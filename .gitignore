@@ -13,12 +13,16 @@ service-account*.json
 credentials.json
 
 # Databases, dumps, backups, exported data
+# NOT a blanket *.sql — that would silently swallow schema migrations
+# (prisma/migrations/*/migration.sql) and lose the schema history.
 *.sqlite
 *.sqlite3
 *.db
-*.sql
 *.dump
 *.bak
+*.dump.sql
+*.backup.sql
+/dumps/
 /backups/
 
 # Dependencies and build output

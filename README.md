@@ -18,14 +18,33 @@ comes from an openly licensed source, recorded per item so anyone can check.
 - **Spaced repetition at the centre.** Scheduling with
   [FSRS](https://github.com/open-spaced-repetition) — the learner is shown
   what they are about to forget, not a list they page through.
-- **CEFR A1 → C2**, useful for DELF / DALF / TCF / TEF preparation without
-  claiming to be an official preparation product.
+- **CEFR A1 → C2**, useful preparation for the DELF, DALF, TCF and TEF
+  examinations — see the independence notice below.
 - **Free and anonymous first.** Study immediately; no account required. An
   account only ever syncs progress across devices.
 - **Openly licensed content**, with provenance recorded per item.
 - **Native-speaker audio** from open corpora, with browser speech synthesis
   only as a fallback.
 - **Works on a phone, works offline.** A commute is the natural study slot.
+
+## Independence and scope
+
+This is an **independent, free study tool**. It is **not affiliated with,
+endorsed by, sponsored by or connected to** France Éducation international,
+the Chambre de commerce et d'industrie de Paris Île-de-France, the French
+Ministry of National Education, or any other examination body.
+
+*DELF*, *DALF*, *TCF* and *TEF* are trademarks of their respective owners.
+They are named here only to describe what learners are studying for — no
+affiliation is claimed or implied.
+
+**This project does not issue, sell, award or help anyone obtain any
+certificate, diploma or test result, and gives no immigration, visa or legal
+advice of any kind.** It teaches French. Nothing more.
+
+CEFR levels shown here are a judgement applied consistently across the
+content set, based on corpus frequency — not an official alignment with any
+examination syllabus. See [`docs/content-provenance.md`](docs/content-provenance.md).
 
 ## Licensing
 

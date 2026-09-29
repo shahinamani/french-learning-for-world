@@ -23,8 +23,11 @@ A pre-commit hook in `.githooks/` scans staged changes for credential
 patterns. Enable it once per clone:
 
 ```bash
-git config core.hooksPath .githooks
+./scripts/setup-hooks.sh
 ```
+
+Hooks are never cloned with a repository, so this must be run once in every
+clone — otherwise the scanner is present but never runs.
 
 If you believe a secret has been committed, **do not open a public issue** —
 report it privately as above so the credential can be rotated first.

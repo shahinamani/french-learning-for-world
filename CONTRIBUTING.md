@@ -27,8 +27,11 @@ leak waiting for someone to forget to override it.
 Enable the pre-commit scanner once per clone:
 
 ```bash
-git config core.hooksPath .githooks
+./scripts/setup-hooks.sh
 ```
+
+Hooks are never cloned with a repository, so this must be run once in every
+clone — otherwise the scanner is present but never runs.
 
 Do not bypass it with `--no-verify`. If it fires, investigate.
 
