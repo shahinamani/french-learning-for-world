@@ -1,0 +1,50 @@
+# Secrets and configuration — never commit real values
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.p12
+*.pfx
+id_rsa*
+*.keystore
+secrets.*
+service-account*.json
+credentials.json
+
+# Databases, dumps, backups, exported data
+*.sqlite
+*.sqlite3
+*.db
+*.sql
+*.dump
+*.bak
+/backups/
+
+# Dependencies and build output
+node_modules/
+.next/
+out/
+dist/
+build/
+coverage/
+*.tsbuildinfo
+
+# Caches and logs
+.cache/
+.turbo/
+*.log
+npm-debug.log*
+yarn-error.log*
+
+# Editor and OS
+.DS_Store
+Thumbs.db
+.idea/
+.vscode/*
+!.vscode/extensions.json
+
+# Scratch — never published
+/scratch/
+/tmp/
+*.local

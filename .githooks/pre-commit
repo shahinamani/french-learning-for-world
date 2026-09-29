@@ -1,0 +1,41 @@
+#!/bin/sh
+# Blocks a commit that stages anything shaped like a real credential.
+# Enable once per clone:  git config core.hooksPath .githooks
+#
+# Matches VALUES, not the words "password" or "secret" — otherwise security
+# documentation blocks itself and people learn to pass --no-verify.
+# This hook is a safety net, not the control. The control is not writing
+# secrets down. Run `gitleaks detect` before a release.
+
+fail=0
+
+# 1. A real .env must never be staged; .env.example may be.
+for f in $(git diff --cached --name-only --diff-filter=ACM); do
+  case "$f" in
+    .env.example|*/.env.example) ;;
+    .env|.env.*|*/.env|*/.env.*)
+      echo "BLOCKED: $f is staged. Only .env.example may be committed." >&2
+      fail=1 ;;
+    *.pem|*.key|*.p12|*.pfx|id_rsa*|*/id_rsa*)
+      echo "BLOCKED: $f looks like key material." >&2
+      fail=1 ;;
+  esac
+done
+
+# 2. Known credential formats, and assignments with a literal value.
+#    The hook excludes itself: it necessarily contains these patterns.
+PATTERNS='gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|BEGIN ([A-Z]+ )?PRIVATE KEY|ey[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}|(postgres(ql)?|mysql|mongodb(\+srv)?|redis|amqp)://[^:/ ]+:[^@ ]+@|(api[_-]?key|apikey|secret|password|passwd|token|auth)[\"'\'' ]*[:=][ ]*[\"'\''][^\"'\'' $<>{}]{8,}[\"'\'']'
+
+files=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^\.githooks/pre-commit$' || true)
+if [ -n "$files" ]; then
+  if git diff --cached -U0 -- $files | grep -nE "$PATTERNS" >&2; then
+    echo "" >&2
+    echo "BLOCKED: the staged diff matches a credential pattern (above)." >&2
+    echo "This repository is PUBLIC. A pushed secret cannot be un-published." >&2
+    echo "If it is genuinely a placeholder, make it obviously fake." >&2
+    fail=1
+  fi
+fi
+
+[ "$fail" -eq 0 ] || exit 1
+exit 0
