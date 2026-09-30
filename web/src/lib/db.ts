@@ -94,6 +94,48 @@ export async function reviewsForCard(userId: string, cardKey: string): Promise<R
   return (await db()).getAllFromIndex('reviews', 'by-user-card', [userId, cardKey]);
 }
 
+/**
+ * Import a parsed export into THIS profile. The rows arrive without a user id —
+ * it is a local profile id and means nothing on another device — so every row
+ * is re-keyed to the importing learner.
+ *
+ * Rows are identified by their own `id` and skipped if already present, so
+ * importing the same file twice does not double a learner's history. Card
+ * states are taken only when the imported one was reviewed more recently than
+ * what is already here, so an import can never move a card backwards.
+ *
+ * One transaction: a half-applied import is worse than a refused one.
+ */
+export async function importForUser(
+  userId: string,
+  data: { rows: Omit<ReviewRow, 'userId'>[]; cards: (CardState & { cardKey: string })[] },
+): Promise<{ rows: number; rowsSkipped: number; cards: number }> {
+  if (!userId) throw new Error('importForUser without a user id');
+  const d = await db();
+  const tx = d.transaction(['reviews', 'cards'], 'readwrite');
+  const reviews = tx.objectStore('reviews');
+  const cards = tx.objectStore('cards');
+  let added = 0, skipped = 0, written = 0;
+
+  for (const r of data.rows) {
+    const row = { ...r, userId } as ReviewRow;
+    if (await reviews.get(row.id)) { skipped++; continue; }
+    await reviews.add(row);
+    added++;
+  }
+  for (const c of data.cards) {
+    const { cardKey, ...state } = c;
+    const existing = await cards.get([userId, cardKey]);
+    const incomingSeen = state.lastReviewedAt ?? 0;
+    const existingSeen = existing?.lastReviewedAt ?? 0;
+    if (existing && existingSeen >= incomingSeen) continue;
+    await cards.put({ ...state, userId, cardKey });
+    written++;
+  }
+  await tx.done;
+  return { rows: added, rowsSkipped: skipped, cards: written };
+}
+
 /** Erases one learner and nothing else. */
 export async function eraseUser(userId: string) {
   if (!userId) throw new Error('eraseUser without a user id');

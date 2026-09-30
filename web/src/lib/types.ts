@@ -46,6 +46,9 @@ export type ReviewRow = {
   dueBefore: number;
   dueAfter: number;
   scheduler: string;
+  /** Digest of the FSRS weight vector in force. Without it a later refit makes
+   *  every earlier row uninterpretable — see docs/03. */
+  paramsHash: string;
   client: 'web';
 };
 

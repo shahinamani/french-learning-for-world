@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../app-context';
-import { reviewsForUser } from '../lib/db';
+import { reviewsForUser, allCardStates } from '../lib/db';
 import { conceptStats, weekSummary, exportRows, type ConceptStat } from '../lib/progress';
 import { loadContent } from '../lib/content';
 import type { Concept, ReviewRow } from '../lib/types';
@@ -38,11 +38,15 @@ export function Progress() {
     return c ? (settings.ui === 'fr' ? frText(c.name.fr) : c.name.en) : id;
   };
 
-  const download = () => {
+  const download = async () => {
     if (!rows) return;
-    const url = URL.createObjectURL(new Blob([exportRows(rows)], { type: 'application/json' }));
+    // The card states go with the log. Without them the history arrives on the
+    // new device and every card is due-new, because the schedule lives in the
+    // states rather than in the log.
+    const states = await allCardStates(userId);
+    const url = URL.createObjectURL(new Blob([exportRows(rows, states)], { type: 'application/json' }));
     const a = document.createElement('a');
-    a.href = url; a.download = 'french-review-log.json';
+    a.href = url; a.download = 'french-learning-progress.json';
     document.body.append(a); a.click(); a.remove();
     setTimeout(() => URL.revokeObjectURL(url), 1000);
   };

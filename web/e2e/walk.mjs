@@ -555,6 +555,100 @@ await audit(320, 640, 'light', '320 light');
 // ── What adopting Radix was actually for ──────────────────────────────────
 // Radix Dialog and Popover cost 21.57 KiB gzipped. These are the behaviours
 // bought with it; without these checks the adoption is a claim, not a change.
+// ── Carrying your history to another device ───────────────────────────────
+// docs/03 said a learner "can carry their history to another device with no
+// account at all". Until now the app exported and could not import, so that
+// sentence was false in the way that costs a real person everything: they
+// switch phones, and the file they carefully saved loads nowhere.
+console.log('\n=== export, erase, import — the round trip ===');
+{
+  const c = await browser.newContext({ viewport: { width: 1440, height: 900 },
+    acceptDownloads: true });
+  const p = await c.newPage(); watch(p, ' io');
+  await p.goto(BASE + '#/practise/review', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(500);
+
+  // Study four cards so there is something to lose.
+  for (let i = 0; i < 4; i++) {
+    await p.keyboard.press('Space'); await p.waitForTimeout(150);
+    await p.keyboard.press('3'); await p.waitForTimeout(350);
+  }
+  const countRows = async () => p.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    return await new Promise((r) => {
+      const q = db.transaction('reviews').objectStore('reviews').index('by-user-time')
+        .getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity]));
+      q.onsuccess = () => r(q.result.length);
+    });
+  });
+  const before = await countRows();
+  ok(`studied ${before} cards before exporting`, before >= 4);
+
+  const hashed = await p.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    const rows = await new Promise((r) => {
+      const q = db.transaction('reviews').objectStore('reviews').index('by-user-time')
+        .getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity]));
+      q.onsuccess = () => r(q.result);
+    });
+    return rows[0]?.paramsHash ?? null;
+  });
+  ok(`every row records the scheduler's parameter hash ("${hashed}")`,
+     typeof hashed === 'string' && /^[0-9a-f]{8}$/.test(hashed));
+
+  await p.goto(BASE + '#/progress', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(400);
+  const dl = p.waitForEvent('download');
+  await p.locator('[data-testid="export"]').click();
+  const file = await (await dl).path();
+  const saved = JSON.parse(readFileSync(file, 'utf8'));
+  ok(`the export carries ${saved.rows?.length ?? 0} rows AND ${saved.cards?.length ?? 0} card states (v${saved.version})`,
+     (saved.rows?.length ?? 0) >= 4 && (saved.cards?.length ?? 0) >= 4 && saved.version === 2);
+  ok('and does not carry the local profile id',
+     !JSON.stringify(saved).includes('"userId"'));
+
+  // Erase, as a learner who has lost their phone has effectively done.
+  await p.goto(BASE + '#/account', { waitUntil: 'networkidle' });
+  await p.locator('[data-testid="erase"]').click();
+  await p.locator('[data-testid="erase-confirm"]').click();
+  await p.waitForTimeout(1200);
+  await p.goto(BASE + '#/progress', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(500);
+  ok(`after erasing, ${await countRows()} rows remain`, (await countRows()) === 0);
+
+  // Import the file they carried.
+  await p.goto(BASE + '#/account', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(300);
+  await p.locator('[data-testid="import-file"]').setInputFiles(file);
+  await p.waitForTimeout(900);
+  const msg = await p.locator('[data-testid="import-result"]').innerText().catch(() => '');
+  ok(`the import reports what it did ("${msg.trim()}")`, /\d/.test(msg));
+  const after = await countRows();
+  ok(`the history is back: ${after} rows restored of ${before}`, after === before);
+
+  // Twice must not double it.
+  await p.locator('[data-testid="import-file"]').setInputFiles(file);
+  await p.waitForTimeout(900);
+  const twice = await countRows();
+  ok(`importing the same file again changes nothing (${twice} rows)`, twice === before);
+
+  // And the schedule came back, not just the history.
+  const due = await p.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    const cards = await new Promise((r) => {
+      const q = db.transaction('cards').objectStore('cards').index('by-user-due')
+        .getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity]));
+      q.onsuccess = () => r(q.result);
+    });
+    return cards.filter((c) => c.reps > 0).length;
+  });
+  ok(`and the schedule came with it (${due} cards carry their review state)`, due >= 4);
+  await c.close();
+}
+
 console.log('\n=== dialog and popover behaviour (the reason for Radix) ===');
 {
   const c = await browser.newContext({ viewport: { width: 1440, height: 900 } });

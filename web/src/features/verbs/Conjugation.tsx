@@ -79,7 +79,7 @@ export function ConjugationDrill() {
       difficultyBefore: before.difficulty, difficultyAfter: after.difficulty,
       elapsedDays: after.elapsedDays, scheduledDays: after.scheduledDays,
       dueBefore: before.dueAt, dueAfter: after.dueAt,
-      scheduler: SCHEDULER_ID, client: 'web',
+      scheduler: SCHEDULER_ID, paramsHash: engine.paramsHash, client: 'web',
     };
     await appendReview(row, after);
   }, [verb, tense, engine, result, value, index, userId]);

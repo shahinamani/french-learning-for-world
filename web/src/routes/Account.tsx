@@ -2,7 +2,8 @@
 import { useState } from 'react';
 import { useApp } from '../app-context';
 import { createProfile, listProfiles, setActiveProfileId } from '../lib/session';
-import { eraseUser } from '../lib/db';
+import { eraseUser, importForUser } from '../lib/db';
+import { parseExport } from '../lib/progress';
 import { LOCALES } from '../lib/i18n';
 import type { Locale } from '../lib/types';
 
@@ -10,6 +11,7 @@ export function Account() {
   const { t, settings, update, profile, setProfile, storageWorks } = useApp();
   const [profiles, setProfiles] = useState(() => listProfiles());
   const [confirming, setConfirming] = useState(false);
+  const [imported, setImported] = useState<string | null>(null);
 
   const switchTo = (id: string) => {
     const p = profiles.find((x) => x.id === id);
@@ -67,6 +69,32 @@ export function Account() {
             <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
           </select>
         </label>
+      </section>
+
+      <section className="card" aria-labelledby="i-h">
+        <h2 id="i-h" className="eyebrow">{t('importData')}</h2>
+        <p className="muted">{t('importBody')}</p>
+        <label className="btn btn--sm" style={{ display: 'inline-flex' }}>
+          {t('chooseFile')}
+          <input type="file" accept="application/json,.json" data-testid="import-file"
+                 className="u-hidden-visually"
+                 onChange={async (e) => {
+                   const file = e.target.files?.[0];
+                   e.target.value = '';
+                   if (!file) return;
+                   setImported(null);
+                   try {
+                     const data = parseExport(await file.text());
+                     const r = await importForUser(profile.id, data);
+                     setImported(t('importDone', { n: r.rows, s: r.rowsSkipped, c: r.cards }));
+                   } catch (err) {
+                     const code = err instanceof Error ? err.message : 'notOurs';
+                     setImported(t(code === 'notJson' ? 'importNotJson'
+                       : code === 'version' ? 'importVersion' : 'importNotOurs'));
+                   }
+                 }} />
+        </label>
+        {imported && <p className="muted" role="status" data-testid="import-result">{imported}</p>}
       </section>
 
       <section className="card" aria-labelledby="d-h">

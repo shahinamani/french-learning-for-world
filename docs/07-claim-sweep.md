@@ -15,6 +15,22 @@ below, with what it said, what is true, and how that was established.
 
 ---
 
+## Settled by Shahin, 2026-10-01
+
+Every drift below was decided rather than carried. The decisions, and where
+each landed:
+
+| Drift | Decision | State |
+|---|---|---|
+| Browser suites never ran in CI | **CI first, ahead of everything** | ✅ both suites run on every push and PR, green on a GitHub runner |
+| shadcn/Radix named, never adopted | **axe-core in CI; adopt Radix only where hand-rolling breaks; keep simple things hand-written; measure** | ✅ Dialog + Popover adopted, +21.57 KiB measured; four primitives deliberately not adopted; axe on 10 screens × 2 themes |
+| `user_id` nullable in spec, required in build | **required is correct — fix the doc** | ✅ `docs/03` corrected |
+| Export without import | **build it** | ✅ export v2 carries states; import is idempotent and never moves a card backwards |
+| `params_hash` specified, never built | **build it or delete it** | ✅ built — 8-char FNV-1a of the weight vector, on every row |
+| No landing page; home prerendered for LCP | **fine — say plainly that SEO is unaddressed** | ✅ stated in `docs/04` |
+
+---
+
 ## The 12 that had drifted
 
 ### 1. shadcn/ui and Radix — named as the stack in three documents, never adopted

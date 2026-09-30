@@ -1,6 +1,6 @@
 /** Queries over the review log. Every one of them names whose rows it wants. */
 import { reviewsForUser, allCardStates } from './db';
-import type { ReviewRow, Card } from './types';
+import type { ReviewRow, Card, CardState } from './types';
 
 export type Counts = { due: number; fresh: number; learned: number; total: number };
 
@@ -71,7 +71,63 @@ export async function weekSummary(userId: string, now: number) {
   };
 }
 
-export function exportRows(rows: ReviewRow[]) {
-  return JSON.stringify({ format: 'french-learning-for-world/review-log', version: 1,
-    exportedAt: new Date().toISOString(), rows }, null, 2);
+export const EXPORT_FORMAT = 'french-learning-for-world/review-log';
+export const EXPORT_VERSION = 2;
+
+/**
+ * The export carries the review log AND the card states.
+ *
+ * Version 1 carried rows only, which made "carry your history to another
+ * device" half true in a way that would have bitten a real learner: the
+ * history would arrive and every card would be due-new, because the schedule
+ * lives in the card states, not in the log. Version 1 files still import; their
+ * card states are simply absent and the scheduler starts those cards over,
+ * which is the best that can be done with what they contain.
+ *
+ * `userId` is deliberately NOT exported. It is a local profile id, meaningless
+ * on another device, and the import assigns the importing profile's own.
+ */
+export function exportRows(rows: ReviewRow[], states: (CardState & { cardKey: string })[] = []) {
+  return JSON.stringify({
+    format: EXPORT_FORMAT, version: EXPORT_VERSION,
+    exportedAt: new Date().toISOString(),
+    rows: rows.map(({ userId: _userId, ...rest }) => rest),
+    cards: states.map(({ cardKey, ...state }) => ({ cardKey, ...stripUser(state) })),
+  }, null, 2);
+}
+
+function stripUser<T extends object>(o: T) {
+  const { userId: _userId, ...rest } = o as T & { userId?: string };
+  return rest;
+}
+
+export type ImportReport = {
+  rows: number; rowsSkipped: number; cards: number; version: number;
+};
+
+/** What an import would do, decided from the file alone. Throws on anything
+ *  that is not one of our exports, rather than guessing at a stranger's JSON. */
+export function parseExport(text: string): { rows: Omit<ReviewRow, 'userId'>[];
+                                             cards: (CardState & { cardKey: string })[];
+                                             version: number } {
+  let parsed: unknown;
+  try { parsed = JSON.parse(text); } catch { throw new Error('notJson'); }
+  if (!parsed || typeof parsed !== 'object') throw new Error('notOurs');
+  const o = parsed as Record<string, unknown>;
+  if (o.format !== EXPORT_FORMAT) throw new Error('notOurs');
+  const version = Number(o.version);
+  if (!Number.isFinite(version) || version < 1 || version > EXPORT_VERSION) throw new Error('version');
+  const rows = Array.isArray(o.rows) ? o.rows : [];
+  const cards = Array.isArray(o.cards) ? o.cards : [];
+  const goodRows = rows.filter((r): r is Omit<ReviewRow, 'userId'> =>
+    !!r && typeof r === 'object'
+    && typeof (r as { id?: unknown }).id === 'string'
+    && typeof (r as { cardKey?: unknown }).cardKey === 'string'
+    && Number.isFinite((r as { reviewedAt?: unknown }).reviewedAt as number)
+    && Array.isArray((r as { conceptIds?: unknown }).conceptIds));
+  const goodCards = cards.filter((c): c is CardState & { cardKey: string } =>
+    !!c && typeof c === 'object'
+    && typeof (c as { cardKey?: unknown }).cardKey === 'string'
+    && Number.isFinite((c as { dueAt?: unknown }).dueAt as number));
+  return { rows: goodRows, cards: goodCards, version };
 }

@@ -192,7 +192,7 @@ export function FlashcardSession() {
       difficultyBefore: before.difficulty, difficultyAfter: after.difficulty,
       elapsedDays: after.elapsedDays, scheduledDays: after.scheduledDays,
       dueBefore: before.dueAt, dueAfter: after.dueAt,
-      scheduler: SCHEDULER_ID, client: 'web',
+      scheduler: SCHEDULER_ID, paramsHash: engine.paramsHash, client: 'web',
     };
     // One transaction: the row and the new card state, or neither.
     await appendReview(row, after);

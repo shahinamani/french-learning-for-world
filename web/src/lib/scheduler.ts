@@ -34,12 +34,35 @@ export function emptyState(): CardState {
 let enginePromise: Promise<{
   review: (s: CardState, g: Grade, now: number) => CardState;
   preview: (s: CardState, now: number) => Record<Grade, number>;
+  paramsHash: string;
 }> | null = null;
+
+/**
+ * A short, stable digest of the weight vector in force, written onto every
+ * review row. `docs/03` specified this and it was never built; its own
+ * justification says why that matters — if the weights are ever refit, rows
+ * written before the refit cannot be told from rows written after, and the
+ * whole log becomes uninterpretable as optimiser input. Retroactively
+ * impossible, so it is cheap now and never cheap again.
+ *
+ * FNV-1a: 8 hex characters, no dependency, and the value only ever has to be
+ * compared for equality — it is not a security hash.
+ */
+export function hashParams(weights: readonly number[]): string {
+  let h = 0x811c9dc5;
+  for (const ch of weights.map((w) => w.toFixed(6)).join(',')) {
+    h ^= ch.charCodeAt(0);
+    h = Math.imul(h, 0x01000193) >>> 0;
+  }
+  return h.toString(16).padStart(8, '0');
+}
 
 export function loadScheduler() {
   if (!enginePromise) {
     enginePromise = import('ts-fsrs').then((m) => {
-      const engine = m.fsrs(m.generatorParameters({ enable_fuzz: true, enable_short_term: true }));
+      const params = m.generatorParameters({ enable_fuzz: true, enable_short_term: true });
+      const engine = m.fsrs(params);
+      const paramsHash = hashParams(params.w);
       const toState = (c: FsrsCard): CardState => ({
         dueAt: c.due.getTime(), stability: c.stability, difficulty: c.difficulty,
         elapsedDays: c.elapsed_days, scheduledDays: c.scheduled_days,
@@ -54,6 +77,7 @@ export function loadScheduler() {
         learning_steps: 0,
       } as FsrsCard);
       return {
+        paramsHash,
         review: (state: CardState, grade: Grade, now: number) =>
           toState(engine.next(toFsrs(state), new Date(now), grade as 1 | 2 | 3 | 4).card),
         preview: (state: CardState, now: number) => {
