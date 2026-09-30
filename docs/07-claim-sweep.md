@@ -10,7 +10,7 @@ written **into** those files, marked `[corrected 2026-09-30]` or `[as built]`,
 and the originals left visible — a document that quietly rewrites itself is no
 better than one that was wrong.
 
-**Result: 43 claims checked. 31 held. 12 had drifted.** Every one of the 12 is
+**Result: 44 claims checked. 31 held. 13 had drifted.** Every one of the 13 is
 below, with what it said, what is true, and how that was established.
 
 ---
@@ -98,7 +98,32 @@ The formatter is `fr()` / `frIf()`. The palette was built as a **route**, not a
 modal, so there is no dialog and nothing to trap; the focus-trap-and-return
 behaviour lives on the **side panel** instead, which is walked and checked.
 
-### 12. Counts that had simply moved
+### 12. `docs/06`: "5 / 15 / 30 min — starts a time-boxed session", and "dead ends found: none"
+
+`?minutes=N` was written by the Learn buttons **and** the search command, and
+**read by nothing**. The link landed on a real session, so the walk's link check
+passed — but the session it landed on was not time-boxed, so the control was
+decoration promising a behaviour that did not exist. `docs/06` §1 listed it as
+working and §2 concluded "dead ends found: none". Both were wrong.
+
+**Fixed, not just documented,** since this is step 5's TIMERS item: the session
+now reads the parameter, starts the *same* timer the pill in the bar drives,
+shows the time remaining as text, and stops serving cards when it reaches zero.
+
+Two defects surfaced while building it, both worth recording:
+
+- **`restore()` is a destructive read.** It clears the timer on expiry so the
+  finish is reported exactly once — correct, so the chime cannot fire twice, and
+  unit-tested. But with a second consumer polling it, the two race and one never
+  sees the finish. The session therefore holds its own end time and compares it
+  to the wall clock; `restore` keeps its once-only semantics for the chime.
+- **My first test for this could not fail usefully.** It asserted the pill
+  matched `/\d:\d\d/`, which "15:00" — the *un-adopted default* — satisfies. It
+  passed while the pill and the session were showing different times. It now
+  requires the two to agree within two seconds, and runs on a mocked clock so
+  the five minutes actually elapse instead of being faked by poking storage.
+
+### 13. Counts that had simply moved
 
 | Claim | Was | Is |
 |---|---|---|

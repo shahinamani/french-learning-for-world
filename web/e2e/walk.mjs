@@ -426,6 +426,39 @@ console.log('\n=== carried-forward items ===');
   const reduced = await q.evaluate(motion);
   ok(`prefers-reduced-motion honoured (${reduced.total} elements, ${reduced.moving} still moving over 0.05 ms${reduced.moving ? `, worst ${reduced.worst} ms on ${reduced.worstSel}` : ''})`, reduced.moving === 0);
 
+  // ?minutes=N must actually time-box the session. It was produced by the Learn
+  // buttons and the search command and read by nothing, so the control was
+  // decoration. Checked at both ends, on a mocked clock so the five minutes
+  // really elapse rather than being simulated by poking storage.
+  await q.emulateMedia({ reducedMotion: 'no-preference' });
+  await q.clock.install();
+  await q.goto(BASE + '#/practise/review?minutes=5', { waitUntil: 'networkidle' });
+  await q.clock.runFor(1200); await q.waitForTimeout(300);
+  const box = await q.locator('[data-testid="timebox"]').count();
+  const boxText = box ? await q.locator('[data-testid="timebox"]').innerText() : '';
+  ok(`?minutes=5 time-boxes the session (shows "${boxText.trim()}")`, box === 1 && /4:5\d|5:00/.test(boxText));
+  // The pill and the session must show the SAME countdown, not merely both show
+  // one: the pill defaults to 15:00, so "matches /\d:\d\d/" would pass on a
+  // timer that had not been adopted at all.
+  const pill = await q.locator('.timer-pill, [data-testid="timer-pill"]').first().innerText().catch(() => '');
+  const mmss = (x) => (x.match(/\d?\d:\d\d/) || [''])[0];
+  const agree = Math.abs(
+    (Number(mmss(pill).split(':')[0]) * 60 + Number(mmss(pill).split(':')[1])) -
+    (Number(mmss(boxText).split(':')[0]) * 60 + Number(mmss(boxText).split(':')[1]))) <= 2;
+  ok(`the bar's pill shows the SAME countdown as the session (pill "${mmss(pill)}" vs session "${mmss(boxText)}")`, agree);
+
+  await q.clock.runFor('04:00');
+  const mid = await q.locator('[data-testid="timebox"]').innerText().catch(() => '');
+  ok(`it counts down as time passes ("${mid.trim()}")`, /0:5\d|1:0\d/.test(mid));
+
+  await q.clock.runFor('01:10');
+  const up = await q.locator('[data-testid="session-timeup"]').count();
+  const upText = up ? (await q.locator('[data-testid="session-timeup"]').innerText()).replace(/\n/g, ' ') : '';
+  ok(`when the time is up the session stops and says so ("${upText.slice(0, 70)}")`, up === 1);
+  const stillCarding = await q.locator('[data-testid="show-answer"], .flashcard').count();
+  ok(`and serves no further card (${stillCarding} card elements left)`, stillCarding === 0);
+  await q.clock.uninstall?.();
+
   // Stubs name what is missing and why.
   for (const [hash, needle] of [['/practise/listening', 'licence'], ['/practise/exams', 'DELF'], ['/learn/level/B1/grammar', 'not built']]) {
     await q.goto(BASE + '#' + hash, { waitUntil: 'networkidle' }); await q.waitForTimeout(250);

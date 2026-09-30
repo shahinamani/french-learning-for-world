@@ -11,6 +11,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams, Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
 import { userKey } from '../../lib/session';
+import { useTick, restore as restoreTimer, save as saveTimer, formatClock } from '../../lib/timer';
 import { loadContent } from '../../lib/content';
 import { allCardStates, appendReview, getCardState } from '../../lib/db';
 import { emptyState, loadScheduler, GRADES, SCHEDULER_ID, type Grade } from '../../lib/scheduler';
@@ -41,6 +42,27 @@ export function FlashcardSession() {
   // A reload, a back button, or the same link pasted into a reopened tab all
   // resume the same ordered queue; a link with no id starts a new one.
   const sessionParam = params.get('s');
+
+  // `?minutes=N` time-boxes the session. It starts the SAME timer the pill in
+  // the bar drives, so the two can never disagree. The session then holds the
+  // end time itself rather than re-reading the timer, because `restore` clears
+  // an expired timer so it reports the finish exactly once — two pollers would
+  // race and one would miss it.
+  const minutesParam = Number(params.get('minutes')) || 0;
+  useTick(250);
+  const [boxEndsAt, setBoxEndsAt] = useState<number | null>(null);
+  const boxStarted = useRef(false);
+  useEffect(() => {
+    if (!minutesParam || boxStarted.current) return;
+    boxStarted.current = true;
+    const existing = restoreTimer(userId, Date.now());
+    if (existing.state === 'running') { setBoxEndsAt(existing.endsAt); return; }
+    const endsAt = Date.now() + minutesParam * 60_000;
+    saveTimer(userId, endsAt, minutesParam);
+    setBoxEndsAt(endsAt);
+  }, [minutesParam, userId]);
+  const boxLeft = boxEndsAt === null ? null : Math.max(0, Math.ceil((boxEndsAt - Date.now()) / 1000));
+  const timeUp = boxLeft !== null && boxLeft <= 0;
 
   const [queue, setQueue] = useState<Card[] | null>(null);
   const [states, setStates] = useState<Map<string, CardState>>(new Map());
@@ -197,6 +219,20 @@ export function FlashcardSession() {
   if (error) return <ErrorState onRetry={() => location.reload()} />;
   if (!queue || !engine) return <SessionSkeleton />;
 
+  if (timeUp) {
+    return (
+      <div className="page">
+        <div className="empty" data-testid="session-timeup">
+          <div className="empty__icon"><Icon name="check" size={34} /></div>
+          <p className="empty__title">{t('timerDone')}</p>
+          <p className="empty__body">{`${t('sessionOfMinutes', { n: minutesParam })} ${t('reviewed', { n: reviewed })}`}</p>
+          <Link className="btn btn--primary" to="/practise/review">{t('keepGoing')}</Link>
+          <Link className="btn btn--sm" to="/learn">{t('learn')}</Link>
+        </div>
+      </div>
+    );
+  }
+
   if (!card) {
     // The session is over; drop its snapshot so the next visit builds a fresh
     // queue instead of replaying a finished one.
@@ -225,6 +261,11 @@ export function FlashcardSession() {
            aria-valuenow={index} aria-label={t('practise')}>
         <span className="rail__fill" style={{ width: `${(index / Math.max(1, queue.length)) * 100}%` }} />
       </div>
+      {minutesParam > 0 && boxLeft !== null && (
+        <p className="session__timebox" data-testid="timebox" role="status">
+          {t('timeLeft', { c: formatClock(boxLeft) })}
+        </p>
+      )}
       <p className="session-count" data-testid="session-count">{index + 1} / {queue.length}</p>
 
       <article className="card card--raised flashcard" data-testid="flashcard">

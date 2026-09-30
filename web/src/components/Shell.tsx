@@ -41,7 +41,19 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
   useEffect(() => {
     const id = setInterval(() => {
-      if (!timer.running) { setClock(formatClock(selected * 60)); return; }
+      if (!timer.running) {
+        // A session started with `?minutes=N` writes the timer to storage. Adopt
+        // it, so the pill shows the same countdown the session is running on —
+        // and so a second tab of this profile picks it up too.
+        const r = restore(userId, Date.now());
+        if (r.state === 'running') {
+          finishedOnce.current = false;
+          setTimer({ endsAt: r.endsAt, durationMin: r.durationMin, running: true });
+          setSelected(r.durationMin);
+          return;
+        }
+        setClock(formatClock(selected * 60)); return;
+      }
       const left = remainingSeconds(timer.endsAt, Date.now());
       setClock(formatClock(left));
       if (left <= 0 && !finishedOnce.current) {

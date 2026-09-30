@@ -299,3 +299,11 @@ kbd {
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important; }
 }
+
+/* Remaining time in a time-boxed session (`?minutes=N`). Text, not only a bar:
+   a learner deciding whether to start one more card needs the number. */
+.session__timebox {
+  font-size: var(--text-2xs); color: var(--color-ink-muted);
+  font-variant-numeric: tabular-nums; text-align: end;
+  padding-inline: var(--space-4); padding-block-start: var(--space-1);
+}
