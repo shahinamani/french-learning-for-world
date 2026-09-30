@@ -390,8 +390,6 @@ function renderCard() {
         el('div', { class: 'example-tr', lang: pref, dir: dirOf(pref),
           text: ex.translations[pref] ?? ex.translations.en ?? '' }),
       )),
-      el('div', { class: 'provenance',
-        text: `${t('source')}: ${card.provenance} · ${t('licence')}: ${card.licence}` }),
     );
     front.append(answer);
   }
