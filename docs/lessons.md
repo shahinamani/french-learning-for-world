@@ -139,6 +139,56 @@ highlighter no longer depends on an exact accent match either.
 text uses `\p{L}` with the `u` flag, or folds through `fold()`. Any such site
 needs a test containing a real accented word and a real ligature.
 
+### #8 — A default that writes into permanent public history
+
+**2026-10-01. The most expensive lesson on this project, and the cheapest to have prevented.**
+
+A tool-attribution trailer was appended to commit messages by default. Nobody
+chose it; it simply arrived. It reached a public repository, where the
+Contributors panel then listed a second name on Shahin's own project.
+
+The removal is where it got expensive:
+
+1. **Rewriting the messages** took a `filter-repo` pass over every branch. That
+   part worked — author names, emails and author dates all preserved, every tree
+   hash identical.
+2. **The rewrite closed the pull request.** Force-pushing `main`, a PR's *base*
+   branch, auto-closes it, and GitHub then **refuses to reopen** a PR whose head
+   was force-pushed. The page, its description and its history were gone for good.
+3. **The pull-request ref kept the commit alive anyway.** `refs/pull/1/head`
+   still pointed into the pre-rewrite history, and the trailered commit was its
+   ancestor. **GitHub keeps `refs/pull/*` permanently and offers no way to delete
+   them.** No rewrite, no branch deletion, no gc could reach it.
+4. **So the repository had to be deleted and rebuilt.** A settings snapshot, a
+   verified bundle, a hard stop for authorisation, a fresh repository, both
+   branches pushed by name, and ten verification checks — to remove one line that
+   was never wanted.
+
+**What it cost:** a rebuild, a lost pull request, and a session spent on it.
+**What prevention would have cost:** not adding the line.
+
+**Rules, now enforced rather than remembered:**
+
+- No attribution trailer, no "generated with" line, no robot emoji, in any commit
+  message, pull-request description, README, changelog or file. Every commit is
+  authored `Shahin Amani <transbox72@gmail.com>` and nothing else.
+- `scripts/check-commit-messages.sh` runs in the required `test` job and fails on
+  any of those patterns in any commit message across `--all`.
+- It scans **messages, not files**, so this page may name the episode. There is a
+  test asserting exactly that distinction, because a check that also flagged
+  documentation would be turned off within a week.
+- **The detector is seen red on every run, not once.** A single historic red run
+  would have proved it worked one time — and would have left the offending commit
+  in the history forever, which is the harm itself. Instead
+  `tests/commit-attribution.test.js` builds a throwaway repository, plants each
+  offending form in turn, and asserts the script exits 1: six forms, plus the
+  empty-history case exiting 2 rather than passing, plus the documentation case
+  passing.
+
+**The general shape.** A default that writes into an append-only public record is
+not a small default. Before accepting one, ask what removing it would cost — and
+whether the platform will even let you.
+
 ---
 
 ## How these are caught
@@ -172,6 +222,7 @@ Not by care. By two habits:
 | 6 | `fsrs.test.js`, `timer.test.js` | PASS | 24 tests against modules the product replaced or never used |
 | 5 | `typography.test.js` | PASS | read the source for the word "apostrophe" instead of running the formatter |
 | 7 | `answer.ts` / search / verb filter | PASS | `œ` and `æ` never folded; `checkAnswer('soeur','sœur')` was WRONG |
+| 8 | commit messages | *no check existed* | a default trailer reached public history; cure was a repository rebuild |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
 meant **not one design token was ever defined**, and the page still looked like a
