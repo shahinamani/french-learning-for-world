@@ -12,10 +12,11 @@ import { useNavigate, useParams, useSearchParams, Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
 import { loadPapers, loadAttempt, saveAttempt, remainingMs,
          type ExamPaper as Paper, type Attempt } from '../../lib/exams';
-import { formatClock, useTick } from '../../lib/timer';
+import {formatClock } from '../../lib/timer';
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
+import { useTick } from '../../hooks/useTick';
 
 export function ExamSit() {
   const { paperId = '' } = useParams();

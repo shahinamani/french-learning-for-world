@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 /**
  * Study timer. Nothing decrements: starting it records when it ends, and the
  * display is always the distance to that moment. A locked phone or a throttled
@@ -76,20 +75,4 @@ export async function chime(): Promise<void> {
   const t = ac.currentTime;
   tone(880, t, 1.1, 0.22);
   tone(587.33, t + 0.18, 1.25, 0.2);
-}
-
-/**
- * A 250 ms tick, for anything that has to re-render against the wall clock.
- * Deliberately NOT a wrapper around `restore`: `restore` clears the timer when
- * it expires so the finish is reported once (the chime must not fire twice),
- * which means a second consumer polling it would race the first and lose.
- * Whoever needs "is it over" holds its own end time and compares it to now.
- */
-export function useTick(ms = 250): number {
-  const [tick, setTick] = useState(0);
-  useEffect(() => {
-    const id = setInterval(() => setTick((n) => n + 1), ms);
-    return () => clearInterval(id);
-  }, [ms]);
-  return tick;
 }

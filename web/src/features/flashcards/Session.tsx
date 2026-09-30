@@ -11,7 +11,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useSearchParams, Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
 import { userKey } from '../../lib/session';
-import { useTick, restore as restoreTimer, save as saveTimer, formatClock } from '../../lib/timer';
+import {restore as restoreTimer, save as saveTimer, formatClock } from '../../lib/timer';
 import { loadContent } from '../../lib/content';
 import { allCardStates, appendReview, getCardState } from '../../lib/db';
 import { emptyState, loadScheduler, GRADES, SCHEDULER_ID, type Grade } from '../../lib/scheduler';
@@ -21,6 +21,7 @@ import { useSidePanel } from '../../components/SidePanel';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
 import { fold } from '../../lib/fold';
+import { useTick } from '../../hooks/useTick';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
 
