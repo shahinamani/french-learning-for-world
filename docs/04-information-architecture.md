@@ -259,7 +259,7 @@ You said: *say so now with numbers rather than discovering it in step 4.* I buil
 
 **Next.js costs 89 KB more than Vite for identical output**, and the App Router's own runtime is the reason. Adding Radix (~20 KB for the primitives the home screen needs), `ts-fsrs` (~10 KB) and our application code (~25 KB) puts Next.js at roughly **225 KB** and Vite at roughly **135 KB**.
 
-**Recommendation: keep every reason you gave, drop only Next.js.** Use **Vite + React + TypeScript + Tailwind + shadcn/ui**. shadcn's components are React + Radix + Tailwind and its CLI supports Vite directly — so you still get MIT components copied into the repo that you own and can change, Radix's keyboard and screen-reader behaviour, and Tailwind making the token rule enforceable. None of your three reasons was a Next.js reason.
+**Recommendation: keep every reason you gave, drop only Next.js.** Use **Vite + React + TypeScript + Tailwind + shadcn/ui**. **[corrected 2026-10-01]** shadcn/ui was never adopted. The build uses two Radix primitives directly — Dialog and Popover — and hand-writes the rest. See `docs/01` and `docs/05`. shadcn's components are React + Radix + Tailwind and its CLI supports Vite directly — so you still get MIT components copied into the repo that you own and can change, Radix's keyboard and screen-reader behaviour, and Tailwind making the token rule enforceable. None of your three reasons was a Next.js reason.
 
 **What dropping Next.js actually costs us:**
 
@@ -276,7 +276,7 @@ You said: *say so now with numbers rather than discovering it in step 4.* I buil
 
 | | |
 |---|---|
-| **Framework** | Vite + React + TypeScript + Tailwind + shadcn/ui. Budget stays **150 KB** gzipped, measured at every step. Landing page prerendered to static HTML for SEO. |
+| **Framework** | Vite + React + TypeScript + Tailwind, plus `@radix-ui/react-dialog` and `@radix-ui/react-popover`. **Not** shadcn/ui. Budget stays **150 KB** gzipped, measured at every step: **138.65 KiB** as of 2026-10-01. **SEO is unaddressed** — there is no landing page, the home route is prerendered for LCP rather than for search, and the app uses a hash router, so nothing below the home is separately crawlable. Nobody should assume this was handled. |
 | **Content licence** | CC BY-SA 4.0, knowingly and permanently — `docs/02` |
 | **Mobile navigation** | **Four tabs.** *About* in settings |
 | **Review log** | **The learner sees it**, summary-first with detail one click away, and it doubles as the data export — `docs/03` |

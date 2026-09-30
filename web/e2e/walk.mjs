@@ -552,6 +552,49 @@ await audit(320, 640, 'light', '320 light');
 // hand-rolled — and this is the test that was standing in for. axe cannot see
 // everything a screen reader does, but it catches the classes hand-rolling
 // gets wrong: names, roles, landmarks, labels, contrast, duplicated ids.
+// ── What adopting Radix was actually for ──────────────────────────────────
+// Radix Dialog and Popover cost 21.57 KiB gzipped. These are the behaviours
+// bought with it; without these checks the adoption is a claim, not a change.
+console.log('\n=== dialog and popover behaviour (the reason for Radix) ===');
+{
+  const c = await browser.newContext({ viewport: { width: 1440, height: 900 } });
+  const p = await c.newPage(); watch(p, ' radix');
+
+  // Popover: Escape closes it, and focus goes back to the trigger. The
+  // hand-rolled panel did neither — it could only be closed with the mouse.
+  await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  await p.locator('[data-testid="timer-pill"]').click();
+  await p.waitForTimeout(250);
+  ok('timer popover opens', await p.locator('[data-testid="timer-panel"]').count() === 1);
+  const inPanel = await p.evaluate(() =>
+    !!document.querySelector('[data-testid="timer-panel"]')?.contains(document.activeElement));
+  ok(`focus moves into the popover on open (${inPanel})`, inPanel);
+  await p.keyboard.press('Escape');
+  await p.waitForTimeout(250);
+  ok('Escape closes the timer popover', await p.locator('[data-testid="timer-panel"]').count() === 0);
+  const backOnPill = await p.evaluate(() =>
+    document.activeElement?.getAttribute('data-testid') === 'timer-pill');
+  ok(`and focus returns to the pill (${backOnPill})`, backOnPill);
+
+  // Dialog: Tab must stay inside it. The hand-rolled panel drew a scrim that
+  // blocked the mouse and let Tab walk straight out behind it.
+  await p.goto(BASE + '#/learn?panel=concept:gram.present.irregular', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(400);
+  ok('side panel opens', await p.locator('[data-testid="side-panel"]').count() === 1);
+  let escaped = false;
+  for (let i = 0; i < 12; i++) {
+    await p.keyboard.press('Tab');
+    const inside = await p.evaluate(() =>
+      !!document.querySelector('[data-testid="side-panel"]')?.contains(document.activeElement));
+    if (!inside) { escaped = true; break; }
+  }
+  ok(`focus is trapped in the dialog over 12 tabs (escaped: ${escaped})`, !escaped);
+  await p.keyboard.press('Escape');
+  await p.waitForTimeout(300);
+  ok('Escape closes the dialog', await p.locator('[data-testid="side-panel"]').count() === 0);
+  await c.close();
+}
+
 console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
 {
   const AXE = readFileSync(new URL('../../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');

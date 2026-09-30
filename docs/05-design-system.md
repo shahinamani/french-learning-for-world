@@ -1,7 +1,7 @@
 # 05 — Design system
 
 **Status:** step 3 deliverable. Rendered at `design-system/index.html`, measured by `design-system/contrast-check.mjs`.
-**Stack it targets:** Vite + React + TypeScript + Tailwind.
+**Stack it targets:** Vite + React + TypeScript + Tailwind, plus two Radix primitives.
 **Swept against the build on 2026-09-30** — corrections are marked **[corrected 2026-09-30]** and listed in `docs/07`.
 
 ---
@@ -83,28 +83,66 @@ Points 2–4 are the argument for measuring against the rendered background rath
 
 **[corrected 2026-09-30] Fonts now render as designed.** This section previously said *"Fonts do not render as designed in this container — the network policy blocks the font host"*. That was true when it was written and stopped being true in step 4: both families are self-hosted from `public/fonts/` (Newsreader and Vazirmatn, OFL-1.1, licences committed beside the files), the style guide loads them from `../public/fonts/fonts.css`, and the contrast check now runs with no network allow-list at all. The three reasons for self-hosting — this container, the offline case, and not sending every visitor's IP to a third party — are all discharged. See `docs/02`.
 
-**The contrast check still requires Playwright, and Playwright is still not a project dependency.** It is resolved from a dev environment that happens to have it. **This did not get done in step 4 as this section said it should**, and the consequence is concrete: **CI runs the 82 unit tests and the secret and personal-data scans, and runs neither the contrast check nor the browser walk.** Every browser check in `docs/06` and every one in the step-5 report was run by hand. Until Playwright is a devDependency and both suites are in `.github/workflows/ci.yml`, a change that breaks contrast or breaks the walk will merge green. Open, named, not fixed.
+**[resolved 2026-10-01] Playwright is now a pinned devDependency and both browser suites run in CI.** This section said it should happen in step 4 and it did not; every browser number in the step-4 and step-5 reports was therefore one moment on one machine. A `browser` job now installs Playwright and Chromium from a committed lockfile, builds the app, serves it gzipped as a real host would, and runs the walk and the contrast check on every push and every pull request, uploading screenshots as an artifact. Verified green on a GitHub runner, not merely written. Both suites had hard-coded this container's Chromium path, which is part of why they had never run anywhere else.
 
 ---
 
-## How this became components in step 4 — **not** via shadcn/ui
+## How this became components — planned, built, and settled
 
-**[corrected 2026-09-30]** This section used to say each component "becomes a shadcn component wrapping a Radix primitive". **That is not what was built.** The application has no shadcn/ui and no Radix dependency — `web/package.json` carries `idb`, `react`, `react-dom`, `react-router` and `ts-fsrs` and nothing else at runtime. The components are hand-written against the CSS contract below: `Shell`, `SidePanel`, `Search` and `Icon`, plus the feature components.
+This section used to say each component "becomes a shadcn component wrapping a
+Radix primitive". For steps 4 and 5 that was false: nothing used shadcn/ui or
+Radix. The sweep in `docs/07` found it and Shahin settled it on 2026-10-01 —
+**adopt Radix where hand-rolling genuinely breaks, keep the simple things
+hand-written, and measure the cost.**
 
-The table therefore records what was *planned* against what *exists*:
+**shadcn/ui is still not used**, and that is deliberate: it is a generator that
+copies component source into the repository, and what was actually needed was
+two primitives, added directly. The table records all three states:
 
-| Here | Planned (step 3) | **Built (step 4–5)** |
+| Here | Planned (step 3) | **As built, 2026-10-01** |
 |---|---|---|
-| `.btn`, `.btn--primary` | Radix `Slot` | plain `<button>` / `<NavLink>` with the class |
-| `.input`, `.field` | `Input`, `Label`, `FormMessage` | plain `<input>` + `<label>` |
-| `.palette` | cmdk + Radix `Dialog`, focus trap | **a route, `/search`, not a modal** — so there is no dialog to trap focus in; `⌘K` navigates to it and focuses the input |
-| `.tabs` | Radix `Tabs` | `<nav aria-label="Main">` of `NavLink`s — a tab *bar* is navigation, not a `tablist` |
-| `.alert` | Radix-free `Alert` | `role="status"` set by hand |
+| side panel | Radix `Dialog` | ✅ **`@radix-ui/react-dialog`.** Adopted. |
+| `.timer-panel` | — | ✅ **`@radix-ui/react-popover`.** Adopted. |
+| `.palette` | cmdk + Radix `Dialog` | ❌ **not adopted.** `/search` is a *page* of results grouped under headings, not an inline autocomplete. It is already a list of real links: Tab reaches every result and a screen reader gets headings and list structure. Turning it into a `combobox` would replace that with `aria-activedescendant` on a single input — **worse**, for a feature it does not have. |
+| `.tabs` | Radix `Tabs` | ❌ **not adopted.** Radix `Tabs` is for switching panels *within* a page. This is site navigation: it changes the route. `<nav aria-label="Main">` of `NavLink`s with `aria-current="page"` is correct, and Radix `Tabs` here would have reintroduced the exact `aria-selected` error axe caught. |
+| select | Radix `Select` | ❌ **not adopted.** The four selects are native `<select>`. Radix `Select` is a div-based replacement that loses the platform picker — on a phone that is a real downgrade. This is not hand-rolling; it is the platform, and the platform is better. |
+| tooltip | Radix `Tooltip` | ❌ **nothing to adopt.** There are no tooltips. A tooltip is a poor pattern on touch, and every control here has a visible label or an `aria-label`. |
+| `.btn`, `.input`, `.field`, `.alert` | Radix `Slot`, form parts | ❌ hand-written, deliberately. A button does not need a library. |
 | `.map` | plain `<table>` | plain `<table>` — as planned |
 | `.flashcard`, `.rate`, `.rail` | our own | our own |
-| side panel | Radix `Dialog` | hand-written `role="dialog" aria-modal="false"`: focuses Close on open, Escape closes, focus returns to the opener |
 
-**What this costs, stated rather than glossed:** doc 01 chose shadcn/ui precisely so that "accessibility (keyboard, focus, ARIA) comes built in rather than hand-rolled", and warned that hand-rolling "is where accessibility bugs breed". That risk is now real and carried by the test suite instead of by a library. What discharges it today: the browser walk measures 40 focusable controls with no `outline: none`, tests the panel's open/Escape/return-focus cycle, and the contrast check measures 436 text-element contrasts. What does **not** discharge it: none of that runs in CI (above), and no screen reader has been used. The decision to drop shadcn was never written down when it was taken — it is written down now.
+**Two of six adopted, and the cost measured before committing to it:**
+**+22 088 bytes = +21.57 KiB** gzipped, first-load JS from 117.08 to
+**138.65 KiB** against a 150 KB budget. That is two thirds of the remaining
+headroom for two components, which is itself an argument against adopting the
+other four.
+
+**What the 21.57 KiB bought, proved by reverting to measure it.** Three checks
+in the walk fail on the pre-Radix build and pass on this one:
+
+| Behaviour | Hand-rolled | With Radix |
+|---|---|---|
+| Focus moves into the timer popover on open | ❌ | ✅ |
+| Escape closes the timer popover | ❌ (mouse only) | ✅ |
+| Focus is trapped in the side panel over 12 tabs | ❌ escaped | ✅ |
+| Escape closes the side panel | ✅ already | ✅ |
+| Focus returns to the opener | ✅ already | ✅ |
+
+The side panel had also been declaring `aria-modal="false"` while drawing a
+scrim that blocked every pointer user — modal to the mouse, not to a screen
+reader. Radix resolves that rather than papering over it.
+
+**And the test the library was standing in for now exists:** axe-core runs on
+**10 screens plus the dialog and popover open states, in both themes**, in CI.
+On its first run it found a *critical* violation on every screen — `aria-selected`
+on a `role="presentation"` span in the tab bar, which was also hiding the label
+from the accessibility tree. That is precisely the class of defect `docs/01`
+predicted hand-rolling would produce, and it had passed the type-checker, 82
+unit tests and 99 browser checks.
+
+**Still not discharged:** axe catches roughly a third to a half of WCAG issues.
+**No screen reader has been used on this product.** That remains true and should
+not be mistaken for "accessible".
 
 Writing them as plain CSS first made the design reviewable before any framework existed, and it is why the accessibility defects were found now rather than after twelve components had inherited them.
 

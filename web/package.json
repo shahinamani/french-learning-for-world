@@ -11,6 +11,8 @@
     "predev": "./scripts-sync.sh"
   },
   "dependencies": {
+    "@radix-ui/react-dialog": "^1.1.6",
+    "@radix-ui/react-popover": "^1.1.6",
     "idb": "8.0.3",
     "react": "19.3.0",
     "react-dom": "19.3.0",

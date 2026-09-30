@@ -173,15 +173,19 @@ On a phone this stacks: session card → map (scrollable, level-major) → weakn
 
 **Proposed bundle budget:** ≤ **150 KB** gzipped JavaScript and ≤ **30 KB** gzipped CSS for the shell plus the home route; ≤ 60 KB gzipped per lazily-loaded section; LCP under 2.5 s on a simulated Slow 4G. Content ships as paged JSON outside the bundle. I will measure and report against this, not assert it.
 
-**Measured against it on 2026-09-30** (`gzip -9` over exactly what `dist/index.html` references): first-load JS **119 261 bytes = 116.47 KiB**, CSS **7 024 bytes = 6.86 KiB**, one lazy chunk (`scheduler`, 7 283 bytes = 7.11 KiB), LCP **1 648 ms** on simulated Slow 4G. All four inside budget.
+**Measured against it on 2026-10-01** (`gzip -9` over exactly what `dist/index.html` references): first-load JS **141 974 bytes = 138.65 KiB**, CSS **7 091 bytes = 6.92 KiB**, one lazy chunk (`scheduler`, 7 283 bytes = 7.11 KiB). All inside budget — but the JS headroom is now **8 026 bytes** against a 150 000-byte reading of "150 KB", which is tight. Adopting the remaining Radix primitives would very likely break it, which is one reason they were not adopted. Before Radix: 119 886 bytes = 117.08 KiB.
 
 ---
 
 ## Part 5 — Decisions (settled)
 
-### Framework — **Vite + React + TypeScript + Tailwind**. Decided 2026-09-30.
+### Framework — **Vite + React + TypeScript + Tailwind, with Radix primitives where they earn their place**. Decided 2026-09-30, settled 2026-10-01.
 
-> **[corrected 2026-09-30] shadcn/ui was part of this decision and was never adopted.** Nothing in the build uses shadcn/ui or Radix: the runtime dependencies are `idb`, `react`, `react-dom`, `react-router`, `ts-fsrs`. The components are hand-written against the step-3 CSS contract. That is a real departure from the reasoning below — the Radix accessibility behaviour named as a reason for the stack is now hand-rolled and carried by the test suite instead. The consequences, and what does and does not cover them, are in `docs/05`. The Vite-over-Next.js measurement is unaffected; it was about the framework baseline, not the component library.
+> **shadcn/ui was part of the original decision and was never adopted; Radix now is, selectively.** The history matters, so it is recorded rather than tidied away: for steps 4 and 5 nothing in the build used shadcn/ui or Radix, and three documents said otherwise. That was found by the claim sweep (`docs/07`) and settled by Shahin on 2026-10-01: add automated accessibility checks, adopt Radix where hand-rolling genuinely breaks, keep the simple things hand-written.
+>
+> **As built:** `@radix-ui/react-dialog` (the side panel) and `@radix-ui/react-popover` (the timer panel). Buttons, cards, rows, chips, the level map and the flashcard remain hand-written against the step-3 CSS contract — a button does not need a library. shadcn/ui is **not** used at all: it is a copy-in generator, and the two primitives were added directly. The reasoning for each of the six primitives considered, including the four deliberately **not** adopted, is in `docs/05`.
+>
+> **Cost, measured:** +22 088 bytes = **+21.57 KiB** gzipped on the first load, taking it from 117.08 to **138.65 KiB** against a 150 KB budget. Reported before adopting, not after. The Vite-over-Next.js measurement is unaffected; it was about the framework baseline, not the component library.
 
 **Next.js was proposed and rejected on measurement.** Both stacks were built
 and the scripts the page actually loads were gzipped (`gzip -9`, minimal App

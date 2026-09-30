@@ -3,8 +3,16 @@
  * `?panel=concept:<id>`, so a deep link opens it, the back button closes it,
  * and a reopened tab restores it. A panel held in component state would lose
  * all three.
+ *
+ * Built on Radix Dialog rather than by hand. The hand-rolled version had
+ * Escape, a scrim and focus return, but no focus trap — Tab walked out into
+ * the page behind a scrim that was blocking the mouse — and it declared
+ * `aria-modal="false"` while being modal to every pointer user. Radix supplies
+ * the trap, the inert background, the labelling and the focus return, which is
+ * exactly the behaviour docs/01 chose a primitive library to get.
  */
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
+import * as Dialog from '@radix-ui/react-dialog';
 import { useSearchParams, useNavigate } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { statsForConcept, type ConceptStat } from '../lib/progress';
@@ -31,8 +39,6 @@ export function SidePanel() {
   const [concept, setConcept] = useState<Concept | null>(null);
   const [stat, setStat] = useState<ConceptStat | null>(null);
   const [loading, setLoading] = useState(false);
-  const closeRef = useRef<HTMLButtonElement>(null);
-  const opener = useRef<Element | null>(null);
 
   const conceptId = value?.startsWith('concept:') ? value.slice('concept:'.length) : null;
 
@@ -40,7 +46,6 @@ export function SidePanel() {
     if (!conceptId) { setConcept(null); setStat(null); return; }
     let live = true;
     setLoading(true);
-    opener.current = document.activeElement;
     (async () => {
       const { conceptById } = await loadContent();
       const s = await statsForConcept(userId, conceptId);
@@ -48,39 +53,32 @@ export function SidePanel() {
       setConcept(conceptById.get(conceptId) ?? null);
       setStat(s);
       setLoading(false);
-      closeRef.current?.focus();
     })();
     return () => { live = false; };
   }, [conceptId, userId]);
-
-  useEffect(() => {
-    if (!conceptId) return;
-    const onKey = (e: KeyboardEvent) => { if (e.key === 'Escape') close(); };
-    window.addEventListener('keydown', onKey);
-    return () => {
-      window.removeEventListener('keydown', onKey);
-      // Focus returns to whatever opened the panel, not to the top of the page.
-      (opener.current as HTMLElement | null)?.focus?.();
-    };
-  }, [conceptId, close]);
 
   if (!conceptId) return null;
   const name = concept ? (settings.ui === 'fr' ? frText(concept.name.fr) : concept.name.en) : conceptId;
 
   return (
-    <>
-      <div className="scrim" onClick={close} data-testid="panel-scrim" />
-      <aside className="panel-side" role="dialog" aria-modal="false" aria-label={name} data-testid="side-panel">
+    <Dialog.Root open onOpenChange={(o) => { if (!o) close(); }}>
+      <Dialog.Portal>
+        <Dialog.Overlay className="scrim" data-testid="panel-scrim" />
+        <Dialog.Content className="panel-side" data-testid="side-panel"
+                        aria-describedby={undefined}>
         <div className="panel-side__head">
           <span className="eyebrow">{t('conceptRecord')}</span>
-          <button ref={closeRef} className="icon-btn" onClick={close} data-testid="panel-close">
-            <Icon name="close" /><span className="u-hidden-visually">{t('close')}</span>
-          </button>
+          <Dialog.Close asChild>
+            <button className="icon-btn" data-testid="panel-close">
+              <Icon name="close" /><span className="u-hidden-visually">{t('close')}</span>
+            </button>
+          </Dialog.Close>
         </div>
+        <Dialog.Title className="u-hidden-visually">{name}</Dialog.Title>
         {loading && <div className="skeleton skeleton--title" />}
         {!loading && (
           <>
-            <h2 className="panel-side__title" lang={settings.ui === 'fr' ? 'fr' : undefined}>{name}</h2>
+            <p className="panel-side__title" lang={settings.ui === 'fr' ? 'fr' : undefined} aria-hidden="true">{name}</p>
             {concept && (
               <div className="row gap-2" style={{ marginBlockEnd: 'var(--space-4)' }}>
                 <span className={`chip chip--${concept.level.toLowerCase()}`}>{concept.level}</span>
@@ -108,7 +106,8 @@ export function SidePanel() {
             </button>
           </>
         )}
-      </aside>
-    </>
+        </Dialog.Content>
+      </Dialog.Portal>
+    </Dialog.Root>
   );
 }

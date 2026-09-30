@@ -6,6 +6,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router';
+import * as Popover from '@radix-ui/react-popover';
 import { useApp, useUserId } from '../app-context';
 import { Icon } from './Icon';
 import { SidePanel } from './SidePanel';
@@ -116,19 +117,20 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
             <span className="brand-name">{t('appName')}</span>
           </NavLink>
           <div className="bar-actions">
-            <button className={`pill${timer.running ? ' is-running' : ''}`} data-testid="timer-pill"
-                    aria-expanded={timerOpen} onClick={() => setTimerOpen((v) => !v)}>
-              <Icon name="timer" size={18} />
-              <span className="pill-clock" data-testid="timer-clock">{clock}</span>
-            </button>
-            <NavLink to="/account" className="icon-btn" data-testid="settings-link">
-              <Icon name="settings" /><span className="u-hidden-visually">{t('settings')}</span>
-            </NavLink>
-          </div>
-        </div>
-
-        {timerOpen && (
-          <section className="timer-panel" aria-label={t('timer')} data-testid="timer-panel">
+            {/* Radix Popover, not a hand-rolled panel. The hand-rolled one had no
+                Escape, no close on an outside click and no focus management: you
+                could open it, tab straight past it into the page, and never get
+                it shut from the keyboard. */}
+            <Popover.Root open={timerOpen} onOpenChange={setTimerOpen}>
+              <Popover.Trigger asChild>
+                <button className={`pill${timer.running ? ' is-running' : ''}`} data-testid="timer-pill">
+                  <Icon name="timer" size={18} />
+                  <span className="pill-clock" data-testid="timer-clock">{clock}</span>
+                </button>
+              </Popover.Trigger>
+              <Popover.Portal>
+                <Popover.Content className="timer-panel" data-testid="timer-panel"
+                                 aria-label={t('timer')} sideOffset={8} align="end" collisionPadding={8}>
             <div className="presets">
               {PRESETS.map((m) => (
                 <button key={m} className="preset" aria-pressed={selected === m} disabled={timer.running}
@@ -147,8 +149,16 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
                 <Icon name={settings.sound ? 'sound' : 'mute'} />
               </button>
             </div>
-          </section>
-        )}
+                </Popover.Content>
+              </Popover.Portal>
+            </Popover.Root>
+            <NavLink to="/account" className="icon-btn" data-testid="settings-link">
+              <Icon name="settings" /><span className="u-hidden-visually">{t('settings')}</span>
+            </NavLink>
+          </div>
+        </div>
+
+
         {finished && (
           <div className="finished" role="status" data-testid="timer-finished">
             <span>{finished === 'away' ? t('timerAway') : finished === 'silent' ? t('timerDoneSilent') : t('timerDone')}</span>
