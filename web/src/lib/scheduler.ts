@@ -8,65 +8,69 @@
  * for the first time, `Relearning` is one that was known and has been lost.
  * A word never known is not a weakness; a word lost last month is.
  */
-import { fsrs, generatorParameters, createEmptyCard, Rating, State, type Card as FsrsCard } from 'ts-fsrs';
+import type { Card as FsrsCard } from 'ts-fsrs';
 import type { CardState } from './types';
 
 export const SCHEDULER_ID = 'fsrs-6';
-export const GRADES = [Rating.Again, Rating.Hard, Rating.Good, Rating.Easy] as const;
+// The grade values are FSRS's, restated rather than imported: importing the
+// enum would pull the whole library into the first-load bundle, which is the
+// thing this file exists to avoid.
+export const GRADES = [1, 2, 3, 4] as const;
 export type Grade = (typeof GRADES)[number];
 
-const params = generatorParameters({ enable_fuzz: true, enable_short_term: true });
-const engine = fsrs(params);
-
+/** A card nobody has seen. No library needed to describe one. */
 export function emptyState(): CardState {
-  const c = createEmptyCard(new Date(0));
-  return toState(c);
-}
-
-function toState(c: FsrsCard): CardState {
   return {
-    dueAt: c.due.getTime(),
-    stability: c.stability,
-    difficulty: c.difficulty,
-    elapsedDays: c.elapsed_days,
-    scheduledDays: c.scheduled_days,
-    reps: c.reps,
-    lapses: c.lapses,
-    state: c.state as 0 | 1 | 2 | 3,
-    lastReviewedAt: c.last_review ? c.last_review.getTime() : null,
+    dueAt: 0, stability: 0, difficulty: 0, elapsedDays: 0, scheduledDays: 0,
+    reps: 0, lapses: 0, state: 0, lastReviewedAt: null,
   };
 }
 
-function toFsrs(s: CardState): FsrsCard {
-  return {
-    due: new Date(s.dueAt),
-    stability: s.stability,
-    difficulty: s.difficulty,
-    elapsed_days: s.elapsedDays,
-    scheduled_days: s.scheduledDays,
-    reps: s.reps,
-    lapses: s.lapses,
-    state: s.state as State,
-    last_review: s.lastReviewedAt ? new Date(s.lastReviewedAt) : undefined,
-    learning_steps: 0,
-  } as FsrsCard;
-}
+/**
+ * ts-fsrs is ~6.5 KB gzipped and is not needed to paint any screen — only to
+ * grade a card. It is loaded on demand, once, when a session starts.
+ * Step 3 claimed this was already true; it was not, and this is the correction.
+ */
+let enginePromise: Promise<{
+  review: (s: CardState, g: Grade, now: number) => CardState;
+  preview: (s: CardState, now: number) => Record<Grade, number>;
+}> | null = null;
 
-/** Pure: same inputs, same output, and the clock is an argument. */
-export function review(state: CardState, grade: Grade, now: number): CardState {
-  const out = engine.next(toFsrs(state), new Date(now), grade);
-  return toState(out.card);
-}
-
-/** What each button will do, for the label under it. */
-export function preview(state: CardState, now: number): Record<Grade, number> {
-  const scheduled = engine.repeat(toFsrs(state), new Date(now));
-  const out = {} as Record<Grade, number>;
-  for (const g of GRADES) {
-    const card = scheduled[g].card;
-    out[g] = Math.max(0, Math.round((card.due.getTime() - now) / 86_400_000));
+export function loadScheduler() {
+  if (!enginePromise) {
+    enginePromise = import('ts-fsrs').then((m) => {
+      const engine = m.fsrs(m.generatorParameters({ enable_fuzz: true, enable_short_term: true }));
+      const toState = (c: FsrsCard): CardState => ({
+        dueAt: c.due.getTime(), stability: c.stability, difficulty: c.difficulty,
+        elapsedDays: c.elapsed_days, scheduledDays: c.scheduled_days,
+        reps: c.reps, lapses: c.lapses, state: c.state as 0 | 1 | 2 | 3,
+        lastReviewedAt: c.last_review ? c.last_review.getTime() : null,
+      });
+      const toFsrs = (s: CardState): FsrsCard => ({
+        due: new Date(s.dueAt || Date.now()), stability: s.stability, difficulty: s.difficulty,
+        elapsed_days: s.elapsedDays, scheduled_days: s.scheduledDays,
+        reps: s.reps, lapses: s.lapses, state: s.state,
+        last_review: s.lastReviewedAt ? new Date(s.lastReviewedAt) : undefined,
+        learning_steps: 0,
+      } as FsrsCard);
+      return {
+        review: (state: CardState, grade: Grade, now: number) =>
+          toState(engine.next(toFsrs(state), new Date(now), grade as 1 | 2 | 3 | 4).card),
+        preview: (state: CardState, now: number) => {
+          const scheduled = engine.repeat(toFsrs(state), new Date(now));
+          const out = {} as Record<Grade, number>;
+          for (const g of GRADES) {
+            out[g] = Math.max(0, Math.round((scheduled[g].card.due.getTime() - now) / 86_400_000));
+          }
+          return out;
+        },
+      };
+    });
   }
-  return out;
+  return enginePromise;
 }
 
-export { Rating, State };
+
+
+
+

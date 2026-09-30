@@ -12,7 +12,7 @@ for (const [label, down, lat, cpu] of profiles) {
   await cdp.send('Network.enable');
   await cdp.send('Network.emulateNetworkConditions', { offline:false, downloadThroughput:down, uploadThroughput:down, latency:lat });
   await cdp.send('Emulation.setCPUThrottlingRate', { rate: cpu });
-  await p.goto('http://127.0.0.1:8791/#/learn', { waitUntil:'load' });
+  await p.goto('http://127.0.0.1:8793/#/learn', { waitUntil:'load' });
   const m = await p.evaluate(() => new Promise((res) => {
     let lcp = 0;
     new PerformanceObserver((l)=>{ for (const e of l.getEntries()) lcp = e.startTime; })

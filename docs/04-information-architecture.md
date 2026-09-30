@@ -1,6 +1,7 @@
 # 04 — Information architecture: sitemap and navigation
 
 **Status:** step 2 deliverable, for review. No application code written.
+**Swept against the build 2026-09-30.** The sitemap below is the *design*; §"The sitemap as built" near the end says which parts exist. Corrections marked **[corrected 2026-09-30]**.
 **Direction:** approved — level × skill map as home, one pinned session card above it, command-palette search.
 
 ---
@@ -51,6 +52,7 @@ Six access paths to the same content. The failure mode is building six separate 
 ├── /practise                       ◆ everything that grades you
 │   ├── /practise/review            SRS session — the default, "what's due"
 │   ├── /practise/session?min=5|15|30   the daily practice, time-boxed
+│   │                               [built as /practise/review?minutes=N]
 │   ├── /practise/quiz              quizzes with explanatory feedback
 │   ├── /practise/listening         audio, adjustable speed
 │   ├── /practise/dialogues         role-play scenarios
@@ -203,12 +205,12 @@ The brief rejects zeros. Every screen has four states designed, not three plus a
 ## Accessibility, designed in rather than audited later
 
 - **Landmarks:** one `<header>`, one `<nav aria-label="Principal">`, one `<main>`, one `<footer>`. The tab bar is `<nav>`, not a list of buttons.
-- **Keyboard:** every action reachable by Tab. Skip link first. `⌘K` from anywhere. The palette is a focus trap that returns focus to the opener. Rating a card: `1`–`4`, and Space to reveal.
+- **Keyboard:** every action reachable by Tab. Skip link first. `⌘K` from anywhere. The palette is a focus trap that returns focus to the opener. Rating a card: `1`–`4`, and Space to reveal. **[corrected 2026-09-30]** the palette was built as a **route** (`/search`), not a modal, so there is no dialog and nothing to trap: `⌘K` navigates there and focuses the input, and Back returns. The focus-trap-and-return behaviour was built for the **side panel** instead, which is `role="dialog" aria-modal="false"`, focuses Close on open, closes on Escape, and returns focus to the chip that opened it — all three walked and checked.
 - **Focus:** visible on every control, 2 px, ≥3:1 against its background. Never `outline: none`.
 - **The map is a `<table>`** with `<th scope>` on levels and skills, because that is what it is. A screen reader then announces "B1, écoute, 64 %" — a grid of divs announces nothing.
 - **Contrast:** WCAG AA — 4.5:1 body, 3:1 large text and UI boundaries, in **both** themes. Measured, not assumed.
-- **Motion:** `prefers-reduced-motion` removes transitions; the session rail jumps rather than slides.
-- **Audio:** never the only channel. Every listening exercise has a transcript, revealed after the attempt.
+- **Motion:** `prefers-reduced-motion` removes transitions; the session rail jumps rather than slides. **[verified 2026-09-30]** measured, not asserted: under `prefers-reduced-motion: reduce`, 0 of 188 elements have a transition or animation longer than 0.05 ms; with the preference off, 4 do (longest 160 ms). The check fails if the rule is removed — proved by removing it.
+- **Audio:** never the only channel. Every listening exercise has a transcript, revealed after the attempt. **[corrected 2026-09-30]** there is no audio of any kind in the product — no listening exercise, no verb audio, no pronunciation clip. The rule stands for when there is; today it governs nothing. The only sound is the study timer's chime, which is a notification and has a visible notice beside it.
 - **Text:** the layout survives 200 % zoom and `font-size` overrides; no fixed heights on text containers.
 - **Language:** `lang` on every element whose language differs from the page — the French sentence inside an English interface is `lang="fr"`, and this is what makes a screen reader pronounce it as French rather than as English nonsense.
 
@@ -229,9 +231,9 @@ Getting these wrong is the detail that tells a French speaker the product was no
 | Capitals keep their accents | — | `ÉCOUTE`, never `ECOUTE` |
 | `Œ` / `œ` is a letter | `U+0153` | `cœur`, `sœur` |
 
-Implemented as one `frenchText()` formatter applied to every French string at render, with unit tests — **not** as a convention for authors to remember. Note `U+202F` is not in every font: the fallback stack must include a face that has it, or it renders as a box.
+Implemented as one formatter applied to every French string at render, with unit tests — **not** as a convention for authors to remember. **[corrected 2026-09-30]** it is called `fr()` (with `frIf(locale, text)` for the bilingual case), in `web/src/lib/typography.ts`, and it is idempotent. It implements the first six rows of the table. The last two — capitals keeping their accents, and `œ` as a letter — are **authoring** rules, not transformations: no formatter can know whether `ECOUTE` was meant as `ÉCOUTE` or whether `coeur` was meant as `cœur` without a dictionary. They are enforced by writing the content correctly, not by code. Note `U+202F` is not in every font: the fallback stack must include a face that has it, or it renders as a box.
 
-**An accent bar** for learners without a French keyboard — `é è ê ë à â ç î ï ô û ù œ æ « »` — on every writing input. Borrowed from LibreLingo's per-course "special characters" list, which exists for exactly this reason.
+**An accent bar** for learners without a French keyboard — `é è ê ë à â ç î ï ô û ù œ æ « »` — on every writing input. Borrowed from LibreLingo's per-course "special characters" list, which exists for exactly this reason. **[corrected 2026-09-30] Not built.** There is one typed input in the product today — the conjugation drill — and it has no accent bar. What it does instead is accept an unaccented answer and mark it *right, but the accents*: `checkAnswer` returns `{ correct, accentsOnly }` and the drill grades a correct-but-unaccented answer down rather than wrong. That is a mitigation, not the feature, and the accent bar is still owed the moment a writing exercise exists.
 
 ---
 
@@ -281,3 +283,37 @@ You said: *say so now with numbers rather than discovering it in step 4.* I buil
 
 `/progress/history` is therefore the learner-facing view of the review log, and
 `/account/data` exports the same rows rather than a separate format.
+
+---
+
+## The sitemap as built — **[added 2026-09-30]**
+
+The sitemap above is a design for the whole platform. This is what the router
+actually serves, so that nobody reads the tree above as an inventory. **13 routes
+exist; the tree above describes roughly 40.**
+
+| Designed | Built | Where it went |
+|---|---|---|
+| `/` landing | ✅ | redirects to `/learn`; there is no separate landing page |
+| `/learn` | ✅ | the level × skill map, prerendered to static HTML, honours `?level=` |
+| `/learn/[level]/[skill]` | ⛔ stub | says so, and names what *is* built |
+| `/learn/grammar`, `/learn/grammar/[point]` | ➡️ | became `/learn/concept/:id`, one page per concept, with the learner's record on it |
+| `/learn/verbs`, `/learn/verbs/[verb]` | ✅ | 14 verbs × 6 tenses × 6 persons; practice writes review rows |
+| `/learn/vocabulary/*`, `/learn/pronunciation/*` | ❌ | not built; the concepts exist and are searchable |
+| `/practise/review` | ✅ | the flashcard session; `?concept=` `?card=` `?minutes=` `?s=` `?i=` all honoured |
+| `/practise/session?min=` | ➡️ | `/practise/review?minutes=N` |
+| `/practise/conjugation` | ✅ | not in the original tree; added with verbs |
+| `/practise/exams`, `/practise/listening` | ⛔ stub | each names what is missing and why |
+| `/practise/quiz`, `/dialogues`, `/writing` | ❌ | not built |
+| `/progress`, `/progress/weak`, `/history`, `/goals` | ➡️ | **one** `/progress` page: what moved, per-concept detail one click away, export. Weak points also surface on `/learn` |
+| `/search` | ✅ | concepts, cards and commands; `⌘K` from anywhere |
+| `/discover/*` | ❌ | not built |
+| `/account/*` (5 sub-pages) | ➡️ | **one** `/account`: profiles, both languages, theme, export, erase |
+| `/about` | ❌ | not built; the independence notice lives on the exam stub |
+| 404 | ✅ | renders and offers real destinations |
+
+✅ built · ➡️ built at a different address or merged · ⛔ a stub that says so · ❌ absent
+
+**Splitting `/progress` and `/account` into sub-pages was dropped deliberately:**
+each would have been a page with two controls on it. They are worth splitting
+when they outgrow one screen, and not before.

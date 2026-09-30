@@ -2,6 +2,7 @@
 
 **For:** Shahin Amani · **Status:** for review, before any application code
 **Date:** 2026-09-30
+**Swept against the build on 2026-09-30.** Corrections are marked **[corrected 2026-09-30]** and the full sweep with evidence is `docs/07`.
 
 ---
 
@@ -127,7 +128,7 @@ Worth stating plainly, because it changes the estimate.
 
 **Already built, working, tested, and licence-clean:**
 
-- An FSRS scheduler with 12 unit tests, a drift-proof study timer with 12 tests, local progress storage with export/import, a four-language i18n layer (English, Persian, French, Arabic) with right-to-left support, exam sections for DELF/DALF/TCF/TEF with 22 verified-`https` outbound links, an offline service worker, and 56 unit + 55 browser checks.
+- An FSRS scheduler with 12 unit tests, a drift-proof study timer with 12 tests, local progress storage with export/import, a four-language i18n layer (English, Persian, French, Arabic) with right-to-left support, exam sections for DELF/DALF/TCF/TEF with 22 verified-`https` outbound links, an offline service worker, and 56 unit + 55 browser checks. **[corrected 2026-09-30]** those counts described the repository on the day this was written; they are now **82 unit tests and 94 browser checks**. The 22 links still resolve to 22 distinct `https` URLs with `checkedOn: null`, because this container still cannot reach those hosts to verify them.
 - **22 A1 cards — all original work written for this project.** I re-checked: there is no content in this repository credited to *Les mots de l'info* or *Vite et Bien*. The §4 blocker refers to a **different, earlier codebase**. Nothing contaminated has ever been committed here.
 
 **Gaps our own engine has, found by reading ts-fsrs (MIT) today:**
@@ -172,11 +173,15 @@ On a phone this stacks: session card → map (scrollable, level-major) → weakn
 
 **Proposed bundle budget:** ≤ **150 KB** gzipped JavaScript and ≤ **30 KB** gzipped CSS for the shell plus the home route; ≤ 60 KB gzipped per lazily-loaded section; LCP under 2.5 s on a simulated Slow 4G. Content ships as paged JSON outside the bundle. I will measure and report against this, not assert it.
 
+**Measured against it on 2026-09-30** (`gzip -9` over exactly what `dist/index.html` references): first-load JS **119 261 bytes = 116.47 KiB**, CSS **7 024 bytes = 6.86 KiB**, one lazy chunk (`scheduler`, 7 283 bytes = 7.11 KiB), LCP **1 648 ms** on simulated Slow 4G. All four inside budget.
+
 ---
 
 ## Part 5 — Decisions (settled)
 
-### Framework — **Vite + React + TypeScript + Tailwind + shadcn/ui**. Decided 2026-09-30.
+### Framework — **Vite + React + TypeScript + Tailwind**. Decided 2026-09-30.
+
+> **[corrected 2026-09-30] shadcn/ui was part of this decision and was never adopted.** Nothing in the build uses shadcn/ui or Radix: the runtime dependencies are `idb`, `react`, `react-dom`, `react-router`, `ts-fsrs`. The components are hand-written against the step-3 CSS contract. That is a real departure from the reasoning below — the Radix accessibility behaviour named as a reason for the stack is now hand-rolled and carried by the test suite instead. The consequences, and what does and does not cover them, are in `docs/05`. The Vite-over-Next.js measurement is unaffected; it was about the framework baseline, not the component library.
 
 **Next.js was proposed and rejected on measurement.** Both stacks were built
 and the scripts the page actually loads were gzipped (`gzip -9`, minimal App
@@ -201,6 +206,8 @@ rendering (nothing to render — anonymous-first, no backend, no per-request
 data), file-based routing (react-router), and image optimisation (there is an
 icon). The one real loss, landing-page SEO, is solved by prerendering that page
 to static HTML at build time.
+
+**[corrected 2026-09-30] There is no separate landing page, and what is prerendered is the home route.** `/` redirects to `/learn`; the build renders the Learn home into `dist/index.html` (2 151 → 10 365 bytes), which is what a crawler or a slow connection receives first. Prerendering was done for **LCP**, not for SEO, and it worked: 5 288 ms → 1 648 ms on Slow 4G. The app also uses a **hash router**, so every route below the home is `#/…` and is not separately crawlable. If landing-page SEO ever matters, it is unbuilt work, not done work.
 
 **Budget stands at 150 KB gzipped** for shell plus home route, ≤30 KB CSS,
 ≤60 KB per lazily-loaded section. It is measured at every step, not once at the

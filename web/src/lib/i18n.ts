@@ -9,11 +9,13 @@ export const LOCALES: Record<Locale, { name: string; dir: 'ltr' | 'rtl' }> = {
 
 /** `en` is the structural source of truth; the test asserts the other three match its keys. */
 const en = {
+  verbs: 'Verbs', verbsIntro: 'Search any verb and see every tense and mood. Practice runs straight from the table, and what you get wrong joins the same record as everything else.', verbSearchPlaceholder: 'être, to take, allons…', irregular: 'irregular', regular: 'regular', auxiliary: 'auxiliary', imperative: 'Imperative', noImperative: 'This verb has no imperative in ordinary French.', practiseTense: 'Practise', yourAnswer: 'Your answer', check: 'Check', next: 'Next', correct: 'Correct.', accentsOnly: 'Right, but the accents: {a}', answerIs: 'The answer is {a}',
   appName: 'French Learning for World',
+  mainNav: 'Main',
   learn: 'Learn', practise: 'Practise', progress: 'Progress', search: 'Search',
   settings: 'Settings', account: 'Account', about: 'About', close: 'Close', back: 'Back',
   today: 'Today', dueNow: 'Due now', newCards: 'New', learned: 'Learned', cards: 'Cards',
-  yourLevel: 'Your level', toWorkOn: 'To work on', start: 'Start', startSession: 'Start studying',
+  yourLevel: 'Your level', allLevels: 'All levels', showingLevel: 'Showing {level} only', toWorkOn: 'To work on', start: 'Start', startSession: 'Start studying',
   minutes: '{n} min', sessionOf: '{n} cards · {m} min',
   nothingDue: 'Nothing is due right now', nothingDueBody: 'Study ahead with new cards, or come back later.',
   studyAhead: 'Study new cards', sessionDone: 'Session finished',
@@ -38,6 +40,7 @@ const en = {
   offline: 'Offline — what is already on this device still works.',
   storageBlocked: 'This browser is not saving progress — it may be a private window.',
   weakNone: 'Not enough data yet. After about twenty reviews your weak points appear here.',
+  weakIntro: 'Weak points appear here as you study. The system watches which concepts you get wrong and shows the ones to work on.',
   history: 'History', thisWeek: 'This week', whatMoved: 'What moved', noHistory: 'No reviews yet.',
   interfaceLanguage: 'Interface language', meaningLanguage: 'Meaning shown in',
   profile: 'Profile', switchProfile: 'Switch profile', newProfile: 'New profile',
@@ -51,11 +54,13 @@ const en = {
 type Dict = typeof en;
 
 const fr: Dict = {
+  verbs: 'Verbes', verbsIntro: "Cherchez un verbe et voyez tous ses temps et modes. On s'entraîne directement depuis le tableau, et ce que vous ratez rejoint le même historique que le reste.", verbSearchPlaceholder: 'être, prendre, allons…', irregular: 'irrégulier', regular: 'régulier', auxiliary: 'auxiliaire', imperative: 'Impératif', noImperative: "Ce verbe n'a pas d'impératif en français courant.", practiseTense: "S'entraîner", yourAnswer: 'Votre réponse', check: 'Vérifier', next: 'Suivant', correct: 'Correct.', accentsOnly: 'Juste, mais les accents : {a}', answerIs: 'La réponse est {a}',
   appName: 'Apprendre le français pour le monde',
+  mainNav: 'Principal',
   learn: 'Apprendre', practise: 'Pratiquer', progress: 'Progrès', search: 'Chercher',
   settings: 'Réglages', account: 'Compte', about: 'À propos', close: 'Fermer', back: 'Retour',
   today: "Aujourd'hui", dueNow: 'À réviser', newCards: 'Nouvelles', learned: 'Apprises', cards: 'Cartes',
-  yourLevel: 'Votre niveau', toWorkOn: 'À travailler', start: 'Commencer', startSession: 'Commencer',
+  yourLevel: 'Votre niveau', allLevels: 'Tous les niveaux', showingLevel: 'Niveau {level} seulement', toWorkOn: 'À travailler', start: 'Commencer', startSession: 'Commencer',
   minutes: '{n} min', sessionOf: '{n} cartes · {m} min',
   nothingDue: "Rien à réviser pour l'instant", nothingDueBody: 'Prenez de nouvelles cartes, ou revenez plus tard.',
   studyAhead: 'Nouvelles cartes', sessionDone: 'Séance terminée',
@@ -80,6 +85,7 @@ const fr: Dict = {
   offline: 'Hors ligne — ce qui est déjà sur cet appareil fonctionne.',
   storageBlocked: "Ce navigateur n'enregistre pas la progression — fenêtre privée ?",
   weakNone: "Pas encore assez de données. Après une vingtaine de révisions, vos points faibles apparaissent ici.",
+  weakIntro: "Vos points faibles apparaissent ici au fil de vos révisions. Le système observe les points que vous ratez et vous montre ceux à travailler.",
   history: 'Historique', thisWeek: 'Cette semaine', whatMoved: 'Ce qui a bougé', noHistory: 'Aucune révision.',
   interfaceLanguage: "Langue de l'interface", meaningLanguage: 'Langue des significations',
   profile: 'Profil', switchProfile: 'Changer de profil', newProfile: 'Nouveau profil',
@@ -91,11 +97,13 @@ const fr: Dict = {
 };
 
 const fa: Dict = {
+  verbs: 'فعل‌ها', verbsIntro: 'هر فعلی را جست‌وجو کنید و همه‌ی زمان‌ها و وجه‌های آن را ببینید. تمرین مستقیم از همین جدول انجام می‌شود و خطاهای شما به همان سابقه‌ی همیشگی می‌پیوندد.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'بی‌قاعده', regular: 'باقاعده', auxiliary: 'فعل کمکی', imperative: 'امری', noImperative: 'این فعل در فرانسه‌ی رایج وجه امری ندارد.', practiseTense: 'تمرین', yourAnswer: 'پاسخ شما', check: 'بررسی', next: 'بعدی', correct: 'درست است.', accentsOnly: 'درست بود، اما علامت‌ها: {a}', answerIs: 'پاسخ درست {a} است',
   appName: 'یادگیری فرانسه برای جهان',
+  mainNav: 'اصلی',
   learn: 'آموزش', practise: 'تمرین', progress: 'پیشرفت', search: 'جست‌وجو',
   settings: 'تنظیمات', account: 'حساب', about: 'درباره', close: 'بستن', back: 'بازگشت',
   today: 'امروز', dueNow: 'برای مرور', newCards: 'جدید', learned: 'آموخته', cards: 'کارت‌ها',
-  yourLevel: 'سطح شما', toWorkOn: 'نیازمند تمرین', start: 'شروع', startSession: 'شروع مطالعه',
+  yourLevel: 'سطح شما', allLevels: 'همه‌ی سطح‌ها', showingLevel: 'فقط سطح {level}', toWorkOn: 'نیازمند تمرین', start: 'شروع', startSession: 'شروع مطالعه',
   minutes: '{n} دقیقه', sessionOf: '{n} کارت · {m} دقیقه',
   nothingDue: 'در حال حاضر کارتی برای مرور نیست', nothingDueBody: 'کارت‌های جدید بخوانید یا بعداً برگردید.',
   studyAhead: 'کارت‌های جدید', sessionDone: 'جلسه تمام شد',
@@ -120,6 +128,7 @@ const fa: Dict = {
   offline: 'بدون اینترنت — آنچه روی این دستگاه است کار می‌کند.',
   storageBlocked: 'این مرورگر پیشرفت را ذخیره نمی‌کند — شاید پنجره‌ی ناشناس باشد.',
   weakNone: 'هنوز داده کافی نیست. پس از حدود بیست مرور، نقاط ضعف شما اینجا می‌آید.',
+  weakIntro: 'نقاط ضعف شما همراه با مطالعه اینجا ظاهر می‌شود. سامانه نکته‌هایی را که اشتباه می‌کنید دنبال می‌کند و آن‌ها را نشان می‌دهد.',
   history: 'تاریخچه', thisWeek: 'این هفته', whatMoved: 'چه چیزی تغییر کرد', noHistory: 'هنوز مروری نیست.',
   interfaceLanguage: 'زبان برنامه', meaningLanguage: 'زبان معنی',
   profile: 'نمایه', switchProfile: 'تغییر نمایه', newProfile: 'نمایه‌ی جدید',
@@ -131,11 +140,13 @@ const fa: Dict = {
 };
 
 const ar: Dict = {
+  verbs: 'الأفعال', verbsIntro: 'ابحث عن أي فعل وشاهد كل أزمنته وصيغه. التمرين يبدأ من الجدول مباشرة، وما تخطئ فيه ينضم إلى السجل نفسه.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'شاذّ', regular: 'منتظم', auxiliary: 'الفعل المساعد', imperative: 'الأمر', noImperative: 'لا صيغة أمر لهذا الفعل في الفرنسية المعتادة.', practiseTense: 'تدرّب', yourAnswer: 'إجابتك', check: 'تحقّق', next: 'التالي', correct: 'صحيح.', accentsOnly: 'صحيح، لكن العلامات: {a}', answerIs: 'الإجابة هي {a}',
   appName: 'تعلّم الفرنسية للعالم',
+  mainNav: 'الرئيسية',
   learn: 'التعلّم', practise: 'التمرين', progress: 'التقدّم', search: 'البحث',
   settings: 'الإعدادات', account: 'الحساب', about: 'حول', close: 'إغلاق', back: 'رجوع',
   today: 'اليوم', dueNow: 'للمراجعة', newCards: 'جديدة', learned: 'محفوظة', cards: 'البطاقات',
-  yourLevel: 'مستواك', toWorkOn: 'بحاجة إلى عمل', start: 'ابدأ', startSession: 'ابدأ الدراسة',
+  yourLevel: 'مستواك', allLevels: 'كل المستويات', showingLevel: 'المستوى {level} فقط', toWorkOn: 'بحاجة إلى عمل', start: 'ابدأ', startSession: 'ابدأ الدراسة',
   minutes: '{n} دقيقة', sessionOf: '{n} بطاقة · {m} دقيقة',
   nothingDue: 'لا توجد بطاقات للمراجعة الآن', nothingDueBody: 'ادرس بطاقات جديدة أو عد لاحقًا.',
   studyAhead: 'بطاقات جديدة', sessionDone: 'انتهت الجلسة',
@@ -160,6 +171,7 @@ const ar: Dict = {
   offline: 'دون اتصال — ما هو على هذا الجهاز يعمل.',
   storageBlocked: 'هذا المتصفح لا يحفظ التقدّم — قد تكون نافذة خاصة.',
   weakNone: 'لا توجد بيانات كافية بعد. بعد نحو عشرين مراجعة تظهر نقاط ضعفك هنا.',
+  weakIntro: 'تظهر نقاط ضعفك هنا مع تقدّم دراستك. يتابع النظام النقاط التي تخطئ فيها ويعرض ما يجب العمل عليه.',
   history: 'السجل', thisWeek: 'هذا الأسبوع', whatMoved: 'ما الذي تغيّر', noHistory: 'لا مراجعات بعد.',
   interfaceLanguage: 'لغة الواجهة', meaningLanguage: 'لغة المعنى',
   profile: 'الملف', switchProfile: 'تبديل الملف', newProfile: 'ملف جديد',

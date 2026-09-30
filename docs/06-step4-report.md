@@ -1,7 +1,8 @@
 # 06 — Step 4: shell, navigation, side panel, search, flashcards
 
-**Status:** for review. Built at `web/`, on the stack settled in step 3.
-**Verification:** 73 unit tests, 66 browser checks, 0 failures, 0 console errors.
+**Status:** step 4 report, kept as the record of that step. Built at `web/`.
+**Verification at the time:** 73 unit tests, 66 browser checks, 0 failures, 0 console errors.
+**Swept against the build 2026-09-30:** now **82 unit tests, 94 browser checks**, 0 failures, 0 console errors. Numbers that moved are corrected in place and marked **[step 5]**; §6 records where each known defect ended up.
 
 ---
 
@@ -126,20 +127,22 @@ Built, then gzipped exactly what `index.html` references.
 
 | | Measured | Budget | |
 |---|---|---|---|
-| First-load JS | **118.63 KB** gz | 150 KB | ✅ |
-| CSS | **7.59 KB** gz | 30 KB | ✅ |
-| Fonts a French page fetches | 90.4 KB (woff2) | — | separate resource, `swap` |
+| First-load JS | **118.63 KB** gz → **[step 5] 116.47 KiB** (119 261 B) | 150 KB | ✅ |
+| CSS | **7.59 KB** gz → **[step 5] 6.86 KiB** (7 024 B) | 30 KB | ✅ |
+| Fonts a French page fetches | 90.4 KiB (woff2) | — | separate resource, ~~`swap`~~ **[step 5] `optional`** |
 | Content, after first paint | 14.7 KB gz | — | |
 
 Breakdown: react 67.29 · router 26.10 · app 18.77 · scheduler 6.48 · css 6.73.
+**[step 5]** re-measured `gzip -9`: react 67.28 · router 26.04 · app 23.15 · css 6.86, plus `scheduler` 7.11 **not** in the first load.
 
-**Lazy chunks: none.** The scheduler is split into its own file but still statically imported, so it is fetched with the first load. Honest: I said in step 3 it would be lazy and it is not. It is 6.5 KB and we are 31 KB under budget, so it did not need to be — but the claim was wrong and is corrected here.
+~~**Lazy chunks: none.**~~ **[step 5] The scheduler is now genuinely lazy.** It is loaded through `loadScheduler()`, `dist/index.html` does not reference it, and it does not arrive until a card is graded. 7 283 bytes = 7.11 KiB. The step-3 claim was wrong when this report was written, was reported as wrong here rather than quietly fixed, and is now true.
 
-### ⚠️ LCP misses the budget on a slow connection
+### ⚠️ LCP misses the budget on a slow connection — **[step 5] fixed, 1 648 ms**
 
 | Connection | FCP | LCP | 2.5 s budget |
 |---|---|---|---|
 | Slow 4G — 400 kbps, 400 ms RTT, 4× CPU | 1 580 ms | **5 288 ms** | ❌ **over** |
+| **[step 5]** Slow 4G, after prerendering the home route | **1 648 ms** | **1 648 ms** | ✅ FCP = LCP, one candidate |
 | Fast 4G — 9 Mbps, 85 ms, 2× CPU | 236 ms | 708 ms | ✅ |
 | Wi-Fi — 30 Mbps, 20 ms | 68 ms | 256 ms | ✅ |
 
@@ -194,16 +197,21 @@ Two tabs, one origin, two profiles. The active profile is in **`sessionStorage`*
 
 ## 6. Things I know are wrong or unfinished
 
-1. **LCP is 5.3 s on Slow 4G** — over the 2.5 s budget. Cause understood, fix identified (prerender), not done. §3.
-2. **The scheduler chunk is not lazy**, though step 3 said it would be. 6.5 KB, inside budget, but the claim was wrong.
-3. **Four routes are stubs** — level/skill pages, verbs, exams, listening. They say so; they are not disguised.
+**[step 5] Each item below is marked with where it ended up. Nothing here was deleted to make the list shorter.**
+
+1. ~~**LCP is 5.3 s on Slow 4G**~~ — **RESOLVED.** Prerendering the home route brought it to **1 648 ms**, with FCP = LCP. The budget was held, not moved.
+2. ~~**The scheduler chunk is not lazy**~~ — **RESOLVED.** It is a real lazy chunk now; `index.html` does not reference it.
+3. **Four routes are stubs** — **now three.** `/learn/verbs` is built (14 verbs, every tense, a drill that writes review rows). `/learn/level/:level/:skill`, `/practise/exams` and `/practise/listening` remain stubs and each says what is missing and why.
 4. **The map is mostly empty and honestly so.** Only A1 grammar/vocabulary/phonetics have cards, because 22 cards exist. CO/CE/PE/PO are locked at every level because no listening, reading, writing or speaking content exists at all.
-5. **`/learn?level=B1`** is produced by the search command but the Learn route ignores the parameter. The link works, the filter does nothing. A loose end, found while writing this inventory.
-6. **No service worker in the React app yet.** The vanilla portal has one; this does not, so offline is not yet true here. The offline *state* is designed but untested.
-7. **No `prefers-reduced-motion` test.** The CSS honours it; I did not verify it in the walk.
+5. ~~**`/learn?level=B1`** ignored by the Learn route~~ — **RESOLVED.** The parameter filters the map to that level and shows a labelled control to clear it.
+6. ~~**No service worker in the React app**~~ — **RESOLVED.** Generated after the build from the real hashed filenames; 18 files precached; offline renders 396 characters of the app, checked with the network cut.
+7. ~~**No `prefers-reduced-motion` test**~~ — **RESOLVED, and the first version of the test was wrong.** It matched the computed duration as a *string* against `/^0\.0001s|0s/`, and the browser computes `0.01ms` as `0.00001s`, which that pattern never matches — so the check failed while the CSS was correct. It now parses durations to milliseconds and has a control arm: with the preference off, 4 of 188 elements animate; with it on, 0 do. Removing the CSS makes it fail, which was checked.
 8. **The vanilla portal still exists at `app/`.** Two apps in one repository until the React one reaches parity. Deliberate — it is the working version — but it must not be forgotten.
 9. **Concept coverage is A1–B2 only.** C1 and C2 have no concepts at all, so those rows can never light up.
-10. **The 22 cards exercise 29 of 224 concepts.** The weakness model works but sees a thin slice of French.
+10. **The 22 cards exercise 29 of 224 concepts.** The weakness model works but sees a thin slice of French. **[step 5]** unchanged — the verbs section adds 504 forms against tense concepts, but the card deck is still 22.
+11. **[step 5, new]** **No shadcn/ui and no Radix**, though docs 01, 04 and 05 all named them as the stack. The components are hand-written. See `docs/05` for what that costs.
+12. **[step 5, new]** **Neither the browser walk nor the contrast check runs in CI.** Playwright is not a project dependency, so both suites are run by hand. A change that breaks either will merge green.
+13. **[step 5, new]** **`params_hash` is missing from the review row**, though `docs/03` specifies it. If the FSRS weights are ever refit, earlier rows become uninterpretable.
 
 ---
 

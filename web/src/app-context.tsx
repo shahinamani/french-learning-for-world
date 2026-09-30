@@ -20,7 +20,8 @@ const AppContext = createContext<Ctx | null>(null);
 
 export function AppProvider({ children }: { children: ReactNode }) {
   const [profile, setProfile] = useState<Profile>(() => resolveActiveProfile());
-  const detected = useMemo(() => detectLocale(navigator.languages ?? [navigator.language]), []);
+  const detected = useMemo(() =>
+    typeof navigator === 'undefined' ? 'en' : detectLocale(navigator.languages ?? [navigator.language]), []);
   const [settings, setSettings] = useState<Settings>(() => loadSettings(profile.id, detected));
   const [storageWorks, setStorageWorks] = useState(true);
 
@@ -28,6 +29,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
   useEffect(() => { setSettings(loadSettings(profile.id, detected)); }, [profile.id, detected]);
 
   useEffect(() => {
+    if (typeof document === 'undefined') return;
     const root = document.documentElement;
     root.lang = settings.ui;
     const dir = LOCALES[settings.ui].dir;

@@ -4,7 +4,7 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "tsc -b --noEmit && vite build",
+    "build": "tsc -b --noEmit && vite build && node scripts/prerender.mjs && node scripts/sw.mjs",
     "preview": "vite preview --port 4173",
     "test": "node --test ../tests/*.test.js",
     "prebuild": "./scripts-sync.sh",

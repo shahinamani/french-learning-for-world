@@ -4,6 +4,7 @@
  * 320 px a fifth tab costs every other tab its label.
  */
 import { useEffect, useRef, useState } from 'react';
+import type { ReactNode } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { Icon } from './Icon';
@@ -17,7 +18,7 @@ const TABS = [
   { to: '/search', icon: 'search', key: 'search' },
 ] as const;
 
-export function Shell() {
+export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const { t, settings, update } = useApp();
   const userId = useUserId();
   const navigate = useNavigate();
@@ -127,9 +128,9 @@ export function Shell() {
         )}
       </header>
 
-      <main id="main" key={location.pathname}><Outlet /></main>
+      <main id="main" key={location.pathname}>{prerenderChild ?? <Outlet />}</main>
 
-      <nav className="tabs" aria-label={t('learn')}>
+      <nav className="tabs" aria-label={t('mainNav')}>
         {TABS.map((tab) => (
           <NavLink key={tab.key} to={tab.to} className="tab" data-testid={`tab-${tab.key}`}
                    aria-current={undefined}>

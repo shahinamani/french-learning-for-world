@@ -26,7 +26,11 @@ credentials.json
 /backups/
 
 # Dependencies and build output
-node_modules/
+# No trailing slash: a trailing slash matches directories only, and a
+# `node_modules` SYMLINK (which is how the e2e browser deps are wired up here)
+# slipped past `node_modules/` and would have been committed as a dangling
+# absolute path into a public repository.
+node_modules
 .next/
 out/
 dist/
@@ -54,7 +58,8 @@ Thumbs.db
 *.local
 
 # Build output and dependencies of the web app
-web/node_modules/
+web/node_modules
 web/dist/
+web/.dbg/
 web/public/content/
 web/public/fonts/

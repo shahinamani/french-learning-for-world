@@ -1,6 +1,6 @@
 # 02 — The review log
 
-**Status:** design, for review. Written **before** the information architecture, on Shahin's instruction, because Progress and every weak point is a query over this table and the IA has to know what it can ask for.
+**Status:** design, for review. **Swept against the build 2026-09-30** — what was built, and what was not, is marked **[as built]** below and in `docs/07`. Written **before** the information architecture, on Shahin's instruction, because Progress and every weak point is a query over this table and the IA has to know what it can ask for.
 
 ---
 
@@ -43,7 +43,7 @@ One row per review. Append-only: nothing in this table is ever updated in place,
 |---|---|---|
 | `id` | uuid | — |
 | `reviewed_at` | timestamptz | The moment of the answer. **Not** a date: "how do I do late at night" is a real question. |
-| `user_id` | uuid, nullable | **Null for anonymous learners.** Study works with no account; the log lives in IndexedDB and carries a null user until they sign in, at which point the rows are claimed. |
+| `user_id` | uuid, nullable | **Null for anonymous learners.** Study works with no account; the log lives in IndexedDB and carries a null user until they sign in, at which point the rows are claimed. **[as built — changed]** `userId` is **required and never null.** Anonymous learners get a locally-generated profile id instead, because step 4 had to support more than one learner per browser and a null user cannot be told apart from another null user. Every storage key goes through `userKey(userId, name)`, which *throws* without an id, and the IndexedDB primary key is `[userId, cardKey]`. Claiming rows on sign-in becomes a re-key of an existing id rather than a fill-in of nulls. |
 | `card_key` | text | The content-derived key (`v:etre`), never an array index or a database id, so content can be re-authored without orphaning history. |
 | `item_type` | enum | `vocab · verb_form · grammar · listening · reading · cloze · dictation · pronunciation` — the exercise kind, so "you are fine reading and lost listening" is answerable. |
 | `concept_ids` | text[] | **The column the weakness model is built on.** What this review actually tested: `['gram.passe-compose.etre-aux', 'verb.aller', 'cefr.A2']`. One review can exercise several concepts, which is why it is an array and not a foreign key. |
@@ -61,7 +61,7 @@ One row per review. Append-only: nothing in this table is ever updated in place,
 | `scheduled_days` | integer | Interval this review produced. |
 | `due_before` / `due_after` | timestamptz | |
 | `scheduler` | text | e.g. `fsrs-6`. Algorithms change; rows scheduled by different versions must stay distinguishable. |
-| `params_hash` | text | Hash of the weight vector in force. Without it, a refit makes every earlier row uninterpretable. |
+| `params_hash` | text | Hash of the weight vector in force. Without it, a refit makes every earlier row uninterpretable. **[as built — MISSING]** This column is specified here and is **not** in `ReviewRow`. Every other column in this table is. The consequence is the one stated in the sentence above it: if the FSRS weights are ever refit, rows written before the refit cannot be told from rows written after, and the whole log becomes uninterpretable for optimisation. It is cheap now and impossible retroactively. Open. |
 | `client` | text | `web · pwa · offline-sync`. |
 | `session_id` | uuid | Groups rows into a sitting, so "time studied" is measurable without a separate table. |
 
@@ -82,7 +82,7 @@ This is the test of the schema: every feature in the brief must be a query here,
 | **Due today** | current card state, not the log |
 | **Time spent** | `sum(duration_ms) group by session_id, date` |
 | **Streak** | `count(distinct date(reviewed_at at time zone :tz))` — note the learner's own time zone, or the streak breaks when they travel |
-| **Words known** | cards in `state = Review` with `stability >= 21` |
+| **Words known** | cards in `state = Review` with `stability >= 21` — **[as built] not implemented.** Progress shows reviews, accuracy and per-concept weakness; there is no "words known" figure on any screen. The query is right; nothing calls it |
 | **Weak points** | `concept_ids` unnested, `avg(grade)` and lapse rate per concept over the last N reviews, ranked. **This is the whole feature, and it is one query.** |
 | **Recognition vs production gap** | the same, split by `direction` |
 | **Listening vs reading gap** | the same, split by `item_type` |
@@ -123,7 +123,7 @@ A learner never sees an id — they see *"Le passé composé avec être"*, trans
 The platform is anonymous-first and currently has no server.
 
 - **Now:** the log lives in **IndexedDB** on the device. `localStorage` is wrong for this — it is synchronous, string-only, and capped around 5 MB, and a daily learner generates tens of thousands of rows over a few years. IndexedDB is asynchronous, indexable on `reviewed_at` and `card_key`, and effectively unbounded.
-- **Export:** the log is included in the existing progress export, so a learner can carry their history to another device with no account at all.
+- **Export:** the log is included in the existing progress export, so a learner can carry their history to another device with no account at all. **[as built — half true]** The React app **exports** and does not **import**. A learner can download their history and cannot load it anywhere, so "carry it to another device" is not something the product does today. The vanilla portal at `app/` has both. Import is on the parity list in `docs/07` and is a precondition for deleting that portal.
 - **Later, if accounts arrive:** the same rows, same columns, in Postgres. Indexes on `(user_id, reviewed_at desc)`, `(user_id, card_key)`, and a GIN index on `concept_ids`.
 - **Retention:** rows are the learner's own record and are not aggregated away. They are deleted when the learner deletes their data, entirely and on request.
 - **Privacy:** no analytics, no third party, nothing leaves the device unless the learner signs in or exports. `prompt_shown` and `response` can contain free writing, which is personal data; it stays local by default and this must not change quietly.

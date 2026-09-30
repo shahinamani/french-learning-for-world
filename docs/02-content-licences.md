@@ -1,6 +1,6 @@
 # 02 — Content sources and licences
 
-**Status:** current as of 2026-09-30. This file is the register the brief requires: **every** item of content in the platform has a source and a licence recorded here, and anything whose licence cannot be established does not ship.
+**Status:** current as of 2026-09-30. **Swept against the build 2026-09-30** — corrections marked **[corrected 2026-09-30]**, full sweep in `docs/07`. This file is the register the brief requires: **every** item of content in the platform has a source and a licence recorded here, and anything whose licence cannot be established does not ship.
 
 ---
 
@@ -21,7 +21,9 @@ Rephrasing is not a loophole. A *selection* of vocabulary is its compiler's own 
 | A1 flashcards — French headword, English/Persian/Arabic meanings, French definition, one past-tense and one future-tense example sentence each, all translated | 22 cards, 44 sentences | **Original work written for this project** | Project content licence (see below) | Yes — every card carries `provenance: original` in `content/fr-core-a1.json`, and a test asserts no card is attributed to a textbook, course or app |
 | Examination descriptions — DELF, DALF, TCF, TEF: full names, CEFR levels, administering body | 4 entries | **Factual statements**, written here | Facts are not copyrightable | Yes |
 | Outbound practice links | 22 distinct URLs | France Éducation international, Le français des affaires, TV5MONDE, RFI, Le Point du FLE, Wikisource, Council of Europe | **Not applicable — links, not copies.** No material from these sites is reproduced, mirrored or embedded | URLs recorded in `content/exams.json`; `checkedOn` is `null` because this environment cannot reach those hosts |
-| Interface strings | 92 keys × 4 languages | **Original**, written here | Project content licence | Yes |
+| Interface strings | **109 keys × 4 languages** *(written as 92; re-counted 2026-09-30)* | **Original**, written here | Project content licence | Yes |
+| Verb conjugations | 14 verbs × 6 tenses × 6 persons = **504 forms**, plus participles and 12 imperatives | **Derived by rule and checked by hand for this project** — imparfait from the *nous* stem, conditional from the future stem; no table copied from any source | Project content licence | Yes — `provenance` and `licence` on every verb, asserted by a test |
+| Concept taxonomy | 224 concepts (190 leaves, 4 roots), A1–B2 | **Original**, written here | Project content licence | Yes |
 
 **Nothing else exists yet.** Every row above is either our own writing or a fact.
 
@@ -46,7 +48,9 @@ some networks block the host outright, including the one this was built on.
 
 Variable fonts, so one file covers every weight — no per-weight request and no
 faux-bold. `unicode-range` means a Latin page never downloads the Arabic
-subset: a French page fetches 90.4 KB of the 192 KB shipped.
+subset: a French page fetches **92 608 bytes (90.4 KiB)** of the **197 020 bytes (192.4 KiB)** shipped. Re-measured 2026-09-30.
+
+**[added 2026-09-30]** `font-display` is **`optional`**, not `swap`. That was changed in step 5 for LCP: with `swap` the first paint waited on the font, and on a simulated 400 kbps connection that cost seconds. `optional` means a first-time visitor on a slow connection sees the fallback face for that visit and the designed face from the next one. It is a deliberate trade of first-visit typography for first-visit speed.
 
 ---
 

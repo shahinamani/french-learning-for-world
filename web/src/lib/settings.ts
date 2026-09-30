@@ -7,6 +7,7 @@ const DEFAULTS: Settings = { ui: 'en', meaning: 'en', theme: 'system', sound: tr
 const safely = <T,>(fn: () => T, f: T): T => { try { return fn(); } catch { return f; } };
 
 export function loadSettings(userId: string, fallbackUi: Locale): Settings {
+  if (typeof localStorage === 'undefined') return { ...DEFAULTS, ui: fallbackUi, meaning: fallbackUi === 'fr' ? 'en' : fallbackUi };
   const raw = safely(() => localStorage.getItem(userKey(userId, 'settings')), null);
   const parsed = raw ? safely(() => JSON.parse(raw), null) : null;
   return { ...DEFAULTS, ui: fallbackUi, meaning: fallbackUi === 'fr' ? 'en' : fallbackUi, ...(parsed ?? {}) };

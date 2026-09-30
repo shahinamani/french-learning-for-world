@@ -1,6 +1,6 @@
 /** Home: the level × skill map, one pinned session card, and weak points. */
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router';
+import { Link, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { loadContent } from '../lib/content';
 import { counts, weakPoints, type Counts, type ConceptStat } from '../lib/progress';
@@ -19,6 +19,11 @@ const SKILLS = [
 
 export function Learn() {
   const { t, settings } = useApp();
+  // Search produces /learn?level=B1. A link whose target ignores its parameter
+  // is a broken connection, however well each end works alone.
+  const [params, setParams] = useSearchParams();
+  const raw = (params.get('level') ?? '').toUpperCase();
+  const level = (LEVELS as string[]).includes(raw) ? (raw as Level) : null;
   const userId = useUserId();
   const [data, setData] = useState<{ cards: Card[]; concepts: Concept[] } | null>(null);
   const [c, setC] = useState<Counts | null>(null);
@@ -78,13 +83,17 @@ export function Learn() {
 
       <section className="learn__weak" aria-labelledby="weak-h">
         <h2 id="weak-h" className="h3">{t('toWorkOn')}</h2>
-        {weak === null && <div className="skeleton skeleton--text" />}
+        {/* Prerendered: a description of the section, true for every learner,
+            and the same size as either thing that replaces it. A one-line
+            skeleton let a much larger paragraph appear after hydration and
+            become the largest contentful paint at 5.6 s — measured. */}
+        {weak === null && <p className="muted" data-testid="weak-intro">{t('weakIntro')}</p>}
         {weak !== null && weak.length === 0 && (
           <p className="muted" data-testid="weak-empty">{t('weakNone')}</p>
         )}
         {weak !== null && weak.length > 0 && (
           <ul className="rows" data-testid="weak-list">
-            {weak.slice(0, 5).map((w) => {
+            {weak.filter((w) => !level || byId.get(w.conceptId)?.level === level).slice(0, 5).map((w) => {
               const concept = byId.get(w.conceptId);
               return (
                 <li key={w.conceptId}>
@@ -105,7 +114,15 @@ export function Learn() {
       </aside>
 
       <section className="learn__main" aria-labelledby="map-h">
-        <h2 id="map-h" className="h3">{t('yourLevel')}</h2>
+        <div className="row" style={{ justifyContent: 'space-between' }}>
+          <h2 id="map-h" className="h3">{t('yourLevel')}</h2>
+          {level && (
+            <button className="btn btn--sm" data-testid="clear-level"
+                    onClick={() => { const p = new URLSearchParams(params); p.delete('level'); setParams(p); }}>
+              {t('showingLevel', { level })} · {t('allLevels')}
+            </button>
+          )}
+        </div>
         <div className="map-scroll">
           <table className="map">
             <caption className="u-hidden-visually">{t('yourLevel')}</caption>
@@ -116,17 +133,20 @@ export function Learn() {
               </tr>
             </thead>
             <tbody>
-              {LEVELS.map((lv) => (
+              {(level ? [level] : LEVELS).map((lv) => (
                 <tr key={lv}>
                   <th scope="row">{lv}</th>
                   {SKILLS.map((s) => {
+                    // The grid is 6 levels by 7 skills whatever the data says, so it
+                    // renders immediately and is the largest element on the screen
+                    // from the first paint. Only the numbers inside wait.
+                    const teachable = s.key === 'grammar' || s.key === 'vocabulary' || s.key === 'phonetics';
                     const available = data
-                      ? (s.key === 'grammar' || s.key === 'vocabulary' || s.key === 'phonetics')
-                        && data.concepts.some((k) => k.level === lv && !k.isGroup
+                      ? teachable && data.concepts.some((k) => k.level === lv && !k.isGroup
                           && k.type === (s.key === 'grammar' ? 'grammar' : s.key === 'vocabulary' ? 'vocabulary' : 'phonetics'))
-                      : false;
+                      : teachable && lv !== 'C1' && lv !== 'C2';
                     const cardsHere = data?.cards.filter((k) => k.level === lv).length ?? 0;
-                    const state = !data ? 'loading' : available ? (cardsHere > 0 ? 'active' : 'open') : 'locked';
+                    const state = available ? (cardsHere > 0 ? 'active' : 'open') : 'locked';
                     const label = `${lv} ${s.short}`;
                     return (
                       <td key={s.key}>

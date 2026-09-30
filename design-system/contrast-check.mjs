@@ -16,9 +16,8 @@ const ok = (label, pass) => { checks++; if (!pass) failures.push(label);
 
 const browser = await chromium.launch({ executablePath: EXE });
 const errors = [];
-// The egress proxy blocks the font host in this container; that one failure is
-// allow-listed by cause so every other console error still fails the run.
-const ENV_ONLY = /ERR_CERT_AUTHORITY_INVALID|fonts\.(googleapis|gstatic)/;
+// No allow-list. The fonts are self-hosted from `public/fonts`, so nothing in
+// this page reaches the network and every console error is ours to fix.
 
 async function measureContrast(page, themeLabel) {
   const rows = await page.evaluate(() => {
@@ -69,7 +68,7 @@ async function measureContrast(page, themeLabel) {
 for (const [w, h, label] of [[375, 812, '375 px'], [1440, 900, '1440 px'], [320, 640, '320 px']]) {
   const page = await browser.newPage({ viewport: { width: w, height: h }, deviceScaleFactor: 2 });
   page.on('pageerror', (e) => errors.push('PAGE: ' + e.message));
-  page.on('console', (m) => { if (m.type() === 'error' && !ENV_ONLY.test(m.text())) errors.push('CONSOLE: ' + m.text()); });
+  page.on('console', (m) => { if (m.type() === 'error') errors.push('CONSOLE: ' + m.text()); });
   await page.goto(BASE, { waitUntil: 'networkidle' });
 
   console.log(`\n=== ${label} ===`);
@@ -156,7 +155,7 @@ for (const [w, h, label] of [[375, 812, '375 px'], [1440, 900, '1440 px'], [320,
 }
 
 console.log('\n=== console ===');
-console.log(errors.length ? errors.join('\n') : '  none (font-host failure allow-listed: proxy blocks it here)');
+console.log(errors.length ? errors.join('\n') : '  none');
 console.log(`\n${checks} checks · ${failures.length} failed · ${errors.length} console errors`);
 if (checks === 0) { console.log('NO CHECKS RAN — failing'); await browser.close(); process.exit(2); }
 for (const f of failures) console.log('  FAILED: ' + f);

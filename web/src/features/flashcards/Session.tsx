@@ -13,7 +13,7 @@ import { useApp, useUserId } from '../../app-context';
 import { userKey } from '../../lib/session';
 import { loadContent } from '../../lib/content';
 import { allCardStates, appendReview, getCardState } from '../../lib/db';
-import { emptyState, preview, review, GRADES, SCHEDULER_ID, type Grade } from '../../lib/scheduler';
+import { emptyState, loadScheduler, GRADES, SCHEDULER_ID, type Grade } from '../../lib/scheduler';
 import type { Card, CardState, ReviewRow } from '../../lib/types';
 import { Icon } from '../../components/Icon';
 import { useSidePanel } from '../../components/SidePanel';
@@ -49,6 +49,9 @@ export function FlashcardSession() {
   const [error, setError] = useState(false);
   const shownAt = useRef<number>(Date.now());
   const sessionId = useRef<string>(newId());
+  // The scheduler is fetched when a session opens, not on first paint.
+  const [engine, setEngine] = useState<Awaited<ReturnType<typeof loadScheduler>> | null>(null);
+  useEffect(() => { let live = true; loadScheduler().then((e) => { if (live) setEngine(e); }); return () => { live = false; }; }, []);
 
   /**
    * Build the queue — or restore the one already in progress.
@@ -98,14 +101,27 @@ export function FlashcardSession() {
           let pool = cards;
           if (conceptFilter) pool = pool.filter((c) => c.conceptIds.includes(conceptFilter));
           if (cardFilter) pool = pool.filter((c) => c.key === cardFilter);
-          const due: Card[] = [], fresh: Card[] = [];
+
+          // A learner who asks for a concept gets that concept.
+          //
+          // The scheduled session shows what is due; a concept or a single card
+          // is an explicit request, and answering it with "nothing is due right
+          // now" is useless — it is most likely to happen straight after
+          // getting those cards wrong, which is exactly when someone wants to
+          // drill them. Reviewing early is not a problem for the scheduler:
+          // FSRS works from elapsed time, so an early review simply produces a
+          // shorter next interval.
+          const asked = Boolean(conceptFilter || cardFilter);
+          const due: Card[] = [], fresh: Card[] = [], early: Card[] = [];
           for (const c of pool) {
             const s = byKey.get(c.key);
             if (!s || s.reps === 0) fresh.push(c);
             else if (s.dueAt <= now) due.push(c);
+            else if (asked) early.push(c);
           }
           due.sort((a, b) => (byKey.get(a.key)!.dueAt) - (byKey.get(b.key)!.dueAt));
-          queueOut = [...due, ...fresh];
+          early.sort((a, b) => (byKey.get(a.key)!.dueAt) - (byKey.get(b.key)!.dueAt));
+          queueOut = [...due, ...fresh, ...early];
           sid = sessionId.current;
           try {
             localStorage.setItem(store(sid), JSON.stringify({
@@ -139,10 +155,10 @@ export function FlashcardSession() {
   const stateOf = useCallback((key: string) => states.get(key) ?? emptyState(), [states]);
 
   const grade = useCallback(async (g: Grade) => {
-    if (!card || !queue) return;
+    if (!card || !queue || !engine) return;
     const now = Date.now();
     const before = await getCardState(userId, card.key) ?? emptyState();
-    const after = review(before, g, now);
+    const after = engine.review(before, g, now);
     const row: ReviewRow = {
       id: newId(), userId, sessionId: sessionId.current, reviewedAt: now,
       cardKey: card.key, itemType: card.type === 'verb' ? 'verb_form' : 'vocab',
@@ -163,7 +179,7 @@ export function FlashcardSession() {
     const next = new URLSearchParams(params);
     next.set('i', String(index + 1));
     setParams(next, { replace: true });   // replace: the back button leaves the session
-  }, [card, queue, userId, params, index, setParams]);
+  }, [card, queue, userId, params, index, setParams, engine]);
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -179,7 +195,7 @@ export function FlashcardSession() {
   }, [card, revealed, grade]);
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
-  if (!queue) return <SessionSkeleton />;
+  if (!queue || !engine) return <SessionSkeleton />;
 
   if (!card) {
     // The session is over; drop its snapshot so the next visit builds a fresh
@@ -201,7 +217,7 @@ export function FlashcardSession() {
 
   const meaning = card.meanings[settings.meaning] ?? card.meanings.en ?? '';
   const alt = settings.meaning === 'en' ? card.meanings.fa : card.meanings.en;
-  const previews = preview(stateOf(card.key), Date.now());
+  const previews = engine.preview(stateOf(card.key), Date.now());
 
   return (
     <div className="page page--session">

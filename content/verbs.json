@@ -1,0 +1,2041 @@
+{
+  "version": 1,
+  "licence": "CC BY-SA 4.0",
+  "note": "Conjugations are facts about French, not anyone’s creative work. Regular forms are generated from the rule; irregular forms are stated explicitly. The imparfait and the conditional are derived (nous-stem plus endings; future stem plus imparfait endings) rather than typed, because deriving them is one place to be wrong instead of eighty-four.",
+  "verbs": [
+    {
+      "infinitive": "être",
+      "key": "v:être",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to be",
+        "fa": "بودن",
+        "ar": "يكون",
+        "fr": ""
+      },
+      "participles": {
+        "past": "été",
+        "present": "étant"
+      },
+      "imperative": [
+        "sois",
+        "soyons",
+        "soyez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "suis",
+            "es",
+            "est",
+            "sommes",
+            "êtes",
+            "sont"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "étais",
+            "étais",
+            "était",
+            "étions",
+            "étiez",
+            "étaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai été",
+            "as été",
+            "a été",
+            "avons été",
+            "avez été",
+            "ont été"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "serai",
+            "seras",
+            "sera",
+            "serons",
+            "serez",
+            "seront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "serais",
+            "serais",
+            "serait",
+            "serions",
+            "seriez",
+            "seraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "sois",
+            "sois",
+            "soit",
+            "soyons",
+            "soyez",
+            "soient"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "avoir",
+      "key": "v:avoir",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to have",
+        "fa": "داشتن",
+        "ar": "يملك",
+        "fr": ""
+      },
+      "participles": {
+        "past": "eu",
+        "present": "ayant"
+      },
+      "imperative": [
+        "aie",
+        "ayons",
+        "ayez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "ai",
+            "as",
+            "a",
+            "avons",
+            "avez",
+            "ont"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "avais",
+            "avais",
+            "avait",
+            "avions",
+            "aviez",
+            "avaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai eu",
+            "as eu",
+            "a eu",
+            "avons eu",
+            "avez eu",
+            "ont eu"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "aurai",
+            "auras",
+            "aura",
+            "aurons",
+            "aurez",
+            "auront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "aurais",
+            "aurais",
+            "aurait",
+            "aurions",
+            "auriez",
+            "auraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "aie",
+            "aies",
+            "ait",
+            "ayons",
+            "ayez",
+            "aient"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "aller",
+      "key": "v:aller",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "être",
+      "meanings": {
+        "en": "to go",
+        "fa": "رفتن",
+        "ar": "يذهب",
+        "fr": ""
+      },
+      "participles": {
+        "past": "allé",
+        "present": "allant"
+      },
+      "imperative": [
+        "va",
+        "allons",
+        "allez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "vais",
+            "vas",
+            "va",
+            "allons",
+            "allez",
+            "vont"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "allais",
+            "allais",
+            "allait",
+            "allions",
+            "alliez",
+            "allaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "suis allé(e)",
+            "es allé(e)",
+            "est allé(e)",
+            "sommes allé(e)s",
+            "êtes allé(e)(s)",
+            "sont allé(e)s"
+          ],
+          "conceptId": "gram.past.pc-etre"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "irai",
+            "iras",
+            "ira",
+            "irons",
+            "irez",
+            "iront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "irais",
+            "irais",
+            "irait",
+            "irions",
+            "iriez",
+            "iraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "aille",
+            "ailles",
+            "aille",
+            "allions",
+            "alliez",
+            "aillent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-etre",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "faire",
+      "key": "v:faire",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to do, to make",
+        "fa": "کردن",
+        "ar": "يفعل",
+        "fr": ""
+      },
+      "participles": {
+        "past": "fait",
+        "present": "faisant"
+      },
+      "imperative": [
+        "fais",
+        "faisons",
+        "faites"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "fais",
+            "fais",
+            "fait",
+            "faisons",
+            "faites",
+            "font"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "faisais",
+            "faisais",
+            "faisait",
+            "faisions",
+            "faisiez",
+            "faisaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai fait",
+            "as fait",
+            "a fait",
+            "avons fait",
+            "avez fait",
+            "ont fait"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "ferai",
+            "feras",
+            "fera",
+            "ferons",
+            "ferez",
+            "feront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "ferais",
+            "ferais",
+            "ferait",
+            "ferions",
+            "feriez",
+            "feraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "fasse",
+            "fasses",
+            "fasse",
+            "fassions",
+            "fassiez",
+            "fassent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "pouvoir",
+      "key": "v:pouvoir",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to be able to",
+        "fa": "توانستن",
+        "ar": "يستطيع",
+        "fr": ""
+      },
+      "participles": {
+        "past": "pu",
+        "present": "pouvant"
+      },
+      "imperative": null,
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "peux",
+            "peux",
+            "peut",
+            "pouvons",
+            "pouvez",
+            "peuvent"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "pouvais",
+            "pouvais",
+            "pouvait",
+            "pouvions",
+            "pouviez",
+            "pouvaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai pu",
+            "as pu",
+            "a pu",
+            "avons pu",
+            "avez pu",
+            "ont pu"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "pourrai",
+            "pourras",
+            "pourra",
+            "pourrons",
+            "pourrez",
+            "pourront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "pourrais",
+            "pourrais",
+            "pourrait",
+            "pourrions",
+            "pourriez",
+            "pourraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "puisse",
+            "puisses",
+            "puisse",
+            "puissions",
+            "puissiez",
+            "puissent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "vouloir",
+      "key": "v:vouloir",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to want",
+        "fa": "خواستن",
+        "ar": "يريد",
+        "fr": ""
+      },
+      "participles": {
+        "past": "voulu",
+        "present": "voulant"
+      },
+      "imperative": [
+        "veuille",
+        "veuillons",
+        "veuillez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "veux",
+            "veux",
+            "veut",
+            "voulons",
+            "voulez",
+            "veulent"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "voulais",
+            "voulais",
+            "voulait",
+            "voulions",
+            "vouliez",
+            "voulaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai voulu",
+            "as voulu",
+            "a voulu",
+            "avons voulu",
+            "avez voulu",
+            "ont voulu"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "voudrai",
+            "voudras",
+            "voudra",
+            "voudrons",
+            "voudrez",
+            "voudront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "voudrais",
+            "voudrais",
+            "voudrait",
+            "voudrions",
+            "voudriez",
+            "voudraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "veuille",
+            "veuilles",
+            "veuille",
+            "voulions",
+            "vouliez",
+            "veuillent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "devoir",
+      "key": "v:devoir",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to have to",
+        "fa": "باید",
+        "ar": "يجب عليه",
+        "fr": ""
+      },
+      "participles": {
+        "past": "dû",
+        "present": "devant"
+      },
+      "imperative": null,
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "dois",
+            "dois",
+            "doit",
+            "devons",
+            "devez",
+            "doivent"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "devais",
+            "devais",
+            "devait",
+            "devions",
+            "deviez",
+            "devaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai dû",
+            "as dû",
+            "a dû",
+            "avons dû",
+            "avez dû",
+            "ont dû"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "devrai",
+            "devras",
+            "devra",
+            "devrons",
+            "devrez",
+            "devront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "devrais",
+            "devrais",
+            "devrait",
+            "devrions",
+            "devriez",
+            "devraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "doive",
+            "doives",
+            "doive",
+            "devions",
+            "deviez",
+            "doivent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "dire",
+      "key": "v:dire",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to say",
+        "fa": "گفتن",
+        "ar": "يقول",
+        "fr": ""
+      },
+      "participles": {
+        "past": "dit",
+        "present": "disant"
+      },
+      "imperative": [
+        "dis",
+        "disons",
+        "dites"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "dis",
+            "dis",
+            "dit",
+            "disons",
+            "dites",
+            "disent"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "disais",
+            "disais",
+            "disait",
+            "disions",
+            "disiez",
+            "disaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai dit",
+            "as dit",
+            "a dit",
+            "avons dit",
+            "avez dit",
+            "ont dit"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "dirai",
+            "diras",
+            "dira",
+            "dirons",
+            "direz",
+            "diront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "dirais",
+            "dirais",
+            "dirait",
+            "dirions",
+            "diriez",
+            "diraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "dise",
+            "dises",
+            "dise",
+            "disions",
+            "disiez",
+            "disent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "voir",
+      "key": "v:voir",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to see",
+        "fa": "دیدن",
+        "ar": "يرى",
+        "fr": ""
+      },
+      "participles": {
+        "past": "vu",
+        "present": "voyant"
+      },
+      "imperative": [
+        "vois",
+        "voyons",
+        "voyez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "vois",
+            "vois",
+            "voit",
+            "voyons",
+            "voyez",
+            "voient"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "voyais",
+            "voyais",
+            "voyait",
+            "voyions",
+            "voyiez",
+            "voyaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai vu",
+            "as vu",
+            "a vu",
+            "avons vu",
+            "avez vu",
+            "ont vu"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "verrai",
+            "verras",
+            "verra",
+            "verrons",
+            "verrez",
+            "verront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "verrais",
+            "verrais",
+            "verrait",
+            "verrions",
+            "verriez",
+            "verraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "voie",
+            "voies",
+            "voie",
+            "voyions",
+            "voyiez",
+            "voient"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "prendre",
+      "key": "v:prendre",
+      "level": "A1",
+      "group": "irregular",
+      "irregular": true,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to take",
+        "fa": "گرفتن",
+        "ar": "يأخذ",
+        "fr": ""
+      },
+      "participles": {
+        "past": "pris",
+        "present": "prenant"
+      },
+      "imperative": [
+        "prends",
+        "prenons",
+        "prenez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "prends",
+            "prends",
+            "prend",
+            "prenons",
+            "prenez",
+            "prennent"
+          ],
+          "conceptId": "gram.present.irregular"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "prenais",
+            "prenais",
+            "prenait",
+            "prenions",
+            "preniez",
+            "prenaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai pris",
+            "as pris",
+            "a pris",
+            "avons pris",
+            "avez pris",
+            "ont pris"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "prendrai",
+            "prendras",
+            "prendra",
+            "prendrons",
+            "prendrez",
+            "prendront"
+          ],
+          "conceptId": "gram.future.irregular"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "prendrais",
+            "prendrais",
+            "prendrait",
+            "prendrions",
+            "prendriez",
+            "prendraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "prenne",
+            "prennes",
+            "prenne",
+            "prenions",
+            "preniez",
+            "prennent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.irregular",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.irregular",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "parler",
+      "key": "v:parler",
+      "level": "A1",
+      "group": "er",
+      "irregular": false,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to speak",
+        "fa": "صحبت کردن",
+        "ar": "يتكلّم",
+        "fr": ""
+      },
+      "participles": {
+        "past": "parlé",
+        "present": "parlant"
+      },
+      "imperative": [
+        "parle",
+        "parlons",
+        "parlez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "parle",
+            "parles",
+            "parle",
+            "parlons",
+            "parlez",
+            "parlent"
+          ],
+          "conceptId": "gram.present.er"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "parlais",
+            "parlais",
+            "parlait",
+            "parlions",
+            "parliez",
+            "parlaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai parlé",
+            "as parlé",
+            "a parlé",
+            "avons parlé",
+            "avez parlé",
+            "ont parlé"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "parlerai",
+            "parleras",
+            "parlera",
+            "parlerons",
+            "parlerez",
+            "parleront"
+          ],
+          "conceptId": "gram.future.simple"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "parlerais",
+            "parlerais",
+            "parlerait",
+            "parlerions",
+            "parleriez",
+            "parleraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "parle",
+            "parles",
+            "parle",
+            "parlions",
+            "parliez",
+            "parlent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.simple",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.er",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "manger",
+      "key": "v:manger",
+      "level": "A1",
+      "group": "er",
+      "irregular": false,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to eat",
+        "fa": "خوردن",
+        "ar": "يأكل",
+        "fr": ""
+      },
+      "participles": {
+        "past": "mangé",
+        "present": "mangeant"
+      },
+      "imperative": [
+        "mange",
+        "mangeons",
+        "mangez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "mange",
+            "manges",
+            "mange",
+            "mangeons",
+            "mangez",
+            "mangent"
+          ],
+          "conceptId": "gram.present.er"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "mangeais",
+            "mangeais",
+            "mangeait",
+            "mangions",
+            "mangiez",
+            "mangeaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai mangé",
+            "as mangé",
+            "a mangé",
+            "avons mangé",
+            "avez mangé",
+            "ont mangé"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "mangerai",
+            "mangeras",
+            "mangera",
+            "mangerons",
+            "mangerez",
+            "mangeront"
+          ],
+          "conceptId": "gram.future.simple"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "mangerais",
+            "mangerais",
+            "mangerait",
+            "mangerions",
+            "mangeriez",
+            "mangeraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "mange",
+            "manges",
+            "mange",
+            "mangions",
+            "mangiez",
+            "mangent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.simple",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.er",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "commencer",
+      "key": "v:commencer",
+      "level": "A1",
+      "group": "er",
+      "irregular": false,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to begin",
+        "fa": "شروع کردن",
+        "ar": "يبدأ",
+        "fr": ""
+      },
+      "participles": {
+        "past": "commencé",
+        "present": "commençant"
+      },
+      "imperative": [
+        "commence",
+        "commençons",
+        "commencez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "commence",
+            "commences",
+            "commence",
+            "commençons",
+            "commencez",
+            "commencent"
+          ],
+          "conceptId": "gram.present.er"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "commençais",
+            "commençais",
+            "commençait",
+            "commencions",
+            "commenciez",
+            "commençaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai commencé",
+            "as commencé",
+            "a commencé",
+            "avons commencé",
+            "avez commencé",
+            "ont commencé"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "commencerai",
+            "commenceras",
+            "commencera",
+            "commencerons",
+            "commencerez",
+            "commenceront"
+          ],
+          "conceptId": "gram.future.simple"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "commencerais",
+            "commencerais",
+            "commencerait",
+            "commencerions",
+            "commenceriez",
+            "commenceraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "commence",
+            "commences",
+            "commence",
+            "commencions",
+            "commenciez",
+            "commencent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.simple",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.er",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    },
+    {
+      "infinitive": "finir",
+      "key": "v:finir",
+      "level": "A1",
+      "group": "ir",
+      "irregular": false,
+      "auxiliary": "avoir",
+      "meanings": {
+        "en": "to finish",
+        "fa": "تمام کردن",
+        "ar": "يُنهي",
+        "fr": ""
+      },
+      "participles": {
+        "past": "fini",
+        "present": "finissant"
+      },
+      "imperative": [
+        "finis",
+        "finissons",
+        "finissez"
+      ],
+      "persons": [
+        "je",
+        "tu",
+        "il/elle",
+        "nous",
+        "vous",
+        "ils/elles"
+      ],
+      "tenses": [
+        {
+          "id": "present",
+          "mood": "indicatif",
+          "name": {
+            "en": "Present",
+            "fr": "Présent"
+          },
+          "forms": [
+            "finis",
+            "finis",
+            "finit",
+            "finissons",
+            "finissez",
+            "finissent"
+          ],
+          "conceptId": "gram.present.ir"
+        },
+        {
+          "id": "imparfait",
+          "mood": "indicatif",
+          "name": {
+            "en": "Imperfect",
+            "fr": "Imparfait"
+          },
+          "forms": [
+            "finissais",
+            "finissais",
+            "finissait",
+            "finissions",
+            "finissiez",
+            "finissaient"
+          ],
+          "conceptId": "gram.past.imparfait"
+        },
+        {
+          "id": "passe-compose",
+          "mood": "indicatif",
+          "name": {
+            "en": "Perfect",
+            "fr": "Passé composé"
+          },
+          "forms": [
+            "ai fini",
+            "as fini",
+            "a fini",
+            "avons fini",
+            "avez fini",
+            "ont fini"
+          ],
+          "conceptId": "gram.past.pc-avoir"
+        },
+        {
+          "id": "futur",
+          "mood": "indicatif",
+          "name": {
+            "en": "Future",
+            "fr": "Futur simple"
+          },
+          "forms": [
+            "finirai",
+            "finiras",
+            "finira",
+            "finirons",
+            "finirez",
+            "finiront"
+          ],
+          "conceptId": "gram.future.simple"
+        },
+        {
+          "id": "conditionnel",
+          "mood": "conditionnel",
+          "name": {
+            "en": "Conditional",
+            "fr": "Conditionnel présent"
+          },
+          "forms": [
+            "finirais",
+            "finirais",
+            "finirait",
+            "finirions",
+            "finiriez",
+            "finiraient"
+          ],
+          "conceptId": "gram.conditional.present"
+        },
+        {
+          "id": "subjonctif",
+          "mood": "subjonctif",
+          "name": {
+            "en": "Subjunctive",
+            "fr": "Subjonctif présent"
+          },
+          "forms": [
+            "finisse",
+            "finisses",
+            "finisse",
+            "finissions",
+            "finissiez",
+            "finissent"
+          ],
+          "conceptId": "gram.subjunctive.present"
+        }
+      ],
+      "conceptIds": [
+        "gram.conditional.present",
+        "gram.future.simple",
+        "gram.imperative.forms",
+        "gram.past.imparfait",
+        "gram.past.pc-avoir",
+        "gram.present.ir",
+        "gram.subjunctive.present"
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0"
+    }
+  ]
+}

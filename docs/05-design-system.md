@@ -1,7 +1,8 @@
 # 05 — Design system
 
 **Status:** step 3 deliverable. Rendered at `design-system/index.html`, measured by `design-system/contrast-check.mjs`.
-**Stack it targets:** Vite + React + TypeScript + Tailwind + shadcn/ui.
+**Stack it targets:** Vite + React + TypeScript + Tailwind.
+**Swept against the build on 2026-09-30** — corrections are marked **[corrected 2026-09-30]** and listed in `docs/07`.
 
 ---
 
@@ -50,11 +51,11 @@ Modular scale, ten steps, nothing between them. The headword is fluid — `clamp
 
 ## Measured, not asserted
 
-`node design-system/contrast-check.mjs` — **20 checks, 0 failures, 0 console errors.**
+`node design-system/contrast-check.mjs` — **20 checks, 0 failures, 0 console errors.** Re-run 2026-09-30.
 
 | What | Result |
 |---|---|
-| WCAG AA contrast, every text element against its **real rendered background** | 217 elements × 2 themes = **434 measurements, all pass** |
+| WCAG AA contrast, every text element against its **real rendered background** | 218 elements × 2 themes = **436 measurements, all pass** *(was written as 217/434; re-counted)* |
 | Horizontal overflow at 320 / 375 / 1440 px | 0 px at every width |
 | Side gutter | 16 px at every width |
 | Interactive targets ≥ 44 px | 0 under, at every width |
@@ -64,6 +65,8 @@ Modular scale, ten steps, nothing between them. The headword is fluid — `clamp
 | Right-to-left | no overflow; French content stays LTR inside an RTL page |
 
 **The check fails the build when something fails.** It records every failed assertion, exits non-zero, and exits `2` if no checks ran at all — a check that prints FAIL and exits 0 is not a check.
+
+**[corrected 2026-09-30]** It also used to allow-list console errors matching `fonts.(googleapis|gstatic)` and to print *"none (font-host failure allow-listed)"* on every clean run — a suppression notice for a failure that stopped happening once the fonts were self-hosted in step 4. The allow-list is removed: every console error now fails the run, and the check still passes 20/20 with nothing allow-listed.
 
 ### Four real defects the measurement caught
 
@@ -78,36 +81,39 @@ Points 2–4 are the argument for measuring against the rendered background rath
 
 ## Known, and not hidden
 
-**Fonts do not render as designed in this container.** The network policy blocks the font host, so the screenshots show system fallbacks — the layout, spacing, colour and contrast measurements are all valid, but the letterforms are not the ones specified. The fallback stacks are real faces, so nothing breaks.
+**[corrected 2026-09-30] Fonts now render as designed.** This section previously said *"Fonts do not render as designed in this container — the network policy blocks the font host"*. That was true when it was written and stopped being true in step 4: both families are self-hosted from `public/fonts/` (Newsreader and Vazirmatn, OFL-1.1, licences committed beside the files), the style guide loads them from `../public/fonts/fonts.css`, and the contrast check now runs with no network allow-list at all. The three reasons for self-hosting — this container, the offline case, and not sending every visitor's IP to a third party — are all discharged. See `docs/02`.
 
-**Self-hosting the two families is the step-4 action.** It fixes three things at once: this container, the offline case (a cross-origin font is not in our service-worker cache), and the privacy exposure of sending every visitor's IP to a third party — which a German court has held to breach the GDPR. Both families are OFL, so self-hosting is permitted; it needs network access to fetch them once.
-
-**The contrast check requires Playwright**, which is not a project dependency. It runs from a dev environment that has it. In CI it should be added as a devDependency when the Vite project is scaffolded in step 4.
+**The contrast check still requires Playwright, and Playwright is still not a project dependency.** It is resolved from a dev environment that happens to have it. **This did not get done in step 4 as this section said it should**, and the consequence is concrete: **CI runs the 82 unit tests and the secret and personal-data scans, and runs neither the contrast check nor the browser walk.** Every browser check in `docs/06` and every one in the step-5 report was run by hand. Until Playwright is a devDependency and both suites are in `.github/workflows/ci.yml`, a change that breaks contrast or breaks the walk will merge green. Open, named, not fixed.
 
 ---
 
-## How this becomes shadcn/ui in step 4
+## How this became components in step 4 — **not** via shadcn/ui
 
-The CSS above is the **contract**, not the implementation. Each component becomes a shadcn component wrapping a Radix primitive, and these class names become the Tailwind utilities it composes:
+**[corrected 2026-09-30]** This section used to say each component "becomes a shadcn component wrapping a Radix primitive". **That is not what was built.** The application has no shadcn/ui and no Radix dependency — `web/package.json` carries `idb`, `react`, `react-dom`, `react-router` and `ts-fsrs` and nothing else at runtime. The components are hand-written against the CSS contract below: `Shell`, `SidePanel`, `Search` and `Icon`, plus the feature components.
 
-| Here | Step 4 |
-|---|---|
-| `.btn`, `.btn--primary` | `Button` with `variant` — Radix `Slot` |
-| `.input`, `.field` | `Input`, `Label`, `FormMessage` |
-| `.palette` | `Command` — cmdk + Radix `Dialog`, focus trap included |
-| `.tabs` | Radix `Tabs` with `role="tablist"` |
-| `.alert` | `Alert` with `role="status"` / `role="alert"` by severity |
-| `.map` | stays a plain `<table>` — no primitive improves on it |
-| `.flashcard`, `.rate`, `.rail` | our own, composed from tokens |
+The table therefore records what was *planned* against what *exists*:
+
+| Here | Planned (step 3) | **Built (step 4–5)** |
+|---|---|---|
+| `.btn`, `.btn--primary` | Radix `Slot` | plain `<button>` / `<NavLink>` with the class |
+| `.input`, `.field` | `Input`, `Label`, `FormMessage` | plain `<input>` + `<label>` |
+| `.palette` | cmdk + Radix `Dialog`, focus trap | **a route, `/search`, not a modal** — so there is no dialog to trap focus in; `⌘K` navigates to it and focuses the input |
+| `.tabs` | Radix `Tabs` | `<nav aria-label="Main">` of `NavLink`s — a tab *bar* is navigation, not a `tablist` |
+| `.alert` | Radix-free `Alert` | `role="status"` set by hand |
+| `.map` | plain `<table>` | plain `<table>` — as planned |
+| `.flashcard`, `.rate`, `.rail` | our own | our own |
+| side panel | Radix `Dialog` | hand-written `role="dialog" aria-modal="false"`: focuses Close on open, Escape closes, focus returns to the opener |
+
+**What this costs, stated rather than glossed:** doc 01 chose shadcn/ui precisely so that "accessibility (keyboard, focus, ARIA) comes built in rather than hand-rolled", and warned that hand-rolling "is where accessibility bugs breed". That risk is now real and carried by the test suite instead of by a library. What discharges it today: the browser walk measures 40 focusable controls with no `outline: none`, tests the panel's open/Escape/return-focus cycle, and the contrast check measures 436 text-element contrasts. What does **not** discharge it: none of that runs in CI (above), and no screen reader has been used. The decision to drop shadcn was never written down when it was taken — it is written down now.
 
 Writing them as plain CSS first made the design reviewable before any framework existed, and it is why the accessibility defects were found now rather than after twelve components had inherited them.
 
-**Budget check at this step:** `tokens.css` + `components.css` are **7.5 KB gzipped** together (measured, `gzip -9`). Against a 30 KB CSS budget that leaves 22.5 KB for Tailwind's own output and the application's utilities.
+**Budget check at this step:** `tokens.css` + `components.css` are **7 353 bytes = 7.18 KiB gzipped** together (measured, `gzip -9`, 2026-09-30; written as "7.5 KB" in step 3). The application's built stylesheet, which is these two plus Tailwind's output, is **7 024 bytes = 6.86 KiB gzipped** — smaller, because Tailwind drops what no component uses. Against a 30 KB CSS budget.
 
 ---
 
-## Open for step 4
+## Opened for step 4 — where each one ended up
 
-1. **Self-host the fonts** — needs network access, fixes the GDPR exposure and offline.
-2. **The concept taxonomy** (`docs/03`) is still the critical-path content task and blocks the weak-points screen.
-3. A **dark-theme toggle in the product**, not only in this style guide: three states (light, dark, system), stored per device.
+1. **Self-host the fonts** — **done** in step 4. Five woff2 files, both OFL licences committed beside them, `unicode-range` so a French page fetches 92 608 bytes of the 197 020 shipped.
+2. **The concept taxonomy** (`docs/03`) — **done**: 224 concepts, 190 leaves under 4 roots, A1–B2, ids permanent. The 22 cards exercise 29 of them.
+3. **A dark-theme toggle in the product** — **done**: three states (light, dark, system) on `/account`. **[corrected 2026-09-30]** this said "stored per device"; it is stored **per profile**, under `flw:u:<id>:settings`, so two profiles in two tabs hold different themes. `docs/06` had this right and this file had it wrong.

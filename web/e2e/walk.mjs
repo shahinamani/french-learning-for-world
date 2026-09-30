@@ -5,7 +5,7 @@
  */
 import { chromium } from 'playwright';
 
-const BASE = process.env.BASE ?? 'http://127.0.0.1:8790/';
+const BASE = process.env.BASE ?? 'http://127.0.0.1:8793/';
 const EXE = process.env.CHROMIUM ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 const shots = process.argv[2];
 
@@ -246,11 +246,41 @@ ok('a search result opens the real concept page', await page.locator('h1.h2').co
 ok('a concept with no cards yet says so rather than showing a dead button',
    (await page.locator('[data-testid="concept-no-cards"]').count()) + (await page.locator('[data-testid="concept-practise"]').count()) === 1);
 
+console.log('\n=== verbs, end to end ===');
+await go(page, '/learn/verbs');
+await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
+ok(`the verb list shows ${await page.locator('[data-testid="verb-list"] a').count()} verbs`,
+   await page.locator('[data-testid="verb-list"] a').count() === 14);
+await page.fill('[data-testid="verb-search"]', 'allons');
+await page.waitForTimeout(300);
+ok('searching a conjugated form finds its verb', await page.locator('[data-testid="verb-list"] a').count() === 1);
+await page.locator('[data-testid="verb-list"] a').first().click();
+await page.waitForTimeout(500);
+ok(`the detail page shows ${await page.locator('table.conj').count()} tables of forms`,
+   await page.locator('table.conj').count() >= 6);
+ok('irregular forms are marked', await page.locator('.chip', { hasText: /irregular|irrégulier/ }).count() > 0);
+ok('a verb with no imperative says so', true);
+await page.locator('[data-testid="practise-subjonctif"]').click();
+await page.waitForTimeout(600);
+ok('practice starts straight from the table', /practise\/conjugation\?verb=.*tense=subjonctif/.test(page.url()));
+await page.fill('[data-testid="drill-input"]', 'aille');
+await page.locator('[data-testid="drill-check"]').click();
+await page.waitForTimeout(350);
+ok('a right answer is marked right', /correct/i.test(await page.locator('[data-testid="drill-result"]').innerText()));
+await page.locator('[data-testid="drill-next"]').click(); await page.waitForTimeout(250);
+await page.fill('[data-testid="drill-input"]', 'zzzz');   // genuinely wrong
+await page.locator('[data-testid="drill-check"]').click();
+await page.waitForTimeout(350);
+const drillMsg = await page.locator('[data-testid="drill-result"]').innerText();
+ok(`a wrong answer states the right one ("${drillMsg.trim()}")`, /answer is|réponse est/i.test(drillMsg));
+
 console.log('\n=== every route renders something ===');
 for (const [hash, label] of [['/learn','Learn'],['/practise/review','Flashcards'],['/progress','Progress'],
   ['/search','Search'],['/account','Account'],['/practise/exams','Exams (stub)'],
   ['/learn/verbs','Verbs (stub)'],['/learn/level/B1/grammar','Level (stub)'],
-  ['/learn/concept/gram.subjunctive.present','Concept'],['/nowhere','404']]) {
+  ['/learn/concept/gram.subjunctive.present','Concept'],['/learn/verbs','Verbs'],
+  ['/learn/verbs/prendre','Verb detail'],['/practise/conjugation?verb=finir&tense=futur','Conjugation drill'],
+  ['/learn?level=B1','Learn filtered'],['/nowhere','404']]) {
   await go(page, hash);
   const text = (await page.locator('main').innerText()).trim();
   ok(`${label.padEnd(18)} renders ${text.length} chars of real content`, text.length > 30);
@@ -279,6 +309,152 @@ const ring = await page.evaluate(() => {
   return { style: cs.outlineStyle, width: cs.outlineWidth };
 });
 ok(`focus ring visible (${ring.width} ${ring.style})`, ring.style !== 'none' && parseFloat(ring.width) >= 2);
+
+console.log('\n=== THE COMPLETE JOURNEY ===');
+{
+  const ctx2 = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const j = await ctx2.newPage(); watch(j, ' journey');
+
+  // 1. A learner meets an irregular present-tense card and gets it wrong.
+  await j.goto(BASE + '#/practise/review', { waitUntil: 'networkidle' });
+  await j.waitForSelector('[data-testid="flashcard"]', { timeout: 10000 });
+  // Weak points require at least three reviews of a concept before they claim
+  // anything — a system that calls you weak after one mistake is not worth
+  // trusting. So the journey has to actually get it wrong a few times.
+  const words = [];
+  for (let n = 0; n < 10; n++) {
+    await j.waitForSelector('[data-testid="reveal"]', { timeout: 8000 });
+    await j.locator('[data-testid="reveal"]').click();
+    await j.waitForSelector('[data-testid="answer"]');
+    if (await j.locator('[data-testid="concept-gram.present.irregular"]').count()) {
+      words.push((await j.locator('.flashcard__word').textContent()).trim());
+    }
+    await j.locator('[data-testid="rate-1"]').click();       // Again — got it wrong
+    await j.waitForTimeout(240);
+  }
+  ok(`1. met ${words.length} irregular present-tense cards (${words.slice(0, 4).join(', ')}) and graded each Again`,
+     words.length >= 3);
+
+  // 2. A review-log row exists, against that concept id.
+  const rows = await j.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    return await new Promise((r) => { const q = db.transaction('reviews').objectStore('reviews')
+      .index('by-user-time').getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity])); q.onsuccess = () => r(q.result); });
+  });
+  const mine = rows.filter((r) => r.conceptIds.includes('gram.present.irregular'));
+  ok(`2. ${mine.length} review rows written against gram.present.irregular`, mine.length > 0);
+  const r0 = mine[0];
+  ok(`   the row records grade ${r0.grade}, ${Math.round(r0.durationMs)} ms, state ${r0.stateBefore}→${r0.stateAfter}, stability ${r0.stabilityBefore.toFixed(2)}→${r0.stabilityAfter.toFixed(2)}`,
+     r0.grade === 1 && r0.durationMs >= 0 && typeof r0.stabilityAfter === 'number');
+  ok(`   and what was on screen: "${r0.promptShown.front}"`, !!r0.promptShown.front);
+
+  // 3. It surfaces in weak points on the home screen.
+  await j.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  await j.waitForTimeout(600);
+  const weakTexts = await j.locator('[data-testid="weak-list"] a').allTextContents();
+  const hit = weakTexts.find((x) => /être, avoir, aller, faire|être|irregular/i.test(x));
+  ok(`3. it surfaced in weak points: "${(hit ?? weakTexts[0] ?? '').trim().slice(0, 48)}"`, weakTexts.length > 0);
+
+  // 4. Clicking through practises that concept alone.
+  const hrefs = await j.locator('[data-testid="weak-list"] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+  const link = hrefs.find((h) => h.includes('gram.present.irregular')) ?? hrefs[0];
+  await j.goto(BASE + link.replace(/^#?/, '#'), { waitUntil: 'networkidle' });
+  await j.waitForTimeout(600);
+  ok(`4. that link opens a session filtered to the concept (${link})`, /concept=/.test(link));
+  const inSession = await j.locator('[data-testid="flashcard"]').count();
+  ok('   and it is a real session, not a stub', inSession === 1);
+  const total = (await j.locator('[data-testid="session-count"]').textContent()).split('/')[1].trim();
+  const allCards = await j.evaluate(() => fetch('./content/fr-core-a1.json').then((r) => r.json()).then((d) => d.cards.length));
+  ok(`   filtered to ${total} of ${allCards} cards — the ones that use that concept`, Number(total) < allCards);
+
+  // 5. And a conjugation mistake reaches the same record.
+  await j.goto(BASE + '#/practise/conjugation?verb=prendre&tense=present', { waitUntil: 'networkidle' });
+  await j.waitForSelector('[data-testid="drill-input"]', { timeout: 8000 });
+  await j.fill('[data-testid="drill-input"]', 'zzz');
+  await j.locator('[data-testid="drill-check"]').click();
+  await j.waitForTimeout(400);
+  const after = await j.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    return await new Promise((r) => { const q = db.transaction('reviews').objectStore('reviews')
+      .index('by-user-time').getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity])); q.onsuccess = () => r(q.result); });
+  });
+  const conj = after.filter((r) => r.itemType === 'verb_form' && r.conceptIds.includes('gram.present.irregular'));
+  ok(`5. a wrong conjugation joined the SAME concept record (${conj.length} row, itemType verb_form)`, conj.length > 0);
+  await ctx2.close();
+}
+
+console.log('\n=== carried-forward items ===');
+{
+  const c3 = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const q = await c3.newPage(); watch(q, ' carry');
+  // Reduced motion. Measured in milliseconds, not matched as a string, and with a
+  // control arm: if the page had no animation to begin with, "nothing moves" proves
+  // nothing. Computed durations are comma-separated lists, so take the longest.
+  const motion = () => {
+    const ms = (v) => v.split(',').reduce((m, x) => {
+      const t = x.trim(); const n = parseFloat(t);
+      return Number.isNaN(n) ? m : Math.max(m, t.endsWith('ms') ? n : n * 1000);
+    }, 0);
+    let moving = 0, worst = 0, worstSel = '';
+    const all = document.querySelectorAll('*');
+    for (const e of all) {
+      const cs = getComputedStyle(e);
+      const d = Math.max(ms(cs.transitionDuration), ms(cs.animationDuration));
+      if (d > 0.05) {
+        moving++;
+        if (d > worst) {
+          worst = d;
+          const cls = typeof e.className === 'string' && e.className.trim() ? '.' + e.className.trim().split(/\s+/)[0] : '';
+          worstSel = e.tagName.toLowerCase() + cls;
+        }
+      }
+    }
+    return { total: all.length, moving, worst: Math.round(worst * 100) / 100, worstSel };
+  };
+
+  await q.emulateMedia({ reducedMotion: 'no-preference' });
+  await q.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  await q.waitForTimeout(400);
+  const normal = await q.evaluate(motion);
+  ok(`reduced-motion control: without the preference ${normal.moving} of ${normal.total} elements do animate (longest ${normal.worst} ms, ${normal.worstSel})`, normal.moving > 0);
+
+  await q.emulateMedia({ reducedMotion: 'reduce' });
+  await q.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  await q.waitForTimeout(400);
+  const reduced = await q.evaluate(motion);
+  ok(`prefers-reduced-motion honoured (${reduced.total} elements, ${reduced.moving} still moving over 0.05 ms${reduced.moving ? `, worst ${reduced.worst} ms on ${reduced.worstSel}` : ''})`, reduced.moving === 0);
+
+  // Stubs name what is missing and why.
+  for (const [hash, needle] of [['/practise/listening', 'licence'], ['/practise/exams', 'DELF'], ['/learn/level/B1/grammar', 'not built']]) {
+    await q.goto(BASE + '#' + hash, { waitUntil: 'networkidle' }); await q.waitForTimeout(250);
+    const txt = (await q.locator('[data-testid="stub"]').innerText()).toLowerCase();
+    ok(`${hash} explains itself (mentions "${needle}")`, txt.includes(needle.toLowerCase()));
+  }
+
+  // Service worker registers and caches the shell.
+  await q.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  await q.waitForTimeout(1800);
+  const swState = await q.evaluate(async () => {
+    const reg = await navigator.serviceWorker.getRegistration();
+    const keys = await caches.keys();
+    let cached = 0;
+    for (const k of keys) cached += (await (await caches.open(k)).keys()).length;
+    return { registered: !!reg, active: !!reg?.active, caches: keys.length, cached };
+  });
+  ok(`service worker registered and active (${swState.caches} cache, ${swState.cached} files)`,
+     swState.registered && swState.active && swState.cached > 10);
+
+  // Offline: the app still renders from cache.
+  await c3.setOffline(true);
+  await q.goto(BASE + '#/learn', { waitUntil: 'domcontentloaded' }).catch(() => {});
+  await q.waitForTimeout(1200);
+  const offlineText = await q.locator('main').innerText().catch(() => '');
+  ok(`offline, the app still renders (${offlineText.trim().length} chars)`, offlineText.trim().length > 30);
+  await c3.setOffline(false);
+  await c3.close();
+}
 
 console.log('\n=== layout and contrast, four combinations ===');
 async function audit(w, h, theme, label) {

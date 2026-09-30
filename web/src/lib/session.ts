@@ -25,12 +25,16 @@ function safely<T>(fn: () => T, fallback: T): T {
 function newId(): string {
   // crypto.randomUUID is unavailable over plain http on some browsers.
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
+  if (!globalThis.crypto?.getRandomValues) return `id-${Date.now()}-${Math.random().toString(16).slice(2)}`;
   const b = new Uint8Array(16);
   globalThis.crypto.getRandomValues(b);
   return [...b].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
 
+const hasDom = () => typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+
 export function listProfiles(): Profile[] {
+  if (!hasDom()) return [];
   const raw = safely(() => localStorage.getItem(INDEX_KEY), null);
   const parsed = raw ? safely(() => JSON.parse(raw) as Profile[], null) : null;
   return Array.isArray(parsed) ? parsed.filter((p) => p && typeof p.id === 'string') : [];
@@ -45,10 +49,12 @@ export function createProfile(name: string): Profile {
 
 /** Which profile this tab is using. Per-tab by design. */
 export function getActiveProfileId(): string | null {
+  if (!hasDom()) return null;
   return safely(() => sessionStorage.getItem(ACTIVE_KEY), null);
 }
 
 export function setActiveProfileId(id: string): void {
+  if (!hasDom()) return;
   safely(() => sessionStorage.setItem(ACTIVE_KEY, id), undefined);
 }
 
@@ -57,6 +63,9 @@ export function setActiveProfileId(id: string): void {
  * Anonymous-first: a learner never has to name themselves to start studying.
  */
 export function resolveActiveProfile(): Profile {
+  // Prerendering has no storage and no learner. A fixed placeholder id keeps
+  // the markup deterministic; the browser replaces it on hydration.
+  if (!hasDom()) return { id: 'prerender', name: 'Learner', createdAt: 0 };
   const active = getActiveProfileId();
   const all = listProfiles();
   const found = all.find((p) => p.id === active);
