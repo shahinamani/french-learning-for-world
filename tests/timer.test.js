@@ -1,3 +1,13 @@
+/**
+ * ⚠️ THIS FILE TESTS `app/` — THE VANILLA PORTAL — NOT THE SHIPPED REACT APP.
+ *
+ * `app/` is still the deployed version until the parity conditions in docs/07
+ * are met, so these tests are kept and still matter. But they are not evidence
+ * about `web/`, and for a long time the whole suite consisted of files like
+ * this one while nobody noticed that the product had no unit tests at all
+ * (docs/lessons.md #6). Behaviour tests for the shipped modules are in
+ * `tests/web-modules.test.js`.
+ */
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import * as T from '../app/timer.js';

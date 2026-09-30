@@ -81,6 +81,30 @@ fed to a scanner, where a typo silently substitutes one screen for another.
 **Same family as #3:** in both, the thing reporting success was not looking at
 the thing under test.
 
+**Swept the whole suite for this shape, 2026-10-01, and it was systemic.**
+**Every single import in `tests/` pointed at `app/`, the vanilla portal, and
+none at `web/`, which is what a learner loads.** Forty-two of ninety-seven tests
+exercised code that is not in the build — including twelve for a hand-written
+FSRS implementation that `ts-fsrs` replaced in step 4, and twelve for a timer
+the React app does not use. `typography.test.js` did read the right file, but as
+**text**: it asserted the source *mentions* guillemets and an apostrophe, which
+a completely broken formatter also satisfies (#5).
+
+Node 22 strips TypeScript types, so the tests now import the real modules and
+call the real functions, through a resolver hook that only ever appends `.ts` to
+a relative specifier (Vite allows extensionless imports; Node does not — that
+friction is part of why this drifted).
+
+**The first run of those tests found a real bug in shipped code.** The
+typographic-apostrophe rule was `/(\w)'(\w)/g`, and `\w` is `[A-Za-z0-9_]`,
+which does not match an accented letter. So the rule failed on precisely the
+French it exists for: `l'élève`, `l'école`, `d'être`, `j'étais` all kept their
+prime, while `qu'il` was corrected. 22 strings in shipped content were affected.
+Fixed with `/(\p{L})'(\p{L})/gu`, and every one of the 22 now renders correctly.
+
+That bug survived a test file dedicated to French typography, because the file
+read the source instead of running it.
+
 ---
 
 ## How these are caught
@@ -110,6 +134,9 @@ Not by care. By two habits:
 | 4 | reduced-motion check | FAIL | assertion could never match |
 | 5 | timer pill check | PASS | `15:00` default satisfied it |
 | 6 | conjugation + axe screen list | PASS | asserting against a not-found page |
+| 6 | `content.test.js` i18n parity | PASS | read `app/i18n.js`; the app's own dictionary was 40 keys short in fa and ar |
+| 6 | `fsrs.test.js`, `timer.test.js` | PASS | 24 tests against modules the product replaced or never used |
+| 5 | `typography.test.js` | PASS | read the source for the word "apostrophe" instead of running the formatter |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
 meant **not one design token was ever defined**, and the page still looked like a

@@ -21,7 +21,12 @@ export function fr(input: string): string {
   s = s.replace(/([;!?])/g, `${NNBSP}$1`);
   s = s.replace(/:/g, `${NBSP}:`);
   s = s.replace(/«/g, `«${NNBSP}`).replace(/»/g, `${NNBSP}»`);
-  s = s.replace(/(\w)'(\w)/g, '$1’$2');
+  // \w is [A-Za-z0-9_] and does NOT match an accented letter, so this rule
+  // used to fail on exactly the French it exists for: « l'élève », « d'être »,
+  // « l'école » all kept their prime while « qu'il » was fixed. \p{L} matches
+  // any letter in any script. Found by testing the function instead of reading
+  // its source for the word "apostrophe" (docs/lessons.md #5).
+  s = s.replace(/(\p{L})'(\p{L})/gu, '$1’$2');
   // 1240 -> 1 240, four digits or more, not inside a year-like token.
   s = s.replace(/\b(\d{1,3})(?=(\d{3})+\b)/g, `$1${NBSP}`);
   // A URL or a time should not have picked up a space before its colon.
