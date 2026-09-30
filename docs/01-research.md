@@ -174,7 +174,47 @@ On a phone this stacks: session card → map (scrollable, level-major) → weakn
 
 ---
 
-## Part 5 — Decisions I need from you before step 2
+## Part 5 — Decisions (settled)
+
+### Framework — **Vite + React + TypeScript + Tailwind + shadcn/ui**. Decided 2026-09-30.
+
+**Next.js was proposed and rejected on measurement.** Both stacks were built
+and the scripts the page actually loads were gzipped (`gzip -9`, minimal App
+Router page, `output: 'export'`):
+
+| Stack | First-load JS, gzipped |
+|---|---|
+| Next.js 16.3.7 App Router, client page | **168.6 KB** |
+| Next.js 16.3.7 App Router, server component page | **168.3 KB** |
+| Vite 7 + React 19 + react-router 7 | **79.2 KB** |
+| The vanilla portal this replaces | 23.3 KB JS + 4.8 KB CSS |
+
+Next.js exceeds the 150 KB budget by 18 KB **before any application code**, and
+server components do not reduce the client baseline — 168.6 against 168.3 is
+noise. Vite leaves roughly 70 KB for Radix, the scheduler and our own code.
+
+None of the reasons for the stack was a Next.js reason: shadcn/ui is MIT and
+copies into the repository, Radix supplies keyboard and screen-reader
+behaviour, Tailwind makes the token rule enforceable. All three work under
+Vite, and shadcn's CLI supports Vite directly. What is given up is server
+rendering (nothing to render — anonymous-first, no backend, no per-request
+data), file-based routing (react-router), and image optimisation (there is an
+icon). The one real loss, landing-page SEO, is solved by prerendering that page
+to static HTML at build time.
+
+**Budget stands at 150 KB gzipped** for shell plus home route, ≤30 KB CSS,
+≤60 KB per lazily-loaded section. It is measured at every step, not once at the
+end.
+
+**Do not re-open this from memory.** If it is re-opened, re-measure.
+
+### Content licence — **CC BY-SA 4.0**, decided knowingly. See `docs/02`.
+### Mobile navigation — **four tabs.** *About* lives in settings.
+### The learner sees their own review log. See `docs/03`.
+
+---
+
+## Part 5b — Questions that were open before those decisions
 
 1. **Framework.** My recommendation: **React + Vite + TypeScript + Tailwind, with shadcn/ui components on Radix primitives** — accessibility (keyboard, focus, ARIA) comes built in rather than hand-rolled, the components are copied into the repo so there is no runtime dependency to bloat the bundle, and Tremor can be added later only if the progress charts justify it. The trade-off against today's zero-dependency vanilla approach is real: we gain accessible components and lose the "no build step, no `node_modules`" simplicity that currently makes this repo deployable by pushing. Alternative if you prefer to keep that: stay vanilla and hand-build the components, which costs weeks and is where accessibility bugs breed.
 2. **`main` vs the feature branch**, and whether to replace `main`'s history so the tool-attribution trailer disappears from your profile entirely.

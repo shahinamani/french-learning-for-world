@@ -10,12 +10,21 @@
 set -uo pipefail
 cd "$(dirname "$0")/.."
 
-mapfile -t urls < <(node -e '
+# Extract first and check it worked. An empty list must never read as
+# "all links resolved" — that is a check that cannot fail.
+urls_raw=$(node -e '
   const doc = require("./content/exams.json");
   const seen = new Set();
   for (const e of doc.exams) for (const r of e.resources) seen.add(r.url);
   for (const u of seen) console.log(u);
-')
+') || { echo "FAILED: could not read content/exams.json" >&2; exit 2; }
+
+mapfile -t urls <<< "$urls_raw"
+if [ "${#urls[@]}" -eq 0 ] || [ -z "${urls[0]}" ]; then
+  echo "FAILED: no links found to check. Either exams.json has none, or the" >&2
+  echo "extraction broke. Refusing to report success on an empty set." >&2
+  exit 2
+fi
 
 echo "Checking ${#urls[@]} distinct links…"
 failed=0

@@ -78,9 +78,34 @@ The brief asks which I recommend and why. **Two licences, because code and conte
 
 Short, universally understood, and permissive. Anyone may reuse the platform, including commercially, provided the copyright notice travels with it. For a project whose purpose is to be useful to as many people as possible, the permissive choice is the one that removes obstacles. `LICENSE` already contains verbatim MIT, copyright Shahin Amani.
 
-### Content — **CC BY-SA 4.0** (add as `LICENSE-CONTENT`)
+### Content — **CC BY-SA 4.0**. Decided 2026-09-30, knowingly and permanently.
 
-Not the permissive choice, and that is deliberate:
+**This decision was taken with its consequences stated and accepted.** It is
+recorded here rather than in a commit message because it cannot be undone for
+anything already published, and whoever reads this file in two years needs to
+know it was a choice and not a default.
+
+**What it forecloses, permanently:**
+
+- **Content already published under it cannot be relicensed.** Every card,
+  sentence and translation released stays CC BY-SA. A later decision to go
+  permissive applies only to content written after it.
+- **Permissively-licensed projects cannot absorb our content.** An MIT or
+  CC BY project cannot take our sentences without becoming share-alike itself.
+  We are choosing to be unusable by them.
+- **Nor can a proprietary product** — which is the point, but it is the same
+  fact seen from the other side.
+- **Every contributor is bound by it.** Anyone writing a card is releasing it
+  under share-alike, and must be told so before they contribute.
+- **Mixing rules become a real constraint.** CC BY (Tatoeba) and CC0
+  (Wikidata, Common Voice) flow *into* CC BY-SA. Nothing flows back out.
+
+**Why it was chosen anyway:** if the platform uses anything Wiktionary-derived
+— and conjugation tables and definitions realistically come from there —
+share-alike is not a preference but an obligation. And it matches what the
+platform is for: free to learn from, free to build on, impossible to enclose.
+
+The reasoning in full:
 
 1. **It is the only option compatible with Wiktionary and Lexique**, both CC BY-SA, both on the approved list. Choosing CC BY or CC0 now would silently rule them out later — and Wiktionary is where conjugation tables and definitions realistically come from.
 2. **Share-alike keeps the content free.** Under CC BY or CC0 a commercial app could take the entire body of work, wrap it in a subscription, and owe nothing back. CC BY-SA does not prevent commercial use — it requires that whatever they build from it stays as free as what they took.

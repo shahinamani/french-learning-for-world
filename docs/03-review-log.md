@@ -139,6 +139,36 @@ The platform is anonymous-first and currently has no server.
 
 ---
 
-## Open question for Shahin
+## The learner sees their own log — decided
 
-**Does a learner ever get to see their own log?** I would show it: a plain "what I did" list, exportable, because a free platform that keeps your record from you is not free. It also costs almost nothing once the data exists. The argument against is that it is one more screen to design and maintain, and few learners will open it twice.
+Plain, not clever: what they reviewed, when, how it went, what is due next.
+Three reasons, and the first is not the important one.
+
+1. **It is their data.** A free platform that keeps your record from you is not
+   free.
+2. **It is the data-export requirement.** The same rows that render this screen
+   are the export; there is no second implementation and no divergence between
+   what is shown and what is downloaded.
+3. **It is what makes the weakness model trustworthy.** A learner told "you are
+   weak on the subjunctive" will believe it if they can see the twelve reviews
+   that produced the claim. Told it with no evidence, they will argue with it —
+   and they will be right to.
+
+**It must not become a wall of rows.** The design is summary-first:
+
+```
+CETTE SEMAINE          142 révisions · 1 h 18 · 6 jours sur 7
+  lun ▮▮▮▮▮▮   mar ▮▮▮   mer ▮▮▮▮▮▮▮▮   jeu —   ven ▮▮▮▮ …
+
+CE QUI A BOUGÉ
+  ▲ Passé composé            62 % → 81 %     18 révisions   ▸
+  ▼ Subjonctif présent       74 % → 55 %      9 révisions   ▸    ← why we say it
+  ● Les nasales              nouveau          4 révisions   ▸
+
+DÛ MAINTENANT   14 cartes · 8 min      ▸ Commencer
+```
+
+Each `▸` opens the rows behind that line — the individual reviews, with what
+was shown, the grade and the time taken. **Detail is one click away and never
+the default view.** A full chronological list exists at the bottom, paginated,
+for anyone who wants it. Export is one button on the same screen.

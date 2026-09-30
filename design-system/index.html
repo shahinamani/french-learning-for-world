@@ -1,0 +1,423 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Design system — French Learning for World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiByeD0iMyIgZmlsbD0iIzM4NDA3ZiIvPjwvc3ZnPg==">
+<link rel="stylesheet" href="tokens.css">
+<link rel="stylesheet" href="components.css">
+<style>
+  /* Layout of this page only. Not part of the system. */
+  .sg { max-width: var(--width-page); margin-inline: auto; padding: var(--space-6) var(--space-4) var(--space-16); }
+  .sg-head { position: sticky; top: 0; z-index: 10; background: var(--color-surface);
+    border-block-end: 1px solid var(--color-line); padding: var(--space-3) var(--space-4); }
+  .sg-head__in { max-width: var(--width-page); margin-inline: auto; display: flex; gap: var(--space-3);
+    align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .sg-title { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+  .sg-sec { margin-block-start: var(--space-12); }
+  .sg-sec > h2 { font-size: var(--text-xl); font-weight: var(--weight-semibold);
+    padding-block-end: var(--space-2); border-block-end: 1px solid var(--color-line); margin-block-end: var(--space-5); }
+  .sg-sec > h3 { font-size: var(--text-sm); font-weight: var(--weight-semibold); color: var(--color-ink-muted);
+    margin-block: var(--space-6) var(--space-3); }
+  .sg-note { font-size: var(--text-sm); color: var(--color-ink-muted); max-width: var(--width-prose);
+    margin-block-end: var(--space-4); }
+  .sg-row { display: flex; gap: var(--space-2); flex-wrap: wrap; align-items: center; }
+  .sg-grid { display: grid; gap: var(--space-2); grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
+  .sw { border: 1px solid var(--color-line); border-radius: var(--radius-sm); overflow: hidden; background: var(--color-surface); }
+  .sw__chip { height: 46px; }
+  .sw__meta { padding: var(--space-2); font-size: var(--text-2xs); }
+  .sw__name { font-weight: var(--weight-semibold); }
+  .sw__val { color: var(--color-ink-faint); font-family: var(--font-mono); }
+  .sg-scale > div { display: flex; align-items: baseline; gap: var(--space-4); padding-block: var(--space-2);
+    border-block-end: 1px dashed var(--color-line); }
+  .sg-scale code { font-family: var(--font-mono); font-size: var(--text-2xs); color: var(--color-ink-faint);
+    min-width: 12ch; flex: none; }
+  .sg-space { display: flex; gap: var(--space-4); flex-wrap: wrap; align-items: flex-end; }
+  .sg-space i { display: block; background: var(--color-accent); border-radius: 2px; }
+  .sg-space span { display: block; font-size: var(--text-2xs); color: var(--color-ink-faint);
+    font-family: var(--font-mono); margin-block-start: var(--space-1); }
+  .sg-demo { background: var(--color-canvas); border: 1px solid var(--color-line);
+    border-radius: var(--radius-md); padding: var(--space-5); }
+  .sg-two { display: grid; gap: var(--space-4); grid-template-columns: 1fr; }
+  @media (min-width: 900px) { .sg-two { grid-template-columns: 1fr 1fr; } }
+  .sg-phone { max-width: 360px; border: 1px solid var(--color-line-strong); border-radius: var(--radius-lg);
+    overflow: hidden; background: var(--color-canvas); }
+</style>
+</head>
+<body>
+
+<header class="sg-head">
+  <div class="sg-head__in">
+    <span class="sg-title">Design system · French Learning for World</span>
+    <div class="sg-row">
+      <button class="btn btn--sm" id="theme">Basculer le thème</button>
+      <button class="btn btn--sm" id="dir">Tester l’arabe (RTL)</button>
+    </div>
+  </div>
+</header>
+
+<div class="sg">
+
+<p class="sg-note" style="margin-block-start:var(--space-4)">
+  Every value below comes from <code>tokens.css</code>. Nothing on this page
+  defines a colour, size, radius or duration of its own — that is the point of
+  the page. Toggle the theme and the direction with the buttons above; both are
+  part of the system, not an afterthought.
+</p>
+<div class="alert alert--warning" style="max-width:var(--width-prose)">
+  <div class="alert__body"><strong>Fonts are not rendering as designed here.</strong>
+  This container’s network policy blocks the font host, so the page falls back
+  to system faces. Newsreader and Vazirmatn will load in production. Self-hosting
+  them is the step-4 action — it fixes this, the offline case, and the privacy
+  exposure of a third-party font request.</div>
+</div>
+
+<!-- ─────────────── Colour ─────────────── -->
+<section class="sg-sec">
+  <h2>Colour</h2>
+  <p class="sg-note">Semantic names only. Neutrals carry a slight blue bias toward the accent —
+    a pure grey beside a coloured accent reads as unconsidered. Every value is declared
+    on bare <code>:root</code> first, then redefined twice for dark: once behind
+    <code>prefers-color-scheme</code> for the majority whose system is set to auto, and once
+    behind <code>[data-theme="dark"]</code> for an explicit choice. Omit either and one group
+    gets one theme’s text on the other theme’s background, with no error.</p>
+
+  <h3>Surfaces and ink</h3>
+  <div class="sg-grid">
+    <div class="sw"><div class="sw__chip" style="background:var(--color-canvas)"></div><div class="sw__meta"><div class="sw__name">canvas</div><div class="sw__val">the page</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-surface)"></div><div class="sw__meta"><div class="sw__name">surface</div><div class="sw__val">cards, bars</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-surface-sunken)"></div><div class="sw__meta"><div class="sw__name">surface-sunken</div><div class="sw__val">wells, tracks</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-ink)"></div><div class="sw__meta"><div class="sw__name">ink</div><div class="sw__val">body text</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-ink-muted)"></div><div class="sw__meta"><div class="sw__name">ink-muted</div><div class="sw__val">secondary</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-ink-faint)"></div><div class="sw__meta"><div class="sw__name">ink-faint</div><div class="sw__val">labels ≥14px</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-line)"></div><div class="sw__meta"><div class="sw__name">line</div><div class="sw__val">borders</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-accent)"></div><div class="sw__meta"><div class="sw__name">accent</div><div class="sw__val">one, used sparingly</div></div></div>
+  </div>
+
+  <h3>Status — never the only signal</h3>
+  <div class="sg-grid">
+    <div class="sw"><div class="sw__chip" style="background:var(--color-success)"></div><div class="sw__meta"><div class="sw__name">success</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-warning)"></div><div class="sw__meta"><div class="sw__name">warning</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-danger)"></div><div class="sw__meta"><div class="sw__name">danger</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-info)"></div><div class="sw__meta"><div class="sw__name">info</div></div></div>
+  </div>
+
+  <h3>CEFR levels — a sequential ramp, because the levels are ordered</h3>
+  <div class="sg-grid">
+    <div class="sw"><div class="sw__chip" style="background:var(--color-a1)"></div><div class="sw__meta"><div class="sw__name">A1</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-a2)"></div><div class="sw__meta"><div class="sw__name">A2</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-b1)"></div><div class="sw__meta"><div class="sw__name">B1</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-b2)"></div><div class="sw__meta"><div class="sw__name">B2</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-c1)"></div><div class="sw__meta"><div class="sw__name">C1</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-c2)"></div><div class="sw__meta"><div class="sw__name">C2</div></div></div>
+  </div>
+</section>
+
+<!-- ─────────────── Type ─────────────── -->
+<section class="sg-sec">
+  <h2>Type</h2>
+  <p class="sg-note">Two families. <strong>Newsreader</strong> carries French — a text serif with
+    enough character to make a headword feel like a word rather than a data field, and proper
+    accents at display size. <strong>Vazirmatn</strong> carries the interface and covers Latin,
+    Persian and Arabic from one family, which is why the right-to-left languages need no separate
+    stack. Modular scale; nothing is “18px because it looked right”.</p>
+
+  <div class="sg-scale">
+    <div><code>--text-word</code><span lang="fr" style="font-size:var(--text-word);font-weight:var(--weight-medium);line-height:var(--leading-tight)">être</span></div>
+    <div><code>--text-2xl</code><span style="font-size:var(--text-2xl);font-weight:var(--weight-semibold)">Tableau de bord</span></div>
+    <div><code>--text-xl</code><span style="font-size:var(--text-xl);font-weight:var(--weight-semibold)">Votre niveau</span></div>
+    <div><code>--text-lg</code><span lang="fr" style="font-size:var(--text-lg)">Hier, j’ai été très fatigué.</span></div>
+    <div><code>--text-base</code><span>Body text. The line length is capped near 65 characters.</span></div>
+    <div><code>--text-sm</code><span style="color:var(--color-ink-muted)">Secondary text and dense interface.</span></div>
+    <div><code>--text-xs</code><span style="color:var(--color-ink-muted)">Captions and metadata.</span></div>
+    <div><code>--text-2xs</code><span style="text-transform:uppercase;letter-spacing:var(--tracking-label);font-weight:var(--weight-semibold);color:var(--color-ink-faint)">Uppercase label</span></div>
+  </div>
+
+  <h3>French typography — implemented, not left to authors</h3>
+  <p class="sg-note">A narrow no-break space (U+202F) before <code>;</code> <code>!</code> <code>?</code>,
+    a no-break space (U+00A0) before <code>:</code> and inside guillemets, a typographic apostrophe,
+    and accents kept on capitals. One formatter applied at render, with unit tests.</p>
+  <div class="sg-demo" lang="fr">
+    <p style="font-size:var(--text-lg)">Vraiment ? Attention : « l’élève a réussi ! »</p>
+    <p style="font-size:var(--text-lg)">ÉCOUTE — cœur, sœur, ça, où, français</p>
+    <p style="font-size:var(--text-sm);color:var(--color-ink-muted);margin-block-start:var(--space-2)">
+      1 240 mots · 8 min · niveau A2</p>
+  </div>
+
+  <h3>Right-to-left, from the same family</h3>
+  <div class="sg-demo">
+    <p lang="ar" dir="rtl" style="font-size:var(--text-lg)">هذا الموقع مستقل ومجاني تمامًا.</p>
+    <p lang="fa" dir="rtl" style="font-size:var(--text-lg)">این پورتال مستقل و کاملاً رایگان است.</p>
+  </div>
+</section>
+
+<!-- ─────────────── Spacing ─────────────── -->
+<section class="sg-sec">
+  <h2>Spacing, radius, elevation</h2>
+  <p class="sg-note">4 px base, no half steps. The side gutter is <code>--space-4</code> at every
+    width, set once on one wrapper.</p>
+  <div class="sg-space">
+    <div><i style="width:var(--space-1);height:32px"></i><span>1 · 4</span></div>
+    <div><i style="width:var(--space-2);height:32px"></i><span>2 · 8</span></div>
+    <div><i style="width:var(--space-3);height:32px"></i><span>3 · 12</span></div>
+    <div><i style="width:var(--space-4);height:32px"></i><span>4 · 16</span></div>
+    <div><i style="width:var(--space-6);height:32px"></i><span>6 · 24</span></div>
+    <div><i style="width:var(--space-8);height:32px"></i><span>8 · 32</span></div>
+    <div><i style="width:var(--space-12);height:32px"></i><span>12 · 48</span></div>
+  </div>
+  <h3>Radius and elevation — applied by role, never decoratively</h3>
+  <div class="sg-row" style="margin-block-start:var(--space-3)">
+    <div class="card" style="border-radius:var(--radius-sm);padding:var(--space-4)">sm · inputs</div>
+    <div class="card" style="border-radius:var(--radius-md);padding:var(--space-4)">md · buttons, cards</div>
+    <div class="card" style="border-radius:var(--radius-lg);padding:var(--space-4)">lg · sheets</div>
+    <div class="card card--raised" style="padding:var(--space-4)">shadow-raised</div>
+    <div class="card" style="box-shadow:var(--shadow-overlay);padding:var(--space-4)">shadow-overlay</div>
+  </div>
+</section>
+
+<!-- ─────────────── Components ─────────────── -->
+<section class="sg-sec">
+  <h2>Components</h2>
+
+  <h3>Buttons — 44 px minimum target</h3>
+  <div class="sg-row">
+    <button class="btn btn--primary">Commencer</button>
+    <button class="btn">Plus tard</button>
+    <button class="btn btn--ghost">Annuler</button>
+    <button class="btn btn--danger">Tout effacer</button>
+    <button class="btn" disabled>Indisponible</button>
+    <button class="btn btn--primary" aria-busy="true">Enregistrement</button>
+    <button class="btn btn--sm">Petit</button>
+    <button class="btn btn--primary btn--lg">Grand</button>
+  </div>
+
+  <h3>Chips</h3>
+  <div class="sg-row">
+    <span class="chip chip--a1">A1</span><span class="chip chip--a2">A2</span>
+    <span class="chip chip--b1">B1</span><span class="chip chip--b2">B2</span>
+    <span class="chip chip--c1">C1</span><span class="chip chip--c2">C2</span>
+    <span class="chip">verbe</span><span class="chip">féminin</span>
+    <span class="chip chip--prep" lang="fr" dir="ltr">à</span>
+  </div>
+
+  <h3>Flashcard — front and back, headword in the same place on both</h3>
+  <div class="sg-two">
+    <div class="card card--raised flashcard card--interactive">
+      <div class="sg-row" style="margin-block-end:var(--space-4)">
+        <span class="chip chip--a1">A1</span><span class="chip">verbe</span>
+      </div>
+      <p class="flashcard__word" lang="fr" dir="ltr">être</p>
+    </div>
+    <div class="card card--raised flashcard">
+      <div class="sg-row" style="margin-block-end:var(--space-4)">
+        <span class="chip chip--a1">A1</span><span class="chip">verbe</span>
+      </div>
+      <p class="flashcard__word" lang="fr" dir="ltr">être</p>
+      <div class="flashcard__answer">
+        <div class="flashcard__meaning">to be</div>
+        <div class="flashcard__alt" lang="fa" dir="rtl">بودن</div>
+        <div class="example">
+          <span class="example__label">passé · <b lang="fr">été</b></span>
+          <div class="example__fr" lang="fr" dir="ltr">Hier, j’ai <mark class="form">été</mark> très fatigué.</div>
+          <div class="example__tr">Yesterday I was very tired.</div>
+        </div>
+        <div class="example">
+          <span class="example__label">futur · <b lang="fr">serai</b></span>
+          <div class="example__fr" lang="fr" dir="ltr">Demain, je <mark class="form">serai</mark> à la maison.</div>
+          <div class="example__tr">Tomorrow I will be at home.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <h3>Ratings — colour is never the only signal; each carries its interval</h3>
+  <div class="ratings" style="max-width:var(--width-card)">
+    <button class="rate rate--again"><span class="rate__name">À revoir</span><span class="rate__when">maintenant</span></button>
+    <button class="rate rate--hard"><span class="rate__name">Difficile</span><span class="rate__when">1 j</span></button>
+    <button class="rate rate--good"><span class="rate__name">Bien</span><span class="rate__when">4 j</span></button>
+    <button class="rate rate--easy"><span class="rate__name">Facile</span><span class="rate__when">14 j</span></button>
+  </div>
+
+  <h3>Level × skill map — a real <code>&lt;table&gt;</code>, so “B1, écoute, 64 %” is announced</h3>
+  <div class="sg-demo" style="overflow-x:auto">
+    <table class="map">
+      <caption class="u-hidden-visually">Progression par niveau et par compétence</caption>
+      <thead><tr><th scope="col"><span class="u-hidden-visually">Niveau</span></th>
+        <th scope="col">CO</th><th scope="col">CE</th><th scope="col">PE</th>
+        <th scope="col">PO</th><th scope="col">Gram</th><th scope="col">Voc</th><th scope="col">Phon</th></tr></thead>
+      <tbody>
+        <tr><th scope="row">A1</th>
+          <td><button class="map__cell" data-state="done">100 %</button></td>
+          <td><button class="map__cell" data-state="done">100 %</button></td>
+          <td><button class="map__cell" data-state="done">92 %</button></td>
+          <td><button class="map__cell" data-state="done">88 %</button></td>
+          <td><button class="map__cell" data-state="done">100 %</button></td>
+          <td><button class="map__cell" data-state="done">96 %</button></td>
+          <td><button class="map__cell" data-state="done">100 %</button></td></tr>
+        <tr><th scope="row">A2</th>
+          <td><button class="map__cell" data-state="active">78 %</button></td>
+          <td><button class="map__cell" data-state="active">64 %</button></td>
+          <td><button class="map__cell">30 %</button></td>
+          <td><button class="map__cell">12 %</button></td>
+          <td><button class="map__cell" data-state="active">55 %</button></td>
+          <td><button class="map__cell" data-state="active">71 %</button></td>
+          <td><button class="map__cell">22 %</button></td></tr>
+        <tr><th scope="row">B1</th>
+          <td><button class="map__cell" data-state="locked" disabled aria-label="B1 compréhension orale, verrouillé">—</button></td>
+          <td><button class="map__cell" data-state="locked" disabled aria-label="B1 compréhension écrite, verrouillé">—</button></td>
+          <td><button class="map__cell" data-state="locked" disabled aria-label="B1 production écrite, verrouillé">—</button></td>
+          <td><button class="map__cell" data-state="locked" disabled aria-label="B1 production orale, verrouillé">—</button></td>
+          <td><button class="map__cell" data-state="locked" disabled aria-label="B1 grammaire, verrouillé">—</button></td>
+          <td><button class="map__cell" data-state="locked" disabled aria-label="B1 vocabulaire, verrouillé">—</button></td>
+          <td><button class="map__cell" data-state="locked" disabled aria-label="B1 phonétique, verrouillé">—</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Fields</h3>
+  <div class="sg-two">
+    <label class="field"><span class="field__label">Chercher</span>
+      <input class="input" type="search" placeholder="passé composé, nasales, voyager…"></label>
+    <label class="field"><span class="field__label">Langue des significations</span>
+      <select class="select"><option>English</option><option>فارسی</option><option>العربية</option><option>Français</option></select></label>
+  </div>
+  <label class="field" style="margin-block-start:var(--space-4);max-width:var(--width-card)">
+    <span class="field__label">Votre réponse</span>
+    <input class="input" aria-invalid="true" value="je suis allé">
+    <span class="field__error">Il manque l’accord : « je suis allée » pour une femme.</span></label>
+
+  <h3>Progress</h3>
+  <div style="max-width:var(--width-card)">
+    <div class="rail"><span class="rail__fill" style="width:38%"></span></div>
+    <p style="font-size:var(--text-2xs);color:var(--color-ink-faint);margin-block:var(--space-2)">rail · session, 38 %</p>
+    <div class="meter"><span class="meter__fill" style="width:62%"></span></div>
+    <p style="font-size:var(--text-2xs);color:var(--color-ink-faint);margin-block-start:var(--space-2)">meter · 62 % appris</p>
+  </div>
+
+  <h3>Alerts</h3>
+  <div style="display:grid;gap:var(--space-2);max-width:var(--width-prose)">
+    <div class="alert alert--info"><div class="alert__body">Hors ligne — 14 cartes sont prêtes sur cet appareil.</div></div>
+    <div class="alert alert--success"><div class="alert__body">Séance terminée. 24 cartes révisées en 9 minutes.</div></div>
+    <div class="alert alert--warning"><div class="alert__body">Ce navigateur n’enregistre pas votre progression — fenêtre privée ?</div></div>
+    <div class="alert alert--danger"><div class="alert__body">Impossible de charger le contenu. Vérifiez votre connexion.</div></div>
+  </div>
+
+  <h3>Loading — the shape of what is coming, never a spinner</h3>
+  <div class="card" style="max-width:var(--width-card)">
+    <div class="skeleton skeleton--title" style="margin-block-end:var(--space-4)"></div>
+    <div class="skeleton skeleton--text" style="margin-block-end:var(--space-2)"></div>
+    <div class="skeleton skeleton--text" style="width:80%;margin-block-end:var(--space-2)"></div>
+    <div class="skeleton skeleton--text" style="width:55%"></div>
+  </div>
+
+  <h3>Empty — teaches, never shows a zero</h3>
+  <div class="sg-demo">
+    <div class="empty">
+      <div class="empty__icon"><svg width="34" height="34" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 8.5A1.5 1.5 0 0 1 8.5 7h9A1.5 1.5 0 0 1 19 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 7 17.5z"/><path d="M5 16.2A1.6 1.6 0 0 1 4 14.8V6.6A1.6 1.6 0 0 1 5.6 5h8.2c.6 0 1.2.4 1.4 1"/></svg></div>
+      <p class="empty__title">Pas encore assez de données</p>
+      <p class="empty__body">Après une vingtaine de révisions, vos points faibles apparaîtront ici. Commencez par cinq minutes.</p>
+      <button class="btn btn--primary">Cinq minutes</button>
+    </div>
+  </div>
+
+  <h3>Command palette — takes commands as well as queries</h3>
+  <div class="sg-demo" style="display:flex;justify-content:center">
+    <div class="palette">
+      <input class="input palette__input" value="passé comp" aria-label="Chercher">
+      <div class="palette__group">
+        <div class="palette__groupLabel">Grammaire</div>
+        <button class="palette__item" aria-selected="true"><span lang="fr">Le passé composé avec avoir</span><span class="palette__meta">B1 · en cours</span></button>
+        <button class="palette__item"><span lang="fr">Le passé composé avec être</span><span class="palette__meta">B1</span></button>
+      </div>
+      <div class="palette__group">
+        <div class="palette__groupLabel">Verbes</div>
+        <button class="palette__item"><span lang="fr">avoir — passé composé</span><span class="palette__meta">conjugaison</span></button>
+      </div>
+      <div class="palette__group">
+        <div class="palette__groupLabel">Leçons</div>
+        <button class="palette__item"><span lang="fr">Raconter son week-end</span><span class="palette__meta">A2 · 8 min</span></button>
+      </div>
+      <div class="palette__hint"><span><kbd>↑</kbd><kbd>↓</kbd> naviguer</span><span><kbd>⏎</kbd> ouvrir</span><span><kbd>esc</kbd> fermer</span></div>
+    </div>
+  </div>
+
+  <h3>Tab bar — four, so every label survives 320 px</h3>
+  <div class="sg-phone">
+    <nav class="tabs" aria-label="Sections">
+      <button class="tab" aria-selected="true"><svg viewBox="0 0 24 24"><path d="M7 8.5A1.5 1.5 0 0 1 8.5 7h9A1.5 1.5 0 0 1 19 8.5v9a1.5 1.5 0 0 1-1.5 1.5h-9A1.5 1.5 0 0 1 7 17.5z"/><path d="M5 16.2A1.6 1.6 0 0 1 4 14.8V6.6A1.6 1.6 0 0 1 5.6 5h8.2c.6 0 1.2.4 1.4 1"/></svg><span>Apprendre</span></button>
+      <button class="tab"><svg viewBox="0 0 24 24"><path d="M7 3h7l4 4v14H7z"/><path d="M14 3v4h4"/><path d="M10 13h6M10 17h4"/></svg><span>Pratiquer</span></button>
+      <button class="tab"><svg viewBox="0 0 24 24"><path d="M4 19h16"/><path d="M7 19v-6M12 19V7M17 19v-9"/></svg><span>Progrès</span></button>
+      <button class="tab"><svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="7"/><path d="M20 20l-4-4"/></svg><span>Chercher</span></button>
+    </nav>
+  </div>
+</section>
+
+<section class="sg-sec">
+  <h2>Accessibility, measured</h2>
+  <p class="sg-note">Contrast is computed against the real rendered background for every text
+    element on this page, in both themes, by <code>design-system/contrast-check.mjs</code>. The
+    result is a number, not a claim. Tab through this page: every control shows a 2 px focus ring
+    with the same treatment everywhere, and nothing sets <code>outline: none</code>.</p>
+  <div id="contrast-live" class="sg-demo" style="font-family:var(--font-mono);font-size:var(--text-xs)"></div>
+</section>
+
+</div>
+
+<script>
+  document.getElementById('theme').onclick = () => {
+    const r = document.documentElement;
+    const now = r.getAttribute('data-theme');
+    r.setAttribute('data-theme', now === 'dark' ? 'light' : 'dark');
+  };
+  document.getElementById('dir').onclick = () => {
+    const r = document.documentElement;
+    const rtl = r.dir === 'rtl';
+    r.dir = rtl ? 'ltr' : 'rtl';
+    r.lang = rtl ? 'en' : 'ar';
+    document.body.dir = r.dir;
+  };
+  // Live contrast readout, so the page reports on itself.
+  (function () {
+    const lum = (c) => { const [r,g,b] = c.map(v => { v/=255; return v<=0.03928 ? v/12.92 : Math.pow((v+0.055)/1.055, 2.4); });
+      return 0.2126*r + 0.7152*g + 0.0722*b; };
+    const parse = (s) => (s.match(/\d+(\.\d+)?/g) || []).slice(0,3).map(Number);
+    const ratio = (a,b) => { const L1 = lum(parse(a)), L2 = lum(parse(b));
+      return (Math.max(L1,L2)+0.05) / (Math.min(L1,L2)+0.05); };
+    const bgOf = (el) => { let n = el; while (n && n !== document.documentElement) {
+      const bg = getComputedStyle(n).backgroundColor;
+      if (bg && !/rgba?\([^)]*,\s*0\)/.test(bg) && bg !== 'transparent') return bg; n = n.parentElement; }
+      return getComputedStyle(document.body).backgroundColor; };
+    const pairs = [
+      ['body text on canvas', '--color-ink', '--color-canvas'],
+      ['muted on surface', '--color-ink-muted', '--color-surface'],
+      ['faint on surface', '--color-ink-faint', '--color-surface'],
+      ['accent on canvas', '--color-accent', '--color-canvas'],
+      ['accent-ink on accent', '--color-accent-ink', '--color-accent'],
+      ['danger on danger-soft', '--color-danger', '--color-danger-soft'],
+      ['success on success-soft', '--color-success', '--color-success-soft'],
+      ['warning on warning-soft', '--color-warning', '--color-warning-soft'],
+      ['info on info-soft', '--color-info', '--color-info-soft'],
+    ];
+    const hexToRgb = (h) => { h = h.trim(); if (!h.startsWith('#')) return h;
+      const n = h.slice(1); const f = n.length === 3 ? n.split('').map(c=>c+c).join('') : n;
+      return `rgb(${parseInt(f.slice(0,2),16)}, ${parseInt(f.slice(2,4),16)}, ${parseInt(f.slice(4,6),16)})`; };
+    function render() {
+      const cs = getComputedStyle(document.documentElement);
+      const out = pairs.map(([label, fg, bg]) => {
+        const r = ratio(hexToRgb(cs.getPropertyValue(fg)), hexToRgb(cs.getPropertyValue(bg)));
+        const pass = r >= 4.5 ? 'AA' : r >= 3 ? 'AA-large only' : 'FAIL';
+        return `${pass === 'FAIL' ? '✗' : '✓'} ${r.toFixed(2)}:1  ${pass.padEnd(14)} ${label}`;
+      }).join('\n');
+      document.getElementById('contrast-live').textContent = out;
+    }
+    render();
+    new MutationObserver(render).observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+    matchMedia('(prefers-color-scheme: dark)').addEventListener('change', render);
+  })();
+</script>
+</body>
+</html>

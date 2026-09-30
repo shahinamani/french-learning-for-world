@@ -1,0 +1,244 @@
+/* ============================================================================
+ * Design tokens — the single source of truth.
+ *
+ * Written as CSS custom properties inside Tailwind v4's @theme block, so the
+ * same file is both the stylesheet's variables and Tailwind's configuration.
+ * A token declared here becomes `bg-surface`, `text-ink`, `rounded-card` and so
+ * on with no second definition to drift out of step.
+ *
+ * Rules this file exists to enforce:
+ *   1. No literal colour, size, radius or duration anywhere else in the CSS.
+ *   2. Every colour is declared on bare :root first, then redefined for dark.
+ *      A colour defined only inside a media query renders one theme's text on
+ *      the other theme's background for anyone whose system is set to "auto".
+ *   3. Semantic names, not visual ones: --danger, never --red.
+ * ========================================================================= */
+
+:root {
+  /* Declared on :root, which is valid CSS everywhere and needs no build step.
+   * Tailwind v4 consumes these through `@theme inline` in the app's stylesheet,
+   * so the token names below become `bg-surface`, `text-ink`, `rounded-md` and
+   * so on without a second definition that can drift.
+   *
+   * They were briefly written inside `@theme { }` directly. A browser ignores
+   * that at-rule entirely, so every token was undefined, every `var()` fell
+   * back to nothing, and the whole page silently rendered with browser
+   * defaults — no colour, no spacing, no focus ring. The check caught it; a
+   * visual review would not have, because the page still looked like a page.
+   */
+  /* ── Type ───────────────────────────────────────────────────────────────
+   * Two families. Newsreader carries French — a text serif with enough
+   * character to make a headword feel like a word rather than a label, and
+   * proper accents at display size. Vazirmatn carries the interface and
+   * covers Latin, Persian and Arabic from one family, which is why the
+   * right-to-left languages need no separate stack.
+   *
+   * Both fall back to real system faces. A font that fails to arrive must not
+   * take the layout with it, and in this container it does fail — the egress
+   * proxy blocks the font host, so screenshots here show the fallbacks.
+   * Self-hosting is the step-4 action: it fixes that, the offline case, and
+   * the GDPR exposure of a third-party font request.
+   */
+  --font-display: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --font-ui: "Vazirmatn", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
+
+  /* Modular scale, ratio 1.2 at the small end opening to 1.25 for display.
+   * Every size is a step; nothing is "18px because it looked right". */
+  --text-2xs: 0.6875rem;   /* 11px — the smallest legible label, uppercase only */
+  --text-xs:  0.75rem;     /* 12px — captions, metadata */
+  --text-sm:  0.875rem;    /* 14px — secondary text, dense UI */
+  --text-base:1rem;        /* 16px — body. Never smaller for running text */
+  --text-lg:  1.125rem;    /* 18px — lead, example sentences */
+  --text-xl:  1.375rem;    /* 22px — section heading */
+  --text-2xl: 1.75rem;     /* 28px — page heading */
+  --text-3xl: 2.25rem;     /* 36px */
+  --text-4xl: 3rem;        /* 48px */
+  /* The headword is fluid: it must dominate a 320px screen and not become
+   * absurd on a 1440px one. */
+  --text-word: clamp(2.5rem, 11vw, 3.75rem);
+
+  --leading-tight: 1.15;
+  --leading-snug: 1.35;
+  --leading-normal: 1.55;
+  --leading-relaxed: 1.7;   /* French with accents needs more room than English */
+
+  --tracking-tight: -0.015em;
+  --tracking-normal: 0;
+  --tracking-label: 0.08em; /* uppercase labels only; lowercase never needs it */
+
+  --weight-normal: 400;
+  --weight-medium: 500;
+  --weight-semibold: 600;
+  --weight-bold: 700;
+
+  /* ── Spacing — 4px base, no half steps ──────────────────────────────── */
+  --space-0: 0;
+  --space-1: 0.25rem;   /* 4  */
+  --space-2: 0.5rem;    /* 8  */
+  --space-3: 0.75rem;   /* 12 */
+  --space-4: 1rem;      /* 16 — the side gutter, at every width */
+  --space-5: 1.25rem;   /* 20 */
+  --space-6: 1.5rem;    /* 24 */
+  --space-8: 2rem;      /* 32 */
+  --space-10: 2.5rem;   /* 40 */
+  --space-12: 3rem;     /* 48 */
+  --space-16: 4rem;     /* 64 */
+
+  /* ── Radius ─────────────────────────────────────────────────────────── */
+  --radius-sm: 6px;     /* inputs, chips */
+  --radius-md: 10px;    /* buttons, cards */
+  --radius-lg: 14px;    /* sheets, dialogs */
+  --radius-full: 9999px;
+
+  /* ── Elevation — used by role, never decoratively ───────────────────── */
+  --shadow-none: none;
+  --shadow-raised: 0 1px 2px rgb(20 23 31 / 0.05), 0 8px 24px -8px rgb(20 23 31 / 0.10);
+  --shadow-overlay: 0 4px 6px rgb(20 23 31 / 0.06), 0 18px 40px -12px rgb(20 23 31 / 0.22);
+
+  /* ── Motion ─────────────────────────────────────────────────────────── */
+  --duration-instant: 90ms;
+  --duration-fast: 160ms;
+  --duration-slow: 280ms;
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+
+  /* ── Layout ─────────────────────────────────────────────────────────── */
+  --width-prose: 42rem;    /* ~65 characters at --text-base */
+  --width-card: 34rem;
+  --width-page: 78rem;
+  --height-bar: 52px;
+  --height-tabs: 58px;
+  --tap-min: 44px;         /* the floor for anything a thumb must hit */
+
+  /* ── Colour — light ─────────────────────────────────────────────────── *
+   * Neutrals carry a slight blue bias toward the accent. A pure grey next
+   * to a coloured accent reads as unconsidered.
+   */
+  --color-canvas: #f2f4f7;      /* the page behind everything */
+  --color-surface: #ffffff;     /* cards, bars, sheets */
+  --color-surface-sunken: #e9ecf1;  /* wells, track backgrounds */
+  --color-ink: #14171f;         /* primary text */
+  --color-ink-muted: #59616e;   /* secondary text */
+  --color-ink-faint: #5c6470;   /* labels, metadata — 5.98 surface, 5.43 canvas, 5.05 sunken */
+  --color-line: #dfe3ea;        /* borders */
+  --color-line-strong: #c3c9d4; /* borders that must read as a boundary */
+
+  --color-accent: #38407f;
+  --color-accent-hover: #2d3468;
+  --color-accent-ink: #ffffff;  /* text ON accent */
+  --color-accent-soft: #eceef9; /* accent-tinted fill */
+
+  /* Status. Separate from the accent, and never the only signal. */
+  --color-success: #0f6349;  --color-success-soft: #e3f1ec;
+  --color-warning: #7d5305;  --color-warning-soft: #f9f0e0;
+  --color-danger:  #a52a21;  --color-danger-soft:  #fbeceb;
+  --color-info:    #1a4b9c;  --color-info-soft:    #e8effa;
+
+  /* Ratings. Their own ramp: they are a four-point scale, not four statuses,
+   * and they must stay distinguishable from success/warning/danger used
+   * elsewhere on the same screen. */
+  --color-again: #a52a21;  --color-again-soft: #fbeceb;
+  --color-hard:  #7d5305;  --color-hard-soft:  #f9f0e0;
+  --color-good:  #0f6349;  --color-good-soft:  #e3f1ec;
+  --color-easy:  #1a4b9c;  --color-easy-soft:  #e8effa;
+
+  /* CEFR levels. A sequential ramp, because the levels are ordered — a
+   * categorical palette would imply they are six unrelated things. */
+  --color-a1: #55742f;  --color-a1-soft: #eef3e4;
+  --color-a2: #2c6a58;  --color-a2-soft: #e4f1ee;
+  --color-b1: #2f5a84;  --color-b1-soft: #e4edf5;
+  --color-b2: #4a4f9c;  --color-b2-soft: #e8e9f5;
+  --color-c1: #6f4494;  --color-c1-soft: #efe7f5;
+  --color-c2: #8f3d6b;  --color-c2-soft: #f6e6ef;
+
+  --color-focus: #38407f;   /* focus ring — AA against canvas and surface */
+}
+
+/* ── Colour — dark ──────────────────────────────────────────────────────
+ * Two blocks with identical values. The media query, guarded so an explicit
+ * light choice wins, covers the majority whose system is set to "auto" and
+ * who therefore have no data-theme attribute at all. The attribute selector
+ * covers an explicit choice. Omitting either leaves one group with a broken
+ * page and no error.
+ */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --color-canvas: #0c0f14;
+    --color-surface: #151920;
+    --color-surface-sunken: #1c212a;
+    --color-ink: #e7eaf0;
+    --color-ink-muted: #9aa3b1;
+    --color-ink-faint: #8d96a5;
+    --color-line: #262c37;
+    --color-line-strong: #3a4250;
+
+    --color-accent: #a6acf2;
+    --color-accent-hover: #bcc1f6;
+    --color-accent-ink: #12151c;
+    --color-accent-soft: #1d2131;
+
+    --color-success: #7fd2b0;  --color-success-soft: #112620;
+    --color-warning: #e2bf7e;  --color-warning-soft: #27210f;
+    --color-danger:  #f2a59e;  --color-danger-soft:  #2a1817;
+    --color-info:    #97bff8;  --color-info-soft:    #121f30;
+
+    --color-again: #f2a59e;  --color-again-soft: #2a1817;
+    --color-hard:  #e2bf7e;  --color-hard-soft:  #27210f;
+    --color-good:  #7fd2b0;  --color-good-soft:  #112620;
+    --color-easy:  #97bff8;  --color-easy-soft:  #121f30;
+
+    --color-a1: #a7c47a;  --color-a1-soft: #1a2113;
+    --color-a2: #76c4b0;  --color-a2-soft: #12231f;
+    --color-b1: #8db6de;  --color-b1-soft: #131e28;
+    --color-b2: #9a9ee4;  --color-b2-soft: #191a2b;
+    --color-c1: #bc94db;  --color-c1-soft: #211829;
+    --color-c2: #dd93bb;  --color-c2-soft: #2a1722;
+
+    --color-focus: #a6acf2;
+
+    --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -8px rgb(0 0 0 / 0.6);
+    --shadow-overlay: 0 4px 6px rgb(0 0 0 / 0.45), 0 18px 40px -12px rgb(0 0 0 / 0.7);
+
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --color-canvas: #0c0f14;
+  --color-surface: #151920;
+  --color-surface-sunken: #1c212a;
+  --color-ink: #e7eaf0;
+  --color-ink-muted: #9aa3b1;
+  --color-ink-faint: #8d96a5;
+  --color-line: #262c37;
+  --color-line-strong: #3a4250;
+
+  --color-accent: #a6acf2;
+  --color-accent-hover: #bcc1f6;
+  --color-accent-ink: #12151c;
+  --color-accent-soft: #1d2131;
+
+  --color-success: #7fd2b0;  --color-success-soft: #112620;
+  --color-warning: #e2bf7e;  --color-warning-soft: #27210f;
+  --color-danger:  #f2a59e;  --color-danger-soft:  #2a1817;
+  --color-info:    #97bff8;  --color-info-soft:    #121f30;
+
+  --color-again: #f2a59e;  --color-again-soft: #2a1817;
+  --color-hard:  #e2bf7e;  --color-hard-soft:  #27210f;
+  --color-good:  #7fd2b0;  --color-good-soft:  #112620;
+  --color-easy:  #97bff8;  --color-easy-soft:  #121f30;
+
+  --color-a1: #a7c47a;  --color-a1-soft: #1a2113;
+  --color-a2: #76c4b0;  --color-a2-soft: #12231f;
+  --color-b1: #8db6de;  --color-b1-soft: #131e28;
+  --color-b2: #9a9ee4;  --color-b2-soft: #191a2b;
+  --color-c1: #bc94db;  --color-c1-soft: #211829;
+  --color-c2: #dd93bb;  --color-c2-soft: #2a1722;
+
+  --color-focus: #a6acf2;
+
+  --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -8px rgb(0 0 0 / 0.6);
+  --shadow-overlay: 0 4px 6px rgb(0 0 0 / 0.45), 0 18px 40px -12px rgb(0 0 0 / 0.7);
+
+  color-scheme: dark;
+}

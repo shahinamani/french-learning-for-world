@@ -1,0 +1,301 @@
+/* ============================================================================
+ * Components — built only from tokens.css. No literal colour, size, radius or
+ * duration appears below; if one is needed, it becomes a token first.
+ *
+ * These are the CSS contracts. In the React build each becomes a shadcn/ui
+ * component wrapping a Radix primitive, and these class names become the
+ * Tailwind utilities the component composes. Writing them as plain CSS first
+ * keeps the design reviewable before any framework exists.
+ *
+ * Logical properties throughout, so Persian and Arabic mirror without an
+ * rtl: variant anywhere.
+ * ========================================================================= */
+
+/* ── Reset and base ─────────────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+[hidden] { display: none !important; }
+
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--color-canvas);
+  color: var(--color-ink);
+  font-family: var(--font-ui);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  overflow-wrap: break-word;
+}
+:where(h1, h2, h3, h4) { margin: 0; line-height: var(--leading-tight); text-wrap: balance; }
+:where(p) { margin: 0; }
+:where(a) { color: var(--color-accent); }
+
+/* One focus treatment everywhere. Never removed, never restyled per component. */
+:focus-visible {
+  outline: 2px solid var(--color-focus);
+  outline-offset: 2px;
+  border-radius: var(--radius-sm);
+}
+
+.u-hidden-visually {
+  position: absolute; width: 1px; height: 1px;
+  overflow: hidden; clip-path: inset(50%); white-space: nowrap;
+}
+
+/* French content. `lang` is what makes a screen reader pronounce it as French
+ * instead of as English nonsense; the serif is what makes it look like a
+ * language rather than a data field. */
+:where([lang="fr"]) { font-family: var(--font-display); }
+
+/* ── Button ─────────────────────────────────────────────────────────────── */
+.btn {
+  display: inline-flex; align-items: center; justify-content: center; gap: var(--space-2);
+  min-height: var(--tap-min);
+  padding-inline: var(--space-4); padding-block: var(--space-3);
+  font-family: var(--font-ui); font-size: var(--text-sm); font-weight: var(--weight-medium);
+  line-height: 1; white-space: nowrap; cursor: pointer;
+  border: 1px solid var(--color-line); border-radius: var(--radius-md);
+  background: var(--color-surface); color: var(--color-ink);
+  transition: background var(--duration-fast) var(--ease-out),
+              border-color var(--duration-fast) var(--ease-out);
+}
+.btn:hover:not(:disabled) { border-color: var(--color-line-strong); background: var(--color-surface-sunken); }
+.btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.btn--primary {
+  background: var(--color-accent); border-color: var(--color-accent);
+  color: var(--color-accent-ink); font-weight: var(--weight-semibold);
+}
+.btn--primary:hover:not(:disabled) { background: var(--color-accent-hover); border-color: var(--color-accent-hover); }
+.btn--ghost { background: transparent; border-color: transparent; color: var(--color-ink-muted); }
+.btn--ghost:hover:not(:disabled) { color: var(--color-ink); background: var(--color-surface-sunken); border-color: var(--color-line); }
+.btn--danger { color: var(--color-danger); border-color: var(--color-danger-soft); }
+.btn--danger:hover:not(:disabled) { background: var(--color-danger-soft); border-color: var(--color-danger); }
+.btn--sm { min-height: auto; padding-block: var(--space-2); padding-inline: var(--space-3); font-size: var(--text-xs); }
+.btn--lg { padding-block: var(--space-4); font-size: var(--text-base); }
+.btn--block { width: 100%; }
+
+/* A loading button keeps its label. Replacing the text with a spinner loses
+ * the only clue about what is happening. */
+.btn[aria-busy="true"] { pointer-events: none; }
+.btn[aria-busy="true"]::before {
+  content: ""; width: 0.85em; height: 0.85em; flex: none;
+  border: 2px solid currentColor; border-block-start-color: transparent;
+  border-radius: var(--radius-full); animation: spin 700ms linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── Chip ───────────────────────────────────────────────────────────────── */
+.chip {
+  display: inline-flex; align-items: center; gap: var(--space-1);
+  padding-inline: var(--space-2); padding-block: var(--space-1);
+  font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--color-ink-faint);
+  border: 1px solid var(--color-line); border-radius: var(--radius-full);
+}
+.chip--a1 { color: var(--color-a1); background: var(--color-a1-soft); border-color: transparent; }
+.chip--a2 { color: var(--color-a2); background: var(--color-a2-soft); border-color: transparent; }
+.chip--b1 { color: var(--color-b1); background: var(--color-b1-soft); border-color: transparent; }
+.chip--b2 { color: var(--color-b2); background: var(--color-b2-soft); border-color: transparent; }
+.chip--c1 { color: var(--color-c1); background: var(--color-c1-soft); border-color: transparent; }
+.chip--c2 { color: var(--color-c2); background: var(--color-c2-soft); border-color: transparent; }
+/* The preposition a verb governs. Not uppercase — it is French, not a label. */
+.chip--prep {
+  font-family: var(--font-display); font-size: var(--text-sm);
+  font-weight: var(--weight-normal); text-transform: none; letter-spacing: 0;
+  color: var(--color-warning); background: var(--color-warning-soft); border-color: transparent;
+}
+
+/* ── Card ───────────────────────────────────────────────────────────────── */
+.card {
+  background: var(--color-surface);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+  padding: var(--space-6);
+}
+.card--raised { box-shadow: var(--shadow-raised); }
+.card--interactive { cursor: pointer; }
+.card--interactive:hover { border-color: var(--color-line-strong); }
+
+/* The flashcard. Hugs its content and sits at a fixed offset from the top, so
+ * the headword does not move between the front and the back. */
+.flashcard { max-width: var(--width-card); min-height: 14rem; }
+.flashcard__word {
+  font-family: var(--font-display); font-size: var(--text-word);
+  font-weight: var(--weight-medium); line-height: var(--leading-tight);
+  letter-spacing: var(--tracking-tight);
+}
+.flashcard__word .article {
+  color: var(--color-ink-faint); font-size: 0.46em;
+  font-weight: var(--weight-normal); vertical-align: 0.32em; margin-inline-end: 0.18em;
+}
+.flashcard__answer {
+  margin-block-start: var(--space-6); padding-block-start: var(--space-5);
+  border-block-start: 1px solid var(--color-line);
+}
+.flashcard__meaning { font-size: var(--text-xl); font-weight: var(--weight-semibold); text-align: start; }
+.flashcard__alt { margin-block-start: var(--space-1); font-size: var(--text-sm); color: var(--color-ink-muted); text-align: start; }
+
+.example { margin-block-start: var(--space-5); }
+.example__label {
+  display: block; margin-block-end: var(--space-1);
+  font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-ink-faint);
+}
+.example__label b { color: var(--color-warning); letter-spacing: 0.04em; }
+.example__fr { font-family: var(--font-display); font-size: var(--text-lg); line-height: var(--leading-relaxed); }
+.example__tr { margin-block-start: var(--space-1); font-size: var(--text-sm); color: var(--color-ink-muted); text-align: start; }
+/* Underlined as well as tinted: the mark must survive colour blindness. */
+mark.form {
+  background: var(--color-warning-soft); color: inherit;
+  border-radius: 3px; padding-inline: 2px;
+  text-decoration: underline; text-underline-offset: 4px;
+  text-decoration-thickness: 2px; text-decoration-color: var(--color-warning);
+}
+
+/* ── Rating row ─────────────────────────────────────────────────────────── */
+.ratings { display: grid; grid-template-columns: repeat(4, 1fr); gap: var(--space-2); }
+.rate {
+  display: flex; flex-direction: column; align-items: center; gap: var(--space-1);
+  min-height: var(--tap-min); padding-block: var(--space-3); padding-inline: var(--space-1);
+  font-family: var(--font-ui); cursor: pointer;
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+.rate__name { font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.rate__when { font-size: var(--text-2xs); color: var(--color-ink-faint); font-variant-numeric: tabular-nums; }
+.rate--again { color: var(--color-again); } .rate--again:hover { background: var(--color-again-soft); border-color: currentColor; }
+.rate--hard  { color: var(--color-hard); }  .rate--hard:hover  { background: var(--color-hard-soft);  border-color: currentColor; }
+.rate--good  { color: var(--color-good); }  .rate--good:hover  { background: var(--color-good-soft);  border-color: currentColor; }
+.rate--easy  { color: var(--color-easy); }  .rate--easy:hover  { background: var(--color-easy-soft);  border-color: currentColor; }
+
+/* ── Field ──────────────────────────────────────────────────────────────── */
+.field { display: flex; flex-direction: column; gap: var(--space-2); }
+.field__label {
+  font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-ink-faint);
+}
+.input, .select {
+  width: 100%; min-height: var(--tap-min);
+  padding-inline: var(--space-3); padding-block: var(--space-3);
+  font-family: var(--font-ui); font-size: var(--text-base);
+  color: var(--color-ink); background: var(--color-surface);
+  border: 1px solid var(--color-line); border-radius: var(--radius-sm);
+}
+.input::placeholder { color: var(--color-ink-faint); }
+.input[aria-invalid="true"] { border-color: var(--color-danger); }
+.field__error { font-size: var(--text-xs); color: var(--color-danger); }
+
+/* ── Progress ───────────────────────────────────────────────────────────── */
+.rail { height: 3px; background: var(--color-surface-sunken); }
+.rail__fill {
+  display: block; height: 100%; width: 0;
+  background: var(--color-accent); border-end-end-radius: 3px;
+  transition: width var(--duration-slow) var(--ease-out);
+}
+.meter { height: 7px; background: var(--color-surface-sunken); border-radius: var(--radius-full); overflow: hidden; }
+.meter__fill { display: block; height: 100%; background: var(--color-accent); }
+
+/* ── Level × skill map. A real table, so a screen reader reads a cell. ──── */
+.map { border-collapse: separate; border-spacing: var(--space-1); width: 100%; }
+.map th {
+  font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label); text-transform: uppercase;
+  color: var(--color-ink-faint); text-align: start; padding: var(--space-1);
+}
+.map td { padding: 0; }
+.map__cell {
+  display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 2px; width: 100%; min-height: 44px; padding: var(--space-2) var(--space-1);
+  font-family: var(--font-ui); font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums; cursor: pointer;
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm); color: var(--color-ink-muted);
+}
+.map__cell:hover { border-color: var(--color-accent); }
+.map__cell[data-state="done"] { background: var(--color-success-soft); color: var(--color-success); border-color: transparent; }
+.map__cell[data-state="active"] { background: var(--color-accent-soft); color: var(--color-accent); border-color: var(--color-accent); }
+/* Locked is dimmed AND marked, never dimmed alone. */
+.map__cell[data-state="locked"] { color: var(--color-ink-faint); background: var(--color-surface-sunken); border-style: dashed; cursor: default; }
+
+/* ── Alert ──────────────────────────────────────────────────────────────── */
+.alert {
+  display: flex; gap: var(--space-3); align-items: flex-start;
+  padding: var(--space-3) var(--space-4);
+  font-size: var(--text-sm); border-radius: var(--radius-sm);
+  border-inline-start: 3px solid currentColor;
+}
+.alert--info    { color: var(--color-info);    background: var(--color-info-soft); }
+.alert--success { color: var(--color-success); background: var(--color-success-soft); }
+.alert--warning { color: var(--color-warning); background: var(--color-warning-soft); }
+.alert--danger  { color: var(--color-danger);  background: var(--color-danger-soft); }
+.alert__body { color: var(--color-ink); }
+
+/* ── Skeleton — the shape of the content it replaces, never a spinner ──── */
+.skeleton {
+  background: linear-gradient(90deg,
+    var(--color-surface-sunken) 25%, var(--color-line) 37%, var(--color-surface-sunken) 63%);
+  background-size: 400% 100%;
+  border-radius: var(--radius-sm);
+  animation: shimmer 1.4s ease-in-out infinite;
+}
+@keyframes shimmer { from { background-position: 100% 0; } to { background-position: 0 0; } }
+.skeleton--text { height: 1em; }
+.skeleton--title { height: 1.6em; width: 45%; }
+
+/* ── Empty state — teaches, never shows a zero ──────────────────────────── */
+.empty { text-align: center; padding: var(--space-10) var(--space-4); max-width: 30rem; margin-inline: auto; }
+.empty__icon { color: var(--color-ink-faint); margin-block-end: var(--space-3); }
+.empty__title { font-size: var(--text-lg); font-weight: var(--weight-semibold); margin-block-end: var(--space-2); }
+.empty__body { color: var(--color-ink-muted); font-size: var(--text-sm); }
+.empty .btn { margin-block-start: var(--space-5); }
+
+/* ── Tab bar — four items ───────────────────────────────────────────────── */
+.tabs { display: flex; background: var(--color-surface); border-block-start: 1px solid var(--color-line); }
+.tab {
+  flex: 1 1 0; min-width: 0; height: var(--height-tabs);
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  font-family: var(--font-ui); font-size: var(--text-2xs); font-weight: var(--weight-medium);
+  color: var(--color-ink-faint); background: none;
+  border: 0; border-block-start: 2px solid transparent; cursor: pointer;
+}
+.tab[aria-selected="true"] { color: var(--color-accent); border-block-start-color: var(--color-accent); }
+.tab svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ── Command palette ────────────────────────────────────────────────────── */
+.palette {
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg); box-shadow: var(--shadow-overlay);
+  max-width: 34rem; width: 100%; overflow: hidden;
+}
+.palette__input { border: 0; border-block-end: 1px solid var(--color-line); border-radius: 0; font-size: var(--text-base); }
+.palette__group { padding-block: var(--space-2); }
+.palette__groupLabel {
+  padding-inline: var(--space-4); padding-block: var(--space-1);
+  font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-ink-faint);
+}
+.palette__item {
+  display: flex; align-items: center; gap: var(--space-3); width: 100%;
+  padding-inline: var(--space-4); padding-block: var(--space-3);
+  font-family: var(--font-ui); font-size: var(--text-sm); text-align: start;
+  background: none; border: 0; cursor: pointer; color: var(--color-ink);
+}
+.palette__item[aria-selected="true"] { background: var(--color-accent-soft); }
+.palette__meta { margin-inline-start: auto; font-size: var(--text-2xs); color: var(--color-ink-faint); }
+.palette__hint {
+  display: flex; gap: var(--space-4); padding: var(--space-2) var(--space-4);
+  border-block-start: 1px solid var(--color-line);
+  font-size: var(--text-2xs); color: var(--color-ink-faint);
+}
+kbd {
+  font-family: var(--font-mono); font-size: var(--text-2xs);
+  padding: 2px 5px; border: 1px solid var(--color-line);
+  border-radius: 4px; background: var(--color-surface-sunken);
+}
+
+/* ── Reduced motion ─────────────────────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important; }
+}

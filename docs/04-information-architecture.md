@@ -270,9 +270,14 @@ You said: *say so now with numbers rather than discovering it in step 4.* I buil
 
 ---
 
-## What I need before step 3
+## Settled
 
-1. **Framework:** Vite (recommended, hits the budget) or Next.js (budget rises to 250 KB)?
-2. **Content licence:** CC BY-SA 4.0 (recommended, keeps Wiktionary and Lexique usable, permanent) or CC BY 4.0 (maximum reuse, loses those sources)? — `docs/02-content-licences.md`
-3. **Four tabs or five** on mobile — I dropped *About* into the settings menu.
-4. **Does the learner see their own review log?** — `docs/03-review-log.md`
+| | |
+|---|---|
+| **Framework** | Vite + React + TypeScript + Tailwind + shadcn/ui. Budget stays **150 KB** gzipped, measured at every step. Landing page prerendered to static HTML for SEO. |
+| **Content licence** | CC BY-SA 4.0, knowingly and permanently — `docs/02` |
+| **Mobile navigation** | **Four tabs.** *About* in settings |
+| **Review log** | **The learner sees it**, summary-first with detail one click away, and it doubles as the data export — `docs/03` |
+
+`/progress/history` is therefore the learner-facing view of the review log, and
+`/account/data` exports the same rows rather than a separate format.

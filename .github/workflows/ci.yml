@@ -27,11 +27,36 @@ jobs:
 
       - name: Secret scan of the whole history
         run: |
-          if git log --all -p | grep -nEi \
-            'gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|BEGIN ([A-Z]+ )?PRIVATE KEY|(postgres(ql)?|mysql|mongodb(\+srv)?)://[^:/ ]+:[^@ ]+@' \
-            -- ':!.githooks/pre-commit' ':!.github/workflows/ci.yml'
+          # Dump first and check it worked. Piping git straight into grep means
+          # a git failure produces an empty stream, grep finds nothing, and the
+          # scan reports "clean" without having read anything.
+          git log --all -p \
+            -- ':!.githooks/pre-commit' ':!.github/workflows/ci.yml' > /tmp/history.txt
+          bytes=$(wc -c < /tmp/history.txt)
+          echo "Scanned $bytes bytes of history."
+          if [ "$bytes" -lt 1000 ]; then
+            echo "::error::History dump is $bytes bytes — the scan did not read the repository."
+            exit 1
+          fi
+          if grep -nEi \
+            'gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9]{50,}|glpat-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|xox[abeprs]-[A-Za-z0-9-]{10,}|BEGIN ([A-Z]+ )?PRIVATE KEY|(postgres(ql)?|mysql|mongodb(\+srv)?)://[^:/ ]+:[^@ ]+@' \
+            /tmp/history.txt
           then
             echo "::error::A credential pattern is present in the git history."
             exit 1
           fi
           echo "History is clean."
+
+      - name: Personal data must not appear in the files people read
+        run: |
+          # The working tree, not the history. Commit metadata carries the
+          # author's address by design and history is not rewritten, so
+          # scanning history would fail forever on something already public
+          # and intended. What must stay clean is what a visitor reads today.
+          if grep -rnEi --exclude-dir=.git \
+             '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\.[a-z]+' .
+          then
+            echo "::error::An email address appears in a tracked file."
+            exit 1
+          fi
+          echo "No personal data in tracked files."
