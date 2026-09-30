@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Free, open-source French practice with spaced repetition. No account, works offline. Independent of all examination bodies.">
+<meta name="theme-color" content="#1b3a5c">
+<title>French Learning for World</title>
+<link rel="stylesheet" href="app/styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="app/icon.svg">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26'>🇫🇷</text></svg>">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">FR</span>
+      <span class="brand-text" data-t="appName">French Learning for World</span>
+    </div>
+    <div class="top-controls">
+      <label class="ctl">
+        <span class="ctl-label" data-t="meaningLanguage">Meaning shown in</span>
+        <select id="meaning-lang"></select>
+      </label>
+      <label class="ctl">
+        <span class="ctl-label visually-hidden">Interface language</span>
+        <select id="ui-lang"></select>
+      </label>
+    </div>
+  </div>
+  <nav class="wrap tabs" id="tabs" aria-label="Sections"></nav>
+</header>
+
+<main id="main" class="wrap">
+  <div id="banner" class="banner" hidden role="status"></div>
+
+  <!-- ─────────── Study ─────────── -->
+  <section id="panel-study" class="panel">
+    <div class="stats" id="stats"></div>
+
+    <section class="timer" id="timer" aria-labelledby="timer-h">
+      <div class="timer-head">
+        <h2 id="timer-h" class="timer-title" data-t="timer">Study timer</h2>
+        <button id="timer-sound" class="icon-btn" type="button" aria-pressed="true"></button>
+      </div>
+      <div class="timer-body">
+        <output id="timer-clock" class="timer-clock" aria-live="off">10:00</output>
+        <div class="presets" id="timer-presets" role="group" aria-labelledby="timer-h"></div>
+        <div class="timer-actions">
+          <button id="timer-start" class="btn btn-primary" type="button"></button>
+          <button id="timer-reset" class="btn btn-quiet" type="button"></button>
+        </div>
+      </div>
+      <div id="timer-finished" class="timer-finished" role="status" hidden>
+        <span id="timer-finished-text"></span>
+        <button id="timer-dismiss" class="btn btn-quiet btn-small" type="button"></button>
+      </div>
+    </section>
+
+    <div id="session" class="session"></div>
+  </section>
+
+  <!-- ─────────── Browse ─────────── -->
+  <section id="panel-browse" class="panel" hidden>
+    <div class="browse-controls">
+      <input id="browse-search" type="search" autocomplete="off" placeholder="Search…">
+    </div>
+    <ul id="browse-list" class="browse-list"></ul>
+  </section>
+
+  <!-- ─────────── Progress ─────────── -->
+  <section id="panel-progress" class="panel" hidden>
+    <div id="progress-body"></div>
+  </section>
+
+  <!-- ─────────── About ─────────── -->
+  <section id="panel-about" class="panel" hidden>
+    <div class="prose">
+      <h2>About this portal</h2>
+      <p>A free, open-source place to practise French, built around spaced
+         repetition. Study immediately — there is no account, nothing to pay,
+         and no advertising.</p>
+
+      <h3>Your data stays on your device</h3>
+      <p>There is no server and no database. Everything you study is stored in
+         this browser only. Nothing about your learning is sent anywhere,
+         because there is nowhere for it to be sent.</p>
+
+      <h3>Independence</h3>
+      <p><strong>This portal is independent.</strong> It is not affiliated with,
+         endorsed by or connected to France&nbsp;Éducation&nbsp;international, the
+         Chambre de commerce et d'industrie de Paris Île-de-France, the French
+         Ministry of National Education, or any other examination body.
+         <em>DELF</em>, <em>DALF</em>, <em>TCF</em> and <em>TEF</em> are
+         trademarks of their respective owners and are named only to describe
+         what learners are studying for.</p>
+      <p><strong>This portal does not issue, sell, award or help anyone obtain
+         any certificate, diploma or test result, and gives no immigration,
+         visa or legal advice.</strong> It teaches French. Nothing more.</p>
+
+      <h3>Content</h3>
+      <p>Every item is original work or comes from an openly licensed source,
+         and carries its own source and licence — shown on each card.</p>
+
+      <h3>Levels</h3>
+      <p>CEFR levels here are a judgement applied consistently across the whole
+         content set. They are not an official alignment with any examination
+         syllabus.</p>
+
+      <p class="repo"><a href="https://github.com/shahinamani/french-learning-for-world">Source code and content on GitHub</a> — code MIT, content CC&nbsp;BY-SA&nbsp;4.0.</p>
+    </div>
+  </section>
+</main>
+
+<footer class="wrap foot">
+  <p data-t="tagline"></p>
+  <p class="foot-legal" data-t="footLegal">Independent study tool. Not affiliated with any examination body. No certificates are issued.</p>
+</footer>
+
+<script type="module" src="app/main.js"></script>
+</body>
+</html>

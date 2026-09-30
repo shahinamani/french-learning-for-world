@@ -1,0 +1,37 @@
+name: Tests
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+# Read-only. Nothing in this repository needs a token that can write, and a
+# workflow that cannot write cannot be turned into one that does.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # No dependencies to install: the project has none, and the test runner
+      # is part of Node. Nothing is fetched, so nothing can be substituted.
+      - name: Unit and content tests
+        run: node --test tests/*.test.js
+
+      - name: Secret scan of the whole history
+        run: |
+          if git log --all -p | grep -nEi \
+            'gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|BEGIN ([A-Z]+ )?PRIVATE KEY|(postgres(ql)?|mysql|mongodb(\+srv)?)://[^:/ ]+:[^@ ]+@' \
+            -- ':!.githooks/pre-commit' ':!.github/workflows/ci.yml'
+          then
+            echo "::error::A credential pattern is present in the git history."
+            exit 1
+          fi
+          echo "History is clean."

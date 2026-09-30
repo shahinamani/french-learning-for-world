@@ -3,8 +3,22 @@
 A free, open-source platform for learning French — built around spaced
 repetition, with content that anyone is legally free to use, share and improve.
 
-**Status: early. Nothing is usable yet.** This repository currently holds the
-project's rules and plan. Code begins once the content plan is settled.
+**Status: early, but usable.** The study app runs: flashcards with spaced
+repetition, meanings and example sentences in Persian and English, and a study
+timer. The content set is small — 22 cards — and grows from here.
+
+## Try it
+
+No installation, no dependencies, no build step:
+
+```bash
+git clone https://github.com/shahinamani/french-learning-for-world
+cd french-learning-for-world
+python3 -m http.server 8000      # or any static file server
+```
+
+Then open <http://localhost:8000>. Deployment is described in
+[`docs/deploying.md`](docs/deploying.md).
 
 ## Why
 
@@ -12,6 +26,29 @@ Most good French-learning material is either locked behind a subscription or
 copied from textbooks that were never licensed for it. This project takes the
 slower path: every card, sentence and recording is either original work or
 comes from an openly licensed source, recorded per item so anyone can check.
+
+## What works today
+
+- **Flashcards** for verbs and nouns. The front shows the French word, its CEFR
+  level, its type, a noun's gender, and the preposition a verb governs — all of
+  it part of what has to be recalled. Tap, click, Enter or Space to flip.
+- **Behind the card:** the meaning, then one past-tense and one future-tense
+  example sentence, each translated, with the form being taught highlighted.
+- **Meanings in Persian or English**, chosen independently of the interface
+  language — a Persian meaning under an English interface is a normal thing to
+  want.
+- **Spaced repetition** (FSRS). Four ratings, each showing when the card will
+  return. Nothing to triage by hand.
+- **Study timer**, 10 minutes to 1 hour, with a chime synthesised in the
+  browser. It is drift-proof: it survives a locked phone, a throttled
+  background tab and a full reload, and says so if it finished while you were
+  away.
+- **Interface in English, فارسی and français**, with full right-to-left layout.
+- **Works offline** once visited, and installs to a phone home screen.
+- **Your progress is yours**: stored only in your browser, exportable to a
+  file, importable on another device. Nothing is sent anywhere.
+
+Run the tests with `node --test tests/*.test.js` — no dependencies required.
 
 ## Goals
 
@@ -61,7 +98,9 @@ word list, no scraped course content — enters this repository. See
 
 ## Contributing
 
-Not open for contributions yet. When it is, [CONTRIBUTING.md](CONTRIBUTING.md)
+The most useful contribution right now is **content**: more cards, and
+meanings in more languages. Card meanings are locale-keyed, so adding Arabic,
+Turkish or Spanish is data, not code. [CONTRIBUTING.md](CONTRIBUTING.md)
 has the rules — the most important being that this repository is public and
 nothing secret or third-party-licensed may ever be committed to it.
 

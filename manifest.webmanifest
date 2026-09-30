@@ -1,0 +1,16 @@
+{
+  "name": "French Learning for World",
+  "short_name": "French",
+  "description": "Free, open-source French practice with spaced repetition. Works offline.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f7f7f4",
+  "theme_color": "#1b3a5c",
+  "lang": "en",
+  "dir": "auto",
+  "categories": ["education"],
+  "icons": [
+    { "src": "app/icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }
+  ]
+}
