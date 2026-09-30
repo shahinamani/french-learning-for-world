@@ -1,0 +1,14 @@
+{
+  "name": "french-learning-for-world",
+  "private": true,
+  "description": "Root manifest. It exists for one reason: the browser suites need Playwright, and until they ran in CI every '0 failures' was one moment on one machine.",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:contrast": "node design-system/contrast-check.mjs",
+    "test:walk": "node web/e2e/walk.mjs"
+  },
+  "devDependencies": {
+    "playwright": "1.55.0",
+    "axe-core": "4.10.2"
+  }
+}

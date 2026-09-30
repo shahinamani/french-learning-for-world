@@ -4,9 +4,14 @@
 // Every check records its result. A failed check fails the run — a check that
 // prints FAIL and exits 0 is not a check.
 import { chromium } from 'playwright';
+import { existsSync } from 'node:fs';
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:8765/design-system/';
-const EXE = process.env.CHROMIUM ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+// Browser path: this container ships Chromium at a fixed path; CI uses the one
+// Playwright installs. Hard-coding the container path made the suite
+// unrunnable anywhere else, which is part of why it never reached CI.
+const LOCAL_CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const EXE = process.env.CHROMIUM || (existsSync(LOCAL_CHROME) ? LOCAL_CHROME : undefined);
 const shots = process.argv[2];
 
 const failures = [];
@@ -14,7 +19,7 @@ let checks = 0;
 const ok = (label, pass) => { checks++; if (!pass) failures.push(label);
   console.log(`${pass ? '  PASS' : '  FAIL'}  ${label}`); };
 
-const browser = await chromium.launch({ executablePath: EXE });
+const browser = await chromium.launch(EXE ? { executablePath: EXE } : {});
 const errors = [];
 // No allow-list. The fonts are self-hosted from `public/fonts`, so nothing in
 // this page reaches the network and every console error is ours to fix.

@@ -4,15 +4,21 @@
  * is itself a failure.
  */
 import { chromium } from 'playwright';
+import { existsSync, readFileSync } from 'node:fs';
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:8793/';
-const EXE = process.env.CHROMIUM ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+// Browser path: this container ships Chromium at a fixed path; CI uses the one
+// Playwright installs. Hard-coding the container path made the suite
+// unrunnable anywhere else, which is part of why it never reached CI.
+const LOCAL_CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const EXE = process.env.CHROMIUM || (existsSync(LOCAL_CHROME) ? LOCAL_CHROME : undefined);
 const shots = process.argv[2];
 
 const failures = []; let checks = 0;
-const ok = (l, p) => { checks++; if (!p) failures.push(l); console.log(`${p ? '  PASS' : '  FAIL'}  ${l}`); };
+const ok = (l, p, detail) => { checks++; if (!p) failures.push(detail ? `${l} — ${detail}` : l);
+  console.log(`${p ? '  PASS' : '  FAIL'}  ${l}`); if (!p && detail) console.log(`          ${detail}`); };
 const errors = [];
-const browser = await chromium.launch({ executablePath: EXE });
+const browser = await chromium.launch(EXE ? { executablePath: EXE } : {});
 
 function watch(page, tag = '') {
   page.on('pageerror', (e) => errors.push(`PAGE${tag}: ${e.message}`));
@@ -539,6 +545,81 @@ await audit(375, 812, 'dark', '375 dark ');
 await audit(1440, 900, 'light', '1440 light');
 await audit(1440, 900, 'dark', '1440 dark ');
 await audit(320, 640, 'light', '320 light');
+
+// ── Accessibility, measured ────────────────────────────────────────────────
+// docs/01 chose shadcn/Radix so that keyboard and screen-reader behaviour came
+// from a library rather than from us. That never happened, so the behaviour is
+// hand-rolled — and this is the test that was standing in for. axe cannot see
+// everything a screen reader does, but it catches the classes hand-rolling
+// gets wrong: names, roles, landmarks, labels, contrast, duplicated ids.
+console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
+{
+  const AXE = readFileSync(new URL('../../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
+  const SCREENS = [
+    ['/learn', 'Learn'],
+    ['/practise/review', 'Flashcards'],
+    ['/learn/verbs', 'Verbs'],
+    ['/learn/verbs/etre', 'Verb detail'],
+    ['/practise/conjugation?verb=etre&tense=present', 'Conjugation'],
+    ['/progress', 'Progress'],
+    ['/search?q=etre', 'Search'],
+    ['/account', 'Account'],
+    ['/learn/concept/gram.present.irregular', 'Concept'],
+    ['/practise/exams', 'Exams stub'],
+  ];
+  let totalViolations = 0;
+  for (const theme of ['light', 'dark']) {
+    const ctx = await browser.newContext({ viewport: { width: 375, height: 812 },
+      colorScheme: theme });
+    const p = await ctx.newPage(); watch(p, ` axe-${theme}`);
+    await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+    for (const [hash, name] of SCREENS) {
+      await p.goto(BASE + '#' + hash, { waitUntil: 'networkidle' });
+      await p.waitForTimeout(350);
+      await p.addScriptTag({ content: AXE });
+      const res = await p.evaluate(async () => {
+        const r = await window.axe.run(document, {
+          runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+          resultTypes: ['violations'],
+        });
+        return r.violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length,
+          help: v.help, sample: (v.nodes[0]?.html || '').slice(0, 90) }));
+      });
+      totalViolations += res.length;
+      const detail = res.length
+        ? res.map((v) => `${v.id}(${v.impact}, ${v.n}): ${v.sample}`).join(' | ')
+        : 'none';
+      ok(`axe ${theme.padEnd(5)} ${name.padEnd(13)} 0 violations`, res.length === 0, detail);
+    }
+    // The open states matter most: a dialog and a popover are exactly what
+    // hand-rolling gets wrong, and both are closed on a plain page load, so
+    // scanning only the routes above would have missed them entirely.
+    for (const [setup, name] of [
+      [async () => { await p.goto(BASE + '#/learn?panel=concept:gram.present.irregular',
+          { waitUntil: 'networkidle' }); }, 'side panel open'],
+      [async () => { await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+          await p.locator('[data-testid="timer-pill"], .timer-pill').first().click(); }, 'timer popover open'],
+    ]) {
+      await setup();
+      await p.waitForTimeout(400);
+      await p.addScriptTag({ content: AXE });
+      const res = await p.evaluate(async () => {
+        const r = await window.axe.run(document, {
+          runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+          resultTypes: ['violations'],
+        });
+        return r.violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length,
+          sample: (v.nodes[0]?.html || '').slice(0, 90) }));
+      });
+      totalViolations += res.length;
+      ok(`axe ${theme.padEnd(5)} ${name.padEnd(13)} 0 violations`, res.length === 0,
+         res.map((v) => `${v.id}(${v.impact}, ${v.n}): ${v.sample}`).join(' | '));
+    }
+    await ctx.close();
+  }
+  ok(`axe total across ${SCREENS.length} screens + 2 open states, × 2 themes`, totalViolations === 0,
+     `${totalViolations} violations`);
+}
 
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));

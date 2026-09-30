@@ -163,13 +163,16 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
       <nav className="tabs" aria-label={t('mainNav')}>
         {TABS.map((tab) => (
-          <NavLink key={tab.key} to={tab.to} className="tab" data-testid={`tab-${tab.key}`}
-                   aria-current={undefined}>
-            {({ isActive }) => (
-              <span className="tab__in" aria-selected={isActive} role="presentation">
-                <Icon name={tab.icon} /><span>{t(tab.key)}</span>
-              </span>
-            )}
+          // A tab BAR is navigation, not a tablist: it changes the page, it does
+          // not switch panels within one. So the active state is `aria-current`
+          // on the link, which react-router sets, and not `aria-selected` — which
+          // axe reports as a critical error on every screen, because it was on a
+          // `role="presentation"` span that was also hiding the label from the
+          // accessibility tree. This is the one Radix Tabs would have got wrong too.
+          <NavLink key={tab.key} to={tab.to} className="tab" data-testid={`tab-${tab.key}`}>
+            <span className="tab__in">
+              <Icon name={tab.icon} /><span>{t(tab.key)}</span>
+            </span>
           </NavLink>
         ))}
       </nav>
