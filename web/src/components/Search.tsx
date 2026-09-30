@@ -14,6 +14,7 @@ import type { Card, Concept } from '../lib/types';
 import { Icon } from './Icon';
 import { fr as frText } from '../lib/typography';
 import { fold } from '../lib/fold';
+import { WithAccentBar } from './AccentBar';
 
 type Result =
   | { kind: 'command'; label: string; to: string }
@@ -66,6 +67,12 @@ export function SearchRoute() {
     return () => { live = false; };
   }, []);
 
+  const setQuery = (v: string) => {
+    const p = new URLSearchParams(params);
+    if (v) p.set('q', v); else p.delete('q');
+    setParams(p, { replace: true });
+  };
+
   const results = useMemo(() => searchAll(q, cards, concepts), [q, cards, concepts]);
   const grouped = {
     command: results.filter((r) => r.kind === 'command'),
@@ -78,14 +85,16 @@ export function SearchRoute() {
   return (
     <div className="page">
       <h1 className="h2">{t('search')}</h1>
-      <label className="field" style={{ marginBlockEnd: 'var(--space-4)' }}>
-        <span className="u-hidden-visually">{t('search')}</span>
-        <input
-          ref={input} className="input" type="search" value={q} data-testid="search-input"
-          placeholder={t('searchPlaceholder')}
-          onChange={(e) => { const p = new URLSearchParams(params); if (e.target.value) p.set('q', e.target.value); else p.delete('q'); setParams(p, { replace: true }); }}
-        />
-      </label>
+      <WithAccentBar inputRef={input} onInsert={setQuery}>
+        <label className="field" style={{ marginBlockEnd: 'var(--space-4)' }}>
+          <span className="u-hidden-visually">{t('search')}</span>
+          <input
+            ref={input} id="search-q" className="input" type="search" value={q} data-testid="search-input"
+            placeholder={t('searchPlaceholder')}
+            onChange={(e) => setQuery(e.target.value)}
+          />
+        </label>
+      </WithAccentBar>
 
       {!q && <p className="muted" data-testid="search-hint">{t('searchHint')}</p>}
       {q && results.length === 0 && (

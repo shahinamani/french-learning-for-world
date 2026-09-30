@@ -1,5 +1,5 @@
 /** Search any verb. */
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useMemo, useState, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp } from '../../app-context';
 import { loadVerbs, type Verb } from '../../lib/verbs';
@@ -7,6 +7,7 @@ import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
 import { fold } from '../../lib/fold';
+import { WithAccentBar } from '../../components/AccentBar';
 
 // Shared with answer checking and the verb filter: three near-copies of this
 // had drifted, and none of them handled the œ/æ ligatures.
@@ -16,6 +17,12 @@ export function VerbList() {
   const { t, settings } = useApp();
   const [params, setParams] = useSearchParams();
   const q = params.get('q') ?? '';
+  const input = useRef<HTMLInputElement>(null);
+  const setQuery = (v: string) => {
+    const p = new URLSearchParams(params);
+    if (v) p.set('q', v); else p.delete('q');
+    setParams(p, { replace: true });
+  };
   const [verbs, setVerbs] = useState<Verb[] | null>(null);
   const [error, setError] = useState(false);
 
@@ -40,14 +47,14 @@ export function VerbList() {
     <div className="page">
       <h1 className="h2">{t('verbs')}</h1>
       <p className="muted">{t('verbsIntro')}</p>
-      <label className="field">
-        <span className="u-hidden-visually">{t('search')}</span>
-        <input className="input" type="search" value={q} data-testid="verb-search"
-               placeholder={t('verbSearchPlaceholder')}
-               onChange={(e) => { const p = new URLSearchParams(params);
-                 if (e.target.value) p.set('q', e.target.value); else p.delete('q');
-                 setParams(p, { replace: true }); }} />
+      <WithAccentBar inputRef={input} onInsert={setQuery}>
+        <label className="field">
+          <span className="u-hidden-visually">{t('search')}</span>
+          <input ref={input} id="verb-q" className="input" type="search" value={q} data-testid="verb-search"
+                 placeholder={t('verbSearchPlaceholder')}
+                 onChange={(e) => setQuery(e.target.value)} />
       </label>
+      </WithAccentBar>
 
       {verbs === null && (
         <ul className="rows" aria-hidden="true">

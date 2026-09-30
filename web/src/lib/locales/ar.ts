@@ -7,6 +7,7 @@ const ar: Dict = {
   verbs: 'الأفعال', verbsIntro: 'ابحث عن أي فعل وشاهد كل أزمنته وصيغه. التمرين يبدأ من الجدول مباشرة، وما تخطئ فيه ينضم إلى السجل نفسه.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'شاذّ', regular: 'منتظم', auxiliary: 'الفعل المساعد', imperative: 'الأمر', noImperative: 'لا صيغة أمر لهذا الفعل في الفرنسية المعتادة.', practiseTense: 'تدرّب', yourAnswer: 'إجابتك', check: 'تحقّق', next: 'التالي', correct: 'صحيح.', accentsOnly: 'صحيح، لكن العلامات: {a}', answerIs: 'الإجابة هي {a}',
   appName: 'تعلّم الفرنسية للعالم',
   mainNav: 'الرئيسية',
+  accentBar: 'حروف فرنسية',
   exams: 'الامتحانات', questions: '{n} سؤالًا',
   examsIntro: 'أوراق تدريب لامتحانات الفرنسية، كُتبت من أجل هذا المشروع. ليست أوراقًا سابقة ولا وثائق رسمية.',
   examsAvailable: 'ما يمكنك التدرّب عليه الآن', examsMissing: 'ما هو غير موجود، ولماذا',

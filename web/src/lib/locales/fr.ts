@@ -7,6 +7,7 @@ const fr: Dict = {
   verbs: 'Verbes', verbsIntro: "Cherchez un verbe et voyez tous ses temps et modes. On s'entraîne directement depuis le tableau, et ce que vous ratez rejoint le même historique que le reste.", verbSearchPlaceholder: 'être, prendre, allons…', irregular: 'irrégulier', regular: 'régulier', auxiliary: 'auxiliaire', imperative: 'Impératif', noImperative: "Ce verbe n'a pas d'impératif en français courant.", practiseTense: "S'entraîner", yourAnswer: 'Votre réponse', check: 'Vérifier', next: 'Suivant', correct: 'Correct.', accentsOnly: 'Juste, mais les accents : {a}', answerIs: 'La réponse est {a}',
   appName: 'Apprendre le français pour le monde',
   mainNav: 'Principal',
+  accentBar: 'Caractères français',
   exams: 'Examens', questions: '{n} questions',
   examsIntro: 'Des épreuves d’entraînement pour les examens de français, écrites pour ce projet. Ce ne sont ni des annales ni des documents officiels.',
   examsAvailable: 'Ce que vous pouvez travailler', examsMissing: 'Ce qui manque, et pourquoi',

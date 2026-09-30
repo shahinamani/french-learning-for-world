@@ -226,3 +226,24 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
 .dot--bad { background: var(--color-danger); }
 .dot--skipped { background: var(--color-ink-faint); }
 .chips { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; padding: 0; }
+
+/* ── Accent bar ─────────────────────────────────────────────────────────── */
+.accents__host { display: block; }
+.accents {
+  display: flex; flex-wrap: wrap; gap: var(--space-1);
+  margin-block-start: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+.accents__key {
+  min-inline-size: 44px; min-block-size: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: var(--text-lg); line-height: 1;
+  background: var(--color-surface); color: var(--color-ink);
+  border: 1px solid var(--color-line); border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.accents__key:hover { background: var(--color-accent-soft); }
+.accents__key:active { transform: translateY(1px); }

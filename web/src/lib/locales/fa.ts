@@ -7,6 +7,7 @@ const fa: Dict = {
   verbs: 'فعل‌ها', verbsIntro: 'هر فعلی را جست‌وجو کنید و همه‌ی زمان‌ها و وجه‌های آن را ببینید. تمرین مستقیم از همین جدول انجام می‌شود و خطاهای شما به همان سابقه‌ی همیشگی می‌پیوندد.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'بی‌قاعده', regular: 'باقاعده', auxiliary: 'فعل کمکی', imperative: 'امری', noImperative: 'این فعل در فرانسه‌ی رایج وجه امری ندارد.', practiseTense: 'تمرین', yourAnswer: 'پاسخ شما', check: 'بررسی', next: 'بعدی', correct: 'درست است.', accentsOnly: 'درست بود، اما علامت‌ها: {a}', answerIs: 'پاسخ درست {a} است',
   appName: 'یادگیری فرانسه برای جهان',
   mainNav: 'اصلی',
+  accentBar: 'نویسه‌های فرانسوی',
   exams: 'آزمون‌ها', questions: '{n} پرسش',
   examsIntro: 'تمرین‌های آزمون‌های زبان فرانسه، نوشته‌شده برای همین پروژه. این‌ها نه نمونه‌سؤال‌های گذشته‌اند و نه سند رسمی.',
   examsAvailable: 'آنچه اکنون می‌توانید تمرین کنید', examsMissing: 'آنچه اینجا نیست، و چرا',

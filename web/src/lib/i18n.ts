@@ -12,6 +12,7 @@ const en = {
   verbs: 'Verbs', verbsIntro: 'Search any verb and see every tense and mood. Practice runs straight from the table, and what you get wrong joins the same record as everything else.', verbSearchPlaceholder: 'être, to take, allons…', irregular: 'irregular', regular: 'regular', auxiliary: 'auxiliary', imperative: 'Imperative', noImperative: 'This verb has no imperative in ordinary French.', practiseTense: 'Practise', yourAnswer: 'Your answer', check: 'Check', next: 'Next', correct: 'Correct.', accentsOnly: 'Right, but the accents: {a}', answerIs: 'The answer is {a}',
   appName: 'French Learning for World',
   mainNav: 'Main',
+  accentBar: 'French characters',
   exams: 'Examinations', questions: '{n} questions',
   examsIntro: 'Practice papers for the French examinations, written for this project. They are not past papers and not official material.',
   examsAvailable: 'What you can practise now', examsMissing: 'What is not here, and why',

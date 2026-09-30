@@ -17,6 +17,7 @@ import type { ReviewRow } from '../../lib/types';
 import { Icon } from '../../components/Icon';
 import { useSidePanel } from '../../components/SidePanel';
 import { fr as frText } from '../../lib/typography';
+import { WithAccentBar } from '../../components/AccentBar';
 
 function newId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
@@ -146,14 +147,16 @@ export function ConjugationDrill() {
           <span className="article">{verb.persons[index]}</span>{frText(verb.infinitive)}
         </p>
         <form onSubmit={(e) => { e.preventDefault(); if (result) next(); else void submit(); }}>
-          <label className="field" style={{ marginBlockStart: 'var(--space-5)' }}>
-            <span className="field__label">{t('yourAnswer')}</span>
-            <input ref={input} className="input" lang="fr" dir="ltr" autoComplete="off"
-                   autoCapitalize="off" autoCorrect="off" spellCheck={false}
-                   data-testid="drill-input" value={value} readOnly={!!result}
-                   aria-invalid={result ? !result.correct : undefined}
-                   onChange={(e) => setValue(e.target.value)} />
-          </label>
+          <WithAccentBar inputRef={input} onInsert={setValue}>
+            <label className="field" style={{ marginBlockStart: 'var(--space-5)' }}>
+              <span className="field__label">{t('yourAnswer')}</span>
+              <input ref={input} id="drill-answer" className="input" lang="fr" dir="ltr" autoComplete="off"
+                     autoCapitalize="off" autoCorrect="off" spellCheck={false}
+                     data-testid="drill-input" value={value} readOnly={!!result}
+                     aria-invalid={result ? !result.correct : undefined}
+                     onChange={(e) => setValue(e.target.value)} />
+            </label>
+          </WithAccentBar>
           {result && (
             <div className={`alert alert--${result.correct ? (result.accentsOnly ? 'warning' : 'success') : 'danger'}`}
                  role="status" data-testid="drill-result" style={{ marginBlockStart: 'var(--space-3)' }}>
