@@ -87,6 +87,7 @@ const en = {
   linksUnchecked: 'These links lead to other organisations. They were not verified automatically; if one is broken, please report it.',
   examFilterOn: 'Studying {code} levels only',
   examFilterClear: 'Study everything',
+  settings: 'Settings', close: 'Close', uiLanguage: 'Interface language',
 };
 
 const fa = {
@@ -153,6 +154,7 @@ const fa = {
   linksUnchecked: 'این پیوندها به سازمان‌های دیگر می‌روند. به‌صورت خودکار بررسی نشده‌اند؛ اگر پیوندی کار نکرد، لطفاً گزارش دهید.',
   examFilterOn: 'فقط سطح‌های {code} در حال مطالعه است',
   examFilterClear: 'مطالعه‌ی همه',
+  settings: 'تنظیمات', close: 'بستن', uiLanguage: 'زبان برنامه',
 };
 
 const fr = {
@@ -219,6 +221,7 @@ const fr = {
   linksUnchecked: "Ces liens mènent à d'autres organismes. Ils n'ont pas été vérifiés automatiquement ; signalez tout lien rompu.",
   examFilterOn: 'Étude limitée aux niveaux {code}',
   examFilterClear: 'Tout étudier',
+  settings: 'Réglages', close: 'Fermer', uiLanguage: "Langue de l'interface",
 };
 
 const ar = {
@@ -285,6 +288,7 @@ const ar = {
   linksUnchecked: 'تؤدي هذه الروابط إلى جهات أخرى. لم تُتحقَّق آليًا؛ إذا وجدت رابطًا معطّلًا فأبلغنا.',
   examFilterOn: 'الدراسة مقتصرة على مستويات {code}',
   examFilterClear: 'ادرس كل شيء',
+  settings: 'الإعدادات', close: 'إغلاق', uiLanguage: 'لغة الواجهة',
 };
 
 export const dictionaries = Object.freeze({ en, fa, fr, ar });
