@@ -9,7 +9,7 @@ import { NavLink, Outlet, useNavigate, useLocation } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { Icon } from './Icon';
 import { SidePanel } from './SidePanel';
-import { PRESETS, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
+import { PRESETS, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
 
 const TABS = [
   { to: '/learn', icon: 'learn', key: 'learn' },
@@ -37,6 +37,25 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
     const r = restore(userId, Date.now());
     if (r.state === 'running') { setTimer({ endsAt: r.endsAt, durationMin: r.durationMin, running: true }); setSelected(r.durationMin); }
     else if (r.state === 'finishedWhileAway') { setFinished('away'); setSelected(r.durationMin); }
+  }, [userId]);
+
+  // Adopt a timer started elsewhere — a `?minutes=N` session in this tab, or
+  // another tab of this profile — the moment it is written, not on the next
+  // poll. Polling alone left the pill showing its 15:00 default while the
+  // session counted down, which is exactly the disagreement this is meant to
+  // make impossible.
+  useEffect(() => {
+    const adopt = () => {
+      const r = restore(userId, Date.now());
+      if (r.state !== 'running') return;
+      finishedOnce.current = false;
+      setTimer({ endsAt: r.endsAt, durationMin: r.durationMin, running: true });
+      setSelected(r.durationMin);
+      setClock(formatClock(remainingSeconds(r.endsAt, Date.now())));
+    };
+    window.addEventListener(TIMER_EVENT, adopt);
+    window.addEventListener('storage', adopt);
+    return () => { window.removeEventListener(TIMER_EVENT, adopt); window.removeEventListener('storage', adopt); };
   }, [userId]);
 
   useEffect(() => {

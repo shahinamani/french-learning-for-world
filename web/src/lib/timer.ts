@@ -27,11 +27,19 @@ export const formatClock = (seconds: number): string => {
 export const remainingSeconds = (endsAt: number, now: number) =>
   Math.max(0, Math.round((endsAt - now) / 1000));
 
+/** Fired whenever the timer is written or cleared, so the bar picks up a timer
+ *  a session started without waiting for the next poll. `storage` covers the
+ *  other tabs; this covers this one, which `storage` deliberately does not. */
+export const TIMER_EVENT = 'flw:timer';
+const announce = () => safely(() => window.dispatchEvent(new Event(TIMER_EVENT)), undefined);
+
 export function save(userId: string, endsAt: number, durationMin: number) {
   safely(() => localStorage.setItem(userKey(userId, 'timer'), JSON.stringify({ endsAt, durationMin })), undefined);
+  announce();
 }
 export function clear(userId: string) {
   safely(() => localStorage.removeItem(userKey(userId, 'timer')), undefined);
+  announce();
 }
 export function restore(userId: string, now: number): Restored {
   const raw = safely(() => localStorage.getItem(userKey(userId, 'timer')), null);

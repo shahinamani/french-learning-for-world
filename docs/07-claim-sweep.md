@@ -122,6 +122,15 @@ Two defects surfaced while building it, both worth recording:
   passed while the pill and the session were showing different times. It now
   requires the two to agree within two seconds, and runs on a mocked clock so
   the five minutes actually elapse instead of being faked by poking storage.
+- **And the tightened test then caught a real intermittent bug**, which is the
+  point of tightening it. The bar adopted the session's timer by *polling*
+  storage every 250 ms, so on a slow render it showed its 15:00 default while
+  the session counted down from 5:00 — the precise disagreement the shared
+  timer exists to prevent. It failed on one run in four and I had already
+  called it fixed. The adoption is now event-driven: writing or clearing the
+  timer dispatches an event the bar listens for, alongside `storage` for other
+  tabs, so the pill updates on the write rather than on the next poll. Four
+  consecutive runs agree.
 
 ### 13. Counts that had simply moved
 
