@@ -17,7 +17,9 @@
       "prep": null,
       "meanings": {
         "en": "to be",
-        "fa": "بودن"
+        "fa": "بودن",
+        "ar": "يكون",
+        "fr": "exister, se trouver dans un état"
       },
       "examples": [
         {
@@ -26,7 +28,8 @@
           "fr": "Hier, j'ai été très fatigué.",
           "translations": {
             "en": "Yesterday I was very tired.",
-            "fa": "دیروز خیلی خسته بودم."
+            "fa": "دیروز خیلی خسته بودم.",
+            "ar": "أمس كنت متعبًا جدًا."
           }
         },
         {
@@ -35,7 +38,8 @@
           "fr": "Demain, je serai à la maison.",
           "translations": {
             "en": "Tomorrow I will be at home.",
-            "fa": "فردا خانه خواهم بود."
+            "fa": "فردا خانه خواهم بود.",
+            "ar": "غدًا سأكون في البيت."
           }
         }
       ],
@@ -50,7 +54,9 @@
       "prep": null,
       "meanings": {
         "en": "to have",
-        "fa": "داشتن"
+        "fa": "داشتن",
+        "ar": "يملك، لديه",
+        "fr": "posséder, détenir"
       },
       "examples": [
         {
@@ -59,7 +65,8 @@
           "fr": "J'ai eu une bonne idée ce matin.",
           "translations": {
             "en": "I had a good idea this morning.",
-            "fa": "امروز صبح ایده‌ی خوبی داشتم."
+            "fa": "امروز صبح ایده‌ی خوبی داشتم.",
+            "ar": "خطرت لي فكرة جيدة هذا الصباح."
           }
         },
         {
@@ -68,7 +75,8 @@
           "fr": "Nous aurons le temps demain.",
           "translations": {
             "en": "We will have time tomorrow.",
-            "fa": "فردا وقت خواهیم داشت."
+            "fa": "فردا وقت خواهیم داشت.",
+            "ar": "سيكون لدينا وقت غدًا."
           }
         }
       ],
@@ -83,7 +91,9 @@
       "prep": "à",
       "meanings": {
         "en": "to go",
-        "fa": "رفتن"
+        "fa": "رفتن",
+        "ar": "يذهب",
+        "fr": "se déplacer vers un lieu"
       },
       "examples": [
         {
@@ -92,7 +102,8 @@
           "fr": "Je suis allé à Paris la semaine dernière.",
           "translations": {
             "en": "I went to Paris last week.",
-            "fa": "هفته‌ی گذشته به پاریس رفتم."
+            "fa": "هفته‌ی گذشته به پاریس رفتم.",
+            "ar": "ذهبت إلى باريس الأسبوع الماضي."
           }
         },
         {
@@ -101,7 +112,8 @@
           "fr": "Elle ira à l'école lundi.",
           "translations": {
             "en": "She will go to school on Monday.",
-            "fa": "او دوشنبه به مدرسه خواهد رفت."
+            "fa": "او دوشنبه به مدرسه خواهد رفت.",
+            "ar": "ستذهب إلى المدرسة يوم الاثنين."
           }
         }
       ],
@@ -116,7 +128,9 @@
       "prep": null,
       "meanings": {
         "en": "to do, to make",
-        "fa": "انجام دادن، کردن"
+        "fa": "انجام دادن، کردن",
+        "ar": "يفعل، يصنع",
+        "fr": "réaliser, fabriquer, accomplir"
       },
       "examples": [
         {
@@ -125,7 +139,8 @@
           "fr": "Nous avons fait les courses samedi.",
           "translations": {
             "en": "We did the shopping on Saturday.",
-            "fa": "شنبه خرید کردیم."
+            "fa": "شنبه خرید کردیم.",
+            "ar": "تسوّقنا يوم السبت."
           }
         },
         {
@@ -134,7 +149,8 @@
           "fr": "Je ferai la cuisine ce soir.",
           "translations": {
             "en": "I will cook this evening.",
-            "fa": "امشب آشپزی خواهم کرد."
+            "fa": "امشب آشپزی خواهم کرد.",
+            "ar": "سأطبخ هذا المساء."
           }
         }
       ],
@@ -149,7 +165,9 @@
       "prep": null,
       "meanings": {
         "en": "to be able to, can",
-        "fa": "توانستن"
+        "fa": "توانستن",
+        "ar": "يستطيع",
+        "fr": "avoir la capacité ou la permission de"
       },
       "examples": [
         {
@@ -158,7 +176,8 @@
           "fr": "Je n'ai pas pu venir hier.",
           "translations": {
             "en": "I could not come yesterday.",
-            "fa": "دیروز نتوانستم بیایم."
+            "fa": "دیروز نتوانستم بیایم.",
+            "ar": "لم أستطع المجيء أمس."
           }
         },
         {
@@ -167,7 +186,8 @@
           "fr": "Tu pourras m'appeler demain.",
           "translations": {
             "en": "You will be able to call me tomorrow.",
-            "fa": "فردا خواهی توانست به من زنگ بزنی."
+            "fa": "فردا خواهی توانست به من زنگ بزنی.",
+            "ar": "ستستطيع الاتصال بي غدًا."
           }
         }
       ],
@@ -182,7 +202,9 @@
       "prep": null,
       "meanings": {
         "en": "to want",
-        "fa": "خواستن"
+        "fa": "خواستن",
+        "ar": "يريد",
+        "fr": "désirer, souhaiter"
       },
       "examples": [
         {
@@ -191,7 +213,8 @@
           "fr": "Elle a voulu partir tôt.",
           "translations": {
             "en": "She wanted to leave early.",
-            "fa": "او خواست زود برود."
+            "fa": "او خواست زود برود.",
+            "ar": "أرادت أن تغادر مبكرًا."
           }
         },
         {
@@ -200,7 +223,8 @@
           "fr": "Ils voudront des explications.",
           "translations": {
             "en": "They will want explanations.",
-            "fa": "آن‌ها توضیح خواهند خواست."
+            "fa": "آن‌ها توضیح خواهند خواست.",
+            "ar": "سيريدون تفسيرات."
           }
         }
       ],
@@ -215,7 +239,9 @@
       "prep": null,
       "meanings": {
         "en": "to have to, must",
-        "fa": "باید، مجبور بودن"
+        "fa": "باید، مجبور بودن",
+        "ar": "يجب عليه",
+        "fr": "avoir l'obligation de"
       },
       "examples": [
         {
@@ -224,7 +250,8 @@
           "fr": "J'ai dû rentrer à pied.",
           "translations": {
             "en": "I had to walk home.",
-            "fa": "مجبور شدم پیاده برگردم."
+            "fa": "مجبور شدم پیاده برگردم.",
+            "ar": "اضطررت إلى العودة سيرًا على الأقدام."
           }
         },
         {
@@ -233,7 +260,8 @@
           "fr": "Vous devrez remplir ce formulaire.",
           "translations": {
             "en": "You will have to fill in this form.",
-            "fa": "باید این فرم را پر کنید."
+            "fa": "باید این فرم را پر کنید.",
+            "ar": "سيتعيّن عليكم ملء هذه الاستمارة."
           }
         }
       ],
@@ -248,7 +276,9 @@
       "prep": "à",
       "meanings": {
         "en": "to say, to tell",
-        "fa": "گفتن"
+        "fa": "گفتن",
+        "ar": "يقول",
+        "fr": "exprimer par la parole"
       },
       "examples": [
         {
@@ -257,7 +287,8 @@
           "fr": "Il m'a dit la vérité.",
           "translations": {
             "en": "He told me the truth.",
-            "fa": "او به من حقیقت را گفت."
+            "fa": "او به من حقیقت را گفت.",
+            "ar": "قال لي الحقيقة."
           }
         },
         {
@@ -266,7 +297,8 @@
           "fr": "Je te dirai tout demain.",
           "translations": {
             "en": "I will tell you everything tomorrow.",
-            "fa": "فردا همه چیز را به تو خواهم گفت."
+            "fa": "فردا همه چیز را به تو خواهم گفت.",
+            "ar": "سأخبرك بكل شيء غدًا."
           }
         }
       ],
@@ -281,7 +313,9 @@
       "prep": null,
       "meanings": {
         "en": "to see",
-        "fa": "دیدن"
+        "fa": "دیدن",
+        "ar": "يرى",
+        "fr": "percevoir par les yeux"
       },
       "examples": [
         {
@@ -290,7 +324,8 @@
           "fr": "Nous avons vu un bon film.",
           "translations": {
             "en": "We saw a good film.",
-            "fa": "فیلم خوبی دیدیم."
+            "fa": "فیلم خوبی دیدیم.",
+            "ar": "شاهدنا فيلمًا جيدًا."
           }
         },
         {
@@ -299,7 +334,8 @@
           "fr": "Tu verras la différence.",
           "translations": {
             "en": "You will see the difference.",
-            "fa": "تفاوت را خواهی دید."
+            "fa": "تفاوت را خواهی دید.",
+            "ar": "سترى الفرق."
           }
         }
       ],
@@ -314,7 +350,9 @@
       "prep": null,
       "meanings": {
         "en": "to take",
-        "fa": "گرفتن، برداشتن"
+        "fa": "گرفتن، برداشتن",
+        "ar": "يأخذ",
+        "fr": "saisir, emporter avec soi"
       },
       "examples": [
         {
@@ -323,7 +361,8 @@
           "fr": "J'ai pris le train de huit heures.",
           "translations": {
             "en": "I took the eight o'clock train.",
-            "fa": "قطار ساعت هشت را گرفتم."
+            "fa": "قطار ساعت هشت را گرفتم.",
+            "ar": "أخذت قطار الساعة الثامنة."
           }
         },
         {
@@ -332,7 +371,8 @@
           "fr": "Nous prendrons un café ensemble.",
           "translations": {
             "en": "We will have a coffee together.",
-            "fa": "با هم قهوه خواهیم خورد."
+            "fa": "با هم قهوه خواهیم خورد.",
+            "ar": "سنشرب قهوة معًا."
           }
         }
       ],
@@ -347,7 +387,9 @@
       "prep": "à / de",
       "meanings": {
         "en": "to speak, to talk",
-        "fa": "صحبت کردن"
+        "fa": "صحبت کردن",
+        "ar": "يتكلّم",
+        "fr": "s'exprimer avec des mots"
       },
       "examples": [
         {
@@ -356,7 +398,8 @@
           "fr": "J'ai parlé à mon professeur.",
           "translations": {
             "en": "I spoke to my teacher.",
-            "fa": "با معلمم صحبت کردم."
+            "fa": "با معلمم صحبت کردم.",
+            "ar": "تحدّثت إلى أستاذي."
           }
         },
         {
@@ -365,7 +408,8 @@
           "fr": "Nous parlerons de ce projet lundi.",
           "translations": {
             "en": "We will talk about this project on Monday.",
-            "fa": "دوشنبه درباره‌ی این پروژه صحبت خواهیم کرد."
+            "fa": "دوشنبه درباره‌ی این پروژه صحبت خواهیم کرد.",
+            "ar": "سنتحدّث عن هذا المشروع يوم الاثنين."
           }
         }
       ],
@@ -380,7 +424,9 @@
       "prep": null,
       "meanings": {
         "en": "to eat",
-        "fa": "خوردن"
+        "fa": "خوردن",
+        "ar": "يأكل",
+        "fr": "avaler un aliment"
       },
       "examples": [
         {
@@ -389,7 +435,8 @@
           "fr": "Nous avons mangé au restaurant.",
           "translations": {
             "en": "We ate at the restaurant.",
-            "fa": "در رستوران غذا خوردیم."
+            "fa": "در رستوران غذا خوردیم.",
+            "ar": "أكلنا في المطعم."
           }
         },
         {
@@ -398,7 +445,8 @@
           "fr": "Je mangerai plus tard.",
           "translations": {
             "en": "I will eat later.",
-            "fa": "بعداً غذا خواهم خورد."
+            "fa": "بعداً غذا خواهم خورد.",
+            "ar": "سآكل لاحقًا."
           }
         }
       ],
@@ -413,7 +461,9 @@
       "prep": "à",
       "meanings": {
         "en": "to begin, to start",
-        "fa": "شروع کردن"
+        "fa": "شروع کردن",
+        "ar": "يبدأ",
+        "fr": "débuter, entamer"
       },
       "examples": [
         {
@@ -422,7 +472,8 @@
           "fr": "Il a commencé à travailler en janvier.",
           "translations": {
             "en": "He started working in January.",
-            "fa": "او در ژانویه شروع به کار کرد."
+            "fa": "او در ژانویه شروع به کار کرد.",
+            "ar": "بدأ العمل في يناير."
           }
         },
         {
@@ -431,7 +482,8 @@
           "fr": "Le cours commencera à neuf heures.",
           "translations": {
             "en": "The class will start at nine.",
-            "fa": "کلاس ساعت نه شروع خواهد شد."
+            "fa": "کلاس ساعت نه شروع خواهد شد.",
+            "ar": "سيبدأ الدرس في الساعة التاسعة."
           }
         }
       ],
@@ -446,7 +498,9 @@
       "prep": "de",
       "meanings": {
         "en": "to finish",
-        "fa": "تمام کردن"
+        "fa": "تمام کردن",
+        "ar": "يُنهي",
+        "fr": "terminer, achever"
       },
       "examples": [
         {
@@ -455,7 +509,8 @@
           "fr": "J'ai fini de lire ce livre.",
           "translations": {
             "en": "I finished reading this book.",
-            "fa": "خواندن این کتاب را تمام کردم."
+            "fa": "خواندن این کتاب را تمام کردم.",
+            "ar": "أنهيت قراءة هذا الكتاب."
           }
         },
         {
@@ -464,7 +519,8 @@
           "fr": "Elle finira son travail ce soir.",
           "translations": {
             "en": "She will finish her work this evening.",
-            "fa": "او کارش را امشب تمام خواهد کرد."
+            "fa": "او کارش را امشب تمام خواهد کرد.",
+            "ar": "ستُنهي عملها هذا المساء."
           }
         }
       ],
@@ -480,7 +536,9 @@
       "gender": "f",
       "meanings": {
         "en": "house, home",
-        "fa": "خانه"
+        "fa": "خانه",
+        "ar": "بيت، منزل",
+        "fr": "bâtiment où l'on habite"
       },
       "examples": [
         {
@@ -489,7 +547,8 @@
           "fr": "Nous avons vendu notre maison.",
           "translations": {
             "en": "We sold our house.",
-            "fa": "خانه‌مان را فروختیم."
+            "fa": "خانه‌مان را فروختیم.",
+            "ar": "بِعنا بيتنا."
           }
         },
         {
@@ -498,7 +557,8 @@
           "fr": "Ils construiront une maison ici.",
           "translations": {
             "en": "They will build a house here.",
-            "fa": "اینجا خانه‌ای خواهند ساخت."
+            "fa": "اینجا خانه‌ای خواهند ساخت.",
+            "ar": "سيبنون بيتًا هنا."
           }
         }
       ],
@@ -514,7 +574,9 @@
       "gender": "m",
       "meanings": {
         "en": "book",
-        "fa": "کتاب"
+        "fa": "کتاب",
+        "ar": "كتاب",
+        "fr": "pages reliées que l'on lit"
       },
       "examples": [
         {
@@ -523,7 +585,8 @@
           "fr": "J'ai acheté ce livre hier.",
           "translations": {
             "en": "I bought this book yesterday.",
-            "fa": "این کتاب را دیروز خریدم."
+            "fa": "این کتاب را دیروز خریدم.",
+            "ar": "اشتريت هذا الكتاب أمس."
           }
         },
         {
@@ -532,7 +595,8 @@
           "fr": "Ce livre vous aidera beaucoup.",
           "translations": {
             "en": "This book will help you a lot.",
-            "fa": "این کتاب خیلی به شما کمک خواهد کرد."
+            "fa": "این کتاب خیلی به شما کمک خواهد کرد.",
+            "ar": "سيساعدكم هذا الكتاب كثيرًا."
           }
         }
       ],
@@ -548,7 +612,9 @@
       "gender": "f",
       "meanings": {
         "en": "water",
-        "fa": "آب"
+        "fa": "آب",
+        "ar": "ماء",
+        "fr": "liquide transparent que l'on boit"
       },
       "examples": [
         {
@@ -557,7 +623,8 @@
           "fr": "J'ai bu beaucoup d'eau.",
           "translations": {
             "en": "I drank a lot of water.",
-            "fa": "آب زیادی نوشیدم."
+            "fa": "آب زیادی نوشیدم.",
+            "ar": "شربت الكثير من الماء."
           }
         },
         {
@@ -566,7 +633,8 @@
           "fr": "L'eau sera froide ce matin.",
           "translations": {
             "en": "The water will be cold this morning.",
-            "fa": "امروز صبح آب سرد خواهد بود."
+            "fa": "امروز صبح آب سرد خواهد بود.",
+            "ar": "سيكون الماء باردًا هذا الصباح."
           }
         }
       ],
@@ -582,7 +650,9 @@
       "gender": "m",
       "meanings": {
         "en": "work, job",
-        "fa": "کار"
+        "fa": "کار",
+        "ar": "عمل",
+        "fr": "activité exercée pour gagner sa vie"
       },
       "examples": [
         {
@@ -591,7 +661,8 @@
           "fr": "Le travail a été difficile.",
           "translations": {
             "en": "The work was hard.",
-            "fa": "کار سخت بود."
+            "fa": "کار سخت بود.",
+            "ar": "كان العمل صعبًا."
           }
         },
         {
@@ -600,7 +671,8 @@
           "fr": "Mon travail finira à six heures.",
           "translations": {
             "en": "My work will finish at six.",
-            "fa": "کارم ساعت شش تمام خواهد شد."
+            "fa": "کارم ساعت شش تمام خواهد شد.",
+            "ar": "سينتهي عملي في الساعة السادسة."
           }
         }
       ],
@@ -616,7 +688,9 @@
       "gender": "f",
       "meanings": {
         "en": "town, city",
-        "fa": "شهر"
+        "fa": "شهر",
+        "ar": "مدينة",
+        "fr": "grande agglomération où vivent beaucoup de gens"
       },
       "examples": [
         {
@@ -625,7 +699,8 @@
           "fr": "Cette ville a beaucoup changé.",
           "translations": {
             "en": "This town has changed a lot.",
-            "fa": "این شهر خیلی تغییر کرده است."
+            "fa": "این شهر خیلی تغییر کرده است.",
+            "ar": "تغيّرت هذه المدينة كثيرًا."
           }
         },
         {
@@ -634,7 +709,8 @@
           "fr": "La ville sera calme en août.",
           "translations": {
             "en": "The city will be quiet in August.",
-            "fa": "شهر در اوت آرام خواهد بود."
+            "fa": "شهر در اوت آرام خواهد بود.",
+            "ar": "ستكون المدينة هادئة في أغسطس."
           }
         }
       ],
@@ -650,7 +726,9 @@
       "gender": "m",
       "meanings": {
         "en": "time; weather",
-        "fa": "زمان؛ هوا"
+        "fa": "زمان؛ هوا",
+        "ar": "وقت؛ طقس",
+        "fr": "durée qui passe ; aussi l'état du ciel"
       },
       "examples": [
         {
@@ -659,7 +737,8 @@
           "fr": "Je n'ai pas eu le temps.",
           "translations": {
             "en": "I did not have time.",
-            "fa": "وقت نداشتم."
+            "fa": "وقت نداشتم.",
+            "ar": "لم يكن لديّ وقت."
           }
         },
         {
@@ -668,7 +747,8 @@
           "fr": "Le temps passera vite.",
           "translations": {
             "en": "Time will pass quickly.",
-            "fa": "زمان زود خواهد گذشت."
+            "fa": "زمان زود خواهد گذشت.",
+            "ar": "سيمرّ الوقت بسرعة."
           }
         }
       ],
@@ -684,7 +764,9 @@
       "gender": "f",
       "meanings": {
         "en": "woman; wife",
-        "fa": "زن؛ همسر"
+        "fa": "زن؛ همسر",
+        "ar": "امرأة؛ زوجة",
+        "fr": "personne adulte de sexe féminin ; épouse"
       },
       "examples": [
         {
@@ -693,7 +775,8 @@
           "fr": "Cette femme a écrit trois livres.",
           "translations": {
             "en": "This woman has written three books.",
-            "fa": "این زن سه کتاب نوشته است."
+            "fa": "این زن سه کتاب نوشته است.",
+            "ar": "كتبت هذه المرأة ثلاثة كتب."
           }
         },
         {
@@ -702,7 +785,8 @@
           "fr": "La femme au guichet vous aidera.",
           "translations": {
             "en": "The woman at the counter will help you.",
-            "fa": "زنِ پشت باجه به شما کمک خواهد کرد."
+            "fa": "زنِ پشت باجه به شما کمک خواهد کرد.",
+            "ar": "ستساعدكم المرأة التي عند الشبّاك."
           }
         }
       ],
@@ -718,7 +802,9 @@
       "gender": "m",
       "meanings": {
         "en": "man",
-        "fa": "مرد"
+        "fa": "مرد",
+        "ar": "رجل",
+        "fr": "personne adulte de sexe masculin"
       },
       "examples": [
         {
@@ -727,7 +813,8 @@
           "fr": "Un homme a demandé ton adresse.",
           "translations": {
             "en": "A man asked for your address.",
-            "fa": "مردی آدرس تو را پرسید."
+            "fa": "مردی آدرس تو را پرسید.",
+            "ar": "سأل رجل عن عنوانك."
           }
         },
         {
@@ -736,7 +823,8 @@
           "fr": "Cet homme deviendra célèbre.",
           "translations": {
             "en": "This man will become famous.",
-            "fa": "این مرد مشهور خواهد شد."
+            "fa": "این مرد مشهور خواهد شد.",
+            "ar": "سيصبح هذا الرجل مشهورًا."
           }
         }
       ],

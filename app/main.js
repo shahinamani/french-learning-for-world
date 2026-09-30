@@ -7,14 +7,17 @@ import * as T from './timer.js';
 import { playChime, unlock } from './chime.js';
 import { loadProgress, saveProgress, loadSettings, saveSettings,
          exportProgress, importProgress } from './storage.js';
-import { LOCALES, dictionaries, detectLocale, translator } from './i18n.js';
+import { LOCALES, MEANING_LOCALES, dictionaries, detectLocale, translator } from './i18n.js';
 import { cardKey } from './cardKey.js';
 
 const $ = (id) => document.getElementById(id);
-const TABS = ['study', 'browse', 'progress', 'about'];
+const TABS = ['study', 'exams', 'browse', 'progress', 'about'];
 
 const app = {
   cards: [],
+  exams: null,
+  openExam: null,      // the exam whose detail page is showing
+  examFilter: null,    // { code, levels } — restricts the study session
   progress: loadProgress(),
   settings: loadSettings(),
   t: translator('en'),
@@ -59,9 +62,14 @@ const isNew = (key) => !app.progress[key] || app.progress[key].reps === 0;
 const isDue = (key, now) => (app.progress[key]?.dueAt ?? 0) <= now;
 
 /** Due cards first, oldest due first; then new cards, in deck order. */
+function inFilter(card) {
+  return !app.examFilter || app.examFilter.levels.includes(card.level);
+}
+
 function buildQueue(now, includeNew = true) {
   const due = [], fresh = [];
   for (const card of app.cards) {
+    if (!inFilter(card)) continue;
     if (isNew(card.key)) { if (includeNew) fresh.push(card); }
     else if (isDue(card.key, now)) due.push(card);
   }
@@ -72,6 +80,7 @@ function buildQueue(now, includeNew = true) {
 function counts(now) {
   let due = 0, fresh = 0, learned = 0;
   for (const card of app.cards) {
+    if (!inFilter(card)) continue;
     if (isNew(card.key)) fresh += 1;
     else {
       if (isDue(card.key, now)) due += 1;
@@ -149,6 +158,113 @@ function el(tag, attrs = {}, ...children) {
   }
   for (const c of children.flat()) if (c) node.append(c);
   return node;
+}
+
+/* ── exams ─────────────────────────────────────────────── */
+
+const SKILL_ORDER = ['general', 'listening', 'reading', 'writing', 'speaking'];
+const SKILL_KEY = { general: 'skillGeneral', listening: 'skillListening',
+  reading: 'skillReading', writing: 'skillWriting', speaking: 'skillSpeaking' };
+const KIND_KEY = { 'exam-body': 'kindExamBody', broadcaster: 'kindBroadcaster',
+  institutional: 'kindInstitutional', open: 'kindOpen' };
+
+const cardsAtLevels = (levels) => app.cards.filter((c) => levels.includes(c.level)).length;
+
+function renderExams() {
+  const t = app.t;
+  const host = $('exams-body');
+  if (!app.exams) { host.replaceChildren(el('p', { text: t('loadFailed') })); return; }
+
+  const notice = el('p', { class: 'exam-disclaimer', text: app.exams.disclaimer });
+
+  if (!app.openExam) {
+    host.replaceChildren(
+      el('h2', { class: 'section-h', text: t('exams') }),
+      el('p', { class: 'section-intro', text: t('examsIntro') }),
+      el('div', { class: 'exam-grid' }, ...app.exams.exams.map((x) => {
+        const n = cardsAtLevels(x.levels);
+        return el('button', { class: 'exam-card', type: 'button',
+          'data-testid': `exam-${x.id}`,
+          onclick: () => { app.openExam = x.id; render(); window.scrollTo(0, 0); } },
+          el('span', { class: 'exam-code', text: x.code }),
+          el('span', { class: 'exam-full', lang: 'fr', dir: 'ltr', text: x.fullName }),
+          el('span', { class: 'exam-levels' },
+            ...x.levels.map((lv) => el('span', { class: 'chip chip-level', text: lv }))),
+          el('span', { class: 'exam-count',
+            text: `${t('examCardsHere')}: ${n} · ${x.resources.length} ${t('examResources').toLowerCase()}` }),
+        );
+      })),
+      notice);
+    return;
+  }
+
+  const x = app.exams.exams.find((e) => e.id === app.openExam);
+  if (!x) { app.openExam = null; renderExams(); return; }
+  const n = cardsAtLevels(x.levels);
+
+  const bySkill = new Map();
+  for (const res of x.resources) {
+    if (!bySkill.has(res.skill)) bySkill.set(res.skill, []);
+    bySkill.get(res.skill).push(res);
+  }
+
+  host.replaceChildren(
+    el('button', { class: 'btn btn-quiet btn-small', type: 'button',
+      text: `← ${t('examBack')}`, onclick: () => { app.openExam = null; render(); } }),
+    el('h2', { class: 'section-h', text: x.code }),
+    el('p', { class: 'exam-full-line', lang: 'fr', dir: 'ltr', text: x.fullName }),
+
+    el('dl', { class: 'exam-facts' },
+      el('dt', { text: t('examLevels') }),
+      el('dd', {}, ...x.levels.map((lv) => el('span', { class: 'chip chip-level', text: lv }))),
+      el('dt', { text: t('examOwner') }),
+      el('dd', { lang: 'fr', dir: 'ltr', text: x.owner }),
+    ),
+
+    el('div', { class: 'exam-study' },
+      n > 0
+        ? el('button', { class: 'btn btn-primary', type: 'button',
+            'data-testid': 'exam-study',
+            text: `${t('examStudyCards')} (${n})`,
+            onclick: () => {
+              app.examFilter = { code: x.code, levels: x.levels };
+              app.tab = 'study'; app.openExam = null;
+              startSession(true); window.scrollTo(0, 0);
+            } })
+        : el('p', { class: 'exam-empty', text: t('examNoCards') })),
+
+    el('h3', { class: 'section-h3', text: t('examResources') }),
+    ...SKILL_ORDER.filter((sk) => bySkill.has(sk)).map((sk) => el('section', { class: 'skill-block' },
+      el('h4', { class: 'skill-h', text: t(SKILL_KEY[sk]) }),
+      el('ul', { class: 'link-list' }, ...bySkill.get(sk).map((res) => el('li', {},
+        // rel="noopener noreferrer": an external page opened with target=_blank
+        // can otherwise reach back through window.opener.
+        el('a', { href: res.url, target: '_blank', rel: 'noopener noreferrer nofollow',
+          lang: res.lang ?? 'fr', dir: 'ltr', text: res.title,
+          title: t('externalLink') }),
+        el('span', { class: 'link-kind', text: t(KIND_KEY[res.kind] ?? 'kindOpen') }),
+        res.levels ? el('span', { class: 'link-levels', text: res.levels.join(' ') }) : null,
+      ))),
+    )),
+    el('p', { class: 'links-note', text: t('linksUnchecked') }),
+    notice);
+}
+
+function renderAbout() {
+  const t = app.t;
+  $('about-body').replaceChildren(
+    el('h2', { text: t('aboutTitle') }),
+    el('p', { text: t('aboutIntro') }),
+    el('h3', { text: t('aboutDataH') }), el('p', { text: t('aboutDataP') }),
+    el('h3', { text: t('aboutIndepH') }),
+    el('p', {}, el('strong', { text: t('aboutIndepP1') })),
+    el('p', {}, el('strong', { text: t('aboutIndepP2') })),
+    el('h3', { text: t('aboutContentH') }), el('p', { text: t('aboutContentP') }),
+    el('h3', { text: t('aboutLevelsH') }), el('p', { text: t('aboutLevelsP') }),
+    el('p', { class: 'repo' }, el('a', {
+      href: 'https://github.com/shahinamani/french-learning-for-world',
+      target: '_blank', rel: 'noopener noreferrer', text: t('aboutRepo') })),
+  );
 }
 
 function renderStats() {
@@ -300,6 +416,15 @@ function renderCard() {
 function renderSession() {
   const t = app.t;
   const host = $('session');
+  const filterBar = $('exam-filter');
+  filterBar.hidden = !app.examFilter;
+  if (app.examFilter) {
+    filterBar.replaceChildren(
+      el('span', { text: t('examFilterOn', { code: app.examFilter.code }) }),
+      el('button', { class: 'btn btn-quiet btn-small', type: 'button',
+        'data-testid': 'exam-filter-clear', text: t('examFilterClear'),
+        onclick: () => { app.examFilter = null; startSession(true); } }));
+  }
   if (app.current) { host.replaceChildren(...renderCard()); return; }
 
   const c = counts(Date.now());
@@ -337,7 +462,7 @@ function renderBrowse() {
   const t = app.t, now = Date.now();
   const q = $('browse-search').value.trim().toLowerCase();
   $('browse-search').placeholder = `${t('browse')}…`;
-  const rows = app.cards.filter((c) => !q
+  const rows = app.cards.filter((c) => inFilter(c)).filter((c) => !q
     || c.fr.toLowerCase().includes(q)
     || Object.values(c.meanings).some((m) => m.toLowerCase().includes(q)));
   $('browse-list').replaceChildren(...rows.map((c) => el('li', { class: 'browse-item' },
@@ -434,6 +559,8 @@ function render() {
   renderStats();
   renderTimer();
   renderSession();
+  renderExams();
+  renderAbout();
   renderBrowse();
   renderProgress();
   if (!app.storageWorks) showBanner(app.t('storageUnavailable'));
@@ -454,8 +581,7 @@ function buildSelects() {
   // Which language the meanings are shown in is a separate question from the
   // interface language: plenty of learners want a Persian meaning under an
   // English interface, or the reverse.
-  const meaningLocales = ['fa', 'en'];
-  meaning.replaceChildren(...meaningLocales.map((code) =>
+  meaning.replaceChildren(...MEANING_LOCALES.map((code) =>
     el('option', { value: code, text: LOCALES[code].name,
       selected: code === app.settings.showTranslation })));
   meaning.onchange = () => {
@@ -492,6 +618,7 @@ async function boot() {
 
   try {
     app.cards = await loadContent();
+    app.exams = await fetch('content/exams.json').then((r) => (r.ok ? r.json() : null)).catch(() => null);
   } catch (err) {
     showBanner(app.t('loadFailed'));
     console.error(err);

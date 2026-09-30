@@ -8,7 +8,7 @@
 // and never stays more than one visit behind. Bump CACHE when the shell
 // changes; old caches are deleted on activate.
 
-const CACHE = 'flw-v1';
+const CACHE = 'flw-v2';
 
 const SHELL = [
   './',
@@ -23,6 +23,7 @@ const SHELL = [
   'app/cardKey.js',
   'content/decks.json',
   'content/fr-core-a1.json',
+  'content/exams.json',
   'manifest.webmanifest',
 ];
 

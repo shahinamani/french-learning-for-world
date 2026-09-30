@@ -47,10 +47,11 @@ test('no card is attributed to a textbook, course or other app', () => {
   }
 });
 
-test('every card carries an English and a Persian meaning', () => {
+test('every card carries a meaning in all four portal languages', () => {
   for (const c of cards) {
-    assert.ok(c.meanings?.en?.trim(), `${c.fr} has no English meaning`);
-    assert.ok(c.meanings?.fa?.trim(), `${c.fr} has no Persian meaning`);
+    for (const locale of ['en', 'fa', 'ar', 'fr']) {
+      assert.ok(c.meanings?.[locale]?.trim(), `${c.fr} has no ${locale} meaning`);
+    }
   }
 });
 
@@ -61,12 +62,15 @@ test('every card has exactly one past and one future example', () => {
   }
 });
 
-test('every example sentence is translated into English and Persian', () => {
+test('every example sentence is translated into English, Persian and Arabic', () => {
+  // Not French: the sentence is already French. A French *definition* of the
+  // headword is carried on the card instead, for monolingual study.
   for (const c of cards) {
     for (const e of c.examples) {
       assert.ok(e.fr?.trim(), `${c.fr}: empty sentence`);
-      assert.ok(e.translations?.en?.trim(), `${c.fr} / ${e.fr}: no English`);
-      assert.ok(e.translations?.fa?.trim(), `${c.fr} / ${e.fr}: no Persian`);
+      for (const locale of ['en', 'fa', 'ar']) {
+        assert.ok(e.translations?.[locale]?.trim(), `${c.fr} / ${e.fr}: no ${locale}`);
+      }
     }
   }
 });

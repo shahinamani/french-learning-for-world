@@ -43,12 +43,28 @@ comes from an openly licensed source, recorded per item so anyone can check.
   browser. It is drift-proof: it survives a locked phone, a throttled
   background tab and a full reload, and says so if it finished while you were
   away.
-- **Interface in English, فارسی and français**, with full right-to-left layout.
+- **Examination sections** for DELF, DALF, TCF and TEF. Each one opens to its
+  CEFR levels, the cards available at those levels, and free practice material
+  for all four tested skills — listening, reading, writing and speaking —
+  linked on the examination body's own site and on public broadcasters.
+  Nothing is copied from them; the links lead to their pages.
+- **Interface in English, فارسی, français and العربية**, with full
+  right-to-left layout. Card meanings in all four, so a Persian or Arabic
+  meaning can sit under an English interface — and a French definition is
+  available for monolingual study.
 - **Works offline** once visited, and installs to a phone home screen.
 - **Your progress is yours**: stored only in your browser, exportable to a
   file, importable on another device. Nothing is sent anywhere.
 
 Run the tests with `node --test tests/*.test.js` — no dependencies required.
+Check the outbound links with `./scripts/check-links.sh`.
+
+> **On the examination links.** They point at other organisations' websites and
+> were written from knowledge, not verified from the machine that generated
+> them — `checkedOn` in `content/exams.json` is therefore `null`, not a date.
+> Run `./scripts/check-links.sh --write` to verify them and stamp it honestly.
+> The exam body's own page is always the authoritative source for format,
+> dates and fees.
 
 ## Goals
 

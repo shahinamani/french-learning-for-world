@@ -252,3 +252,61 @@ mark.form {
   text-decoration-color: var(--warn); text-decoration-thickness: 2px;
   padding: 0 1px; border-radius: 2px;
 }
+
+/* ── Exams ──────────────────────────────────────────────── */
+.section-h { font-size: 1.25rem; margin-block: 8px 4px; }
+.section-h3 { font-size: 1.02rem; margin-block: 26px 8px; }
+.section-intro { color: var(--slate); margin-block: 0 16px; max-width: 46rem; }
+
+.exam-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 10px; }
+.exam-card {
+  font: inherit; text-align: start; cursor: pointer;
+  background: var(--panel); color: var(--ink);
+  border: 1px solid var(--line); border-radius: var(--radius);
+  padding: 16px; display: flex; flex-direction: column; gap: 7px;
+}
+.exam-card:hover { border-color: var(--accent); box-shadow: var(--shadow); }
+.exam-code { font-size: 1.5rem; font-weight: 700; letter-spacing: .02em; color: var(--accent); }
+.exam-full { font-size: .9rem; color: var(--slate); }
+.exam-levels { display: flex; gap: 4px; flex-wrap: wrap; }
+.exam-count { font-size: .78rem; color: var(--slate); margin-block-start: 2px; }
+
+.exam-full-line { color: var(--slate); margin-block: 0 14px; }
+.exam-facts { display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; margin-block: 0 18px; align-items: baseline; }
+.exam-facts dt { font-size: .72rem; text-transform: uppercase; letter-spacing: .06em;
+  color: var(--slate); font-weight: 650; }
+.exam-facts dd { margin: 0; display: flex; gap: 4px; flex-wrap: wrap; font-size: .92rem; }
+.exam-study { margin-block-end: 8px; }
+.exam-empty { color: var(--slate); font-size: .92rem; background: var(--warn-bg);
+  border-radius: var(--radius); padding: 10px 14px; }
+
+.skill-block { margin-block-end: 6px; }
+.skill-h { font-size: .74rem; text-transform: uppercase; letter-spacing: .07em;
+  color: var(--slate); font-weight: 700; margin-block: 14px 6px; }
+.link-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 4px; }
+.link-list li {
+  display: flex; gap: 10px; align-items: baseline; flex-wrap: wrap;
+  background: var(--panel); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 9px 13px;
+}
+.link-list a { color: var(--accent); text-decoration: none; font-size: .95rem; }
+.link-list a:hover { text-decoration: underline; }
+/* Mark an outbound link, on both sides, since the layout mirrors. */
+.link-list a::after { content: ' ↗'; font-size: .8em; opacity: .7; }
+.link-kind {
+  font-size: .68rem; text-transform: uppercase; letter-spacing: .05em; font-weight: 650;
+  color: var(--slate); background: var(--accent-soft); padding: 2px 7px; border-radius: 99px;
+  margin-inline-start: auto; white-space: nowrap;
+}
+.link-levels { font-size: .7rem; color: var(--slate); font-variant-numeric: tabular-nums; }
+.links-note, .exam-disclaimer {
+  font-size: .78rem; color: var(--slate); max-width: 46rem;
+  margin-block-start: 18px; padding-inline-start: 12px;
+  border-inline-start: 3px solid var(--line);
+}
+.exam-filter {
+  display: flex; align-items: center; justify-content: space-between; gap: 10px;
+  flex-wrap: wrap; background: var(--accent-soft); color: var(--accent);
+  border-radius: var(--radius); padding: 8px 14px; margin-block-end: 14px;
+  font-size: .9rem; font-weight: 600;
+}
