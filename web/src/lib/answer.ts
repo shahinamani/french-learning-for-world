@@ -1,3 +1,5 @@
+import { fold } from './fold';
+
 /**
  * Comparing what a learner typed with what French requires.
  *
@@ -8,12 +10,10 @@
  * marked itself correct for someone who did not know the answer, which is
  * worse than no checking at all.
  */
-export function normalise(s: string): string {
-  return s.trim().toLowerCase()
-    .normalize('NFD').replace(/[̀-ͯ]/g, '')
-    .replace(/[’']/g, "'")
-    .replace(/\s+/g, ' ');
-}
+/** Kept as a named export because it is part of this module's contract; the
+ *  implementation is shared so search, the verb filter and answer checking
+ *  cannot drift apart again. */
+export const normalise = fold;
 
 export type Check = { correct: boolean; accentsOnly: boolean };
 

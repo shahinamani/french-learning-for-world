@@ -105,6 +105,40 @@ Fixed with `/(\p{L})'(\p{L})/gu`, and every one of the 22 now renders correctly.
 That bug survived a test file dedicated to French typography, because the file
 read the source instead of running it.
 
+### #7 — An ASCII character class in a product about an accented language
+
+**Named after the `\w` bug, swept deliberately 2026-10-01.**
+
+`\w`, `\b`, `[a-z]` and `[A-Za-z]` all silently exclude `é à ç ê œ`. In a
+French product that is not a style question — it is a correctness class. The
+apostrophe bug was found by accident; the rest were found on purpose, by running
+every candidate site against accented and ligatured input rather than reading it.
+
+| Site | Accented input | Verdict |
+|---|---|---|
+| `fold`/`norm` in search, verb filter, answer checking | `être`, `ÊTRE`, `etre` | ✅ folded symmetrically |
+| the same, with `œ`/`æ` | `soeur` vs `sœur` | ❌ **broken** — NFD does not decompose a ligature |
+| number grouping `/\b(\d{1,3})…/` | `été 1240` | ✅ digits only; accents nearby are irrelevant |
+| spacing rules `;!?:«»` | `Écoute !`, `« cœur »` | ✅ punctuation classes, not letter classes |
+| CEFR level `.toLowerCase()`, `[abc][12]` | `B1` | ✅ ASCII by definition |
+| example-sentence highlighting | all 44 sentences | ⚠️ passes today, by exact accent match only |
+| locale tag parsing, key handlers, numeric sorts | — | ✅ no letters involved |
+
+**The second real bug: `checkAnswer('soeur', 'sœur')` returned WRONG.** `œ` and
+`æ` are letters, not letter-plus-accent, so `normalize('NFD')` leaves them
+alone. A learner on a keyboard with no `œ` key was marked wrong for spelling
+`sœur` the only way they could — and `docs/04` specifies an accent bar for
+exactly this, which is not built. `cœur, sœur, œuf, œil, bœuf, vœu, nœud` are
+ordinary words.
+
+Three near-copies of the folding function had drifted apart; there is now one,
+`web/src/lib/fold.ts`, which expands ligatures before decomposing. The
+highlighter no longer depends on an exact accent match either.
+
+**Rule:** in this codebase, a character class that touches learner or content
+text uses `\p{L}` with the `u` flag, or folds through `fold()`. Any such site
+needs a test containing a real accented word and a real ligature.
+
 ---
 
 ## How these are caught
@@ -137,6 +171,7 @@ Not by care. By two habits:
 | 6 | `content.test.js` i18n parity | PASS | read `app/i18n.js`; the app's own dictionary was 40 keys short in fa and ar |
 | 6 | `fsrs.test.js`, `timer.test.js` | PASS | 24 tests against modules the product replaced or never used |
 | 5 | `typography.test.js` | PASS | read the source for the word "apostrophe" instead of running the formatter |
+| 7 | `answer.ts` / search / verb filter | PASS | `œ` and `æ` never folded; `checkAnswer('soeur','sœur')` was WRONG |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
 meant **not one design token was ever defined**, and the page still looked like a

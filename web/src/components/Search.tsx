@@ -13,13 +13,16 @@ import { loadContent } from '../lib/content';
 import type { Card, Concept } from '../lib/types';
 import { Icon } from './Icon';
 import { fr as frText } from '../lib/typography';
+import { fold } from '../lib/fold';
 
 type Result =
   | { kind: 'command'; label: string; to: string }
   | { kind: 'concept'; concept: Concept }
   | { kind: 'card'; card: Card };
 
-const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+// Shared with answer checking and the verb filter: three near-copies of this
+// had drifted, and none of them handled the œ/æ ligatures.
+const norm = fold;
 
 export function searchAll(q: string, cards: Card[], concepts: Concept[]): Result[] {
   const needle = norm(q.trim());

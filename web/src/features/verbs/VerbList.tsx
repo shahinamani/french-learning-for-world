@@ -6,8 +6,11 @@ import { loadVerbs, type Verb } from '../../lib/verbs';
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
+import { fold } from '../../lib/fold';
 
-const norm = (s: string) => s.toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g, '');
+// Shared with answer checking and the verb filter: three near-copies of this
+// had drifted, and none of them handled the œ/æ ligatures.
+const norm = fold;
 
 export function VerbList() {
   const { t, settings } = useApp();

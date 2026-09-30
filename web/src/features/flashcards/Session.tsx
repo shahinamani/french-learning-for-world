@@ -20,6 +20,7 @@ import { Icon } from '../../components/Icon';
 import { useSidePanel } from '../../components/SidePanel';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
+import { fold } from '../../lib/fold';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
 
@@ -349,13 +350,53 @@ function ConceptName({ id }: { id: string }) {
  * because formatting inserts characters and would move the index the mark is
  * placed at.
  */
+/**
+ * Find `form` in `sentence`, tolerating a difference in accents, ligatures or
+ * Unicode normalisation — and return an index into the ORIGINAL string, so the
+ * slices below stay correct.
+ *
+ * The previous version compared `toLowerCase()` on both sides, which matches
+ * only when the content stores the form with byte-identical accents. It happens
+ * to hold for all 44 example sentences today; it is one authoring slip or one
+ * NFC/NFD mismatch away from failing, and the failure is silent — the taught
+ * form simply stops being underlined. `docs/05` says colour is never the only
+ * signal and the underline is the other one, so losing it quietly matters.
+ */
+function findForm(sentence: string, form: string): number {
+  if (!form) return -1;
+  const exact = sentence.toLowerCase().indexOf(form.toLowerCase());
+  if (exact >= 0) return exact;
+  // Fold each character separately so a folded index maps back to the original.
+  const map: number[] = [];
+  let folded = '';
+  for (let i = 0; i < sentence.length; i++) {
+    const piece = fold(sentence[i] as string);
+    for (let k = 0; k < piece.length; k++) map.push(i);
+    folded += piece;
+  }
+  const at = folded.indexOf(fold(form));
+  return at < 0 ? -1 : (map[at] ?? -1);
+}
+
+/** How many characters of the ORIGINAL sentence the match covers. Folding can
+ *  change length (œ becomes oe), so `form.length` is not it. */
+function matchLength(sentence: string, at: number, form: string): number {
+  const want = fold(form).length;
+  let taken = 0;
+  for (let n = 0; at + n <= sentence.length; n++) {
+    taken = fold(sentence.slice(at, at + n)).length;
+    if (taken >= want) return n;
+  }
+  return form.length;
+}
+
 function highlight(sentence: string, form: string) {
-  const at = form ? sentence.toLowerCase().indexOf(form.toLowerCase()) : -1;
+  const at = findForm(sentence, form);
   if (at < 0) return frText(sentence);
   return (<>
     {frText(sentence.slice(0, at))}
-    <mark className="form">{frText(sentence.slice(at, at + form.length))}</mark>
-    {frText(sentence.slice(at + form.length))}
+    <mark className="form">{frText(sentence.slice(at, at + matchLength(sentence, at, form)))}</mark>
+    {frText(sentence.slice(at + matchLength(sentence, at, form)))}
   </>);
 }
 
