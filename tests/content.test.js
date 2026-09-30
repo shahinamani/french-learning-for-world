@@ -133,3 +133,30 @@ test('every interface locale defines exactly the English key set', () => {
     assert.deepEqual(Object.keys(dict).sort(), expected, `locale ${code}`);
   }
 });
+
+test('every card names the concepts it exercises, and they all exist', () => {
+  // This join is what turns a wrong answer into "your passé composé with être
+  // is the problem" rather than "you got a card wrong".
+  const concepts = JSON.parse(readFileSync(new URL('../content/concepts.json', import.meta.url), 'utf8'));
+  const ids = new Set(concepts.concepts.map((c) => c.id));
+  for (const c of cards) {
+    assert.ok(Array.isArray(c.conceptIds) && c.conceptIds.length > 0, `${c.fr} names no concepts`);
+    for (const id of c.conceptIds) {
+      assert.ok(ids.has(id), `${c.fr} names concept ${id}, which does not exist`);
+      const concept = concepts.concepts.find((k) => k.id === id);
+      assert.equal(concept.retired, false, `${c.fr} names retired concept ${id}`);
+    }
+  }
+});
+
+test('a card never points at a group, only at a specific concept', () => {
+  const concepts = JSON.parse(readFileSync(new URL('../content/concepts.json', import.meta.url), 'utf8'));
+  const groups = new Set(concepts.concepts.filter((c) => c.isGroup).map((c) => c.id));
+  for (const c of cards) {
+    for (const id of c.conceptIds) {
+      // lex.* themes are leaves for our purposes; everything else must be specific.
+      if (id.startsWith('lex.')) continue;
+      assert.ok(!groups.has(id), `${c.fr} points at the group ${id} rather than a concept inside it`);
+    }
+  }
+});

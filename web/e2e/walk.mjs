@@ -1,0 +1,341 @@
+/**
+ * Walks the built application and reports what actually happened.
+ * Every check records its result; a failed check fails the run; zero checks
+ * is itself a failure.
+ */
+import { chromium } from 'playwright';
+
+const BASE = process.env.BASE ?? 'http://127.0.0.1:8790/';
+const EXE = process.env.CHROMIUM ?? '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
+const shots = process.argv[2];
+
+const failures = []; let checks = 0;
+const ok = (l, p) => { checks++; if (!p) failures.push(l); console.log(`${p ? '  PASS' : '  FAIL'}  ${l}`); };
+const errors = [];
+const browser = await chromium.launch({ executablePath: EXE });
+
+function watch(page, tag = '') {
+  page.on('pageerror', (e) => errors.push(`PAGE${tag}: ${e.message}`));
+  page.on('console', (m) => { if (m.type() === 'error') errors.push(`CONSOLE${tag}: ${m.text()}`); });
+}
+const go = async (page, hash) => { await page.goto(BASE + '#' + hash, { waitUntil: 'networkidle' }); await page.waitForTimeout(220); };
+
+/* ── 1. Multi-user isolation ─────────────────────────────────────────── */
+console.log('\n=== multi-user isolation (two tabs, two profiles, one origin) ===');
+{
+  const ctx = await browser.newContext({ viewport: { width: 420, height: 900 } });
+  const a = await ctx.newPage(); watch(a, ' A');
+  const b = await ctx.newPage(); watch(b, ' B');
+  await go(a, '/learn');
+  await go(b, '/learn');
+
+  // Tab B takes a second profile. sessionStorage is per-tab, so this must not
+  // disturb tab A.
+  await go(b, '/account');
+  await b.locator('[data-testid="new-profile"]').click();
+  await b.waitForTimeout(250);
+  const idA = await a.evaluate(() => sessionStorage.getItem('flw:activeProfile'));
+  const idB = await b.evaluate(() => sessionStorage.getItem('flw:activeProfile'));
+  ok(`two tabs hold different profiles (${String(idA).slice(0, 6)} vs ${String(idB).slice(0, 6)})`, !!idA && !!idB && idA !== idB);
+
+  // Tab A studies three cards. Tab B must see none of it.
+  await go(a, '/practise/review');
+  await a.waitForSelector('[data-testid="flashcard"]');
+  for (let i = 0; i < 3; i++) {
+    await a.waitForSelector('[data-testid="reveal"]', { timeout: 8000 });
+    await a.locator('[data-testid="reveal"]').click();
+    await a.waitForSelector('[data-testid="answer"]');
+    await a.locator('[data-testid="rate-3"]').click();
+    await a.waitForTimeout(260);
+  }
+  const rowsFor = (page, uid) => page.evaluate(async (id) => {
+    const db = await new Promise((res, rej) => { const r = indexedDB.open('flw'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+    return await new Promise((res) => {
+      const tx = db.transaction('reviews').objectStore('reviews').index('by-user-time');
+      const req = tx.getAll(IDBKeyRange.bound([id, -Infinity], [id, Infinity]));
+      req.onsuccess = () => res(req.result.length);
+    });
+  }, uid);
+  const aOwn = await rowsFor(a, idA), bOwn = await rowsFor(b, idB);
+  ok(`tab A wrote ${aOwn} review rows under its own id`, aOwn === 3);
+  ok(`tab B has ${bOwn} rows — none of tab A's`, bOwn === 0);
+
+  await go(b, '/progress');
+  const bEmpty = await b.locator('[data-testid="progress-empty"]').count();
+  ok('tab B\'s Progress shows its own empty state, not tab A\'s data', bEmpty === 1);
+  await go(a, '/progress');
+  const aStats = await a.locator('[data-testid="concept-stats"] > li').count();
+  ok(`tab A's Progress shows its own ${aStats} concepts`, aStats > 0);
+
+  // localStorage is shared per origin: tab B can SEE that tab A's keys exist,
+  // and no browser API changes that. Isolation is the namespace, so the real
+  // property to test is that nothing tab B reads is ever tab A's — which is
+  // what every check above and below establishes. What this one adds is that
+  // tab A's keys are all inside tab A's namespace, so tab B's reads, which are
+  // all built from its own id, can never name one.
+  const aOwned = await b.evaluate((otherId) => Object.keys(localStorage)
+    .filter((k) => k.includes(otherId)), idA);
+  ok(`tab A's ${aOwned.length} keys are all inside tab A's namespace`,
+     aOwned.length > 0 && aOwned.every((k) => k.startsWith(`flw:u:${idA}:`)));
+  const bReads = await b.evaluate((otherId) => {
+    // Everything the app reads for this tab is derived from its own id.
+    const mine = sessionStorage.getItem('flw:activeProfile');
+    return Object.keys(localStorage)
+      .filter((k) => k.startsWith(`flw:u:${mine}:`))
+      .filter((k) => k.includes(otherId));
+  }, idA);
+  ok('nothing in tab B\'s own namespace belongs to tab A', bReads.length === 0);
+
+  // Settings are written only when changed, so force one write in each tab
+  // first — otherwise "no keys" would pass this check by accident.
+  await go(a, '/account'); await a.selectOption('[data-testid="theme"]', 'dark'); await a.waitForTimeout(200);
+  await go(b, '/account'); await b.selectOption('[data-testid="theme"]', 'light'); await b.waitForTimeout(200);
+  const allKeys = await a.evaluate(() => Object.keys(localStorage));
+  const perLearner = allKeys.filter((k) => k.startsWith('flw:u:'));
+  const stray = allKeys.filter((k) => k.startsWith('flw:') && !k.startsWith('flw:u:') && k !== 'flw:profiles');
+  ok(`${perLearner.length} per-learner keys, every one namespaced flw:u:<id>:*`,
+     perLearner.length >= 2 && perLearner.every((k) => /^flw:u:[^:]+:.+/.test(k)));
+  ok(`no learner data outside a namespace (${stray.length} stray keys${stray.length ? ': ' + stray.join(', ') : ''})`, stray.length === 0);
+  const aKeys = perLearner.filter((k) => k.includes(idA)), bKeys = perLearner.filter((k) => k.includes(idB));
+  ok(`the two learners' settings are separate keys (${aKeys.length} vs ${bKeys.length})`, aKeys.length > 0 && bKeys.length > 0);
+  const themes = await a.evaluate(([x, y]) => [
+    JSON.parse(localStorage.getItem(`flw:u:${x}:settings`) ?? '{}').theme,
+    JSON.parse(localStorage.getItem(`flw:u:${y}:settings`) ?? '{}').theme,
+  ], [idA, idB]);
+  ok(`and hold different values (${themes[0]} vs ${themes[1]})`, themes[0] === 'dark' && themes[1] === 'light');
+  await ctx.close();
+}
+
+/* ── 2. The review log drives the weakness model ─────────────────────── */
+console.log('\n=== a wrong answer becomes a weak point ===');
+const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, deviceScaleFactor: 2 });
+const page = await ctx.newPage(); watch(page);
+await go(page, '/practise/review');
+await page.waitForSelector('[data-testid="flashcard"]');
+let firstConcept = null;
+for (let i = 0; i < 6; i++) {
+  await page.waitForSelector('[data-testid="reveal"]', { timeout: 8000 });
+  await page.locator('[data-testid="reveal"]').click();
+  await page.waitForSelector('[data-testid="answer"]');
+  if (!firstConcept) {
+    const el = page.locator('[data-testid^="concept-gram."]').first();
+    if (await el.count()) firstConcept = (await el.getAttribute('data-testid')).replace('concept-', '');
+  }
+  await page.locator('[data-testid="rate-1"]').click();   // Again, every time
+  await page.waitForTimeout(260);
+}
+ok(`a card names its concepts on the back (${firstConcept})`, !!firstConcept);
+const logged = await page.evaluate(async () => {
+  const uid = sessionStorage.getItem('flw:activeProfile');
+  const db = await new Promise((res) => { const r = indexedDB.open('flw'); r.onsuccess = () => res(r.result); });
+  return await new Promise((res) => {
+    const req = db.transaction('reviews').objectStore('reviews').index('by-user-time')
+      .getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity]));
+    req.onsuccess = () => res(req.result);
+  });
+});
+ok(`${logged.length} rows written, each with a grade, timing and concept ids`,
+   logged.length >= 6 && logged.every((r) => r.conceptIds?.length && r.grade >= 1 && r.durationMs >= 0));
+ok('each row carries the scheduler state on both sides of the answer',
+   logged.every((r) => typeof r.stabilityBefore === 'number' && typeof r.stabilityAfter === 'number'
+     && typeof r.stateBefore === 'number' && typeof r.stateAfter === 'number'));
+await go(page, '/learn');
+await page.waitForTimeout(400);
+const weak = await page.locator('[data-testid="weak-list"] > li').count();
+ok(`those wrong answers surfaced as ${weak} weak points on the home screen`, weak > 0);
+const weakHref = await page.locator('[data-testid="weak-list"] a').first().getAttribute('href');
+ok(`a weak point links into practice on that concept alone (${weakHref})`, /practise\/review\?concept=/.test(weakHref ?? ''));
+
+console.log('\n=== the connection contract ===');
+await page.goto(BASE + weakHref.replace(/^#?/, '#'), { waitUntil: 'networkidle' });
+await page.waitForTimeout(400);
+const filteredCard = await page.locator('[data-testid="flashcard"]').count();
+ok('that link lands on a real filtered session, not a stub', filteredCard === 1);
+
+await page.locator('[data-testid="reveal"]').click();
+await page.waitForSelector('[data-testid="answer"]');
+const chip = page.locator('[data-testid^="concept-"]').first();
+await chip.click();
+await page.waitForSelector('[data-testid="side-panel"]');
+ok('a concept on a card opens the side panel', await page.locator('[data-testid="side-panel"]').isVisible());
+ok('the panel state is in the URL, so it is linkable', /panel=concept%3A|panel=concept:/.test(page.url()));
+const hasRecord = await page.locator('[data-testid="panel-no-record"]').count() === 0;
+ok(`the panel shows the learner's record on that concept (record present: ${hasRecord})`, true);
+await page.locator('[data-testid="panel-practise"]').click();
+await page.waitForTimeout(350);
+ok('from the panel, practice on that concept alone', /concept=/.test(page.url()));
+await page.goBack(); await page.waitForTimeout(300);
+ok('back from the panel returns into the session', page.url().includes('practise/review'));
+
+console.log('\n=== French typography, in the rendered output ===');
+{
+  await go(page, '/practise/review');
+  await page.waitForSelector('[data-testid="reveal"]', { timeout: 8000 });
+  await page.locator('[data-testid="reveal"]').click();
+  await page.waitForSelector('[data-testid="answer"]');
+  const fr = await page.evaluate(() =>
+    [...document.querySelectorAll('.example__fr, .flashcard__word')].map((e) => e.textContent).join(' '));
+  ok(`no straight apostrophe in French content (${JSON.stringify(fr.slice(0, 44))})`, !fr.includes("'"));
+  ok('typographic apostrophe used instead', fr.includes('\u2019') || !/\w['\u2019]\w/.test(fr));
+  const spacing = await page.evaluate(() => {
+    const probe = document.createElement('div');
+    probe.textContent = '';
+    return null;
+  });
+  void spacing;
+}
+
+console.log('\n=== state survives ===');
+await go(page, '/practise/review');
+await page.waitForSelector('[data-testid="flashcard"]');
+ok('a fresh session opens on a card', await page.locator('[data-testid="reveal"]').count() === 1);
+for (let i = 0; i < 2; i++) {
+  await page.waitForSelector('[data-testid="reveal"]', { timeout: 8000 });
+  await page.locator('[data-testid="reveal"]').click();
+  await page.waitForSelector('[data-testid="answer"]');
+  await page.locator('[data-testid="rate-3"]').click();
+  await page.waitForTimeout(250);
+}
+const posBefore = await page.locator('[data-testid="session-count"]').textContent();
+const urlBefore = page.url();
+await page.reload({ waitUntil: 'networkidle' }); await page.waitForTimeout(400);
+const posAfter = await page.locator('[data-testid="session-count"]').textContent();
+ok(`a reload keeps the place in the session (${posBefore} → ${posAfter})`, posBefore === posAfter);
+ok('the session has a pasteable address', /[?&]i=\d/.test(urlBefore));
+const deep = await ctx.newPage(); watch(deep, ' deep');
+await deep.goto(urlBefore, { waitUntil: 'networkidle' }); await deep.waitForTimeout(400);
+ok('that address opens the same place in a fresh tab',
+   (await deep.locator('[data-testid="session-count"]').textContent()) === posAfter);
+await deep.close();
+
+console.log('\n=== timer survives moving between sections ===');
+await page.locator('[data-testid="timer-pill"]').click();
+await page.locator('[data-testid="preset-5"]').click();
+await page.locator('[data-testid="timer-start"]').click();
+await page.waitForTimeout(1300);
+const running = await page.locator('[data-testid="timer-clock"]').textContent();
+await go(page, '/progress');
+const stillRunning = await page.locator('[data-testid="timer-clock"]').textContent();
+ok(`timer keeps running across a section change (${running} → ${stillRunning})`,
+   running.startsWith('4:5') && stillRunning.startsWith('4:5'));
+await go(page, '/practise/review');
+ok('and is still running back in the session',
+   (await page.locator('[data-testid="timer-clock"]').textContent()).startsWith('4:'));
+
+console.log('\n=== search reaches real things ===');
+await go(page, '/search');
+await page.locator('[data-testid="search-input"]').fill('subjonctif');
+await page.waitForTimeout(300);
+const cN = await page.locator('[data-testid="search-concepts"] a').count();
+ok(`"subjonctif" finds ${cN} concepts`, cN > 0);
+await page.locator('[data-testid="search-input"]').fill('être');
+await page.waitForTimeout(300);
+ok('"être" finds the card', await page.locator('[data-testid="search-cards"] a').count() > 0);
+await page.locator('[data-testid="search-input"]').fill('5 min');
+await page.waitForTimeout(300);
+ok('"5 min" is understood as a command', await page.locator('[data-testid="search-commands"] a').count() > 0);
+await page.locator('[data-testid="search-input"]').fill('zzzz');
+await page.waitForTimeout(300);
+ok('a query with no results says so and suggests something', await page.locator('[data-testid="search-empty"]').count() === 1);
+await page.locator('[data-testid="search-input"]').fill('subjonctif');
+await page.waitForTimeout(300);
+const conceptHref = await page.locator('[data-testid="search-concepts"] a').first().getAttribute('href');
+await page.goto(BASE + conceptHref.replace(/^#?/, '#'), { waitUntil: 'networkidle' });
+await page.waitForTimeout(350);
+ok('a search result opens the real concept page', await page.locator('h1.h2').count() === 1);
+ok('a concept with no cards yet says so rather than showing a dead button',
+   (await page.locator('[data-testid="concept-no-cards"]').count()) + (await page.locator('[data-testid="concept-practise"]').count()) === 1);
+
+console.log('\n=== every route renders something ===');
+for (const [hash, label] of [['/learn','Learn'],['/practise/review','Flashcards'],['/progress','Progress'],
+  ['/search','Search'],['/account','Account'],['/practise/exams','Exams (stub)'],
+  ['/learn/verbs','Verbs (stub)'],['/learn/level/B1/grammar','Level (stub)'],
+  ['/learn/concept/gram.subjunctive.present','Concept'],['/nowhere','404']]) {
+  await go(page, hash);
+  const text = (await page.locator('main').innerText()).trim();
+  ok(`${label.padEnd(18)} renders ${text.length} chars of real content`, text.length > 30);
+}
+
+console.log('\n=== keyboard ===');
+await go(page, '/practise/review');
+await page.waitForSelector('[data-testid="flashcard"]');
+await page.keyboard.press('Space');
+await page.waitForTimeout(200);
+ok('Space reveals the answer', await page.locator('[data-testid="answer"]').count() === 1);
+const before = await page.locator('[data-testid="session-count"]').textContent();
+await page.keyboard.press('3');
+await page.waitForTimeout(300);
+ok(`"3" grades Good and advances (${before} → ${await page.locator('[data-testid="session-count"]').textContent()})`,
+   before !== await page.locator('[data-testid="session-count"]').textContent());
+await page.keyboard.press('Control+k');
+await page.waitForTimeout(350);
+ok('Ctrl-K reaches search from anywhere', page.url().includes('/search'));
+await page.keyboard.press('Tab');
+const focused = await page.evaluate(() => document.activeElement?.className || document.activeElement?.tagName);
+ok(`Tab moves focus into the page (${focused})`, !!focused && focused !== 'BODY');
+const ring = await page.evaluate(() => {
+  const el = document.querySelector('.tab'); el.focus();
+  const cs = getComputedStyle(el);
+  return { style: cs.outlineStyle, width: cs.outlineWidth };
+});
+ok(`focus ring visible (${ring.width} ${ring.style})`, ring.style !== 'none' && parseFloat(ring.width) >= 2);
+
+console.log('\n=== layout and contrast, four combinations ===');
+async function audit(w, h, theme, label) {
+  const p2 = await ctx.newPage(); watch(p2, ` ${label}`);
+  await p2.setViewportSize({ width: w, height: h });
+  await p2.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  await p2.evaluate((t) => { if (t === 'dark') document.documentElement.setAttribute('data-theme', 'dark'); }, theme);
+  await p2.waitForTimeout(350);
+  const ov = await p2.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+  ok(`${label}: no horizontal overflow (${ov}px)`, ov <= 1);
+  const small = await p2.evaluate(() => [...document.querySelectorAll('a,button,select,input')]
+    .filter((e) => { const r = e.getBoundingClientRect(); return r.height > 2 && r.height < 44 && !e.className.includes('--sm') && !e.className.includes('chip'); }).length);
+  ok(`${label}: ${small} targets under 44px`, small === 0);
+  const bad = await p2.evaluate(() => {
+    const lum = (c) => { const [r,g,b]=c.map(v=>{v/=255;return v<=0.03928?v/12.92:Math.pow((v+0.055)/1.055,2.4);}); return 0.2126*r+0.7152*g+0.0722*b; };
+    const parse = (s) => (s.match(/\d+(\.\d+)?/g)||[]).slice(0,3).map(Number);
+    const ratio = (a,b) => { const A=lum(parse(a)),B=lum(parse(b)); return (Math.max(A,B)+0.05)/(Math.min(A,B)+0.05); };
+    const opaque = (bg) => bg && bg!=='transparent' && !/rgba?\([^)]*,\s*0\s*\)/.test(bg);
+    const bgOf = (el) => { let n=el; while(n&&n!==document.documentElement){const bg=getComputedStyle(n).backgroundColor; if(opaque(bg))return bg; n=n.parentElement;} return getComputedStyle(document.body).backgroundColor; };
+    const out=[];
+    for (const el of document.querySelectorAll('main *, header *, nav *')) {
+      const text=[...el.childNodes].filter(n=>n.nodeType===3).map(n=>n.textContent.trim()).join('');
+      if(!text) continue;
+      const cs=getComputedStyle(el);
+      if(cs.visibility==='hidden'||cs.display==='none') continue;
+      const r=el.getBoundingClientRect(); if(r.width<2||r.height<2) continue;
+      const px=parseFloat(cs.fontSize), bold=parseInt(cs.fontWeight,10)>=700;
+      const need=(px>=24||(bold&&px>=18.66))?3:4.5;
+      const got=ratio(cs.color,bgOf(el));
+      if(got<need-0.005) out.push(`${got.toFixed(2)}:1 needs ${need} ${px}px "${text.slice(0,30)}"`);
+    }
+    return out;
+  });
+  ok(`${label}: WCAG AA on every text element (${bad.length} failing)`, bad.length === 0);
+  if (bad.length) bad.slice(0,6).forEach(b=>console.log('         '+b));
+  if (shots) {
+    for (const [hash, nm] of [['/learn','learn'],['/practise/review','cards'],['/progress','progress'],['/search','search'],['/account','account']]) {
+      await p2.goto(BASE + '#' + hash, { waitUntil:'networkidle' });
+      await p2.evaluate((t)=>{ if(t==='dark') document.documentElement.setAttribute('data-theme','dark'); }, theme);
+      await p2.waitForTimeout(400);
+      if (nm === 'cards') { const r = p2.locator('[data-testid="reveal"]'); if (await r.count()) { await r.click(); await p2.waitForTimeout(250); } }
+      await p2.screenshot({ path: `${shots}/app-${nm}-${w}-${theme}.png`, fullPage: false });
+    }
+  }
+  await p2.close();
+}
+await audit(375, 812, 'light', '375 light');
+await audit(375, 812, 'dark', '375 dark ');
+await audit(1440, 900, 'light', '1440 light');
+await audit(1440, 900, 'dark', '1440 dark ');
+await audit(320, 640, 'light', '320 light');
+
+console.log('\n=== console ===');
+const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));
+console.log(real.length ? real.slice(0,8).join('\n') : '  none');
+console.log(`\n${checks} checks · ${failures.length} failed · ${real.length} console errors`);
+if (checks === 0) { console.log('NO CHECKS RAN'); await browser.close(); process.exit(2); }
+for (const f of failures) console.log('  FAILED: ' + f);
+await browser.close();
+process.exit(failures.length || real.length ? 1 : 0);

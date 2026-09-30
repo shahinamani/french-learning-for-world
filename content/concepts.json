@@ -1,0 +1,2709 @@
+{
+  "version": 1,
+  "rule": "IDS ARE PERMANENT AND PUBLIC. Once any learner has review history against a concept id, that id is frozen: it may never be renamed, re-scoped or reused for a different concept, and it may never be deleted while history points at it. Renaming an id silently reassigns somebody's record to the wrong piece of French; reusing a retired id merges two unrelated records. To retire a concept, set \"retired\": true and leave the row in place — history stays readable and nothing new is filed against it. To split a concept, add new ids and retire the old one; never repurpose it. The learner-facing NAMES may be corrected freely, in any language, at any time: they are labels, not keys.",
+  "idFormat": "<root>[.<area>[.<point>]] — lowercase ASCII, dot-separated, hyphens inside a segment; roots are gram, lex, phon, usage",
+  "types": [
+    "grammar",
+    "vocabulary",
+    "phonetics",
+    "usage"
+  ],
+  "levels": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ],
+  "concepts": [
+    {
+      "id": "gram",
+      "type": "grammar",
+      "level": "A1",
+      "parent": null,
+      "name": {
+        "en": "Grammar",
+        "fr": "La grammaire"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.adjective",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Adjectives",
+        "fr": "Les adjectifs"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.adjective.agreement",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "Adjectives agree with the noun",
+        "fr": "L’accord de l’adjectif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adjective.comparative",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "plus / moins / aussi … que",
+        "fr": "Le comparatif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adjective.demonstrative",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "ce, cet, cette, ces",
+        "fr": "Les adjectifs démonstratifs"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adjective.irregular",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "beau, nouveau, vieux",
+        "fr": "Adjectifs irréguliers"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adjective.meaning-shift",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "Position changes the meaning",
+        "fr": "La place change le sens"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adjective.position",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "Before or after the noun (BAGS)",
+        "fr": "La place de l’adjectif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adjective.possessive",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "mon, ton, son, notre…",
+        "fr": "Les adjectifs possessifs"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adjective.superlative",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.adjective",
+      "name": {
+        "en": "le plus, le moins",
+        "fr": "Le superlatif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adverb",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Adverbs",
+        "fr": "Les adverbes"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.adverb.formation",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.adverb",
+      "name": {
+        "en": "Adverbs in -ment",
+        "fr": "Les adverbes en -ment"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adverb.frequency",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.adverb",
+      "name": {
+        "en": "toujours, souvent, jamais",
+        "fr": "Les adverbes de fréquence"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adverb.position",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.adverb",
+      "name": {
+        "en": "Where the adverb goes",
+        "fr": "La place de l’adverbe"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.adverb.quantity",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.adverb",
+      "name": {
+        "en": "beaucoup, trop, assez, peu",
+        "fr": "Les adverbes de quantité"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.agreement",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram",
+      "name": {
+        "en": "Past participle agreement",
+        "fr": "L’accord du participe passé"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.agreement.avoir-cod",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.agreement",
+      "name": {
+        "en": "Agreement with a preceding direct object",
+        "fr": "L’accord avec le COD antéposé"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.agreement.etre",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.agreement",
+      "name": {
+        "en": "Agreement with être",
+        "fr": "L’accord avec « être »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.agreement.pronominal",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.agreement",
+      "name": {
+        "en": "Agreement of reflexive verbs",
+        "fr": "L’accord des verbes pronominaux"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.article",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Articles",
+        "fr": "Les articles"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.article.contracted",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.article",
+      "name": {
+        "en": "au, aux, du, des",
+        "fr": "Les articles contractés"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.article.de-negative",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.article",
+      "name": {
+        "en": "de after a negative",
+        "fr": "« de » après la négation"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.article.definite",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.article",
+      "name": {
+        "en": "le, la, les",
+        "fr": "L’article défini"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.article.indefinite",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.article",
+      "name": {
+        "en": "un, une, des",
+        "fr": "L’article indéfini"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.article.omission",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.article",
+      "name": {
+        "en": "When no article is used",
+        "fr": "L’absence d’article"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.article.partitive",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.article",
+      "name": {
+        "en": "du, de la, des — some",
+        "fr": "L’article partitif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.article.quantity",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.article",
+      "name": {
+        "en": "de after expressions of quantity",
+        "fr": "« de » après les quantités"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.conditional",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "The conditional",
+        "fr": "Le conditionnel"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.conditional.past",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.conditional",
+      "name": {
+        "en": "The past conditional",
+        "fr": "Le conditionnel passé"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.conditional.politeness",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.conditional",
+      "name": {
+        "en": "je voudrais — being polite",
+        "fr": "« je voudrais » — la politesse"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.conditional.present",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.conditional",
+      "name": {
+        "en": "The present conditional",
+        "fr": "Le conditionnel présent"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.conditional.regret",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.conditional",
+      "name": {
+        "en": "Regret and reproach",
+        "fr": "Le regret et le reproche"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Connectors",
+        "fr": "Les connecteurs logiques"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.connector.basic",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.connector",
+      "name": {
+        "en": "et, mais, ou, donc",
+        "fr": "« et », « mais », « ou », « donc »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector.cause",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.connector",
+      "name": {
+        "en": "parce que, car, puisque",
+        "fr": "La cause"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector.concession",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.connector",
+      "name": {
+        "en": "bien que, malgré, quand même",
+        "fr": "La concession"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector.consequence",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.connector",
+      "name": {
+        "en": "donc, alors, c’est pourquoi",
+        "fr": "La conséquence"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector.opposition",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.connector",
+      "name": {
+        "en": "pourtant, cependant, en revanche",
+        "fr": "L’opposition"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector.purpose",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.connector",
+      "name": {
+        "en": "pour, afin de, pour que",
+        "fr": "Le but"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector.sequence",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.connector",
+      "name": {
+        "en": "d’abord, ensuite, enfin",
+        "fr": "La chronologie"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.connector.time",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.connector",
+      "name": {
+        "en": "quand, lorsque, dès que, avant que",
+        "fr": "Le temps"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.expression",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Key structures",
+        "fr": "Structures essentielles"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.expression.cest-ilest",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.expression",
+      "name": {
+        "en": "c’est or il est",
+        "fr": "« c’est » ou « il est »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.expression.emphasis",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.expression",
+      "name": {
+        "en": "c’est … qui, c’est … que",
+        "fr": "La mise en relief"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.expression.faire-causatif",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.expression",
+      "name": {
+        "en": "faire + infinitive",
+        "fr": "« faire » causatif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.expression.il-y-a",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.expression",
+      "name": {
+        "en": "il y a",
+        "fr": "« il y a »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.expression.impersonal",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.expression",
+      "name": {
+        "en": "il faut, il vaut mieux",
+        "fr": "Les tournures impersonnelles"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.future",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "The future",
+        "fr": "Le futur"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.future.after-quand",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.future",
+      "name": {
+        "en": "Future after quand, dès que",
+        "fr": "Le futur après « quand », « dès que »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.future.anterieur",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.future",
+      "name": {
+        "en": "The future perfect",
+        "fr": "Le futur antérieur"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.future.irregular",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.future",
+      "name": {
+        "en": "Irregular future stems",
+        "fr": "Les radicaux irréguliers du futur"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.future.proche",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.future",
+      "name": {
+        "en": "aller + infinitive",
+        "fr": "Le futur proche"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.future.simple",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.future",
+      "name": {
+        "en": "The simple future",
+        "fr": "Le futur simple"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.gender",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Gender",
+        "fr": "Le genre"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.gender.endings",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.gender",
+      "name": {
+        "en": "Guessing gender from the ending",
+        "fr": "Deviner le genre d’après la terminaison"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.gender.nouns",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.gender",
+      "name": {
+        "en": "Masculine and feminine nouns",
+        "fr": "Noms masculins et féminins"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.gender.people",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.gender",
+      "name": {
+        "en": "Feminine forms of jobs and roles",
+        "fr": "Le féminin des métiers"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.gender.places",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.gender",
+      "name": {
+        "en": "Gender of countries and regions",
+        "fr": "Le genre des pays et régions"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.imperative",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "The imperative",
+        "fr": "L’impératif"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.imperative.forms",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.imperative",
+      "name": {
+        "en": "Giving instructions",
+        "fr": "Donner des instructions"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.imperative.pronouns",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.imperative",
+      "name": {
+        "en": "Pronouns with the imperative",
+        "fr": "Les pronoms à l’impératif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.negation",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Negation",
+        "fr": "La négation"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.negation.combined",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.negation",
+      "name": {
+        "en": "Combining negatives",
+        "fr": "Les négations combinées"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.negation.infinitive",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.negation",
+      "name": {
+        "en": "Negating an infinitive",
+        "fr": "La négation de l’infinitif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.negation.ne-pas",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.negation",
+      "name": {
+        "en": "ne … pas",
+        "fr": "« ne … pas »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.negation.ne-que",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.negation",
+      "name": {
+        "en": "ne … que — only",
+        "fr": "« ne … que »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.negation.other",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.negation",
+      "name": {
+        "en": "jamais, plus, rien, personne",
+        "fr": "« jamais », « plus », « rien », « personne »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.negation.spoken",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.negation",
+      "name": {
+        "en": "Dropping ne in speech",
+        "fr": "La chute du « ne » à l’oral"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.nonfinite",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram",
+      "name": {
+        "en": "Infinitive and participles",
+        "fr": "Infinitif et participes"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.nonfinite.gerondif",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.nonfinite",
+      "name": {
+        "en": "en + -ant",
+        "fr": "Le gérondif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.nonfinite.infinitive",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.nonfinite",
+      "name": {
+        "en": "Verb + infinitive",
+        "fr": "Verbe + infinitif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.nonfinite.participe-present",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.nonfinite",
+      "name": {
+        "en": "The present participle",
+        "fr": "Le participe présent"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.number",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Number and plurals",
+        "fr": "Le nombre et le pluriel"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.number.invariable",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.number",
+      "name": {
+        "en": "Nouns that do not change",
+        "fr": "Les noms invariables"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.number.irregular",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.number",
+      "name": {
+        "en": "Plurals in -x, -aux, -eux",
+        "fr": "Les pluriels en -x, -aux, -eux"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.number.regular",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.number",
+      "name": {
+        "en": "Regular plurals in -s",
+        "fr": "Le pluriel régulier en -s"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.passive",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram",
+      "name": {
+        "en": "The passive",
+        "fr": "La voix passive"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.passive.agent",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.passive",
+      "name": {
+        "en": "par or de",
+        "fr": "« par » ou « de »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.passive.avoiding",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.passive",
+      "name": {
+        "en": "Avoiding the passive with on",
+        "fr": "Éviter le passif avec « on »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.passive.formation",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.passive",
+      "name": {
+        "en": "Forming the passive",
+        "fr": "La formation du passif"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Past tenses",
+        "fr": "Les temps du passé"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.past.imparfait",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.past",
+      "name": {
+        "en": "The imperfect",
+        "fr": "L’imparfait"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.participles-irregular",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.past",
+      "name": {
+        "en": "Irregular past participles",
+        "fr": "Les participes passés irréguliers"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.passe-simple",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.past",
+      "name": {
+        "en": "Recognising the passé simple",
+        "fr": "Reconnaître le passé simple"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.pc-avoir",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.past",
+      "name": {
+        "en": "Passé composé with avoir",
+        "fr": "Le passé composé avec « avoir »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.pc-etre",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.past",
+      "name": {
+        "en": "Passé composé with être",
+        "fr": "Le passé composé avec « être »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.pc-pronominal",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.past",
+      "name": {
+        "en": "Passé composé of reflexive verbs",
+        "fr": "Le passé composé des verbes pronominaux"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.pc-vs-imparfait",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.past",
+      "name": {
+        "en": "Passé composé or imperfect?",
+        "fr": "Passé composé ou imparfait ?"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.plus-que-parfait",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.past",
+      "name": {
+        "en": "The pluperfect",
+        "fr": "Le plus-que-parfait"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.past.venir-de",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.past",
+      "name": {
+        "en": "venir de — to have just",
+        "fr": "« venir de » — le passé récent"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.preposition",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Prepositions",
+        "fr": "Les prépositions"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.preposition.countries",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.preposition",
+      "name": {
+        "en": "en, au, aux with countries",
+        "fr": "« en », « au », « aux » + pays"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.preposition.location",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.preposition",
+      "name": {
+        "en": "sur, sous, devant, derrière",
+        "fr": "Les prépositions de lieu"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.preposition.places",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.preposition",
+      "name": {
+        "en": "à, de, chez with places",
+        "fr": "« à », « de », « chez »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.preposition.time",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.preposition",
+      "name": {
+        "en": "depuis, pendant, pour, il y a",
+        "fr": "« depuis », « pendant », « pour », « il y a »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.preposition.verb-a",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.preposition",
+      "name": {
+        "en": "Verbs followed by à",
+        "fr": "Les verbes suivis de « à »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.preposition.verb-de",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.preposition",
+      "name": {
+        "en": "Verbs followed by de",
+        "fr": "Les verbes suivis de « de »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.present",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "The present tense",
+        "fr": "Le présent"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.present.er",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.present",
+      "name": {
+        "en": "-er verbs",
+        "fr": "Les verbes en -er"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.present.ir",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.present",
+      "name": {
+        "en": "-ir verbs",
+        "fr": "Les verbes en -ir"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.present.irregular",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.present",
+      "name": {
+        "en": "être, avoir, aller, faire",
+        "fr": "Les verbes irréguliers fréquents"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.present.pronominal",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.present",
+      "name": {
+        "en": "Reflexive verbs: se lever",
+        "fr": "Les verbes pronominaux"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.present.re",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.present",
+      "name": {
+        "en": "-re verbs",
+        "fr": "Les verbes en -re"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.present.stem-change",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.present",
+      "name": {
+        "en": "Stem changes: acheter, appeler, préférer",
+        "fr": "Les verbes à changement de radical"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Pronouns",
+        "fr": "Les pronoms"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.pronoun.ce-cela",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "ce, ça, cela",
+        "fr": "« ce », « ça », « cela »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.cod",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "Direct object: le, la, les",
+        "fr": "Le pronom COD"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.coi",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "Indirect object: lui, leur",
+        "fr": "Le pronom COI"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.demonstrative",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "celui, celle, ceux, celles",
+        "fr": "Les pronoms démonstratifs"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.en",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "en — of it, some",
+        "fr": "Le pronom « en »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.indefinite",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "quelqu’un, chacun, plusieurs",
+        "fr": "Les pronoms indéfinis"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.on",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "on — we, people, someone",
+        "fr": "« on »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.order",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "Two pronouns together",
+        "fr": "L’ordre des doubles pronoms"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.possessive",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "le mien, le tien, le sien",
+        "fr": "Les pronoms possessifs"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.reflexive",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "me, te, se, nous, vous",
+        "fr": "Les pronoms réfléchis"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.relative-lequel",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "lequel, auquel, duquel",
+        "fr": "« lequel », « auquel », « duquel »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.relative-ou-dont",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "où and dont",
+        "fr": "« où » et « dont »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.relative-qui-que",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "qui and que",
+        "fr": "« qui » et « que »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.subject",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "je, tu, il, elle, on…",
+        "fr": "Les pronoms sujets"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.tonic",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "moi, toi, lui, elle…",
+        "fr": "Les pronoms toniques"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.pronoun.y",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.pronoun",
+      "name": {
+        "en": "y — there, to it",
+        "fr": "Le pronom « y »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.question",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram",
+      "name": {
+        "en": "Questions",
+        "fr": "L’interrogation"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.question.est-ce-que",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.question",
+      "name": {
+        "en": "est-ce que",
+        "fr": "« est-ce que »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.question.intonation",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.question",
+      "name": {
+        "en": "Asking by intonation",
+        "fr": "L’interrogation par l’intonation"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.question.inversion",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.question",
+      "name": {
+        "en": "Inversion",
+        "fr": "L’inversion"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.question.lequel",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.question",
+      "name": {
+        "en": "lequel — which one",
+        "fr": "« lequel »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.question.quel",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.question",
+      "name": {
+        "en": "quel, quelle, quels, quelles",
+        "fr": "« quel »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.question.qui-que-quoi",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.question",
+      "name": {
+        "en": "qui, que, quoi",
+        "fr": "« qui », « que », « quoi »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.question.words",
+      "type": "grammar",
+      "level": "A1",
+      "parent": "gram.question",
+      "name": {
+        "en": "où, quand, comment, pourquoi",
+        "fr": "Les mots interrogatifs"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.reported",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram",
+      "name": {
+        "en": "Reported speech",
+        "fr": "Le discours rapporté"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.reported.imperative",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.reported",
+      "name": {
+        "en": "Reporting an instruction",
+        "fr": "Rapporter un ordre"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.reported.questions",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.reported",
+      "name": {
+        "en": "Reporting a question",
+        "fr": "Rapporter une question"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.reported.statements",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.reported",
+      "name": {
+        "en": "Reporting what was said",
+        "fr": "Rapporter une affirmation"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.reported.tense-shift",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.reported",
+      "name": {
+        "en": "Tense changes in reported speech",
+        "fr": "La concordance des temps"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.si",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram",
+      "name": {
+        "en": "Si-clauses",
+        "fr": "Les phrases avec « si »"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.si.imparfait-conditional",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.si",
+      "name": {
+        "en": "si + imperfect → conditional",
+        "fr": "« si » + imparfait → conditionnel"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.si.pqp-conditional-past",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.si",
+      "name": {
+        "en": "si + pluperfect → past conditional",
+        "fr": "« si » + plus-que-parfait → conditionnel passé"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.si.present-future",
+      "type": "grammar",
+      "level": "A2",
+      "parent": "gram.si",
+      "name": {
+        "en": "si + present → future",
+        "fr": "« si » + présent → futur"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.subjunctive",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram",
+      "name": {
+        "en": "The subjunctive",
+        "fr": "Le subjonctif"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "gram.subjunctive.conjunctions",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.subjunctive",
+      "name": {
+        "en": "After bien que, pour que, avant que",
+        "fr": "Après « bien que », « pour que »…"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.subjunctive.doubt",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.subjunctive",
+      "name": {
+        "en": "After doubt and possibility",
+        "fr": "Après le doute et la possibilité"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.subjunctive.emotion",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.subjunctive",
+      "name": {
+        "en": "After emotion",
+        "fr": "Après les sentiments"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.subjunctive.past",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.subjunctive",
+      "name": {
+        "en": "The past subjunctive",
+        "fr": "Le subjonctif passé"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.subjunctive.present",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.subjunctive",
+      "name": {
+        "en": "Forming the present subjunctive",
+        "fr": "Former le subjonctif présent"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.subjunctive.vs-indicative",
+      "type": "grammar",
+      "level": "B2",
+      "parent": "gram.subjunctive",
+      "name": {
+        "en": "Subjunctive or indicative?",
+        "fr": "Subjonctif ou indicatif ?"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "gram.subjunctive.will",
+      "type": "grammar",
+      "level": "B1",
+      "parent": "gram.subjunctive",
+      "name": {
+        "en": "After wanting and wishing",
+        "fr": "Après la volonté et le souhait"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": null,
+      "name": {
+        "en": "Vocabulary",
+        "fr": "Le vocabulaire"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "lex.abstract",
+      "type": "vocabulary",
+      "level": "B2",
+      "parent": "lex",
+      "name": {
+        "en": "Ideas and argument",
+        "fr": "Les idées et l’argumentation"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.administration",
+      "type": "vocabulary",
+      "level": "B1",
+      "parent": "lex",
+      "name": {
+        "en": "Paperwork and officialdom",
+        "fr": "Les démarches administratives"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.body",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "The body",
+        "fr": "Le corps"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.clothing",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Clothes",
+        "fr": "Les vêtements"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.emotions",
+      "type": "vocabulary",
+      "level": "A2",
+      "parent": "lex",
+      "name": {
+        "en": "Feelings",
+        "fr": "Les sentiments"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.environment",
+      "type": "vocabulary",
+      "level": "B2",
+      "parent": "lex",
+      "name": {
+        "en": "Environment and climate",
+        "fr": "L’environnement et le climat"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.family",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Family and people",
+        "fr": "La famille et les personnes"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.food",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Food and eating out",
+        "fr": "La nourriture et le restaurant"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.greetings",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Greetings and introductions",
+        "fr": "Saluer et se présenter"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.health",
+      "type": "vocabulary",
+      "level": "A2",
+      "parent": "lex",
+      "name": {
+        "en": "Health and the doctor",
+        "fr": "La santé et le médecin"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.housing",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Home and housing",
+        "fr": "Le logement"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.law",
+      "type": "vocabulary",
+      "level": "B2",
+      "parent": "lex",
+      "name": {
+        "en": "Law and justice",
+        "fr": "Le droit et la justice"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.leisure",
+      "type": "vocabulary",
+      "level": "A2",
+      "parent": "lex",
+      "name": {
+        "en": "Free time and hobbies",
+        "fr": "Les loisirs"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.media",
+      "type": "vocabulary",
+      "level": "B1",
+      "parent": "lex",
+      "name": {
+        "en": "News and media",
+        "fr": "L’actualité et les médias"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.money",
+      "type": "vocabulary",
+      "level": "B1",
+      "parent": "lex",
+      "name": {
+        "en": "Money and banking",
+        "fr": "L’argent et la banque"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.numbers",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Numbers and quantities",
+        "fr": "Les nombres et les quantités"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.politics",
+      "type": "vocabulary",
+      "level": "B2",
+      "parent": "lex",
+      "name": {
+        "en": "Politics and society",
+        "fr": "La politique et la société"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.relationships",
+      "type": "vocabulary",
+      "level": "B1",
+      "parent": "lex",
+      "name": {
+        "en": "Relationships",
+        "fr": "Les relations"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.shopping",
+      "type": "vocabulary",
+      "level": "A2",
+      "parent": "lex",
+      "name": {
+        "en": "Shopping",
+        "fr": "Les achats"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.study",
+      "type": "vocabulary",
+      "level": "A2",
+      "parent": "lex",
+      "name": {
+        "en": "School and studying",
+        "fr": "L’école et les études"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.technology",
+      "type": "vocabulary",
+      "level": "B1",
+      "parent": "lex",
+      "name": {
+        "en": "Technology and the internet",
+        "fr": "La technologie et internet"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.time",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Time and dates",
+        "fr": "L’heure et les dates"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.transport",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Getting around",
+        "fr": "Les transports"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.travel",
+      "type": "vocabulary",
+      "level": "A2",
+      "parent": "lex",
+      "name": {
+        "en": "Travel and holidays",
+        "fr": "Les voyages et les vacances"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.weather",
+      "type": "vocabulary",
+      "level": "A1",
+      "parent": "lex",
+      "name": {
+        "en": "Weather",
+        "fr": "La météo"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "lex.work",
+      "type": "vocabulary",
+      "level": "A2",
+      "parent": "lex",
+      "name": {
+        "en": "Work and jobs",
+        "fr": "Le travail et les métiers"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": null,
+      "name": {
+        "en": "Pronunciation",
+        "fr": "La prononciation"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.accent",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon",
+      "name": {
+        "en": "Accents and spelling signs",
+        "fr": "Les accents et signes"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.accent.aigu-grave",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.accent",
+      "name": {
+        "en": "é and è",
+        "fr": "« é » et « è »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.accent.capitals",
+      "type": "phonetics",
+      "level": "B1",
+      "parent": "phon.accent",
+      "name": {
+        "en": "Accents on capitals",
+        "fr": "Les accents sur les majuscules"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.accent.circonflexe",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.accent",
+      "name": {
+        "en": "The circumflex",
+        "fr": "L’accent circonflexe"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.accent.trema-cedille",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.accent",
+      "name": {
+        "en": "ï and ç",
+        "fr": "Le tréma et la cédille"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.consonant",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon",
+      "name": {
+        "en": "Consonants",
+        "fr": "Les consonnes"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.consonant.ch-j",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.consonant",
+      "name": {
+        "en": "[ʃ] and [ʒ] — chat / je",
+        "fr": "[ʃ] et [ʒ]"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.consonant.gn",
+      "type": "phonetics",
+      "level": "B1",
+      "parent": "phon.consonant",
+      "name": {
+        "en": "[ɲ] — montagne",
+        "fr": "[ɲ] — « montagne »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.consonant.h",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.consonant",
+      "name": {
+        "en": "Silent h and aspirate h",
+        "fr": "« h » muet et « h » aspiré"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.consonant.r",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.consonant",
+      "name": {
+        "en": "The French R",
+        "fr": "Le « r » français"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.elision",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon",
+      "name": {
+        "en": "Elision",
+        "fr": "L’élision"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.elision.basic",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.elision",
+      "name": {
+        "en": "l’, d’, j’, n’, qu’",
+        "fr": "L’élision"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.elision.before-h",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.elision",
+      "name": {
+        "en": "Elision and aspirate h",
+        "fr": "L’élision et le « h » aspiré"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.liaison",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon",
+      "name": {
+        "en": "Liaison",
+        "fr": "La liaison"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.liaison.forbidden",
+      "type": "phonetics",
+      "level": "B1",
+      "parent": "phon.liaison",
+      "name": {
+        "en": "Liaisons you must not make",
+        "fr": "Les liaisons interdites"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.liaison.obligatory",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.liaison",
+      "name": {
+        "en": "Liaisons you must make",
+        "fr": "Les liaisons obligatoires"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.liaison.optional",
+      "type": "phonetics",
+      "level": "B2",
+      "parent": "phon.liaison",
+      "name": {
+        "en": "Optional liaison and register",
+        "fr": "Les liaisons facultatives"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.nasal",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon",
+      "name": {
+        "en": "Nasal vowels",
+        "fr": "Les voyelles nasales"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.nasal.an",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.nasal",
+      "name": {
+        "en": "[ɑ̃] — an, en, am, em",
+        "fr": "[ɑ̃] — « an », « en »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.nasal.contrast",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.nasal",
+      "name": {
+        "en": "Telling the three nasals apart",
+        "fr": "Distinguer les trois nasales"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.nasal.denasalised",
+      "type": "phonetics",
+      "level": "B1",
+      "parent": "phon.nasal",
+      "name": {
+        "en": "When the n is pronounced",
+        "fr": "Quand le « n » se prononce"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.nasal.in",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.nasal",
+      "name": {
+        "en": "[ɛ̃] — in, ain, ein, un",
+        "fr": "[ɛ̃] — « in », « ain », « ein »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.nasal.on",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.nasal",
+      "name": {
+        "en": "[ɔ̃] — on, om",
+        "fr": "[ɔ̃] — « on », « om »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.rhythm",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon",
+      "name": {
+        "en": "Rhythm and intonation",
+        "fr": "Rythme et intonation"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.rhythm.enchainement",
+      "type": "phonetics",
+      "level": "B1",
+      "parent": "phon.rhythm",
+      "name": {
+        "en": "Enchaînement",
+        "fr": "L’enchaînement"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.rhythm.intonation",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.rhythm",
+      "name": {
+        "en": "Question and statement intonation",
+        "fr": "L’intonation"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.rhythm.stress",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.rhythm",
+      "name": {
+        "en": "Stress falls on the last syllable",
+        "fr": "L’accent sur la dernière syllabe"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.silent",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon",
+      "name": {
+        "en": "Silent letters",
+        "fr": "Les lettres muettes"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.silent.careful",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.silent",
+      "name": {
+        "en": "Final consonants that are pronounced",
+        "fr": "Les consonnes finales prononcées"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.silent.ent",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.silent",
+      "name": {
+        "en": "The -ent verb ending is silent",
+        "fr": "La terminaison « -ent » des verbes"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.silent.final",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.silent",
+      "name": {
+        "en": "Silent final consonants",
+        "fr": "Les consonnes finales muettes"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.vowel",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon",
+      "name": {
+        "en": "Vowels",
+        "fr": "Les voyelles"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "phon.vowel.e-muet",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.vowel",
+      "name": {
+        "en": "The silent e",
+        "fr": "Le « e » muet"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.vowel.e-open-closed",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.vowel",
+      "name": {
+        "en": "[e] vs [ɛ] — été / être",
+        "fr": "[e] et [ɛ] — « été » / « être »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.vowel.eu",
+      "type": "phonetics",
+      "level": "A2",
+      "parent": "phon.vowel",
+      "name": {
+        "en": "[ø] vs [œ] — peu / peur",
+        "fr": "[ø] et [œ] — « peu » / « peur »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.vowel.o",
+      "type": "phonetics",
+      "level": "B1",
+      "parent": "phon.vowel",
+      "name": {
+        "en": "[o] vs [ɔ] — beau / bonne",
+        "fr": "[o] et [ɔ]"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "phon.vowel.u-ou",
+      "type": "phonetics",
+      "level": "A1",
+      "parent": "phon.vowel",
+      "name": {
+        "en": "[y] vs [u] — tu / tout",
+        "fr": "[y] et [u] — « tu » / « tout »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage",
+      "type": "usage",
+      "level": "A1",
+      "parent": null,
+      "name": {
+        "en": "Usage and register",
+        "fr": "Usage et registre"
+      },
+      "retired": false,
+      "isGroup": true
+    },
+    {
+      "id": "usage.anglicisms",
+      "type": "usage",
+      "level": "B2",
+      "parent": "usage",
+      "name": {
+        "en": "Anglicisms and how they are used",
+        "fr": "Les anglicismes"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.date-time-format",
+      "type": "usage",
+      "level": "A1",
+      "parent": "usage",
+      "name": {
+        "en": "24-hour clock and date order",
+        "fr": "L’heure sur 24 h et la date"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.decimal-comma",
+      "type": "usage",
+      "level": "A1",
+      "parent": "usage",
+      "name": {
+        "en": "The decimal comma",
+        "fr": "La virgule décimale"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.email",
+      "type": "usage",
+      "level": "B1",
+      "parent": "usage",
+      "name": {
+        "en": "Writing an email or a letter",
+        "fr": "Écrire un courriel ou une lettre"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.false-friends",
+      "type": "usage",
+      "level": "A2",
+      "parent": "usage",
+      "name": {
+        "en": "False friends",
+        "fr": "Les faux amis"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.false-friends-common",
+      "type": "usage",
+      "level": "A2",
+      "parent": "usage",
+      "name": {
+        "en": "actuellement, éventuellement, sensible",
+        "fr": "« actuellement », « éventuellement », « sensible »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.false-friends-nouns",
+      "type": "usage",
+      "level": "B1",
+      "parent": "usage",
+      "name": {
+        "en": "librairie, journée, location",
+        "fr": "« librairie », « journée », « location »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.numbers-70-90",
+      "type": "usage",
+      "level": "A1",
+      "parent": "usage",
+      "name": {
+        "en": "soixante-dix, quatre-vingts",
+        "fr": "« soixante-dix », « quatre-vingts »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.politeness",
+      "type": "usage",
+      "level": "A1",
+      "parent": "usage",
+      "name": {
+        "en": "Politeness formulas",
+        "fr": "Les formules de politesse"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.register-spoken",
+      "type": "usage",
+      "level": "B1",
+      "parent": "usage",
+      "name": {
+        "en": "Spoken versus written French",
+        "fr": "Le français parlé et écrit"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.tu-vous",
+      "type": "usage",
+      "level": "A1",
+      "parent": "usage",
+      "name": {
+        "en": "tu or vous",
+        "fr": "« tu » ou « vous »"
+      },
+      "retired": false,
+      "isGroup": false
+    },
+    {
+      "id": "usage.typography",
+      "type": "usage",
+      "level": "A2",
+      "parent": "usage",
+      "name": {
+        "en": "French punctuation spacing",
+        "fr": "Les espaces avant la ponctuation"
+      },
+      "retired": false,
+      "isGroup": false
+    }
+  ]
+}

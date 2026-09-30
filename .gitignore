@@ -52,3 +52,9 @@ Thumbs.db
 /scratch/
 /tmp/
 *.local
+
+# Build output and dependencies of the web app
+web/node_modules/
+web/dist/
+web/public/content/
+web/public/fonts/

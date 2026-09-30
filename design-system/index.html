@@ -4,9 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Design system — French Learning for World</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="../public/fonts/fonts.css">
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiByeD0iMyIgZmlsbD0iIzM4NDA3ZiIvPjwvc3ZnPg==">
 <link rel="stylesheet" href="tokens.css">
 <link rel="stylesheet" href="components.css">
@@ -68,12 +66,12 @@
   the page. Toggle the theme and the direction with the buttons above; both are
   part of the system, not an afterthought.
 </p>
-<div class="alert alert--warning" style="max-width:var(--width-prose)">
-  <div class="alert__body"><strong>Fonts are not rendering as designed here.</strong>
-  This container’s network policy blocks the font host, so the page falls back
-  to system faces. Newsreader and Vazirmatn will load in production. Self-hosting
-  them is the step-4 action — it fixes this, the offline case, and the privacy
-  exposure of a third-party font request.</div>
+<div class="alert alert--success" style="max-width:var(--width-prose)">
+  <div class="alert__body"><strong>Fonts are self-hosted.</strong>
+  Newsreader and Vazirmatn are served from our own origin, both OFL-1.1, both
+  variable so one file covers every weight. Nothing is requested from a third
+  party, the service worker can cache them, and <code>unicode-range</code> means
+  a Latin page never downloads the Arabic subset.</div>
 </div>
 
 <!-- ─────────────── Colour ─────────────── -->

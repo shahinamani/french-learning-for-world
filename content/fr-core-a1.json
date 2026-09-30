@@ -44,7 +44,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "phon.accent.circonflexe"
+      ]
     },
     {
       "key": "v:avoir",
@@ -81,7 +87,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular"
+      ]
     },
     {
       "key": "v:aller",
@@ -118,7 +129,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-etre",
+        "gram.future.irregular",
+        "gram.preposition.places"
+      ]
     },
     {
       "key": "v:faire",
@@ -155,7 +172,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular"
+      ]
     },
     {
       "key": "v:pouvoir",
@@ -192,7 +214,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.negation.ne-pas"
+      ]
     },
     {
       "key": "v:vouloir",
@@ -229,7 +257,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.nonfinite.infinitive"
+      ]
     },
     {
       "key": "v:devoir",
@@ -266,7 +300,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.nonfinite.infinitive"
+      ]
     },
     {
       "key": "v:dire",
@@ -303,7 +343,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.pronoun.coi"
+      ]
     },
     {
       "key": "v:voir",
@@ -340,7 +386,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular"
+      ]
     },
     {
       "key": "v:prendre",
@@ -377,7 +428,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.simple"
+      ]
     },
     {
       "key": "v:parler",
@@ -414,7 +470,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.er",
+        "gram.past.pc-avoir",
+        "gram.future.simple",
+        "gram.preposition.verb-a"
+      ]
     },
     {
       "key": "v:manger",
@@ -451,7 +513,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.er",
+        "gram.past.pc-avoir",
+        "gram.future.simple"
+      ]
     },
     {
       "key": "v:commencer",
@@ -488,7 +555,14 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.er",
+        "gram.present.stem-change",
+        "gram.past.pc-avoir",
+        "gram.future.simple",
+        "gram.preposition.verb-a"
+      ]
     },
     {
       "key": "v:finir",
@@ -525,7 +599,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.ir",
+        "gram.past.pc-avoir",
+        "gram.future.simple",
+        "gram.preposition.verb-de"
+      ]
     },
     {
       "key": "n:maison",
@@ -563,7 +643,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "lex.housing"
+      ]
     },
     {
       "key": "n:livre",
@@ -601,7 +686,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "lex.study"
+      ]
     },
     {
       "key": "n:eau",
@@ -639,7 +729,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.partitive",
+        "phon.elision.basic",
+        "lex.food"
+      ]
     },
     {
       "key": "n:travail",
@@ -677,7 +773,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "gram.number.irregular",
+        "lex.work"
+      ]
     },
     {
       "key": "n:ville",
@@ -715,7 +817,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "lex.travel"
+      ]
     },
     {
       "key": "n:temps",
@@ -753,7 +860,13 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "phon.silent.final",
+        "lex.time"
+      ]
     },
     {
       "key": "n:femme",
@@ -791,7 +904,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.gender.people",
+        "lex.family"
+      ]
     },
     {
       "key": "n:homme",
@@ -829,7 +947,12 @@
         }
       ],
       "provenance": "original",
-      "licence": "CC BY-SA 4.0"
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "phon.elision.basic",
+        "lex.family"
+      ]
     }
   ]
 }

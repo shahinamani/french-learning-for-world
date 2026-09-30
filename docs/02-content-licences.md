@@ -27,6 +27,29 @@ Rephrasing is not a loophole. A *selection* of vocabulary is its compiler's own 
 
 ---
 
+## Fonts — self-hosted, and why
+
+| Asset | Licence | Source | Shipped |
+|---|---|---|---|
+| **Newsreader** (variable) | **OFL-1.1** | `@fontsource-variable/newsreader@5.3.0` | `public/fonts/newsreader-latin.woff2`, `-latin-ext.woff2` |
+| **Vazirmatn** (variable) | **OFL-1.1** | `@fontsource-variable/vazirmatn@5.3.0` | `public/fonts/vazirmatn-latin.woff2`, `-latin-ext.woff2`, `-arabic.woff2` |
+
+Both licences are committed beside the files as `LICENSE-Newsreader.txt` and
+`LICENSE-Vazirmatn.txt`. OFL permits redistribution and web embedding; it
+requires the licence to travel with the files, which is why it is there.
+
+**Served from our own origin, not a font host.** Three reasons, and a
+third-party host fails all three: a cross-origin font is not in our
+service-worker cache, so offline falls back to a system face; every visitor's
+IP reaches the host, which a German court has held to breach the GDPR; and
+some networks block the host outright, including the one this was built on.
+
+Variable fonts, so one file covers every weight — no per-weight request and no
+faux-bold. `unicode-range` means a Latin page never downloads the Arabic
+subset: a French page fetches 90.4 KB of the 192 KB shipped.
+
+---
+
 ## Sources approved for future use, with the licence checked
 
 Each carries a real obligation. They are listed with what that obligation actually costs us.
