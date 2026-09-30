@@ -282,12 +282,19 @@ ok(`a wrong answer states the right one ("${drillMsg.trim()}")`, /answer is|rép
 
 console.log('\n=== every route renders something ===');
 for (const [hash, label] of [['/learn','Learn'],['/practise/review','Flashcards'],['/progress','Progress'],
-  ['/search','Search'],['/account','Account'],['/practise/exams','Exams (stub)'],
+  ['/search','Search'],['/account','Account'],['/practise/exams','Exams'],
   ['/learn/verbs','Verbs (stub)'],['/learn/level/B1/grammar','Level (stub)'],
   ['/learn/concept/gram.subjunctive.present','Concept'],['/learn/verbs','Verbs'],
   ['/learn/verbs/prendre','Verb detail'],['/practise/conjugation?verb=finir&tense=futur','Conjugation drill'],
   ['/learn?level=B1','Learn filtered'],['/nowhere','404']]) {
   await go(page, hash);
+  // A lazy route renders its Suspense skeleton first, which is deliberately
+  // textless. Wait for the chunk rather than widening the timeout everywhere:
+  // the question is whether the route ever renders content, not how fast.
+  await page.waitForFunction(
+    () => ((document.querySelector('main')?.innerText) ?? '').trim().length > 30,
+    null, { timeout: 5000 },
+  ).catch(() => { /* fall through: the assertion below reports what it found */ });
   const text = (await page.locator('main').innerText()).trim();
   ok(`${label.padEnd(18)} renders ${text.length} chars of real content`, text.length > 30);
 }
@@ -466,7 +473,7 @@ console.log('\n=== carried-forward items ===');
   await q.clock.uninstall?.();
 
   // Stubs name what is missing and why.
-  for (const [hash, needle] of [['/practise/listening', 'licence'], ['/practise/exams', 'DELF'], ['/learn/level/B1/grammar', 'not built']]) {
+  for (const [hash, needle] of [['/practise/listening', 'licence'], ['/learn/level/B1/grammar', 'not built']]) {
     await q.goto(BASE + '#' + hash, { waitUntil: 'networkidle' }); await q.waitForTimeout(250);
     const txt = (await q.locator('[data-testid="stub"]').innerText()).toLowerCase();
     ok(`${hash} explains itself (mentions "${needle}")`, txt.includes(needle.toLowerCase()));
@@ -599,6 +606,136 @@ console.log('\n=== verbs drill: one sitting survives a reload ===');
   });
   ok(`${sittings.rows} drill rows across a reload are ONE sitting (${sittings.sessions} session id)`,
      sittings.rows >= 2 && sittings.sessions === 1);
+  await c.close();
+}
+
+// ── Exams, end to end ─────────────────────────────────────────────────────
+// The largest section, and the one that exercises the timer, the review log
+// and the taxonomy together. Sat, timed, left, resumed, submitted, and the
+// result checked for what it is supposed to be: a diagnosis, not a score.
+console.log('\n=== exams: sit, leave, resume, submit, and land in the review log ===');
+{
+  const c = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const p = await c.newPage(); watch(p, ' exams');
+
+  await p.goto(BASE + '#/practise/exams', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(600);
+  const papers = await p.locator('[data-testid="exam-papers"] a').count();
+  ok(`the exams list offers ${papers} papers`, papers >= 3);
+  const missing = await p.locator('[data-testid="exam-missing"] li').count();
+  const missingText = (await p.locator('[data-testid="exam-missing"]').innerText()).toLowerCase();
+  ok(`and names ${missing} papers it does NOT have, with reasons`, missing >= 4);
+  ok('  the listening reason is the licence, not a vague "coming soon"', missingText.includes('licence'));
+  ok('  the DALF reason is the missing C1/C2 concepts', missingText.includes('c1') && missingText.includes('c2'));
+  const indep = (await p.locator('[data-testid="exam-independence"]').innerText()).toLowerCase();
+  ok('  and the page states it is not affiliated with the examining bodies',
+     indep.includes('not affiliated') && indep.includes('france éducation'));
+
+  await p.locator('[data-testid="paper-delf-a1-ce"]').click();
+  await p.waitForTimeout(500);
+  const official = await p.locator('[data-testid="paper-official"]').innerText();
+  ok(`the paper says what the REAL paper is ("${official.split('\n')[1] ?? ''}")`,
+     /30/.test(official) && /25/.test(official));
+  ok('  and how this practice differs from it', /8 original questions/i.test(official));
+
+  await p.locator('[data-testid="start-exam"]').click();
+  await p.waitForTimeout(600);
+  const url1 = p.url();
+  ok(`starting puts the attempt id in the URL (${/a=[a-z0-9]+/.test(url1)})`, /a=[a-z0-9]+/.test(url1));
+  const clock1 = await p.locator('[data-testid="exam-clock"]').innerText();
+  ok(`the paper is timed and counting ("${clock1.trim()}")`, /^(29|30):\d\d$/.test(clock1.trim()));
+
+  // Answer three, then leave the app entirely.
+  for (let q = 0; q < 3; q++) {
+    await p.locator('[data-testid="option-1"]').click();
+    await p.waitForTimeout(150);
+    if (q < 2) { await p.locator('[data-testid="exam-next"]').click(); await p.waitForTimeout(200); }
+  }
+  await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(400);
+  await p.goto(BASE + '#/practise/exams/delf-a1-ce', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(500);
+  const resumeShown = await p.locator('[data-testid="resume-card"]').count();
+  ok('leaving and coming back offers RESUME, not a fresh paper', resumeShown === 1);
+  await p.locator('[data-testid="resume"]').click();
+  await p.waitForTimeout(600);
+  const kept = await p.locator('[data-testid="option-1"]').first().isChecked();
+  ok(`resuming keeps the answers already given (${kept})`, kept);
+  const clock2 = await p.locator('[data-testid="exam-clock"]').innerText();
+  ok(`and the clock kept running rather than resetting ("${clock2.trim()}")`,
+     clock2.trim() !== clock1.trim());
+
+  await p.locator('[data-testid="exam-submit"]').click();
+  await p.waitForTimeout(1200);
+  const score = await p.locator('[data-testid="exam-score"]').innerText();
+  ok(`submitting lands on a result ("${score.trim()}")`, /\d+ \/ \d+/.test(score));
+  const weak = await p.locator('[data-testid="exam-weak"] a').count();
+  ok(`the result is a diagnosis: ${weak} concepts to work on, each a link`, weak > 0);
+  const firstWeak = await p.locator('[data-testid="exam-weak"] a').first().getAttribute('href');
+  ok(`  and that link practises the concept alone (${firstWeak})`,
+     (firstWeak ?? '').includes('/practise/review?concept='));
+  const notOfficial = (await p.locator('[data-testid="exam-score"]').locator('xpath=../..').innerText()).toLowerCase();
+  ok('  and it refuses to call itself a pass, a fail or a level',
+     notOfficial.includes('not the examination') || notOfficial.includes('practice, not'));
+
+  // The point of the section: exam answers join the same record as everything else.
+  const rows = await p.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    return await new Promise((r) => {
+      const q = db.transaction('reviews').objectStore('reviews').index('by-user-time')
+        .getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity]));
+      q.onsuccess = () => r(q.result.filter((x) => x.cardKey.startsWith('exam:')));
+    });
+  });
+  ok(`${rows.length} exam answers wrote review-log rows`, rows.length === 8);
+  ok(`  each against real concept ids (${(rows[0]?.conceptIds ?? []).join(', ')})`,
+     (rows[0]?.conceptIds ?? []).length > 0);
+  ok(`  with the scheduler's parameter hash (${rows[0]?.paramsHash})`,
+     /^[0-9a-f]{8}$/.test(rows[0]?.paramsHash ?? ''));
+  ok(`  and one session id for the whole paper (${new Set(rows.map((r) => r.sessionId)).size})`,
+     new Set(rows.map((r) => r.sessionId)).size === 1);
+
+  // Reloading the results must not write the log twice.
+  await p.reload({ waitUntil: 'networkidle' });
+  await p.waitForTimeout(1200);
+  const again = await p.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    return await new Promise((r) => {
+      const q = db.transaction('reviews').objectStore('reviews').index('by-user-time')
+        .getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity]));
+      q.onsuccess = () => r(q.result.filter((x) => x.cardKey.startsWith('exam:')).length);
+    });
+  });
+  ok(`reloading the results does not double the log (${again} rows)`, again === rows.length);
+  await c.close();
+}
+
+// ── The interface language is fetched, not bundled ─────────────────────────
+// Three of the four dictionaries left the first load. If the fetch ever breaks,
+// the page must stay in English rather than showing key names or nothing.
+console.log('\n=== languages load on demand ===');
+{
+  const c = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const p = await c.newPage(); watch(p, ' lang');
+  await p.goto(BASE + '#/account', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(500);
+  await p.locator('[data-testid="ui-lang"]').selectOption('fa');
+  await p.waitForTimeout(800);
+  const dir = await p.evaluate(() => document.documentElement.dir);
+  const body = await p.locator('#main').innerText();
+  ok(`switching to Persian fetches its dictionary and applies it (dir=${dir})`, dir === 'rtl');
+  ok('  and the interface is actually in Persian, not English key names',
+     /[\u0600-\u06FF]/.test(body) && !body.includes('interfaceLanguage'));
+  await p.locator('[data-testid="ui-lang"]').selectOption('ar');
+  await p.waitForTimeout(800);
+  const arBody = await p.locator('#main').innerText();
+  ok('  Arabic too', /[\u0600-\u06FF]/.test(arBody));
+  await p.locator('[data-testid="ui-lang"]').selectOption('en');
+  await p.waitForTimeout(500);
+  ok('  and back to English, left-to-right',
+     (await p.evaluate(() => document.documentElement.dir)) === 'ltr');
   await c.close();
 }
 
@@ -744,7 +881,8 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
     ['/search?q=etre', 'Search'],
     ['/account', 'Account'],
     ['/learn/concept/gram.present.irregular', 'Concept'],
-    ['/practise/exams', 'Exams stub'],
+    ['/practise/exams', 'Exams'],
+    ['/practise/exams/delf-a1-ce', 'Exam paper'],
   ];
   let totalViolations = 0;
   for (const theme of ['light', 'dark']) {

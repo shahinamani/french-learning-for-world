@@ -22,7 +22,8 @@ function safely<T>(fn: () => T, fallback: T): T {
   try { return fn(); } catch { return fallback; }
 }
 
-function newId(): string {
+/** A short opaque id. Shared, because three features had their own copy. */
+export function newId(): string {
   // crypto.randomUUID is unavailable over plain http on some browsers.
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
   if (!globalThis.crypto?.getRandomValues) return `id-${Date.now()}-${Math.random().toString(16).slice(2)}`;

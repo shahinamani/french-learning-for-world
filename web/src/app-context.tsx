@@ -1,7 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState, type ReactNode } from 'react';
 import { resolveActiveProfile, type Profile } from './lib/session';
 import { loadSettings, saveSettings, type Settings } from './lib/settings';
-import { translator, LOCALES, detectLocale } from './lib/i18n';
+import { translator, LOCALES, detectLocale, loadDictionary, dictionaryFor } from './lib/i18n';
 import type { Locale } from './lib/types';
 
 type Ctx = {
@@ -28,6 +28,18 @@ export function AppProvider({ children }: { children: ReactNode }) {
   // Switching profile reloads that profile's settings. Nothing carries over.
   useEffect(() => { setSettings(loadSettings(profile.id, detected)); }, [profile.id, detected]);
 
+  // Fetch the chosen language if it is not the bundled English. Until it
+  // arrives every string falls back to English rather than to a blank screen
+  // or a flash of key names; `dictReady` re-renders once it lands.
+  const [dictReady, setDictReady] = useState(0);
+  useEffect(() => {
+    if (dictionaryFor(settings.ui)) return;
+    let live = true;
+    loadDictionary(settings.ui).then(() => { if (live) setDictReady((n) => n + 1); })
+      .catch(() => { /* stays on English, which is still a working page */ });
+    return () => { live = false; };
+  }, [settings.ui]);
+
   useEffect(() => {
     if (typeof document === 'undefined') return;
     const root = document.documentElement;
@@ -49,7 +61,7 @@ export function AppProvider({ children }: { children: ReactNode }) {
 
   const value: Ctx = {
     profile, setProfile, settings, update, storageWorks,
-    t: useMemo(() => translator(settings.ui), [settings.ui]),
+    t: useMemo(() => translator(settings.ui), [settings.ui, dictReady]),
   };
   return <AppContext.Provider value={value}>{children}</AppContext.Provider>;
 }

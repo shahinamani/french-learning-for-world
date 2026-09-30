@@ -12,6 +12,29 @@ const en = {
   verbs: 'Verbs', verbsIntro: 'Search any verb and see every tense and mood. Practice runs straight from the table, and what you get wrong joins the same record as everything else.', verbSearchPlaceholder: 'être, to take, allons…', irregular: 'irregular', regular: 'regular', auxiliary: 'auxiliary', imperative: 'Imperative', noImperative: 'This verb has no imperative in ordinary French.', practiseTense: 'Practise', yourAnswer: 'Your answer', check: 'Check', next: 'Next', correct: 'Correct.', accentsOnly: 'Right, but the accents: {a}', answerIs: 'The answer is {a}',
   appName: 'French Learning for World',
   mainNav: 'Main',
+  exams: 'Examinations', questions: '{n} questions',
+  examsIntro: 'Practice papers for the French examinations, written for this project. They are not past papers and not official material.',
+  examsAvailable: 'What you can practise now', examsMissing: 'What is not here, and why',
+  examsMissingIntro: 'These papers are missing for reasons, not by oversight. Each one says what is blocking it.',
+  whyNoListening: 'No listening paper: we ship no audio, because none has been obtained under a licence that permits it. Machine speech is not offered as listening practice.',
+  whyNoWriting: 'No writing paper: writing needs a human or a very good model to mark it, and pretending otherwise would waste your time.',
+  whyNoSpeaking: 'No speaking paper: the same, and it also needs recording and a marker.',
+  whyNoDalf: 'No DALF: it is C1 and C2 only, and the concept map for this project stops at B2. B2 is the stated ceiling until A1–B2 is deep rather than thin.',
+  examIndependence: 'This project is independent. It is not affiliated with, endorsed by or connected to France Éducation international, the Chambre de commerce et d’industrie de Paris, or any body that administers these examinations. No past paper is reproduced here.',
+  theRealPaper: 'The real paper', thisPractice: 'This practice:', duration: 'Duration', marks: 'Marks', source: 'Source',
+  startExam: 'Start — {n} minutes', resume: 'Resume', attemptInProgress: 'You have a paper in progress',
+  yourAttempts: 'Your past attempts', paperNotFound: 'That paper does not exist.',
+  attemptNotFound: 'That attempt is not on this device.',
+  attemptNotFoundBody: 'Attempts are stored on the device you sat them on. Start a new one, or open it on the device you used.',
+  attemptFinished: 'You have already finished this attempt.', seeResults: 'See the results',
+  questionsAnswered: 'Questions answered', previous: 'Previous',
+  submitExam: 'Finish — {n} of {m} answered',
+  examResumable: 'Your answers are saved as you go. You can close this and come back; the clock keeps running.',
+  yourResult: 'Your result', score: 'Score', answeredOf: '{n} of {m} answered',
+  notAnOfficialResult: 'This is practice, not the examination. It is not a pass or a fail and it is not a level.',
+  whatToWorkOn: 'What to work on', whatWentWell: 'What went well', nothingWeak: 'Every concept in this paper came out right.',
+  everyQuestion: 'Every question', incorrect: 'Wrong', notAnswered: 'Not answered',
+  theAnswer: 'the answer', youChose: 'You chose', backToPaper: 'Back to the paper',
   importData: 'Bring your progress in', chooseFile: 'Choose a file…',
   importBody: 'Load a file you exported from this app, on this device or another one. Your history is added to this profile; nothing already here is lost, and importing the same file twice changes nothing.',
   importDone: 'Added {n} reviews, skipped {s} already here, updated {c} cards.',
@@ -58,162 +81,38 @@ const en = {
   independence: 'Independent study tool. Not affiliated with any examination body. No certificates are issued.',
 };
 
-type Dict = typeof en;
+export type Dict = typeof en;
 
-const fr: Dict = {
-  verbs: 'Verbes', verbsIntro: "Cherchez un verbe et voyez tous ses temps et modes. On s'entraîne directement depuis le tableau, et ce que vous ratez rejoint le même historique que le reste.", verbSearchPlaceholder: 'être, prendre, allons…', irregular: 'irrégulier', regular: 'régulier', auxiliary: 'auxiliaire', imperative: 'Impératif', noImperative: "Ce verbe n'a pas d'impératif en français courant.", practiseTense: "S'entraîner", yourAnswer: 'Votre réponse', check: 'Vérifier', next: 'Suivant', correct: 'Correct.', accentsOnly: 'Juste, mais les accents : {a}', answerIs: 'La réponse est {a}',
-  appName: 'Apprendre le français pour le monde',
-  mainNav: 'Principal',
-  importData: 'Importer votre progression', chooseFile: 'Choisir un fichier…',
-  importBody: 'Chargez un fichier exporté depuis cette application, sur cet appareil ou un autre. Votre historique est ajouté à ce profil ; rien n’est perdu, et importer deux fois le même fichier ne change rien.',
-  importDone: '{n} révisions ajoutées, {s} déjà présentes ignorées, {c} cartes mises à jour.',
-  importNotJson: 'Ce fichier n’est pas lisible comme du JSON.',
-  importNotOurs: 'Ce n’est pas un fichier de progression de cette application.',
-  importVersion: 'Ce fichier vient d’une version plus récente de l’application.',
-  sessionOfMinutes: 'Votre session de {n} minutes est terminée.', keepGoing: 'Continuer', timeLeft: 'il reste {c}',
-  learn: 'Apprendre', practise: 'Pratiquer', progress: 'Progrès', search: 'Chercher',
-  settings: 'Réglages', account: 'Compte', about: 'À propos', close: 'Fermer', back: 'Retour',
-  today: "Aujourd'hui", dueNow: 'À réviser', newCards: 'Nouvelles', learned: 'Apprises', cards: 'Cartes',
-  yourLevel: 'Votre niveau', allLevels: 'Tous les niveaux', showingLevel: 'Niveau {level} seulement', toWorkOn: 'À travailler', start: 'Commencer', startSession: 'Commencer',
-  minutes: '{n} min', sessionOf: '{n} cartes · {m} min',
-  nothingDue: "Rien à réviser pour l'instant", nothingDueBody: 'Prenez de nouvelles cartes, ou revenez plus tard.',
-  studyAhead: 'Nouvelles cartes', sessionDone: 'Séance terminée',
-  sessionDoneBody: 'Toutes les cartes dues ont été révisées.', reviewed: 'Révisées : {n}',
-  showAnswer: 'Voir la réponse', again: 'À revoir', hard: 'Difficile', good: 'Bien', easy: 'Facile',
-  now: 'maintenant', days: '{n} j', past: 'Passé', future: 'Futur',
-  verb: 'verbe', noun: 'nom', adjective: 'adjectif', masculine: 'masculin', feminine: 'féminin',
-  timer: "Minuteur d'étude", pause: 'Pause', reset: 'Réinitialiser', dismiss: 'Fermer',
-  timerDone: 'Le temps est écoulé.', timerDoneSilent: "Le temps est écoulé. Le navigateur n'a pas joué le carillon.",
-  timerAway: 'Votre minuteur a fini pendant votre absence.',
-  soundOn: 'Carillon activé', soundOff: 'Carillon désactivé',
-  conceptRecord: 'Votre historique sur ce point', practiseThis: 'Travailler ce point',
-  noRecordYet: 'Aucune révision. Étudiez une carte qui le met en jeu et ceci se remplira.',
-  reviewsCount: '{n} révisions', accuracy: 'Réussite', lastSeen: 'Dernière fois',
-  relatedConcepts: 'Ce que cette carte met en jeu', openPanel: 'Voir le détail',
-  searchPlaceholder: 'Leçons, grammaire, verbes, mots…',
-  searchEmpty: 'Rien pour « {q} ». Essayez : passé composé, liaison, voyager.',
-  searchHint: 'Tapez pour chercher. Essayez un niveau comme « B1 », ou une durée comme « 5 min ».',
-  grammar: 'Grammaire', vocabulary: 'Vocabulaire', phonetics: 'Prononciation', usage: 'Usage',
-  concepts: 'Points', sessions: 'Séances', loading: 'Chargement…',
-  loadFailed: 'Impossible de charger le contenu.', retry: 'Réessayer',
-  offline: 'Hors ligne — ce qui est déjà sur cet appareil fonctionne.',
-  storageBlocked: "Ce navigateur n'enregistre pas la progression — fenêtre privée ?",
-  weakNone: "Pas encore assez de données. Après une vingtaine de révisions, vos points faibles apparaissent ici.",
-  weakIntro: "Vos points faibles apparaissent ici au fil de vos révisions. Le système observe les points que vous ratez et vous montre ceux à travailler.",
-  history: 'Historique', thisWeek: 'Cette semaine', whatMoved: 'Ce qui a bougé', noHistory: 'Aucune révision.',
-  interfaceLanguage: "Langue de l'interface", meaningLanguage: 'Langue des significations',
-  profile: 'Profil', switchProfile: 'Changer de profil', newProfile: 'Nouveau profil',
-  exportData: 'Exporter mes données', eraseData: 'Tout effacer',
-  eraseConfirm: 'Effacer toute la progression de ce profil ? Action irréversible.',
-  notBuilt: 'Pas encore construit',
-  notBuiltBody: "Cette section est prévue. La coque, la recherche, le panneau latéral et les cartes sont terminés ; le reste suivra le même schéma.",
-  independence: "Outil d'étude indépendant. Non affilié à un organisme d'examen. Aucun certificat n'est délivré.",
-};
+/**
+ * English is bundled; the other three are fetched when a learner actually uses
+ * them. All four in the first load cost 13 820 bytes gzipped, of which any one
+ * learner reads a quarter — and the budget has no room for three languages
+ * nobody on this page is reading.
+ *
+ * Until a dictionary arrives the translator falls back to English, which is why
+ * `en` cannot itself be lazy: the prerendered HTML is rendered with it.
+ */
+const loaded: Partial<Record<Locale, Dict>> = { en };
+const pending: Partial<Record<Locale, Promise<Dict>>> = {};
 
-const fa: Dict = {
-  verbs: 'فعل‌ها', verbsIntro: 'هر فعلی را جست‌وجو کنید و همه‌ی زمان‌ها و وجه‌های آن را ببینید. تمرین مستقیم از همین جدول انجام می‌شود و خطاهای شما به همان سابقه‌ی همیشگی می‌پیوندد.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'بی‌قاعده', regular: 'باقاعده', auxiliary: 'فعل کمکی', imperative: 'امری', noImperative: 'این فعل در فرانسه‌ی رایج وجه امری ندارد.', practiseTense: 'تمرین', yourAnswer: 'پاسخ شما', check: 'بررسی', next: 'بعدی', correct: 'درست است.', accentsOnly: 'درست بود، اما علامت‌ها: {a}', answerIs: 'پاسخ درست {a} است',
-  appName: 'یادگیری فرانسه برای جهان',
-  mainNav: 'اصلی',
-  importData: 'وارد کردن پیشرفت شما', chooseFile: 'انتخاب فایل…',
-  importBody: 'فایلی را که از این برنامه خروجی گرفته‌اید بارگذاری کنید، از همین دستگاه یا دستگاهی دیگر. تاریخچهٔ شما به این نمایه افزوده می‌شود؛ چیزی از دست نمی‌رود و وارد کردن دوبارهٔ همان فایل تغییری ایجاد نمی‌کند.',
-  importDone: '{n} مرور افزوده شد، {s} مورد تکراری نادیده گرفته شد، {c} کارت به‌روز شد.',
-  importNotJson: 'این فایل به شکل JSON خوانده نمی‌شود.',
-  importNotOurs: 'این فایل پیشرفتِ این برنامه نیست.',
-  importVersion: 'این فایل از نسخهٔ جدیدتری از برنامه است.',
-  sessionOfMinutes: 'جلسهٔ {n} دقیقه‌ای شما تمام شد.', keepGoing: 'ادامه بده', timeLeft: '{c} باقی مانده',
-  learn: 'آموزش', practise: 'تمرین', progress: 'پیشرفت', search: 'جست‌وجو',
-  settings: 'تنظیمات', account: 'حساب', about: 'درباره', close: 'بستن', back: 'بازگشت',
-  today: 'امروز', dueNow: 'برای مرور', newCards: 'جدید', learned: 'آموخته', cards: 'کارت‌ها',
-  yourLevel: 'سطح شما', allLevels: 'همه‌ی سطح‌ها', showingLevel: 'فقط سطح {level}', toWorkOn: 'نیازمند تمرین', start: 'شروع', startSession: 'شروع مطالعه',
-  minutes: '{n} دقیقه', sessionOf: '{n} کارت · {m} دقیقه',
-  nothingDue: 'در حال حاضر کارتی برای مرور نیست', nothingDueBody: 'کارت‌های جدید بخوانید یا بعداً برگردید.',
-  studyAhead: 'کارت‌های جدید', sessionDone: 'جلسه تمام شد',
-  sessionDoneBody: 'همه‌ی کارت‌های مهلت‌رسیده مرور شدند.', reviewed: 'مرور شده: {n}',
-  showAnswer: 'نمایش پاسخ', again: 'دوباره', hard: 'سخت', good: 'خوب', easy: 'آسان',
-  now: 'اکنون', days: '{n} روز', past: 'گذشته', future: 'آینده',
-  verb: 'فعل', noun: 'اسم', adjective: 'صفت', masculine: 'مذکر', feminine: 'مؤنث',
-  timer: 'زمان‌سنج مطالعه', pause: 'توقف', reset: 'بازنشانی', dismiss: 'بستن',
-  timerDone: 'زمان تمام شد.', timerDoneSilent: 'زمان تمام شد. مرورگر اجازه‌ی پخش صدا نداد.',
-  timerAway: 'زمان‌سنج شما در نبودتان به پایان رسید.',
-  soundOn: 'صدا روشن', soundOff: 'صدا خاموش',
-  conceptRecord: 'سابقه‌ی شما در این نکته', practiseThis: 'تمرین همین نکته',
-  noRecordYet: 'هنوز مروری نیست. کارتی مرتبط بخوانید تا اینجا پر شود.',
-  reviewsCount: '{n} مرور', accuracy: 'درستی', lastSeen: 'آخرین بار',
-  relatedConcepts: 'این کارت چه چیزی را می‌سنجد', openPanel: 'نمایش جزئیات',
-  searchPlaceholder: 'درس‌ها، دستور، فعل‌ها، واژه‌ها…',
-  searchEmpty: 'چیزی برای «{q}» نیست. امتحان کنید: passé composé، liaison، voyager.',
-  searchHint: 'برای جست‌وجو تایپ کنید. سطحی مثل «B1» یا مدتی مثل «5 min» را امتحان کنید.',
-  grammar: 'دستور زبان', vocabulary: 'واژگان', phonetics: 'تلفظ', usage: 'کاربرد',
-  concepts: 'نکته‌ها', sessions: 'جلسه‌ها', loading: 'در حال بارگذاری…',
-  loadFailed: 'محتوا بارگذاری نشد.', retry: 'تلاش دوباره',
-  offline: 'بدون اینترنت — آنچه روی این دستگاه است کار می‌کند.',
-  storageBlocked: 'این مرورگر پیشرفت را ذخیره نمی‌کند — شاید پنجره‌ی ناشناس باشد.',
-  weakNone: 'هنوز داده کافی نیست. پس از حدود بیست مرور، نقاط ضعف شما اینجا می‌آید.',
-  weakIntro: 'نقاط ضعف شما همراه با مطالعه اینجا ظاهر می‌شود. سامانه نکته‌هایی را که اشتباه می‌کنید دنبال می‌کند و آن‌ها را نشان می‌دهد.',
-  history: 'تاریخچه', thisWeek: 'این هفته', whatMoved: 'چه چیزی تغییر کرد', noHistory: 'هنوز مروری نیست.',
-  interfaceLanguage: 'زبان برنامه', meaningLanguage: 'زبان معنی',
-  profile: 'نمایه', switchProfile: 'تغییر نمایه', newProfile: 'نمایه‌ی جدید',
-  exportData: 'خروجی گرفتن از داده‌ها', eraseData: 'پاک کردن همه چیز',
-  eraseConfirm: 'تمام پیشرفت این نمایه پاک شود؟ برگشت‌پذیر نیست.',
-  notBuilt: 'هنوز ساخته نشده',
-  notBuiltBody: 'این بخش برنامه‌ریزی شده است. پوسته، جست‌وجو، پنل کناری و کارت‌ها کامل‌اند؛ بقیه همین الگو را دنبال می‌کنند.',
-  independence: 'ابزار مطالعه‌ی مستقل. وابسته به هیچ نهاد آزمون‌گیرنده‌ای نیست. هیچ مدرکی صادر نمی‌کند.',
-};
+export function dictionaryFor(locale: Locale): Dict | undefined {
+  return loaded[locale];
+}
 
-const ar: Dict = {
-  verbs: 'الأفعال', verbsIntro: 'ابحث عن أي فعل وشاهد كل أزمنته وصيغه. التمرين يبدأ من الجدول مباشرة، وما تخطئ فيه ينضم إلى السجل نفسه.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'شاذّ', regular: 'منتظم', auxiliary: 'الفعل المساعد', imperative: 'الأمر', noImperative: 'لا صيغة أمر لهذا الفعل في الفرنسية المعتادة.', practiseTense: 'تدرّب', yourAnswer: 'إجابتك', check: 'تحقّق', next: 'التالي', correct: 'صحيح.', accentsOnly: 'صحيح، لكن العلامات: {a}', answerIs: 'الإجابة هي {a}',
-  appName: 'تعلّم الفرنسية للعالم',
-  mainNav: 'الرئيسية',
-  importData: 'استيراد تقدّمك', chooseFile: 'اختر ملفًا…',
-  importBody: 'حمّل ملفًا صدّرته من هذا التطبيق، من هذا الجهاز أو من جهاز آخر. يُضاف سجلّك إلى هذا الملف الشخصي؛ لا يضيع شيء، واستيراد الملف نفسه مرتين لا يغيّر شيئًا.',
-  importDone: 'أُضيفت {n} مراجعة، وتُخطّيت {s} موجودة، وحُدّثت {c} بطاقة.',
-  importNotJson: 'هذا الملف غير قابل للقراءة بصيغة JSON.',
-  importNotOurs: 'هذا ليس ملف تقدّم من هذا التطبيق.',
-  importVersion: 'هذا الملف من إصدار أحدث من التطبيق.',
-  sessionOfMinutes: 'انتهت جلستك التي مدتها {n} دقيقة.', keepGoing: 'واصل', timeLeft: 'بقي {c}',
-  learn: 'التعلّم', practise: 'التمرين', progress: 'التقدّم', search: 'البحث',
-  settings: 'الإعدادات', account: 'الحساب', about: 'حول', close: 'إغلاق', back: 'رجوع',
-  today: 'اليوم', dueNow: 'للمراجعة', newCards: 'جديدة', learned: 'محفوظة', cards: 'البطاقات',
-  yourLevel: 'مستواك', allLevels: 'كل المستويات', showingLevel: 'المستوى {level} فقط', toWorkOn: 'بحاجة إلى عمل', start: 'ابدأ', startSession: 'ابدأ الدراسة',
-  minutes: '{n} دقيقة', sessionOf: '{n} بطاقة · {m} دقيقة',
-  nothingDue: 'لا توجد بطاقات للمراجعة الآن', nothingDueBody: 'ادرس بطاقات جديدة أو عد لاحقًا.',
-  studyAhead: 'بطاقات جديدة', sessionDone: 'انتهت الجلسة',
-  sessionDoneBody: 'تمت مراجعة كل البطاقات المستحقة.', reviewed: 'تمت مراجعة: {n}',
-  showAnswer: 'أظهر الإجابة', again: 'مرة أخرى', hard: 'صعبة', good: 'جيدة', easy: 'سهلة',
-  now: 'الآن', days: '{n} ي', past: 'الماضي', future: 'المستقبل',
-  verb: 'فعل', noun: 'اسم', adjective: 'صفة', masculine: 'مذكّر', feminine: 'مؤنّث',
-  timer: 'مؤقّت الدراسة', pause: 'إيقاف مؤقت', reset: 'إعادة ضبط', dismiss: 'إغلاق',
-  timerDone: 'انتهى الوقت.', timerDoneSilent: 'انتهى الوقت. لم يسمح المتصفح بتشغيل الجرس.',
-  timerAway: 'انتهى مؤقّتك أثناء غيابك.',
-  soundOn: 'الجرس مفعّل', soundOff: 'الجرس متوقف',
-  conceptRecord: 'سجلّك في هذه النقطة', practiseThis: 'تدرّب على هذه النقطة',
-  noRecordYet: 'لا مراجعات بعد. ادرس بطاقة تستخدمها وسيمتلئ هذا.',
-  reviewsCount: '{n} مراجعة', accuracy: 'الدقة', lastSeen: 'آخر مرة',
-  relatedConcepts: 'ما تختبره هذه البطاقة', openPanel: 'عرض التفاصيل',
-  searchPlaceholder: 'دروس، قواعد، أفعال، كلمات…',
-  searchEmpty: 'لا شيء لـ «{q}». جرّب: passé composé، liaison، voyager.',
-  searchHint: 'اكتب للبحث. جرّب مستوى مثل «B1» أو مدة مثل «5 min».',
-  grammar: 'القواعد', vocabulary: 'المفردات', phonetics: 'النطق', usage: 'الاستعمال',
-  concepts: 'النقاط', sessions: 'الجلسات', loading: 'جارٍ التحميل…',
-  loadFailed: 'تعذّر تحميل المحتوى.', retry: 'أعد المحاولة',
-  offline: 'دون اتصال — ما هو على هذا الجهاز يعمل.',
-  storageBlocked: 'هذا المتصفح لا يحفظ التقدّم — قد تكون نافذة خاصة.',
-  weakNone: 'لا توجد بيانات كافية بعد. بعد نحو عشرين مراجعة تظهر نقاط ضعفك هنا.',
-  weakIntro: 'تظهر نقاط ضعفك هنا مع تقدّم دراستك. يتابع النظام النقاط التي تخطئ فيها ويعرض ما يجب العمل عليه.',
-  history: 'السجل', thisWeek: 'هذا الأسبوع', whatMoved: 'ما الذي تغيّر', noHistory: 'لا مراجعات بعد.',
-  interfaceLanguage: 'لغة الواجهة', meaningLanguage: 'لغة المعنى',
-  profile: 'الملف', switchProfile: 'تبديل الملف', newProfile: 'ملف جديد',
-  exportData: 'تصدير بياناتي', eraseData: 'محو كل شيء',
-  eraseConfirm: 'محو كل تقدّم هذا الملف؟ لا يمكن التراجع.',
-  notBuilt: 'لم يُبنَ بعد',
-  notBuiltBody: 'هذا القسم مخطّط له. الهيكل والبحث واللوحة الجانبية والبطاقات جاهزة؛ والبقية تتبع النمط نفسه.',
-  independence: 'أداة دراسة مستقلة. غير تابعة لأي هيئة امتحانات. لا تُصدر أي شهادة.',
-};
-
-export const dictionaries: Record<Locale, Dict> = { en, fr, fa, ar };
+export function loadDictionary(locale: Locale): Promise<Dict> {
+  if (loaded[locale]) return Promise.resolve(loaded[locale] as Dict);
+  if (!pending[locale]) {
+    pending[locale] = (locale === 'fr' ? import('./locales/fr')
+      : locale === 'fa' ? import('./locales/fa')
+      : import('./locales/ar'))
+      .then((m) => { loaded[locale] = m.default; return m.default; })
+      .catch((e) => { delete pending[locale]; throw e; });
+  }
+  return pending[locale] as Promise<Dict>;
+}
 
 export function translator(locale: Locale) {
-  const dict = dictionaries[locale] ?? en;
+  const dict = loaded[locale] ?? en;
   return (key: keyof Dict, vars?: Record<string, string | number>): string => {
     let out: string = dict[key] ?? en[key] ?? String(key);
     if (vars) for (const [k, v] of Object.entries(vars)) out = out.split(`{${k}}`).join(String(v));
@@ -224,7 +123,7 @@ export function translator(locale: Locale) {
 export function detectLocale(langs: readonly string[]): Locale {
   for (const tag of langs) {
     const base = String(tag).toLowerCase().split('-')[0] as Locale;
-    if (base && base in dictionaries) return base;
+    if (base && base in LOCALES) return base;
   }
   return 'en';
 }

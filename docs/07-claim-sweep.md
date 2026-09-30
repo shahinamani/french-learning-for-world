@@ -22,7 +22,7 @@ each landed:
 
 | Drift | Decision | State |
 |---|---|---|
-| Browser suites never ran in CI | **CI first, ahead of everything** | ✅ both suites run on every push and PR, green on a GitHub runner |
+| Browser suites never ran in CI | **CI first, ahead of everything** | ✅ both suites run on every push and PR, green on a GitHub runner, and required on `main` so a red run blocks the merge |
 | shadcn/Radix named, never adopted | **axe-core in CI; adopt Radix only where hand-rolling breaks; keep simple things hand-written; measure** | ✅ Dialog + Popover adopted, +21.57 KiB measured; four primitives deliberately not adopted; axe on 10 screens × 2 themes |
 | `user_id` nullable in spec, required in build | **required is correct — fix the doc** | ✅ `docs/03` corrected |
 | Export without import | **build it** | ✅ export v2 carries states; import is idempotent and never moves a card backwards |
@@ -267,7 +267,7 @@ conditions, and each is checkable:
 | 6 | Timer with chime, surviving navigation and reload | ✅ walked |
 | 7 | Offline via service worker | ✅ 18 files, offline render checked |
 | 8 | Progress export produces the same information | ✅ |
-| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ✅ **built 2026-10-01**, green on a GitHub runner. One gap remains: CI *reports* rather than *blocks* — branch protection is not set, so a red run does not yet stop a merge |
+| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ✅ **built 2026-10-01**, green on a GitHub runner, with `test` and `browser` as **required status checks on `main`** — a red run blocks the merge |
 
 **Two conditions are unmet, and `app/` stays until all nine are green:** a real
 exams section, and an About destination. Browse-everything (4) is partially met
