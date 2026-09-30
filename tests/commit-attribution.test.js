@@ -27,7 +27,9 @@ function repoWith(message) {
   const git = (args) => execFileSync('git', args, { cwd: dir, stdio: 'pipe' });
   git(['init', '-q', '-b', 'main']);
   git(['config', 'user.name', 'Shahin Amani']);
-  git(['config', 'user.email', 'transbox72@gmail.com']);
+  // A placeholder, not the owner's real address: this is a public repository
+  // and Part 0 forbids any email address in a tracked file beyond commit metadata.
+  git(['config', 'user.email', 'author@example.invalid']);
   writeFileSync(join(dir, 'a.txt'), 'x'.repeat(80));
   git(['add', 'a.txt']);
   execSync('git commit -q --allow-empty-message -F -', { cwd: dir, input: message });

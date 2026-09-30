@@ -171,7 +171,8 @@ The removal is where it got expensive:
 
 - No attribution trailer, no "generated with" line, no robot emoji, in any commit
   message, pull-request description, README, changelog or file. Every commit is
-  authored `Shahin Amani <transbox72@gmail.com>` and nothing else.
+  authored by Shahin Amani and nothing else — the address lives in commit
+  metadata, where it belongs, and nowhere a scraper reads.
 - `scripts/check-commit-messages.sh` runs in the required `test` job and fails on
   any of those patterns in any commit message across `--all`.
 - It scans **messages, not files**, so this page may name the episode. There is a
