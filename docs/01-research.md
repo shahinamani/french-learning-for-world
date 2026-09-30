@@ -14,7 +14,23 @@ The brief says *evidence, not claims*, so this section is first.
 | Source | How |
 |---|---|
 | `open-spaced-repetition/ts-fsrs` | Cloned and read. **MIT.** Read `packages/fsrs/src/models.ts` and the public exports. |
-| `LibreLingo/LibreLingo` | Cloned and read. **AGPL-3.0** — studied for structure only; **no code taken**, and none may be. Read the course/module/skill YAML schema and the Python type model. |
+| `LibreLingo/LibreLingo` | Cloned and read. **AGPL-3.0.** See the licence note below. |
+
+> ### Licence note — read before reusing anything in this document
+>
+> **LibreLingo is AGPL-3.0.** Its *structure and ideas* informed this document
+> and may inform ours: a schema is not a copyrightable work, and "put the
+> licence inside the content file" is a design decision, not code.
+> **No LibreLingo code has been copied into this project, and none may be.**
+> AGPL-3.0 is a strong copyleft: copying its source would oblige us to release
+> this entire platform — including any server we ever run — under AGPL-3.0.
+> If anyone later finds a line here that looks like LibreLingo's, it arrived by
+> coincidence or by mistake, and it must be removed rather than justified.
+>
+> **ts-fsrs is MIT.** Its code *may* be used, with the copyright notice
+> retained. This is the one library in this document we may copy from.
+>
+> Both clones were read and then deleted; neither is vendored here.
 | Product comparisons, dashboard UX, UI libraries, French typography | Web search, sources listed at the end. |
 
 **What I could not do, and you should know it:** this container's network policy **blocks direct access to every product site named in the brief** — `duolingo.com`, `busuu.com`, `khanacademy.org`, `linear.app`, `ui.shadcn.com`, `tatoeba.org`, `kwiziq.com` all return **403 at the egress proxy**. I could not sign up, click through a real lesson, or tab through their interfaces. Product findings below come from search results plus prior knowledge — **they are not the result of me using these products today.** Where a claim rests only on that, I have marked it *(indirect)*.
@@ -23,7 +39,7 @@ If you want first-hand walkthroughs, widen **Network access** in the cloud envir
 
 **Housekeeping the brief asked me to check:**
 
-- `git config user.email` = `transbox72@gmail.com`, `user.name` = `Shahin Amani`. ✅ Correct — commits will count on your graph.
+- Git identity checked and correct: commits are authored as Shahin Amani, so they count on his contribution graph. (The address itself is deliberately not repeated in this file — it is already in commit metadata, where it has to be; printing it in a document scrapers read is an extra exposure that buys nothing.)
 - **The storage-hygiene skill named in the brief is not installed in this session.** I found no such skill. I will not prune, delete or release any resource, and I have created nothing outside this repository except two read-only clones under `/home/user/` for the research above. Tell me if that skill should be available and I will flag it rather than guess at its rules.
 - **Branching conflict, needs your word.** The brief says work lands on `main`. My standing instruction for this session is to develop on `claude/confident-johnson-xu1f22` and never push elsewhere without explicit permission. Also relevant: `main` still carries the very first commit with a tool-attribution trailer, while the feature branch's history is now clean. See §5.
 
@@ -66,6 +82,22 @@ If you want first-hand walkthroughs, widen **Network access** in the cloud envir
 **Oura** redesigned in late 2025 around **"one big thing — the most critical score or insight you need right now."** Every other metric remains available but stops competing for attention, with three depths: at-a-glance rings, mid-level metrics, then precise exploratory views. This is the most directly applicable idea in the whole research set. **Strava** is the counter-example most often cited: it optimises for comparison against others, which motivates the already-fit and demoralises everyone else. **Khan Academy** gets the mastery ladder right — you see the skill tree and what unlocks — but its dashboard has historically been criticised as cluttered *(indirect)*. **Linear** and **Todoist** demonstrate that density is not the enemy of clarity when there is a command palette: one keystroke reaches anything, so the visible surface can stay calm. **Brilliant** shows that a "next lesson" card plus a visible path beats a grid of everything.
 
 The synthesis from dashboard research: *good dashboard UX is measured in **seconds-to-answer**, not in how the screen looks*, and **progressive disclosure** — summary first, detail on demand — is the pattern that makes density survivable.
+
+### Claims to verify when browsing is available
+
+Two *(indirect)* findings carry the recommendation, so they are the ones to
+check first if this is ever redone with working access. Everything else could
+move without changing the design.
+
+| Claim | Rests on | What it decides | If it is wrong |
+|---|---|---|---|
+| Kwiziq builds a per-learner "brainmap" that identifies mis-learned concepts and serves the material that repairs them | Search results and its own marketing, **not** an account I used | The whole weakness model, and therefore the review-log schema | The log is still right — it is how *any* weakness model is built — but our claim to be matching a proven approach weakens to a claim about a plausible one |
+| Anki's interface is the standard complaint against it, and the gap between its engine and its interface is the opening for this project | Search results and forum reports | The framing of the entire product: "Anki's brain, a humane face" | If learners do not actually find Anki hard, our differentiator is smaller than stated and the case for building rests on French specificity alone |
+
+Lower-stakes *(indirect)* claims, recorded so nobody mistakes them for
+first-hand: Babbel's single-speed dialogues, Memrise's fixed-interval
+scheduler, Clozemaster's synthesised audio, TV5MONDE's navigation, Khan
+Academy's dashboard clutter.
 
 ---
 

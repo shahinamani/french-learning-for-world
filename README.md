@@ -102,15 +102,15 @@ examination syllabus. See [`docs/content-provenance.md`](docs/content-provenance
 ## Licensing
 
 - **Code** — [MIT](LICENSE).
-- **Content** — determined per item and recorded in the database alongside it.
-  Source corpora under consideration are listed in
-  [`docs/content-provenance.md`](docs/content-provenance.md); some carry
-  share-alike terms that will apply to the content set. The final content
-  licence is decided before any content ships.
+- **Learning content** — [CC BY-SA 4.0](LICENSE-CONTENT).
+Every item also records its own source and licence, so the question "may we
+publish this?" is a query rather than an audit. Every source in use and every
+source approved for future use is listed, with its licence, in
+[`docs/02-content-licences.md`](docs/02-content-licences.md).
 
 **No third-party copyrighted material** — no textbook text, no commercial
-word list, no scraped course content — enters this repository. See
-[`docs/content-provenance.md`](docs/content-provenance.md).
+word list, no scraped course content — enters this repository. Everything
+here today is original work written for this project.
 
 ## Contributing
 

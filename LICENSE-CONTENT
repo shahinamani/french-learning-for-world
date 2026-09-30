@@ -1,0 +1,25 @@
+Learning content licence
+========================
+
+The CODE in this repository is licensed separately, under the MIT licence in
+LICENSE. This file covers the LEARNING CONTENT: the cards, sentences,
+meanings, translations, definitions, exercises, interface strings and any
+audio.
+
+    Copyright (c) 2026 Shahin Amani and contributors
+
+    Licensed under the Creative Commons Attribution-ShareAlike 4.0
+    International Licence (CC BY-SA 4.0).
+
+    https://creativecommons.org/licenses/by-sa/4.0/
+
+In short: you may share and adapt this content, including commercially,
+provided you give credit and release anything you build from it under the
+same licence.
+
+Why share-alike: it keeps the content free for everyone downstream, and it is
+what allows this project to draw on CC BY-SA sources such as Wiktionary and
+Lexique. See docs/02-content-licences.md for every source and its licence.
+
+Individual items may carry their own licence where they come from an outside
+source. The licence recorded on the item governs that item.
