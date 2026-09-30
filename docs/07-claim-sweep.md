@@ -260,15 +260,18 @@ conditions, and each is checkable:
 | # | Condition | Status |
 |---|---|---|
 | 1 | **Exams section is real, not a stub** — 4 exams, all 22 official links, the independence disclaimer | ⛔ stub |
-| 2 | **Progress import**, not only export — a file exported from either app loads into the React app | ⛔ export only |
+| 2 | **Progress import**, not only export — a file exported from either app loads into the React app | ✅ **built 2026-10-01.** Export v2 carries rows and card states; import is idempotent and never moves a card backwards. Walked: study → export → erase → import → history and schedule both back |
 | 3 | **An About / independence notice** exists as its own destination | ⛔ absent (text lives on the exam stub) |
 | 4 | **Browse all content** — every card reachable without knowing what to search for | ⚠️ search reaches cards and concepts; there is no browse-everything list |
 | 5 | All four languages, both RTL, across every screen the React app has | ✅ 109 keys × 4, parity asserted by a test |
 | 6 | Timer with chime, surviving navigation and reload | ✅ walked |
 | 7 | Offline via service worker | ✅ 18 files, offline render checked |
 | 8 | Progress export produces the same information | ✅ |
-| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ⛔ neither runs in CI |
+| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ✅ **built 2026-10-01**, green on a GitHub runner. One gap remains: CI *reports* rather than *blocks* — branch protection is not set, so a red run does not yet stop a merge |
 
-**Four conditions are unmet, and `app/` stays until all nine are green.**
-Condition 9 is deliberately on the list: deleting the fallback while the safety
-net is manual would be the worst possible order to do these in.
+**Two conditions are unmet, and `app/` stays until all nine are green:** a real
+exams section, and an About destination. Browse-everything (4) is partially met
+and is a judgement call rather than a hard gate.
+
+Condition 9 was deliberately on this list, and the order it enforced was the
+right one: the safety net went up before the fallback comes down.

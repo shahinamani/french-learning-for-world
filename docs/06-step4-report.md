@@ -209,9 +209,10 @@ Two tabs, one origin, two profiles. The active profile is in **`sessionStorage`*
 8. **The vanilla portal still exists at `app/`.** Two apps in one repository until the React one reaches parity. Deliberate — it is the working version — but it must not be forgotten.
 9. **Concept coverage is A1–B2 only.** C1 and C2 have no concepts at all, so those rows can never light up.
 10. **The 22 cards exercise 29 of 224 concepts.** The weakness model works but sees a thin slice of French. **[step 5]** unchanged — the verbs section adds 504 forms against tense concepts, but the card deck is still 22.
-11. **[step 5, new]** **No shadcn/ui and no Radix**, though docs 01, 04 and 05 all named them as the stack. The components are hand-written. See `docs/05` for what that costs.
-12. **[step 5, new]** **Neither the browser walk nor the contrast check runs in CI.** Playwright is not a project dependency, so both suites are run by hand. A change that breaks either will merge green.
-13. **[step 5, new]** **`params_hash` is missing from the review row**, though `docs/03` specifies it. If the FSRS weights are ever refit, earlier rows become uninterpretable.
+11. ~~**No shadcn/ui and no Radix**~~ — **RESOLVED 2026-10-01**, selectively. Radix `Dialog` and `Popover` adopted where hand-rolling genuinely broke (+21.57 KiB, measured); four other primitives deliberately **not** adopted, with reasons, in `docs/05`. shadcn/ui is still not used and that is now a recorded choice rather than an omission.
+12. ~~**Neither browser suite runs in CI**~~ — **RESOLVED 2026-10-01.** Both run on every push and pull request, green on a GitHub runner. **Still open:** CI *reports* rather than *blocks* — branch protection on `main` is not configured, so a red run does not yet prevent a merge. That needs repository-admin access.
+13. ~~**`params_hash` is missing**~~ — **RESOLVED 2026-10-01.** An 8-character FNV-1a digest of the FSRS weight vector, on every row.
+14. **[new]** **axe-core covers roughly a third to a half of WCAG, and no screen reader has been used on this product.** It found a critical violation on every screen the first time it ran, and a serious one on the conjugation drill as soon as the scan reached the real screen rather than its not-found state. Both are fixed. What it cannot see has not been checked.
 
 ---
 
