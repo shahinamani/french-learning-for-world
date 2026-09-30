@@ -39,7 +39,19 @@ export function ConjugationDrill() {
   const [result, setResult] = useState<null | { correct: boolean; accentsOnly: boolean; expected: string }>(null);
   const [right, setRight] = useState(0);
   const shownAt = useRef(Date.now());
-  const sessionId = useRef(newId());
+
+  // The session id belongs in the URL, exactly as it does for flashcards. Held
+  // in a ref it was regenerated on every reload, so one sitting became two
+  // sessionIds and "time studied" — which docs/03 defines as a grouping over
+  // session_id — silently split in half.
+  const sessionParam = params.get('s');
+  const sessionId = useRef(sessionParam ?? newId());
+  useEffect(() => {
+    if (sessionParam) { sessionId.current = sessionParam; return; }
+    const p = new URLSearchParams(params);
+    p.set('s', sessionId.current);
+    setParams(p, { replace: true });
+  }, [sessionParam, params, setParams]);
   const input = useRef<HTMLInputElement>(null);
 
   useEffect(() => { loadScheduler().then(setEngine); }, []);
@@ -120,7 +132,7 @@ export function ConjugationDrill() {
   const label = settings.ui === 'fr' ? tense.name.fr : tense.name.en;
   return (
     <div className="page page--session">
-      <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={verb.persons.length} aria-valuenow={index}>
+      <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={verb.persons.length} aria-valuenow={index} aria-label={t('practiseTense')}>
         <span className="rail__fill" style={{ width: `${(index / verb.persons.length) * 100}%` }} />
       </div>
       <p className="session-count" data-testid="drill-count">{index + 1} / {verb.persons.length}</p>

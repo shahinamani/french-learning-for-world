@@ -560,6 +560,48 @@ await audit(320, 640, 'light', '320 light');
 // account at all". Until now the app exported and could not import, so that
 // sentence was false in the way that costs a real person everything: they
 // switch phones, and the file they carefully saved loads nowhere.
+// ── The verbs drill follows the flashcards pattern ────────────────────────
+// Point 1 of that pattern: the session id lives in the URL, so a reload
+// continues the sitting instead of starting a new one. The drill held it in a
+// ref, which meant a reload split one sitting into two sessionIds — and
+// "time studied" is defined in docs/03 as a grouping over session_id.
+console.log('\n=== verbs drill: one sitting survives a reload ===');
+{
+  const c = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const p = await c.newPage(); watch(p, ' verbsession');
+  await p.goto(BASE + '#/practise/conjugation?verb=%C3%AAtre&tense=present', { waitUntil: 'networkidle' });
+  await p.waitForTimeout(600);
+  const first = await p.evaluate(() => new URL(location.hash.slice(1), location.origin).searchParams.get('s'));
+  ok(`the drill puts its session id in the URL (${first ? first.slice(0, 8) + '…' : 'absent'})`, !!first);
+
+  const answer = async () => {
+    await p.locator('[data-testid="drill-input"]').fill('zzz');
+    await p.keyboard.press('Enter'); await p.waitForTimeout(250);
+    await p.keyboard.press('Enter'); await p.waitForTimeout(350);
+  };
+  await answer();
+  await p.reload({ waitUntil: 'networkidle' });
+  await p.waitForTimeout(600);
+  const second = await p.evaluate(() => new URL(location.hash.slice(1), location.origin).searchParams.get('s'));
+  ok(`and keeps it across a reload (${first === second})`, !!second && first === second);
+  await answer();
+
+  const sittings = await p.evaluate(async () => {
+    const uid = sessionStorage.getItem('flw:activeProfile');
+    const db = await new Promise((r) => { const q = indexedDB.open('flw'); q.onsuccess = () => r(q.result); });
+    const rows = await new Promise((r) => {
+      const q = db.transaction('reviews').objectStore('reviews').index('by-user-time')
+        .getAll(IDBKeyRange.bound([uid, -Infinity], [uid, Infinity]));
+      q.onsuccess = () => r(q.result);
+    });
+    const drill = rows.filter((x) => x.itemType === 'verb_form');
+    return { rows: drill.length, sessions: new Set(drill.map((x) => x.sessionId)).size };
+  });
+  ok(`${sittings.rows} drill rows across a reload are ONE sitting (${sittings.sessions} session id)`,
+     sittings.rows >= 2 && sittings.sessions === 1);
+  await c.close();
+}
+
 console.log('\n=== export, erase, import — the round trip ===');
 {
   const c = await browser.newContext({ viewport: { width: 1440, height: 900 },
@@ -696,8 +738,8 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
     ['/learn', 'Learn'],
     ['/practise/review', 'Flashcards'],
     ['/learn/verbs', 'Verbs'],
-    ['/learn/verbs/etre', 'Verb detail'],
-    ['/practise/conjugation?verb=etre&tense=present', 'Conjugation'],
+    ['/learn/verbs/%C3%AAtre', 'Verb detail'],
+    ['/practise/conjugation?verb=%C3%AAtre&tense=present', 'Conjugation'],
     ['/progress', 'Progress'],
     ['/search?q=etre', 'Search'],
     ['/account', 'Account'],
