@@ -378,6 +378,47 @@ Nothing compared what the content file offered against what the type admitted.
   ledger asserted with `deepEqual`, so finishing a level and forgetting the
   ledger fails too.
 
+### #13 — A job that only runs on the branch it is never exercised on
+
+**2026-10-01, the moment pull request #1 merged.**
+
+`ci.yml` and `pages.yml` both have a job that runs the unit suite. They had
+drifted: `ci.yml` runs
+
+```
+node --import ./tests/register.mjs --test tests/*.test.js
+```
+
+and `pages.yml` ran the same command **without the resolver hook**, which is what
+lets Node resolve a relative import of a `.ts` module. Every test that imports one
+dies on load.
+
+It had been wrong since the suite was pointed at `web/`. Nobody saw it, because
+`pages.yml` triggers on **push to `main`** only, and every commit for that whole
+period lived on a feature branch. The resolver reached `main` for the first time
+with the merge — so the job failed the first time it was ever genuinely
+exercised, and took the Pages deploy down with it. The site did not publish.
+
+**The shape:** a check whose trigger excludes the place the work happens is not
+a check that passes. It is a check with no result at all, and an empty result
+reads exactly like a green one in a branch-protection UI that is only watching
+two other names.
+
+**Second fault, found at the same moment and cheaper to fix than to explain
+later:** both workflows had a job called `test`, and the ruleset requires a
+status check called `test`. Two different runs were reporting under one name.
+Renamed to `pages-test`.
+
+**Rules:**
+
+- A workflow that runs on `main` only is unverified until something merges. If
+  it runs a command, that command is also run somewhere the work actually
+  happens — or the two commands are one command in one place.
+- When two workflows run "the same" suite, they drift. Diff them deliberately, or
+  make one call the other.
+- A required status-check name belongs to exactly one job. Two jobs sharing it
+  makes the branch's reported state depend on which run lands last.
+
 ---
 
 ## How these are caught
@@ -420,6 +461,8 @@ Not by care. By two habits:
 | 11 | `fr=147` vs `en=fa=ar=160` | *in plain sight* | nothing compared the counts |
 | 12 | `Concept.name`, `VerbTense.name` | `tsc` clean | typed `Record<'en' \| 'fr', string>`; 18 sites served English to fa and ar, and `name.fa` sat unread in `verbs.json` |
 | 12 | the RTL walk's screen list | 856 checks, 0 failed | no screen in the list rendered a content name |
+| 13 | `pages.yml` unit-test job | *never ran* | triggers on push to `main` only; broken since the resolver arrived, failed the first time it was exercised, and the site did not deploy |
+| 13 | `test` job name | — | used by two workflows while the ruleset required one check of that name |
 | 2 | `no-untranslated-strings.test.js` | *could not start* | `new URL(...).pathname` percent-encodes; a clone under a path with a space in it crashed the suite |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`

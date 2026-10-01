@@ -4,7 +4,10 @@ Written because a session ended mid-task. It assumes you have none of the
 conversation that produced the work. Everything here is either in the repository
 or is a decision that was taken verbally and would otherwise be lost.
 
-**Branch: `feat/portal-foundation`. Tip: `5f92c08`. Pull request: #1 into `main`.**
+**Pull request #1 is merged. The work is on `main` at `698c550`.**
+**Current branch: `feat/translations`.** `main` is protected: `test` and
+`browser` required, no force-push, no deletion — commit to a branch and open a
+pull request.
 `main` is at `ffb6393` and is protected: `test` and `browser` are required
 checks, no force-push, no deletion.
 
@@ -268,11 +271,23 @@ as not ours to translate.
 
 ## 8. CI status — the last line, because it is the one that is checkable
 
-**Branch tip `805a48b`** — required checks `test` **success**, `browser` **success**.
-Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36865040514>
-Observed **2026-10-01T12:57:52Z**. Pull request #1: `MERGEABLE`.
+**`main` at `698c550`** — the merge of pull request #1, which is where the work
+now lives. Required checks `test` **success**, `browser` **success**.
+Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36866704090>
+Observed **2026-10-01T13:12:46Z**. Pull request #1: `MERGED`, not squashed, so
+every commit is on the contribution graph.
 
-This line reports the **last CI run observed on this branch**, which is the run
+**And the part a branch run could never have told us.** The same push put
+`main`'s *other* workflow — Deploy to GitHub Pages — red for the first time, and
+the site did not deploy. `pages.yml` ran `node --test tests/*.test.js` without
+the resolver hook that `ci.yml` has had since the suite was pointed at `web/`,
+so every test importing a `.ts` module died on load. It runs **only on a push to
+`main`**, and the resolver reached `main` only with this merge: a job that
+cannot run on the branch it guards is a job nobody has seen. Fixed on
+`feat/translations`, with its job renamed `pages-test` because a second job
+called `test` makes the required check ambiguous.
+
+This block reports the **last CI run observed on this branch**, which is the run
 of the push before this document was last written — a document cannot name the
 run of the commit that contains it. Whoever pushes next observes that run and
 updates this block as the final act of their session. A local test count is not
