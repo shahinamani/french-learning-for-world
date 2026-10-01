@@ -48,6 +48,7 @@ E_GRAVE_ELER_ETER = {
     "acheter", "racheter", "haleter", "crocheter", "fureter",
     "geler", "dégeler", "congeler", "surgeler", "celer", "déceler", "receler",
     "ciseler", "démanteler", "écarteler", "marteler", "modeler", "peler",
+    "harceler",   # the corpus attests harcèle, not « harcelle »
 }
 
 REGULAR_IR_ENDINGS = {  # the -iss- family: finir, choisir, réussir …
@@ -97,6 +98,11 @@ def er_mute_stem(lemma: str, stem: str) -> str | None:
     # vowel may be separated from the ending by more than one consonant, which
     # is the case the first version missed.
     i = len(body) - 1
+    # The u of -guer and -quer is silent and never the stem vowel: in « légu- »
+    # the vowel that changes is the é. The corpus caught léguer, déléguer and
+    # reléguer, which must give lègue.
+    if body.endswith(("gu", "qu")):
+        i = len(body) - 3
     while i >= 0 and body[i] not in "aeiouyéèêëàâîïôûù":
         i -= 1
     if i < 0 or i >= len(body) - 1:
@@ -173,8 +179,13 @@ def conjugate(lemma: str) -> tuple[str, dict] | tuple[str, None]:
     must not get a confident wrong answer — « je partis » for « je pars » is
     worse than a gap, because a gap is visible and a wrong form is believed.
     """
+    if lemma in NOT_IRREGULAR:
+        return ("-ir regular", conjugate_ir_regular(lemma))
+    irregular = conjugate_irregular(lemma)
+    if irregular is not None:
+        return ("irregular model", irregular)
     if lemma.endswith("oir"):
-        return ("unhandled -oir", None)          # avoir, pouvoir, savoir, devoir…
+        return ("unhandled -oir", None)          # the -oir verbs with no model yet
     if lemma == "aller" or lemma.endswith(("envoyer",)):
         # aller is suppletive; envoyer has an irregular future (enverra).
         return ("unhandled -er irregular", None)
@@ -185,6 +196,103 @@ def conjugate(lemma: str) -> tuple[str, dict] | tuple[str, None]:
     if lemma.endswith("ir"):
         return ("-ir regular", conjugate_ir_regular(lemma))
     return ("unhandled -re/other", None)
+
+
+# ── Irregular verbs: the 270 at the head of the frequency list ──────────────
+
+from irregular_models import MODELS, DIRE_IRREGULAR_VOUS, EXACT_ONLY   # noqa: E402
+
+# Verbs that END in an irregular model but do not belong to it.
+NOT_IRREGULAR = {"répartir", "assortir", "impartir"}
+from conjugation_exceptions import classification, KNOWN_WRONG   # noqa: E402
+
+IMPARFAIT_ENDINGS = ["ais", "ais", "ait", "ions", "iez", "aient"]
+SUBJ_IMP_ENDINGS = ["sse", "sses", "^t", "ssions", "ssiez", "ssent"]
+
+
+def _model_for(lemma: str):
+    """Longest matching family, so comprendre finds prendre and not rendre."""
+    if lemma in MODELS:
+        return lemma, ""
+    best = None
+    for name in MODELS:
+        if name in EXACT_ONLY:
+            continue            # only an exact match, handled above
+        if lemma.endswith(name) and (best is None or len(name) > len(best)):
+            best = name
+    if best is None:
+        return None, None
+    return best, lemma[: len(lemma) - len(best)]
+
+
+def _pref(prefix: str, form):
+    return None if form is None else prefix + form
+
+
+def conjugate_irregular(lemma: str) -> dict | None:
+    name, prefix = _model_for(lemma)
+    if name is None:
+        return None
+    m = MODELS[name]
+    out: dict[str, list] = {}
+
+    pres = [_pref(prefix, f) for f in m["pres"]]
+    # Only dire and redire take « vous dites »; interdire, prédire, contredire
+    # and médire all take -disez, which is the classic trap.
+    if name == "dire" and lemma not in DIRE_IRREGULAR_VOUS and pres[4]:
+        pres[4] = prefix + "disez"
+    out["ind:pre"] = pres
+
+    ppr = _pref(prefix, m.get("ppr"))
+    out["par:pre"] = [ppr] if ppr else []
+    if "imparfait" in m:
+        out["ind:imp"] = [_pref(prefix, f) for f in m["imparfait"]]
+    elif ppr:
+        stem = ppr[:-3]
+        out["ind:imp"] = [stem + e for e in IMPARFAIT_ENDINGS]
+    else:
+        out["ind:imp"] = [None] * 6
+
+    fut_stem = prefix + m["fut"]
+    out["ind:fut"] = [fut_stem + e for e in FUT_ENDINGS]
+    out["cnd:pre"] = [fut_stem + e for e in CND_ENDINGS]
+
+    if "subj" in m:
+        out["sub:pre"] = [_pref(prefix, f) for f in m["subj"]]
+    else:
+        # The rule almost every irregular follows: ils-présent stem for the
+        # singular and third plural, nous-imparfait stem for nous and vous.
+        ils, nous = pres[5], out["ind:imp"][3]
+        if ils and nous:
+            a, b = ils[:-3], nous[:-4]
+            out["sub:pre"] = [a + "e", a + "es", a + "e", b + "ions", b + "iez", a + "ent"]
+        else:
+            out["sub:pre"] = [None] * 6
+
+    out["ind:pas"] = [_pref(prefix, f) for f in m["ps"]]
+    tu_ps = out["ind:pas"][1]
+    if tu_ps:
+        base = tu_ps[:-1] if tu_ps.endswith("s") else tu_ps
+        out["sub:imp"] = [base + e if e != "^t" else _circumflex(base) + "t"
+                          for e in SUBJ_IMP_ENDINGS]
+    else:
+        out["sub:imp"] = [None] * 6
+
+    out["par:pas"] = [_pref(prefix, m["pp"])]
+    out["imp:pre"] = ([_pref(prefix, f) for f in m["imper"]] if "imper" in m
+                      else [pres[1], pres[3], pres[4]])
+    out["aux"] = m.get("aux", "avoir")
+    return out
+
+
+def _circumflex(base: str) -> str:
+    """prit → prît. The third person singular of the imperfect subjunctive."""
+    last_vowel = max((i for i, ch in enumerate(base) if ch in "aeiouyâêîôûé"), default=-1)
+    if last_vowel == -1:
+        return base
+    swap = {"a": "â", "e": "ê", "i": "î", "o": "ô", "u": "û", "é": "ê"}
+    ch = base[last_vowel]
+    return base[:last_vowel] + swap.get(ch, ch) + base[last_vowel + 1:]
 
 
 # ── Validation against the corpus ───────────────────────────────────────────
@@ -260,10 +368,13 @@ def main() -> int:
         bad = []
         for (slot, person), real in attested[lem].items():
             if slot == "par:pas":
-                ours = set(forms.get("par:pas", []))
-                # The corpus lists gender and number variants of the participle;
-                # the masculine singular must be among them.
-                if ours and not (ours & real):
+                ours = set(x for x in forms.get("par:pas", []) if x)
+                # The corpus lists gender and number variants, and for an
+                # essentially-pronominal verb it may list ONLY those: entraidés,
+                # dandinée. So the masculine singular is the stem of what the
+                # corpus holds, not necessarily a member of it.
+                ok = any(r == o or r.startswith(o) for o in ours for r in real)
+                if ours and not ok:
                     bad.append((slot, person, sorted(ours)[0], sorted(real)[:3]))
                 checked += 1
                 continue
@@ -286,6 +397,32 @@ def main() -> int:
     print(f"  mismatches: {mismatched:,}  ({100 * mismatched / max(checked, 1):.2f}%)")
     print(f"verbs with every attested form correct: {len(clean_verbs):,} of {len(ranked)}")
     print(f"verbs with at least one disagreement:   {len(failures):,}")
+
+    # Every disagreement must be classified by hand. An unclassified one is the
+    # dangerous case: we do not yet know whether we are wrong or the corpus is.
+    buckets = collections.Counter()
+    unclassified = []
+    for lem, _ in failures:
+        kind = classification(lem)
+        buckets[kind or "UNCLASSIFIED"] += 1
+        if kind is None:
+            unclassified.append(lem)
+    print()
+    print("disagreements, classified:")
+    for k in ("corpus-noise", "alternate", "known-wrong", "UNCLASSIFIED"):
+        if buckets[k]:
+            print(f"  {k:<14} {buckets[k]}")
+    shippable = [l for l in clean_verbs if l not in KNOWN_WRONG] + \
+                [l for l, _ in failures if classification(l) in ("corpus-noise", "alternate")]
+    print()
+    print(f"SHIPPABLE: {len(shippable):,} of {len(ranked)} verbs")
+    print(f"  withheld as known-wrong: {len([l for l, _ in failures if classification(l) == 'known-wrong'])}")
+    print(f"  withheld as unclassified: {len(unclassified)}")
+    if unclassified:
+        print("  unclassified (each must be judged by hand before shipping):")
+        for lem in unclassified[:20]:
+            bad = dict(failures)[lem][0]
+            print(f"    {lem:<16} {bad[0]}:{bad[1]:<3} ours={bad[2]:<16} corpus={', '.join(bad[3])}")
 
     if failures and args.show_failures:
         print("\nfirst disagreements (ours vs corpus):")
