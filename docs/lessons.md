@@ -472,6 +472,46 @@ workflow "disabled" by a filename that still ends in `.yml`. Seen red on the
 exact state `main` was in: `pages.yml` re-enabled with its job called `test`
 fails two assertions.
 
+### #15 — A test that depended on the shape of the checkout, not on the repository
+
+**2026-10-01, and it was mine, written the same day as #13 and #14.**
+
+The handoff guard asserts that the CI block names a commit in this history:
+
+```js
+execFileSync('git', ['merge-base', '--is-ancestor', sha, 'HEAD'])
+```
+
+`actions/checkout` fetches **depth 1** by default. `ci.yml` sets
+`fetch-depth: 0` — it has to, because the history secret scan would otherwise
+read one commit and report clean. `pages.yml` did not. So the same suite gave
+two different answers depending on which workflow ran it, and the assertion
+failed in the workflow whose checkout was ordinary.
+
+It surfaced the moment #2 merged and the Pages test job ran for the first time
+in a fixed state. **I had predicted that job would fail at
+`actions/configure-pages`. It failed earlier, on my own test**, which is the
+more useful outcome: the prediction was about the thing I had been looking at,
+and the fault was in the thing I had just written.
+
+**The shape:** an assertion about *the repository* that is really an assertion
+about *the clone*. Depth, filters, `--single-branch`, a missing tag fetch and a
+detached HEAD all produce this, and all of them look like the test being wrong
+about the content rather than absent from it.
+
+**Rules:**
+
+- A check that reads history states its requirement. Here: the test detects a
+  shallow clone with `git rev-parse --is-shallow-repository` and **skips with a
+  reason**, reported as a skip and never as a pass (#2), with the shallowness
+  verified so it cannot be used to dodge the check in a full clone.
+- And the requirement is enforced where it belongs:
+  `tests/workflow-check-names.test.js` fails any active job that runs the suite
+  without `fetch-depth: 0`. Seen red by removing it from `ci.yml`.
+- When two workflows run "the same" suite, the difference that bites is rarely
+  the command. It is the environment around it — #13 said diff them
+  deliberately, and this is what that costs when you do not.
+
 ---
 
 ## How these are caught
@@ -516,6 +556,7 @@ Not by care. By two habits:
 | 12 | the RTL walk's screen list | 856 checks, 0 failed | no screen in the list rendered a content name |
 | 13 | `pages.yml` unit-test job | *never ran* | triggers on push to `main` only; broken since the resolver arrived, failed the first time it was exercised, and the site did not deploy |
 | 14 | the `test` required check | *protection read as absolute* | matched by name only (`integration_id=None`); two workflows reported under it, success and failure on one commit |
+| 15 | `handoff-and-push-safety` ancestry check | PASS in ci.yml | depth-1 checkout in pages.yml made the same assertion fail; it tested the clone, not the repository |
 | 2 | `no-untranslated-strings.test.js` | *could not start* | `new URL(...).pathname` percent-encodes; a clone under a path with a space in it crashed the suite |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
