@@ -109,8 +109,8 @@ test('every verb tense name reaches a Persian and an Arabic learner', () => {
  */
 const EXPECTED_NAME_COVERAGE = {
   A1: { fa: 85, ar: 0 },
-  A2: { fa: 0, ar: 0 },
-  B1: { fa: 0, ar: 0 },
+  A2: { fa: 68, ar: 0 },
+  B1: { fa: 50, ar: 0 },
   B2: { fa: 0, ar: 0 },
   C1: { fa: 0, ar: 0 },
   C2: { fa: 0, ar: 0 },
@@ -126,6 +126,77 @@ test('concept name coverage per level and language is exactly what we declare', 
   }
   assert.deepEqual(actual, EXPECTED_NAME_COVERAGE,
     'translate a level and raise the number here; add an untranslated concept and this tells you');
+});
+
+// ── 3b. The colon convention for French inside a right-to-left name ─────────
+
+/**
+ * Where a concept is *about* a French form, the name carries that French. In a
+ * right-to-left name the French is a left-to-right run, and where it sits
+ * decides whether it survives: at the end, after a colon, it is one run at the
+ * edge of the line. Mid-phrase — « نفی با ne … pas » — it is a left-to-right
+ * island inside a right-to-left sentence, which is where the bidi algorithm
+ * reorders punctuation and digits.
+ *
+ * Settled by Shahin on 2026-10-01 after reading the 85 A1 names: standardise on
+ * the colon form. 35 names were converted. This keeps it true for the next 118.
+ */
+const LATIN = /[A-Za-z\u00C0-\u024F\u0152\u0153]/;
+
+/**
+ * IPA in square brackets is notation, not a French word: « تفاوت [e] / [ɛ] »
+ * names a contrast, it does not quote French. The first version of this check
+ * read those symbols as French and rejected four correct names — a detector
+ * too broad is switched off as fast as one too narrow.
+ */
+const withoutIpa = (s) => s.replace(/\[[^\]]*\]/g, '');
+
+test('French inside a Persian or Arabic name sits after a colon, never mid-phrase', () => {
+  const offenders = [];
+  let carrying = 0;
+  for (const c of concepts) {
+    for (const loc of ['fa', 'ar']) {
+      const name = c.name?.[loc];
+      if (!name || !LATIN.test(name)) continue;
+      carrying++;
+      const colon = name.indexOf(':');
+      if (colon === -1) { offenders.push(`${c.id} ${loc}: "${name}" — no colon`); continue; }
+      // Every Latin run must be after the colon. A label before it may not
+      // contain French, or the French is mid-phrase again with a colon nearby.
+      if (LATIN.test(withoutIpa(name.slice(0, colon)))) {
+        offenders.push(`${c.id} ${loc}: "${name}" — French before the colon`);
+      }
+    }
+  }
+  console.log(`    names carrying French: ${carrying}`);
+  assert.ok(carrying >= 30, `only ${carrying} names carry French — the detector has stopped matching`);
+  assert.deepEqual(offenders, []);
+});
+
+test('the colon-convention detector fires on the form that was replaced', () => {
+  const check = (name) => {
+    if (!LATIN.test(withoutIpa(name))) return 'no french';
+    const colon = name.indexOf(':');
+    if (colon === -1) return 'no colon';
+    return LATIN.test(withoutIpa(name.slice(0, colon))) ? 'french before colon' : 'ok';
+  };
+  // The shapes actually converted on 2026-10-01.
+  assert.equal(check('نفی با ne … pas'), 'no colon');
+  assert.equal(check('ضمیر on'), 'no colon');
+  assert.equal(check('جایی که n خوانده می‌شود'), 'no colon');
+  assert.equal(check('tu یا vous'), 'no colon');
+  // And the forms that are correct.
+  assert.equal(check('نفی: ne … pas'), 'ok');
+  assert.equal(check('خیشومی [ɑ̃]: an, en'), 'ok');
+  assert.equal(check('مصوت‌ها'), 'no french');
+  // IPA in brackets is notation, not French: these four are correct and an
+  // earlier version of this check rejected all of them.
+  assert.equal(check('تفاوت [e] / [ɛ]: été / être'), 'ok');
+  assert.equal(check('تفاوت [ø] / [œ]: peu / peur'), 'ok');
+  assert.equal(check('خیشومی [ɔ̃]: on, om'), 'ok');
+  assert.equal(check('تشخیص سه مصوت خیشومی'), 'no french');
+  // But a real French word before the colon is still caught.
+  assert.equal(check('تفاوت été و être: [e] / [ɛ]'), 'french before colon');
 });
 
 // ── 4. Distinctness in every language a name is read in ─────────────────────
