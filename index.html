@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="en" dir="ltr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Free French practice with spaced repetition. No account, works offline. Independent of all examination bodies.">
+<meta name="theme-color" content="#14171f">
+<title>French Learning for World</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Vazirmatn:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="app/styles.css">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="app/icon.svg">
+<link rel="apple-touch-icon" href="app/icon.svg">
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<!-- Session progress. One thin line, not four tiles: the only number that
+     matters mid-session is how much of it is left. -->
+<div class="rail" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="rail">
+  <span id="rail-fill"></span>
+</div>
+
+<header class="bar">
+  <div class="bar-in">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">Fr</span>
+      <span class="brand-name" data-t="appName">French Learning for World</span>
+    </div>
+
+    <div class="bar-actions">
+      <button id="timer-pill" class="pill" type="button" aria-expanded="false" aria-controls="timer-panel">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="13" r="8"/><path d="M12 9v4l2.5 2.5M9 2h6"/></svg>
+        <span id="timer-clock" class="pill-clock" aria-live="off">10:00</span>
+      </button>
+      <button id="settings-btn" class="icon-btn" type="button" aria-expanded="false" aria-controls="settings-sheet">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h10M18 7h2M4 17h4M12 17h8M4 12h6M14 12h6"/><circle cx="16" cy="7" r="2"/><circle cx="10" cy="17" r="2"/><circle cx="12" cy="12" r="2"/></svg>
+        <span class="visually-hidden" data-t="settings">Settings</span>
+      </button>
+    </div>
+  </div>
+
+  <!-- The timer lives behind its pill. It is a tool, not the subject. -->
+  <section id="timer-panel" class="timer-panel" hidden aria-labelledby="timer-h">
+    <h2 id="timer-h" class="eyebrow" data-t="timer">Study timer</h2>
+    <div class="presets" id="timer-presets" role="group" aria-labelledby="timer-h"></div>
+    <div class="timer-row">
+      <button id="timer-start" class="btn btn-solid" type="button"></button>
+      <button id="timer-reset" class="btn btn-ghost" type="button"></button>
+      <button id="timer-sound" class="icon-btn" type="button" aria-pressed="true"></button>
+    </div>
+  </section>
+  <div id="timer-finished" class="finished" role="status" hidden>
+    <span id="timer-finished-text"></span>
+    <button id="timer-dismiss" class="btn btn-ghost btn-sm" type="button"></button>
+  </div>
+</header>
+
+<main id="main">
+  <div id="banner" class="banner" hidden role="status"></div>
+
+  <section id="panel-study" class="panel panel-study">
+    <div id="exam-filter" class="filter" hidden></div>
+    <div id="session" class="stage"></div>
+  </section>
+
+  <section id="panel-exams" class="panel" hidden><div id="exams-body" class="sheet-in"></div></section>
+  <section id="panel-browse" class="panel" hidden>
+    <div class="sheet-in">
+      <input id="browse-search" type="search" autocomplete="off" class="search">
+      <ul id="browse-list" class="rows"></ul>
+    </div>
+  </section>
+  <section id="panel-progress" class="panel" hidden><div id="progress-body" class="sheet-in"></div></section>
+  <section id="panel-about" class="panel" hidden><div id="about-body" class="sheet-in prose"></div></section>
+</main>
+
+<!-- The answer controls sit in the thumb's reach, directly above the tabs. -->
+<div id="actions" class="actions" hidden></div>
+
+<nav id="tabs" class="tabs" aria-label="Sections"></nav>
+
+<div id="settings-sheet" class="sheet" hidden role="dialog" aria-modal="false" aria-labelledby="settings-h">
+  <div class="sheet-in">
+    <div class="sheet-head">
+      <h2 id="settings-h" class="sheet-title" data-t="settings">Settings</h2>
+      <button id="settings-close" class="icon-btn" type="button">
+        <svg class="i" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+        <span class="visually-hidden" data-t="close">Close</span>
+      </button>
+    </div>
+    <label class="field"><span class="field-label" data-t="uiLanguage">Interface language</span>
+      <select id="ui-lang"></select></label>
+    <label class="field"><span class="field-label" data-t="meaningLanguage">Meaning shown in</span>
+      <select id="meaning-lang"></select></label>
+    <div id="settings-extra"></div>
+  </div>
+</div>
+<div id="scrim" class="scrim" hidden></div>
+
+<script type="module" src="app/main.js"></script>
+</body>
+</html>

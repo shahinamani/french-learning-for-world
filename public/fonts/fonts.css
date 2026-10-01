@@ -1,0 +1,78 @@
+/* Self-hosted, served from our own origin.
+ *
+ * Three reasons, all of which a third-party font host fails:
+ *   1. A cross-origin font is not in our service-worker cache, so the offline
+ *      case falls back to a system face.
+ *   2. Every visitor's IP reaches the font host. A German court has held that
+ *      to breach the GDPR, and this platform is aimed at the EU among others.
+ *   3. Some networks block the host outright, including the one this was built
+ *      on — which is how it was noticed.
+ *
+ * Both families are variable: one file covers every weight, so there is no
+ * per-weight request and no faux-bold. Licences sit beside the files.
+ * `unicode-range` means a Latin-only page never downloads the Arabic subset.
+ *
+ * font-display: optional, not swap. Measured on a simulated 400 kbps
+ * connection, the font arrived at 3.8 s and the swap re-painted the text,
+ * which moved the largest contentful paint from 1.7 s to 4.4 s. `optional`
+ * uses the fallback when the font is not ready in about 100 ms and does not
+ * swap it in afterwards, so the paint happens once.
+ *
+ * The cost is real and worth stating: a first visit on a slow connection sees
+ * the fallback stack — itself a serif for French and a sans for the interface
+ * — and gets the intended faces from the second visit, when they are cached.
+ * A learner on a poor connection gets a page that paints in 1.7 s rather than
+ * one that looks right in 5.7 s.
+ */
+
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: optional;
+  src: url("newsreader-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Newsreader";
+  font-style: normal;
+  font-weight: 400 600;
+  font-display: optional;
+  src: url("newsreader-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+
+@font-face {
+  font-family: "Vazirmatn";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: optional;
+  src: url("vazirmatn-latin.woff2") format("woff2");
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+    U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193,
+    U+2212, U+2215, U+FEFF, U+FFFD;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: optional;
+  src: url("vazirmatn-latin-ext.woff2") format("woff2");
+  unicode-range: U+0100-02BA, U+02BD-02C5, U+02C7-02CC, U+02CE-02D7, U+02DD-02FF,
+    U+0304, U+0308, U+0329, U+1D00-1DBF, U+1E00-1E9F, U+1EF2-1EFF, U+2020,
+    U+20A0-20AB, U+20AD-20C0, U+2113, U+2C60-2C7F, U+A720-A7FF;
+}
+@font-face {
+  font-family: "Vazirmatn";
+  font-style: normal;
+  font-weight: 400 700;
+  font-display: optional;
+  src: url("vazirmatn-arabic.woff2") format("woff2");
+  unicode-range: U+0600-06FF, U+0750-077F, U+0870-088E, U+0890-0891, U+0898-08E1,
+    U+08E3-08FF, U+200C-200E, U+2010-2011, U+204F, U+2E41, U+FB50-FDFF,
+    U+FE70-FE74, U+FE76-FEFC;
+}

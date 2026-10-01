@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="French Learning for World">
+  <rect width="512" height="512" rx="96" fill="#1b3a5c"/>
+  <g transform="translate(256 260)">
+    <circle r="140" fill="none" stroke="#f7f7f4" stroke-width="16" opacity=".35"/>
+    <path d="M-140 0h280M0-140v280" stroke="#f7f7f4" stroke-width="10" opacity=".25"/>
+    <text x="0" y="34" font-family="Georgia, 'Times New Roman', serif" font-size="150"
+          font-weight="700" fill="#f7f7f4" text-anchor="middle">Fr</text>
+  </g>
+</svg>

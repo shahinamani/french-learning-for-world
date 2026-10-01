@@ -1,0 +1,143 @@
+name: Tests
+
+on:
+  push:
+    branches: ['**']
+  pull_request:
+
+# Read-only. Nothing in this repository needs a token that can write, and a
+# workflow that cannot write cannot be turned into one that does.
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+
+      # Needs the whole history, not a shallow clone, or the scan below reads
+      # one commit and reports clean.
+      - name: Unit and content tests
+        run: node --import ./tests/register.mjs --test tests/*.test.js
+
+      - name: No tool attribution in any commit message
+        run: bash scripts/check-commit-messages.sh
+
+      - name: Secret scan of the whole history
+        run: |
+          # Dump first and check it worked. Piping git straight into grep means
+          # a git failure produces an empty stream, grep finds nothing, and the
+          # scan reports "clean" without having read anything.
+          git log --all -p \
+            -- ':!.githooks/pre-commit' ':!.github/workflows/ci.yml' > /tmp/history.txt
+          bytes=$(wc -c < /tmp/history.txt)
+          echo "Scanned $bytes bytes of history."
+          if [ "$bytes" -lt 1000 ]; then
+            echo "::error::History dump is $bytes bytes — the scan did not read the repository."
+            exit 1
+          fi
+          if grep -nEi \
+            'gh[pousr]_[A-Za-z0-9]{30,}|github_pat_[A-Za-z0-9]{50,}|glpat-[A-Za-z0-9_-]{16,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|AIza[0-9A-Za-z_-]{35}|xox[abeprs]-[A-Za-z0-9-]{10,}|BEGIN ([A-Z]+ )?PRIVATE KEY|(postgres(ql)?|mysql|mongodb(\+srv)?)://[^:/ ]+:[^@ ]+@' \
+            /tmp/history.txt
+          then
+            echo "::error::A credential pattern is present in the git history."
+            exit 1
+          fi
+          echo "History is clean."
+
+      - name: Personal data must not appear in the files people read
+        run: |
+          # The working tree, not the history. Commit metadata carries the
+          # author's address by design and history is not rewritten, so
+          # scanning history would fail forever on something already public
+          # and intended. What must stay clean is what a visitor reads today.
+          # node_modules is excluded because it is not ours and is not
+          # committed; every other directory is scanned.
+          if grep -rnEi --exclude-dir=.git --exclude-dir=node_modules \
+             '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\.[a-z]+' .
+          then
+            echo "::error::An email address appears in a tracked file."
+            exit 1
+          fi
+          echo "No personal data in tracked files."
+
+  # Until this job existed, every "0 failures" in a report was one moment on one
+  # machine: the browser suites were run by hand and nothing stopped a change
+  # that broke them from merging. It runs on every push and every pull request,
+  # and a failure fails the run.
+  browser:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: |
+            package-lock.json
+            web/package-lock.json
+
+      - name: Install (root — Playwright and axe-core)
+        run: npm ci
+
+      - name: Install (web)
+        working-directory: web
+        run: npm ci
+
+      # Pinned by the lockfile; --with-deps installs the system libraries
+      # headless Chromium needs on a clean runner.
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+
+      - name: Build the app
+        working-directory: web
+        run: npm run build
+
+      - name: Serve the build, gzipped, as a real host would
+        working-directory: web
+        run: |
+          nohup python3 e2e/gzserver.py dist 8793 > /tmp/gzserver.log 2>&1 &
+          disown || true
+          for i in $(seq 1 30); do
+            curl -fsS -o /dev/null http://127.0.0.1:8793/ && break
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:8793/
+
+      - name: Serve the design system
+        run: |
+          nohup python3 -m http.server 8765 > /tmp/httpserver.log 2>&1 &
+          disown || true
+          for i in $(seq 1 30); do
+            curl -fsS -o /dev/null http://127.0.0.1:8765/design-system/ && break
+            sleep 1
+          done
+          curl -fsS -o /dev/null http://127.0.0.1:8765/design-system/
+
+      # The connection walk: every route, the journey end to end, multi-user
+      # isolation, the service worker, reduced motion, and axe-core on every
+      # screen in both themes.
+      - name: Browser walk
+        run: |
+          mkdir -p /tmp/shots
+          node web/e2e/walk.mjs /tmp/shots
+
+      # Contrast against real rendered backgrounds, layout at three widths,
+      # focus visibility, RTL.
+      - name: Design-system contrast and layout
+        run: node design-system/contrast-check.mjs
+
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: screenshots
+          path: /tmp/shots
+          if-no-files-found: warn

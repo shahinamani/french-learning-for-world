@@ -1,0 +1,845 @@
+{
+  "version": 1,
+  "checkedOn": null,
+  "disclaimer": "This portal is independent of every organisation named here. Exam names are trademarks of their owners and are used only to describe what learners are preparing for. Links lead to those organisations’ own websites; no material from them is copied, hosted or reproduced here. Always confirm exam format, dates and fees on the exam body’s own page — it is the only authoritative source.",
+  "exams": [
+    {
+      "id": "delf",
+      "code": "DELF",
+      "fullName": "Diplôme d’études en langue française",
+      "owner": "France Éducation international",
+      "ownerNote": "Diploma issued by the French Ministry of National Education, administered by France Éducation international.",
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2"
+      ],
+      "skills": [
+        "listening",
+        "reading",
+        "writing",
+        "speaking"
+      ],
+      "resources": [
+        {
+          "title": "DELF tous publics — page officielle",
+          "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Diplômes et tests — France Éducation international",
+          "url": "https://www.france-education-international.fr/diplomes-et-tests",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "DELF Prim / DELF junior et scolaire",
+          "url": "https://www.france-education-international.fr/diplomes-tests/delf-junior-scolaire",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre le français",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A2"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B2"
+          ]
+        },
+        {
+          "title": "RFI — Français facile",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — podcasts et journaux en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Podcast Français Facile",
+          "url": "https://www.podcastfrancaisfacile.com/",
+          "skill": "listening",
+          "kind": "open",
+          "publisher": "Podcast Français Facile",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — articles en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/",
+          "skill": "reading",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Wikisource en français (domaine public)",
+          "url": "https://fr.wikisource.org/",
+          "skill": "reading",
+          "kind": "open",
+          "publisher": "Wikimedia",
+          "lang": "fr",
+          "levels": [
+            "B2",
+            "C1",
+            "C2"
+          ]
+        },
+        {
+          "title": "Institut français",
+          "url": "https://www.institutfrancais.com/",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Institut français",
+          "lang": "fr"
+        },
+        {
+          "title": "Cadre européen commun de référence (CECRL)",
+          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Conseil de l’Europe",
+          "lang": "en"
+        },
+        {
+          "title": "DELF — épreuves et exemples de sujets : production écrite",
+          "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
+          "skill": "writing",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — répertoire d’exercices de français",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "writing",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "writing",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr"
+        },
+        {
+          "title": "DELF — épreuves et exemples de sujets : production orale",
+          "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
+          "skill": "speaking",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — compréhension et expression orales",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "speaking",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI Français facile — écouter et répéter au quotidien",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "speaking",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        }
+      ]
+    },
+    {
+      "id": "dalf",
+      "code": "DALF",
+      "fullName": "Diplôme approfondi de langue française",
+      "owner": "France Éducation international",
+      "ownerNote": "Diploma issued by the French Ministry of National Education, administered by France Éducation international.",
+      "levels": [
+        "C1",
+        "C2"
+      ],
+      "skills": [
+        "listening",
+        "reading",
+        "writing",
+        "speaking"
+      ],
+      "resources": [
+        {
+          "title": "DALF tous publics — page officielle",
+          "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Diplômes et tests — France Éducation international",
+          "url": "https://www.france-education-international.fr/diplomes-et-tests",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre le français",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A2"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B2"
+          ]
+        },
+        {
+          "title": "RFI — Français facile",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — podcasts et journaux en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Podcast Français Facile",
+          "url": "https://www.podcastfrancaisfacile.com/",
+          "skill": "listening",
+          "kind": "open",
+          "publisher": "Podcast Français Facile",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — articles en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/",
+          "skill": "reading",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Wikisource en français (domaine public)",
+          "url": "https://fr.wikisource.org/",
+          "skill": "reading",
+          "kind": "open",
+          "publisher": "Wikimedia",
+          "lang": "fr",
+          "levels": [
+            "B2",
+            "C1",
+            "C2"
+          ]
+        },
+        {
+          "title": "Institut français",
+          "url": "https://www.institutfrancais.com/",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Institut français",
+          "lang": "fr"
+        },
+        {
+          "title": "Cadre européen commun de référence (CECRL)",
+          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Conseil de l’Europe",
+          "lang": "en"
+        },
+        {
+          "title": "DALF — épreuves et exemples de sujets : production écrite",
+          "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
+          "skill": "writing",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — répertoire d’exercices de français",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "writing",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "writing",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr"
+        },
+        {
+          "title": "DALF — épreuves et exemples de sujets : production orale",
+          "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
+          "skill": "speaking",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — compréhension et expression orales",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "speaking",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI Français facile — écouter et répéter au quotidien",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "speaking",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        }
+      ]
+    },
+    {
+      "id": "tcf",
+      "code": "TCF",
+      "fullName": "Test de connaissance du français",
+      "owner": "France Éducation international",
+      "ownerNote": "Test administered by France Éducation international. Variants include TCF Tout Public, TCF Canada, TCF Québec, TCF IRN and TCF ANF.",
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "skills": [
+        "listening",
+        "reading",
+        "writing",
+        "speaking"
+      ],
+      "resources": [
+        {
+          "title": "TCF tout public — page officielle",
+          "url": "https://www.france-education-international.fr/test/tcf-tout-public",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "TCF Canada — page officielle",
+          "url": "https://www.france-education-international.fr/test/tcf-canada",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "TCF Québec — page officielle",
+          "url": "https://www.france-education-international.fr/test/tcf-quebec",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre le français",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A2"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B2"
+          ]
+        },
+        {
+          "title": "RFI — Français facile",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — podcasts et journaux en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Podcast Français Facile",
+          "url": "https://www.podcastfrancaisfacile.com/",
+          "skill": "listening",
+          "kind": "open",
+          "publisher": "Podcast Français Facile",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — articles en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/",
+          "skill": "reading",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Wikisource en français (domaine public)",
+          "url": "https://fr.wikisource.org/",
+          "skill": "reading",
+          "kind": "open",
+          "publisher": "Wikimedia",
+          "lang": "fr",
+          "levels": [
+            "B2",
+            "C1",
+            "C2"
+          ]
+        },
+        {
+          "title": "Institut français",
+          "url": "https://www.institutfrancais.com/",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Institut français",
+          "lang": "fr"
+        },
+        {
+          "title": "Cadre européen commun de référence (CECRL)",
+          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Conseil de l’Europe",
+          "lang": "en"
+        },
+        {
+          "title": "TCF — épreuves et exemples de sujets : production écrite",
+          "url": "https://www.france-education-international.fr/test/tcf-tout-public",
+          "skill": "writing",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — répertoire d’exercices de français",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "writing",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "writing",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr"
+        },
+        {
+          "title": "TCF — épreuves et exemples de sujets : production orale",
+          "url": "https://www.france-education-international.fr/test/tcf-tout-public",
+          "skill": "speaking",
+          "kind": "exam-body",
+          "publisher": "France Éducation international",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — compréhension et expression orales",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "speaking",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI Français facile — écouter et répéter au quotidien",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "speaking",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        }
+      ]
+    },
+    {
+      "id": "tef",
+      "code": "TEF",
+      "fullName": "Test d’évaluation de français",
+      "owner": "Le français des affaires — CCI Paris Île-de-France",
+      "ownerNote": "Test administered by Le français des affaires, part of the Chambre de commerce et d’industrie de Paris Île-de-France. Variants include TEF Canada, TEFAQ, TEF Naturalisation and TEF Études.",
+      "levels": [
+        "A1",
+        "A2",
+        "B1",
+        "B2",
+        "C1",
+        "C2"
+      ],
+      "skills": [
+        "listening",
+        "reading",
+        "writing",
+        "speaking"
+      ],
+      "resources": [
+        {
+          "title": "TEF — page officielle",
+          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "Le français des affaires — CCI Paris Île-de-France",
+          "lang": "fr"
+        },
+        {
+          "title": "Le français des affaires — tests et diplômes",
+          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/",
+          "skill": "general",
+          "kind": "exam-body",
+          "publisher": "Le français des affaires — CCI Paris Île-de-France",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre le français",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1",
+            "A2",
+            "B1",
+            "B2",
+            "C1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau A2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "A2"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B1",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B1"
+          ]
+        },
+        {
+          "title": "TV5MONDE — exercices niveau B2",
+          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr",
+          "levels": [
+            "B2"
+          ]
+        },
+        {
+          "title": "RFI — Français facile",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — podcasts et journaux en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+          "skill": "listening",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Podcast Français Facile",
+          "url": "https://www.podcastfrancaisfacile.com/",
+          "skill": "listening",
+          "kind": "open",
+          "publisher": "Podcast Français Facile",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI — articles en français facile",
+          "url": "https://francaisfacile.rfi.fr/fr/",
+          "skill": "reading",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        },
+        {
+          "title": "Wikisource en français (domaine public)",
+          "url": "https://fr.wikisource.org/",
+          "skill": "reading",
+          "kind": "open",
+          "publisher": "Wikimedia",
+          "lang": "fr",
+          "levels": [
+            "B2",
+            "C1",
+            "C2"
+          ]
+        },
+        {
+          "title": "Institut français",
+          "url": "https://www.institutfrancais.com/",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Institut français",
+          "lang": "fr"
+        },
+        {
+          "title": "Cadre européen commun de référence (CECRL)",
+          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+          "skill": "general",
+          "kind": "institutional",
+          "publisher": "Conseil de l’Europe",
+          "lang": "en"
+        },
+        {
+          "title": "TEF — épreuves et exemples de sujets : production écrite",
+          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
+          "skill": "writing",
+          "kind": "exam-body",
+          "publisher": "Le français des affaires — CCI Paris Île-de-France",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — répertoire d’exercices de français",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "writing",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+          "url": "https://apprendre.tv5monde.com/",
+          "skill": "writing",
+          "kind": "broadcaster",
+          "publisher": "TV5MONDE",
+          "lang": "fr"
+        },
+        {
+          "title": "TEF — épreuves et exemples de sujets : production orale",
+          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
+          "skill": "speaking",
+          "kind": "exam-body",
+          "publisher": "Le français des affaires — CCI Paris Île-de-France",
+          "lang": "fr"
+        },
+        {
+          "title": "Le Point du FLE — compréhension et expression orales",
+          "url": "https://www.lepointdufle.net/",
+          "skill": "speaking",
+          "kind": "open",
+          "publisher": "Le Point du FLE",
+          "lang": "fr"
+        },
+        {
+          "title": "RFI Français facile — écouter et répéter au quotidien",
+          "url": "https://francaisfacile.rfi.fr/",
+          "skill": "speaking",
+          "kind": "broadcaster",
+          "publisher": "Radio France Internationale",
+          "lang": "fr"
+        }
+      ]
+    }
+  ]
+}

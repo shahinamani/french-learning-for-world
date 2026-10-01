@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "contentLicence": "CC BY-SA 4.0",
+  "decks": [
+    {
+      "id": "fr-core-a1",
+      "file": "fr-core-a1.json",
+      "level": "A1",
+      "title": {
+        "en": "Core French A1",
+        "fr": "Français essentiel A1",
+        "fa": "فرانسه‌ی پایه A1",
+        "ar": "الفرنسية الأساسية A1"
+      },
+      "count": 22
+    }
+  ]
+}

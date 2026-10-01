@@ -1,40 +1,80 @@
-#!/bin/sh
+#!/usr/bin/env bash
 # Blocks a commit that stages anything shaped like a real credential.
-# Enable once per clone:  git config core.hooksPath .githooks
 #
-# Matches VALUES, not the words "password" or "secret" — otherwise security
-# documentation blocks itself and people learn to pass --no-verify.
-# This hook is a safety net, not the control. The control is not writing
-# secrets down. Run `gitleaks detect` before a release.
+# Enable it — once per clone:   ./scripts/setup-hooks.sh
+#
+# It matches credential VALUES, not the words "password" or "secret" —
+# otherwise security documentation blocks itself, and people learn to pass
+# --no-verify, which disables the protection permanently.
+#
+# This hook is a safety net, not the control. The control is architectural:
+# a static site with no server has no credentials to leak in the first place.
+# Run a full scanner (gitleaks, trufflehog) before any release.
 
+set -u
 fail=0
 
-# 1. A real .env must never be staged; .env.example may be.
-for f in $(git diff --cached --name-only --diff-filter=ACM); do
+# ---------------------------------------------------------------------------
+# 1. File shapes that must never be staged.
+#    NUL-delimited, so a filename containing a space is still checked.
+# ---------------------------------------------------------------------------
+while IFS= read -r -d '' f; do
   case "$f" in
     .env.example|*/.env.example) ;;
     .env|.env.*|*/.env|*/.env.*)
       echo "BLOCKED: $f is staged. Only .env.example may be committed." >&2
       fail=1 ;;
-    *.pem|*.key|*.p12|*.pfx|id_rsa*|*/id_rsa*)
+    *.pem|*.key|*.p12|*.pfx|*.jks|*.keystore|*.ppk|id_rsa*|*/id_rsa*)
       echo "BLOCKED: $f looks like key material." >&2
       fail=1 ;;
+    *.sqlite|*.sqlite3|*.db|*.dump|*.bak)
+      echo "BLOCKED: $f looks like a database, dump or backup." >&2
+      fail=1 ;;
+    *service-account*.json|*credentials.json|*.kdbx)
+      echo "BLOCKED: $f looks like a credentials file." >&2
+      fail=1 ;;
   esac
-done
+done < <(git diff --cached --name-only --diff-filter=ACM -z)
 
-# 2. Known credential formats, and assignments with a literal value.
-#    The hook excludes itself: it necessarily contains these patterns.
-PATTERNS='gh[pousr]_[A-Za-z0-9]{30,}|sk-[A-Za-z0-9_-]{20,}|AKIA[0-9A-Z]{16}|BEGIN ([A-Z]+ )?PRIVATE KEY|ey[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}|(postgres(ql)?|mysql|mongodb(\+srv)?|redis|amqp)://[^:/ ]+:[^@ ]+@|(api[_-]?key|apikey|secret|password|passwd|token|auth)[\"'\'' ]*[:=][ ]*[\"'\''][^\"'\'' $<>{}]{8,}[\"'\'']'
+# ---------------------------------------------------------------------------
+# 2. Credential values inside the staged diff.
+#
+#    The whole staged diff is scanned — including this hook. Lines carrying
+#    the sentinel below are skipped, which is how this file's own pattern
+#    list avoids matching itself. Adding that sentinel to smuggle a key past
+#    the hook is a deliberate bypass, exactly like --no-verify.
+# ---------------------------------------------------------------------------
+SENTINEL='hook-pattern-definition-allow'
 
-files=$(git diff --cached --name-only --diff-filter=ACM | grep -v '^\.githooks/pre-commit$' || true)
-if [ -n "$files" ]; then
-  if git diff --cached -U0 -- $files | grep -nE "$PATTERNS" >&2; then
-    echo "" >&2
-    echo "BLOCKED: the staged diff matches a credential pattern (above)." >&2
-    echo "This repository is PUBLIC. A pushed secret cannot be un-published." >&2
-    echo "If it is genuinely a placeholder, make it obviously fake." >&2
-    fail=1
-  fi
+PATTERNS='gh[pousr]_[A-Za-z0-9]{30,}'                                 # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|github_pat_[A-Za-z0-9_]{50,}'                   # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|glpat-[A-Za-z0-9_-]{16,}'                       # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|sk-[A-Za-z0-9_-]{20,}'                          # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|sk-ant-[A-Za-z0-9_-]{20,}'                      # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|(sk|rk|pk)_(live|test)_[A-Za-z0-9]{20,}'        # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|AKIA[0-9A-Z]{16}'                               # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|ASIA[0-9A-Z]{16}'                               # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|AIza[0-9A-Za-z_-]{35}'                          # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|xox[abeprs]-[A-Za-z0-9-]{10,}'                  # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|SG\.[A-Za-z0-9_-]{20,}\.[A-Za-z0-9_-]{20,}'     # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|npm_[A-Za-z0-9]{36}'                            # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|hf_[A-Za-z0-9]{30,}'                            # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|dop_v1_[a-f0-9]{64}'                            # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|BEGIN ([A-Z]+ )?PRIVATE KEY'                    # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|ey[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}\.[A-Za-z0-9_-]{10,}'   # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|(postgres(ql)?|mysql|mongodb(\+srv)?|redis|amqp|mssql)://[^:/ ]+:[^@ ]+@'  # hook-pattern-definition-allow
+PATTERNS="$PATTERNS"'|(api[_-]?key|apikey|secret|password|passwd|token|auth|bearer)["'"'"' ]*[:=][ ]*["'"'"'][^"'"'"' $<>{}]{8,}["'"'"']'  # hook-pattern-definition-allow
+
+if git diff --cached -U0 --diff-filter=ACM \
+   | grep -v -- "$SENTINEL" \
+   | grep -nE -- "$PATTERNS" >&2
+then
+  echo "" >&2
+  echo "BLOCKED: the staged diff matches a credential pattern (above)." >&2
+  echo "This repository is PUBLIC. A pushed secret cannot be un-published." >&2
+  echo "Revoke and rotate the credential FIRST; removing the commit is cleanup." >&2
+  echo "If it is genuinely a placeholder, make it obviously fake." >&2
+  fail=1
 fi
 
 [ "$fail" -eq 0 ] || exit 1

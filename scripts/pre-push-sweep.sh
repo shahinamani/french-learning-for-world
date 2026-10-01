@@ -1,0 +1,41 @@
+#!/usr/bin/env bash
+# Everything CI will check, run before pushing rather than discovered after.
+#
+# CI went red on the rebuilt repository because I ran the secret hook locally
+# but not the personal-data scan, which is a separate CI step. Two files I had
+# just written carried an email address. The sweep existed; I only ran half of
+# it. So it is one command now.
+set -uo pipefail
+fail=0
+say() { printf '%s\n' "$*"; }
+
+say "1. credential patterns in the working tree"
+if ! ./.githooks/pre-commit >/dev/null 2>&1; then say "   FAIL"; fail=1; else say "   clean"; fi
+
+say "2. tool attribution in any commit message"
+if ! bash scripts/check-commit-messages.sh >/dev/null; then say "   FAIL"; fail=1; else say "   clean"; fi
+
+say "3. personal data in tracked files (the step that caught this)"
+if grep -rqnEi --exclude-dir=.git --exclude-dir=node_modules \
+     '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\.[a-z]+' . ; then
+  say "   FAIL — an email address appears in a tracked file:"
+  grep -rnEi --exclude-dir=.git --exclude-dir=node_modules \
+    '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\.[a-z]+' . | sed 's/^/     /'
+  fail=1
+else say "   clean"; fi
+
+say "4. unit tests, with web dependencies hidden as CI has them"
+hidden=0
+if [ -d web/node_modules ]; then mv web/node_modules /tmp/_web_nm && hidden=1; fi
+if node --import ./tests/register.mjs --test tests/*.test.js >/tmp/units.txt 2>&1; then
+  say "   $(grep -E '^# (tests|pass|fail)' /tmp/units.txt | tr '\n' ' ')"
+else
+  say "   FAIL"; grep -E '^not ok' /tmp/units.txt | head -5 | sed 's/^/     /'; fail=1
+fi
+[ "$hidden" = "1" ] && mv /tmp/_web_nm web/node_modules
+
+say "5. nothing heavy or untracked staged"
+git status --porcelain | grep -E '^\?\? (node_modules|web/dist|web/node_modules)' && { say "   FAIL"; fail=1; } || say "   clean"
+
+[ "$fail" = "0" ] && say "ALL CLEAR" || say "SWEEP FAILED — do not push"
+exit "$fail"

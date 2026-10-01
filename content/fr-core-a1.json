@@ -1,0 +1,959 @@
+{
+  "id": "fr-core-a1",
+  "title": {
+    "en": "Core French A1",
+    "fr": "Français essentiel A1",
+    "fa": "فرانسه‌ی پایه A1",
+    "ar": "الفرنسية الأساسية A1"
+  },
+  "level": "A1",
+  "licence": "CC BY-SA 4.0",
+  "provenanceNote": "Every card on this deck is original work written for this project. No sentence, meaning or word list is taken from any textbook, course or other app.",
+  "cards": [
+    {
+      "key": "v:etre",
+      "type": "verb",
+      "level": "A1",
+      "fr": "être",
+      "prep": null,
+      "meanings": {
+        "en": "to be",
+        "fa": "بودن",
+        "ar": "يكون",
+        "fr": "exister, se trouver dans un état"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "été",
+          "fr": "Hier, j'ai été très fatigué.",
+          "translations": {
+            "en": "Yesterday I was very tired.",
+            "fa": "دیروز خیلی خسته بودم.",
+            "ar": "أمس كنت متعبًا جدًا."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "serai",
+          "fr": "Demain, je serai à la maison.",
+          "translations": {
+            "en": "Tomorrow I will be at home.",
+            "fa": "فردا خانه خواهم بود.",
+            "ar": "غدًا سأكون في البيت."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "phon.accent.circonflexe"
+      ]
+    },
+    {
+      "key": "v:avoir",
+      "type": "verb",
+      "level": "A1",
+      "fr": "avoir",
+      "prep": null,
+      "meanings": {
+        "en": "to have",
+        "fa": "داشتن",
+        "ar": "يملك، لديه",
+        "fr": "posséder, détenir"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "eu",
+          "fr": "J'ai eu une bonne idée ce matin.",
+          "translations": {
+            "en": "I had a good idea this morning.",
+            "fa": "امروز صبح ایده‌ی خوبی داشتم.",
+            "ar": "خطرت لي فكرة جيدة هذا الصباح."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "aurons",
+          "fr": "Nous aurons le temps demain.",
+          "translations": {
+            "en": "We will have time tomorrow.",
+            "fa": "فردا وقت خواهیم داشت.",
+            "ar": "سيكون لدينا وقت غدًا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular"
+      ]
+    },
+    {
+      "key": "v:aller",
+      "type": "verb",
+      "level": "A1",
+      "fr": "aller",
+      "prep": "à",
+      "meanings": {
+        "en": "to go",
+        "fa": "رفتن",
+        "ar": "يذهب",
+        "fr": "se déplacer vers un lieu"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "allé",
+          "fr": "Je suis allé à Paris la semaine dernière.",
+          "translations": {
+            "en": "I went to Paris last week.",
+            "fa": "هفته‌ی گذشته به پاریس رفتم.",
+            "ar": "ذهبت إلى باريس الأسبوع الماضي."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "ira",
+          "fr": "Elle ira à l'école lundi.",
+          "translations": {
+            "en": "She will go to school on Monday.",
+            "fa": "او دوشنبه به مدرسه خواهد رفت.",
+            "ar": "ستذهب إلى المدرسة يوم الاثنين."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-etre",
+        "gram.future.irregular",
+        "gram.preposition.places"
+      ]
+    },
+    {
+      "key": "v:faire",
+      "type": "verb",
+      "level": "A1",
+      "fr": "faire",
+      "prep": null,
+      "meanings": {
+        "en": "to do, to make",
+        "fa": "انجام دادن، کردن",
+        "ar": "يفعل، يصنع",
+        "fr": "réaliser, fabriquer, accomplir"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "fait",
+          "fr": "Nous avons fait les courses samedi.",
+          "translations": {
+            "en": "We did the shopping on Saturday.",
+            "fa": "شنبه خرید کردیم.",
+            "ar": "تسوّقنا يوم السبت."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "ferai",
+          "fr": "Je ferai la cuisine ce soir.",
+          "translations": {
+            "en": "I will cook this evening.",
+            "fa": "امشب آشپزی خواهم کرد.",
+            "ar": "سأطبخ هذا المساء."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular"
+      ]
+    },
+    {
+      "key": "v:pouvoir",
+      "type": "verb",
+      "level": "A1",
+      "fr": "pouvoir",
+      "prep": null,
+      "meanings": {
+        "en": "to be able to, can",
+        "fa": "توانستن",
+        "ar": "يستطيع",
+        "fr": "avoir la capacité ou la permission de"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "pu",
+          "fr": "Je n'ai pas pu venir hier.",
+          "translations": {
+            "en": "I could not come yesterday.",
+            "fa": "دیروز نتوانستم بیایم.",
+            "ar": "لم أستطع المجيء أمس."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "pourras",
+          "fr": "Tu pourras m'appeler demain.",
+          "translations": {
+            "en": "You will be able to call me tomorrow.",
+            "fa": "فردا خواهی توانست به من زنگ بزنی.",
+            "ar": "ستستطيع الاتصال بي غدًا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.negation.ne-pas"
+      ]
+    },
+    {
+      "key": "v:vouloir",
+      "type": "verb",
+      "level": "A1",
+      "fr": "vouloir",
+      "prep": null,
+      "meanings": {
+        "en": "to want",
+        "fa": "خواستن",
+        "ar": "يريد",
+        "fr": "désirer, souhaiter"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "voulu",
+          "fr": "Elle a voulu partir tôt.",
+          "translations": {
+            "en": "She wanted to leave early.",
+            "fa": "او خواست زود برود.",
+            "ar": "أرادت أن تغادر مبكرًا."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "voudront",
+          "fr": "Ils voudront des explications.",
+          "translations": {
+            "en": "They will want explanations.",
+            "fa": "آن‌ها توضیح خواهند خواست.",
+            "ar": "سيريدون تفسيرات."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.nonfinite.infinitive"
+      ]
+    },
+    {
+      "key": "v:devoir",
+      "type": "verb",
+      "level": "A1",
+      "fr": "devoir",
+      "prep": null,
+      "meanings": {
+        "en": "to have to, must",
+        "fa": "باید، مجبور بودن",
+        "ar": "يجب عليه",
+        "fr": "avoir l'obligation de"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "dû",
+          "fr": "J'ai dû rentrer à pied.",
+          "translations": {
+            "en": "I had to walk home.",
+            "fa": "مجبور شدم پیاده برگردم.",
+            "ar": "اضطررت إلى العودة سيرًا على الأقدام."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "devrez",
+          "fr": "Vous devrez remplir ce formulaire.",
+          "translations": {
+            "en": "You will have to fill in this form.",
+            "fa": "باید این فرم را پر کنید.",
+            "ar": "سيتعيّن عليكم ملء هذه الاستمارة."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.nonfinite.infinitive"
+      ]
+    },
+    {
+      "key": "v:dire",
+      "type": "verb",
+      "level": "A1",
+      "fr": "dire",
+      "prep": "à",
+      "meanings": {
+        "en": "to say, to tell",
+        "fa": "گفتن",
+        "ar": "يقول",
+        "fr": "exprimer par la parole"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "dit",
+          "fr": "Il m'a dit la vérité.",
+          "translations": {
+            "en": "He told me the truth.",
+            "fa": "او به من حقیقت را گفت.",
+            "ar": "قال لي الحقيقة."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "dirai",
+          "fr": "Je te dirai tout demain.",
+          "translations": {
+            "en": "I will tell you everything tomorrow.",
+            "fa": "فردا همه چیز را به تو خواهم گفت.",
+            "ar": "سأخبرك بكل شيء غدًا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular",
+        "gram.pronoun.coi"
+      ]
+    },
+    {
+      "key": "v:voir",
+      "type": "verb",
+      "level": "A1",
+      "fr": "voir",
+      "prep": null,
+      "meanings": {
+        "en": "to see",
+        "fa": "دیدن",
+        "ar": "يرى",
+        "fr": "percevoir par les yeux"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "vu",
+          "fr": "Nous avons vu un bon film.",
+          "translations": {
+            "en": "We saw a good film.",
+            "fa": "فیلم خوبی دیدیم.",
+            "ar": "شاهدنا فيلمًا جيدًا."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "verras",
+          "fr": "Tu verras la différence.",
+          "translations": {
+            "en": "You will see the difference.",
+            "fa": "تفاوت را خواهی دید.",
+            "ar": "سترى الفرق."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.irregular"
+      ]
+    },
+    {
+      "key": "v:prendre",
+      "type": "verb",
+      "level": "A1",
+      "fr": "prendre",
+      "prep": null,
+      "meanings": {
+        "en": "to take",
+        "fa": "گرفتن، برداشتن",
+        "ar": "يأخذ",
+        "fr": "saisir, emporter avec soi"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "pris",
+          "fr": "J'ai pris le train de huit heures.",
+          "translations": {
+            "en": "I took the eight o'clock train.",
+            "fa": "قطار ساعت هشت را گرفتم.",
+            "ar": "أخذت قطار الساعة الثامنة."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "prendrons",
+          "fr": "Nous prendrons un café ensemble.",
+          "translations": {
+            "en": "We will have a coffee together.",
+            "fa": "با هم قهوه خواهیم خورد.",
+            "ar": "سنشرب قهوة معًا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.irregular",
+        "gram.past.pc-avoir",
+        "gram.future.simple"
+      ]
+    },
+    {
+      "key": "v:parler",
+      "type": "verb",
+      "level": "A1",
+      "fr": "parler",
+      "prep": "à / de",
+      "meanings": {
+        "en": "to speak, to talk",
+        "fa": "صحبت کردن",
+        "ar": "يتكلّم",
+        "fr": "s'exprimer avec des mots"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "parlé",
+          "fr": "J'ai parlé à mon professeur.",
+          "translations": {
+            "en": "I spoke to my teacher.",
+            "fa": "با معلمم صحبت کردم.",
+            "ar": "تحدّثت إلى أستاذي."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "parlerons",
+          "fr": "Nous parlerons de ce projet lundi.",
+          "translations": {
+            "en": "We will talk about this project on Monday.",
+            "fa": "دوشنبه درباره‌ی این پروژه صحبت خواهیم کرد.",
+            "ar": "سنتحدّث عن هذا المشروع يوم الاثنين."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.er",
+        "gram.past.pc-avoir",
+        "gram.future.simple",
+        "gram.preposition.verb-a"
+      ]
+    },
+    {
+      "key": "v:manger",
+      "type": "verb",
+      "level": "A1",
+      "fr": "manger",
+      "prep": null,
+      "meanings": {
+        "en": "to eat",
+        "fa": "خوردن",
+        "ar": "يأكل",
+        "fr": "avaler un aliment"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "mangé",
+          "fr": "Nous avons mangé au restaurant.",
+          "translations": {
+            "en": "We ate at the restaurant.",
+            "fa": "در رستوران غذا خوردیم.",
+            "ar": "أكلنا في المطعم."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "mangerai",
+          "fr": "Je mangerai plus tard.",
+          "translations": {
+            "en": "I will eat later.",
+            "fa": "بعداً غذا خواهم خورد.",
+            "ar": "سآكل لاحقًا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.er",
+        "gram.past.pc-avoir",
+        "gram.future.simple"
+      ]
+    },
+    {
+      "key": "v:commencer",
+      "type": "verb",
+      "level": "A1",
+      "fr": "commencer",
+      "prep": "à",
+      "meanings": {
+        "en": "to begin, to start",
+        "fa": "شروع کردن",
+        "ar": "يبدأ",
+        "fr": "débuter, entamer"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "commencé",
+          "fr": "Il a commencé à travailler en janvier.",
+          "translations": {
+            "en": "He started working in January.",
+            "fa": "او در ژانویه شروع به کار کرد.",
+            "ar": "بدأ العمل في يناير."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "commencera",
+          "fr": "Le cours commencera à neuf heures.",
+          "translations": {
+            "en": "The class will start at nine.",
+            "fa": "کلاس ساعت نه شروع خواهد شد.",
+            "ar": "سيبدأ الدرس في الساعة التاسعة."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.er",
+        "gram.present.stem-change",
+        "gram.past.pc-avoir",
+        "gram.future.simple",
+        "gram.preposition.verb-a"
+      ]
+    },
+    {
+      "key": "v:finir",
+      "type": "verb",
+      "level": "A1",
+      "fr": "finir",
+      "prep": "de",
+      "meanings": {
+        "en": "to finish",
+        "fa": "تمام کردن",
+        "ar": "يُنهي",
+        "fr": "terminer, achever"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "fini",
+          "fr": "J'ai fini de lire ce livre.",
+          "translations": {
+            "en": "I finished reading this book.",
+            "fa": "خواندن این کتاب را تمام کردم.",
+            "ar": "أنهيت قراءة هذا الكتاب."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "finira",
+          "fr": "Elle finira son travail ce soir.",
+          "translations": {
+            "en": "She will finish her work this evening.",
+            "fa": "او کارش را امشب تمام خواهد کرد.",
+            "ar": "ستُنهي عملها هذا المساء."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.present.ir",
+        "gram.past.pc-avoir",
+        "gram.future.simple",
+        "gram.preposition.verb-de"
+      ]
+    },
+    {
+      "key": "n:maison",
+      "type": "noun",
+      "level": "A1",
+      "fr": "maison",
+      "article": "la",
+      "gender": "f",
+      "meanings": {
+        "en": "house, home",
+        "fa": "خانه",
+        "ar": "بيت، منزل",
+        "fr": "bâtiment où l'on habite"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "maison",
+          "fr": "Nous avons vendu notre maison.",
+          "translations": {
+            "en": "We sold our house.",
+            "fa": "خانه‌مان را فروختیم.",
+            "ar": "بِعنا بيتنا."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "maison",
+          "fr": "Ils construiront une maison ici.",
+          "translations": {
+            "en": "They will build a house here.",
+            "fa": "اینجا خانه‌ای خواهند ساخت.",
+            "ar": "سيبنون بيتًا هنا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "lex.housing"
+      ]
+    },
+    {
+      "key": "n:livre",
+      "type": "noun",
+      "level": "A1",
+      "fr": "livre",
+      "article": "le",
+      "gender": "m",
+      "meanings": {
+        "en": "book",
+        "fa": "کتاب",
+        "ar": "كتاب",
+        "fr": "pages reliées que l'on lit"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "livre",
+          "fr": "J'ai acheté ce livre hier.",
+          "translations": {
+            "en": "I bought this book yesterday.",
+            "fa": "این کتاب را دیروز خریدم.",
+            "ar": "اشتريت هذا الكتاب أمس."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "livre",
+          "fr": "Ce livre vous aidera beaucoup.",
+          "translations": {
+            "en": "This book will help you a lot.",
+            "fa": "این کتاب خیلی به شما کمک خواهد کرد.",
+            "ar": "سيساعدكم هذا الكتاب كثيرًا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "lex.study"
+      ]
+    },
+    {
+      "key": "n:eau",
+      "type": "noun",
+      "level": "A1",
+      "fr": "eau",
+      "article": "l'",
+      "gender": "f",
+      "meanings": {
+        "en": "water",
+        "fa": "آب",
+        "ar": "ماء",
+        "fr": "liquide transparent que l'on boit"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "eau",
+          "fr": "J'ai bu beaucoup d'eau.",
+          "translations": {
+            "en": "I drank a lot of water.",
+            "fa": "آب زیادی نوشیدم.",
+            "ar": "شربت الكثير من الماء."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "eau",
+          "fr": "L'eau sera froide ce matin.",
+          "translations": {
+            "en": "The water will be cold this morning.",
+            "fa": "امروز صبح آب سرد خواهد بود.",
+            "ar": "سيكون الماء باردًا هذا الصباح."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.partitive",
+        "phon.elision.basic",
+        "lex.food"
+      ]
+    },
+    {
+      "key": "n:travail",
+      "type": "noun",
+      "level": "A1",
+      "fr": "travail",
+      "article": "le",
+      "gender": "m",
+      "meanings": {
+        "en": "work, job",
+        "fa": "کار",
+        "ar": "عمل",
+        "fr": "activité exercée pour gagner sa vie"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "travail",
+          "fr": "Le travail a été difficile.",
+          "translations": {
+            "en": "The work was hard.",
+            "fa": "کار سخت بود.",
+            "ar": "كان العمل صعبًا."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "travail",
+          "fr": "Mon travail finira à six heures.",
+          "translations": {
+            "en": "My work will finish at six.",
+            "fa": "کارم ساعت شش تمام خواهد شد.",
+            "ar": "سينتهي عملي في الساعة السادسة."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "gram.number.irregular",
+        "lex.work"
+      ]
+    },
+    {
+      "key": "n:ville",
+      "type": "noun",
+      "level": "A1",
+      "fr": "ville",
+      "article": "la",
+      "gender": "f",
+      "meanings": {
+        "en": "town, city",
+        "fa": "شهر",
+        "ar": "مدينة",
+        "fr": "grande agglomération où vivent beaucoup de gens"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "ville",
+          "fr": "Cette ville a beaucoup changé.",
+          "translations": {
+            "en": "This town has changed a lot.",
+            "fa": "این شهر خیلی تغییر کرده است.",
+            "ar": "تغيّرت هذه المدينة كثيرًا."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "ville",
+          "fr": "La ville sera calme en août.",
+          "translations": {
+            "en": "The city will be quiet in August.",
+            "fa": "شهر در اوت آرام خواهد بود.",
+            "ar": "ستكون المدينة هادئة في أغسطس."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "lex.travel"
+      ]
+    },
+    {
+      "key": "n:temps",
+      "type": "noun",
+      "level": "A1",
+      "fr": "temps",
+      "article": "le",
+      "gender": "m",
+      "meanings": {
+        "en": "time; weather",
+        "fa": "زمان؛ هوا",
+        "ar": "وقت؛ طقس",
+        "fr": "durée qui passe ; aussi l'état du ciel"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "temps",
+          "fr": "Je n'ai pas eu le temps.",
+          "translations": {
+            "en": "I did not have time.",
+            "fa": "وقت نداشتم.",
+            "ar": "لم يكن لديّ وقت."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "temps",
+          "fr": "Le temps passera vite.",
+          "translations": {
+            "en": "Time will pass quickly.",
+            "fa": "زمان زود خواهد گذشت.",
+            "ar": "سيمرّ الوقت بسرعة."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.article.definite",
+        "phon.silent.final",
+        "lex.time"
+      ]
+    },
+    {
+      "key": "n:femme",
+      "type": "noun",
+      "level": "A1",
+      "fr": "femme",
+      "article": "la",
+      "gender": "f",
+      "meanings": {
+        "en": "woman; wife",
+        "fa": "زن؛ همسر",
+        "ar": "امرأة؛ زوجة",
+        "fr": "personne adulte de sexe féminin ; épouse"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "femme",
+          "fr": "Cette femme a écrit trois livres.",
+          "translations": {
+            "en": "This woman has written three books.",
+            "fa": "این زن سه کتاب نوشته است.",
+            "ar": "كتبت هذه المرأة ثلاثة كتب."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "femme",
+          "fr": "La femme au guichet vous aidera.",
+          "translations": {
+            "en": "The woman at the counter will help you.",
+            "fa": "زنِ پشت باجه به شما کمک خواهد کرد.",
+            "ar": "ستساعدكم المرأة التي عند الشبّاك."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "gram.gender.people",
+        "lex.family"
+      ]
+    },
+    {
+      "key": "n:homme",
+      "type": "noun",
+      "level": "A1",
+      "fr": "homme",
+      "article": "l'",
+      "gender": "m",
+      "meanings": {
+        "en": "man",
+        "fa": "مرد",
+        "ar": "رجل",
+        "fr": "personne adulte de sexe masculin"
+      },
+      "examples": [
+        {
+          "tense": "past",
+          "form": "homme",
+          "fr": "Un homme a demandé ton adresse.",
+          "translations": {
+            "en": "A man asked for your address.",
+            "fa": "مردی آدرس تو را پرسید.",
+            "ar": "سأل رجل عن عنوانك."
+          }
+        },
+        {
+          "tense": "future",
+          "form": "homme",
+          "fr": "Cet homme deviendra célèbre.",
+          "translations": {
+            "en": "This man will become famous.",
+            "fa": "این مرد مشهور خواهد شد.",
+            "ar": "سيصبح هذا الرجل مشهورًا."
+          }
+        }
+      ],
+      "provenance": "original",
+      "licence": "CC BY-SA 4.0",
+      "conceptIds": [
+        "gram.gender.nouns",
+        "phon.elision.basic",
+        "lex.family"
+      ]
+    }
+  ]
+}

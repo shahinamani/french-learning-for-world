@@ -1,0 +1,249 @@
+@import "tailwindcss";
+@import "../../design-system/tokens.css";
+@import "../../design-system/components.css";
+
+/* App-specific layout, all from tokens. */
+.shell { display: flex; flex-direction: column; min-height: 100%; }
+html, body, #root { height: 100%; }
+#root { display: flex; flex-direction: column; }
+
+.bar { flex: none; background: var(--color-surface); border-block-end: 1px solid var(--color-line);
+  padding-block-start: env(safe-area-inset-top, 0px); }
+.bar-in { height: var(--height-bar); display: flex; align-items: center; justify-content: space-between;
+  gap: var(--space-3); max-width: var(--width-page); margin-inline: auto; padding-inline: var(--space-4); }
+.brand { display: flex; align-items: center; gap: var(--space-2); min-width: 0;
+  min-height: var(--tap-min); text-decoration: none; color: inherit; }
+.brand-mark { background: var(--color-accent); color: var(--color-accent-ink); font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold); padding: 6px 7px; border-radius: var(--radius-sm); flex: none; }
+.brand-name { font-size: var(--text-sm); font-weight: var(--weight-semibold);
+  white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.bar-actions { display: flex; align-items: center; gap: var(--space-2); flex: none; }
+.pill { display: inline-flex; align-items: center; gap: var(--space-2); min-height: var(--tap-min);
+  padding-inline: var(--space-3); font-size: var(--text-sm); font-weight: var(--weight-medium);
+  font-variant-numeric: tabular-nums; color: var(--color-ink-muted); background: var(--color-canvas);
+  border: 1px solid var(--color-line); border-radius: var(--radius-full); cursor: pointer; }
+.pill.is-running { color: var(--color-accent); border-color: var(--color-accent); background: var(--color-accent-soft); }
+.pill-clock { min-width: 4.5ch; text-align: center; }
+.icon-btn { display: inline-flex; align-items: center; justify-content: center;
+  min-width: var(--tap-min); min-height: var(--tap-min); color: var(--color-ink-muted);
+  background: none; border: 1px solid transparent; border-radius: var(--radius-sm); cursor: pointer; }
+.icon-btn:hover { color: var(--color-ink); background: var(--color-canvas); border-color: var(--color-line); }
+.timer-panel { max-width: var(--width-page); margin-inline: auto; padding: var(--space-3) var(--space-4);
+  display: flex; flex-direction: column; gap: var(--space-3); border-block-start: 1px solid var(--color-line); }
+
+main { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+.page { max-width: var(--width-page); margin-inline: auto; padding: var(--space-4) var(--space-4) var(--space-10);
+  display: flex; flex-direction: column; gap: var(--space-6); }
+.page--session { gap: var(--space-3); }
+.h2 { font-size: var(--text-xl); font-weight: var(--weight-semibold); margin: 0; }
+.h3 { font-size: var(--text-base); font-weight: var(--weight-semibold); margin: 0 0 var(--space-2); }
+.muted { color: var(--color-ink-muted); font-size: var(--text-sm); }
+.row { display: flex; gap: var(--space-3); align-items: center; flex-wrap: wrap; }
+.gap-2 { gap: var(--space-2); } .wrap { flex-wrap: wrap; }
+
+.today__line { font-size: var(--text-lg); font-weight: var(--weight-semibold); margin-block: var(--space-2); }
+.session-count { font-size: var(--text-2xs); color: var(--color-ink-faint); font-variant-numeric: tabular-nums;
+  text-align: center; margin: 0; }
+
+.map-scroll { overflow-x: auto; }
+.map__cell { text-decoration: none; }
+a.map__cell[data-state="active"] { background: var(--color-accent-soft); color: var(--color-accent); border-color: var(--color-accent); }
+a.map__cell[data-state="open"] { color: var(--color-ink-muted); }
+span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background: var(--color-surface-sunken);
+  border-style: dashed; cursor: default; }
+
+.rows { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-2); }
+.rows > li { display: grid; gap: var(--space-2); }
+.row--link, .row__disclose { display: flex; gap: var(--space-3); align-items: center; width: 100%;
+  min-height: var(--tap-min); padding: var(--space-3) var(--space-4); text-align: start;
+  background: var(--color-surface); border: 1px solid var(--color-line); border-radius: var(--radius-sm);
+  color: var(--color-ink); text-decoration: none; font: inherit; cursor: pointer; }
+.row--link:hover, .row__disclose:hover { border-color: var(--color-accent); }
+.row--link .muted, .row__disclose .muted { margin-inline-start: auto; }
+.row-fr { font-family: var(--font-display); font-weight: var(--weight-medium); }
+.sublist { list-style: none; margin: 0; padding: var(--space-2) var(--space-4); display: grid; gap: var(--space-2);
+  font-size: var(--text-sm); background: var(--color-surface-sunken); border-radius: var(--radius-sm); }
+.sublist li { display: flex; gap: var(--space-3); flex-wrap: wrap; }
+.sublist .muted { margin-inline-start: auto; font-size: var(--text-xs); }
+
+.concepts-row { margin-block-start: var(--space-5); padding-block-start: var(--space-4);
+  border-block-start: 1px solid var(--color-line); display: grid; gap: var(--space-2); }
+.chip--link { cursor: pointer; background: var(--color-accent-soft); color: var(--color-accent);
+  border-color: transparent; text-transform: none; letter-spacing: 0; font-size: var(--text-xs);
+  min-height: 32px; }
+.chip--link:hover { border-color: var(--color-accent); }
+
+.actions { position: sticky; bottom: 0; background: var(--color-surface);
+  border-block-start: 1px solid var(--color-line); padding: var(--space-3) var(--space-4);
+  margin-inline: calc(var(--space-4) * -1); }
+.actions-in { max-width: var(--width-card); margin-inline: auto; display: flex; gap: var(--space-2); }
+.actions-in > * { flex: 1 1 0; min-width: 0; }
+.reveal { min-height: var(--tap-min); padding-block: var(--space-4); font-family: var(--font-ui);
+  font-size: var(--text-base); font-weight: var(--weight-semibold); cursor: pointer;
+  color: var(--color-accent-ink); background: var(--color-accent);
+  border: 1px solid var(--color-accent); border-radius: var(--radius-md); }
+
+.tabs { flex: none; padding-block-end: env(safe-area-inset-bottom, 0px); }
+.tab { text-decoration: none; }
+.tab__in { display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 3px;
+  width: 100%; height: 100%; }
+.tab.active, .tab[aria-current="page"] { color: var(--color-accent); border-block-start-color: var(--color-accent); }
+
+.scrim { position: fixed; inset: 0; z-index: 40; background: rgb(12 15 20 / 0.45); border: 0; }
+.panel-side { position: fixed; z-index: 50; inset-inline-end: 0; inset-block: 0; width: min(24rem, 92vw);
+  background: var(--color-surface); border-inline-start: 1px solid var(--color-line);
+  box-shadow: var(--shadow-overlay); padding: var(--space-5) var(--space-4);
+  padding-block-start: calc(var(--space-5) + env(safe-area-inset-top, 0px));
+  overflow-y: auto; display: flex; flex-direction: column; gap: var(--space-3); }
+.panel-side__head { display: flex; align-items: center; justify-content: space-between; }
+.panel-side__title { font-size: var(--text-lg); font-weight: var(--weight-semibold); margin: 0; }
+.foot-legal { font-size: var(--text-xs); }
+
+@media (min-width: 900px) {
+  .page { padding-block: var(--space-6) var(--space-10); }
+  .actions { position: static; margin-inline: 0; border: 0; background: none; padding-inline: 0; }
+  .today { max-width: var(--width-card); }
+}
+
+/* The skip link. It had no hiding styles at all and sat visibly at the top of
+   every screen, pushing the layout down — a screenshot caught it, the
+   automated checks did not, because a visible link is a valid link. It is
+   off-screen until focused, and full size when it is. */
+.skip {
+  position: absolute; inset-inline-start: -9999px; top: 0; z-index: 60;
+  display: inline-flex; align-items: center; min-height: var(--tap-min);
+  padding-inline: var(--space-4);
+  background: var(--color-accent); color: var(--color-accent-ink);
+  text-decoration: none;
+}
+.skip:focus { inset-inline-start: 0; }
+
+/* ── Desktop is a different layout, not the phone stretched ──────────────
+ * At 1024px the bottom tab bar becomes a left rail and the page gains a
+ * column. Same DOM, so there is one navigation for assistive technology and
+ * no duplicated links — only the axis changes.
+ */
+@media (min-width: 1024px) {
+  .shell {
+    display: grid;
+    grid-template-columns: 15rem 1fr;
+    grid-template-rows: auto 1fr;
+    height: 100%;
+  }
+  .bar { grid-column: 1 / -1; grid-row: 1; }
+  .bar-in { max-width: none; }
+
+  .tabs {
+    grid-column: 1; grid-row: 2;
+    flex-direction: column; align-items: stretch; justify-content: flex-start;
+    gap: 2px; padding: var(--space-4) var(--space-2);
+    border-block-start: 0; border-inline-end: 1px solid var(--color-line);
+    overflow-y: auto;
+  }
+  .tab {
+    flex: none; height: auto; font-size: var(--text-sm);
+    border-block-start: 0; border-inline-start: 2px solid transparent;
+    border-radius: var(--radius-sm);
+  }
+  .tab__in {
+    flex-direction: row; justify-content: flex-start; gap: var(--space-3);
+    padding: var(--space-3) var(--space-3);
+  }
+  .tab.active, .tab[aria-current="page"] {
+    border-block-start-color: transparent;
+    border-inline-start-color: var(--color-accent);
+    background: var(--color-accent-soft);
+  }
+  main { grid-column: 2; grid-row: 2; }
+  .page { padding-inline: var(--space-6); }
+}
+
+@media (min-width: 1200px) {
+  /* The map is the subject and takes the width; the session card and the weak
+     points sit beside it rather than above and below it. */
+  .learn {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 21rem;
+    grid-template-areas: "main side";
+    align-items: start;
+    gap: var(--space-6);
+  }
+  .learn__main { grid-area: main; }
+  .learn__side { grid-area: side; display: flex; flex-direction: column; gap: var(--space-6); }
+  .learn .today { max-width: none; }
+  .page--session .actions-in { max-width: var(--width-card); }
+}
+
+/* A placeholder row is the same box as a real one, so the section does not
+   change size when the data arrives and nothing larger can appear late. */
+.row--placeholder {
+  display: flex; align-items: center; min-height: var(--tap-min);
+  padding: var(--space-3) var(--space-4);
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-sm);
+}
+.row--placeholder .skeleton { height: 1em; }
+
+/* Conjugation table. A real table, so a screen reader reads "nous — prenons". */
+.conj { width: 100%; border-collapse: collapse; margin-block-start: var(--space-3); }
+.conj th { text-align: start; font-weight: var(--weight-normal); color: var(--color-ink-muted);
+  font-size: var(--text-sm); padding: var(--space-2) var(--space-3) var(--space-2) 0;
+  width: 7.5rem; white-space: nowrap; }
+.conj td { font-family: var(--font-display); font-size: var(--text-lg);
+  padding: var(--space-2) 0; }
+.conj tr + tr th, .conj tr + tr td { border-block-start: 1px solid var(--color-line-soft); }
+
+/* ── Exams ──────────────────────────────────────────────────────────────── */
+.exam-bar { display: flex; align-items: baseline; justify-content: space-between;
+  gap: var(--space-3); padding-inline: var(--space-4); }
+.exam-clock { font-variant-numeric: tabular-nums; font-size: var(--text-lg);
+  font-weight: var(--weight-semibold); color: var(--color-ink-muted); }
+/* Under a minute the clock stops being neutral. Colour is not the only signal:
+   it also becomes an aria-live region, so it is announced, not just seen. */
+.exam-clock.is-low { color: var(--color-danger); }
+
+.exam-stimulus { margin: var(--space-4); padding: var(--space-4);
+  background: var(--color-surface-sunken); border-radius: var(--radius-md);
+  border-inline-start: 3px solid var(--color-line); }
+.exam-text { white-space: pre-line; line-height: var(--leading-relaxed); }
+
+.exam-q { border: 0; padding: 0 var(--space-4); margin: 0; }
+.exam-prompt { font-weight: var(--weight-semibold); padding: 0 0 var(--space-3); }
+.exam-option { display: flex; align-items: center; gap: var(--space-3);
+  min-block-size: 44px; padding: var(--space-3);
+  border: 1px solid var(--color-line); border-radius: var(--radius-md);
+  margin-block-end: var(--space-2); cursor: pointer; }
+.exam-option.is-chosen { border-color: var(--color-accent);
+  background: var(--color-accent-soft); }
+.exam-option input { inline-size: 20px; block-size: 20px; flex: none; }
+
+.result-score { font-size: var(--text-2xl); font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums; }
+.qa > summary { display: flex; align-items: center; gap: var(--space-2);
+  min-block-size: 44px; cursor: pointer; }
+.dot { inline-size: 10px; block-size: 10px; border-radius: 50%; flex: none; }
+.dot--good { background: var(--color-success); }
+.dot--bad { background: var(--color-danger); }
+.dot--skipped { background: var(--color-ink-faint); }
+.chips { display: flex; flex-wrap: wrap; gap: var(--space-2); list-style: none; padding: 0; }
+
+/* ── Accent bar ─────────────────────────────────────────────────────────── */
+.accents__host { display: block; }
+.accents {
+  display: flex; flex-wrap: wrap; gap: var(--space-1);
+  margin-block-start: var(--space-2);
+  padding: var(--space-2);
+  background: var(--color-surface-sunken);
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius-md);
+}
+.accents__key {
+  min-inline-size: 44px; min-block-size: 44px;
+  display: inline-flex; align-items: center; justify-content: center;
+  font-size: var(--text-lg); line-height: 1;
+  background: var(--color-surface); color: var(--color-ink);
+  border: 1px solid var(--color-line); border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+.accents__key:hover { background: var(--color-accent-soft); }
+.accents__key:active { transform: translateY(1px); }
