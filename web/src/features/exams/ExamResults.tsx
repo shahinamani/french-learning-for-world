@@ -14,7 +14,7 @@ import { useEffect, useState } from 'react';
 import { Link, useParams, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
 import { loadPapers, loadAttempt, saveAttempt, score,
-         type ExamPaper as Paper, type Attempt, type Scored } from '../../lib/exams';
+         type ExamPaper as Paper, type Attempt, type Scored, pick } from '../../lib/exams';
 import { appendReview, getCardState } from '../../lib/db';
 import { emptyState, loadScheduler, SCHEDULER_ID } from '../../lib/scheduler';
 import { loadContent } from '../../lib/content';
@@ -181,6 +181,9 @@ export function ExamResults() {
 
       <section aria-labelledby="r-review" style={{ marginBlockStart: 'var(--space-5)' }}>
         <h2 id="r-review" className="eyebrow">{t('everyQuestion')}</h2>
+        {paper.items.some((it) => !pick(it.explain, settings.ui).translated) && (
+          <p className="muted" data-testid="not-translated">{t('notTranslatedHere')}</p>
+        )}
         <ol className="rows" data-testid="exam-review">
           {paper.items.map((item, i) => {
             const chosen = attempt.answers[item.id];
@@ -197,7 +200,7 @@ export function ExamResults() {
                   {answered && !right && (
                     <p className="muted" lang="fr" dir="ltr">{t('youChose')}: {frText(item.options[chosen]?.fr ?? '')}</p>
                   )}
-                  <p className="muted">{item.explain[settings.ui] ?? item.explain.en}</p>
+                  <p className="muted">{pick(item.explain, settings.ui).text}</p>
                 </details>
               </li>
             );

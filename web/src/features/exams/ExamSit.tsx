@@ -10,7 +10,7 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { useNavigate, useParams, useSearchParams, Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
-import { loadPapers, loadAttempt, saveAttempt, remainingMs,
+import { loadPapers, loadAttempt, saveAttempt, remainingMs, pick,
          type ExamPaper as Paper, type Attempt } from '../../lib/exams';
 import {formatClock } from '../../lib/timer';
 import { Icon } from '../../components/Icon';
@@ -104,7 +104,12 @@ export function ExamSit() {
   const item = paper.items[Math.min(index, paper.items.length - 1)];
   if (!item) return <div className="page"><p className="muted">{t('loadFailed')}</p></div>;
   const chosen = attempt.answers[item.id];
-  const prompt = item.prompt[settings.ui] ?? item.prompt.en ?? '';
+  // The label used to be hard-coded to fr-or-en, so a Persian learner got
+  // English even once Persian existed. Both go through pick() now, and both
+  // report whether what they returned is the learner's language.
+  const prompt = pick(item.prompt, settings.ui);
+  const label = item.stimulus?.label ? pick(item.stimulus.label, settings.ui) : null;
+  const untranslated = !prompt.translated || (label !== null && !label.translated);
   const low = left <= 60;
 
   return (
@@ -127,16 +132,18 @@ export function ExamSit() {
 
       {item.stimulus && (
         <div className="exam-stimulus" data-testid="exam-stimulus">
-          {item.stimulus.label && (
-            <p className="eyebrow">{item.stimulus.label[settings.ui === 'fr' ? 'fr' : 'en']}</p>
-          )}
+          {label && <p className="eyebrow">{settings.ui === 'fr' ? frText(label.text) : label.text}</p>}
           <p lang="fr" dir="ltr" className="exam-text">{frText(item.stimulus.fr)}</p>
         </div>
       )}
 
+      {untranslated && (
+        <p className="muted" data-testid="not-translated">{t('notTranslatedHere')}</p>
+      )}
+
       <fieldset className="exam-q">
         <legend className="exam-prompt" data-testid="exam-prompt">
-          {settings.ui === 'fr' ? frText(prompt) : prompt}
+          {settings.ui === 'fr' ? frText(prompt.text) : prompt.text}
         </legend>
         {item.options.map((o, i) => (
           <label key={i} className={`exam-option${chosen === i ? ' is-chosen' : ''}`}>

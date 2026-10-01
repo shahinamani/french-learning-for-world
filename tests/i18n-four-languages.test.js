@@ -15,7 +15,9 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { foldLabel, INVISIBLE, SCRIPT } from './text-identity.mjs';
+import { translator } from '../web/src/lib/i18n.ts';
+import { pick } from '../web/src/lib/exams.ts';
+import { foldLabel, INVISIBLE, SCRIPT, isolatesBalanced } from './text-identity.mjs';
 
 const LOC = ['en', 'fr', 'fa', 'ar'];
 const R = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
@@ -92,10 +94,9 @@ test('every dictionary was read whole — not a quote-style subset of itself', (
  * that only ever grows is a way of not fixing things.
  */
 const KNOWN_COLLISIONS = [
-  'ar: close + dismiss',
-  'fa: close + dismiss',
-  'fr: close + dismiss',
-  'fr: marks + concepts',
+  // Left deliberately: English keeps these apart, the learner does not need them
+  // apart. «Commencer» for both Start and Start studying, «À travailler» for the
+  // heading and the label, are the same act in the same place.
   'fr: start + startSession',
   'fr: whatToWorkOn + toWorkOn',
 ];
@@ -218,35 +219,50 @@ test('both RTL languages are declared right-to-left', () => {
 });
 
 /**
- * A placeholder that is replaced by LATIN text inside an RTL sentence needs
- * bidi isolation, or the substituted run and the punctuation around it reorder
- * on screen. Numbers are handled by the bidi algorithm; a French answer, a
- * search query, a level like "B1" and a clock like "12:34" are not reliably.
+ * Bidi isolation is the renderer's job, not the translator's wording.
  *
- * `translator()` substitutes with a plain string split/join and the result goes
- * into a text node, so there is nothing isolating them today. KNOWN and dated;
- * the fix is in the renderer, not in these strings.
+ * Twelve strings substituted Latin text — a French answer, a search query, a
+ * level, a clock — straight into an RTL sentence, where the run and the
+ * punctuation around it reorder on screen. The fix is in `translator()`, the
+ * single point where substitution happens, and NOT at the call sites: a rule
+ * applied at call sites is a rule one call site will always miss, and it will
+ * be the one added next month by someone who never read that file.
  */
-const SUBSTITUTES_LATIN = new Set(['a', 'q', 'level', 'c']);
-const KNOWN_UNISOLATED = [
-  'ar.accentsOnly', 'ar.answerIs', 'ar.importDone', 'ar.searchEmpty',
-  'ar.showingLevel', 'ar.timeLeft',
-  'fa.accentsOnly', 'fa.answerIs', 'fa.importDone', 'fa.searchEmpty',
-  'fa.showingLevel', 'fa.timeLeft',
-];
+test('translator isolates every substituted value in a right-to-left language', () => {
+  const problems = [];
+  for (const loc of ['fa', 'ar']) {
+    const t = translator(loc);
+    const out = t('timeLeft', { c: '12:34' });
+    if (!out.includes('\u2068' + '12:34' + '\u2069')) problems.push(`${loc}: ${JSON.stringify(out)}`);
+    const q = translator(loc)('searchEmpty', { q: 'passé composé' });
+    if (!q.includes('\u2068' + 'passé composé' + '\u2069')) problems.push(`${loc} searchEmpty: ${JSON.stringify(q)}`);
+  }
+  assert.deepEqual(problems, [], 'an unisolated substitution in RTL text');
+});
 
-test('Latin text substituted into an RTL sentence is isolated, or listed as not yet', () => {
-  const found = [];
-  for (const c of ['fa', 'ar']) {
-    for (const [k, v] of dict[c]) {
-      if (!SCRIPT.arabic.test(v)) continue;
-      if (/[⁦-⁩‎‏]/.test(v)) continue;
-      const ph = [...v.matchAll(/\{(\w+)\}/g)].map((m) => m[1]);
-      if (ph.some((p) => SUBSTITUTES_LATIN.has(p))) found.push(`${c}.${k}`);
+test('translator leaves left-to-right languages alone', () => {
+  // Isolates cost nothing to render but are noise where there is no conflict,
+  // and an invisible character in an English string is a thing to explain later.
+  for (const loc of ['en', 'fr']) {
+    const out = translator(loc)('timeLeft', { c: '12:34' });
+    assert.ok(!/[\u2066-\u2069]/.test(out), `${loc} should not be isolated: ${JSON.stringify(out)}`);
+    assert.ok(out.includes('12:34'), `${loc} still substitutes: ${JSON.stringify(out)}`);
+  }
+});
+
+test('every placeholder still survives substitution in all four languages', () => {
+  const bad = [];
+  for (const loc of LOC) {
+    const t = translator(loc);
+    for (const [k, v] of dict[loc]) {
+      const names = [...v.matchAll(/\{(\w+)\}/g)].map((m) => m[1]);
+      if (!names.length) continue;
+      const vars = Object.fromEntries(names.map((n) => [n, `<${n}>`]));
+      const out = t(k, vars);
+      if (/\{\w+\}/.test(out)) bad.push(`${loc}.${k} left a placeholder unfilled: ${out}`);
     }
   }
-  assert.deepEqual(found.sort(), KNOWN_UNISOLATED,
-    'an unisolated Latin substitution in RTL text — or one fixed and still listed');
+  assert.deepEqual(bad, [], 'a placeholder the translator could not fill');
 });
 
 // ── Content files ─────────────────────────────────────────────────────────
@@ -277,23 +293,25 @@ const shapes = () => {
  * What multilingual content exists today, and in which languages.
  *
  * `translations` carries no `fr` on purpose: it translates a French sentence,
- * so a French column would restate it. `verbs[].meanings.fr` is empty for the
- * same reason — the headword is the French. Everything else marked below as
- * short of all four is a real gap, inventoried rather than hidden, so that
- * "Persian and Arabic are supported" cannot be said while 158 nodes of it are
- * English-only.
+ * so a French column would restate it.
+ *
+ * The three `ar: HELD` rows are a decision, not a backlog item. Arabic exam
+ * text waits for a human reader of Arabic (docs/08-arabic-review.md). A wrong
+ * explanation teaches a wrong thing and the learner believes it, so 72
+ * unreviewed Arabic explanations would be worse than English plus a line
+ * saying it is English — which is what an Arabic learner now sees.
  */
 const EXPECTED_SHAPES = {
-  'decks.json decks[].title':                          { n: 1,  have: 'en/fr/fa' },   // GAP: ar
+  'decks.json decks[].title':                          { n: 1,  have: 'en/fr/fa/ar' },
   'exam-papers.json papers[].name':                    { n: 3,  have: 'en/fr/fa/ar' },
-  'exam-papers.json papers[].items[].prompt':          { n: 28, have: 'en/fr' },      // GAP: fa, ar
-  'exam-papers.json papers[].items[].explain':         { n: 28, have: 'en/fr' },      // GAP: fa, ar
-  'exam-papers.json papers[].items[].stimulus.label':  { n: 16, have: 'en/fr' },      // GAP: fa, ar
-  'fr-core-a1.json title':                             { n: 1,  have: 'en/fr/fa' },   // GAP: ar
+  'exam-papers.json papers[].items[].prompt':          { n: 28, have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].items[].explain':         { n: 28, have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].items[].stimulus.label':  { n: 16, have: 'en/fr/fa' },   // ar: HELD
+  'fr-core-a1.json title':                             { n: 1,  have: 'en/fr/fa/ar' },
   'fr-core-a1.json cards[].meanings':                  { n: 22, have: 'en/fr/fa/ar' },
   'fr-core-a1.json cards[].examples[].translations':   { n: 44, have: 'en/fa/ar' },   // fr by design
   'verbs.json verbs[].meanings':                       { n: 14, have: 'en/fr/fa/ar' },
-  'verbs.json verbs[].tenses[].name':                  { n: 84, have: 'en/fr' },      // GAP: fa, ar
+  'verbs.json verbs[].tenses[].name':                  { n: 84, have: 'en/fr/fa/ar' },
 };
 
 test('the multilingual shape of the content is exactly what is written down', () => {
@@ -319,4 +337,43 @@ test('Persian and Arabic content is in Arabic script, with Persian letterforms',
     });
   }
   assert.deepEqual(bad, [], 'content in the wrong script, or Persian written with Arabic letterforms');
+});
+
+// ── The honest state, where a language is deliberately absent ─────────────
+test('a learner reading a language the exam text lacks is told so, not served English in silence', () => {
+  const papers = JSON.parse(R('content/exam-papers.json')).papers;
+  const items = papers.flatMap((p) => p.items);
+
+  // The decision, asserted: Persian is there, Arabic is deliberately not.
+  assert.ok(items.every((i) => i.explain.fa?.trim()), 'every explanation exists in Persian');
+  assert.ok(items.every((i) => !i.explain.ar), 'no Arabic explanation is shipped before a reader has seen it');
+
+  // pick() is what draws the line, and it has to report the absence.
+  assert.equal(pick(items[0].explain, 'fa').translated, true);
+  assert.equal(pick(items[0].explain, 'ar').translated, false);
+  assert.ok(pick(items[0].explain, 'ar').text.trim(), 'and still shows something readable');
+
+  // and the line exists to be drawn with, in all four languages.
+  for (const c of LOC) {
+    assert.ok(dict[c].get('notTranslatedHere')?.trim(), `${c} can say the content is not in its language`);
+  }
+});
+
+test('French quotations inside Persian explanations are isolated, and the isolates are balanced', () => {
+  // « Fermé le dimanche et le lundi » inside a Persian sentence reorders on
+  // screen without FSI…PDI around it. A stray opener is worse than none: it
+  // swallows the rest of the paragraph.
+  const items = JSON.parse(R('content/exam-papers.json')).papers.flatMap((p) => p.items);
+  const unbalanced = [];
+  let isolated = 0;
+  for (const it of items) {
+    for (const field of ['prompt', 'explain']) {
+      const fa = it[field].fa;
+      if (!fa) continue;
+      if (!isolatesBalanced(fa)) unbalanced.push(`${it.id}.${field}`);
+      isolated += [...fa.matchAll(/\u2068/g)].length;
+    }
+  }
+  assert.deepEqual(unbalanced, [], 'unbalanced bidi isolates');
+  assert.ok(isolated >= 60, `only ${isolated} isolated runs; the French quotations should be wrapped`);
 });

@@ -1,10 +1,30 @@
 import type { Level, Locale } from './types';
 import { userKey } from './session';
 
+/**
+ * Pick a translation, and say when there is not one.
+ *
+ * `field[ui] ?? field.en` is the shape that made this necessary: it serves
+ * English to an Arabic learner and says nothing, so the interface claims to be
+ * in Arabic while the content is not. Exam explanations are the worst place for
+ * that — a learner trusts an explanation, and a silent language switch is the
+ * mildest of the things that can go wrong there.
+ *
+ * Arabic exam text is deliberately absent until a human reader of Arabic has
+ * reviewed it (docs/08-arabic-review.md). Until then the honest state is
+ * English plus a line saying so, and `translated: false` is what draws that line.
+ */
+export function pick(field: Partial<Record<Locale, string>> | undefined, ui: Locale):
+  { text: string; translated: boolean } {
+  const want = field?.[ui]?.trim();
+  if (want) return { text: want, translated: true };
+  return { text: field?.en?.trim() || field?.fr?.trim() || '', translated: false };
+}
+
 export type ExamItem = {
   id: string;
   kind: 'mcq' | 'cloze';
-  stimulus?: { fr: string; label?: Record<'en' | 'fr', string> };
+  stimulus?: { fr: string; label?: Partial<Record<Locale, string>> };
   prompt: Partial<Record<Locale, string>>;
   options: { fr: string }[];
   answer: number;

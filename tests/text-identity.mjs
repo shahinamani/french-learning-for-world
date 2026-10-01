@@ -28,7 +28,9 @@
  *   - Tatweel ـ (U+0640) is decoration and carries no meaning.
  *   - Harakat (fatha, damma, shadda…) are combining marks and optional.
  *   - Arabic-Indic ٠١٢ and extended Arabic-Indic ۰۱۲ are the same digits as 012.
- *   - Bidi controls (U+200E/F, U+202A–E, U+2066–9) are invisible by definition.
+ *   - Bidi controls are invisible by definition. The legacy ones (U+200E/F,
+ *     U+202A–E) are never right; FSI/PDI (U+2068/9) are how a French
+ *     quotation survives inside a Persian sentence, and are allowed in pairs.
  */
 
 const ZERO_WIDTH = /[​-‏‪-‮⁦-⁩ـ﻿]/g;
@@ -68,13 +70,31 @@ export const sameLabel = (a, b) => foldLabel(a) === foldLabel(b);
 
 /** Characters that are invisible and therefore cannot be reviewed by eye. */
 export const INVISIBLE = {
-  zwnj: /‌/g,          // legitimate in Persian, suspect elsewhere
-  zwj: /‍/g,
-  bidi: /[‎‏‪-‮⁦-⁩]/g,
-  tatweel: /ـ/g,
-  nbsp: / /g,
-  bom: /﻿/g,
+  zwnj: /\u200C/g,          // legitimate in Persian, suspect elsewhere
+  zwj: /\u200D/g,
+  /** Deprecated embedding and override codes, and the bare marks. Never right. */
+  bidiLegacy: /[\u200E\u200F\u202A-\u202E]/g,
+  tatweel: /\u0640/g,
+  nbsp: /\u00A0/g,
+  bom: /\uFEFF/g,
 };
+
+/**
+ * FSI U+2068 … PDI U+2069 are the opposite of noise: they are how a French
+ * quotation is held together inside a Persian sentence. Allowed, but only in
+ * balanced pairs — a stray opener silently swallows the rest of the paragraph.
+ */
+export function isolatesBalanced(s) {
+  let depth = 0;
+  for (const ch of s) {
+    if (ch === '\u2066' || ch === '\u2067' || ch === '\u2068') depth++;
+    else if (ch === '\u2069') { depth--; if (depth < 0) return false; }
+  }
+  return depth === 0;
+}
+
+/** Wrap a run that is not in the language around it. */
+export const iso = (s) => `\u2068${s}\u2069`;
 
 /** Script membership, for "is this value actually in the language it claims?" */
 export const SCRIPT = {

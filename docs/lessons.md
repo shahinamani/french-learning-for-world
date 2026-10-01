@@ -228,49 +228,87 @@ survives.
 **Same family as #6:** the check was looking at something adjacent to the thing
 under test, and passing on it.
 
-### #10 — A reader that cannot see part of what it reads
+### #10 — The alphabet was an assumption, and nobody declared it
 
-**2026-10-01, found while extending the guards to four languages before building for them.**
+**2026-10-01. Found while pointing the guards at the two languages nobody here reads.**
 
-Three faults, one shape, each found by the previous one.
+#7 was written up as a lesson about `\w`. That was too small. The real lesson is
+that **every character class encodes a belief about which alphabet the text is
+written in, and that belief is almost never stated.** `\w` excludes `é`; it also
+excludes the whole of Arabic and Persian, and nothing in the code says so.
 
-**The fold was ASCII-only.** `tests/concept-names-distinct.test.js` — written the
-same day #7 was written up — ended with `.replace(/[^a-z0-9']+/g, ' ')`. Every
-Arabic and Persian string folds through it to the empty string:
+The proof arrived within a day. `concept-names-distinct.test.js` — written the
+same day #7 was written up, by someone who had just written it up — ended with
+`.replace(/[^a-z0-9']+/g, ' ')`:
 
 ```
 foldLabel('العربية') -> ''      foldLabel('فارسی') -> ''
 ```
 
-Extended to four languages unchanged, it would have reported every Arabic label
-as colliding with every other, and been switched off inside a week. #7 is not a
-lesson about `\w`; it is a lesson about assuming the alphabet.
+Every Arabic and Persian string folds to the empty string. Pointed at four
+languages unchanged, that guard would have reported every Arabic label as
+colliding with every other Arabic label, produced a wall of nonsense, and been
+switched off inside a week — leaving the two languages least able to be reviewed
+by eye with no guard at all.
 
-**The dictionary reader could only see single-quoted values.** The parity and
-placeholder checks matched `key: '…'`. Thirteen French strings are written
-`key: "…"` — **every one of them double-quoted precisely because it contains an
-apostrophe.** So the check could not see the strings most likely to carry an
-apostrophe fault. `fr=147` where `en=fa=ar=160`, and nothing reported the
-difference because nothing compared the counts.
+This is why the class matters more than the instance. Fixing `\w` fixed one
+regex. The belief behind it — *text is Latin unless something says otherwise* —
+survived the fix and reappeared immediately in new code.
 
-**And those thirteen were where the fault was.** Ten of them carried a straight
-prime: `Aujourd'hui`, `S'entraîner`, `Minuteur d'étude`, `Langue de l'interface`.
-`typography.ts`'s `fr()` is applied to content — concept names, verb forms, exam
-text — and never to `t()` output, so a prime in the dictionary reaches the screen
-unconverted. The French interface had been rendering primes since it was written.
+What a fold for this product actually has to do, none of which NFD or NFC does:
+
+| | |
+|---|---|
+| ZWNJ U+200C | the Persian half-space. **Invisible.** `می‌رود` and `میرود` differ by one codepoint |
+| ك U+0643 / ي U+064A | Arabic kaf and yeh against Persian ک U+06A9 and ی U+06CC — near-identical glyphs |
+| ـ U+0640 | tatweel: decoration, no meaning — *except* where it carries a prefix onto a Latin word |
+| harakat | combining marks, optional, and stripped by the same rule as the French accents |
+| ٠١٢ / ۰۱۲ | Arabic-Indic and extended Arabic-Indic digits are the same digits as `012` |
+
+**Rule:** a character class, a fold or a comparison that touches learner-facing
+text must be demonstrated against a real string in **every** script the product
+ships, in the test, visibly. Not asserted — run. And where a language cannot be
+reviewed by eye here, what is legitimate in it is written down with a reason:
+the tatweel in `لـFrance` is **correct** Arabic typography, and a non-reader
+"tidying" it away would be introducing the defect, not removing it.
+
+### #11 — A checker that cannot parse the shape the defect lives in
+
+**2026-10-01. Found one layer under #10, and it is a different fault.**
+
+The i18n parity and placeholder checks read values with
+`/(\w+)\s*:\s*'((?:[^'\\]|\\.)*)'/g` — single-quoted values only. Thirteen
+French strings are written with double quotes. The checks never saw them.
+
+What makes this its own lesson rather than another instance of #3 is **why**
+those thirteen are double-quoted:
+
+> They contain an apostrophe.
+
+So the reader was blind to exactly the strings most likely to carry an
+apostrophe fault — not by coincidence, but by the same cause. The quoting style
+*is* the signal that the value contains the character under test. The hole in
+the checker was cut in the precise shape of the problem.
+
+**And the defect was in there.** Ten of the thirteen carried a straight prime:
+`Aujourd'hui`, `S'entraîner`, `Minuteur d'étude`, `Langue de l'interface`,
+`Outil d'étude indépendant`. `fr()` in `typography.ts` is applied to content —
+concept names, verb forms, exam text — and **never to `t()` output**, so the
+French interface had been rendering primes since the day it was written. Behind
+a test file named for i18n parity, which was passing.
+
+The giveaway was sitting in plain sight and nothing was reading it: `fr=147`
+where `en=fa=ar=160`. Nobody compared the counts.
 
 **Rules:**
 
-- A character class, a fold or a comparison that touches interface text must be
-  shown to work on all four scripts, with a real string from each.
-- A reader must report what it read. The four dictionaries now have to yield the
-  same count, and the count has a floor — a reader that silently returns a subset
-  is #3 wearing new clothes.
-- Where two languages cannot both be reviewed by eye, the check carries the
-  difference: what is legitimate in one and not the other is written down with a
-  reason. Tatweel in `لـFrance` is correct Arabic typography and is listed as
-  allowed, because a non-reader of Arabic "tidying" it away would be introducing
-  the defect, not removing it.
+- A reader must report what it read, and the counts must be compared. Four
+  dictionaries now have to yield the same number of values, with a floor.
+  A reader that silently returns a subset is #3 with better manners.
+- When writing a checker, ask what the defective input *looks like* — and
+  confirm the parser accepts that form. If values containing `X` are written
+  differently from values that do not, a checker for `X` must parse both, and
+  that is the first thing to test.
 
 ---
 
@@ -309,8 +347,9 @@ Not by care. By two habits:
 | 9 | C1/C2 concept draft | *ids all unique* | four entries carried a name already live, where ids are permanent |
 | 9 | `phon.elision` / `.basic` | PASS, since the taxonomy was written | identical French name, group and child; English names differed |
 | 10 | `concept-names-distinct` fold | PASS | ASCII-only: every Arabic and Persian string folded to `""` |
-| 10 | i18n parity + placeholder checks | PASS | read single-quoted values only; 13 French strings never checked |
-| 10 | French interface strings | *no check existed* | 10 carried a straight prime; `fr()` is never applied to `t()` output |
+| 11 | i18n parity + placeholder checks | PASS | single-quoted values only — blind to the 13 strings that hold an apostrophe |
+| 11 | French interface strings | *no check existed* | 10 carried a straight prime; `fr()` is never applied to `t()` output |
+| 11 | `fr=147` vs `en=fa=ar=160` | *in plain sight* | nothing compared the counts |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
 meant **not one design token was ever defined**, and the page still looked like a

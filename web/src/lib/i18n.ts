@@ -30,6 +30,7 @@ const en = {
   attemptFinished: 'You have already finished this attempt.', seeResults: 'See the results',
   questionsAnswered: 'Questions answered', previous: 'Previous',
   submitExam: 'Finish — {n} of {m} answered',
+  notTranslatedHere: 'Shown in English — these questions and explanations have not been translated into your language yet.',
   examResumable: 'Your answers are saved as you go. You can close this and come back; the clock keeps running.',
   yourResult: 'Your result', score: 'Score', answeredOf: '{n} of {m} answered',
   notAnOfficialResult: 'This is practice, not the examination. It is not a pass or a fail and it is not a level.',
@@ -112,11 +113,37 @@ export function loadDictionary(locale: Locale): Promise<Dict> {
   return pending[locale] as Promise<Dict>;
 }
 
+/**
+ * Bidi isolation, applied where the substitution happens.
+ *
+ * A placeholder in an RTL sentence is replaced by text whose direction we do
+ * not control: a French answer, a search query someone typed, a level like
+ * «B1», a clock like «12:34». Dropped in bare, the substituted run and the
+ * punctuation around it reorder on screen, and the sentence a Persian or
+ * Arabic learner reads is not the sentence that was written.
+ *
+ * U+2068 FIRST STRONG ISOLATE … U+2069 POP DIRECTIONAL ISOLATE tells the bidi
+ * algorithm to resolve the inserted run on its own and put it back as one
+ * piece. FSI rather than LRI because the value may legitimately be either
+ * direction.
+ *
+ * This lives here and not at the call sites on purpose. A rule applied at call
+ * sites is a rule one call site will always miss — and it will be the one added
+ * next month by someone who never read this file. There is one substitution
+ * point in the product; it is this line.
+ */
+const FSI = '\u2068';
+const PDI = '\u2069';
+
 export function translator(locale: Locale) {
   const dict = loaded[locale] ?? en;
+  const isolate = LOCALES[locale].dir === 'rtl';
   return (key: keyof Dict, vars?: Record<string, string | number>): string => {
     let out: string = dict[key] ?? en[key] ?? String(key);
-    if (vars) for (const [k, v] of Object.entries(vars)) out = out.split(`{${k}}`).join(String(v));
+    if (vars) for (const [k, v] of Object.entries(vars)) {
+      const value = isolate ? `${FSI}${v}${PDI}` : String(v);
+      out = out.split(`{${k}}`).join(value);
+    }
     return out;
   };
 }
