@@ -23,7 +23,7 @@ Rephrasing is not a loophole. A *selection* of vocabulary is its compiler's own 
 | Outbound practice links | 22 distinct URLs | France Éducation international, Le français des affaires, TV5MONDE, RFI, Le Point du FLE, Wikisource, Council of Europe | **Not applicable — links, not copies.** No material from these sites is reproduced, mirrored or embedded | URLs recorded in `content/exams.json`; `checkedOn` is `null` because this environment cannot reach those hosts |
 | Interface strings | **109 keys × 4 languages** *(written as 92; re-counted 2026-09-30)* | **Original**, written here | Project content licence | Yes |
 | Verb conjugations | 14 verbs × 6 tenses × 6 persons = **504 forms**, plus participles and 12 imperatives | **Derived by rule and checked by hand for this project** — imparfait from the *nous* stem, conditional from the future stem; no table copied from any source | Project content licence | Yes — `provenance` and `licence` on every verb, asserted by a test |
-| Concept taxonomy | 224 concepts (190 leaves, 4 roots), A1–B2 | **Original**, written here | Project content licence | Yes |
+| Concept taxonomy | 297 concepts (261 leaves, 4 roots), A1–C2 *(224 A1–B2; C1 and C2 added 2026-10-01)* | **Original**, written here | Project content licence | Yes |
 
 **Nothing else exists yet.** Every row above is either our own writing or a fact.
 

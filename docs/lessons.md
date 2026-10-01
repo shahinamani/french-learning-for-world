@@ -190,6 +190,44 @@ The removal is where it got expensive:
 not a small default. Before accepting one, ask what removing it would cost — and
 whether the platform will even let you.
 
+### #9 — A guard on the key, with nothing on what the reader sees
+
+**2026-10-01, found while merging the C1/C2 draft.**
+
+`tests/concept-ids-permanent.test.js` checks that ids are unique, well formed,
+parented and never renamed. Every one of those passed on the C1/C2 draft. Four
+of its entries were still duplicates of concepts already live:
+
+| Draft id | Already existed as | Both named |
+|---|---|---|
+| `gram.subjunctive.passe` | `gram.subjunctive.past` (B2) | « Le subjonctif passé » — *and* "The past subjunctive" |
+| `gram.reported.concordance` | `gram.reported.tense-shift` (B1) | « La concordance des temps » |
+| `gram.expression.mise-en-relief` | `gram.expression.emphasis` (B2) | « La mise en relief » |
+| `gram.article.absence` | `gram.article.omission` (B1) | « L’absence d’article » |
+
+The ids were distinct, so the uniqueness check was satisfied. The **names** were
+character-for-character identical, which is the only part a learner ever sees.
+
+This mattered more than an ordinary duplicate. Ids are permanent by design, so
+merging would not have been correctable by deletion — each pair would have
+needed a retirement, and any learner who had reviewed against the wrong half
+would have had their record split across two ids for one piece of French.
+
+The check that now exists compares names the way a reader does — case, accents
+and apostrophes folded — in **both** languages separately. Its first run found a
+fifth collision that had been live since the taxonomy was written: the group
+`phon.elision` and its child `phon.elision.basic` were **both** « L’élision », so
+a French-interface learner saw a heading nested inside itself. The English names
+differed, which is exactly why nobody noticed.
+
+**Rule:** a uniqueness guard on an internal key is not a uniqueness guard. Check
+the field the user reads, in every language it is read in — a collision can exist
+in one language and not another, and the one you do not speak is the one that
+survives.
+
+**Same family as #6:** the check was looking at something adjacent to the thing
+under test, and passing on it.
+
 ---
 
 ## How these are caught
@@ -224,6 +262,8 @@ Not by care. By two habits:
 | 5 | `typography.test.js` | PASS | read the source for the word "apostrophe" instead of running the formatter |
 | 7 | `answer.ts` / search / verb filter | PASS | `œ` and `æ` never folded; `checkAnswer('soeur','sœur')` was WRONG |
 | 8 | commit messages | *no check existed* | a default trailer reached public history; cure was a repository rebuild |
+| 9 | C1/C2 concept draft | *ids all unique* | four entries carried a name already live, where ids are permanent |
+| 9 | `phon.elision` / `.basic` | PASS, since the taxonomy was written | identical French name, group and child; English names differed |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
 meant **not one design token was ever defined**, and the page still looked like a

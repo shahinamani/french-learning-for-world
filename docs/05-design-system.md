@@ -153,5 +153,6 @@ Writing them as plain CSS first made the design reviewable before any framework 
 ## Opened for step 4 — where each one ended up
 
 1. **Self-host the fonts** — **done** in step 4. Five woff2 files, both OFL licences committed beside them, `unicode-range` so a French page fetches 92 608 bytes of the 197 020 shipped.
-2. **The concept taxonomy** (`docs/03`) — **done**: 224 concepts, 190 leaves under 4 roots, A1–B2, ids permanent. The 22 cards exercise 29 of them.
+2. **The concept taxonomy** (`docs/03`) — **done**: 297 concepts, 261 leaves under 4 roots, A1–C2, ids permanent. The 22 cards exercise 29 of them.
+   **[extended 2026-10-01]** 73 concepts added for C1 and C2. The taxonomy now reaches C2; **the product does not.** No card, drill or exam item is written against a C1 or C2 id, and every learner-facing page still says B2, which is still true. The ceiling claim changes when the content does, not before.
 3. **A dark-theme toggle in the product** — **done**: three states (light, dark, system) on `/account`. **[corrected 2026-09-30]** this said "stored per device"; it is stored **per profile**, under `flw:u:<id>:settings`, so two profiles in two tabs hold different themes. `docs/06` had this right and this file had it wrong.
