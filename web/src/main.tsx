@@ -53,10 +53,8 @@ function AppRoutes() {
         <Route path="search" element={<SearchRoute />} />
         <Route path="account" element={<Account />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="learn/level/:level/:skill" element={<Stub title="Level and skill"
-          status="Lesson pages per level and skill are not built. The concepts for this level exist and are searchable, and the flashcards and verbs sections cover A1 today. Next after Sounds and Timers." />} />
-        <Route path="practise/listening" element={<Stub title="Sounds and listening"
-          status="Blocked on audio, not on code: this project may only use recordings whose licence permits it, and none has been obtained yet. Machine speech is not shipped as listening practice. The phonetics concepts exist and are searchable now." />} />
+        <Route path="learn/level/:level/:skill" element={<Stub titleKey="stubLevelTitle" bodyKey="stubLevelBody" />} />
+        <Route path="practise/listening" element={<Stub titleKey="stubSoundsTitle" bodyKey="stubSoundsBody" />} />
       </Route>
     </Routes>
   );

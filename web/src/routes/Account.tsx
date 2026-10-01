@@ -63,10 +63,10 @@ export function Account() {
           </select>
         </label>
         <label className="field">
-          <span className="field__label">Theme</span>
+          <span className="field__label">{t('theme')}</span>
           <select className="select" value={settings.theme} data-testid="theme"
                   onChange={(e) => update({ theme: e.target.value as 'light' | 'dark' | 'system' })}>
-            <option value="system">System</option><option value="light">Light</option><option value="dark">Dark</option>
+            <option value="system">{t('themeSystem')}</option><option value="light">{t('themeLight')}</option><option value="dark">{t('themeDark')}</option>
           </select>
         </label>
       </section>

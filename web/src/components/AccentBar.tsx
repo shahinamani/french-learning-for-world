@@ -89,8 +89,20 @@ export function AccentBar({ inputRef, onInsert, id = 'accent-bar' }: Props) {
   const onKeyDown = (e: React.KeyboardEvent) => {
     const last = ACCENT_CHARS.length - 1;
     let next = active;
-    if (e.key === 'ArrowRight') next = active === last ? 0 : active + 1;
-    else if (e.key === 'ArrowLeft') next = active === 0 ? last : active - 1;
+    // Which arrow means "forward" depends on which way the toolbar runs, not on
+    // which way English runs. This bar is dir="ltr" on purpose — the characters
+    // are French and belong in French order even on a Persian page — so today
+    // ArrowRight is forward. But that is a fact about the element, and reading
+    // it from the element is the difference between being right and being
+    // right by coincidence: delete the dir attribute and the arrows would
+    // silently invert for every RTL learner, with every test still passing.
+    const rtl = barRef.current
+      ? getComputedStyle(barRef.current).direction === 'rtl'
+      : false;
+    const forward = rtl ? 'ArrowLeft' : 'ArrowRight';
+    const back = rtl ? 'ArrowRight' : 'ArrowLeft';
+    if (e.key === forward) next = active === last ? 0 : active + 1;
+    else if (e.key === back) next = active === 0 ? last : active - 1;
     else if (e.key === 'Home') next = 0;
     else if (e.key === 'End') next = last;
     else return;

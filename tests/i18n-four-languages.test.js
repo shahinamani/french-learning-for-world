@@ -304,6 +304,13 @@ const shapes = () => {
 const EXPECTED_SHAPES = {
   'decks.json decks[].title':                          { n: 1,  have: 'en/fr/fa/ar' },
   'exam-papers.json papers[].name':                    { n: 3,  have: 'en/fr/fa/ar' },
+  // These three were PLAIN ENGLISH STRINGS until 2026-10-01, with no locale
+  // keys at all — so the shape map could not see them and even the French
+  // interface showed English. Found by looking at an RTL screenshot, where
+  // the English also rendered with its full stops at the wrong end.
+  'exam-papers.json papers[].official.passNote':       { n: 3,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].official.source':         { n: 3,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].practiceNote':            { n: 3,  have: 'en/fr/fa' },   // ar: HELD
   'exam-papers.json papers[].items[].prompt':          { n: 28, have: 'en/fr/fa' },   // ar: HELD
   'exam-papers.json papers[].items[].explain':         { n: 28, have: 'en/fr/fa' },   // ar: HELD
   'exam-papers.json papers[].items[].stimulus.label':  { n: 16, have: 'en/fr/fa' },   // ar: HELD
@@ -376,4 +383,60 @@ test('French quotations inside Persian explanations are isolated, and the isolat
   }
   assert.deepEqual(unbalanced, [], 'unbalanced bidi isolates');
   assert.ok(isolated >= 60, `only ${isolated} isolated runs; the French quotations should be wrapped`);
+});
+
+test('no learner-facing content field is a bare string instead of a set of languages', () => {
+  // The shape map can only report on fields that HAVE languages. A field that
+  // is a plain string has none, so it is invisible to it — which is how three
+  // paragraphs stayed English in every interface, French included.
+  const LEARNER_TEXT = /^(passNote|practiceNote|source|label|prompt|explain|title|name)$/;
+  /**
+   * Named, with reasons, rather than loosening the pattern:
+   *  - a licence's formal name is a legal identifier and is not translated;
+   *  - an external page's title is in that page's own language and carries its
+   *    own `lang` field, so translating it would misattribute it.
+   */
+  const NOT_OURS_TO_TRANSLATE = new Set([
+    'exam-papers.json licence.name',
+    'exams.json exams[].resources[].title',
+  ]);
+  const bare = [];
+  for (const file of CONTENT) {
+    walk(JSON.parse(R(`content/${file}`)), '', (node, path) => {
+      for (const [k, v] of Object.entries(node)) {
+        if (typeof v === 'string' && LEARNER_TEXT.test(k)) {
+          const id = `${file} ${path.replace(/\[\d+\]/g, '[]')}.${k}`;
+          if (!NOT_OURS_TO_TRANSLATE.has(id)) bare.push(id);
+        }
+      }
+    });
+  }
+  assert.deepEqual([...new Set(bare)], [],
+    'learner-facing text must be {en, fr, …} so it can be translated and so this map can see it');
+});
+
+test('Persian and Arabic text uses the same digits the application substitutes', () => {
+  // The app renders numbers with `String(v)` — 30, 25, 12:34 — so prose written
+  // with ۰۱۲ or ٠١٢ puts two numbering systems on one card. The exam paper
+  // screen showed « ۲۵ نمره » beside « 25 », which a Persian reader sees at once
+  // and a machine checking only the dictionary never would.
+  //
+  // This fixes the INCONSISTENCY, not the choice: localising every number
+  // (scores, clocks, counts) is a product decision, and until it is taken the
+  // honest state is one system everywhere.
+  const INDIC = /[\u0660-\u0669\u06F0-\u06F9]/;
+  const bad = [];
+  for (const c of ['fa', 'ar']) {
+    for (const [k, v] of dict[c]) if (INDIC.test(v)) bad.push(`${c}.${k}: ${v.slice(0, 40)}`);
+  }
+  for (const file of CONTENT) {
+    walk(JSON.parse(R(`content/${file}`)), '', (node, path) => {
+      for (const l of ['fa', 'ar']) {
+        if (typeof node[l] === 'string' && INDIC.test(node[l])) {
+          bad.push(`${file} ${path}.${l}: ${node[l].slice(0, 40)}`);
+        }
+      }
+    });
+  }
+  assert.deepEqual(bad, [], 'two numbering systems on one screen');
 });

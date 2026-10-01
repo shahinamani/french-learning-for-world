@@ -108,7 +108,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
   return (
     <div className="shell">
-      <a className="skip" href="#main">Skip to content</a>
+      <a className="skip" href="#main">{t('skipToContent')}</a>
 
       <header className="bar">
         <div className="bar-in">

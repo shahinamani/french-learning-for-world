@@ -1,3 +1,4 @@
+import { Localised, anyUntranslated } from '../../components/Localised';
 /**
  * One paper: what it is, how it differs from the real thing, and start or
  * resume. Resuming is offered rather than assumed — a learner who left a paper
@@ -84,9 +85,13 @@ export function ExamPaperRoute() {
           <dt>{t('duration')}</dt><dd>{t('minutes', { n: paper.official.minutes })}</dd>
           <dt>{t('marks')}</dt><dd>{paper.official.marks}</dd>
         </dl>
-        <p className="muted">{paper.official.passNote}</p>
-        <p className="muted"><strong>{t('thisPractice')}</strong> {paper.practiceNote}</p>
-        <p className="muted">{t('source')}: {paper.official.source}</p>
+        <p className="muted"><Localised field={paper.official.passNote} /></p>
+        <p className="muted"><strong>{t('thisPractice')}</strong>{' '}
+          <Localised field={paper.practiceNote} /></p>
+        <p className="muted">{t('source')}: <Localised field={paper.official.source} /></p>
+        {anyUntranslated([paper.official.passNote, paper.practiceNote], settings.ui) && (
+          <p className="muted" data-testid="not-translated">{t('notTranslatedHere')}</p>
+        )}
       </section>
 
       {live && (

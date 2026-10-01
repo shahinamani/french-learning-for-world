@@ -1,3 +1,4 @@
+import { Localised } from '../../components/Localised';
 /**
  * Results, as a diagnosis rather than a score.
  *
@@ -200,7 +201,7 @@ export function ExamResults() {
                   {answered && !right && (
                     <p className="muted" lang="fr" dir="ltr">{t('youChose')}: {frText(item.options[chosen]?.fr ?? '')}</p>
                   )}
-                  <p className="muted">{pick(item.explain, settings.ui).text}</p>
+                  <p className="muted"><Localised field={item.explain} /></p>
                 </details>
               </li>
             );

@@ -1,3 +1,4 @@
+import { Localised } from '../../components/Localised';
 /**
  * Sitting a paper. Timed, and resumable in the only way that counts: every
  * answer is written to storage as it is given, and the deadline is an absolute
@@ -132,7 +133,7 @@ export function ExamSit() {
 
       {item.stimulus && (
         <div className="exam-stimulus" data-testid="exam-stimulus">
-          {label && <p className="eyebrow">{settings.ui === 'fr' ? frText(label.text) : label.text}</p>}
+          {item.stimulus.label && <p className="eyebrow"><Localised field={item.stimulus.label} /></p>}
           <p lang="fr" dir="ltr" className="exam-text">{frText(item.stimulus.fr)}</p>
         </div>
       )}
@@ -143,7 +144,7 @@ export function ExamSit() {
 
       <fieldset className="exam-q">
         <legend className="exam-prompt" data-testid="exam-prompt">
-          {settings.ui === 'fr' ? frText(prompt.text) : prompt.text}
+          <Localised field={item.prompt} />
         </legend>
         {item.options.map((o, i) => (
           <label key={i} className={`exam-option${chosen === i ? ' is-chosen' : ''}`}>

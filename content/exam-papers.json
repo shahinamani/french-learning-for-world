@@ -23,10 +23,22 @@
       "official": {
         "minutes": 30,
         "marks": 25,
-        "passNote": "The real paper is marked out of 25. A candidate needs 50 of 100 overall across the four papers, with at least 5 of 25 on each.",
-        "source": "France Éducation international, DELF tous publics"
+        "passNote": {
+          "en": "The real paper is marked out of 25. A candidate needs 50 of 100 overall across the four papers, with at least 5 of 25 on each.",
+          "fr": "L’épreuve réelle est notée sur 25. Il faut 50 sur 100 au total pour les quatre épreuves, avec au moins 5 sur 25 à chacune.",
+          "fa": "برگهٔ واقعی از 25 نمره داده می‌شود. داوطلب برای چهار برگه روی‌هم به 50 از 100 نیاز دارد، و دست‌کم 5 از 25 در هر کدام."
+        },
+        "source": {
+          "en": "France Éducation international, DELF tous publics",
+          "fr": "France Éducation international, DELF tous publics",
+          "fa": "France Éducation international، DELF tous publics"
+        }
       },
-      "practiceNote": "8 original questions, not the 4 exercises of a real paper. This is practice on the same skills at the same level, not a mock paper of the same length.",
+      "practiceNote": {
+        "en": "8 original questions, not the 4 exercises of a real paper. This is practice on the same skills at the same level, not a mock paper of the same length.",
+        "fr": "8 questions originales, et non les 4 exercices d’une épreuve réelle. C’est un entraînement sur les mêmes compétences au même niveau, pas un examen blanc de la même longueur.",
+        "fa": "8 پرسش اصیل، نه 4 تمرین یک برگهٔ واقعی. این تمرینی است بر همان مهارت‌ها و در همان سطح، نه آزمون آزمایشی به همان درازا."
+      },
       "items": [
         {
           "id": "d-a1-ce-1",
@@ -379,10 +391,22 @@
       "official": {
         "minutes": 30,
         "marks": 25,
-        "passNote": "Marked out of 25. 50 of 100 overall is required, with a minimum of 5 of 25 per paper.",
-        "source": "France Éducation international, DELF tous publics"
+        "passNote": {
+          "en": "Marked out of 25. 50 of 100 overall is required, with a minimum of 5 of 25 per paper.",
+          "fr": "Notée sur 25. Il faut 50 sur 100 au total, avec un minimum de 5 sur 25 par épreuve.",
+          "fa": "از 25 نمره داده می‌شود. روی‌هم 50 از 100 لازم است، با کمینهٔ 5 از 25 در هر برگه."
+        },
+        "source": {
+          "en": "France Éducation international, DELF tous publics",
+          "fr": "France Éducation international, DELF tous publics",
+          "fa": "France Éducation international، DELF tous publics"
+        }
       },
-      "practiceNote": "8 original questions. A real A2 reading paper has four exercises and runs longer.",
+      "practiceNote": {
+        "en": "8 original questions. A real A2 reading paper has four exercises and runs longer.",
+        "fr": "8 questions originales. Une véritable épreuve de compréhension des écrits A2 comporte quatre exercices et dure plus longtemps.",
+        "fa": "8 پرسش اصیل. یک برگهٔ واقعی درک مطلب نوشتاری A2 چهار تمرین دارد و درازتر است."
+      },
       "items": [
         {
           "id": "d-a2-ce-1",
@@ -732,10 +756,22 @@
       "official": {
         "minutes": 20,
         "marks": 18,
-        "passNote": "The real paper is 18 multiple-choice questions in 20 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
-        "source": "France Éducation international, Test de connaissance du français"
+        "passNote": {
+          "en": "The real paper is 18 multiple-choice questions in 20 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
+          "fr": "L’épreuve réelle compte 18 questions à choix multiple en 20 minutes, du A1 au C2. Elle est notée sur l’échelle de 699 points propre au TCF et donne un niveau du CECR, sans réussite ni échec.",
+          "fa": "برگهٔ واقعی 18 پرسش چندگزینه‌ای در 20 دقیقه دارد، از A1 تا C2. بر پایهٔ مقیاس 699 امتیازی ویژهٔ TCF نمره می‌گیرد و به یک سطح CEFR نگاشته می‌شود، نه قبولی و ردی."
+        },
+        "source": {
+          "en": "France Éducation international, Test de connaissance du français",
+          "fr": "France Éducation international, Test de connaissance du français",
+          "fa": "France Éducation international، Test de connaissance du français"
+        }
       },
-      "practiceNote": "12 original questions spanning A1 to B2. A real paper has 18 and reaches C1–C2, which this project has no concepts for yet.",
+      "practiceNote": {
+        "en": "12 original questions spanning A1 to B2. A real paper has 18 and reaches C1–C2, which this project has no concepts for yet.",
+        "fr": "12 questions originales, du A1 au B2. Une épreuve réelle en compte 18 et va jusqu’au C1–C2, pour lesquels ce projet n’a pas encore de contenu.",
+        "fa": "12 پرسش اصیل، از A1 تا B2. برگهٔ واقعی 18 پرسش دارد و تا C1–C2 می‌رود، که این پروژه هنوز محتوایی برای آن ندارد."
+      },
       "items": [
         {
           "id": "tcf-s-1",

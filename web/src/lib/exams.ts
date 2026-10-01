@@ -15,10 +15,14 @@ import { userKey } from './session';
  * English plus a line saying so, and `translated: false` is what draws that line.
  */
 export function pick(field: Partial<Record<Locale, string>> | undefined, ui: Locale):
-  { text: string; translated: boolean } {
+  { text: string; translated: boolean; locale: Locale } {
   const want = field?.[ui]?.trim();
-  if (want) return { text: want, translated: true };
-  return { text: field?.en?.trim() || field?.fr?.trim() || '', translated: false };
+  if (want) return { text: want, translated: true, locale: ui };
+  const en = field?.en?.trim();
+  if (en) return { text: en, translated: false, locale: 'en' };
+  const fr = field?.fr?.trim();
+  if (fr) return { text: fr, translated: false, locale: 'fr' };
+  return { text: '', translated: false, locale: 'en' };
 }
 
 export type ExamItem = {
@@ -41,8 +45,10 @@ export type ExamPaper = {
   code: string;
   name: Partial<Record<Locale, string>>;
   minutes: number;
-  official: { minutes: number; marks: number; passNote: string; source: string };
-  practiceNote: string;
+  official: { minutes: number; marks: number;
+              passNote: Partial<Record<Locale, string>>;
+              source: Partial<Record<Locale, string>> };
+  practiceNote: Partial<Record<Locale, string>>;
   items: ExamItem[];
 };
 
