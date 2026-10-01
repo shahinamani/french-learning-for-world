@@ -7,7 +7,9 @@ import { conceptStats, weekSummary, exportRows, type ConceptStat } from '../lib/
 import { loadContent } from '../lib/content';
 import type { Concept, ReviewRow } from '../lib/types';
 import { Icon } from '../components/Icon';
-import { fr as frText } from '../lib/typography';
+import { Localised } from '../components/Localised';
+import { pick } from '../lib/exams';
+import { Num } from '../components/Num';
 
 export function Progress() {
   const { t, settings } = useApp();
@@ -35,8 +37,14 @@ export function Progress() {
 
   const name = (id: string) => {
     const c = byId.get(id);
-    return c ? (settings.ui === 'fr' ? frText(c.name.fr) : c.name.en) : id;
+    return c ? <Localised field={c.name} /> : <>{id}</>;
   };
+  /** True when any concept on this screen falls back out of the learner's language. */
+  const anyNameUntranslated = () =>
+    stats.slice(0, 12).some((s) => {
+      const c = byId.get(s.conceptId);
+      return c ? !pick(c.name, settings.ui).translated : false;
+    });
 
   const download = async () => {
     if (!rows) return;
@@ -59,7 +67,7 @@ export function Progress() {
         <h2 id="week-h" className="eyebrow">{t('thisWeek')}</h2>
         {week === null ? <div className="skeleton skeleton--text" /> : (
           <p className="today__line" data-testid="week-summary">
-            {t('reviewsCount', { n: week.reviews })} · {week.minutes} min · {week.days}/7
+            {t('reviewsCount', { n: week.reviews })} · <Num>{week.minutes} min</Num> · <Num>{week.days}/7</Num>
           </p>
         )}
       </section>
@@ -72,14 +80,17 @@ export function Progress() {
         )}
         {stats.length > 0 && (
           <ul className="rows" data-testid="concept-stats">
+            {anyNameUntranslated() && (
+              <li className="muted notice-untranslated">{t('notTranslatedName')}</li>
+            )}
             {stats.slice(0, 12).map((s) => (
               <li key={s.conceptId}>
                 <div className="row">
                   <button className="row__disclose" aria-expanded={open === s.conceptId}
                           data-testid={`disclose-${s.conceptId}`}
                           onClick={() => setOpen(open === s.conceptId ? null : s.conceptId)}>
-                    <span lang={settings.ui === 'fr' ? 'fr' : undefined}>{name(s.conceptId)}</span>
-                    <span className="muted">{Math.round(s.accuracy * 100)} % · {s.reviews}</span>
+                    <span>{name(s.conceptId)}</span>
+                    <span className="muted"><Num>{Math.round(s.accuracy * 100)} % · {s.reviews}</Num></span>
                     <Icon name="chevron" size={16} />
                   </button>
                   <Link className="btn btn--sm" to={`/practise/review?concept=${encodeURIComponent(s.conceptId)}`}>

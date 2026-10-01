@@ -7,7 +7,8 @@ import { statsForConcept, type ConceptStat } from '../lib/progress';
 import type { Card, Concept as C } from '../lib/types';
 import { Icon } from '../components/Icon';
 import { NotFound } from './Stub';
-import { fr as frText } from '../lib/typography';
+import { Localised } from '../components/Localised';
+import { pick } from '../lib/exams';
 
 export function ConceptRoute() {
   const { id = '' } = useParams();
@@ -34,13 +35,14 @@ export function ConceptRoute() {
   if (concept === undefined) return <div className="page"><div className="skeleton skeleton--title" /></div>;
   if (concept === null) return <NotFound />;
 
-  const name = settings.ui === 'fr' ? frText(concept.name.fr) : concept.name.en;
+  const shown = pick(concept.name, settings.ui);
   return (
     <div className="page">
       <button className="btn btn--ghost btn--sm" onClick={() => navigate(-1)} data-testid="concept-back">
         ← {t('back')}
       </button>
-      <h1 className="h2" lang={settings.ui === 'fr' ? 'fr' : undefined}>{name}</h1>
+      <h1 className="h2"><Localised field={concept.name} /></h1>
+      {!shown.translated && <p className="muted notice-untranslated">{t('notTranslatedName')}</p>}
       <div className="row gap-2" style={{ marginBlockEnd: 'var(--space-4)' }}>
         <span className={`chip chip--${concept.level.toLowerCase()}`}>{concept.level}</span>
         <span className="chip">{t(concept.type as 'grammar')}</span>

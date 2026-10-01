@@ -85,6 +85,8 @@ const fr: Dict = {
   notBuilt: 'Pas encore construit',
   notBuiltBody: "Cette section est prévue. La coque, la recherche, le panneau latéral et les cartes sont terminés ; le reste suivra le même schéma.",
   independence: "Outil d’étude indépendant. Non affilié à un organisme d’examen. Aucun certificat n’est délivré.",
+  skillListening: 'Compréhension orale', skillReading: 'Compréhension écrite', skillWriting: 'Production écrite', skillSpeaking: 'Production orale',
+  notTranslatedName: 'Affiché en anglais — ce nom n’est pas encore traduit dans votre langue.',
 };
 
 export default fr;

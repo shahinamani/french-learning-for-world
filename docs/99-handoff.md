@@ -15,7 +15,8 @@ checks, no force-push, no deletion.
 - **No tool attribution anywhere, ever.** No `Co-Authored-By`, no "generated
   with", no robot emoji — not in a commit message, a pull-request description, a
   README, a changelog or any file. Every commit is authored
-  `Shahin Amani <transbox72@gmail.com>` and nothing else. This is enforced:
+  Shahin Amani and nothing else — the address lives in commit metadata, where
+  it belongs, and nowhere a scraper reads. This is enforced:
   `scripts/check-commit-messages.sh` runs in the required `test` job, and
   `tests/commit-attribution.test.js` builds throwaway repositories and plants six
   offending forms on every run, so the detector is seen red continuously rather

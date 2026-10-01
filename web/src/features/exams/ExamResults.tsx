@@ -25,6 +25,7 @@ import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
 import type { Concept, ReviewRow } from '../../lib/types';
+import { Num } from '../../components/Num';
 
 export function ExamResults() {
   const { paperId = '' } = useParams();
@@ -120,8 +121,8 @@ export function ExamResults() {
 
   const label = (id: string) => {
     const c = conceptById.get(id);
-    if (!c) return id;
-    return settings.ui === 'fr' ? frText(c.name.fr) : c.name.en;
+    if (!c) return <>{id}</>;
+    return <Localised field={c.name} />;
   };
   const weak = scored.byConcept.filter((c) => c.correct < c.total);
   const strong = scored.byConcept.filter((c) => c.correct === c.total);
@@ -133,7 +134,7 @@ export function ExamResults() {
       <section className="card card--raised" aria-labelledby="r-score">
         <h2 id="r-score" className="eyebrow">{t('score')}</h2>
         <p className="result-score" data-testid="exam-score">
-          {scored.correct} / {scored.total}
+          <Num>{scored.correct} / {scored.total}</Num>
         </p>
         <p className="muted" data-testid="exam-answered">
           {t('answeredOf', { n: scored.answered, m: scored.total })}
@@ -155,7 +156,7 @@ export function ExamResults() {
                       data-testid={`weak-${c.conceptId}`}
                       to={`/practise/review?concept=${encodeURIComponent(c.conceptId)}`}>
                   <span>{label(c.conceptId)}</span>
-                  <span className="muted">{c.correct} / {c.total}</span>
+                  <Num className="muted">{c.correct} / {c.total}</Num>
                   <Icon name="chevron" size={16} />
                 </Link>
               </li>

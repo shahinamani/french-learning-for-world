@@ -18,6 +18,8 @@ import { Icon } from '../../components/Icon';
 import { useSidePanel } from '../../components/SidePanel';
 import { fr as frText } from '../../lib/typography';
 import { WithAccentBar } from '../../components/AccentBar';
+import { pick } from '../../lib/exams';
+import { Num } from '../../components/Num';
 
 function newId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
@@ -119,7 +121,7 @@ export function ConjugationDrill() {
       <div className="page"><div className="empty" data-testid="drill-done">
         <div className="empty__icon"><Icon name="check" size={34} /></div>
         <p className="empty__title">{t('sessionDone')}</p>
-        <p className="empty__body">{right} / {verb.persons.length}</p>
+        <p className="empty__body"><Num>{right} / {verb.persons.length}</Num></p>
         <div className="row gap-2 wrap" style={{ justifyContent: 'center', marginBlockStart: 'var(--space-5)' }}>
           <Link className="btn btn--primary" to={`/learn/verbs/${encodeURIComponent(verb.infinitive)}`}>{t('back')}</Link>
           <button className="chip chip--link" data-testid="drill-concept" onClick={() => panel.open(`concept:${tense.conceptId}`)}>
@@ -130,13 +132,13 @@ export function ConjugationDrill() {
     );
   }
 
-  const label = settings.ui === 'fr' ? tense.name.fr : tense.name.en;
+  const label = pick(tense.name, settings.ui).text;
   return (
     <div className="page page--session">
       <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={verb.persons.length} aria-valuenow={index} aria-label={t('practiseTense')}>
         <span className="rail__fill" style={{ width: `${(index / verb.persons.length) * 100}%` }} />
       </div>
-      <p className="session-count" data-testid="drill-count">{index + 1} / {verb.persons.length}</p>
+      <p className="session-count"><Num testId="drill-count">{index + 1} / {verb.persons.length}</Num></p>
 
       <article className="card card--raised flashcard">
         <div className="tags">

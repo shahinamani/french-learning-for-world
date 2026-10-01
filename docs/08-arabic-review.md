@@ -1,6 +1,6 @@
 # Arabic needs a human reader — a launch condition
 
-**Status: open. 2026-10-01.**
+**Status: open. Updated 2026-10-01 (second pass).**
 
 This is not a backlog item and not a nice-to-have. **The platform does not launch
 in Arabic until a person who reads Arabic has reviewed what is below.**
@@ -55,6 +55,17 @@ skimmed.
 
 ### 2. Verb tense names — `content/verbs.json`
 
+> **Correction, 2026-10-01.** This section previously said these six terms were
+> shipped. They were in the file and **never reached a screen.** `VerbTense.name`
+> was typed `Record<'en' | 'fr', string>`, and `VerbDetail.tsx` and
+> `Conjugation.tsx` both read `ui === 'fr' ? name.fr : name.en`, so an Arabic
+> learner saw “Present” and “Imperfect” while the Arabic sat unused in the
+> content file. Found by looking at a Persian screenshot, not by any check.
+> The type now admits all four languages, both screens render through
+> `Localised`, and `tests/content-names-localised.test.js` asserts every tense
+> name reaches a Persian and an Arabic learner. **So these six are now genuinely
+> on screen, and genuinely unreviewed — which is what this section always meant.**
+
 Six terms, each repeated across fourteen verbs, added 2026-10-01 **without an
 Arabic reader**, on the judgement that they are short and terminological:
 
@@ -76,6 +87,43 @@ Arabic-language French teaching differs, the convention wins.
 
 `content/decks.json` and `content/fr-core-a1.json` both carry
 `الفرنسية الأساسية A1`. Added without a reader, same caveat.
+
+### 3b. Five interface strings added 2026-10-01, without a reader
+
+Same judgement as the tense names — short, terminological — and listed here
+rather than left for the reviewer to discover.
+
+The map's seven columns used to read `CO CE PE PO Gr Voc Phon` in every
+language. Those are **French** abbreviations (compréhension orale, compréhension
+écrite, production écrite, production orale…), and they named the skill to
+nobody who did not already know the French. They are now real labels:
+
+| key | Arabic as shipped | English |
+|---|---|---|
+| `skillListening` | `الفهم السمعي` | Listening |
+| `skillReading` | `الفهم القرائي` | Reading |
+| `skillWriting` | `التعبير الكتابي` | Writing |
+| `skillSpeaking` | `التعبير الشفوي` | Speaking |
+| `notTranslatedName` | `يُعرض بالإنجليزية — لم يُترجَم هذا الاسم إلى العربية بعد.` | Shown in English — this name has not been translated into your language yet. |
+
+As with the tense names: the question is not whether each is good Arabic, but
+whether an Arabic-speaking learner of French would recognise it as the name of
+that CEFR skill. If the convention in Arabic-language French teaching differs,
+the convention wins.
+
+### 3c. Concept names — **Arabic deliberately held, like the exam text**
+
+The 297 concept names existed in English and French only, and were rendered to
+Arabic and Persian learners **in English, in silence**, on Learn, Progress,
+Search, the concept page and the side panel. They now go through `pick()`, so an
+Arabic learner sees the English *and a line in Arabic saying it is not
+translated* — `notTranslatedName` — rather than English presented as Arabic.
+
+Persian has been written for the 85 A1 concepts, because Shahin reads Persian
+and can check it. **Arabic is held at zero on purpose**, and the ledger in
+`tests/content-names-localised.test.js` records that as a declared number, so
+translating a level without updating the ledger fails, and adding an
+untranslated concept fails too.
 
 ### 4. Exam papers — **deliberately not written yet**
 
@@ -105,6 +153,10 @@ This is the honest state. It stays until a reader exists.
 So the review can concentrate on meaning:
 
 - The key set matches English exactly, with no duplicates and none missing.
+- Every content name a learner reads now reports whether it is in their language,
+  and no source file chooses between exactly two languages for a content field —
+  `tests/content-names-localised.test.js`, whose detector is run against a
+  planted sample on every run.
 - Every value is in Arabic script, non-empty, and free of stray invisible
   characters.
 - No two keys read identically where English keeps them apart.

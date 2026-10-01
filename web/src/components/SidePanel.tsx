@@ -19,7 +19,8 @@ import { statsForConcept, type ConceptStat } from '../lib/progress';
 import { loadContent } from '../lib/content';
 import type { Concept } from '../lib/types';
 import { Icon } from './Icon';
-import { fr as frText } from '../lib/typography';
+import { Localised } from './Localised';
+import { pick } from '../lib/exams';
 
 export function useSidePanel() {
   const [params, setParams] = useSearchParams();
@@ -58,7 +59,9 @@ export function SidePanel() {
   }, [conceptId, userId]);
 
   if (!conceptId) return null;
-  const name = concept ? (settings.ui === 'fr' ? frText(concept.name.fr) : concept.name.en) : conceptId;
+  // The dialog's accessible name must be a plain string, so it takes pick()'s
+  // text; the visible line takes Localised, which carries lang and dir with it.
+  const name = concept ? pick(concept.name, settings.ui).text : conceptId;
 
   return (
     <Dialog.Root open onOpenChange={(o) => { if (!o) close(); }}>
@@ -78,7 +81,12 @@ export function SidePanel() {
         {loading && <div className="skeleton skeleton--title" />}
         {!loading && (
           <>
-            <p className="panel-side__title" lang={settings.ui === 'fr' ? 'fr' : undefined} aria-hidden="true">{name}</p>
+            <p className="panel-side__title" aria-hidden="true">
+              {concept ? <Localised field={concept.name} /> : conceptId}
+            </p>
+            {concept && !pick(concept.name, settings.ui).translated && (
+              <p className="muted notice-untranslated">{t('notTranslatedName')}</p>
+            )}
             {concept && (
               <div className="row gap-2" style={{ marginBlockEnd: 'var(--space-4)' }}>
                 <span className={`chip chip--${concept.level.toLowerCase()}`}>{concept.level}</span>

@@ -57,7 +57,9 @@ export type Concept = {
   type: 'grammar' | 'vocabulary' | 'phonetics' | 'usage';
   level: Level;
   parent: string | null;
-  name: Record<'en' | 'fr', string>;
+  /** Every language we have. `pick()` decides what a given learner sees, and
+   *  reports whether it is their language — never a silent English fallback. */
+  name: Partial<Record<Locale, string>>;
   retired: boolean;
   isGroup: boolean;
 };

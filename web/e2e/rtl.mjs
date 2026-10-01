@@ -50,6 +50,12 @@ const SCREENS = [
   ['/practise/exams', 'exams', '[data-testid="exam-papers"] a'],
   ['/practise/exams/delf-a1-ce', 'exam-paper', '[data-testid="start-exam"]'],
   ['/progress', 'progress', '[data-testid="week-summary"]'],
+  // Two screens that render a CONTENT name rather than an interface string.
+  // The concept name was English on every Persian and Arabic screen and no
+  // check saw it, because no screen in this list rendered one: search shows
+  // nothing without a query, and the concept page was not walked at all.
+  ['/learn/concept/gram.negation', 'concept', '[data-testid="concept-practise"], [data-testid="concept-no-cards"]'],
+  ['/search?q=negation', 'search-results', '[data-testid="search-concepts"] a'],
   ['/search', 'search', 'input[type="search"], .input'],
   ['/account', 'account', '[data-testid="theme"]'],
 ];

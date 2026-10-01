@@ -22,6 +22,9 @@ import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
 import { fold } from '../../lib/fold';
 import { useTick } from '../../hooks/useTick';
+import { Num } from '../../components/Num';
+import { Localised } from '../../components/Localised';
+import type { Locale } from '../../lib/types';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
 
@@ -268,7 +271,7 @@ export function FlashcardSession() {
           {t('timeLeft', { c: formatClock(boxLeft) })}
         </p>
       )}
-      <p className="session-count" data-testid="session-count">{index + 1} / {queue.length}</p>
+      <p className="session-count"><Num testId="session-count">{index + 1} / {queue.length}</Num></p>
 
       <article className="card card--raised flashcard" data-testid="flashcard">
         <div className="tags">
@@ -331,17 +334,16 @@ export function FlashcardSession() {
 }
 
 function ConceptName({ id }: { id: string }) {
-  const { settings } = useApp();
-  const [name, setName] = useState(id);
+  const [field, setField] = useState<Partial<Record<Locale, string>> | null>(null);
   useEffect(() => {
     let live = true;
     loadContent().then(({ conceptById }) => {
       const c = conceptById.get(id);
-      if (live && c) setName(settings.ui === 'fr' ? frText(c.name.fr) : c.name.en);
+      if (live && c) setField(c.name);
     }).catch(() => {});
     return () => { live = false; };
-  }, [id, settings.ui]);
-  return <>{name}</>;
+  }, [id]);
+  return field ? <Localised field={field} /> : <>{id}</>;
 }
 
 /**

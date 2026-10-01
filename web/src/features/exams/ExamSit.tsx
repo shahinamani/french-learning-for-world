@@ -18,6 +18,7 @@ import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
 import { useTick } from '../../hooks/useTick';
+import { Num } from '../../components/Num';
 
 export function ExamSit() {
   const { paperId = '' } = useParams();
@@ -122,7 +123,7 @@ export function ExamSit() {
 
       <div className="exam-bar">
         <p className="session-count" data-testid="exam-count">
-          {index + 1} / {paper.items.length}
+          <Num>{index + 1} / {paper.items.length}</Num>
         </p>
         <p className={`exam-clock${low ? ' is-low' : ''}`} data-testid="exam-clock"
            role="timer" aria-live={low ? 'polite' : 'off'}

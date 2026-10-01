@@ -24,7 +24,8 @@
       "parent": null,
       "name": {
         "en": "Grammar",
-        "fr": "La grammaire"
+        "fr": "La grammaire",
+        "fa": "دستور زبان"
       },
       "retired": false,
       "isGroup": true
@@ -36,7 +37,8 @@
       "parent": "gram",
       "name": {
         "en": "Adjectives",
-        "fr": "Les adjectifs"
+        "fr": "Les adjectifs",
+        "fa": "صفت‌ها"
       },
       "retired": false,
       "isGroup": true
@@ -48,7 +50,8 @@
       "parent": "gram.adjective",
       "name": {
         "en": "Adjectives agree with the noun",
-        "fr": "L’accord de l’adjectif"
+        "fr": "L’accord de l’adjectif",
+        "fa": "مطابقت صفت با اسم"
       },
       "retired": false,
       "isGroup": false
@@ -72,7 +75,8 @@
       "parent": "gram.adjective",
       "name": {
         "en": "ce, cet, cette, ces",
-        "fr": "Les adjectifs démonstratifs"
+        "fr": "Les adjectifs démonstratifs",
+        "fa": "صفت‌های اشاره: ce, cet, cette, ces"
       },
       "retired": false,
       "isGroup": false
@@ -120,7 +124,8 @@
       "parent": "gram.adjective",
       "name": {
         "en": "mon, ton, son, notre…",
-        "fr": "Les adjectifs possessifs"
+        "fr": "Les adjectifs possessifs",
+        "fa": "صفت‌های ملکی: mon, ton, son…"
       },
       "retired": false,
       "isGroup": false
@@ -144,7 +149,8 @@
       "parent": "gram",
       "name": {
         "en": "Adverbs",
-        "fr": "Les adverbes"
+        "fr": "Les adverbes",
+        "fa": "قیدها"
       },
       "retired": false,
       "isGroup": true
@@ -168,7 +174,8 @@
       "parent": "gram.adverb",
       "name": {
         "en": "toujours, souvent, jamais",
-        "fr": "Les adverbes de fréquence"
+        "fr": "Les adverbes de fréquence",
+        "fa": "قیدهای تکرار: toujours, souvent, jamais"
       },
       "retired": false,
       "isGroup": false
@@ -192,7 +199,8 @@
       "parent": "gram.adverb",
       "name": {
         "en": "beaucoup, trop, assez, peu",
-        "fr": "Les adverbes de quantité"
+        "fr": "Les adverbes de quantité",
+        "fa": "قیدهای مقدار: beaucoup, trop, assez, peu"
       },
       "retired": false,
       "isGroup": false
@@ -252,7 +260,8 @@
       "parent": "gram",
       "name": {
         "en": "Articles",
-        "fr": "Les articles"
+        "fr": "Les articles",
+        "fa": "حرف تعریف"
       },
       "retired": false,
       "isGroup": true
@@ -264,7 +273,8 @@
       "parent": "gram.article",
       "name": {
         "en": "au, aux, du, des",
-        "fr": "Les articles contractés"
+        "fr": "Les articles contractés",
+        "fa": "حرف تعریف ادغام‌شده: au, aux, du, des"
       },
       "retired": false,
       "isGroup": false
@@ -288,7 +298,8 @@
       "parent": "gram.article",
       "name": {
         "en": "le, la, les",
-        "fr": "L’article défini"
+        "fr": "L’article défini",
+        "fa": "حرف تعریف معرفه: le, la, les"
       },
       "retired": false,
       "isGroup": false
@@ -300,7 +311,8 @@
       "parent": "gram.article",
       "name": {
         "en": "un, une, des",
-        "fr": "L’article indéfini"
+        "fr": "L’article indéfini",
+        "fa": "حرف تعریف نکره: un, une, des"
       },
       "retired": false,
       "isGroup": false
@@ -324,7 +336,8 @@
       "parent": "gram.article",
       "name": {
         "en": "du, de la, des — some",
-        "fr": "L’article partitif"
+        "fr": "L’article partitif",
+        "fa": "حرف تعریف جزئی: du, de la, des"
       },
       "retired": false,
       "isGroup": false
@@ -348,7 +361,8 @@
       "parent": "gram",
       "name": {
         "en": "The conditional",
-        "fr": "Le conditionnel"
+        "fr": "Le conditionnel",
+        "fa": "وجه شرطی"
       },
       "retired": false,
       "isGroup": true
@@ -372,7 +386,8 @@
       "parent": "gram.conditional",
       "name": {
         "en": "je voudrais — being polite",
-        "fr": "« je voudrais » — la politesse"
+        "fr": "« je voudrais » — la politesse",
+        "fa": "ادب با je voudrais"
       },
       "retired": false,
       "isGroup": false
@@ -408,7 +423,8 @@
       "parent": "gram",
       "name": {
         "en": "Connectors",
-        "fr": "Les connecteurs logiques"
+        "fr": "Les connecteurs logiques",
+        "fa": "حروف ربط منطقی"
       },
       "retired": false,
       "isGroup": true
@@ -420,7 +436,8 @@
       "parent": "gram.connector",
       "name": {
         "en": "et, mais, ou, donc",
-        "fr": "« et », « mais », « ou », « donc »"
+        "fr": "« et », « mais », « ou », « donc »",
+        "fa": "ربط‌های پایه: et, mais, ou, donc"
       },
       "retired": false,
       "isGroup": false
@@ -516,7 +533,8 @@
       "parent": "gram",
       "name": {
         "en": "Key structures",
-        "fr": "Structures essentielles"
+        "fr": "Structures essentielles",
+        "fa": "ساختارهای کلیدی"
       },
       "retired": false,
       "isGroup": true
@@ -564,7 +582,8 @@
       "parent": "gram.expression",
       "name": {
         "en": "il y a",
-        "fr": "« il y a »"
+        "fr": "« il y a »",
+        "fa": "ساختار il y a"
       },
       "retired": false,
       "isGroup": false
@@ -588,7 +607,8 @@
       "parent": "gram",
       "name": {
         "en": "The future",
-        "fr": "Le futur"
+        "fr": "Le futur",
+        "fa": "زمان آینده"
       },
       "retired": false,
       "isGroup": true
@@ -636,7 +656,8 @@
       "parent": "gram.future",
       "name": {
         "en": "aller + infinitive",
-        "fr": "Le futur proche"
+        "fr": "Le futur proche",
+        "fa": "آیندهٔ نزدیک با aller"
       },
       "retired": false,
       "isGroup": false
@@ -660,7 +681,8 @@
       "parent": "gram",
       "name": {
         "en": "Gender",
-        "fr": "Le genre"
+        "fr": "Le genre",
+        "fa": "جنس دستوری"
       },
       "retired": false,
       "isGroup": true
@@ -684,7 +706,8 @@
       "parent": "gram.gender",
       "name": {
         "en": "Masculine and feminine nouns",
-        "fr": "Noms masculins et féminins"
+        "fr": "Noms masculins et féminins",
+        "fa": "اسم‌های مذکر و مؤنث"
       },
       "retired": false,
       "isGroup": false
@@ -696,7 +719,8 @@
       "parent": "gram.gender",
       "name": {
         "en": "Feminine forms of jobs and roles",
-        "fr": "Le féminin des métiers"
+        "fr": "Le féminin des métiers",
+        "fa": "مؤنث کردن نام مشاغل"
       },
       "retired": false,
       "isGroup": false
@@ -720,7 +744,8 @@
       "parent": "gram",
       "name": {
         "en": "The imperative",
-        "fr": "L’impératif"
+        "fr": "L’impératif",
+        "fa": "وجه امری"
       },
       "retired": false,
       "isGroup": true
@@ -732,7 +757,8 @@
       "parent": "gram.imperative",
       "name": {
         "en": "Giving instructions",
-        "fr": "Donner des instructions"
+        "fr": "Donner des instructions",
+        "fa": "دستور دادن و راهنمایی کردن"
       },
       "retired": false,
       "isGroup": false
@@ -756,7 +782,8 @@
       "parent": "gram",
       "name": {
         "en": "Negation",
-        "fr": "La négation"
+        "fr": "La négation",
+        "fa": "نفی"
       },
       "retired": false,
       "isGroup": true
@@ -792,7 +819,8 @@
       "parent": "gram.negation",
       "name": {
         "en": "ne … pas",
-        "fr": "« ne … pas »"
+        "fr": "« ne … pas »",
+        "fa": "نفی با ne … pas"
       },
       "retired": false,
       "isGroup": false
@@ -888,7 +916,8 @@
       "parent": "gram",
       "name": {
         "en": "Number and plurals",
-        "fr": "Le nombre et le pluriel"
+        "fr": "Le nombre et le pluriel",
+        "fa": "شمار و جمع"
       },
       "retired": false,
       "isGroup": true
@@ -924,7 +953,8 @@
       "parent": "gram.number",
       "name": {
         "en": "Regular plurals in -s",
-        "fr": "Le pluriel régulier en -s"
+        "fr": "Le pluriel régulier en -s",
+        "fa": "جمع باقاعده با -s"
       },
       "retired": false,
       "isGroup": false
@@ -984,7 +1014,8 @@
       "parent": "gram",
       "name": {
         "en": "Past tenses",
-        "fr": "Les temps du passé"
+        "fr": "Les temps du passé",
+        "fa": "زمان‌های گذشته"
       },
       "retired": false,
       "isGroup": true
@@ -1032,7 +1063,8 @@
       "parent": "gram.past",
       "name": {
         "en": "Passé composé with avoir",
-        "fr": "Le passé composé avec « avoir »"
+        "fr": "Le passé composé avec « avoir »",
+        "fa": "ماضی نقلی با avoir"
       },
       "retired": false,
       "isGroup": false
@@ -1044,7 +1076,8 @@
       "parent": "gram.past",
       "name": {
         "en": "Passé composé with être",
-        "fr": "Le passé composé avec « être »"
+        "fr": "Le passé composé avec « être »",
+        "fa": "ماضی نقلی با être"
       },
       "retired": false,
       "isGroup": false
@@ -1104,7 +1137,8 @@
       "parent": "gram",
       "name": {
         "en": "Prepositions",
-        "fr": "Les prépositions"
+        "fr": "Les prépositions",
+        "fa": "حروف اضافه"
       },
       "retired": false,
       "isGroup": true
@@ -1116,7 +1150,8 @@
       "parent": "gram.preposition",
       "name": {
         "en": "en, au, aux with countries",
-        "fr": "« en », « au », « aux » + pays"
+        "fr": "« en », « au », « aux » + pays",
+        "fa": "حروف اضافه با نام کشورها: en, au, aux"
       },
       "retired": false,
       "isGroup": false
@@ -1128,7 +1163,8 @@
       "parent": "gram.preposition",
       "name": {
         "en": "sur, sous, devant, derrière",
-        "fr": "Les prépositions de lieu"
+        "fr": "Les prépositions de lieu",
+        "fa": "حروف اضافهٔ مکان: sur, sous, devant, derrière"
       },
       "retired": false,
       "isGroup": false
@@ -1140,7 +1176,8 @@
       "parent": "gram.preposition",
       "name": {
         "en": "à, de, chez with places",
-        "fr": "« à », « de », « chez »"
+        "fr": "« à », « de », « chez »",
+        "fa": "حروف اضافه با مکان‌ها: à, de, chez"
       },
       "retired": false,
       "isGroup": false
@@ -1188,7 +1225,8 @@
       "parent": "gram",
       "name": {
         "en": "The present tense",
-        "fr": "Le présent"
+        "fr": "Le présent",
+        "fa": "زمان حال"
       },
       "retired": false,
       "isGroup": true
@@ -1200,7 +1238,8 @@
       "parent": "gram.present",
       "name": {
         "en": "-er verbs",
-        "fr": "Les verbes en -er"
+        "fr": "Les verbes en -er",
+        "fa": "فعل‌های گروه -er"
       },
       "retired": false,
       "isGroup": false
@@ -1212,7 +1251,8 @@
       "parent": "gram.present",
       "name": {
         "en": "-ir verbs",
-        "fr": "Les verbes en -ir"
+        "fr": "Les verbes en -ir",
+        "fa": "فعل‌های گروه -ir"
       },
       "retired": false,
       "isGroup": false
@@ -1224,7 +1264,8 @@
       "parent": "gram.present",
       "name": {
         "en": "être, avoir, aller, faire",
-        "fr": "Les verbes irréguliers fréquents"
+        "fr": "Les verbes irréguliers fréquents",
+        "fa": "فعل‌های بی‌قاعدهٔ پرکاربرد"
       },
       "retired": false,
       "isGroup": false
@@ -1236,7 +1277,8 @@
       "parent": "gram.present",
       "name": {
         "en": "Reflexive verbs: se lever",
-        "fr": "Les verbes pronominaux"
+        "fr": "Les verbes pronominaux",
+        "fa": "فعل‌های انعکاسی"
       },
       "retired": false,
       "isGroup": false
@@ -1272,7 +1314,8 @@
       "parent": "gram",
       "name": {
         "en": "Pronouns",
-        "fr": "Les pronoms"
+        "fr": "Les pronoms",
+        "fa": "ضمیرها"
       },
       "retired": false,
       "isGroup": true
@@ -1356,7 +1399,8 @@
       "parent": "gram.pronoun",
       "name": {
         "en": "on — we, people, someone",
-        "fr": "« on »"
+        "fr": "« on »",
+        "fa": "ضمیر on"
       },
       "retired": false,
       "isGroup": false
@@ -1392,7 +1436,8 @@
       "parent": "gram.pronoun",
       "name": {
         "en": "me, te, se, nous, vous",
-        "fr": "Les pronoms réfléchis"
+        "fr": "Les pronoms réfléchis",
+        "fa": "ضمیرهای انعکاسی"
       },
       "retired": false,
       "isGroup": false
@@ -1440,7 +1485,8 @@
       "parent": "gram.pronoun",
       "name": {
         "en": "je, tu, il, elle, on…",
-        "fr": "Les pronoms sujets"
+        "fr": "Les pronoms sujets",
+        "fa": "ضمیرهای فاعلی"
       },
       "retired": false,
       "isGroup": false
@@ -1452,7 +1498,8 @@
       "parent": "gram.pronoun",
       "name": {
         "en": "moi, toi, lui, elle…",
-        "fr": "Les pronoms toniques"
+        "fr": "Les pronoms toniques",
+        "fa": "ضمیرهای تأکیدی"
       },
       "retired": false,
       "isGroup": false
@@ -1476,7 +1523,8 @@
       "parent": "gram",
       "name": {
         "en": "Questions",
-        "fr": "L’interrogation"
+        "fr": "L’interrogation",
+        "fa": "پرسش"
       },
       "retired": false,
       "isGroup": true
@@ -1488,7 +1536,8 @@
       "parent": "gram.question",
       "name": {
         "en": "est-ce que",
-        "fr": "« est-ce que »"
+        "fr": "« est-ce que »",
+        "fa": "پرسش با est-ce que"
       },
       "retired": false,
       "isGroup": false
@@ -1500,7 +1549,8 @@
       "parent": "gram.question",
       "name": {
         "en": "Asking by intonation",
-        "fr": "L’interrogation par l’intonation"
+        "fr": "L’interrogation par l’intonation",
+        "fa": "پرسش با آهنگ صدا"
       },
       "retired": false,
       "isGroup": false
@@ -1536,7 +1586,8 @@
       "parent": "gram.question",
       "name": {
         "en": "quel, quelle, quels, quelles",
-        "fr": "« quel »"
+        "fr": "« quel »",
+        "fa": "صفت پرسشی quel"
       },
       "retired": false,
       "isGroup": false
@@ -1560,7 +1611,8 @@
       "parent": "gram.question",
       "name": {
         "en": "où, quand, comment, pourquoi",
-        "fr": "Les mots interrogatifs"
+        "fr": "Les mots interrogatifs",
+        "fa": "کلمه‌های پرسشی: où, quand, comment, pourquoi"
       },
       "retired": false,
       "isGroup": false
@@ -1776,7 +1828,8 @@
       "parent": null,
       "name": {
         "en": "Vocabulary",
-        "fr": "Le vocabulaire"
+        "fr": "Le vocabulaire",
+        "fa": "واژگان"
       },
       "retired": false,
       "isGroup": true
@@ -1812,7 +1865,8 @@
       "parent": "lex",
       "name": {
         "en": "The body",
-        "fr": "Le corps"
+        "fr": "Le corps",
+        "fa": "بدن"
       },
       "retired": false,
       "isGroup": false
@@ -1824,7 +1878,8 @@
       "parent": "lex",
       "name": {
         "en": "Clothes",
-        "fr": "Les vêtements"
+        "fr": "Les vêtements",
+        "fa": "پوشاک"
       },
       "retired": false,
       "isGroup": false
@@ -1860,7 +1915,8 @@
       "parent": "lex",
       "name": {
         "en": "Family and people",
-        "fr": "La famille et les personnes"
+        "fr": "La famille et les personnes",
+        "fa": "خانواده و اشخاص"
       },
       "retired": false,
       "isGroup": false
@@ -1872,7 +1928,8 @@
       "parent": "lex",
       "name": {
         "en": "Food and eating out",
-        "fr": "La nourriture et le restaurant"
+        "fr": "La nourriture et le restaurant",
+        "fa": "خوراک و رستوران"
       },
       "retired": false,
       "isGroup": false
@@ -1884,7 +1941,8 @@
       "parent": "lex",
       "name": {
         "en": "Greetings and introductions",
-        "fr": "Saluer et se présenter"
+        "fr": "Saluer et se présenter",
+        "fa": "سلام و معرفی خود"
       },
       "retired": false,
       "isGroup": false
@@ -1908,7 +1966,8 @@
       "parent": "lex",
       "name": {
         "en": "Home and housing",
-        "fr": "Le logement"
+        "fr": "Le logement",
+        "fa": "خانه و مسکن"
       },
       "retired": false,
       "isGroup": false
@@ -1972,7 +2031,8 @@
       "parent": "lex",
       "name": {
         "en": "Numbers and quantities",
-        "fr": "Les nombres et les quantités"
+        "fr": "Les nombres et les quantités",
+        "fa": "عددها و مقدارها"
       },
       "retired": false,
       "isGroup": false
@@ -2044,7 +2104,8 @@
       "parent": "lex",
       "name": {
         "en": "Time and dates",
-        "fr": "L’heure et les dates"
+        "fr": "L’heure et les dates",
+        "fa": "ساعت و تاریخ"
       },
       "retired": false,
       "isGroup": false
@@ -2056,7 +2117,8 @@
       "parent": "lex",
       "name": {
         "en": "Getting around",
-        "fr": "Les transports"
+        "fr": "Les transports",
+        "fa": "رفت‌وآمد و حمل‌ونقل"
       },
       "retired": false,
       "isGroup": false
@@ -2080,7 +2142,8 @@
       "parent": "lex",
       "name": {
         "en": "Weather",
-        "fr": "La météo"
+        "fr": "La météo",
+        "fa": "آب‌وهوا"
       },
       "retired": false,
       "isGroup": false
@@ -2104,7 +2167,8 @@
       "parent": null,
       "name": {
         "en": "Pronunciation",
-        "fr": "La prononciation"
+        "fr": "La prononciation",
+        "fa": "تلفظ"
       },
       "retired": false,
       "isGroup": true
@@ -2116,7 +2180,8 @@
       "parent": "phon",
       "name": {
         "en": "Accents and spelling signs",
-        "fr": "Les accents et signes"
+        "fr": "Les accents et signes",
+        "fa": "اکسان‌ها و نشانه‌های نوشتاری"
       },
       "retired": false,
       "isGroup": true
@@ -2128,7 +2193,8 @@
       "parent": "phon.accent",
       "name": {
         "en": "é and è",
-        "fr": "« é » et « è »"
+        "fr": "« é » et « è »",
+        "fa": "تفاوت é و è"
       },
       "retired": false,
       "isGroup": false
@@ -2176,7 +2242,8 @@
       "parent": "phon",
       "name": {
         "en": "Consonants",
-        "fr": "Les consonnes"
+        "fr": "Les consonnes",
+        "fa": "همخوان‌ها"
       },
       "retired": false,
       "isGroup": true
@@ -2224,7 +2291,8 @@
       "parent": "phon.consonant",
       "name": {
         "en": "The French R",
-        "fr": "Le « r » français"
+        "fr": "Le « r » français",
+        "fa": "حرف r فرانسوی"
       },
       "retired": false,
       "isGroup": false
@@ -2236,7 +2304,8 @@
       "parent": "phon",
       "name": {
         "en": "Elision",
-        "fr": "L’élision"
+        "fr": "L’élision",
+        "fa": "حذف واکه"
       },
       "retired": false,
       "isGroup": true
@@ -2248,7 +2317,8 @@
       "parent": "phon.elision",
       "name": {
         "en": "l’, d’, j’, n’, qu’",
-        "fr": "Les formes élidées : l’, d’, j’, n’, qu’"
+        "fr": "Les formes élidées : l’, d’, j’, n’, qu’",
+        "fa": "شکل‌های حذف‌شده: l’, d’, j’, n’, qu’"
       },
       "retired": false,
       "isGroup": false
@@ -2320,7 +2390,8 @@
       "parent": "phon",
       "name": {
         "en": "Nasal vowels",
-        "fr": "Les voyelles nasales"
+        "fr": "Les voyelles nasales",
+        "fa": "واکه‌های خیشومی"
       },
       "retired": false,
       "isGroup": true
@@ -2332,7 +2403,8 @@
       "parent": "phon.nasal",
       "name": {
         "en": "[ɑ̃] — an, en, am, em",
-        "fr": "[ɑ̃] — « an », « en »"
+        "fr": "[ɑ̃] — « an », « en »",
+        "fa": "خیشومی [ɑ̃]: an, en"
       },
       "retired": false,
       "isGroup": false
@@ -2368,7 +2440,8 @@
       "parent": "phon.nasal",
       "name": {
         "en": "[ɛ̃] — in, ain, ein, un",
-        "fr": "[ɛ̃] — « in », « ain », « ein »"
+        "fr": "[ɛ̃] — « in », « ain », « ein »",
+        "fa": "خیشومی [ɛ̃]: in, ain, ein"
       },
       "retired": false,
       "isGroup": false
@@ -2380,7 +2453,8 @@
       "parent": "phon.nasal",
       "name": {
         "en": "[ɔ̃] — on, om",
-        "fr": "[ɔ̃] — « on », « om »"
+        "fr": "[ɔ̃] — « on », « om »",
+        "fa": "خیشومی [ɔ̃]: on, om"
       },
       "retired": false,
       "isGroup": false
@@ -2440,7 +2514,8 @@
       "parent": "phon",
       "name": {
         "en": "Silent letters",
-        "fr": "Les lettres muettes"
+        "fr": "Les lettres muettes",
+        "fa": "حرف‌های خوانده‌نشده"
       },
       "retired": false,
       "isGroup": true
@@ -2464,7 +2539,8 @@
       "parent": "phon.silent",
       "name": {
         "en": "The -ent verb ending is silent",
-        "fr": "La terminaison « -ent » des verbes"
+        "fr": "La terminaison « -ent » des verbes",
+        "fa": "پایانهٔ -ent فعل‌ها خوانده نمی‌شود"
       },
       "retired": false,
       "isGroup": false
@@ -2476,7 +2552,8 @@
       "parent": "phon.silent",
       "name": {
         "en": "Silent final consonants",
-        "fr": "Les consonnes finales muettes"
+        "fr": "Les consonnes finales muettes",
+        "fa": "همخوان‌های پایانی خوانده‌نشده"
       },
       "retired": false,
       "isGroup": false
@@ -2488,7 +2565,8 @@
       "parent": "phon",
       "name": {
         "en": "Vowels",
-        "fr": "Les voyelles"
+        "fr": "Les voyelles",
+        "fa": "واکه‌ها"
       },
       "retired": false,
       "isGroup": true
@@ -2548,7 +2626,8 @@
       "parent": "phon.vowel",
       "name": {
         "en": "[y] vs [u] — tu / tout",
-        "fr": "[y] et [u] — « tu » / « tout »"
+        "fr": "[y] et [u] — « tu » / « tout »",
+        "fa": "تفاوت [y] و [u]: tu / tout"
       },
       "retired": false,
       "isGroup": false
@@ -2560,7 +2639,8 @@
       "parent": null,
       "name": {
         "en": "Usage and register",
-        "fr": "Usage et registre"
+        "fr": "Usage et registre",
+        "fa": "کاربرد و سطح زبان"
       },
       "retired": false,
       "isGroup": true
@@ -2584,7 +2664,8 @@
       "parent": "usage",
       "name": {
         "en": "24-hour clock and date order",
-        "fr": "L’heure sur 24 h et la date"
+        "fr": "L’heure sur 24 h et la date",
+        "fa": "ساعت 24 ساعته و ترتیب تاریخ"
       },
       "retired": false,
       "isGroup": false
@@ -2596,7 +2677,8 @@
       "parent": "usage",
       "name": {
         "en": "The decimal comma",
-        "fr": "La virgule décimale"
+        "fr": "La virgule décimale",
+        "fa": "ویرگول اعشاری"
       },
       "retired": false,
       "isGroup": false
@@ -2656,7 +2738,8 @@
       "parent": "usage",
       "name": {
         "en": "soixante-dix, quatre-vingts",
-        "fr": "« soixante-dix », « quatre-vingts »"
+        "fr": "« soixante-dix », « quatre-vingts »",
+        "fa": "عددهای 70 تا 90: soixante-dix, quatre-vingts"
       },
       "retired": false,
       "isGroup": false
@@ -2668,7 +2751,8 @@
       "parent": "usage",
       "name": {
         "en": "Politeness formulas",
-        "fr": "Les formules de politesse"
+        "fr": "Les formules de politesse",
+        "fa": "عبارت‌های مؤدبانه"
       },
       "retired": false,
       "isGroup": false
@@ -2692,7 +2776,8 @@
       "parent": "usage",
       "name": {
         "en": "tu or vous",
-        "fr": "« tu » ou « vous »"
+        "fr": "« tu » ou « vous »",
+        "fa": "tu یا vous"
       },
       "retired": false,
       "isGroup": false

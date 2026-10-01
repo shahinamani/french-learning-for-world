@@ -76,6 +76,11 @@ const en = {
   searchEmpty: 'Nothing for “{q}”. Try: passé composé, liaison, voyager.',
   searchHint: 'Type to search. Try a level like “B1”, or a time like “5 min”.',
   grammar: 'Grammar', vocabulary: 'Vocabulary', phonetics: 'Pronunciation', usage: 'Usage',
+  // The seven columns of the map. They were CO CE PE PO Gr Voc Phon — French
+  // abbreviations, unexplained, in every language. They meant nothing to a
+  // Persian or Arabic learner and little to an English one.
+  skillListening: 'Listening', skillReading: 'Reading', skillWriting: 'Writing', skillSpeaking: 'Speaking',
+  notTranslatedName: 'Shown in English — this name has not been translated into your language yet.',
   concepts: 'Concepts', sessions: 'Sessions', loading: 'Loading…',
   loadFailed: 'Could not load the content.', retry: 'Try again',
   offline: 'Offline — what is already on this device still works.',

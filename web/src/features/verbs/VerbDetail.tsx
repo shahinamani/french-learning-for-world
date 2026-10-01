@@ -8,6 +8,7 @@ import { useSidePanel } from '../../components/SidePanel';
 import { Icon } from '../../components/Icon';
 import { NotFound } from '../../routes/Stub';
 import { fr as frText } from '../../lib/typography';
+import { Localised } from '../../components/Localised';
 
 export function VerbDetail() {
   const { infinitive = '' } = useParams();
@@ -56,9 +57,17 @@ export function VerbDetail() {
       {verb.tenses.map((tn) => (
         <section key={tn.id} className="card" aria-labelledby={`t-${tn.id}`}>
           <div className="row" style={{ justifyContent: 'space-between' }}>
-            <h2 id={`t-${tn.id}`} className="h3" style={{ margin: 0 }}>
-              {settings.ui === 'fr' ? frText(tn.name.fr) : tn.name.en}
-              <span className="muted" style={{ marginInlineStart: 'var(--space-2)', fontWeight: 400 }}>
+            {/* The mood is a French grammatical term. It was rendered bare, with no
+                separator and no language, against an English tense name inside a
+                right-to-left heading. The gap is a flex gap rather than an inline
+                margin: `dir="ltr"` on the mood flips which physical side
+                `margin-inline-start` resolves to, so the margin landed on the far
+                side and the two words touched. */}
+            <h2 id={`t-${tn.id}`} className="h3"
+                style={{ margin: 0, display: 'flex', gap: 'var(--space-2)',
+                         alignItems: 'baseline', flexWrap: 'wrap' }}>
+              <Localised field={tn.name} />
+              <span className="muted" lang="fr" dir="ltr" style={{ fontWeight: 400 }}>
                 {tn.mood}
               </span>
             </h2>
@@ -78,7 +87,7 @@ export function VerbDetail() {
           </div>
           <table className="conj">
             <caption className="u-hidden-visually">
-              {verb.infinitive} — {settings.ui === 'fr' ? tn.name.fr : tn.name.en}
+              <span lang="fr" dir="ltr">{verb.infinitive}</span>{' — '}<Localised field={tn.name} />
             </caption>
             <tbody>
               {verb.persons.map((p, i) => (

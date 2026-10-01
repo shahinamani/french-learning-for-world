@@ -7,18 +7,21 @@ import { counts, weakPoints, type Counts, type ConceptStat } from '../lib/progre
 import { Icon } from '../components/Icon';
 import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
-import { fr as frText } from '../lib/typography';
+import { Localised } from '../components/Localised';
 
 const LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+/** `label` is an interface key. The column used to show the French abbreviation
+ *  (CO, CE, PE, PO, Gr, Voc, Phon) in all four languages, which named the skill
+ *  to nobody who did not already know the French. */
 const SKILLS = [
-  { key: 'listening', short: 'CO' }, { key: 'reading', short: 'CE' },
-  { key: 'writing', short: 'PE' }, { key: 'speaking', short: 'PO' },
-  { key: 'grammar', short: 'Gr' }, { key: 'vocabulary', short: 'Voc' },
-  { key: 'phonetics', short: 'Phon' },
+  { key: 'listening', label: 'skillListening' }, { key: 'reading', label: 'skillReading' },
+  { key: 'writing', label: 'skillWriting' }, { key: 'speaking', label: 'skillSpeaking' },
+  { key: 'grammar', label: 'grammar' }, { key: 'vocabulary', label: 'vocabulary' },
+  { key: 'phonetics', label: 'phonetics' },
 ] as const;
 
 export function Learn() {
-  const { t, settings } = useApp();
+  const { t } = useApp();
   // Search produces /learn?level=B1. A link whose target ignores its parameter
   // is a broken connection, however well each end works alone.
   const [params, setParams] = useSearchParams();
@@ -99,9 +102,7 @@ export function Learn() {
                 <li key={w.conceptId}>
                   {/* Straight into practice on that concept, not a generic page. */}
                   <Link className="row row--link" to={`/practise/review?concept=${encodeURIComponent(w.conceptId)}`}>
-                    <span lang={settings.ui === 'fr' ? 'fr' : undefined}>
-                      {concept ? (settings.ui === 'fr' ? frText(concept.name.fr) : concept.name.en) : w.conceptId}
-                    </span>
+                    {concept ? <Localised field={concept.name} /> : <span>{w.conceptId}</span>}
                     <span className="muted">{Math.round(w.accuracy * 100)} % · {t('reviewsCount', { n: w.reviews })}</span>
                     <Icon name="chevron" size={16} />
                   </Link>
@@ -129,7 +130,7 @@ export function Learn() {
             <thead>
               <tr>
                 <th scope="col"><span className="u-hidden-visually">{t('yourLevel')}</span></th>
-                {SKILLS.map((s) => <th key={s.key} scope="col">{s.short}</th>)}
+                {SKILLS.map((s) => <th key={s.key} scope="col">{t(s.label)}</th>)}
               </tr>
             </thead>
             <tbody>
@@ -147,7 +148,7 @@ export function Learn() {
                       : teachable && lv !== 'C1' && lv !== 'C2';
                     const cardsHere = data?.cards.filter((k) => k.level === lv).length ?? 0;
                     const state = available ? (cardsHere > 0 ? 'active' : 'open') : 'locked';
-                    const label = `${lv} ${s.short}`;
+                    const label = `${lv} ${t(s.label)}`;
                     return (
                       <td key={s.key}>
                         {state === 'locked' ? (

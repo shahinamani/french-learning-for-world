@@ -310,6 +310,53 @@ where `en=fa=ar=160`. Nobody compared the counts.
   differently from values that do not, a checker for `X` must parse both, and
   that is the first thing to test.
 
+### #12 — A type that could not express the defect, so the compiler endorsed it
+
+**2026-10-01. Found by looking at a Persian screenshot, which is not a method.**
+
+`VerbTense.name` was declared `Record<'en' | 'fr', string>` and `Concept.name`
+the same. `content/verbs.json` carries `حال ساده` and `المضارع` for every tense.
+The type had no place to put them, so eighteen call sites wrote
+`ui === 'fr' ? name.fr : name.en` — and **every one of those is type-correct**.
+`tsc` passed. 184 unit tests passed. The RTL walk passed 856 checks, because
+direction, overflow and isolation were all genuinely right: the text was
+correctly laid out, and in the wrong language.
+
+Three guards were adjacent to this and none of them could see it:
+
+- **i18n parity** checks the 169 interface strings. A content name is not a key.
+- **`concept-names-distinct`** checks that two concepts do not read alike — in
+  `en` and `fr` only, the two languages that were never the problem.
+- **the RTL walk** rendered ten screens, and **not one of them displayed a
+  content name**: search shows nothing without a query, and the concept page was
+  not in the list at all. The screens where the defect lived were the screens
+  nobody walked.
+
+**What makes it its own lesson rather than another #9:** in #9 the guard was
+pointed at the wrong field. Here the *type* said the wrong field was the only
+field there was. A guard can be added to a codebase; a type is agreed with the
+compiler, and once agreed it reports every instance of the defect as correct.
+
+**And the giveaway was in the data the whole time.** `name.fa` existed in
+`content/verbs.json`, unreferenced, for as long as the type had excluded it.
+Nothing compared what the content file offered against what the type admitted.
+
+**Rules:**
+
+- A field that holds learner-facing text is typed `Partial<Record<Locale, string>>`
+  — every language the product ships — and is read through `pick()`, which
+  reports whether what it returned is the learner's language. A two-language
+  branch over a content field is now a test failure
+  (`tests/content-names-localised.test.js`), with the detector run against a
+  planted sample on every run.
+- **A screen that renders a content name must be in the browser walk.** A walk
+  whose screen list omits the screens where a class of defect lives is #6 at the
+  level of the suite rather than the assertion.
+- Where a language is not translated yet, say so on the page. The honest state
+  is cheap and ships today; the translation arrives per level, counted in a
+  ledger asserted with `deepEqual`, so finishing a level and forgetting the
+  ledger fails too.
+
 ---
 
 ## How these are caught
@@ -350,6 +397,9 @@ Not by care. By two habits:
 | 11 | i18n parity + placeholder checks | PASS | single-quoted values only — blind to the 13 strings that hold an apostrophe |
 | 11 | French interface strings | *no check existed* | 10 carried a straight prime; `fr()` is never applied to `t()` output |
 | 11 | `fr=147` vs `en=fa=ar=160` | *in plain sight* | nothing compared the counts |
+| 12 | `Concept.name`, `VerbTense.name` | `tsc` clean | typed `Record<'en' \| 'fr', string>`; 18 sites served English to fa and ar, and `name.fa` sat unread in `verbs.json` |
+| 12 | the RTL walk's screen list | 856 checks, 0 failed | no screen in the list rendered a content name |
+| 2 | `no-untranslated-strings.test.js` | *could not start* | `new URL(...).pathname` percent-encodes; a clone under a path with a space in it crashed the suite |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
 meant **not one design token was ever defined**, and the page still looked like a

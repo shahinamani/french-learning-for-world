@@ -12,9 +12,9 @@ import { useApp } from '../app-context';
 import { loadContent } from '../lib/content';
 import type { Card, Concept } from '../lib/types';
 import { Icon } from './Icon';
-import { fr as frText } from '../lib/typography';
 import { fold } from '../lib/fold';
 import { WithAccentBar } from './AccentBar';
+import { Localised } from './Localised';
 
 type Result =
   | { kind: 'command'; label: string; to: string }
@@ -38,7 +38,9 @@ export function searchAll(q: string, cards: Card[], concepts: Concept[]): Result
 
   for (const c of concepts) {
     if (c.retired) continue;
-    if (norm(c.name.en).includes(needle) || norm(c.name.fr).includes(needle) || norm(c.id).includes(needle)) {
+    // Every language we hold, not the two a Latin-reading author thought of.
+    const inName = Object.values(c.name).some((v) => v && norm(v).includes(needle));
+    if (inName || norm(c.id).includes(needle)) {
       out.push({ kind: 'concept', concept: c });
     }
   }
@@ -117,9 +119,7 @@ export function SearchRoute() {
             {grouped.concept.slice(0, 12).map((r) => r.kind === 'concept' && (
               <li key={r.concept.id}>
                 <Link className="row row--link" to={`/learn/concept/${encodeURIComponent(r.concept.id)}`}>
-                  <span lang={settings.ui === 'fr' ? 'fr' : undefined}>
-                    {settings.ui === 'fr' ? frText(r.concept.name.fr) : r.concept.name.en}
-                  </span>
+                  <Localised field={r.concept.name} />
                   <span className={`chip chip--${r.concept.level.toLowerCase()}`}>{r.concept.level}</span>
                   <Icon name="chevron" size={16} />
                 </Link>

@@ -1,7 +1,9 @@
 import type { Level, Locale } from './types';
 
 export type VerbTense = {
-  id: string; mood: string; name: Record<'en' | 'fr', string>;
+  id: string; mood: string;
+  /** fa and ar exist in content/verbs.json. A two-language type discarded them. */
+  name: Partial<Record<Locale, string>>;
   forms: string[]; conceptId: string;
 };
 export type Verb = {
