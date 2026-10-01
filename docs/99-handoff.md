@@ -268,9 +268,9 @@ as not ours to translate.
 
 ## 8. CI status — the last line, because it is the one that is checkable
 
-**Branch tip `5f92c08`** — required checks `test` **success**, `browser` **success**.
-Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36861092703>
-Observed **2026-10-01T12:23:03Z**. Pull request #1: `MERGEABLE`.
+**Branch tip `805a48b`** — required checks `test` **success**, `browser` **success**.
+Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36865040514>
+Observed **2026-10-01T12:57:52Z**. Pull request #1: `MERGEABLE`.
 
 This line reports the **last CI run observed on this branch**, which is the run
 of the push before this document was last written — a document cannot name the
