@@ -419,6 +419,52 @@ Renamed to `pages-test`.
 - A required status-check name belongs to exactly one job. Two jobs sharing it
   makes the branch's reported state depend on which run lands last.
 
+### #14 — A required status check identifies by NAME, and nothing else
+
+**2026-10-01, found beside #13 and the more serious of the two.**
+
+The ruleset protecting `main` requires status checks called `test` and
+`browser`. Read back from the API, the requirement is:
+
+```
+context='test'      integration_id=None
+context='browser'   integration_id=None
+```
+
+**`integration_id=None` means the requirement matches on the name alone** —
+nothing binds it to a workflow, a job, or even to GitHub Actions. Both `ci.yml`
+and `pages.yml` had a job called `test`. The merge of pull request #1 produced
+exactly this on `main`:
+
+```
+name=test      conclusion=success    .../runs/36866704090   (ci.yml)
+name=test      conclusion=failure    .../runs/36866703259   (pages.yml)
+name=browser   conclusion=success    .../runs/36866704090
+name=deploy    conclusion=skipped    .../runs/36866703259
+```
+
+Two check runs, one name, opposite conclusions, on one commit. Which one the
+branch *appears* to satisfy is a question about ordering, not about whether the
+tests passed.
+
+**Why this is worse than a naming collision.** Branch protection is read as a
+guarantee: nothing merges unless `test` passed. What it actually says is
+*something called `test` passed.* A second workflow — added later, by anyone,
+for any purpose — can satisfy or break that requirement without touching the
+suite it is supposed to guard. The protection is weaker than it reads, and it
+reads as absolute.
+
+**Rules:**
+
+- A required status-check name belongs to **exactly one job in exactly one
+  workflow**. Before adding a job, check the name is not already required or
+  already produced elsewhere.
+- Verify protection by listing what a commit actually reported, not by reading
+  the ruleset: `gh api repos/<owner>/<repo>/commits/<ref>/check-runs`. Two rows
+  with one name is the defect, and it is invisible in the ruleset itself.
+- A rule that matches on a string is only as strong as the uniqueness of that
+  string, and nothing in the platform enforces that uniqueness for you.
+
 ---
 
 ## How these are caught
@@ -462,7 +508,7 @@ Not by care. By two habits:
 | 12 | `Concept.name`, `VerbTense.name` | `tsc` clean | typed `Record<'en' \| 'fr', string>`; 18 sites served English to fa and ar, and `name.fa` sat unread in `verbs.json` |
 | 12 | the RTL walk's screen list | 856 checks, 0 failed | no screen in the list rendered a content name |
 | 13 | `pages.yml` unit-test job | *never ran* | triggers on push to `main` only; broken since the resolver arrived, failed the first time it was exercised, and the site did not deploy |
-| 13 | `test` job name | — | used by two workflows while the ruleset required one check of that name |
+| 14 | the `test` required check | *protection read as absolute* | matched by name only (`integration_id=None`); two workflows reported under it, success and failure on one commit |
 | 2 | `no-untranslated-strings.test.js` | *could not start* | `new URL(...).pathname` percent-encodes; a clone under a path with a space in it crashed the suite |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
