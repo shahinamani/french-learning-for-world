@@ -1,0 +1,77 @@
+name: Audio sample
+
+# Manual only. This exists to answer one question before anything is scaled:
+# does the voice sound right? Ten files is enough to judge that, and 12,480 is
+# an expensive way to find out it is not.
+#
+# It is NOT the generation pipeline for the release asset. That comes later,
+# when the voice is settled, and it will publish to a release rather than to an
+# artifact — audio is not committed to this repository, because audio in git is
+# permanent and a voice change would add rather than replace.
+on:
+  workflow_dispatch:
+    inputs:
+      voice:
+        description: 'Voice to sample (licence-checked list is in scripts/generate-audio.py)'
+        required: true
+        default: fr_FR-siwis-medium
+        type: choice
+        options:
+          - fr_FR-siwis-medium
+          - fr_FR-mls-medium
+          - fr_FR-upmc-medium
+          - fr_FR-gilles-low
+
+permissions:
+  contents: read
+
+jobs:
+  # Named `audio-sample`, not `test` or `build`: a required status check matches
+  # by name alone, so two jobs sharing one is how branch protection quietly
+  # weakens. docs/lessons.md #14, enforced by tests/workflow-check-names.test.js.
+  audio-sample:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install Piper and ffmpeg
+        run: |
+          python -m pip install --quiet piper-tts
+          sudo apt-get update -qq && sudo apt-get install -y -qq ffmpeg
+
+      # The macOS wheel bakes its build machine's espeak-ng path into the native
+      # bridge and dies before Python can catch it, which is why this runs here
+      # rather than on a laptop. On Linux the wheel resolves its own data.
+      - name: Download the voice
+        run: python -m piper.download_voices "${{ inputs.voice }}"
+
+      - name: Generate the sample
+        run: python3 scripts/generate-audio.py --voice "${{ inputs.voice }}" --sample --out audio-sample
+
+      - name: Report what was produced
+        run: |
+          echo "### Audio sample — ${{ inputs.voice }}" >> "$GITHUB_STEP_SUMMARY"
+          echo '' >> "$GITHUB_STEP_SUMMARY"
+          echo '| file | kind | bytes | text |' >> "$GITHUB_STEP_SUMMARY"
+          echo '|---|---|---:|---|' >> "$GITHUB_STEP_SUMMARY"
+          python3 - <<'PY' >> "$GITHUB_STEP_SUMMARY"
+          import json, pathlib
+          m = json.loads(pathlib.Path('audio-sample/manifest.json').read_text())
+          total = 0
+          for h, f in m['files'].items():
+              total += f['bytes']
+              print(f"| `{h}.opus` | {f['kind']} | {f['bytes']} | {f['text']} |")
+          print(f"\n**{len(m['files'])} files, {total} bytes, "
+                f"average {total // max(len(m['files']), 1)} bytes.** "
+                f"Voice licence: {m['licence']}.")
+          PY
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: audio-sample-${{ inputs.voice }}
+          path: audio-sample/
+          if-no-files-found: error
