@@ -68,6 +68,15 @@ MODELS: dict[str, dict] = {
         "ps": ["fis", "fis", "fit", "fîmes", "fîtes", "firent"],
         "subj": ["fasse", "fasses", "fasse", "fassions", "fassiez", "fassent"],
     },
+    # maudire looks like dire and conjugates like finir — nous maudissons —
+    # but keeps an irregular participle, « maudit », which is also the
+    # adjective. Neither half of that is guessable from the ending, and the
+    # corpus attests only the participle; the second oracle supplied the rest.
+    "maudire": {
+        "pres": ["maudis", "maudis", "maudit", "maudissons", "maudissez", "maudissent"],
+        "fut": "maudir", "pp": "maudit", "ppr": "maudissant",
+        "ps": ["maudis", "maudis", "maudit", "maudîmes", "maudîtes", "maudirent"],
+    },
     "dire": {
         "pres": ["dis", "dis", "dit", "disons", "dites", "disent"],
         "fut": "dir", "pp": "dit", "ppr": "disant",
@@ -130,6 +139,12 @@ MODELS: dict[str, dict] = {
         "fut": "vaudr", "pp": "valu", "ppr": "valant",
         "ps": ["valus", "valus", "valut", "valûmes", "valûtes", "valurent"],
         "subj": ["vaille", "vailles", "vaille", "valions", "valiez", "vaillent"],
+    },
+    "prévaloir": {   # subjonctif prévale, NOT valoir's vaille
+        "pres": ["prévaux", "prévaux", "prévaut", "prévalons", "prévalez", "prévalent"],
+        "fut": "prévaudr", "pp": "prévalu", "ppr": "prévalant",
+        "ps": ["prévalus", "prévalus", "prévalut", "prévalûmes", "prévalûtes", "prévalurent"],
+        "subj": ["prévale", "prévales", "prévale", "prévalions", "prévaliez", "prévalent"],
     },
     "recevoir": {
         "pres": ["reçois", "reçois", "reçoit", "recevons", "recevez", "reçoivent"],
