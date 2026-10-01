@@ -465,6 +465,13 @@ reads as absolute.
 - A rule that matches on a string is only as strong as the uniqueness of that
   string, and nothing in the platform enforces that uniqueness for you.
 
+**Enforced, not remembered:** `tests/workflow-check-names.test.js` parses every
+active workflow, fails on two jobs publishing one check name, and fails when a
+required check is produced by none or by more than one job. It also refuses a
+workflow "disabled" by a filename that still ends in `.yml`. Seen red on the
+exact state `main` was in: `pages.yml` re-enabled with its job called `test`
+fails two assertions.
+
 ---
 
 ## How these are caught

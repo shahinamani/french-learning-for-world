@@ -1,0 +1,98 @@
+# DISABLED — deliberately, and not because it is broken.
+#
+# GitHub only reads `.yml` and `.yaml` in this directory, so the `.disabled`
+# suffix is what switches this off. The file is kept rather than deleted
+# because the work in it is fine; it is the *decision* behind it that is not
+# made yet.
+#
+# Why it is off:
+#
+#   This workflow would publish `path: '.'` — the whole repository as a
+#   website: the old vanilla portal at the root as the home page, plus docs/,
+#   tests/, scripts/ and web/ source. It has never actually published
+#   anything. Pages was never enabled on this repository, there have been zero
+#   deployments in its lifetime, and the workflow ran exactly once, on the
+#   merge of pull request #1, where the test job failed ahead of the deploy.
+#   So nobody has ever been served anything by it.
+#
+#   With the test job fixed, the deploy job would have run and then failed at
+#   `actions/configure-pages` — `enablement` defaults to `false` and
+#   `GITHUB_TOKEN` cannot enable Pages. That is a `main` permanently red on a
+#   job nobody intends to fix this week, which is how a team learns to ignore a
+#   red `main`. Deferring the question consciously is the point; leaving a
+#   standing failure as a reminder is not.
+#
+# What has to be true before it comes back:
+#
+#   1. A real exams section, not a stub — the first of the nine parity
+#      conditions in docs/07-claim-sweep.md.
+#   2. An About / independence notice as its own destination — the third.
+#      Those are the two that are unmet, and they are why `app/` cannot be
+#      deleted yet.
+#   3. A decision taken knowingly, because **publishing `web/dist` IS the
+#      decision to retire `app/`.** The published directory is not a
+#      deployment detail: whichever one is served is the product. Switching it
+#      retires the vanilla portal as the live site, and that is exactly what
+#      the nine conditions exist to gate.
+#
+#   And whichever is chosen, this workflow needs a build step. It has none, and
+#   `web/dist` does not exist on a fresh runner. The premise it was written
+#   under — "the repository is the website, no build step" — was true of the
+#   vanilla portal and is false now. See docs/deploying.md.
+
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+# A queued deploy replaces a waiting one; a deploy already running is left to
+# finish rather than cancelled half-published.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  # Named `pages-test`, not `test`. The ruleset requires status checks called
+  # `test` and `browser`, which are ci.yml's jobs; a second job also called
+  # `test` makes the required check ambiguous — two different runs reporting
+  # under one name, and whichever lands last is what the branch appears to say.
+  pages-test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      # The resolver hook, which ci.yml has had since the suite was pointed at
+      # web/. Without it Node cannot resolve a relative import of a .ts module
+      # and every test that imports one dies on load. This workflow only runs on
+      # a push to main, and the resolver only reached main when PR #1 merged —
+      # so it was latently broken for as long as it existed and fired the first
+      # time it was ever exercised. A job that cannot run on the branch it
+      # guards is a job nobody has seen.
+      - run: node --import ./tests/register.mjs --test tests/*.test.js
+
+  deploy:
+    needs: pages-test    # never publish a build whose tests did not pass
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      # There is no build step. The repository is the site: static files only,
+      # no bundler, no dependencies, nothing to compile.
+      - uses: actions/configure-pages@v5
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: '.'
+      - id: deployment
+        uses: actions/deploy-pages@v4
