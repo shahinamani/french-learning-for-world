@@ -117,8 +117,52 @@ Academy's dashboard clutter.
 1. **Gamification that manufactures guilt.** *(Duolingo)* Streaks that punish, notifications that nag, fake urgency. The brief forbids dark patterns; this is where they live in this category.
 2. **A fixed interval for every item.** *(Memrise)* An algorithm that fits no one.
 3. **An engine with a hostile interface.** *(Anki)* Never make the learner understand our data model to use the product.
-4. **Synthesised audio presented as listening practice.** *(Clozemaster)* Either real recorded speech, or say plainly that it is machine speech.
+4. **Synthesised audio presented as listening practice.** *(Clozemaster)* Either real recorded speech, or say plainly that it is machine speech. **[split 2026-10-01 — see “The audio rule, split” below.]**
 5. **Aggregation without curation.** *(Le Point du FLE)* A directory of links is not a learning platform. Every link we surface must be graded, labelled and placed in a path.
+
+---
+
+## The audio rule, split — decided 2026-10-01
+
+This supersedes the blanket block above, which treated all synthetic speech as
+one thing. It is not one thing, and the distinction is what makes the rule
+defensible rather than merely convenient.
+
+**Pronunciation playback is allowed; synthetic listening practice is not.**
+
+A learner may press play on a verb, a word or an example sentence and hear it
+spoken, at a speed they choose. That is a pronunciation aid — the audible form
+of a spelling — and every serious learning tool provides it. It is generated at
+build time, served from our own origin, and labelled on the page as machine
+speech.
+
+What stays blocked is synthetic speech standing in for a human:
+listening-comprehension exercises, exam listening papers, dialogue practice, or
+anything that implies a real speaker. A learner training their ear on a
+synthesiser learns to understand a synthesiser. That needs licensed human
+recordings and remains blocked until we have them.
+
+### What follows from it, in practice
+
+- **No third party sees a learner's IP.** Audio is pre-generated at build time
+  and served from our own origin. There is no live cloud call from a browser,
+  which also gives offline playback and no per-learner cost.
+- **The generator's licence has to permit redistribution** of the generated
+  audio in a CC BY-SA project. A voice that sounds better but cannot be
+  redistributed is not a candidate.
+- **The label is on the page wherever audio appears**, not only in a document
+  nobody reading the page will open.
+
+### Québécois is a named absence
+
+The accent selector ships with Parisian French and an empty Canadian entry that
+says so. There is no fr-CA voice under a licence compatible with this project:
+Piper has no `*_CA` voice in any language, and Kokoro has one French voice,
+Parisian. The cloud services that do have Québécois voices do not permit
+redistributing their output under CC BY-SA.
+
+So it is handled the way Arabic and Sounds are handled — a named absence with a
+reason, not a silent one. Adding it later is data, not a rewrite.
 
 ---
 
