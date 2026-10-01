@@ -4,7 +4,7 @@ Written because a session ended mid-task. It assumes you have none of the
 conversation that produced the work. Everything here is either in the repository
 or is a decision that was taken verbally and would otherwise be lost.
 
-**Branch: `feat/portal-foundation`. Tip: `314e856`. Pull request: #1 into `main`.**
+**Branch: `feat/portal-foundation`. Tip: `5f92c08`. Pull request: #1 into `main`.**
 `main` is at `ffb6393` and is protected: `test` and `browser` are required
 checks, no force-push, no deletion.
 
@@ -114,7 +114,15 @@ Nobody in this project reads Arabic. Shahin reads Persian and French.
 ### RTL, verified by looking
 
 `web/e2e/rtl.mjs` renders every screen in Persian and Arabic at 375 and 1440 in
-both themes. **856 checks, 0 failed** at the last complete run.
+both themes. **1016 checks over 13 screens, 0 failed** at the last complete run,
+on the Chromium revision Playwright pins (1187).
+
+**[2026-10-01] Two screens were added**, and the reason is worth keeping: the
+walk rendered ten screens and **not one of them displayed a content name**.
+Search shows nothing without a query and the concept page was not in the list,
+so 856 checks passed over a product that was showing English concept names to
+every Persian and Arabic learner. `/learn/concept/:id` and `/search?q=` are
+now walked.
 
 Found only by looking at the rendered page, after every data check passed:
 
@@ -143,12 +151,25 @@ reach both ends.
 
 ## 3. In flight when the session ended
 
-**Nothing is half-written. The tree is committed and pushed, 184 unit tests
-pass, `tsc` is clean and the build is clean.**
+~~**Nothing is half-written. The tree is committed and pushed, 184 unit tests
+pass, `tsc` is clean and the build is clean.**~~
 
-The one thing not completed: **the Persian screenshots were never sent to
-Shahin.** He reads Persian and asked to see them as images rather than as a
-description. They are produced by:
+> **[2026-10-01] Struck, and left visible because it is the lesson.** Every one
+> of those four claims was true, and every one was about a local machine. **CI
+> was red at the time this was written** — this very document carried an email
+> address in a tracked file, which failed the personal-data scan on the push and
+> on the pull request. The handoff written so a lost session loses nothing
+> omitted the one fact a reader checks first, and read as green.
+>
+> A handoff now **ends with a CI run**: url, timestamp, conclusion, and the sha
+> it refers to. Asserted by `tests/handoff-and-push-safety.test.js`, whose
+> detector is run against this document's own closing claim on every run. And
+> the sweep is a **pre-push hook** now, so it no longer depends on somebody
+> remembering to run it.
+
+~~The one thing not completed: the Persian screenshots were never sent.~~
+**Done 2026-10-01.** 104 PNGs produced on the pinned browser and sent as images.
+Reproduce with:
 
 ```
 cd web && npm run build
@@ -156,13 +177,16 @@ python3 e2e/gzserver.py dist 8793 &
 node e2e/rtl.mjs /path/to/output-dir
 ```
 
-88 PNGs: `{fa,ar}-{375,1440}-{light,dark}-{screen}.png` plus an accent-bar shot
-per context. **They were regenerated after the digit fix but not reviewed and
-not sent.** That is the immediate next step.
+`{fa,ar}-{375,1440}-{light,dark}-{screen}.png`, 13 screens plus an accent-bar
+shot per context.
+
+**The open item is Shahin's Persian verdict on the 85 A1 concept names**, which
+were written in this session and are unreviewed. A2 and B1 wait on it.
 
 ## 4. What to do next, in order
 
-1. **Send Shahin the Persian screenshots.** He will check the Persian himself.
+1. **Shahin's verdict on the A1 Persian concept names**, then A2 and B1 in that
+   order. Arabic concept names stay held until there is a reader.
 2. **Part 9.1 remainder**: per-language typography on screen (the dictionary is
    checked; the rendering is not), and an axe-core accessibility pass in the two
    RTL locales — the existing axe scan runs in English only.
@@ -239,3 +263,20 @@ Exemptions are named individually with a reason, never widened into a pattern.
 Two examples worth copying: the tatweel in `لـFrance` is listed as correct
 Arabic typography; a licence's formal name and external page titles are listed
 as not ours to translate.
+
+---
+
+## 8. CI status — the last line, because it is the one that is checkable
+
+**Branch tip `5f92c08`** — required checks `test` **success**, `browser` **success**.
+Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36861092703>
+Observed **2026-10-01T12:23:03Z**. Pull request #1: `MERGEABLE`.
+
+This line reports the **last CI run observed on this branch**, which is the run
+of the push before this document was last written — a document cannot name the
+run of the commit that contains it. Whoever pushes next observes that run and
+updates this block as the final act of their session. A local test count is not
+a substitute and is not accepted here: `tests/handoff-and-push-safety.test.js`
+rejects "184 unit tests pass, tsc is clean and the build is clean" as a CI
+status, because that is exactly the sentence this document shipped while CI
+was red.

@@ -13,6 +13,15 @@ better than one that was wrong.
 **Result: 44 claims checked. 31 held. 13 had drifted.** Every one of the 13 is
 below, with what it said, what is true, and how that was established.
 
+**[Updated 2026-10-01, second pass.]** Counts that have moved since: the RTL walk
+is **1016 checks over 13 screens**, not 856 over 11 — `/learn/concept/:id` and
+`/search?q=` were added, because the previous ten screens between them rendered
+**no content name at all**, which is how 297 English concept names reached every
+Persian and Arabic learner with every check passing. The unit suite is **198
+tests**, not 184. And the sweep that this document relies on is now enforced by a
+pre-push hook rather than by habit, for the reason recorded in `docs/lessons.md`
+#8.
+
 ---
 
 ## Settled by Shahin, 2026-10-01
@@ -267,7 +276,7 @@ conditions, and each is checkable:
 | 6 | Timer with chime, surviving navigation and reload | ✅ walked |
 | 7 | Offline via service worker | ✅ 18 files, offline render checked |
 | 8 | Progress export produces the same information | ✅ |
-| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ✅ **built and verified 2026-10-01.** Ruleset `24264890`, enforcement `active`, targeting `~DEFAULT_BRANCH`: `required_status_checks` = `test`, `browser`, plus `deletion` and `non_fast_forward`. Read back from the API, not assumed |
+| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ✅ **built and verified 2026-10-01.** Ruleset `24264890`, enforcement `active`, targeting `~DEFAULT_BRANCH`: `required_status_checks` = `test`, `browser`, plus `deletion` and `non_fast_forward`. Read back from the API, not assumed. **[2026-10-01, second pass]** Running in CI is not the same as being *read*: the handoff commit went out red on the personal-data scan and sat red for hours while a local-only status was written up as green. The sweep is a **pre-push hook** now, and a handoff must end with a CI run url, timestamp and conclusion — `tests/handoff-and-push-safety.test.js` |
 
 **Two conditions are unmet, and `app/` stays until all nine are green:** a real
 exams section, and an About destination. Browse-everything (4) is partially met

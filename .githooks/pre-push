@@ -1,0 +1,45 @@
+#!/usr/bin/env bash
+# Runs the whole pre-push sweep before anything leaves this machine.
+# Enabled by the same command as the pre-commit hook:
+#
+#     git config core.hooksPath .githooks
+#
+# Why this exists rather than "remember to run the sweep":
+#
+# The sweep already existed and already catches an email address in a tracked
+# file. It caught one on 2026-10-01. But it only runs when a person runs it, and
+# the commit before that had gone out without it — so CI was red for hours on a
+# check that exists precisely to catch what it was failing on, and the handoff
+# document written to survive a lost session reported four local green results
+# and never mentioned it.
+#
+# A safeguard that depends on remembering is a safeguard that documents a habit
+# rather than enforcing one. This one runs on the push itself, so "push and move
+# on" cannot skip it.
+#
+# It is deliberately NOT a fast subset. The sweep is one command because a
+# safeguard split into five is a safeguard that gets partially run, and the same
+# argument applies to a hook that checks only the cheap half.
+#
+# Do not pass --no-verify. If this fires, investigate. The one case that was
+# settled rather than fixed — the author address already in every commit's author
+# field — is recorded in docs/lessons.md #8, with the reasoning for why a
+# credential and a published address are not the same thing.
+
+set -uo pipefail
+cd "$(git rev-parse --show-toplevel)" || exit 1
+
+if [ ! -x scripts/pre-push-sweep.sh ]; then
+  echo "BLOCKED: scripts/pre-push-sweep.sh is missing or not executable." >&2
+  echo "The sweep is required before a push. Restore it rather than bypassing." >&2
+  exit 1
+fi
+
+echo "pre-push: running the full sweep (credentials, attribution, personal data, unit tests)"
+if ! bash scripts/pre-push-sweep.sh; then
+  echo "" >&2
+  echo "BLOCKED: the pre-push sweep failed. Nothing was pushed." >&2
+  echo "This repository is public. Fix the cause; do not pass --no-verify." >&2
+  exit 1
+fi
+exit 0

@@ -19,8 +19,10 @@ string, private hostname or personal datum may ever be committed** — see
 All configuration is read from the environment. Only `.env.example`, holding
 empty placeholder values, is ever committed.
 
-A pre-commit hook in `.githooks/` scans staged changes for credential
-patterns. Enable it once per clone:
+Two hooks in `.githooks/` enforce this: **pre-commit** scans staged changes for
+credential patterns, and **pre-push** runs the full sweep — credentials, commit
+attribution, personal data and the unit tests — before anything leaves the
+machine. Enable both once per clone:
 
 ```bash
 ./scripts/setup-hooks.sh

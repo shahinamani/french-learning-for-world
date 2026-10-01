@@ -24,14 +24,20 @@ All configuration is read from the environment. Commit the *name* of a
 variable and its documentation, never its value. A default value in code is a
 leak waiting for someone to forget to override it.
 
-Enable the pre-commit scanner once per clone:
+Enable the hooks once per clone:
 
 ```bash
 ./scripts/setup-hooks.sh
 ```
 
 Hooks are never cloned with a repository, so this must be run once in every
-clone — otherwise the scanner is present but never runs.
+clone — otherwise they are present but never run. That one command enables both:
+
+- **pre-commit** — scans the staged diff for credential patterns.
+- **pre-push** — runs the whole sweep (credentials, commit attribution, personal
+  data, unit tests) before anything leaves your machine. It exists because the
+  sweep used to run only when somebody remembered, and the one time it did not,
+  CI went red for hours on the very check it would have run.
 
 Do not bypass it with `--no-verify`. If it fires, investigate.
 
