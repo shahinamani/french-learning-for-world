@@ -167,6 +167,27 @@ The removal is where it got expensive:
 **What it cost:** a rebuild, a lost pull request, and a session spent on it.
 **What prevention would have cost:** not adding the line.
 
+**Settled 2026-10-01, and not to be re-opened: the address in `c279308` stays.**
+
+The pre-push sweep caught an email address in a tracked file — `docs/99-handoff.md`
+reintroduced one that commit `069185d` had removed. The address was taken out of
+the working tree, and the commit that already carries it was **deliberately left
+alone.** Shahin's reasoning, recorded here so nobody re-derives it:
+
+- The address is in the **author field of every commit** on this repository
+  already. That is where it belongs and it is not removable without rewriting
+  every commit. Stripping it from one document changes nothing real.
+- Rewriting history on a pull request's **base** branch closed the last pull
+  request permanently, and `refs/pull/*` kept the old commit reachable anyway.
+  The cure cost a repository rebuild. The disease here is one line of prose.
+
+**The distinction that makes this consistent rather than an exception:** a
+*credential* is removed whatever it costs, because it is live and abusable. A
+*published author address* is already public by the design of git, so the
+rewrite buys nothing and the PR is a real loss. The sweep stays exactly as it
+is — it was right to stop the push, and this is the judgement that follows it,
+not a reason to loosen it.
+
 **Rules, now enforced rather than remembered:**
 
 - No attribution trailer, no "generated with" line, no robot emoji, in any commit
