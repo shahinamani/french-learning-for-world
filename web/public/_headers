@@ -1,0 +1,35 @@
+# Cloudflare Pages response headers.
+#
+# Tested against the real build, not written from a template: the policy below
+# was checked by serving dist/ with these exact headers and loading every screen
+# in a browser with the console treated as fatal. It is as tight as it is
+# because this app loads NOTHING from anywhere else — no CDN, no font host, no
+# analytics, no cloud TTS. Every script, style, font and JSON file is our own.
+#
+# If a future change needs a new origin, widen this deliberately and say why.
+# A CSP relaxed in a hurry is a CSP nobody trusts afterwards.
+
+/*
+  Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; media-src 'self'
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: accelerometer=(), ambient-light-sensor=(), autoplay=(), battery=(), camera=(), display-capture=(), document-domain=(), encrypted-media=(), fullscreen=(self), gamepad=(), geolocation=(), gyroscope=(), hid=(), idle-detection=(), local-fonts=(), magnetometer=(), microphone=(), midi=(), payment=(), picture-in-picture=(), publickey-credentials-get=(), screen-wake-lock=(), serial=(), usb=(), xr-spatial-tracking=()
+  Cross-Origin-Opener-Policy: same-origin
+  Cross-Origin-Resource-Policy: same-origin
+  X-Frame-Options: DENY
+
+# Hashed assets are immutable: the filename changes when the content does.
+/assets/*
+  Cache-Control: public, max-age=31536000, immutable
+
+/fonts/*
+  Cache-Control: public, max-age=31536000, immutable
+
+# The service worker and the shell must never be served stale, or a learner
+# keeps an old app after a deploy.
+/sw.js
+  Cache-Control: no-cache
+
+/index.html
+  Cache-Control: no-cache

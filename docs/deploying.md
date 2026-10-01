@@ -1,16 +1,18 @@
 # Deploying
 
-> # Nothing is deployed and nothing can be.
+> # Hosting is Cloudflare Pages. Nothing is live until the DNS records exist.
 >
-> **This is deliberate, not a breakage.** The deploy workflow is switched off at
-> `.github/workflows/pages.yml.disabled`, GitHub Pages has never been enabled on
-> this repository, and there have been zero deployments in its lifetime. If you
-> are here because "the site is down", the site has never been up, and the
-> reason is the open decision in [the section below](#the-decision-that-is-actually-open):
-> **publishing `web/dist` is the decision to retire `app/`**, and two of the nine
-> conditions for that are unmet.
+> **Domain:** `frenchmavie.com`, registered at Namecheap, DNS stays there — so
+> changing host later is two records, not a migration.
 >
-> Nothing is broken. Nothing needs fixing. A decision needs taking.
+> **Host:** Cloudflare Pages, which builds `web/` from this repository and can
+> set response headers from a `_headers` file. That is the reason it was chosen
+> over GitHub Pages, which cannot: the Content-Security-Policy and HSTS this
+> project wants are not expressible there at all.
+>
+> **Not on our own servers, deliberately.** This is a static site that needs
+> none, and the server that would have hosted it carries salary and HR data for
+> an unrelated project. A public, world-facing site does not belong beside that.
 
 **Status: nothing is deployed, and nothing ever has been. Deliberately.**
 Updated 2026-10-01.
@@ -30,9 +32,13 @@ the workflow was configured to publish `path: '.'` — the whole repository as a
 website — and it is worth being precise that this was *latent* and never
 *exposed*.
 
-The workflow now sits at `.github/workflows/pages.yml.disabled`, with its
-reasons at the top of the file. GitHub only reads `.yml` and `.yaml`, so the
-suffix is what switches it off.
+**The GitHub Pages workflow has been deleted.** It sat disabled for a while as
+`pages.yml.disabled`, and leaving a switched-off file in the tree is a puzzle
+for whoever reads it next: it looked like a thing that might be turned back on.
+It will not be. Cloudflare builds from the repository on its own, with no
+workflow of ours, so the file had no future and is gone rather than dormant.
+Its history is in git if anyone wants it, and the reasoning that retired it is
+the section below.
 
 ## Why this page had to be rewritten
 

@@ -7,8 +7,15 @@
 <meta name="theme-color" content="#38407f">
 <title>French Learning for World</title>
 <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxNiAxNiI+PHJlY3Qgd2lkdGg9IjE2IiBoZWlnaHQ9IjE2IiByeD0iMyIgZmlsbD0iIzM4NDA3ZiIvPjwvc3ZnPg==">
-<link rel="stylesheet" href="./fonts/fonts.css" media="print" onload="this.media='all'">
-<noscript><link rel="stylesheet" href="./fonts/fonts.css"></noscript>
+<!-- Loaded plainly, not with the media="print" onload="this.media='all'"
+     trick. That trick is an INLINE EVENT HANDLER, and a Content-Security-Policy
+     without 'unsafe-inline' blocks it: the stylesheet would stay media="print"
+     for every visitor with JavaScript, and the designed faces would never load
+     at all. The noscript fallback hid that, because it only fires when JS is
+     off — the one case where the handler was never going to run anyway.
+     The cost of loading it plainly is small: fonts.css is 3.3 KB and the faces
+     are font-display: optional, so first paint still does not wait on them. -->
+<link rel="stylesheet" href="./fonts/fonts.css">
 </head>
 <body>
 <div id="root">
