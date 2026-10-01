@@ -17,17 +17,28 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  test:
+  # Named `pages-test`, not `test`. The ruleset requires status checks called
+  # `test` and `browser`, which are ci.yml's jobs; a second job also called
+  # `test` makes the required check ambiguous — two different runs reporting
+  # under one name, and whichever lands last is what the branch appears to say.
+  pages-test:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - run: node --test tests/*.test.js
+      # The resolver hook, which ci.yml has had since the suite was pointed at
+      # web/. Without it Node cannot resolve a relative import of a .ts module
+      # and every test that imports one dies on load. This workflow only runs on
+      # a push to main, and the resolver only reached main when PR #1 merged —
+      # so it was latently broken for as long as it existed and fired the first
+      # time it was ever exercised. A job that cannot run on the branch it
+      # guards is a job nobody has seen.
+      - run: node --import ./tests/register.mjs --test tests/*.test.js
 
   deploy:
-    needs: test          # never publish a build whose tests did not pass
+    needs: pages-test    # never publish a build whose tests did not pass
     runs-on: ubuntu-latest
     environment:
       name: github-pages

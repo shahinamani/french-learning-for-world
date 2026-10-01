@@ -31,7 +31,7 @@ each landed:
 
 | Drift | Decision | State |
 |---|---|---|
-| Browser suites never ran in CI | **CI first, ahead of everything** | ✅ both suites run on every push and PR, green on a GitHub runner; verified by reading ruleset `24264890` — `test` and `browser` required, `deletion` and `non_fast_forward` blocked |
+| Browser suites never ran in CI | **CI first, ahead of everything** | ✅ both suites run on every push and PR, green on a GitHub runner; verified by reading ruleset `24298702` — `test` and `browser` required, `deletion` and `non_fast_forward` blocked |
 | shadcn/Radix named, never adopted | **axe-core in CI; adopt Radix only where hand-rolling breaks; keep simple things hand-written; measure** | ✅ Dialog + Popover adopted, +21.57 KiB measured; four primitives deliberately not adopted; axe on 10 screens × 2 themes |
 | `user_id` nullable in spec, required in build | **required is correct — fix the doc** | ✅ `docs/03` corrected |
 | Export without import | **build it** | ✅ export v2 carries states; import is idempotent and never moves a card backwards |
@@ -276,7 +276,7 @@ conditions, and each is checkable:
 | 6 | Timer with chime, surviving navigation and reload | ✅ walked |
 | 7 | Offline via service worker | ✅ 18 files, offline render checked |
 | 8 | Progress export produces the same information | ✅ |
-| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ✅ **built and verified 2026-10-01.** Ruleset `24264890`, enforcement `active`, targeting `~DEFAULT_BRANCH`: `required_status_checks` = `test`, `browser`, plus `deletion` and `non_fast_forward`. Read back from the API, not assumed. **[2026-10-01, second pass]** Running in CI is not the same as being *read*: the handoff commit went out red on the personal-data scan and sat red for hours while a local-only status was written up as green. The sweep is a **pre-push hook** now, and a handoff must end with a CI run url, timestamp and conclusion — `tests/handoff-and-push-safety.test.js` |
+| 9 | The walk and the contrast check **run in CI**, so the vanilla portal's deletion is not the moment regressions start shipping | ✅ **built and verified 2026-10-01.** Ruleset `24298702`, enforcement `active`, targeting `~DEFAULT_BRANCH`: `required_status_checks` = `test`, `browser`, plus `deletion` and `non_fast_forward`. Read back from the API, not assumed. **[corrected 2026-10-01]** this said `24264890`, which no longer exists — the repository was rebuilt and the ruleset was recreated with a new id, so a reader checking the citation would have got a 404 and had nothing to compare against. And what the API actually returns is `integration_id=None` on both contexts: the requirement matches on the **name**, which is `docs/lessons.md` #14. **[2026-10-01, second pass]** Running in CI is not the same as being *read*: the handoff commit went out red on the personal-data scan and sat red for hours while a local-only status was written up as green. The sweep is a **pre-push hook** now, and a handoff must end with a CI run url, timestamp and conclusion — `tests/handoff-and-push-safety.test.js` |
 
 **Two conditions are unmet, and `app/` stays until all nine are green:** a real
 exams section, and an About destination. Browse-everything (4) is partially met
