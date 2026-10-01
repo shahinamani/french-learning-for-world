@@ -29,6 +29,14 @@ import { join } from 'node:path';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const read = (p) => readFileSync(join(root, p), 'utf8');
 
+/** True when this is a depth-limited clone, so history is not available. */
+function shallow() {
+  try {
+    return execFileSync('git', ['rev-parse', '--is-shallow-repository'],
+      { cwd: root, encoding: 'utf8' }).trim() === 'true';
+  } catch { return false; }
+}
+
 // ── 1. The sweep runs on the push ───────────────────────────────────────────
 
 test('a pre-push hook exists, is executable, and runs the whole sweep', () => {
@@ -113,7 +121,7 @@ test('docs/99-handoff.md ends with a CI run: url, timestamp, conclusion and sha'
   assert.match(end, /\bbrowser\b/, 'the two required checks are named individually');
 });
 
-test('the commit the handoff reports CI for is really in this history', () => {
+test('the commit the handoff reports CI for is really in this history', (t) => {
   const end = tail(read('docs/99-handoff.md'));
   const sha = end.match(/\b([0-9a-f]{7,40})\b/g)?.find((h) => {
     try {
@@ -121,6 +129,23 @@ test('the commit the handoff reports CI for is really in this history', () => {
       return true;
     } catch { return false; }
   });
+  // A shallow clone cannot answer this question: `actions/checkout` fetches
+  // depth 1 by default, so `git cat-file -e <older sha>` fails on a commit that
+  // is genuinely in the branch. This assertion therefore depended on the shape
+  // of the CHECKOUT rather than on the repository, and it failed in the one
+  // workflow that used the default depth while passing in the one that sets
+  // `fetch-depth: 0` — the same suite, two answers. docs/lessons.md #15.
+  //
+  // Skipping is reported as a skip, not a pass: "nothing to check" must never
+  // read as green (docs/lessons.md #2). And the shallowness is verified rather
+  // than assumed, so this cannot be used to dodge the check in a full clone.
+  if (shallow()) {
+    t.skip('shallow clone: history is absent, so ancestry cannot be checked. '
+         + 'Use fetch-depth: 0 — tests/workflow-check-names.test.js requires it of any '
+         + 'workflow running this suite.');
+    return;
+  }
+
   assert.ok(sha, 'the closing section names no commit that exists in this repository');
 
   // Not freshness — reachability. A fabricated or copied-in sha fails here,

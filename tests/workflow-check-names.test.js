@@ -62,6 +62,23 @@ function jobCheckNames(src) {
   return names;
 }
 
+/** Each job as {name, body}, body being the lines belonging to that job. */
+function jobBlocks(src) {
+  const lines = src.split('\n');
+  const start = lines.findIndex((l) => /^jobs:\s*$/.test(l));
+  if (start === -1) return [];
+  const blocks = [];
+  let current = null;
+  for (let i = start + 1; i < lines.length; i++) {
+    const line = lines[i];
+    if (/^\S/.test(line) && line.trim() !== '') break;
+    const key = line.match(/^ {2}([A-Za-z0-9_-]+):\s*$/);
+    if (key) { current = { name: key[1], body: [] }; blocks.push(current); continue; }
+    if (current) current.body.push(line);
+  }
+  return blocks.map((b) => ({ name: b.name, body: b.body.join('\n') }));
+}
+
 const active = readdirSync(dir).filter((f) => /\.ya?ml$/.test(f));
 
 test('there are workflows to check — a guard over no files guards nothing', () => {
@@ -112,4 +129,38 @@ test('a disabled workflow is really inert, not merely renamed in spirit', () => 
     assert.match(head, /DISABLED/,
       `${f} is switched off with no reason at the top; the next person will not know what has to be true to turn it back on`);
   }
+});
+
+test('any job that runs the unit suite checks out the whole history', () => {
+  // `actions/checkout` fetches depth 1 by default. The suite asserts that the
+  // handoff's CI block names a commit in this history, which a shallow clone
+  // cannot answer — so the same suite passed in the workflow that set
+  // `fetch-depth: 0` and failed in the one that did not. Two workflows running
+  // "the same" tests, two answers. docs/lessons.md #15.
+  const offenders = [];
+  let runners = 0;
+  for (const file of active) {
+    for (const job of jobBlocks(readFileSync(join(dir, file), 'utf8'))) {
+      if (!/tests\/\*\.test\.js/.test(job.body)) continue;
+      runners++;
+      if (!/fetch-depth:\s*0/.test(job.body)) offenders.push(`${file}:${job.name}`);
+    }
+  }
+  assert.ok(runners >= 1, 'no active job runs the unit suite — this guard just stopped guarding');
+  assert.deepEqual(offenders, [],
+    'a shallow checkout gives this suite a different answer than a full one');
+});
+
+test('the fetch-depth detector fires on a job that omits it', () => {
+  const withDepth = [
+    'jobs:', '  test:', '    steps:',
+    '      - uses: actions/checkout@v4', '        with:', '          fetch-depth: 0',
+    '      - run: node --import ./tests/register.mjs --test tests/*.test.js',
+  ].join('\n');
+  const without = withDepth.split('\n').filter((l) => !/fetch-depth/.test(l)).join('\n');
+  const runs = (src) => jobBlocks(src).filter((j) => /tests\/\*\.test\.js/.test(j.body));
+  assert.equal(runs(withDepth).length, 1);
+  assert.match(runs(withDepth)[0].body, /fetch-depth:\s*0/);
+  assert.doesNotMatch(runs(without)[0].body, /fetch-depth:\s*0/,
+    'the detector would not notice a missing fetch-depth, which is the whole defect');
 });
