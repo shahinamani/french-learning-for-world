@@ -17,8 +17,11 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readdirSync, readFileSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-const SRC = new URL('../web/src/', import.meta.url).pathname;
+// `.pathname` percent-encodes: a clone under a path containing a space
+// gave `/Users/.../Projects%20Shahin/...` and the suite could not start.
+const SRC = fileURLToPath(new URL('../web/src/', import.meta.url));
 
 const walk = (dir) => readdirSync(dir).flatMap((f) => {
   const p = join(dir, f);
