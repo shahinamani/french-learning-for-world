@@ -271,16 +271,16 @@ as not ours to translate.
 
 ## 8. CI status — the last line, because it is the one that is checkable
 
-**`main` at `efcafe0`** — required checks `test` **success**, `browser` **success**,
-and now **exactly two check runs on the commit**, one per name:
+**`main` at `7aae977`** — required checks `test` **success**, `browser` **success**,
+and **exactly two check runs on the commit**, one per name:
 
 ```
 name=test      conclusion=success
 name=browser   conclusion=success
 ```
 
-Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36872896304>
-Observed **2026-10-01T14:02:52Z**. Pull requests #1–#4 merged, none squashed, so
+Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36873831354>
+Observed **2026-10-01T14:09:52Z**. Pull requests #1–#5 merged, none squashed, so
 every commit is on the contribution graph.
 
 **`main` is green, and the deploy question is deferred rather than failing.**

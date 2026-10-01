@@ -1,5 +1,17 @@
 # Deploying
 
+> # Nothing is deployed and nothing can be.
+>
+> **This is deliberate, not a breakage.** The deploy workflow is switched off at
+> `.github/workflows/pages.yml.disabled`, GitHub Pages has never been enabled on
+> this repository, and there have been zero deployments in its lifetime. If you
+> are here because "the site is down", the site has never been up, and the
+> reason is the open decision in [the section below](#the-decision-that-is-actually-open):
+> **publishing `web/dist` is the decision to retire `app/`**, and two of the nine
+> conditions for that are unmet.
+>
+> Nothing is broken. Nothing needs fixing. A decision needs taking.
+
 **Status: nothing is deployed, and nothing ever has been. Deliberately.**
 Updated 2026-10-01.
 

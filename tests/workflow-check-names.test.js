@@ -131,24 +131,61 @@ test('a disabled workflow is really inert, not merely renamed in spirit', () => 
   }
 });
 
-test('any job that runs the unit suite checks out the whole history', () => {
-  // `actions/checkout` fetches depth 1 by default. The suite asserts that the
-  // handoff's CI block names a commit in this history, which a shallow clone
-  // cannot answer — so the same suite passed in the workflow that set
-  // `fetch-depth: 0` and failed in the one that did not. Two workflows running
-  // "the same" tests, two answers. docs/lessons.md #15.
+/**
+ * Anything that verifies this repository: the unit suite, the browser walk, the
+ * RTL walk, the contrast check, the attribution scan, the sweep.
+ *
+ * It was once "any job that runs the unit suite", which is the narrow reading
+ * that let the browser job keep a depth-1 checkout — nothing in the walk reads
+ * history *today*, which is precisely the state the Pages job was in until the
+ * first day it mattered.
+ */
+const SUITE_ENTRYPOINT = /(?:tests|web\/e2e|design-system|scripts)\/[\w.*/-]+\.(?:m?js|sh)/;
+
+test('any job that runs any part of the suite checks out the whole history', () => {
+  // `actions/checkout` fetches depth 1 by default, and a check that reads
+  // history gives a different answer at depth 1 than at full depth — so the
+  // same suite passed in the workflow that set `fetch-depth: 0` and failed in
+  // the one that did not. docs/lessons.md #15.
   const offenders = [];
-  let runners = 0;
+  const runners = [];
   for (const file of active) {
     for (const job of jobBlocks(readFileSync(join(dir, file), 'utf8'))) {
-      if (!/tests\/\*\.test\.js/.test(job.body)) continue;
-      runners++;
+      if (!SUITE_ENTRYPOINT.test(job.body)) continue;
+      runners.push(`${file}:${job.name}`);
       if (!/fetch-depth:\s*0/.test(job.body)) offenders.push(`${file}:${job.name}`);
     }
   }
-  assert.ok(runners >= 1, 'no active job runs the unit suite — this guard just stopped guarding');
+  // Printed, not merely counted: a number that is obviously wrong is visible,
+  // a green tick is not.
+  console.log(`    jobs running part of the suite: ${runners.join(', ')}`);
+  assert.ok(runners.length >= 2,
+    `only ${runners.length} job(s) matched — the entry-point pattern has stopped matching, so this guard is guarding nothing`);
   assert.deepEqual(offenders, [],
-    'a shallow checkout gives this suite a different answer than a full one');
+    'a shallow checkout gives a history-reading check a different answer than a full one');
+});
+
+test('the entry-point pattern recognises every part of the suite, not just the unit tests', () => {
+  // The narrow version of this matched `tests/*.test.js` only, which is how a
+  // job running the browser walk kept a depth-1 checkout.
+  for (const command of [
+    'node --import ./tests/register.mjs --test tests/*.test.js',
+    'node web/e2e/walk.mjs /tmp/shots',
+    'node web/e2e/rtl.mjs /tmp/shots',
+    'node design-system/contrast-check.mjs',
+    'bash scripts/check-commit-messages.sh',
+    './scripts/pre-push-sweep.sh',
+  ]) {
+    assert.ok(SUITE_ENTRYPOINT.test(command), `entry point not recognised: ${command}`);
+  }
+  for (const innocent of [
+    'npm ci',
+    'npx playwright install --with-deps chromium',
+    'npm run build',
+    'curl -fsS -o /dev/null http://127.0.0.1:8793/',
+  ]) {
+    assert.ok(!SUITE_ENTRYPOINT.test(innocent), `pattern too broad: ${innocent}`);
+  }
 });
 
 test('the fetch-depth detector fires on a job that omits it', () => {
@@ -158,7 +195,7 @@ test('the fetch-depth detector fires on a job that omits it', () => {
     '      - run: node --import ./tests/register.mjs --test tests/*.test.js',
   ].join('\n');
   const without = withDepth.split('\n').filter((l) => !/fetch-depth/.test(l)).join('\n');
-  const runs = (src) => jobBlocks(src).filter((j) => /tests\/\*\.test\.js/.test(j.body));
+  const runs = (src) => jobBlocks(src).filter((j) => SUITE_ENTRYPOINT.test(j.body));
   assert.equal(runs(withDepth).length, 1);
   assert.match(runs(withDepth)[0].body, /fetch-depth:\s*0/);
   assert.doesNotMatch(runs(without)[0].body, /fetch-depth:\s*0/,
