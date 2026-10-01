@@ -228,6 +228,50 @@ survives.
 **Same family as #6:** the check was looking at something adjacent to the thing
 under test, and passing on it.
 
+### #10 — A reader that cannot see part of what it reads
+
+**2026-10-01, found while extending the guards to four languages before building for them.**
+
+Three faults, one shape, each found by the previous one.
+
+**The fold was ASCII-only.** `tests/concept-names-distinct.test.js` — written the
+same day #7 was written up — ended with `.replace(/[^a-z0-9']+/g, ' ')`. Every
+Arabic and Persian string folds through it to the empty string:
+
+```
+foldLabel('العربية') -> ''      foldLabel('فارسی') -> ''
+```
+
+Extended to four languages unchanged, it would have reported every Arabic label
+as colliding with every other, and been switched off inside a week. #7 is not a
+lesson about `\w`; it is a lesson about assuming the alphabet.
+
+**The dictionary reader could only see single-quoted values.** The parity and
+placeholder checks matched `key: '…'`. Thirteen French strings are written
+`key: "…"` — **every one of them double-quoted precisely because it contains an
+apostrophe.** So the check could not see the strings most likely to carry an
+apostrophe fault. `fr=147` where `en=fa=ar=160`, and nothing reported the
+difference because nothing compared the counts.
+
+**And those thirteen were where the fault was.** Ten of them carried a straight
+prime: `Aujourd'hui`, `S'entraîner`, `Minuteur d'étude`, `Langue de l'interface`.
+`typography.ts`'s `fr()` is applied to content — concept names, verb forms, exam
+text — and never to `t()` output, so a prime in the dictionary reaches the screen
+unconverted. The French interface had been rendering primes since it was written.
+
+**Rules:**
+
+- A character class, a fold or a comparison that touches interface text must be
+  shown to work on all four scripts, with a real string from each.
+- A reader must report what it read. The four dictionaries now have to yield the
+  same count, and the count has a floor — a reader that silently returns a subset
+  is #3 wearing new clothes.
+- Where two languages cannot both be reviewed by eye, the check carries the
+  difference: what is legitimate in one and not the other is written down with a
+  reason. Tatweel in `لـFrance` is correct Arabic typography and is listed as
+  allowed, because a non-reader of Arabic "tidying" it away would be introducing
+  the defect, not removing it.
+
 ---
 
 ## How these are caught
@@ -264,6 +308,9 @@ Not by care. By two habits:
 | 8 | commit messages | *no check existed* | a default trailer reached public history; cure was a repository rebuild |
 | 9 | C1/C2 concept draft | *ids all unique* | four entries carried a name already live, where ids are permanent |
 | 9 | `phon.elision` / `.basic` | PASS, since the taxonomy was written | identical French name, group and child; English names differed |
+| 10 | `concept-names-distinct` fold | PASS | ASCII-only: every Arabic and Persian string folded to `""` |
+| 10 | i18n parity + placeholder checks | PASS | read single-quoted values only; 13 French strings never checked |
+| 10 | French interface strings | *no check existed* | 10 carried a straight prime; `fr()` is never applied to `t()` output |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
 meant **not one design token was ever defined**, and the page still looked like a

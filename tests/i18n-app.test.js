@@ -124,10 +124,26 @@ test('placeholders match across locales', () => {
   // A string with {n} in English must keep {n} everywhere, or a number
   // silently vanishes in one language and nobody notices.
   const bodies = Object.fromEntries(LOCALES.map((c) => [c, bodyOf(c)]));
-  const entryRe = /([A-Za-z][A-Za-z0-9_]*)\s*:\s*'((?:[^'\\]|\\.)*)'/g;
+  // Single-quoted values ONLY was the bug here: 13 French strings are
+  // double-quoted because they contain an apostrophe, so this check silently
+  // skipped them. tests/i18n-four-languages.test.js explains it at length.
   const read = (body) => {
     const out = new Map();
-    for (const m of body.matchAll(entryRe)) out.set(m[1], m[2]);
+    let i = 0;
+    for (;;) {
+      const m = /([A-Za-z][A-Za-z0-9_$]*)\s*:\s*(['"`])/.exec(body.slice(i));
+      if (!m) break;
+      const [, key, q] = m;
+      let j = i + m.index + m[0].length, val = '';
+      while (j < body.length) {
+        const ch = body[j];
+        if (ch === '\\') { val += body[j + 1]; j += 2; continue; }
+        if (ch === q) break;
+        val += ch; j++;
+      }
+      out.set(key, val);
+      i = j + 1;
+    }
     return out;
   };
   const en = read(bodies.en);

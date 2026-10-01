@@ -41,31 +41,49 @@ for (const lang of ['en', 'fr']) {
 }
 
 /**
- * Pairs that genuinely are two things and will keep looking like one.
+ * Concepts that are genuinely distinct and will keep looking like one thing.
  *
- * `lex.law` and `lex.justice`: French divides le droit (the body of rules)
- * from la justice (the courts and their procedure) where English says "law"
- * for both. That is how the language splits them, not how we chose to. Each
- * description must name the other id, so a reader meeting one is told the
- * other exists and why it is not a duplicate.
+ * Each entry is a hub and the concepts it is most likely to be folded into.
+ * The hub's description must name every spoke; every spoke's description must
+ * name the hub. Both directions, or a reader who arrives at the spoke is never
+ * told the hub exists.
+ *
+ * `lex.law` / `lex.justice`: French divides le droit (the body of rules) from
+ * la justice (the courts and their procedure) where English says "law" for
+ * both. That is how the language splits them, not how we chose to.
+ *
+ * `phon.rhythm.conversation` (C2) against the three C1 entries that name the
+ * phenomena it involves. It is the weakest of the C2 additions precisely
+ * because those three between them name every phenomenon in it, so the
+ * boundary — one phenomenon in isolation, versus all of them at once across
+ * speakers in real time — has to be stated rather than assumed.
  */
-const MUST_CITE_EACH_OTHER = [['lex.law', 'lex.justice']];
+const MUST_CITE = [
+  { hub: 'lex.law', spokes: ['lex.justice'] },
+  { hub: 'phon.rhythm.conversation',
+    spokes: ['phon.rhythm.reduced', 'phon.liaison.rapide', 'phon.vowel.e-caduc'] },
+];
 
-test('concepts that look like duplicates say, in both languages, why they are not', () => {
+test('a concept that could be folded into another says so, by id, in both languages', () => {
   const byId = new Map(concepts.map((c) => [c.id, c]));
-  for (const pair of MUST_CITE_EACH_OTHER) {
-    for (const id of pair) {
-      const c = byId.get(id);
-      assert.ok(c, `${id} is missing — if the pair was folded, that is the thing this test exists to stop`);
-      const other = pair.find((x) => x !== id);
-      for (const lang of ['en', 'fr']) {
-        const text = c.description?.[lang];
-        assert.ok(text?.trim(), `${id} has no ${lang} description`);
-        assert.ok(text.includes(other),
-          `${id}'s ${lang} description does not mention ${other}; in six months the two read as a duplicate`);
-      }
+  const problems = [];
+  const cites = (id, other) => {
+    const c = byId.get(id);
+    if (!c) return problems.push(`${id} is missing — if it was folded away, that is what this test exists to stop`);
+    for (const lang of ['en', 'fr']) {
+      const text = c.description?.[lang];
+      if (!text?.trim()) problems.push(`${id} has no ${lang} description`);
+      else if (!text.includes(other)) problems.push(`${id}'s ${lang} description does not name ${other}`);
+    }
+  };
+  for (const { hub, spokes } of MUST_CITE) {
+    for (const s of spokes) {
+      cites(hub, s);   // the hub names each thing it is not
+      cites(s, hub);   // and each of those names the hub
     }
   }
+  assert.deepEqual(problems, [],
+    'a stated boundary is what keeps two concepts from being read as a duplicate in six months');
 });
 
 test('a description, where present, is given in both languages and uses French apostrophes', () => {

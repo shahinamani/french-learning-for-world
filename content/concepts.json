@@ -3251,7 +3251,11 @@
         "fr": "Les formes réduites du débit rapide"
       },
       "retired": false,
-      "isGroup": false
+      "isGroup": false,
+      "description": {
+        "en": "Reduced forms in rapid speech: « chuis », « t’as », « y’a », « ch’ais pas ». One phenomenon, named and recognised on its own. Following a real conversation in which this happens alongside everything else is phon.rhythm.conversation (C2) — a separate concept, because knowing the forms is not the same as keeping up.",
+        "fr": "Les formes réduites du débit rapide : « chuis », « t’as », « y’a », « ch’ais pas ». Un phénomène, isolé et reconnu pour lui-même. Suivre une vraie conversation où il se produit en même temps que tout le reste, c’est phon.rhythm.conversation (C2) — un concept distinct, car connaître les formes n’est pas suivre."
+      }
     },
     {
       "id": "phon.rhythm.insistance",
@@ -3275,7 +3279,11 @@
         "fr": "La liaison dans le débit rapide"
       },
       "retired": false,
-      "isGroup": false
+      "isGroup": false,
+      "description": {
+        "en": "Liaison as it behaves at speed, where optional liaisons are made or dropped by rhythm rather than by rule. One phenomenon, in isolation. Following several speakers while this and the other reductions all happen at once is phon.rhythm.conversation (C2).",
+        "fr": "La liaison telle qu’elle se comporte au débit rapide, où les liaisons facultatives se font ou tombent selon le rythme plus que selon la règle. Un phénomène isolé. Suivre plusieurs locuteurs pendant que celui-ci et les autres réductions se produisent ensemble, c’est phon.rhythm.conversation (C2)."
+      }
     },
     {
       "id": "phon.vowel.e-caduc",
@@ -3287,7 +3295,11 @@
         "fr": "La chute du e caduc"
       },
       "retired": false,
-      "isGroup": false
+      "isGroup": false,
+      "description": {
+        "en": "The dropped « e »: « j’(e) sais pas », « p(e)tit », and when it must be kept. One phenomenon, in isolation. Holding the thread while this and the other reductions run together, across speakers, is phon.rhythm.conversation (C2).",
+        "fr": "La chute du e caduc : « j’(e) sais pas », « p(e)tit », et les cas où il se maintient. Un phénomène isolé. Garder le fil pendant que celui-ci et les autres réductions se cumulent, entre plusieurs voix, c’est phon.rhythm.conversation (C2)."
+      }
     },
     {
       "id": "phon.accent.regional",
@@ -3595,8 +3607,8 @@
         "fr": "Suivre plusieurs locuteurs à plein débit"
       },
       "description": {
-        "en": "Holding the thread of a fast conversation with overlap, interruption and no repetition. phon.rhythm.reduced, phon.liaison.rapide and phon.vowel.e-caduc (all C1) describe the phenomena one at a time; this is sustained comprehension while all of them happen at once and nobody slows down.",
-        "fr": "Garder le fil d’une conversation rapide, avec chevauchements, interruptions et aucune répétition. phon.rhythm.reduced, phon.liaison.rapide et phon.vowel.e-caduc (C1) décrivent les phénomènes un par un ; ici ils arrivent ensemble et personne ne ralentit."
+        "en": "Holding the thread of a fast conversation between several speakers, with overlap, interruption and no repetition. It is NOT any of the phenomena themselves: phon.rhythm.reduced names the reduced forms, phon.liaison.rapide names liaison at speed, and phon.vowel.e-caduc names the dropped e — all three at C1, each one at a time, in isolation. This is sustaining all of them at once, across speakers, in real time, with nothing repeated for you. A learner can hold every C1 entry above and still lose the thread here, which is the only reason this concept exists.",
+        "fr": "Garder le fil d’une conversation rapide entre plusieurs locuteurs, avec chevauchements, interruptions et aucune répétition. Ce n’est AUCUN des phénomènes pris isolément : phon.rhythm.reduced nomme les formes réduites, phon.liaison.rapide la liaison au débit rapide, phon.vowel.e-caduc la chute du e — tous trois en C1, un par un. Ici, ils arrivent ensemble, entre plusieurs voix, en temps réel, et personne ne répète. On peut maîtriser chacune des entrées C1 ci-dessus et perdre quand même le fil : c’est la seule raison d’être de ce concept."
       },
       "retired": false,
       "isGroup": false
