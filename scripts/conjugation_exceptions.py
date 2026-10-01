@@ -58,6 +58,15 @@ ALTERNATES = {
     "égayer": "égaie / égaye. Same rule as payer.",
     "déblayer": "déblaie / déblaye. Same rule as payer.",
     "rasseoir": "Follows asseoir: rasseye / rassoie are both current.",
+    "plaire": "plaît / plait. The 1990 rectifications drop the circumflex; "
+              "both are correct and both are taught. We ship the circumflex.",
+    "déplaire": "déplaît / déplait. Same as plaire.",
+    "complaire": "complaît / complait. Same as plaire.",
+    "entrouvrir": "entrouvrir / entr’ouvrir. The rectified spelling joins the "
+                  "word; Wiktionary lists the apostrophe form. Both are current "
+                  "and the whole paradigm differs by that one character.",
+    "vouloir": "que nous voulions / veuillions. Both exist; voulions is the "
+               "ordinary form and veuillions the literary one. We ship voulions.",
     "asseoir": "Two complete paradigms exist: j'assieds/j'assois, and the "
                "futures assiéra/assoira. We ship the assieds series, which is "
                "the one taught; the assois series is accepted.",
@@ -65,6 +74,19 @@ ALTERNATES = {
 
 # ── We are wrong, and these verbs are withheld ──────────────────────────────
 # Empty is the goal. Anything here is a verb a learner cannot see yet.
+# ── Where the two oracles disagree with EACH OTHER ──────────────────────────
+# Not our error and not noise: French itself is unsettled, or in transition.
+# Each needs a teacher's decision about what to teach, which is Shahin's call.
+ORACLES_DISAGREE = {
+    "départir": "Lexique attests « il se départ » (the partir pattern); "
+                "Wiktionary gives « départis » (regular). Both are defensible: "
+                "the partir conjugation is traditional, the regular one is now "
+                "common. We ship the partir pattern. NEEDS A TEACHER'S RULING.",
+    "décroître": "Passé simple: we give « décrus », Wiktionary « décrûs ». The "
+                 "circumflex on croître exists to tell crû from cru; whether its "
+                 "compounds keep it is disputed. NEEDS A TEACHER'S RULING.",
+}
+
 KNOWN_WRONG: dict[str, str] = {
     "gésir": "Defective: only gis/gis/gît/gisons/gisez/gisent and the imperfect "
              "exist. The generator produces a full paradigm, which is wrong. "
@@ -80,6 +102,8 @@ def classification(lemma: str) -> str | None:
         return "alternate"
     if lemma in KNOWN_WRONG:
         return "known-wrong"
+    if lemma in ORACLES_DISAGREE:
+        return "oracles-disagree"
     return None
 
 

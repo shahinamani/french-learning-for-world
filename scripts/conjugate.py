@@ -204,6 +204,7 @@ from irregular_models import MODELS, DIRE_IRREGULAR_VOUS, EXACT_ONLY   # noqa: E
 
 # Verbs that END in an irregular model but do not belong to it.
 NOT_IRREGULAR = {"répartir", "assortir", "impartir"}
+
 from conjugation_exceptions import classification, KNOWN_WRONG   # noqa: E402
 
 IMPARFAIT_ENDINGS = ["ais", "ais", "ait", "ions", "iez", "aient"]
@@ -329,12 +330,68 @@ def load_oracle(path: str) -> tuple[dict, dict]:
     return attested, freq
 
 
+def load_wiktionary(path: str) -> dict:
+    """The second oracle: complete paradigms from fr.wiktionary.org (CC BY-SA).
+
+    Lexique is a corpus and attests about 19 of a verb's 45 forms. Wiktionary
+    carries the whole table, including the passé simple and the subjonctif
+    imparfait — the forms a C-level reader meets and the corpus cannot see.
+    """
+    with open(path, encoding="utf-8") as fh:
+        return json.load(fh)["verbs"]
+
+
+def cross_check(ranked, wikt, show=12):
+    """Compare generated forms against Wiktionary, slot by slot.
+
+    Reports three populations, and the third is the point of the exercise:
+      agreed        both oracles, or Wiktionary alone, confirm the form
+      disagreed     Wiktionary says something else — a finding, to be judged
+      unverified    neither source has an opinion — the remaining blind spot
+    """
+    agreed = disagreed = 0
+    findings = []
+    slots_seen = collections.Counter()
+    for lem in ranked:
+        table = wikt.get(lem)
+        if not table:
+            continue
+        _, forms = conjugate(lem)
+        if forms is None:
+            continue
+        for slot, theirs in table.items():
+            ours = forms.get(slot)
+            if not ours:
+                continue
+            slots_seen[slot] += 1
+            for i, (a, b) in enumerate(zip(ours, theirs)):
+                if a is None or not b:
+                    continue
+                if a == b:
+                    agreed += 1
+                else:
+                    disagreed += 1
+                    findings.append((lem, slot, PERSONS[i], a, b))
+    print()
+    print(f"second oracle — fr.wiktionary.org, {len(wikt):,} verbs")
+    print(f"  forms compared : {agreed + disagreed:,}")
+    print(f"  agreed         : {agreed:,}  ({100 * agreed / max(agreed + disagreed, 1):.2f}%)")
+    print(f"  disagreed      : {disagreed:,}")
+    print("  coverage by slot: " + ", ".join(f"{k} {v}" for k, v in sorted(slots_seen.items())))
+    if findings and show:
+        print("\n  disagreements with Wiktionary (ours vs theirs):")
+        for lem, slot, person, a, b in findings[:show]:
+            print(f"    {lem:<16} {slot}:{person:<3} ours={a:<18} wiktionary={b}")
+    return findings
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--verb")
     ap.add_argument("--validate", help="path to Lexique383.tsv")
     ap.add_argument("--top", type=int, default=2400)
     ap.add_argument("--show-failures", type=int, default=12)
+    ap.add_argument("--wiktionary", help="second oracle, from harvest_wiktionary.py")
     args = ap.parse_args()
 
     if args.verb:
@@ -423,6 +480,9 @@ def main() -> int:
         for lem in unclassified[:20]:
             bad = dict(failures)[lem][0]
             print(f"    {lem:<16} {bad[0]}:{bad[1]:<3} ours={bad[2]:<16} corpus={', '.join(bad[3])}")
+
+    if args.wiktionary:
+        cross_check(ranked, load_wiktionary(args.wiktionary), args.show_failures)
 
     if failures and args.show_failures:
         print("\nfirst disagreements (ours vs corpus):")

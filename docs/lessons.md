@@ -524,6 +524,62 @@ That printout immediately earned itself: a planted failure silently failed to
 apply, the guard reported green, and only the list of matched jobs showed the
 plant had never taken effect.
 
+### #16 — A suffix match is a proxy for a family, and a name match is a proxy for a topic
+
+**2026-10-01. Four instances in one day, in three different domains, and they
+are the same fault.**
+
+A cheap string test stands in for a real relationship, and it is right often
+enough that nobody checks it.
+
+**In morphology.** The conjugator picked a verb's family by longest matching
+suffix. Eleven verbs took the wrong one:
+
+| verb | ends in | became |
+|---|---|---|
+| `installer` | **aller** | « instvais » |
+| `inscrire` | **rire** | participle « inscri » |
+| `apercevoir` | **voir** | « apercevoyaient » |
+| `répartir` | **partir** | « répars », when it is regular |
+
+A suffix is where a family usually *shows*, not what a family *is*. `comprendre`
+really is `prendre` with a prefix; `installer` is not `aller` with a prefix, and
+nothing in the string says which.
+
+**In a coverage measurement.** The Part 3 grammar map was scored by searching
+concept names for keywords: 82% covered. Four were false. *accord du participe
+passé suivi d'un infinitif* matched **Verb + infinitive**; *accord des verbes
+impersonnels* matched **il faut**; *phrase, types et formes* matched **Les
+phrases avec « si »**; *adjectifs régissant une préposition* matched the verb
+prepositions. The real figure was 77%. A name match is a proxy for a topic being
+covered, and a concept id is a proxy for anything being taught at all.
+
+**In the checker itself, twice.** The participle check required the masculine
+singular to be among the corpus forms — but for an essentially-pronominal verb
+the corpus attests only « entraidés » or « dandinée », so four correct verbs
+were reported wrong. And the Wiktionary harvester reported three SSL failures as
+*three verbs with no conjugation page*: a transport fault disguised as a finding
+about French.
+
+**What they share.** In every case the thing reporting was adjacent to the thing
+under test, and right often enough to be trusted. This is #6 and #9 again, and
+naming it a third time is the point: it is not a bug that recurs, it is a
+*method* that recurs, and the method is "use the cheap test and move on".
+
+**Rules:**
+
+- A string relationship is a hypothesis. Where a real relationship exists —
+  morphological family, topic coverage, file identity — either encode it
+  explicitly or verify the string test against something independent. The
+  conjugator now has `EXACT_ONLY` and `NOT_IRREGULAR` lists, which are the
+  explicit encoding of what a suffix could not say.
+- **A measurement that can fail must report its own failure separately from its
+  result.** "No conjugation page" and "the network broke" are different facts and
+  must never share a return value.
+- When a proxy is unavoidable, get a second, independent one. Lexique attests
+  about 19 of a verb's 45 forms; Wiktionary carries the other 26. One source
+  silent is a blind spot; two sources disagreeing is a finding.
+
 ---
 
 ## How these are caught
@@ -569,6 +625,10 @@ Not by care. By two habits:
 | 13 | `pages.yml` unit-test job | *never ran* | triggers on push to `main` only; broken since the resolver arrived, failed the first time it was exercised, and the site did not deploy |
 | 14 | the `test` required check | *protection read as absolute* | matched by name only (`integration_id=None`); two workflows reported under it, success and failure on one commit |
 | 15 | `handoff-and-push-safety` ancestry check | PASS in ci.yml | depth-1 checkout in pages.yml made the same assertion fail; it tested the clone, not the repository |
+| 16 | conjugator family matching | 2,102 verbs "correct" | suffix match: installer→aller gave « instvais », inscrire→rire gave « inscri » |
+| 16 | Part 3 coverage map | 82% covered | keyword match: « accord PP + infinitif » matched « Verb + infinitive ». Really 77% |
+| 16 | participle check | 4 verbs wrong | demanded the masculine singular; the corpus holds only « entraidés » |
+| 16 | Wiktionary harvester | "3 verbs have no page" | three SSL failures reported as a fact about French |
 | 2 | `no-untranslated-strings.test.js` | *could not start* | `new URL(...).pathname` percent-encodes; a clone under a path with a space in it crashed the suite |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`
