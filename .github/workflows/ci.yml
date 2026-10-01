@@ -75,7 +75,14 @@ jobs:
   browser:
     runs-on: ubuntu-latest
     steps:
+      # Whole history, like the unit job. Nothing in the walk reads history
+      # today, which is exactly the state the Pages job was in until the first
+      # day it mattered: actions/checkout defaults to depth 1, and a suite that
+      # gives one answer at depth 1 and another at full depth is a suite whose
+      # result depends on which workflow ran it. docs/lessons.md #15.
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v4
         with:

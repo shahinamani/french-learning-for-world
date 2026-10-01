@@ -512,6 +512,18 @@ about the content rather than absent from it.
   the command. It is the environment around it — #13 said diff them
   deliberately, and this is what that costs when you do not.
 
+**[extended 2026-10-01]** The first version of the guard required
+`fetch-depth: 0` of *any job running the unit suite*, which left the `browser`
+job on a depth-1 checkout: nothing in the walk reads history **today**. That is
+the same sentence as "nothing currently breaks", which is how the Pages job
+survived until the first day it mattered. The guard now covers any job running
+any part of the suite — unit tests, the browser walk, the RTL walk, the contrast
+check, the attribution scan, the sweep — and it **prints the jobs it matched**,
+because a count that is obviously wrong is visible and a green tick is not.
+That printout immediately earned itself: a planted failure silently failed to
+apply, the guard reported green, and only the list of matched jobs showed the
+plant had never taken effect.
+
 ---
 
 ## How these are caught
