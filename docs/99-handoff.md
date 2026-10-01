@@ -271,21 +271,25 @@ as not ours to translate.
 
 ## 8. CI status — the last line, because it is the one that is checkable
 
-**`main` at `698c550`** — the merge of pull request #1, which is where the work
-now lives. Required checks `test` **success**, `browser` **success**.
-Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36866704090>
-Observed **2026-10-01T13:12:46Z**. Pull request #1: `MERGED`, not squashed, so
+**`main` at `efcafe0`** — required checks `test` **success**, `browser` **success**,
+and now **exactly two check runs on the commit**, one per name:
+
+```
+name=test      conclusion=success
+name=browser   conclusion=success
+```
+
+Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/36872896304>
+Observed **2026-10-01T14:02:52Z**. Pull requests #1–#4 merged, none squashed, so
 every commit is on the contribution graph.
 
-**And the part a branch run could never have told us.** The same push put
-`main`'s *other* workflow — Deploy to GitHub Pages — red for the first time, and
-the site did not deploy. `pages.yml` ran `node --test tests/*.test.js` without
-the resolver hook that `ci.yml` has had since the suite was pointed at `web/`,
-so every test importing a `.ts` module died on load. It runs **only on a push to
-`main`**, and the resolver reached `main` only with this merge: a job that
-cannot run on the branch it guards is a job nobody has seen. Fixed on
-`feat/translations`, with its job renamed `pages-test` because a second job
-called `test` makes the required check ambiguous.
+**`main` is green, and the deploy question is deferred rather than failing.**
+The Pages workflow is at `.github/workflows/pages.yml.disabled` with its reasons
+and its re-entry conditions at the top of the file; `docs/deploying.md` records
+that nothing has ever been published and why that is now a decision rather than
+an accident. Until it comes back, `ci.yml` is the only workflow and it produces
+`test` and `browser`, each from exactly one job —
+`tests/workflow-check-names.test.js` fails if that stops being true.
 
 This block reports the **last CI run observed on this branch**, which is the run
 of the push before this document was last written — a document cannot name the
