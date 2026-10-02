@@ -87,6 +87,13 @@ const fr: Dict = {
   independence: "Outil d’étude indépendant. Non affilié à un organisme d’examen. Aucun certificat n’est délivré.",
   skillListening: 'Compréhension orale', skillReading: 'Compréhension écrite', skillWriting: 'Production écrite', skillSpeaking: 'Production orale',
   notTranslatedName: 'Affiché en anglais — ce nom n’est pas encore traduit dans votre langue.',
+  dataTitle: 'Où votre progression est conservée',
+  dataStored: 'Tout ce que vous faites ici — votre historique de révision, vos réglages et votre progression — est enregistré uniquement dans ce navigateur.',
+  dataNotSent: 'Rien n’est envoyé ailleurs. Il n’y a ni compte, ni serveur, ni tiers. C’est pourquoi ce site ne vous demande de consentir à rien.',
+  dataClear: 'Si vous effacez les données de votre navigateur, ou si vous travaillez dans une fenêtre privée, tout est perdu et rien ne peut être récupéré.',
+  dataExport: 'Exportez une copie depuis les réglages avant de changer d’appareil, puis importez-la sur le nouveau.',
+  dataUnderstood: 'J’ai compris',
+  dataOpen: 'Où va votre progression, et comment la garder',
 };
 
 export default fr;

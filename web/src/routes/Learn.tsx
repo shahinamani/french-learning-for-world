@@ -8,6 +8,7 @@ import { Icon } from '../components/Icon';
 import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
 import { Localised } from '../components/Localised';
+import { DataNotice } from '../components/DataNotice';
 
 const LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 /** `label` is an interface key. The column used to show the French abbreviation
@@ -56,6 +57,8 @@ export function Learn() {
 
   return (
     <div className="page learn">
+      {/* First entry, before there is anything to lose. */}
+      <DataNotice />
       <aside className="learn__side">
       {/* One pinned card: what to do now, before anything else. */}
       <section className="today card card--raised" aria-labelledby="today-h">

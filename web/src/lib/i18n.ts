@@ -95,6 +95,17 @@ const en = {
   notBuilt: 'Not built yet',
   notBuiltBody: 'This section is planned. The shell, search, the side panel and flashcards are complete; the rest follow the same pattern.',
   independence: 'Independent study tool. Not affiliated with any examination body. No certificates are issued.',
+  // The promise this product makes to a learner about their own data. Shown on
+  // first entry and permanently reachable, because somebody who loses six
+  // months of history to a cleared browser was never warned by a sentence
+  // buried in settings.
+  dataTitle: 'Where your progress is kept',
+  dataStored: 'Everything you do here — your review history, your settings and your progress — is stored in this browser only.',
+  dataNotSent: 'It is never sent anywhere. There is no account, no server and no third party involved, which is why this site asks you to agree to nothing.',
+  dataClear: 'If you clear your browser data, or study in a private window, it is gone and cannot be recovered.',
+  dataExport: 'Export a copy from Settings before you change device, and import it on the new one.',
+  dataUnderstood: 'Got it',
+  dataOpen: 'Where your progress is kept, and how to keep it',
 };
 
 export type Dict = typeof en;

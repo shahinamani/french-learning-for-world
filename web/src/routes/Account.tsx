@@ -6,6 +6,7 @@ import { eraseUser, importForUser } from '../lib/db';
 import { parseExport } from '../lib/progress';
 import { LOCALES } from '../lib/i18n';
 import type { Locale } from '../lib/types';
+import { DataNoticeBody } from '../components/DataNotice';
 
 export function Account() {
   const { t, settings, update, profile, setProfile, storageWorks } = useApp();
@@ -95,6 +96,11 @@ export function Account() {
                  }} />
         </label>
         {imported && <p className="muted" role="status" data-testid="import-result">{imported}</p>}
+      </section>
+
+      <section className="card" aria-labelledby="dn-h" data-testid="data-notice-always">
+        <h2 id="dn-h" className="h3">{t('dataTitle')}</h2>
+        <DataNoticeBody />
       </section>
 
       <section className="card" aria-labelledby="d-h">
