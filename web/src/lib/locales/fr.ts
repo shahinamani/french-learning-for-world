@@ -93,7 +93,6 @@ const fr: Dict = {
   dataClear: 'Si vous effacez les données de votre navigateur, ou si vous travaillez dans une fenêtre privée, tout est perdu et rien ne peut être récupéré.',
   dataExport: 'Exportez une copie depuis les réglages avant de changer d’appareil, puis importez-la sur le nouveau.',
   dataUnderstood: 'J’ai compris',
-  dataOpen: 'Où va votre progression, et comment la garder',
 };
 
 export default fr;
