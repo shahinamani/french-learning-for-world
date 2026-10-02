@@ -38,6 +38,8 @@ CORPUS_NOISE = {
                  "again, same fault as dorer.",
     "chuter": "A Lexique row under « chuter » carries « contrôler ». A "
               "lemmatisation fault, like the one under ruer.",
+    "fondre": "Lexique offers « fondre » for ind:pre:2p. The infinitive again, "
+              "the third instance of that tagging fault after dorer and accoupler.",
     "maudire": "Lexique offers « maudis » as the participe passé. That is the "
                "first or second person singular; the participle is « maudit », "
                "which is also how the adjective is spelled.",
@@ -72,6 +74,30 @@ ALTERNATES = {
                "the one taught; the assois series is accepted.",
 }
 
+# ── Defective verbs: refused on purpose ─────────────────────────────────────
+# These do not have a full paradigm in French, so generating one would invent
+# forms no French speaker uses. Refusing is the correct answer, not a gap to be
+# closed — and a learner is better served by the handful of real forms with a
+# note than by six confident inventions.
+DEFECTIVE = {
+    "faillir": "Survives almost only as « il a failli + infinitif ». The present "
+               "is literary at best.",
+    "clore": "je clos, tu clos, il clôt, ils closent — and no nous or vous in the "
+             "present at all.",
+    "choir": "Literary and fragmentary: « il chut », « choir ».",
+    "ouïr": "Archaic outside « j'ai ouï dire ».",
+    "défaillir": "Incomplete in the present and the passé simple.",
+    "seoir": "Impersonal and third-person only: « il sied ».",
+}
+
+# Not a verb. Lexique lists « découverte » under cgram=VER, but it is the noun
+# (a discovery) and the past participle of découvrir used as one. Nothing to
+# conjugate, and the frequency rank it carries is the noun's.
+NOT_A_VERB = {
+    "découverte": "A noun in Lexique's verb rows — the feminine participle of "
+                  "découvrir used substantively.",
+}
+
 # ── We are wrong, and these verbs are withheld ──────────────────────────────
 # Empty is the goal. Anything here is a verb a learner cannot see yet.
 # ── Where the two oracles disagree with EACH OTHER ──────────────────────────
@@ -104,9 +130,13 @@ def classification(lemma: str) -> str | None:
         return "known-wrong"
     if lemma in ORACLES_DISAGREE:
         return "oracles-disagree"
+    if lemma in DEFECTIVE:
+        return "defective"
+    if lemma in NOT_A_VERB:
+        return "not-a-verb"
     return None
 
 
 def ships(lemma: str) -> bool:
-    """False for a verb we know we conjugate wrongly."""
-    return lemma not in KNOWN_WRONG
+    """False for a verb we conjugate wrongly, or that has no paradigm to ship."""
+    return lemma not in KNOWN_WRONG and lemma not in NOT_A_VERB

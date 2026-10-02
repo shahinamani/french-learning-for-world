@@ -184,6 +184,12 @@ def conjugate(lemma: str) -> tuple[str, dict] | tuple[str, None]:
     irregular = conjugate_irregular(lemma)
     if irregular is not None:
         return ("irregular model", irregular)
+    if lemma.endswith("dre") and not lemma.endswith(NOT_REGULAR_DRE):
+        return ("-dre regular", conjugate_regular_dre(lemma))
+    if lemma in DEFECTIVE:
+        return ("defective — refused on purpose", None)
+    if lemma in NOT_A_VERB:
+        return ("not a verb", None)
     if lemma.endswith("oir"):
         return ("unhandled -oir", None)          # the -oir verbs with no model yet
     if lemma == "aller" or lemma.endswith(("envoyer",)):
@@ -205,10 +211,44 @@ from irregular_models import MODELS, DIRE_IRREGULAR_VOUS, EXACT_ONLY   # noqa: E
 # Verbs that END in an irregular model but do not belong to it.
 NOT_IRREGULAR = {"répartir", "assortir", "impartir"}
 
-from conjugation_exceptions import classification, KNOWN_WRONG   # noqa: E402
+from conjugation_exceptions import classification, KNOWN_WRONG, DEFECTIVE, NOT_A_VERB   # noqa: E402
 
 IMPARFAIT_ENDINGS = ["ais", "ais", "ait", "ions", "iez", "aient"]
 SUBJ_IMP_ENDINGS = ["sse", "sses", "^t", "ssions", "ssiez", "ssent"]
+
+
+# Endings that look like -dre but are their own families and must not take the
+# regular pattern: -indre changes its stem (peignons), -oudre and -soudre are
+# irregular, and prendre is prendre.
+NOT_REGULAR_DRE = ("aindre", "eindre", "oindre", "oudre", "prendre")
+
+
+def conjugate_regular_dre(lemma: str) -> dict:
+    """attendre, entendre, perdre, répondre, vendre, mordre, fondre…
+
+    The largest single group left after the models: twenty-six of the ninety-one.
+    Regular once seen — the third person singular simply has no ending, which is
+    why it is « il attend » and not « il attendt ».
+    """
+    stem = lemma[:-3]                      # attendre → atten
+    out = {
+        "ind:pre": [stem + "ds", stem + "ds", stem + "d",
+                    stem + "dons", stem + "dez", stem + "dent"],
+        "ind:imp": [stem + "d" + e for e in IMPARFAIT_ENDINGS],
+        "ind:fut": [stem + "dr" + e for e in FUT_ENDINGS],
+        "cnd:pre": [stem + "dr" + e for e in CND_ENDINGS],
+        "sub:pre": [stem + "de", stem + "des", stem + "de",
+                    stem + "dions", stem + "diez", stem + "dent"],
+        "ind:pas": [stem + "dis", stem + "dis", stem + "dit",
+                    stem + "dîmes", stem + "dîtes", stem + "dirent"],
+        "par:pas": [stem + "du"],
+        "par:pre": [stem + "dant"],
+        "aux": "avoir",
+    }
+    out["sub:imp"] = [stem + "disse", stem + "disses", stem + "dît",
+                      stem + "dissions", stem + "dissiez", stem + "dissent"]
+    out["imp:pre"] = [out["ind:pre"][1], out["ind:pre"][3], out["ind:pre"][4]]
+    return out
 
 
 def _model_for(lemma: str):
@@ -288,6 +328,10 @@ def conjugate_irregular(lemma: str) -> dict | None:
 
 def _circumflex(base: str) -> str:
     """prit → prît. The third person singular of the imperfect subjunctive."""
+    # A vowel that already carries a diacritic does not take a circumflex on
+    # top: haïr gives « qu'il haït », not « hâït ». Found by the second oracle.
+    if any(ch in base for ch in "ïëüäöî"):
+        return base
     last_vowel = max((i for i, ch in enumerate(base) if ch in "aeiouyâêîôûé"), default=-1)
     if last_vowel == -1:
         return base
