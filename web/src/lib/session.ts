@@ -7,13 +7,17 @@
  *   1. The active profile lives in **sessionStorage**, which is per-tab.
  *      localStorage is shared across every tab of an origin, so putting it
  *      there would mean two tabs could never be two different learners.
+ *   1b. Which profile the BROWSER last used lives in localStorage, so a
+ *      restart resumes the right person rather than whoever was created first.
+ *      sessionStorage still wins when a tab has chosen.
  *   2. Nothing in this file is exported as a mutable module-level value.
  *      There is no `let currentUser` for a second learner to overwrite.
  *      Every reader passes a userId, and the only ambient thing is which
  *      profile *this tab* has selected.
  */
 
-const ACTIVE_KEY = 'flw:activeProfile';
+const ACTIVE_KEY = 'flw:activeProfile';     // sessionStorage: this tab
+const LAST_KEY = 'flw:lastProfile';         // localStorage: across restarts
 const INDEX_KEY = 'flw:profiles';
 
 export type Profile = { id: string; name: string; createdAt: number };
@@ -57,6 +61,17 @@ export function getActiveProfileId(): string | null {
 export function setActiveProfileId(id: string): void {
   if (!hasDom()) return;
   safely(() => sessionStorage.setItem(ACTIVE_KEY, id), undefined);
+  // Also remembered across restarts, so a returning learner resumes the profile
+  // they were last using rather than whichever was created first. sessionStorage
+  // keeps two tabs apart; this keeps a browser restart from picking the wrong
+  // person on a shared laptop.
+  safely(() => localStorage.setItem(LAST_KEY, id), undefined);
+}
+
+/** The profile this browser last used, across restarts. */
+export function getLastProfileId(): string | null {
+  if (!hasDom()) return null;
+  return safely(() => localStorage.getItem(LAST_KEY), null);
 }
 
 /**
@@ -67,19 +82,37 @@ export function resolveActiveProfile(): Profile {
   // Prerendering has no storage and no learner. A fixed placeholder id keeps
   // the markup deterministic; the browser replaces it on hydration.
   if (!hasDom()) return { id: 'prerender', name: 'Learner', createdAt: 0 };
-  const active = getActiveProfileId();
   const all = listProfiles();
-  const found = all.find((p) => p.id === active);
-  if (found) return found;
-  const first = all[0] ?? createProfile('Learner');
-  setActiveProfileId(first.id);
-  return first;
+  // 1. what this tab chose, 2. what this browser last used, 3. the first
+  // profile, 4. a new one. Only step 4 creates, and only when the browser has
+  // no profile at all — a learner's id must never be regenerated while one
+  // exists, because every review row is keyed to it.
+  const found = all.find((p) => p.id === getActiveProfileId())
+    ?? all.find((p) => p.id === getLastProfileId())
+    ?? all[0];
+  if (found) {
+    setActiveProfileId(found.id);
+    return found;
+  }
+  const created = createProfile('Learner');
+  setActiveProfileId(created.id);
+  return created;
 }
 
 /**
  * Every storage key in the application goes through here. A key that forgets
  * the user id is how one learner sees another's progress, and it is the kind
  * of bug that is invisible until two people share a laptop.
+ */
+/**
+ * The profile id is permanent, from the first visit onwards.
+ *
+ * This is the part that is expensive to retrofit. Every review row, card state
+ * and setting is keyed to it, so when email accounts arrive, an existing
+ * learner attaches an address to the profile they already have and keeps every
+ * row — nobody starts again. That only works if the id was never regenerated,
+ * which is why `resolveActiveProfile` creates one *only* when the browser holds
+ * no profile at all, and why `tests/profile-id-is-permanent.test.js` asserts it.
  */
 export function userKey(userId: string, name: string): string {
   if (!userId) throw new Error('userKey called without a user id');
