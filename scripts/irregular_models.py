@@ -448,6 +448,104 @@ MODELS: dict[str, dict] = {
         "fut": "pourvoir", "pp": "pourvu", "ppr": "pourvoyant",
         "ps": ["pourvus", "pourvus", "pourvut", "pourvûmes", "pourvûtes", "pourvurent"],
     },
+
+    # ── Suffix-keyed families ────────────────────────────────────────────────
+    # Keyed on the ENDING rather than on a representative verb, because
+    # `attendre` does not end in `rendre` and `paraître` does not end in
+    # `connaître`. The whole-word keys above stay for the verbs that are their
+    # own family.
+
+    "eindre": {   # peindre, atteindre, éteindre, feindre, teindre, ceindre…
+        "pres": ["eins", "eins", "eint", "eignons", "eignez", "eignent"],
+        "fut": "eindr", "pp": "eint", "ppr": "eignant",
+        "ps": ["eignis", "eignis", "eignit", "eignîmes", "eignîtes", "eignirent"],
+    },
+    "aindre": {   # craindre, plaindre, contraindre
+        "pres": ["ains", "ains", "aint", "aignons", "aignez", "aignent"],
+        "fut": "aindr", "pp": "aint", "ppr": "aignant",
+        "ps": ["aignis", "aignis", "aignit", "aignîmes", "aignîtes", "aignirent"],
+    },
+    "oindre": {   # joindre, poindre
+        "pres": ["oins", "oins", "oint", "oignons", "oignez", "oignent"],
+        "fut": "oindr", "pp": "oint", "ppr": "oignant",
+        "ps": ["oignis", "oignis", "oignit", "oignîmes", "oignîtes", "oignirent"],
+    },
+    "uire": {     # conduire, construire, produire, détruire, cuire, séduire…
+        "pres": ["uis", "uis", "uit", "uisons", "uisez", "uisent"],
+        "fut": "uir", "pp": "uit", "ppr": "uisant",
+        "ps": ["uisis", "uisis", "uisit", "uisîmes", "uisîtes", "uisirent"],
+    },
+    # nuire and luire take the same present but a participle with no t.
+    "nuire": {
+        "pres": ["nuis", "nuis", "nuit", "nuisons", "nuisez", "nuisent"],
+        "fut": "nuir", "pp": "nui", "ppr": "nuisant",
+        "ps": ["nuisis", "nuisis", "nuisit", "nuisîmes", "nuisîtes", "nuisirent"],
+    },
+    "luire": {
+        "pres": ["luis", "luis", "luit", "luisons", "luisez", "luisent"],
+        "fut": "luir", "pp": "lui", "ppr": "luisant",
+        "ps": ["luisis", "luisis", "luisit", "luisîmes", "luisîtes", "luisirent"],
+    },
+    "aître": {    # paraître, disparaître, apparaître, comparaître, connaître…
+        "pres": ["ais", "ais", "aît", "aissons", "aissez", "aissent"],
+        "fut": "aîtr", "pp": "u", "ppr": "aissant",
+        "ps": ["us", "us", "ut", "ûmes", "ûtes", "urent"],
+    },
+    "quérir": {   # acquérir, conquérir, requérir, s'enquérir
+        "pres": ["quiers", "quiers", "quiert", "quérons", "quérez", "quièrent"],
+        "fut": "querr", "pp": "quis", "ppr": "quérant",
+        "ps": ["quis", "quis", "quit", "quîmes", "quîtes", "quirent"],
+    },
+    "saillir": {  # assaillir, tressaillir
+        "pres": ["saille", "sailles", "saille", "saillons", "saillez", "saillent"],
+        "fut": "saillir", "pp": "sailli", "ppr": "saillant",
+        "ps": ["saillis", "saillis", "saillit", "saillîmes", "saillîtes", "saillirent"],
+    },
+    "rompre": {   # rompre, interrompre, corrompre
+        "pres": ["romps", "romps", "rompt", "rompons", "rompez", "rompent"],
+        "fut": "rompr", "pp": "rompu", "ppr": "rompant",
+        "ps": ["rompis", "rompis", "rompit", "rompîmes", "rompîtes", "rompirent"],
+    },
+    "traire": {   # traire, distraire, extraire, soustraire — NO passé simple
+        "pres": ["trais", "trais", "trait", "trayons", "trayez", "traient"],
+        "fut": "trair", "pp": "trait", "ppr": "trayant",
+        "ps": [None, None, None, None, None, None],
+    },
+    "foutre": {
+        "pres": ["fous", "fous", "fout", "foutons", "foutez", "foutent"],
+        "fut": "foutr", "pp": "foutu", "ppr": "foutant",
+        "ps": [None, None, None, None, None, None],
+    },
+    "envoyer": {  # irregular future: enverra, not « envoiera »
+        "pres": ["envoie", "envoies", "envoie", "envoyons", "envoyez", "envoient"],
+        "fut": "enverr", "pp": "envoyé", "ppr": "envoyant",
+        "ps": ["envoyai", "envoyas", "envoya", "envoyâmes", "envoyâtes", "envoyèrent"],
+    },
+    "haïr": {     # the tréma holds everywhere except the three singular présents
+        "pres": ["hais", "hais", "hait", "haïssons", "haïssez", "haïssent"],
+        "fut": "haïr", "pp": "haï", "ppr": "haïssant",
+        "ps": ["haïs", "haïs", "haït", "haïmes", "haïtes", "haïrent"],
+    },
+    "exclure": {
+        "pres": ["exclus", "exclus", "exclut", "excluons", "excluez", "excluent"],
+        "fut": "exclur", "pp": "exclu", "ppr": "excluant",
+        "ps": ["exclus", "exclus", "exclut", "exclûmes", "exclûtes", "exclurent"],
+    },
+    "inclure": {  # participle « inclus », unlike conclu and exclu
+        "pres": ["inclus", "inclus", "inclut", "incluons", "incluez", "incluent"],
+        "fut": "inclur", "pp": "inclus", "ppr": "incluant",
+        "ps": ["inclus", "inclus", "inclut", "inclûmes", "inclûtes", "inclurent"],
+    },
+    "dissoudre": {
+        "pres": ["dissous", "dissous", "dissout", "dissolvons", "dissolvez", "dissolvent"],
+        "fut": "dissoudr", "pp": "dissous", "ppr": "dissolvant",
+        "ps": [None, None, None, None, None, None],
+    },
+    "absoudre": {
+        "pres": ["absous", "absous", "absout", "absolvons", "absolvez", "absolvent"],
+        "fut": "absoudr", "pp": "absous", "ppr": "absolvant",
+        "ps": [None, None, None, None, None, None],
+    },
 }
 
 # Models that may only match a verb EXACTLY, never as a suffix. `installer`
