@@ -56,6 +56,23 @@ if (!/class="tabs"/.test(html) || !/class="bar"/.test(html)) {
   console.error('PRERENDER FAILED: the shell chrome is missing.');
   process.exit(1);
 }
+// The line below used to claim the session card was present and check nothing.
+// A success message with no assertion behind it is the same fault as a suite
+// that prints FAIL and exits 0 — docs/lessons.md #1.
+if (!/class="today/.test(html)) {
+  console.error('PRERENDER FAILED: the session card is missing from the home route.');
+  process.exit(1);
+}
+// A style attribute in the prerendered HTML is blocked by the
+// Content-Security-Policy, which has no 'unsafe-inline'. React's style prop at
+// runtime is fine — it sets CSSOM properties — but anything rendered into this
+// file is parsed as HTML and refused.
+const styled = html.replace(/<!--[\s\S]*?-->/g, '').match(/<[a-z0-9]+[^>]*\sstyle="/gi);
+if (styled) {
+  console.error(`PRERENDER FAILED: ${styled.length} inline style attribute(s) in the `
+    + `prerendered HTML. The CSP forbids them; use a utility class.`);
+  process.exit(1);
+}
 writeFileSync(indexPath, html);
 rmSync(out, { recursive: true, force: true });
 console.log(`prerendered home: index.html ${before} → ${html.length} bytes; map and session card present`);

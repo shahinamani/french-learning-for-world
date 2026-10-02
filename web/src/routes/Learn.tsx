@@ -75,7 +75,7 @@ export function Learn() {
             <p className="today__line" data-testid="today-line">
               {t('sessionOf', { n: c.due + Math.min(c.fresh, 20), m: Math.max(1, Math.round((c.due + Math.min(c.fresh, 20)) * 0.4)) })}
             </p>
-            <div className="row gap-2 wrap" style={{ marginBlock: 'var(--space-3)' }}>
+            <div className="row gap-2 wrap u-mb-3">
               {[5, 15, 30].map((m) => (
                 <Link key={m} className="btn btn--sm" to={`/practise/review?minutes=${m}`}>{t('minutes', { n: m })}</Link>
               ))}
@@ -118,7 +118,7 @@ export function Learn() {
       </aside>
 
       <section className="learn__main" aria-labelledby="map-h">
-        <div className="row" style={{ justifyContent: 'space-between' }}>
+        <div className="row u-between">
           <h2 id="map-h" className="h3">{t('yourLevel')}</h2>
           {level && (
             <button className="btn btn--sm" data-testid="clear-level"

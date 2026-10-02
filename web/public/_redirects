@@ -1,0 +1,9 @@
+# The app uses a HASH router, so every route is /#/learn, /#/progress and so on,
+# and the server only ever serves one document. This catch-all is therefore
+# defensive rather than required today: it means a mistyped or shared deep path
+# lands on the app's own 404 screen — which offers real destinations — instead of
+# Cloudflare's.
+#
+# It also means that if the router is ever moved to history mode, deep links keep
+# working rather than 404ing on the first visit.
+/*  /index.html  200
