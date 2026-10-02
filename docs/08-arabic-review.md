@@ -111,6 +111,28 @@ whether an Arabic-speaking learner of French would recognise it as the name of
 that CEFR skill. If the convention in Arabic-language French teaching differs,
 the convention wins.
 
+### 3b-ii. Seven strings about a learner's own data, added 2026-10-02
+
+These are **not** short and terminological, and they are the most consequential
+Arabic in the product: they are the promise that progress is stored only in the
+browser and is lost if the browser is cleared. An Arabic learner who misreads
+this loses their history. Written without a reader, like the rest, and flagged
+here as the highest priority in this document.
+
+| key | Arabic as shipped |
+|---|---|
+| `dataTitle` | `أين يُحفظ تقدّمك` |
+| `dataStored` | `كل ما تفعله هنا — سجلّ المراجعة والإعدادات والتقدّم — يُحفظ في هذا المتصفّح وحده.` |
+| `dataNotSent` | `لا يُرسَل شيء إلى أي مكان. لا حساب ولا خادم ولا طرف ثالث، ولهذا لا يطلب منك هذا الموقع الموافقة على شيء.` |
+| `dataClear` | `إذا مسحت بيانات المتصفّح أو عملت في نافذة خاصة، فسيضيع كل شيء ولا يمكن استرجاعه.` |
+| `dataExport` | `صدّر نسخة من الإعدادات قبل تغيير الجهاز، ثم استوردها في الجهاز الجديد.` |
+| `dataUnderstood` | `فهمت` |
+| `dataOpen` | `أين يبقى تقدّمك وكيف تحتفظ به` |
+
+The question for the reviewer is not only whether the Arabic is correct but
+whether `dataClear` is **unmistakable**. It is the warning, and a warning that
+reads as a mild caveat has failed.
+
 ### 3c. Concept names — **Arabic deliberately held, like the exam text**
 
 The 297 concept names existed in English and French only, and were rendered to
