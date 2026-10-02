@@ -39,27 +39,33 @@ build **refuses** if a correction names a verb that is not in the content —
 seen failing on purpose, because a recorded ruling with a typo in it is worse
 than no ruling at all.
 
-### A consequence of the three removals, needing a ruling
+### The consequence of those removals, ruled on 2026-10-03
 
-`cabrer` and `prostituer` are no longer pronominal-only, but their glosses
-still describe the pronominal use: "to rear up (on a horse or a motorcycle)"
-and "to prostitute oneself". A verb marked transitive and glossed reflexively
-is a new small inconsistency, created by the removal. The transitive senses
-would read "to pull up (an aircraft's nose)" and "to prostitute, to debase".
-**Not guessed at — left for a ruling.**
+`cabrer` and `prostituer` were left marked transitive and glossed reflexively.
+Both now lead with the transitive sense, per Shahin's ruling:
+
+| verb | gloss |
+|:--|:--|
+| `cabrer` | to pull up (an aircraft's nose); (reflexive) to rear up, to resist |
+| `prostituer` | to prostitute, to debase (one's talent, one's principles); (reflexive) to prostitute oneself |
+
+Four of the 2,375 meanings in the product have now been read by a human.
 
 ## The remaining 48
 
 Rank is position among the 2,400 most frequent French verbs. Glosses are
-Wiktionary's and unreviewed unless marked. Write in the last column: `keep`,
-`not pronominal-only`, a corrected gloss, or both.
+Wiktionary's and unreviewed unless marked, and now carry up to four senses
+within a 130-character budget rather than the two a count allowed.
+
+Write in the last column: `keep`, `not pronominal-only`, a corrected gloss, or
+both.
 
 | rank | headword | infinitive | gloss | ruling |
 |---:|:--|:--|:--|:--|
 | 89 | `se souvenir` | `souvenir` | to remember |  |
 | 560 | `se méfier` | `méfier` | to mistrust, to be wary of, to watch out for |  |
 | 572 | `s'efforcer` | `efforcer` | to make efforts towards, to try hard to, to endeavour |  |
-| 585 | `s'envoler` | `envoler` | to take off, to take flight; to blow away |  |
+| 585 | `s'envoler` | `envoler` | to take off, to take flight; to blow away; to fly (of time); to vanish, disappear, walk (to be stolen) (colloquial) |  |
 | 640 | `s'emparer` | `emparer` | to seize, get hold of; to take over |  |
 | 660 | `s'écrouler` | `écrouler` | to collapse |  |
 | 672 | `s'écrier` | `écrier` | to exclaim; to yell, scream |  |
@@ -71,7 +77,7 @@ Wiktionary's and unreviewed unless marked. Write in the last column: `keep`,
 | 1021 | `se fier` | `fier` | to trust (someone), to rely (on someone) |  |
 | 1037 | `s'élancer` | `élancer` | to dash forward, to throw oneself at; to soar up |  |
 | 1112 | `s'obstiner` | `obstiner` | to persevere, persist, insist; be obstinate about something |  |
-| 1148 | `s'épanouir` | `épanouir` | to blossom, to bloom, to flower; to reveal its qualities |  |
+| 1148 | `s'épanouir` | `épanouir` | to blossom, to bloom, to flower; to reveal its qualities; to thrive, flourish |  |
 | 1174 | `s'accouder` | `accouder` | to rest, lean (on one's elbows) |  |
 | 1271 | `se repentir` | `repentir` | to repent |  |
 | 1329 | `s'empresser` | `empresser` | to hasten; to mass, to gather (literary) |  |

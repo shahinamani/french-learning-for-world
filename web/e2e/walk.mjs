@@ -363,6 +363,32 @@ await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
 ok('the pronominal provenance is on the page, like the gloss provenance',
    /wiktionary/i.test(await page.locator('[data-testid="verb-pronominal"]').innerText()));
 
+// The sense budget, on the verbs that prove why it replaced the two-sense cap.
+// « porter » showed "to carry" and not "to wear"; « marcher » showed "to walk"
+// and not "to work, to function", which is « ça marche ». These are the
+// meanings a learner meets first in ordinary French.
+for (const [verb, want] of [['porter', 'to wear'], ['marcher', 'to work, to function'],
+                            ['passer', 'to spend (time)']]) {
+  await go(page, `/learn/verbs/${verb}`);
+  await page.waitForSelector('[data-testid="verb-meaning"]', { timeout: 8000 });
+  const text = await page.locator('[data-testid="verb-meaning"]').innerText();
+  ok(`${verb} shows "${want}"`, text.includes(want));
+}
+
+// And the list row stays a row: the index carries every sense so that searching
+// "to wear" finds porter, but the row shows the first sense only.
+await go(page, '/learn/verbs');
+await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
+await page.fill('[data-testid="verb-search"]', 'to wear');
+await page.waitForTimeout(400);
+ok('searching a LATER sense still finds the verb',
+   (await page.locator('[data-testid="verb-list"] a').count()) >= 1);
+await page.fill('[data-testid="verb-search"]', 'porter');
+await page.waitForTimeout(400);
+const row = await page.locator('[data-testid="verb-list"] a').first().innerText();
+ok(`the list row shows one sense, not four (${row.replace(/\n/g, ' · ').slice(0, 60)})`,
+   !row.includes('to wear') && row.includes('to carry'));
+
 // A teacher's correction, and the only two meanings on the project a human has
 // read. The page must stop calling these unreviewed, and must go on calling the
 // other 2,373 unreviewed.

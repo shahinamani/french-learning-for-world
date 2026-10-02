@@ -80,6 +80,14 @@ test('a teacher\'s removal is applied, and is not silently a no-op', () => {
 test('a teacher\'s gloss replaces Wiktionary\'s, and says so', () => {
   // These are the ONLY reviewed meanings in the product. The page must stop
   // calling them unreviewed, and must keep calling the other 2,373 unreviewed.
+  const cabrer = all.find((v) => v.infinitive === 'cabrer');
+  assert.match(cabrer.meanings.en, /^to pull up/,
+    `cabrer reads "${cabrer.meanings.en}" — it is no longer marked pronominal, `
+    + 'so the transitive sense must come first');
+  assert.match(cabrer.meanings.en, /\(reflexive\)/, 'se cabrer is still a real verb');
+  const prostituer = all.find((v) => v.infinitive === 'prostituer');
+  assert.match(prostituer.meanings.en, /^to prostitute, to debase/);
+
   const complaire = all.find((v) => v.infinitive === 'complaire');
   assert.match(complaire.meanings.en, /revel in/,
     `complaire reads "${complaire.meanings.en}" — Wiktionary leads with "to get `
@@ -93,7 +101,10 @@ test('a teacher\'s gloss replaces Wiktionary\'s, and says so', () => {
 
   // And the rest still carry Wiktionary's provenance, or the claim means nothing.
   const reviewed = all.filter((v) => v.glossProvenance === 'teacher').map((v) => v.infinitive);
-  assert.deepEqual(reviewed.sort(), ['complaire', 'tapir']);
+  // cabrer and prostituer were added when their removal from the pronominal
+  // list left them glossed reflexively — a verb marked transitive and glossed
+  // "to prostitute oneself".
+  assert.deepEqual(reviewed.sort(), ['cabrer', 'complaire', 'prostituer', 'tapir']);
   console.log(`    ${reviewed.length} of ${all.length} meanings have been read by a teacher`);
 });
 

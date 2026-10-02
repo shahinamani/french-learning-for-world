@@ -11,7 +11,8 @@ meanings are a conjugation reference. With a gloss they are flashcards. The
 difference is one short phrase per verb, and it is the difference between a
 lookup tool and something a learner studies.
 
-What is taken: the first two sense lines of the French Verb section. Not the
+What is taken: as many sense lines of the French Verb section as fit in a
+character budget — see `SENSE_BUDGET`, and the measurement that set it. Not the
 etymology, not the usage notes, not the quotations — those are long, and a
 learner meeting a verb needs "to take", not an essay.
 
@@ -63,9 +64,34 @@ import urllib.parse
 UA = ("french-learning-for-world/0.1 (open-source CC BY-SA French learning "
       "project; https://github.com/shahinamani/french-learning-for-world)")
 API = "https://en.wiktionary.org/w/api.php"
-# Two, not three. A flashcard is read in a second; the third sense of « avoir »
-# is true and is not what somebody meeting the verb needs.
-MAX_SENSES = 2
+# **A character budget, not a sense count.** "to go" and a twelve-word clause
+# are not the same unit of reading, and a count treats them as though they were.
+#
+# The two-sense cap was measured on 2026-10-03 against every sense in the cache,
+# and it was a systematic quality fault, not a trade-off:
+#
+#   839 of 2,375 verbs (35%) have three or more senses
+#   in 681 of those (81%) the third says something the first two do not
+#   767 verbs lost at least one such sense; 1,632 senses in total
+#
+# And the losses were not marginalia. « porter » had "to carry" and not "to
+# wear". « marcher » had "to walk" and not "to work, to function" — « ça
+# marche » is one of the most common things said in French. « passer » had no
+# "to spend (time)"; « laisser » no "to let, to allow"; « prendre » no "to get,
+# to buy". 268 verbs in the 500 most frequent lost a meaning of that kind.
+#
+# 130 characters with at most 4 senses was chosen by measuring: it moves the
+# median gloss from 36 to 46 characters and the 90th percentile to 109, which is
+# still a card, while cutting the verbs that lose a distinct sense from 767 to
+# 309. Going further — 150 characters, 5 senses — buys 100 more verbs at a 90th
+# percentile of 122 and starts admitting the obscure tier (« parler » gains "to
+# cant, of a coat of arms, to make a pun of the bearer's name"), so this is
+# where the curve flattens.
+SENSE_BUDGET = 130
+MAX_SENSES = 4
+# Always at least two where two exist, even over budget: dropping a sense for
+# length loses meaning, and the long-sense verbs are better long than halved.
+MIN_SENSES = 2
 
 # **The line is drawn on OUR English output, not on Wiktionary's French label.**
 #
@@ -105,10 +131,6 @@ EXPLICIT = re.compile(r"""(?ix) \b(
     | whore\w* | slut\w* | nigger\w* | faggot\w*
     | penis | vagina | anus | testicle\w*
 )\b""")
-
-# Two, not three. A flashcard is read in a second; the third sense of « avoir »
-# is true and is not what somebody meeting the verb needs.
-MAX_SENSES = 2
 
 # Shown in parentheses so the learner knows the register. `vulgar` is here
 # rather than in a reject list on purpose — see EXPLICIT above.
@@ -277,6 +299,25 @@ def usable(s: str) -> bool:
     return bool(re.search(r"[A-Za-z]{2}", s))
 
 
+def within_budget(senses: list[str]) -> list[str]:
+    """As many senses as fit in SENSE_BUDGET characters, at least MIN, at most MAX.
+
+    The joined length is what a learner reads, so that is what is budgeted —
+    including the "; " between senses.
+    """
+    out: list[str] = []
+    total = 0
+    for i, sense in enumerate(senses):
+        if len(out) >= MAX_SENSES:
+            break
+        cost = len(sense) + (2 if out else 0)
+        if i >= MIN_SENSES and total + cost > SENSE_BUDGET:
+            break
+        out.append(sense)
+        total += cost
+    return out
+
+
 def pronominal_only(sense_lines: list[str]) -> bool:
     """True when EVERY usable sense needs a reflexive pronoun.
 
@@ -395,11 +436,11 @@ def senses(wikitext: str) -> tuple[list[str], list[dict], bool]:
         decided_first = True
         out.append(s_text)
         # NOT `break`: the loop must keep reading lines so `considered` holds
-        # every sense, not only the first two. Breaking here is what made
+        # every sense, not only the kept ones. Breaking here is what made
         # « transporter » look pronominal-only.
     if first_refused:
         return [], rejected, pronominal_only(considered)
-    return out[:MAX_SENSES], rejected, pronominal_only(considered)
+    return within_budget(out), rejected, pronominal_only(considered)
 
 
 def probe(path: str) -> int:
@@ -480,6 +521,7 @@ def main() -> int:
     pathlib.Path(args.out).write_text(json.dumps({
         "source": "en.wiktionary.org",
         "licence": "CC BY-SA 4.0",
+        "senseBudget": SENSE_BUDGET,
         "maxSenses": MAX_SENSES,
         "rejectedBy": "explicit terms in the English output, not Wiktionary labels",
         "sensesRejectedByLabel": dict(sorted(by_label.items(), key=lambda kv: -kv[1])),
@@ -488,7 +530,9 @@ def main() -> int:
         "glosses": got,
     }, ensure_ascii=False, indent=1) + "\n", encoding="utf-8")
 
-    print(f"glossed {len(got)} of {len(verbs)} verbs (at most {MAX_SENSES} senses each)")
+    n_senses = sum(len(v) for v in got.values())
+    print(f"glossed {len(got)} of {len(verbs)} verbs — {n_senses} senses "
+          f"({SENSE_BUDGET} chars, max {MAX_SENSES}, min {MIN_SENSES})")
     dropped = sum(n for n in by_label.values())
     print(f"  senses refused for explicit English: {dropped} — "
           + ", ".join(f"{l} {n}" for l, n in sorted(by_label.items(), key=lambda kv: -kv[1])[:8]))

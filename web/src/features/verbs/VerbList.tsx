@@ -105,7 +105,10 @@ export function VerbList() {
                     infinitive here is the first thing they would have copied. */}
                 <span className="row-fr" lang="fr" dir="ltr"
                       data-testid={`row-${v.infinitive}`}>{frText(verbLabel(v))}</span>
-                <span className="muted">{v.en}</span>
+                {/* The first sense only. The index carries every sense so that
+                    searching "to wear" finds « porter », but a row showing all
+                    of them runs to 190 characters and stops being a list. */}
+                <span className="muted">{v.en.split('; ')[0]}</span>
                 {v.irregular && <span className="chip" data-testid={`irr-${v.infinitive}`}>{t('irregular')}</span>}
                 <Icon name="chevron" size={16} />
               </Link>
