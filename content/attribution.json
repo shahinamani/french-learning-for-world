@@ -1,0 +1,30 @@
+{
+  "version": 1,
+  "note": "The sources this project takes from, what was taken, and the licence each carries. CC BY-SA requires attribution, and attribution requires being findable by a reader of the product rather than only by a reader of the repository. Rendered at /about; never hand-maintained there.",
+  "sources": [
+    {
+      "id": "lexique",
+      "name": "Lexique 3.83",
+      "url": "http://www.lexique.org/",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "takenFrom": "Université Savoie Mont Blanc / Laboratoire de Psychologie et NeuroCognition",
+      "usedFor": {
+        "en": "The list of French verbs and their frequency, which decides which verbs appear at which level. Frequency counts are also used to check our generated conjugations against forms that really occur.",
+        "fr": "La liste des verbes français et leur fréquence, qui détermine quel verbe apparaît à quel niveau. Les relevés de fréquence servent aussi à vérifier nos conjugaisons face aux formes réellement attestées."
+      }
+    },
+    {
+      "id": "wiktionary-fr",
+      "name": "Wiktionnaire (French Wiktionary)",
+      "url": "https://fr.wiktionary.org/wiki/Wiktionnaire:Page_d%E2%80%99accueil",
+      "licence": "CC BY-SA 4.0",
+      "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
+      "takenFrom": "Wikimedia Foundation and the contributors to fr.wiktionary.org",
+      "usedFor": {
+        "en": "Complete conjugation tables, used to check every form this project generates — including the passé simple and the imperfect subjunctive, which a corpus of real speech rarely contains. Three errors in our own conjugator were found this way.",
+        "fr": "Les tableaux de conjugaison complets, qui servent à vérifier chaque forme produite par ce projet — y compris le passé simple et l’imparfait du subjonctif, que les corpus de langue parlée contiennent rarement. Trois erreurs de notre conjugueur ont été trouvées ainsi."
+      }
+    }
+  ]
+}

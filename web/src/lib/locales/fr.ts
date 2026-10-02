@@ -93,6 +93,11 @@ const fr: Dict = {
   dataClear: 'Si vous effacez les données de votre navigateur, ou si vous travaillez dans une fenêtre privée, tout est perdu et rien ne peut être récupéré.',
   dataExport: 'Exportez une copie depuis les réglages avant de changer d’appareil, puis importez-la sur le nouveau.',
   dataUnderstood: 'J’ai compris',
+  aboutTitle: 'À propos de ce projet',
+  aboutWhat: 'Un outil d’étude du français, libre et ouvert, construit autour de la répétition espacée. Sans compte, sans traçage, et rien de ce que vous faites ici ne quitte votre navigateur.',
+  aboutIndependenceHeading: 'Indépendance',
+  aboutSources: 'Sources et licences',
+  aboutSourcesIntro: 'Des travaux sous licence libre sur lesquels ce projet s’appuie. Chacun est utilisé sous la licence indiquée, et chaque licence exige qu’il soit nommé ici.',
 };
 
 export default fr;

@@ -429,10 +429,38 @@ def cross_check(ranked, wikt, show=12):
     return findings
 
 
+def load_fixture(path: str):
+    """The committed 150 KiB subset, which is what runs in CI.
+
+    Same shape as `load_oracle`, from `tests/fixtures/lexique-verbs.json.gz`.
+    Frequency is not in the subset — it is not needed to check a form — so the
+    ranking is simply the file's own order, which was written frequency-first.
+    """
+    import gzip
+    with gzip.open(path, "rt", encoding="utf-8") as fh:
+        data = json.load(fh)
+    attested: dict[str, dict[tuple[str, str], set[str]]] = collections.defaultdict(
+        lambda: collections.defaultdict(set))
+    freq: dict[str, float] = {}
+    for rank, (lemma, rows) in enumerate(data["verbs"].items()):
+        freq[lemma] = float(len(data["verbs"]) - rank)
+        for ortho, tags in rows:
+            for tag in tags.split(";"):
+                parts = tag.split(":")
+                slot = ":".join(parts[:2])
+                if slot in SLOT_FROM_TAG and len(parts) > 2 and parts[2] in PERSONS:
+                    attested[lemma][(slot, parts[2])].add(ortho)
+                elif slot == "par:pas":
+                    attested[lemma][("par:pas", "")].add(ortho)
+    return attested, freq
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--verb")
     ap.add_argument("--validate", help="path to Lexique383.tsv")
+    ap.add_argument("--validate-fixture",
+                    help="path to the committed gzipped subset (what CI uses)")
     ap.add_argument("--top", type=int, default=2400)
     ap.add_argument("--show-failures", type=int, default=12)
     ap.add_argument("--wiktionary", help="second oracle, from harvest_wiktionary.py")
@@ -445,11 +473,14 @@ def main() -> int:
             print(json.dumps(forms, ensure_ascii=False, indent=2))
         return 0
 
-    if not args.validate:
+    if not args.validate and not args.validate_fixture:
         ap.print_help()
         return 2
 
-    attested, freq = load_oracle(args.validate)
+    if args.validate_fixture:
+        attested, freq = load_fixture(args.validate_fixture)
+    else:
+        attested, freq = load_oracle(args.validate)
     if not attested:
         print("refusing: the oracle is empty — nothing to check is a failure, not a pass.",
               file=sys.stderr)
