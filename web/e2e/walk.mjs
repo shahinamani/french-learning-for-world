@@ -262,11 +262,25 @@ ok('a concept with no cards yet says so rather than showing a dead button',
 console.log('\n=== verbs, end to end ===');
 await go(page, '/learn/verbs');
 await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
-ok(`the verb list shows ${await page.locator('[data-testid="verb-list"] a').count()} verbs`,
-   await page.locator('[data-testid="verb-list"] a').count() === 14);
+// 2,392 verbs, shown 60 at a time with the total stated. A wall of rows is not
+// a list, and the count is information rather than something to scroll past.
+ok(`the verb list shows ${await page.locator('[data-testid="verb-list"] a').count()} of 2,392 verbs`,
+   await page.locator('[data-testid="verb-list"] a').count() === 60);
+ok('the list says how many there are in total',
+   /2392|2,392/.test(await page.locator('[data-testid="verb-count"]').innerText()));
+// « allons » is not an infinitive and not a meaning, so this exercises the
+// lazily-fetched form index — the capability the split nearly cost.
 await page.fill('[data-testid="verb-search"]', 'allons');
+await page.waitForTimeout(1200);
+ok('searching a conjugated form still finds its verb',
+   await page.locator('[data-testid="verb-list"] a').count() === 1,
+   'the form index is fetched on a miss; if this fails the split lost a real capability');
+await page.fill('[data-testid="verb-search"]', 'attendre');
 await page.waitForTimeout(300);
-ok('searching a conjugated form finds its verb', await page.locator('[data-testid="verb-list"] a').count() === 1);
+ok('searching an infinitive needs no extra fetch',
+   await page.locator('[data-testid="verb-list"] a').count() >= 1);
+await page.fill('[data-testid="verb-search"]', 'allons');
+await page.waitForTimeout(600);
 await page.locator('[data-testid="verb-list"] a').first().click();
 await page.waitForTimeout(500);
 ok(`the detail page shows ${await page.locator('table.conj').count()} tables of forms`,

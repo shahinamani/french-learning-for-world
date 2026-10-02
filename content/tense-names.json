@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "note": "A tense is called the same thing whatever verb it belongs to, so the name lives here once rather than beside every verb. In the 14-verb file it was duplicated fourteen times; at 2,392 it would have been duplicated 2,392 times, and the Arabic would have been unreviewable by anyone.",
+  "licence": "Original, written for this project.",
+  "tenses": {
+    "present":              { "en": "Present",     "fr": "Présent",              "fa": "حال ساده",        "ar": "المضارع" },
+    "imparfait":            { "en": "Imperfect",   "fr": "Imparfait",            "fa": "ماضی استمراری",   "ar": "الماضي الناقص" },
+    "passe-compose":        { "en": "Perfect",     "fr": "Passé composé",        "fa": "ماضی نقلی",       "ar": "الماضي المركّب" },
+    "futur":                { "en": "Future",      "fr": "Futur simple",         "fa": "آینده ساده",      "ar": "المستقبل البسيط" },
+    "conditionnel":         { "en": "Conditional", "fr": "Conditionnel présent", "fa": "شرطی حال",        "ar": "الشرطي الحاضر" },
+    "subjonctif":           { "en": "Subjunctive", "fr": "Subjonctif présent",   "fa": "التزامی حال",     "ar": "المضارع المنصوب" },
+    "passe-simple":         { "en": "Past historic", "fr": "Passé simple",       "fa": "ماضی ساده ادبی",  "ar": "الماضي البسيط" },
+    "subjonctif-imparfait": { "en": "Imperfect subjunctive", "fr": "Subjonctif imparfait", "fa": "التزامی گذشته", "ar": "الماضي المنصوب" }
+  },
+  "readOnly": {
+    "note": "Tenses a learner reads but is never asked to produce. Marked `produced: false` on every verb, so no drill offers them.",
+    "ids": ["passe-simple", "subjonctif-imparfait"]
+  }
+}

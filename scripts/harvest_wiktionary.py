@@ -132,14 +132,32 @@ def parse(page: str) -> dict[str, list[str]]:
         return current
 
     out: dict[str, list[str]] = {}
-    for m in re.finditer(r'<th[^>]*>(.*?)</th>(.*?)</table>', page, re.S):
-        tense = strip(m.group(1))
-        slot = SLOT_OF.get((mood_at(m.start()), tense))
-        if not slot or slot in out:              # first occurrence = active
+    # Scan from each tense HEADING to the next one, rather than matching
+    # <th>…</th>…</table> blocks. These tables are nested, so a sequential
+    # finditer consumed an outer </table> and swallowed every inner tense table
+    # after it — which is why 297 verbs, arriver and espérer among them, parsed
+    # to nothing while prendre parsed fine. The difference was the nesting, not
+    # the verb.
+    heads = [(strip(m.group(1)), m.end(), m.start())
+             for m in re.finditer(r"<th[^>]*>(.*?)</th>", page, re.S)]
+    # Which headings name a tense we want. The region for one of them runs to
+    # the NEXT such heading, not to the next <th>: in one of the two layouts
+    # Wiktionary uses, « Présent » and « Passé composé » share a header row and
+    # their cells alternate along each data row, so stopping at the next <th>
+    # gave an empty region. Taking the FIRST cell pair per pronoun picks the
+    # simple tense in that layout, and the only table present in the other.
+    mapped = [i for i, (t, _, at) in enumerate(heads)
+              if SLOT_OF.get((mood_at(at), t))]
+    for n, i in enumerate(mapped):
+        tense, after, at = heads[i]
+        slot = SLOT_OF[(mood_at(at), tense)]
+        if slot in out:                          # first occurrence = active voice
             continue
+        end = heads[mapped[n + 1]][2] if n + 1 < len(mapped) else len(page)
+        region = page[after:end]
         rows = re.findall(
             r'<td[^>]*align="right"[^>]*>(.*?)</td>\s*<td[^>]*align="left"[^>]*>(.*?)</td>',
-            m.group(2), re.S)
+            region, re.S)
         forms: dict[str, str] = {}
         for pron_raw, form_raw in rows:
             pron, form = strip(pron_raw), strip(form_raw)
@@ -153,13 +171,21 @@ def parse(page: str) -> dict[str, list[str]]:
                 key = "nous"
             elif bare.startswith("vous"):
                 key = "vous"
-            elif unprefix(pron).startswith(("ils", "elles")):
+            elif bare.startswith(("ils", "elles")):
                 key = "ils"
-            elif unprefix(pron).startswith(("il", "elle", "on")):
+            elif bare.startswith(("il", "elle", "on")):
                 key = "il"
-            elif unprefix(pron).startswith(("tu", "t'")):
+            elif bare.startswith(("tu", "t'", "t\u2019")):
                 key = "tu"
-            elif unprefix(pron).startswith(("je", "j'")):
+            elif bare.startswith(("je", "j'", "j\u2019")):
+                # The TYPOGRAPHIC apostrophe. « j’ » is how Wiktionary writes
+                # the elided first person, and every -er verb begins its présent
+                # with it — so a straight-apostrophe test loses one person in
+                # six and the whole tense is discarded for being incomplete.
+                # This is the third time this character has broken something in
+                # this project, and the second time in this file: an earlier fix
+                # here was reverted by a later edit that replaced the
+                # surrounding block.
                 key = "je"
             if key and key not in forms:
                 # Wiktionary prefixes the form with the elided pronoun in some

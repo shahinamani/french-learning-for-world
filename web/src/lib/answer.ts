@@ -17,20 +17,27 @@ export const normalise = fold;
 
 export type Check = { correct: boolean; accentsOnly: boolean };
 
-export function checkAnswer(given: string, expected: string): Check {
+/**
+ * @param also  Other spellings French accepts for this form. Not a kindness:
+ *   « essaye » and « essaie » are both correct, and a drill that refuses one
+ *   teaches a learner that a right answer is wrong — which is worse than
+ *   teaching nothing, because they will carry it into an exam.
+ */
+export function checkAnswer(given: string, expected: string, also: string[] = []): Check {
   const g = given.trim();
   if (!g) return { correct: false, accentsOnly: false };
   // "allé(e)" accepts both "allé" and "allée": the parenthesis is optional.
-  const variants = [
-    expected,
-    expected.replace(/\((.*?)\)/g, ''),
-    expected.replace(/[()]/g, ''),
-  ].map(normalise);
+  const spellings = [expected, ...also.filter(Boolean)];
+  const variants = spellings.flatMap((e) => [
+    e,
+    e.replace(/\((.*?)\)/g, ''),
+    e.replace(/[()]/g, ''),
+  ]).map(normalise);
   const n = normalise(g);
   const correct = variants.includes(n);
   // Exactly right apart from accents is worth saying, because it is a
   // different mistake from not knowing the form.
-  const exact = [expected, expected.replace(/\((.*?)\)/g, ''), expected.replace(/[()]/g, '')]
+  const exact = spellings.flatMap((e) => [e, e.replace(/\((.*?)\)/g, ''), e.replace(/[()]/g, '')])
     .some((v) => v.trim().toLowerCase() === g.toLowerCase());
   return { correct, accentsOnly: correct && !exact };
 }

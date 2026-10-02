@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
-import { loadVerbs, type Verb } from '../../lib/verbs';
+import { loadVerb, loadTenseNames, type Verb, type TenseNames } from '../../lib/verbs';
 import { statsForConcept } from '../../lib/progress';
 import { useSidePanel } from '../../components/SidePanel';
 import { Icon } from '../../components/Icon';
@@ -18,16 +18,20 @@ export function VerbDetail() {
   const panel = useSidePanel();
   const [verb, setVerb] = useState<Verb | null | undefined>(undefined);
   const [seen, setSeen] = useState<Record<string, number>>({});
+  const [names, setNames] = useState<TenseNames>({});
+  useEffect(() => { loadTenseNames().then(setNames).catch(() => {}); }, []);
 
   useEffect(() => {
     let live = true;
-    loadVerbs().then(async (vs) => {
-      const v = vs.find((x) => x.infinitive === decodeURIComponent(infinitive)) ?? null;
+    loadVerb(decodeURIComponent(infinitive)).then(async (v) => {
       if (!live) return;
       setVerb(v);
       if (v) {
-        const entries = await Promise.all(v.tenses.map(async (tn) =>
-          [tn.conceptId, (await statsForConcept(userId, tn.conceptId))?.reviews ?? 0] as const));
+        const entries = await Promise.all(v.tenses
+          .filter((tn) => tn.conceptId)
+          .map(async (tn) =>
+            [tn.conceptId as string,
+             (await statsForConcept(userId, tn.conceptId as string))?.reviews ?? 0] as const));
         if (live) setSeen(Object.fromEntries(entries));
       }
     }).catch(() => { if (live) setVerb(null); });
@@ -66,36 +70,46 @@ export function VerbDetail() {
             <h2 id={`t-${tn.id}`} className="h3"
                 style={{ margin: 0, display: 'flex', gap: 'var(--space-2)',
                          alignItems: 'baseline', flexWrap: 'wrap' }}>
-              <Localised field={tn.name} />
+              <Localised field={names[tn.id] ?? {}} />
               <span className="muted" lang="fr" dir="ltr" style={{ fontWeight: 400 }}>
                 {tn.mood}
               </span>
             </h2>
             <div className="row gap-2">
               {/* The concept behind the tense, and the learner's record on it. */}
+              {tn.conceptId && (
               <button className="chip chip--link" data-testid={`concept-${tn.conceptId}`}
                       onClick={() => panel.open(`concept:${tn.conceptId}`)}>
                 {seen[tn.conceptId] ? t('reviewsCount', { n: seen[tn.conceptId] ?? 0 }) : t('openPanel')}
                 <Icon name="chevron" size={12} />
               </button>
-              {/* Practice straight from the table. */}
-              <Link className="btn btn--sm btn--primary" data-testid={`practise-${tn.id}`}
-                    to={`/practise/conjugation?verb=${encodeURIComponent(verb.infinitive)}&tense=${tn.id}`}>
-                {t('practiseTense')}
-              </Link>
+              )}
+              {/* Practice straight from the table — but only for a tense a
+                  learner is ever asked to produce. Drilling somebody on the
+                  passé simple wastes the evening: they will read it and never
+                  be asked to write it. */}
+              {tn.produced && (
+                <Link className="btn btn--sm btn--primary" data-testid={`practise-${tn.id}`}
+                      to={`/practise/conjugation?verb=${encodeURIComponent(verb.infinitive)}&tense=${tn.id}`}>
+                  {t('practiseTense')}
+                </Link>
+              )}
+              {!tn.produced && (
+                <span className="chip" data-testid={`read-only-${tn.id}`}>{t('readNotWritten')}</span>
+              )}
             </div>
           </div>
           <table className="conj">
             <caption className="u-hidden-visually">
-              <span lang="fr" dir="ltr">{verb.infinitive}</span>{' — '}<Localised field={tn.name} />
+              <span lang="fr" dir="ltr">{verb.infinitive}</span>{' — '}<Localised field={names[tn.id] ?? {}} />
             </caption>
             <tbody>
-              {verb.persons.map((p, i) => (
+              {verb.persons.map((p, i) => (tn.forms[i] ? (
                 <tr key={p}>
                   <th scope="row" lang="fr" dir="ltr">{p}</th>
                   <td lang="fr" dir="ltr" data-testid={`form-${tn.id}-${i}`}>{frText(tn.forms[i] ?? '')}</td>
                 </tr>
-              ))}
+              ) : null))}
             </tbody>
           </table>
         </section>
