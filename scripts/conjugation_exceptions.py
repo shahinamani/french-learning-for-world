@@ -20,6 +20,8 @@ the product until it is fixed, because a gap is visible to a learner and a wrong
 conjugation is not.
 """
 
+import re
+
 # ── The corpus is wrong ─────────────────────────────────────────────────────
 # Each entry records what Lexique says and why it cannot be right. These are
 # tagging faults in a 142,694-row corpus, which is a very low rate; they are
@@ -88,6 +90,8 @@ DEFECTIVE = {
     "ouïr": "Archaic outside « j'ai ouï dire ».",
     "défaillir": "Incomplete in the present and the passé simple.",
     "seoir": "Impersonal and third-person only: « il sied ».",
+    "sourdre": "Third person only, and literary: « l'eau sourd ». Wiktionary "
+               "leaves most of the paradigm empty, which is the honest answer.",
 }
 
 # Not a verb. Lexique lists « découverte » under cgram=VER, but it is the noun
@@ -120,11 +124,42 @@ KNOWN_WRONG: dict[str, str] = {
 }
 
 
+# ── Families where French itself admits two spellings ───────────────────────
+# Enumerating these verb by verb would be sixty entries that all say the same
+# thing, and a list that long stops being read. The rule is the fact: every
+# verb in -ayer may be written with i or with y throughout — paie/paye,
+# essaiera/essayera — and both are taught. We ship the i-form, which the corpus
+# attests far more often, and accept the other.
+def family_alternate(lemma: str) -> str | None:
+    # é + consonant(s) + er: the future and conditional. The traditional
+    # spelling keeps the é — « j'espérerai » — and the 1990 rectifications
+    # write è — « j'espèrerai ». Lexique attests the first and Wiktionary gives
+    # the second, which is two reputable sources describing one language in
+    # transition rather than either being wrong. We ship the traditional form,
+    # because that is what a learner meets in print and in an exam paper.
+    if re.search(r"é[a-zç]{1,3}er$", lemma):
+        return ("é_er: espérerai / espèrerai in the future and conditional. The "
+                "first is traditional and the second is the 1990 rectification. "
+                "We ship the traditional spelling; both are correct.")
+    # -eler and -eter: doubling the consonant or taking è. The 1990
+    # rectifications made è the default for all but appeler and jeter, and both
+    # are in print today.
+    if lemma.endswith(("eler", "eter")):
+        return ("-eler/-eter: martèle / martelle, both current since the 1990 "
+                "rectifications. We ship the form in E_GRAVE_ELER_ETER; the "
+                "other is accepted.")
+    if lemma.endswith("ayer"):
+        return ("-ayer: both the i-form and the y-form are standard throughout "
+                "(paie/paye, essaierai/essayerai). We ship the i-form; the "
+                "y-form is accepted and must be marked right in a drill.")
+    return None
+
+
 def classification(lemma: str) -> str | None:
     """Which of the three a verb's disagreement is, or None if unclassified."""
     if lemma in CORPUS_NOISE:
         return "corpus-noise"
-    if lemma in ALTERNATES:
+    if lemma in ALTERNATES or family_alternate(lemma):
         return "alternate"
     if lemma in KNOWN_WRONG:
         return "known-wrong"
