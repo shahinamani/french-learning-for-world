@@ -159,6 +159,44 @@ test('only an explicit ALTERNATIVE is dropped, not the sense around it', () => {
   assert.ok(!/fuck/i.test(entuber.meanings.en), entuber.meanings.en);
 });
 
+test('widening the budget did not admit rubbish at a new rate', () => {
+  // The question behind this check: a filter you remove has been doing two
+  // jobs, and the measurement that justified removing it only counted one. The
+  // two-sense cap was hiding bad senses along with good ones, so widening it
+  // admitted both — « envoler » gained "to vanish, disappear, walk (to be
+  // stolen) (colloquial)", which was found by reading, not by any check.
+  //
+  // Measured: 15 of the 1,084 newly admitted senses are mechanically
+  // defective, 1.4%, against 1.0% on the senses that were already shown. The
+  // worry was right in form and wrong in size. This guard keeps it that way.
+  const harvest = read('data/wiktionary-glosses.json');
+  const CHECKS = [
+    (t) => !/\b(to|be|being)\b/.test(t.toLowerCase()),      // no verb at all
+    (t) => !t.replace(/\([^)]*\)/g, '').trim().replace(/[,;]/g, ''),  // only a parenthetical
+    (t) => /\((?:of a coat of arms|heraldry|falconry|nautical|masonry|hunting|archaic|obsolete)\b/i.test(t),
+    (t) => /\((?:to be stolen|slang for)\b/i.test(t),
+    (t) => /\b(or|and)$/i.test(t.trim().replace(/\.$/, '')),
+  ];
+  // NOT a check for a trailing "of" or "in": « sentir » is "to smell of, taste
+  // of" and « rentrer » is "to bring in, to get in", both correct. An earlier
+  // version flagged 36 such glosses and 35 of them were right.
+  const bad = (t) => CHECKS.some((f) => f(t));
+  const rate = (senses) => {
+    const n = senses.length;
+    return n ? senses.filter(bad).length / n : 0;
+  };
+  const admitted = Object.values(harvest.glosses).flatMap((s) => s.slice(2));
+  const shown = Object.values(harvest.glosses).flatMap((s) => s.slice(0, 2));
+  const rA = rate(admitted), rS = rate(shown);
+  console.log(`    newly admitted ${(rA * 100).toFixed(1)}% defective of ${admitted.length}`
+    + ` · already shown ${(rS * 100).toFixed(1)}% of ${shown.length}`);
+  assert.ok(admitted.length > 900, `only ${admitted.length} senses past position two`);
+  assert.ok(rA < 0.02, `${(rA * 100).toFixed(1)}% of the admitted senses are malformed`);
+  // The budget must not be adding defects faster than the senses it joins.
+  assert.ok(rA - rS < 0.015,
+    `the admitted senses are ${((rA - rS) * 100).toFixed(1)} points worse than the shown ones`);
+});
+
 test('baiser keeps BOTH senses — this is the rule working, not an exception', () => {
   // In modern French « baiser » almost never means "to kiss"; « embrasser »
   // does. A learner who reads only "to kiss (dated)" will use it in a
