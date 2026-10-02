@@ -105,6 +105,12 @@ const en = {
   dataClear: 'If you clear your browser data, or study in a private window, it is gone and cannot be recovered.',
   dataExport: 'Export a copy from Settings before you change device, and import it on the new one.',
   dataUnderstood: 'Got it',
+  // /about — what this is, and the attribution CC BY-SA requires.
+  aboutTitle: 'About this project',
+  aboutWhat: 'A free, open study tool for French, built around spaced repetition. No account, no tracking, and nothing you do here leaves your browser.',
+  aboutIndependenceHeading: 'Independence',
+  aboutSources: 'Sources and licences',
+  aboutSourcesIntro: 'Openly licensed work this project is built on. Each is used under the licence shown, and each licence requires that it be named here.',
 };
 
 export type Dict = typeof en;

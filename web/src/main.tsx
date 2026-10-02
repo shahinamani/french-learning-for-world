@@ -30,6 +30,7 @@ const lazily = (node: React.ReactNode) => (
   </Suspense>
 );
 import './styles.css';
+import { About } from './routes/About';
 
 // Hash routing: the site is served from a repository subpath on static hosting
 // with no server to rewrite deep links, and a pasted URL must work. Every
@@ -39,6 +40,7 @@ function AppRoutes() {
     <Routes>
       <Route path="/" element={<AppProvider><Shell /></AppProvider>}>
         <Route index element={<Navigate to="/learn" replace />} />
+        <Route path="about" element={<About />} />
         <Route path="learn" element={<Learn />} />
         <Route path="learn/concept/:id" element={<ConceptRoute />} />
         <Route path="learn/verbs" element={<VerbList />} />

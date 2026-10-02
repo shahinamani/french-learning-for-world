@@ -24,6 +24,8 @@ Rephrasing is not a loophole. A *selection* of vocabulary is its compiler's own 
 | Interface strings | **109 keys × 4 languages** *(written as 92; re-counted 2026-09-30)* | **Original**, written here | Project content licence | Yes |
 | Verb conjugations | 14 verbs × 6 tenses × 6 persons = **504 forms**, plus participles and 12 imperatives | **Derived by rule and checked by hand for this project** — imparfait from the *nous* stem, conditional from the future stem; no table copied from any source | Project content licence | Yes — `provenance` and `licence` on every verb, asserted by a test |
 | Concept taxonomy | 297 concepts (261 leaves, 4 roots), A1–C2 *(224 A1–B2; C1 and C2 added 2026-10-01)* | **Original**, written here | Project content licence | Yes |
+| Verb conjugation — the generator and its validation | 2,400 verbs considered, 2,392 shippable, 34,150 forms checked | **Conjugated by rule, written for this project.** Validated against **Lexique 3.83** (verb list, frequency, attested forms) and **fr.wiktionary.org** (complete paradigms, 240 verbs) | Our rules: project content licence. Both validation sources: **CC BY-SA 4.0** | Yes — `tests/conjugation-against-corpus.test.js` runs on every push |
+| Lexique verb subset, redistributed | 2,400 verbs, 46,520 tagged forms, 150 KiB gzipped | **Lexique 3.83**, reduced to the columns this project validates against | **CC BY-SA 4.0**, redistributed under the same licence | `tests/fixtures/lexique-verbs.json.gz` |
 
 **Arabic exam text is deliberately absent.** 28 prompts, 28 explanations and
 16 labels exist in English, French and Persian; Arabic waits for a human reader
@@ -66,7 +68,7 @@ Each carries a real obligation. They are listed with what that obligation actual
 | Source | Licence | What we may take | The obligation |
 |---|---|---|---|
 | **Tatoeba** | CC BY 2.0 FR | Example sentences and their translations, including French↔Persian and French↔Arabic pairs | Credit Tatoeba and the sentence contributors. **No share-alike** — our own content stays under whatever licence we choose |
-| **Wiktionary (fr)** | CC BY-SA 3.0 / 4.0 | Definitions, gender, conjugation tables | **Share-alike.** Anything derived from it must be released under a compatible licence. This is the source that constrains our choice |
+| **Wiktionary (fr)** — **IN USE since 2026-10-02, see above** | CC BY-SA 4.0 | Definitions, gender, conjugation tables | **Share-alike.** Anything derived from it must be released under a compatible licence. This is the source that constrains our choice |
 | **Wikidata lexemes** | CC0 | Lemma and form data | None |
 | **Lexique 3** | CC BY-SA 4.0 | Frequency, lemma, part of speech | Share-alike — but *frequency itself is a fact*, and a word list derived from frequency is not a copy of Lexique's selection |
 | **Mozilla Common Voice** | CC0 | Recorded speech | None. **Caveat:** contributors are volunteers of varying accent and fluency, not pedagogical voice actors — it is real speech, not model speech, and should be labelled as such |
@@ -153,4 +155,23 @@ The reasoning in full:
 
 Once content arrives from an outside source, the platform needs a generated credits page listing each source, its licence and a link — built from the `licence` and `sourceRef` fields, never hand-maintained. CC BY and CC BY-SA both require this; it is the condition on which the material is free.
 
-Today there is nothing to attribute, because everything is ours.
+~~Today there is nothing to attribute, because everything is ours.~~
+
+**[2026-10-02] That stopped being true, and the obligation was carried for a
+day before it was discharged.** Two sources are now genuinely used:
+
+- **Lexique 3.83 (CC BY-SA 4.0)** — the verb list and the frequency ranking that
+  decides which verb sits at which level, and the attested forms every generated
+  conjugation is checked against. A reduced subset is **redistributed** in
+  `tests/fixtures/lexique-verbs.json.gz`, which makes attribution a licence
+  condition rather than a courtesy.
+- **fr.wiktionary.org (CC BY-SA 4.0)** — complete conjugation tables, used to
+  check the forms a corpus of real speech rarely contains: the passé simple and
+  the imperfect subjunctive. Three errors in our own conjugator were found this
+  way, in forms Lexique does not attest at all.
+
+Both are listed in `content/attribution.json` and rendered at **`/about`**,
+which is where a reader of the *product* can find them. A licence that requires
+attribution is not satisfied by a line in a file only a reader of the repository
+will open. The page is generated from the data, as this section always said it
+must be.
