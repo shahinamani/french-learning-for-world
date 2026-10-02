@@ -8,6 +8,59 @@ Numbering follows Shahin's list, which spans more than this repository.
 
 ---
 
+## Two questions that found more than any check on this project
+
+Everything below is an instance of one of these. Read them before writing a
+test, and before saying a piece of work is finished.
+
+### "What can this shape not express?" — not "is this right?"
+
+« souvenir » sat in the content as a bare infinitive with a conjugation table
+reading « je souviens », « tu souviens », « il souvient ». Six rows of French
+that does not exist, on a verb in the first hundred.
+
+Guarding it at the time: 2,392 verbs checked against two independent corpora
+agreeing on 134,000 forms, 251 unit tests, a 199-check browser walk that opened
+that very page, and a rule that every tense have six non-empty persons — which
+it did.
+
+**None of it could catch this, because the verb record had no field in which to
+say "this verb needs a pronoun".** A wrong value is something a test can
+disagree with. A missing field has no value to disagree with. Review reads what
+is there; the fact was not there to be read.
+
+Asking what the shape cannot express is the only question that finds this class.
+For a verb record the answers were: that it is pronominal, that it is defective,
+that its register differs by sense, that its meaning has been reviewed by a
+human. Four fields that did not exist, each of them a fact the product needed
+to state and could not. **I do not know what else is missing, and that is the
+honest state of every schema here.**
+
+### A guard you have not seen fail is a guess about what it does
+
+Not a slogan — the strongest finding on this project came from spending thirty
+seconds breaking a check on purpose.
+
+After « souvenir » had been fixed on five separate surfaces, each found by hand
+after I had declared the work done, I wrote a source-level check: no component
+may print a verb's bare `.infinitive` where a learner reads it. Then I reverted
+the verb list to the defect to watch the check fail.
+
+**It passed.** The reverted line was:
+
+```jsx
+<span data-testid={`row-${v.infinitive}`}>{frText(v.infinitive)}</span>
+```
+
+The check excused any *line* containing a legitimate use of the identifier, and
+`data-testid` is one. **The attribute added so the browser check could find the
+row is what made the source check blind to the defect beside it. One safeguard
+disabled another, and only reverting the fix on purpose revealed it.**
+
+A line is not the unit of meaning; an expression is.
+
+---
+
 ## How entries are written, from 2026-10-02
 
 **Stop numbering.** Four agents append to this file concurrently and the numbers

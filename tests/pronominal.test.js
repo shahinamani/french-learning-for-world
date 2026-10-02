@@ -41,25 +41,72 @@ test('souvenir is marked, and its headword is « se souvenir »', () => {
   assert.equal(index.find((x) => x.infinitive === 'souvenir').headword, 'se souvenir');
 });
 
-test('the pronominal-only verbs are exactly these 51', () => {
-  // Declared in full, because the list is the claim. Wiktionary's labels are
-  // its only reviewer; a teacher reading this list is the next step, and when
-  // they move one this check tells whoever changed it what they changed.
+test('the pronominal-only verbs are exactly these 48', () => {
+  // Declared in full, because the list is the claim. It started at 51 from
+  // Wiktionary's labels alone; Shahin's first reading removed three —
+  // « cabrer un avion », « évaporer un liquide », « prostituer son talent »
+  // are all ordinary transitive French — and this check is what told me the
+  // removal had landed, by failing on the number before I updated it.
+  // Removals are in scripts/gloss_corrections.py with their reasons.
   const EXPECTED = [
     'absenter', 'accouder', 'agenouiller', 'attabler', 'biler', 'blottir',
-    'cabrer', 'camer', 'chamailler', 'complaire', 'démener', 'démerder',
+    'camer', 'chamailler', 'complaire', 'démener', 'démerder',
     'ébrouer', 'écrier', 'écrouler', 'efforcer', 'élancer', 'emparer',
     'empiffrer', 'empresser', 'enquérir', 'entraider', 'entrecroiser',
     'entretuer', 'envoler', 'épanouir', 'éperdre', 'éprendre', 'esclaffer',
-    'évader', 'évanouir', 'évaporer', 'extasier', 'fier', 'gourer',
+    'évader', 'évanouir', 'extasier', 'fier', 'gourer',
     'insurger', 'lamenter', 'marrer', 'méfier', 'obstiner', 'prosterner',
-    'prostituer', 'raviser', 'rebeller', 'recoucher', 'recroqueviller',
+    'raviser', 'rebeller', 'recoucher', 'recroqueviller',
     'rendormir', 'repentir', 'souvenir', 'suicider', 'tapir',
   ];
   const actual = all.filter((v) => v.pronominal).map((v) => v.infinitive)
     .sort((a, b) => a.localeCompare(b, 'fr'));
   assert.deepEqual(actual, [...EXPECTED].sort((a, b) => a.localeCompare(b, 'fr')));
   console.log(`    ${actual.length} pronominal-only verbs`);
+});
+
+test('a teacher\'s removal is applied, and is not silently a no-op', () => {
+  // The mirror of the souvenir defect: marking a verb pronominal-only when it
+  // is not teaches that the plain form is wrong. These three have ordinary
+  // transitive uses that Wiktionary does not label.
+  for (const inf of ['cabrer', 'évaporer', 'prostituer']) {
+    const v = all.find((x) => x.infinitive === inf);
+    assert.ok(v, `${inf} is not in the content`);
+    assert.equal(v.pronominal, false, `${inf} is still marked pronominal-only`);
+    assert.equal(v.headword, null);
+  }
+});
+
+test('a teacher\'s gloss replaces Wiktionary\'s, and says so', () => {
+  // These are the ONLY reviewed meanings in the product. The page must stop
+  // calling them unreviewed, and must keep calling the other 2,373 unreviewed.
+  const complaire = all.find((v) => v.infinitive === 'complaire');
+  assert.match(complaire.meanings.en, /revel in/,
+    `complaire reads "${complaire.meanings.en}" — Wiktionary leads with "to get `
+    + 'stuck in", which is a different verb');
+  assert.ok(!/stuck in/.test(complaire.meanings.en));
+  assert.equal(complaire.glossProvenance, 'teacher');
+
+  const tapir = all.find((v) => v.infinitive === 'tapir');
+  assert.match(tapir.meanings.en, /crouch/, 'se tapir is to crouch, not to hide');
+  assert.equal(tapir.glossProvenance, 'teacher');
+
+  // And the rest still carry Wiktionary's provenance, or the claim means nothing.
+  const reviewed = all.filter((v) => v.glossProvenance === 'teacher').map((v) => v.infinitive);
+  assert.deepEqual(reviewed.sort(), ['complaire', 'tapir']);
+  console.log(`    ${reviewed.length} of ${all.length} meanings have been read by a teacher`);
+});
+
+test('a homograph is named, so two different words are not blurred', () => {
+  // « fier » the verb (se fier à, to trust) and « fier » the adjective (proud)
+  // are different words. A learner meeting one and not the other uses the
+  // wrong one.
+  const fier = all.find((v) => v.infinitive === 'fier');
+  assert.match(fier.homograph || '', /adjective/);
+  assert.match(all.find((v) => v.infinitive === 'tapir').homograph || '', /animal/);
+  // Null everywhere else, so the field is a statement and not decoration.
+  assert.deepEqual(all.filter((v) => v.homograph).map((v) => v.infinitive).sort(),
+                   ['fier', 'tapir']);
 });
 
 test('a verb with a pronominal sense among others keeps the bare infinitive', () => {

@@ -103,6 +103,7 @@ const fr: Dict = {
   glossSource: 'Les sens et les marques de registre proviennent du Wiktionnaire et n’ont pas été relus par un enseignant.',
   glossWithheldExplicit: 'Aucun sens n’est affiché : toutes les traductions anglaises de ce verbe sont crues. Il figure dans la liste parce qu’il est courant à l’oral, non parce qu’il est à employer.',
   pronominalOnly: 'Ce verbe ne s’emploie qu’à la forme pronominale. « je souviens » n’existe pas ; « je me souviens » si. Cette indication provient du Wiktionnaire et n’a pas été relue par un enseignant.',
+  glossReviewed: 'Ce sens a été corrigé par un enseignant de français. Celui du Wiktionnaire était faux.',
 };
 
 export default fr;
