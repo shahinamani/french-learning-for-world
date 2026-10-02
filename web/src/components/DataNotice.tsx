@@ -17,9 +17,41 @@ import { userKey } from '../lib/session';
 
 const SEEN = 'dataNoticeSeen';
 
+/**
+ * Dismissal when storage is unavailable — a private window, or a browser with
+ * site data blocked.
+ *
+ * The first version treated "cannot read storage" as "already seen", to avoid
+ * nagging on every paint. That was backwards: the learner whose data will NOT
+ * survive the tab is the one who most needs to be told, and was the only one
+ * never told. Holding the dismissal in memory gives both — shown once, dismissed
+ * for the session, and gone when the tab closes, which is exactly when their
+ * progress goes too.
+ */
+let dismissedInMemory = false;
+
+function storageWorks(): boolean {
+  try {
+    const probe = 'flw:probe';
+    localStorage.setItem(probe, '1');
+    localStorage.removeItem(probe);
+    return true;
+  } catch { return false; }
+}
+
 function seen(userId: string): boolean {
+  // No usable id and no storage is precisely the blocked-storage learner, who
+  // is the one this notice is for. Falling back to "already seen" here is what
+  // hid it from them entirely.
+  if (!userId || !storageWorks()) return dismissedInMemory;
   try { return localStorage.getItem(userKey(userId, SEEN)) === '1'; }
-  catch { return true; }   // storage blocked: do not nag on every paint
+  catch { return dismissedInMemory; }
+}
+
+function remember(userId: string): void {
+  dismissedInMemory = true;
+  if (!userId || !storageWorks()) return;
+  try { localStorage.setItem(userKey(userId, SEEN), '1'); } catch { /* in memory only */ }
 }
 
 /** The text itself, used both on first entry and as a permanent section. */
@@ -35,11 +67,19 @@ export function DataNoticeBody() {
   );
 }
 
-/** Shown once per profile, on first entry. */
+/**
+ * Shown once per profile on first entry.
+ *
+ * It is deliberately absent from the prerendered HTML: prerendering has no
+ * storage and no learner, so the component resolves to nothing and the notice
+ * appears on hydration. That keeps the prerendered markup deterministic, and it
+ * means on a slow connection the page is readable for a moment before the
+ * notice arrives. See docs/04-information-architecture.md.
+ */
 export function DataNotice() {
   const { t } = useApp();
   const userId = useUserId();
-  const [dismissed, setDismissed] = useState(() => !userId || seen(userId));
+  const [dismissed, setDismissed] = useState(() => seen(userId));
   if (dismissed) return null;
   return (
     <section className="card card--raised" data-testid="data-notice"
@@ -47,10 +87,7 @@ export function DataNotice() {
       <h2 id="data-notice-h" className="h3">{t('dataTitle')}</h2>
       <DataNoticeBody />
       <button className="btn btn--primary" data-testid="data-notice-dismiss"
-              onClick={() => {
-                try { localStorage.setItem(userKey(userId, SEEN), '1'); } catch { /* blocked */ }
-                setDismissed(true);
-              }}>
+              onClick={() => { remember(userId); setDismissed(true); }}>
         {t('dataUnderstood')}
       </button>
     </section>

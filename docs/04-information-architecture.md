@@ -237,6 +237,36 @@ Implemented as one formatter applied to every French string at render, with unit
 
 ---
 
+## The data notice — where it is, and when it appears
+
+A learner's progress lives in their browser and nowhere else. That is the right
+default and it has one sharp edge: clear the browser and the history is gone,
+with no way back. So the product says so **on first entry**, at the top of the
+home page, and keeps the same text permanently in Settings beside the export
+button it refers to. It is not a cookie banner — there is nothing to consent
+to, so there is no "accept", only one dismissal.
+
+**It is deliberately absent from the prerendered HTML.** Prerendering has no
+storage and no learner, so the component resolves to nothing and the notice
+arrives on hydration. That keeps the prerendered markup deterministic, which is
+what the build asserts — and it means that on a slow connection the page is
+readable for a moment before the notice appears. That is a known trade, not an
+oversight: putting it in the prerendered shell would mean serving it to a
+returning learner who dismissed it months ago, because the server cannot know.
+
+**When storage is unavailable** — a private window, or a browser with site data
+blocked — the dismissal is held in memory instead. The learner sees it once,
+dismisses it, and is not nagged as they move around the app; it returns if they
+reload, which is correct, because their progress resets then too. An earlier
+version treated "cannot read storage" as "already seen", which hid the warning
+from the one learner who most needed it.
+
+**Two storage failure modes are tested, because they behave differently.** In
+one the methods throw (Safari's private mode); in the other the `localStorage`
+accessor itself throws, so even `typeof localStorage` raises SecurityError. The
+second crashed the whole application — a blank page, not a degraded one — until
+`lib/settings.ts` and `lib/session.ts` were guarded.
+
 ## Two things this IA depends on that do not exist yet
 
 1. **The concept taxonomy** (`docs/03-review-log.md`). `/progress/weak`, the "your record on this" panel on every grammar point, and the palette's cross-type results all join on `concept_ids`. Until the taxonomy is drafted, those three are wireframes with no data behind them. It is on the critical path and it is content work, not code.

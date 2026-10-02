@@ -36,7 +36,13 @@ export function newId(): string {
   return [...b].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
 
-const hasDom = () => typeof window !== 'undefined' && typeof localStorage !== 'undefined';
+// `typeof localStorage` THROWS in a browser with site data blocked — the
+// property accessor itself raises SecurityError, so this cannot be a bare
+// typeof. Found by running the app against a storage that refuses access.
+const hasDom = () => {
+  try { return typeof window !== 'undefined' && typeof localStorage !== 'undefined'; }
+  catch { return false; }
+};
 
 export function listProfiles(): Profile[] {
   if (!hasDom()) return [];

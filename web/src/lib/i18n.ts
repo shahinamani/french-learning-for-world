@@ -105,7 +105,6 @@ const en = {
   dataClear: 'If you clear your browser data, or study in a private window, it is gone and cannot be recovered.',
   dataExport: 'Export a copy from Settings before you change device, and import it on the new one.',
   dataUnderstood: 'Got it',
-  dataOpen: 'Where your progress is kept, and how to keep it',
 };
 
 export type Dict = typeof en;
