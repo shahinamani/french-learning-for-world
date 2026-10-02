@@ -9,7 +9,7 @@ import { Icon } from '../../components/Icon';
 import { NotFound } from '../../routes/Stub';
 import { fr as frText } from '../../lib/typography';
 import { Localised } from '../../components/Localised';
-import { withPronoun } from '../../lib/pronominal';
+import { withPronoun, verbLabel } from '../../lib/pronominal';
 
 export function VerbDetail() {
   const { infinitive = '' } = useParams();
@@ -52,7 +52,7 @@ export function VerbDetail() {
             headword for all 51 pronominal-only verbs, and a learner copying it
             writes « je souviens ». */}
         <h1 className="h2" lang="fr" dir="ltr" data-testid="verb-headword">
-          {frText(verb.headword ?? verb.infinitive)}
+          {frText(verbLabel(verb))}
         </h1>
         {/* `verb.meanings[settings.meaning] ?? verb.meanings.en` was here. That
             pattern is forbidden in this codebase for the reason docs/04 gives:
@@ -126,7 +126,10 @@ export function VerbDetail() {
           </div>
           <table className="conj">
             <caption className="u-hidden-visually">
-              <span lang="fr" dir="ltr">{verb.infinitive}</span>{' — '}<Localised field={names[tn.id] ?? {}} />
+              {/* The caption is read by a screen reader before the table and
+                  shown above it. It said "souvenir" while the rows said
+                  "me souviens". */}
+              <span lang="fr" dir="ltr">{verbLabel(verb)}</span>{' — '}<Localised field={names[tn.id] ?? {}} />
             </caption>
             <tbody>
               {verb.persons.map((p, i) => (tn.forms[i] ? (

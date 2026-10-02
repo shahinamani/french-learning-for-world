@@ -6,6 +6,7 @@ import { loadVerbIndex, loadVerbForms, type VerbSummary } from '../../lib/verbs'
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
+import { verbLabel } from '../../lib/pronominal';
 import { fold } from '../../lib/fold';
 import { WithAccentBar } from '../../components/AccentBar';
 
@@ -99,7 +100,11 @@ export function VerbList() {
           {capped.map((v) => (
             <li key={v.infinitive}>
               <Link className="row row--link" to={`/learn/verbs/${encodeURIComponent(v.infinitive)}`}>
-                <span className="row-fr" lang="fr" dir="ltr">{frText(v.infinitive)}</span>
+                {/* verbLabel, not v.infinitive: « se souvenir ». The learner
+                    meets this list before the detail page, so the bare
+                    infinitive here is the first thing they would have copied. */}
+                <span className="row-fr" lang="fr" dir="ltr"
+                      data-testid={`row-${v.infinitive}`}>{frText(verbLabel(v))}</span>
                 <span className="muted">{v.en}</span>
                 {v.irregular && <span className="chip" data-testid={`irr-${v.infinitive}`}>{t('irregular')}</span>}
                 <Icon name="chevron" size={16} />

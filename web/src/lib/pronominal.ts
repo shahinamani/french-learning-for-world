@@ -38,3 +38,20 @@ export function withPronoun(person: string, personIndex: number, form: string): 
   const p = reflexivePronoun(personIndex, form);
   return p.endsWith("'") ? `${person} ${p}${form}` : `${person} ${p} ${form}`;
 }
+
+
+/**
+ * The name of a verb, as a learner must read it.
+ *
+ * Every learner-facing surface goes through here. The reason is the defect this
+ * file exists for: `souvenir` was fixed on the detail page and in the drill, and
+ * the LIST went on printing the bare infinitive for another day, because the
+ * fix was applied at call sites and the list was a call site nobody listed.
+ * Three surfaces, two fixed, and the learner meets the list first.
+ *
+ * `infinitive` remains the identifier — the route, the record key, the index
+ * lookup. This is only what is shown.
+ */
+export function verbLabel(v: { infinitive: string; headword?: string | null }): string {
+  return v.headword || v.infinitive;
+}

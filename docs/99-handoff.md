@@ -356,9 +356,11 @@ honours them.
    pushed without checking, and the budget has never slipped before.
 4. **The level-assignment list** for Shahin's 150–250 manual moves: verb,
    frequency-assigned level, room for his correction.
-5. **The 51 pronominal-only verbs want a teacher's eye** — the list is in
-   `tests/pronominal.test.js`, declared in full, so moving one is a one-line
-   change that the suite then checks.
+5. **The 51 pronominal-only verbs are with Shahin for a ruling** —
+   `docs/reviews/pronominal-51.md` has the list with a column for his verdict.
+   `cabrer`, `évaporer` and `prostituer` are already flagged as likely wrong.
+   This review matters more than the glosses: a wrong meaning teaches one wrong
+   word, a wrong reflexive marking teaches a wrong conjugation on every row.
 6. **Build inputs are in `data/`** and the page caches are at
    `~/.cache/flw/`, not in a scratchpad. `data/README.md` states what losing
    them costs: 4,793 requests against Wikimedia, about 28 minutes. `content/`

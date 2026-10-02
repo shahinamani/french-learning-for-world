@@ -346,6 +346,29 @@ ok('a vowel-initial pronominal verb elides',
      return norm(h) === "s'évanouir" && /^m'évanouis/.test(norm(f));
    })());
 
+// The LIST, which a learner meets before the detail page. It printed the bare
+// infinitive for a day after the detail page and the drill were fixed, because
+// the fix was applied at call sites and this was a call site nobody listed.
+await go(page, '/learn/verbs');
+await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
+await page.fill('[data-testid="verb-search"]', 'souvenir');
+await page.waitForTimeout(400);
+ok('the verb LIST shows « se souvenir », not « souvenir »',
+   (await page.locator('[data-testid="row-souvenir"]').innerText()).trim() === 'se souvenir');
+
+// The history record is what a learner reads back weeks later. It said
+// "je — souvenir (present)" while the screen had said "je me — se souvenir".
+await go(page, '/learn/verbs/souvenir');
+await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
+ok('the pronominal provenance is on the page, like the gloss provenance',
+   /wiktionary/i.test(await page.locator('[data-testid="verb-pronominal"]').innerText()));
+
+// « baiser » keeps both senses: "to kiss" alone is the more dangerous gloss.
+await go(page, '/learn/verbs/baiser');
+await page.waitForSelector('[data-testid="verb-meaning"]', { timeout: 8000 });
+const baiser = await page.locator('[data-testid="verb-meaning"]').innerText();
+ok(`baiser reads "${baiser}"`, /to kiss/.test(baiser) && /vulgar/.test(baiser));
+
 // A verb with a pronominal sense among others keeps the bare infinitive: the
 // mirror defect would teach that « je trouve » is wrong.
 await go(page, '/learn/verbs/trouver');

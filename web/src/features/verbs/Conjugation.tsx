@@ -17,7 +17,7 @@ import type { ReviewRow } from '../../lib/types';
 import { Icon } from '../../components/Icon';
 import { useSidePanel } from '../../components/SidePanel';
 import { fr as frText } from '../../lib/typography';
-import { reflexivePronoun } from '../../lib/pronominal';
+import { reflexivePronoun, verbLabel } from '../../lib/pronominal';
 import { WithAccentBar } from '../../components/AccentBar';
 import { pick } from '../../lib/exams';
 import { Num } from '../../components/Num';
@@ -94,7 +94,12 @@ export function ConjugationDrill() {
       id: newId(), userId, sessionId: sessionId.current, reviewedAt: now,
       cardKey, itemType: 'verb_form', conceptIds: tense.conceptId ? [tense.conceptId] : [],
       direction: 'native-fr',
-      promptShown: { front: `${verb.persons[index]} — ${verb.infinitive} (${tense.id})`, level: verb.level, type: 'verb_form' },
+      promptShown: {
+        front: `${verb.pronominal
+          ? `${verb.persons[index]} ${reflexivePronoun(index, tense.forms[index] ?? '')}`
+          : verb.persons[index]} — ${verbLabel(verb)} (${tense.id})`,
+        level: verb.level, type: 'verb_form',
+      },
       response: value, isCorrect: check.correct, grade, durationMs: took,
       stateBefore: before.state, stateAfter: after.state,
       stabilityBefore: before.stability, stabilityAfter: after.stability,
@@ -161,7 +166,7 @@ export function ConjugationDrill() {
             {verb.pronominal
               ? `${verb.persons[index]} ${reflexivePronoun(index, tense.forms[index] ?? '')}`
               : verb.persons[index]}
-          </span>{frText(verb.headword ?? verb.infinitive)}
+          </span>{frText(verbLabel(verb))}
         </p>
         <form onSubmit={(e) => { e.preventDefault(); if (result) next(); else void submit(); }}>
           <WithAccentBar inputRef={input} onInsert={setValue}>

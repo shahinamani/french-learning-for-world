@@ -208,6 +208,80 @@ nothing fails when it goes stale]]: both are failures that produce no signal at
 all, which is the only kind that survives.
 
 
+### 2026-10-02 — a missing field is a fact nothing can assert and no test can miss
+
+« souvenir » was in the content as a bare infinitive, glossed "to remember",
+with a conjugation table reading « je souviens », « tu souviens », « il
+souvient ». Six rows of French that does not exist, on a verb in the first
+hundred. A learner studying that table writes it in an exam and learned it from
+us.
+
+The content had 2,392 verbs, 251 tests, two corpora agreeing on 134,000 forms,
+and a browser walk that opened the verb page. None of it could have caught
+this, for one reason: **the data had no field in which to say "this verb needs
+a pronoun", so the fact went unsaid for all 51.**
+
+A wrong value is a thing a test can disagree with. A missing *field* is not
+wrong — it is absent, and absence has no value to compare against. Every guard
+on this project checks that the data says something true. None of them could
+check that the data was silent about something it had to say.
+
+This is the failure mode that survives the most careful review, because review
+reads what is there. The question that finds it is not "is this right?" but
+**"what can this shape not express?"** — and the answer for a verb record was
+"that it is pronominal, that it is defective, that it needs an auxiliary other
+than the one we assumed, that its meaning differs by register". Three of those
+four are now expressible. The fourth is not, and I do not know what else is
+missing, which is the honest state.
+
+The mirror defect is the harder half, and it was one disjunction away: «
+transporter » carries `{{lb|fr|transitive|or|pronominal}}`, and reading that as
+"pronominal" marked five verbs pronominal-only that are not. **Breaking five
+verbs that were already right while fixing 51 that were wrong would have been a
+net loss nobody would have spotted** — the 51 were visibly broken, the five
+would have become quietly broken.
+
+### 2026-10-02 — the guard was blinded by the attribute that made it testable
+
+« se souvenir » was fixed five times, on five surfaces, each found by hand
+after I had said the work was done: the detail heading, the drill prompt, then
+the list, then the table caption, then the stored history record. The fix was
+applied at call sites, and a call site nobody has listed is a call site that
+keeps the defect.
+
+So I wrote a source-level check: no component may print `.infinitive` where a
+learner reads it; go through `verbLabel()`. Then I tested it the way everything
+here gets tested — reverted the list to the bare infinitive and ran it.
+
+**It passed.**
+
+The reverted line was:
+
+```jsx
+<span data-testid={`row-${v.infinitive}`}>{frText(v.infinitive)}</span>
+```
+
+My allow-list excused any LINE containing an allowed use of the identifier — a
+route, a React key, a test id — and `data-testid` is an allowed use. The
+attribute I had added so the *browser* check could find the row is what made
+the *source* check blind to the defect on the same line.
+
+Two things in that:
+
+* **A line is not the unit of meaning; an expression is.** The check now
+  removes each legitimate use together with its argument before looking for a
+  bare render, so one allowed token on a line no longer pardons the rest of it.
+* **A guard that has never been seen failing is a guess about what it does.**
+  This one was written carefully, read correctly, and did nothing. The thirty
+  seconds of reverting one line is the whole difference between a check and a
+  comment claiming there is a check.
+
+See also [[2026-10-02 — a filter written to protect learners damaged the one
+entry it most mattered to get right]], which ends on the same point from the
+other side: a guard on the most ordinary case is worth more than one on the
+exotic case you will remember to check by hand.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0
