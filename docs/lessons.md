@@ -21,6 +21,98 @@ exactly as they are: renumbering them would break every reference already
 written, and the numbers were never the point.
 
 
+### 2026-10-02 — a handoff document decays faster than the code, because nothing fails when it goes stale
+
+`docs/99-handoff.md` exists to orient somebody with none of the conversation
+that produced the work. Directly under the warning that nobody had checked its
+claims, it said: *"Pull request #1 is merged. The work is on `main` at
+`698c550`. Current branch: `feat/translations`."* Nineteen pull requests out of
+date. That branch no longer existed.
+
+The warning and the wrong facts were on the same screen, and **the wrong facts
+were more specific.** A commit hash and a branch name read as something checked;
+a paragraph of caution reads as a disclaimer. A reader would have trusted the
+hash and discounted the warning, which is the exact opposite of what was true.
+
+Code that goes stale fails: a test breaks, a build stops, a type stops matching.
+A document that goes stale does nothing at all, and keeps being read.
+
+Two cheap defences, both now in place:
+
+* **`last updated <date>` in the title of every document of this kind.** It
+  costs one line and tells a reader how much to trust the rest.
+* **Put the unverified-work warning FIRST, before any claim the document
+  makes.** A reader who learns at the end that nobody checked this has already
+  believed the middle.
+
+The same decay had reached the code, where it is quieter still: the comment at
+the top of `web/src/lib/verbs.ts` stated the verb index was "26 KiB gzipped".
+It was 71. The number had been right when it was written, glosses were added,
+and nothing re-measured it. A comment stating a measurement is a claim, and a
+claim nothing checks is a claim that will be wrong later. There is now a check
+that fails when the index passes 90 KiB.
+
+### 2026-10-02 — a label describes the French word, not the English text we are about to print
+
+`venir` shipped "to come …; **to cum, to come, to orgasm**" — on the verb every
+A1 course teaches in week one. en.wiktionary records that sense and labels it
+`{{lb|fr|Anglicism|vulgar}}`; our harvest stripped every `{{lb|...}}` as noise
+before anything could read it. The label existed in the source and was thrown
+away one line before the decision that needed it.
+
+**Read the metadata before you strip the markup.** The fix was to move label
+extraction above `clean()`, not to add a word blocklist. A blocklist fails
+twice: it misses what it has not heard of, and it censors the innocent —
+« baiser » is "to kiss" and also carries vulgar senses, one word with two
+registers, and only the label can separate them.
+
+But the label does not answer the question we were actually asking.
+Wiktionary's `vulgar` describes the register of the **French** word. It says
+nothing about the English text we are about to print:
+
+* « gueuler » → "to yell, to scream" — dropped. Clean translation, coarse French.
+* « démerder » → "to manage, to get by" — dropped. Same.
+* « enculer », « chier » — dropped, and here the English is explicit too.
+
+Dropping by label is what ships. It costs seven verbs out of 2,392, and two of
+those seven lost a translation a learner could have read without blinking.
+**The label answers "what register is this word?", not "is this sentence
+printable?"** If the second question is ever asked properly it needs a check on
+our own English output — a narrow and defensible use of a word list, applied to
+what we are about to publish rather than to someone else's language.
+
+Where a verb is silenced the page now says so, in four languages. A blank field
+looks like a bug and teaches nothing; "every sense Wiktionary records for this
+verb is marked vulgar" is the single most useful fact about « enculer ».
+
+Three parsing faults surfaced in the same pass, each already shipping:
+
+* **An HTML comment can span two lines, and `<[^>]+>` matches neither half.**
+  « chier » shipped a Wiktionary editor's aside — "not sure I believe the next
+  one" — as part of its meaning.
+* **Templates nest, and one non-recursive pass cannot see that.**
+  `{{ng|... {{m|en|would}} or {{m|en|should}} ...}}` stripped as two separate
+  matches leaves the text between them. « vouloir » shipped a sense whose entire
+  content was the word **"or"**.
+* **A gloss inlined bare welds two clauses into a third meaning.** « venir »
+  read "to come to move from one place to another that is nearer the speaker".
+
+And one fault I introduced and caught in the same hour: `usable()` required a
+three-letter word, which rejected « aller »'s primary sense, **"to go"** — no
+word in it reaches three letters. aller would have shipped with "to attend
+(school, church regularly)" as its first meaning, on the most taught verb in the
+language. A filter written to protect learners silently damaged the one entry it
+was most important to get right. The check now asserts aller reads "to go".
+
+A fourth, in `build-verbs.py`: I named my set of withheld verbs `withheld`, and
+a line further down already said `index, shards, withheld = [], {...}, []`. The
+set was emptied before it was read, every verb reported "not withheld", and the
+build printed `0 withheld` — a wrong answer that looked exactly like a right
+one. Nothing failed. The only reason it was caught is that **0 was a number I
+had a reason to expect to be 7.** A count you cannot predict in advance is a
+count that cannot catch this.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

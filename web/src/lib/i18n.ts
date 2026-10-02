@@ -92,6 +92,12 @@ const en = {
   profile: 'Profile', switchProfile: 'Switch profile', newProfile: 'New profile',
   exportData: 'Export my data', eraseData: 'Erase everything',
   eraseConfirm: 'Erase all progress for this profile? This cannot be undone.',
+  // Where the meanings come from, said on the page rather than in a document
+  // nobody opens. 2,366 glosses were taken from en.wiktionary.org by script and
+  // no French teacher has read them; a learner is entitled to know that before
+  // they memorise one.
+  glossSource: 'Meanings come from Wiktionary and have not been reviewed by a teacher.',
+  glossWithheldVulgar: 'No meaning is shown: every sense Wiktionary records for this verb is marked vulgar. The verb is in the list because it is common in speech, not because it is one to use.',
   notBuilt: 'Not built yet',
   notBuiltBody: 'This section is planned. The shell, search, the side panel and flashcards are complete; the rest follow the same pattern.',
   independence: 'Independent study tool. Not affiliated with any examination body. No certificates are issued.',

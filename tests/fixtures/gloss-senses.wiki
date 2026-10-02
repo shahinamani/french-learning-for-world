@@ -1,0 +1,26 @@
+==English==
+
+===Verb===
+# to test, an English section that must be ignored entirely
+
+==French==
+
+===Etymology===
+Invented for this fixture.
+
+===Verb===
+# to [[walk]] {{gloss|to move on foot at a moderate pace}}
+# {{lb|fr|transitive|vulgar}} to UNSHIPPABLE, to WITHHELD
+# {{ng|forms a construction, with {{m|en|would}} or {{m|en|should}} in English}}
+# {{lb|fr|slang}} to [[hurry]]
+# to [[eat]]<!-- an editor's aside that opens here
+and closes on the following line -->
+# {{lb|fr|derogatory}} to SLUR
+
+====Usage notes====
+Not a sense and must not be read as one.
+
+==German==
+
+===Verb===
+# to test, a later language that must terminate the French section

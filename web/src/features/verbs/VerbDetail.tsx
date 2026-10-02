@@ -48,7 +48,23 @@ export function VerbDetail() {
       </button>
       <div>
         <h1 className="h2" lang="fr" dir="ltr">{frText(verb.infinitive)}</h1>
-        <p className="muted">{verb.meanings[settings.meaning] ?? verb.meanings.en}</p>
+        {/* `verb.meanings[settings.meaning] ?? verb.meanings.en` was here. That
+            pattern is forbidden in this codebase for the reason docs/04 gives:
+            it serves English silently, so a learner reading Persian cannot tell
+            a translated meaning from an untranslated one. `Localised` says
+            which language came back, in the markup, and marks it. */}
+        {verb.meanings?.en || verb.meanings?.[settings.meaning]
+          ? <p className="muted"><Localised field={verb.meanings} locale={settings.meaning}
+                                            testId="verb-meaning" /></p>
+          : verb.glossWithheld === 'vulgar'
+            ? <p className="muted" data-testid="verb-gloss-withheld">{t('glossWithheldVulgar')}</p>
+            : null}
+        {/* Said on the page, every time, not once in an About screen. A learner
+            about to memorise "to come" from a machine-harvested gloss should
+            know no teacher has read it. */}
+        {verb.meanings?.en
+          ? <p className="fine muted" data-testid="verb-gloss-source">{t('glossSource')}</p>
+          : null}
       </div>
       <div className="row gap-2 wrap">
         <span className={`chip chip--${verb.level.toLowerCase()}`}>{verb.level}</span>

@@ -287,6 +287,39 @@ ok(`the detail page shows ${await page.locator('table.conj').count()} tables of 
    await page.locator('table.conj').count() >= 6);
 ok('irregular forms are marked', await page.locator('.chip', { hasText: /irregular|irrégulier/ }).count() > 0);
 ok('a verb with no imperative says so', true);
+
+// The meanings are machine-harvested from Wiktionary and no teacher has read
+// them. A learner about to memorise one is told so on the page, every time,
+// rather than in an About screen nobody opens.
+ok('the page says the meanings are from Wiktionary and unreviewed',
+   /wiktionary/i.test(await page.locator('[data-testid="verb-gloss-source"]').innerText()));
+
+// « venir » shipped "to cum, to come, to orgasm" until today. The sense is
+// labelled vulgar by Wiktionary and is now refused before it is ever written to
+// the content, so the only way this can regress is if the filter is removed —
+// and this is the check that a learner would have seen it.
+await go(page, '/learn/verbs/venir');
+await page.waitForSelector('[data-testid="verb-meaning"]', { timeout: 8000 });
+const venir = await page.locator('[data-testid="verb-meaning"]').innerText();
+ok(`venir reads "${venir}"`, /^to come/i.test(venir));
+ok('no vulgar sense reaches the verb page',
+   !/\b(cum|orgasm)\b/i.test(await page.locator('.page').innerText()));
+
+// « chier »'s every sense is labelled vulgar, so it ships with no meaning. The
+// page says why: a blank field looks like a bug and teaches nothing.
+await go(page, '/learn/verbs/chier');
+await page.waitForSelector('[data-testid="verb-gloss-withheld"]', { timeout: 8000 });
+ok('a verb with every sense withheld explains itself instead of showing a blank',
+   /vulgar/i.test(await page.locator('[data-testid="verb-gloss-withheld"]').innerText()));
+ok('and prints none of the withheld text',
+   !/\bshit\b/i.test(await page.locator('.page').innerText()));
+
+await go(page, '/learn/verbs');
+await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
+await page.fill('[data-testid="verb-search"]', 'allons');
+await page.waitForTimeout(400);
+await page.locator('[data-testid="verb-list"] a').first().click();
+await page.waitForTimeout(500);
 await page.locator('[data-testid="practise-subjonctif"]').click();
 await page.waitForTimeout(600);
 ok('practice starts straight from the table', /practise\/conjugation\?verb=.*tense=subjonctif/.test(page.url()));

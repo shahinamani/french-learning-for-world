@@ -63,3 +63,8 @@ web/dist/
 web/.dbg/
 web/public/content/
 web/public/fonts/
+
+# Python bytecode. A .pyc was tracked and churned on every run of the
+# conjugator, putting a binary diff in commits that changed no source.
+__pycache__/
+*.pyc

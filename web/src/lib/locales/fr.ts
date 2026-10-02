@@ -100,6 +100,8 @@ const fr: Dict = {
   aboutSourcesIntro: 'Des travaux sous licence libre sur lesquels ce projet s’appuie. Chacun est utilisé sous la licence indiquée, et chaque licence exige qu’il soit nommé ici.',
   verbCount: '{shown} verbes affichés sur {total}. Tapez pour affiner la liste.',
   readNotWritten: 'À lire, pas à écrire',
+  glossSource: 'Les sens proviennent du Wiktionnaire et n’ont pas été relus par un enseignant.',
+  glossWithheldVulgar: 'Aucun sens n’est affiché : tous les sens que le Wiktionnaire donne pour ce verbe sont marqués vulgaires. Le verbe figure dans la liste parce qu’il est courant à l’oral, non parce qu’il est à employer.',
 };
 
 export default fr;
