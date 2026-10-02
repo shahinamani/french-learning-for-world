@@ -25,11 +25,16 @@ import type { Locale } from '../lib/types';
  * here, and the markup cannot be forgotten.
  */
 export function Localised(
-  { field, className, testId }:
-  { field: Partial<Record<Locale, string>> | undefined; className?: string; testId?: string },
+  { field, className, testId, locale: want }:
+  { field: Partial<Record<Locale, string>> | undefined; className?: string;
+    testId?: string;
+    /** Which language to ask for. Defaults to the interface language; a verb's
+     *  MEANING passes `settings.meaning`, which the learner sets separately
+     *  from the interface and which was being ignored. */
+    locale?: Locale },
 ) {
   const { settings } = useApp();
-  const { text, locale } = pick(field, settings.ui);
+  const { text, locale } = pick(field, want ?? settings.ui);
   if (!text) return null;
   return (
     <span className={className} lang={locale} dir="auto" data-testid={testId}>

@@ -5,10 +5,17 @@
  * twenty times the entire JavaScript budget, so it is split the way a learner's
  * session splits:
  *
- *   verbs-index.json      every verb, one line each — 26 KiB gzipped. The list
+ *   verbs-index.json      every verb, one line each — 71 KiB gzipped. The list
  *                         and the search read this and nothing else.
- *   verbs/<level>.json    the paradigms, by CEFR level, 24–52 KiB gzipped each,
+ *   verbs/<level>.json    the paradigms, by CEFR level, 34–82 KiB gzipped each,
  *                         fetched when a learner opens a verb at that level.
+ *
+ * Those two numbers were 26 and "24–52" in this comment until 2026-10-02, and
+ * had been wrong for several commits: the index grew when glosses were added
+ * and nobody re-measured. A comment stating a measured size is a claim, and a
+ * claim nothing checks goes stale silently — `tests/glosses.test.js` now fails
+ * if the index passes 90 KiB gzipped, so the next person is told rather than
+ * trusting this paragraph.
  *
  * Sharded by level rather than by letter because that is what a session
  * follows: somebody working at B1 opens B1 verbs and never touches C2's
@@ -53,6 +60,10 @@ export type Verb = {
   provenance: string;
   licence: string;
   glossProvenance: string | null;
+  /** Set when every sense Wiktionary records is labelled vulgar, so the page can
+   *  say why it shows no meaning instead of rendering an empty line that looks
+   *  like a bug. Null for every other verb. */
+  glossWithheld: 'vulgar' | null;
   /** Something a learner should be told about this verb — an accepted
    *  alternative spelling, a defective paradigm, a point still unsettled. */
   notes: string | null;

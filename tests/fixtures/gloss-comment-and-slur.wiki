@@ -1,0 +1,7 @@
+==French==
+
+===Verb===
+# {{lb|fr|derogatory}} to SLUR, a sense no learner may be shown
+# to [[eat]]<!-- an editor's aside that opens here
+and closes on the following line, and is matched by no single-line pattern -->
+# to [[drink]]<!-- a comment that is never closed at all
