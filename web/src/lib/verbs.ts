@@ -59,7 +59,14 @@ export type Verb = {
   tenses: VerbTense[];
   provenance: string;
   licence: string;
-  glossProvenance: string | null;
+  /** "wiktionary-en" for the 2,373 taken from the source as-is, "teacher" for
+   *  the handful a French teacher has ruled on — which is what lets the page
+   *  stop calling those unreviewed. */
+  glossProvenance: 'wiktionary-en' | 'teacher' | null;
+  /** A lemma that is also a common word of another part of speech. « fier » the
+   *  verb and « fier » the adjective are different words, and a learner
+   *  meeting one needs telling that the other exists. */
+  homograph: string | null;
   /** Set when every sense Wiktionary records is labelled vulgar, so the page can
    *  say why it shows no meaning instead of rendering an empty line that looks
    *  like a bug. Null for every other verb. */

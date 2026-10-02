@@ -363,6 +363,37 @@ await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
 ok('the pronominal provenance is on the page, like the gloss provenance',
    /wiktionary/i.test(await page.locator('[data-testid="verb-pronominal"]').innerText()));
 
+// A teacher's correction, and the only two meanings on the project a human has
+// read. The page must stop calling these unreviewed, and must go on calling the
+// other 2,373 unreviewed.
+await go(page, '/learn/verbs/complaire');
+await page.waitForSelector('[data-testid="verb-meaning"]', { timeout: 8000 });
+ok('a corrected gloss shows the teacher\'s meaning, not Wiktionary\'s',
+   /revel in/.test(await page.locator('[data-testid="verb-meaning"]').innerText()));
+ok('and says a teacher corrected it rather than claiming it is unreviewed',
+   /teacher/i.test(await page.locator('[data-testid="verb-gloss-source"]').innerText()));
+ok('while an uncorrected verb still says it is unreviewed',
+   await (async () => {
+     await go(page, '/learn/verbs/souvenir');
+     await page.waitForSelector('[data-testid="verb-gloss-source"]', { timeout: 8000 });
+     return /not been reviewed/i.test(
+       await page.locator('[data-testid="verb-gloss-source"]').innerText());
+   })());
+
+// « fier » the verb and « fier » the adjective are different words.
+await go(page, '/learn/verbs/fier');
+await page.waitForSelector('[data-testid="verb-homograph"]', { timeout: 8000 });
+ok('a homograph is named on the page',
+   /adjective/i.test(await page.locator('[data-testid="verb-homograph"]').innerText()));
+
+// A removal is the mirror correction: cabrer is transitive French.
+await go(page, '/learn/verbs/cabrer');
+await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
+ok('a verb removed from the pronominal list shows its bare infinitive',
+   (await page.locator('[data-testid="verb-headword"]').innerText()).trim() === 'cabrer');
+ok('and its table has no reflexive pronoun',
+   !/\bme /.test(await page.locator('[data-testid="form-present-0"]').innerText()));
+
 // « baiser » keeps both senses: "to kiss" alone is the more dangerous gloss.
 await go(page, '/learn/verbs/baiser');
 await page.waitForSelector('[data-testid="verb-meaning"]', { timeout: 8000 });

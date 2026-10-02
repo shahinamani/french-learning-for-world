@@ -71,8 +71,18 @@ export function VerbDetail() {
         {verb.pronominal
           ? <p className="fine" data-testid="verb-pronominal">{t('pronominalOnly')}</p>
           : null}
+        {/* « fier » the verb and « fier » the adjective are different words. A
+            learner who meets one and not the other will use the wrong one. */}
+        {verb.homograph
+          ? <p className="fine" data-testid="verb-homograph">{verb.homograph}</p>
+          : null}
+        {/* A reviewed meaning must not carry the unreviewed warning: these are
+            the only glosses on the project a teacher has ruled on, and saying
+            otherwise would understate the one piece of human review there is. */}
         {verb.meanings?.en
-          ? <p className="fine muted" data-testid="verb-gloss-source">{t('glossSource')}</p>
+          ? <p className="fine muted" data-testid="verb-gloss-source">
+              {t(verb.glossProvenance === 'teacher' ? 'glossReviewed' : 'glossSource')}
+            </p>
           : null}
       </div>
       <div className="row gap-2 wrap">

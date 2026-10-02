@@ -147,7 +147,7 @@ test('every verb records where its conjugation and its meaning came from', () =>
     // A meaning and a conjugation come from different places, and the data has
     // to say so — docs/02 requires provenance per item, not per file.
     const hasGloss = Boolean(v.meanings && v.meanings.en);
-    if (hasGloss && v.glossProvenance !== 'wiktionary-en') {
+    if (hasGloss && !['wiktionary-en', 'teacher'].includes(v.glossProvenance)) {
       bad.push(`${v.infinitive}: a gloss with provenance ${v.glossProvenance}`);
     }
     if (!hasGloss && v.glossProvenance) {
