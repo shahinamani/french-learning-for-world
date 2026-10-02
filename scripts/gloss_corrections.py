@@ -60,6 +60,41 @@ TEACHER_GLOSS: dict[str, tuple[str, str]] = {
         "talent » is ordinary figurative French and is the transitive sense a "
         "learner is most likely to meet in writing.",
     ),
+    # Found by reading the 48 pronominal verbs, ruled on by Shahin 2026-10-03.
+    # Four of the five are the same fault as « complaire »: Wiktionary's sense
+    # ORDER is an editor's judgement about primacy and the harvest reads
+    # position as meaning, so an archaic or marginal sense leads.
+    "éprendre": (
+        "to fall in love with, to become enamoured with (literary)",
+        "Wiktionary leads with « to burn », which is archaic literary "
+        "(éprendre = enflammer) and should not lead, if it appears at all. "
+        "« S'éprendre de » is to fall in love with.",
+    ),
+    "gourer": (
+        "to be mistaken, to get it wrong (familiar)",
+        "Wiktionary's « to goof up, to mess up, to screw up » is close enough, "
+        "but its second sense — « to doubt something, to be wary of something » "
+        "— is not this verb at all and was being shown.",
+    ),
+    "empresser": (
+        "to hurry to, to be eager to",
+        "Wiktionary's second sense « to mass, to gather (literary) » is an "
+        "archaic sense of « presser » and does not belong here. "
+        "« S'empresser de » is to hurry to do something.",
+    ),
+    "envoler": (
+        "to fly away, to take off; to vanish, to disappear",
+        "The character budget admitted a fourth sense reading « to vanish, "
+        "disappear, walk (to be stolen) (colloquial) ». « Walk » there is "
+        "English slang glossing the figurative sense and is useless to a "
+        "learner. NOTE: this is damage from WIDENING the budget, not from the "
+        "old cap — see the lessons entry on a filter doing two jobs.",
+    ),
+    "suicider": (
+        "to commit suicide",
+        "Wiktionary's « to commit suicide, to kill oneself, suicide » ends with "
+        "a bare noun that got into a verb gloss.",
+    ),
     "tapir": (
         "to crouch, to lie low",
         "Wiktionary's only sense is « to hide », which is thin enough to be "

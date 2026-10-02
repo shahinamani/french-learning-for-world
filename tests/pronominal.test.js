@@ -104,7 +104,26 @@ test('a teacher\'s gloss replaces Wiktionary\'s, and says so', () => {
   // cabrer and prostituer were added when their removal from the pronominal
   // list left them glossed reflexively — a verb marked transitive and glossed
   // "to prostitute oneself".
-  assert.deepEqual(reviewed.sort(), ['cabrer', 'complaire', 'prostituer', 'tapir']);
+  // Nine, after Shahin read the 48 and found five more. Four of those five are
+  // the « complaire » fault again: Wiktionary's sense ORDER put an archaic or
+  // marginal meaning first and the harvest read position as meaning.
+  assert.deepEqual(reviewed.sort(), ['cabrer', 'complaire', 'empresser', 'envoler',
+    'gourer', 'prostituer', 'suicider', 'tapir', 'éprendre'].sort());
+  // The five, by what was wrong with each.
+  const g = (inf) => all.find((v) => v.infinitive === inf).meanings.en;
+  assert.match(g('éprendre'), /^to fall in love/, 'Wiktionary led with "to burn"');
+  assert.ok(!/to burn/.test(g('éprendre')));
+  assert.match(g('gourer'), /^to be mistaken/);
+  assert.ok(!/wary of/.test(g('gourer')), 'a sense that is not this verb');
+  assert.match(g('empresser'), /^to hurry to/);
+  assert.ok(!/to mass/.test(g('empresser')), 'an archaic sense of « presser »');
+  assert.equal(g('suicider'), 'to commit suicide');
+  assert.ok(!/,\s*suicide$/.test(g('suicider')),
+    'the gloss still ends with a bare noun as a list item');
+  // envoler is the one the BUDGET broke, not the cap: widening it admitted
+  // "to vanish, disappear, walk (to be stolen) (colloquial)".
+  assert.ok(!/\bwalk\b/.test(g('envoler')),
+    `envoler reads "${g('envoler')}" — English slang glossing the figurative sense`);
   console.log(`    ${reviewed.length} of ${all.length} meanings have been read by a teacher`);
 });
 
