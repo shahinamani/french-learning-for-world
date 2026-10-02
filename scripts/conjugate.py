@@ -72,10 +72,15 @@ def strip_accents(s: str) -> str:
 
 
 def soften(stem: str, ending: str) -> str:
-    """c → ç and g → ge before a and o, so that the sound does not harden."""
+    """c → ç and g → ge before a and o, so that the sound does not harden.
+
+    The accented forms count: the passé simple « nous mangeâmes » and
+    « nous commençâmes » begin with â, and a rule that only looked for a bare
+    `a` produced « mangâmes » — a hard g, which is not a French word.
+    """
     if not ending:
         return stem
-    if ending[0] in "ao":
+    if ending[0] in "aoâàô":
         if stem.endswith("c"):
             return stem[:-1] + "ç"
         if stem.endswith("g"):
@@ -146,6 +151,13 @@ def conjugate_er(lemma: str) -> dict:
     out["cnd:pre"] = [fut_stem + e for e in CND_ENDINGS]
     out["par:pas"] = [stem + "é"]
     out["par:pre"] = [soften(stem, "ant") + "ant"]
+    # Read, not written — but a learner meets both in any B2 text, and leaving
+    # them out means the conjugation page simply has nothing where the passé
+    # simple should be.
+    out["ind:pas"] = [soften(stem, e) + e for e in
+                      ["ai", "as", "a", "âmes", "âtes", "èrent"]]
+    out["sub:imp"] = [soften(stem, "a") + e for e in
+                      ["asse", "asses", "ât", "assions", "assiez", "assent"]]
     out["imp:pre"] = [out["ind:pre"][1], out["ind:pre"][3], out["ind:pre"][4]]
     return out
 
@@ -157,6 +169,9 @@ def conjugate_ir_regular(lemma: str) -> dict:
     out["cnd:pre"] = [lemma + e for e in CND_ENDINGS]
     out["par:pas"] = [stem + "i"]
     out["par:pre"] = [stem + "issant"]
+    out["ind:pas"] = [stem + e for e in ["is", "is", "it", "îmes", "îtes", "irent"]]
+    out["sub:imp"] = [stem + e for e in
+                      ["isse", "isses", "ît", "issions", "issiez", "issent"]]
     out["imp:pre"] = [out["ind:pre"][1], out["ind:pre"][3], out["ind:pre"][4]]
     return out
 

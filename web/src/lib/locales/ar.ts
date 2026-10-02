@@ -98,6 +98,8 @@ const ar: Dict = {
   aboutIndependenceHeading: 'الاستقلال',
   aboutSources: 'المصادر والتراخيص',
   aboutSourcesIntro: 'أعمال مرخّصة بحرّية يقوم عليها هذا المشروع. كلّ منها مستخدم بموجب الترخيص المبيّن، وكلّ ترخيص يشترط ذكره هنا.',
+  verbCount: 'عرض {shown} فعلاً من {total}. اكتب لتضييق القائمة.',
+  readNotWritten: 'للقراءة لا للكتابة',
 };
 
 export default ar;

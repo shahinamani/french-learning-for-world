@@ -16,7 +16,12 @@ const walk = (dir, prefix = '') => readdirSync(resolve(dist, dir), { withFileTyp
 
 const assets = walk('assets', 'assets/');
 const fonts = walk('fonts', 'fonts/').filter((f) => f.endsWith('.woff2') || f.endsWith('.css'));
-const content = walk('content', 'content/');
+// The verb paradigms are NOT precached. Six shards are about 200 KiB gzipped
+// between them, and a learner working at B1 needs one. The fetch handler below
+// is stale-while-revalidate, so a shard caches itself the first time it is
+// opened and is available offline from then on — which is the behaviour we
+// want, without making every first visit pay for five levels nobody opened.
+const content = walk('content', 'content/').filter((f) => !f.startsWith('content/verbs/'));
 const shell = ['./', 'index.html', ...assets, ...fonts, ...content];
 const version = readFileSync(resolve(dist, 'index.html'), 'utf8').length + '-' + assets.join('').length;
 

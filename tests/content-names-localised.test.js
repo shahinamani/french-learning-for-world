@@ -31,14 +31,19 @@ import { pick } from '../web/src/lib/exams.ts';
 const root = fileURLToPath(new URL('..', import.meta.url));
 const concepts = JSON.parse(readFileSync(join(root, 'content/concepts.json'), 'utf8'))
   .concepts.filter((c) => !c.retired);
-const verbs = JSON.parse(readFileSync(join(root, 'content/verbs.json'), 'utf8')).verbs;
+// Tense names used to be repeated inside every verb — fourteen copies of each.
+// At 2,392 verbs that would have been 2,392 copies, so they now live once in
+// content/tense-names.json. The claim this file makes is unchanged: a name a
+// learner reads must exist in their language.
+const tenseNames = JSON.parse(
+  readFileSync(join(root, 'content/tense-names.json'), 'utf8')).tenses;
 const LOCALES = ['en', 'fr', 'fa', 'ar'];
 
 test('the inputs are populated — a check over an empty list checks nothing', () => {
   assert.ok(concepts.length >= 290, `${concepts.length} live concepts`);
-  assert.ok(verbs.length >= 14, `${verbs.length} verbs`);
-  const tenses = verbs.flatMap((v) => v.tenses);
-  assert.ok(tenses.length >= 84, `${tenses.length} verb tenses`);
+
+  assert.ok(Object.keys(tenseNames).length >= 6,
+    `${Object.keys(tenseNames).length} tense names`);
 });
 
 // ── 1. The shape. A name field must be able to hold every language ──────────
@@ -49,11 +54,9 @@ test('every content name is a locale map, not a two-language record', () => {
     if (!c.name || typeof c.name !== 'object') { bad.push(`${c.id}: no name object`); continue; }
     for (const k of Object.keys(c.name)) if (!LOCALES.includes(k)) bad.push(`${c.id}: unknown language "${k}"`);
   }
-  for (const v of verbs) {
-    for (const t of v.tenses) {
-      for (const k of Object.keys(t.name ?? {})) {
-        if (!LOCALES.includes(k)) bad.push(`${v.key} ${t.id}: unknown language "${k}"`);
-      }
+  for (const [id, name] of Object.entries(tenseNames)) {
+    for (const k of Object.keys(name)) {
+      if (!LOCALES.includes(k)) bad.push(`tense ${id}: unknown language "${k}"`);
     }
   }
   assert.deepEqual(bad, []);
@@ -71,10 +74,11 @@ test('pick() reports a fallback as a fallback, in every language, on real conten
   const sample = concepts.find((c) => c.id === 'gram.present.irregular') ?? concepts[0];
   assert.equal(pick(sample.name, 'en').translated, true);
 
-  const tense = verbs.find((v) => v.key === 'v:être').tenses.find((t) => t.id === 'present');
-  assert.equal(pick(tense.name, 'fa').text, 'حال ساده');
-  assert.equal(pick(tense.name, 'fa').translated, true, 'fa exists in verbs.json and must be served');
-  assert.equal(pick(tense.name, 'fa').locale, 'fa');
+  const present = tenseNames['present'];
+  assert.equal(pick(present, 'fa').text, 'حال ساده');
+  assert.equal(pick(present, 'fa').translated, true,
+    'fa exists in content/tense-names.json and must be served');
+  assert.equal(pick(present, 'fa').locale, 'fa');
 
   // A field with no Persian must say so rather than hand back English quietly.
   const noFa = { en: 'Grammar', fr: 'La grammaire' };
@@ -85,15 +89,14 @@ test('pick() reports a fallback as a fallback, in every language, on real conten
 
 test('every verb tense name reaches a Persian and an Arabic learner', () => {
   const missing = [];
-  for (const v of verbs) {
-    for (const t of v.tenses) {
-      for (const loc of ['fa', 'ar']) {
-        if (!pick(t.name, loc).translated) missing.push(`${v.key} ${t.id} ${loc}`);
-      }
+  for (const [id, name] of Object.entries(tenseNames)) {
+    for (const loc of ['fa', 'ar']) {
+      if (!pick(name, loc).translated) missing.push(`${id} ${loc}`);
     }
   }
   assert.deepEqual(missing, [],
-    'these exist in content/verbs.json; if this fails, a type or a call site is discarding them again');
+    'these exist in content/tense-names.json; if this fails, a type or a call '
+    + 'site is discarding them again');
 });
 
 // ── 3. The coverage ledger ──────────────────────────────────────────────────

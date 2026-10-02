@@ -273,7 +273,7 @@ function walk(node, path, fn) {
     for (const [k, v] of Object.entries(node)) walk(v, path ? `${path}.${k}` : k, fn);
   }
 }
-const CONTENT = ['fr-core-a1.json', 'verbs.json', 'exam-papers.json', 'decks.json', 'exams.json'];
+const CONTENT = ['fr-core-a1.json', 'tense-names.json', 'exam-papers.json', 'decks.json', 'exams.json'];
 const shapes = () => {
   const out = new Map();
   for (const file of CONTENT) {
@@ -317,8 +317,14 @@ const EXPECTED_SHAPES = {
   'fr-core-a1.json title':                             { n: 1,  have: 'en/fr/fa/ar' },
   'fr-core-a1.json cards[].meanings':                  { n: 22, have: 'en/fr/fa/ar' },
   'fr-core-a1.json cards[].examples[].translations':   { n: 44, have: 'en/fa/ar' },   // fr by design
-  'verbs.json verbs[].meanings':                       { n: 14, have: 'en/fr/fa/ar' },
-  'verbs.json verbs[].tenses[].name':                  { n: 84, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.conditionnel':          { n: 1, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.futur':                 { n: 1, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.imparfait':             { n: 1, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.passe-compose':         { n: 1, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.passe-simple':          { n: 1, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.present':               { n: 1, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.subjonctif':            { n: 1, have: 'en/fr/fa/ar' },
+  'tense-names.json tenses.subjonctif-imparfait':  { n: 1, have: 'en/fr/fa/ar' },
 };
 
 test('the multilingual shape of the content is exactly what is written down', () => {

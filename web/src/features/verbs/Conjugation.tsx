@@ -9,7 +9,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
-import { loadVerbs, type Verb, type VerbTense } from '../../lib/verbs';
+import { loadVerb, loadTenseNames, type Verb, type VerbTense, type TenseNames } from '../../lib/verbs';
 import { appendReview, getCardState } from '../../lib/db';
 import { emptyState, loadScheduler, SCHEDULER_ID, type Grade } from '../../lib/scheduler';
 import { checkAnswer } from '../../lib/answer';
@@ -57,10 +57,13 @@ export function ConjugationDrill() {
   }, [sessionParam, params, setParams]);
   const input = useRef<HTMLInputElement>(null);
 
+  const [names, setNames] = useState<TenseNames>({});
+  useEffect(() => { loadTenseNames().then(setNames).catch(() => {}); }, []);
   useEffect(() => { loadScheduler().then(setEngine); }, []);
   useEffect(() => {
     let live = true;
-    loadVerbs().then((vs) => { if (live) setVerb(vs.find((v) => v.infinitive === decodeURIComponent(wanted)) ?? null); })
+    loadVerb(decodeURIComponent(wanted))
+      .then((v) => { if (live) setVerb(v); })
       .catch(() => { if (live) setVerb(null); });
     return () => { live = false; };
   }, [wanted]);
@@ -85,7 +88,7 @@ export function ConjugationDrill() {
     const after = engine.review(before, grade, now);
     const row: ReviewRow = {
       id: newId(), userId, sessionId: sessionId.current, reviewedAt: now,
-      cardKey, itemType: 'verb_form', conceptIds: [tense.conceptId],
+      cardKey, itemType: 'verb_form', conceptIds: tense.conceptId ? [tense.conceptId] : [],
       direction: 'native-fr',
       promptShown: { front: `${verb.persons[index]} — ${verb.infinitive} (${tense.id})`, level: verb.level, type: 'verb_form' },
       response: value, isCorrect: check.correct, grade, durationMs: took,
@@ -132,7 +135,7 @@ export function ConjugationDrill() {
     );
   }
 
-  const label = pick(tense.name, settings.ui).text;
+  const label = pick(names[tense.id] ?? {}, settings.ui).text;
   return (
     <div className="page page--session">
       <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={verb.persons.length} aria-valuenow={index} aria-label={t('practiseTense')}>

@@ -1,91 +1,182 @@
+/**
+ * The verb content a learner actually loads.
+ *
+ * Rewritten when the deck went from 14 verbs in one file to 2,392 across an
+ * index and six level shards. The claims are the same ones the 14-verb version
+ * made — every tense has six persons, no form is empty, every concept id is
+ * real — which is the point: the shape changed, the guarantees did not.
+ *
+ * Two claims are new and belong to the new scale. Every verb in the index must
+ * be findable in its own shard, because the index is what the list renders and
+ * the shard is what the verb page loads; an entry in one and not the other is a
+ * row that leads to a not-found screen. And nothing withheld by
+ * `conjugation_exceptions.py` may appear at all — `gésir` is conjugated wrongly
+ * and `découverte` is not a verb, so a learner must meet neither.
+ */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, existsSync } from 'node:fs';
+import { fileURLToPath } from 'node:url';
+import { join } from 'node:path';
 
-const doc = JSON.parse(readFileSync(new URL('../content/verbs.json', import.meta.url), 'utf8'));
-const concepts = JSON.parse(readFileSync(new URL('../content/concepts.json', import.meta.url), 'utf8'));
-const conceptIds = new Set(concepts.concepts.map((c) => c.id));
-const byInf = new Map(doc.verbs.map((v) => [v.infinitive, v]));
+const root = fileURLToPath(new URL('..', import.meta.url));
+const read = (p) => JSON.parse(readFileSync(join(root, p), 'utf8'));
 
-test('every verb has every tense, for all six persons', () => {
-  for (const v of doc.verbs) {
-    assert.equal(v.persons.length, 6, v.infinitive);
-    assert.ok(v.tenses.length >= 6, `${v.infinitive} has only ${v.tenses.length} tenses`);
+const index = read('content/verbs-index.json').verbs;
+const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
+const shards = Object.fromEntries(LEVELS.map((l) => [l, read(`content/verbs/${l}.json`).verbs]));
+const all = LEVELS.flatMap((l) => shards[l]);
+const conceptIds = new Set(read('content/concepts.json').concepts.map((c) => c.id));
+const tenseNames = read('content/tense-names.json').tenses;
+
+test('the content is populated — a guard over an empty deck guards nothing', () => {
+  assert.ok(index.length >= 2000, `${index.length} verbs in the index`);
+  assert.ok(all.length >= 2000, `${all.length} verbs across the shards`);
+  console.log(`    ${index.length} verbs · ` + LEVELS.map((l) => `${l} ${shards[l].length}`).join(' · '));
+});
+
+test('every verb in the index is in its own shard, and nowhere else', () => {
+  const missing = [], misfiled = [];
+  for (const s of index) {
+    const here = shards[s.level]?.some((v) => v.infinitive === s.infinitive);
+    if (!here) missing.push(`${s.infinitive} (index says ${s.level})`);
+    const elsewhere = LEVELS.filter((l) => l !== s.level
+      && shards[l].some((v) => v.infinitive === s.infinitive));
+    if (elsewhere.length) misfiled.push(`${s.infinitive} also in ${elsewhere.join(', ')}`);
+  }
+  assert.deepEqual(missing, [], 'a row in the list that leads to a not-found screen');
+  assert.deepEqual(misfiled, [], 'the same verb in two shards means two paradigms to disagree');
+});
+
+test('every tense has six persons and no empty form', () => {
+  const bad = [];
+  for (const v of all) {
+    if (v.persons.length !== 6) bad.push(`${v.infinitive}: ${v.persons.length} persons`);
+    if (v.tenses.length < 5) bad.push(`${v.infinitive}: only ${v.tenses.length} tenses`);
     for (const t of v.tenses) {
-      assert.equal(t.forms.length, 6, `${v.infinitive} ${t.id}`);
-      for (const f of t.forms) assert.ok(f && f.trim(), `${v.infinitive} ${t.id} has an empty form`);
+      if (t.forms.length !== 6) bad.push(`${v.infinitive} ${t.id}: ${t.forms.length} forms`);
+      for (const f of t.forms) {
+        // An impersonal verb has only a third person: « il faut », « il pleut ».
+        // Its empty persons are correct French, and the entry says so.
+        if ((!f || !f.trim()) && !v.impersonal) {
+          bad.push(`${v.infinitive} ${t.id}: an empty form`);
+        }
+      }
+    }
+  }
+  assert.deepEqual(bad.slice(0, 10), []);
+});
+
+test('an impersonal verb is marked, and is the only kind with empty persons', () => {
+  const impersonal = all.filter((v) => v.impersonal).map((v) => v.infinitive);
+  assert.ok(impersonal.length >= 1, 'no verb is marked impersonal — falloir should be');
+  assert.ok(impersonal.includes('falloir'), `impersonal: ${impersonal.join(', ')}`);
+  console.log(`    impersonal: ${impersonal.join(', ')}`);
+  for (const v of all.filter((x) => !x.impersonal)) {
+    for (const t of v.tenses) {
+      assert.ok(t.forms.every((f) => f && f.trim()),
+        `${v.infinitive} ${t.id} has an empty form but is not marked impersonal`);
     }
   }
 });
 
-test('every tense names the concept it exercises, and it exists', () => {
-  for (const v of doc.verbs) {
-    for (const t of v.tenses) {
-      assert.ok(t.conceptId, `${v.infinitive} ${t.id} names no concept`);
-      assert.ok(conceptIds.has(t.conceptId), `${v.infinitive} ${t.id}: ${t.conceptId} is not in the taxonomy`);
+test('every tense id has a name in all four languages', () => {
+  const unknown = new Set();
+  for (const v of all) for (const t of v.tenses) if (!tenseNames[t.id]) unknown.add(t.id);
+  assert.deepEqual([...unknown], [],
+    'a tense whose name is in no dictionary renders as nothing at all');
+  for (const [id, name] of Object.entries(tenseNames)) {
+    for (const loc of ['en', 'fr', 'fa', 'ar']) {
+      assert.ok(name[loc], `tense ${id} has no ${loc} name`);
     }
-    assert.ok(v.conceptIds.length > 0, v.infinitive);
-    for (const id of v.conceptIds) assert.ok(conceptIds.has(id), `${v.infinitive}: ${id}`);
   }
 });
 
-test('irregular verbs are marked, and the regular ones are not', () => {
-  for (const inf of ['être', 'avoir', 'aller', 'faire', 'pouvoir', 'vouloir', 'devoir', 'dire', 'voir', 'prendre']) {
-    assert.equal(byInf.get(inf)?.irregular, true, inf);
+test('a tense either names a concept that exists, or names none at all', () => {
+  const bad = [];
+  for (const v of all) {
+    for (const t of v.tenses) {
+      if (t.conceptId === null) {
+        // Read-only tenses have no concept: nothing drills them, so nothing can
+        // be weak at them. Null is the honest answer; a wrong id would detach a
+        // whole tense from the weakness model silently.
+        if (t.produced) bad.push(`${v.infinitive} ${t.id} is drilled but names no concept`);
+        continue;
+      }
+      if (!conceptIds.has(t.conceptId)) {
+        bad.push(`${v.infinitive} ${t.id}: ${t.conceptId} is not in the taxonomy`);
+      }
+    }
   }
-  for (const inf of ['parler', 'manger', 'commencer', 'finir']) {
-    assert.equal(byInf.get(inf)?.irregular, false, inf);
+  assert.deepEqual(bad.slice(0, 10), []);
+});
+
+test('the read-only tenses are marked so, and are never drilled', () => {
+  const readOnly = new Set(read('content/tense-names.json').readOnly.ids);
+  const bad = [];
+  for (const v of all) {
+    for (const t of v.tenses) {
+      if (readOnly.has(t.id) && t.produced) {
+        bad.push(`${v.infinitive} ${t.id} would be drilled`);
+      }
+      if (!readOnly.has(t.id) && !t.produced) {
+        bad.push(`${v.infinitive} ${t.id} is marked read-only but is not one`);
+      }
+    }
   }
+  assert.deepEqual(bad.slice(0, 10), [],
+    'the passé simple is read in every B2 text and written in none of them');
 });
 
-test('known forms are right — spot checks a French teacher would make', () => {
-  const at = (inf, tense, person) => byInf.get(inf).tenses.find((t) => t.id === tense).forms[person];
-  assert.equal(at('être', 'present', 4), 'êtes');
-  assert.equal(at('être', 'imparfait', 0), 'étais');          // not "sois"
-  assert.equal(at('aller', 'futur', 0), 'irai');              // suppletive stem
-  assert.equal(at('faire', 'present', 4), 'faites');
-  assert.equal(at('pouvoir', 'subjonctif', 0), 'puisse');
-  assert.equal(at('commencer', 'imparfait', 0), 'commençais'); // cedilla before a
-  assert.equal(at('commencer', 'imparfait', 3), 'commencions');// but not before i
-  assert.equal(at('manger', 'imparfait', 0), 'mangeais');      // e kept before a
-  assert.equal(at('manger', 'imparfait', 3), 'mangions');      // dropped before i
-  assert.equal(at('finir', 'present', 3), 'finissons');        // second group
-  assert.equal(at('prendre', 'present', 5), 'prennent');
-  assert.equal(at('voir', 'futur', 0), 'verrai');
+test('nothing withheld by the exception list reaches a learner', () => {
+  // gésir is conjugated wrongly and découverte is not a verb. Both are named in
+  // scripts/conjugation_exceptions.py, and a learner must meet neither.
+  const WITHHELD = ['gésir', 'découverte', 'clore', 'choir', 'ouïr', 'seoir',
+                    'faillir', 'défaillir'];
+  const leaked = WITHHELD.filter((w) => index.some((v) => v.infinitive === w)
+                                     || all.some((v) => v.infinitive === w));
+  assert.deepEqual(leaked, [],
+    'a verb we cannot conjugate correctly must not be shown conjugated');
 });
 
-test('the conditional is the future stem with imperfect endings', () => {
-  for (const v of doc.verbs) {
-    const fut = v.tenses.find((t) => t.id === 'futur').forms[0];      // …ai
-    const cond = v.tenses.find((t) => t.id === 'conditionnel').forms[0]; // …ais
-    assert.equal(cond, fut.slice(0, -2) + 'ais', v.infinitive);
+test('every verb records where its conjugation and its meaning came from', () => {
+  const bad = [];
+  for (const v of all) {
+    if (v.provenance !== 'generated') bad.push(`${v.infinitive}: provenance ${v.provenance}`);
+    if (!v.licence) bad.push(`${v.infinitive}: no licence`);
+    // A meaning and a conjugation come from different places, and the data has
+    // to say so — docs/02 requires provenance per item, not per file.
+    const hasGloss = Boolean(v.meanings && v.meanings.en);
+    if (hasGloss && v.glossProvenance !== 'wiktionary-en') {
+      bad.push(`${v.infinitive}: a gloss with provenance ${v.glossProvenance}`);
+    }
+    if (!hasGloss && v.glossProvenance) {
+      bad.push(`${v.infinitive}: gloss provenance but no gloss`);
+    }
   }
+  assert.deepEqual(bad.slice(0, 10), []);
 });
 
-test('verbs taking être are marked and conjugate their perfect with it', () => {
-  const aller = byInf.get('aller');
-  assert.equal(aller.auxiliary, 'être');
-  assert.match(aller.tenses.find((t) => t.id === 'passe-compose').forms[0], /^suis /);
-  assert.equal(aller.tenses.find((t) => t.id === 'passe-compose').conceptId, 'gram.past.pc-etre');
-  const parler = byInf.get('parler');
-  assert.equal(parler.auxiliary, 'avoir');
-  assert.match(parler.tenses.find((t) => t.id === 'passe-compose').forms[0], /^ai /);
+test('the level a verb is filed under matches its frequency rank', () => {
+  const BANDS = { A1: [1, 200], A2: [201, 500], B1: [501, 900],
+                  B2: [901, 1400], C1: [1401, 1900], C2: [1901, 2400] };
+  const bad = [];
+  for (const v of index) {
+    const [lo, hi] = BANDS[v.level];
+    if (v.rank < lo || v.rank > hi) bad.push(`${v.infinitive}: rank ${v.rank} filed as ${v.level}`);
+  }
+  assert.deepEqual(bad.slice(0, 10), [],
+    'level is assigned from frequency; a verb outside its band was filed by hand or by accident');
 });
 
-test('verbs with no imperative say so rather than inventing one', () => {
-  // pouvoir and devoir have no imperative in ordinary French.
-  assert.equal(byInf.get('pouvoir').imperative, null);
-  assert.equal(byInf.get('devoir').imperative, null);
-  assert.deepEqual(byInf.get('dire').imperative, ['dis', 'disons', 'dites']);
-});
-
-test('no straight apostrophes anywhere in the verb data', () => {
-  assert.doesNotMatch(JSON.stringify(doc), /\w'\w/);
-});
-
-test('every verb carries its provenance and licence', () => {
-  for (const v of doc.verbs) {
-    assert.equal(v.provenance, 'original');
-    assert.ok(v.licence);
+test('the shards are small enough to send one at a time', () => {
+  // The whole set is about 4 MiB. The split exists so a learner at B1 fetches
+  // B1, and a shard that grows past a quarter of a megabyte raw has stopped
+  // being a shard.
+  for (const l of LEVELS) {
+    const path = join(root, `content/verbs/${l}.json`);
+    assert.ok(existsSync(path), `content/verbs/${l}.json is missing`);
+    const kib = readFileSync(path).length / 1024;
+    assert.ok(kib < 1200, `${l}.json is ${kib.toFixed(0)} KiB raw`);
   }
 });

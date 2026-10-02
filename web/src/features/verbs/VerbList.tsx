@@ -2,7 +2,7 @@
 import { useEffect, useMemo, useState, useRef } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp } from '../../app-context';
-import { loadVerbs, type Verb } from '../../lib/verbs';
+import { loadVerbIndex, loadVerbForms, type VerbSummary } from '../../lib/verbs';
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
@@ -14,7 +14,7 @@ import { WithAccentBar } from '../../components/AccentBar';
 const norm = fold;
 
 export function VerbList() {
-  const { t, settings } = useApp();
+  const { t } = useApp();
   const [params, setParams] = useSearchParams();
   const q = params.get('q') ?? '';
   const input = useRef<HTMLInputElement>(null);
@@ -23,12 +23,14 @@ export function VerbList() {
     if (v) p.set('q', v); else p.delete('q');
     setParams(p, { replace: true });
   };
-  const [verbs, setVerbs] = useState<Verb[] | null>(null);
+  const [verbs, setVerbs] = useState<VerbSummary[] | null>(null);
   const [error, setError] = useState(false);
+  // Filled only after a search finds nothing, and only once.
+  const [forms, setForms] = useState<Record<string, string> | null>(null);
 
   useEffect(() => {
     let live = true;
-    loadVerbs().then((v) => { if (live) setVerbs(v); }).catch(() => { if (live) setError(true); });
+    loadVerbIndex().then((v) => { if (live) setVerbs(v); }).catch(() => { if (live) setError(true); });
     return () => { live = false; };
   }, []);
 
@@ -36,10 +38,33 @@ export function VerbList() {
     if (!verbs) return [];
     const n = norm(q.trim());
     if (!n) return verbs;
-    return verbs.filter((v) => norm(v.infinitive).includes(n)
-      || Object.values(v.meanings).some((m) => m && norm(m).includes(n))
-      || v.tenses.some((tn) => tn.forms.some((f) => norm(f).startsWith(n))));
-  }, [verbs, q]);
+    // The index carries the infinitive and the English gloss, not the forms.
+    // Searching a conjugated form would mean holding every paradigm in memory,
+    // which is the thing the split exists to avoid.
+    const direct = verbs.filter((v) => norm(v.infinitive).includes(n) || norm(v.en).includes(n));
+    if (direct.length) return direct;
+    // Nothing matched a name or a meaning, so the query may be a conjugated
+    // form: « allons », « fîtes », « vaudrait ». The form index answers that,
+    // and is fetched only now.
+    if (!forms) return [];
+    const lemma = forms[q.trim().toLowerCase()] ?? forms[q.trim()];
+    return lemma ? verbs.filter((v) => v.infinitive === lemma) : [];
+  }, [verbs, q, forms]);
+
+  useEffect(() => {
+    if (!verbs || !q.trim() || forms) return;
+    const n = norm(q.trim());
+    const anyDirect = verbs.some((v) => norm(v.infinitive).includes(n) || norm(v.en).includes(n));
+    if (anyDirect) return;
+    let live = true;
+    loadVerbForms().then((f) => { if (live) setForms(f); }).catch(() => {});
+    return () => { live = false; };
+  }, [verbs, q, forms]);
+
+  // 2,392 rows is not a list, it is a wall. Show the first slice and say how
+  // many there are, so the number is information rather than a scroll.
+  const LIMIT = 60;
+  const capped = shown.slice(0, LIMIT);
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
 
@@ -64,13 +89,18 @@ export function VerbList() {
       {verbs !== null && shown.length === 0 && (
         <p className="muted" data-testid="verbs-empty">{t('searchEmpty', { q })}</p>
       )}
+      {verbs !== null && (
+        <p className="muted" data-testid="verb-count">
+          {t('verbCount', { shown: String(capped.length), total: String(shown.length) })}
+        </p>
+      )}
       {shown.length > 0 && (
         <ul className="rows" data-testid="verb-list">
-          {shown.map((v) => (
+          {capped.map((v) => (
             <li key={v.infinitive}>
               <Link className="row row--link" to={`/learn/verbs/${encodeURIComponent(v.infinitive)}`}>
                 <span className="row-fr" lang="fr" dir="ltr">{frText(v.infinitive)}</span>
-                <span className="muted">{v.meanings[settings.meaning] ?? v.meanings.en}</span>
+                <span className="muted">{v.en}</span>
                 {v.irregular && <span className="chip" data-testid={`irr-${v.infinitive}`}>{t('irregular')}</span>}
                 <Icon name="chevron" size={16} />
               </Link>

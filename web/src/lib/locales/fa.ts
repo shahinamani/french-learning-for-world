@@ -98,6 +98,8 @@ const fa: Dict = {
   aboutIndependenceHeading: 'استقلال',
   aboutSources: 'منبع‌ها و پروانه‌ها',
   aboutSourcesIntro: 'کارهایی با پروانهٔ آزاد که این پروژه بر آن‌ها استوار است. هر کدام زیر پروانهٔ نشان‌داده‌شده به کار رفته‌اند و هر پروانه خواستار نام بردن از آن در همین‌جاست.',
+  verbCount: 'نمایش {shown} فعل از {total}. برای محدودکردن فهرست تایپ کنید.',
+  readNotWritten: 'برای خواندن، نه نوشتن',
 };
 
 export default fa;

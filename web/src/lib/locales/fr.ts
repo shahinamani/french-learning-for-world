@@ -98,6 +98,8 @@ const fr: Dict = {
   aboutIndependenceHeading: 'Indépendance',
   aboutSources: 'Sources et licences',
   aboutSourcesIntro: 'Des travaux sous licence libre sur lesquels ce projet s’appuie. Chacun est utilisé sous la licence indiquée, et chaque licence exige qu’il soit nommé ici.',
+  verbCount: '{shown} verbes affichés sur {total}. Tapez pour affiner la liste.',
+  readNotWritten: 'À lire, pas à écrire',
 };
 
 export default fr;

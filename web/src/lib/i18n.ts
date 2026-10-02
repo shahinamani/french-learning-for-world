@@ -111,6 +111,8 @@ const en = {
   aboutIndependenceHeading: 'Independence',
   aboutSources: 'Sources and licences',
   aboutSourcesIntro: 'Openly licensed work this project is built on. Each is used under the licence shown, and each licence requires that it be named here.',
+  verbCount: 'Showing {shown} of {total} verbs. Type to narrow the list.',
+  readNotWritten: 'Read, not written',
 };
 
 export type Dict = typeof en;

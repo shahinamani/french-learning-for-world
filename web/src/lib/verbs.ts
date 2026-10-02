@@ -1,30 +1,134 @@
+/**
+ * Verbs, in two pieces, because 2,392 paradigms are not one request.
+ *
+ * The whole set is 2.87 MiB of JSON. Sending that to open a verb list would be
+ * twenty times the entire JavaScript budget, so it is split the way a learner's
+ * session splits:
+ *
+ *   verbs-index.json      every verb, one line each — 26 KiB gzipped. The list
+ *                         and the search read this and nothing else.
+ *   verbs/<level>.json    the paradigms, by CEFR level, 24–52 KiB gzipped each,
+ *                         fetched when a learner opens a verb at that level.
+ *
+ * Sharded by level rather than by letter because that is what a session
+ * follows: somebody working at B1 opens B1 verbs and never touches C2's
+ * paradigms. Sharding by first letter would spread one session across every
+ * shard and cache none of it usefully.
+ *
+ * Tense names live in `content/tense-names.json`, once, because a tense is
+ * called the same thing whatever verb it belongs to. In the old 14-verb file
+ * each name was repeated fourteen times; at this size it would have been
+ * repeated 2,392 times, and nobody could have reviewed the Arabic.
+ */
 import type { Level, Locale } from './types';
 
 export type VerbTense = {
-  id: string; mood: string;
-  /** fa and ar exist in content/verbs.json. A two-language type discarded them. */
-  name: Partial<Record<Locale, string>>;
-  forms: string[]; conceptId: string;
+  id: string;
+  mood: string;
+  /** False for the passé simple and the imperfect subjunctive: a learner reads
+   *  them and is never asked to write them, so no drill offers them. */
+  produced: boolean;
+  /** The concept this tense exercises, so a wrong answer reaches the weakness
+   *  model. Null for the read-only tenses: nothing drills them, so nothing can
+   *  be weak at them, and a wrong id would be worse than none. */
+  conceptId: string | null;
+  forms: string[];
 };
+
 export type Verb = {
-  infinitive: string; key: string; level: Level; group: string; irregular: boolean;
+  infinitive: string; key: string; level: Level; rank: number;
+  group: string; pattern: string; irregular: boolean;
+  /** « il faut », « il pleut » — a third person and nothing else. */
+  impersonal: boolean;
   auxiliary: 'avoir' | 'être';
   meanings: Partial<Record<Locale, string>>;
   participles: { past: string; present: string };
   imperative: string[] | null;
   persons: string[];
   tenses: VerbTense[];
-  conceptIds: string[];
+  provenance: string;
+  licence: string;
+  glossProvenance: string | null;
+  /** Something a learner should be told about this verb — an accepted
+   *  alternative spelling, a defective paradigm, a point still unsettled. */
+  notes: string | null;
 };
 
-let cache: Promise<Verb[]> | null = null;
+/** One line per verb: what the list and the search need, and nothing more. */
+export type VerbSummary = {
+  infinitive: string; key: string; level: Level; rank: number;
+  group: string; irregular: boolean; auxiliary: 'avoir' | 'être';
+  en: string;
+};
 
-export function loadVerbs(): Promise<Verb[]> {
-  if (!cache) {
-    cache = fetch('./content/verbs.json')
-      .then((r) => { if (!r.ok) throw new Error('verbs'); return r.json(); })
-      .then((d) => d.verbs as Verb[])
-      .catch((e) => { cache = null; throw e; });
+export type TenseNames = Record<string, Partial<Record<Locale, string>>>;
+
+const json = async <T,>(path: string, what: string): Promise<T> => {
+  const r = await fetch(path);
+  if (!r.ok) throw new Error(what);
+  return r.json() as Promise<T>;
+};
+
+let indexCache: Promise<VerbSummary[]> | null = null;
+const shardCache = new Map<Level, Promise<Verb[]>>();
+let namesCache: Promise<TenseNames> | null = null;
+
+export function loadVerbIndex(): Promise<VerbSummary[]> {
+  if (!indexCache) {
+    indexCache = json<{ verbs: VerbSummary[] }>('./content/verbs-index.json', 'verb index')
+      .then((d) => d.verbs)
+      .catch((e) => { indexCache = null; throw e; });
   }
-  return cache;
+  return indexCache;
+}
+
+export function loadTenseNames(): Promise<TenseNames> {
+  if (!namesCache) {
+    namesCache = json<{ tenses: TenseNames }>('./content/tense-names.json', 'tense names')
+      .then((d) => d.tenses)
+      .catch((e) => { namesCache = null; throw e; });
+  }
+  return namesCache;
+}
+
+function loadLevel(level: Level): Promise<Verb[]> {
+  let p = shardCache.get(level);
+  if (!p) {
+    p = json<{ verbs: Verb[] }>(`./content/verbs/${level}.json`, `verbs ${level}`)
+      .then((d) => d.verbs)
+      .catch((e) => { shardCache.delete(level); throw e; });
+    shardCache.set(level, p);
+  }
+  return p;
+}
+
+/**
+ * One verb, with its paradigm. Null when the infinitive is not one we ship —
+ * which includes the eight withheld on purpose, so a learner following an old
+ * link gets the not-found screen rather than an invented conjugation.
+ */
+let formsCache: Promise<Record<string, string>> | null = null;
+
+/**
+ * Every conjugated form back to its infinitive — 82,798 of them, 237 KiB
+ * gzipped. Deliberately NOT loaded with the verb list: it is fetched the first
+ * time a search finds nothing, which is the only time it can help. A learner
+ * typing « allons » should find aller; every other learner should not pay
+ * 237 KiB for it.
+ */
+export function loadVerbForms(): Promise<Record<string, string>> {
+  if (!formsCache) {
+    formsCache = json<{ forms: Record<string, string> }>('./content/verb-forms.json', 'verb forms')
+      .then((d) => d.forms)
+      .catch((e) => { formsCache = null; throw e; });
+  }
+  return formsCache;
+}
+
+export async function loadVerb(infinitive: string): Promise<Verb | null> {
+  const index = await loadVerbIndex();
+  const summary = index.find((v) => v.infinitive === infinitive);
+  if (!summary) return null;
+  const shard = await loadLevel(summary.level);
+  return shard.find((v) => v.infinitive === infinitive) ?? null;
 }
