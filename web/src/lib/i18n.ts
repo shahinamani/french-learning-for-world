@@ -96,8 +96,8 @@ const en = {
   // nobody opens. 2,366 glosses were taken from en.wiktionary.org by script and
   // no French teacher has read them; a learner is entitled to know that before
   // they memorise one.
-  pronominalOnly: 'This verb is only used with a reflexive pronoun. « je souviens » is not French; « je me souviens » is.',
-  glossSource: 'Meanings come from Wiktionary and have not been reviewed by a teacher.',
+  pronominalOnly: 'This verb is only used with a reflexive pronoun. « je souviens » is not French; « je me souviens » is. This marking comes from Wiktionary and has not been reviewed by a teacher.',
+  glossSource: 'Meanings and register labels come from Wiktionary and have not been reviewed by a teacher.',
   glossWithheldExplicit: 'No meaning is shown: every English translation of this verb is explicit. It is in the list because it is common in speech, not because it is one to use.',
   notBuilt: 'Not built yet',
   notBuiltBody: 'This section is planned. The shell, search, the side panel and flashcards are complete; the rest follow the same pattern.',

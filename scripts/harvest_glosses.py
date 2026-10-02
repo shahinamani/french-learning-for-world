@@ -81,6 +81,14 @@ MAX_SENSES = 2
 # oral without knowing what they have said. So the register is now shown and the
 # meaning is kept, and the only thing refused is English we would not print.
 #
+# **« baiser » is the case that proves this rule rather than an exception to it.**
+# It comes out as "to kiss (dated); to prevail over someone, screw (vulgar)",
+# and both halves must stay. In modern French « baiser » almost never means "to
+# kiss" — « embrasser » does — so a learner who reads only "to kiss (dated)"
+# will use it in a classroom and find out the hard way. The vulgar sense, with
+# its label, is the thing that protects them. Show the meaning, show the
+# register, let the learner decide. Do not "tidy" the second sense away.
+#
 # A word list is defensible here in a way it was not before, because it is
 # applied to the sentence we are about to publish rather than to somebody else's
 # language. These are terms with no innocent reading in a verb gloss. Terms with

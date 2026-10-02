@@ -112,6 +112,21 @@ test('only an explicit ALTERNATIVE is dropped, not the sense around it', () => {
   assert.ok(!/fuck/i.test(entuber.meanings.en), entuber.meanings.en);
 });
 
+test('baiser keeps BOTH senses — this is the rule working, not an exception', () => {
+  // In modern French « baiser » almost never means "to kiss"; « embrasser »
+  // does. A learner who reads only "to kiss (dated)" will use it in a
+  // classroom and find out the hard way, so the vulgar sense WITH ITS LABEL is
+  // the half that protects them. Deleting it would look like good taste and
+  // would be the more dangerous gloss.
+  const v = all.find((x) => x.infinitive === 'baiser');
+  assert.match(v.meanings.en, /to kiss/, 'baiser lost its first sense');
+  assert.match(v.meanings.en, /\(dated\)/, 'the register of "to kiss" is the point');
+  assert.ok(v.meanings.en.split('; ').length >= 2,
+    `baiser reads "${v.meanings.en}" — the second sense was tidied away, which `
+    + 'leaves a learner believing the word is harmless');
+  assert.match(v.meanings.en, /\(vulgar\)/, 'the second sense lost its label');
+});
+
 test('no wikitext reaches a learner', () => {
   // « chier » shipped "to shit, defecate<!-- not sure I believe the next one;"
   // because an HTML comment that spans two lines is matched by no single-line
