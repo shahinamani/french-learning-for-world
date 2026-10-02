@@ -8,6 +8,24 @@
 #
 # If a future change needs a new origin, widen this deliberately and say why.
 # A CSP relaxed in a hurry is a CSP nobody trusts afterwards.
+#
+# ── Two things to know before changing anything here ───────────────────────
+#
+# HSTS carries `preload`, and that directive is a COMMITMENT rather than a
+# setting. On its own it does nothing: the domain has to be submitted to
+# hstspreload.org, and it has NOT been, and must not be without Shahin saying
+# so. Once submitted, `includeSubDomains` forces HTTPS on every future
+# subdomain of frenchmavie.com, and removal from the list takes months and
+# travels with browser releases. The directive is here deliberately, so that
+# submitting stays a decision rather than becoming a prerequisite — but
+# submitting is a separate, later decision and is not implied by this line.
+#
+# There is NO CSP reporting, so a violation in a learner's browser is invisible
+# to us. That is a known blind spot and a deliberate one: `report-uri` needs an
+# endpoint, an endpoint that is not ours would send a learner's address and the
+# page they were on to a third party, and that breaks the rule this whole file
+# exists to keep. We accept being blind rather than accept that. If reporting
+# ever matters enough, it has to be our own endpoint on our own origin.
 
 /*
   Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'; frame-ancestors 'none'; object-src 'none'; media-src 'self'

@@ -580,6 +580,56 @@ naming it a third time is the point: it is not a bug that recurs, it is a
   about 19 of a verb's 45 forms; Wiktionary carries the other 26. One source
   silent is a blind spot; two sources disagreeing is a finding.
 
+### #17 — `typeof` is not safe on a property accessor that can throw
+
+**2026-10-02. The guard meant to detect a condition was the thing that died on it.**
+
+```js
+if (typeof localStorage === 'undefined') return DEFAULTS;   // the guard
+```
+
+`typeof` is famously the safe operator: the one thing you may do to an
+undeclared identifier without a ReferenceError. That is true of *identifiers*.
+`localStorage` is not an identifier, it is a **property of `window` with a
+getter**, and in a browser where site data is blocked that getter raises
+`SecurityError`. So `typeof localStorage` does not return `'undefined'`. It
+throws, from inside the line written to find out whether it would.
+
+The result was not a degraded experience. It was a **blank page**, for exactly
+the learner whose data is not going to persist — the one person who most needed
+the application to work and to warn them.
+
+**Two failure modes, and only one had ever been imagined.** In a private window
+the methods throw and the accessor is fine; with site data blocked the accessor
+itself throws and nothing inside it ever runs. Code that handles the first is
+untouched by the second — and the first is the one everybody tests, because it
+is the one you can reach by opening a private window.
+
+**What found it.** Not a check. The privacy notice — a feature written to be
+honest with a learner about where their progress lives — had to behave
+correctly when storage was unavailable, and asking that question for the first
+time walked straight into the crash. **A feature written to tell the truth
+uncovered a fault nobody would have gone looking for.**
+
+**Rules:**
+
+- `typeof x` is safe for an undeclared identifier and for nothing else. Any
+  property whose accessor can throw — `localStorage`, `sessionStorage`,
+  `indexedDB`, a cross-origin `window.parent` — is read inside `try`, including
+  when all you want is to know whether it exists.
+- Probe a capability by *using* it and catching, not by asking whether it is
+  there. `storageWorks()` sets a key and removes it, which answers the real
+  question: not "does this exist" but "will this work".
+- When a resource can be unavailable, enumerate the ways. "Blocked" is at least
+  two different behaviours here, and handling either one alone reads exactly
+  like handling both.
+
+**Enforced:** `web/e2e/walk.mjs` drives the application under both modes on
+every push — it renders, no uncaught error, the notice appears, dismisses, and
+stays dismissed while moving around. Seen red against the pre-fix code: the
+accessor mode fails three checks, and treating blocked storage as "already
+seen" fails the notice check in both modes.
+
 ---
 
 ## How these are caught
@@ -629,6 +679,7 @@ Not by care. By two habits:
 | 16 | Part 3 coverage map | 82% covered | keyword match: « accord PP + infinitif » matched « Verb + infinitive ». Really 77% |
 | 16 | participle check | 4 verbs wrong | demanded the masculine singular; the corpus holds only « entraidés » |
 | 16 | Wiktionary harvester | "3 verbs have no page" | three SSL failures reported as a fact about French |
+| 17 | `settings.ts` storage guard | — | `typeof localStorage` THREW when site data was blocked; a blank page for the learner whose data will not persist |
 | 2 | `no-untranslated-strings.test.js` | *could not start* | `new URL(...).pathname` percent-encodes; a clone under a path with a space in it crashed the suite |
 
 Two more that are not checks but the same instinct: `@theme {}` in `tokens.css`

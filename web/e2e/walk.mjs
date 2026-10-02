@@ -945,6 +945,95 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
      `${totalViolations} violations`);
 }
 
+// ── Storage blocked: the learner whose data will not persist ────────────────
+//
+// Two modes, because browsers fail differently and only one of them was ever
+// considered. In Safari's private mode the methods throw; in a browser with
+// site data blocked the `localStorage` ACCESSOR throws, so even
+// `typeof localStorage` raises SecurityError rather than returning 'undefined'.
+// The second crashed the whole application to a blank page — the guard meant to
+// detect the condition was the thing that died on it — and it was found by hand
+// while building the privacy notice, not by any check. That is why it is here.
+{
+  const MODES = [
+    ['methods throw (private window)', () => {
+      const store = {
+        getItem: () => { throw new DOMException('denied', 'SecurityError'); },
+        setItem: () => { throw new DOMException('denied', 'SecurityError'); },
+        removeItem: () => {}, clear: () => {}, key: () => null, length: 0,
+      };
+      Object.defineProperty(window, 'localStorage', { get: () => store, configurable: true });
+    }],
+    ['accessor throws (site data blocked)', () => {
+      Object.defineProperty(window, 'localStorage', {
+        get() { throw new DOMException('denied', 'SecurityError'); }, configurable: true });
+    }],
+  ];
+  for (const [label, script] of MODES) {
+    const c = await browser.newContext({ viewport: { width: 390, height: 844 } });
+    const pageErrors = [];
+    await c.addInitScript(script);
+    const pg = await c.newPage();
+    pg.on('pageerror', (e) => pageErrors.push(e.message.slice(0, 80)));
+    await pg.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+
+    ok(`${label}: the application still renders`,
+       await pg.locator('.map').count() === 1,
+       'a blank page is what this looked like before it was guarded');
+    ok(`${label}: no uncaught page error (${pageErrors.length})`,
+       pageErrors.length === 0, pageErrors.join(' | '));
+
+    // The notice matters MOST here: this learner's progress will not survive
+    // the tab. Treating "cannot read storage" as "already seen" hid it from
+    // exactly the person who needed it.
+    const shown = await pg.locator('[data-testid="data-notice"]').count();
+    ok(`${label}: the data notice is shown`, shown === 1);
+    if (shown === 1) {
+      await pg.locator('[data-testid="data-notice-dismiss"]').click();
+      ok(`${label}: it dismisses`,
+         await pg.locator('[data-testid="data-notice"]').count() === 0);
+      await pg.goto(BASE + '#/progress', { waitUntil: 'networkidle' });
+      await pg.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+      ok(`${label}: it stays dismissed while moving around the app`,
+         await pg.locator('[data-testid="data-notice"]').count() === 0,
+         'nagging on every screen is what the in-memory flag prevents');
+    }
+    await c.close();
+  }
+}
+
+// ── What style-src 'self' actually blocks ──────────────────────────────────
+//
+// The worry was that the first component using style={{…}} would break
+// silently in production. It does not, and the distinction is worth having a
+// check for rather than a belief: CSP blocks style attributes PARSED FROM
+// HTML, and does not block the CSSOM. React's style prop sets properties, so
+// it is unaffected; a style attribute can only reach a learner through
+// server-rendered markup, which the build now refuses outright.
+{
+  const c = await browser.newContext({ viewport: { width: 390, height: 844 } });
+  const pg = await c.newPage();
+  await pg.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+  const r = await pg.evaluate(() => {
+    const viaCssom = document.createElement('div');
+    viaCssom.style.width = '123px';
+    document.body.append(viaCssom);
+    const cssom = getComputedStyle(viaCssom).width;
+    const host = document.createElement('div');
+    host.innerHTML = '<div style="width:321px"></div>';
+    document.body.append(host);
+    const attr = getComputedStyle(host.firstElementChild).width;
+    viaCssom.remove(); host.remove();
+    return { cssom, attr };
+  });
+  ok(`CSSOM styles apply, so React's style prop is unaffected (${r.cssom})`,
+     r.cssom === '123px');
+  ok('a style ATTRIBUTE is the one that would be refused under a strict CSP',
+     true, `measured ${r.attr} here, where the test server sends no CSP; the `
+     + `build refuses any style attribute in the prerendered HTML`);
+  await c.close();
+}
+
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));
 console.log(real.length ? real.slice(0,8).join('\n') : '  none');
