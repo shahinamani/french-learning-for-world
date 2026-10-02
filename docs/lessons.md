@@ -8,6 +8,19 @@ Numbering follows Shahin's list, which spans more than this repository.
 
 ---
 
+## How entries are written, from 2026-10-02
+
+**Stop numbering.** Four agents append to this file concurrently and the numbers
+collide — three did so on 2026-10-02 alone. Every new entry is **dated and
+titled**, and is referred to by its title:
+
+    ### 2026-10-02 — a comment claiming two things agree is the reason nobody checks
+
+Cross-reference by title, never by number. The numbered entries below are left
+exactly as they are: renumbering them would break every reference already
+written, and the numbers were never the point.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0
