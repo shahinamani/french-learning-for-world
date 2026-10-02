@@ -38,6 +38,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 from conjugate import conjugate, PERSONS                    # noqa: E402
 from conjugation_exceptions import (ALTERNATES, CORPUS_NOISE, DEFECTIVE,   # noqa: E402
                                     KNOWN_WRONG, NOT_A_VERB, ORACLES_DISAGREE)
+from harvest_glosses import headword                          # noqa: E402
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -124,10 +125,16 @@ def main() -> int:
     # that « enculer » is vulgar is the most useful thing a learner can know
     # about it, and an empty field teaches them nothing while looking like a bug.
     gloss_withheld: set[str] = set()
+    # Verbs that exist ONLY with a reflexive pronoun. « souvenir » was shown as
+    # a bare infinitive and glossed "to remember", and a learner reading that
+    # writes « je souviens », which is not French — taught to them by us. The
+    # headword is « se souvenir » and the table shows « je me souviens ».
+    pronominal: set[str] = set()
     if args.glosses and pathlib.Path(args.glosses).exists():
         gdata = json.loads(pathlib.Path(args.glosses).read_text(encoding="utf-8"))
         glosses = gdata["glosses"]
         gloss_withheld = set(gdata.get("withheldEntirely", []))
+        pronominal = set(gdata.get("pronominalOnly", []))
 
     # Every concept id used below must exist, or a tense is silently detached
     # from the weakness model and nobody finds out.
@@ -208,7 +215,13 @@ def main() -> int:
                        "(both CC BY-SA 4.0).",
             "glossProvenance": "wiktionary-en" if gloss else None,
             # Not a gap: a decision. Null for every verb where it was not taken.
-            "glossWithheld": "vulgar" if lemma in gloss_withheld else None,
+            "glossWithheld": "explicit" if lemma in gloss_withheld else None,
+            # The form a learner must learn. Null when the verb is not
+            # pronominal-only, so the page keeps the bare infinitive for the
+            # ~500 verbs that have a pronominal sense among others
+            # (« trouver » / « se trouver ») and whose headword is correct.
+            "pronominal": lemma in pronominal,
+            "headword": headword(lemma) if lemma in pronominal else None,
             "notes": note_for(lemma),
         }
         shards[level].append(entry)
@@ -217,6 +230,7 @@ def main() -> int:
             "rank": entry["rank"], "group": entry["group"],
             "irregular": entry["irregular"], "auxiliary": entry["auxiliary"],
             "en": entry["meanings"].get("en", ""),
+            **({"headword": entry["headword"]} if entry["pronominal"] else {}),
         })
 
     # Every conjugated form back to its infinitive. 82,798 entries, 237 KiB
@@ -261,8 +275,9 @@ def main() -> int:
         total += size
         glossed = sum(1 for e in entries if e["meanings"])
         held = sum(1 for e in entries if e["glossWithheld"])
+        pron = sum(1 for e in entries if e["pronominal"])
         print(f"  {level}: {len(entries):>4} verbs  {size/1024:>7.1f} KiB  "
-              f"{glossed:>4} with a gloss, {held} withheld")
+              f"{glossed:>4} with a gloss, {held} withheld, {pron} pronominal")
     idx = (out_dir / "verbs-index.json").stat().st_size
     forms_kib = (out_dir / "verb-forms.json").stat().st_size / 1024
     print(f"  index    {idx/1024:.1f} KiB   forms index {forms_kib:.1f} KiB "

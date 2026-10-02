@@ -74,12 +74,33 @@ nothing about the English text we are about to print:
 * « démerder » → "to manage, to get by" — dropped. Same.
 * « enculer », « chier » — dropped, and here the English is explicit too.
 
-Dropping by label is what ships. It costs seven verbs out of 2,392, and two of
-those seven lost a translation a learner could have read without blinking.
-**The label answers "what register is this word?", not "is this sentence
-printable?"** If the second question is ever asked properly it needs a check on
-our own English output — a narrow and defensible use of a word list, applied to
-what we are about to publish rather than to someone else's language.
+**Shahin's ruling, the same day: show the meaning, show the register.** A
+learner needs to know that « gueuler » means "to yell" AND that it is coarse.
+Hiding it teaches nothing and leaves them able to use it in a DELF oral without
+knowing what they have said.
+
+So the rule changed to ask the question we were actually asking: **is this
+sentence printable?** — checked on our own English output, which is a narrow and
+defensible use of a word list because it is applied to what we are about to
+publish rather than to someone else's language. The register is appended, so
+« gueuler » now reads `to yell, to scream (slang)`.
+
+The line still falls where it should. `chier`, `enculer`, `merder`, `pisser`
+and `masturber` are silent, because their English is coarse too. Five verbs
+instead of seven, and the two that lost a clean translation got it back.
+
+Two refinements the change needed, each found by reading the output rather than
+by reasoning about it:
+
+* **Dropping only the explicit alternatives, not the sense around them.**
+  « entuber » is "to shaft, to fuck over, dupe, swindle, fool"; refusing the
+  whole sense cost four printable translations. Splitting on separators outside
+  parentheses keeps "to put on/in (quickly), to shove" intact.
+* **But if the LEADING translation is unprintable, the whole sense goes, and if
+  the verb's FIRST sense goes, the verb is silenced.** Without that, « enculer »
+  came back as "to beat up" — its fourth sense, listed, real, and not what the
+  word means. Dropping a trailing synonym edits a list; keeping a later sense
+  when the first is refused substitutes a different word.
 
 Where a verb is silenced the page now says so, in four languages. A blank field
 looks like a bug and teaches nothing; "every sense Wiktionary records for this
@@ -111,6 +132,80 @@ build printed `0 withheld` — a wrong answer that looked exactly like a right
 one. Nothing failed. The only reason it was caught is that **0 was a number I
 had a reason to expect to be 7.** A count you cannot predict in advance is a
 count that cannot catch this.
+
+
+### 2026-10-02 — a filter written to protect learners damaged the one entry it most mattered to get right
+
+Dropping Wiktionary's vulgar senses needed a rule for "is this cleaned line a
+usable gloss". I wrote one: it must contain a word of three letters or more.
+
+It rejected **"to go"**.
+
+« aller » would have shipped with "to attend (school, church regularly)" as its
+first meaning — the most taught verb in French, with its primary sense deleted,
+by a filter whose entire purpose was to make the glosses safer. The rule was not
+wrong about anything it was designed for. It was wrong about the shortest
+correct answer in the language, and short correct answers are exactly what a
+good gloss looks like.
+
+**A filter's blast radius is not where you are looking.** I was reading
+`venir`, `chier`, `baiser` — the entries I expected to be interesting — and the
+damage landed on `aller`, which I had no reason to open. The check that caught
+it was a deliberate spot-check of the most common verbs, not the test suite,
+because the suite only knew what I had thought to assert.
+
+What now stops it: `tests/glosses.test.js` asserts that aller reads "to go",
+by name. Not "aller has a gloss" — the exact text. A guard on the most ordinary
+case is worth more than a guard on the exotic one, because the exotic one is
+the one you will remember to check by hand.
+
+See also [[2026-10-02 — a label describes the French word, not the English text
+we are about to print]], the change that introduced this.
+
+### 2026-10-02 — a count you cannot predict in advance cannot catch anything
+
+In `build-verbs.py` I added a set of verbs whose glosses were withheld:
+
+```python
+gloss_withheld: set[str] = set()      # what I wrote, after the fix
+withheld: set[str] = set()            # what I wrote first
+```
+
+Seventeen lines further down, already there and older than my change:
+
+```python
+index, shards, withheld = [], {lvl: [] for lvl, _, _ in BANDS}, []
+```
+
+My set was emptied before it was ever read. Every verb came out
+`glossWithheld: null`, the content was silently wrong, and the build printed:
+
+```
+A1: 200 verbs  351.1 KiB  200 with a gloss, 0 withheld
+```
+
+**`0 withheld` is a wrong answer that is indistinguishable from a right one.**
+Nothing failed. No test broke, because the tests I had written at that point
+asserted the glosses were clean, and they were. A verb that should have carried
+a reason for its silence carried nothing instead, which renders as a blank
+field — and a blank field is what the whole change existed to remove.
+
+It was caught for one reason: **0 was a number I had a reason to expect to be
+7.** I had just run the harvest and read "verbs left with NO gloss: 7 — chier,
+emmerder, gueuler…". So the build's 0 was not a plausible number, it was a
+contradiction with something I had read two minutes earlier.
+
+The general form: a printed count protects you only if you know what it should
+say before you read it. `0`, `null`, `[]` and "no results" are the values a
+broken pipeline produces most often, and they are also legitimate answers, so
+they are the ones a reader accepts without friction. **Print counts you can
+predict, next to the number they must agree with, and make the test assert the
+agreement** — `tests/glosses.test.js` now declares the five silenced verbs by
+name and `deepEqual`s them, so an empty set fails instead of reporting zero.
+
+See also [[2026-10-02 — a handoff document decays faster than the code, because
+nothing fails when it goes stale]]: both are failures that produce no signal at
+all, which is the only kind that survives.
 
 
 ## The checklist

@@ -305,14 +305,53 @@ ok(`venir reads "${venir}"`, /^to come/i.test(venir));
 ok('no vulgar sense reaches the verb page',
    !/\b(cum|orgasm)\b/i.test(await page.locator('.page').innerText()));
 
-// « chier »'s every sense is labelled vulgar, so it ships with no meaning. The
-// page says why: a blank field looks like a bug and teaches nothing.
+// Every English translation of « chier » is explicit, so it ships with no
+// meaning. The page says why: a blank field looks like a bug and teaches
+// nothing. The line is drawn on OUR output, not on Wiktionary's French label.
 await go(page, '/learn/verbs/chier');
 await page.waitForSelector('[data-testid="verb-gloss-withheld"]', { timeout: 8000 });
 ok('a verb with every sense withheld explains itself instead of showing a blank',
-   /vulgar/i.test(await page.locator('[data-testid="verb-gloss-withheld"]').innerText()));
+   /explicit/i.test(await page.locator('[data-testid="verb-gloss-withheld"]').innerText()));
 ok('and prints none of the withheld text',
    !/\bshit\b/i.test(await page.locator('.page').innerText()));
+
+// The other half of that ruling: « gueuler » is coarse French with a clean
+// English translation, and a learner needs both — the meaning so they
+// understand it, the register so they do not use it in a DELF oral.
+await go(page, '/learn/verbs/gueuler');
+await page.waitForSelector('[data-testid="verb-meaning"]', { timeout: 8000 });
+const gueuler = await page.locator('[data-testid="verb-meaning"]').innerText();
+ok(`gueuler reads "${gueuler}" — meaning shown`, /yell|scream/i.test(gueuler));
+ok('and its register shown with it', /\((slang|vulgar)\)/i.test(gueuler));
+
+// « se souvenir ». The bare infinitive was the headword and the table read
+// « je souviens », which is not French — six rows of it, on an A1 verb.
+await go(page, '/learn/verbs/souvenir');
+await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
+ok('a pronominal-only verb shows « se souvenir » as its headword',
+   (await page.locator('[data-testid="verb-headword"]').innerText()).trim() === 'se souvenir');
+ok('the table carries the reflexive pronoun',
+   /me souviens/.test(await page.locator('[data-testid="form-present-0"]').innerText()));
+ok('and NOT the form a learner would have copied wrongly',
+   (await page.locator('[data-testid="form-present-0"]').innerText()).trim() !== 'souviens');
+ok('the page says why the pronoun is there',
+   /reflexive|pronominal|pronom/i.test(await page.locator('[data-testid="verb-pronominal"]').innerText()));
+ok('a vowel-initial pronominal verb elides',
+   await (async () => {
+     await go(page, '/learn/verbs/évanouir');
+     await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
+     const h = (await page.locator('[data-testid="verb-headword"]').innerText()).trim();
+     const f = (await page.locator('[data-testid="form-present-0"]').innerText()).trim();
+     const norm = (x) => x.replace(/[\u2018\u2019]/g, "'");
+     return norm(h) === "s'évanouir" && /^m'évanouis/.test(norm(f));
+   })());
+
+// A verb with a pronominal sense among others keeps the bare infinitive: the
+// mirror defect would teach that « je trouve » is wrong.
+await go(page, '/learn/verbs/trouver');
+await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
+ok('a verb that is only sometimes pronominal keeps its bare infinitive',
+   (await page.locator('[data-testid="verb-headword"]').innerText()).trim() === 'trouver');
 
 await go(page, '/learn/verbs');
 await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
