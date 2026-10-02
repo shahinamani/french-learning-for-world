@@ -63,7 +63,13 @@ export type Verb = {
   /** Set when every sense Wiktionary records is labelled vulgar, so the page can
    *  say why it shows no meaning instead of rendering an empty line that looks
    *  like a bug. Null for every other verb. */
-  glossWithheld: 'vulgar' | null;
+  glossWithheld: 'explicit' | null;
+  /** True for the 51 verbs that exist only with a reflexive pronoun. The
+   *  headword is then « se souvenir », not « souvenir », and every row of the
+   *  table carries the pronoun. */
+  pronominal: boolean;
+  /** « se souvenir » / « s'évanouir ». Null unless `pronominal`. */
+  headword: string | null;
   /** Something a learner should be told about this verb — an accepted
    *  alternative spelling, a defective paradigm, a point still unsettled. */
   notes: string | null;
@@ -74,6 +80,10 @@ export type VerbSummary = {
   infinitive: string; key: string; level: Level; rank: number;
   group: string; irregular: boolean; auxiliary: 'avoir' | 'être';
   en: string;
+  /** Present only for a pronominal-only verb, so the LIST shows « se souvenir »
+   *  too. A learner who reads the wrong headword in the list has already
+   *  learned it wrong before they open the verb. */
+  headword?: string;
 };
 
 export type TenseNames = Record<string, Partial<Record<Locale, string>>>;

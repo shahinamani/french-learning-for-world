@@ -37,32 +37,44 @@ function probe(fixture) {
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const all = LEVELS.flatMap((l) => read(`content/verbs/${l}.json`).verbs);
 
-test('a sense Wiktionary labels vulgar is refused, and the refusal is recorded', () => {
+test('an explicit translation is refused, and the refusal is recorded', () => {
   const { kept, rejected } = probe('tests/fixtures/gloss-senses.wiki');
   assert.ok(!JSON.stringify(kept).includes('UNSHIPPABLE'),
-    `a vulgar-labelled sense reached a learner: ${JSON.stringify(kept)}`);
-  const byLabel = rejected.filter((r) => r.why === 'label');
-  assert.ok(byLabel.some((r) => r.labels.includes('vulgar')),
-    'nothing was rejected by label — the filter is not running at all');
+    `an explicit sense reached a learner: ${JSON.stringify(kept)}`);
+  assert.ok(rejected.some((r) => r.why === 'explicit'),
+    'nothing was refused — the filter is not running at all');
 });
 
-test('a derogatory sense is refused too, not only a vulgar one', () => {
-  const { kept, rejected } = probe('tests/fixtures/gloss-comment-and-slur.wiki');
-  assert.ok(!JSON.stringify(kept).includes('SLUR'), 'a slur reached a learner');
-  assert.ok(rejected.some((r) => r.why === 'label' && r.labels.includes('derogatory')));
-  // Both comment forms, and both senses behind them. Two rules strip comments:
-  // closed ones anywhere, and one left unclosed to the end of the section. The
-  // second alone would take every sense after the first comment with it, so
-  // this asserts the sense AFTER a closed comment is still there — without it,
-  // deleting the closed-comment rule broke nothing and the suite stayed green.
-  assert.deepEqual(kept, ['to eat', 'to drink'],
-    'a sense behind an HTML comment was lost or a comment reached the gloss');
+test('the decision is made on our English, not on Wiktionary\'s French label', () => {
+  // This is the whole ruling. `vulgar` describes the register of the FRENCH
+  // word and says nothing about the English we are about to print, so these
+  // two are shown WITH their register rather than withheld:
+  //
+  //   gueuler    to yell, to scream      coarse French, clean English
+  //   démerder   to manage, to get by    the same
+  //
+  // Dropping them taught nothing and left a learner able to use « gueuler » in
+  // a DELF oral without knowing it is coarse.
+  const show = { gueuler: /to yell/, 'démerder': /to manage/, bosser: /to work/ };
+  for (const [v, want] of Object.entries(show)) {
+    const verb = all.find((x) => x.infinitive === v);
+    assert.ok(verb, `${v} is not in the content`);
+    assert.match(verb.meanings.en || '', want,
+      `${v} reads "${verb.meanings.en}" — its clean translation was withheld`);
+  }
+  // And the register is on the page, because half the information is the half
+  // that keeps a learner out of trouble.
+  assert.match(all.find((v) => v.infinitive === 'gueuler').meanings.en, /\((slang|vulgar)\)/);
 });
 
-test('a verb whose every sense is refused gets no gloss at all', () => {
-  const { kept, rejected } = probe('tests/fixtures/gloss-all-rejected.wiki');
-  assert.deepEqual(kept, [], 'a gloss survived where every sense was rejected');
-  assert.equal(rejected.length, 2);
+test('a verb whose PRIMARY sense is unprintable is silenced, not re-described', () => {
+  // « enculer » came back as "to beat up" — its fourth sense, listed, real, and
+  // not what the word means. Keeping a later sense when the first is refused
+  // does not describe the verb, it substitutes a different one.
+  const enculer = all.find((v) => v.infinitive === 'enculer');
+  assert.equal(enculer.meanings.en, undefined,
+    `enculer reads "${enculer.meanings.en}" — a marginal sense was promoted`);
+  assert.equal(enculer.glossWithheld, 'explicit');
 });
 
 test('at most two senses, and the first sense is the first sense', () => {
@@ -92,6 +104,14 @@ test('a register is shown rather than used as a reason to withhold', () => {
     'a slang sense was dropped instead of marked — that teaches less, not more');
 });
 
+test('only an explicit ALTERNATIVE is dropped, not the sense around it', () => {
+  // « entuber » is "to shaft, to fuck over, dupe, swindle, fool". Refusing the
+  // whole sense for one synonym cost it four printable translations.
+  const entuber = all.find((v) => v.infinitive === 'entuber');
+  assert.match(entuber.meanings.en, /shaft/);
+  assert.ok(!/fuck/i.test(entuber.meanings.en), entuber.meanings.en);
+});
+
 test('no wikitext reaches a learner', () => {
   // « chier » shipped "to shit, defecate<!-- not sure I believe the next one;"
   // because an HTML comment that spans two lines is matched by no single-line
@@ -114,14 +134,14 @@ test('no gloss is a fragment left between two nested templates', () => {
 
 test('the verbs withheld for register are exactly these, and say so', () => {
   // Declared, so that silencing another verb fails this check and un-silencing
-  // one without striking it from this list fails it too. Every English
-  // translation Wiktionary records for these is labelled vulgar.
-  const WITHHELD = ['chier', 'démerder', 'emmerder', 'enculer', 'entuber',
-                    'gueuler', 'merder'];
+  // one without striking it from this list fails it too. The leading English
+  // translation of each of these is explicit, which is the whole reason: it is
+  // our own output that is refused, not somebody else's label.
+  const WITHHELD = ['chier', 'enculer', 'masturber', 'merder', 'pisser'];
   const actual = all.filter((v) => v.glossWithheld).map((v) => v.infinitive).sort();
   assert.deepEqual(actual, [...WITHHELD].sort());
   for (const v of all.filter((x) => x.glossWithheld)) {
-    assert.equal(v.glossWithheld, 'vulgar');
+    assert.equal(v.glossWithheld, 'explicit');
     assert.deepEqual(v.meanings, {},
       `${v.infinitive} is marked withheld and still carries a meaning`);
   }

@@ -337,10 +337,18 @@ honours them.
 
 ### Resume order, set by Shahin on 2026-10-02
 
-1. **Gloss quality.** First one or two senses only; drop senses by Wiktionary's
-   own vulgar/slang/obscene **label**, not by guessing at the text; sample a
-   hundred across frequency bands for Shahin to read; and say on the page that
-   meanings come from Wiktionary and are unreviewed.
+1. ~~**Gloss quality.**~~ **Done 2026-10-02.** Two senses, the decision made on
+   our own English output rather than Wiktionary's French label (Shahin's
+   ruling: show the meaning, show the register), 100 sampled across the bands,
+   and the page says the meanings are unreviewed. Five verbs are silent and say
+   why. See `tests/glosses.test.js`.
+1b. ~~**Pronominal-only verbs.**~~ **Done 2026-10-02, and it was the most
+   serious defect found so far.** « souvenir » was glossed "to remember" with a
+   table reading « je souviens » — six rows of French that does not exist, on an
+   A1 verb. 51 verbs are pronominal-only; they now carry `pronominal` and a
+   headword (« se souvenir », « s'évanouir ») and the table shows the pronoun.
+   **The 51 have had no review but Wiktionary's labels. It is a ten-minute read
+   for a teacher and it is the highest-value ten minutes available.**
 2. **Alternates in the flashcard session and the exam engine.** Only the
    conjugation drill honours `accepted`. A learner marked wrong for correct
    French in an exam is the same defect where it hurts most.
@@ -348,6 +356,13 @@ honours them.
    pushed without checking, and the budget has never slipped before.
 4. **The level-assignment list** for Shahin's 150–250 manual moves: verb,
    frequency-assigned level, room for his correction.
+5. **The 51 pronominal-only verbs want a teacher's eye** — the list is in
+   `tests/pronominal.test.js`, declared in full, so moving one is a one-line
+   change that the suite then checks.
+6. **Build inputs are in `data/`** and the page caches are at
+   `~/.cache/flw/`, not in a scratchpad. `data/README.md` states what losing
+   them costs: 4,793 requests against Wikimedia, about 28 minutes. `content/`
+   rebuilds from `data/wiktionary-glosses.json` with no network at all.
 
 ### What is wrong right now, in priority order
 

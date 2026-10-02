@@ -101,7 +101,8 @@ const fr: Dict = {
   verbCount: '{shown} verbes affichés sur {total}. Tapez pour affiner la liste.',
   readNotWritten: 'À lire, pas à écrire',
   glossSource: 'Les sens proviennent du Wiktionnaire et n’ont pas été relus par un enseignant.',
-  glossWithheldVulgar: 'Aucun sens n’est affiché : tous les sens que le Wiktionnaire donne pour ce verbe sont marqués vulgaires. Le verbe figure dans la liste parce qu’il est courant à l’oral, non parce qu’il est à employer.',
+  glossWithheldExplicit: 'Aucun sens n’est affiché : toutes les traductions anglaises de ce verbe sont crues. Il figure dans la liste parce qu’il est courant à l’oral, non parce qu’il est à employer.',
+  pronominalOnly: 'Ce verbe ne s’emploie qu’à la forme pronominale. « je souviens » n’existe pas ; « je me souviens » si.',
 };
 
 export default fr;

@@ -68,3 +68,8 @@ web/public/fonts/
 # conjugator, putting a binary diff in commits that changed no source.
 __pycache__/
 *.pyc
+
+# Page caches are NOT committed — see data/README.md for what they cost to
+# rebuild (2,393 requests against en.wiktionary, about 14 minutes).
+.gloss-cache/
+.wikt-cache/

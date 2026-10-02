@@ -9,6 +9,7 @@ import { Icon } from '../../components/Icon';
 import { NotFound } from '../../routes/Stub';
 import { fr as frText } from '../../lib/typography';
 import { Localised } from '../../components/Localised';
+import { withPronoun } from '../../lib/pronominal';
 
 export function VerbDetail() {
   const { infinitive = '' } = useParams();
@@ -47,7 +48,12 @@ export function VerbDetail() {
         ← {t('back')}
       </button>
       <div>
-        <h1 className="h2" lang="fr" dir="ltr">{frText(verb.infinitive)}</h1>
+        {/* « se souvenir », not « souvenir ». The bare infinitive was the
+            headword for all 51 pronominal-only verbs, and a learner copying it
+            writes « je souviens ». */}
+        <h1 className="h2" lang="fr" dir="ltr" data-testid="verb-headword">
+          {frText(verb.headword ?? verb.infinitive)}
+        </h1>
         {/* `verb.meanings[settings.meaning] ?? verb.meanings.en` was here. That
             pattern is forbidden in this codebase for the reason docs/04 gives:
             it serves English silently, so a learner reading Persian cannot tell
@@ -56,12 +62,15 @@ export function VerbDetail() {
         {verb.meanings?.en || verb.meanings?.[settings.meaning]
           ? <p className="muted"><Localised field={verb.meanings} locale={settings.meaning}
                                             testId="verb-meaning" /></p>
-          : verb.glossWithheld === 'vulgar'
-            ? <p className="muted" data-testid="verb-gloss-withheld">{t('glossWithheldVulgar')}</p>
+          : verb.glossWithheld === 'explicit'
+            ? <p className="muted" data-testid="verb-gloss-withheld">{t('glossWithheldExplicit')}</p>
             : null}
         {/* Said on the page, every time, not once in an About screen. A learner
             about to memorise "to come" from a machine-harvested gloss should
             know no teacher has read it. */}
+        {verb.pronominal
+          ? <p className="fine" data-testid="verb-pronominal">{t('pronominalOnly')}</p>
+          : null}
         {verb.meanings?.en
           ? <p className="fine muted" data-testid="verb-gloss-source">{t('glossSource')}</p>
           : null}
@@ -123,7 +132,15 @@ export function VerbDetail() {
               {verb.persons.map((p, i) => (tn.forms[i] ? (
                 <tr key={p}>
                   <th scope="row" lang="fr" dir="ltr">{p}</th>
-                  <td lang="fr" dir="ltr" data-testid={`form-${tn.id}-${i}`}>{frText(tn.forms[i] ?? '')}</td>
+                  {/* The pronoun goes in the FORM cell, not the person cell: it
+                      belongs to the verb, it elides against the form
+                      (« je m'évanouis »), and a learner copying the cell must
+                      get something they can write down. */}
+                  <td lang="fr" dir="ltr" data-testid={`form-${tn.id}-${i}`}>
+                    {frText(verb.pronominal
+                      ? withPronoun('', i, tn.forms[i] ?? '').trim()
+                      : (tn.forms[i] ?? ''))}
+                  </td>
                 </tr>
               ) : null))}
             </tbody>

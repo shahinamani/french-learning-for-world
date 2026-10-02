@@ -17,6 +17,7 @@ import type { ReviewRow } from '../../lib/types';
 import { Icon } from '../../components/Icon';
 import { useSidePanel } from '../../components/SidePanel';
 import { fr as frText } from '../../lib/typography';
+import { reflexivePronoun } from '../../lib/pronominal';
 import { WithAccentBar } from '../../components/AccentBar';
 import { pick } from '../../lib/exams';
 import { Num } from '../../components/Num';
@@ -152,7 +153,15 @@ export function ConjugationDrill() {
           <span className="chip">{frText(label)}</span>
         </div>
         <p className="flashcard__word" lang="fr" dir="ltr">
-          <span className="article">{verb.persons[index]}</span>{frText(verb.infinitive)}
+          {/* « je me — se souvenir ». The pronoun is part of the prompt, not
+              part of the expected answer: a learner typing "souviens" is right,
+              and asking them to type the pronoun too would mark correct French
+              wrong. */}
+          <span className="article">
+            {verb.pronominal
+              ? `${verb.persons[index]} ${reflexivePronoun(index, tense.forms[index] ?? '')}`
+              : verb.persons[index]}
+          </span>{frText(verb.headword ?? verb.infinitive)}
         </p>
         <form onSubmit={(e) => { e.preventDefault(); if (result) next(); else void submit(); }}>
           <WithAccentBar inputRef={input} onInsert={setValue}>
