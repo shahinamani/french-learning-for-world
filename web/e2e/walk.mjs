@@ -98,7 +98,14 @@ console.log('\n=== multi-user isolation (two tabs, two profiles, one origin) ===
   await go(b, '/account'); await b.selectOption('[data-testid="theme"]', 'light'); await b.waitForTimeout(200);
   const allKeys = await a.evaluate(() => Object.keys(localStorage));
   const perLearner = allKeys.filter((k) => k.startsWith('flw:u:'));
-  const stray = allKeys.filter((k) => k.startsWith('flw:') && !k.startsWith('flw:u:') && k !== 'flw:profiles');
+  // Two keys are deliberately outside a learner's namespace because they are
+  // pointers, not data: the index of profiles, and which profile this browser
+  // last used so a restart resumes the right person. Both hold ids only. Any
+  // OTHER key outside flw:u:<id>: is learner data in a place a second learner
+  // on the same laptop could read, which is what this check exists to stop.
+  const POINTERS = ['flw:profiles', 'flw:lastProfile'];
+  const stray = allKeys.filter((k) => k.startsWith('flw:') && !k.startsWith('flw:u:')
+                                      && !POINTERS.includes(k));
   ok(`${perLearner.length} per-learner keys, every one namespaced flw:u:<id>:*`,
      perLearner.length >= 2 && perLearner.every((k) => /^flw:u:[^:]+:.+/.test(k)));
   ok(`no learner data outside a namespace (${stray.length} stray keys${stray.length ? ': ' + stray.join(', ') : ''})`, stray.length === 0);
