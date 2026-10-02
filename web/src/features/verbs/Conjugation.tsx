@@ -74,7 +74,10 @@ export function ConjugationDrill() {
   const submit = useCallback(async () => {
     if (!verb || !tense || !engine || result) return;
     const expected = tense.forms[index] ?? '';
-    const check = checkAnswer(value, expected);
+    // The other spelling French accepts for this exact person, if there is
+    // one. Marking « essaye » wrong would teach a learner that a correct
+    // form is incorrect.
+    const check = checkAnswer(value, expected, [tense.accepted?.[index] ?? '']);
     setResult({ ...check, expected });
     if (check.correct) setRight((n) => n + 1);
 

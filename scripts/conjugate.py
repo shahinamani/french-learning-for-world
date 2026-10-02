@@ -88,16 +88,30 @@ def soften(stem: str, ending: str) -> str:
     return stem
 
 
-def er_mute_stem(lemma: str, stem: str) -> str | None:
-    """The stem an -er verb uses before a mute e, or None if it does not change."""
+def er_mute_stem(lemma: str, stem: str, rectified: bool = False) -> str | None:
+    """The stem an -er verb uses before a mute e, or None if it does not change.
+
+    `rectified` selects the other accepted spelling where French has two: the
+    y-form of an -ayer verb, and è for every -eler/-eter verb rather than only
+    the listed ones. Both are current, and a learner who writes either is right,
+    so the drill has to be told about both.
+    """
     if lemma.endswith(("eler", "eter")):
-        if lemma in E_GRAVE_ELER_ETER:
+        # Two spellings, and `rectified` takes the OTHER one — whichever the
+        # verb does not ship with. martèle ships and martelle is accepted;
+        # appelle ships and appèle is accepted.
+        takes_grave = lemma in E_GRAVE_ELER_ETER
+        if rectified:
+            takes_grave = not takes_grave
+        if takes_grave:
             return stem[:-2] + "è" + stem[-1]          # achet- → achèt-
         return stem + stem[-1]                          # appel- → appell-
+    if lemma.endswith("ayer") and rectified:
+        # The y-form: je paye, j'essaye. Both are standard; the i-form ships
+        # because the corpus attests it far more often, and this is the other.
+        return None
     if lemma.endswith("yer"):
-        # -ayer admits paye and paie; the corpus overwhelmingly attests the
-        # i-form, so that is what ships, with the y-form a known alternate.
-        return stem[:-1] + "i"                          # emploie, essuie
+        return stem[:-1] + "i"                          # emploie, essuie, paie
     body = stem
     # e_er (lever → lève) and é_er (préférer → préfère, régler → règle). The
     # vowel may be separated from the ending by more than one consonant, which
@@ -127,9 +141,9 @@ def er_mute_stem(lemma: str, stem: str) -> str | None:
     return None
 
 
-def conjugate_er(lemma: str) -> dict:
+def conjugate_er(lemma: str, rectified: bool = False) -> dict:
     stem = lemma[:-2]
-    mute = er_mute_stem(lemma, stem)
+    mute = er_mute_stem(lemma, stem, rectified)
     out: dict[str, list[str]] = {}
     for slot, endings in ER_ENDINGS.items():
         forms = []
@@ -145,7 +159,10 @@ def conjugate_er(lemma: str) -> dict:
     # caught this on répéter, inquiéter and protéger.
     fut_stem = lemma
     e_grave_from_e_acute = len(stem) >= 2 and "é" in stem[-3:]
-    if mute and not e_grave_from_e_acute:
+    # The 1990 rectifications write « j'espèrerai » where tradition writes
+    # « j'espérerai ». Both are in print; the traditional one is what a learner
+    # meets in an exam paper, so it ships and the other is accepted.
+    if mute and (rectified or not e_grave_from_e_acute):
         fut_stem = mute + "er"
     out["ind:fut"] = [fut_stem + e for e in FUT_ENDINGS]
     out["cnd:pre"] = [fut_stem + e for e in CND_ENDINGS]
@@ -187,7 +204,7 @@ IRREGULAR_IR_STEMS = (
 )
 
 
-def conjugate(lemma: str) -> tuple[str, dict] | tuple[str, None]:
+def conjugate(lemma: str, rectified: bool = False) -> tuple[str, dict] | tuple[str, None]:
     """Returns (pattern, forms). `None` forms mean: not handled yet, do not ship.
 
     Refusing is a first-class outcome. A verb this script cannot do correctly
@@ -211,7 +228,7 @@ def conjugate(lemma: str) -> tuple[str, dict] | tuple[str, None]:
         # aller is suppletive; envoyer has an irregular future (enverra).
         return ("unhandled -er irregular", None)
     if lemma.endswith("er"):
-        return ("-er", conjugate_er(lemma))
+        return ("-er", conjugate_er(lemma, rectified))
     if lemma.endswith(IRREGULAR_IR_STEMS):
         return ("unhandled -ir irregular", None)
     if lemma.endswith("ir"):

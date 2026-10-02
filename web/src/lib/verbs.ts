@@ -33,6 +33,10 @@ export type VerbTense = {
    *  be weak at them, and a wrong id would be worse than none. */
   conceptId: string | null;
   forms: string[];
+  /** A second spelling French also accepts, per person, empty where there is
+   *  only one: « essaye » beside « essaie », « martelle » beside « martèle ».
+   *  A drill that refuses these marks a correct learner wrong. */
+  accepted?: string[];
 };
 
 export type Verb = {

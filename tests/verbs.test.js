@@ -169,6 +169,38 @@ test('the level a verb is filed under matches its frequency rank', () => {
     'level is assigned from frequency; a verb outside its band was filed by hand or by accident');
 });
 
+test('where French admits two spellings, the second is carried on the form', () => {
+  // A learner writing « essaye » or « martelle » is right. The drill reads
+  // `accepted` to know that; without it, a correct answer is marked wrong,
+  // which is the one failure this product will not have.
+  const withAlt = all.filter((v) => v.tenses.some((t) => t.accepted));
+  assert.ok(withAlt.length >= 40,
+    `only ${withAlt.length} verbs carry an alternate spelling — the -ayer, é_er `
+    + 'and -eler/-eter families alone should be far more');
+  const essayer = all.find((v) => v.infinitive === 'essayer');
+  assert.ok(essayer, 'essayer is not in the content');
+  const pres = essayer.tenses.find((t) => t.id === 'present');
+  assert.deepEqual(pres.forms.slice(0, 3), ['essaie', 'essaies', 'essaie']);
+  assert.deepEqual(pres.accepted.slice(0, 3), ['essaye', 'essayes', 'essaye']);
+  // An alternate must never equal the form it stands beside, or it is noise.
+  const noise = [];
+  for (const v of all) {
+    for (const t of v.tenses) {
+      if (!t.accepted) continue;
+      t.accepted.forEach((a, i) => { if (a && a === t.forms[i]) noise.push(`${v.infinitive} ${t.id}`); });
+    }
+  }
+  assert.deepEqual(noise.slice(0, 5), []);
+  console.log(`    ${withAlt.length} verbs carry a second accepted spelling`);
+});
+
+test('nearly every verb has an English gloss, and the gaps are named', () => {
+  const without = all.filter((v) => !v.meanings || !v.meanings.en).map((v) => v.infinitive);
+  console.log(`    ${all.length - without.length} of ${all.length} glossed`);
+  assert.ok(without.length <= 30,
+    `${without.length} verbs have no meaning at all: ${without.slice(0, 12).join(', ')}`);
+});
+
 test('the shards are small enough to send one at a time', () => {
   // The whole set is about 4 MiB. The split exists so a learner at B1 fetches
   // B1, and a shard that grows past a quarter of a megabyte raw has stopped
