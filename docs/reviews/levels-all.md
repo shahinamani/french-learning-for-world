@@ -1,6 +1,6 @@
 # Level assignment — all 2,392 verbs
 
-Frequency-assigned levels, for reference. The 194 with
+Frequency-assigned levels, for reference. The 196 with
 evidence that the frequency is misleading are in `levels-priority.md` and are
 the ones worth reading first.
 
@@ -605,7 +605,7 @@ C2 1,901–2,400.
 | 582 | B1 | `estimer` | to estimate, to calculate roughly; to esteem, to hold in high regard; to give some thoug |  |
 | 583 | B1 | `ôter` | to take away, remove; to take off, remove (clothes, etc.); to remove, cut (text etc.), t |  |
 | 584 | B1 | `exercer` | to instruct, to command; to exercise; to practise, to do |  |
-| 585 | B1 | `s'envoler` | to take off, to take flight; to blow away; to fly (of time); to vanish, disappear, walk  |  |
+| 585 | B1 | `s'envoler` | to fly away, to take off; to vanish, to disappear |  |
 | 586 | B1 | `violer` | to violate; to rape, to have sex with an unwilling partner |  |
 | 587 | B1 | `user` | to wear, wear down, wear off, wear out, grind down, run in; to use (used with de) |  |
 | 588 | B1 | `épuiser` | to dry up; to squeeze out; to exhaust, to wear out |  |
@@ -738,7 +738,7 @@ C2 1,901–2,400.
 | 715 | B1 | `envier` | to envy |  |
 | 716 | B1 | `citer` | to cite, quote; to summon; to name |  |
 | 717 | B1 | `défaire` | to take down, take apart, dismantle, unpack (luggage); to undo, unfasten, unwind; to bre |  |
-| 718 | B1 | `s'évanouir` | to lose consciousness, to faint; to vanish or disappear without a trace, especially thin |  |
+| 718 | B1 | `s'évanouir` | to lose consciousness, to faint; to vanish, to disappear |  |
 | 719 | B1 | `distraire` | to distract |  |
 | 720 | B1 | `étirer` | to stretch; to stretch (stretch one's muscles) |  |
 | 721 | B1 | `filmer` | to film |  |
@@ -759,7 +759,7 @@ C2 1,901–2,400.
 | 736 | B1 | `sucer` | to suck; to give head, to suck off (slang) |  |
 | 737 | B1 | `développer` | to develop; to deploy, unfold; to code (an application) |  |
 | 738 | B1 | `affecter` | to feign, affect (an emotion, etc.); to allocate (something); to assign someone, to post |  |
-| 739 | B1 | `se suicider` | to commit suicide, to kill oneself, suicide |  |
+| 739 | B1 | `se suicider` | to commit suicide |  |
 | 740 | B1 | `compliquer` | to complicate; to elaborate |  |
 | 741 | B1 | `circuler` | to circulate; to go by, to get around |  |
 | 742 | B1 | `contacter` | to contact (all senses) |  |
@@ -921,7 +921,7 @@ C2 1,901–2,400.
 | 899 | B1 | `disperser` | to scatter, to disperse |  |
 | 900 | B1 | `pêcher` | to fish |  |
 
-## B2 — 499 verbs
+## B2 — 498 verbs
 
 | rank | level | verb | gloss | ruling |
 |---:|:--|:--|:--|:--|
@@ -1352,7 +1352,7 @@ C2 1,901–2,400.
 | 1326 | B2 | `tituber` | to stagger |  |
 | 1327 | B2 | `hérisser` | to spike, to form spikes in; to get somebody's back up (colloquial) |  |
 | 1328 | B2 | `démonter` | to dismantle, to take down; to remove, to take off; to disconcert |  |
-| 1329 | B2 | `s'empresser` | to hasten; to mass, to gather (literary) |  |
+| 1329 | B2 | `s'empresser` | to hurry to, to be eager to |  |
 | 1330 | B2 | `mijoter` | to simmer |  |
 | 1331 | B2 | `se blottir` | to snuggle, to huddle |  |
 | 1332 | B2 | `aménager` | to lay out, fit out; to develop, convert (to an intended use) |  |
@@ -1378,7 +1378,6 @@ C2 1,901–2,400.
 | 1352 | B2 | `bredouiller` | to stammer, to mumble |  |
 | 1353 | B2 | `rebondir` | to bounce, rebound; to pick oneself up, to get back on one's feet |  |
 | 1354 | B2 | `frayer` | to rub; to spawn, to fertilize an egg; to open up, clear (a path, a way, etc.); to mix,  |  |
-| 1355 | B2 | `dépourvoir` | to unequip |  |
 | 1356 | B2 | `déverser` | to pour, pour out, spill out; to pour (into), to flow (into) |  |
 | 1357 | B2 | `grommeler` | to grumble, mutter (colloquial) |  |
 | 1358 | B2 | `amorcer` | to prime, set in motion; to begin, to get to work on (to commence a project); to break g |  |
@@ -1403,7 +1402,7 @@ C2 1,901–2,400.
 | 1377 | B2 | `épater` | to flatten (dated); to knock down, to cause to sprawl on the ground (dated); to amaze, t |  |
 | 1378 | B2 | `dénouer` | to undo (a knot), to unknot; to untangle, to unravel (a situation) |  |
 | 1379 | B2 | `enrager` | to have rabies; to enrage, anger, infuriate; to inflame, arouse |  |
-| 1380 | B2 | `se rendormir` | to fall asleep again, to fall back to sleep, to go back to sleep |  |
+| 1380 | B2 | `rendormir` | to fall asleep again, to fall back to sleep, to go back to sleep |  |
 | 1381 | B2 | `ressaisir` | to regain or recover (that which was lost) |  |
 | 1382 | B2 | `revendre` | resell, sell again |  |
 | 1383 | B2 | `recruter` | to recruit |  |
@@ -1516,7 +1515,7 @@ C2 1,901–2,400.
 | 1486 | C1 | `ronronner` | to purr (to make a vibrating sound in its throat when contented or in certain other cond |  |
 | 1487 | C1 | `pleurnicher` | to whine (to complain or protest in a childish manner or about trivial things) |  |
 | 1488 | C1 | `restituer` | to restitute, to restore (return to something's former condition); to bring back, bring  |  |
-| 1489 | C1 | `se recoucher` | to go back to bed |  |
+| 1489 | C1 | `recoucher` | to go back to bed |  |
 | 1490 | C1 | `se démerder` | to manage, to get by (vulgar); to figure something out (vulgar) |  |
 | 1491 | C1 | `neiger` | to snow |  |
 | 1492 | C1 | `ramer` | to row; to have a hard time (be in difficulties) (informal) |  |
@@ -1733,7 +1732,7 @@ C2 1,901–2,400.
 | 1705 | C1 | `consigner` | to confine to quarters; to give (somebody) detention; to record, to write down; to consi |  |
 | 1706 | C1 | `ferrer` | to clad in iron (transitive), to be clad in iron (intransitive); to shoe (a horse); to c |  |
 | 1707 | C1 | `niquer` | to obtain what was announced on the first throw |  |
-| 1708 | C1 | `s'éprendre` | to burn; to become enamoured with, fall in love with (literary) |  |
+| 1708 | C1 | `s'éprendre` | to fall in love with, to become enamoured with (literary) |  |
 | 1709 | C1 | `loucher` | to be cross-eyed, to be squint-eyed, to squint; squint (to look with eyes that are turne |  |
 | 1710 | C1 | `moisir` | (to cause) to go mouldy, to moulder; to hang around, to gather dust (informal) |  |
 | 1711 | C1 | `sévir` | to crack down, clamp down; to rage; to be rife; to hold sway |  |
@@ -1767,7 +1766,7 @@ C2 1,901–2,400.
 | 1739 | C1 | `griffonner` | to scribble, scrawl (write something scruffily) |  |
 | 1740 | C1 | `énumérer` | to enumerate, count out, go through one by one |  |
 | 1741 | C1 | `casquer` | to fall into a trap, particularly by paying money in advance; to cough up, stump up, for |  |
-| 1742 | C1 | `se gourer` | to goof up, to mess up, to screw up; to doubt something, to be wary of something |  |
+| 1742 | C1 | `se gourer` | to be mistaken, to get it wrong (familiar) |  |
 | 1743 | C1 | `pédaler` | to pedal (a bicycle) |  |
 | 1744 | C1 | `tanguer` | to sway back and forth; to spin, sway (seem to be moving); to shake (not perform well) |  |
 | 1745 | C1 | `magner` | bump, hit into (accidentally); move (slang) |  |
@@ -1819,7 +1818,7 @@ C2 1,901–2,400.
 | 1791 | C1 | `perler` | to bead (form into beads) |  |
 | 1792 | C1 | `réintégrer` | to return to (somewhere one's been before); to reinstate (someone), to restore (someone  |  |
 | 1793 | C1 | `amarrer` | to moor; to tie with rope |  |
-| 1794 | C1 | `s'ébrouer` | to snort; to flap its wings |  |
+| 1794 | C1 | `s'ébrouer` | to snort, to shake oneself |  |
 | 1795 | C1 | `obscurcir` | to darken (a colour); to obscure, to blur; to obfuscate; to darken |  |
 | 1796 | C1 | `draper` | to drape |  |
 | 1797 | C1 | `truquer` | to tamper with, to fiddle, to falsify; to trick; to fix, rig (e.g. elections, a sports m |  |
@@ -1834,7 +1833,7 @@ C2 1,901–2,400.
 | 1806 | C1 | `éventrer` | to gut, to disembowel; to rip apart, to tear open; to gore |  |
 | 1807 | C1 | `frimer` | to show off (colloquial) |  |
 | 1808 | C1 | `bouillonner` | to bubble, to froth; to seethe, to get angry |  |
-| 1809 | C1 | `s'extasier` | to be in ecstasy; to rave |  |
+| 1809 | C1 | `s'extasier` | to go into raptures, to enthuse (over) |  |
 | 1810 | C1 | `fouiner` | to furrow, ferret, snoop around (informal) |  |
 | 1811 | C1 | `déjouer` | to foil, to thwart, to frustrate |  |
 | 1812 | C1 | `endosser` | to carry on one's back; to assume responsibility, to shoulder; to endorse; to take on (e |  |
@@ -1927,7 +1926,7 @@ C2 1,901–2,400.
 | 1899 | C1 | `rabaisser` | to humiliate, belittle; to lower, reduce |  |
 | 1900 | C1 | `décimer` | to decimate (reduce by one tenth); to decimate (massacre, almost wipe out) |  |
 
-## C2 — 498 verbs
+## C2 — 496 verbs
 
 | rank | level | verb | gloss | ruling |
 |---:|:--|:--|:--|:--|
@@ -1964,7 +1963,6 @@ C2 1,901–2,400.
 | 1931 | C2 | `suinter` | to ooze |  |
 | 1932 | C2 | `expérimenter` | to experiment; to experience |  |
 | 1933 | C2 | `cabrer` | to pull up (an aircraft's nose); (reflexive) to rear up, to resist |  |
-| 1934 | C2 | `dénuer` | to deprive |  |
 | 1935 | C2 | `rétracter` | to retract, contract |  |
 | 1936 | C2 | `dilater` | to dilate |  |
 | 1937 | C2 | `héler` | to hail (call out loudly) |  |
@@ -2028,7 +2026,7 @@ C2 1,901–2,400.
 | 1996 | C2 | `manigancer` | to conspire, scheme, plot |  |
 | 1997 | C2 | `énoncer` | to enounce, lay out, declare; to explain |  |
 | 1998 | C2 | `rivaliser` | to compete |  |
-| 1999 | C2 | `se démener` | to convulse, thrash about, to struggle |  |
+| 1999 | C2 | `se démener` | to struggle, to bustle about, to exert oneself |  |
 | 2000 | C2 | `mordiller` | to chew (to crush food with teeth prior to swallowing) |  |
 | 2001 | C2 | `tramer` | to weave; to hatch, think up, come up with |  |
 | 2002 | C2 | `troquer` | to barter (exchange goods or services without involving money) |  |
@@ -2103,7 +2101,7 @@ C2 1,901–2,400.
 | 2071 | C2 | `comparaître` | to appear before a judge or government official |  |
 | 2072 | C2 | `effaroucher` | to scare off, frighten away (an animal); to frighten, alarm (someone); to shock |  |
 | 2073 | C2 | `jauger` | to sound (measure), to gauge by sounding |  |
-| 2074 | C2 | `s'entrecroiser` | to criss-cross, intersect |  |
+| 2074 | C2 | `entrecroiser` | to criss-cross, intersect |  |
 | 2075 | C2 | `enrôler` | to enroll, enlist |  |
 | 2076 | C2 | `culpabiliser` | to feel guilty; to guilt trip, to make (someone) feel guilty |  |
 | 2077 | C2 | `malmener` | to mistreat; to misuse, use incorrectly |  |
@@ -2415,7 +2413,6 @@ C2 1,901–2,400.
 | 2384 | C2 | `bonder` | to fill up |  |
 | 2385 | C2 | `soutirer` | to rack (beer or wine) |  |
 | 2386 | C2 | `défouler` | to vent, to be a release for; to let off steam, unwind |  |
-| 2387 | C2 | `s'éperdre` | to lose one's way (literary) |  |
 | 2388 | C2 | `primer` | to dominate, to be dominant over; to win (a prize); to prevail, take precedent |  |
 | 2389 | C2 | `présager` | to predict, to foresee, foretell; to forewarn; to portend, be an omen of; to bode |  |
 | 2390 | C2 | `tempérer` | to temper, to soothe, to assuage |  |

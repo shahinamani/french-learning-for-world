@@ -62,7 +62,7 @@ export function VerbList() {
     return () => { live = false; };
   }, [verbs, q, forms]);
 
-  // 2,392 rows is not a list, it is a wall. Show the first slice and say how
+  // 2,389 rows is not a list, it is a wall. Show the first slice and say how
   // many there are, so the number is information rather than a scroll.
   const LIMIT = 60;
   const capped = shown.slice(0, LIMIT);

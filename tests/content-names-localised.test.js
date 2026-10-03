@@ -32,7 +32,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 const concepts = JSON.parse(readFileSync(join(root, 'content/concepts.json'), 'utf8'))
   .concepts.filter((c) => !c.retired);
 // Tense names used to be repeated inside every verb — fourteen copies of each.
-// At 2,392 verbs that would have been 2,392 copies, so they now live once in
+// At 2,389 verbs that would have been 2,389 copies, so they now live once in
 // content/tense-names.json. The claim this file makes is unchanged: a name a
 // learner reads must exist in their language.
 const tenseNames = JSON.parse(
