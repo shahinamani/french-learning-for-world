@@ -49,6 +49,8 @@ const DECLARED = {
   'découverte': { dropped: true, why: 'not a verb at all — a noun Lexique mis-tags' },
   'sous-titrer': { dropped: false, why: 'films are subtitled rather than people subtitling them, '
     + 'and « ils ont sous-titré le film » is ordinary French' },
+  'répertorier': { dropped: true, why: '0% finite — no conjugated form attested' },
+  'diplômer': { dropped: true, why: '0% finite — « diplômé » is the living word' },
 };
 
 test('every all-participle lemma is declared, dropped or kept, with a reason', () => {

@@ -137,7 +137,8 @@ test('nothing withheld by the exception list reaches a learner', () => {
                     // past participles and no finite form is attested. The
                     // adjectives « éperdu », « dépourvu », « dénué » are the
                     // living words.
-                    'éperdre', 'dépourvoir', 'dénuer'];
+                    'éperdre', 'dépourvoir', 'dénuer',
+                    'répertorier', 'diplômer'];
   const leaked = WITHHELD.filter((w) => index.some((v) => v.infinitive === w)
                                      || all.some((v) => v.infinitive === w));
   assert.deepEqual(leaked, [],
@@ -233,7 +234,7 @@ test('the build is deterministic — the same inputs give the same content', () 
   // can see — so the real guard is the tiebreak itself, asserted in the source.
   const ranks = index.map((v) => v.rank);
   assert.equal(new Set(ranks).size, ranks.length, 'two verbs share a rank');
-  const WITHHELD = 11;    // defective, not-a-verb, not-used-as-a-verb
+  const WITHHELD = 13;    // defective, not-a-verb, not-used-as-a-verb
   assert.ok(Math.min(...ranks) >= 1 && Math.max(...ranks) <= 2400,
     `ranks run ${Math.min(...ranks)}..${Math.max(...ranks)}`);
   // Rank is a position in the full 2,400 ordering, so the verbs withheld on
