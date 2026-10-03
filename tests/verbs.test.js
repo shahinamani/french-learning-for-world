@@ -217,3 +217,38 @@ test('the shards are small enough to send one at a time', () => {
     assert.ok(kib < 1200, `${l}.json is ${kib.toFixed(0)} KiB raw`);
   }
 });
+
+test('the build is deterministic — the same inputs give the same content', () => {
+  // Two builds from identical inputs produced different files on 2026-10-03.
+  // Every sort key in build-verbs.py is a frequency, thousands of verbs share
+  // one, and the candidates were held in a SET whose iteration order Python
+  // randomises per process — so ties fell out differently each run, every
+  // rebuild made a content diff, and the review sheets went stale with nothing
+  // having changed.
+  //
+  // This checks the property that fixes it rather than running the build twice
+  // (which needs Lexique's 24.65 MiB): no two verbs may share a rank, and the
+  // ranks must be exactly 1..n with no gaps. A tie broken arbitrarily shows up
+  // as neither — it shows up as a DIFFERENT order, which only a second build
+  // can see — so the real guard is the tiebreak itself, asserted in the source.
+  const ranks = index.map((v) => v.rank);
+  assert.equal(new Set(ranks).size, ranks.length, 'two verbs share a rank');
+  const WITHHELD = 11;    // defective, not-a-verb, not-used-as-a-verb
+  assert.ok(Math.min(...ranks) >= 1 && Math.max(...ranks) <= 2400,
+    `ranks run ${Math.min(...ranks)}..${Math.max(...ranks)}`);
+  // Rank is a position in the full 2,400 ordering, so the verbs withheld on
+  // purpose leave gaps. Asserting 1..n accused a correct build — the invariant
+  // is that the gaps are exactly the withheld ones.
+  assert.equal(2400 - ranks.length, WITHHELD,
+    `${2400 - ranks.length} ranks are missing and ${WITHHELD} verbs are withheld`);
+
+  const src = readFileSync(join(root, 'scripts/build-verbs.py'), 'utf8');
+  const sorts = [...src.matchAll(/key=lambda l:(.*)$/gm)].map((m) => m[1]);
+  assert.ok(sorts.length >= 3, `found ${sorts.length} orderings — the pattern missed some`);
+  // `, l)` is the tiebreak. `get(l, 0.0)` is not one, and reading the capture
+  // only as far as the first `)` confused the two.
+  const untied = sorts.filter((k) => !/,\s*l\s*\)/.test(k)).map((k) => k.trim());
+  assert.deepEqual(untied, [],
+    'an ordering has no tiebreak on the lemma, so equal frequencies order by '
+    + 'set iteration and the build stops being reproducible');
+});

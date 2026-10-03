@@ -575,6 +575,51 @@ invariant. It should not assert a current value, because a current value is
 news and not a rule.**
 
 
+### 2026-10-03 — sorting a set is not sorting, and the guard that caught it was watching a document
+
+Levels moved from a frequency sum to a spoken/written split. The new code built
+its candidate list like this:
+
+```python
+lemmas = set(spoken) | set(written)
+pool = sorted(lemmas, key=lambda l: -total[l])[:2400]
+```
+
+Thousands of verbs share a frequency, the key is a float, and ties therefore
+fell out in the iteration order of a **set** — which Python randomises per
+process. **Two builds from identical inputs produced different content.** Every
+rebuild made a diff in 4.5 MiB of JSON, and the level of any verb tied with
+another was whatever that run happened to decide.
+
+The code it replaced was deterministic by accident: it sorted a `dict`, whose
+order is insertion order, which follows the order of rows in the TSV. Replacing
+a dict with a set looked like a clarification.
+
+**What caught it was a staleness check written for documents.** The review
+sheets are generated from the content, and `tests/review-sheets.test.js` asserts
+every verb they name sits at the level they claim. After a rebuild that changed
+no input, three sheets failed. I had rebuilt only to pick up a new field.
+
+Two things worth keeping:
+
+* **A sort whose key can tie is not an ordering until the tie is broken.** Every
+  sort in that file now ends `, l)`, and a check reads the source and fails on
+  one that does not — because the property is invisible in a single run. One
+  build cannot tell you it was arbitrary; only two can, and nothing runs two.
+* **A guard aimed at one thing can be the only witness to another.** The
+  staleness check exists because a teacher ruling on a stale sheet rules on
+  nothing. It found a content bug instead, by being the only thing in the
+  project that compared two derived artefacts to each other rather than each to
+  its own expectations.
+
+And the fourth pattern-matching mistake of the week, in the check for this very
+fault: I read the sort keys with `key=lambda l: ([^)]*)\)`, which stops at the
+first `)` — the one inside `get(l, 0.0)` — so a correctly tied sort read as
+untied and the check accused working code. [[2026-10-03 — a count you cannot
+predict in advance cannot catch anything]] has the same shape from the other
+side. **When an assertion accuses the data, suspect the assertion first.**
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

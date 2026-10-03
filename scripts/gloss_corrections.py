@@ -173,3 +173,64 @@ HOMOGRAPH: dict[str, str] = {
 def reviewed_gloss(lemma: str) -> str | None:
     got = TEACHER_GLOSS.get(lemma)
     return got[0] if got else None
+
+
+# ---------------------------------------------------------------------------
+# REGISTER
+#
+# Shahin's taxonomy: soutenu / standard / familier / argotique, plus a separate
+# produce-or-recognise flag. The second is the one that matters for teaching —
+# the concept taxonomy already draws it for the passé simple, and « paumer » is
+# the same case: a learner should understand it and should not use it in a DELF
+# oral.
+#
+# **It cannot be derived, and that was measured before deciding.** Of the 2,389
+# verbs shipped:
+#
+#     a LOW label on the leading sense        58   2.4%
+#     a HIGH label on the leading sense       39   1.6%
+#     a label only on a later sense          167   7.0%
+#     NO register label anywhere           2,132  89.2%
+#
+# And the spoken/written skew cannot stand in for the missing 89%. Verbs with a
+# leading informal label have a median skew of +1.32 towards speech; unlabelled
+# verbs, -1.06; but 26% of unlabelled verbs are at least as spoken-skewed as the
+# median informal verb. Using skew as a proxy would mark some 563 ordinary verbs
+# familier — « calmer », « pardonner », « inviter » among them.
+#
+# So register is written by hand, for the verbs where it changes what a learner
+# is told to do.
+#
+# **`None` means nobody has said, and it is NOT the same as "standard".** A
+# default that masquerades as a judgement is how « souvenir » went unmarked for
+# 51 verbs: the shape could not distinguish "checked and ordinary" from "never
+# looked at". A verb with no entry here carries `register: null` and the band
+# rule below does not fire for it, which is a known gap and not a claim.
+#
+# Shahin's band rule, once a verb IS marked: familier or argotique does not
+# belong in A1 or A2 PRODUCTION content, whatever its frequency. It may appear
+# as recognition from B1.
+REGISTER: dict[str, tuple[str, str]] = {}
+
+# Seeded from the leading-sense labels where Wiktionary gives one — 97 verbs,
+# 4% of the deck. Marked `derived` rather than `teacher`: it is a draft from a
+# source that labels senses rather than verbs, and « paumer » proves the source
+# misses the thing being asked (its leading sense carries no label and the verb
+# is thoroughly colloquial).
+LABEL_TO_REGISTER = {
+    "slang": "argotique", "vulgar": "argotique",
+    "colloquial": "familier", "informal": "familier",
+    "familiar": "familier", "childish": "familier",
+    "literary": "soutenu", "poetic": "soutenu", "formal": "soutenu",
+    "archaic": "soutenu", "dated": "soutenu",
+}
+
+
+def register_of(lemma: str, leading_labels: list[str]) -> tuple[str | None, str | None]:
+    """(register, provenance). (None, None) when nobody has said."""
+    if lemma in REGISTER:
+        return REGISTER[lemma][0], "teacher"
+    for label in leading_labels:
+        if label.lower() in LABEL_TO_REGISTER:
+            return LABEL_TO_REGISTER[label.lower()], "derived"
+    return None, None
