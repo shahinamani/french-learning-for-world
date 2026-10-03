@@ -150,19 +150,6 @@ def main() -> int:
     # « boursoufler », « bruire », « badigeonner ». A B2 learner needs the first
     # list. The same-set split keeps all 2,400 and still cuts flagged problems
     # from 83 to 53, with no verb entering or leaving.
-    pool = sorted(lemmas, key=lambda l: (-total[l], l))[:2400]
-    in_pool = set(pool)
-    # A1-B1: the 900 commonest in speech, among the verbs that ship.
-    lower = sorted(pool, key=lambda l: (-spoken.get(l, 0.0), l))[:900]
-    in_lower = set(lower)
-    # B2-C2: everything else, by how common it is in writing.
-    upper = sorted((l for l in pool if l not in in_lower),
-                   key=lambda l: (-written.get(l, 0.0), l))
-    ranked = lower + upper
-    freq = total          # kept for the refusal below, which guards the corpus
-    if len(ranked) < 2000:
-        print("refusing: the frequency list is too short to be the real one.", file=sys.stderr)
-        return 2
 
     glosses: dict[str, list[str]] = {}
     # Verbs every one of whose Wiktionary senses carries a rejected label. They
@@ -193,6 +180,97 @@ def main() -> int:
             print(f"refusing: NOT_PRONOMINAL names verbs that are not marked "
                   f"pronominal-only: {sorted(unused)}", file=sys.stderr)
             return 2
+
+    # ---- which verb goes where ---------------------------------------------
+    #
+    # Which 2,400 verbs ship: the SUM of spoken and written frequency. Choosing
+    # the SET by the split as well was measured and rejected — it expels 142
+    # verbs, « connecter », « programmer », « surfer » among them, and admits
+    # « bouffir » and « boursoufler », because Lexique's written corpus is
+    # literary novels.
+    pool = sorted(lemmas, key=lambda l: (-total[l], l))[:2400]
+
+    # Each verb's register, needed BEFORE banding because of the placement rule
+    # below. It comes from the labels on the leading gloss sense, so it cannot
+    # be computed until the glosses are loaded — which is why this block sits
+    # here rather than beside the frequency tables.
+    # Verbs whose corpus use is almost entirely the past participle, with the
+    # conjugated form the corpus does attest. 3% or less is the line Shahin
+    # ruled on; above 100% participle with no finite form at all the verb is
+    # withheld instead (NOT_USED_AS_VERB).
+    rare: dict[str, dict] = {}
+    share_file = ROOT / "data/participle-share.json"
+    if share_file.exists():
+        for lemma, d in json.loads(share_file.read_text(encoding="utf-8"))["shares"].items():
+            if d["pp"] >= 0.85 and d["finite"] <= 0.03 and d.get("example"):
+                rare[lemma] = {"participleShare": round(d["pp"], 3),
+                               "attestedForm": d["example"]}
+
+    reg_of: dict[str, str | None] = {}
+    for lemma in pool:
+        g = glosses.get(lemma, [])
+        leading = re.findall(r"\(([a-z ]+)\)", g[0] if g else "")
+        reg = register_of(lemma, leading)[0]
+        # **A verb whose gloss was withheld for explicit English is argotique by
+        # construction** — that is precisely why it was withheld. Reading the
+        # register off the gloss missed exactly these verbs, because withholding
+        # the gloss destroyed the evidence: « pisser » has no gloss, therefore
+        # no labels, therefore no register, therefore the placement rule could
+        # not see it — and it sat at A2 with a blank meaning, which is the row
+        # the rule exists to prevent.
+        if reg is None and lemma in gloss_withheld:
+            reg = "argotique"
+        reg_of[lemma] = reg
+
+    # **A1-B1 by spoken frequency** — A1 and A2 are survival French, spoken and
+    # immediate. « désoler » is 80th in subtitles and 1,041st in books, and a
+    # beginner needs "sorry" in week one.
+    #
+    # **But familier and argotique cannot be PLACED below B1**, whatever their
+    # frequency. Shahin's rule, and it is about the band and not only the drill:
+    # « pisser » was placed at A2 by spoken frequency with no gloss shown at all
+    # — a blank row on a beginner's screen. Marking it recognition-only left it
+    # on that screen.
+    def placed_late(lemma: str) -> bool:
+        return reg_of.get(lemma) in ("familier", "argotique")
+
+    by_speech = sorted(pool, key=lambda l: (-spoken.get(l, 0.0), l))
+    # The low-register verbs go to the END of the lower block, so the earliest
+    # band they can reach is B1 (positions 501-900).
+    lower = ([l for l in by_speech if not placed_late(l)][:900 - sum(
+                 1 for l in by_speech[:900] if placed_late(l))]
+             + [l for l in by_speech if placed_late(l)])[:900]
+    in_lower = set(lower)
+
+    # **B2-C2 by the SUM, not by written frequency alone.** Ranking them by
+    # books was measured on 2026-10-03: 348 of 1,490 upper placements (23%) move
+    # a band or more, and the direction is the literary corpus distorting them.
+    # « critiquer », « patienter », « récompenser », « débuter », « endurer » sat
+    # at C1 and belong at B2; « financer », « détecter », « inclure » sat at C2.
+    # Meanwhile « toussoter », « hoqueter », « ourler » and « bougonner » were at
+    # C1.
+    #
+    # The split already does the register work: a verb is in the upper bands
+    # BECAUSE it is not among the 900 commonest in speech. Ordering within them
+    # by books applies the same bias a second time.
+    #
+    # The existing signals cannot see this change — they measure skew against
+    # band membership and have no term for order within a band, and they score
+    # both schemes at 69. This is a judgement from reading the verbs that move,
+    # and it is recorded as one.
+    upper = sorted((l for l in pool if l not in in_lower),
+                   key=lambda l: (-total[l], l))
+    ranked = lower + upper
+    freq = total          # kept for the refusal below, which guards the corpus
+    if len(ranked) < 2000:
+        print("refusing: the frequency list is too short to be the real one.", file=sys.stderr)
+        return 2
+    # The placement rule, asserted rather than assumed: nothing marked familier
+    # or argotique may sit in the first 500 positions, which are A1 and A2.
+    early = [l for l in ranked[:500] if placed_late(l)]
+    if early:
+        print(f"refusing: familier/argotique placed in A1 or A2: {early}", file=sys.stderr)
+        return 2
 
     # Every concept id used below must exist, or a tense is silently detached
     # from the weakness model and nobody finds out.
@@ -245,9 +323,14 @@ def main() -> int:
         gloss = glosses.get(lemma, [])
         reviewed = TEACHER_GLOSS.get(lemma)
         # The labels on the FIRST sense, which is the only place a label says
-        # something about the verb rather than about one of its uses.
+        # something about the verb rather than about one of its uses. Read from
+        # the map built before banding, so the register that decided the
+        # placement and the register on the entry cannot disagree.
         leading = re.findall(r"\(([a-z ]+)\)", (gloss[0] if gloss else ""))
         reg, reg_prov = register_of(lemma, leading)
+        if reg is None and lemma in gloss_withheld:
+            reg, reg_prov = "argotique", "derived"
+        assert reg == reg_of.get(lemma), f"register disagrees for {lemma}"
         if reviewed:
             gloss = [reviewed[0]]
         group = group_of(lemma, pattern)
@@ -314,14 +397,14 @@ def main() -> int:
             # belong in A1 or A2 PRODUCTION content, whatever its frequency. It
             # may appear as recognition from B1.
             #
-            # Scoped to exactly what the rule says. Whether such a verb should
-            # be produced at B1 and above is not settled: the rule names what is
-            # forbidden (A1/A2 production) and what is permitted (recognition
-            # from B1), and is silent on production later. « bosser » is
-            # ordinary spoken French and a B2 learner arguably should produce
-            # it, so that is left alone rather than guessed at.
-            "produce": not (reg in ("familier", "argotique")
-                            and level in ("A1", "A2")),
+            #   familier    produced from B1, with the register shown. The
+            #               A1/A2 block exists so nobody learns « bosser » as if
+            #               it were « travailler »; by B1 a learner can be
+            #               trusted with the label, and withholding it teaches
+            #               them a French nobody speaks.
+            #   argotique   recognition only, at every level.
+            "produce": not (reg == "argotique"
+                            or (reg == "familier" and level in ("A1", "A2"))),
             # Not a gap: a decision. Null for every verb where it was not taken.
             "glossWithheld": "explicit" if lemma in gloss_withheld else None,
             # The form a learner must learn. Null when the verb is not
@@ -331,6 +414,13 @@ def main() -> int:
             "pronominal": lemma in pronominal,
             "headword": headword(lemma) if lemma in pronominal else None,
             "notes": note_for(lemma),
+            # **Almost always a past participle.** « doué », « sacré »,
+            # « rapiécé » are what a learner meets; the conjugated form is rare
+            # and real. Shahin's ruling: keep the verb and show the attested
+            # form, because a learner meeting « il sacra » in a text needs to be
+            # able to look it up. The share and the example come from
+            # data/participle-share.json, measured from Lexique.
+            "rarelyConjugated": rare.get(lemma),
         }
         shards[level].append(entry)
         index.append({
@@ -338,6 +428,10 @@ def main() -> int:
             "rank": entry["rank"], "group": entry["group"],
             "irregular": entry["irregular"], "auxiliary": entry["auxiliary"],
             "en": entry["meanings"].get("en", ""),
+            # So the LIST can say "not shown here" rather than printing nothing.
+            # A blank meaning is worse than a stated refusal whatever the
+            # reason: it reads as a missing row, not as a decision.
+            **({"glossWithheld": entry["glossWithheld"]} if entry["glossWithheld"] else {}),
             **({"headword": entry["headword"]} if entry["pronominal"] else {}),
         })
 
@@ -390,7 +484,7 @@ def main() -> int:
         if r: print(f"    {r:<10} {prov:<8} {n}")
     recog = sorted(e["infinitive"] for es in shards.values()
                    for e in es if not e["produce"])
-    print(f"recognition only (familier/argotique at A1 or A2): {len(recog)}"
+    print(f"recognition only (argotique anywhere, familier at A1/A2): {len(recog)}"
           + (" — " + ", ".join(recog) if recog else ""))
     total = 0
     for level, entries in shards.items():

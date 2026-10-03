@@ -76,6 +76,14 @@ export function VerbDetail() {
         {verb.homograph
           ? <p className="fine" data-testid="verb-homograph">{verb.homograph}</p>
           : null}
+        {/* « doué » is what a learner meets; « douait » is what they need if
+            they ever see it conjugated. Dropping the verb would leave them
+            unable to look it up. */}
+        {verb.rarelyConjugated
+          ? <p className="fine" data-testid="verb-rarely-conjugated">
+              {t('rarelyConjugated', { a: verb.rarelyConjugated.attestedForm })}
+            </p>
+          : null}
         {/* A reviewed meaning must not carry the unreviewed warning: these are
             the only glosses on the project a teacher has ruled on, and saying
             otherwise would understate the one piece of human review there is. */}
