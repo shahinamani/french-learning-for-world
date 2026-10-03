@@ -620,6 +620,53 @@ predict in advance cannot catch anything]] has the same shape from the other
 side. **When an assertion accuses the data, suspect the assertion first.**
 
 
+### 2026-10-04 — a check that cries wolf gets ignored, and the real alarm goes with it
+
+Five checks of mine in one week accused data that was correct:
+
+| the check | what it got wrong |
+|:--|:--|
+| counting senses by splitting on `"; "` | one Wiktionary sense contains semicolons — twice, having learned it once |
+| `checkAnswer(alternate, form)` | the third argument was missing, so rejection was the function working |
+| `/\bsuicide$/` | matched "to commit suicide", the correct gloss |
+| `key=lambda l: ([^)]*)\)` | stopped at the `)` inside `get(l, 0.0)`, so a tied sort read as untied |
+| a pace check using marks as items | 25 marks on a DELF reading paper is four exercises, not 25 questions |
+
+Each was found within minutes, each was my error, and none reached `main`. The
+cost is not the minutes. **Shahin's reason is the one that matters: a check that
+cries wolf gets ignored, and then the real alarm gets ignored with it.** A suite
+where failures are usually the suite's fault trains everybody to read `not ok`
+as noise — and the failure that found the TCF pace defect looked exactly like
+the five that found nothing.
+
+**The rule: run every new check against the whole existing corpus before it
+lands, and adjudicate every accusation it raises.** A check that has never been
+run against known-good data is not finished — it is a hypothesis with a test
+runner attached.
+
+Adjudication has exactly three outcomes, and naming which one applies is the
+work:
+
+1. **The data is wrong.** Fix the data. This is the outcome everybody expects
+   and, this week, the rarest.
+2. **The check is wrong.** Fix the check. All five above.
+3. **The check is right and the data is a legitimate exception.** The exception
+   goes into the DATA as an explicit field — never into the check as a loosened
+   rule.
+
+The third is the one that needs discipline. Adding three listed-only TCF
+variants fired six existing guards demanding a body link, four skills and real
+CEFR levels. Every one of those guards was right about an exam the portal offers
+preparation for. The temptation was to make them skip exams without resources,
+which would have let a real exam ship with no writing material and no
+complaint. Instead a `preparationOffered` field went into the data and the
+guards were scoped to it: the distinction became a fact about the exam rather
+than a hole in the rule.
+
+See also [[suspect-the-assertion-first]] — the same point at the moment a single
+failure appears, where this entry is about the habit that prevents the pile.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

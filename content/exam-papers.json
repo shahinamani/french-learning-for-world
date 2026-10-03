@@ -764,7 +764,7 @@
     "fa": "TCF — ساختار زبان",
     "ar": "TCF — بنية اللغة"
    },
-   "minutes": 10,
+   "minutes": 8,
    "official": {
     "minutes": 15,
     "marks": 18,
@@ -780,14 +780,30 @@
     },
     "verified": {
      "on": "2026-10-04",
-     "url": "https://www.ccfs-sorbonne.fr/en/exam-centers/tcf-exam/tcf-tp-so-exam-complete/",
-     "what": "18 multiple-choice questions in 15 minutes",
-     "correction": "This field said 20 minutes until 2026-10-04 and had never been checked against any source. The real paper is 15 minutes. The file's own figures were also internally inconsistent: 25 + 20 + 45 is 90 minutes against the 1 h 25 the exam body states for the three compulsory papers."
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public?langue=fr",
+     "what": "18 scored multiple-choice questions in 15 minutes on paper; 23 presented in the same 15 minutes on computer, of which 18 are scored",
+     "correction": "This field said 20 minutes until 2026-10-04 and had never been checked against any source. The real paper is 15 minutes. The file's own figures were also internally inconsistent: 25 + 20 + 45 is 90 minutes against the 1 h 25 the exam body states for the three compulsory papers.",
+     "readBy": "the project owner, in a browser. The exam body's site refuses automated clients and the agent could not read it first-hand."
+    },
+    "forms": {
+     "paper": {
+      "items": 18,
+      "minutes": 15,
+      "secondsPerItem": 50
+     },
+     "computer": {
+      "itemsPresented": 23,
+      "scored": 18,
+      "minutes": 15,
+      "secondsPerItem": 39,
+      "note": "Five extra items that do not count toward the score. Same 15 minutes."
+     },
+     "weSimulate": "computer"
     }
    },
    "practiceNote": {
-    "en": "12 original questions spanning A1 to B2, in 10 minutes. A real paper has 18 in 15 minutes and reaches C1–C2, which this project has no concepts for yet. The time here is set to the REAL PACE — 50 seconds a question — because practising at 100 seconds a question would teach a speed the exam does not allow.",
-    "fr": "12 questions originales du A1 au B2, en 10 minutes. L’épreuve réelle en compte 18 en 15 minutes et va jusqu’au C1–C2, niveaux pour lesquels ce projet n’a pas encore de notions. Le temps est réglé sur le RYTHME RÉEL — 50 secondes par question — car s’entraîner à 100 secondes apprendrait une vitesse que l’examen n’autorise pas.",
+    "en": "12 original questions spanning A1 to B2, in 8 minutes. A real paper has 18 scored questions in 15 minutes — and on computer, 23 questions in the same 15 minutes, five of which are not scored. YOU DO NOT CHOOSE THE FORM; THE CENTRE DOES. So the time here is set to the faster of the two, 39 seconds a question, because a candidate trained to the slower pace would be unprepared for the other. The real paper also reaches C1–C2, which this project has no concepts for yet.",
+    "fr": "12 questions originales du A1 au B2, en 8 minutes. L’épreuve réelle compte 18 questions notées en 15 minutes — et sur ordinateur, 23 questions dans les mêmes 15 minutes, dont cinq ne comptent pas. VOUS NE CHOISISSEZ PAS LA FORME : C’EST LE CENTRE QUI DÉCIDE. Le temps est donc réglé sur la plus rapide des deux, 39 secondes par question, car s’entraîner au rythme plus lent laisserait mal préparé à l’autre. L’épreuve réelle va aussi jusqu’au C1–C2, niveaux pour lesquels ce projet n’a pas encore de notions.",
     "fa": "12 پرسش اصیل، از A1 تا B2. برگهٔ واقعی 18 پرسش دارد و تا C1–C2 می‌رود، که این پروژه هنوز محتوایی برای آن ندارد."
    },
    "items": [

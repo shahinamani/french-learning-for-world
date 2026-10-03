@@ -306,6 +306,8 @@ const EXPECTED_SHAPES = {
   'exam-papers.json papers[].name':                    { n: 3,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.A1[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.A2[].name':     { n: 4,  have: 'en/fr/fa/ar' },
+  'exams.json exams[].structure.papers.B1[].name':     { n: 4,  have: 'en/fr/fa/ar' },
+  'exams.json exams[].structure.papers.B2[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.compulsory[].name':    { n: 3,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.optional[].name':      { n: 2,  have: 'en/fr/fa/ar' },
   // These three were PLAIN ENGLISH STRINGS until 2026-10-01, with no locale

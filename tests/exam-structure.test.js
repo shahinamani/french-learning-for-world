@@ -97,9 +97,14 @@ test('our practice papers do not teach a pace the exam does not allow', () => {
     // and how many questions that is is not published anywhere I could find.
     // Using marks as an item count made this check call a correct paper wrong,
     // which is the fourth time this week one of my metrics has done that.
-    const realItems = { 'tcf-structure': 18 }[p.id];
-    if (!realItems) continue;
-    const realPace = (o.minutes * 60) / realItems;
+    // Against the form we SIMULATE, not the gentler one. The candidate does not
+    // choose the form — the centre does — so the computer form's 23 presented
+    // items in the same 15 minutes is the pace to be ready for. Measuring
+    // against the paper form would pass a practice paper that is 28% too slow.
+    if (!o.forms) continue;
+    const sim = o.forms[o.forms.weSimulate];
+    const realItems = sim.itemsPresented ?? sim.items;
+    const realPace = (sim.minutes * 60) / realItems;
     const ourPace = (p.minutes * 60) / p.items.length;
     // Within a quarter of the real pace. Slower than the exam is the dangerous
     // direction; a little faster is harmless practice.
@@ -108,12 +113,76 @@ test('our practice papers do not teach a pace the exam does not allow', () => {
     }
   }
   assert.deepEqual(bad, []);
+  // And which form we simulate must be said, not left implicit.
+  for (const q of papers.filter((x) => x.official.forms)) {
+    assert.ok(['paper', 'computer'].includes(q.official.forms.weSimulate),
+      `${q.id} does not say which form it simulates`);
+    assert.match(q.practiceNote.en, /CENTRE DOES|centre does/,
+      `${q.id} does not tell the candidate they cannot choose the form`);
+  }
   // And the gap is stated: the DELF papers cannot be checked this way.
   const unknown = papers.filter((p) => p.exam === 'delf').map((p) => p.id);
   assert.ok(unknown.length >= 2,
     'the DELF papers no longer exist — the note below needs rewriting');
   console.log(`    pace checked for tcf-structure; not checkable for ${unknown.join(', ')} `
     + '(question count not published)');
+});
+
+test('both TCF forms are recorded, because the centre chooses, not the candidate', () => {
+  // The exam body's page gives 76 items on paper and 91 on computer — five extra
+  // per skill that do not count toward the score — in the SAME 85 minutes. A
+  // project that recorded only the paper form would have built to a pace 20%
+  // gentler than the one a candidate may face, with no way to know.
+  const f = exams.exams.find((e) => e.id === 'tcf').structure.forms;
+  assert.equal(f.paper.presentedItems, 76);
+  assert.equal(f.computer.presentedItems, 91);
+  assert.equal(f.computer.presentedItems - f.paper.presentedItems, 5 * 3,
+    'five extra items per skill across three skills');
+  assert.equal(f.paper.minutes, f.computer.minutes,
+    'the durations are the same on both forms, which is what makes the computer form faster');
+  assert.equal(f.pace.whichWeSimulate, 'computer');
+});
+
+test('the primary documents nobody has read are listed as unread', () => {
+  // Two PDFs are linked from the exam body's page: "Fiche de présentation du TCF
+  // tout public" and "Manuel du candidat TCF". They are the primary source and
+  // no figure here has been reconciled against them. That is recorded rather
+  // than left as an impression that everything was checked.
+  const unread = exams.exams.find((e) => e.id === 'tcf').structure.notRead;
+  assert.ok(Array.isArray(unread) && unread.length >= 2);
+  for (const doc of unread) {
+    assert.equal(doc.status, 'NOT READ');
+    assert.ok(doc.why && doc.document);
+  }
+});
+
+test('every exam has a structure block, verified or explicitly not', () => {
+  // The owner's scope ruling: the portal targets every recognised test, and no
+  // exam may be quietly absent from what it claims to prepare you for.
+  assert.ok(exams.scopeNote && /KNOWN GAP/.test(exams.scopeNote),
+    'the scope note must name what is still missing');
+  for (const e of exams.exams) {
+    assert.ok(e.structure, `${e.id} has no structure block`);
+    if (!e.structure.verifiedOn) {
+      assert.match(e.structure.note || '', /NOT VERIFIED/, `${e.id} is silent about being unverified`);
+      assert.ok(e.structure.note.length > 60, `${e.id} gives no reason`);
+    }
+  }
+  const ids = exams.exams.map((e) => e.id);
+  for (const want of ['delf', 'dalf', 'tcf', 'tef', 'tcf-canada', 'tcf-quebec', 'tcf-irn']) {
+    assert.ok(ids.includes(want), `${want} is absent from the portal's own claims`);
+  }
+  console.log(`    ${ids.length} exams · verified: `
+    + exams.exams.filter((e) => e.structure.verifiedOn).map((e) => e.id).join(', '));
+});
+
+test('result validity and retake rules are recorded, and the portal claims none', () => {
+  const v = exams.exams.find((e) => e.id === 'tcf').structure.validity;
+  assert.equal(v.resultsValidFor, '2 years');
+  assert.equal(v.minimumBetweenSittings, '20 days');
+  assert.equal(v.reCorrection.status, 'suspended');
+  assert.match(v.portalClaims, /^NONE/,
+    'the portal now makes a claim about validity or retakes — check it against these figures');
 });
 
 test('every official claim carries a source and a date it was read', () => {
