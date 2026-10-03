@@ -620,6 +620,85 @@ predict in advance cannot catch anything]] has the same shape from the other
 side. **When an assertion accuses the data, suspect the assertion first.**
 
 
+### 2026-10-03 — a score that improves by removing the hard cases has not solved them
+
+Levels were moving from a frequency sum to a spoken/written split, and the
+measurement of the ruling as given looked decisive:
+
+```
+signal            current   full split   same-set split
+written-early          35           13               13
+spoken-late            32            0               19
+TOTAL                  83           34               53
+```
+
+The full split wins on every line and wins outright on `spoken-late`, which it
+takes to **zero**. The obvious reading is that it solves that problem
+completely.
+
+It does not solve it. **It deletes the verbs.** Ranking the upper bands purely
+by written frequency changes which 2,400 verbs ship at all, and the 142 it
+expels are precisely the spoken-skewed ones — the cases the signal was counting.
+`spoken-late` reaches zero because nothing is left to be late.
+
+What left and what arrived:
+
+```
+out:  connecter · programmer · surfer · planifier · financer · licencier
+in:   bouffir · boursoufler · bruire · badigeonner · appesantir
+```
+
+Lexique's written corpus is literary novels. A B2 learner needs the first list.
+
+**The metric improved while the product got worse**, and the metric was mine —
+I wrote it the previous day to find misplaced verbs, and it had no term for "the
+verb is no longer here". A count of misplaced items is silent about items that
+have been removed from the count's own domain.
+
+What to do about it, concretely: **when a change improves a score, check whether
+the population the score is computed over has changed.** Here the check was
+three lines — set difference of the two verb lists — and it reversed the
+conclusion. The same question applies to any filter, threshold or cap: the
+cheapest way to make a problem disappear from a measurement is to make the
+measured thing disappear.
+
+See also [[2026-10-03 — a filter you remove has been doing two jobs, and the
+measurement only counted one]], which is the same error one step earlier: both
+are measurements that were complete about what they described and silent about
+what they had stopped describing.
+
+### 2026-10-03 — a staleness check between two generated files is also a determinism check
+
+`tests/review-sheets.test.js` exists for a narrow reason: a teacher rules on
+`docs/reviews/levels-priority.md`, that sheet is generated from `content/`, and
+**a ruling written against a stale sheet is a ruling about nothing.** So the
+check reads every verb the sheets name and asserts it sits at the rank and level
+the content gives it.
+
+It caught something else entirely. After a rebuild that changed no input, three
+sheets failed. The cause was that the build had stopped being reproducible —
+ties in a float sort key falling out of the iteration order of a set, which
+Python randomises per process — so two builds from the same Lexique produced
+different levels for any verb tied with another.
+
+**Nothing else in the project could have noticed.** Every other check compares a
+derived artefact to an expectation written by hand: ranks are unique, levels
+match bands, no gloss leaks wikitext. All of those pass under either ordering,
+because both orderings are internally consistent. This one check compared **two
+derived artefacts to each other**, and that is the only shape that can see a
+difference between two valid outputs.
+
+The general form: **a check that relates two generated things is testing the
+generator, not the things.** It will fail on any non-determinism in the
+pipeline, including kinds nobody anticipated — which is why it is worth having
+even where both artefacts are "obviously" consistent.
+
+And the corollary, which is why the fix needed a second guard: a single build
+cannot tell you its output was arbitrary. Only two can, and nothing in CI runs
+two. So the tiebreak itself is asserted — a source-level check that every sort
+key ends `, l)` — because the property is invisible in any one run.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

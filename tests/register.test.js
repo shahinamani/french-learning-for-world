@@ -60,13 +60,33 @@ test('a register value always says where it came from, and vice versa', () => {
 test('the band rule holds: familier or argotique is not produced at A1 or A2', () => {
   // Shahin's rule, enforced where it is explicit. The seven it catches are the
   // same seven that tier 1 of the level sheet flagged by hand.
-  const RECOGNISE_ONLY = ['bosser', 'bouffer', 'emmerder', 'foutre', 'piger',
-                          'péter', 'rigoler'];
+  // argotique: recognition only at every level.
+  // familier: recognition only at A1 and A2, produced from B1 WITH the register
+  // shown. The A1/A2 block exists so nobody learns « bosser » as if it were
+  // « travailler »; by B1 a learner can be trusted with the label, and
+  // withholding it would teach them a French nobody speaks.
+  const RECOGNISE_ONLY = [
+    'foutre', 'emmerder', 'marrer', 'gueuler', 'gamberger', 'démerder',
+    'déglinguer', 'dégueuler', 'morfler', 'tapiner', 'pioncer', 'glander',
+    'dealer', 'entuber',                                   // argotique, any level
+    'bosser', 'rigoler', 'bouffer', 'piger', 'péter',      // familier at A1/A2
+  ];
   const actual = verbs.filter((v) => !v.produce).map((v) => v.infinitive).sort();
   assert.deepEqual(actual, [...RECOGNISE_ONLY].sort());
   for (const v of verbs.filter((x) => !x.produce)) {
     assert.ok(['familier', 'argotique'].includes(v.register), v.infinitive);
-    assert.ok(['A1', 'A2'].includes(v.level), v.infinitive);
+    if (v.register === 'familier') {
+      assert.ok(['A1', 'A2'].includes(v.level),
+        `${v.infinitive} is familier at ${v.level} and should be produced there`);
+    }
+  }
+  // And a familier verb from B1 upwards IS produced.
+  const b1familier = verbs.filter((v) => v.register === 'familier'
+    && !['A1', 'A2'].includes(v.level));
+  assert.ok(b1familier.length > 0, 'no familier verb at B1 or above to check');
+  for (const v of b1familier) {
+    assert.equal(v.produce, true,
+      `${v.infinitive} is familier at ${v.level} and is being withheld from production`);
   }
   // And nothing else is withheld from production: an unmarked verb is not
   // quietly demoted on a guess.
