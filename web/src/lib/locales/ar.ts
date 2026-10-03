@@ -106,6 +106,16 @@ const ar: Dict = {
   glossReviewed: 'صحّح هذا المعنى مدرّس لغة فرنسية. كان معنى ويكاموس خطأ.',
   glossNotShown: 'المعنى غير معروض',
   rarelyConjugated: 'يُستخدم غالباً اسم المفعول منه. الصيغة المصرّفة نادرة: {a} مُثبتة.',
+  conceptsWithExercises: 'مفهوماً له تمارين',
+  conceptsListedOnly: '{n} مفهوماً مذكوراً بلا تمارين بعد',
+  noExercisesYet: 'لا شيء للتدرّب عليه بعد',
+  exercises: 'تمارين',
+  noConceptsHere: 'هذا المستوى وهذه المهارة ليسا في قائمة المفاهيم بعد.',
+  skillNotModelled: 'هذه المهارة تُختبر لكنها غير ممثّلة هنا في أي مستوى. القواعد والمفردات والنطق ممثّلة. الاستماع يحتاج تسجيلات بترخيص يسمح بذلك، وهذا المشروع لن يستخدم صوتاً آلياً للتدرّب على الاستماع.',
+  mastery_untouched: 'لم يبدأ',
+  mastery_started: 'جارٍ',
+  mastery_weak: 'يحتاج عملاً',
+  mastery_solid: 'متمكّن',
 };
 
 export default ar;

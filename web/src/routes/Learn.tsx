@@ -3,6 +3,7 @@ import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { loadContent } from '../lib/content';
+import { loadMaterial, cellState, type Material } from '../lib/material';
 import { counts, weakPoints, type Counts, type ConceptStat } from '../lib/progress';
 import { Icon } from '../components/Icon';
 import { ErrorState } from '../components/Search';
@@ -14,6 +15,10 @@ const LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 /** `label` is an interface key. The column used to show the French abbreviation
  *  (CO, CE, PE, PO, Gr, Voc, Phon) in all four languages, which named the skill
  *  to nobody who did not already know the French. */
+/** The skills the taxonomy models. The other four are examined and unmodelled,
+ *  so their cells are locked rather than clickable. */
+const TAUGHT = ['grammar', 'vocabulary', 'phonetics'];
+
 const SKILLS = [
   { key: 'listening', label: 'skillListening' }, { key: 'reading', label: 'skillReading' },
   { key: 'writing', label: 'skillWriting' }, { key: 'speaking', label: 'skillSpeaking' },
@@ -30,6 +35,7 @@ export function Learn() {
   const level = (LEVELS as string[]).includes(raw) ? (raw as Level) : null;
   const userId = useUserId();
   const [data, setData] = useState<{ cards: Card[]; concepts: Concept[] } | null>(null);
+  const [material, setMaterial] = useState<Map<string, Material> | null>(null);
   const [c, setC] = useState<Counts | null>(null);
   const [weak, setWeak] = useState<ConceptStat[] | null>(null);
   const [byId, setById] = useState<Map<string, Concept>>(new Map());
@@ -40,11 +46,15 @@ export function Learn() {
     (async () => {
       try {
         const content = await loadContent();
-        const [cnt, w] = await Promise.all([
+        const [cnt, w, mat] = await Promise.all([
           counts(userId, content.cards, Date.now()),
           weakPoints(userId),
+          // 5.8 KiB, generated at build time. The map cannot say what is in a
+          // cell without it, and saying the wrong thing is what it did before.
+          loadMaterial(),
         ]);
         if (!live) return;
+        setMaterial(mat);
         setData({ cards: content.cards, concepts: content.concepts });
         setById(content.conceptById);
         setC(cnt); setWeak(w);
@@ -144,22 +154,35 @@ export function Learn() {
                     // The grid is 6 levels by 7 skills whatever the data says, so it
                     // renders immediately and is the largest element on the screen
                     // from the first paint. Only the numbers inside wait.
-                    const teachable = s.key === 'grammar' || s.key === 'vocabulary' || s.key === 'phonetics';
-                    const available = data
-                      ? teachable && data.concepts.some((k) => k.level === lv && !k.isGroup
-                          && k.type === (s.key === 'grammar' ? 'grammar' : s.key === 'vocabulary' ? 'vocabulary' : 'phonetics'))
-                      : teachable && lv !== 'C1' && lv !== 'C2';
-                    const cardsHere = data?.cards.filter((k) => k.level === lv).length ?? 0;
-                    const state = available ? (cardsHere > 0 ? 'active' : 'open') : 'locked';
+                    //
+                    // **What a cell says is now read from the material counts**, not
+                    // from whether the LEVEL has flashcards. The old rule showed the
+                    // A1 card count in all three A1 cells — including phonetics,
+                    // which has none of those cards — and showed a bare dot for every
+                    // other cell whether it held 18 exercises or none. Every one of
+                    // the 18 clickable cells then led to a page saying "Not built
+                    // yet".
+                    const cell = data && material
+                      ? cellState(data.concepts, material, lv, s.key)
+                      : null;
+                    const state = cell ? cell.state : (TAUGHT.includes(s.key) ? 'listed' : 'locked');
                     const label = `${lv} ${t(s.label)}`;
                     return (
                       <td key={s.key}>
                         {state === 'locked' ? (
-                          <span className="map__cell" data-state="locked" aria-label={`${label} — ${t('notBuilt')}`}>—</span>
+                          <span className="map__cell" data-state="locked"
+                                aria-label={`${label} — ${t('notBuilt')}`}>—</span>
                         ) : (
                           <Link className="map__cell" data-state={state} to={`/learn/level/${lv}/${s.key}`}
-                                aria-label={label} data-testid={`cell-${lv}-${s.key}`}>
-                            {state === 'active' ? `${cardsHere}` : '·'}
+                                aria-label={cell
+                                  ? `${label} — ${cell.withMaterial}/${cell.concepts} ${t('conceptsWithExercises')}`
+                                  : label}
+                                data-testid={`cell-${lv}-${s.key}`}>
+                            {/* The number of concepts that can actually be practised,
+                                or a dot where none can. A learner reading "4" and
+                                finding four things is the point; the old cell read
+                                "22" from a different level's card count. */}
+                            {cell && cell.withMaterial > 0 ? `${cell.withMaterial}` : '·'}
                           </Link>
                         )}
                       </td>

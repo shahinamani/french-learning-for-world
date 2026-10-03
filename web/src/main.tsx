@@ -13,6 +13,7 @@ import { VerbList } from './features/verbs/VerbList';
 import { VerbDetail } from './features/verbs/VerbDetail';
 import { ConjugationDrill } from './features/verbs/Conjugation';
 import { Stub, NotFound } from './routes/Stub';
+import { LevelSkill } from './routes/LevelSkill';
 
 // Exams is the largest section and no screen needs it until a learner asks for
 // it, so it is a lazy chunk. With 8 026 bytes of headroom left against the
@@ -55,7 +56,10 @@ function AppRoutes() {
         <Route path="search" element={<SearchRoute />} />
         <Route path="account" element={<Account />} />
         <Route path="*" element={<NotFound />} />
-        <Route path="learn/level/:level/:skill" element={<Stub titleKey="stubLevelTitle" bodyKey="stubLevelBody" />} />
+        {/* Was a Stub. All 18 clickable cells of the learn map led here and
+            said "Not built yet"; the map is the portal's main navigation and a
+            learner who hits three dead ends stops believing it. */}
+        <Route path="learn/level/:level/:skill" element={<LevelSkill />} />
         <Route path="practise/listening" element={<Stub titleKey="stubSoundsTitle" bodyKey="stubSoundsBody" />} />
       </Route>
     </Routes>

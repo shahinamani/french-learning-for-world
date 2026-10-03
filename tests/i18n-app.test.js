@@ -54,8 +54,14 @@ test('each non-English dictionary is its own lazy module', () => {
  * Every top-level key, not only the ones that begin a line — this file puts
  * several keys on one line, and a line-anchored regex silently compared a
  * subset of 70 of about 150. The scanner walks the body, skips the inside of
- * quoted strings (French values are full of apostrophes and colons), and takes
- * identifiers followed by `:` at brace depth 0.
+ * quoted strings (French values are full of apostrophes and colons), skips
+ * COMMENTS, and takes identifiers followed by `:` at brace depth 0.
+ *
+ * Comments were added on 2026-10-04, after a `//` comment reading "actually
+ * here: 196 of the 261 concepts…" was read as a key named `here` and reported
+ * as missing from every other locale. The parser was wrong, not the
+ * dictionaries — and the next person to write a colon in a comment would have
+ * hit the same thing, so this is fixed here rather than by rewording the prose.
  */
 function keysOf(code) {
   const body = bodyOf(code);
@@ -68,6 +74,16 @@ function keysOf(code) {
       if (ch === '\\') { i++; continue; }
       if (ch === quote) quote = null;
       continue;
+    }
+    // A comment can contain anything, including `word:`. Skip to its end.
+    if (ch === '/' && body[i + 1] === '/') {
+      while (i < body.length && body[i] !== '\n') i++;
+      token = ''; continue;
+    }
+    if (ch === '/' && body[i + 1] === '*') {
+      i += 2;
+      while (i < body.length && !(body[i] === '*' && body[i + 1] === '/')) i++;
+      i += 1; token = ''; continue;
     }
     if (ch === "'" || ch === '"' || ch === '`') { quote = ch; token = ''; continue; }
     if (ch === '{' || ch === '[' || ch === '(') { depth++; token = ''; continue; }
@@ -88,6 +104,18 @@ test('the extraction found all four dictionaries with real content', () => {
     assert.ok(keys.length > 120,
       `dictionary ${code} has a plausible number of keys (found ${keys.length}) — ` +
       'if this fails after a reformat, fix the extraction rather than the assertion');
+  }
+});
+
+test('the key scanner ignores comments, including colons inside them', () => {
+  // Seen failing: before this, a comment reading "actually here: 196 of the 261
+  // concepts…" produced a key called `here`. The check accused four correct
+  // dictionaries of missing a key that did not exist.
+  const en = keysOf('en');
+  assert.ok(!en.includes('here'), 'a word from a comment is being read as a key');
+  // And the scanner still finds the real keys around the comment.
+  for (const real of ['conceptsWithExercises', 'noExercisesYet', 'mastery_solid']) {
+    assert.ok(en.includes(real), `${real} was lost by the comment skipping`);
   }
 });
 

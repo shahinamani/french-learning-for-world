@@ -259,6 +259,66 @@ ok('a search result opens the real concept page', await page.locator('h1.h2').co
 ok('a concept with no cards yet says so rather than showing a dead button',
    (await page.locator('[data-testid="concept-no-cards"]').count()) + (await page.locator('[data-testid="concept-practise"]').count()) === 1);
 
+// ===================================================================
+// The learn map, which is the portal's main navigation. It offered 42 cells and
+// every one of the 18 clickable ones led to a page saying "Not built yet".
+console.log('\n=== the learn map leads somewhere ===');
+await go(page, '/learn');
+await page.waitForSelector('.map', { timeout: 8000 });
+const cells = await page.locator('.map__cell').count();
+ok(`the map renders ${cells} cells`, cells >= 40);
+const clickable = await page.locator('a.map__cell').count();
+ok(`${clickable} cells are clickable`, clickable > 0);
+
+// Every clickable cell must land on a page that says something. Walking all of
+// them, because "three dead ends and a learner stops believing the map" is
+// about the third one, and a sample of one would have passed before today.
+const hrefs = await page.locator('a.map__cell').evaluateAll(
+  (as) => as.map((a) => a.getAttribute('href')));
+let stubs = 0, listed = 0, withConcepts = 0;
+for (const href of hrefs) {
+  await page.goto(BASE + href.replace(/^#/, '#'), { waitUntil: 'networkidle' });
+  await page.waitForTimeout(250);
+  if (await page.locator('[data-testid="stub"]').count()) { stubs += 1; continue; }
+  const count = await page.locator('[data-testid="level-skill-count"]').count();
+  if (count) {
+    withConcepts += 1;
+    const txt = await page.locator('[data-testid="level-skill-count"]').innerText();
+    if (/0 ?\/|^0/.test(txt.replace(/\s/g, ''))) listed += 1;
+  }
+}
+ok(`no clickable cell leads to "Not built yet" (${stubs} of ${hrefs.length})`, stubs === 0);
+ok(`every clickable cell states how much of it exists (${withConcepts}/${hrefs.length})`,
+   withConcepts === hrefs.length);
+ok(`and ${listed} of them honestly say nothing is practisable yet`, listed > 0);
+
+// C1 grammar: 22 concepts, not one exercise. The page must list them AND say so,
+// because a list of 22 empty rows is the old lie one level down.
+await go(page, '/learn/level/C1/grammar');
+await page.waitForSelector('[data-testid="concept-list"]', { timeout: 8000 });
+const c1count = await page.locator('[data-testid="level-skill-count"]').innerText();
+ok(`C1 grammar says "${c1count.replace(/\n/g, ' ')}"`, /0/.test(c1count));
+const c1rows = await page.locator('[data-testid="concept-list"] li').count();
+ok(`C1 grammar lists ${c1rows} concepts rather than an empty page`, c1rows >= 20);
+ok('and none of them is a link, because none can be practised',
+   (await page.locator('[data-testid="concept-list"] a').count()) === 0);
+
+// A1 grammar: some have exercises and some do not, and the difference is visible.
+await go(page, '/learn/level/A1/grammar');
+await page.waitForSelector('[data-testid="concept-list"]', { timeout: 8000 });
+const links = await page.locator('[data-testid="concept-list"] a').count();
+const rows = await page.locator('[data-testid="concept-list"] li').count();
+ok(`A1 grammar: ${links} of ${rows} concepts are links`, links > 0 && links < rows);
+ok('a concept with no exercise is marked, not silently dead',
+   (await page.locator('[data-testid="concept-list"] [data-testid^="state-"]').count()) === rows);
+
+// An examined skill is not modelled anywhere; the page says that rather than
+// listing nothing.
+await go(page, '/learn/level/B2/listening');
+await page.waitForSelector('[data-testid="skill-not-modelled"]', { timeout: 8000 });
+ok('an examined but unmodelled skill explains itself',
+   /machine speech|licensed/i.test(await page.locator('[data-testid="skill-not-modelled"]').innerText()));
+
 console.log('\n=== verbs, end to end ===');
 await go(page, '/learn/verbs');
 await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
@@ -653,12 +713,22 @@ console.log('\n=== carried-forward items ===');
   ok(`and serves no further card (${stillCarding} card elements left)`, stillCarding === 0);
   await q.clock.uninstall?.();
 
-  // Stubs name what is missing and why.
-  for (const [hash, needle] of [['/practise/listening', 'licence'], ['/learn/level/B1/grammar', 'not built']]) {
+  // What remains a stub names what is missing and why. `/learn/level/B1/grammar`
+  // WAS in this list — it is now a real page, so it is checked as one above.
+  // Leaving it here would have asserted that a route still says "not built"
+  // after it was built, which is a check defending yesterday's product.
+  for (const [hash, needle] of [['/practise/listening', 'licence']]) {
     await q.goto(BASE + '#' + hash, { waitUntil: 'networkidle' }); await q.waitForTimeout(250);
     const txt = (await q.locator('[data-testid="stub"]').innerText()).toLowerCase();
     ok(`${hash} explains itself (mentions "${needle}")`, txt.includes(needle.toLowerCase()));
   }
+  // And the route that stopped being a stub is no longer one, asserted here so
+  // a regression to the stub fails rather than passing quietly.
+  await q.goto(BASE + '#/learn/level/B1/grammar', { waitUntil: 'networkidle' });
+  await q.waitForTimeout(250);
+  ok('/learn/level/B1/grammar is no longer a stub',
+     (await q.locator('[data-testid="stub"]').count()) === 0
+     && (await q.locator('[data-testid="level-skill-count"]').count()) === 1);
 
   // Service worker registers and caches the shell.
   await q.goto(BASE + '#/learn', { waitUntil: 'networkidle' });

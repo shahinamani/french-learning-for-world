@@ -1,0 +1,399 @@
+{
+"version": 1,
+"note": "Exercises reaching each live, non-group concept, counted at build time from the decks, the verb paradigms and the exam papers. A concept absent from `material` has NO exercise: that is true of 196 of the 261 live concepts, and of every concept at C1 and C2.",
+"generatedBy": "scripts/build-concept-material.py",
+"liveConcepts": 261,
+"conceptsWithMaterial": 65,
+"material": {
+"gram.adjective.comparative": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.agreement.avoir-cod": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.agreement.etre": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.article.de-negative": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 2,
+"total": 2
+},
+"gram.article.definite": {
+"cards": 5,
+"verbForms": 0,
+"examItems": 1,
+"total": 6
+},
+"gram.article.partitive": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 2,
+"total": 3
+},
+"gram.conditional.past": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.conditional.present": {
+"cards": 0,
+"verbForms": 14208,
+"examItems": 1,
+"total": 14209
+},
+"gram.connector.concession": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.expression.il-y-a": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.expression.impersonal": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.future.after-quand": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.future.irregular": {
+"cards": 9,
+"verbForms": 0,
+"examItems": 0,
+"total": 9
+},
+"gram.future.proche": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.future.simple": {
+"cards": 5,
+"verbForms": 14208,
+"examItems": 1,
+"total": 14214
+},
+"gram.gender.nouns": {
+"cards": 8,
+"verbForms": 0,
+"examItems": 0,
+"total": 8
+},
+"gram.gender.people": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"gram.negation.infinitive": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.negation.ne-pas": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 2,
+"total": 3
+},
+"gram.nonfinite.infinitive": {
+"cards": 2,
+"verbForms": 0,
+"examItems": 3,
+"total": 5
+},
+"gram.number.irregular": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"gram.passive.formation": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.past.imparfait": {
+"cards": 0,
+"verbForms": 14203,
+"examItems": 2,
+"total": 14205
+},
+"gram.past.pc-avoir": {
+"cards": 13,
+"verbForms": 0,
+"examItems": 0,
+"total": 13
+},
+"gram.past.pc-etre": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 1,
+"total": 2
+},
+"gram.past.pc-vs-imparfait": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.past.venir-de": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.preposition.countries": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.preposition.places": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"gram.preposition.time": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.preposition.verb-a": {
+"cards": 2,
+"verbForms": 0,
+"examItems": 1,
+"total": 3
+},
+"gram.preposition.verb-de": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 1,
+"total": 2
+},
+"gram.present.er": {
+"cards": 3,
+"verbForms": 11808,
+"examItems": 1,
+"total": 11812
+},
+"gram.present.ir": {
+"cards": 1,
+"verbForms": 846,
+"examItems": 0,
+"total": 847
+},
+"gram.present.irregular": {
+"cards": 10,
+"verbForms": 1545,
+"examItems": 0,
+"total": 1555
+},
+"gram.present.pronominal": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.present.stem-change": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"gram.pronoun.cod": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 3,
+"total": 3
+},
+"gram.pronoun.coi": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"gram.pronoun.relative-lequel": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.pronoun.relative-ou-dont": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 3,
+"total": 3
+},
+"gram.pronoun.relative-qui-que": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.pronoun.subject": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.question.est-ce-que": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.si.imparfait-conditional": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.si.pqp-conditional-past": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.subjunctive.conjunctions": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.subjunctive.doubt": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"gram.subjunctive.present": {
+"cards": 0,
+"verbForms": 14203,
+"examItems": 2,
+"total": 14205
+},
+"gram.subjunctive.will": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"lex.clothing": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"lex.family": {
+"cards": 2,
+"verbForms": 0,
+"examItems": 0,
+"total": 2
+},
+"lex.food": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"lex.housing": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 2,
+"total": 3
+},
+"lex.money": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"lex.numbers": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+},
+"lex.study": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 1,
+"total": 2
+},
+"lex.time": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 1,
+"total": 2
+},
+"lex.transport": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 2,
+"total": 2
+},
+"lex.travel": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"lex.work": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 2,
+"total": 3
+},
+"phon.accent.circonflexe": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"phon.elision.basic": {
+"cards": 2,
+"verbForms": 0,
+"examItems": 0,
+"total": 2
+},
+"phon.silent.final": {
+"cards": 1,
+"verbForms": 0,
+"examItems": 0,
+"total": 1
+},
+"usage.tu-vous": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 1,
+"total": 1
+}
+}
+}

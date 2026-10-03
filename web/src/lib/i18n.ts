@@ -103,6 +103,19 @@ const en = {
   glossSource: 'Meanings and register labels come from Wiktionary and have not been reviewed by a teacher.',
   glossReviewed: 'This meaning was corrected by a French teacher. Wiktionary’s was wrong.',
   glossWithheldExplicit: 'No meaning is shown: every English translation of this verb is explicit. It is in the list because it is common in speech, not because it is one to use.',
+  // The level-and-skill page. Its first job is to say how much of the level is
+  // actually here: 196 of the 261 concepts have no exercise, and all 71 at C1
+  // and C2. A list that hid that would be the old dead end one level down.
+  conceptsWithExercises: 'concepts have exercises',
+  conceptsListedOnly: '{n} listed with nothing to practise yet',
+  noExercisesYet: 'nothing to practise yet',
+  exercises: 'exercises',
+  noConceptsHere: 'This level and skill has nothing in the taxonomy yet.',
+  skillNotModelled: 'This skill is examined but is not modelled here at any level. Grammar, vocabulary and pronunciation are. Listening needs audio that can be licensed, and this project will not use machine speech for listening practice.',
+  mastery_untouched: 'not started',
+  mastery_started: 'in progress',
+  mastery_weak: 'needs work',
+  mastery_solid: 'solid',
   notBuilt: 'Not built yet',
   notBuiltBody: 'This section is planned. The shell, search, the side panel and flashcards are complete; the rest follow the same pattern.',
   independence: 'Independent study tool. Not affiliated with any examination body. No certificates are issued.',
