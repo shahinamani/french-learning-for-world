@@ -67,6 +67,22 @@ export type Verb = {
    *  verb and « fier » the adjective are different words, and a learner
    *  meeting one needs telling that the other exists. */
   homograph: string | null;
+  /** soutenu / standard / familier / argotique.
+   *
+   *  **Null means nobody has said, which is NOT the same as "standard".** It
+   *  cannot be derived, and that was measured: 89% of the verbs carry no
+   *  register label anywhere in their Wiktionary senses, and the spoken/written
+   *  frequency skew does not separate the labelled from the unlabelled well
+   *  enough to stand in — 26% of unlabelled verbs are as spoken-skewed as the
+   *  median informal one. A default pretending to be a judgement is how
+   *  « souvenir » went unmarked for 51 verbs. */
+  register: 'soutenu' | 'standard' | 'familier' | 'argotique' | null;
+  /** "teacher" where a person ruled; "derived" where it came from a label on
+   *  the leading Wiktionary sense, which is a draft and not a reading. */
+  registerProvenance: 'teacher' | 'derived' | null;
+  /** False where a learner should recognise the verb and not be drilled on
+   *  producing it: familier or argotique at A1 or A2. */
+  produce: boolean;
   /** Set when every sense Wiktionary records is labelled vulgar, so the page can
    *  say why it shows no meaning instead of rendering an empty line that looks
    *  like a bug. Null for every other verb. */

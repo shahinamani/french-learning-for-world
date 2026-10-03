@@ -32,6 +32,7 @@ import argparse
 import csv
 import json
 import pathlib
+import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
@@ -40,12 +41,15 @@ from conjugation_exceptions import (ALTERNATES, CORPUS_NOISE, DEFECTIVE,   # noq
                                     KNOWN_WRONG, NOT_A_VERB, ORACLES_DISAGREE)
 from harvest_glosses import headword                          # noqa: E402
 from gloss_corrections import (HOMOGRAPH, NOT_PRONOMINAL,     # noqa: E402
-                               NOT_USED_AS_VERB, TEACHER_GLOSS)
+                               NOT_USED_AS_VERB, REGISTER, TEACHER_GLOSS,
+                               register_of)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
-# Frequency bands, from docs: the levels a teacher would accept as a draft and
-# then move perhaps 150-250 verbs by hand.
+# The bands. Position within them is CURRICULUM ORDER, not raw frequency rank:
+# the first 900 are ordered by spoken frequency and the rest by written, so a
+# verb's `rank` says where it sits in the teaching sequence. Raw frequency is
+# still what decides which 2,400 verbs ship at all.
 BANDS = [("A1", 0, 200), ("A2", 200, 500), ("B1", 500, 900),
          ("B2", 900, 1400), ("C1", 1400, 1900), ("C2", 1900, 2400)]
 
@@ -106,17 +110,56 @@ def main() -> int:
     ap.add_argument("--out", default="content")
     args = ap.parse_args()
 
-    freq: dict[str, float] = {}
+    # Lexique keeps SPOKEN and WRITTEN frequency in separate columns, and until
+    # 2026-10-03 this summed them, which threw the distinction away. « bosser »
+    # is 247th in film subtitles and 1,223rd in books; « murmurer » is the
+    # reverse. The sum made them the same kind of fact.
+    spoken: dict[str, float] = {}
+    written: dict[str, float] = {}
     with open(args.lexique, encoding="utf-8") as fh:
         for r in csv.DictReader(fh, delimiter="\t"):
             if r["cgram"] != "VER":
                 continue
-            try:
-                f = float(r["freqlemfilms2"] or 0) + float(r["freqlemlivres"] or 0)
-                freq[r["lemme"]] = max(freq.get(r["lemme"], 0.0), f)
-            except ValueError:
-                pass
-    ranked = sorted(freq, key=lambda l: -freq[l])[:2400]
+            for col, table in (("freqlemfilms2", spoken), ("freqlemlivres", written)):
+                try:
+                    table[r["lemme"]] = max(table.get(r["lemme"], 0.0), float(r[col] or 0))
+                except ValueError:
+                    pass
+    # Every sort below breaks ties on the lemma. The keys are floats and
+    # thousands of verbs share a frequency, so without a tiebreak the order
+    # falls out of the iteration order of this SET — which Python randomises per
+    # process. Two builds from identical inputs produced different content, and
+    # the only reason it was noticed is that the review-sheet staleness guard
+    # fired after a rebuild that changed nothing.
+    lemmas = set(spoken) | set(written)
+    total = {l: spoken.get(l, 0.0) + written.get(l, 0.0) for l in lemmas}
+
+    # **Which 2,400 verbs ship is chosen by the SUM. Which level each one gets
+    # is chosen by the register a learner will meet it in** — Shahin's ruling:
+    # A1-B1 by spoken frequency, B2-C2 by written. A1 and A2 are survival
+    # French, spoken and immediate; DELF B2 and DALF are argumentative written
+    # French, which is where « murmurer » belongs.
+    #
+    # Selection stays on the sum deliberately, and this is a departure from the
+    # ruling as given. Choosing the SET by the split as well was measured: it
+    # scores better on every signal (34 flagged problems against 53) and it
+    # reaches that score by EXPELLING 142 verbs rather than placing them
+    # better. Lexique's written corpus is literary novels, so ranking the upper
+    # bands purely by books drops « connecter », « programmer », « surfer »,
+    # « planifier », « financer », « licencier » and admits « bouffir »,
+    # « boursoufler », « bruire », « badigeonner ». A B2 learner needs the first
+    # list. The same-set split keeps all 2,400 and still cuts flagged problems
+    # from 83 to 53, with no verb entering or leaving.
+    pool = sorted(lemmas, key=lambda l: (-total[l], l))[:2400]
+    in_pool = set(pool)
+    # A1-B1: the 900 commonest in speech, among the verbs that ship.
+    lower = sorted(pool, key=lambda l: (-spoken.get(l, 0.0), l))[:900]
+    in_lower = set(lower)
+    # B2-C2: everything else, by how common it is in writing.
+    upper = sorted((l for l in pool if l not in in_lower),
+                   key=lambda l: (-written.get(l, 0.0), l))
+    ranked = lower + upper
+    freq = total          # kept for the refusal below, which guards the corpus
     if len(ranked) < 2000:
         print("refusing: the frequency list is too short to be the real one.", file=sys.stderr)
         return 2
@@ -201,6 +244,10 @@ def main() -> int:
 
         gloss = glosses.get(lemma, [])
         reviewed = TEACHER_GLOSS.get(lemma)
+        # The labels on the FIRST sense, which is the only place a label says
+        # something about the verb rather than about one of its uses.
+        leading = re.findall(r"\(([a-z ]+)\)", (gloss[0] if gloss else ""))
+        reg, reg_prov = register_of(lemma, leading)
         if reviewed:
             gloss = [reviewed[0]]
         group = group_of(lemma, pattern)
@@ -258,6 +305,23 @@ def main() -> int:
             # « fier » the verb and « fier » the adjective are different words
             # and the page must not blur them.
             "homograph": HOMOGRAPH.get(lemma),
+            # soutenu / standard / familier / argotique, or null when nobody has
+            # said — which is NOT the same as standard, and the data must not
+            # pretend otherwise.
+            "register": reg,
+            "registerProvenance": reg_prov,
+            # Shahin's band rule: a verb marked familier or argotique does not
+            # belong in A1 or A2 PRODUCTION content, whatever its frequency. It
+            # may appear as recognition from B1.
+            #
+            # Scoped to exactly what the rule says. Whether such a verb should
+            # be produced at B1 and above is not settled: the rule names what is
+            # forbidden (A1/A2 production) and what is permitted (recognition
+            # from B1), and is silent on production later. « bosser » is
+            # ordinary spoken French and a B2 learner arguably should produce
+            # it, so that is left alone rather than guessed at.
+            "produce": not (reg in ("familier", "argotique")
+                            and level in ("A1", "A2")),
             # Not a gap: a decision. Null for every verb where it was not taken.
             "glossWithheld": "explicit" if lemma in gloss_withheld else None,
             # The form a learner must learn. Null when the verb is not
@@ -314,7 +378,20 @@ def main() -> int:
 
     print(f"index: {len(index)} verbs")
     print(f"teacher-reviewed glosses: {len(TEACHER_GLOSS)}   "
-          f"pronominal removals: {len(NOT_PRONOMINAL)}")
+          f"pronominal removals: {len(NOT_PRONOMINAL)}   "
+          f"register by hand: {len(REGISTER)}")
+    from collections import Counter
+    rc = Counter((e["register"], e["registerProvenance"])
+                 for es in shards.values() for e in es)
+    unset = rc.get((None, None), 0)
+    print(f"register: {len(index) - unset} marked, {unset} unset "
+          f"(unset is NOT standard — nobody has said)")
+    for (r, prov), n in sorted(rc.items(), key=lambda kv: -kv[1]):
+        if r: print(f"    {r:<10} {prov:<8} {n}")
+    recog = sorted(e["infinitive"] for es in shards.values()
+                   for e in es if not e["produce"])
+    print(f"recognition only (familier/argotique at A1 or A2): {len(recog)}"
+          + (" — " + ", ".join(recog) if recog else ""))
     total = 0
     for level, entries in shards.items():
         size = (out_dir / "verbs" / f"{level}.json").stat().st_size
