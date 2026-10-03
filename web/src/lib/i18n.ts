@@ -97,6 +97,9 @@ const en = {
   // no French teacher has read them; a learner is entitled to know that before
   // they memorise one.
   pronominalOnly: 'This verb is only used with a reflexive pronoun. « je souviens » is not French; « je me souviens » is. This marking comes from Wiktionary and has not been reviewed by a teacher.',
+  // A blank meaning in a list row reads as a missing row, not as a decision.
+  glossNotShown: 'Meaning not shown',
+  rarelyConjugated: 'Almost always used as a past participle. The conjugated form is rare: {a} is attested.',
   glossSource: 'Meanings and register labels come from Wiktionary and have not been reviewed by a teacher.',
   glossReviewed: 'This meaning was corrected by a French teacher. Wiktionary’s was wrong.',
   glossWithheldExplicit: 'No meaning is shown: every English translation of this verb is explicit. It is in the list because it is common in speech, not because it is one to use.',
