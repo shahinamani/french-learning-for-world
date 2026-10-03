@@ -335,6 +335,117 @@ other side: a guard on the most ordinary case is worth more than one on the
 exotic case you will remember to check by hand.
 
 
+### 2026-10-03 — every content defect on this project has been a shape problem, not a value problem
+
+Three weeks of content work, three serious defects, and they are the same
+defect:
+
+| what shipped | what was inexpressible |
+|:--|:--|
+| « je souviens » on an A1 verb, six rows of non-French | that a verb needs a reflexive pronoun |
+| « porter » glossed "to carry" with no "to wear" | that a verb has four meanings that matter |
+| « complaire » glossed "to get stuck in" | that a source's sense ORDER is its opinion, not our data |
+
+**In none of them was a value wrong.** Every field held what the pipeline put
+there, every pipeline did what it was written to do, and both corpora agreed
+throughout. What was missing was a place to put a fact:
+
+* The verb record had no `pronominal` field, so 51 verbs could not say they
+  needed a pronoun.
+* The gloss had a `MAX_SENSES` count, which can express "at most two" and
+  cannot express "this verb has four meanings a learner meets in week one".
+* There was no table of corrections, so "Wiktionary is wrong here" had nowhere
+  to be written down.
+
+**An inexpressible fact cannot be asserted, so it cannot be tested, so it is
+not noticed.** This is why the three defects survived 2,392 verbs, two corpora
+agreeing on 134,000 forms, 251 tests and a browser walk: all of those check
+that the values present are right. None of them can check that a value is
+absent, because absence has no shape to compare against.
+
+The practical consequence, and the reason this is its own entry rather than a
+remark on the others: **when a defect is found, the first question is not "what
+is the fix" but "what could this shape not say".** Fixing « souvenir » as a
+value — hard-coding one verb — would have left 50. Fixing the shape found all
+51 and, because the shape then existed, made the mirror defect visible too
+(five verbs wrongly marked, which a value fix would never have surfaced).
+
+See [[2026-10-03 — faithfulness to a source that is itself a judgement is not
+accuracy]] and [[2026-10-03 — a decision with no place to live expires when the
+session does]], which are the second and third rows of that table.
+
+### 2026-10-03 — faithfulness to a source that is itself a judgement is not accuracy
+
+« complaire » shipped glossed **"to get stuck in, to get caught in"**. The verb
+means to revel in something.
+
+The parser was not wrong. en.wiktionary lists three senses for it, in this
+order:
+
+```
+1. to get stuck in, to get caught in      <- taken
+2. to take pleasure in, to bask in        <- taken
+3. to wallow, to revel in                 <- the right one, discarded by the cap
+```
+
+The harvest took the first two faithfully. **Sense order on Wiktionary is an
+editor's opinion about which meaning is primary, and the harvest was reading
+position as meaning.** Nobody wrote that rule down; it arrived by default, in
+the act of looping over the lines in the order they appear.
+
+This is not a parsing bug and it cannot be fixed by parsing more carefully. A
+more faithful parser would reproduce the editorial judgement more exactly. The
+only answers are to take more of the senses — which is what the character
+budget does, and `complaire`'s correct sense is third, inside the new budget —
+and to have somewhere to overrule the source, which is the entry below.
+
+The general form: **when you consume a source, separate what it has measured
+from what it has decided.** Lexique's frequency counts are measurements; its
+corpus's gaps are not claims. Wiktionary's forms are attested; its sense order,
+its labels and its choice of what to include are judgements. Treating a
+judgement as data makes you precisely as wrong as the judgement, with none of
+the signals that you are relying on one.
+
+### 2026-10-03 — a decision with no place to live expires when the session does
+
+Shahin read 51 verbs and ruled on six. Three were not pronominal-only;
+« complaire » and « tapir » had wrong glosses; « fier » needed a homograph note.
+
+Until that afternoon **there was nowhere in the repository to write any of
+it.** The conjugator has had `scripts/conjugation_exceptions.py` since the
+beginning — `ORACLES_DISAGREE`, `KNOWN_WRONG`, `CORPUS_NOISE` — because two
+corpora disagreeing was anticipated from the start. The glosses had no
+equivalent, so a human ruling had nowhere to go but my memory of a
+conversation, which is to say: it had until the end of the session.
+
+Everything else was in place. 2,375 glosses, a provenance field, a licence
+note, a browser check that the page says the meanings are unreviewed. The one
+thing missing was a row that says "a person looked at this and the source was
+wrong", and so the review Shahin had just done could not be recorded, only
+acted on once.
+
+Two properties the table needed, beyond existing:
+
+* **The reasoning, not only the ruling.** « cabrer » is not pronominal-only
+  because « cabrer un avion » is ordinary aviation French. Without the reason
+  the next person can only defer to it or overturn it blindly.
+* **A refusal when a correction corrects nothing.** The build now exits 2 if a
+  correction names a verb that is not in the content, seen failing on purpose:
+
+  ```
+  refusing: TEACHER_GLOSS names verbs that are not in the content: ['tapirr']
+  ```
+
+  A recorded ruling with a typo in it is worse than no ruling, because
+  everybody — including the person who wrote it — believes the correction is
+  live.
+
+Four meanings out of 2,375 now carry `glossProvenance: "teacher"`, and the page
+stops calling those unreviewed while continuing to say it of the rest. That is
+a small number and it is the first human review in the product; the point of
+the table is that the next forty-eight have somewhere to land.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

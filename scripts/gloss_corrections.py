@@ -41,6 +41,25 @@ TEACHER_GLOSS: dict[str, tuple[str, str]] = {
         "third sense, « to wallow, to revel in », is the right one and fell "
         "outside the two-sense cap.",
     ),
+    # Both of these were created by the removals above: the verb is no longer
+    # marked pronominal-only, so the gloss must lead with the transitive sense.
+    # A verb marked transitive and glossed reflexively is the inconsistency the
+    # correction introduced.
+    "cabrer": (
+        "to pull up (an aircraft's nose); (reflexive) to rear up, to resist",
+        "Wiktionary gives only the pronominal reading, « to rear up (on a horse "
+        "or a motorcycle); to complain ». The transitive is aviation — « cabrer "
+        "l'avion ». « Cabrer quelqu'un contre » (to turn someone against) is "
+        "real but secondary. « Se cabrer » is to rear up, and figuratively to "
+        "dig one's heels in.",
+    ),
+    "prostituer": (
+        "to prostitute, to debase (one's talent, one's principles); "
+        "(reflexive) to prostitute oneself",
+        "Wiktionary gives only « to prostitute oneself ». « Prostituer son "
+        "talent » is ordinary figurative French and is the transitive sense a "
+        "learner is most likely to meet in writing.",
+    ),
     "tapir": (
         "to crouch, to lie low",
         "Wiktionary's only sense is « to hide », which is thin enough to be "

@@ -77,12 +77,59 @@ test('a verb whose PRIMARY sense is unprintable is silenced, not re-described', 
   assert.equal(enculer.glossWithheld, 'explicit');
 });
 
-test('at most two senses, and the first sense is the first sense', () => {
+test('the sense budget is a budget, not a count', () => {
+  // Measured on 2026-10-03: a two-sense cap cost 767 verbs at least one sense
+  // that said something the kept ones did not — 1,632 senses — and the losses
+  // were core meanings, not marginalia. These five are the evidence; each one
+  // reads correctly only because the budget replaced the count.
+  const want = {
+    porter: /to wear/,                 // had "to carry" and not "to wear"
+    marcher: /to work, to function/,   // « ça marche »
+    passer: /to spend \(time\)/,
+    laisser: /to let, to allow/,
+    prendre: /to get, to buy/,
+  };
+  for (const [inf, re_] of Object.entries(want)) {
+    const v = all.find((x) => x.infinitive === inf);
+    assert.match(v.meanings.en, re_,
+      `${inf} reads "${v.meanings.en}" — a core meaning was cut by the cap`);
+  }
+  // The budget is asserted against the harvest's SENSE ARRAYS, not against the
+  // joined string. Splitting "; " to count senses is wrong and I have now got
+  // it wrong twice: a single Wiktionary sense contains semicolons of its own —
+  // « revêtir » sense two is "to invest (formally give authority, titles,
+  // responsibilities; install ...)" — so the joined form cannot be taken apart
+  // again. The list is the only place the sense boundaries survive.
+  const harvest = read('data/wiktionary-glosses.json');
+  const BUDGET = harvest.senseBudget;
+  const MAX = harvest.maxSenses;
+  assert.equal(BUDGET, 130);
+  assert.equal(MAX, 4);
+  const broken = [];
+  for (const [verb, senses] of Object.entries(harvest.glosses)) {
+    if (senses.length > MAX) broken.push(`${verb}: ${senses.length} senses`);
+    // Over budget is allowed ONLY at two senses, because dropping one for
+    // length loses meaning and a long pair is better than a halved one.
+    const joined = senses.join('; ').length;
+    if (joined > BUDGET && senses.length > 2) {
+      broken.push(`${verb}: ${senses.length} senses, ${joined} chars`);
+    }
+  }
+  assert.deepEqual(broken, []);
+  const overTwo = Object.values(harvest.glosses).filter((x) => x.length > 2).length;
+  console.log(`    ${overTwo} verbs carry more than two senses `
+    + `(the cap allowed none)`);
+  const lens = all.filter((v) => v.meanings?.en).map((v) => v.meanings.en.length).sort((a, b) => a - b);
+  console.log(`    gloss length: median ${lens[Math.floor(lens.length / 2)]}, `
+    + `p90 ${lens[Math.floor(lens.length * 0.9)]}, max ${lens[lens.length - 1]} chars`);
+});
+
+test('the first sense is the first sense', () => {
   // « aller » is the case: a rule requiring a three-letter word rejected "to go"
   // and promoted "to attend (school, church regularly)" to first place. The
   // primary meaning of the most taught verb in French must come first.
   const { kept } = probe('tests/fixtures/gloss-senses.wiki');
-  assert.equal(kept.length, 2);
+  assert.ok(kept.length >= 2);
   assert.match(kept[0], /^to walk/, `the first sense was not kept first: ${kept[0]}`);
   const aller = all.find((v) => v.infinitive === 'aller');
   assert.match(aller.meanings.en, /^to go\b/,

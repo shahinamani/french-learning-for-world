@@ -1,7 +1,8 @@
 {
  "source": "en.wiktionary.org",
  "licence": "CC BY-SA 4.0",
- "maxSenses": 2,
+ "senseBudget": 130,
+ "maxSenses": 4,
  "rejectedBy": "explicit terms in the English output, not Wiktionary labels",
  "sensesRejectedByLabel": {
   "vulgar": 16,
@@ -85,31 +86,42 @@
   ],
   "avoir": [
    "to have, to own, to possess, to get",
-   "to have (to experience or suffer from a state or condition)"
+   "to have (to experience or suffer from a state or condition)",
+   "to have (an age)"
   ],
   "faire": [
    "to do",
-   "to make"
+   "to make",
+   "to say (of a person), to go (of an animal or device)",
+   "to make (cause someone or something to do something)"
   ],
   "aller": [
    "to go",
-   "to attend (school, church regularly)"
+   "to attend (school, church regularly)",
+   "to be going (to), will soon",
+   "to be (feeling)"
   ],
   "dire": [
    "to say, to tell (to express through speech)",
-   "to tell (to order, to advise)"
+   "to tell (to order, to advise)",
+   "to say, to tell (to set out in writing)"
   ],
   "pouvoir": [
    "can, to be able to",
-   "may (of a choice)"
+   "may (of a choice)",
+   "to be possible, may, could be",
+   "to have the right (to)"
   ],
   "vouloir": [
    "to want, wish, desire",
-   "to expect, to think"
+   "to expect, to think",
+   "to see oneself as, to give the impression of, to seem",
+   "to please do something (formal)"
   ],
   "voir": [
    "to see (visually)",
-   "to see (to understand)"
+   "to see (to understand)",
+   "to see (to visit, to go and see)"
   ],
   "savoir": [
    "to know (something)",
@@ -117,18 +129,22 @@
   ],
   "devoir": [
    "must, to have to, should (as a requirement)",
-   "must, to do or have with certainty"
+   "must, to do or have with certainty",
+   "to owe (money, obligation and etc)"
   ],
   "venir": [
    "to come (to move from one place to another that is nearer the speaker)"
   ],
   "prendre": [
    "to take",
-   "to eat, to drink"
+   "to eat, to drink",
+   "to get, to buy",
+   "to rob, to deprive"
   ],
   "parler": [
    "to speak, talk",
-   "to be able to communicate in a language, to speak"
+   "to be able to communicate in a language, to speak",
+   "to cant, (of a coat of arms) to make a pun of its bearer's name"
   ],
   "suivre": [
    "to follow (literal sense)",
@@ -136,15 +152,20 @@
   ],
   "falloir": [
    "to need, have to, to be necessary (that)",
-   "to take (time)"
+   "to take (time)",
+   "to be missing"
   ],
   "passer": [
    "to pass, to go past",
-   "to cross (a border)"
+   "to cross (a border)",
+   "to pass, to go through",
+   "to spend (time)"
   ],
   "croire": [
    "to believe (someone)",
-   "to believe, to accept as true"
+   "to believe, to accept as true",
+   "to believe, to have faith",
+   "to think of oneself as, to consider oneself"
   ],
   "aimer": [
    "to love",
@@ -152,7 +173,8 @@
   ],
   "penser": [
    "to think, reflect, concentrate one's mind on something",
-   "to think, imagine, believe"
+   "to think, imagine, believe",
+   "to be of the opinion that, believe"
   ],
   "trouver": [
    "to find, to retrieve something lost, turn up something hidden, or encounter something previously unknown to one",
@@ -160,43 +182,59 @@
   ],
   "regarder": [
    "to look at",
-   "to watch"
+   "to watch",
+   "to face",
+   "to concern (be associated with)"
   ],
   "laisser": [
    "to leave, to leave behind",
-   "to forget, to leave alone"
+   "to forget, to leave alone",
+   "to leave with, to give",
+   "to let, to allow"
   ],
   "donner": [
    "to give, to transfer the possession/holding of something to someone else",
-   "to donate"
+   "to donate",
+   "to come across"
   ],
   "mettre": [
    "to put, to place",
-   "to put on"
+   "to put on",
+   "to set",
+   "to start (something / doing something)"
   ],
   "attendre": [
    "to wait for, to await",
-   "to expect"
+   "to expect",
+   "to hear"
   ],
   "arriver": [
    "to arrive (often followed by a location)",
-   "to cope, to manage (informal)"
+   "to cope, to manage (informal)",
+   "to be able to, to manage (to do something successfully)"
   ],
   "demander": [
    "to ask",
-   "to request"
+   "to request",
+   "to wonder"
   ],
   "rester": [
    "to stay",
-   "to remain, be left over"
+   "to remain, be left over",
+   "to stay, to remain (to continue to have a particular quality)",
+   "to rest"
   ],
   "appeler": [
    "to call (out)",
-   "to call, phone, ring"
+   "to call, phone, ring",
+   "to call for, summon",
+   "to be called"
   ],
   "partir": [
    "to share, to share out, to divide",
-   "to go away, leave, depart"
+   "to go away, leave, depart",
+   "to originate",
+   "to die"
   ],
   "connaître": [
    "to know (of), to be familiar with (a person, place, fact, event)",
@@ -208,7 +246,8 @@
   ],
   "comprendre": [
    "to understand, comprehend",
-   "to comprise, include"
+   "to comprise, include",
+   "to know each other (well), to get on well, to get along well"
   ],
   "arrêter": [
    "to stop, to come to a standstill, to halt, to stop from moving",
@@ -216,27 +255,38 @@
   ],
   "entendre": [
    "to hear",
-   "to be able to hear"
+   "to be able to hear",
+   "to listen to (literary)",
+   "to mean (formal)"
   ],
   "mourir": [
    "to die, to be dying",
-   "to be dying (of)"
+   "to be dying (of)",
+   "to be dying"
   ],
   "sentir": [
    "to smell",
-   "to sense, feel (physical perception)"
+   "to sense, feel (physical perception)",
+   "to smell of, taste of",
+   "to smack of, to indicate, foreshadow (informal)"
   ],
   "tenir": [
    "to have, to hold",
-   "to keep"
+   "to keep",
+   "to stay, to hold",
+   "to hold on"
   ],
   "chercher": [
    "to look for, to seek",
-   "to look (to do something)"
+   "to look (to do something)",
+   "to mess with someone, ask for trouble (slang)",
+   "to pick up, to go and get"
   ],
   "revenir": [
    "to come back, to return",
-   "to grow back"
+   "to grow back",
+   "to recur, to be mentioned repeatedly",
+   "to come to mind, to be remembered"
   ],
   "tuer": [
    "to kill",
@@ -244,7 +294,9 @@
   ],
   "rendre": [
    "to give back",
-   "to render"
+   "to render",
+   "to pay (a visit, respects)",
+   "to yield"
   ],
   "finir": [
    "to finish, end, complete",
@@ -260,26 +312,35 @@
   ],
   "essayer": [
    "to test, to try on",
-   "to try, to attempt"
+   "to try, to attempt",
+   "to try one's hand"
   ],
   "perdre": [
    "to lose (be unable to find)",
-   "to lose (not win)"
+   "to lose (not win)",
+   "to get lost",
+   "to waste, to make bad use of something"
   ],
   "jouer": [
    "to play (engage in games or play)",
-   "to play (produce music from a musical instrument)"
+   "to play (produce music from a musical instrument)",
+   "to play (a role)",
+   "to bid (money), gamble"
   ],
   "ouvrir": [
    "to open",
-   "to begin, to initiate"
+   "to begin, to initiate",
+   "to open (of a door or a flower)",
+   "to open, to begin"
   ],
   "commencer": [
    "to begin, commence"
   ],
   "tomber": [
    "to fall",
-   "to come down"
+   "to come down",
+   "to bump into, to come across, to be received by (when making a telephone call)",
+   "to become, to get"
   ],
   "entrer": [
    "to enter"
@@ -290,7 +351,9 @@
   ],
   "rentrer": [
    "to go back, to re-enter",
-   "to go (back) home, to come (back) home"
+   "to go (back) home, to come (back) home",
+   "to get in, to go in, to fit in",
+   "to bring in, to get in, to put in"
   ],
   "sembler": [
    "to seem, to resemble, to look like",
@@ -298,15 +361,20 @@
   ],
   "tirer": [
    "to draw, drag, pull",
-   "to shoot"
+   "to shoot",
+   "to draw (conclusions), to consider (consequences)",
+   "to leave a place"
   ],
   "porter": [
    "to carry",
-   "to support, to bear"
+   "to support, to bear",
+   "to wear",
+   "to be about, to concern"
   ],
   "écouter": [
    "to listen",
-   "to listen to"
+   "to listen to",
+   "to watch (a film or television)"
   ],
   "oublier": [
    "to forget",
@@ -325,27 +393,35 @@
   ],
   "asseoir": [
    "to sit (someone) down, to seat, make sit",
-   "to sit down, sit up, take a seat"
+   "to sit down, sit up, take a seat",
+   "to assert"
   ],
   "retrouver": [
    "to find (again), to rediscover",
-   "to remember, to recall"
+   "to remember, to recall",
+   "to meet, to meet up, to bump into",
+   "to go back to, to return to"
   ],
   "marcher": [
    "to walk",
-   "to travel, to move, to march"
+   "to travel, to move, to march",
+   "to work, to function",
+   "to step"
   ],
   "travailler": [
    "to work",
-   "to study"
+   "to study",
+   "to struggle"
   ],
   "monter": [
    "to go up, to climb (go to a higher position)",
-   "to ascend, go higher, go uphill, go upstairs"
+   "to ascend, go higher, go uphill, go upstairs",
+   "to get on, get in (a vehicle)"
   ],
   "changer": [
    "to exchange (something)",
-   "to change (money, a job, one's circumstances etc.)"
+   "to change (money, a job, one's circumstances etc.)",
+   "to change, alter (something en into)"
   ],
   "dormir": [
    "to sleep"
@@ -359,38 +435,51 @@
   ],
   "poser": [
    "to stop carrying, to put down (something or somebody)",
-   "to ask or pose (a question)"
+   "to ask or pose (a question)",
+   "to land (a plane)",
+   "to lay, place"
   ],
   "boire": [
    "to drink"
   ],
   "lever": [
    "to raise, lift",
-   "to rise, stand up"
+   "to rise, stand up",
+   "to rise, come up",
+   "to get up (out of bed)"
   ],
   "lire": [
    "to read",
-   "to play"
+   "to play",
+   "to be read"
   ],
   "montrer": [
    "to show",
-   "to point to"
+   "to point to",
+   "to point out",
+   "to display, to demonstrate one's characteristics"
   ],
   "servir": [
    "to serve (to help in a shop; to bring a meal to someone)",
-   "to be used for"
+   "to be used for",
+   "to be useful, to be of use, come in handy",
+   "to serve"
   ],
   "garder": [
    "to keep, to retain, to store, to save",
-   "to guard"
+   "to guard",
+   "to be careful (de faire not to do)"
   ],
   "quitter": [
    "to discharge somebody from an obligation",
-   "to leave, to quit"
+   "to leave, to quit",
+   "to part with somebody, to leave somebody"
   ],
   "occuper": [
    "to occupy, to take up",
-   "to employ"
+   "to employ",
+   "to be busy, to keep oneself busy",
+   "to take care of, to tend to, to deal with someone"
   ],
   "tourner": [
    "to turn, to change (direction), to rotate, to spin",
@@ -398,15 +487,20 @@
   ],
   "foutre": [
    "to do, to fritter, to tinker (vulgar)",
-   "to give (slang)"
+   "to give (slang)",
+   "to put on/in (quickly), to shove, to stick, to stash (slang)"
   ],
   "paraître": [
    "to appear (become visible)",
-   "to be published"
+   "to be published",
+   "to appear, to seem",
+   "to be said that, to be rumored that"
   ],
   "payer": [
    "to pay (for)",
-   "to pay (someone)"
+   "to pay (someone)",
+   "to buy (something)",
+   "pay for (suffer the consequences of something)"
   ],
   "continuer": [
    "to continue"
@@ -417,18 +511,23 @@
   ],
   "descendre": [
    "to go down",
-   "to descend"
+   "to descend",
+   "to put down, disparage",
+   "to kill (someone) (slang)"
   ],
   "retourner": [
    "to turn over, to turn upside-down",
-   "to turn over, to flip"
+   "to turn over, to flip",
+   "turn over (earth, soil), to toss (salad)"
   ],
   "souvenir": [
    "to remember"
   ],
   "jeter": [
    "to throw",
-   "to throw away, to discard"
+   "to throw away, to discard",
+   "to throw away, discard",
+   "to throw oneself (into, out of, etc.)"
   ],
   "raconter": [
    "to recount, to tell, to narrate"
@@ -439,11 +538,14 @@
   ],
   "gagner": [
    "to win",
-   "to earn"
+   "to earn",
+   "to gain, to obtain",
+   "to go to, to reach, to arrive at"
   ],
   "reprendre": [
    "to take back, recover, regain",
-   "to take again, take more of, have another helping"
+   "to take again, take more of, have another helping",
+   "to resume (work), get back to, carry on with"
   ],
   "excuser": [
    "to excuse (to forgive, to pardon)"
@@ -453,7 +555,9 @@
   ],
   "toucher": [
    "to touch (physically)",
-   "to affect"
+   "to affect",
+   "to receive, to get, to earn (money)",
+   "to try, to try out"
   ],
   "manquer": [
    "to lack, to be lacking in, to be short of (something)",
@@ -464,11 +568,15 @@
   ],
   "espérer": [
    "to hope",
-   "to hope for"
+   "to hope for",
+   "to have faith, to trust",
+   "to wait"
   ],
   "fermer": [
    "to shut",
-   "to close"
+   "to close",
+   "to do up (of clothing)",
+   "to switch off, to turn off (of a device or an appliance)"
   ],
   "imaginer": [
    "to imagine"
@@ -482,7 +590,9 @@
   ],
   "compter": [
    "to count",
-   "to reckon, allow"
+   "to reckon, allow",
+   "to include, to comprise, to consist of",
+   "to comprise, to consist of"
   ],
   "rencontrer": [
    "to meet",
@@ -490,7 +600,8 @@
   ],
   "décider": [
    "to decide",
-   "to persuade, convince (someone)"
+   "to persuade, convince (someone)",
+   "to make a decision, to make up one's mind"
   ],
   "prier": [
    "to pray",
@@ -502,23 +613,31 @@
   ],
   "agir": [
    "to act, to do (something)",
-   "to work, to have an effect, to act (on)"
+   "to work, to have an effect, to act (on)",
+   "to act, behave",
+   "prosecute, sue"
   ],
   "pousser": [
    "to push",
-   "to urge on, encourage"
+   "to urge on, encourage",
+   "to grow",
+   "to spring up, to sprout"
   ],
   "valoir": [
    "to be worth",
-   "to earn, to win, to bring (something of value, ironic usage notwithstanding)"
+   "to earn, to win, to bring (something of value, ironic usage notwithstanding)",
+   "to be equal to"
   ],
   "courir": [
    "to run",
-   "to hurry, to rush"
+   "to hurry, to rush",
+   "to go"
   ],
   "offrir": [
    "to offer, to provide",
-   "to give as a gift"
+   "to give as a gift",
+   "to buy for oneself",
+   "to treat oneself"
   ],
   "suffire": [
    "to be enough, to suffice"
@@ -529,11 +648,15 @@
   ],
   "battre": [
    "to beat, to defeat",
-   "to beat up"
+   "to beat up",
+   "to fight",
+   "to whisk or whip (eggs)"
   ],
   "coucher": [
    "to lay, to lay down",
-   "to put to bed, to put up (a lodger)"
+   "to put to bed, to put up (a lodger)",
+   "to go to bed",
+   "to set (of celestial objects)"
   ],
   "emmener": [
    "to take off, take away or out",
@@ -545,7 +668,9 @@
   ],
   "apporter": [
    "to bring (something)",
-   "to take"
+   "to take",
+   "to give (support), to give, supply (explanation etc.)",
+   "to bring (improvement, freedom etc.)"
   ],
   "bouger": [
    "to move (in general)",
@@ -553,11 +678,14 @@
   ],
   "permettre": [
    "to permit, to allow",
-   "to allow, to enable"
+   "to allow, to enable",
+   "to take the liberty",
+   "to afford"
   ],
   "crier": [
    "to cry out",
-   "to shout"
+   "to shout",
+   "to creak"
   ],
   "pleurer": [
    "to cry, to weep, to shed tears",
@@ -569,11 +697,14 @@
   ],
   "remettre": [
    "to put back, replace",
-   "to put (clothing etc.) back on"
+   "to put (clothing etc.) back on",
+   "to restart (machine etc.)"
   ],
   "sauver": [
    "to save, rescue, to protect",
-   "to save"
+   "to save",
+   "to escape, run away",
+   "to save (conserve, prevent the wasting of)"
   ],
   "préparer": [
    "to prepare",
@@ -581,22 +712,29 @@
   ],
   "frapper": [
    "to hit, to strike, to bash",
-   "to knock (e.g. on a door)"
+   "to knock (e.g. on a door)",
+   "to bang (to get attention)",
+   "to beat time (as a conductor)"
   ],
   "voler": [
    "to fly through the air",
-   "to pursue flying"
+   "to pursue flying",
+   "to scarper, flee",
+   "to steal, rob"
   ],
   "découvrir": [
    "to discover",
-   "to show, to reveal"
+   "to show, to reveal",
+   "to leave uncovered, to expose",
+   "to leave unprotected, to expose"
   ],
   "sourire": [
    "to smile"
   ],
   "conduire": [
    "to drive (a vehicle)",
-   "to lead, to conduct"
+   "to lead, to conduct",
+   "to behave, to conduct oneself"
   ],
   "approcher": [
    "to approach, to come close to, to move towards"
@@ -613,7 +751,8 @@
   ],
   "ressembler": [
    "to resemble",
-   "to be similar to each other"
+   "to be similar to each other",
+   "to look like, to resemble"
   ],
   "choisir": [
    "to choose",
@@ -629,7 +768,9 @@
   ],
   "présenter": [
    "to present, to introduce",
-   "to show, to present"
+   "to show, to present",
+   "to look (informal)",
+   "to appear, to be present (before someone)"
   ],
   "vendre": [
    "to sell",
@@ -637,14 +778,17 @@
   ],
   "répéter": [
    "to repeat",
-   "to repeat oneself"
+   "to repeat oneself",
+   "to rehearse, practice"
   ],
   "refuser": [
    "to refuse"
   ],
   "couper": [
    "to cut, cut up, to chop, to sever",
-   "to cut, to clip, to trim"
+   "to cut, to clip, to trim",
+   "to cut off, to keep out, to bar",
+   "to take away"
   ],
   "taire": [
    "to be quiet, to be silent",
@@ -660,22 +804,28 @@
   ],
   "avancer": [
    "to advance, to go forward",
-   "to progress"
+   "to progress",
+   "to bring forward, to advance",
+   "to propose, to put forward"
   ],
   "promettre": [
    "to promise",
-   "to be promising, to be hopeful"
+   "to be promising, to be hopeful",
+   "to hope (for)",
+   "to resolve (to)"
   ],
   "marier": [
    "to marry, to marry off, to perform or cause the marriage of",
-   "to wed, to marry (one's spouse) (colloquial)"
+   "to wed, to marry (one's spouse) (colloquial)",
+   "to get married, to wed"
   ],
   "exister": [
    "to exist"
   ],
   "amener": [
    "to bring (a person), take, fetch, give a lift, give a ride",
-   "to reel in (a fish)"
+   "to reel in (a fish)",
+   "to lead"
   ],
   "inquiéter": [
    "to worry",
@@ -683,7 +833,8 @@
   ],
   "ramener": [
    "to take back, bring back, restore",
-   "to draw, pull (back)"
+   "to draw, pull (back)",
+   "to come down, be reduced (à to)"
   ],
   "embrasser": [
    "to hug, embrace (to affectionately wrap one's arms around another) (dated)",
@@ -702,7 +853,8 @@
   ],
   "glisser": [
    "to slip, to slide, to skid",
-   "to glide"
+   "to glide",
+   "to slide"
   ],
   "ajouter": [
    "to add, append"
@@ -713,11 +865,15 @@
   ],
   "lâcher": [
    "to release, to loosen, to let go",
-   "to abandon, to let go"
+   "to abandon, to let go",
+   "to chicken out",
+   "to fail"
   ],
   "serrer": [
    "to tighten (a screw, a knot)",
-   "to shake (hands)"
+   "to shake (hands)",
+   "to squeeze",
+   "to hug, to stay close to"
   ],
   "intéresser": [
    "to interest, to make interested",
@@ -725,7 +881,9 @@
   ],
   "sauter": [
    "to jump, leap",
-   "to jump over"
+   "to jump over",
+   "to sauté",
+   "to bang, hump, have sex with (slang)"
   ],
   "réussir": [
    "to manage to do something",
@@ -733,18 +891,22 @@
   ],
   "casser": [
    "to break",
-   "to break up (with somebody)"
+   "to break up (with somebody)",
+   "to get lost, go away, skidaddle, leave, see se casser (informal)"
   ],
   "enlever": [
    "to remove, take off, take away, clear",
-   "to take off, remove (clothes)"
+   "to take off, remove (clothes)",
+   "to kidnap, abduct",
+   "to win, capture, carry off"
   ],
   "rêver": [
    "to dream"
   ],
   "tromper": [
    "to deceive, lead astray, mislead",
-   "to distract oneself from"
+   "to distract oneself from",
+   "to make a mistake, be wrong"
   ],
   "cesser": [
    "to cease, to stop",
@@ -756,11 +918,14 @@
   ],
   "tendre": [
    "to tighten",
-   "to stretch out"
+   "to stretch out",
+   "to hand",
+   "to tend"
   ],
   "terminer": [
    "to end, to finish, to terminate",
-   "to end, to bring to an end, to finish"
+   "to end, to bring to an end, to finish",
+   "to end, to finish, to complete, to conclude"
   ],
   "habiter": [
    "to live in, to occupy (to have as a home.)",
@@ -768,11 +933,13 @@
   ],
   "lancer": [
    "to throw",
-   "to start, to launch"
+   "to start, to launch",
+   "to call out, yell"
   ],
   "abandonner": [
    "to give up",
-   "to abandon, forsake"
+   "to abandon, forsake",
+   "to give oneself (to someone)"
   ],
   "adorer": [
    "to love, to adore",
@@ -780,7 +947,8 @@
   ],
   "mener": [
    "to lead, to take",
-   "to lead, to run, to take charge"
+   "to lead, to run, to take charge",
+   "to lead, to be leading, to be in the lead"
   ],
   "mentir": [
    "to lie (say something untrue)"
@@ -790,7 +958,8 @@
   ],
   "assurer": [
    "to assure, to ensure, to make sure",
-   "to do, to take care of, to carry out, to be in charge of"
+   "to do, to take care of, to carry out, to be in charge of",
+   "to insure, to give insurance to"
   ],
   "souffrir": [
    "to suffer",
@@ -798,26 +967,32 @@
   ],
   "installer": [
    "to install",
-   "to place"
+   "to place",
+   "to settle"
   ],
   "rejoindre": [
    "to join, to join up",
-   "to rejoin, join together"
+   "to rejoin, join together",
+   "to reach (a destination)"
   ],
   "remonter": [
    "to go back up, to come back up, to climb again, to reclimb",
-   "to rise again, to go up again"
+   "to rise again, to go up again",
+   "to go up, to ride up"
   ],
   "jurer": [
    "to swear (to promise by oath)",
-   "to swear (to say a swear word)"
+   "to swear (to say a swear word)",
+   "to clash with, to be jarring, to stick out like a sore thumb"
   ],
   "danser": [
    "to dance"
   ],
   "échapper": [
    "to escape (from), evade",
-   "to drop an object unintentionally"
+   "to drop an object unintentionally",
+   "to escape, break out (e.g., from prison)",
+   "to go away, run away"
   ],
   "utiliser": [
    "to use, to utilize"
@@ -828,11 +1003,15 @@
   ],
   "rouler": [
    "to roll",
-   "to revolve"
+   "to revolve",
+   "to go (of events, to proceed) (colloquial)",
+   "to work, to function"
   ],
   "remarquer": [
    "to observe",
-   "to point out, remark upon"
+   "to point out, remark upon",
+   "to notice",
+   "to attract attention"
   ],
   "couvrir": [
    "to cover up, to cover (put a cover over)",
@@ -840,22 +1019,28 @@
   ],
   "maintenir": [
    "to maintain",
-   "to stick to"
+   "to stick to",
+   "to stay fair",
+   "to persist"
   ],
   "retenir": [
    "to retain, hold",
-   "to remember"
+   "to remember",
+   "to accept (que that)",
+   "to uphold"
   ],
   "charger": [
    "to load (up) (vehicle, animal etc.)",
-   "to load (firearm)"
+   "to load (firearm)",
+   "to charge (battery)"
   ],
   "accompagner": [
    "to accompany, to escort"
   ],
   "brûler": [
    "to burn",
-   "to burn oneself"
+   "to burn oneself",
+   "to pass an obstacle, to blow (through or past), to run"
   ],
   "calmer": [
    "to calm, pacify, soothe",
@@ -863,15 +1048,19 @@
   ],
   "tenter": [
    "to attempt",
-   "to tempt"
+   "to tempt",
+   "to be desirable or interesting to, to be something one feels like doing"
   ],
   "réfléchir": [
    "to reflect",
-   "to reflect, to manifest, to show"
+   "to reflect, to manifest, to show",
+   "to ponder, to reflect",
+   "to realize"
   ],
   "apparaître": [
    "to appear (become visible)",
-   "to appear, to seem"
+   "to appear, to seem",
+   "to spawn"
   ],
   "prévenir": [
    "to prevent, to avert, to guard against",
@@ -879,30 +1068,39 @@
   ],
   "protéger": [
    "to protect",
-   "to protect oneself"
+   "to protect oneself",
+   "to protect one's ...",
+   "to protect each other"
   ],
   "risquer": [
    "to risk, to put at risk",
-   "to face, to incur"
+   "to face, to incur",
+   "to run the risk of, to be likely to"
   ],
   "obliger": [
    "to oblige, to require, to compel, to force",
-   "to have to"
+   "to have to",
+   "to help, to aid"
   ],
   "inviter": [
    "to invite"
   ],
   "éviter": [
    "to avoid",
-   "to dodge, to shun, to bypass"
+   "to dodge, to shun, to bypass",
+   "to avert"
   ],
   "arranger": [
    "to arrange",
-   "to suit, to be convenient (colloquial)"
+   "to suit, to be convenient (colloquial)",
+   "to be set for",
+   "to be pleasant (towards someone), to get along (with someone)"
   ],
   "emporter": [
    "to take",
-   "to win"
+   "to win",
+   "to take away, to blow away, to carry away",
+   "to take away"
   ],
   "proposer": [
    "to propose, suggest",
@@ -910,19 +1108,26 @@
   ],
   "annoncer": [
    "to announce",
-   "to predict, foretell"
+   "to predict, foretell",
+   "to declare",
+   "to approach"
   ],
   "filer": [
    "to spin (a web)",
-   "to thread through (a crowd)"
+   "to thread through (a crowd)",
+   "to spin a thread (of syrup, or syrup-like substances)"
   ],
   "atteindre": [
    "to attain",
-   "to reach"
+   "to reach",
+   "to accomplish",
+   "to achieve"
   ],
   "traîner": [
    "to pull, drag",
-   "to bring (something bad)"
+   "to bring (something bad)",
+   "to suffer (from), to linger",
+   "to drag along"
   ],
   "détester": [
    "to hate, to detest (to thoroughly dislike)"
@@ -937,7 +1142,9 @@
   ],
   "fumer": [
    "to smoke",
-   "to emit smoke"
+   "to emit smoke",
+   "to steam",
+   "to kill"
   ],
   "supposer": [
    "to suppose, to think, to reckon, to surmise",
@@ -949,26 +1156,33 @@
   ],
   "reposer": [
    "to put down, to place",
-   "to rest"
+   "to rest",
+   "to rest, to repose",
+   "to be based on"
   ],
   "baisser": [
    "to lower",
-   "to turn down (as a volume/setting)"
+   "to turn down (as a volume/setting)",
+   "to go down, fall",
+   "to fail"
   ],
   "retirer": [
    "to take off, to remove (e.g. clothes), to pull out",
-   "to withdraw, to get out, to take out (money)"
+   "to withdraw, to get out, to take out (money)",
+   "to retire"
   ],
   "respirer": [
    "to breathe"
   ],
   "détruire": [
    "to destroy",
-   "to destruct"
+   "to destruct",
+   "to demolish"
   ],
   "épouser": [
    "to marry, to wed",
-   "to marry, to get married, wed"
+   "to marry, to get married, wed",
+   "to cling to, hug (of tight clothes etc.)"
   ],
   "séparer": [
    "to separate",
@@ -979,19 +1193,25 @@
   ],
   "éloigner": [
    "to remove",
-   "to distance, to draw or pull away from"
+   "to distance, to draw or pull away from",
+   "to distance oneself, to pull oneself away from"
   ],
   "traiter": [
    "to treat (someone) (a particular way)",
-   "to render treatment (usually medical)"
+   "to render treatment (usually medical)",
+   "to process, spray, coat",
+   "to process"
   ],
   "fixer": [
    "to fix, fasten",
-   "to fix, arrange, set (a date, price etc.)"
+   "to fix, arrange, set (a date, price etc.)",
+   "to settle (in a place)",
+   "to stare at"
   ],
   "surprendre": [
    "to surprise",
-   "to catch out"
+   "to catch out",
+   "to overhear, to discover, to spot (an action or secret someone is trying to hide)"
   ],
   "appartenir": [
    "to belong",
@@ -999,15 +1219,20 @@
   ],
   "pencher": [
    "to tilt, tip up",
-   "to lean, list"
+   "to lean, list",
+   "to lean towards (an opinion, idea etc.), to be inclined (to do something)",
+   "to bend down, lean over"
   ],
   "saisir": [
    "to take hold of, to grab",
-   "to seize, to take (an illegal product), to capture"
+   "to seize, to take (an illegal product), to capture",
+   "to grasp mentally, understand"
   ],
   "poursuivre": [
    "to pursue, to chase",
-   "to pursue, to persecute, to torment"
+   "to pursue, to persecute, to torment",
+   "to carry on, to continue what has been started",
+   "to sue"
   ],
   "allumer": [
    "to light, to set alight (a candle, a fire, a cigar)",
@@ -1022,7 +1247,9 @@
   ],
   "attaquer": [
    "to attack",
-   "to diminish, to spoil, to erode"
+   "to diminish, to spoil, to erode",
+   "to begin, to undertake (an enterprise, an endeavor, a task)",
+   "to approach (a shore)"
   ],
   "défendre": [
    "to defend",
@@ -1033,7 +1260,9 @@
   ],
   "couler": [
    "to sink",
-   "to cast (metal), to pour (liquid)"
+   "to cast (metal), to pour (liquid)",
+   "to flow, to run, to slip, to skid",
+   "to shed (i.e. shed blood)"
   ],
   "remercier": [
    "to thank (someone)",
@@ -1044,7 +1273,8 @@
   ],
   "attraper": [
    "to trap (to capture in a trap)",
-   "to catch (e.g. a ball)"
+   "to catch (e.g. a ball)",
+   "to catch (a cold etc.)"
   ],
   "souhaiter": [
    "to wish (for), to hope (for)",
@@ -1052,7 +1282,9 @@
   ],
   "arracher": [
    "to uproot, pull up, tear out",
-   "to extract, take out (a tooth)"
+   "to extract, take out (a tooth)",
+   "to pull off, rip off, peel",
+   "to buy, snap up"
   ],
   "supporter": [
    "to support",
@@ -1060,11 +1292,14 @@
   ],
   "appuyer": [
    "to press, push",
-   "to rest"
+   "to rest",
+   "to support, to back",
+   "to lean"
   ],
   "mêler": [
    "to mix",
-   "to meddle in, to interfere in, to get mixed up in"
+   "to meddle in, to interfere in, to get mixed up in",
+   "to shuffle"
   ],
   "sonner": [
    "to sound",
@@ -1084,23 +1319,32 @@
   ],
   "engager": [
    "to pledge, commit",
-   "to hire, sign, snap up"
+   "to hire, sign, snap up",
+   "to involve",
+   "to encourage"
   ],
   "diriger": [
    "to run, to direct (be the director of)",
-   "to supervise, to oversee"
+   "to supervise, to oversee",
+   "to steer (vehicles)",
+   "to aim, to direct"
   ],
   "dégager": [
    "to free (someone or something)",
-   "to relieve (a town, army, etc.)"
+   "to relieve (a town, army, etc.)",
+   "to release (funds)",
+   "to clear (a table, area, nose etc.)"
   ],
   "observer": [
    "to observe, watch",
-   "to note, notice"
+   "to note, notice",
+   "to keep, maintain"
   ],
   "coller": [
    "to stick (together), to glue",
-   "to approach too closely, to be too close"
+   "to approach too closely, to be too close",
+   "to place (colloquial)",
+   "to give, to hand over (colloquial)"
   ],
   "profiter": [
    "to take advantage of, make the most of, enjoy",
@@ -1108,27 +1352,35 @@
   ],
   "partager": [
    "to share",
-   "to divide up"
+   "to divide up",
+   "to divide",
+   "to share out"
   ],
   "avouer": [
    "to avow",
-   "to confess"
+   "to confess",
+   "to approve"
   ],
   "baiser": [
    "to kiss (dated)",
-   "to prevail over someone, screw (vulgar)"
+   "to prevail over someone, screw (vulgar)",
+   "to break, deteriorate (vulgar)"
   ],
   "élever": [
    "to raise",
-   "to bring up"
+   "to bring up",
+   "to raise a number to a certain power",
+   "to elevate, to enhance"
   ],
   "prévoir": [
    "to anticipate, foresee, expect (reaction, event, etc.)",
-   "to forecast (weather)"
+   "to forecast (weather)",
+   "to plan"
   ],
   "discuter": [
    "to argue, to debate",
-   "to discuss"
+   "to discuss",
+   "to chat"
   ],
   "placer": [
    "to place (to put in a specific location)",
@@ -1136,11 +1388,13 @@
   ],
   "signer": [
    "to sign (put a signature on)",
-   "to sign (communicate using sign language)"
+   "to sign (communicate using sign language)",
+   "to cross oneself (make the sign of the cross)"
   ],
   "fuir": [
    "to escape",
-   "to flee"
+   "to flee",
+   "to leak, to have a leak"
   ],
   "juger": [
    "to judge, to try",
@@ -1151,29 +1405,36 @@
   ],
   "entraîner": [
    "to coach, to train",
-   "to carry, pull, drive"
+   "to carry, pull, drive",
+   "to drag (along)",
+   "to bring about, lead to, involve"
   ],
   "mériter": [
    "to deserve, merit"
   ],
   "accrocher": [
    "to hook, hook up (attach with a hook)",
-   "to pick up, become attached to"
+   "to pick up, become attached to",
+   "to pick up, to come to learn (e.g. a skill)"
   ],
   "vérifier": [
    "to verify"
   ],
   "éprouver": [
    "to put to the test, test, try",
-   "to feel, experience"
+   "to feel, experience",
+   "to experience, go through"
   ],
   "former": [
    "to form",
-   "to shape"
+   "to shape",
+   "to train, to educate"
   ],
   "prêter": [
    "to lend",
-   "to attribute"
+   "to attribute",
+   "to lend itself to",
+   "to go along with"
   ],
   "ressentir": [
    "to feel (an emotion, usually strongly)",
@@ -1181,19 +1442,25 @@
   ],
   "blesser": [
    "to wound, to injure",
-   "to hurt one's feelings, to offend"
+   "to hurt one's feelings, to offend",
+   "to injure oneself"
   ],
   "crever": [
    "to pop, burst",
-   "to have a puncture"
+   "to have a puncture",
+   "to snuff it, pop one's clogs, to die (informal)",
+   "to wear out, knacker (informal)"
   ],
   "repartir": [
    "to leave again, to go back",
-   "to restart, to set off again"
+   "to restart, to set off again",
+   "to retort (archaic)"
   ],
   "écraser": [
    "to squash",
-   "to obliterate"
+   "to obliterate",
+   "to mash (vegetables), to crush (garlic)",
+   "to thrash, to crush, to win by a large margin"
   ],
   "marquer": [
    "to mark, mark down (to add a mark or a spot to something)",
@@ -1209,19 +1476,24 @@
   ],
   "remplir": [
    "to fill, to fill up (make full)",
-   "to fill in"
+   "to fill in",
+   "to fulfil"
   ],
   "demeurer": [
    "to live, stay",
-   "to stay, to remain, to stop for a long time (formal)"
+   "to stay, to remain, to stop for a long time (formal)",
+   "to last, to persist"
   ],
   "éclater": [
    "to burst, to break, to shatter",
-   "to boom (make a loud noise)"
+   "to boom (make a loud noise)",
+   "to appear (literary)",
+   "to shine"
   ],
   "livrer": [
    "to deliver (a package, merchandise etc.)",
-   "to hand over, deliver (someone to an enemy, police, etc.)"
+   "to hand over, deliver (someone to an enemy, police, etc.)",
+   "to betray"
   ],
   "prouver": [
    "to prove"
@@ -1231,7 +1503,9 @@
   ],
   "régler": [
    "to sort out, to settle (a problem, a bill)",
-   "to set, to adjust"
+   "to set, to adjust",
+   "to regulate",
+   "to rule, to put lines on"
   ],
   "créer": [
    "to create"
@@ -1244,7 +1518,8 @@
   ],
   "soulever": [
    "to raise, to lift up, to pick up",
-   "to stir up (emotions), to rouse (interest)"
+   "to stir up (emotions), to rouse (interest)",
+   "to revolt, to rise up (against)"
   ],
   "entourer": [
    "to surround"
@@ -1255,7 +1530,9 @@
   ],
   "secouer": [
    "to shake",
-   "to shake off (oppression etc.)"
+   "to shake off (oppression etc.)",
+   "to shake (emotionally, figuratively)",
+   "to shake up"
   ],
   "représenter": [
    "to represent (to be the representative of)",
@@ -1267,11 +1544,14 @@
   ],
   "éteindre": [
    "to turn off (a switch, device, etc.)",
-   "to put out, to extinguish (a fire)"
+   "to put out, to extinguish (a fire)",
+   "to die out, fade"
   ],
   "étendre": [
    "to spread, to spread out, to lay out",
-   "to stretch (the limbs)"
+   "to stretch (the limbs)",
+   "to hang out (washing)",
+   "to extend, to enlarge, expand"
   ],
   "causer": [
    "to cause (be the cause of)"
@@ -1284,11 +1564,15 @@
   ],
   "allonger": [
    "to lay down",
-   "to lengthen, to make longer, to extend"
+   "to lengthen, to make longer, to extend",
+   "to extend out, to stretch",
+   "to lengthen"
   ],
   "considérer": [
    "to consider (to look at)",
-   "to consider (to look at) each other"
+   "to consider (to look at) each other",
+   "to consider (to think about)",
+   "to consider, to think of"
   ],
   "attirer": [
    "to attract",
@@ -1296,7 +1580,9 @@
   ],
   "songer": [
    "to dream (literary)",
-   "to think (about), consider (that)"
+   "to think (about), consider (that)",
+   "to ponder, to imagine, to consider",
+   "to dream about (literary)"
   ],
   "plaindre": [
    "to pity",
@@ -1308,7 +1594,9 @@
   ],
   "gêner": [
    "to hinder, hamper, bother",
-   "to bother, annoy, irritate"
+   "to bother, annoy, irritate",
+   "to embarrass",
+   "to be bothered about something"
   ],
   "adresser": [
    "to direct",
@@ -1316,14 +1604,17 @@
   ],
   "enfermer": [
    "to lock up, lock in, lock away",
-   "to imprison, entrap"
+   "to imprison, entrap",
+   "to enclose, contain (literary)"
   ],
   "trembler": [
    "to tremble, shake"
   ],
   "enfoncer": [
    "to push in, to press in, to drive in",
-   "to break open, to break down"
+   "to break open, to break down",
+   "to defeat, to thrash",
+   "to sink down"
   ],
   "téléphoner": [
    "to call, to ring, to telephone"
@@ -1333,15 +1624,19 @@
   ],
   "fatiguer": [
    "to tire",
-   "to wear out, to drain"
+   "to wear out, to drain",
+   "to make an effort (especially in the negative)",
+   "to bore, to annoy"
   ],
   "ficher": [
    "to plug in (to drive something in by its point, as with a nail or a stake)",
-   "to file, to record, to track"
+   "to file, to record, to track",
+   "to not care"
   ],
   "habiller": [
    "to dress",
-   "to get dressed"
+   "to get dressed",
+   "to dress in a certain fashion"
   ],
   "posséder": [
    "to own, to possess"
@@ -1352,7 +1647,8 @@
   ],
   "virer": [
    "to bear, veer (change direction slightly)",
-   "to turn into, become"
+   "to turn into, become",
+   "to transfer (money, from one account to another)"
   ],
   "inventer": [
    "to invent (to make something for the first time)",
@@ -1360,11 +1656,15 @@
   ],
   "presser": [
    "to urge",
-   "to squeeze, to squash"
+   "to squeeze, to squash",
+   "to hurry, to hurry up",
+   "to hurry up"
   ],
   "chasser": [
    "to hunt",
-   "to chase"
+   "to chase",
+   "to drive off",
+   "to chassé"
   ],
   "hurler": [
    "to shout, to yell",
@@ -1372,15 +1672,19 @@
   ],
   "ennuyer": [
    "to afflict with boredom, to bore",
-   "to be bored"
+   "to be bored",
+   "to miss something or someone",
+   "to annoy, bother, trouble"
   ],
   "moquer": [
    "to mock (literary)",
-   "to make fun (of someone)"
+   "to make fun (of someone)",
+   "to be indifferent, to not care (about something)"
   ],
   "dépasser": [
    "to exceed",
-   "to overtake, to go past"
+   "to overtake, to go past",
+   "to surpass"
   ],
   "endormir": [
    "to put to sleep",
@@ -1388,26 +1692,33 @@
   ],
   "apprécier": [
    "to appreciate",
-   "to like"
+   "to like",
+   "to evaluate or measure quantitatively, to appraise"
   ],
   "reculer": [
    "to move back, to put back",
-   "to go backwards"
+   "to go backwards",
+   "to back down, to concede",
+   "to back off, to draw back, to retreat"
   ],
   "construire": [
    "to build"
   ],
   "accorder": [
    "to grant (something to someone)",
-   "to link to, to be related to"
+   "to link to, to be related to",
+   "to agree on a fact",
+   "to come to an agreement"
   ],
   "rapporter": [
    "to bring back (physically bring something back from where it came from)",
-   "to retrieve"
+   "to retrieve",
+   "to fetch"
   ],
   "produire": [
    "to produce, to yield",
-   "to happen, take place (of an event)"
+   "to happen, take place (of an event)",
+   "to perform (of a singer, etc.)"
   ],
   "ramasser": [
    "to pick up, to collect, gather",
@@ -1415,7 +1726,8 @@
   ],
   "plonger": [
    "to dive",
-   "to plunge"
+   "to plunge",
+   "to immerse oneself (in something)"
   ],
   "interdire": [
    "to forbid, ban, prohibit",
@@ -1423,7 +1735,9 @@
   ],
   "dresser": [
    "to raise, to erect, to build",
-   "to raise, to lift, to elevate"
+   "to raise, to lift, to elevate",
+   "to prepare, to draw up",
+   "to pitch (a tent)"
   ],
   "attacher": [
    "to affix, bind, tie something to something else, especially with rope",
@@ -1434,11 +1748,14 @@
   ],
   "écarter": [
    "to separate, move apart",
-   "to spread, open (fingers, legs etc)"
+   "to spread, open (fingers, legs etc)",
+   "to draw (curtains)",
+   "to dismiss, rule out, turn down"
   ],
   "nourrir": [
    "to feed (provide with nourishment), nourish",
-   "to nurture, to fuel"
+   "to nurture, to fuel",
+   "to eat, to feed oneself"
   ],
   "briser": [
    "to break, snap",
@@ -1449,22 +1766,29 @@
   ],
   "déposer": [
    "to put down (set down), lay down",
-   "to deposit (one material onto another)"
+   "to deposit (one material onto another)",
+   "to drop off (someone)",
+   "to deposit (money)"
   ],
   "ranger": [
    "to order, to arrange",
-   "to put away, to put aside, to stack away, to stow"
+   "to put away, to put aside, to stack away, to stow",
+   "to park (a car)",
+   "to go along"
   ],
   "signifier": [
    "to signify, mean"
   ],
   "piquer": [
    "to prick, to sting",
-   "to sting"
+   "to sting",
+   "to put down, euthanise (an animal)",
+   "to nick, pinch, steal (colloquial)"
   ],
   "déclarer": [
    "to declare",
-   "to declare oneself (to be), to state (one's opinion) that, to come out in favour of/down against"
+   "to declare oneself (to be), to state (one's opinion) that, to come out in favour of/down against",
+   "to break out"
   ],
   "plaisanter": [
    "to joke (make a joke)"
@@ -1474,26 +1798,33 @@
   ],
   "planter": [
    "to plant",
-   "to drive in (a nail, stake etc.)"
+   "to drive in (a nail, stake etc.)",
+   "to pitch (a tent)"
   ],
   "remplacer": [
    "to replace"
   ],
   "saluer": [
    "to greet",
-   "to wave to (as a greeting)"
+   "to wave to (as a greeting)",
+   "to say goodbye to",
+   "to salute"
   ],
   "convenir": [
    "to admit, to agree",
-   "to suit, to be convenient for"
+   "to suit, to be convenient for",
+   "to be appropriate or admissible (to be agreed upon according to convention)"
   ],
   "souffler": [
    "to blow",
-   "to blow out"
+   "to blow out",
+   "to whisper",
+   "to relax"
   ],
   "prononcer": [
    "to pronounce",
-   "to say, mention"
+   "to say, mention",
+   "to give, deliver (a speech)"
   ],
   "confier": [
    "to confide",
@@ -1501,18 +1832,22 @@
   ],
   "débarrasser": [
    "to clear",
-   "to rid, to relieve (someone)"
+   "to rid, to relieve (someone)",
+   "to get rid, rid oneself",
+   "to remove, to take off"
   ],
   "grandir": [
    "to grow, get bigger",
-   "to grow up"
+   "to grow up",
+   "to magnify"
   ],
   "briller": [
    "to shine, to sparkle"
   ],
   "dessiner": [
    "to draw, to sketch",
-   "to draw up, to design"
+   "to draw up, to design",
+   "to take shape, to appear slowly"
   ],
   "admettre": [
    "to admit, to accept, to recognize",
@@ -1523,23 +1858,30 @@
   ],
   "nommer": [
    "to nominate",
-   "to name, to call"
+   "to name, to call",
+   "to be called, to call oneself"
   ],
   "balancer": [
    "to swing (to do a reciprocating movement)",
-   "to swing (to ride on a swing)"
+   "to swing (to ride on a swing)",
+   "to toss, to throw away, to discard (informal)"
   ],
   "récupérer": [
    "to get back, to recover, to recuperate",
-   "to reform, to rehabilitate"
+   "to reform, to rehabilitate",
+   "to reclaim, to recover",
+   "to make up (e.g. time)"
   ],
   "réaliser": [
    "to direct (a movie)",
-   "to fulfill (a dream)"
+   "to fulfill (a dream)",
+   "to perform (activities, task)",
+   "to finish making"
   ],
   "pénétrer": [
    "to enter, to get in (to)",
-   "to penetrate"
+   "to penetrate",
+   "to see through somebody's lies or secret plans"
   ],
   "renoncer": [
    "to resign, to quit",
@@ -1547,11 +1889,14 @@
   ],
   "croiser": [
    "to cross, to put in the shape of a cross",
-   "to cross, to go across"
+   "to cross, to go across",
+   "to cross, to intersect",
+   "to cross, to crossbreed"
   ],
   "achever": [
    "to finish, to complete",
-   "to finish off (someone who is already incapacitated)"
+   "to finish off (someone who is already incapacitated)",
+   "to finish"
   ],
   "disposer": [
    "to organize, to arrange, to distribute in a certain fashion",
@@ -1559,7 +1904,8 @@
   ],
   "éclairer": [
    "to light up, to brighten",
-   "to shed light on, to enlighten"
+   "to shed light on, to enlighten",
+   "to scout"
   ],
   "agiter": [
    "to shake, to wave (to move back and forth)",
@@ -1571,7 +1917,9 @@
   ],
   "rater": [
    "to miss (an event or a thing)",
-   "to screw up, to mess up (informal)"
+   "to screw up, to mess up (informal)",
+   "to fail to fire, to misfire",
+   "to fail (informal)"
   ],
   "convaincre": [
    "to convince, to persuade",
@@ -1579,7 +1927,9 @@
   ],
   "prétendre": [
    "to claim, to allege",
-   "to expect, to consider necessary"
+   "to expect, to consider necessary",
+   "to aim at, to set one's sights on",
+   "to claim"
   ],
   "transformer": [
    "to transform"
@@ -1598,7 +1948,8 @@
   ],
   "imposer": [
    "to impose",
-   "to tax (a person, a product), or to impose (a tax)"
+   "to tax (a person, a product), or to impose (a tax)",
+   "to triumph, to win"
   ],
   "renvoyer": [
    "to resend, retransmit, to send again",
@@ -1613,7 +1964,9 @@
   ],
   "avaler": [
    "to swallow",
-   "to believe"
+   "to believe",
+   "to support",
+   "to approve, endorse"
   ],
   "pendre": [
    "to hang",
@@ -1621,7 +1974,8 @@
   ],
   "ravir": [
    "to ravish (to seize by force)",
-   "to ravish, delight or thrill (transport with joy)"
+   "to ravish, delight or thrill (transport with joy)",
+   "to charm, bewitch, dazzle or fascinate"
   ],
   "admirer": [
    "to admire"
@@ -1631,7 +1985,8 @@
   ],
   "caresser": [
    "to stroke, to caress (to move the hand over the surface of)",
-   "to toy with"
+   "to toy with",
+   "to touch up, put the final touches on"
   ],
   "effacer": [
    "to erase",
@@ -1643,11 +1998,14 @@
   ],
   "respecter": [
    "to respect",
-   "to meet (deadline)"
+   "to meet (deadline)",
+   "to comply with (rules, laws)"
   ],
   "réunir": [
    "to gather, collect",
-   "to bring together"
+   "to bring together",
+   "to meet",
+   "to come together"
   ],
   "parier": [
    "to mate, couple",
@@ -1659,11 +2017,15 @@
   ],
   "dépendre": [
    "to depend",
-   "to depend, to rely"
+   "to depend, to rely",
+   "to belong to, to be part of",
+   "it's up to"
   ],
   "soutenir": [
    "to support",
-   "to keep up"
+   "to keep up",
+   "to maintain (that)",
+   "to argue"
   ],
   "organiser": [
    "to organise, to plan an event",
@@ -1674,15 +2036,20 @@
   ],
   "peser": [
    "to weigh (to have a weight of)",
-   "to weigh (to see how much something weighs)"
+   "to weigh (to see how much something weighs)",
+   "to burden, weigh down"
   ],
   "abattre": [
    "to butcher, to slaughter for meat",
-   "to shoot dead"
+   "to shoot dead",
+   "to cut down (a tree)",
+   "to destroy or demolish (a wall)"
   ],
   "rompre": [
    "to break, to snap",
-   "to stop, to block, to interrupt"
+   "to stop, to block, to interrupt",
+   "to break up (with someone)",
+   "to break"
   ],
   "mordre": [
    "to bite",
@@ -1690,22 +2057,27 @@
   ],
   "révéler": [
    "to reveal, to give away",
-   "to develop (a photo)"
+   "to develop (a photo)",
+   "to emerge"
   ],
   "réparer": [
    "to repair, fix, mend"
   ],
   "assister": [
    "to assist, to aid",
-   "to attend, to be present"
+   "to attend, to be present",
+   "to witness, to observe"
   ],
   "accuser": [
    "to accuse",
-   "to find fault with"
+   "to find fault with",
+   "to show, to reveal (formal)",
+   "(when used with ~ réception) to acknowledge receipt of something"
   ],
   "enterrer": [
    "to bury, to inter",
-   "to ditch, to bury (a plan, a memory, a legislative proposal, etc.)"
+   "to ditch, to bury (a plan, a memory, a legislative proposal, etc.)",
+   "to outlive, to survive (someone) (familiar)"
   ],
   "interrompre": [
    "to interrupt"
@@ -1730,7 +2102,9 @@
   ],
   "indiquer": [
    "to connote (to signify beyond principal meaning)",
-   "to show, indicate"
+   "to show, indicate",
+   "to prescribe",
+   "to point to, to point out"
   ],
   "nettoyer": [
    "to clean",
@@ -1742,23 +2116,30 @@
   ],
   "fouiller": [
    "to search (place, thing)",
-   "to search, frisk (person)"
+   "to search, frisk (person)",
+   "to go into, investigate (question, issue)",
+   "to rummage, delve (dans in)"
   ],
   "claquer": [
    "to clack (make a sharp sound)",
-   "to clap"
+   "to clap",
+   "to click, to snap",
+   "to crack"
   ],
   "creuser": [
    "to dig",
-   "to hollow out"
+   "to hollow out",
+   "to grow hollow"
   ],
   "contenir": [
    "to contain",
-   "to contain, to hold back, to keep in check (to control)"
+   "to contain, to hold back, to keep in check (to control)",
+   "to hold, to take, to seat (to have a capacity of)"
   ],
   "condamner": [
    "to condemn",
-   "to sentence, punish"
+   "to sentence, punish",
+   "to permanently close (a door, window, etc.)"
   ],
   "trahir": [
    "to betray",
@@ -1773,7 +2154,8 @@
   ],
   "fabriquer": [
    "to make, to build, to manufacture",
-   "to fabricate"
+   "to fabricate",
+   "to be up to (informal)"
   ],
   "faillir": [
    "to almost do something",
@@ -1781,7 +2163,8 @@
   ],
   "coincer": [
    "to wedge, to jam, to catch (e.g. one's finger in a door)",
-   "to turn a corner"
+   "to turn a corner",
+   "to catch out, to expose (informal)"
   ],
   "remuer": [
    "to move (something, often with repeated, restless or agitated movement, especially a body part), to shake, swing, wag",
@@ -1799,7 +2182,8 @@
   ],
   "distinguer": [
    "to distinguish",
-   "to make out (with one of the senses, often visually)"
+   "to make out (with one of the senses, often visually)",
+   "to be distinguished"
   ],
   "accueillir": [
    "to welcome, to accommodate",
@@ -1807,7 +2191,9 @@
   ],
   "repousser": [
    "to push back, push out of the way",
-   "to repel, drive back, repulse"
+   "to repel, drive back, repulse",
+   "to ward off, turn away",
+   "to turn down, dismiss, reject, rule out"
   ],
   "céder": [
    "to yield"
@@ -1821,7 +2207,8 @@
   ],
   "verser": [
    "to pour",
-   "to pay, to put money into a fund"
+   "to pay, to put money into a fund",
+   "to overturn (turn over, capsize)"
   ],
   "détacher": [
    "to remove spots, stains"
@@ -1843,7 +2230,8 @@
   ],
   "subir": [
    "to suffer",
-   "to undergo, be subjected to"
+   "to undergo, be subjected to",
+   "to have (an operation, medical test etc.), to take (an exam)"
   ],
   "franchir": [
    "to clear, to cross (a line), to pass (an obstacle etc.), to get over (a fence)",
@@ -1851,7 +2239,8 @@
   ],
   "lier": [
    "to link",
-   "to associate"
+   "to associate",
+   "to thicken"
   ],
   "provoquer": [
    "to provoke, bring on, bring about"
@@ -1862,11 +2251,14 @@
   ],
   "goûter": [
    "to taste, to try (to sample something orally)",
-   "to taste like"
+   "to taste like",
+   "to approve, to appreciate"
   ],
   "fournir": [
    "to supply, to provide, to furnish",
-   "to put in"
+   "to put in",
+   "to follow suit",
+   "to poke, to shaft, to hump, to have sex (slang)"
   ],
   "réserver": [
    "to reserve, to make a reservation (for), to book",
@@ -1886,7 +2278,8 @@
   ],
   "veiller": [
    "to stay up, sit up",
-   "to keep guard, keep watch"
+   "to keep guard, keep watch",
+   "to look after, see to ( + à), see to it that ( + à ce que)"
   ],
   "parfaire": [
    "to finish, to complete (literary)",
@@ -1902,7 +2295,8 @@
   ],
   "emmerder": [
    "to bug, bother (vulgar)",
-   "to bother with (vulgar)"
+   "to bother with (vulgar)",
+   "to be bored (vulgar)"
   ],
   "combattre": [
    "to fight, to combat (against)",
@@ -1913,27 +2307,35 @@
   ],
   "joindre": [
    "to join, to connect, to attach",
-   "to join up"
+   "to join up",
+   "to reach, to contact"
   ],
   "conclure": [
    "to conclude",
-   "to attain, to reach"
+   "to attain, to reach",
+   "to score, to get it on (informal)"
   ],
   "précipiter": [
    "to throw out, push out, chuck out, throw off, push off, chuck off",
-   "to throw oneself out, to jump out"
+   "to throw oneself out, to jump out",
+   "to take down, to bring down"
   ],
   "rassembler": [
    "to assemble",
-   "to gather, summon up (courage)"
+   "to gather, summon up (courage)",
+   "to collect",
+   "to gather together, congregate"
   ],
   "réduire": [
    "to reduce",
-   "to cut (prices), to shorten (text), to reduce, scale down (pictures, etc.)"
+   "to cut (prices), to shorten (text), to reduce, scale down (pictures, etc.)",
+   "to reduce (someone)",
+   "to reduce (something)"
   ],
   "habituer": [
    "to get someone in the habit (of)",
-   "to settle"
+   "to settle",
+   "to get used to something"
   ],
   "résoudre": [
    "to resolve (to find a solution to)",
@@ -1945,11 +2347,13 @@
   ],
   "rattraper": [
    "to get back (something which is lost)",
-   "to catch up (with) (arrive at the same level as)"
+   "to catch up (with) (arrive at the same level as)",
+   "to catch (e.g. an elevator)"
   ],
   "énerver": [
    "to vex, to get on one's nerves",
-   "to unnerve, to make nervous"
+   "to unnerve, to make nervous",
+   "to be excited"
   ],
   "louer": [
    "to rent",
@@ -1961,19 +2365,25 @@
   ],
   "désigner": [
    "to designate",
-   "to indicate (symbol, abbreviation, etc.)"
+   "to indicate (symbol, abbreviation, etc.)",
+   "to connote (to signify beyond principal meaning)"
   ],
   "flotter": [
    "to float",
-   "to flutter, to wave"
+   "to flutter, to wave",
+   "to mill about (informal)"
   ],
   "noter": [
    "to note",
-   "to notice (become aware)"
+   "to notice (become aware)",
+   "to grade (an exam, an assignment, etc.)",
+   "to denote"
   ],
   "bouffer": [
    "to eat (colloquial)",
-   "to eat, to worry (colloquial)"
+   "to eat, to worry (colloquial)",
+   "to consume in excess (colloquial)",
+   "to bash (criticise harshly) (colloquial)"
   ],
   "soupirer": [
    "to sigh",
@@ -1981,7 +2391,8 @@
   ],
   "envahir": [
    "to invade",
-   "to stretch, to overgrow, to fill"
+   "to stretch, to overgrow, to fill",
+   "to come over (someone) or wash over (someone), as a feeling"
   ],
   "guérir": [
    "to cure, to heal",
@@ -2000,11 +2411,15 @@
   ],
   "participer": [
    "to participate",
-   "to donate"
+   "to donate",
+   "to share (emotions)",
+   "to have some of the characteristics of, to partake of (dated)"
   ],
   "redresser": [
    "to straighten (up)",
-   "to rectify, straighten out"
+   "to rectify, straighten out",
+   "to restore, turn around",
+   "to recover, regain composure"
   ],
   "voyager": [
    "to travel, to voyage"
@@ -2015,22 +2430,29 @@
   ],
   "éveiller": [
    "to stimulate",
-   "to kindle"
+   "to kindle",
+   "to waken"
   ],
   "ordonner": [
    "to arrange, to organise, sort out (put in order)",
-   "to prescribe (e.g. medicine)"
+   "to prescribe (e.g. medicine)",
+   "to prescribe, to order (give an order)",
+   "to ordain"
   ],
   "raser": [
    "to shave",
-   "to brush, lightly touch"
+   "to brush, lightly touch",
+   "to raze (level to the ground)",
+   "to bore someone (informal)"
   ],
   "grimper": [
    "to climb, climb up"
   ],
   "foncer": [
    "to darken",
-   "to tear along (of person, vehicle etc.)"
+   "to tear along (of person, vehicle etc.)",
+   "to get a move on, go for it (colloquial)",
+   "to rush at"
   ],
   "figurer": [
    "to appear (in a list, etc.), to be included, to represent",
@@ -2050,11 +2472,14 @@
   ],
   "rejeter": [
    "to throw back (a fish, etc.)",
-   "to discharge, spew out"
+   "to discharge, spew out",
+   "to reject (an appeal, a lover etc.), to refute (an accusation)"
   ],
   "réclamer": [
    "to protest",
-   "to object"
+   "to object",
+   "to claim, reclaim",
+   "to demand"
   ],
   "conserver": [
    "to keep (in a particular place)",
@@ -2066,18 +2491,22 @@
   ],
   "confondre": [
    "to confuse, to confound",
-   "to confuse (one thing with another), to mistake (one thing for another)"
+   "to confuse (one thing with another), to mistake (one thing for another)",
+   "to mix in, to merge"
   ],
   "retomber": [
    "to refall, to fall again, to fall back down"
   ],
   "étaler": [
    "to spread, spread out (papers, objects, etc.; sur on or over)",
-   "to spread, smear (butter, etc.)"
+   "to spread, smear (butter, etc.)",
+   "to spread, stagger (repayments)"
   ],
   "détourner": [
    "to divert, to redirect",
-   "to distract, to divert (attention)"
+   "to distract, to divert (attention)",
+   "to hijack",
+   "to embezzle"
   ],
   "fâcher": [
    "to annoy, to vex",
@@ -2092,7 +2521,8 @@
   ],
   "inscrire": [
    "to inscribe (engrave)",
-   "to inscribe, jot down (make notes on paper)"
+   "to inscribe, jot down (make notes on paper)",
+   "to inscribe"
   ],
   "gâcher": [
    "to ruin, spoil, mar, wreck, waste",
@@ -2100,11 +2530,14 @@
   ],
   "constater": [
    "to note, notice",
-   "to certify"
+   "to certify",
+   "to state"
   ],
   "détendre": [
    "to relax",
-   "to help relax, to calm"
+   "to help relax, to calm",
+   "to loosen, to untighten",
+   "to remove or pull down something hung"
   ],
   "rechercher": [
    "to search for, seek, to look for",
@@ -2143,19 +2576,24 @@
   ],
   "dominer": [
    "to dominate",
-   "to dominate, to overpower, to subdue, to govern, to rule, to master"
+   "to dominate, to overpower, to subdue, to govern, to rule, to master",
+   "to (pre-)dominate"
   ],
   "noyer": [
    "to drown, to drown oneself",
-   "to drown"
+   "to drown",
+   "to dilute, to water down"
   ],
   "appliquer": [
    "to apply, to put something on something else",
-   "to apply, to employ, to make use of"
+   "to apply, to employ, to make use of",
+   "to apply to, to be applicable to"
   ],
   "employer": [
    "to use (a physical thing)",
-   "to use (an abstract)"
+   "to use (an abstract)",
+   "to be used",
+   "to employ (a person)"
   ],
   "viser": [
    "to aim, to target",
@@ -2167,14 +2605,18 @@
   ],
   "répandre": [
    "to spill, scatter",
-   "to spread"
+   "to spread",
+   "to shed (tears)",
+   "to give off, give out (a smell etc.)"
   ],
   "reprocher": [
    "to blame somebody for something (place blame upon)"
   ],
   "plier": [
    "to fold (bend (something) over; arrange by folding)",
-   "to fold up"
+   "to fold up",
+   "to bend",
+   "to mess up, to do in, to damage"
   ],
   "opposer": [
    "to oppose",
@@ -2182,23 +2624,29 @@
   ],
   "gonfler": [
    "to inflate, to blow up",
-   "to swell, to puff up"
+   "to swell, to puff up",
+   "to get on someone's nerves (informal)"
   ],
   "pointer": [
    "to point to/at",
-   "to indicate, to show, to point out"
+   "to indicate, to show, to point out",
+   "to show up, turn up (informal)"
   ],
   "renverser": [
    "to turn over, turn upside down",
-   "to knock over, knock to the ground"
+   "to knock over, knock to the ground",
+   "to run over",
+   "to spill (e.g. a liquid)"
   ],
   "constituer": [
    "to constitute",
-   "to make up"
+   "to make up",
+   "to build up"
   ],
   "satisfaire": [
    "to satisfy",
-   "to fulfil (to do what was expected)"
+   "to fulfil (to do what was expected)",
+   "to meet (expectations)"
   ],
   "transporter": [
    "to transport"
@@ -2209,11 +2657,15 @@
   ],
   "exécuter": [
    "to execute, to carry out",
-   "to execute (to kill as punishment)"
+   "to execute (to kill as punishment)",
+   "to comply",
+   "to perform (contract)"
   ],
   "frotter": [
    "to rub, chafe",
-   "to scrub, scour"
+   "to scrub, scour",
+   "to scrape",
+   "to stone"
   ],
   "méfier": [
    "to mistrust, to be wary of, to watch out for"
@@ -2230,11 +2682,15 @@
   ],
   "bloquer": [
    "to block (physically), to barricade, to obstruct",
-   "to jam, to wedge, to fix in place"
+   "to jam, to wedge, to fix in place",
+   "to freeze (e.g. prices)",
+   "to defeat"
   ],
   "composer": [
    "to compose",
-   "to compose (to produce or create a musical work)"
+   "to compose (to produce or create a musical work)",
+   "to constitute, to make up",
+   "to dial (a number)"
   ],
   "disputer": [
    "to dispute",
@@ -2242,37 +2698,46 @@
   ],
   "confirmer": [
    "to confirm (a fact etc.)",
-   "to uphold (a decision)"
+   "to uphold (a decision)",
+   "to be confirmed, be corroborated"
   ],
   "cogner": [
    "to whack, to bash, to thump (hit hard)",
-   "to pound (of the heart)"
+   "to pound (of the heart)",
+   "to bump oneself"
   ],
   "jouir": [
    "to enjoy"
   ],
   "repasser": [
    "to iron (to pass an iron over clothing)",
-   "to pass by again"
+   "to pass by again",
+   "to redo (an exam, a test)"
   ],
   "exposer": [
    "to expose",
-   "to exhibit"
+   "to exhibit",
+   "to explain, make known"
   ],
   "efforcer": [
    "to make efforts towards, to try hard to, to endeavour"
   ],
   "débarquer": [
    "to unload (merchandise), land (troops, passengers)",
-   "to fire, sack (colloquial)"
+   "to fire, sack (colloquial)",
+   "to disembark"
   ],
   "sécher": [
    "to dry",
-   "to play truant (informal)"
+   "to play truant (informal)",
+   "to dry up, to run out of things to say (informal)",
+   "to fail"
   ],
   "entretenir": [
    "to maintain, to look after",
-   "to support (e.g. a family)"
+   "to support (e.g. a family)",
+   "to fuel, to keep something going",
+   "to have a discussion (with someone)"
   ],
   "dissimuler": [
    "to hide, to conceal",
@@ -2284,7 +2749,8 @@
   ],
   "regagner": [
    "to regain, to recover (something lost)",
-   "to get back, to win back"
+   "to get back, to win back",
+   "to go back to"
   ],
   "embarquer": [
    "to board (a vehicle)",
@@ -2300,19 +2766,24 @@
   ],
   "estimer": [
    "to estimate, to calculate roughly",
-   "to esteem, to hold in high regard"
+   "to esteem, to hold in high regard",
+   "to give some thought to, to consider"
   ],
   "ôter": [
    "to take away, remove",
-   "to take off, remove (clothes, etc.)"
+   "to take off, remove (clothes, etc.)",
+   "to remove, cut (text etc.), to take away (in arithmetic)"
   ],
   "exercer": [
    "to instruct, to command",
-   "to exercise"
+   "to exercise",
+   "to practise, to do"
   ],
   "envoler": [
    "to take off, to take flight",
-   "to blow away"
+   "to blow away",
+   "to fly (of time)",
+   "to vanish, disappear, walk (to be stolen) (colloquial)"
   ],
   "violer": [
    "to violate",
@@ -2324,7 +2795,8 @@
   ],
   "épuiser": [
    "to dry up",
-   "to squeeze out"
+   "to squeeze out",
+   "to exhaust, to wear out"
   ],
   "concentrer": [
    "to concentrate",
@@ -2332,7 +2804,9 @@
   ],
   "craquer": [
    "to split, to break",
-   "to crack (petroleum)"
+   "to crack (petroleum)",
+   "to crack, to creak, to crunch",
+   "to give up, to break down, to crack (informal)"
   ],
   "repérer": [
    "to map out, to mark, to reference",
@@ -2340,7 +2814,9 @@
   ],
   "mouiller": [
    "to make wet, get wet, dampen, moisten",
-   "to water (down)"
+   "to water (down)",
+   "to cast, drop (anchor)",
+   "to palatalize"
   ],
   "armer": [
    "to arm (equip with weapons)",
@@ -2356,7 +2832,9 @@
   ],
   "préciser": [
    "to specify",
-   "to clarify"
+   "to clarify",
+   "to point out",
+   "to take shape, become clear"
   ],
   "identifier": [
    "to identify",
@@ -2364,7 +2842,8 @@
   ],
   "incliner": [
    "to incline",
-   "to lose"
+   "to lose",
+   "to set, to go down"
   ],
   "dévorer": [
    "to devour"
@@ -2375,7 +2854,8 @@
   ],
   "saigner": [
    "to bleed, to be bleeding",
-   "to bleed, to drain blood from"
+   "to bleed, to drain blood from",
+   "to knife to death"
   ],
   "réagir": [
    "to react, respond",
@@ -2383,14 +2863,17 @@
   ],
   "consacrer": [
    "to dedicate, to devote (time, effort)",
-   "to consecrate"
+   "to consecrate",
+   "to standardize through long usage"
   ],
   "persuader": [
    "to persuade"
   ],
   "enfiler": [
    "to thread (a needle)",
-   "to string, to sling (put on a string or sling)"
+   "to string, to sling (put on a string or sling)",
+   "to put on (clothes)",
+   "to hump, to screw (vulgar)"
   ],
   "emplir": [
    "to fill (archaic)",
@@ -2404,7 +2887,9 @@
   ],
   "fondre": [
    "to melt, melt down, smelt",
-   "to melt"
+   "to melt",
+   "to melt away, waste away",
+   "to dwindle, to diminish"
   ],
   "redevenir": [
    "to become again"
@@ -2415,15 +2900,20 @@
   ],
   "décrocher": [
    "to unhook, remove from a hook",
-   "to pick up, pick up the phone, start a telephone conversation"
+   "to pick up, pick up the phone, start a telephone conversation",
+   "to stall"
   ],
   "pourvoir": [
    "to equip, provide, endow someone",
-   "to fill (a seat, job vacancy)"
+   "to fill (a seat, job vacancy)",
+   "to provide",
+   "to provide oneself"
   ],
   "comporter": [
    "to include",
-   "to consist of, comprise"
+   "to consist of, comprise",
+   "to entail (formal, risk), involve",
+   "to behave, act"
   ],
   "soumettre": [
    "to submit"
@@ -2437,7 +2927,8 @@
   ],
   "puer": [
    "to stink, to smell (bad)",
-   "to stink of"
+   "to stink of",
+   "to be awful, to be repulsive"
   ],
   "décevoir": [
    "to disappoint",
@@ -2455,7 +2946,8 @@
   ],
   "voiler": [
    "to veil (cover with a veil)",
-   "to cover up, to cloak, to veil (to restrict the view of something)"
+   "to cover up, to cloak, to veil (to restrict the view of something)",
+   "to become cloudy, to become hazy"
   ],
   "soupçonner": [
    "to suspect (have a suspicion)"
@@ -2470,7 +2962,8 @@
   ],
   "raccrocher": [
    "to hang again, to hang back up",
-   "to hang up (end a phone call)"
+   "to hang up (end a phone call)",
+   "to cling (to)"
   ],
   "opérer": [
    "to operate (on)",
@@ -2486,7 +2979,9 @@
   ],
   "buter": [
    "to stop dead",
-   "to prop up, buttress"
+   "to prop up, buttress",
+   "to kill (informal)",
+   "to obsess, to become obsessed"
   ],
   "suspendre": [
    "to suspend (hang freely)",
@@ -2494,7 +2989,9 @@
   ],
   "siffler": [
    "to whistle",
-   "to whistle for, to blow on a whistle for"
+   "to whistle for, to blow on a whistle for",
+   "to boo by whistling (to show one's disapproval at something)",
+   "to hiss"
   ],
   "affronter": [
    "to confront, face",
@@ -2509,11 +3006,13 @@
   ],
   "tracer": [
    "to draw or plot (a diagram), to trace out",
-   "to rule (a line)"
+   "to rule (a line)",
+   "to buck up, hurry up (informal)"
   ],
   "vieillir": [
    "to grow old, to age",
-   "to make (someone) look older"
+   "to make (someone) look older",
+   "to make oneself look older"
   ],
   "épargner": [
    "to save (time, money etc.)",
@@ -2535,14 +3034,17 @@
   ],
   "chauffer": [
    "to heat, warm, warm up",
-   "to tease, entice sexually, to arouse (slang)"
+   "to tease, entice sexually, to arouse (slang)",
+   "to drive (a vehicle)"
   ],
   "approuver": [
    "to approve of"
   ],
   "échouer": [
    "to fail, fall through, miscarry",
-   "to end, wind up (informal)"
+   "to end, wind up (informal)",
+   "to ground, run aground",
+   "to beach"
   ],
   "autoriser": [
    "to authorise",
@@ -2557,11 +3059,13 @@
   ],
   "tailler": [
    "to cut",
-   "to sharpen"
+   "to sharpen",
+   "to do one, to clear off (informal)"
   ],
   "dérouler": [
    "to unroll",
-   "to break"
+   "to break",
+   "to unravel, to unfold"
   ],
   "augmenter": [
    "to increase",
@@ -2569,30 +3073,38 @@
   ],
   "coiffer": [
    "to cover the head",
-   "to give a haircut, to do the hair of"
+   "to give a haircut, to do the hair of",
+   "to do one's own hair"
   ],
   "déconner": [
    "to pull out (archaic)",
-   "to talk rubbish, talk bollocks, kid, joke (slang)"
+   "to talk rubbish, talk bollocks, kid, joke (slang)",
+   "to mess up, act up, malfunction (slang)"
   ],
   "soulager": [
    "to relieve, soothe",
-   "to make oneself feel better, to find relief"
+   "to make oneself feel better, to find relief",
+   "to relieve oneself (colloquial)"
   ],
   "fonder": [
    "to found"
   ],
   "tordre": [
    "to twist, to bend",
-   "to wring"
+   "to wring",
+   "to writhe"
   ],
   "gratter": [
    "to scrub",
-   "to scrape"
+   "to scrape",
+   "to scratch",
+   "to itch (informal)"
   ],
   "parer": [
    "to adorn, to bedeck",
-   "to fend off"
+   "to fend off",
+   "to parry",
+   "to get dressed up (in one's finest clothes)"
   ],
   "écrouler": [
    "to collapse"
@@ -2603,7 +3115,8 @@
   ],
   "fréquenter": [
    "to frequent, to go to (a place)",
-   "to socialise with (people)"
+   "to socialise with (people)",
+   "to flirt (dated)"
   ],
   "traduire": [
    "to translate",
@@ -2611,7 +3124,9 @@
   ],
   "balayer": [
    "to sweep",
-   "to sweep aside, brush aside"
+   "to sweep aside, brush aside",
+   "to drag on the floor",
+   "to rake (sweep with gunfire)"
   ],
   "embêter": [
    "to bug, bother, annoy",
@@ -2626,7 +3141,9 @@
   ],
   "bourrer": [
    "to stuff with stuffing material",
-   "to completely fill by shoving in"
+   "to completely fill by shoving in",
+   "to make to eat a lot",
+   "to force-feed"
   ],
   "vomir": [
    "to vomit"
@@ -2652,15 +3169,21 @@
   ],
   "jaillir": [
    "to spurt out, gush forth",
-   "to spring out"
+   "to spring out",
+   "to thrust up, to jut out",
+   "to emerge from"
   ],
   "impliquer": [
    "to implicate, to accuse",
-   "to imply"
+   "to imply",
+   "to involve",
+   "to get involved in, to participate in"
   ],
   "heurter": [
    "to strike, hit",
-   "to clash, conflict with"
+   "to clash, conflict with",
+   "to crash, collide (together)",
+   "to clash"
   ],
   "protester": [
    "to protest, to object"
@@ -2670,14 +3193,17 @@
   ],
   "dénoncer": [
    "to denounce",
-   "to announce an end"
+   "to announce an end",
+   "to give oneself up",
+   "to report someone or something to the authorities, to tell on"
   ],
   "nier": [
    "to deny"
   ],
   "percevoir": [
    "to perceive, to make out",
-   "to perceive (understand)"
+   "to perceive (understand)",
+   "to collect (e.g. taxes, transit fares)"
   ],
   "ralentir": [
    "to slow down",
@@ -2689,19 +3215,24 @@
   ],
   "situer": [
    "to locate (to find the location of something)",
-   "to situate"
+   "to situate",
+   "to be located (at a certain place), To be (for a place)"
   ],
   "boucler": [
    "to buckle (to fasten)",
-   "to curl (make curly)"
+   "to curl (make curly)",
+   "to tie up, to finish up (e.g. an affair or case)",
+   "to shut (colloquial)"
   ],
   "tremper": [
    "to soak, to drench, to wet",
-   "to dip, to dunk, to immerse"
+   "to dip, to dunk, to immerse",
+   "to temper (metal), to harden"
   ],
   "péter": [
    "to blow off, fart (informal)",
-   "to break (slang)"
+   "to break (slang)",
+   "to explode (slang)"
   ],
   "enregistrer": [
    "to record for later replay or use, especially sound",
@@ -2725,7 +3256,8 @@
   ],
   "ressortir": [
    "to go or come back out, to go/come out again",
-   "to take back out, to take out [again]"
+   "to take back out, to take out [again]",
+   "to emerge from, according to evidence"
   ],
   "émouvoir": [
    "to move emotionally, to touch"
@@ -2756,25 +3288,29 @@
   ],
   "délivrer": [
    "to set free",
-   "to deliver (a message)"
+   "to deliver (a message)",
+   "to deliver a child"
   ],
   "communiquer": [
    "to communicate"
   ],
   "découper": [
    "to cut up, to chop up",
-   "to cut out (to remove by cutting)"
+   "to cut out (to remove by cutting)",
+   "to zone, to divide up (into areas)"
   ],
   "insulter": [
    "to insult"
   ],
   "semer": [
    "to sow (scatter seed, etc.)",
-   "to shake off, to lose (a pursuer)"
+   "to shake off, to lose (a pursuer)",
+   "to spread, to sow"
   ],
   "garer": [
    "to cover, shelter",
-   "to park (a vehicle)"
+   "to park (a vehicle)",
+   "to dock (a vessel)"
   ],
   "redouter": [
    "to dread, to fear"
@@ -2785,7 +3321,8 @@
   ],
   "loger": [
    "to lodge, to stay, to be lodging (to temporarily inhabit)",
-   "to find (someone) a place to stay"
+   "to find (someone) a place to stay",
+   "to fit into"
   ],
   "pourrir": [
    "to rot, decompose, putrefy, crumble",
@@ -2800,11 +3337,13 @@
   ],
   "citer": [
    "to cite, quote",
-   "to summon"
+   "to summon",
+   "to name"
   ],
   "défaire": [
    "to take down, take apart, dismantle, unpack (luggage)",
-   "to undo, unfasten, unwind"
+   "to undo, unfasten, unwind",
+   "to break, break up, unmake"
   ],
   "évanouir": [
    "to lose consciousness, to faint",
@@ -2825,7 +3364,9 @@
   ],
   "défiler": [
    "to parade or march",
-   "to appear one after the other"
+   "to appear one after the other",
+   "to unfold, to happen",
+   "to scroll"
   ],
   "bâtir": [
    "to build, to construct",
@@ -2840,36 +3381,46 @@
   ],
   "correspondre": [
    "to correspond",
-   "to write to"
+   "to write to",
+   "to transfer (on public transit)"
   ],
   "hocher": [
    "to nod (move one's head)"
   ],
   "encourager": [
    "to encourage",
-   "to motivate oneself"
+   "to motivate oneself",
+   "to encourage each other",
+   "to promote"
   ],
   "déménager": [
    "to move (an object from a place to another)",
-   "to move house"
+   "to move house",
+   "to move out",
+   "to move an object as part of moving house"
   ],
   "mépriser": [
    "to hate, despise, scorn, disdain"
   ],
   "projeter": [
    "throw, hurl",
-   "project"
+   "project",
+   "plan (to create a plan for)"
   ],
   "déclencher": [
    "to trigger, to spark, to set off",
-   "to set off (a device)"
+   "to set off (a device)",
+   "to take off the latch",
+   "to be under way, to start happening"
   ],
   "cuire": [
    "to cook"
   ],
   "sacrer": [
    "to crown",
-   "to post (nominate to a certain post or position)"
+   "to post (nominate to a certain post or position)",
+   "whack, slam (put violently)",
+   "to swear, curse, to run one's mouth"
   ],
   "sucer": [
    "to suck",
@@ -2877,11 +3428,14 @@
   ],
   "développer": [
    "to develop",
-   "to deploy, unfold"
+   "to deploy, unfold",
+   "to code (an application)"
   ],
   "affecter": [
    "to feign, affect (an emotion, etc.)",
-   "to allocate (something)"
+   "to allocate (something)",
+   "to assign someone, to post someone",
+   "to affect, influence"
   ],
   "suicider": [
    "to commit suicide, to kill oneself, suicide"
@@ -2906,11 +3460,14 @@
   ],
   "décoller": [
    "to take off (i.e. a plane)",
-   "to leave (colloquial)"
+   "to leave (colloquial)",
+   "unstick",
+   "to come undone, come unstuck"
   ],
   "bouleverser": [
    "to completely and drastically change, to overturn",
-   "to shake, to cause a strong emotion"
+   "to shake, to cause a strong emotion",
+   "to disorganize, to turn upside down"
   ],
   "procurer": [
    "to get, obtain (for someone)"
@@ -2921,7 +3478,8 @@
   ],
   "étrangler": [
    "to strangle",
-   "to choke (with laughter, etc.)"
+   "to choke (with laughter, etc.)",
+   "to say in a voice strangled by emotion."
   ],
   "planquer": [
    "to hide (colloquial)",
@@ -2952,11 +3510,14 @@
   ],
   "plaquer": [
    "to plate (to cover the surface material of an object with a thin coat of another material)",
-   "to tackle"
+   "to tackle",
+   "to grapple"
   ],
   "animer": [
    "to animate (give something life)",
-   "to animate (give vigour)"
+   "to animate (give vigour)",
+   "to animate (draw animation)",
+   "to spur on"
   ],
   "ronger": [
    "to gnaw",
@@ -2968,11 +3529,15 @@
   ],
   "recueillir": [
    "to collect, gather",
-   "to obtain, to win"
+   "to obtain, to win",
+   "to take in (a stray, etc.)",
+   "to collect one's thoughts, to reflect"
   ],
   "replier": [
    "to fold, fold up",
-   "to refold, to fold again"
+   "to refold, to fold again",
+   "to curl up, roll up",
+   "to withdraw, retreat, fall back"
   ],
   "cueillir": [
    "to gather, pick",
@@ -2983,7 +3548,8 @@
   ],
   "chuchoter": [
    "to whisper",
-   "to gossip"
+   "to gossip",
+   "to rustle"
   ],
   "clore": [
    "close (put an end to)"
@@ -3023,14 +3589,17 @@
   ],
   "border": [
    "to border (add a border to)",
-   "to border (share a border with)"
+   "to border (share a border with)",
+   "to tuck in"
   ],
   "recommander": [
    "to recommend, to endorse"
   ],
   "doubler": [
    "to double, duplicate",
-   "to double-cross"
+   "to double-cross",
+   "to overtake, pass",
+   "to dub"
   ],
   "fasciner": [
    "to fascinate, bewitch, enthrall"
@@ -3047,29 +3616,36 @@
   ],
   "acquérir": [
    "to acquire, to obtain",
-   "to purchase"
+   "to purchase",
+   "to gain, to win (approval, etc.)"
   ],
   "grouiller": [
    "to mill about, swarm with people",
-   "to swarm or crawl"
+   "to swarm or crawl",
+   "to hurry, to get a move on (colloquial)"
   ],
   "contrer": [
    "to block, to counter, to counteract"
   ],
   "balader": [
    "to stroll, walk around",
-   "to give someone the runaround"
+   "to give someone the runaround",
+   "to go for a walk, to trail"
   ],
   "errer": [
    "to wander, to wander about"
   ],
   "figer": [
    "to freeze",
-   "to fix"
+   "to fix",
+   "to congeal, to thicken, to clot",
+   "to scare, frighten"
   ],
   "déboucher": [
    "to unblock, to clear",
-   "to uncork (a bottle)"
+   "to uncork (a bottle)",
+   "to lead (somewhere), to come out (somewhere)",
+   "to lead (to), to culminate (in)"
   ],
   "fourrer": [
    "to shove, stick, stuff (dans in something) (colloquial)",
@@ -3077,7 +3653,9 @@
   ],
   "célébrer": [
    "to celebrate",
-   "to observe (a holiday, event, etc.)"
+   "to observe (a holiday, event, etc.)",
+   "to perform, to officiate at",
+   "to worship"
   ],
   "isoler": [
    "to isolate",
@@ -3089,7 +3667,8 @@
   ],
   "boucher": [
    "to cork up",
-   "to bung"
+   "to bung",
+   "to block up"
   ],
   "surmonter": [
    "to overcome, to surmount, to get over",
@@ -3104,7 +3683,8 @@
   ],
   "aviser": [
    "to advise",
-   "to take stock of the situation and make a decision accordingly, to decide"
+   "to take stock of the situation and make a decision accordingly, to decide",
+   "to notice"
   ],
   "lécher": [
    "to lick",
@@ -3132,11 +3712,14 @@
   ],
   "trancher": [
    "to slice, cut into slices",
-   "to complete, conclude (literary)"
+   "to complete, conclude (literary)",
+   "to decide, settle, address"
   ],
   "basculer": [
    "to topple, to tip over",
-   "to sway from side to side"
+   "to sway from side to side",
+   "to fall apart, to turn upside down",
+   "to transfer (e.g. a call)"
   ],
   "garantir": [
    "to guarantee (to assure that something will get done right)",
@@ -3148,18 +3731,23 @@
   ],
   "préoccuper": [
    "to concern, preoccupy",
-   "to be concerned, preoccupied"
+   "to be concerned, preoccupied",
+   "to care",
+   "to mind, to be bothered"
   ],
   "fendre": [
    "to split, to chop (wood), to crack",
-   "to shoulder (one's way through a crowd)"
+   "to shoulder (one's way through a crowd)",
+   "to break (someone's heart)",
+   "to break"
   ],
   "atterrir": [
    "to land (a plane, helicopter etc.)"
   ],
   "nouer": [
    "knot (form into a knot)",
-   "tie, bind, fasten"
+   "tie, bind, fasten",
+   "tie up"
   ],
   "dégoûter": [
    "to disgust, to nauseate, to sicken, to turn someone's stomach"
@@ -3172,7 +3760,9 @@
   ],
   "écouler": [
    "to sell off, to shift",
-   "to flow"
+   "to flow",
+   "to disband, to scatter",
+   "to pass, to elapse"
   ],
   "divorcer": [
    "to divorce (to legally dissolve a marriage)",
@@ -3186,11 +3776,13 @@
   ],
   "entamer": [
    "to cut into (something)",
-   "to remove a small piece of something"
+   "to remove a small piece of something",
+   "to lead (play the first card)"
   ],
   "débattre": [
    "to negotiate",
-   "to discuss, debate"
+   "to discuss, debate",
+   "to struggle"
   ],
   "relâcher": [
    "to release"
@@ -3201,7 +3793,9 @@
   ],
   "combler": [
    "to fulfil, satisfy",
-   "to fill (add contents to, so it is full)"
+   "to fill (add contents to, so it is full)",
+   "to fill (to install someone)",
+   "to counter"
   ],
   "empoisonner": [
    "to poison, to kill by poisoning"
@@ -3211,7 +3805,9 @@
   ],
   "pincer": [
    "to pinch (skin)",
-   "to pinch (to arrest) (informal)"
+   "to pinch (to arrest) (informal)",
+   "to pluck (a stringed instrument)",
+   "to fancy (colloquial)"
   ],
   "grogner": [
    "to grunt (for a pig, make the sound of a pig)",
@@ -3219,22 +3815,28 @@
   ],
   "dérober": [
    "to conceal, screen, shield (à from)",
-   "to steal (à from)"
+   "to steal (à from)",
+   "to turn away (one's head, gaze etc.) (literary)"
   ],
   "abuser": [
    "to mislead",
-   "to take advantage"
+   "to take advantage",
+   "to abuse (use improperly)",
+   "to go too far (slang)"
   ],
   "orner": [
    "to decorate, to adorn"
   ],
   "abriter": [
    "to shelter, to harbour",
-   "to host (an object, an event, an institution, etc.)"
+   "to host (an object, an event, an institution, etc.)",
+   "to take cover, to shelter"
   ],
   "emballer": [
    "to pack up, to wrap up, to parcel",
-   "to thrill, to turn on (colloquial)"
+   "to thrill, to turn on (colloquial)",
+   "to race",
+   "to bolt"
   ],
   "vanter": [
    "to praise, to vaunt",
@@ -3242,7 +3844,8 @@
   ],
   "émerger": [
    "to arrive at the top, to move upwards",
-   "emerge (to come into view)"
+   "emerge (to come into view)",
+   "to wake up (colloquial)"
   ],
   "dater": [
    "to date, to add a date onto something",
@@ -3250,7 +3853,9 @@
   ],
   "arroser": [
    "to water (e.g. plants)",
-   "to sprinkle"
+   "to sprinkle",
+   "to squirt",
+   "to spray"
   ],
   "applaudir": [
    "to applaud (express approval by clapping)"
@@ -3274,11 +3879,14 @@
   ],
   "égarer": [
    "to misplace",
-   "to mislead, misinform"
+   "to mislead, misinform",
+   "to lead astray",
+   "to get lost, go astray, to lose one's way, to wander"
   ],
   "relier": [
    "to connect, link, join, relate to",
-   "to bind (as a book)"
+   "to bind (as a book)",
+   "to hoop together (as a barrel)"
   ],
   "cuisiner": [
    "to cook (prepare food)",
@@ -3290,7 +3898,9 @@
   ],
   "glacer": [
    "to freeze, to turn to ice",
-   "to freeze"
+   "to freeze",
+   "to ice (cover with icing)",
+   "to turn to ice (become ice)"
   ],
   "déplaire": [
    "to be displeasing or disliked",
@@ -3302,7 +3912,8 @@
   ],
   "encombrer": [
    "to block off, to clutter, to clutter up, to congest",
-   "to encumber, to burden"
+   "to encumber, to burden",
+   "to jam (e.g. a switchboard)"
   ],
   "conquérir": [
    "to conquer, to capture",
@@ -3310,11 +3921,13 @@
   ],
   "ruiner": [
    "to ruin",
-   "to raze to the ground, to destroy, to wreck"
+   "to raze to the ground, to destroy, to wreck",
+   "to shatter (hope), to ruin (reputation)"
   ],
   "expédier": [
    "to post, to send, to ship",
-   "to expedite"
+   "to expedite",
+   "to deal with quickly, to get rid of"
   ],
   "crisper": [
    "to tense, to tense up"
@@ -3327,7 +3940,9 @@
   ],
   "reproduire": [
    "to reproduce",
-   "to recreate"
+   "to recreate",
+   "to regenerate",
+   "to reproduce (to produce offspring)"
   ],
   "mater": [
    "to checkmate",
@@ -3339,11 +3954,13 @@
   ],
   "entrevoir": [
    "to make out, see vaguely, to glimpse",
-   "to foresee, anticipate"
+   "to foresee, anticipate",
+   "to catch sight of, see briefly"
   ],
   "réfugier": [
    "to take refuge",
-   "to give shelter to someone (dated)"
+   "to give shelter to someone (dated)",
+   "to protect, to conceal something (dated)"
   ],
   "déguiser": [
    "to disguise (change someone's appearance to make him/her look different)",
@@ -3370,11 +3987,15 @@
   ],
   "braquer": [
    "to point (a gun, camera etc.)",
-   "to turn (one’s eyes)"
+   "to turn (one’s eyes)",
+   "to make a hard turn, turn hard",
+   "to stick up, rob (a bank) (colloquial)"
   ],
   "aboutir": [
    "to lead to, to end up in, to reach",
-   "to lead to, to have the consequence of"
+   "to lead to, to have the consequence of",
+   "to reach a conclusion, to succeed",
+   "to touch by one end"
   ],
   "enfouir": [
    "to bury, to inter (something in the ground)",
@@ -3400,7 +4021,8 @@
   ],
   "maîtriser": [
    "to master, have authority over somebody",
-   "to dominate, overcome, conquer, control"
+   "to dominate, overcome, conquer, control",
+   "be master of"
   ],
   "limiter": [
    "to mark, to limit (to show a physical limit or boundary)",
@@ -3412,34 +4034,43 @@
   ],
   "assommer": [
    "to slaughter (an animal)",
-   "to stun, knock out, poleaxe, sandbag"
+   "to stun, knock out, poleaxe, sandbag",
+   "to hit (someone)"
   ],
   "humilier": [
    "to humiliate"
   ],
   "brouiller": [
    "to blur",
-   "to mix up, confuse"
+   "to mix up, confuse",
+   "to scramble (an egg)",
+   "to set at odds, put (someone) off (something)"
   ],
   "racheter": [
    "to buy back",
-   "to buy out, buy off"
+   "to buy out, buy off",
+   "to ransom",
+   "to redeem (from sin)"
   ],
   "convoquer": [
    "to convene, convoke (invite together)",
-   "to summon, call (call up), invite"
+   "to summon, call (call up), invite",
+   "to summon, to summons"
   ],
   "bander": [
    "to bandage",
-   "to flex, tighten the muscles, strain, tauten"
+   "to flex, tighten the muscles, strain, tauten",
+   "to have a hard-on, to get a hard-on (colloquial)"
   ],
   "démolir": [
    "to demolish",
-   "to wreck, to ruin"
+   "to wreck, to ruin",
+   "to shellac (slang)"
   ],
   "renifler": [
    "to sniff",
-   "to smell (sense with the nose)"
+   "to smell (sense with the nose)",
+   "to turn up one's nose (at)"
   ],
   "frôler": [
    "to brush against, touch, skim, graze, skirt",
@@ -3470,7 +4101,8 @@
   ],
   "attribuer": [
    "to grant, to award",
-   "to give credit to, to recognize"
+   "to give credit to, to recognize",
+   "to attribute to, to ascribe to"
   ],
   "disperser": [
    "to scatter, to disperse"
@@ -3484,7 +4116,8 @@
   ],
   "enchaîner": [
    "to chain, to shackle",
-   "to subjugate, to enslave"
+   "to subjugate, to enslave",
+   "to put together (in a sequence), to concatenate"
   ],
   "négliger": [
    "to neglect",
@@ -3506,18 +4139,22 @@
   ],
   "choquer": [
    "to hit, to collide",
-   "to shock (surprise, startle)"
+   "to shock (surprise, startle)",
+   "to offend, to anger (especially in reflexive)"
   ],
   "effleurer": [
    "to stroke gently, to touch lightly",
-   "to brush over, to brush past"
+   "to brush over, to brush past",
+   "to skim over (a subject)"
   ],
   "piéger": [
    "to trap (catch in a trap), to trick, to set up"
   ],
   "ménager": [
    "to husband, to conserve",
-   "to treat gently, treat nicely"
+   "to treat gently, treat nicely",
+   "to conserve, go easy on",
+   "to go easy, take it easy"
   ],
   "revêtir": [
    "to clothe, dress (those in need or for ceremonial purposes)",
@@ -3532,21 +4169,25 @@
   ],
   "graver": [
    "to engrave",
-   "to carve (wood)"
+   "to carve (wood)",
+   "to burn (data, onto a CD, DVD, etc.)"
   ],
   "reparler": [
    "to talk again, to speak again"
   ],
   "supprimer": [
    "to delete",
-   "to suppress"
+   "to suppress",
+   "to remove, to take out"
   ],
   "agenouiller": [
    "to kneel, to kneel down"
   ],
   "brancher": [
    "to connect, plug in (appliance)",
-   "to branch"
+   "to branch",
+   "to branch off, to turn (of a road)",
+   "to chat up (colloquial)"
   ],
   "traquer": [
    "to track, follow",
@@ -3562,7 +4203,8 @@
   ],
   "faucher": [
    "to mow, to reap",
-   "to run over, to knock down"
+   "to run over, to knock down",
+   "to steal"
   ],
   "retentir": [
    "to ring, to ring out",
@@ -3586,11 +4228,14 @@
   ],
   "assumer": [
    "embrace, accept, own",
-   "assume"
+   "assume",
+   "take responsibility"
   ],
   "afficher": [
    "to put up (a notice etc)",
-   "to display"
+   "to display",
+   "to show",
+   "to flaunt"
   ],
   "exclure": [
    "to exclude",
@@ -3626,7 +4271,9 @@
   ],
   "flanquer": [
    "to flank, adjoin",
-   "to fling, chuck (colloquial)"
+   "to fling, chuck (colloquial)",
+   "to give (colloquial)",
+   "to stay by (someone's) side, to be someone's right-hand man"
   ],
   "maquiller": [
    "to disguise, cover or apply makeup (to), to dress up, to embellish",
@@ -3634,11 +4281,14 @@
   ],
   "accroupir": [
    "to crouch, squat",
-   "to debase oneself (morally) (literary)"
+   "to debase oneself (morally) (literary)",
+   "to make someone or something crouch or squat"
   ],
   "clouer": [
    "to nail (to attach using a nail)",
-   "to stick (to attach)"
+   "to stick (to attach)",
+   "to pin down",
+   "to nail, shag (vulgar)"
   ],
   "compromettre": [
    "to compromise, jeopardise"
@@ -3649,7 +4299,8 @@
   ],
   "griller": [
    "to toast (cook with a toaster)",
-   "to grill (cook with a grill)"
+   "to grill (cook with a grill)",
+   "to toast (heat up, said of e.g. skin)"
   ],
   "engloutir": [
    "to gulp",
@@ -3667,7 +4318,8 @@
   ],
   "ébranler": [
    "to shake, rattle",
-   "to weaken (health), disturb, unhinge (spirits)"
+   "to weaken (health), disturb, unhinge (spirits)",
+   "to move off, set off (of vehicle)"
   ],
   "dévisager": [
    "to peer at (someone's face), stare at (the face of)"
@@ -3678,14 +4330,17 @@
   ],
   "encadrer": [
    "to frame",
-   "to surround, outline"
+   "to surround, outline",
+   "to supervise, overlook",
+   "to create a framework or rules for, to regulate"
   ],
   "cirer": [
    "to wax (apply wax to something)"
   ],
   "émettre": [
    "to emit",
-   "to state, to express"
+   "to state, to express",
+   "to issue"
   ],
   "hanter": [
    "to haunt",
@@ -3699,7 +4354,8 @@
   ],
   "affoler": [
    "to madden, drive crazy (under the effects of a strong emotion)",
-   "to terrify, frighten, scare"
+   "to terrify, frighten, scare",
+   "to run like crazy, leg it"
   ],
   "illuminer": [
    "to illuminate, to light up",
@@ -3723,7 +4379,9 @@
   ],
   "défoncer": [
    "to deep-plough",
-   "to smash in, smash up, break, break open (destroy violently)"
+   "to smash in, smash up, break, break open (destroy violently)",
+   "to rip, rip apart, tear apart",
+   "to get high"
   ],
   "rouiller": [
    "to rust",
@@ -3738,7 +4396,8 @@
   ],
   "investir": [
    "to invest",
-   "to lay siege to, to besiege"
+   "to lay siege to, to besiege",
+   "to install into office, to vest, to give formal authority to"
   ],
   "nuire": [
    "to harm, to spoil"
@@ -3759,7 +4418,8 @@
   ],
   "vouer": [
    "to vow",
-   "to devote (+ à to)"
+   "to devote (+ à to)",
+   "to devote oneself, to be devoted"
   ],
   "défier": [
    "to defy, challenge",
@@ -3770,19 +4430,25 @@
   ],
   "effectuer": [
    "to effect",
-   "to work out (a calculation)"
+   "to work out (a calculation)",
+   "to carry out (an experiment)",
+   "to execute (an operation)"
   ],
   "acharner": [
    "to incite, to sic",
-   "to hound, to fiercely attack"
+   "to hound, to fiercely attack",
+   "to slave away, to persevere",
+   "to attach oneself excessively"
   ],
   "tâter": [
    "to feel (touch lightly, to sense consistency or temperature)",
-   "to get a feel for"
+   "to get a feel for",
+   "to go to see someone (slang)"
   ],
   "grossir": [
    "to increase, to make larger",
-   "to plump up"
+   "to plump up",
+   "to put on weight, to gain weight, to get fat"
   ],
   "intriguer": [
    "to puzzle, to make interested or curious",
@@ -3797,15 +4463,19 @@
   ],
   "dépouiller": [
    "to skin (an animal)",
-   "to rob, despoil, rip off"
+   "to rob, despoil, rip off",
+   "to count (votes), to go through (mail), to peruse, examine in detail"
   ],
   "stopper": [
    "to stop, in regard to motors and machines",
-   "to take (a hit, a bullet) (colloquial)"
+   "to take (a hit, a bullet) (colloquial)",
+   "to stop (colloquial)"
   ],
   "fouetter": [
    "to beat with a whip, to whip, to flagellate.",
-   "to hit and sting like a whip"
+   "to hit and sting like a whip",
+   "to whisk",
+   "to stimulate or urge into action"
   ],
   "mentionner": [
    "to mention"
@@ -3815,15 +4485,18 @@
   ],
   "ronfler": [
    "to snore",
-   "to snort (of a horse etc)"
+   "to snort (of a horse etc)",
+   "to roar"
   ],
   "sombrer": [
    "to sink (literary)",
-   "to sink (+dans; into) (literary)"
+   "to sink (+dans; into) (literary)",
+   "to whittle away (disappear)"
   ],
   "classer": [
    "to classify",
-   "to file"
+   "to file",
+   "to rank"
   ],
   "hériter": [
    "to inherit"
@@ -3834,15 +4507,19 @@
   ],
   "planer": [
    "to glide, to hover",
-   "to be entranced, to be mesmerized"
+   "to be entranced, to be mesmerized",
+   "to be high (slang)",
+   "to be going well, to run smoothly (slang)"
   ],
   "dissiper": [
    "to dissipate",
-   "to squander (waste)"
+   "to squander (waste)",
+   "to distract (someone) from serious thoughts (literary)"
   ],
   "contrarier": [
    "to thwart",
-   "to upset"
+   "to upset",
+   "to stand in the way of"
   ],
   "peupler": [
    "to populate"
@@ -3873,22 +4550,29 @@
   ],
   "ruer": [
    "to kick with its hind legs",
-   "to hurl (dated)"
+   "to hurl (dated)",
+   "to struggle, fight (dated)",
+   "to mob, jump on"
   ],
   "photographier": [
    "to photograph"
   ],
   "rabattre": [
    "to make something lower",
-   "to close, shut (down)"
+   "to close, shut (down)",
+   "to fold over (covers, curtains etc.)",
+   "to turn down (a collar)"
   ],
   "accoucher": [
    "to go into labour",
-   "to give birth to, to deliver (a baby)"
+   "to give birth to, to deliver (a baby)",
+   "to help someone deliver (a baby)",
+   "to come up with"
   ],
   "attendrir": [
    "to make softer or more tender, to soften",
-   "to soften (up)"
+   "to soften (up)",
+   "to soften up (become softer)"
   ],
   "cultiver": [
    "to cultivate"
@@ -3913,7 +4597,9 @@
   ],
   "agrandir": [
    "to enlarge, make bigger",
-   "to extend, to expand (a house, building, area)"
+   "to extend, to expand (a house, building, area)",
+   "to grow, get bigger",
+   "to embiggen"
   ],
   "détenir": [
    "to detain",
@@ -3948,7 +4634,8 @@
   ],
   "navrer": [
    "to cause great pain or affliction",
-   "to upset, dismay"
+   "to upset, dismay",
+   "to wound"
   ],
   "masquer": [
    "to mask, to hide"
@@ -3959,7 +4646,8 @@
   ],
   "branler": [
    "to shake",
-   "to do (some work) (vulgar)"
+   "to do (some work) (vulgar)",
+   "to do (vulgar)"
   ],
   "gifler": [
    "to slap (on the face)"
@@ -3973,7 +4661,8 @@
   ],
   "frissonner": [
    "tremble",
-   "shiver"
+   "shiver",
+   "rustle (literary)"
   ],
   "élancer": [
    "to dash forward, to throw oneself at",
@@ -3984,7 +4673,9 @@
   ],
   "courber": [
    "to bend (cause to become bent)",
-   "to bend (e.g. a rule)"
+   "to bend (e.g. a rule)",
+   "to bend (become bent)",
+   "to bend"
   ],
   "rajouter": [
    "to re-add, to add again",
@@ -3992,15 +4683,19 @@
   ],
   "grincer": [
    "to squeak",
-   "to creak, rasp, squeal"
+   "to creak, rasp, squeal",
+   "to gnash",
+   "to squawk"
   ],
   "souiller": [
    "to soil, sully, dirty",
-   "to make unclean or impure, defile, profane"
+   "to make unclean or impure, defile, profane",
+   "to blacken, besmirch, defile"
   ],
   "évoluer": [
    "to evolve, to change, to develop",
-   "to play"
+   "to play",
+   "to move (in a given area), to move about"
   ],
   "émerveiller": [
    "to fascinate, amaze (strike with admiration and marvel)",
@@ -4008,7 +4703,9 @@
   ],
   "questionner": [
    "to question, interrogate",
-   "to call into question"
+   "to call into question",
+   "to question, ask (someone)",
+   "to inquire, ask (about)"
   ],
   "baver": [
    "to drool, to slobber",
@@ -4016,7 +4713,8 @@
   ],
   "interpréter": [
    "to translate",
-   "to interpret"
+   "to interpret",
+   "to construe"
   ],
   "offenser": [
    "to offend (to insult, to cause offence)",
@@ -4027,7 +4725,9 @@
   ],
   "décharger": [
    "to unload, offload",
-   "to discharge"
+   "to discharge",
+   "to let off (remove the guilt from someone)",
+   "to remove a charge from"
   ],
   "résumer": [
    "to summarize, to sum up",
@@ -4041,11 +4741,14 @@
   ],
   "caler": [
    "to wedge (open) (a door)",
-   "to jam (machinery etc.), to stall (an engine)"
+   "to jam (machinery etc.), to stall (an engine)",
+   "to stall (of driver, engine)",
+   "to fill (someone) up"
   ],
   "manier": [
    "to handle, manipulate, wield (an object)",
-   "to use (software)"
+   "to use (software)",
+   "to knead"
   ],
   "repenser": [
    "to rethink, to reconsider"
@@ -4070,11 +4773,15 @@
   ],
   "dévoiler": [
    "to unveil (remove a veil from)",
-   "to unveil, to reveal, to disclose"
+   "to unveil, to reveal, to disclose",
+   "to unveil oneself, to reveal oneself",
+   "to appear, to manifest"
   ],
   "choper": [
    "to steal, nick, pinch",
-   "to arrest, catch"
+   "to arrest, catch",
+   "to pick up, collect a passenger",
+   "to contract a disease, to develop an illness"
   ],
   "faufiler": [
    "to baste",
@@ -4082,14 +4789,17 @@
   ],
   "éclaircir": [
    "to brighten (up)",
-   "to thin (down)"
+   "to thin (down)",
+   "to clear up, solve, clarify (mystery, problem etc.)"
   ],
   "cligner": [
    "to squint"
   ],
   "accéder": [
    "to reach (a place)",
-   "to obtain, to achieve, to reach (a goal)"
+   "to obtain, to achieve, to reach (a goal)",
+   "to grant (permission)",
+   "to access (information)"
   ],
   "périr": [
    "to perish, to die (formal)"
@@ -4103,7 +4813,9 @@
   ],
   "larguer": [
    "to unfurl",
-   "to ease (a line)"
+   "to ease (a line)",
+   "to drop (a bomb, parachute)",
+   "to ditch, dump (break up with) (colloquial)"
   ],
   "indigner": [
    "to fill with indignation, exasperate",
@@ -4111,7 +4823,9 @@
   ],
   "tasser": [
    "to pile together, to put into a pile",
-   "to compress or to pack vertically"
+   "to compress or to pack vertically",
+   "to shrink, e.g. with age",
+   "to sort itself out with time"
   ],
   "trinquer": [
    "to clink glasses, toast",
@@ -4126,7 +4840,8 @@
   ],
   "bouillir": [
    "to boil (becoming boiling; reach boiling point)",
-   "to boil (cause to boil)"
+   "to boil (cause to boil)",
+   "to seethe"
   ],
   "botter": [
    "to kick",
@@ -4150,7 +4865,9 @@
   ],
   "forger": [
    "to fashion metal with fire and a hammer, to forge",
-   "to forge, falsify"
+   "to forge, falsify",
+   "to create, to conceive, to make up",
+   "to trot"
   ],
   "épier": [
    "to spy on, keep an eye on, watch",
@@ -4158,7 +4875,8 @@
   ],
   "renier": [
    "to renounce",
-   "to disown"
+   "to disown",
+   "to take back (what has been said), to renege"
   ],
   "dicter": [
    "to dictate"
@@ -4180,7 +4898,9 @@
   ],
   "encaisser": [
    "to collect, to cash",
-   "to let in, concede"
+   "to let in, concede",
+   "to take (slang)",
+   "to stand, to tolerate (slang)"
   ],
   "infliger": [
    "to inflict, to impose"
@@ -4198,11 +4918,13 @@
   ],
   "liquider": [
    "to liquidate, pay off, settle (a debt)",
-   "to sell off (goods)"
+   "to sell off (goods)",
+   "to liquidate, bump off (kill)"
   ],
   "renaître": [
    "to be reborn, to be born again",
-   "to reappear, to resurface"
+   "to reappear, to resurface",
+   "to rekindle"
   ],
   "freiner": [
    "to brake",
@@ -4218,14 +4940,16 @@
   ],
   "fleurir": [
    "to flower, to produce flowers",
-   "to bloom"
+   "to bloom",
+   "to flourish"
   ],
   "couronner": [
    "to crown"
   ],
   "survenir": [
    "to occur",
-   "to happen unexpectedly"
+   "to happen unexpectedly",
+   "to appear, arrive (unexpectedly)"
   ],
   "bâiller": [
    "to yawn"
@@ -4242,7 +4966,8 @@
   ],
   "reconstituer": [
    "to re-form (a group, association)",
-   "to recreate (a past time, decor, etc.)"
+   "to recreate (a past time, decor, etc.)",
+   "to reconstruct (a crime)"
   ],
   "décourager": [
    "to discourage",
@@ -4265,7 +4990,9 @@
   ],
   "naviguer": [
    "to navigate",
-   "to sail"
+   "to sail",
+   "to browse",
+   "to steer an automobile"
   ],
   "étreindre": [
    "to hug (embrace)",
@@ -4297,11 +5024,13 @@
   ],
   "convertir": [
    "to convert (change one thing into another)",
-   "to convert (exchange one thing into another)"
+   "to convert (exchange one thing into another)",
+   "to convert (to change someone's beliefs)"
   ],
   "réconcilier": [
    "to reconcile",
-   "to reconcile, to match up"
+   "to reconcile, to match up",
+   "to be reconciled, to make it up"
   ],
   "insinuer": [
    "insinuate (make way for by subtle means)",
@@ -4313,11 +5042,14 @@
   ],
   "incarner": [
    "to incarnate",
-   "to embody, to personify"
+   "to embody, to personify",
+   "to play (act as a certain character)"
   ],
   "déchaîner": [
    "to unleash",
-   "to arouse, rouse"
+   "to arouse, rouse",
+   "to cause, bring out",
+   "to go wild, to let rip, rage"
   ],
   "bombarder": [
    "to shell, blitz"
@@ -4327,11 +5059,14 @@
   ],
   "capter": [
    "to capture, to catch, to pick up",
-   "to detect, to sense, to receive"
+   "to detect, to sense, to receive",
+   "to understand (informal)",
+   "to meet or see someone (informal)"
   ],
   "imprégner": [
    "to impregnate (dated)",
-   "to imbue"
+   "to imbue",
+   "to soak up"
   ],
   "répliquer": [
    "to reply, to retort",
@@ -4342,21 +5077,25 @@
   ],
   "rafraîchir": [
    "to refresh",
-   "to cool off"
+   "to cool off",
+   "to freshen up",
+   "to do up (a flat)"
   ],
   "alerter": [
    "to alert"
   ],
   "régaler": [
    "to cook (someone) a really good meal",
-   "to have a great meal"
+   "to have a great meal",
+   "to treat, to serve a treat, to cook up something special [for]"
   ],
   "compléter": [
    "to complete"
   ],
   "aboyer": [
    "to bark",
-   "to scream at or inveigh against somebody"
+   "to scream at or inveigh against somebody",
+   "to scream or yell in short bouts, to bark"
   ],
   "exclamer": [
    "to exclaim, shout out"
@@ -4370,11 +5109,13 @@
   ],
   "flairer": [
    "to smell, sniff (at)",
-   "to scent"
+   "to scent",
+   "to sense"
   ],
   "engouffrer": [
    "to engulf, swallow up",
-   "to gobble up, to eat up"
+   "to gobble up, to eat up",
+   "to rush, dive into"
   ],
   "subsister": [
    "to subsist, live on, go on, keep going",
@@ -4382,7 +5123,8 @@
   ],
   "épanouir": [
    "to blossom, to bloom, to flower",
-   "to reveal its qualities"
+   "to reveal its qualities",
+   "to thrive, flourish"
   ],
   "dessécher": [
    "to dry, to dry out",
@@ -4390,7 +5132,8 @@
   ],
   "refroidir": [
    "to lower the temperature of, to cool",
-   "to become cooler, to lose heat, to cool down"
+   "to become cooler, to lose heat, to cool down",
+   "to become less active, to cool down, cool off"
   ],
   "économiser": [
    "to economise (to conserve money)"
@@ -4422,7 +5165,8 @@
   ],
   "flamber": [
    "to flame, flambé",
-   "to squander money, especially on gambling"
+   "to squander money, especially on gambling",
+   "(of costs, rates, etc) to rise sharply, to surge, to skyrocket"
   ],
   "égorger": [
    "to slit the throat of, to rip out the throat of"
@@ -4482,11 +5226,13 @@
   ],
   "enflammer": [
    "to set fire to, to set on fire",
-   "to inflame, to fuel (e.g. a debate, hatred)"
+   "to inflame, to fuel (e.g. a debate, hatred)",
+   "to catch fire"
   ],
   "croquer": [
    "to crunch",
-   "to waste, squander (money etc.) (colloquial)"
+   "to waste, squander (money etc.) (colloquial)",
+   "to sketch, outline"
   ],
   "scruter": [
    "to scrutinise, scrutinize, put under the microscope"
@@ -4503,11 +5249,14 @@
   ],
   "qualifier": [
    "to qualify (of a sports team, etc.)",
-   "to characterize, to consider"
+   "to characterize, to consider",
+   "to call, to label",
+   "to call oneself (usually undeservedly)"
   ],
   "brosser": [
    "to brush (to clean/tidy/shape with a brush)",
-   "to whip, to beat (to defeat)"
+   "to whip, to beat (to defeat)",
+   "to play truant, to skip class (informal)"
   ],
   "tapoter": [
    "to tap (strike lightly and repeatedly)"
@@ -4517,7 +5266,8 @@
   ],
   "adosser": [
    "to back up (put someone's back (against))",
-   "to lean (back)"
+   "to lean (back)",
+   "to back up (put one's back against something)"
   ],
   "poignarder": [
    "to stab, to knife"
@@ -4527,7 +5277,8 @@
   ],
   "embrouiller": [
    "to entangle",
-   "to make mistakes, get confused (while performing a complex task)"
+   "to make mistakes, get confused (while performing a complex task)",
+   "to bamboozle, to confuse (informal)"
   ],
   "empiler": [
    "to pile up"
@@ -4537,7 +5288,9 @@
   ],
   "blanchir": [
    "to launder, wash",
-   "to make white, to whiten"
+   "to make white, to whiten",
+   "to grow or become white",
+   "to blanch or bleach"
   ],
   "esquisser": [
    "to sketch",
@@ -4552,11 +5305,13 @@
   ],
   "garnir": [
    "to furnish (a building, a room)",
-   "to arm (dated)"
+   "to arm (dated)",
+   "to decorate, to pretty, to garnish"
   ],
   "accentuer": [
    "to accentuate (emphasize)",
-   "to intensify"
+   "to intensify",
+   "to accent (put an accent on a letter or symbol etc.)"
   ],
   "brailler": [
    "to holler, yell",
@@ -4574,7 +5329,8 @@
   ],
   "piloter": [
    "to pilot (control an aircraft)",
-   "to pilot (control a vessel)"
+   "to pilot (control a vessel)",
+   "to drive (control a vehicle)"
   ],
   "débuter": [
    "to start",
@@ -4589,11 +5345,14 @@
   ],
   "plisser": [
    "to squint (the eyes)",
-   "to fold over, pleat"
+   "to fold over, pleat",
+   "to wrinkle, crease, pucker, screw up"
   ],
   "interpeller": [
    "to call out to",
-   "to question, to interrogate, to address (of police etc.)"
+   "to question, to interrogate, to address (of police etc.)",
+   "to apprehend, to arrest",
+   "to raise questions for"
   ],
   "réapparaître": [
    "to reappear",
@@ -4612,7 +5371,9 @@
   ],
   "chausser": [
    "to put footwear (on someone)",
-   "to shoe (a horse)"
+   "to shoe (a horse)",
+   "to put on footwear",
+   "to have a certain shoe size"
   ],
   "détailler": [
    "to detail (to explain in detail)",
@@ -4670,7 +5431,8 @@
   ],
   "chevaucher": [
    "to straddle, be astride",
-   "to span, sit/be across"
+   "to span, sit/be across",
+   "to ride on horseback, usually for the purpose of raiding and pillaging"
   ],
   "grouper": [
    "to group (to put together to form a group)"
@@ -4688,7 +5450,9 @@
   ],
   "débiter": [
    "to sell continuously",
-   "to turn out, produce (continuously)"
+   "to turn out, produce (continuously)",
+   "to recite, deliver",
+   "to reel off, rattle off"
   ],
   "pâlir": [
    "to pale, to fade (lose color)",
@@ -4715,11 +5479,13 @@
   ],
   "dissoudre": [
    "to dissolve, break up, separate, disband",
-   "to dissolve, separate, disintegrate, disperse"
+   "to dissolve, separate, disintegrate, disperse",
+   "to nullify (as a contract)"
   ],
   "froisser": [
    "to crumple, rumple, crease (paper, fabric…)",
-   "to offend, to hurt someone's feelings"
+   "to offend, to hurt someone's feelings",
+   "to take offence, be hurt"
   ],
   "tricoter": [
    "to knit"
@@ -4734,7 +5500,8 @@
   ],
   "exhiber": [
    "to exhibit",
-   "to show, show round, show off"
+   "to show, show round, show off",
+   "to show off, flaunt, strut one's stuff"
   ],
   "conférer": [
    "to confer"
@@ -4745,7 +5512,9 @@
   ],
   "bousiller": [
    "to wreck, smash up (colloquial)",
-   "to botch, screw up (colloquial)"
+   "to botch, screw up (colloquial)",
+   "to kill (colloquial)",
+   "to do work in bousillage"
   ],
   "affairer": [
    "to absorb",
@@ -4753,15 +5522,18 @@
   ],
   "rallier": [
    "to rally (group or bring together)",
-   "to rally (motivate)"
+   "to rally (motivate)",
+   "to bring round (convince, cause someone to have the same opinion)"
   ],
   "encercler": [
    "circle (draw a circle round)",
-   "ring round, circle round"
+   "ring round, circle round",
+   "surround, encircle"
   ],
   "tournoyer": [
    "to whirl, to swirl",
-   "to eddy, to swirl"
+   "to eddy, to swirl",
+   "to whirl, to swirl, to twirl, to whirl round, to swirl round, to twirl round"
   ],
   "emménager": [
    "to move in (to a new home)"
@@ -4791,7 +5563,8 @@
   ],
   "lover": [
    "to coil (a rope or cord), to fake a line",
-   "to coil up, wind up, to curl up"
+   "to coil up, wind up, to curl up",
+   "to snuggle up to, to snuggle up against"
   ],
   "prédire": [
    "to predict, foretell"
@@ -4805,7 +5578,8 @@
   ],
   "orienter": [
    "to orientate",
-   "to set to north"
+   "to set to north",
+   "to guide"
   ],
   "durcir": [
    "to harden",
@@ -4835,14 +5609,18 @@
   ],
   "dériver": [
    "to derive (originate from)",
-   "to drift"
+   "to drift",
+   "to derive",
+   "to redirect, to divert"
   ],
   "éparpiller": [
    "to scatter"
   ],
   "enjamber": [
    "to straddle",
-   "to step over, to stride"
+   "to step over, to stride",
+   "to make an enjambment",
+   "to ignore"
   ],
   "exalter": [
    "to elate, thrill",
@@ -4850,7 +5628,8 @@
   ],
   "couver": [
    "to brood (an egg)",
-   "to coddle, pamper, mollycoddle"
+   "to coddle, pamper, mollycoddle",
+   "to plot, hatch, scheme"
   ],
   "contracter": [
    "to engage via a formal or informal contract, to contract",
@@ -4887,7 +5666,8 @@
   ],
   "borner": [
    "to limit, confine",
-   "to confine oneself (à faire to doing something)"
+   "to confine oneself (à faire to doing something)",
+   "to content oneself"
   ],
   "damer": [
    "to queen (transform a pawn into a queen, by advancing it to the opponent's side of the board)",
@@ -4921,7 +5701,8 @@
   ],
   "prêcher": [
    "to preach",
-   "to advocate moral values, political ideas"
+   "to advocate moral values, political ideas",
+   "to lecture someone about what is good or bad"
   ],
   "aventurer": [
    "to venture",
@@ -4933,7 +5714,9 @@
   ],
   "alimenter": [
    "to feed, to give food to",
-   "to supply, to fund"
+   "to supply, to fund",
+   "to fuel, feed (e.g. an argument)",
+   "to eat, to feed"
   ],
   "croître": [
    "to grow"
@@ -4957,7 +5740,8 @@
   ],
   "tressaillir": [
    "to thrill, shiver, quiver",
-   "to vibrate"
+   "to vibrate",
+   "to twitch, start, shudder, jump"
   ],
   "tabasser": [
    "beat up (to give a beating to)",
@@ -4969,7 +5753,9 @@
   ],
   "déguster": [
    "to try, to taste (food or drink)",
-   "to savor, to relish something"
+   "to savor, to relish something",
+   "to withstand (colloquial)",
+   "to suffer (colloquial)"
   ],
   "répugner": [
    "to repel, disgust",
@@ -4977,7 +5763,9 @@
   ],
   "intégrer": [
    "to integrate, to incorporate",
-   "to join, to join in (a group, a band)"
+   "to join, to join in (a group, a band)",
+   "to fit in",
+   "to integrate"
   ],
   "scier": [
    "to saw (cut with a saw)"
@@ -4990,15 +5778,20 @@
   ],
   "décliner": [
    "to weaken, to sicken, to go downhill",
-   "to enumerate"
+   "to enumerate",
+   "to decline",
+   "to develop a range from a product"
   ],
   "resserrer": [
    "to retighten (knot, belt, screw, etc.)",
-   "to tighten (link, knot)"
+   "to tighten (link, knot)",
+   "to become stricter (discipline)",
+   "to narrow (road, gap)"
   ],
   "broncher": [
    "to stumble",
-   "to flinch"
+   "to flinch",
+   "to budge (colloquial)"
   ],
   "vaciller": [
    "to vacillate",
@@ -5020,7 +5813,8 @@
   ],
   "démonter": [
    "to dismantle, to take down",
-   "to remove, to take off"
+   "to remove, to take off",
+   "to disconcert"
   ],
   "empresser": [
    "to hasten",
@@ -5055,7 +5849,9 @@
   ],
   "dispenser": [
    "to excuse, exempt (de from)",
-   "to dispense, give out, radiate (literary)"
+   "to dispense, give out, radiate (literary)",
+   "to distribute, dispense",
+   "to avoid, refrain (de from)"
   ],
   "chatouiller": [
    "to tickle"
@@ -5085,7 +5881,9 @@
   ],
   "rattacher": [
    "to attach, fix, fix on, put on, link",
-   "to post (an employee)"
+   "to post (an employee)",
+   "to reattach, put back on",
+   "to connect back (to)"
   ],
   "déshonorer": [
    "to dishonor"
@@ -5108,7 +5906,9 @@
   ],
   "frayer": [
    "to rub",
-   "to spawn, to fertilize an egg"
+   "to spawn, to fertilize an egg",
+   "to open up, clear (a path, a way, etc.)",
+   "to mix, to associate"
   ],
   "dépourvoir": [
    "to unequip"
@@ -5122,7 +5922,9 @@
   ],
   "amorcer": [
    "to prime, set in motion",
-   "to begin, to get to work on (to commence a project)"
+   "to begin, to get to work on (to commence a project)",
+   "to break ground (start construction work)",
+   "to boot"
   ],
   "contaminer": [
    "to contaminate"
@@ -5135,7 +5937,8 @@
   ],
   "dégringoler": [
    "to tumble, to fall down",
-   "to tumble, to fall (decrease), to tank"
+   "to tumble, to fall (decrease), to tank",
+   "to descend quickly (stairs etc.)"
   ],
   "entraver": [
    "to hinder, to impede",
@@ -5143,14 +5946,16 @@
   ],
   "inverser": [
    "to invert",
-   "to revert"
+   "to revert",
+   "to get reversed, to go the other way round"
   ],
   "racler": [
    "to scrape (off), to scratch"
   ],
   "dénicher": [
    "to scare up",
-   "to hunt out, to track down"
+   "to hunt out, to track down",
+   "to dig out, to unearth (informal)"
   ],
   "officier": [
    "to officiate"
@@ -5171,7 +5976,8 @@
   ],
   "favoriser": [
    "to favour, to show a preference to something",
-   "to prioritise"
+   "to prioritise",
+   "to promote, encourage, foster"
   ],
   "grignoter": [
    "to nibble",
@@ -5191,7 +5997,8 @@
   ],
   "épater": [
    "to flatten (dated)",
-   "to knock down, to cause to sprawl on the ground (dated)"
+   "to knock down, to cause to sprawl on the ground (dated)",
+   "to amaze, to stagger"
   ],
   "dénouer": [
    "to undo (a knot), to unknot",
@@ -5199,7 +6006,8 @@
   ],
   "enrager": [
    "to have rabies",
-   "to enrage, anger, infuriate"
+   "to enrage, anger, infuriate",
+   "to inflame, arouse"
   ],
   "rendormir": [
    "to fall asleep again, to fall back to sleep, to go back to sleep"
@@ -5215,7 +6023,8 @@
   ],
   "gaver": [
    "to force-feed",
-   "to gorge oneself, to overeat"
+   "to gorge oneself, to overeat",
+   "to fill up, exasperate (slang)"
   ],
   "acquiescer": [
    "to acquiesce"
@@ -5230,14 +6039,17 @@
   ],
   "desserrer": [
    "to loosen (knot, belt, etc.)",
-   "to unclench (teeth), relax (grip), release (brakes)"
+   "to unclench (teeth), relax (grip), release (brakes)",
+   "to space out",
+   "to ease, relax"
   ],
   "contester": [
    "to contest, to challenge, to dispute"
   ],
   "lisser": [
    "to smooth",
-   "to level"
+   "to level",
+   "(of hair) to straighten"
   ],
   "mobiliser": [
    "to mobilize"
@@ -5253,7 +6065,9 @@
   ],
   "affranchir": [
    "to free, liberate, enfranchise, emancipate",
-   "to discharge, exempt"
+   "to discharge, exempt",
+   "to prepay (postage), frank (a letter)",
+   "to pervert (slang)"
   ],
   "impatienter": [
    "to make, become impatient",
@@ -5265,7 +6079,9 @@
   ],
   "enfler": [
    "to inflate",
-   "to fill"
+   "to fill",
+   "to build up (an emotion)",
+   "to swell up"
   ],
   "assoupir": [
    "to make drowsy",
@@ -5285,7 +6101,8 @@
   ],
   "rajeunir": [
    "to rejuvenate",
-   "to make young"
+   "to make young",
+   "to take off (years from someone's age) (to make appear younger)"
   ],
   "déduire": [
    "to deduce, to work out",
@@ -5301,18 +6118,22 @@
   ],
   "reporter": [
    "to carry something back to where it was",
-   "to wear again"
+   "to wear again",
+   "to transfer (an emotion)",
+   "to put back, to put off, to postpone"
   ],
   "vautrer": [
    "to wallow (to roll one's body, or a part of it, in the mud or something of similar texture)",
-   "to sprawl, to wallow"
+   "to sprawl, to wallow",
+   "to wallow"
   ],
   "coopérer": [
    "to cooperate"
   ],
   "éclipser": [
    "to eclipse",
-   "to eclipse, to overshadow, to surpass"
+   "to eclipse, to overshadow, to surpass",
+   "to slip away, to escape"
   ],
   "crisser": [
    "to screech, to squeak",
@@ -5327,21 +6148,25 @@
   ],
   "gerber": [
    "to sheave",
-   "to stack"
+   "to stack",
+   "to puke, to throw up (slang)"
   ],
   "présumer": [
    "to presume, assume"
   ],
   "broyer": [
    "to crush, grind",
-   "to crush in a fight (slang)"
+   "to crush in a fight (slang)",
+   "to outpower (slang)"
   ],
   "trotter": [
    "to trot"
   ],
   "sceller": [
    "to seal (place a seal on)",
-   "to seal (fasten something to prevent its being opened)"
+   "to seal (fasten something to prevent its being opened)",
+   "to seal (close securely)",
+   "to seal, guarantee"
   ],
   "ravager": [
    "to ravage, to ruin, to lay waste to"
@@ -5375,7 +6200,9 @@
   ],
   "esquiver": [
    "to dodge (a blow), duck",
-   "to evade, elude"
+   "to evade, elude",
+   "to sidestep, to strafe",
+   "to slip away"
   ],
   "conter": [
    "to recount (tell a story)"
@@ -5396,7 +6223,8 @@
   ],
   "déferler": [
    "to break",
-   "to break out, to surge, to rise up, to sweep"
+   "to break out, to surge, to rise up, to sweep",
+   "to unfurl (sails)"
   ],
   "blaguer": [
    "to joke, to joke about"
@@ -5410,7 +6238,8 @@
   ],
   "fouler": [
    "to stamp, to impress, to dent, to mill",
-   "to walk on, to tread, to trample"
+   "to walk on, to tread, to trample",
+   "to oppress, to mistreat"
   ],
   "financer": [
    "to fund"
@@ -5427,7 +6256,9 @@
   ],
   "requérir": [
    "to call for, to require",
-   "to request, to summon"
+   "to request, to summon",
+   "to demand",
+   "to need"
   ],
   "haleter": [
    "to pant (To breathe heavily)"
@@ -5453,7 +6284,8 @@
   ],
   "éplucher": [
    "to peel",
-   "to scrutinise"
+   "to scrutinise",
+   "to preen"
   ],
   "propager": [
    "to propagate, spread"
@@ -5466,7 +6298,9 @@
   ],
   "relancer": [
    "to throw back",
-   "to relaunch"
+   "to relaunch",
+   "to boost, to revive (economically)",
+   "to reboot (a computer)"
   ],
   "initier": [
    "to initiate (to introduce into a religion, sect, art, etc.)",
@@ -5480,11 +6314,15 @@
   ],
   "affaisser": [
    "to cause to subside",
-   "to subside, go down, sink"
+   "to subside, go down, sink",
+   "to cave in, sag, give way, collapse",
+   "to ebb, weaken"
   ],
   "conjurer": [
    "to beseech, to beg",
-   "to ward off"
+   "to ward off",
+   "to conspire, to plot, to conjure",
+   "to conjure"
   ],
   "pondre": [
    "to lay (eggs)",
@@ -5492,7 +6330,8 @@
   ],
   "déraper": [
    "to skid, to slide",
-   "to drag"
+   "to drag",
+   "to get out of hand, to get out of control"
   ],
   "parfumer": [
    "to perfume (to apply a scent)"
@@ -5506,11 +6345,14 @@
   ],
   "acquitter": [
    "to pay",
-   "to acknowledge (a signal), to notify the receipt of"
+   "to acknowledge (a signal), to notify the receipt of",
+   "to clear, to acquit",
+   "to discharge, to complete (one's duty)"
   ],
   "ranimer": [
    "to revive",
-   "to animate"
+   "to animate",
+   "to motivate, to rally (troops)"
   ],
   "étinceler": [
    "to spark (give off sparks) (archaic)",
@@ -5518,18 +6360,21 @@
   ],
   "tapisser": [
    "to carpet (cover with carpet)",
-   "to decorate"
+   "to decorate",
+   "to cover, to overlay"
   ],
   "engourdir": [
    "to numb, make numb",
-   "to dull, deaden, blunt"
+   "to dull, deaden, blunt",
+   "to go numb, go to sleep"
   ],
   "choir": [
    "to fall (literary)"
   ],
   "palpiter": [
    "to palpitate",
-   "to beat, flutter, to race, pulsate"
+   "to beat, flutter, to race, pulsate",
+   "to jump around, jump about"
   ],
   "résulter": [
    "to result, to happen",
@@ -5537,7 +6382,8 @@
   ],
   "mûrir": [
    "to mature, to become mature",
-   "to ripen, to become ripe"
+   "to ripen, to become ripe",
+   "to mature, to cause to be mature"
   ],
   "repeindre": [
    "to repaint"
@@ -5562,11 +6408,13 @@
   ],
   "prélever": [
    "to take (sur from)",
-   "to take (blood), remove (an organ), harvest (an organ)"
+   "to take (blood), remove (an organ), harvest (an organ)",
+   "to take out, withdraw (money)"
   ],
   "marteler": [
    "to strike with a hammer, to hammer",
-   "to shape or forge with a hammer"
+   "to shape or forge with a hammer",
+   "to emphasise individual elements such as words or notes"
   ],
   "ridiculiser": [
    "to ridicule"
@@ -5600,7 +6448,8 @@
   ],
   "éclabousser": [
    "to splatter, to splash",
-   "to taint, to embroil, to fill with scandal"
+   "to taint, to embroil, to fill with scandal",
+   "to shatter, to burst"
   ],
   "résider": [
    "to reside, live",
@@ -5614,18 +6463,22 @@
   ],
   "dégonfler": [
    "to deflate",
-   "to deflate, go down"
+   "to deflate, go down",
+   "to chicken out (slang)"
   ],
   "amasser": [
    "to amass, to gather up",
-   "to accumulate, to build up"
+   "to accumulate, to build up",
+   "to huddle"
   ],
   "fracasser": [
    "to smash (to break violently)"
   ],
   "ensevelir": [
    "to bury, to entomb",
-   "to cover with earth"
+   "to cover with earth",
+   "to bury (hide something)",
+   "to bury oneself, hide away"
   ],
   "simuler": [
    "to feign, to fake, to put on, to pretend to have",
@@ -5641,7 +6494,8 @@
   ],
   "inclure": [
    "to include",
-   "to enclose (attach document, file)"
+   "to enclose (attach document, file)",
+   "to feature (important aspect, design, information, event)"
   ],
   "tortiller": [
    "to twist, twirl",
@@ -5649,18 +6503,22 @@
   ],
   "exhaler": [
    "to exhale",
-   "to give off (e.g. an odor)"
+   "to give off (e.g. an odor)",
+   "to let out, let slip (e.g. a secret)",
+   "to let out (e.g. of an instrument, to emit a sound)"
   ],
   "varier": [
    "to vary"
   ],
   "survoler": [
    "to fly over",
-   "to skip through, to browse quickly"
+   "to skip through, to browse quickly",
+   "to fly high"
   ],
   "gober": [
    "to swallow whole",
-   "to believe easily, without evidence, to buy"
+   "to believe easily, without evidence, to buy",
+   "to ingest drugs, especially ecstasy or LSD (slang)"
   ],
   "administrer": [
    "to administer"
@@ -5670,7 +6528,8 @@
   ],
   "arpenter": [
    "to survey land",
-   "to pace, to measure"
+   "to pace, to measure",
+   "to pace, to walk to and fro"
   ],
   "grelotter": [
    "to shiver, tremble"
@@ -5681,7 +6540,8 @@
   ],
   "crépiter": [
    "to crackle",
-   "to rattle"
+   "to rattle",
+   "to splutter"
   ],
   "surnommer": [
    "to nickname"
@@ -5698,7 +6558,8 @@
   ],
   "fuser": [
    "to melt or fuse",
-   "to gush or spurt"
+   "to gush or spurt",
+   "to ring out, sound out"
   ],
   "frire": [
    "to fry (to cook in hot fat)"
@@ -5722,7 +6583,8 @@
   ],
   "approprier": [
    "to adapt (something) to a situation",
-   "to seize, take"
+   "to seize, take",
+   "to make one's own"
   ],
   "éponger": [
    "to sponge (clean with a sponge)",
@@ -5741,11 +6603,13 @@
   ],
   "arborer": [
    "to sport (clothes, a badge etc.)",
-   "to wear (a facial expression e.g. a smile, a frown)"
+   "to wear (a facial expression e.g. a smile, a frown)",
+   "to fly, display (a flag)"
   ],
   "cavaler": [
    "to rush about (colloquial)",
-   "to be on the run"
+   "to be on the run",
+   "to bestride"
   ],
   "siffloter": [
    "to whistle (carelessly)"
@@ -5771,7 +6635,8 @@
   ],
   "écorcher": [
    "to skin (to remove the skin off)",
-   "to graze (one's body)"
+   "to graze (one's body)",
+   "to mispronounce, butcher"
   ],
   "trafiquer": [
    "to traffic (e.g. drugs)",
@@ -5779,7 +6644,9 @@
   ],
   "coter": [
    "to quote, list",
-   "to quote the market price of, to put odds on"
+   "to quote the market price of, to put odds on",
+   "to mark (UK), grade (US)",
+   "to rate (a film etc.)"
   ],
   "bafouiller": [
    "to babble, splutter, stammer"
@@ -5801,15 +6668,19 @@
   ],
   "poindre": [
    "to prick, sting",
-   "to sting, afflict (of pain, love etc.) (literary)"
+   "to sting, afflict (of pain, love etc.) (literary)",
+   "to come up (of a plant), peep through"
   ],
   "fléchir": [
    "to bend, to fold",
-   "to bend, to bend over"
+   "to bend, to bend over",
+   "to flex (eg. a muscle)",
+   "to provoke pity"
   ],
   "méprendre": [
    "to mistake (to confuse someone for another)",
-   "to make a mistake"
+   "to make a mistake",
+   "to misunderstand"
   ],
   "combiner": [
    "to combine (bring (two or more things or activities) together)"
@@ -5820,7 +6691,8 @@
   ],
   "bronzer": [
    "to bronze (plate with bronze)",
-   "to tan, bronze"
+   "to tan, bronze",
+   "to tan, bronze, catch a tan"
   ],
   "camoufler": [
    "to camouflage (hide, disguise)"
@@ -5830,7 +6702,8 @@
   ],
   "débloquer": [
    "to unblock",
-   "to unlock (release, make available)"
+   "to unlock (release, make available)",
+   "to be out of one's mind (colloquial)"
   ],
   "lamenter": [
    "to lament, to bewail, to bemoan"
@@ -5853,7 +6726,8 @@
   ],
   "patauger": [
    "to paddle around, splash about",
-   "to squelch around, wade through (in mud, in wet terrain)"
+   "to squelch around, wade through (in mud, in wet terrain)",
+   "to flounder around (in mud or snow)"
   ],
   "confectionner": [
    "to make, create",
@@ -5868,7 +6742,8 @@
   ],
   "expirer": [
    "to breathe out",
-   "to draw one's last breath, to pass away"
+   "to draw one's last breath, to pass away",
+   "to expire, to run out"
   ],
   "simplifier": [
    "to simplify"
@@ -5906,7 +6781,8 @@
   ],
   "alléger": [
    "to lighten",
-   "to alleviate, relieve"
+   "to alleviate, relieve",
+   "to reduce"
   ],
   "trôner": [
    "to sit on a throne (archaic)"
@@ -5937,11 +6813,14 @@
   ],
   "ravaler": [
    "to restore",
-   "to swallow again"
+   "to swallow again",
+   "to debase"
   ],
   "estomper": [
    "to blur",
-   "to blur (with a stump), to make indistinct, to dim"
+   "to blur (with a stump), to make indistinct, to dim",
+   "to become blurred",
+   "to die down, to fade away"
   ],
   "retrousser": [
    "to hitch up, hike up, roll up, pull up (a garment)"
@@ -5955,19 +6834,25 @@
   ],
   "mouler": [
    "to mold, mould",
-   "to fit tightly (clothes)"
+   "to fit tightly (clothes)",
+   "to grind, mill"
   ],
   "terrer": [
    "to spread with soil",
-   "to crouch down, flatten oneself"
+   "to crouch down, flatten oneself",
+   "to lie low, hide, to go to ground, to hole up"
   ],
   "barbouiller": [
    "to daub",
-   "to scribble"
+   "to scribble",
+   "to mark, stain, dirty",
+   "to blabber"
   ],
   "décomposer": [
    "to decompose, to break down (into components)",
-   "to factorize"
+   "to factorize",
+   "to decompose, decay",
+   "to break down (for analysis)"
   ],
   "intercepter": [
    "to intercept"
@@ -5986,7 +6871,9 @@
   ],
   "friser": [
    "to curl",
-   "to graze, to pass by barely touching"
+   "to graze, to pass by barely touching",
+   "to skip, to print double",
+   "to border on, verge on"
   ],
   "flâner": [
    "to wander around",
@@ -6033,7 +6920,9 @@
   ],
   "échauffer": [
    "to overheat",
-   "to excite, incite (imagination etc.)"
+   "to excite, incite (imagination etc.)",
+   "to inflame (dated)",
+   "to warm up"
   ],
   "accoutumer": [
    "to accustom, get (someone) used (à, à faire)",
@@ -6041,14 +6930,16 @@
   ],
   "soustraire": [
    "to subtract",
-   "to avoid, to escape (from)"
+   "to avoid, to escape (from)",
+   "to preserve, protect from, free from"
   ],
   "tresser": [
    "to plait, braid"
   ],
   "aiguiser": [
    "to sharpen (of a point, to make sharper)",
-   "to hone (e.g. a skill)"
+   "to hone (e.g. a skill)",
+   "to whet"
   ],
   "rappliquer": [
    "to arrive, to turn up (informal)",
@@ -6066,7 +6957,9 @@
   ],
   "jacter": [
    "to talk, speak (colloquial)",
-   "to speak (a language) (colloquial)"
+   "to speak (a language) (colloquial)",
+   "to chat (colloquial)",
+   "to gossip (colloquial)"
   ],
   "cheminer": [
    "to walk on, to keep walking (especially on a long and regular or a painful walk)"
@@ -6076,33 +6969,41 @@
   ],
   "côtoyer": [
    "to coast",
-   "to pass alongside"
+   "to pass alongside",
+   "to rub shoulders, to work alongside"
   ],
   "entonner": [
    "to intone, to chant, to vocalise"
   ],
   "pomper": [
    "to pump",
-   "to copy (slang)"
+   "to copy (slang)",
+   "to grow angrier as time goes on, especially if there are no further reasons to do so (slang)"
   ],
   "surcharger": [
    "to overcharge",
-   "to overload, overburden, overcrowd"
+   "to overload, overburden, overcrowd",
+   "to surcharge"
   ],
   "pulvériser": [
    "to pulverise (to grind into powder)",
-   "to pulverise (defeat thoroughly) (informal)"
+   "to pulverise (defeat thoroughly) (informal)",
+   "to spray (to project as liquid droplets)"
   ],
   "épouvanter": [
    "to terrify, horrify"
   ],
   "avorter": [
    "to fail, to come to an end",
-   "to have an abortion"
+   "to have an abortion",
+   "to abort, to terminate",
+   "to cause an abortion"
   ],
   "assimiler": [
    "to assimilate (all meanings), to absorb",
-   "to liken"
+   "to liken",
+   "to lump together (e.g., one group with another)",
+   "to digest (of food)"
   ],
   "surfer": [
    "to surf (on a wave)",
@@ -6125,7 +7026,9 @@
   ],
   "languir": [
    "to languish",
-   "to lie torpid"
+   "to lie torpid",
+   "to flag, die down, slack off, be slack",
+   "to wither, weaken"
   ],
   "recopier": [
    "to copy (again)",
@@ -6165,7 +7068,8 @@
   ],
   "surplomber": [
    "to overhang",
-   "to overlook"
+   "to overlook",
+   "to hang over, to hang above"
   ],
   "rétorquer": [
    "to retort"
@@ -6194,7 +7098,8 @@
   ],
   "renouer": [
    "to tie in a knot again",
-   "to pick up on (a conversation)"
+   "to pick up on (a conversation)",
+   "to rekindle a friendship (with), to get back in touch (with)"
   ],
   "sautiller": [
    "to hop (make small jumps)",
@@ -6216,11 +7121,13 @@
   ],
   "démentir": [
    "to contradict, gainsay (someone)",
-   "to deny, refute (rumors etc.)"
+   "to deny, refute (rumors etc.)",
+   "to belie (appearances)"
   ],
   "débrancher": [
    "to unplug",
-   "to turn off, switch off (of an alarm)"
+   "to turn off, switch off (of an alarm)",
+   "to prune, to remove branches"
   ],
   "égaler": [
    "to equal",
@@ -6231,7 +7138,8 @@
   ],
   "doucher": [
    "to shower",
-   "to take a shower"
+   "to take a shower",
+   "to disappoint (colloquial)"
   ],
   "roupiller": [
    "to drowse, to doze (archaic)",
@@ -6239,7 +7147,9 @@
   ],
   "faner": [
    "to make hay (literary)",
-   "to toss, turn (grass, hay, etc.)"
+   "to toss, turn (grass, hay, etc.)",
+   "to fade, to wilt (literary)",
+   "to fade, wither"
   ],
   "approfondir": [
    "to deepen",
@@ -6247,7 +7157,8 @@
   ],
   "chiner": [
    "to dye and interweave fabrics into cloud motif",
-   "to look around, to lurk"
+   "to look around, to lurk",
+   "to bargain-hunt, to antique (informal)"
   ],
   "refouler": [
    "to trample etc. again",
@@ -6258,7 +7169,8 @@
   ],
   "happer": [
    "to snatch by the mouth, to snap up (typically of animals)",
-   "to grab, to seize"
+   "to grab, to seize",
+   "to strike forcefully (colloquial)"
   ],
   "jaunir": [
    "to go yellow, to turn yellow",
@@ -6272,7 +7184,8 @@
   ],
   "farder": [
    "to disguise",
-   "to make up or paint (the face)"
+   "to make up or paint (the face)",
+   "to represent in a false light, to augment with falsehoods or affectations"
   ],
   "promouvoir": [
    "to promote (advertise a product)",
@@ -6297,7 +7210,8 @@
   ],
   "barder": [
    "to bard",
-   "to clad (add cladding to a wall)"
+   "to clad (add cladding to a wall)",
+   "to transport wood onto a boat (archaic)"
   ],
   "muter": [
    "to transfer",
@@ -6308,15 +7222,19 @@
   ],
   "façonner": [
    "to work on, to shape, notably with tool(s), to fashion",
-   "to educate morally, spiritually"
+   "to educate morally, spiritually",
+   "to perform labor"
   ],
   "moucher": [
    "to blow (someone's) nose",
-   "to put someone in their place (colloquial)"
+   "to put someone in their place (colloquial)",
+   "to blow one's nose",
+   "to snuff out (a candle etc.)"
   ],
   "abréger": [
    "to shorten in duration",
-   "to shorten (in textual length) or summarize, to abridge"
+   "to shorten (in textual length) or summarize, to abridge",
+   "to abbreviate"
   ],
   "élier": [
    "to rack (wine)"
@@ -6349,15 +7267,19 @@
   ],
   "essouffler": [
    "to knock the wind out of, leave breathless",
-   "to become breathless"
+   "to become breathless",
+   "to run out of steam, to tail off"
   ],
   "consigner": [
    "to confine to quarters",
-   "to give (somebody) detention"
+   "to give (somebody) detention",
+   "to record, to write down",
+   "to consign"
   ],
   "ferrer": [
    "to clad in iron (transitive), to be clad in iron (intransitive)",
-   "to shoe (a horse)"
+   "to shoe (a horse)",
+   "to clad in some metal, not necessarily iron"
   ],
   "niquer": [
    "to obtain what was announced on the first throw"
@@ -6368,7 +7290,8 @@
   ],
   "loucher": [
    "to be cross-eyed, to be squint-eyed, to squint",
-   "squint (to look with eyes that are turned in different directions)"
+   "squint (to look with eyes that are turned in different directions)",
+   "glance"
   ],
   "moisir": [
    "(to cause) to go mouldy, to moulder",
@@ -6376,7 +7299,9 @@
   ],
   "sévir": [
    "to crack down, clamp down",
-   "to rage"
+   "to rage",
+   "to be rife",
+   "to hold sway"
   ],
   "planifier": [
    "to plan ahead, to prepare oneself"
@@ -6402,7 +7327,8 @@
   ],
   "enduire": [
    "to plaster",
-   "to coat, cover"
+   "to coat, cover",
+   "to smear, anoint (to smear or rub over with oil or an unctuous substance)"
   ],
   "apitoyer": [
    "to make (someone) feel pity for (something)",
@@ -6413,11 +7339,13 @@
   ],
   "peloter": [
    "to wind, roll etc. into a ball (archaic)",
-   "to touch up, feel up (sexually) (colloquial)"
+   "to touch up, feel up (sexually) (colloquial)",
+   "to make out (colloquial)"
   ],
   "torcher": [
    "to wipe with a cloth to remove dirt",
-   "to flare (to burn off excess gas at a petroleum drilling site)"
+   "to flare (to burn off excess gas at a petroleum drilling site)",
+   "to churn out (slang)"
   ],
   "alarmer": [
    "to alarm (alert)"
@@ -6432,11 +7360,14 @@
   ],
   "trimbaler": [
    "to drag (colloquial)",
-   "to lug, lug around, cart (colloquial)"
+   "to lug, lug around, cart (colloquial)",
+   "to have in mind (colloquial)",
+   "to run ragged (colloquial)"
   ],
   "purger": [
    "to purge",
-   "to serve (a sentence)"
+   "to serve (a sentence)",
+   "to bleed"
   ],
   "défigurer": [
    "to disfigure, to deform"
@@ -6450,7 +7381,8 @@
   ],
   "muer": [
    "to moult (molt), to slough (sluff)",
-   "to break"
+   "to break",
+   "to change, to mutate, to transform"
   ],
   "stimuler": [
    "to stimulate",
@@ -6461,7 +7393,8 @@
   ],
   "retrancher": [
    "to deduct, take away, cut out (delete)",
-   "to cut down"
+   "to cut down",
+   "to cut off (exclude, from e.g. society)"
   ],
   "enfreindre": [
    "to infringe"
@@ -6491,7 +7424,8 @@
   ],
   "tanguer": [
    "to sway back and forth",
-   "to spin, sway (seem to be moving)"
+   "to spin, sway (seem to be moving)",
+   "to shake (not perform well)"
   ],
   "magner": [
    "bump, hit into (accidentally)",
@@ -6502,11 +7436,13 @@
   ],
   "abrutir": [
    "to render idiotic, to turn into idiots",
-   "to blunt or deaden the mind"
+   "to blunt or deaden the mind",
+   "to overwhelm, to devastate"
   ],
   "chanceler": [
    "to stagger, totter, reel",
-   "to wobble"
+   "to wobble",
+   "to falter, waver (of resolve etc.)"
   ],
   "sommeiller": [
    "to doze, nap, sleep"
@@ -6529,7 +7465,8 @@
   ],
   "déléguer": [
    "to delegate (to commit a task to someone), depute",
-   "to devolve"
+   "to devolve",
+   "to appoint, commission"
   ],
   "narguer": [
    "to taunt"
@@ -6543,7 +7480,9 @@
   ],
   "relayer": [
    "to relay, change horses",
-   "to relieve, take over from"
+   "to relieve, take over from",
+   "to replace",
+   "to transmit, relay (information)"
   ],
   "coffrer": [
    "to lock up, to put away or inside",
@@ -6555,7 +7494,8 @@
   ],
   "braver": [
    "to challenge, defy",
-   "to brave"
+   "to brave",
+   "to flout, pay no heed to (someone's opinion, hostility, etc.)"
   ],
   "boutonner": [
    "to button (to fasten with a button)"
@@ -6565,18 +7505,21 @@
   ],
   "sonder": [
    "to probe (test with a probe)",
-   "to probe (test the depth of something)"
+   "to probe (test the depth of something)",
+   "to probe (look carefully around)"
   ],
   "communier": [
    "to receive communion",
-   "to administer communion"
+   "to administer communion",
+   "to communicate"
   ],
   "injurier": [
    "to abuse, howl abuse at"
   ],
   "murer": [
    "to wall, wall off",
-   "to wall up"
+   "to wall up",
+   "to lock up (put into prison)"
   ],
   "sous-estimer": [
    "to underestimate",
@@ -6619,7 +7562,8 @@
   ],
   "siéger": [
    "to sit (hold a seat)",
-   "to sit"
+   "to sit",
+   "to be located, lie"
   ],
   "déchiqueter": [
    "to rip up (into small pieces)",
@@ -6627,11 +7571,13 @@
   ],
   "hacher": [
    "to chop up, mince",
-   "to split with an axe (dated)"
+   "to split with an axe (dated)",
+   "to cut roughly and unequally"
   ],
   "dévier": [
    "to divert",
-   "to deviate, stray, go off course"
+   "to deviate, stray, go off course",
+   "to deflect, parry"
   ],
   "déconcerter": [
    "to disconcert",
@@ -6646,11 +7592,14 @@
   ],
   "lorgner": [
    "to ogle",
-   "to leer"
+   "to leer",
+   "to covet",
+   "to look at using a monocle or lorgnette"
   ],
   "dégrader": [
    "to demote (lower someone's position in an organisation)",
-   "to degrade (lessen someone's reputation)"
+   "to degrade (lessen someone's reputation)",
+   "to deface (vandalise)"
   ],
   "perler": [
    "to bead (form into beads)"
@@ -6669,14 +7618,17 @@
   ],
   "obscurcir": [
    "to darken (a colour)",
-   "to obscure, to blur"
+   "to obscure, to blur",
+   "to obfuscate",
+   "to darken"
   ],
   "draper": [
    "to drape"
   ],
   "truquer": [
    "to tamper with, to fiddle, to falsify",
-   "to trick"
+   "to trick",
+   "to fix, rig (e.g. elections, a sports match)"
   ],
   "recharger": [
    "to recharge (add more electricity to)",
@@ -6701,15 +7653,19 @@
   ],
   "égrener": [
    "to shell, pod (maize, peas, wheat etc.)",
-   "to gin (cotton)"
+   "to gin (cotton)",
+   "to ripple (flax)",
+   "to drop off the stalk or bunch"
   ],
   "tamponner": [
    "to tamp",
-   "to swab"
+   "to swab",
+   "to buffer"
   ],
   "éventrer": [
    "to gut, to disembowel",
-   "to rip apart, to tear open"
+   "to rip apart, to tear open",
+   "to gore"
   ],
   "frimer": [
    "to show off (colloquial)"
@@ -6730,15 +7686,20 @@
   ],
   "endosser": [
    "to carry on one's back",
-   "to assume responsibility, to shoulder"
+   "to assume responsibility, to shoulder",
+   "to endorse",
+   "to take on (e.g. a role)"
   ],
   "revendiquer": [
    "to demand",
-   "to claim, to lay claim to (ownership), to stake a claim to"
+   "to claim, to lay claim to (ownership), to stake a claim to",
+   "to take on, assume (responsibility)"
   ],
   "assortir": [
    "to match, match up",
-   "to pair up"
+   "to pair up",
+   "to supply, stock up, to hook (someone) up with",
+   "to match"
   ],
   "gesticuler": [
    "to gesticulate (make gestures)"
@@ -6787,7 +7748,8 @@
   ],
   "renfermer": [
    "to lock again, to re-lock (dated)",
-   "to contain, encompass"
+   "to contain, encompass",
+   "to withdraw into oneself"
   ],
   "patiner": [
    "to ice-skate"
@@ -6806,7 +7768,8 @@
   ],
   "adhérer": [
    "to adhere, to stick to (rules, regulations)",
-   "to belong to, to be part of, to be a member of"
+   "to belong to, to be part of, to be a member of",
+   "to associate, to join"
   ],
   "éternuer": [
    "to sneeze"
@@ -6841,7 +7804,8 @@
   ],
   "scander": [
    "to scan",
-   "to chant (name, slogan etc.)"
+   "to chant (name, slogan etc.)",
+   "to enunciate (words) carefully, to articulate separately, accentuate"
   ],
   "éjecter": [
    "to eject"
@@ -6871,7 +7835,8 @@
   ],
   "cramer": [
    "to burn",
-   "to smoke (a cigarette) (slang)"
+   "to smoke (a cigarette) (slang)",
+   "to have one's identity found out or discovered (slang)"
   ],
   "acclamer": [
    "to acclaim, applaud (to shout applause)"
@@ -6941,15 +7906,19 @@
   ],
   "sangler": [
    "to strap up",
-   "to strap (hit with a strap)"
+   "to strap (hit with a strap)",
+   "to tell off, chide",
+   "to do up one's belt, corset, trousers"
   ],
   "abreuver": [
    "to water (cattle, fields etc.), give water to (a person) (literary)",
-   "to drink (literary)"
+   "to drink (literary)",
+   "to shower (someone)"
   ],
   "adonner": [
    "to devote oneself",
-   "to get along well, be compatible"
+   "to get along well, be compatible",
+   "to get used to"
   ],
   "désapprouver": [
    "to disapprove of"
@@ -6994,7 +7963,8 @@
   ],
   "clignoter": [
    "to blink, to flash, to turn on and off repeatedly",
-   "to indicate (the direction)"
+   "to indicate (the direction)",
+   "to blink repeatedly (dated)"
   ],
   "engraisser": [
    "to fatten"
@@ -7007,7 +7977,8 @@
   ],
   "gazer": [
    "to gas (exterminate using gas)",
-   "to smoke (a cigarette) (slang)"
+   "to smoke (a cigarette) (slang)",
+   "to rage, to become irate"
   ],
   "reformer": [
    "to reform, to get/put back together"
@@ -7040,7 +8011,8 @@
   ],
   "nicher": [
    "to nest (bird)",
-   "to nestle"
+   "to nestle",
+   "to hang out (slang)"
   ],
   "opter": [
    "to opt"
@@ -7059,7 +8031,8 @@
   ],
   "bomber": [
    "to bulge",
-   "to cower, to bend"
+   "to cower, to bend",
+   "to move, walk quickly (colloquial)"
   ],
   "resplendir": [
    "to glimmer, gleam, beam, sparkle"
@@ -7074,11 +8047,13 @@
   ],
   "égayer": [
    "to entertain",
-   "to brighten up (make appear more jolly)"
+   "to brighten up (make appear more jolly)",
+   "to have fun, to enjoy oneself"
   ],
   "emboîter": [
    "to embed, encapsulate",
-   "to fit, fit together"
+   "to fit, fit together",
+   "to box, to place in a box"
   ],
   "arnaquer": [
    "to swindle, to dupe (informal)",
@@ -7093,22 +8068,28 @@
   ],
   "affubler": [
    "to deck out, to equip",
-   "to deck out oneself, to equip oneself"
+   "to deck out oneself, to equip oneself",
+   "to take on the surname of"
   ],
   "crucifier": [
    "to crucify"
   ],
   "tondre": [
    "to shear (sheep)",
-   "to mow, cut (grass; a lawn)"
+   "to mow, cut (grass; a lawn)",
+   "to clip, cut (hair)",
+   "to shave (one's head)"
   ],
   "outrager": [
    "to offend greatly, insult",
-   "to outrage"
+   "to outrage",
+   "to rape (literary)"
   ],
   "déporter": [
    "to deport (expel from a country)",
-   "to send to a concentration camp"
+   "to send to a concentration camp",
+   "to put off course, carry off course",
+   "to swerve"
   ],
   "graisser": [
    "to grease, oil, lubricate",
@@ -7116,7 +8097,8 @@
   ],
   "mutiler": [
    "to maim (to cause permanent loss)",
-   "to mutilate"
+   "to mutilate",
+   "to dismember (cut off a limb)"
   ],
   "raffoler": [
    "to be mad (about), to be crazy (for) (have a big passion for) (informal)"
@@ -7140,7 +8122,9 @@
   ],
   "dégainer": [
    "to unsheath",
-   "to draw (a weapon)"
+   "to draw (a weapon)",
+   "to strip (a cable)",
+   "to unveil"
   ],
   "suinter": [
    "to ooze"
@@ -7175,7 +8159,8 @@
   ],
   "enliser": [
    "to get (a ship or vehicle) stuck in mud, sand etc.",
-   "to get stuck in mud, sand etc."
+   "to get stuck in mud, sand etc.",
+   "to get bogged down"
   ],
   "référer": [
    "to refer (someone)",
@@ -7191,7 +8176,9 @@
   ],
   "dérouiller": [
    "to derust, to remove rust from",
-   "to get back into, dust off"
+   "to get back into, dust off",
+   "to lose rust",
+   "to come back"
   ],
   "relater": [
    "to relate, to recount",
@@ -7206,7 +8193,9 @@
   ],
   "tarir": [
    "to dry up",
-   "to exhaust, use up"
+   "to exhaust, use up",
+   "to talk non-stop (about something)",
+   "to dwindle, to dry up, to peter out"
   ],
   "paître": [
    "to graze"
@@ -7237,11 +8226,13 @@
   ],
   "croupir": [
    "to stagnate",
-   "to wallow (remain miserable)"
+   "to wallow (remain miserable)",
+   "to rot (e.g. in prison)"
   ],
   "recourir": [
    "to run again, to race again",
-   "to resort"
+   "to resort",
+   "to turn (for help, etc.)"
   ],
   "écosser": [
    "to shell (e.g. a nut)"
@@ -7277,7 +8268,8 @@
   ],
   "amortir": [
    "to cushion, absorb, soften (shock, blow etc.)",
-   "to deaden, muffle (noise)"
+   "to deaden, muffle (noise)",
+   "to pay off, amortize, to redeem (a title)"
   ],
   "recréer": [
    "to recreate"
@@ -7292,11 +8284,13 @@
   ],
   "empester": [
    "to infect with a pest or with a contagious disease",
-   "to cause to stink, to cause to reek (of)"
+   "to cause to stink, to cause to reek (of)",
+   "to stink, reek of"
   ],
   "glousser": [
    "to cluck (make the noise of a chicken)",
-   "to gobble (make the noise of a turkey)"
+   "to gobble (make the noise of a turkey)",
+   "to chortle, to giggle"
   ],
   "rehausser": [
    "to reraise, to raise up, raise higher, lift higher",
@@ -7304,7 +8298,8 @@
   ],
   "ressasser": [
    "to sieve again (dated)",
-   "to think constantly about the same things"
+   "to think constantly about the same things",
+   "to repeat oneself"
   ],
   "amocher": [
    "to mess up (colloquial)"
@@ -7314,7 +8309,8 @@
   ],
   "ensuivre": [
    "to follow (to come after) (archaic)",
-   "to follow, to come next"
+   "to follow, to come next",
+   "to ensue, to result, to come as a result"
   ],
   "décamper": [
    "to decamp, to break camp (to pack up a campsite and move on)",
@@ -7336,7 +8332,9 @@
   ],
   "rajuster": [
    "to adjust, readjust, correct",
-   "to straighten, tidy (clothes)"
+   "to straighten, tidy (clothes)",
+   "to straighten one's clothes",
+   "to reconcile (dated)"
   ],
   "prosterner": [
    "to bow down"
@@ -7357,7 +8355,9 @@
   ],
   "sauvegarder": [
    "to safeguard, to protect",
-   "to preserve, to keep intact"
+   "to preserve, to keep intact",
+   "to save",
+   "to back up"
   ],
   "ballotter": [
    "to toss (around), to jolt"
@@ -7397,7 +8397,8 @@
   ],
   "ceinturer": [
    "to belt, belt up, girt, put a belt (or something similar) around",
-   "to wrap, wrap up"
+   "to wrap, wrap up",
+   "to surround"
   ],
   "conjuguer": [
    "to conjugate",
@@ -7405,7 +8406,8 @@
   ],
   "dépanner": [
    "to fix, repair",
-   "to help out (informal)"
+   "to help out (informal)",
+   "to tide over (informal)"
   ],
   "enthousiasmer": [
    "to enthuse",
@@ -7434,11 +8436,13 @@
   ],
   "dérouter": [
    "to reroute, derail (cause to change path)",
-   "to set back"
+   "to set back",
+   "to disconcert"
   ],
   "plumer": [
    "to pluck the feathers off",
-   "to swindle or cheat out of (informal)"
+   "to swindle or cheat out of (informal)",
+   "to desquamate, to have the skin peel off (informal)"
   ],
   "obstruer": [
    "to block off, to obstruct"
@@ -7521,15 +8525,19 @@
   ],
   "rebuter": [
    "to reject, turn down",
-   "to send someone packing, to kick to the curb"
+   "to send someone packing, to kick to the curb",
+   "to disgust, to put off"
   ],
   "implanter": [
    "to build (an installation), to install (machinery), to open (a business)",
-   "to establish"
+   "to establish",
+   "to instill (an idea)",
+   "to implant"
   ],
   "agrémenter": [
    "to brighten up",
-   "to liven up"
+   "to liven up",
+   "to supplement, adorn"
   ],
   "compatir": [
    "to sympathise, empathise, feel for"
@@ -7556,7 +8564,9 @@
   ],
   "jongler": [
    "to juggle",
-   "to entertain (dated)"
+   "to entertain (dated)",
+   "to think about, to worry about",
+   "to think of, to think about"
   ],
   "sniffer": [
    "to consume a drug via the nose"
@@ -7580,14 +8590,17 @@
   ],
   "grésiller": [
    "to crackle",
-   "to sizzle"
+   "to sizzle",
+   "to sleet"
   ],
   "blinder": [
    "to armor, to reinforce"
   ],
   "enfanter": [
    "to bear [a child], bring into the world (literary)",
-   "to give birth"
+   "to give birth",
+   "to bear [fruit]",
+   "to produce, reel off [an opus]"
   ],
   "équivaloir": [
    "to be equivalent",
@@ -7598,7 +8611,9 @@
   ],
   "dévisser": [
    "to unscrew, undo",
-   "to remove (the lid from a container)"
+   "to remove (the lid from a container)",
+   "to lose one's grip and fall",
+   "to drop sharply, to plunge, to plummet"
   ],
   "délimiter": [
    "to delimit (make or form the limits or boundaries of)",
@@ -7617,7 +8632,9 @@
   ],
   "voltiger": [
    "to flit, flutter",
-   "to flit about (a place) (en), flutter about (a place)"
+   "to flit about (a place) (en), flutter about (a place)",
+   "to get kicked out, chucked out",
+   "to fly, to take a plane"
   ],
   "concilier": [
    "to reconcile",
@@ -7625,7 +8642,9 @@
   ],
   "affermir": [
    "to firm up",
-   "to strengthen"
+   "to strengthen",
+   "to make firmer",
+   "to become firmer, sharper or stronger"
   ],
   "désinfecter": [
    "to disinfect, to sanitize"
@@ -7638,7 +8657,8 @@
   ],
   "effaroucher": [
    "to scare off, frighten away (an animal)",
-   "to frighten, alarm (someone)"
+   "to frighten, alarm (someone)",
+   "to shock"
   ],
   "jauger": [
    "to sound (measure), to gauge by sounding"
@@ -7673,7 +8693,9 @@
   ],
   "cantonner": [
    "to station, billet (troops)",
-   "to be stationed, be billeted"
+   "to be stationed, be billeted",
+   "to confine (someone to)",
+   "to take refuge (in)"
   ],
   "environner": [
    "to surround, to encircle"
@@ -7690,7 +8712,8 @@
   ],
   "abonder": [
    "to be found in large amounts, to abound",
-   "to abound, to teem, to be swarming or overflowing with"
+   "to abound, to teem, to be swarming or overflowing with",
+   "to contribute financing to"
   ],
   "voûter": [
    "to vault a ceiling",
@@ -7698,7 +8721,9 @@
   ],
   "vanner": [
    "to winnow",
-   "to shake about, jolt, jostle"
+   "to shake about, jolt, jostle",
+   "to scrutinise (analyse thoroughly)",
+   "to knacker, tire out, flush (colloquial)"
   ],
   "maugréer": [
    "to grumble"
@@ -7735,7 +8760,8 @@
   ],
   "éterniser": [
    "to drag out, to prolong",
-   "to immortalize"
+   "to immortalize",
+   "to drag on"
   ],
   "déclamer": [
    "to declaim, speak out (against)"
@@ -7810,7 +8836,8 @@
   ],
   "seoir": [
    "to be suitable for, to be proper for (literary)",
-   "to be situated"
+   "to be situated",
+   "sit down (dated)"
   ],
   "dégrafer": [
    "to unclasp, unfasten, unhook (a piece of clothing)",
@@ -7865,7 +8892,8 @@
   ],
   "mitrailler": [
    "to machine-gun, to fire",
-   "to snap away (take many photos of)"
+   "to snap away (take many photos of)",
+   "to pummel (have hard sex with) (vulgar)"
   ],
   "remémorer": [
    "to memorize",
@@ -7873,7 +8901,8 @@
   ],
   "écailler": [
    "to scale (a fish)",
-   "to shuck (an oyster)"
+   "to shuck (an oyster)",
+   "to chip (paintwork)"
   ],
   "enfourner": [
    "to put in the oven"
@@ -7884,7 +8913,8 @@
   ],
   "déloger": [
    "to move out (of e.g. a house)",
-   "to kick out, expel (from e.g. a house)"
+   "to kick out, expel (from e.g. a house)",
+   "to dislodge"
   ],
   "rebeller": [
    "to rebel"
@@ -7916,7 +8946,8 @@
   ],
   "saupoudrer": [
    "to salt",
-   "to sprinkle powder (onto)"
+   "to sprinkle powder (onto)",
+   "to sprinkle (onto)"
   ],
   "interner": [
    "to intern, to imprison",
@@ -7935,14 +8966,17 @@
   ],
   "ravitailler": [
    "to resupply (army, etc.)",
-   "to refuel"
+   "to refuel",
+   "to revictual (archaic)",
+   "to stock up, take on fresh supplies"
   ],
   "triturer": [
    "to triturate"
   ],
   "bâillonner": [
    "to gag",
-   "to muzzle"
+   "to muzzle",
+   "to silence"
   ],
   "chiper": [
    "to pinch, steal, filch, rob (colloquial)"
@@ -7988,14 +9022,17 @@
   ],
   "solder": [
    "to close (a deal)",
-   "to settle, to pay off (debt)"
+   "to settle, to pay off (debt)",
+   "to sell at sales, to have a sale",
+   "to end up (in), to result (in)"
   ],
   "converser": [
    "to converse (literary)"
   ],
   "taxer": [
    "to tax, to impose a tax on",
-   "to accuse"
+   "to accuse",
+   "to call, to label"
   ],
   "épeler": [
    "to spell"
@@ -8012,7 +9049,8 @@
   ],
   "arc-bouter": [
    "to buttress",
-   "to press, lean, brace"
+   "to press, lean, brace",
+   "to stand firm (in opposition to someone)"
   ],
   "enclencher": [
    "to set off, start up, put in motion"
@@ -8045,7 +9083,8 @@
   ],
   "complaire": [
    "to get stuck in, to get caught in",
-   "to take pleasure in, to bask in"
+   "to take pleasure in, to bask in",
+   "to wallow, to revel in"
   ],
   "jalonner": [
    "stake out, mark out (to mark off the limits by stakes)"
@@ -8055,22 +9094,26 @@
   ],
   "amadouer": [
    "to coax, to sweet-talk (persuade gradually)",
-   "to cajole"
+   "to cajole",
+   "to humour (person)"
   ],
   "retracer": [
    "to recount, to tell",
-   "to redraw, to draw again"
+   "to redraw, to draw again",
+   "to remember"
   ],
   "susurrer": [
    "to whisper (talk quietly)"
   ],
   "concourir": [
    "to compete, to contend",
-   "to contribute, to play a role in"
+   "to contribute, to play a role in",
+   "to converge"
   ],
   "décommander": [
    "to cancel (an order, event, etc.)",
-   "to put off (until another time)"
+   "to put off (until another time)",
+   "to withdraw (an invitation)"
   ],
   "reléguer": [
    "to relegate"
@@ -8087,7 +9130,8 @@
   ],
   "rassasier": [
    "to satiate",
-   "to satisfy"
+   "to satisfy",
+   "to have enough of something, to get one's fill"
   ],
   "vagabonder": [
    "to walk about, wander",
@@ -8110,7 +9154,8 @@
   ],
   "escamoter": [
    "to conjure away, to make disappear",
-   "to snatch, to nick"
+   "to snatch, to nick",
+   "to evade, dodge, to skip (a word, question, etc.)"
   ],
   "ameuter": [
    "to incite, to stir up",
@@ -8118,7 +9163,8 @@
   ],
   "chambouler": [
    "to shatter, to shake",
-   "to turn upside down"
+   "to turn upside down",
+   "to upset"
   ],
   "esquinter": [
    "to damage, ruin, or wear out, especially through use or misuse"
@@ -8143,11 +9189,13 @@
   ],
   "volatiliser": [
    "to volatilize",
-   "to extinguish, obliterate"
+   "to extinguish, obliterate",
+   "to vanish"
   ],
   "accaparer": [
    "to monopolize, to corner",
-   "to occupy, to grab, to acquire, to arrogate (often with force or money)"
+   "to occupy, to grab, to acquire, to arrogate (often with force or money)",
+   "to engross, to preoccupy"
   ],
   "dégourdir": [
    "to warm up (one's fingers etc), to stretch (one's legs)",
@@ -8175,18 +9223,21 @@
   ],
   "tanner": [
    "to tan (in leather-making)",
-   "to beat physically, whip, thrash"
+   "to beat physically, whip, thrash",
+   "to exasperate, annoy, make someone sick of something"
   ],
   "chagriner": [
    "to bother, worry",
-   "to grieve"
+   "to grieve",
+   "to upset"
   ],
   "infester": [
    "to infest"
   ],
   "ceindre": [
    "to gird, put on (clothes, which fit around a part of the body)",
-   "to wrap round"
+   "to wrap round",
+   "to don (an item of ceremonious clothing)"
   ],
   "entretuer": [
    "to kill each other"
@@ -8199,7 +9250,8 @@
   ],
   "départir": [
    "to divest, dispose of",
-   "to distribute"
+   "to distribute",
+   "to depart, to leave"
   ],
   "détériorer": [
    "to deteriorate"
@@ -8212,18 +9264,23 @@
   ],
   "écumer": [
    "to foam, foam up, froth, froth up",
-   "to lather (as of a horse)"
+   "to lather (as of a horse)",
+   "to unfoam, remove foam from",
+   "to take the scum off"
   ],
   "éventer": [
    "to air, ventilate (expose to the air) (dated)",
-   "to fan"
+   "to fan",
+   "to expose to the wind",
+   "to expose, to reveal"
   ],
   "converger": [
    "to converge"
   ],
   "déteindre": [
    "to bleach",
-   "to lose one's color"
+   "to lose one's color",
+   "to bleed (onto), to transfer some color (to)"
   ],
   "gracier": [
    "to pardon, to issue a pardon to"
@@ -8233,7 +9290,8 @@
   ],
   "modérer": [
    "to moderate, temper, lessen, weaken etc.",
-   "to practice moderation"
+   "to practice moderation",
+   "to moderate, act as moderator, notably in a gremium"
   ],
   "rénover": [
    "to renew, to renovate, to revitalize"
@@ -8293,7 +9351,8 @@
   ],
   "receler": [
    "to conceal",
-   "to receive (stolen goods)"
+   "to receive (stolen goods)",
+   "to harbour"
   ],
   "prostituer": [
    "to prostitute oneself"
@@ -8319,7 +9378,8 @@
   ],
   "pétiller": [
    "to fizz, to be fizzy, bubble, bubble up",
-   "to crackle"
+   "to crackle",
+   "to sparkle, twinkle, flutter"
   ],
   "rapiécer": [
    "to patch"
@@ -8365,7 +9425,9 @@
   ],
   "amenuiser": [
    "to make thinner",
-   "to thin out"
+   "to thin out",
+   "to get slimmer, to slim",
+   "to dwindle, to run low"
   ],
   "argenter": [
    "to silverplate"
@@ -8402,7 +9464,8 @@
   ],
   "décoiffer": [
    "to mess up someone's hair",
-   "to knock someone's hat off"
+   "to knock someone's hat off",
+   "to take one's breath away (be mindblowing)"
   ],
   "détraquer": [
    "to upset, wreck",
@@ -8413,7 +9476,8 @@
   ],
   "tirailler": [
    "to pull, to tug",
-   "to tear somebody in two, to make somebody hesitate"
+   "to tear somebody in two, to make somebody hesitate",
+   "to skirmish"
   ],
   "consteller": [
    "to cluster",
@@ -8424,21 +9488,26 @@
   ],
   "dégommer": [
    "to degum",
-   "to leave (a place)"
+   "to leave (a place)",
+   "to sack, can, fire (informal)",
+   "to unseat (informal)"
   ],
   "enhardir": [
    "to embolden"
   ],
   "féconder": [
    "to fecundate",
-   "to fertilize"
+   "to fertilize",
+   "to impregnate"
   ],
   "caractériser": [
    "to characterize"
   ],
   "décocher": [
    "to uncheck, to deselect",
-   "to shoot (with a bow)"
+   "to shoot (with a bow)",
+   "to throw, send (a gesture, object etc.)",
+   "to smack, lash (hit suddenly)"
   ],
   "traumatiser": [
    "to traumatise"
@@ -8475,7 +9544,9 @@
   ],
   "affûter": [
    "to sharpen, to whet (e.g. a tool)",
-   "to hone (a skill)"
+   "to hone (a skill)",
+   "to eat (slang)",
+   "to dance (slang)"
   ],
   "désamorcer": [
    "to defuse (e.g. a weapon)",
@@ -8523,7 +9594,8 @@
   ],
   "cailler": [
    "to curdle, clot",
-   "to be very cold, to be brass monkeys (slang)"
+   "to be very cold, to be brass monkeys (slang)",
+   "to be very cold, to freeze (slang)"
   ],
   "singer": [
    "to ape",
@@ -8553,7 +9625,9 @@
   ],
   "ratatiner": [
    "to shrink, shrivel",
-   "to shrivel (up)"
+   "to shrivel (up)",
+   "to badly damage, wreck, to destroy (informal)",
+   "to kill (slang)"
   ],
   "fignoler": [
    "to tweak, put the finishing touches to"
@@ -8578,7 +9652,9 @@
   ],
   "enraciner": [
    "to root",
-   "to cause to take root"
+   "to cause to take root",
+   "to take root",
+   "to settle down"
   ],
   "ensoleiller": [
    "to fill with light, to brighten, to illuminate"
@@ -8611,7 +9687,8 @@
   ],
   "réformer": [
    "to reform (put into a new form)",
-   "to reform (improve, make better)"
+   "to reform (improve, make better)",
+   "to declare unfit for military service"
   ],
   "lessiver": [
    "to launder, to wash clothes",
@@ -8622,7 +9699,9 @@
   ],
   "appareiller": [
    "to join or mix together",
-   "to mate animals for breeding"
+   "to mate animals for breeding",
+   "to prepare",
+   "to fit with a prosthesis"
   ],
   "revaloir": [
    "to get even (with)"
@@ -8661,7 +9740,8 @@
   ],
   "trépigner": [
    "to stamp or shuffle one's feet (usually of horses or humans)",
-   "to wait nervously or angrily"
+   "to wait nervously or angrily",
+   "to trample"
   ],
   "embusquer": [
    "to ambush"
@@ -8688,7 +9768,8 @@
   ],
   "affiner": [
    "to purify",
-   "to refine"
+   "to refine",
+   "to make finer"
   ],
   "bonder": [
    "to fill up"
@@ -8705,11 +9786,14 @@
   ],
   "primer": [
    "to dominate, to be dominant over",
-   "to win (a prize)"
+   "to win (a prize)",
+   "to prevail, take precedent"
   ],
   "présager": [
    "to predict, to foresee, foretell",
-   "to forewarn"
+   "to forewarn",
+   "to portend, be an omen of",
+   "to bode"
   ],
   "tempérer": [
    "to temper, to soothe, to assuage"
@@ -8727,7 +9811,8 @@
   ],
   "prévaloir": [
    "to prevail",
-   "to boast, to claim, to pride oneself on"
+   "to boast, to claim, to pride oneself on",
+   "to take advantage of"
   ],
   "sympathiser": [
    "to hit it off"
