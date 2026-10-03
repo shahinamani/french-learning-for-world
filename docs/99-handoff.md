@@ -361,7 +361,14 @@ honours them.
    `cabrer`, `évaporer` and `prostituer` are already flagged as likely wrong.
    This review matters more than the glosses: a wrong meaning teaches one wrong
    word, a wrong reflexive marking teaches a wrong conjugation on every row.
-6. **Build inputs are in `data/`** and the page caches are at
+6. **Never open a pull request whose base is not `main`.** On 2026-10-03 PR #27
+   was stacked on PR #26's branch. #26 merged into `main` first, #27 then merged
+   into a branch that was already gone, GitHub reported it `MERGED`, and its
+   work — five of Shahin's gloss corrections and a test file — was absent from
+   `main` for a day. **A pull request whose base is not `main` can report
+   success and deliver nothing**, and nothing in CI or the merge UI says so.
+   Branch from `main` and rebase when `main` moves.
+7. **Build inputs are in `data/`** and the page caches are at
    `~/.cache/flw/`, not in a scratchpad. `data/README.md` states what losing
    them costs: 4,793 requests against Wikimedia, about 28 minutes. `content/`
    rebuilds from `data/wiktionary-glosses.json` with no network at all.
