@@ -631,6 +631,13 @@ Five checks of mine in one week accused data that was correct:
 | `/\bsuicide$/` | matched "to commit suicide", the correct gloss |
 | `key=lambda l: ([^)]*)\)` | stopped at the `)` inside `get(l, 0.0)`, so a tied sort read as untied |
 | a pace check using marks as items | 25 marks on a DELF reading paper is four exercises, not 25 questions |
+| `/not been verified/` | the text it checked says "none **has** been verified" |
+
+**Running total: six distinct faults, seven occurrences** — the semicolon split
+happened twice, having been learned once. Shahin's standing instruction: when
+this table reaches ten, stop and look at what they have in common, because by
+then it is a pattern about how the checks are written and not about any one of
+them.
 
 Each was found within minutes, each was my error, and none reached `main`. The
 cost is not the minutes. **Shahin's reason is the one that matters: a check that

@@ -262,7 +262,7 @@
      }
     ],
     "caveat": {
-     "en": "Durations and marks are read from official candidate papers, all of which predate the 2024 reform. The reform replaced open answers with multiple choice in comprehension at A2–B2 and added ten minutes to the B1 written session, which is reflected above. THE NUMBER OF EXERCISES PER SECTION IS NOT VERIFIED FOR THE CURRENT FORMAT at any level: the reform states that comprehension now has more and shorter questions, and no post-2024 paper was obtainable. Two separate official A2 papers both show 4 exercises; neither is marked as the new format, so they corroborate each other and settle nothing."
+     "en": "Durations and marks are read from official candidate papers, all of which predate the 2024 reform. The reform replaced open answers with multiple choice in comprehension at A2–B2 and added ten minutes to the B1 written session, which is reflected above. THE NUMBER OF EXERCISES PER SECTION IS NOT VERIFIED FOR THE CURRENT FORMAT at any level: the reform states that comprehension now has more and shorter questions, and no post-2024 paper was obtainable. Two separate official A2 papers both show 4 exercises, and TWO PAPERS AGREEING ON A NUMBER THAT MAY BE OBSOLETE IS MORE MISLEADING THAN ONE. Corroboration between two sources of the same vintage is not independent evidence: both predate the reform, so they agree about the old format and say nothing about the current one."
     },
     "passing": {
      "overall": "50/100 across the four papers",
@@ -683,8 +683,129 @@
     }
    ],
    "structure": {
-    "verifiedOn": null,
-    "note": "NOT VERIFIED. No structure is recorded, deliberately, rather than a figure nobody has checked."
+    "verifiedOn": "2026-10-04",
+    "scope": "C1 and C2, each read from an official candidate paper. C2 IS A DIFFERENT SHAPE from every other exam here — two papers marked out of 50 with a 10/50 minimum, not four out of 25 — which is why a guard written for DELF's shape must not be pointed at it.",
+    "sources": [
+     {
+      "what": "DALF C1, official candidate paper, épreuves collectives, front grid",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-candidat-coll.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper"
+     },
+     {
+      "what": "DALF C2 Lettres et sciences humaines, official candidate paper Sujet_démo_C2",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C2/c2-nouveau_example1_LSH_candidat_PE.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper",
+      "note": "Prints the candidate's choice of two domains — lettres et sciences humaines, or sciences — which the 2024 reform REMOVED. The paper therefore predates the reform, and that is how we know, rather than from a date on it."
+     },
+     {
+      "what": "Évolution des examens DELF/DALF — the 2024 reform removed the DALF domain choice",
+      "url": "https://www.delfdalf.ch/professeurs/evolution-examens",
+      "readOn": "2026-10-04",
+      "kind": "official-centre"
+     }
+    ],
+    "caveat": {
+     "en": "Read from official candidate papers that predate the 2024 reform, which for DALF removed the choice of specialist domain. No change to DALF durations, marks or pass thresholds has been published that I could find, and no post-reform DALF paper was obtainable. Task counts are NOT VERIFIED for the current format."
+    },
+    "passing": {
+     "C1": {
+      "overall": "50/100 across the four papers",
+      "perPaper": "a minimum of 5/25"
+     },
+     "C2": {
+      "overall": "50/100 across the two papers",
+      "perPaper": "a minimum of 10/50"
+     },
+     "verified": "printed on the front grid of each paper read"
+    },
+    "papers": {
+     "C1": [
+      {
+       "code": "CO",
+       "name": {
+        "en": "Listening",
+        "fr": "Compréhension de l’oral",
+        "fa": "شنیدن",
+        "ar": "الاستماع"
+       },
+       "minutes": 40,
+       "marks": 25,
+       "minutesNote": "environ. One long document of about eight minutes with two listenings, plus several short broadcast items with one. Documents 10 minutes maximum."
+      },
+      {
+       "code": "CE",
+       "name": {
+        "en": "Reading",
+        "fr": "Compréhension des écrits",
+        "fa": "خواندن",
+        "ar": "القراءة"
+       },
+       "minutes": 50,
+       "marks": 25,
+       "task": "one text of ideas, literary or journalistic, of 1,500 to 2,000 words"
+      },
+      {
+       "code": "PE",
+       "name": {
+        "en": "Writing",
+        "fr": "Production écrite",
+        "fa": "نوشتن",
+        "ar": "الكتابة"
+       },
+       "minutes": 150,
+       "marks": 25,
+       "task": "a synthesis from several documents totalling about 1,000 words, then an argued essay from their content"
+      },
+      {
+       "code": "PO",
+       "name": {
+        "en": "Speaking",
+        "fr": "Production orale",
+        "fa": "گفتار",
+        "ar": "التحدّث"
+       },
+       "minutes": 30,
+       "marks": 25,
+       "minutesNote": "plus 1 hour preparation",
+       "task": "a presentation from several written documents, then a discussion with the panel"
+      }
+     ],
+     "C2": [
+      {
+       "code": "CPO",
+       "name": {
+        "en": "Listening and speaking",
+        "fr": "Compréhension et production orales",
+        "fa": "شنیدن و گفتن",
+        "ar": "الاستماع والتحدّث"
+       },
+       "minutes": 30,
+       "marks": 50,
+       "minutesNote": "passation 30 minutes; preparation 1 hour, after the two listenings",
+       "task": "report on a recorded document, personal development of its problem, then a debate with the panel",
+       "domainChoice": "The paper read offers lettres et sciences humaines or sciences. The 2024 reform removed this choice."
+      },
+      {
+       "code": "CPE",
+       "name": {
+        "en": "Reading and writing",
+        "fr": "Compréhension et production écrites",
+        "fa": "خواندن و نوشتن",
+        "ar": "القراءة والكتابة"
+       },
+       "minutes": 210,
+       "marks": 50,
+       "task": "produce a structured text — article, editorial, report, speech — from a dossier of about 2,000 words"
+      }
+     ]
+    },
+    "collectiveTotalMinutes": {
+     "C1": 240,
+     "C2": 210
+    },
+    "collectiveTotalNote": "C1 4 hours, C2 3 h 30, both printed on the papers read. At C2 the oral is the individual paper, so the collective total and the written paper are the same 3 h 30."
    },
    "preparationOffered": true
   },

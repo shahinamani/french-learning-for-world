@@ -74,12 +74,48 @@ test('the TCF section durations sum to the total the exam body states', () => {
   assert.equal(slg.items, 18);
 });
 
+test('DALF C2 is a different shape, and the marks still sum to 100', () => {
+  // **The guard written for DELF would have been wrong here.** DELF is four
+  // papers out of 25 with a 5/25 minimum. DALF C2 is TWO papers out of 50 with
+  // a 10/50 minimum — one oral, one written — and C1 is four out of 25 like
+  // DELF. Pointing the DELF-shaped check at DALF would have failed a correct
+  // grid, so the invariant asserted is the one that actually holds across both:
+  // the marks sum to 100 and the per-paper minimum is a tenth of the total.
+  const dalf = exams.exams.find((e) => e.id === 'dalf').structure;
+  assert.equal(dalf.papers.C1.length, 4);
+  assert.equal(dalf.papers.C2.length, 2, 'DALF C2 has two papers, not four');
+  for (const [level, ps] of Object.entries(dalf.papers)) {
+    const marks = ps.reduce((a, s) => a + s.marks, 0);
+    assert.equal(marks, 100, `DALF ${level} sums to ${marks}`);
+  }
+  assert.match(dalf.passing.C1.perPaper, /5\/25/);
+  assert.match(dalf.passing.C2.perPaper, /10\/50/);
+  // And the domain choice the 2024 reform removed is recorded as what dates the
+  // paper, since the paper carries no date.
+  const cpo = dalf.papers.C2.find((s) => s.code === 'CPO');
+  assert.match(cpo.domainChoice, /2024 reform removed/);
+});
+
+test('every verified grid sums its papers to 100 marks', () => {
+  // The invariant that holds across DELF and DALF, at every level, whatever the
+  // shape: four papers of 25 or two of 50, the diploma is out of 100.
+  for (const e of exams.exams) {
+    const ps = e.structure?.papers;
+    if (!ps) continue;
+    for (const [level, list] of Object.entries(ps)) {
+      const marks = list.reduce((a, s) => a + s.marks, 0);
+      assert.equal(marks, 100, `${e.id} ${level} sums to ${marks} marks`);
+    }
+  }
+});
+
 test('the DELF marks sum to 100 and the pass figures are the printed ones', () => {
   const delf = exams.exams.find((e) => e.id === 'delf').structure;
   for (const [level, ps] of Object.entries(delf.papers)) {
     const marks = ps.reduce((a, s) => a + s.marks, 0);
     assert.equal(marks, 100, `${level} papers sum to ${marks} marks`);
     assert.equal(ps.length, 4, `${level} has ${ps.length} papers`);
+    // DELF only. DALF C2 has two papers out of 50 — see the check above.
   }
   assert.match(delf.passing.overall, /50\/100/);
   assert.match(delf.passing.perPaper, /5\/25/);
