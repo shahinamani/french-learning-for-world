@@ -1,6 +1,6 @@
 # Level assignment — all 2,392 verbs
 
-Frequency-assigned levels, for reference. The 168 with
+Frequency-assigned levels, for reference. The 167 with
 evidence that the frequency is misleading are in `levels-priority.md` and are
 the ones worth reading first.
 

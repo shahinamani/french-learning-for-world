@@ -8,7 +8,7 @@ learner is reading literature and writing argumentative essays. « Paumer » is
 level is meaningless** — the case that proves the method rather than an
 exception to it.
 
-2,392 verbs is not a sitting. This sheet is the 168 where
+2,392 verbs is not a sitting. This sheet is the 167 where
 there is evidence the frequency is misleading, in two tiers so you can stop when
 you have had enough. Rank is position among the 2,400 most frequent verbs.
 
@@ -91,13 +91,13 @@ production. Blank means keep.
 | 809 | B1 | `bousiller` | to wreck, smash up (colloquial); to botch, screw up (colloquial); to kill (colloquial);  | informal on its first sense (colloquial) at B1 |  |
 | 869 | B1 | `flinguer` | to gun, to gun down (colloquial); to commit suicide with a gun (colloquial) | informal on its first sense (colloquial) at B1 |  |
 
-## Tier 2 — 134 verbs
+## Tier 2 — 133 verbs
 
 | rank | level | verb | gloss | evidence | ruling |
 |---:|:--|:--|:--|:--|:--|
 | 535 | B1 | `tendre` | to tighten; to stretch out; to hand; to tend | written-skewed 5.5x at B1 |  |
 | 570 | B1 | `songer` | to dream (literary); to think (about), consider (that); to ponder, to imagine, to consid | literary on its first sense (literary) at B1; written-skewed 2.6x at B1 |  |
-| 574 | B1 | `soulever` | to raise, to lift up, to pick up; to stir up (emotions), to rouse (interest); to revolt, | written-skewed 2.9x at B1 |  |
+| 574 | B1 | `soulever` | to raise, to lift up, to pick up; to stir up (emotions), to rouse (interest); to revolt, | written-skewed 2.8x at B1 |  |
 | 578 | B1 | `entourer` | to surround | written-skewed 2.8x at B1 |  |
 | 584 | B1 | `éprouver` | to put to the test, test, try; to feel, experience; to experience, go through | written-skewed 3.4x at B1 |  |
 | 585 | B1 | `enfoncer` | to push in, to press in, to drive in; to break open, to break down; to defeat, to thrash | written-skewed 2.7x at B1 |  |
@@ -211,22 +211,21 @@ production. Blank means keep.
 | 2368 | C2 | `inculper` | to charge | spoken-skewed 3.0x at C2 — commoner in speech than its level says |  |
 | 2374 | C2 | `sous-estimer` | to underestimate; to undervalue | spoken-skewed 3.1x at C2 — commoner in speech than its level says |  |
 | 2375 | C2 | `halluciner` | to hallucinate; to be flabbergasted (informal) | colloquial sense in a verb filed C2 — the « paumer » pattern |  |
-| 2380 | C2 | `relaxer` | to discharge; to relax | spoken-skewed 3.0x at C2 — commoner in speech than its level says |  |
 | 2383 | C2 | `arnaquer` | to swindle, to dupe (informal); to cheat (informal) | informal on its first sense (informal) at C2; spoken-skewed 3.3x at C2 — commoner in speech than its level says |  |
-| 2384 | C2 | `coffrer` | to lock up, to put away or inside; to make formwork | spoken-skewed 3.6x at C2 — commoner in speech than its level says |  |
+| 2384 | C2 | `coffrer` | to lock up, to put away or inside; to make formwork | spoken-skewed 3.7x at C2 — commoner in speech than its level says |  |
 | 2386 | C2 | `planifier` | to plan ahead, to prepare oneself | spoken-skewed 3.8x at C2 — commoner in speech than its level says |  |
 | 2387 | C2 | `connecter` | to connect; to log in, to sign in | spoken-skewed 4.0x at C2 — commoner in speech than its level says |  |
 | 2388 | C2 | `tarer` | to spoil, to tarnish; to tare | spoken-skewed 3.4x at C2 — commoner in speech than its level says |  |
-| 2389 | C2 | `culpabiliser` | to feel guilty; to guilt trip, to make (someone) feel guilty | spoken-skewed 3.3x at C2 — commoner in speech than its level says |  |
+| 2389 | C2 | `culpabiliser` | to feel guilty; to guilt trip, to make (someone) feel guilty | spoken-skewed 3.2x at C2 — commoner in speech than its level says |  |
 | 2390 | C2 | `désactiver` | to disable, to turn off (to deactivate a function of an electronic or mechanical device) | spoken-skewed 3.3x at C2 — commoner in speech than its level says |  |
-| 2391 | C2 | `s'entretuer` | to kill each other | spoken-skewed 3.3x at C2 — commoner in speech than its level says |  |
+| 2391 | C2 | `s'entretuer` | to kill each other | spoken-skewed 3.2x at C2 — commoner in speech than its level says |  |
 | 2392 | C2 | `stresser` | to stress (cause stress to); to become stressed, to stress out | spoken-skewed 4.0x at C2 — commoner in speech than its level says |  |
-| 2393 | C2 | `surfer` | to surf (on a wave); to surf (to browse the internet) | spoken-skewed 4.5x at C2 — commoner in speech than its level says |  |
-| 2394 | C2 | `sécuriser` | to secure; to put at ease | spoken-skewed 3.8x at C2 — commoner in speech than its level says |  |
+| 2393 | C2 | `surfer` | to surf (on a wave); to surf (to browse the internet) | spoken-skewed 4.6x at C2 — commoner in speech than its level says |  |
+| 2394 | C2 | `sécuriser` | to secure; to put at ease | spoken-skewed 3.7x at C2 — commoner in speech than its level says |  |
 | 2395 | C2 | `diplômer` | to graduate, to attribute a diploma to | spoken-skewed 3.3x at C2 — commoner in speech than its level says |  |
 | 2396 | C2 | `jaffer` | — | spoken-skewed 3.8x at C2 — commoner in speech than its level says |  |
 | 2397 | C2 | `harper` | to grasp forcefully | spoken-skewed 4.7x at C2 — commoner in speech than its level says |  |
-| 2398 | C2 | `réessayer` | to retry, to try again | spoken-skewed 3.8x at C2 — commoner in speech than its level says |  |
+| 2398 | C2 | `réessayer` | to retry, to try again | spoken-skewed 4.0x at C2 — commoner in speech than its level says |  |
 | 2399 | C2 | `sous-titrer` | to subtitle | spoken-skewed 4.1x at C2 — commoner in speech than its level says |  |
 | 2400 | C2 | `biper` | to beep, to buzz (contact by phone or by beeper); to bleep out (censor offensive or sens | spoken-skewed 4.4x at C2 — commoner in speech than its level says |  |
 

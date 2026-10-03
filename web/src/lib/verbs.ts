@@ -81,7 +81,12 @@ export type Verb = {
    *  the leading Wiktionary sense, which is a draft and not a reading. */
   registerProvenance: 'teacher' | 'derived' | null;
   /** False where a learner should recognise the verb and not be drilled on
-   *  producing it: familier or argotique at A1 or A2. */
+   *  producing it: `argotique` at any level, `familier` at A1 or A2.
+   *
+   *  A `familier` verb IS produced from B1, with its register shown — the
+   *  A1/A2 block exists so nobody learns « bosser » as if it were
+   *  « travailler », and withholding it later would teach a French nobody
+   *  speaks. */
   produce: boolean;
   /** Set when every sense Wiktionary records is labelled vulgar, so the page can
    *  say why it shows no meaning instead of rendering an empty line that looks

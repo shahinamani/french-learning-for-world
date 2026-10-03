@@ -310,18 +310,16 @@ def main() -> int:
             # pretend otherwise.
             "register": reg,
             "registerProvenance": reg_prov,
-            # Shahin's band rule: a verb marked familier or argotique does not
-            # belong in A1 or A2 PRODUCTION content, whatever its frequency. It
-            # may appear as recognition from B1.
+            # Shahin's band rule, complete as of 2026-10-03:
             #
-            # Scoped to exactly what the rule says. Whether such a verb should
-            # be produced at B1 and above is not settled: the rule names what is
-            # forbidden (A1/A2 production) and what is permitted (recognition
-            # from B1), and is silent on production later. « bosser » is
-            # ordinary spoken French and a B2 learner arguably should produce
-            # it, so that is left alone rather than guessed at.
-            "produce": not (reg in ("familier", "argotique")
-                            and level in ("A1", "A2")),
+            #   familier    not produced at A1 or A2; produced from B1 WITH the
+            #               register shown. The A1/A2 block exists so nobody
+            #               learns « bosser » as if it were « travailler »; by
+            #               B1 a learner can be trusted with the label, and
+            #               withholding it teaches them a French nobody speaks.
+            #   argotique   recognition only, at every level.
+            "produce": not (reg == "argotique"
+                            or (reg == "familier" and level in ("A1", "A2"))),
             # Not a gap: a decision. Null for every verb where it was not taken.
             "glossWithheld": "explicit" if lemma in gloss_withheld else None,
             # The form a learner must learn. Null when the verb is not
@@ -390,7 +388,7 @@ def main() -> int:
         if r: print(f"    {r:<10} {prov:<8} {n}")
     recog = sorted(e["infinitive"] for es in shards.values()
                    for e in es if not e["produce"])
-    print(f"recognition only (familier/argotique at A1 or A2): {len(recog)}"
+    print(f"recognition only (argotique anywhere, familier at A1/A2): {len(recog)}"
           + (" — " + ", ".join(recog) if recog else ""))
     total = 0
     for level, entries in shards.items():
