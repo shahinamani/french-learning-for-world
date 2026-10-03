@@ -536,6 +536,45 @@ And the generally useful habit, which would have caught it in ten seconds:
 main` names the pull requests that actually landed.
 
 
+### 2026-10-03 — a check that restates a number goes stale exactly like a comment
+
+Three verbs left the product today, so 2,392 became 2,389. The browser walk had
+this in it:
+
+```js
+ok('the page states the total',
+   /2392|2,392/.test(await page.locator('[data-testid="verb-count"]').innerText()));
+```
+
+**A correct product would have failed that assertion.** The page would have
+said 2,389, which is right, and the check would have called it a regression.
+
+The lesson already written about a stale comment — the verb index saying "26
+KiB gzipped" when it measured 71 — treated comments as the vulnerable thing and
+checks as the defence. They are the same thing. A literal in an assertion is a
+claim about the world written down at one moment, and the only difference is
+that a wrong comment misleads a reader while a wrong assertion blocks a
+correct change and sends somebody looking for a defect that is not there.
+
+The walk now reads the number instead of restating it:
+
+```js
+const shippedVerbs = await page.evaluate(async () =>
+  (await (await fetch('./content/verbs-index.json')).json()).verbs.length);
+ok(`the total shown is the number actually shipped (${shippedVerbs})`, ...);
+```
+
+That is a weaker assertion — it no longer notices if the content itself loses a
+thousand verbs — and a separate check already covers that (`tests/verbs.test.js`
+requires at least 2,000). **Each check should assert one thing against a source
+of truth, not restate a fact two sources already agree on.**
+
+The general rule, which also covers the index-size guard that says `< 90 KiB`
+rather than `=== 82.5`: **a check may assert a bound, a relationship or an
+invariant. It should not assert a current value, because a current value is
+news and not a rule.**
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

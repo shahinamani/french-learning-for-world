@@ -1,5 +1,5 @@
 /**
- * Verbs, in two pieces, because 2,392 paradigms are not one request.
+ * Verbs, in two pieces, because 2,389 paradigms are not one request.
  *
  * The whole set is 2.87 MiB of JSON. Sending that to open a verb list would be
  * twenty times the entire JavaScript budget, so it is split the way a learner's
@@ -25,7 +25,7 @@
  * Tense names live in `content/tense-names.json`, once, because a tense is
  * called the same thing whatever verb it belongs to. In the old 14-verb file
  * each name was repeated fourteen times; at this size it would have been
- * repeated 2,392 times, and nobody could have reviewed the Arabic.
+ * repeated 2,389 times, and nobody could have reviewed the Arabic.
  */
 import type { Level, Locale } from './types';
 

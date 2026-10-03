@@ -33,10 +33,11 @@ function rows(file) {
     .map((m) => ({ rank: Number(m[1]), level: m[2], verb: m[3] }));
 }
 
-for (const file of ['docs/reviews/levels-priority.md', 'docs/reviews/levels-all.md']) {
+for (const file of ['docs/reviews/levels-priority.md', 'docs/reviews/levels-all.md',
+                    'docs/reviews/pronominal.md']) {
   test(`${file} names verbs that exist, at the level it claims`, () => {
     const rs = rows(file);
-    assert.ok(rs.length > 40, `${file} has ${rs.length} rows — it did not parse`);
+    assert.ok(rs.length >= 40, `${file} has ${rs.length} rows — it did not parse`);
     const wrong = [];
     for (const r of rs) {
       const v = byHeadword.get(r.verb);
@@ -57,6 +58,17 @@ test('levels-all.md covers every verb, so nothing is unreviewable', () => {
   assert.deepEqual(missing.slice(0, 8), [],
     'a verb has no row in any sheet, so no ruling can reach it');
   assert.equal(named.size, verbs.length);
+});
+
+test('the pronominal sheet lists exactly the pronominal verbs', () => {
+  // The sheet has been written by hand three times — 51, then 48, then 44 —
+  // and scripts/pronominal-review.py now generates it. A sheet that disagrees
+  // with the content is a sheet a teacher rules on for nothing.
+  const named = new Set(rows('docs/reviews/pronominal.md').map((r) => r.verb));
+  const actual = verbs.filter((v) => v.pronominal).map((v) => v.headword);
+  assert.deepEqual([...named].sort(), [...actual].sort(),
+    'regenerate with scripts/pronominal-review.py');
+  console.log(`    pronominal.md: ${named.size} verbs`);
 });
 
 test('the priority sheet is a sitting, not a project', () => {

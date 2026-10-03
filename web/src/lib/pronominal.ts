@@ -7,7 +7,7 @@
  * would have written « je souviens » in an exam having learned it from us —
  * the teaching-something-false failure this product is built not to have.
  *
- * Fifty-one of the 2,392 verbs are pronominal-only. Roughly five hundred more
+ * Forty-four of the 2,389 verbs are pronominal-only. Roughly five hundred more
  * have a pronominal sense among others — « trouver » and « se trouver » — and
  * those keep the bare infinitive, because that is correct for them.
  *

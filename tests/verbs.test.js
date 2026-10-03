@@ -1,7 +1,7 @@
 /**
  * The verb content a learner actually loads.
  *
- * Rewritten when the deck went from 14 verbs in one file to 2,392 across an
+ * Rewritten when the deck went from 14 verbs in one file to 2,389 across an
  * index and six level shards. The claims are the same ones the 14-verb version
  * made — every tense has six persons, no form is empty, every concept id is
  * real — which is the point: the shape changed, the guarantees did not.
@@ -132,7 +132,12 @@ test('nothing withheld by the exception list reaches a learner', () => {
   // gésir is conjugated wrongly and découverte is not a verb. Both are named in
   // scripts/conjugation_exceptions.py, and a learner must meet neither.
   const WITHHELD = ['gésir', 'découverte', 'clore', 'choir', 'ouïr', 'seoir',
-                    'faillir', 'défaillir'];
+                    'faillir', 'défaillir',
+                    // Lexique tags these as verbs; 100% of their frequency is
+                    // past participles and no finite form is attested. The
+                    // adjectives « éperdu », « dépourvu », « dénué » are the
+                    // living words.
+                    'éperdre', 'dépourvoir', 'dénuer'];
   const leaked = WITHHELD.filter((w) => index.some((v) => v.infinitive === w)
                                      || all.some((v) => v.infinitive === w));
   assert.deepEqual(leaked, [],

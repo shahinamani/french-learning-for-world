@@ -40,7 +40,7 @@ from conjugation_exceptions import (ALTERNATES, CORPUS_NOISE, DEFECTIVE,   # noq
                                     KNOWN_WRONG, NOT_A_VERB, ORACLES_DISAGREE)
 from harvest_glosses import headword                          # noqa: E402
 from gloss_corrections import (HOMOGRAPH, NOT_PRONOMINAL,     # noqa: E402
-                               TEACHER_GLOSS)
+                               NOT_USED_AS_VERB, TEACHER_GLOSS)
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
@@ -169,7 +169,8 @@ def main() -> int:
     # file invites: the ruling is recorded, the typo is invisible, and everyone
     # believes the correction is live.
     shippable = set(ranked)
-    for name, table in (("TEACHER_GLOSS", TEACHER_GLOSS), ("HOMOGRAPH", HOMOGRAPH)):
+    for name, table in (("TEACHER_GLOSS", TEACHER_GLOSS), ("HOMOGRAPH", HOMOGRAPH),
+                        ("NOT_USED_AS_VERB", NOT_USED_AS_VERB)):
         unknown = sorted(set(table) - shippable)
         if unknown:
             print(f"refusing: {name} names verbs that are not in the content: "
@@ -183,6 +184,11 @@ def main() -> int:
             withheld.append((lemma, "known-wrong")); continue
         if lemma in NOT_A_VERB:
             withheld.append((lemma, "not-a-verb")); continue
+        # A lemma Lexique tags as a verb whose entire frequency is past
+        # participles — the adjective exists and the verb does not. Withheld
+        # for the same reason as « découverte »: there is no verb to teach.
+        if lemma in NOT_USED_AS_VERB:
+            withheld.append((lemma, "not-used-as-a-verb")); continue
         pattern, forms = conjugate(lemma)
         if forms is None:
             withheld.append((lemma, pattern)); continue

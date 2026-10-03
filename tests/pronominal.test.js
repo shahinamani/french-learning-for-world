@@ -41,9 +41,15 @@ test('souvenir is marked, and its headword is « se souvenir »', () => {
   assert.equal(index.find((x) => x.infinitive === 'souvenir').headword, 'se souvenir');
 });
 
-test('the pronominal-only verbs are exactly these 48', () => {
-  // Declared in full, because the list is the claim. It started at 51 from
-  // Wiktionary's labels alone; Shahin's first reading removed three —
+test('the pronominal-only verbs are exactly these 44', () => {
+  // Declared in full, because the list is the claim. 51 from Wiktionary's
+  // labels alone, then 48 after Shahin's first reading, then 44 after his pass
+  // over all of them: « rendormir un enfant », « recoucher un enfant » and
+  // « entrecroiser les doigts » are ordinary transitive French, and « éperdre »
+  // left the product entirely for not being a verb in use. Each removal is in
+  // scripts/gloss_corrections.py with its reason.
+  //
+  // The earlier note, kept because it is still true —
   // « cabrer un avion », « évaporer un liquide », « prostituer son talent »
   // are all ordinary transitive French — and this check is what told me the
   // removal had landed, by failing on the number before I updated it.
@@ -52,12 +58,11 @@ test('the pronominal-only verbs are exactly these 48', () => {
     'absenter', 'accouder', 'agenouiller', 'attabler', 'biler', 'blottir',
     'camer', 'chamailler', 'complaire', 'démener', 'démerder',
     'ébrouer', 'écrier', 'écrouler', 'efforcer', 'élancer', 'emparer',
-    'empiffrer', 'empresser', 'enquérir', 'entraider', 'entrecroiser',
-    'entretuer', 'envoler', 'épanouir', 'éperdre', 'éprendre', 'esclaffer',
+    'empiffrer', 'empresser', 'enquérir', 'entraider', 'entretuer', 'envoler', 'épanouir', 'éprendre', 'esclaffer',
     'évader', 'évanouir', 'extasier', 'fier', 'gourer',
     'insurger', 'lamenter', 'marrer', 'méfier', 'obstiner', 'prosterner',
-    'raviser', 'rebeller', 'recoucher', 'recroqueviller',
-    'rendormir', 'repentir', 'souvenir', 'suicider', 'tapir',
+    'raviser', 'rebeller', 'recroqueviller',
+    'repentir', 'souvenir', 'suicider', 'tapir',
   ];
   const actual = all.filter((v) => v.pronominal).map((v) => v.infinitive)
     .sort((a, b) => a.localeCompare(b, 'fr'));
@@ -108,7 +113,8 @@ test('a teacher\'s gloss replaces Wiktionary\'s, and says so', () => {
   // the « complaire » fault again: Wiktionary's sense ORDER put an archaic or
   // marginal meaning first and the harvest read position as meaning.
   assert.deepEqual(reviewed.sort(), ['cabrer', 'complaire', 'empresser', 'envoler',
-    'gourer', 'prostituer', 'suicider', 'tapir', 'éprendre'].sort());
+    'gourer', 'prostituer', 'suicider', 'tapir', 'éprendre',
+    'démener', 'extasier', 'évanouir', 'ébrouer'].sort());
   // The five, by what was wrong with each.
   const g = (inf) => all.find((v) => v.infinitive === inf).meanings.en;
   assert.match(g('éprendre'), /^to fall in love/, 'Wiktionary led with "to burn"');
@@ -125,6 +131,36 @@ test('a teacher\'s gloss replaces Wiktionary\'s, and says so', () => {
   assert.ok(!/\bwalk\b/.test(g('envoler')),
     `envoler reads "${g('envoler')}" — English slang glossing the figurative sense`);
   console.log(`    ${reviewed.length} of ${all.length} meanings have been read by a teacher`);
+});
+
+test('the four corrections from the full pass are applied', () => {
+  const g = (inf) => all.find((v) => v.infinitive === inf).meanings.en;
+  // Wiktionary had these simply wrong, not merely ordered badly.
+  assert.equal(g('ébrouer'), 'to snort, to shake oneself');
+  assert.ok(!/flap its wings/.test(g('ébrouer')), 'a horse does not flap its wings');
+  assert.match(g('extasier'), /go into raptures/);
+  assert.ok(!/to rave/.test(g('extasier')), '"to rave" misleads in modern English');
+  assert.match(g('démener'), /to struggle, to bustle about/);
+  assert.ok(!/convulse/.test(g('démener')), 'se démener is not a medical event');
+  assert.match(g('évanouir'), /to vanish, to disappear$/);
+  assert.ok(!/especially things \(formal\)/.test(g('évanouir')),
+    'the vanishing sense is ordinary French, not formal');
+});
+
+test('a lemma that is not used as a verb does not ship', () => {
+  // Not "obsolete", which is a judgement — "no finite form is attested in
+  // either corpus", which is a measurement. 100% of the frequency of these
+  // three is the four past-participle agreement forms: « éperdu »,
+  // « dépourvu », « dénué » are the living words and the verbs are not used.
+  for (const inf of ['éperdre', 'dépourvoir', 'dénuer']) {
+    assert.equal(all.find((v) => v.infinitive === inf), undefined,
+      `${inf} is shipped, and the corpus attests nobody using it as a verb`);
+  }
+  // And the one the same measurement flags that we KEEP: « sous-titrer » is
+  // also all-participle, because films are subtitled rather than people
+  // subtitling them, and « ils ont sous-titré le film » is ordinary French.
+  assert.ok(all.find((v) => v.infinitive === 'sous-titrer'),
+    'sous-titrer was dropped — it is a living verb with participle-heavy use');
 });
 
 test('a homograph is named, so two different words are not blurred', () => {

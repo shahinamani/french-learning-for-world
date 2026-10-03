@@ -95,6 +95,27 @@ TEACHER_GLOSS: dict[str, tuple[str, str]] = {
         "Wiktionary's « to commit suicide, to kill oneself, suicide » ends with "
         "a bare noun that got into a verb gloss.",
     ),
+    # Shahin's pass over the 48 pronominal verbs, 2026-10-03.
+    "ébrouer": (
+        "to snort, to shake oneself",
+        "Wiktionary's « to flap its wings » is simply wrong. « S'ébrouer » is a "
+        "horse shaking itself, or a person shaking water off.",
+    ),
+    "extasier": (
+        "to go into raptures, to enthuse (over)",
+        "Wiktionary's « to be in ecstasy; to rave » misleads in modern English: "
+        "« to rave » now reads as ranting, or as a party.",
+    ),
+    "démener": (
+        "to struggle, to bustle about, to exert oneself",
+        "Wiktionary's « to convulse » is wrong. « Se démener » is to throw "
+        "oneself into something, not a medical event.",
+    ),
+    "évanouir": (
+        "to lose consciousness, to faint; to vanish, to disappear",
+        "Wiktionary marks the vanishing sense « especially things (formal) ». It "
+        "is ordinary French, not formal, and the restriction to things is wrong.",
+    ),
     "tapir": (
         "to crouch, to lie low",
         "Wiktionary's only sense is « to hide », which is thin enough to be "
@@ -107,9 +128,37 @@ TEACHER_GLOSS: dict[str, tuple[str, str]] = {
 # ordinary transitive use. Marking these pronominal-only is the MIRROR of the
 # souvenir defect: it teaches that the plain form is wrong, when it is not.
 NOT_PRONOMINAL: dict[str, str] = {
+    "rendormir": "« rendormir un enfant » — to get a child back to sleep. Transitive.",
+    "recoucher": "« recoucher un enfant » — to put a child back to bed. Transitive.",
+    "entrecroiser": "« entrecroiser les doigts » — to interlace one's fingers. Transitive.",
     "cabrer": "« cabrer un avion » — to pull an aircraft's nose up. Transitive.",
     "évaporer": "« évaporer un liquide » — to evaporate a liquid. Transitive.",
     "prostituer": "« prostituer son talent » — to prostitute one's talent. Transitive.",
+}
+
+# **Not obsolete — not used as a verb at all**, which is a measurement rather
+# than a judgement. Shahin asked whether the product should carry obsolete verbs.
+# The answer these three force is narrower and firmer: for each of them, 100% of
+# the corpus frequency is the four past-participle agreement forms, and not one
+# finite form is attested in either Lexique corpus. They are in the frequency
+# list because the ADJECTIVE exists — « éperdu », « dépourvu », « dénué » —
+# and Lexique tags those forms as participles of a verb nobody conjugates.
+#
+# So the test is not "is this verb archaic" but "does the corpus attest anybody
+# using it as a verb". An archaic verb people still write — « ouïr », « seoir »
+# — is withheld elsewhere for being defective, and a literary verb in use gets a
+# register label instead. These three have no verb to teach.
+#
+# `sous-titrer` is the one the same measurement flags and we KEEP: its frequency
+# is also all participle, because films are subtitled rather than people
+# subtitling them, but « ils ont sous-titré le film » is ordinary French. A
+# measurement that cannot tell a dead verb from a participle-heavy living one is
+# a filter for a human to read, not one to apply.
+NOT_USED_AS_VERB: dict[str, str] = {
+    "éperdre": "100% of its frequency is « éperdu/e/s/es » and no finite form is "
+               "attested. The adjective « éperdu » survives; the verb does not.",
+    "dépourvoir": "Same shape: « dépourvu » is the living word, the verb is not used.",
+    "dénuer": "Same shape: « dénué (de) » is the living word.",
 }
 
 # A lemma that is also a common word of another part of speech, where showing

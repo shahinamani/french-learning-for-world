@@ -262,12 +262,20 @@ ok('a concept with no cards yet says so rather than showing a dead button',
 console.log('\n=== verbs, end to end ===');
 await go(page, '/learn/verbs');
 await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
-// 2,392 verbs, shown 60 at a time with the total stated. A wall of rows is not
-// a list, and the count is information rather than something to scroll past.
-ok(`the verb list shows ${await page.locator('[data-testid="verb-list"] a').count()} of 2,392 verbs`,
+// The verb list is shown 60 at a time with the total stated. A wall of rows is
+// not a list. The TOTAL is read from the content rather than written here: this
+// block asserted the literal string "2392" and three verbs were withheld today
+// for not being verbs, so a correct product would have failed a stale
+// assertion. A check that restates a number goes stale exactly like a comment.
+const shippedVerbs = await page.evaluate(async () => {
+  const r = await fetch('./content/verbs-index.json');
+  return (await r.json()).verbs.length;
+});
+ok(`the verb list shows ${await page.locator('[data-testid="verb-list"] a').count()} of ${shippedVerbs} verbs`,
    await page.locator('[data-testid="verb-list"] a').count() === 60);
-ok('the list says how many there are in total',
-   /2392|2,392/.test(await page.locator('[data-testid="verb-count"]').innerText()));
+ok(`the total shown on the page is the number actually shipped (${shippedVerbs})`,
+   new RegExp(`${shippedVerbs}|${shippedVerbs.toLocaleString('en-US')}`)
+     .test(await page.locator('[data-testid="verb-count"]').innerText()));
 // « allons » is not an infinitive and not a meaning, so this exercises the
 // lazily-fetched form index — the capability the split nearly cost.
 await page.fill('[data-testid="verb-search"]', 'allons');
