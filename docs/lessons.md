@@ -446,6 +446,96 @@ a small number and it is the first human review in the product; the point of
 the table is that the next forty-eight have somewhere to land.
 
 
+### 2026-10-03 — a filter you remove has been doing two jobs, and the measurement only counted one
+
+The two-sense cap was measured carefully and removed for good reasons: 767
+verbs were losing a sense that said something the kept ones did not, and the
+losses were core meanings — « porter » with no "to wear", « marcher » with no
+"to work, to function".
+
+Every number in that measurement counted **what the cap was costing**. None of
+them counted **what it was suppressing**. A cap that keeps two senses out of
+five does not discriminate: it withholds the good third sense and the mangled
+fourth one with equal indifference, and removing it admits both.
+
+Found the same hour, by reading 48 lines rather than by any check:
+
+```
+s'envoler  to take off, to take flight; to blow away; to fly (of time);
+           to vanish, disappear, walk (to be stolen) (colloquial)
+```
+
+"Walk (to be stolen)" is English slang glossing a figurative sense. It is
+useless to a learner, it was never visible before, and **it is damage from my
+own change** — not a pre-existing defect the widening revealed.
+
+So I measured the other half. Of the 1,084 senses the budget newly admits,
+**15 are mechanically defective — 1.4%, against 1.0% on the senses already
+shown.** Fifteen bad against 1,069 sound.
+
+**The worry was right in form and wrong in size.** The cap was not sitting on a
+reservoir of rubbish; it was suppressing good and bad at roughly the rate they
+occur. Had the number come back at the one-in-five my reading suggested, the
+budget would have been the wrong fix and a per-sense quality filter the right
+one. I did not know which until I counted, and I had already shipped.
+
+Two things to carry:
+
+* **When you remove a filter, measure what it was holding back as well as what
+  it was costing.** Both halves, before shipping, not after somebody asks.
+* **A biased sample reads as a rate.** My one-in-five came from reading verbs I
+  had already flagged as suspicious. That is not a sample of the population, it
+  is a sample of my suspicions, and quoting it as a rate would have been wrong
+  in exactly the direction that justified more work.
+
+And one about the check itself: my first version of the defect detector flagged
+36 glosses for ending on a connector, and 35 of them were correct — « sentir »
+is "to smell of, taste of", « rentrer » is "to bring in, to get in". A detector
+with a 97% false-positive rate reported 4.8% and the real figure was 1.4%.
+**A measurement is only as honest as its worst check**, and the way to find out
+is to read what it flagged rather than the number it produced.
+
+
+### 2026-10-03 — a pull request whose base is not main can report success and deliver nothing
+
+PR #27 was stacked on PR #26's branch to save a rebuild. The sequence:
+
+```
+08:3x   #26  fix/sense-budget      -> main          MERGED
+08:40   #27  fix/alternates-guards -> fix/sense-budget   MERGED
+```
+
+The second merge is into a branch that had already been merged and was no
+longer going anywhere. GitHub reported #27 as `MERGED`, which is true, and its
+commit reached `main` never. Both of us believed it had landed; the user said
+"#26 and #27 merged" and I agreed.
+
+**Every signal said success.** CI green on #27. The merge UI said merged. The
+branch was deleted. `git log` on the branch showed the commit. The only place
+the truth was visible was `git log main`, which neither of us read, because
+there was no reason to doubt a merge.
+
+It surfaced a day later for an unrelated reason: Shahin asked for a list to be
+printed again, and five glosses in the output still read the way they had read
+before his corrections. **The defect was found by reading the product, not by
+any check** — and what was missing included the corrections themselves and the
+test file meant to guard them.
+
+The general shape: **a success signal that reports on the wrong object.** #27's
+"merged" was accurate about #27 and said nothing about `main`. The same family
+as a comment claiming a size it no longer has, or a build printing "0 withheld"
+from an emptied set — the reading is correct and the thing it refers to is not
+what the reader thinks.
+
+What now stops it: do not stack. Branch from `main`, rebase when `main` moves.
+The saving was one rebuild of a 4 MiB content directory; the cost was a day of
+`main` quietly missing a teacher's corrections.
+
+And the generally useful habit, which would have caught it in ten seconds:
+**after a merge, verify on `main`, not on the branch.** `git log --oneline -5
+main` names the pull requests that actually landed.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0
