@@ -116,6 +116,7 @@ const fr: Dict = {
   mastery_started: 'en cours',
   mastery_weak: 'à retravailler',
   mastery_solid: 'acquis',
+  examStructureUnverified: 'Ce projet n’a pas vérifié la structure de cet examen auprès de son organisme. Ce qui est proposé ici est un entraînement général, non calé sur ses épreuves.',
 };
 
 export default fr;

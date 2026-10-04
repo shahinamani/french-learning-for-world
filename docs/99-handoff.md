@@ -22,6 +22,13 @@
 > taxonomy around it, and the measurement is regenerated on every build into
 > `content/concept-material.json` under `theOneNumber`.
 >
+> **And the number that should govern every content decision from here:
+> 15–25 hours of teacher review for 150 exam items** — six to ten minutes each
+> to check the French, the distractors and the explanation. Drafting them takes
+> an afternoon. Measured on 2026-10-04 by writing eight properly and counting
+> what had NOT been done; see the lessons entry "drafting is minutes; the review
+> that makes it safe to teach is the cost".
+>
 > That is the single most important fact about the state of this work.
 
 

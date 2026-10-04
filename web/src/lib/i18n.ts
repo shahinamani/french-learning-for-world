@@ -116,6 +116,10 @@ const en = {
   mastery_started: 'in progress',
   mastery_weak: 'needs work',
   mastery_solid: 'solid',
+  // An unverified grid is honest; an unmarked claim is not. The portal lists TEF
+  // among the exams it prepares you for and has never checked what the TEF
+  // consists of, so a learner who sees it listed is told.
+  examStructureUnverified: 'This project has not checked this examination’s structure against its examining body. Anything here is general practice, not matched to its papers.',
   notBuilt: 'Not built yet',
   notBuiltBody: 'This section is planned. The shell, search, the side panel and flashcards are complete; the rest follow the same pattern.',
   independence: 'Independent study tool. Not affiliated with any examination body. No certificates are issued.',

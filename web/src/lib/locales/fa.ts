@@ -116,6 +116,7 @@ const fa: Dict = {
   mastery_started: 'در جریان',
   mastery_weak: 'نیاز به کار',
   mastery_solid: 'مسلط',
+  examStructureUnverified: 'این پروژه ساختار این آزمون را با نهاد برگزارکننده‌اش بررسی نکرده است. هر چه این‌جا هست تمرین کلی است و بر پایهٔ برگه‌های آن آزمون تنظیم نشده.',
 };
 
 export default fa;

@@ -67,10 +67,12 @@ export function Learn() {
 
   return (
     <div className="page learn">
-      {/* First entry, before there is anything to lose. */}
-      <DataNotice />
       <aside className="learn__side">
-      {/* One pinned card: what to do now, before anything else. */}
+      {/* One pinned card: what to do now, before anything else. The data notice
+          used to sit above this, so the first thing a learner met on opening the
+          portal was a privacy notice rather than an invitation to study. It is
+          now immediately below — same screen, same first visit, one position
+          later — because what leads should be the thing to do. */}
       <section className="today card card--raised" aria-labelledby="today-h">
         <h1 id="today-h" className="eyebrow">{t('today')}</h1>
         {c === null ? (
@@ -96,6 +98,9 @@ export function Learn() {
           </>
         )}
       </section>
+      {/* Second, not first: before there is anything to lose, and after the
+          reason the learner opened the page. */}
+      <DataNotice />
 
       <section className="learn__weak" aria-labelledby="weak-h">
         <h2 id="weak-h" className="h3">{t('toWorkOn')}</h2>

@@ -674,6 +674,52 @@ See also [[suspect-the-assertion-first]] — the same point at the moment a sing
 failure appears, where this entry is about the habit that prevents the pile.
 
 
+### 2026-10-04 — drafting is minutes; the review that makes it safe to teach is the cost
+
+One B2 grammar concept was costed properly, on Shahin's instruction, to replace
+two people guessing. Eight multiple-choice items on
+`gram.subjunctive.vs-indicative`, written to the standard that nothing false is
+taught: four subjunctive answers and four indicative so the set is not
+guessable, each explanation naming why every distractor is wrong, in three
+languages.
+
+**My wall clock: 291 seconds.** That number is worthless, and the four reasons
+are the finding:
+
+1. **The French was not verified** against a reference grammar or a native
+   speaker. Eight grammatical claims, written from a machine's own knowledge.
+   One — `après que` taking the indicative — is prescriptively right and widely
+   violated in speech, and I hedged it in the explanation. **Nobody has checked
+   the other seven.**
+2. **The Persian is mine and unreviewed.**
+3. **There is no Arabic at all**, in these or in any of the 36 exercises in the
+   product, against a four-language claim.
+4. **I chose eight distinctions I already knew cleanly.** The next 142 include
+   cases where the right answer is contested, and those are the expensive ones.
+
+**So: 15–25 hours of teacher review for 150 items** — six to ten minutes each to
+check the French, the distractors and the explanation — on top of drafting that
+takes an afternoon.
+
+**This is the sentence that should have governed the verb work.** 2,389 verbs
+were conjugated, validated against two corpora, glossed, sharded and shipped,
+and **nine of their 2,375 meanings have been read by a human.** The drafting was
+cheap and done; the review was expensive and skipped, and the project called the
+result finished. 99.8% of every exercise in the product is a verb form, which is
+the same fact from the other end: we built what was cheap to build.
+
+The general rule: **when estimating generated content, estimate the review, not
+the generation.** The generation is the part you can see happening and the part
+that feels like progress. The review is the part that decides whether what you
+made is true.
+
+And the corollary, which is Shahin's: **draft in batches of twenty, not a
+hundred and fifty.** If the first batch shows a systematic fault in how the
+items are written, it is found after twenty. The verb work found its systematic
+faults — the suffix bug, the sense-order fault, the missing pronominal field —
+after two thousand.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

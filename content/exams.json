@@ -1394,9 +1394,15 @@
    ],
    "structure": {
     "verifiedOn": null,
-    "note": "NOT VERIFIED. No structure is recorded, deliberately, rather than a figure nobody has checked."
+    "note": "NOT VERIFIED. The TEF is set by the Chambre de commerce et d'industrie de Paris Île-de-France — a different body from the one behind DELF, DALF and the TCF — so it is a separate source hunt that has not been done. No section, duration, item count or scoring figure is recorded, because none has been checked. ITS VARIANTS (TEF Canada, TEFAQ, TEF Naturalisation, TEF IRN) ARE NOT ENUMERATED HERE EITHER."
    },
-   "preparationOffered": true
+   "preparationOffered": true,
+   "structureUnverifiedWhileOffering": {
+    "claim": "The portal links TEF resources and lists it among the examinations it prepares you for.",
+    "gap": "It holds no verified structure for it: no sections, no durations, no item counts, no scoring.",
+    "shownToLearner": true,
+    "why": "An unverified grid is honest; an unmarked claim is not. A learner who sees TEF listed must be able to see that this project has never checked what the TEF consists of."
+   }
   },
   {
    "id": "tcf-canada",

@@ -116,6 +116,7 @@ const ar: Dict = {
   mastery_started: 'جارٍ',
   mastery_weak: 'يحتاج عملاً',
   mastery_solid: 'متمكّن',
+  examStructureUnverified: 'لم يتحقّق هذا المشروع من بنية هذا الاختبار لدى الجهة المنظِّمة له. ما يُعرض هنا تدريب عام غير مبني على أوراقه.',
 };
 
 export default ar;
