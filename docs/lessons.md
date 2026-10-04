@@ -746,11 +746,22 @@ good enough. So:
   reviewed anything**, and that `data/review-decisions.json` is empty. When that
   fails because a review has happened, the reviewer gets named in the check.
 * Every other test that plants a decision restores both files in a `finally`,
-  so a test cannot leave a verdict behind.
+  so a test cannot leave a verdict behind. `web/e2e/review-tool.mjs`, which
+  drives the tool with a real keyboard, restores `data/review-decisions.json`
+  in a `finally` for the same reason — after it ran, the file had 0 decisions
+  and no item named a reviewer, which is checked rather than assumed.
+
+**And Shahin found the same fault arriving by accident rather than by test.**
+A reviewer pressing keys for two hours will mis-key, and a mistaken `A` records
+an approval **with their name on it** against an item they did not read. The
+`←` key returned to an item but could not change what was recorded for it. Now
+it shows the recorded verdict and its note, `A`/`R`/`S` overwrite it, and `C`
+clears it outright. A tool that can forge by accident is the same tool.
 
 The general shape, which is not about review tools: **a tool that writes
 attribution can forge attribution, and testing it writes real attribution into
-real files.** The test fixture and the production record were the same file.
+real files — in the one project whose central claim is knowing what has been
+checked.** The test fixture and the production record were the same file.
 Anything that records who-did-what needs its test data kept somewhere the record
 is not.
 

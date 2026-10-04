@@ -41,8 +41,32 @@ asserts all of that, and that nothing under `web/src` can call the endpoint.
 | `R` | reject — a reason is required, the tool will not accept it without one |
 | `S` | skip — "not now". The item stays in the queue and nothing is written |
 | `N` | jump to the note field |
-| `←` | back one item |
+| `C` | clear the decision recorded for this item, and stay on it |
+| `←` `→` | move between items |
 | `Esc` | leave the note field |
+
+**`←` can change a decision you already made.** Returning to an item shows what
+you recorded and the note you wrote; `A`, `R` or `S` overwrites it and `C`
+removes it. This exists because pressing keys quickly for two hours means
+mis-keying, and a mistaken `A` records an approval **with your name on it**
+against an item you did not read — which is the forging fault arriving by
+accident instead of by test.
+
+Typing in the note field does not trigger the keys, `Esc` leaves it, and a
+verdict key pressed after the last item does nothing.
+
+### Before a session
+
+```sh
+cd web && npx vite --port 5199 --strictPort &
+node web/e2e/review-tool.mjs
+```
+
+27 checks, driven by a real keyboard in a real browser: every key, the note
+field, the reason-required refusal, overwriting with `←`, clearing with `C`, and
+the batch-done state. It restores the decisions file afterwards. **Run it before
+sitting a session** — the tool was reported working once when the endpoints
+answered curl and every key handler was unobserved.
 
 **Flagged items come first.** Where the writer was unsure, the doubt is shown at
 the top of the item in full, because that is where a reviewer's six minutes are

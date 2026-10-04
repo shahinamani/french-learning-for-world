@@ -67,8 +67,15 @@ export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.ur
           }
         }
         queue.sort((a, b) => Number(Boolean(b.uncertain)) - Number(Boolean(a.uncertain)));
+        // The decisions already recorded, so the screen can show what it is
+        // about to change. A reviewer pressing keys quickly for two hours will
+        // mis-key, and a mistaken approval carries THEIR NAME against an item
+        // they did not read — the forging fault arriving by accident instead of
+        // by test.
+        const recorded = {};
+        for (const d of readDecisions().decisions) recorded[d.itemId] = d;
         res.setHeader('content-type', 'application/json');
-        res.end(JSON.stringify({ queue, decided: decided.size }));
+        res.end(JSON.stringify({ queue, decided: decided.size, recorded }));
       });
 
       server.middlewares.use(`${ENDPOINT}/decide`, (req, res) => {
@@ -78,18 +85,24 @@ export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.ur
         req.on('end', () => {
           try {
             const d = JSON.parse(body);
-            if (!d.itemId || !['approved', 'rejected', 'skipped'].includes(d.verdict)) {
+            // `cleared` removes the record entirely: a mis-key must be
+            // undoable, not merely overwritable with a different verdict.
+            if (!d.itemId || !['approved', 'rejected', 'skipped', 'cleared'].includes(d.verdict)) {
               res.statusCode = 400; res.end(JSON.stringify({ error: 'bad decision' })); return;
             }
             const file = readDecisions();
             // One decision per item: a reviewer who changes their mind replaces
             // the earlier verdict rather than appending a contradiction.
+            const had = file.decisions.some((x) => x.itemId === d.itemId);
             file.decisions = file.decisions.filter((x) => x.itemId !== d.itemId);
-            file.decisions.push({ ...d, at: new Date().toISOString() });
+            if (d.verdict !== 'cleared') {
+              file.decisions.push({ ...d, at: new Date().toISOString() });
+            }
             mkdirSync(dirname(decisionsPath), { recursive: true });
             writeFileSync(decisionsPath, JSON.stringify(file, null, 1) + '\n');
             res.setHeader('content-type', 'application/json');
-            res.end(JSON.stringify({ ok: true, decisions: file.decisions.length }));
+            res.end(JSON.stringify({ ok: true, decisions: file.decisions.length,
+                                     cleared: d.verdict === 'cleared' && had }));
           } catch (e) {
             res.statusCode = 500;
             res.end(JSON.stringify({ error: String(e) }));
@@ -98,7 +111,8 @@ export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.ur
       });
 
       server.middlewares.use(ENDPOINT, (req, res, next) => {
-        if (req.url && req.url !== '/' && req.url !== '') return next();
+        const path = (req.url ?? '/').split('?')[0];
+        if (path !== '/' && path !== '') return next();
         res.setHeader('content-type', 'text/html; charset=utf-8');
         res.end(readFileSync(join(root, 'web/vite-plugins/review.html'), 'utf8'));
       });

@@ -39,6 +39,8 @@
           border-radius:.4rem; padding:.7rem .9rem; margin:0 0 1.25rem; }
   .flag strong { display:block; margin-bottom:.25rem; }
   .gap { color:var(--dim); font-size:.85rem; margin:0 0 1rem; }
+  .recorded { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
+              border-radius:.4rem; padding:.5rem .8rem; margin:0 0 1rem; font-size:.9rem; }
   textarea { width:100%; min-height:4.5rem; font:inherit; padding:.6rem;
              border:1px solid var(--line); border-radius:.4rem; background:transparent; color:inherit; }
   .keys { position:fixed; inset:auto 0 0 0; background:var(--bg); border-top:1px solid var(--line);
@@ -58,16 +60,17 @@
 </main>
 <div class="keys">
   <span><b>A</b> approve</span><span><b>R</b> reject</span><span><b>S</b> skip</span>
-  <span><b>N</b> note</span><span><b>←</b> back</span><span><b>Esc</b> leave the note</span>
+  <span><b>N</b> note</span><span><b>C</b> clear</span>
+  <span><b>←</b> <b>→</b> move</span><span><b>Esc</b> leave the note</span>
 </div>
 <script type="module">
 const REVIEWER = new URLSearchParams(location.search).get('by') || 'Shahin Amani';
 const BATCH = Number(new URLSearchParams(location.search).get('batch') || 20);
 const el = (id) => document.getElementById(id);
-let queue = [], i = 0, decided = 0;
+let queue = [], i = 0, decided = 0, recorded = {};
 
 const r = await fetch('/__review/queue').then((x) => x.json());
-queue = r.queue.slice(0, BATCH); decided = r.decided;
+queue = r.queue.slice(0, BATCH); decided = r.decided; recorded = r.recorded ?? {};
 
 function render() {
   if (i >= queue.length) {
@@ -98,24 +101,37 @@ function render() {
     <p class="expl">${it.explain?.en ?? '(no English explanation)'}</p>
     ${missing.length ? `<p class="gap">No explanation in: ${missing.join(', ')} — ${
       missing.includes('ar') ? 'the Arabic slot is open and will not be machine-filled.' : ''}</p>` : ''}
-    <p class="gap">${it.id} · currently <b>${it.review?.state ?? 'unreviewed'}</b></p>`;
+    <p class="gap">${it.id} · in the content: <b>${it.review?.state ?? 'unreviewed'}</b></p>
+    ${recorded[it.id] ? `<p class="recorded" data-recorded="${recorded[it.id].verdict}">
+        <b>You recorded: ${recorded[it.id].verdict}</b>${
+          recorded[it.id].note ? ` — ${recorded[it.id].note}` : ''}
+        <br><span class="k">A, R or S overwrites it · C clears it</span></p>`
+      : '<p class="gap" data-recorded="none">Nothing recorded for this item yet.</p>'}`;
   el('note').style.display = '';
-  el('note').value = '';
+  // The note of a recorded decision comes back, so a reviewer returning with ←
+  // edits what they wrote rather than retyping it from memory.
+  el('note').value = recorded[it.id]?.note ?? '';
 }
 
-async function decide(verdict) {
+async function decide(verdict, advance = true) {
   const it = queue[i];
   const note = el('note').value.trim() || null;
   if (verdict === 'rejected' && !note) {
     el('note').focus();
     el('note').placeholder = 'A rejection needs a reason — what is wrong with it?';
+    el('note').dataset.refused = 'no-reason';
     return;
   }
   await fetch('/__review/decide', {
     method: 'POST', headers: { 'content-type': 'application/json' },
     body: JSON.stringify({ itemId: it.id, paperId: it.paperId, verdict, note, by: REVIEWER }),
   });
-  decided += 1; i += 1; render();
+  if (verdict === 'cleared') delete recorded[it.id];
+  else recorded[it.id] = { verdict, note, by: REVIEWER };
+  decided = Object.values(recorded).filter((d) => d.verdict !== 'skipped').length;
+  // Clearing does NOT advance: the reviewer cleared it to look at it again.
+  if (advance && verdict !== 'cleared') i += 1;
+  render();
 }
 
 addEventListener('keydown', (e) => {
@@ -124,11 +140,17 @@ addEventListener('keydown', (e) => {
   if (inNote && e.key !== 'Enter') return;
   if (inNote && e.key === 'Enter' && !e.metaKey && !e.ctrlKey) return;
   const k = e.key.toLowerCase();
+  const onItem = i < queue.length;
+  if (!onItem && ['a', 'r', 's', 'c'].includes(k)) { e.preventDefault(); return; }
   if (k === 'a') { e.preventDefault(); decide('approved'); }
   else if (k === 'r') { e.preventDefault(); decide('rejected'); }
   else if (k === 's') { e.preventDefault(); decide('skipped'); }
-  else if (k === 'n') { e.preventDefault(); el('note').focus(); }
+  else if (k === 'n') { e.preventDefault(); if (onItem) el('note').focus(); }
+  else if (k === 'c') { e.preventDefault(); if (recorded[queue[i]?.id]) decide('cleared'); }
+  // Back one item, and the screen then shows what is recorded for it, so
+  // pressing A there is visibly a change rather than a fresh decision.
   else if (e.key === 'ArrowLeft') { e.preventDefault(); if (i > 0) { i -= 1; render(); } }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); if (i < queue.length) { i += 1; render(); } }
 });
 render();
 </script>
