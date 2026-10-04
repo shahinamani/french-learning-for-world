@@ -11,16 +11,35 @@ const SKILLS = ['listening', 'reading', 'writing', 'speaking', 'general'];
 const KINDS = ['exam-body', 'broadcaster', 'institutional', 'open'];
 const all = exams.exams.flatMap((e) => e.resources);
 
-test('the four examinations are present, with unique ids', () => {
-  const codes = exams.exams.map((e) => e.code);
-  assert.deepEqual([...codes].sort(), ['DALF', 'DELF', 'TCF', 'TEF']);
-  assert.equal(new Set(exams.exams.map((e) => e.id)).size, 4);
+/** The exams the portal offers preparation for. A listed-only entry exists so
+ *  the exam is not absent from the portal's claims; it claims nothing itself. */
+const OFFERED = exams.exams.filter((e) => e.preparationOffered);
+
+test('the examinations are present, with unique ids', () => {
+  // Four until 2026-10-04, when the owner ruled that the portal's scope is every
+  // recognised test and that none may be quietly absent. The TCF variants are
+  // LISTED ONLY: no preparation, no levels, no skills, nothing verified. The
+  // guards below apply to the exams the portal actually offers preparation for,
+  // which is what they were always about — until today every exam in the file
+  // was one, so the distinction had never needed stating.
+  const offered = exams.exams.filter((e) => e.preparationOffered).map((e) => e.code);
+  assert.deepEqual([...offered].sort(), ['DALF', 'DELF', 'TCF', 'TEF']);
+  const listed = exams.exams.filter((e) => !e.preparationOffered).map((e) => e.id);
+  assert.deepEqual([...listed].sort(), ['tcf-canada', 'tcf-irn', 'tcf-quebec']);
+  assert.equal(new Set(exams.exams.map((e) => e.id)).size, exams.exams.length);
+  // A listed-only exam must claim nothing, or it is a guess wearing a label.
+  for (const e of exams.exams.filter((x) => !x.preparationOffered)) {
+    assert.ok(!('levels' in e), `${e.id} claims levels`);
+    assert.ok(!('skills' in e), `${e.id} claims skills`);
+    assert.ok(!e.resources.length, `${e.id} claims resources`);
+    assert.match(e.listedOnly, /none has been verified/);
+  }
 });
 
 test('every examination names the body that administers it', () => {
   // Naming the owner is what makes "we are not them" a checkable statement
   // rather than a disclaimer nobody can act on.
-  for (const e of exams.exams) {
+  for (const e of OFFERED) {
     assert.ok(e.owner?.trim(), `${e.code} has no owner`);
     assert.ok(e.fullName?.trim(), `${e.code} has no full name`);
   }
@@ -33,7 +52,7 @@ test('DELF covers A1–B2 and DALF covers C1–C2', () => {
 });
 
 test('every declared level is a real CEFR level', () => {
-  for (const e of exams.exams) {
+  for (const e of OFFERED) {
     for (const lv of e.levels) assert.ok(LEVELS.includes(lv), `${e.code}: ${lv}`);
     assert.ok(e.levels.length > 0, `${e.code} covers no levels`);
   }
@@ -55,7 +74,7 @@ test('every link declares a title, publisher, skill and kind', () => {
 });
 
 test('each examination links to its own body, not only to third parties', () => {
-  for (const e of exams.exams) {
+  for (const e of OFFERED) {
     const own = e.resources.filter((r) => r.kind === 'exam-body');
     assert.ok(own.length >= 1, `${e.code} has no link to the examination body itself`);
   }
@@ -65,7 +84,7 @@ test('each examination offers material for all four tested skills', () => {
   // The examinations test listening, reading, writing and speaking. A portal
   // that only links listening and reading quietly leaves half the exam
   // unprepared for, which is the kind of gap a learner discovers on the day.
-  for (const e of exams.exams) {
+  for (const e of OFFERED) {
     for (const skill of ['listening', 'reading', 'writing', 'speaking']) {
       assert.ok(e.resources.some((r) => r.skill === skill), `${e.code}: nothing for ${skill}`);
     }
@@ -75,7 +94,7 @@ test('each examination offers material for all four tested skills', () => {
 test('the productive skills link to the examination body, not only to free sites', () => {
   // Only the body itself is authoritative about what the written and spoken
   // papers actually ask for.
-  for (const e of exams.exams) {
+  for (const e of OFFERED) {
     for (const skill of ['writing', 'speaking']) {
       assert.ok(e.resources.some((r) => r.skill === skill && r.kind === 'exam-body'),
         `${e.code}: no official source for ${skill}`);
@@ -122,7 +141,7 @@ test('no duplicate link within one skill of one examination', () => {
   // The same page may legitimately appear under two skills — an exam body's
   // page describes both the written and the spoken paper — but listing it
   // twice under the same heading is a mistake.
-  for (const e of exams.exams) {
+  for (const e of OFFERED) {
     for (const skill of new Set(e.resources.map((r) => r.skill))) {
       const urls = e.resources.filter((r) => r.skill === skill).map((r) => r.url);
       assert.equal(new Set(urls).size, urls.length, `${e.code} repeats a link under ${skill}`);
@@ -131,7 +150,7 @@ test('no duplicate link within one skill of one examination', () => {
 });
 
 test('a link listed under two skills says something different each time', () => {
-  for (const e of exams.exams) {
+  for (const e of OFFERED) {
     const byUrl = new Map();
     for (const r of e.resources) {
       if (!byUrl.has(r.url)) byUrl.set(r.url, new Set());

@@ -1,1223 +1,1257 @@
 {
-  "version": 1,
-  "licence": {
-    "name": "Creative Commons Attribution-ShareAlike 4.0 International",
-    "shortName": "CC BY-SA 4.0",
-    "url": "https://creativecommons.org/licenses/by-sa/4.0/"
-  },
-  "note": "EVERY text, question, option and explanation in this file is original work written for this project. No item is taken, adapted or rephrased from a past paper, a preparation textbook, or any other course. Real DELF, DALF, TCF and TEF papers are the copyright of the bodies that administer them and are not reproduced here in any form. What IS taken from those bodies is factual: the name of a paper, its duration, its CEFR level and how it is marked. Facts are not copyrightable. The `official` block on each paper records those facts and where they came from, so a learner knows how this practice differs from the real thing.",
-  "papers": [
-    {
-      "id": "delf-a1-ce",
-      "exam": "delf",
-      "level": "A1",
-      "skill": "reading",
-      "code": "CE",
-      "name": {
-        "en": "DELF A1 — Reading",
-        "fr": "DELF A1 — Compréhension des écrits",
-        "fa": "DELF A1 — درک مطلب نوشتاری",
-        "ar": "DELF A1 — فهم المقروء"
-      },
-      "minutes": 30,
-      "official": {
-        "minutes": 30,
-        "marks": 25,
-        "passNote": {
-          "en": "The real paper is marked out of 25. A candidate needs 50 of 100 overall across the four papers, with at least 5 of 25 on each.",
-          "fr": "L’épreuve réelle est notée sur 25. Il faut 50 sur 100 au total pour les quatre épreuves, avec au moins 5 sur 25 à chacune.",
-          "fa": "برگهٔ واقعی از 25 نمره داده می‌شود. داوطلب برای چهار برگه روی‌هم به 50 از 100 نیاز دارد، و دست‌کم 5 از 25 در هر کدام."
-        },
-        "source": {
-          "en": "France Éducation international, DELF tous publics",
-          "fr": "France Éducation international, DELF tous publics",
-          "fa": "France Éducation international، DELF tous publics"
-        }
-      },
-      "practiceNote": {
-        "en": "8 original questions, not the 4 exercises of a real paper. This is practice on the same skills at the same level, not a mock paper of the same length.",
-        "fr": "8 questions originales, et non les 4 exercices d’une épreuve réelle. C’est un entraînement sur les mêmes compétences au même niveau, pas un examen blanc de la même longueur.",
-        "fa": "8 پرسش اصیل، نه 4 تمرین یک برگهٔ واقعی. این تمرینی است بر همان مهارت‌ها و در همان سطح، نه آزمون آزمایشی به همان درازا."
-      },
-      "items": [
-        {
-          "id": "d-a1-ce-1",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "BOULANGERIE DU PONT\nOuvert du mardi au samedi, de 7 h à 19 h 30.\nFermé le dimanche et le lundi.",
-            "label": {
-              "en": "A sign in a shop window",
-              "fr": "Une affiche dans une vitrine",
-              "fa": "اعلانی در ویترین یک مغازه"
-            }
-          },
-          "prompt": {
-            "en": "The bakery is closed on:",
-            "fr": "La boulangerie est fermée le :",
-            "fa": "نانوایی در چه روزهایی بسته است:"
-          },
-          "options": [
-            {
-              "fr": "lundi seulement"
-            },
-            {
-              "fr": "mardi"
-            },
-            {
-              "fr": "dimanche et lundi"
-            },
-            {
-              "fr": "samedi et dimanche"
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "lex.time",
-            "gram.article.definite"
-          ],
-          "explain": {
-            "en": "The sign says « Fermé le dimanche et le lundi ». Note « le dimanche » with the definite article — in French that means every Sunday, not one particular Sunday.",
-            "fr": "L’affiche dit « Fermé le dimanche et le lundi ». « Le dimanche » avec l’article défini veut dire tous les dimanches.",
-            "fa": "روی اعلان نوشته ⁨« Fermé le dimanche et le lundi »⁩. به ⁨« le dimanche »⁩ با حرف تعریف معیّن توجه کنید — در فرانسه این یعنی همهٔ یکشنبه‌ها، نه یک یکشنبهٔ بخصوص."
-          }
-        },
-        {
-          "id": "d-a1-ce-2",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Salut Léa,\nJe suis à la gare. Mon train arrive à 18 h 15. Tu peux venir me chercher ?\nÀ tout à l’heure,\nSamir",
-            "label": {
-              "en": "A message",
-              "fr": "Un message",
-              "fa": "یک پیام"
-            }
-          },
-          "prompt": {
-            "en": "What does Samir want?",
-            "fr": "Qu’est-ce que Samir veut ?",
-            "fa": "سمیر چه می‌خواهد؟"
-          },
-          "options": [
-            {
-              "fr": "Que Léa prenne le train avec lui."
-            },
-            {
-              "fr": "Que Léa vienne le chercher à la gare."
-            },
-            {
-              "fr": "Que Léa achète un billet."
-            },
-            {
-              "fr": "Que Léa arrive à 18 h 15 chez lui."
-            }
-          ],
-          "answer": 1,
-          "conceptIds": [
-            "gram.question.est-ce-que",
-            "lex.transport",
-            "gram.pronoun.cod"
-          ],
-          "explain": {
-            "en": "« Tu peux venir me chercher ? » — « chercher quelqu’un » here means to collect someone, not to look for them. A common trap for English speakers.",
-            "fr": "« Venir chercher quelqu’un », c’est aller le prendre quelque part, et non le chercher.",
-            "fa": "⁨« Tu peux venir me chercher ? »⁩ — اینجا ⁨« chercher quelqu’un »⁩ یعنی کسی را سوار کردن و بردن، نه دنبال کسی گشتن. دامی رایج برای انگلیسی‌زبان‌ها."
-          }
-        },
-        {
-          "id": "d-a1-ce-3",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Dans mon quartier, il y a une pharmacie, deux cafés et un petit marché le mercredi matin. Il n’y a pas de cinéma.",
-            "label": {
-              "en": "A description",
-              "fr": "Une description",
-              "fa": "یک توصیف"
-            }
-          },
-          "prompt": {
-            "en": "In the neighbourhood there is no:",
-            "fr": "Dans le quartier, il n’y a pas de :",
-            "fa": "در این محله چه چیزی وجود ندارد:"
-          },
-          "options": [
-            {
-              "fr": "café"
-            },
-            {
-              "fr": "marché"
-            },
-            {
-              "fr": "cinéma"
-            },
-            {
-              "fr": "pharmacie"
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "gram.expression.il-y-a",
-            "gram.article.de-negative",
-            "lex.housing"
-          ],
-          "explain": {
-            "en": "« Il n’y a pas de cinéma » — after a negative, « un/une/des » becomes « de ». That change is itself the grammar point being tested.",
-            "fr": "Après une négation, « un cinéma » devient « pas de cinéma ».",
-            "fa": "⁨« Il n’y a pas de cinéma »⁩ — پس از نفی، ⁨« un/une/des »⁩ به ⁨« de »⁩ تبدیل می‌شود. همین تغییر، خودِ نکتهٔ دستوری این پرسش است."
-          }
-        },
-        {
-          "id": "d-a1-ce-4",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "OFFRE D’EMPLOI\nRestaurant cherche serveur ou serveuse.\nExpérience non exigée. Travail le soir.\nÉcrire à : contact@restaurant-exemple.fr",
-            "label": {
-              "en": "A job advertisement",
-              "fr": "Une offre d’emploi",
-              "fa": "یک آگهی استخدام"
-            }
-          },
-          "prompt": {
-            "en": "To apply you must:",
-            "fr": "Pour répondre, il faut :",
-            "fa": "برای درخواست باید:"
-          },
-          "options": [
-            {
-              "fr": "avoir de l’expérience"
-            },
-            {
-              "fr": "téléphoner le matin"
-            },
-            {
-              "fr": "écrire un message"
-            },
-            {
-              "fr": "aller au restaurant le soir"
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "gram.nonfinite.infinitive",
-            "lex.work"
-          ],
-          "explain": {
-            "en": "« Écrire à : … » is an instruction in the infinitive, which is how notices and recipes give orders in French. « Expérience non exigée » rules out option 3.",
-            "fr": "« Écrire à… » : l’infinitif sert à donner une consigne. « Expérience non exigée » élimine la troisième réponse.",
-            "fa": "⁨« Écrire à : … »⁩ دستوری است در مصدر؛ در فرانسه اعلان‌ها و دستور پخت به همین شکل امر می‌دهند. ⁨« Expérience non exigée »⁩ گزینهٔ سوم را رد می‌کند."
-          }
-        },
-        {
-          "id": "d-a1-ce-5",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Chère Madame Roux,\nJe ne peux pas venir au cours de mardi. Je suis malade.\nCordialement,\nAnna Petit",
-            "label": {
-              "en": "An email",
-              "fr": "Un courriel",
-              "fa": "یک ایمیل"
-            }
-          },
-          "prompt": {
-            "en": "Why is Anna writing?",
-            "fr": "Pourquoi Anna écrit-elle ?",
-            "fa": "آنا برای چه می‌نویسد؟"
-          },
-          "options": [
-            {
-              "fr": "Pour changer l’heure du cours."
-            },
-            {
-              "fr": "Pour remercier son professeur."
-            },
-            {
-              "fr": "Pour demander un document."
-            },
-            {
-              "fr": "Pour dire qu’elle sera absente."
-            }
-          ],
-          "answer": 3,
-          "conceptIds": [
-            "gram.negation.ne-pas",
-            "usage.tu-vous",
-            "lex.study"
-          ],
-          "explain": {
-            "en": "« Je ne peux pas venir » is the whole message. Note « Chère Madame » and « Cordialement » — the register is formal, which tells you this is a teacher, not a friend.",
-            "fr": "« Je ne peux pas venir » suffit. « Chère Madame » et « Cordialement » indiquent un registre formel.",
-            "fa": "⁨« Je ne peux pas venir »⁩ تمامِ پیام است. به ⁨« Chère Madame »⁩ و ⁨« Cordialement »⁩ توجه کنید — لحن رسمی است، و همین نشان می‌دهد مخاطب معلم است نه یک دوست."
-          }
-        },
-        {
-          "id": "d-a1-ce-6",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Le musée est ouvert tous les jours sauf le mardi.\nEntrée : 8 €. Gratuit pour les moins de 18 ans.",
-            "label": {
-              "en": "Museum information",
-              "fr": "Informations du musée",
-              "fa": "اطلاعات موزه"
-            }
-          },
-          "prompt": {
-            "en": "A 15-year-old visitor pays:",
-            "fr": "Un visiteur de 15 ans paie :",
-            "fa": "بازدیدکنندهٔ پانزده‌ساله چقدر می‌پردازد:"
-          },
-          "options": [
-            {
-              "fr": "rien"
-            },
-            {
-              "fr": "18 €"
-            },
-            {
-              "fr": "8 €"
-            },
-            {
-              "fr": "4 €"
-            }
-          ],
-          "answer": 0,
-          "conceptIds": [
-            "lex.money",
-            "gram.adjective.comparative",
-            "lex.numbers"
-          ],
-          "explain": {
-            "en": "« Gratuit pour les moins de 18 ans » — a 15-year-old is « moins de 18 ans », so entry is free.",
-            "fr": "« Les moins de 18 ans » : à 15 ans, l’entrée est gratuite.",
-            "fa": "⁨« Gratuit pour les moins de 18 ans »⁩ — کسی که پانزده سال دارد ⁨« moins de 18 ans »⁩ است، پس ورود برای او رایگان است."
-          }
-        },
-        {
-          "id": "d-a1-ce-7",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Je m’appelle Karim. J’habite à Lyon depuis trois ans. Avant, j’habitais au Maroc.",
-            "label": {
-              "en": "Someone introducing themselves",
-              "fr": "Une présentation",
-              "fa": "معرفی خود"
-            }
-          },
-          "prompt": {
-            "en": "Karim lives:",
-            "fr": "Karim habite :",
-            "fa": "کریم کجا زندگی می‌کند:"
-          },
-          "options": [
-            {
-              "fr": "on ne sait pas"
-            },
-            {
-              "fr": "au Maroc"
-            },
-            {
-              "fr": "à Lyon"
-            },
-            {
-              "fr": "à Lyon et au Maroc"
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "gram.present.pronominal",
-            "gram.preposition.countries",
-            "gram.past.imparfait"
-          ],
-          "explain": {
-            "en": "« J’habite à Lyon » is the present; « j’habitais au Maroc » is the imperfect and describes what is no longer true. Note « à Lyon » for a city and « au Maroc » for a masculine country.",
-            "fr": "« J’habite » (présent) contre « j’habitais » (imparfait, ce n’est plus vrai). « À » pour une ville, « au » pour un pays masculin.",
-            "fa": "⁨« J’habite à Lyon »⁩ حال است؛ ⁨« j’habitais au Maroc »⁩ ماضی استمراری است و چیزی را توصیف می‌کند که دیگر درست نیست. به ⁨« à Lyon »⁩ برای شهر و ⁨« au Maroc »⁩ برای کشور مذکر توجه کنید."
-          }
-        },
-        {
-          "id": "d-a1-ce-8",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "ATTENTION\nNe pas ouvrir la fenêtre pendant le trajet.",
-            "label": {
-              "en": "A notice on a coach",
-              "fr": "Un avis dans un car",
-              "fa": "اعلانی در اتوبوس"
-            }
-          },
-          "prompt": {
-            "en": "This notice:",
-            "fr": "Cet avis :",
-            "fa": "این اعلان:"
-          },
-          "options": [
-            {
-              "fr": "explique comment ouvrir la fenêtre"
-            },
-            {
-              "fr": "annonce que la fenêtre est cassée"
-            },
-            {
-              "fr": "interdit d’ouvrir la fenêtre"
-            },
-            {
-              "fr": "demande d’ouvrir la fenêtre"
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "gram.negation.infinitive",
-            "gram.nonfinite.infinitive"
-          ],
-          "explain": {
-            "en": "« Ne pas ouvrir » — with an infinitive, both parts of the negation come together in front of the verb, unlike « je n’ouvre pas ». This is how prohibitions are written on signs.",
-            "fr": "Devant un infinitif, « ne pas » reste groupé : « ne pas ouvrir », et non « n’ouvre pas ».",
-            "fa": "⁨« Ne pas ouvrir »⁩ — با مصدر، هر دو جزء نفی کنار هم و پیش از فعل می‌آیند، برخلاف ⁨« je n’ouvre pas »⁩. نهی روی تابلوها به همین شکل نوشته می‌شود."
-          }
-        }
-      ]
+ "version": 1,
+ "licence": {
+  "name": "Creative Commons Attribution-ShareAlike 4.0 International",
+  "shortName": "CC BY-SA 4.0",
+  "url": "https://creativecommons.org/licenses/by-sa/4.0/"
+ },
+ "note": "EVERY text, question, option and explanation in this file is original work written for this project. No item is taken, adapted or rephrased from a past paper, a preparation textbook, or any other course. Real DELF, DALF, TCF and TEF papers are the copyright of the bodies that administer them and are not reproduced here in any form. What IS taken from those bodies is factual: the name of a paper, its duration, its CEFR level and how it is marked. Facts are not copyrightable. The `official` block on each paper records those facts and where they came from, so a learner knows how this practice differs from the real thing. Every `official` block was checked against a named source on 2026-10-04 and carries a `verified` record; see content/exams.json for the per-exam grids and the sources.",
+ "papers": [
+  {
+   "id": "delf-a1-ce",
+   "exam": "delf",
+   "level": "A1",
+   "skill": "reading",
+   "code": "CE",
+   "name": {
+    "en": "DELF A1 — Reading",
+    "fr": "DELF A1 — Compréhension des écrits",
+    "fa": "DELF A1 — درک مطلب نوشتاری",
+    "ar": "DELF A1 — فهم المقروء"
+   },
+   "minutes": 30,
+   "official": {
+    "minutes": 30,
+    "marks": 25,
+    "passNote": {
+     "en": "The real paper is marked out of 25. A candidate needs 50 of 100 overall across the four papers, with at least 5 of 25 on each.",
+     "fr": "L’épreuve réelle est notée sur 25. Il faut 50 sur 100 au total pour les quatre épreuves, avec au moins 5 sur 25 à chacune.",
+     "fa": "برگهٔ واقعی از 25 نمره داده می‌شود. داوطلب برای چهار برگه روی‌هم به 50 از 100 نیاز دارد، و دست‌کم 5 از 25 در هر کدام."
     },
-    {
-      "id": "delf-a2-ce",
-      "exam": "delf",
-      "level": "A2",
-      "skill": "reading",
-      "code": "CE",
-      "name": {
-        "en": "DELF A2 — Reading",
-        "fr": "DELF A2 — Compréhension des écrits",
-        "fa": "DELF A2 — درک مطلب نوشتاری",
-        "ar": "DELF A2 — فهم المقروء"
-      },
-      "minutes": 30,
-      "official": {
-        "minutes": 30,
-        "marks": 25,
-        "passNote": {
-          "en": "Marked out of 25. 50 of 100 overall is required, with a minimum of 5 of 25 per paper.",
-          "fr": "Notée sur 25. Il faut 50 sur 100 au total, avec un minimum de 5 sur 25 par épreuve.",
-          "fa": "از 25 نمره داده می‌شود. روی‌هم 50 از 100 لازم است، با کمینهٔ 5 از 25 در هر برگه."
-        },
-        "source": {
-          "en": "France Éducation international, DELF tous publics",
-          "fr": "France Éducation international, DELF tous publics",
-          "fa": "France Éducation international، DELF tous publics"
-        }
-      },
-      "practiceNote": {
-        "en": "8 original questions. A real A2 reading paper has four exercises and runs longer.",
-        "fr": "8 questions originales. Une véritable épreuve de compréhension des écrits A2 comporte quatre exercices et dure plus longtemps.",
-        "fa": "8 پرسش اصیل. یک برگهٔ واقعی درک مطلب نوشتاری A2 چهار تمرین دارد و درازتر است."
-      },
-      "items": [
-        {
-          "id": "d-a2-ce-1",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Quand j’étais petite, nous passions tous les étés chez ma grand-mère, en Bretagne. Un jour, j’ai trouvé une vieille boîte dans le grenier.",
-            "label": {
-              "en": "A memory",
-              "fr": "Un souvenir",
-              "fa": "یک خاطره"
-            }
-          },
-          "prompt": {
-            "en": "Why is « passions » in the imperfect and « ai trouvé » in the perfect?",
-            "fr": "Pourquoi « passions » est-il à l’imparfait et « ai trouvé » au passé composé ?",
-            "fa": "چرا ⁨« passions »⁩ ماضی استمراری است و ⁨« ai trouvé »⁩ ماضی نقلی؟"
-          },
-          "options": [
-            {
-              "fr": "« Passions » est plus ancien que « ai trouvé »."
-            },
-            {
-              "fr": "« Ai trouvé » décrit une habitude."
-            },
-            {
-              "fr": "« Passions » décrit une habitude, « ai trouvé » un événement unique."
-            },
-            {
-              "fr": "Les deux sont interchangeables ici."
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "gram.past.pc-vs-imparfait",
-            "gram.past.imparfait"
-          ],
-          "explain": {
-            "en": "The imperfect carries what used to happen repeatedly; the perfect carries the one thing that happened and moved the story on. « Un jour » is the giveaway.",
-            "fr": "L’imparfait pour l’habitude, le passé composé pour l’événement. « Un jour » annonce la rupture.",
-            "fa": "ماضی استمراری آنچه را که به‌تکرار رخ می‌داد می‌رساند؛ ماضی نقلی آن یک اتفاق را که ماجرا را پیش برد. ⁨« Un jour »⁩ نشانهٔ آن است."
-          }
-        },
-        {
-          "id": "d-a2-ce-2",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Tu as vu les clés ? — Oui, je les ai posées sur la table.",
-            "label": {
-              "en": "A short exchange",
-              "fr": "Un échange",
-              "fa": "یک گفت‌وگوی کوتاه"
-            }
-          },
-          "prompt": {
-            "en": "Why « posées » and not « posé »?",
-            "fr": "Pourquoi « posées » et non « posé » ?",
-            "fa": "چرا ⁨« posées »⁩ و نه ⁨« posé »⁩؟"
-          },
-          "options": [
-            {
-              "fr": "Parce que le sujet est « je »."
-            },
-            {
-              "fr": "Parce que le verbe se conjugue avec être."
-            },
-            {
-              "fr": "C’est une faute ; « posé » serait correct."
-            },
-            {
-              "fr": "Le complément « les » (= les clés) est placé avant le verbe."
-            }
-          ],
-          "answer": 3,
-          "conceptIds": [
-            "gram.agreement.avoir-cod",
-            "gram.pronoun.cod"
-          ],
-          "explain": {
-            "en": "With « avoir », the participle agrees with a direct object only when that object comes before the verb. Here « les » stands for « les clés », feminine plural, so « posées ».",
-            "fr": "Avec « avoir », le participe s’accorde avec le COD placé avant : « les » = « les clés », féminin pluriel.",
-            "fa": "با ⁨« avoir »⁩، اسم مفعول تنها وقتی با مفعول بی‌واسطه مطابقت می‌کند که آن مفعول پیش از فعل آمده باشد. اینجا ⁨« les »⁩ جانشین ⁨« les clés »⁩ است، مؤنث و جمع، پس ⁨« posées »⁩."
-          }
-        },
-        {
-          "id": "d-a2-ce-3",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "PETITE ANNONCE\nÉchange appartement à Marseille contre logement à Montréal, en juillet.\nDeux chambres, proche du métro. Animaux acceptés.",
-            "label": {
-              "en": "A classified advertisement",
-              "fr": "Une petite annonce",
-              "fa": "یک آگهی نیازمندی"
-            }
-          },
-          "prompt": {
-            "en": "The person wants to:",
-            "fr": "La personne veut :",
-            "fa": "این شخص چه می‌خواهد:"
-          },
-          "options": [
-            {
-              "fr": "vendre son appartement"
-            },
-            {
-              "fr": "louer une chambre à l’année"
-            },
-            {
-              "fr": "acheter un logement à Montréal"
-            },
-            {
-              "fr": "échanger son logement pendant un mois"
-            }
-          ],
-          "answer": 3,
-          "conceptIds": [
-            "lex.housing",
-            "gram.preposition.time"
-          ],
-          "explain": {
-            "en": "« Échange X contre Y, en juillet » — a swap, for the month of July. Nothing here is sold or rented.",
-            "fr": "« Échange… contre… en juillet » : un échange, pour le mois de juillet.",
-            "fa": "⁨« Échange X contre Y, en juillet »⁩ — یک مبادله، برای ماه ژوئیه. چیزی نه فروخته می‌شود و نه اجاره داده می‌شود."
-          }
-        },
-        {
-          "id": "d-a2-ce-4",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Si tu veux réussir l’examen, il faut que tu révises un peu tous les jours.",
-            "label": {
-              "en": "Advice",
-              "fr": "Un conseil",
-              "fa": "یک توصیه"
-            }
-          },
-          "prompt": {
-            "en": "« Que tu révises » is in the subjunctive because:",
-            "fr": "« Que tu révises » est au subjonctif parce que :",
-            "fa": "⁨« Que tu révises »⁩ التزامی است، چون:"
-          },
-          "options": [
-            {
-              "fr": "c’est une question"
-            },
-            {
-              "fr": "la phrase commence par « si »"
-            },
-            {
-              "fr": "« il faut que » impose le subjonctif"
-            },
-            {
-              "fr": "« réviser » est irrégulier"
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "gram.subjunctive.present",
-            "gram.subjunctive.will",
-            "gram.expression.impersonal"
-          ],
-          "explain": {
-            "en": "« Il faut que » always takes the subjunctive. Note that « si tu veux » does not — « si » never takes the subjunctive in French, which is the mistake this question is built to catch.",
-            "fr": "« Il faut que » entraîne le subjonctif. Après « si », jamais de subjonctif.",
-            "fa": "⁨« Il faut que »⁩ همیشه التزامی می‌گیرد. توجه کنید که ⁨« si tu veux »⁩ چنین نیست — ⁨« si »⁩ در فرانسه هرگز التزامی نمی‌گیرد، و این پرسش برای گرفتن همین اشتباه ساخته شده است."
-          }
-        },
-        {
-          "id": "d-a2-ce-5",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Le train de 8 h 12 est supprimé. Les voyageurs sont priés de prendre le train suivant, à 8 h 47.",
-            "label": {
-              "en": "A station announcement",
-              "fr": "Une annonce en gare",
-              "fa": "اعلام در ایستگاه"
-            }
-          },
-          "prompt": {
-            "en": "Travellers should:",
-            "fr": "Les voyageurs doivent :",
-            "fa": "مسافران باید:"
-          },
-          "options": [
-            {
-              "fr": "quitter la gare"
-            },
-            {
-              "fr": "prendre le train de 8 h 12"
-            },
-            {
-              "fr": "attendre le train de 8 h 47"
-            },
-            {
-              "fr": "demander un remboursement"
-            }
-          ],
-          "answer": 2,
-          "conceptIds": [
-            "gram.passive.formation",
-            "lex.transport"
-          ],
-          "explain": {
-            "en": "« Sont priés de » is a passive and a very common formal way of giving an instruction in public notices. « Supprimé » means cancelled, not delayed.",
-            "fr": "« Sont priés de » : tournure passive et formelle pour donner une consigne. « Supprimé » ne veut pas dire « retardé ».",
-            "fa": "⁨« Sont priés de »⁩ مجهول است و شکلی بسیار رایج و رسمی برای دستور دادن در اعلان‌های عمومی. ⁨« Supprimé »⁩ یعنی لغو شده، نه تأخیرخورده."
-          }
-        },
-        {
-          "id": "d-a2-ce-6",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "J’ai acheté ce manteau hier, mais il est trop petit. Est-ce que je peux l’échanger ?",
-            "label": {
-              "en": "In a shop",
-              "fr": "Dans un magasin",
-              "fa": "در یک مغازه"
-            }
-          },
-          "prompt": {
-            "en": "What does « l’ » stand for?",
-            "fr": "Que remplace « l’ » ?",
-            "fa": "⁨« l’ »⁩ جانشین چیست؟"
-          },
-          "options": [
-            {
-              "fr": "hier"
-            },
-            {
-              "fr": "le manteau"
-            },
-            {
-              "fr": "le magasin"
-            },
-            {
-              "fr": "la taille"
-            }
-          ],
-          "answer": 1,
-          "conceptIds": [
-            "gram.pronoun.cod",
-            "lex.clothing"
-          ],
-          "explain": {
-            "en": "« L’échanger » = « échanger le manteau ». The object pronoun sits in front of the infinitive, not after it.",
-            "fr": "« L’échanger » = « échanger le manteau ». Le pronom se place devant l’infinitif.",
-            "fa": "⁨« L’échanger »⁩ یعنی ⁨« échanger le manteau »⁩. ضمیر مفعولی پیش از مصدر می‌نشیند، نه پس از آن."
-          }
-        },
-        {
-          "id": "d-a2-ce-7",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Nous cherchons des bénévoles pour l’association. Il n’est pas nécessaire d’avoir de l’expérience : nous formons tout le monde.",
-            "label": {
-              "en": "A call for volunteers",
-              "fr": "Un appel à bénévoles",
-              "fa": "فراخوان داوطلب"
-            }
-          },
-          "prompt": {
-            "en": "The association:",
-            "fr": "L’association :",
-            "fa": "این انجمن:"
-          },
-          "options": [
-            {
-              "fr": "accepte les débutants et les forme"
-            },
-            {
-              "fr": "ne cherche plus personne"
-            },
-            {
-              "fr": "demande plusieurs années d’expérience"
-            },
-            {
-              "fr": "propose un emploi payé"
-            }
-          ],
-          "answer": 0,
-          "conceptIds": [
-            "gram.negation.ne-pas",
-            "gram.article.partitive",
-            "lex.work"
-          ],
-          "explain": {
-            "en": "« Il n’est pas nécessaire d’avoir de l’expérience » plus « nous formons tout le monde » — beginners welcome. « Bénévole » means unpaid, which rules out the third option.",
-            "fr": "« Il n’est pas nécessaire… » et « nous formons tout le monde ». « Bénévole » signifie non rémunéré.",
-            "fa": "⁨« Il n’est pas nécessaire d’avoir de l’expérience »⁩ به‌اضافهٔ ⁨« nous formons tout le monde »⁩ — تازه‌کارها پذیرفته می‌شوند. ⁨« Bénévole »⁩ یعنی بدون دستمزد، که گزینهٔ سوم را رد می‌کند."
-          }
-        },
-        {
-          "id": "d-a2-ce-8",
-          "kind": "mcq",
-          "stimulus": {
-            "fr": "Je viens de finir mon stage. Je vais chercher un travail à partir de septembre.",
-            "label": {
-              "en": "A plan",
-              "fr": "Un projet",
-              "fa": "یک برنامه"
-            }
-          },
-          "prompt": {
-            "en": "The internship:",
-            "fr": "Le stage :",
-            "fa": "این کارآموزی:"
-          },
-          "options": [
-            {
-              "fr": "dure encore quelques mois"
-            },
-            {
-              "fr": "va commencer bientôt"
-            },
-            {
-              "fr": "commence en septembre"
-            },
-            {
-              "fr": "est terminé depuis peu"
-            }
-          ],
-          "answer": 3,
-          "conceptIds": [
-            "gram.past.venir-de",
-            "gram.future.proche"
-          ],
-          "explain": {
-            "en": "« Venir de + infinitive » is the recent past — it has just finished. « Aller + infinitive » in the next sentence is the near future. Two tenses built the same way, pointing opposite ways.",
-            "fr": "« Venir de » = passé récent ; « aller + infinitif » = futur proche. Deux structures jumelles, deux directions opposées.",
-            "fa": "⁨« Venir de + infinitif »⁩ گذشتهٔ نزدیک است — تازه تمام شده. ⁨« Aller + infinitif »⁩ در جملهٔ بعد آیندهٔ نزدیک است. دو زمان با ساختی یکسان که به دو سوی مخالف اشاره می‌کنند."
-          }
-        }
-      ]
+    "source": {
+     "en": "France Éducation international, DELF tous publics",
+     "fr": "France Éducation international, DELF tous publics",
+     "fa": "France Éducation international، DELF tous publics"
     },
-    {
-      "id": "tcf-structure",
-      "exam": "tcf",
-      "level": "B1",
-      "skill": "grammar",
-      "code": "SLG",
-      "name": {
-        "en": "TCF — Structure of the language",
-        "fr": "TCF — Structure de la langue",
-        "fa": "TCF — ساختار زبان",
-        "ar": "TCF — بنية اللغة"
-      },
-      "minutes": 20,
-      "official": {
-        "minutes": 20,
-        "marks": 18,
-        "passNote": {
-          "en": "The real paper is 18 multiple-choice questions in 20 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
-          "fr": "L’épreuve réelle compte 18 questions à choix multiple en 20 minutes, du A1 au C2. Elle est notée sur l’échelle de 699 points propre au TCF et donne un niveau du CECR, sans réussite ni échec.",
-          "fa": "برگهٔ واقعی 18 پرسش چندگزینه‌ای در 20 دقیقه دارد، از A1 تا C2. بر پایهٔ مقیاس 699 امتیازی ویژهٔ TCF نمره می‌گیرد و به یک سطح CEFR نگاشته می‌شود، نه قبولی و ردی."
-        },
-        "source": {
-          "en": "France Éducation international, Test de connaissance du français",
-          "fr": "France Éducation international, Test de connaissance du français",
-          "fa": "France Éducation international، Test de connaissance du français"
-        }
-      },
-      "practiceNote": {
-        "en": "12 original questions spanning A1 to B2. A real paper has 18 and reaches C1–C2, which this project has no concepts for yet.",
-        "fr": "12 questions originales, du A1 au B2. Une épreuve réelle en compte 18 et va jusqu’au C1–C2, pour lesquels ce projet n’a pas encore de contenu.",
-        "fa": "12 پرسش اصیل، از A1 تا B2. برگهٔ واقعی 18 پرسش دارد و تا C1–C2 می‌رود، که این پروژه هنوز محتوایی برای آن ندارد."
-      },
-      "items": [
-        {
-          "id": "tcf-s-1",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Elle ___ au bureau à huit heures tous les matins."
-          },
-          "options": [
-            {
-              "fr": "arrives"
-            },
-            {
-              "fr": "arriver"
-            },
-            {
-              "fr": "arrive"
-            },
-            {
-              "fr": "arrivent"
-            }
-          ],
-          "answer": 2,
-          "level": "A1",
-          "conceptIds": [
-            "gram.present.er",
-            "gram.pronoun.subject"
-          ],
-          "explain": {
-            "en": "« Elle » is third person singular, so « arrive ». « Arrives » is second person; « arrivent » is plural.",
-            "fr": "« Elle » : troisième personne du singulier, donc « arrive ».",
-            "fa": "⁨« Elle »⁩ سوم‌شخص مفرد است، پس ⁨« arrive »⁩. ⁨« Arrives »⁩ دوم‌شخص است و ⁨« arrivent »⁩ جمع."
-          }
-        },
-        {
-          "id": "tcf-s-2",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Je n’ai pas ___ argent sur moi."
-          },
-          "options": [
-            {
-              "fr": "de l’"
-            },
-            {
-              "fr": "d’"
-            },
-            {
-              "fr": "un"
-            },
-            {
-              "fr": "l’"
-            }
-          ],
-          "answer": 1,
-          "level": "A1",
-          "conceptIds": [
-            "gram.article.de-negative",
-            "gram.article.partitive"
-          ],
-          "explain": {
-            "en": "After a negative, the partitive « de l’argent » reduces to « d’argent ». This is one of the most common errors at every level.",
-            "fr": "Après une négation, « de l’argent » devient « d’argent ».",
-            "fa": "پس از نفی، حرف تبعیضی ⁨« de l’argent »⁩ به ⁨« d’argent »⁩ کاهش می‌یابد. این یکی از رایج‌ترین خطاها در همهٔ سطح‌هاست."
-          }
-        },
-        {
-          "id": "tcf-s-3",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Nous sommes ___ en retard parce que le métro était bloqué."
-          },
-          "options": [
-            {
-              "fr": "arrivés"
-            },
-            {
-              "fr": "arrivées"
-            },
-            {
-              "fr": "arrivé"
-            },
-            {
-              "fr": "arriver"
-            }
-          ],
-          "answer": 0,
-          "level": "A2",
-          "conceptIds": [
-            "gram.past.pc-etre",
-            "gram.agreement.etre"
-          ],
-          "explain": {
-            "en": "« Arriver » takes « être », so the participle agrees with the subject: « nous » gives « arrivés ». « Arrivées » would need an all-female « nous », which nothing here establishes.",
-            "fr": "« Arriver » se conjugue avec être : accord avec le sujet. « Arrivées » supposerait un « nous » entièrement féminin.",
-            "fa": "⁨« Arriver »⁩ با ⁨« être »⁩ صرف می‌شود، پس اسم مفعول با فاعل مطابقت می‌کند: ⁨« nous »⁩ می‌دهد ⁨« arrivés »⁩. ⁨« Arrivées »⁩ به ⁨« nous »⁩ی تماماً مؤنث نیاز دارد که اینجا چیزی آن را ثابت نمی‌کند."
-          }
-        },
-        {
-          "id": "tcf-s-4",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "C’est le village ___ je suis née."
-          },
-          "options": [
-            {
-              "fr": "qui"
-            },
-            {
-              "fr": "que"
-            },
-            {
-              "fr": "où"
-            },
-            {
-              "fr": "dont"
-            }
-          ],
-          "answer": 2,
-          "level": "B1",
-          "conceptIds": [
-            "gram.pronoun.relative-ou-dont",
-            "gram.pronoun.relative-qui-que"
-          ],
-          "explain": {
-            "en": "« Où » covers place and time. « Que » would need the village to be the direct object of « je suis née », which is impossible — that verb takes no object.",
-            "fr": "« Où » pour le lieu. « Que » exigerait un COD, or « naître » n’en a pas.",
-            "fa": "⁨« Où »⁩ هم مکان را می‌پوشاند و هم زمان را. ⁨« Que »⁩ آنگاه لازم بود که دهکده مفعول بی‌واسطهٔ ⁨« je suis née »⁩ باشد، و این ناممکن است — آن فعل مفعول نمی‌گیرد."
-          }
-        },
-        {
-          "id": "tcf-s-5",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Si j’avais le temps, je ___ plus souvent."
-          },
-          "options": [
-            {
-              "fr": "voyagerai"
-            },
-            {
-              "fr": "voyagerais"
-            },
-            {
-              "fr": "voyagerais pas"
-            },
-            {
-              "fr": "voyageais"
-            }
-          ],
-          "answer": 1,
-          "level": "B1",
-          "conceptIds": [
-            "gram.si.imparfait-conditional",
-            "gram.conditional.present"
-          ],
-          "explain": {
-            "en": "« Si » + imperfect pairs with the present conditional. « Voyagerai » is the future, which would need « si » + present. The two patterns are never mixed.",
-            "fr": "« Si » + imparfait appelle le conditionnel présent. Le futur irait avec « si » + présent.",
-            "fa": "⁨« Si »⁩ + ماضی استمراری با شرطی حال جفت می‌شود. ⁨« Voyagerai »⁩ آینده است و به ⁨« si »⁩ + حال نیاز دارد. این دو الگو هرگز با هم نمی‌آمیزند."
-          }
-        },
-        {
-          "id": "tcf-s-6",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Je doute qu’il ___ raison."
-          },
-          "options": [
-            {
-              "fr": "a"
-            },
-            {
-              "fr": "ait"
-            },
-            {
-              "fr": "aura"
-            },
-            {
-              "fr": "avait"
-            }
-          ],
-          "answer": 1,
-          "level": "B1",
-          "conceptIds": [
-            "gram.subjunctive.doubt",
-            "gram.subjunctive.present"
-          ],
-          "explain": {
-            "en": "Doubt takes the subjunctive: « je doute qu’il ait raison ». Note that « je ne doute pas que » takes the indicative — negating the doubt removes the subjunctive.",
-            "fr": "Le doute entraîne le subjonctif. À l’inverse, « je ne doute pas que » demande l’indicatif.",
-            "fa": "شک التزامی می‌گیرد: ⁨« je doute qu’il ait raison »⁩. توجه کنید که ⁨« je ne doute pas que »⁩ اخباری می‌گیرد — نفیِ شک، التزامی را برمی‌دارد."
-          }
-        },
-        {
-          "id": "tcf-s-7",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Il est parti sans ___ au revoir."
-          },
-          "options": [
-            {
-              "fr": "dire"
-            },
-            {
-              "fr": "dit"
-            },
-            {
-              "fr": "disant"
-            },
-            {
-              "fr": "qu’il dise"
-            }
-          ],
-          "answer": 0,
-          "level": "B1",
-          "conceptIds": [
-            "gram.nonfinite.infinitive",
-            "gram.preposition.verb-a"
-          ],
-          "explain": {
-            "en": "« Sans » is followed by an infinitive, never a gerund. English « without saying » misleads here — « sans disant » is wrong.",
-            "fr": "« Sans » est suivi de l’infinitif. L’anglais « without saying » induit en erreur.",
-            "fa": "پس از ⁨« sans »⁩ مصدر می‌آید، هرگز وجه وصفی. انگلیسیِ ⁨“without saying”⁩ اینجا گمراه‌کننده است — ⁨« sans disant »⁩ نادرست است."
-          }
-        },
-        {
-          "id": "tcf-s-8",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Ce sont les documents ___ j’ai besoin."
-          },
-          "options": [
-            {
-              "fr": "dont"
-            },
-            {
-              "fr": "où"
-            },
-            {
-              "fr": "qui"
-            },
-            {
-              "fr": "que"
-            }
-          ],
-          "answer": 0,
-          "level": "B1",
-          "conceptIds": [
-            "gram.pronoun.relative-ou-dont",
-            "gram.preposition.verb-de"
-          ],
-          "explain": {
-            "en": "« Avoir besoin DE » — the « de » is what forces « dont ». Whenever the verb in the relative clause takes « de », the pronoun is « dont ».",
-            "fr": "« Avoir besoin de » : le « de » impose « dont ».",
-            "fa": "⁨« Avoir besoin DE »⁩ — همین ⁨« de »⁩ است که ⁨« dont »⁩ را الزامی می‌کند. هرگاه فعلِ جملهٔ موصولی ⁨« de »⁩ بگیرد، ضمیر ⁨« dont »⁩ است."
-          }
-        },
-        {
-          "id": "tcf-s-9",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Quand tu ___ à Paris, appelle-moi."
-          },
-          "options": [
-            {
-              "fr": "arrivais"
-            },
-            {
-              "fr": "arriveras"
-            },
-            {
-              "fr": "arriverais"
-            },
-            {
-              "fr": "arrives"
-            }
-          ],
-          "answer": 1,
-          "level": "B1",
-          "conceptIds": [
-            "gram.future.after-quand",
-            "gram.future.simple"
-          ],
-          "explain": {
-            "en": "French puts the future after « quand » when the action is still to come. English uses the present — « when you arrive » — which is exactly why this is tested.",
-            "fr": "Après « quand », le français emploie le futur, là où l’anglais garde le présent.",
-            "fa": "فرانسه پس از ⁨« quand »⁩ آینده می‌آورد، وقتی کار هنوز نیامده است. انگلیسی حال به کار می‌برد — ⁨“when you arrive”⁩ — و دقیقاً به همین دلیل این نکته آزموده می‌شود."
-          }
-        },
-        {
-          "id": "tcf-s-10",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Bien qu’il ___ fatigué, il a terminé le travail."
-          },
-          "options": [
-            {
-              "fr": "soit"
-            },
-            {
-              "fr": "était"
-            },
-            {
-              "fr": "sera"
-            },
-            {
-              "fr": "est"
-            }
-          ],
-          "answer": 0,
-          "level": "B2",
-          "conceptIds": [
-            "gram.subjunctive.conjunctions",
-            "gram.connector.concession"
-          ],
-          "explain": {
-            "en": "« Bien que » always takes the subjunctive. Compare « même si », which takes the indicative and means something slightly different.",
-            "fr": "« Bien que » exige le subjonctif ; « même si » prend l’indicatif.",
-            "fa": "⁨« Bien que »⁩ همیشه التزامی می‌گیرد. با ⁨« même si »⁩ مقایسه کنید که اخباری می‌گیرد و معنایی اندکی متفاوت دارد."
-          }
-        },
-        {
-          "id": "tcf-s-11",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Les mesures ___ le gouvernement a parlé n’ont pas été adoptées."
-          },
-          "options": [
-            {
-              "fr": "que"
-            },
-            {
-              "fr": "dont"
-            },
-            {
-              "fr": "lesquelles"
-            },
-            {
-              "fr": "desquelles"
-            }
-          ],
-          "answer": 1,
-          "level": "B2",
-          "conceptIds": [
-            "gram.pronoun.relative-lequel",
-            "gram.pronoun.relative-ou-dont"
-          ],
-          "explain": {
-            "en": "« Parler DE quelque chose » gives « dont ». « Desquelles » is not wrong in every context but is not used after a bare « de » with a simple antecedent.",
-            "fr": "« Parler de » donne « dont ». « Desquelles » s’emploie après une locution prépositive, pas ici.",
-            "fa": "⁨« Parler DE quelque chose »⁩ به ⁨« dont »⁩ می‌انجامد. ⁨« Desquelles »⁩ در هر بافتی نادرست نیست، اما پس از ⁨« de »⁩ی ساده با مرجعی ساده به کار نمی‌رود."
-          }
-        },
-        {
-          "id": "tcf-s-12",
-          "kind": "cloze",
-          "prompt": {
-            "en": "Choose the right form.",
-            "fr": "Choisissez la forme correcte.",
-            "fa": "شکل درست را انتخاب کنید."
-          },
-          "stimulus": {
-            "fr": "Si elle avait su, elle ___ autrement."
-          },
-          "options": [
-            {
-              "fr": "avait réagi"
-            },
-            {
-              "fr": "aurait réagi"
-            },
-            {
-              "fr": "réagirait"
-            },
-            {
-              "fr": "aura réagi"
-            }
-          ],
-          "answer": 1,
-          "level": "B2",
-          "conceptIds": [
-            "gram.si.pqp-conditional-past",
-            "gram.conditional.past"
-          ],
-          "explain": {
-            "en": "« Si » + pluperfect pairs with the past conditional: something that did not happen. « Réagirait » would be the present conditional, which needs « si » + imperfect.",
-            "fr": "« Si » + plus-que-parfait appelle le conditionnel passé : l’irréel du passé.",
-            "fa": "⁨« Si »⁩ + ماضی بعید با شرطی گذشته جفت می‌شود: چیزی که رخ نداد. ⁨« Réagirait »⁩ شرطی حال است و به ⁨« si »⁩ + ماضی استمراری نیاز دارد."
-          }
-        }
-      ]
+    "verified": {
+     "on": "2026-10-04",
+     "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+     "what": "30 minutes, /25, 4 exercises (6+6+6+7), pass 50/100, minimum 5/25 — all confirmed",
+     "caveat": "Read from an official candidate paper that predates the 2024 reform. The reform replaced open answers with multiple choice in comprehension at A2–B2; no change to durations, marks or pass thresholds has been published that we could find, but THE EXERCISE COUNT IS NOT VERIFIED FOR THE CURRENT FORMAT."
     }
-  ]
+   },
+   "practiceNote": {
+    "en": "8 original questions, not the 4 exercises of a real paper. This is practice on the same skills at the same level, not a mock paper of the same length.",
+    "fr": "8 questions originales, et non les 4 exercices d’une épreuve réelle. C’est un entraînement sur les mêmes compétences au même niveau, pas un examen blanc de la même longueur.",
+    "fa": "8 پرسش اصیل، نه 4 تمرین یک برگهٔ واقعی. این تمرینی است بر همان مهارت‌ها و در همان سطح، نه آزمون آزمایشی به همان درازا."
+   },
+   "items": [
+    {
+     "id": "d-a1-ce-1",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "BOULANGERIE DU PONT\nOuvert du mardi au samedi, de 7 h à 19 h 30.\nFermé le dimanche et le lundi.",
+      "label": {
+       "en": "A sign in a shop window",
+       "fr": "Une affiche dans une vitrine",
+       "fa": "اعلانی در ویترین یک مغازه"
+      }
+     },
+     "prompt": {
+      "en": "The bakery is closed on:",
+      "fr": "La boulangerie est fermée le :",
+      "fa": "نانوایی در چه روزهایی بسته است:"
+     },
+     "options": [
+      {
+       "fr": "lundi seulement"
+      },
+      {
+       "fr": "mardi"
+      },
+      {
+       "fr": "dimanche et lundi"
+      },
+      {
+       "fr": "samedi et dimanche"
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "lex.time",
+      "gram.article.definite"
+     ],
+     "explain": {
+      "en": "The sign says « Fermé le dimanche et le lundi ». Note « le dimanche » with the definite article — in French that means every Sunday, not one particular Sunday.",
+      "fr": "L’affiche dit « Fermé le dimanche et le lundi ». « Le dimanche » avec l’article défini veut dire tous les dimanches.",
+      "fa": "روی اعلان نوشته ⁨« Fermé le dimanche et le lundi »⁩. به ⁨« le dimanche »⁩ با حرف تعریف معیّن توجه کنید — در فرانسه این یعنی همهٔ یکشنبه‌ها، نه یک یکشنبهٔ بخصوص."
+     }
+    },
+    {
+     "id": "d-a1-ce-2",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Salut Léa,\nJe suis à la gare. Mon train arrive à 18 h 15. Tu peux venir me chercher ?\nÀ tout à l’heure,\nSamir",
+      "label": {
+       "en": "A message",
+       "fr": "Un message",
+       "fa": "یک پیام"
+      }
+     },
+     "prompt": {
+      "en": "What does Samir want?",
+      "fr": "Qu’est-ce que Samir veut ?",
+      "fa": "سمیر چه می‌خواهد؟"
+     },
+     "options": [
+      {
+       "fr": "Que Léa prenne le train avec lui."
+      },
+      {
+       "fr": "Que Léa vienne le chercher à la gare."
+      },
+      {
+       "fr": "Que Léa achète un billet."
+      },
+      {
+       "fr": "Que Léa arrive à 18 h 15 chez lui."
+      }
+     ],
+     "answer": 1,
+     "conceptIds": [
+      "gram.question.est-ce-que",
+      "lex.transport",
+      "gram.pronoun.cod"
+     ],
+     "explain": {
+      "en": "« Tu peux venir me chercher ? » — « chercher quelqu’un » here means to collect someone, not to look for them. A common trap for English speakers.",
+      "fr": "« Venir chercher quelqu’un », c’est aller le prendre quelque part, et non le chercher.",
+      "fa": "⁨« Tu peux venir me chercher ? »⁩ — اینجا ⁨« chercher quelqu’un »⁩ یعنی کسی را سوار کردن و بردن، نه دنبال کسی گشتن. دامی رایج برای انگلیسی‌زبان‌ها."
+     }
+    },
+    {
+     "id": "d-a1-ce-3",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Dans mon quartier, il y a une pharmacie, deux cafés et un petit marché le mercredi matin. Il n’y a pas de cinéma.",
+      "label": {
+       "en": "A description",
+       "fr": "Une description",
+       "fa": "یک توصیف"
+      }
+     },
+     "prompt": {
+      "en": "In the neighbourhood there is no:",
+      "fr": "Dans le quartier, il n’y a pas de :",
+      "fa": "در این محله چه چیزی وجود ندارد:"
+     },
+     "options": [
+      {
+       "fr": "café"
+      },
+      {
+       "fr": "marché"
+      },
+      {
+       "fr": "cinéma"
+      },
+      {
+       "fr": "pharmacie"
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "gram.expression.il-y-a",
+      "gram.article.de-negative",
+      "lex.housing"
+     ],
+     "explain": {
+      "en": "« Il n’y a pas de cinéma » — after a negative, « un/une/des » becomes « de ». That change is itself the grammar point being tested.",
+      "fr": "Après une négation, « un cinéma » devient « pas de cinéma ».",
+      "fa": "⁨« Il n’y a pas de cinéma »⁩ — پس از نفی، ⁨« un/une/des »⁩ به ⁨« de »⁩ تبدیل می‌شود. همین تغییر، خودِ نکتهٔ دستوری این پرسش است."
+     }
+    },
+    {
+     "id": "d-a1-ce-4",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "OFFRE D’EMPLOI\nRestaurant cherche serveur ou serveuse.\nExpérience non exigée. Travail le soir.\nÉcrire à : contact@restaurant-exemple.fr",
+      "label": {
+       "en": "A job advertisement",
+       "fr": "Une offre d’emploi",
+       "fa": "یک آگهی استخدام"
+      }
+     },
+     "prompt": {
+      "en": "To apply you must:",
+      "fr": "Pour répondre, il faut :",
+      "fa": "برای درخواست باید:"
+     },
+     "options": [
+      {
+       "fr": "avoir de l’expérience"
+      },
+      {
+       "fr": "téléphoner le matin"
+      },
+      {
+       "fr": "écrire un message"
+      },
+      {
+       "fr": "aller au restaurant le soir"
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "gram.nonfinite.infinitive",
+      "lex.work"
+     ],
+     "explain": {
+      "en": "« Écrire à : … » is an instruction in the infinitive, which is how notices and recipes give orders in French. « Expérience non exigée » rules out option 3.",
+      "fr": "« Écrire à… » : l’infinitif sert à donner une consigne. « Expérience non exigée » élimine la troisième réponse.",
+      "fa": "⁨« Écrire à : … »⁩ دستوری است در مصدر؛ در فرانسه اعلان‌ها و دستور پخت به همین شکل امر می‌دهند. ⁨« Expérience non exigée »⁩ گزینهٔ سوم را رد می‌کند."
+     }
+    },
+    {
+     "id": "d-a1-ce-5",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Chère Madame Roux,\nJe ne peux pas venir au cours de mardi. Je suis malade.\nCordialement,\nAnna Petit",
+      "label": {
+       "en": "An email",
+       "fr": "Un courriel",
+       "fa": "یک ایمیل"
+      }
+     },
+     "prompt": {
+      "en": "Why is Anna writing?",
+      "fr": "Pourquoi Anna écrit-elle ?",
+      "fa": "آنا برای چه می‌نویسد؟"
+     },
+     "options": [
+      {
+       "fr": "Pour changer l’heure du cours."
+      },
+      {
+       "fr": "Pour remercier son professeur."
+      },
+      {
+       "fr": "Pour demander un document."
+      },
+      {
+       "fr": "Pour dire qu’elle sera absente."
+      }
+     ],
+     "answer": 3,
+     "conceptIds": [
+      "gram.negation.ne-pas",
+      "usage.tu-vous",
+      "lex.study"
+     ],
+     "explain": {
+      "en": "« Je ne peux pas venir » is the whole message. Note « Chère Madame » and « Cordialement » — the register is formal, which tells you this is a teacher, not a friend.",
+      "fr": "« Je ne peux pas venir » suffit. « Chère Madame » et « Cordialement » indiquent un registre formel.",
+      "fa": "⁨« Je ne peux pas venir »⁩ تمامِ پیام است. به ⁨« Chère Madame »⁩ و ⁨« Cordialement »⁩ توجه کنید — لحن رسمی است، و همین نشان می‌دهد مخاطب معلم است نه یک دوست."
+     }
+    },
+    {
+     "id": "d-a1-ce-6",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Le musée est ouvert tous les jours sauf le mardi.\nEntrée : 8 €. Gratuit pour les moins de 18 ans.",
+      "label": {
+       "en": "Museum information",
+       "fr": "Informations du musée",
+       "fa": "اطلاعات موزه"
+      }
+     },
+     "prompt": {
+      "en": "A 15-year-old visitor pays:",
+      "fr": "Un visiteur de 15 ans paie :",
+      "fa": "بازدیدکنندهٔ پانزده‌ساله چقدر می‌پردازد:"
+     },
+     "options": [
+      {
+       "fr": "rien"
+      },
+      {
+       "fr": "18 €"
+      },
+      {
+       "fr": "8 €"
+      },
+      {
+       "fr": "4 €"
+      }
+     ],
+     "answer": 0,
+     "conceptIds": [
+      "lex.money",
+      "gram.adjective.comparative",
+      "lex.numbers"
+     ],
+     "explain": {
+      "en": "« Gratuit pour les moins de 18 ans » — a 15-year-old is « moins de 18 ans », so entry is free.",
+      "fr": "« Les moins de 18 ans » : à 15 ans, l’entrée est gratuite.",
+      "fa": "⁨« Gratuit pour les moins de 18 ans »⁩ — کسی که پانزده سال دارد ⁨« moins de 18 ans »⁩ است، پس ورود برای او رایگان است."
+     }
+    },
+    {
+     "id": "d-a1-ce-7",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Je m’appelle Karim. J’habite à Lyon depuis trois ans. Avant, j’habitais au Maroc.",
+      "label": {
+       "en": "Someone introducing themselves",
+       "fr": "Une présentation",
+       "fa": "معرفی خود"
+      }
+     },
+     "prompt": {
+      "en": "Karim lives:",
+      "fr": "Karim habite :",
+      "fa": "کریم کجا زندگی می‌کند:"
+     },
+     "options": [
+      {
+       "fr": "on ne sait pas"
+      },
+      {
+       "fr": "au Maroc"
+      },
+      {
+       "fr": "à Lyon"
+      },
+      {
+       "fr": "à Lyon et au Maroc"
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "gram.present.pronominal",
+      "gram.preposition.countries",
+      "gram.past.imparfait"
+     ],
+     "explain": {
+      "en": "« J’habite à Lyon » is the present; « j’habitais au Maroc » is the imperfect and describes what is no longer true. Note « à Lyon » for a city and « au Maroc » for a masculine country.",
+      "fr": "« J’habite » (présent) contre « j’habitais » (imparfait, ce n’est plus vrai). « À » pour une ville, « au » pour un pays masculin.",
+      "fa": "⁨« J’habite à Lyon »⁩ حال است؛ ⁨« j’habitais au Maroc »⁩ ماضی استمراری است و چیزی را توصیف می‌کند که دیگر درست نیست. به ⁨« à Lyon »⁩ برای شهر و ⁨« au Maroc »⁩ برای کشور مذکر توجه کنید."
+     }
+    },
+    {
+     "id": "d-a1-ce-8",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "ATTENTION\nNe pas ouvrir la fenêtre pendant le trajet.",
+      "label": {
+       "en": "A notice on a coach",
+       "fr": "Un avis dans un car",
+       "fa": "اعلانی در اتوبوس"
+      }
+     },
+     "prompt": {
+      "en": "This notice:",
+      "fr": "Cet avis :",
+      "fa": "این اعلان:"
+     },
+     "options": [
+      {
+       "fr": "explique comment ouvrir la fenêtre"
+      },
+      {
+       "fr": "annonce que la fenêtre est cassée"
+      },
+      {
+       "fr": "interdit d’ouvrir la fenêtre"
+      },
+      {
+       "fr": "demande d’ouvrir la fenêtre"
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "gram.negation.infinitive",
+      "gram.nonfinite.infinitive"
+     ],
+     "explain": {
+      "en": "« Ne pas ouvrir » — with an infinitive, both parts of the negation come together in front of the verb, unlike « je n’ouvre pas ». This is how prohibitions are written on signs.",
+      "fr": "Devant un infinitif, « ne pas » reste groupé : « ne pas ouvrir », et non « n’ouvre pas ».",
+      "fa": "⁨« Ne pas ouvrir »⁩ — با مصدر، هر دو جزء نفی کنار هم و پیش از فعل می‌آیند، برخلاف ⁨« je n’ouvre pas »⁩. نهی روی تابلوها به همین شکل نوشته می‌شود."
+     }
+    }
+   ]
+  },
+  {
+   "id": "delf-a2-ce",
+   "exam": "delf",
+   "level": "A2",
+   "skill": "reading",
+   "code": "CE",
+   "name": {
+    "en": "DELF A2 — Reading",
+    "fr": "DELF A2 — Compréhension des écrits",
+    "fa": "DELF A2 — درک مطلب نوشتاری",
+    "ar": "DELF A2 — فهم المقروء"
+   },
+   "minutes": 30,
+   "official": {
+    "minutes": 30,
+    "marks": 25,
+    "passNote": {
+     "en": "Marked out of 25. 50 of 100 overall is required, with a minimum of 5 of 25 per paper.",
+     "fr": "Notée sur 25. Il faut 50 sur 100 au total, avec un minimum de 5 sur 25 par épreuve.",
+     "fa": "از 25 نمره داده می‌شود. روی‌هم 50 از 100 لازم است، با کمینهٔ 5 از 25 در هر برگه."
+    },
+    "source": {
+     "en": "France Éducation international, DELF tous publics",
+     "fr": "France Éducation international, DELF tous publics",
+     "fa": "France Éducation international، DELF tous publics"
+    },
+    "verified": {
+     "on": "2026-10-04",
+     "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+     "what": "30 minutes, /25, 4 exercises (6+6+6+7), pass 50/100, minimum 5/25 — all confirmed",
+     "caveat": "Read from an official candidate paper that predates the 2024 reform. The reform replaced open answers with multiple choice in comprehension at A2–B2; no change to durations, marks or pass thresholds has been published that we could find, but THE EXERCISE COUNT IS NOT VERIFIED FOR THE CURRENT FORMAT."
+    }
+   },
+   "practiceNote": {
+    "en": "8 original questions. A real A2 reading paper has four exercises and runs longer.",
+    "fr": "8 questions originales. Une véritable épreuve de compréhension des écrits A2 comporte quatre exercices et dure plus longtemps.",
+    "fa": "8 پرسش اصیل. یک برگهٔ واقعی درک مطلب نوشتاری A2 چهار تمرین دارد و درازتر است."
+   },
+   "items": [
+    {
+     "id": "d-a2-ce-1",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Quand j’étais petite, nous passions tous les étés chez ma grand-mère, en Bretagne. Un jour, j’ai trouvé une vieille boîte dans le grenier.",
+      "label": {
+       "en": "A memory",
+       "fr": "Un souvenir",
+       "fa": "یک خاطره"
+      }
+     },
+     "prompt": {
+      "en": "Why is « passions » in the imperfect and « ai trouvé » in the perfect?",
+      "fr": "Pourquoi « passions » est-il à l’imparfait et « ai trouvé » au passé composé ?",
+      "fa": "چرا ⁨« passions »⁩ ماضی استمراری است و ⁨« ai trouvé »⁩ ماضی نقلی؟"
+     },
+     "options": [
+      {
+       "fr": "« Passions » est plus ancien que « ai trouvé »."
+      },
+      {
+       "fr": "« Ai trouvé » décrit une habitude."
+      },
+      {
+       "fr": "« Passions » décrit une habitude, « ai trouvé » un événement unique."
+      },
+      {
+       "fr": "Les deux sont interchangeables ici."
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "gram.past.pc-vs-imparfait",
+      "gram.past.imparfait"
+     ],
+     "explain": {
+      "en": "The imperfect carries what used to happen repeatedly; the perfect carries the one thing that happened and moved the story on. « Un jour » is the giveaway.",
+      "fr": "L’imparfait pour l’habitude, le passé composé pour l’événement. « Un jour » annonce la rupture.",
+      "fa": "ماضی استمراری آنچه را که به‌تکرار رخ می‌داد می‌رساند؛ ماضی نقلی آن یک اتفاق را که ماجرا را پیش برد. ⁨« Un jour »⁩ نشانهٔ آن است."
+     }
+    },
+    {
+     "id": "d-a2-ce-2",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Tu as vu les clés ? — Oui, je les ai posées sur la table.",
+      "label": {
+       "en": "A short exchange",
+       "fr": "Un échange",
+       "fa": "یک گفت‌وگوی کوتاه"
+      }
+     },
+     "prompt": {
+      "en": "Why « posées » and not « posé »?",
+      "fr": "Pourquoi « posées » et non « posé » ?",
+      "fa": "چرا ⁨« posées »⁩ و نه ⁨« posé »⁩؟"
+     },
+     "options": [
+      {
+       "fr": "Parce que le sujet est « je »."
+      },
+      {
+       "fr": "Parce que le verbe se conjugue avec être."
+      },
+      {
+       "fr": "C’est une faute ; « posé » serait correct."
+      },
+      {
+       "fr": "Le complément « les » (= les clés) est placé avant le verbe."
+      }
+     ],
+     "answer": 3,
+     "conceptIds": [
+      "gram.agreement.avoir-cod",
+      "gram.pronoun.cod"
+     ],
+     "explain": {
+      "en": "With « avoir », the participle agrees with a direct object only when that object comes before the verb. Here « les » stands for « les clés », feminine plural, so « posées ».",
+      "fr": "Avec « avoir », le participe s’accorde avec le COD placé avant : « les » = « les clés », féminin pluriel.",
+      "fa": "با ⁨« avoir »⁩، اسم مفعول تنها وقتی با مفعول بی‌واسطه مطابقت می‌کند که آن مفعول پیش از فعل آمده باشد. اینجا ⁨« les »⁩ جانشین ⁨« les clés »⁩ است، مؤنث و جمع، پس ⁨« posées »⁩."
+     }
+    },
+    {
+     "id": "d-a2-ce-3",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "PETITE ANNONCE\nÉchange appartement à Marseille contre logement à Montréal, en juillet.\nDeux chambres, proche du métro. Animaux acceptés.",
+      "label": {
+       "en": "A classified advertisement",
+       "fr": "Une petite annonce",
+       "fa": "یک آگهی نیازمندی"
+      }
+     },
+     "prompt": {
+      "en": "The person wants to:",
+      "fr": "La personne veut :",
+      "fa": "این شخص چه می‌خواهد:"
+     },
+     "options": [
+      {
+       "fr": "vendre son appartement"
+      },
+      {
+       "fr": "louer une chambre à l’année"
+      },
+      {
+       "fr": "acheter un logement à Montréal"
+      },
+      {
+       "fr": "échanger son logement pendant un mois"
+      }
+     ],
+     "answer": 3,
+     "conceptIds": [
+      "lex.housing",
+      "gram.preposition.time"
+     ],
+     "explain": {
+      "en": "« Échange X contre Y, en juillet » — a swap, for the month of July. Nothing here is sold or rented.",
+      "fr": "« Échange… contre… en juillet » : un échange, pour le mois de juillet.",
+      "fa": "⁨« Échange X contre Y, en juillet »⁩ — یک مبادله، برای ماه ژوئیه. چیزی نه فروخته می‌شود و نه اجاره داده می‌شود."
+     }
+    },
+    {
+     "id": "d-a2-ce-4",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Si tu veux réussir l’examen, il faut que tu révises un peu tous les jours.",
+      "label": {
+       "en": "Advice",
+       "fr": "Un conseil",
+       "fa": "یک توصیه"
+      }
+     },
+     "prompt": {
+      "en": "« Que tu révises » is in the subjunctive because:",
+      "fr": "« Que tu révises » est au subjonctif parce que :",
+      "fa": "⁨« Que tu révises »⁩ التزامی است، چون:"
+     },
+     "options": [
+      {
+       "fr": "c’est une question"
+      },
+      {
+       "fr": "la phrase commence par « si »"
+      },
+      {
+       "fr": "« il faut que » impose le subjonctif"
+      },
+      {
+       "fr": "« réviser » est irrégulier"
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "gram.subjunctive.present",
+      "gram.subjunctive.will",
+      "gram.expression.impersonal"
+     ],
+     "explain": {
+      "en": "« Il faut que » always takes the subjunctive. Note that « si tu veux » does not — « si » never takes the subjunctive in French, which is the mistake this question is built to catch.",
+      "fr": "« Il faut que » entraîne le subjonctif. Après « si », jamais de subjonctif.",
+      "fa": "⁨« Il faut que »⁩ همیشه التزامی می‌گیرد. توجه کنید که ⁨« si tu veux »⁩ چنین نیست — ⁨« si »⁩ در فرانسه هرگز التزامی نمی‌گیرد، و این پرسش برای گرفتن همین اشتباه ساخته شده است."
+     }
+    },
+    {
+     "id": "d-a2-ce-5",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Le train de 8 h 12 est supprimé. Les voyageurs sont priés de prendre le train suivant, à 8 h 47.",
+      "label": {
+       "en": "A station announcement",
+       "fr": "Une annonce en gare",
+       "fa": "اعلام در ایستگاه"
+      }
+     },
+     "prompt": {
+      "en": "Travellers should:",
+      "fr": "Les voyageurs doivent :",
+      "fa": "مسافران باید:"
+     },
+     "options": [
+      {
+       "fr": "quitter la gare"
+      },
+      {
+       "fr": "prendre le train de 8 h 12"
+      },
+      {
+       "fr": "attendre le train de 8 h 47"
+      },
+      {
+       "fr": "demander un remboursement"
+      }
+     ],
+     "answer": 2,
+     "conceptIds": [
+      "gram.passive.formation",
+      "lex.transport"
+     ],
+     "explain": {
+      "en": "« Sont priés de » is a passive and a very common formal way of giving an instruction in public notices. « Supprimé » means cancelled, not delayed.",
+      "fr": "« Sont priés de » : tournure passive et formelle pour donner une consigne. « Supprimé » ne veut pas dire « retardé ».",
+      "fa": "⁨« Sont priés de »⁩ مجهول است و شکلی بسیار رایج و رسمی برای دستور دادن در اعلان‌های عمومی. ⁨« Supprimé »⁩ یعنی لغو شده، نه تأخیرخورده."
+     }
+    },
+    {
+     "id": "d-a2-ce-6",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "J’ai acheté ce manteau hier, mais il est trop petit. Est-ce que je peux l’échanger ?",
+      "label": {
+       "en": "In a shop",
+       "fr": "Dans un magasin",
+       "fa": "در یک مغازه"
+      }
+     },
+     "prompt": {
+      "en": "What does « l’ » stand for?",
+      "fr": "Que remplace « l’ » ?",
+      "fa": "⁨« l’ »⁩ جانشین چیست؟"
+     },
+     "options": [
+      {
+       "fr": "hier"
+      },
+      {
+       "fr": "le manteau"
+      },
+      {
+       "fr": "le magasin"
+      },
+      {
+       "fr": "la taille"
+      }
+     ],
+     "answer": 1,
+     "conceptIds": [
+      "gram.pronoun.cod",
+      "lex.clothing"
+     ],
+     "explain": {
+      "en": "« L’échanger » = « échanger le manteau ». The object pronoun sits in front of the infinitive, not after it.",
+      "fr": "« L’échanger » = « échanger le manteau ». Le pronom se place devant l’infinitif.",
+      "fa": "⁨« L’échanger »⁩ یعنی ⁨« échanger le manteau »⁩. ضمیر مفعولی پیش از مصدر می‌نشیند، نه پس از آن."
+     }
+    },
+    {
+     "id": "d-a2-ce-7",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Nous cherchons des bénévoles pour l’association. Il n’est pas nécessaire d’avoir de l’expérience : nous formons tout le monde.",
+      "label": {
+       "en": "A call for volunteers",
+       "fr": "Un appel à bénévoles",
+       "fa": "فراخوان داوطلب"
+      }
+     },
+     "prompt": {
+      "en": "The association:",
+      "fr": "L’association :",
+      "fa": "این انجمن:"
+     },
+     "options": [
+      {
+       "fr": "accepte les débutants et les forme"
+      },
+      {
+       "fr": "ne cherche plus personne"
+      },
+      {
+       "fr": "demande plusieurs années d’expérience"
+      },
+      {
+       "fr": "propose un emploi payé"
+      }
+     ],
+     "answer": 0,
+     "conceptIds": [
+      "gram.negation.ne-pas",
+      "gram.article.partitive",
+      "lex.work"
+     ],
+     "explain": {
+      "en": "« Il n’est pas nécessaire d’avoir de l’expérience » plus « nous formons tout le monde » — beginners welcome. « Bénévole » means unpaid, which rules out the third option.",
+      "fr": "« Il n’est pas nécessaire… » et « nous formons tout le monde ». « Bénévole » signifie non rémunéré.",
+      "fa": "⁨« Il n’est pas nécessaire d’avoir de l’expérience »⁩ به‌اضافهٔ ⁨« nous formons tout le monde »⁩ — تازه‌کارها پذیرفته می‌شوند. ⁨« Bénévole »⁩ یعنی بدون دستمزد، که گزینهٔ سوم را رد می‌کند."
+     }
+    },
+    {
+     "id": "d-a2-ce-8",
+     "kind": "mcq",
+     "stimulus": {
+      "fr": "Je viens de finir mon stage. Je vais chercher un travail à partir de septembre.",
+      "label": {
+       "en": "A plan",
+       "fr": "Un projet",
+       "fa": "یک برنامه"
+      }
+     },
+     "prompt": {
+      "en": "The internship:",
+      "fr": "Le stage :",
+      "fa": "این کارآموزی:"
+     },
+     "options": [
+      {
+       "fr": "dure encore quelques mois"
+      },
+      {
+       "fr": "va commencer bientôt"
+      },
+      {
+       "fr": "commence en septembre"
+      },
+      {
+       "fr": "est terminé depuis peu"
+      }
+     ],
+     "answer": 3,
+     "conceptIds": [
+      "gram.past.venir-de",
+      "gram.future.proche"
+     ],
+     "explain": {
+      "en": "« Venir de + infinitive » is the recent past — it has just finished. « Aller + infinitive » in the next sentence is the near future. Two tenses built the same way, pointing opposite ways.",
+      "fr": "« Venir de » = passé récent ; « aller + infinitif » = futur proche. Deux structures jumelles, deux directions opposées.",
+      "fa": "⁨« Venir de + infinitif »⁩ گذشتهٔ نزدیک است — تازه تمام شده. ⁨« Aller + infinitif »⁩ در جملهٔ بعد آیندهٔ نزدیک است. دو زمان با ساختی یکسان که به دو سوی مخالف اشاره می‌کنند."
+     }
+    }
+   ]
+  },
+  {
+   "id": "tcf-structure",
+   "exam": "tcf",
+   "level": "B1",
+   "skill": "grammar",
+   "code": "SLG",
+   "name": {
+    "en": "TCF — Structure of the language",
+    "fr": "TCF — Structure de la langue",
+    "fa": "TCF — ساختار زبان",
+    "ar": "TCF — بنية اللغة"
+   },
+   "minutes": 8,
+   "official": {
+    "minutes": 15,
+    "marks": 18,
+    "passNote": {
+     "en": "The real paper is 18 multiple-choice questions in 15 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
+     "fr": "L’épreuve réelle compte 18 questions à choix multiple en 15 minutes, du A1 au C2. Elle est notée sur l’échelle de 699 points propre au TCF et donne un niveau du CECRL plutôt qu’une réussite ou un échec.",
+     "fa": "برگهٔ واقعی 18 پرسش چندگزینه‌ای در 15 دقیقه است، از A1 تا C2. نمره بر پایهٔ مقیاس 699 امتیازی خودِ TCF داده می‌شود و به سطح CEFR نگاشته می‌شود، نه قبولی یا ردی."
+    },
+    "source": {
+     "en": "France Éducation international, Test de connaissance du français",
+     "fr": "France Éducation international, Test de connaissance du français",
+     "fa": "France Éducation international، Test de connaissance du français"
+    },
+    "verified": {
+     "on": "2026-10-04",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public?langue=fr",
+     "what": "18 scored multiple-choice questions in 15 minutes on paper; 23 presented in the same 15 minutes on computer, of which 18 are scored",
+     "correction": "This field said 20 minutes until 2026-10-04 and had never been checked against any source. The real paper is 15 minutes. The file's own figures were also internally inconsistent: 25 + 20 + 45 is 90 minutes against the 1 h 25 the exam body states for the three compulsory papers.",
+     "readBy": "the project owner, in a browser. The exam body's site refuses automated clients and the agent could not read it first-hand."
+    },
+    "forms": {
+     "paper": {
+      "items": 18,
+      "minutes": 15,
+      "secondsPerItem": 50
+     },
+     "computer": {
+      "itemsPresented": 23,
+      "scored": 18,
+      "minutes": 15,
+      "secondsPerItem": 39,
+      "note": "Five extra items that do not count toward the score. Same 15 minutes."
+     },
+     "weSimulate": "computer"
+    }
+   },
+   "practiceNote": {
+    "en": "12 original questions spanning A1 to B2, in 8 minutes. A real paper has 18 scored questions in 15 minutes — and on computer, 23 questions in the same 15 minutes, five of which are not scored. YOU DO NOT CHOOSE THE FORM; THE CENTRE DOES. So the time here is set to the faster of the two, 39 seconds a question, because a candidate trained to the slower pace would be unprepared for the other. The real paper also reaches C1–C2, which this project has no concepts for yet.",
+    "fr": "12 questions originales du A1 au B2, en 8 minutes. L’épreuve réelle compte 18 questions notées en 15 minutes — et sur ordinateur, 23 questions dans les mêmes 15 minutes, dont cinq ne comptent pas. VOUS NE CHOISISSEZ PAS LA FORME : C’EST LE CENTRE QUI DÉCIDE. Le temps est donc réglé sur la plus rapide des deux, 39 secondes par question, car s’entraîner au rythme plus lent laisserait mal préparé à l’autre. L’épreuve réelle va aussi jusqu’au C1–C2, niveaux pour lesquels ce projet n’a pas encore de notions.",
+    "fa": "12 پرسش اصیل، از A1 تا B2. برگهٔ واقعی 18 پرسش دارد و تا C1–C2 می‌رود، که این پروژه هنوز محتوایی برای آن ندارد."
+   },
+   "items": [
+    {
+     "id": "tcf-s-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Elle ___ au bureau à huit heures tous les matins."
+     },
+     "options": [
+      {
+       "fr": "arrives"
+      },
+      {
+       "fr": "arriver"
+      },
+      {
+       "fr": "arrive"
+      },
+      {
+       "fr": "arrivent"
+      }
+     ],
+     "answer": 2,
+     "level": "A1",
+     "conceptIds": [
+      "gram.present.er",
+      "gram.pronoun.subject"
+     ],
+     "explain": {
+      "en": "« Elle » is third person singular, so « arrive ». « Arrives » is second person; « arrivent » is plural.",
+      "fr": "« Elle » : troisième personne du singulier, donc « arrive ».",
+      "fa": "⁨« Elle »⁩ سوم‌شخص مفرد است، پس ⁨« arrive »⁩. ⁨« Arrives »⁩ دوم‌شخص است و ⁨« arrivent »⁩ جمع."
+     }
+    },
+    {
+     "id": "tcf-s-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Je n’ai pas ___ argent sur moi."
+     },
+     "options": [
+      {
+       "fr": "de l’"
+      },
+      {
+       "fr": "d’"
+      },
+      {
+       "fr": "un"
+      },
+      {
+       "fr": "l’"
+      }
+     ],
+     "answer": 1,
+     "level": "A1",
+     "conceptIds": [
+      "gram.article.de-negative",
+      "gram.article.partitive"
+     ],
+     "explain": {
+      "en": "After a negative, the partitive « de l’argent » reduces to « d’argent ». This is one of the most common errors at every level.",
+      "fr": "Après une négation, « de l’argent » devient « d’argent ».",
+      "fa": "پس از نفی، حرف تبعیضی ⁨« de l’argent »⁩ به ⁨« d’argent »⁩ کاهش می‌یابد. این یکی از رایج‌ترین خطاها در همهٔ سطح‌هاست."
+     }
+    },
+    {
+     "id": "tcf-s-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Nous sommes ___ en retard parce que le métro était bloqué."
+     },
+     "options": [
+      {
+       "fr": "arrivés"
+      },
+      {
+       "fr": "arrivées"
+      },
+      {
+       "fr": "arrivé"
+      },
+      {
+       "fr": "arriver"
+      }
+     ],
+     "answer": 0,
+     "level": "A2",
+     "conceptIds": [
+      "gram.past.pc-etre",
+      "gram.agreement.etre"
+     ],
+     "explain": {
+      "en": "« Arriver » takes « être », so the participle agrees with the subject: « nous » gives « arrivés ». « Arrivées » would need an all-female « nous », which nothing here establishes.",
+      "fr": "« Arriver » se conjugue avec être : accord avec le sujet. « Arrivées » supposerait un « nous » entièrement féminin.",
+      "fa": "⁨« Arriver »⁩ با ⁨« être »⁩ صرف می‌شود، پس اسم مفعول با فاعل مطابقت می‌کند: ⁨« nous »⁩ می‌دهد ⁨« arrivés »⁩. ⁨« Arrivées »⁩ به ⁨« nous »⁩ی تماماً مؤنث نیاز دارد که اینجا چیزی آن را ثابت نمی‌کند."
+     }
+    },
+    {
+     "id": "tcf-s-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "C’est le village ___ je suis née."
+     },
+     "options": [
+      {
+       "fr": "qui"
+      },
+      {
+       "fr": "que"
+      },
+      {
+       "fr": "où"
+      },
+      {
+       "fr": "dont"
+      }
+     ],
+     "answer": 2,
+     "level": "B1",
+     "conceptIds": [
+      "gram.pronoun.relative-ou-dont",
+      "gram.pronoun.relative-qui-que"
+     ],
+     "explain": {
+      "en": "« Où » covers place and time. « Que » would need the village to be the direct object of « je suis née », which is impossible — that verb takes no object.",
+      "fr": "« Où » pour le lieu. « Que » exigerait un COD, or « naître » n’en a pas.",
+      "fa": "⁨« Où »⁩ هم مکان را می‌پوشاند و هم زمان را. ⁨« Que »⁩ آنگاه لازم بود که دهکده مفعول بی‌واسطهٔ ⁨« je suis née »⁩ باشد، و این ناممکن است — آن فعل مفعول نمی‌گیرد."
+     }
+    },
+    {
+     "id": "tcf-s-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Si j’avais le temps, je ___ plus souvent."
+     },
+     "options": [
+      {
+       "fr": "voyagerai"
+      },
+      {
+       "fr": "voyagerais"
+      },
+      {
+       "fr": "voyagerais pas"
+      },
+      {
+       "fr": "voyageais"
+      }
+     ],
+     "answer": 1,
+     "level": "B1",
+     "conceptIds": [
+      "gram.si.imparfait-conditional",
+      "gram.conditional.present"
+     ],
+     "explain": {
+      "en": "« Si » + imperfect pairs with the present conditional. « Voyagerai » is the future, which would need « si » + present. The two patterns are never mixed.",
+      "fr": "« Si » + imparfait appelle le conditionnel présent. Le futur irait avec « si » + présent.",
+      "fa": "⁨« Si »⁩ + ماضی استمراری با شرطی حال جفت می‌شود. ⁨« Voyagerai »⁩ آینده است و به ⁨« si »⁩ + حال نیاز دارد. این دو الگو هرگز با هم نمی‌آمیزند."
+     }
+    },
+    {
+     "id": "tcf-s-6",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Je doute qu’il ___ raison."
+     },
+     "options": [
+      {
+       "fr": "a"
+      },
+      {
+       "fr": "ait"
+      },
+      {
+       "fr": "aura"
+      },
+      {
+       "fr": "avait"
+      }
+     ],
+     "answer": 1,
+     "level": "B1",
+     "conceptIds": [
+      "gram.subjunctive.doubt",
+      "gram.subjunctive.present"
+     ],
+     "explain": {
+      "en": "Doubt takes the subjunctive: « je doute qu’il ait raison ». Note that « je ne doute pas que » takes the indicative — negating the doubt removes the subjunctive.",
+      "fr": "Le doute entraîne le subjonctif. À l’inverse, « je ne doute pas que » demande l’indicatif.",
+      "fa": "شک التزامی می‌گیرد: ⁨« je doute qu’il ait raison »⁩. توجه کنید که ⁨« je ne doute pas que »⁩ اخباری می‌گیرد — نفیِ شک، التزامی را برمی‌دارد."
+     }
+    },
+    {
+     "id": "tcf-s-7",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Il est parti sans ___ au revoir."
+     },
+     "options": [
+      {
+       "fr": "dire"
+      },
+      {
+       "fr": "dit"
+      },
+      {
+       "fr": "disant"
+      },
+      {
+       "fr": "qu’il dise"
+      }
+     ],
+     "answer": 0,
+     "level": "B1",
+     "conceptIds": [
+      "gram.nonfinite.infinitive",
+      "gram.preposition.verb-a"
+     ],
+     "explain": {
+      "en": "« Sans » is followed by an infinitive, never a gerund. English « without saying » misleads here — « sans disant » is wrong.",
+      "fr": "« Sans » est suivi de l’infinitif. L’anglais « without saying » induit en erreur.",
+      "fa": "پس از ⁨« sans »⁩ مصدر می‌آید، هرگز وجه وصفی. انگلیسیِ ⁨“without saying”⁩ اینجا گمراه‌کننده است — ⁨« sans disant »⁩ نادرست است."
+     }
+    },
+    {
+     "id": "tcf-s-8",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Ce sont les documents ___ j’ai besoin."
+     },
+     "options": [
+      {
+       "fr": "dont"
+      },
+      {
+       "fr": "où"
+      },
+      {
+       "fr": "qui"
+      },
+      {
+       "fr": "que"
+      }
+     ],
+     "answer": 0,
+     "level": "B1",
+     "conceptIds": [
+      "gram.pronoun.relative-ou-dont",
+      "gram.preposition.verb-de"
+     ],
+     "explain": {
+      "en": "« Avoir besoin DE » — the « de » is what forces « dont ». Whenever the verb in the relative clause takes « de », the pronoun is « dont ».",
+      "fr": "« Avoir besoin de » : le « de » impose « dont ».",
+      "fa": "⁨« Avoir besoin DE »⁩ — همین ⁨« de »⁩ است که ⁨« dont »⁩ را الزامی می‌کند. هرگاه فعلِ جملهٔ موصولی ⁨« de »⁩ بگیرد، ضمیر ⁨« dont »⁩ است."
+     }
+    },
+    {
+     "id": "tcf-s-9",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Quand tu ___ à Paris, appelle-moi."
+     },
+     "options": [
+      {
+       "fr": "arrivais"
+      },
+      {
+       "fr": "arriveras"
+      },
+      {
+       "fr": "arriverais"
+      },
+      {
+       "fr": "arrives"
+      }
+     ],
+     "answer": 1,
+     "level": "B1",
+     "conceptIds": [
+      "gram.future.after-quand",
+      "gram.future.simple"
+     ],
+     "explain": {
+      "en": "French puts the future after « quand » when the action is still to come. English uses the present — « when you arrive » — which is exactly why this is tested.",
+      "fr": "Après « quand », le français emploie le futur, là où l’anglais garde le présent.",
+      "fa": "فرانسه پس از ⁨« quand »⁩ آینده می‌آورد، وقتی کار هنوز نیامده است. انگلیسی حال به کار می‌برد — ⁨“when you arrive”⁩ — و دقیقاً به همین دلیل این نکته آزموده می‌شود."
+     }
+    },
+    {
+     "id": "tcf-s-10",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Bien qu’il ___ fatigué, il a terminé le travail."
+     },
+     "options": [
+      {
+       "fr": "soit"
+      },
+      {
+       "fr": "était"
+      },
+      {
+       "fr": "sera"
+      },
+      {
+       "fr": "est"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.conjunctions",
+      "gram.connector.concession"
+     ],
+     "explain": {
+      "en": "« Bien que » always takes the subjunctive. Compare « même si », which takes the indicative and means something slightly different.",
+      "fr": "« Bien que » exige le subjonctif ; « même si » prend l’indicatif.",
+      "fa": "⁨« Bien que »⁩ همیشه التزامی می‌گیرد. با ⁨« même si »⁩ مقایسه کنید که اخباری می‌گیرد و معنایی اندکی متفاوت دارد."
+     }
+    },
+    {
+     "id": "tcf-s-11",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Les mesures ___ le gouvernement a parlé n’ont pas été adoptées."
+     },
+     "options": [
+      {
+       "fr": "que"
+      },
+      {
+       "fr": "dont"
+      },
+      {
+       "fr": "lesquelles"
+      },
+      {
+       "fr": "desquelles"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.pronoun.relative-lequel",
+      "gram.pronoun.relative-ou-dont"
+     ],
+     "explain": {
+      "en": "« Parler DE quelque chose » gives « dont ». « Desquelles » is not wrong in every context but is not used after a bare « de » with a simple antecedent.",
+      "fr": "« Parler de » donne « dont ». « Desquelles » s’emploie après une locution prépositive, pas ici.",
+      "fa": "⁨« Parler DE quelque chose »⁩ به ⁨« dont »⁩ می‌انجامد. ⁨« Desquelles »⁩ در هر بافتی نادرست نیست، اما پس از ⁨« de »⁩ی ساده با مرجعی ساده به کار نمی‌رود."
+     }
+    },
+    {
+     "id": "tcf-s-12",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید."
+     },
+     "stimulus": {
+      "fr": "Si elle avait su, elle ___ autrement."
+     },
+     "options": [
+      {
+       "fr": "avait réagi"
+      },
+      {
+       "fr": "aurait réagi"
+      },
+      {
+       "fr": "réagirait"
+      },
+      {
+       "fr": "aura réagi"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.si.pqp-conditional-past",
+      "gram.conditional.past"
+     ],
+     "explain": {
+      "en": "« Si » + pluperfect pairs with the past conditional: something that did not happen. « Réagirait » would be the present conditional, which needs « si » + imperfect.",
+      "fr": "« Si » + plus-que-parfait appelle le conditionnel passé : l’irréel du passé.",
+      "fa": "⁨« Si »⁩ + ماضی بعید با شرطی گذشته جفت می‌شود: چیزی که رخ نداد. ⁨« Réagirait »⁩ شرطی حال است و به ⁨« si »⁩ + ماضی استمراری نیاز دارد."
+     }
+    }
+   ]
+  }
+ ]
 }

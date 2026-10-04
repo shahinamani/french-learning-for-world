@@ -1,845 +1,1446 @@
 {
-  "version": 1,
-  "checkedOn": null,
-  "disclaimer": "This portal is independent of every organisation named here. Exam names are trademarks of their owners and are used only to describe what learners are preparing for. Links lead to those organisations’ own websites; no material from them is copied, hosted or reproduced here. Always confirm exam format, dates and fees on the exam body’s own page — it is the only authoritative source.",
-  "exams": [
+ "version": 1,
+ "checkedOn": "2026-10-04",
+ "disclaimer": "This portal is independent of every organisation named here. Exam names are trademarks of their owners and are used only to describe what learners are preparing for. Links lead to those organisations’ own websites; no material from them is copied, hosted or reproduced here. Always confirm exam format, dates and fees on the exam body’s own page — it is the only authoritative source.",
+ "exams": [
+  {
+   "id": "delf",
+   "code": "DELF",
+   "fullName": "Diplôme d’études en langue française",
+   "owner": "France Éducation international",
+   "ownerNote": "Diploma issued by the French Ministry of National Education, administered by France Éducation international.",
+   "levels": [
+    "A1",
+    "A2",
+    "B1",
+    "B2"
+   ],
+   "skills": [
+    "listening",
+    "reading",
+    "writing",
+    "speaking"
+   ],
+   "resources": [
     {
-      "id": "delf",
-      "code": "DELF",
-      "fullName": "Diplôme d’études en langue française",
-      "owner": "France Éducation international",
-      "ownerNote": "Diploma issued by the French Ministry of National Education, administered by France Éducation international.",
-      "levels": [
-        "A1",
-        "A2",
-        "B1",
-        "B2"
-      ],
-      "skills": [
-        "listening",
-        "reading",
-        "writing",
-        "speaking"
-      ],
-      "resources": [
-        {
-          "title": "DELF tous publics — page officielle",
-          "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Diplômes et tests — France Éducation international",
-          "url": "https://www.france-education-international.fr/diplomes-et-tests",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "DELF Prim / DELF junior et scolaire",
-          "url": "https://www.france-education-international.fr/diplomes-tests/delf-junior-scolaire",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre le français",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1",
-            "A2",
-            "B1",
-            "B2",
-            "C1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A2"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B2"
-          ]
-        },
-        {
-          "title": "RFI — Français facile",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — podcasts et journaux en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Podcast Français Facile",
-          "url": "https://www.podcastfrancaisfacile.com/",
-          "skill": "listening",
-          "kind": "open",
-          "publisher": "Podcast Français Facile",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — articles en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/",
-          "skill": "reading",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Wikisource en français (domaine public)",
-          "url": "https://fr.wikisource.org/",
-          "skill": "reading",
-          "kind": "open",
-          "publisher": "Wikimedia",
-          "lang": "fr",
-          "levels": [
-            "B2",
-            "C1",
-            "C2"
-          ]
-        },
-        {
-          "title": "Institut français",
-          "url": "https://www.institutfrancais.com/",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Institut français",
-          "lang": "fr"
-        },
-        {
-          "title": "Cadre européen commun de référence (CECRL)",
-          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Conseil de l’Europe",
-          "lang": "en"
-        },
-        {
-          "title": "DELF — épreuves et exemples de sujets : production écrite",
-          "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
-          "skill": "writing",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — répertoire d’exercices de français",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "writing",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "writing",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr"
-        },
-        {
-          "title": "DELF — épreuves et exemples de sujets : production orale",
-          "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
-          "skill": "speaking",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — compréhension et expression orales",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "speaking",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI Français facile — écouter et répéter au quotidien",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "speaking",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        }
-      ]
+     "title": "DELF tous publics — page officielle",
+     "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
     },
     {
-      "id": "dalf",
-      "code": "DALF",
-      "fullName": "Diplôme approfondi de langue française",
-      "owner": "France Éducation international",
-      "ownerNote": "Diploma issued by the French Ministry of National Education, administered by France Éducation international.",
-      "levels": [
-        "C1",
-        "C2"
-      ],
-      "skills": [
-        "listening",
-        "reading",
-        "writing",
-        "speaking"
-      ],
-      "resources": [
-        {
-          "title": "DALF tous publics — page officielle",
-          "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Diplômes et tests — France Éducation international",
-          "url": "https://www.france-education-international.fr/diplomes-et-tests",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre le français",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1",
-            "A2",
-            "B1",
-            "B2",
-            "C1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A2"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B2"
-          ]
-        },
-        {
-          "title": "RFI — Français facile",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — podcasts et journaux en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Podcast Français Facile",
-          "url": "https://www.podcastfrancaisfacile.com/",
-          "skill": "listening",
-          "kind": "open",
-          "publisher": "Podcast Français Facile",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — articles en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/",
-          "skill": "reading",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Wikisource en français (domaine public)",
-          "url": "https://fr.wikisource.org/",
-          "skill": "reading",
-          "kind": "open",
-          "publisher": "Wikimedia",
-          "lang": "fr",
-          "levels": [
-            "B2",
-            "C1",
-            "C2"
-          ]
-        },
-        {
-          "title": "Institut français",
-          "url": "https://www.institutfrancais.com/",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Institut français",
-          "lang": "fr"
-        },
-        {
-          "title": "Cadre européen commun de référence (CECRL)",
-          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Conseil de l’Europe",
-          "lang": "en"
-        },
-        {
-          "title": "DALF — épreuves et exemples de sujets : production écrite",
-          "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
-          "skill": "writing",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — répertoire d’exercices de français",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "writing",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "writing",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr"
-        },
-        {
-          "title": "DALF — épreuves et exemples de sujets : production orale",
-          "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
-          "skill": "speaking",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — compréhension et expression orales",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "speaking",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI Français facile — écouter et répéter au quotidien",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "speaking",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        }
-      ]
+     "title": "Diplômes et tests — France Éducation international",
+     "url": "https://www.france-education-international.fr/diplomes-et-tests",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
     },
     {
-      "id": "tcf",
-      "code": "TCF",
-      "fullName": "Test de connaissance du français",
-      "owner": "France Éducation international",
-      "ownerNote": "Test administered by France Éducation international. Variants include TCF Tout Public, TCF Canada, TCF Québec, TCF IRN and TCF ANF.",
-      "levels": [
-        "A1",
-        "A2",
-        "B1",
-        "B2",
-        "C1",
-        "C2"
-      ],
-      "skills": [
-        "listening",
-        "reading",
-        "writing",
-        "speaking"
-      ],
-      "resources": [
-        {
-          "title": "TCF tout public — page officielle",
-          "url": "https://www.france-education-international.fr/test/tcf-tout-public",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "TCF Canada — page officielle",
-          "url": "https://www.france-education-international.fr/test/tcf-canada",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "TCF Québec — page officielle",
-          "url": "https://www.france-education-international.fr/test/tcf-quebec",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre le français",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1",
-            "A2",
-            "B1",
-            "B2",
-            "C1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A2"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B2"
-          ]
-        },
-        {
-          "title": "RFI — Français facile",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — podcasts et journaux en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Podcast Français Facile",
-          "url": "https://www.podcastfrancaisfacile.com/",
-          "skill": "listening",
-          "kind": "open",
-          "publisher": "Podcast Français Facile",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — articles en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/",
-          "skill": "reading",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Wikisource en français (domaine public)",
-          "url": "https://fr.wikisource.org/",
-          "skill": "reading",
-          "kind": "open",
-          "publisher": "Wikimedia",
-          "lang": "fr",
-          "levels": [
-            "B2",
-            "C1",
-            "C2"
-          ]
-        },
-        {
-          "title": "Institut français",
-          "url": "https://www.institutfrancais.com/",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Institut français",
-          "lang": "fr"
-        },
-        {
-          "title": "Cadre européen commun de référence (CECRL)",
-          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Conseil de l’Europe",
-          "lang": "en"
-        },
-        {
-          "title": "TCF — épreuves et exemples de sujets : production écrite",
-          "url": "https://www.france-education-international.fr/test/tcf-tout-public",
-          "skill": "writing",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — répertoire d’exercices de français",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "writing",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "writing",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr"
-        },
-        {
-          "title": "TCF — épreuves et exemples de sujets : production orale",
-          "url": "https://www.france-education-international.fr/test/tcf-tout-public",
-          "skill": "speaking",
-          "kind": "exam-body",
-          "publisher": "France Éducation international",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — compréhension et expression orales",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "speaking",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI Français facile — écouter et répéter au quotidien",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "speaking",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        }
-      ]
+     "title": "DELF Prim / DELF junior et scolaire",
+     "url": "https://www.france-education-international.fr/diplomes-tests/delf-junior-scolaire",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
     },
     {
-      "id": "tef",
-      "code": "TEF",
-      "fullName": "Test d’évaluation de français",
-      "owner": "Le français des affaires — CCI Paris Île-de-France",
-      "ownerNote": "Test administered by Le français des affaires, part of the Chambre de commerce et d’industrie de Paris Île-de-France. Variants include TEF Canada, TEFAQ, TEF Naturalisation and TEF Études.",
-      "levels": [
-        "A1",
-        "A2",
-        "B1",
-        "B2",
-        "C1",
-        "C2"
-      ],
-      "skills": [
-        "listening",
-        "reading",
-        "writing",
-        "speaking"
-      ],
-      "resources": [
-        {
-          "title": "TEF — page officielle",
-          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "Le français des affaires — CCI Paris Île-de-France",
-          "lang": "fr"
-        },
-        {
-          "title": "Le français des affaires — tests et diplômes",
-          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/",
-          "skill": "general",
-          "kind": "exam-body",
-          "publisher": "Le français des affaires — CCI Paris Île-de-France",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre le français",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1",
-            "A2",
-            "B1",
-            "B2",
-            "C1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau A2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "A2"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B1",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B1"
-          ]
-        },
-        {
-          "title": "TV5MONDE — exercices niveau B2",
-          "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr",
-          "levels": [
-            "B2"
-          ]
-        },
-        {
-          "title": "RFI — Français facile",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — podcasts et journaux en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
-          "skill": "listening",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Podcast Français Facile",
-          "url": "https://www.podcastfrancaisfacile.com/",
-          "skill": "listening",
-          "kind": "open",
-          "publisher": "Podcast Français Facile",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI — articles en français facile",
-          "url": "https://francaisfacile.rfi.fr/fr/",
-          "skill": "reading",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        },
-        {
-          "title": "Wikisource en français (domaine public)",
-          "url": "https://fr.wikisource.org/",
-          "skill": "reading",
-          "kind": "open",
-          "publisher": "Wikimedia",
-          "lang": "fr",
-          "levels": [
-            "B2",
-            "C1",
-            "C2"
-          ]
-        },
-        {
-          "title": "Institut français",
-          "url": "https://www.institutfrancais.com/",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Institut français",
-          "lang": "fr"
-        },
-        {
-          "title": "Cadre européen commun de référence (CECRL)",
-          "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
-          "skill": "general",
-          "kind": "institutional",
-          "publisher": "Conseil de l’Europe",
-          "lang": "en"
-        },
-        {
-          "title": "TEF — épreuves et exemples de sujets : production écrite",
-          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
-          "skill": "writing",
-          "kind": "exam-body",
-          "publisher": "Le français des affaires — CCI Paris Île-de-France",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — répertoire d’exercices de français",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "writing",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "TV5MONDE Apprendre — exercices d’expression écrite",
-          "url": "https://apprendre.tv5monde.com/",
-          "skill": "writing",
-          "kind": "broadcaster",
-          "publisher": "TV5MONDE",
-          "lang": "fr"
-        },
-        {
-          "title": "TEF — épreuves et exemples de sujets : production orale",
-          "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
-          "skill": "speaking",
-          "kind": "exam-body",
-          "publisher": "Le français des affaires — CCI Paris Île-de-France",
-          "lang": "fr"
-        },
-        {
-          "title": "Le Point du FLE — compréhension et expression orales",
-          "url": "https://www.lepointdufle.net/",
-          "skill": "speaking",
-          "kind": "open",
-          "publisher": "Le Point du FLE",
-          "lang": "fr"
-        },
-        {
-          "title": "RFI Français facile — écouter et répéter au quotidien",
-          "url": "https://francaisfacile.rfi.fr/",
-          "skill": "speaking",
-          "kind": "broadcaster",
-          "publisher": "Radio France Internationale",
-          "lang": "fr"
-        }
-      ]
+     "title": "TV5MONDE Apprendre le français",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A2"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B2"
+     ]
+    },
+    {
+     "title": "RFI — Français facile",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — podcasts et journaux en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Podcast Français Facile",
+     "url": "https://www.podcastfrancaisfacile.com/",
+     "skill": "listening",
+     "kind": "open",
+     "publisher": "Podcast Français Facile",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — articles en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/",
+     "skill": "reading",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Wikisource en français (domaine public)",
+     "url": "https://fr.wikisource.org/",
+     "skill": "reading",
+     "kind": "open",
+     "publisher": "Wikimedia",
+     "lang": "fr",
+     "levels": [
+      "B2",
+      "C1",
+      "C2"
+     ]
+    },
+    {
+     "title": "Institut français",
+     "url": "https://www.institutfrancais.com/",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Institut français",
+     "lang": "fr"
+    },
+    {
+     "title": "Cadre européen commun de référence (CECRL)",
+     "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Conseil de l’Europe",
+     "lang": "en"
+    },
+    {
+     "title": "DELF — épreuves et exemples de sujets : production écrite",
+     "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
+     "skill": "writing",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — répertoire d’exercices de français",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "writing",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "writing",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr"
+    },
+    {
+     "title": "DELF — épreuves et exemples de sujets : production orale",
+     "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
+     "skill": "speaking",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — compréhension et expression orales",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "speaking",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI Français facile — écouter et répéter au quotidien",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "speaking",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
     }
-  ]
+   ],
+   "structure": {
+    "verifiedOn": "2026-10-04",
+    "scope": "A1, A2, B1 and B2 — every level, each read from an official candidate paper. B1 also carries a post-2024 figure from the reform notice, because the reform changed B1 and only B1.",
+    "sources": [
+     {
+      "what": "DELF A1 tout public, official candidate paper SUJET_DÉMO_A1TP, front grid",
+      "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper",
+      "published": "2022"
+     },
+     {
+      "what": "DELF A2 tout public, official candidate paper SUJET_DÉMO_A2TP_02, front grid",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper",
+      "published": "2019"
+     },
+     {
+      "what": "Évolution des examens DELF/DALF — the 2024 reform",
+      "url": "https://www.delfdalf.ch/professeurs/evolution-examens",
+      "readOn": "2026-10-04",
+      "kind": "official-centre"
+     },
+     {
+      "what": "DELF B1 tout public, official candidate paper Sujet_démo_B1TP, front grid",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-candidat-coll-sujet-demo_exemple_2.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper",
+      "published": "pre-2024"
+     },
+     {
+      "what": "DELF B2 tout public, official candidate paper SUJET_DÉMO_B2TP_02, front grid",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper",
+      "published": "2019"
+     },
+     {
+      "what": "A second official A2 paper, read specifically to re-check the exercise count",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/a2_ex1_tp_candidat_exemple_2.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper",
+      "note": "Also 4 exercises in compréhension des écrits and also 1 h 40 collective. It carries no year and no reform marking, so it corroborates the 2019 paper and settles nothing about the current format."
+     }
+    ],
+    "caveat": {
+     "en": "Durations and marks are read from official candidate papers, all of which predate the 2024 reform. The reform replaced open answers with multiple choice in comprehension at A2–B2 and added ten minutes to the B1 written session, which is reflected above. THE NUMBER OF EXERCISES PER SECTION IS NOT VERIFIED FOR THE CURRENT FORMAT at any level: the reform states that comprehension now has more and shorter questions, and no post-2024 paper was obtainable. Two separate official A2 papers both show 4 exercises, and TWO PAPERS AGREEING ON A NUMBER THAT MAY BE OBSOLETE IS MORE MISLEADING THAN ONE. Corroboration between two sources of the same vintage is not independent evidence: both predate the reform, so they agree about the old format and say nothing about the current one."
+    },
+    "passing": {
+     "overall": "50/100 across the four papers",
+     "perPaper": "a minimum of 5/25 on each paper",
+     "verified": "both figures printed on the front grid of the A1 and A2 papers"
+    },
+    "papers": {
+     "A1": [
+      {
+       "code": "CO",
+       "name": {
+        "en": "Listening",
+        "fr": "Compréhension de l’oral",
+        "fa": "شنیدن",
+        "ar": "الاستماع"
+       },
+       "minutes": 20,
+       "minutesNote": "environ",
+       "marks": 25
+      },
+      {
+       "code": "CE",
+       "name": {
+        "en": "Reading",
+        "fr": "Compréhension des écrits",
+        "fa": "خواندن",
+        "ar": "القراءة"
+       },
+       "minutes": 30,
+       "marks": 25,
+       "exercises": 4,
+       "exercisesNote": "4 exercises worth 6+6+6+7 on the 2022 paper; not verified for the post-2024 format"
+      },
+      {
+       "code": "PE",
+       "name": {
+        "en": "Writing",
+        "fr": "Production écrite",
+        "fa": "نوشتن",
+        "ar": "الكتابة"
+       },
+       "minutes": 30,
+       "marks": 25
+      },
+      {
+       "code": "PO",
+       "name": {
+        "en": "Speaking",
+        "fr": "Production orale",
+        "fa": "گفتار",
+        "ar": "التحدّث"
+       },
+       "minutes": 7,
+       "minutesNote": "5 to 7, plus 10 minutes preparation",
+       "marks": 25
+      }
+     ],
+     "A2": [
+      {
+       "code": "CO",
+       "name": {
+        "en": "Listening",
+        "fr": "Compréhension de l’oral",
+        "fa": "شنیدن",
+        "ar": "الاستماع"
+       },
+       "minutes": 25,
+       "marks": 25
+      },
+      {
+       "code": "CE",
+       "name": {
+        "en": "Reading",
+        "fr": "Compréhension des écrits",
+        "fa": "خواندن",
+        "ar": "القراءة"
+       },
+       "minutes": 30,
+       "marks": 25,
+       "exercises": 4,
+       "exercisesNote": "4 exercises worth 6+6+6+7 on the 2019 paper; not verified for the post-2024 format"
+      },
+      {
+       "code": "PE",
+       "name": {
+        "en": "Writing",
+        "fr": "Production écrite",
+        "fa": "نوشتن",
+        "ar": "الكتابة"
+       },
+       "minutes": 45,
+       "marks": 25
+      },
+      {
+       "code": "PO",
+       "name": {
+        "en": "Speaking",
+        "fr": "Production orale",
+        "fa": "گفتار",
+        "ar": "التحدّث"
+       },
+       "minutes": 8,
+       "minutesNote": "6 to 8, plus 10 minutes preparation",
+       "marks": 25
+      }
+     ],
+     "B1": [
+      {
+       "code": "CO",
+       "name": {
+        "en": "Listening",
+        "fr": "Compréhension de l’oral",
+        "fa": "شنیدن",
+        "ar": "الاستماع"
+       },
+       "minutes": 25,
+       "minutesNote": "environ; documents 6 minutes maximum",
+       "marks": 25
+      },
+      {
+       "code": "CE",
+       "name": {
+        "en": "Reading",
+        "fr": "Compréhension des écrits",
+        "fa": "خواندن",
+        "ar": "القراءة"
+       },
+       "minutes": 45,
+       "marks": 25,
+       "exercises": 2,
+       "minutesNote": "45 since the 2024 reform, which added ten minutes to the B1 written session and gave them to this paper. The official paper read here predates the reform and prints 35.",
+       "preReformMinutes": 35,
+       "exercisesNote": "2 documents on the pre-reform paper; not verified for the current format"
+      },
+      {
+       "code": "PE",
+       "name": {
+        "en": "Writing",
+        "fr": "Production écrite",
+        "fa": "نوشتن",
+        "ar": "الكتابة"
+       },
+       "minutes": 45,
+       "marks": 25
+      },
+      {
+       "code": "PO",
+       "name": {
+        "en": "Speaking",
+        "fr": "Production orale",
+        "fa": "گفتار",
+        "ar": "التحدّث"
+       },
+       "minutes": 15,
+       "marks": 25,
+       "minutesNote": "environ, plus 10 minutes preparation for the third part only"
+      }
+     ],
+     "B2": [
+      {
+       "code": "CO",
+       "name": {
+        "en": "Listening",
+        "fr": "Compréhension de l’oral",
+        "fa": "شنیدن",
+        "ar": "الاستماع"
+       },
+       "minutes": 30,
+       "minutesNote": "environ; documents 15 minutes maximum",
+       "marks": 25
+      },
+      {
+       "code": "CE",
+       "name": {
+        "en": "Reading",
+        "fr": "Compréhension des écrits",
+        "fa": "خواندن",
+        "ar": "القراءة"
+       },
+       "minutes": 60,
+       "marks": 25
+      },
+      {
+       "code": "PE",
+       "name": {
+        "en": "Writing",
+        "fr": "Production écrite",
+        "fa": "نوشتن",
+        "ar": "الكتابة"
+       },
+       "minutes": 60,
+       "marks": 25
+      },
+      {
+       "code": "PO",
+       "name": {
+        "en": "Speaking",
+        "fr": "Production orale",
+        "fa": "گفتار",
+        "ar": "التحدّث"
+       },
+       "minutes": 20,
+       "marks": 25,
+       "minutesNote": "plus 30 minutes preparation"
+      }
+     ]
+    },
+    "collectiveTotalMinutes": {
+     "A1": 80,
+     "A2": 100,
+     "B1": 115,
+     "B2": 150
+    },
+    "collectiveTotalNote": "B1 is 115 (1 h 55) since the 2024 reform; the pre-reform paper prints 1 h 45. A1 1 h 20, A2 1 h 40 and B2 2 h 30 are printed on the papers read."
+   },
+   "preparationOffered": true
+  },
+  {
+   "id": "dalf",
+   "code": "DALF",
+   "fullName": "Diplôme approfondi de langue française",
+   "owner": "France Éducation international",
+   "ownerNote": "Diploma issued by the French Ministry of National Education, administered by France Éducation international.",
+   "levels": [
+    "C1",
+    "C2"
+   ],
+   "skills": [
+    "listening",
+    "reading",
+    "writing",
+    "speaking"
+   ],
+   "resources": [
+    {
+     "title": "DALF tous publics — page officielle",
+     "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "Diplômes et tests — France Éducation international",
+     "url": "https://www.france-education-international.fr/diplomes-et-tests",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "TV5MONDE Apprendre le français",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A2"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B2"
+     ]
+    },
+    {
+     "title": "RFI — Français facile",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — podcasts et journaux en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Podcast Français Facile",
+     "url": "https://www.podcastfrancaisfacile.com/",
+     "skill": "listening",
+     "kind": "open",
+     "publisher": "Podcast Français Facile",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — articles en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/",
+     "skill": "reading",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Wikisource en français (domaine public)",
+     "url": "https://fr.wikisource.org/",
+     "skill": "reading",
+     "kind": "open",
+     "publisher": "Wikimedia",
+     "lang": "fr",
+     "levels": [
+      "B2",
+      "C1",
+      "C2"
+     ]
+    },
+    {
+     "title": "Institut français",
+     "url": "https://www.institutfrancais.com/",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Institut français",
+     "lang": "fr"
+    },
+    {
+     "title": "Cadre européen commun de référence (CECRL)",
+     "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Conseil de l’Europe",
+     "lang": "en"
+    },
+    {
+     "title": "DALF — épreuves et exemples de sujets : production écrite",
+     "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
+     "skill": "writing",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — répertoire d’exercices de français",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "writing",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "writing",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr"
+    },
+    {
+     "title": "DALF — épreuves et exemples de sujets : production orale",
+     "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
+     "skill": "speaking",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — compréhension et expression orales",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "speaking",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI Français facile — écouter et répéter au quotidien",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "speaking",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    }
+   ],
+   "structure": {
+    "verifiedOn": "2026-10-04",
+    "scope": "C1 and C2, each read from an official candidate paper. C2 IS A DIFFERENT SHAPE from every other exam here — two papers marked out of 50 with a 10/50 minimum, not four out of 25 — which is why a guard written for DELF's shape must not be pointed at it.",
+    "sources": [
+     {
+      "what": "DALF C1, official candidate paper, épreuves collectives, front grid",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-candidat-coll.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper"
+     },
+     {
+      "what": "DALF C2 Lettres et sciences humaines, official candidate paper Sujet_démo_C2",
+      "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C2/c2-nouveau_example1_LSH_candidat_PE.pdf",
+      "readOn": "2026-10-04",
+      "kind": "official-paper",
+      "note": "Prints the candidate's choice of two domains — lettres et sciences humaines, or sciences — which the 2024 reform REMOVED. The paper therefore predates the reform, and that is how we know, rather than from a date on it."
+     },
+     {
+      "what": "Évolution des examens DELF/DALF — the 2024 reform removed the DALF domain choice",
+      "url": "https://www.delfdalf.ch/professeurs/evolution-examens",
+      "readOn": "2026-10-04",
+      "kind": "official-centre"
+     }
+    ],
+    "caveat": {
+     "en": "Read from official candidate papers that predate the 2024 reform, which for DALF removed the choice of specialist domain. No change to DALF durations, marks or pass thresholds has been published that I could find, and no post-reform DALF paper was obtainable. Task counts are NOT VERIFIED for the current format."
+    },
+    "passing": {
+     "C1": {
+      "overall": "50/100 across the four papers",
+      "perPaper": "a minimum of 5/25"
+     },
+     "C2": {
+      "overall": "50/100 across the two papers",
+      "perPaper": "a minimum of 10/50"
+     },
+     "verified": "printed on the front grid of each paper read"
+    },
+    "papers": {
+     "C1": [
+      {
+       "code": "CO",
+       "name": {
+        "en": "Listening",
+        "fr": "Compréhension de l’oral",
+        "fa": "شنیدن",
+        "ar": "الاستماع"
+       },
+       "minutes": 40,
+       "marks": 25,
+       "minutesNote": "environ. One long document of about eight minutes with two listenings, plus several short broadcast items with one. Documents 10 minutes maximum."
+      },
+      {
+       "code": "CE",
+       "name": {
+        "en": "Reading",
+        "fr": "Compréhension des écrits",
+        "fa": "خواندن",
+        "ar": "القراءة"
+       },
+       "minutes": 50,
+       "marks": 25,
+       "task": "one text of ideas, literary or journalistic, of 1,500 to 2,000 words"
+      },
+      {
+       "code": "PE",
+       "name": {
+        "en": "Writing",
+        "fr": "Production écrite",
+        "fa": "نوشتن",
+        "ar": "الكتابة"
+       },
+       "minutes": 150,
+       "marks": 25,
+       "task": "a synthesis from several documents totalling about 1,000 words, then an argued essay from their content"
+      },
+      {
+       "code": "PO",
+       "name": {
+        "en": "Speaking",
+        "fr": "Production orale",
+        "fa": "گفتار",
+        "ar": "التحدّث"
+       },
+       "minutes": 30,
+       "marks": 25,
+       "minutesNote": "plus 1 hour preparation",
+       "task": "a presentation from several written documents, then a discussion with the panel"
+      }
+     ],
+     "C2": [
+      {
+       "code": "CPO",
+       "name": {
+        "en": "Listening and speaking",
+        "fr": "Compréhension et production orales",
+        "fa": "شنیدن و گفتن",
+        "ar": "الاستماع والتحدّث"
+       },
+       "minutes": 30,
+       "marks": 50,
+       "minutesNote": "passation 30 minutes; preparation 1 hour, after the two listenings",
+       "task": "report on a recorded document, personal development of its problem, then a debate with the panel",
+       "domainChoice": "The paper read offers lettres et sciences humaines or sciences. The 2024 reform removed this choice."
+      },
+      {
+       "code": "CPE",
+       "name": {
+        "en": "Reading and writing",
+        "fr": "Compréhension et production écrites",
+        "fa": "خواندن و نوشتن",
+        "ar": "القراءة والكتابة"
+       },
+       "minutes": 210,
+       "marks": 50,
+       "task": "produce a structured text — article, editorial, report, speech — from a dossier of about 2,000 words"
+      }
+     ]
+    },
+    "collectiveTotalMinutes": {
+     "C1": 240,
+     "C2": 210
+    },
+    "collectiveTotalNote": "C1 4 hours, C2 3 h 30, both printed on the papers read. At C2 the oral is the individual paper, so the collective total and the written paper are the same 3 h 30."
+   },
+   "preparationOffered": true
+  },
+  {
+   "id": "tcf",
+   "code": "TCF",
+   "fullName": "Test de connaissance du français",
+   "owner": "France Éducation international",
+   "ownerNote": "Test administered by France Éducation international. Variants include TCF Tout Public, TCF Canada, TCF Québec, TCF IRN and TCF ANF.",
+   "levels": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "skills": [
+    "listening",
+    "reading",
+    "writing",
+    "speaking"
+   ],
+   "resources": [
+    {
+     "title": "TCF tout public — page officielle",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "TCF Canada — page officielle",
+     "url": "https://www.france-education-international.fr/test/tcf-canada",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "TCF Québec — page officielle",
+     "url": "https://www.france-education-international.fr/test/tcf-quebec",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "TV5MONDE Apprendre le français",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A2"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B2"
+     ]
+    },
+    {
+     "title": "RFI — Français facile",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — podcasts et journaux en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Podcast Français Facile",
+     "url": "https://www.podcastfrancaisfacile.com/",
+     "skill": "listening",
+     "kind": "open",
+     "publisher": "Podcast Français Facile",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — articles en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/",
+     "skill": "reading",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Wikisource en français (domaine public)",
+     "url": "https://fr.wikisource.org/",
+     "skill": "reading",
+     "kind": "open",
+     "publisher": "Wikimedia",
+     "lang": "fr",
+     "levels": [
+      "B2",
+      "C1",
+      "C2"
+     ]
+    },
+    {
+     "title": "Institut français",
+     "url": "https://www.institutfrancais.com/",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Institut français",
+     "lang": "fr"
+    },
+    {
+     "title": "Cadre européen commun de référence (CECRL)",
+     "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Conseil de l’Europe",
+     "lang": "en"
+    },
+    {
+     "title": "TCF — épreuves et exemples de sujets : production écrite",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public",
+     "skill": "writing",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — répertoire d’exercices de français",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "writing",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "writing",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr"
+    },
+    {
+     "title": "TCF — épreuves et exemples de sujets : production orale",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public",
+     "skill": "speaking",
+     "kind": "exam-body",
+     "publisher": "France Éducation international",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — compréhension et expression orales",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "speaking",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI Français facile — écouter et répéter au quotidien",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "speaking",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    }
+   ],
+   "structure": {
+    "verifiedOn": "2026-10-04",
+    "scope": "TCF tout public. The test is not sat at a level: one paper spans A1–C2 and the result is mapped to a level.",
+    "sources": [
+     {
+      "what": "TCF tout public — the exam body's own page: section counts and durations for both forms, the 91-item computer form, result validity, the interval between sittings, and the suspension of re-correction",
+      "url": "https://www.france-education-international.fr/test/tcf-tout-public?langue=fr",
+      "readOn": "2026-10-04",
+      "kind": "exam-body",
+      "readBy": "the project owner, in a browser",
+      "note": "NOT read first-hand by the agent. The site serves an Anubis proof-of-work challenge to automated clients, and completing that challenge from a script was refused by this environment's safety check. The figures below are the owner's reading of the primary source; everything the agent could corroborate independently is listed beside its own source."
+     },
+     {
+      "what": "TCF TP sur ordinateur — section counts and durations",
+      "url": "https://www.ccfs-sorbonne.fr/en/exam-centers/tcf-exam/tcf-tp-so-exam-complete/",
+      "readOn": "2026-10-04",
+      "kind": "official-centre",
+      "note": "Cours de civilisation française de la Sorbonne, which administers the TCF. A guard in tests/exams.test.js refuses the word that was here before, because this project must never read as though it were approved by anybody."
+     },
+     {
+      "what": "France Éducation international — compulsory tests last 1 h 25 and are all multiple choice",
+      "url": "https://www.ciep.fr/tcf/faq",
+      "readOn": "2026-10-04",
+      "kind": "exam-body",
+      "note": "reached through search; the france-education-international.fr pages themselves returned Access Denied (ERR-BOT-403) to an automated fetch on this date"
+     },
+     {
+      "what": "The 699-point scale and its CEFR bands",
+      "url": "https://www.france-education-international.fr/en/node/752?langue=en",
+      "readOn": "2026-10-04",
+      "kind": "exam-body",
+      "note": "title and figures from search results; the page itself was bot-blocked"
+     }
+    ],
+    "compulsory": [
+     {
+      "code": "CO",
+      "name": {
+       "en": "Listening",
+       "fr": "Compréhension orale",
+       "fa": "شنیدن",
+       "ar": "الاستماع"
+      },
+      "items": 29,
+      "minutes": 25
+     },
+     {
+      "code": "SLG",
+      "name": {
+       "en": "Language structures",
+       "fr": "Maîtrise des structures de la langue",
+       "fa": "ساختارهای زبان",
+       "ar": "بنية اللغة"
+      },
+      "items": 18,
+      "minutes": 15
+     },
+     {
+      "code": "CE",
+      "name": {
+       "en": "Reading",
+       "fr": "Compréhension écrite",
+       "fa": "خواندن",
+       "ar": "القراءة"
+      },
+      "items": 29,
+      "minutes": 45
+     }
+    ],
+    "compulsoryTotal": {
+     "items": 76,
+     "minutes": 85,
+     "check": "25 + 15 + 45 = 85, which is the 1 h 25 the exam body states",
+     "presentedItemsOnComputer": 91
+    },
+    "optional": [
+     {
+      "code": "EE",
+      "name": {
+       "en": "Writing",
+       "fr": "Expression écrite",
+       "fa": "نوشتن",
+       "ar": "الكتابة"
+      },
+      "exercises": 3,
+      "minutes": 60
+     },
+     {
+      "code": "EO",
+      "name": {
+       "en": "Speaking",
+       "fr": "Expression orale",
+       "fa": "گفتار",
+       "ar": "التحدّث"
+      },
+      "exercises": 3,
+      "minutes": 12,
+      "minutesNote": "including 2 minutes preparation"
+     }
+    ],
+    "scoring": {
+     "scale": "100–699",
+     "bands": {
+      "A1": "100–199",
+      "A2": "200–299",
+      "B1": "300–399",
+      "B2": "400–499",
+      "C1": "500–599",
+      "C2": "600–699"
+     },
+     "note": "Comprehension sections are scored on the 699 scale and weighted by question difficulty, not by a count of correct answers. The expression papers are marked out of 20.",
+     "verified": "partial — the scale and bands are corroborated by several sources; the weighting statement is from a preparation site, not the exam body"
+    },
+    "forms": {
+     "note": "The candidate does not choose the form — the centre does — so a candidate must be ready for either, and the computer form is the faster of the two.",
+     "paper": {
+      "scoredItems": 76,
+      "presentedItems": 76,
+      "minutes": 85
+     },
+     "computer": {
+      "scoredItems": 76,
+      "presentedItems": 91,
+      "minutes": 85,
+      "extraPerSkill": 5,
+      "note": "Five extra items per skill, which do not count toward the score. The durations are unchanged, so the same 85 minutes covers 91 items instead of 76."
+     },
+     "pace": {
+      "paper": "67 seconds per presented item",
+      "computer": "56 seconds",
+      "slgPaper": "50 seconds",
+      "slgComputer": "39 seconds",
+      "whichWeSimulate": "computer",
+      "why": "The faster of the two, because the centre decides the form and a candidate trained to the slower pace would be unprepared for the other. Training to the harder case is safe; the reverse is not."
+     }
+    },
+    "validity": {
+     "resultsValidFor": "2 years",
+     "minimumBetweenSittings": "20 days",
+     "reCorrection": {
+      "status": "suspended",
+      "from": "2026-09-01",
+      "until": "autumn 2027",
+      "scope": "the written and oral papers"
+     },
+     "portalClaims": "NONE. The portal says nothing anywhere about validity, retakes or intervals — checked on 2026-10-04 across content/exams.json, the interface strings and every route. These figures are recorded so that the first such claim can be checked against them rather than written from memory.",
+     "sourceRead": "the exam body's own page, read by the project owner on 2026-10-04"
+    },
+    "notRead": [
+     {
+      "status": "NOT READ",
+      "why": "Linked from the exam body's page, which is behind the challenge described in the first source. This is a primary document and no figure here has been reconciled against it.",
+      "document": "Fiche de présentation du TCF tout public"
+     },
+     {
+      "status": "NOT READ",
+      "why": "The same.",
+      "document": "Manuel du candidat TCF"
+     }
+    ]
+   },
+   "preparationOffered": true
+  },
+  {
+   "id": "tef",
+   "code": "TEF",
+   "fullName": "Test d’évaluation de français",
+   "owner": "Le français des affaires — CCI Paris Île-de-France",
+   "ownerNote": "Test administered by Le français des affaires, part of the Chambre de commerce et d’industrie de Paris Île-de-France. Variants include TEF Canada, TEFAQ, TEF Naturalisation and TEF Études.",
+   "levels": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+   ],
+   "skills": [
+    "listening",
+    "reading",
+    "writing",
+    "speaking"
+   ],
+   "resources": [
+    {
+     "title": "TEF — page officielle",
+     "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "Le français des affaires — CCI Paris Île-de-France",
+     "lang": "fr"
+    },
+    {
+     "title": "Le français des affaires — tests et diplômes",
+     "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/",
+     "skill": "general",
+     "kind": "exam-body",
+     "publisher": "Le français des affaires — CCI Paris Île-de-France",
+     "lang": "fr"
+    },
+    {
+     "title": "TV5MONDE Apprendre le français",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1",
+      "A2",
+      "B1",
+      "B2",
+      "C1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau A2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/a2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "A2"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B1",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b1",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B1"
+     ]
+    },
+    {
+     "title": "TV5MONDE — exercices niveau B2",
+     "url": "https://apprendre.tv5monde.com/fr/niveaux/b2",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr",
+     "levels": [
+      "B2"
+     ]
+    },
+    {
+     "title": "RFI — Français facile",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — podcasts et journaux en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/podcasts/",
+     "skill": "listening",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Podcast Français Facile",
+     "url": "https://www.podcastfrancaisfacile.com/",
+     "skill": "listening",
+     "kind": "open",
+     "publisher": "Podcast Français Facile",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI — articles en français facile",
+     "url": "https://francaisfacile.rfi.fr/fr/",
+     "skill": "reading",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    },
+    {
+     "title": "Wikisource en français (domaine public)",
+     "url": "https://fr.wikisource.org/",
+     "skill": "reading",
+     "kind": "open",
+     "publisher": "Wikimedia",
+     "lang": "fr",
+     "levels": [
+      "B2",
+      "C1",
+      "C2"
+     ]
+    },
+    {
+     "title": "Institut français",
+     "url": "https://www.institutfrancais.com/",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Institut français",
+     "lang": "fr"
+    },
+    {
+     "title": "Cadre européen commun de référence (CECRL)",
+     "url": "https://www.coe.int/en/web/common-european-framework-reference-languages",
+     "skill": "general",
+     "kind": "institutional",
+     "publisher": "Conseil de l’Europe",
+     "lang": "en"
+    },
+    {
+     "title": "TEF — épreuves et exemples de sujets : production écrite",
+     "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
+     "skill": "writing",
+     "kind": "exam-body",
+     "publisher": "Le français des affaires — CCI Paris Île-de-France",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — répertoire d’exercices de français",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "writing",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "TV5MONDE Apprendre — exercices d’expression écrite",
+     "url": "https://apprendre.tv5monde.com/",
+     "skill": "writing",
+     "kind": "broadcaster",
+     "publisher": "TV5MONDE",
+     "lang": "fr"
+    },
+    {
+     "title": "TEF — épreuves et exemples de sujets : production orale",
+     "url": "https://www.lefrancaisdesaffaires.fr/tests-diplomes/test-evaluation-francais-tef/",
+     "skill": "speaking",
+     "kind": "exam-body",
+     "publisher": "Le français des affaires — CCI Paris Île-de-France",
+     "lang": "fr"
+    },
+    {
+     "title": "Le Point du FLE — compréhension et expression orales",
+     "url": "https://www.lepointdufle.net/",
+     "skill": "speaking",
+     "kind": "open",
+     "publisher": "Le Point du FLE",
+     "lang": "fr"
+    },
+    {
+     "title": "RFI Français facile — écouter et répéter au quotidien",
+     "url": "https://francaisfacile.rfi.fr/",
+     "skill": "speaking",
+     "kind": "broadcaster",
+     "publisher": "Radio France Internationale",
+     "lang": "fr"
+    }
+   ],
+   "structure": {
+    "verifiedOn": null,
+    "note": "NOT VERIFIED. No structure is recorded, deliberately, rather than a figure nobody has checked."
+   },
+   "preparationOffered": true
+  },
+  {
+   "id": "tcf-canada",
+   "code": "TCF Canada",
+   "fullName": "Test de connaissance du français pour le Canada",
+   "owner": "France Éducation international",
+   "ownerNote": "Administered by France Éducation international.",
+   "resources": [],
+   "structure": {
+    "verifiedOn": null,
+    "note": "NOT VERIFIED. Present so that this exam is not quietly absent from what the portal says it prepares you for. No figure, level list or skill list is recorded, because none has been checked. Named by the project owner as in scope. Used for Canadian immigration programmes."
+   },
+   "preparationOffered": false,
+   "listedOnly": "Listed so this exam is not absent from what the portal says it prepares you for. No preparation material, no levels and no skills are claimed, because none has been verified."
+  },
+  {
+   "id": "tcf-quebec",
+   "code": "TCF Québec",
+   "fullName": "Test de connaissance du français pour le Québec",
+   "owner": "France Éducation international",
+   "ownerNote": "Administered by France Éducation international.",
+   "resources": [],
+   "structure": {
+    "verifiedOn": null,
+    "note": "NOT VERIFIED. Present so that this exam is not quietly absent from what the portal says it prepares you for. No figure, level list or skill list is recorded, because none has been checked. Named by the project owner as in scope."
+   },
+   "preparationOffered": false,
+   "listedOnly": "Listed so this exam is not absent from what the portal says it prepares you for. No preparation material, no levels and no skills are claimed, because none has been verified."
+  },
+  {
+   "id": "tcf-irn",
+   "code": "TCF IRN",
+   "fullName": "Test de connaissance du français pour l’intégration, la résidence et la nationalité",
+   "owner": "France Éducation international",
+   "ownerNote": "Administered by France Éducation international.",
+   "resources": [],
+   "structure": {
+    "verifiedOn": null,
+    "note": "NOT VERIFIED. Present so that this exam is not quietly absent from what the portal says it prepares you for. No figure, level list or skill list is recorded, because none has been checked. Named by the project owner as in scope. Used for French residence and nationality."
+   },
+   "preparationOffered": false,
+   "listedOnly": "Listed so this exam is not absent from what the portal says it prepares you for. No preparation material, no levels and no skills are claimed, because none has been verified."
+  }
+ ],
+ "structureNote": "Every figure in an exam's `structure` block was read from the source named beside it on the date given. Nothing here is inferred from another figure, and nothing is carried over from an earlier version of this file: before 2026-10-04 this file carried no structure at all and `checkedOn` was null, while content/exam-papers.json stated an official duration that had never been checked — and one of them was wrong.",
+ "scopeNote": "The portal's stated scope is every recognised French proficiency test: DELF, DALF, TCF and its variants, TEF and its variants. That is the owner's decision and it does not mean all of them are built — it means none is quietly absent and each carries either a verified structure or an explicit NOT VERIFIED with a reason. KNOWN GAP: the TEF variants (TEF Canada, TEFAQ, TEF Naturalisation, TEF IRN) are not enumerated here. They exist and are administered by the Chambre de commerce et d'industrie de Paris Île-de-France, but the agent has not verified the list of them, and inventing entries would be the same fault as inventing figures."
 }
