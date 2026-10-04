@@ -1,3 +1,4 @@
+import { fileURLToPath } from 'node:url';
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
@@ -8,7 +9,7 @@ export default defineConfig(({ command }) => ({
   // plugin itself also declares apply: 'serve' — two independent gates, because
   // either alone is one mistake away from shipping a file writer.
   plugins: [react(), tailwindcss(),
-            ...(command === 'serve' ? [reviewTool(new URL('..', import.meta.url).pathname)] : [])],
+            ...(command === 'serve' ? [reviewTool(fileURLToPath(new URL('..', import.meta.url)))] : [])],
   // Served from a repository subpath on GitHub Pages; relative base keeps it
   // working from any prefix and from file:// during review.
   base: './',

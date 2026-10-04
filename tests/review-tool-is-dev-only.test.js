@@ -66,6 +66,18 @@ test('the review plugin, once it exists, is serve-only and never bundled', (t) =
     'build hooks in a serve-only plugin mean it is not serve-only');
 });
 
+test('the plugin is handed a decoded path, not a URL pathname', () => {
+  // This repository lives under "Projects Shahin". `new URL(...).pathname`
+  // percent-encodes the space, so the plugin opened every file at a path that
+  // does not exist and the dev server answered nothing — it started cleanly and
+  // died on the first request, which is the worst way for this to fail.
+  const cfg = readFileSync(join(root, 'web/vite.config.ts'), 'utf8');
+  assert.match(cfg, /fileURLToPath/,
+    'the plugin root must come from fileURLToPath, which decodes');
+  assert.doesNotMatch(cfg, /import\.meta\.url\)\.pathname/,
+    '.pathname percent-encodes; a space in the repository path breaks every file read');
+});
+
 test('the vite config does not add the review plugin unconditionally', (t) => {
   const cfg = readFileSync(join(root, 'web/vite.config.ts'), 'utf8');
   // The import path, not the word "review" — the config already contains that
