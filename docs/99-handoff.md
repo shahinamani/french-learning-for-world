@@ -15,6 +15,13 @@
 > language. If one of those models is wrong in a form neither corpus attests, a
 > learner will be taught it and nothing in this project will object.
 >
+> **And the single most important fact about what the product CONTAINS:
+> 71,021 verb forms, 79 flashcards, 63 exam items — 99.8% of every exercise
+> here is a verb form.** 65 of 261 live concepts have any exercise at all, and
+> at C1 and C2 it is 0 of 71. This is a verb reference with a course-shaped
+> taxonomy around it, and the measurement is regenerated on every build into
+> `content/concept-material.json` under `theOneNumber`.
+>
 > That is the single most important fact about the state of this work.
 
 

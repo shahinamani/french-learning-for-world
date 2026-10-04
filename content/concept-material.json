@@ -1,5 +1,6 @@
 {
 "version": 1,
+"theOneNumber": "71,021 verb forms · 79 flashcards · 63 exam items. 99.8% of every exercise in this product is a verb form. That is the honest state of the project, and it is the measurement that should have existed before anybody asked for more verbs.",
 "note": "Exercises reaching each live, non-group concept, counted at build time from the decks, the verb paradigms and the exam papers. A concept absent from `material` has NO exercise: that is true of 196 of the 261 live concepts, and of every concept at C1 and C2.",
 "generatedBy": "scripts/build-concept-material.py",
 "liveConcepts": 261,

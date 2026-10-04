@@ -85,6 +85,25 @@ test('the generated counts match the content they are derived from', () => {
   console.log(`    ${material.size} of ${live.length} live concepts have an exercise`);
 });
 
+test('the one number is in the file, and is still what it says', () => {
+  // 99.8% of every exercise in this product is a verb form. Shahin asked for it
+  // somewhere permanent, and the honest place is the generated file, where
+  // anybody reading the counts sees the ratio beside them.
+  assert.match(generated.theOneNumber, /verb forms/);
+  assert.match(generated.theOneNumber, /flashcards/);
+  const totals = [...material.values()].reduce((a, m) => ({
+    verbForms: a.verbForms + m.verbForms,
+    cards: a.cards + m.cards,
+    examItems: a.examItems + m.examItems,
+  }), { verbForms: 0, cards: 0, examItems: 0 });
+  const all = totals.verbForms + totals.cards + totals.examItems;
+  const pct = (100 * totals.verbForms / all).toFixed(1);
+  assert.ok(generated.theOneNumber.includes(`${pct}%`),
+    `the file says "${generated.theOneNumber.slice(0, 60)}…" and the counts give ${pct}%`);
+  console.log(`    ${totals.verbForms.toLocaleString('en-US')} verb forms · `
+    + `${totals.cards} flashcards · ${totals.examItems} exam items — ${pct}% verbs`);
+});
+
 test('the gap is recorded, not implied', () => {
   // 196 of 261 is the number a reader needs, and it belongs in the file rather
   // than being left to be worked out from what is absent.

@@ -823,6 +823,85 @@ await audit(320, 640, 'light', '320 light');
 // continues the sitting instead of starting a new one. The drill held it in a
 // ref, which meant a reload split one sitting into two sessionIds — and
 // "time studied" is defined in docs/03 as a grouping over session_id.
+// ===================================================================
+// The mastery states on the level page, OBSERVED rather than reasoned about.
+// They were typechecked and never seen: the walk visited that page with an
+// empty profile, so "needs work" and "solid" existed only in the type.
+//
+// Two concepts are driven to opposite ends in the SAME profile: the future of a
+// regular verb answered correctly throughout, and the imperfect answered wrongly
+// throughout. Both are A2 grammar, so one page shows both.
+console.log('\n=== mastery states, driven to both ends ===');
+
+/**
+ * Answer every person of one tense, right or wrong, and come back.
+ *
+ * Answering CORRECTLY means knowing the answer, and the drill does not put it
+ * on the page until after the check. So the six forms are read from the verb
+ * table first — which is what a learner revising from the table would do, and
+ * is the only way to observe the "solid" state rather than reason about it.
+ */
+async function formsFor(verb, tense) {
+  await go(page, `/learn/verbs/${verb}`);
+  await page.waitForSelector(`[data-testid="form-${tense}-0"]`, { timeout: 8000 });
+  const out = [];
+  for (let i = 0; i < 6; i++) {
+    out.push((await page.locator(`[data-testid="form-${tense}-${i}"]`).innerText()
+      .catch(() => '')).trim());
+  }
+  return out;
+}
+
+async function drill(verb, tense, answers) {
+  await go(page, `/practise/conjugation?verb=${verb}&tense=${tense}`);
+  await page.waitForSelector('[data-testid="drill-input"]', { timeout: 8000 });
+  for (let i = 0; i < 6; i++) {
+    const field = page.locator('[data-testid="drill-input"]');
+    if (!(await field.count())) break;
+    await field.fill(answers[i] ?? 'zzzz');
+    await page.locator('[data-testid="drill-check"]').click();
+    await page.waitForTimeout(160);
+    const next = page.locator('[data-testid="drill-next"]');
+    if (await next.count()) { await next.click(); await page.waitForTimeout(160); }
+  }
+}
+
+// Six right on the future, six wrong on the imperfect, in one profile.
+const futureForms = await formsFor('parler', 'futur');
+await drill('parler', 'futur', futureForms);
+await drill('parler', 'imparfait', ['zzzz', 'zzzz', 'zzzz', 'zzzz', 'zzzz', 'zzzz']);
+await go(page, '/learn/level/A2/grammar');
+await page.waitForSelector('[data-testid="concept-list"]', { timeout: 8000 });
+const futureState = await page.locator('[data-testid="state-gram.future.simple"]')
+  .innerText().catch(() => '(absent)');
+const imparfaitState = await page.locator('[data-testid="state-gram.past.imparfait"]')
+  .innerText().catch(() => '(absent)');
+ok(`the future reads "${futureState}" after six RIGHT answers`,
+   /solid/i.test(futureState));
+ok(`the imperfect reads "${imparfaitState}" after six wrong answers`,
+   /needs work/i.test(imparfaitState));
+
+// And a concept nobody has touched still reads "not started", so the states are
+// distinguishing the learner's record and not merely rendering.
+const untouched = await page.locator('[data-testid="concept-list"] [data-testid^="state-"]')
+  .allInnerTexts();
+ok(`both ends observed in one profile: solid and needs work`,
+   /solid/i.test(futureState) && /needs work/i.test(imparfaitState));
+ok(`${untouched.filter((x) => /not started/i.test(x)).length} concepts on the page still read "not started"`,
+   untouched.some((x) => /not started/i.test(x)));
+ok('and the two drilled concepts do not',
+   !/not started/i.test(futureState) && !/not started/i.test(imparfaitState));
+
+// The usage column, added because 32 live concepts were unreachable from the map.
+await go(page, '/learn');
+await page.waitForSelector('.map', { timeout: 8000 });
+ok(`the map now has ${await page.locator('.map thead th').count()} columns including usage`,
+   (await page.locator('[data-testid="cell-A1-usage"]').count()) === 1);
+await go(page, '/learn/level/C1/usage');
+await page.waitForSelector('[data-testid="level-skill-count"]', { timeout: 8000 });
+const usageCount = await page.locator('[data-testid="level-skill-count"]').innerText();
+ok(`C1 usage is reachable and says "${usageCount.replace(/\n/g, ' ')}"`, /0/.test(usageCount));
+
 console.log('\n=== verbs drill: one sitting survives a reload ===');
 {
   const c = await browser.newContext({ viewport: { width: 390, height: 844 } });

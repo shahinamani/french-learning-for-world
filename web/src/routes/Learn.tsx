@@ -17,13 +17,13 @@ const LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
  *  to nobody who did not already know the French. */
 /** The skills the taxonomy models. The other four are examined and unmodelled,
  *  so their cells are locked rather than clickable. */
-const TAUGHT = ['grammar', 'vocabulary', 'phonetics'];
+const TAUGHT = ['grammar', 'vocabulary', 'phonetics', 'usage'];
 
 const SKILLS = [
   { key: 'listening', label: 'skillListening' }, { key: 'reading', label: 'skillReading' },
   { key: 'writing', label: 'skillWriting' }, { key: 'speaking', label: 'skillSpeaking' },
   { key: 'grammar', label: 'grammar' }, { key: 'vocabulary', label: 'vocabulary' },
-  { key: 'phonetics', label: 'phonetics' },
+  { key: 'phonetics', label: 'phonetics' }, { key: 'usage', label: 'usage' },
 ] as const;
 
 export function Learn() {

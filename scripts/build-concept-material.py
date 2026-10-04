@@ -69,8 +69,17 @@ def main() -> int:
                 bump(cid, "examItems")
 
     with_material = len(counts)
+    by_source = {k: sum(v[k] for v in counts.values())
+                 for k in ("cards", "verbForms", "examItems")}
     out = {
         "version": 1,
+        "theOneNumber": (
+            f"{by_source['verbForms']:,} verb forms · {by_source['cards']:,} flashcards · "
+            f"{by_source['examItems']:,} exam items. "
+            f"{100 * by_source['verbForms'] / sum(by_source.values()):.1f}% of every "
+            "exercise in this product is a verb form. That is the honest state of the "
+            "project, and it is the measurement that should have existed before anybody "
+            "asked for more verbs."),
         "note": "Exercises reaching each live, non-group concept, counted at build time "
                 "from the decks, the verb paradigms and the exam papers. A concept absent "
                 "from `material` has NO exercise: that is true of "
@@ -85,9 +94,8 @@ def main() -> int:
         json.dumps(out, ensure_ascii=False, indent=0) + "\n", encoding="utf-8")
 
     print(f"concept-material.json: {with_material} of {len(live)} live concepts have material")
-    by_source = {k: sum(v[k] for v in counts.values())
-                 for k in ("cards", "verbForms", "examItems")}
     print(f"  exercises: {by_source}")
+    print(f"  {out['theOneNumber']}")
     for lvl in LEVELS:
         here = [c for c in concepts if not c.get("isGroup") and not c.get("retired")
                 and c["level"] == lvl]

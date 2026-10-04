@@ -48,8 +48,10 @@ html = html.slice(0, start) + `<div id="root">${markup}</div>\n` + html.slice(en
 // what the learner would see for those few milliseconds anyway.
 const rows = (html.match(/<th scope="row"/g) ?? []).length;
 const cells = (html.match(/class="map__cell"/g) ?? []).length;
-if (!/class="map"/.test(html) || rows !== 6 || cells !== 42) {
-  console.error(`PRERENDER FAILED: expected a 6x7 map, found ${rows} rows and ${cells} cells.`);
+const SKILL_COUNT = (readFileSync(new URL('../src/routes/Learn.tsx', import.meta.url), 'utf8')
+  .match(/\{ key: '/g) ?? []).length;
+if (!/class="map"/.test(html) || rows !== 6 || cells !== 6 * SKILL_COUNT) {
+  console.error(`PRERENDER FAILED: expected a 6x${SKILL_COUNT} map, found ${rows} rows and ${cells} cells.`);
   process.exit(1);
 }
 if (!/class="tabs"/.test(html) || !/class="bar"/.test(html)) {
