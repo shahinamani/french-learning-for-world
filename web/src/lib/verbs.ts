@@ -83,6 +83,11 @@ export type Verb = {
   /** False where a learner should recognise the verb and not be drilled on
    *  producing it: familier or argotique at A1 or A2. */
   produce: boolean;
+  /** Set for a verb the corpus almost never shows conjugated — « doué »,
+   *  « sacré » — with the one conjugated form it does attest. The verb is kept
+   *  rather than dropped because a learner meeting « il sacra » in a text needs
+   *  to be able to look it up. */
+  rarelyConjugated: { participleShare: number; attestedForm: string } | null;
   /** Set when every sense Wiktionary records is labelled vulgar, so the page can
    *  say why it shows no meaning instead of rendering an empty line that looks
    *  like a bug. Null for every other verb. */
@@ -103,6 +108,9 @@ export type VerbSummary = {
   infinitive: string; key: string; level: Level; rank: number;
   group: string; irregular: boolean; auxiliary: 'avoir' | 'être';
   en: string;
+  /** Set where no meaning is shown, so the LIST can say so rather than
+   *  printing an empty cell. */
+  glossWithheld?: 'explicit';
   /** Present only for a pronominal-only verb, so the LIST shows « se souvenir »
    *  too. A learner who reads the wrong headword in the list has already
    *  learned it wrong before they open the verb. */

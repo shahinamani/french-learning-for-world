@@ -159,6 +159,12 @@ NOT_USED_AS_VERB: dict[str, str] = {
                "attested. The adjective « éperdu » survives; the verb does not.",
     "dépourvoir": "Same shape: « dépourvu » is the living word, the verb is not used.",
     "dénuer": "Same shape: « dénué (de) » is the living word.",
+    # Shahin's ruling 2026-10-03, on the seven verbs conjugated 3% of the time
+    # or less. These two have NO finite form attested at all, so there is no
+    # verb to teach; the other five keep their place with the attested form
+    # shown, because a learner meeting « il sacra » in a text needs to find it.
+    "répertorier": "0% finite. No conjugated form attested in either corpus.",
+    "diplômer": "0% finite. « diplômé » is the living word.",
 }
 
 # A lemma that is also a common word of another part of speech, where showing

@@ -259,6 +259,66 @@ ok('a search result opens the real concept page', await page.locator('h1.h2').co
 ok('a concept with no cards yet says so rather than showing a dead button',
    (await page.locator('[data-testid="concept-no-cards"]').count()) + (await page.locator('[data-testid="concept-practise"]').count()) === 1);
 
+// ===================================================================
+// The learn map, which is the portal's main navigation. It offered 42 cells and
+// every one of the 18 clickable ones led to a page saying "Not built yet".
+console.log('\n=== the learn map leads somewhere ===');
+await go(page, '/learn');
+await page.waitForSelector('.map', { timeout: 8000 });
+const cells = await page.locator('.map__cell').count();
+ok(`the map renders ${cells} cells`, cells >= 40);
+const clickable = await page.locator('a.map__cell').count();
+ok(`${clickable} cells are clickable`, clickable > 0);
+
+// Every clickable cell must land on a page that says something. Walking all of
+// them, because "three dead ends and a learner stops believing the map" is
+// about the third one, and a sample of one would have passed before today.
+const hrefs = await page.locator('a.map__cell').evaluateAll(
+  (as) => as.map((a) => a.getAttribute('href')));
+let stubs = 0, listed = 0, withConcepts = 0;
+for (const href of hrefs) {
+  await page.goto(BASE + href.replace(/^#/, '#'), { waitUntil: 'networkidle' });
+  await page.waitForTimeout(250);
+  if (await page.locator('[data-testid="stub"]').count()) { stubs += 1; continue; }
+  const count = await page.locator('[data-testid="level-skill-count"]').count();
+  if (count) {
+    withConcepts += 1;
+    const txt = await page.locator('[data-testid="level-skill-count"]').innerText();
+    if (/0 ?\/|^0/.test(txt.replace(/\s/g, ''))) listed += 1;
+  }
+}
+ok(`no clickable cell leads to "Not built yet" (${stubs} of ${hrefs.length})`, stubs === 0);
+ok(`every clickable cell states how much of it exists (${withConcepts}/${hrefs.length})`,
+   withConcepts === hrefs.length);
+ok(`and ${listed} of them honestly say nothing is practisable yet`, listed > 0);
+
+// C1 grammar: 22 concepts, not one exercise. The page must list them AND say so,
+// because a list of 22 empty rows is the old lie one level down.
+await go(page, '/learn/level/C1/grammar');
+await page.waitForSelector('[data-testid="concept-list"]', { timeout: 8000 });
+const c1count = await page.locator('[data-testid="level-skill-count"]').innerText();
+ok(`C1 grammar says "${c1count.replace(/\n/g, ' ')}"`, /0/.test(c1count));
+const c1rows = await page.locator('[data-testid="concept-list"] li').count();
+ok(`C1 grammar lists ${c1rows} concepts rather than an empty page`, c1rows >= 20);
+ok('and none of them is a link, because none can be practised',
+   (await page.locator('[data-testid="concept-list"] a').count()) === 0);
+
+// A1 grammar: some have exercises and some do not, and the difference is visible.
+await go(page, '/learn/level/A1/grammar');
+await page.waitForSelector('[data-testid="concept-list"]', { timeout: 8000 });
+const links = await page.locator('[data-testid="concept-list"] a').count();
+const rows = await page.locator('[data-testid="concept-list"] li').count();
+ok(`A1 grammar: ${links} of ${rows} concepts are links`, links > 0 && links < rows);
+ok('a concept with no exercise is marked, not silently dead',
+   (await page.locator('[data-testid="concept-list"] [data-testid^="state-"]').count()) === rows);
+
+// An examined skill is not modelled anywhere; the page says that rather than
+// listing nothing.
+await go(page, '/learn/level/B2/listening');
+await page.waitForSelector('[data-testid="skill-not-modelled"]', { timeout: 8000 });
+ok('an examined but unmodelled skill explains itself',
+   /machine speech|licensed/i.test(await page.locator('[data-testid="skill-not-modelled"]').innerText()));
+
 console.log('\n=== verbs, end to end ===');
 await go(page, '/learn/verbs');
 await page.waitForSelector('[data-testid="verb-list"]', { timeout: 8000 });
@@ -653,12 +713,22 @@ console.log('\n=== carried-forward items ===');
   ok(`and serves no further card (${stillCarding} card elements left)`, stillCarding === 0);
   await q.clock.uninstall?.();
 
-  // Stubs name what is missing and why.
-  for (const [hash, needle] of [['/practise/listening', 'licence'], ['/learn/level/B1/grammar', 'not built']]) {
+  // What remains a stub names what is missing and why. `/learn/level/B1/grammar`
+  // WAS in this list — it is now a real page, so it is checked as one above.
+  // Leaving it here would have asserted that a route still says "not built"
+  // after it was built, which is a check defending yesterday's product.
+  for (const [hash, needle] of [['/practise/listening', 'licence']]) {
     await q.goto(BASE + '#' + hash, { waitUntil: 'networkidle' }); await q.waitForTimeout(250);
     const txt = (await q.locator('[data-testid="stub"]').innerText()).toLowerCase();
     ok(`${hash} explains itself (mentions "${needle}")`, txt.includes(needle.toLowerCase()));
   }
+  // And the route that stopped being a stub is no longer one, asserted here so
+  // a regression to the stub fails rather than passing quietly.
+  await q.goto(BASE + '#/learn/level/B1/grammar', { waitUntil: 'networkidle' });
+  await q.waitForTimeout(250);
+  ok('/learn/level/B1/grammar is no longer a stub',
+     (await q.locator('[data-testid="stub"]').count()) === 0
+     && (await q.locator('[data-testid="level-skill-count"]').count()) === 1);
 
   // Service worker registers and caches the shell.
   await q.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
@@ -753,6 +823,85 @@ await audit(320, 640, 'light', '320 light');
 // continues the sitting instead of starting a new one. The drill held it in a
 // ref, which meant a reload split one sitting into two sessionIds — and
 // "time studied" is defined in docs/03 as a grouping over session_id.
+// ===================================================================
+// The mastery states on the level page, OBSERVED rather than reasoned about.
+// They were typechecked and never seen: the walk visited that page with an
+// empty profile, so "needs work" and "solid" existed only in the type.
+//
+// Two concepts are driven to opposite ends in the SAME profile: the future of a
+// regular verb answered correctly throughout, and the imperfect answered wrongly
+// throughout. Both are A2 grammar, so one page shows both.
+console.log('\n=== mastery states, driven to both ends ===');
+
+/**
+ * Answer every person of one tense, right or wrong, and come back.
+ *
+ * Answering CORRECTLY means knowing the answer, and the drill does not put it
+ * on the page until after the check. So the six forms are read from the verb
+ * table first — which is what a learner revising from the table would do, and
+ * is the only way to observe the "solid" state rather than reason about it.
+ */
+async function formsFor(verb, tense) {
+  await go(page, `/learn/verbs/${verb}`);
+  await page.waitForSelector(`[data-testid="form-${tense}-0"]`, { timeout: 8000 });
+  const out = [];
+  for (let i = 0; i < 6; i++) {
+    out.push((await page.locator(`[data-testid="form-${tense}-${i}"]`).innerText()
+      .catch(() => '')).trim());
+  }
+  return out;
+}
+
+async function drill(verb, tense, answers) {
+  await go(page, `/practise/conjugation?verb=${verb}&tense=${tense}`);
+  await page.waitForSelector('[data-testid="drill-input"]', { timeout: 8000 });
+  for (let i = 0; i < 6; i++) {
+    const field = page.locator('[data-testid="drill-input"]');
+    if (!(await field.count())) break;
+    await field.fill(answers[i] ?? 'zzzz');
+    await page.locator('[data-testid="drill-check"]').click();
+    await page.waitForTimeout(160);
+    const next = page.locator('[data-testid="drill-next"]');
+    if (await next.count()) { await next.click(); await page.waitForTimeout(160); }
+  }
+}
+
+// Six right on the future, six wrong on the imperfect, in one profile.
+const futureForms = await formsFor('parler', 'futur');
+await drill('parler', 'futur', futureForms);
+await drill('parler', 'imparfait', ['zzzz', 'zzzz', 'zzzz', 'zzzz', 'zzzz', 'zzzz']);
+await go(page, '/learn/level/A2/grammar');
+await page.waitForSelector('[data-testid="concept-list"]', { timeout: 8000 });
+const futureState = await page.locator('[data-testid="state-gram.future.simple"]')
+  .innerText().catch(() => '(absent)');
+const imparfaitState = await page.locator('[data-testid="state-gram.past.imparfait"]')
+  .innerText().catch(() => '(absent)');
+ok(`the future reads "${futureState}" after six RIGHT answers`,
+   /solid/i.test(futureState));
+ok(`the imperfect reads "${imparfaitState}" after six wrong answers`,
+   /needs work/i.test(imparfaitState));
+
+// And a concept nobody has touched still reads "not started", so the states are
+// distinguishing the learner's record and not merely rendering.
+const untouched = await page.locator('[data-testid="concept-list"] [data-testid^="state-"]')
+  .allInnerTexts();
+ok(`both ends observed in one profile: solid and needs work`,
+   /solid/i.test(futureState) && /needs work/i.test(imparfaitState));
+ok(`${untouched.filter((x) => /not started/i.test(x)).length} concepts on the page still read "not started"`,
+   untouched.some((x) => /not started/i.test(x)));
+ok('and the two drilled concepts do not',
+   !/not started/i.test(futureState) && !/not started/i.test(imparfaitState));
+
+// The usage column, added because 32 live concepts were unreachable from the map.
+await go(page, '/learn');
+await page.waitForSelector('.map', { timeout: 8000 });
+ok(`the map now has ${await page.locator('.map thead th').count()} columns including usage`,
+   (await page.locator('[data-testid="cell-A1-usage"]').count()) === 1);
+await go(page, '/learn/level/C1/usage');
+await page.waitForSelector('[data-testid="level-skill-count"]', { timeout: 8000 });
+const usageCount = await page.locator('[data-testid="level-skill-count"]').innerText();
+ok(`C1 usage is reachable and says "${usageCount.replace(/\n/g, ' ')}"`, /0/.test(usageCount));
+
 console.log('\n=== verbs drill: one sitting survives a reload ===');
 {
   const c = await browser.newContext({ viewport: { width: 390, height: 844 } });

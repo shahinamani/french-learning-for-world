@@ -108,7 +108,11 @@ export function VerbList() {
                 {/* The first sense only. The index carries every sense so that
                     searching "to wear" finds « porter », but a row showing all
                     of them runs to 190 characters and stops being a list. */}
-                <span className="muted">{v.en.split('; ')[0]}</span>
+                {/* A blank cell reads as a missing row rather than as a
+                    decision, which is worse than saying nothing is shown. */}
+                <span className="muted">
+                  {v.en ? v.en.split('; ')[0] : <em>{t('glossNotShown')}</em>}
+                </span>
                 {v.irregular && <span className="chip" data-testid={`irr-${v.infinitive}`}>{t('irregular')}</span>}
                 <Icon name="chevron" size={16} />
               </Link>

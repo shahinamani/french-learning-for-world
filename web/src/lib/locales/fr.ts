@@ -104,6 +104,18 @@ const fr: Dict = {
   glossWithheldExplicit: 'Aucun sens n’est affiché : toutes les traductions anglaises de ce verbe sont crues. Il figure dans la liste parce qu’il est courant à l’oral, non parce qu’il est à employer.',
   pronominalOnly: 'Ce verbe ne s’emploie qu’à la forme pronominale. « je souviens » n’existe pas ; « je me souviens » si. Cette indication provient du Wiktionnaire et n’a pas été relue par un enseignant.',
   glossReviewed: 'Ce sens a été corrigé par un enseignant de français. Celui du Wiktionnaire était faux.',
+  glossNotShown: 'Sens non affiché',
+  rarelyConjugated: 'Presque toujours employé au participe passé. La forme conjuguée est rare : {a} est attesté.',
+  conceptsWithExercises: 'notions avec des exercices',
+  conceptsListedOnly: '{n} notions listées, sans exercice pour l’instant',
+  noExercisesYet: 'rien à travailler pour l’instant',
+  exercises: 'exercices',
+  noConceptsHere: 'Ce niveau et cette compétence ne figurent pas encore dans la taxonomie.',
+  skillNotModelled: 'Cette compétence est évaluée à l’examen mais n’est modélisée ici à aucun niveau. La grammaire, le vocabulaire et la prononciation le sont. La compréhension orale demande des enregistrements dont la licence le permette, et ce projet n’utilisera pas de voix de synthèse pour l’entraînement à l’écoute.',
+  mastery_untouched: 'pas commencé',
+  mastery_started: 'en cours',
+  mastery_weak: 'à retravailler',
+  mastery_solid: 'acquis',
 };
 
 export default fr;
