@@ -262,6 +262,39 @@ ok('a concept with no cards yet says so rather than showing a dead button',
 // ===================================================================
 // The learn map, which is the portal's main navigation. It offered 42 cells and
 // every one of the 18 clickable ones led to a page saying "Not built yet".
+// The unreviewed marker on EXERCISES, which the glosses have carried since
+// 2026-10-02 while the exercises carried nothing. Unevenly applied honesty is
+// worse than none: a learner who has seen the gloss marker concludes its
+// absence means reviewed.
+console.log('\n=== exercises say they are unchecked ===');
+await go(page, '/practise/exams/tcf-b2-structure');
+await page.waitForSelector('[data-testid="paper-unreviewed"]', { timeout: 8000 });
+ok('the paper says so BEFORE a learner sits it',
+   /teacher/i.test(await page.locator('[data-testid="paper-unreviewed"]').innerText()));
+
+const startBtn = page.locator('a[href*="/sit"], button').filter({ hasText: /start|commencer/i });
+if (await startBtn.count()) { await startBtn.first().click(); await page.waitForTimeout(700); }
+ok('and while sitting it, quietly',
+   (await page.locator('[data-testid="sit-unreviewed"]').count()) === 1);
+
+// Answer everything wrong, so the explanations are what the learner reads.
+for (let i = 0; i < 8; i++) {
+  const r = page.locator('input[type="radio"]');
+  if ((await r.count()) === 4) await r.nth(0).check();
+  const nx = page.locator('[data-testid="exam-next"]');
+  if ((await nx.count()) && await nx.isEnabled()) { await nx.click(); await page.waitForTimeout(100); }
+}
+await page.locator('[data-testid="exam-submit"]').click();
+await page.waitForTimeout(1200);
+const details = page.locator('details');
+for (let i = 0; i < await details.count(); i++) await details.nth(i).click().catch(() => {});
+await page.waitForTimeout(250);
+const marks = await page.locator('[data-testid^="unreviewed-b2-sv-"]').count();
+ok(`every explanation carries the marker (${marks} of 8)`, marks === 8);
+const flagged = await page.locator('[data-testid="unreviewed-b2-sv-2"]').innerText();
+ok(`a flagged item shows the doubt itself ("${flagged.slice(0, 64).replace(/\n/g, ' ')}…")`,
+   /unsure/i.test(flagged) && /esp|indicative|subjunctive/i.test(flagged));
+
 console.log('\n=== the learn map leads somewhere ===');
 await go(page, '/learn');
 await page.waitForSelector('.map', { timeout: 8000 });

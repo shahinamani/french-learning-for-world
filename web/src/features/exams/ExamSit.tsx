@@ -168,6 +168,11 @@ export function ExamSit() {
         </button>
       </div>
 
+      {/* Quiet while sitting — a warning on every question would be noise — but
+          present, because the learner is answering an unchecked question now. */}
+      {item.review?.state !== 'approved' && (
+        <p className="fine muted" data-testid="sit-unreviewed">{t('itemUnreviewed')}</p>
+      )}
       <p className="muted" data-testid="exam-resumable">{t('examResumable')}</p>
     </div>
   );

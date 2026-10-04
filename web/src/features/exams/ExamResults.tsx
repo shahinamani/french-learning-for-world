@@ -203,6 +203,17 @@ export function ExamResults() {
                     <p className="muted" lang="fr" dir="ltr">{t('youChose')}: {frText(item.options[chosen]?.fr ?? '')}</p>
                   )}
                   <p className="muted"><Localised field={item.explain} /></p>
+                  {/* Beside the explanation, because that is where an unchecked
+                      item does its damage: a learner who got it wrong reads this
+                      to find out why, and takes it as the answer. */}
+                  {item.review?.state !== 'approved' && (
+                    <p className="fine muted" data-testid={`unreviewed-${item.id}`}>
+                      {t('itemUnreviewed')}
+                      {item.uncertain
+                        ? <> · <strong>{t('itemUncertain')}</strong>: {item.uncertain.doubt}</>
+                        : null}
+                    </p>
+                  )}
                 </details>
               </li>
             );

@@ -1604,6 +1604,11 @@
       "state": "unreviewed",
       "by": null,
       "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "prescriptive-rule-widely-violated",
+      "doubt": "« espérer que » takes the indicative in standard French, and « j’espère qu’il vienne » is very widely heard and written. The item marks the indicative correct and the subjunctive wrong. If the TCF would accept either, the item has a second right answer and should be rewritten or dropped — this is the only item in the eight whose CORRECT ANSWER I am unsure of."
      }
     },
     {
@@ -1690,6 +1695,11 @@
       "state": "unreviewed",
       "by": null,
       "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "prescriptive-rule-widely-violated",
+      "doubt": "The ANSWER is safe — « avant que » takes the subjunctive and nobody disputes it. The doubt is in the EXPLANATION, which tells the learner that « après que » takes the indicative in careful writing. That is the prescriptive rule and it is violated constantly, including by educated writers. Telling a B2 candidate the rule without saying how little it is observed may be teaching them to correct French that an examiner would accept."
      }
     },
     {

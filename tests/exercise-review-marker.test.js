@@ -68,6 +68,33 @@ test('the file states that unreviewed is the default, in words', () => {
   assert.match(papers.reviewNote, /earns/i);
 });
 
+test('an uncertain item says how sure and what the doubt is', () => {
+  // A comment would not survive the round trip through the review tool, so the
+  // doubt is a field. Structured because the kinds are reviewed differently:
+  // "contested among native speakers" and "a prescriptive rule widely violated"
+  // need different judgements from a teacher, and a flagged item is where a
+  // reviewer's six minutes are worth most.
+  const KINDS = ['contested-usage', 'prescriptive-rule-widely-violated',
+                 'register-unsure', 'regional-variation', 'other'];
+  const flagged = items.filter((i) => i.uncertain);
+  assert.ok(flagged.length >= 2,
+    'no item is flagged uncertain. Two of the first eight were written with real '
+    + 'doubt, and hiding that until item 90 is the thing this field prevents');
+  for (const it of flagged) {
+    assert.ok(['low', 'medium'].includes(it.uncertain.confidence), it.id);
+    assert.ok(KINDS.includes(it.uncertain.kind), `${it.id}: kind ${it.uncertain.kind}`);
+    assert.ok((it.uncertain.doubt || '').length > 80,
+      `${it.id}: the doubt must say what the doubt IS, not that there is one`);
+    // An item flagged uncertain cannot also be approved without a note saying
+    // the doubt was resolved: that is the whole point of flagging it.
+    if (it.review.state === 'approved') {
+      assert.ok(it.review.note, `${it.id} was approved while flagged uncertain and no note says why`);
+    }
+  }
+  console.log(`    ${flagged.length} of ${items.length} items flagged uncertain: `
+    + flagged.map((i) => `${i.id} (${i.uncertain.kind})`).join(', '));
+});
+
 test('every item has an Arabic slot, present and empty', () => {
   // Present: so the backlog is visible the day a reviewer appears.
   // Empty: because Arabic is not machine-filled and will not be.

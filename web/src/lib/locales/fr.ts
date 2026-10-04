@@ -117,6 +117,9 @@ const fr: Dict = {
   mastery_weak: 'à retravailler',
   mastery_solid: 'acquis',
   examStructureUnverified: 'Ce projet n’a pas vérifié la structure de cet examen auprès de son organisme. Ce qui est proposé ici est un entraînement général, non calé sur ses épreuves.',
+  itemsUnreviewed: 'Ces questions ont été écrites pour ce projet et n’ont pas été vérifiées par un enseignant. Si l’une vous paraît fausse, elle peut l’être.',
+  itemUnreviewed: 'non vérifié par un enseignant',
+  itemUncertain: 'L’auteur n’était pas sûr de celle-ci',
 };
 
 export default fr;
