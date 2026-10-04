@@ -118,8 +118,48 @@ try {
   ok('and stayed on the item rather than advancing',
      (await p.locator('[data-recorded="none"]').count()) === 1);
 
+  console.log('\n=== a rejected rule pulls its siblings forward ===');
+  // Flagging is blind to confident error: b1-agr-1 to -4 all rest on one rule,
+  // and if it is wrong all four are wrong with no flag on any of them. So
+  // rejecting one must offer the others now, not in three months.
+  await p.goto(`${BASE}?paper=tcf-b2-structure-2&batch=20&by=Keyboard%20Test`,
+               { waitUntil: 'networkidle' });
+  await p.waitForSelector('.stim', { timeout: 8000 });
+  // Walk to the agreement item.
+  const currentId = () => p.locator('[data-item]').getAttribute('data-item');
+  let found = false;
+  for (let n = 0; n < 20; n++) {
+    if ((await currentId()) === 'b1-agr-2') { found = true; break; }
+    await p.keyboard.press('ArrowRight');
+    await p.waitForTimeout(90);
+  }
+  ok(`reached b1-agr-2 (on ${await currentId()})`, found);
+  const ruleShown = await p.locator('.rule').innerText().catch(() => '');
+  ok(`the item names the rule it rests on ("${ruleShown.split('\n')[0]}")`,
+     /rule it rests on/i.test(ruleShown));
+  ok(`and lists the other items resting on it, excluding itself`,
+     /3 other items rest on this/.test(ruleShown)
+     && /b1-agr-1/.test(ruleShown) && !/this: [^\n]*b1-agr-2/.test(ruleShown));
+  ok('and shows the risk the rule carries',
+     /se parler/i.test(ruleShown));
+
+  await p.keyboard.press('n');
+  await p.keyboard.type('the direct/indirect distinction looks reversed to me');
+  await p.keyboard.press('Escape');
+  await p.keyboard.press('r');
+  await p.waitForTimeout(400);
+  const bannerEl = p.locator('[data-pulled]');
+  ok('rejecting it announces the correlated failure',
+     (await bannerEl.count()) === 1);
+  const banner = await bannerEl.innerText().catch(() => '');
+  ok(`the banner names the siblings now coming next ("${banner.split('\n').slice(0,2).join(' ').slice(0,80)}…")`,
+     /rest on it and now come next|No other item/i.test(banner));
+  const next = await currentId();
+  ok(`the very next item is a sibling, not the next in paper order (${next})`,
+     ['b1-agr-1', 'b1-agr-3', 'b1-agr-4'].includes(next));
+
   console.log('\n=== the batch-done state ===');
-  for (let n = 0; n < 6; n++) { await p.keyboard.press('s'); await p.waitForTimeout(220); }
+  for (let n = 0; n < 24; n++) { await p.keyboard.press('s'); await p.waitForTimeout(120); }
   const done = await p.locator('.done').innerText().catch(() => '');
   ok(`it says the batch is done ("${done.split('\n')[0]}")`, /batch done/i.test(done));
   ok('and says nothing was written into the content',

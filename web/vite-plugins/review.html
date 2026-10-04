@@ -39,6 +39,11 @@
           border-radius:.4rem; padding:.7rem .9rem; margin:0 0 1.25rem; }
   .flag strong { display:block; margin-bottom:.25rem; }
   .gap { color:var(--dim); font-size:.85rem; margin:0 0 1rem; }
+  .rule { border:1px dashed var(--line); border-radius:.4rem; padding:.6rem .85rem;
+          margin:0 0 1rem; font-size:.9rem; color:var(--dim); }
+  .rule b { display:block; color:var(--ink); margin-bottom:.2rem; }
+  .pulled { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
+            border-radius:.4rem; padding:.6rem .85rem; margin:0 0 1rem; font-size:.9rem; }
   .recorded { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
               border-radius:.4rem; padding:.5rem .8rem; margin:0 0 1rem; font-size:.9rem; }
   textarea { width:100%; min-height:4.5rem; font:inherit; padding:.6rem;
@@ -67,9 +72,11 @@
 const REVIEWER = new URLSearchParams(location.search).get('by') || 'Shahin Amani';
 const BATCH = Number(new URLSearchParams(location.search).get('batch') || 20);
 const el = (id) => document.getElementById(id);
-let queue = [], i = 0, decided = 0, recorded = {};
+let queue = [], i = 0, decided = 0, recorded = {}, pulled = null;
 
-const r = await fetch('/__review/queue').then((x) => x.json());
+const PAPER = new URLSearchParams(location.search).get('paper');
+const r = await fetch('/__review/queue' + (PAPER ? `?paper=${encodeURIComponent(PAPER)}` : ''))
+  .then((x) => x.json());
 queue = r.queue.slice(0, BATCH); decided = r.decided; recorded = r.recorded ?? {};
 
 function render() {
@@ -85,6 +92,15 @@ function render() {
   }
   const it = queue[i];
   el('where').textContent = `${it.paperId} · ${it.level} · ${(it.conceptIds || []).join(', ')}`;
+  const banner = pulled && pulled.rule
+    ? `<div class="pulled" data-pulled="${pulled.rule}"><b>You rejected the rule behind
+         this item.</b> ${pulled.next.length
+           ? `${pulled.next.length} other item${pulled.next.length > 1 ? 's' : ''} rest on
+              it and now come next: ${pulled.next.join(', ')}.`
+           : 'No other item in this batch rests on it.'}
+         ${pulled.absent.length
+           ? ` Outside this batch: ${pulled.absent.join(', ')}.` : ''}</div>`
+    : '';
   el('count').textContent = `${i + 1} of ${queue.length}`;
   const opts = it.options.map((o, n) => `<li class="${n === it.answer ? 'right' : ''}">
       <span class="k">${n + 1}</span><span>${o.fr}</span>
@@ -94,14 +110,22 @@ function render() {
       ${it.uncertain.doubt}</div>` : '';
   const missing = ['en', 'fr', 'fa', 'ar'].filter((l) => !it.explain?.[l]);
   el('item').innerHTML = `
+    ${banner}
     ${flag}
+    ${it.ruleSays ? `<div class="rule"><b>The rule it rests on</b>
+        ${it.ruleSays.says}
+        ${it.ruleSays.risk ? `<br><i>Risk: ${it.ruleSays.risk}</i>` : ''}
+        ${it.siblings?.length ? `<br><span class="k">${it.siblings.length} other item${
+          it.siblings.length > 1 ? 's' : ''} rest${it.siblings.length > 1 ? '' : 's'} on this:
+          ${it.siblings.join(', ')}</span>` : ''}</div>` : ''}
     <p class="meta">${it.prompt?.en ?? ''}</p>
     <p class="stim" lang="fr" dir="ltr">${it.stimulus?.fr ?? ''}</p>
     <ol class="opts">${opts}</ol>
     <p class="expl">${it.explain?.en ?? '(no English explanation)'}</p>
     ${missing.length ? `<p class="gap">No explanation in: ${missing.join(', ')} — ${
       missing.includes('ar') ? 'the Arabic slot is open and will not be machine-filled.' : ''}</p>` : ''}
-    <p class="gap">${it.id} · in the content: <b>${it.review?.state ?? 'unreviewed'}</b></p>
+    <p class="gap"><span data-item="${it.id}">${it.id}</span> · in the content:
+       <b>${it.review?.state ?? 'unreviewed'}</b></p>
     ${recorded[it.id] ? `<p class="recorded" data-recorded="${recorded[it.id].verdict}">
         <b>You recorded: ${recorded[it.id].verdict}</b>${
           recorded[it.id].note ? ` — ${recorded[it.id].note}` : ''}
@@ -128,6 +152,21 @@ async function decide(verdict, advance = true) {
   });
   if (verdict === 'cleared') delete recorded[it.id];
   else recorded[it.id] = { verdict, note, by: REVIEWER };
+
+  // **A rejected rule is a correlated failure.** Every other item resting on it
+  // is suspect for the same reason, so they come next rather than in three
+  // months. One wrong rule should cost one session.
+  if (verdict === 'rejected' && it.siblings?.length) {
+    const here = new Set(queue.map((q) => q.id));
+    const pull = queue.filter((q, n) => n > i && it.siblings.includes(q.id)
+                                     && !recorded[q.id]);
+    const absent = it.siblings.filter((sid) => !here.has(sid));
+    if (pull.length || absent.length) {
+      queue = [...queue.slice(0, i + 1), ...pull,
+               ...queue.slice(i + 1).filter((q) => !pull.includes(q))];
+      pulled = { rule: it.rule, next: pull.map((q) => q.id), absent };
+    }
+  } else pulled = null;
   decided = Object.values(recorded).filter((d) => d.verdict !== 'skipped').length;
   // Clearing does NOT advance: the reviewer cleared it to look at it again.
   if (advance && verdict !== 'cleared') i += 1;

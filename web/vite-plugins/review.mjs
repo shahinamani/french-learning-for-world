@@ -42,6 +42,7 @@ const ENDPOINT = '/__review';
 export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.url))) {
   const decisionsPath = join(root, 'data/review-decisions.json');
   const papersPath = join(root, 'content/exam-papers.json');
+  const rulesPath = join(root, 'content/item-rules.json');
 
   const readDecisions = () => {
     if (!existsSync(decisionsPath)) return { version: 1, decisions: [] };
@@ -53,17 +54,39 @@ export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.ur
     // Vite never includes this in a build. The guard asserts the literal.
     apply: 'serve',
     configureServer(server) {
-      server.middlewares.use(`${ENDPOINT}/queue`, (_req, res) => {
+      server.middlewares.use(`${ENDPOINT}/queue`, (req, res) => {
         // Everything not yet decided, flagged items first: a flagged item is
         // where the reviewer's six minutes are worth most.
         const papers = JSON.parse(readFileSync(papersPath, 'utf8'));
-        const decided = new Set(readDecisions().decisions
-          .filter((d) => d.verdict !== 'skipped').map((d) => d.itemId));
-        const queue = [];
+        const rules = existsSync(rulesPath)
+          ? JSON.parse(readFileSync(rulesPath, 'utf8')).rules : {};
+        // Which items rest on the same rule. **Flagging is blind to confident
+        // error**: an item whose writer was unsure carries `uncertain`, an item
+        // whose writer was confidently wrong carries nothing, and several items
+        // on one wrong rule fail together and silently. Rejecting one should
+        // offer the others immediately.
+        const siblingsOf = {};
         for (const paper of papers.papers) {
           for (const item of paper.items) {
+            if (!item.rule) continue;
+            (siblingsOf[item.rule] ??= []).push(item.id);
+          }
+        }
+        const decided = new Set(readDecisions().decisions
+          .filter((d) => d.verdict !== 'skipped').map((d) => d.itemId));
+        // `?paper=` narrows the queue. Without it the queue is every undecided
+        // item in the file — 56 of them — and `?batch=20` then served the DELF
+        // papers while the batch a reviewer had been asked to read sat at the
+        // end. A reviewer who asks for batch one must get batch one.
+        const want = new URL(req.url ?? '/', 'http://x').searchParams.get('paper');
+        const queue = [];
+        for (const paper of papers.papers) {
+          if (want && paper.id !== want) continue;
+          for (const item of paper.items) {
             if (item.review?.state === 'approved' || decided.has(item.id)) continue;
-            queue.push({ ...item, paperId: paper.id, paperName: paper.name?.en ?? paper.id });
+            queue.push({ ...item, paperId: paper.id, paperName: paper.name?.en ?? paper.id,
+                         ruleSays: item.rule ? rules[item.rule] : null,
+                         siblings: (siblingsOf[item.rule] ?? []).filter((x) => x !== item.id) });
           }
         }
         queue.sort((a, b) => Number(Boolean(b.uncertain)) - Number(Boolean(a.uncertain)));

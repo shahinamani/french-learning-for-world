@@ -171,3 +171,57 @@ test('the Arabic gap is the size the project thinks it is', () => {
   assert.equal(three.length, items.length,
     `${three.length} of ${items.length} items are three languages of a four-language claim`);
 });
+
+test('every drafted item records the one rule it rests on', () => {
+  // **Flagging is blind to confident error.** An item whose writer was unsure
+  // carries `uncertain`; an item whose writer was confidently wrong carries
+  // nothing — and when several items rest on one wrong rule they fail together,
+  // silently. b1-agr-1 to -4 all turn on direct-versus-indirect object: if
+  // « se parler » and « se rencontrer » are the wrong way round, four items are
+  // wrong at once and no flag would show it.
+  const rules = read('content/item-rules.json').rules;
+  const drafted = items.filter((i) => /^(b1|b2)-/.test(i.id));
+  assert.ok(drafted.length >= 28, `${drafted.length} drafted items`);
+  const bad = [];
+  for (const it of drafted) {
+    if (!it.rule) { bad.push(`${it.id}: no rule`); continue; }
+    if (!rules[it.rule]) bad.push(`${it.id}: rule ${it.rule} is not in the registry`);
+    else if ((rules[it.rule].says || '').length < 60) bad.push(`${it.rule}: says too little`);
+  }
+  assert.deepEqual(bad, []);
+  // Unused rules are dead weight and a sign a rename went half-done.
+  const used = new Set(drafted.map((i) => i.rule));
+  assert.deepEqual(Object.keys(rules).filter((r) => !used.has(r)), []);
+});
+
+test('the rules carrying several items are named, because that is where a correlated failure lives', () => {
+  const drafted = items.filter((i) => i.rule);
+  const byRule = {};
+  for (const it of drafted) (byRule[it.rule] ??= []).push(it.id);
+  const shared = Object.entries(byRule).filter(([, ids]) => ids.length > 1);
+  assert.ok(shared.length >= 3,
+    'no rule carries more than one item, so either the tagging is too fine to be '
+    + 'useful or the batch has no correlated risk at all');
+  // The one that prompted the field.
+  assert.deepEqual(
+    (byRule['pronominal.agreement.pronoun-is-direct-object'] ?? []).sort(),
+    ['b1-agr-1', 'b1-agr-2', 'b1-agr-3', 'b1-agr-4']);
+  // A rule carrying a correlated risk should say so, so a reviewer reading one
+  // item knows what else is at stake.
+  const rules = read('content/item-rules.json').rules;
+  assert.match(rules['pronominal.agreement.pronoun-is-direct-object'].risk, /fails together/);
+  for (const [rule, ids] of shared) {
+    console.log(`    ${ids.length} items on ${rule}`);
+  }
+});
+
+test('the rebalancer refuses to move a reviewed item', () => {
+  // Running it after a review would attach a verdict to an item the reviewer
+  // did not see — the forged-review fault by a different road, and by a road
+  // nobody would watch. Seen refusing: a planted approval, out of position.
+  const src = readFileSync(join(root, 'scripts/even-out-answers.py'), 'utf8');
+  assert.match(src, /REFUSING/, 'the script does not refuse anything');
+  assert.match(src, /approved", "rejected"|"approved", "rejected"/,
+    'the refusal must key on a review verdict');
+  assert.match(src, /return 2/, 'it must exit non-zero, not warn and continue');
+});

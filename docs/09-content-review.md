@@ -55,6 +55,39 @@ accident instead of by test.
 Typing in the note field does not trigger the keys, `Esc` leaves it, and a
 verdict key pressed after the last item does nothing.
 
+## Reviewing one batch
+
+```sh
+open 'http://localhost:5199/__review?paper=tcf-b2-structure-2&batch=20'
+```
+
+**Name the paper.** Without `?paper=` the queue is every undecided item in the
+file — 56 of them — and a batch of 20 serves the DELF papers while the batch you
+were asked to read sits at the end.
+
+## The rule each item rests on
+
+Every drafted item names the single claim about French it depends on, shown at
+the top of the item with any risk that claim carries.
+
+**This exists because flagging is blind to confident error.** An item whose
+writer was unsure carries a flag; an item whose writer was confidently wrong
+carries nothing. `b1-agr-1` to `b1-agr-4` all rest on direct-versus-indirect
+object: if that is the wrong way round, four items are wrong together and no
+flag shows it.
+
+So **rejecting an item offers every other item resting on the same rule
+immediately** — they come next, not in three months, and the banner names any
+that are outside the batch you are reviewing. One wrong rule costs one session.
+
+Three rules in the 28 drafted items carry more than one item:
+
+| items | rule |
+|---:|:--|
+| 4 | pronominal agreement — is the pronoun the direct object? |
+| 3 | « on » for an unknown agent |
+| 2 | negative word order, adverb before pronoun |
+
 ### Before a session
 
 ```sh

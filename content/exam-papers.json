@@ -1561,7 +1561,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "mood.doubt-and-negated-opinion-take-the-subjunctive"
     },
     {
      "id": "b2-sv-2",
@@ -1609,7 +1610,8 @@
       "confidence": "medium",
       "kind": "prescriptive-rule-widely-violated",
       "doubt": "« espérer que » takes the indicative in standard French, and « j’espère qu’il vienne » is very widely heard and written. The item marks the indicative correct and the subjunctive wrong. If the TCF would accept either, the item has a second right answer and should be rewritten or dropped — this is the only item in the eight whose CORRECT ANSWER I am unsure of."
-     }
+     },
+     "rule": "mood.esperer-takes-the-indicative"
     },
     {
      "id": "b2-sv-3",
@@ -1652,7 +1654,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "mood.probable-indicative-possible-subjunctive"
     },
     {
      "id": "b2-sv-4",
@@ -1700,7 +1703,8 @@
       "confidence": "medium",
       "kind": "prescriptive-rule-widely-violated",
       "doubt": "The ANSWER is safe — « avant que » takes the subjunctive and nobody disputes it. The doubt is in the EXPLANATION, which tells the learner that « après que » takes the indicative in careful writing. That is the prescriptive rule and it is violated constantly, including by educated writers. Telling a B2 candidate the rule without saying how little it is observed may be teaching them to correct French that an examiner would accept."
-     }
+     },
+     "rule": "mood.avant-que-subjunctive"
     },
     {
      "id": "b2-sv-5",
@@ -1743,7 +1747,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "mood.bien-que-subjunctive"
     },
     {
      "id": "b2-sv-6",
@@ -1786,7 +1791,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "mood.certainty-takes-the-indicative"
     },
     {
      "id": "b2-sv-7",
@@ -1829,7 +1835,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "mood.il-faut-que-subjunctive"
     },
     {
      "id": "b2-sv-8",
@@ -1872,7 +1879,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "mood.il-me-semble-indicative-il-semble-subjunctive"
     }
    ]
   },
@@ -1972,7 +1980,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "negation.order-adverb-before-pronoun"
     },
     {
      "id": "b1-neg-2",
@@ -2015,7 +2024,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "negation.order-adverb-before-pronoun"
     },
     {
      "id": "b1-neg-3",
@@ -2058,7 +2068,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "negation.encore-not-deja-in-the-negative"
     },
     {
      "id": "b1-neg-4",
@@ -2101,7 +2112,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "negation.ne-required-with-subject-personne"
     },
     {
      "id": "b1-neg-5",
@@ -2149,7 +2161,8 @@
       "confidence": "low",
       "kind": "contested-usage",
       "doubt": "« Il ne reste que » and « il ne reste plus que » are both ordinary French and the second is arguably more natural here — « there is only a little bread LEFT » carries the sense of « plus ». I marked « que » correct and « plus que » wrong, and I am not confident the distractor is actually wrong. If both are acceptable the item has two right answers and should be rewritten with a context that excludes one."
-     }
+     },
+     "rule": "negation.ne-que-is-restriction"
     },
     {
      "id": "b1-agr-1",
@@ -2192,7 +2205,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
     },
     {
      "id": "b1-agr-2",
@@ -2235,7 +2249,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
     },
     {
      "id": "b1-agr-3",
@@ -2278,7 +2293,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
     },
     {
      "id": "b1-agr-4",
@@ -2321,7 +2337,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
     },
     {
      "id": "b1-agr-5",
@@ -2369,7 +2386,8 @@
       "confidence": "medium",
       "kind": "prescriptive-rule-widely-violated",
       "doubt": "The rule is certain and this is the standard example, but agreement with a preceding direct object in a PRONOMINAL verb is among the most frequently got wrong constructions in written French, including by native writers. My doubt is pedagogical rather than grammatical: whether a B2 candidate is served by an item whose correct answer most native speakers would also miss, or whether this belongs at C1."
-     }
+     },
+     "rule": "pronominal.agreement.preceding-direct-object"
     },
     {
      "id": "b1-pas-1",
@@ -2412,7 +2430,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "passive.on-for-unknown-agent"
     },
     {
      "id": "b1-pas-2",
@@ -2455,7 +2474,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "passive.on-for-unknown-agent"
     },
     {
      "id": "b1-pas-3",
@@ -2498,7 +2518,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "passive.etre-passive-when-subject-is-the-thing"
     },
     {
      "id": "b1-pas-4",
@@ -2541,7 +2562,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "passive.on-for-unknown-agent"
     },
     {
      "id": "b1-pas-5",
@@ -2584,7 +2606,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "passive.pronominal-passive-for-general-statements"
     },
     {
      "id": "b1-emp-1",
@@ -2627,7 +2650,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "cleft.c-est-not-il-est-before-a-name"
     },
     {
      "id": "b1-emp-2",
@@ -2670,7 +2694,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "cleft.qui-for-subject-que-for-object"
     },
     {
      "id": "b1-emp-3",
@@ -2718,7 +2743,8 @@
       "confidence": "medium",
       "kind": "prescriptive-rule-widely-violated",
       "doubt": "« C’est eux » is extremely common in speech and increasingly in writing, and some reference grammars now accept it. I marked « ce sont » correct and « c’est » wrong. If an examiner would accept either, this item punishes a candidate for ordinary French and should be dropped rather than softened in the explanation."
-     }
+     },
+     "rule": "cleft.ce-sont-for-plural"
     },
     {
      "id": "b1-emp-4",
@@ -2761,7 +2787,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "cleft.que-after-an-emphasised-adverbial"
     },
     {
      "id": "b1-emp-5",
@@ -2804,7 +2831,8 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     }
+     },
+     "rule": "cleft.verb-agrees-with-the-stressed-pronoun"
     }
    ]
   }

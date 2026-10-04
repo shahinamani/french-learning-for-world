@@ -15,8 +15,8 @@ test, and before saying a piece of work is finished.
 
 ### Before anything else: am I comparing the right two things?
 
-Ten checks of mine accused correct data in one week. **Nine of the ten compared
-the wrong two things.** Only one was a wrong idea about the data — a rule
+Eleven checks of mine accused correct data in one week. **Ten of the eleven
+compared the wrong two things.** Only one was a wrong idea about the data — a rule
 requiring a three-letter word, which rejected « to go ».
 
 | the check | what it compared | what it should have compared |
@@ -29,6 +29,7 @@ requiring a three-letter word, which rejected « to go ».
 | `/not been verified/` | my paraphrase of the text | the text |
 | a positional line comparison | line *i* to line *i* | a diff |
 | `git diff` in the applier test | the file and the last commit | the file before and after the applier |
+| the keyboard drive looking for an item | the page's PROSE for an id | the id, read from its own element — it matched a sibling LIST containing that id and walked to the wrong item |
 | the answer-position guard | nothing — it was right, and found the fault in two papers nobody had written | — |
 
 So the first question when writing a check is not "is my rule right?" —
@@ -667,7 +668,7 @@ Five checks of mine in one week accused data that was correct:
 | a positional line comparison | an inserted line shifts every line after it; one added `note` reported 323 differences |
 | `git diff` in the applier test | compared the file to **HEAD**, so every uncommitted change counted as the applier's work: 936 lines for a four-line write |
 
-**Running total: eight distinct faults, ten occurrences** — and at ten, the pattern is above, in "am I comparing the right two things?". Nine of the ten compared the wrong two things; one was a wrong idea about the data. — the semicolon split
+**Running total: nine distinct faults, eleven occurrences** — and at ten, the pattern is above, in "am I comparing the right two things?". Nine of the ten compared the wrong two things; one was a wrong idea about the data. — the semicolon split
 happened twice, having been learned once. Shahin's standing instruction: when
 this table reaches ten, stop and look at what they have in common, because by
 then it is a pattern about how the checks are written and not about any one of
@@ -802,6 +803,42 @@ And the smaller lesson, costing nothing: the applier is Python because the file
 is written by a Python serialiser. A Node round-trip would have reformatted all
 2,400 lines and buried every review in a diff nobody could read. **One file, one
 serialiser** — two is how two sources of truth begin.
+
+
+### 2026-10-04 — flagging is blind to confident error
+
+Three items in batch one are flagged `uncertain`, with the kind of doubt and why.
+That system works, and it cannot see the thing that matters most.
+
+`b1-agr-1` to `b1-agr-4` all rest on one claim: that a pronominal verb's
+participle agrees when the reflexive pronoun is the direct object and not when
+it is indirect. **If « se parler » and « se rencontrer » are the wrong way
+round, all four items are wrong together — and not one of them carries a flag,
+because I am not unsure. I am confident.**
+
+Shahin's framing: **confidence is exactly where the flagging system is blind.**
+A flag records what the writer knows they do not know. The expensive failures
+are the ones they do not know they do not know, and those arrive in groups,
+because a writer with one wrong rule writes several items from it.
+
+So every drafted item now records the single rule it rests on, and the review
+tool reads them: **rejecting an item offers every other item resting on the same
+rule immediately.** Rejecting `b1-agr-2` jumps to `b1-agr-3`, not to the next
+item in paper order, and the banner names what else is affected — including
+items outside the current batch.
+
+Three rules in 28 items carry more than one item: the agreement rule carries
+four, « on » for an unknown agent carries three, negative word order carries
+two. **Those three rules are where a correlated failure lives**, and naming them
+turns one wrong rule into one review session rather than three discoveries
+months apart.
+
+The general shape: **a flag is a confession, and confessions are selective.**
+Where work rests on shared premises, record the premises — not because the
+writer doubts them, but because the reader will one day disprove one and need to
+know what else falls with it. The verb work had no such record: when the
+suffix-matching bug was found, eleven verbs were wrong and finding the eleventh
+took a separate search each time.
 
 
 ## The checklist

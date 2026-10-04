@@ -1,0 +1,77 @@
+{
+ "version": 1,
+ "note": "The single claim about French each exercise rests on. **This exists because flagging is blind to confident error.** An item whose writer was unsure carries `uncertain`; an item whose writer was confidently wrong carries nothing — and when several items rest on one wrong rule they fail together, silently. b1-agr-2, -3 and -4 all turn on direct-versus-indirect object: if « se parler » and « se rencontrer » are the wrong way round, three items are wrong at once and no flag would show it.\\nThe review tool reads this: rejecting an item offers every other item resting on the same rule immediately, so one wrong rule costs one session rather than three discoveries months apart.",
+ "forReviewers": true,
+ "rules": {
+  "pronominal.agreement.pronoun-is-direct-object": {
+   "says": "In a pronominal verb the past participle agrees with the subject when the reflexive pronoun is the DIRECT object (« elle s'est levée »), and does not when it is indirect (« elle s'est lavé les mains », « ils se sont parlé »). Whether the verb takes « à » is what decides.",
+   "risk": "If « se parler » (indirect, no agreement) and « se rencontrer » (direct, agreement) are the wrong way round, every item resting on this fails together."
+  },
+  "pronominal.agreement.preceding-direct-object": {
+   "says": "A direct object placed BEFORE a pronominal verb — as a relative « que » — takes the agreement, and the reflexive pronoun plays no part: « la robe qu'elle s'est achetée »."
+  },
+  "negation.order-adverb-before-pronoun": {
+   "says": "When negative words combine, the adverb precedes the pronoun: « plus rien », « jamais rien », never the reverse. « Pas » does not combine with « plus » or « rien » in the same negation."
+  },
+  "negation.ne-required-with-subject-personne": {
+   "says": "« Personne » or « rien » as the SUBJECT still requires « ne »: « personne n'est venu ». The « ne » is not optional in writing, though it disappears in speech."
+  },
+  "negation.encore-not-deja-in-the-negative": {
+   "says": "« Pas encore » / « ne … encore » is the negative of « déjà ». « Déjà » itself belongs to affirmatives and questions."
+  },
+  "negation.ne-que-is-restriction": {
+   "says": "« Ne … que » restricts rather than negates: « il ne reste qu'un peu » means only a little remains."
+  },
+  "passive.on-for-unknown-agent": {
+   "says": "Where English uses a passive with no agent, French prefers « on »: « on m'a dit » for « I was told »."
+  },
+  "passive.etre-passive-when-subject-is-the-thing": {
+   "says": "The être-passive is correct, not to be avoided, when the sentence is ABOUT the thing and names no agent: « le pont a été construit en 1890 »."
+  },
+  "passive.pronominal-passive-for-general-statements": {
+   "says": "A pronominal passive states a general or habitual fact about a thing: « ce plat se mange avec du riz »."
+  },
+  "cleft.ce-sont-for-plural": {
+   "says": "A plural stressed element takes « ce sont »: « ce sont eux qui ont décidé ». « C'est eux » is widely said and not accepted in careful writing.",
+   "risk": "If an examiner accepts « c'est eux », any item resting on this punishes ordinary French."
+  },
+  "cleft.qui-for-subject-que-for-object": {
+   "says": "In « c'est … qui / que » the link is decided by the role of the emphasised element in its clause: subject takes « qui », object takes « que ». Whether it is a person is irrelevant."
+  },
+  "cleft.que-after-an-emphasised-adverbial": {
+   "says": "After an emphasised adverbial the link is always « que », never « où »: « c'est à Paris que je l'ai rencontré »."
+  },
+  "cleft.verb-agrees-with-the-stressed-pronoun": {
+   "says": "« C'est moi qui » takes the first person: « c'est moi qui ai fait la vaisselle ». The relative « qui » carries the person of the stressed pronoun."
+  },
+  "cleft.c-est-not-il-est-before-a-name": {
+   "says": "« C'est » introduces a name or a noun phrase; « il est » introduces a profession or an adjective."
+  },
+  "mood.doubt-and-negated-opinion-take-the-subjunctive": {
+   "says": "Doubt takes the subjunctive, and negating a verb of opinion creates doubt: « je ne crois pas qu'il ait raison »."
+  },
+  "mood.esperer-takes-the-indicative": {
+   "says": "« Espérer que » takes the indicative in standard French, unlike « souhaiter que » and « vouloir que ».",
+   "risk": "« J'espère qu'il vienne » is very widely written. If it is accepted, any item resting on this has two right answers."
+  },
+  "mood.probable-indicative-possible-subjunctive": {
+   "says": "« Il est probable que » takes the indicative; « il est possible que » takes the subjunctive. Probability is asserted, possibility is not."
+  },
+  "mood.avant-que-subjunctive": {
+   "says": "« Avant que » takes the subjunctive. « Après que » takes the indicative in careful writing.",
+   "risk": "The « après que » half is a prescriptive rule violated constantly, including by educated writers."
+  },
+  "mood.bien-que-subjunctive": {
+   "says": "« Bien que » takes the subjunctive: a concession is not asserted as fact. « Parce que » takes the indicative, because a cause is."
+  },
+  "mood.certainty-takes-the-indicative": {
+   "says": "Certainty takes the indicative — « je suis sûr qu'elle dit » — and negating the certainty switches the mood."
+  },
+  "mood.il-faut-que-subjunctive": {
+   "says": "« Il faut que » takes the subjunctive: necessity is not a statement of fact."
+  },
+  "mood.il-me-semble-indicative-il-semble-subjunctive": {
+   "says": "« Il me semble que » reports an opinion and takes the indicative; impersonal « il semble que » takes the subjunctive. One pronoun decides the mood."
+  }
+ }
+}
