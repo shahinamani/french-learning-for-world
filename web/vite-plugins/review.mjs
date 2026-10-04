@@ -26,25 +26,24 @@
  */
 import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
 import { join, dirname } from 'node:path';
-import type { Plugin } from 'vite';
+import { fileURLToPath } from 'node:url';
 
 /** The one spelling. The guard greps for it. */
 const ENDPOINT = '/__review';
 
-type Decision = {
-  itemId: string;
-  paperId: string;
-  verdict: 'approved' | 'rejected' | 'skipped';
-  note: string | null;
-  by: string;
-  at: string;
-};
-
-export function reviewTool(root: string): Plugin {
+/**
+ * A decision is { itemId, paperId, verdict, note, by, at } — written as a
+ * comment rather than a type because this file is deliberately not TypeScript.
+ * See the note above the imports.
+ *
+ * The plugin resolves its OWN root, so vite.config.ts needs nothing from
+ * node:url. It is two levels up from web/vite-plugins/.
+ */
+export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.url))) {
   const decisionsPath = join(root, 'data/review-decisions.json');
   const papersPath = join(root, 'content/exam-papers.json');
 
-  const readDecisions = (): { version: number; decisions: Decision[] } => {
+  const readDecisions = () => {
     if (!existsSync(decisionsPath)) return { version: 1, decisions: [] };
     return JSON.parse(readFileSync(decisionsPath, 'utf8'));
   };
@@ -78,7 +77,7 @@ export function reviewTool(root: string): Plugin {
         req.on('data', (c) => { body += c; });
         req.on('end', () => {
           try {
-            const d = JSON.parse(body) as Decision;
+            const d = JSON.parse(body);
             if (!d.itemId || !['approved', 'rejected', 'skipped'].includes(d.verdict)) {
               res.statusCode = 400; res.end(JSON.stringify({ error: 'bad decision' })); return;
             }
