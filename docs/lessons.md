@@ -632,8 +632,9 @@ Five checks of mine in one week accused data that was correct:
 | `key=lambda l: ([^)]*)\)` | stopped at the `)` inside `get(l, 0.0)`, so a tied sort read as untied |
 | a pace check using marks as items | 25 marks on a DELF reading paper is four exercises, not 25 questions |
 | `/not been verified/` | the text it checked says "none **has** been verified" |
+| a positional line comparison | an inserted line shifts every line after it; one added `note` reported 323 differences |
 
-**Running total: six distinct faults, seven occurrences** — the semicolon split
+**Running total: seven distinct faults, eight occurrences** — the semicolon split
 happened twice, having been learned once. Shahin's standing instruction: when
 this table reaches ten, stop and look at what they have in common, because by
 then it is a pattern about how the checks are written and not about any one of
@@ -718,6 +719,45 @@ hundred and fifty.** If the first batch shows a systematic fault in how the
 items are written, it is found after twenty. The verb work found its systematic
 faults — the suffix bug, the sense-order fault, the missing pronominal field —
 after two thousand.
+
+
+### 2026-10-04 — the tool wrote that a person had reviewed something they had never seen
+
+Building the content review tool, I applied a test decision to check the
+round trip. It worked. `content/exam-papers.json` then said:
+
+```json
+"review": { "state": "approved", "by": "Shahin Amani",
+            "at": "2026-10-04T12:00:00.000Z" }
+```
+
+for two items he had never opened.
+
+**In the one project whose central claim is that it says what has and has not
+been checked.** Every gloss carries an unreviewed marker, the exercises had just
+been given one that morning, the handoff opens with a warning that nobody has
+verified its own contents — and the first thing the review tool did was forge a
+review.
+
+It was reverted within the minute, by me noticing, which is the part that is not
+good enough. So:
+
+* `tests/apply-review.test.js` asserts that **nobody is recorded as having
+  reviewed anything**, and that `data/review-decisions.json` is empty. When that
+  fails because a review has happened, the reviewer gets named in the check.
+* Every other test that plants a decision restores both files in a `finally`,
+  so a test cannot leave a verdict behind.
+
+The general shape, which is not about review tools: **a tool that writes
+attribution can forge attribution, and testing it writes real attribution into
+real files.** The test fixture and the production record were the same file.
+Anything that records who-did-what needs its test data kept somewhere the record
+is not.
+
+And the smaller lesson, costing nothing: the applier is Python because the file
+is written by a Python serialiser. A Node round-trip would have reformatted all
+2,400 lines and buried every review in a diff nobody could read. **One file, one
+serialiser** — two is how two sources of truth begin.
 
 
 ## The checklist

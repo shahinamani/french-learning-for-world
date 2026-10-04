@@ -1,0 +1,134 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Content review</title>
+<!--
+  One reviewer, batches of twenty, a laptop, two hours at a stretch.
+
+  Deliberately plain: no framework, no build step, no dependency on the
+  application's own code. `tests/review-tool-is-dev-only.test.js` forbids
+  anything under web/src from mentioning this endpoint, so the review screen
+  cannot be part of the app — and that turns out to be the right constraint
+  anyway. A reviewer needs the item, the answer, the explanation and four keys.
+
+  No inline editing. The first batch exists to find out what the notes look
+  like; if they are mostly "change this one word", editing earns its extra hours.
+-->
+<style>
+  :root { --ink:#16181d; --dim:#5b6472; --line:#d8dde5; --bg:#fbfcfd;
+          --ok:#0a7d3e; --no:#b3261e; --flag:#8a5a00; --flagbg:#fff6e0; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#e9edf3; --dim:#9aa5b4; --line:#2b313b; --bg:#14161a;
+            --ok:#5bd38c; --no:#ff8a80; --flag:#ffce6a; --flagbg:#2b2310; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, sans-serif; }
+  main { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 6rem; }
+  .bar { display:flex; gap:.75rem; align-items:baseline; justify-content:space-between;
+         border-bottom:1px solid var(--line); padding-bottom:.5rem; margin-bottom:1.25rem; }
+  .count { font-variant-numeric: tabular-nums; color:var(--dim); }
+  .meta { color:var(--dim); font-size:.85rem; letter-spacing:.02em; text-transform:uppercase; }
+  .stim { font-size:1.4rem; margin:.5rem 0 1.25rem; }
+  ol.opts { list-style:none; padding:0; margin:0 0 1.25rem; }
+  ol.opts li { padding:.45rem .7rem; border:1px solid var(--line); border-radius:.4rem;
+               margin-bottom:.35rem; display:flex; gap:.6rem; align-items:baseline; }
+  ol.opts li.right { border-color:var(--ok); color:var(--ok); font-weight:600; }
+  .k { color:var(--dim); font-variant-numeric:tabular-nums; min-width:1.2rem; }
+  .expl { border-left:3px solid var(--line); padding-left:.9rem; margin:0 0 1.25rem; }
+  .flag { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
+          border-radius:.4rem; padding:.7rem .9rem; margin:0 0 1.25rem; }
+  .flag strong { display:block; margin-bottom:.25rem; }
+  .gap { color:var(--dim); font-size:.85rem; margin:0 0 1rem; }
+  textarea { width:100%; min-height:4.5rem; font:inherit; padding:.6rem;
+             border:1px solid var(--line); border-radius:.4rem; background:transparent; color:inherit; }
+  .keys { position:fixed; inset:auto 0 0 0; background:var(--bg); border-top:1px solid var(--line);
+          padding:.6rem 1rem; display:flex; gap:1.25rem; flex-wrap:wrap; justify-content:center;
+          font-size:.85rem; color:var(--dim); }
+  .keys b { color:var(--ink); }
+  .done { text-align:center; padding:3rem 1rem; }
+</style>
+<main>
+  <div class="bar">
+    <span class="meta" id="where">loading…</span>
+    <span class="count" id="count"></span>
+  </div>
+  <div id="item"></div>
+  <label for="note" class="meta">Note — what is wrong, or why you are unsure</label>
+  <textarea id="note" placeholder="Left empty on approve. Required on reject."></textarea>
+</main>
+<div class="keys">
+  <span><b>A</b> approve</span><span><b>R</b> reject</span><span><b>S</b> skip</span>
+  <span><b>N</b> note</span><span><b>←</b> back</span><span><b>Esc</b> leave the note</span>
+</div>
+<script type="module">
+const REVIEWER = new URLSearchParams(location.search).get('by') || 'Shahin Amani';
+const BATCH = Number(new URLSearchParams(location.search).get('batch') || 20);
+const el = (id) => document.getElementById(id);
+let queue = [], i = 0, decided = 0;
+
+const r = await fetch('/__review/queue').then((x) => x.json());
+queue = r.queue.slice(0, BATCH); decided = r.decided;
+
+function render() {
+  if (i >= queue.length) {
+    el('item').innerHTML = `<div class="done"><h1>Batch done</h1>
+      <p>${queue.length} items, ${decided} decisions recorded in
+      <code>data/review-decisions.json</code>.</p>
+      <p class="gap">Nothing has been written into the content. Run
+      <code>python3 scripts/apply-review.py</code> to apply them.</p></div>`;
+    el('note').style.display = 'none';
+    el('count').textContent = '';
+    return;
+  }
+  const it = queue[i];
+  el('where').textContent = `${it.paperId} · ${it.level} · ${(it.conceptIds || []).join(', ')}`;
+  el('count').textContent = `${i + 1} of ${queue.length}`;
+  const opts = it.options.map((o, n) => `<li class="${n === it.answer ? 'right' : ''}">
+      <span class="k">${n + 1}</span><span>${o.fr}</span>
+      ${n === it.answer ? '<span class="k">← correct</span>' : ''}</li>`).join('');
+  const flag = it.uncertain ? `<div class="flag"><strong>The writer was unsure —
+      ${it.uncertain.kind}, confidence ${it.uncertain.confidence}</strong>
+      ${it.uncertain.doubt}</div>` : '';
+  const missing = ['en', 'fr', 'fa', 'ar'].filter((l) => !it.explain?.[l]);
+  el('item').innerHTML = `
+    ${flag}
+    <p class="meta">${it.prompt?.en ?? ''}</p>
+    <p class="stim" lang="fr" dir="ltr">${it.stimulus?.fr ?? ''}</p>
+    <ol class="opts">${opts}</ol>
+    <p class="expl">${it.explain?.en ?? '(no English explanation)'}</p>
+    ${missing.length ? `<p class="gap">No explanation in: ${missing.join(', ')} — ${
+      missing.includes('ar') ? 'the Arabic slot is open and will not be machine-filled.' : ''}</p>` : ''}
+    <p class="gap">${it.id} · currently <b>${it.review?.state ?? 'unreviewed'}</b></p>`;
+  el('note').style.display = '';
+  el('note').value = '';
+}
+
+async function decide(verdict) {
+  const it = queue[i];
+  const note = el('note').value.trim() || null;
+  if (verdict === 'rejected' && !note) {
+    el('note').focus();
+    el('note').placeholder = 'A rejection needs a reason — what is wrong with it?';
+    return;
+  }
+  await fetch('/__review/decide', {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ itemId: it.id, paperId: it.paperId, verdict, note, by: REVIEWER }),
+  });
+  decided += 1; i += 1; render();
+}
+
+addEventListener('keydown', (e) => {
+  const inNote = document.activeElement === el('note');
+  if (e.key === 'Escape') { el('note').blur(); return; }
+  if (inNote && e.key !== 'Enter') return;
+  if (inNote && e.key === 'Enter' && !e.metaKey && !e.ctrlKey) return;
+  const k = e.key.toLowerCase();
+  if (k === 'a') { e.preventDefault(); decide('approved'); }
+  else if (k === 'r') { e.preventDefault(); decide('rejected'); }
+  else if (k === 's') { e.preventDefault(); decide('skipped'); }
+  else if (k === 'n') { e.preventDefault(); el('note').focus(); }
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); if (i > 0) { i -= 1; render(); } }
+});
+render();
+</script>
