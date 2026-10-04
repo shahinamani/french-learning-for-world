@@ -133,12 +133,18 @@ test('applying does not reformat the file', () => {
   // The reason the applier is Python and not Node. Two decisions must change
   // the lines they decide and nothing else.
   withDecisions([D()], () => {
+    const before = readFileSync(PAPERS, 'utf8').split('\n');
     applier();
-    const stat = execFileSync('git', ['diff', '--numstat', '--', 'content/exam-papers.json'],
-      { cwd: root, encoding: 'utf8' }).trim();
-    const [added, removed] = stat ? stat.split(/\s+/).map(Number) : [0, 0];
-    assert.ok(added + removed <= 12,
-      `a diff of ${added}+${removed} lines for one decision — it reformatted the file`);
-    assert.ok(added > 0, 'the decision was not written at all');
+    const after = readFileSync(PAPERS, 'utf8').split('\n');
+    // A multiset difference, which is insensitive to lines shifting: the
+    // question is which lines appeared and disappeared, not which index moved.
+    const count = (ls) => ls.reduce((m, l) => m.set(l, (m.get(l) ?? 0) + 1), new Map());
+    const b = count(before), a = count(after);
+    let appeared = 0, vanished = 0;
+    for (const [l, n] of a) appeared += Math.max(0, n - (b.get(l) ?? 0));
+    for (const [l, n] of b) vanished += Math.max(0, n - (a.get(l) ?? 0));
+    assert.ok(appeared + vanished <= 12,
+      `${appeared} lines appeared and ${vanished} vanished for one decision — it reformatted`);
+    assert.ok(appeared > 0, 'the decision was not written at all');
   });
 });

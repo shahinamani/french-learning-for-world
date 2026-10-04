@@ -137,6 +137,34 @@ jobs:
           mkdir -p /tmp/shots
           node web/e2e/walk.mjs /tmp/shots
 
+      # The review tool exists only under `vite`, so nothing in the unit suite or
+      # the walk can reach it — and the three faults the keyboard drive found
+      # were invisible to both. An unguarded tool rots, and this one protects
+      # review sessions that will run for months, so CI starts a dev server and
+      # drives it. It FAILS rather than skips: a check that quietly does nothing
+      # when its dependency is missing is the shape this project refuses.
+      - name: Start the dev server (the review tool lives only there)
+        working-directory: web
+        run: |
+          nohup npx vite --port 5199 --strictPort > /tmp/vite.log 2>&1 &
+          for i in $(seq 1 40); do
+            curl -fsS -o /dev/null "http://localhost:5199/__review" && break
+            sleep 1
+          done
+          # Not `|| true`: if the endpoint never answers, the job stops here
+          # rather than running a drive against nothing.
+          curl -fsS -o /dev/null "http://localhost:5199/__review"
+
+      - name: Drive the review tool with a keyboard
+        run: node web/e2e/review-tool.mjs
+
+      - name: The review tool left no decision behind
+        run: |
+          # The drive restores data/review-decisions.json in a `finally`. If it
+          # did not, CI would carry a verdict nobody made into the next job —
+          # and a forged review is the one thing this file must never produce.
+          git diff --exit-code -- data/review-decisions.json content/exam-papers.json
+
       # Contrast against real rendered backgrounds, layout at three widths,
       # focus visibility, RTL.
       - name: Design-system contrast and layout

@@ -95,6 +95,52 @@ test('an uncertain item says how sure and what the doubt is', () => {
     + flagged.map((i) => `${i.id} (${i.uncertain.kind})`).join(', '));
 });
 
+test('the answers are not clustered at one position', () => {
+  // THE SYSTEMATIC FAULT BATCH ONE FOUND, in itself. The first draft of its
+  // twenty items had every answer at position 0 — because writing the correct
+  // option first is the convenient way to write an item — so a learner who
+  // always picked the first option would have scored 20/20. It teaches the
+  // strategy and measures nothing.
+  //
+  // Found after 20 items rather than after 150, which is the whole argument for
+  // drafting in batches.
+  const byPaper = {};
+  for (const it of items) {
+    (byPaper[it.paper] ??= []).push(it.answer);
+  }
+  const bad = [];
+  for (const [paper, answers] of Object.entries(byPaper)) {
+    if (answers.length < 8) continue;        // too few to say anything
+    const counts = answers.reduce((m, a) => ({ ...m, [a]: (m[a] ?? 0) + 1 }), {});
+    const worst = Math.max(...Object.values(counts));
+    // A fair set of n items over 4 positions puts about n/4 at each. Half of
+    // them at one position is a pattern a learner can exploit.
+    if (worst > answers.length / 2) {
+      bad.push(`${paper}: ${worst} of ${answers.length} answers at one position `
+        + `(${JSON.stringify(counts)})`);
+    }
+  }
+  assert.deepEqual(bad, []);
+  for (const [paper, answers] of Object.entries(byPaper)) {
+    if (answers.length < 8) continue;
+    console.log(`    ${paper}: ${answers.length} items, positions `
+      + JSON.stringify(answers.reduce((m, a) => ({ ...m, [a]: (m[a] ?? 0) + 1 }), {})));
+  }
+});
+
+test('a batch flags what its writer was unsure of', () => {
+  // Shahin's instruction: include cases I am NOT sure about and mark them, so
+  // disagreement is learned early rather than found at item 90.
+  const batch = items.filter((i) => i.paper === 'tcf-b2-structure-2');
+  assert.equal(batch.length, 20);
+  const flagged = batch.filter((i) => i.uncertain);
+  assert.ok(flagged.length >= 2,
+    `${flagged.length} of 20 flagged — a batch with no doubt in it is a batch whose `
+    + 'doubts were not written down');
+  console.log(`    batch one: ${flagged.length} of 20 flagged — `
+    + flagged.map((i) => i.id).join(', '));
+});
+
 test('every item has an Arabic slot, present and empty', () => {
   // Present: so the backlog is visible the day a reviewer appears.
   // Empty: because Arabic is not machine-filled and will not be.

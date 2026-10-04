@@ -13,6 +13,38 @@ Numbering follows Shahin's list, which spans more than this repository.
 Everything below is an instance of one of these. Read them before writing a
 test, and before saying a piece of work is finished.
 
+### Before anything else: am I comparing the right two things?
+
+Ten checks of mine accused correct data in one week. **Nine of the ten compared
+the wrong two things.** Only one was a wrong idea about the data — a rule
+requiring a three-letter word, which rejected « to go ».
+
+| the check | what it compared | what it should have compared |
+|:--|:--|:--|
+| counting senses by splitting on `"; "` (twice) | a joined string | the sense list |
+| `checkAnswer(alternate, form)` | a two-argument call | the drill's three-argument call |
+| `/\bsuicide$/` | the end of the string | the trailing list item |
+| the sort-key regex | up to the first `)` | the whole line |
+| the pace check | marks | questions |
+| `/not been verified/` | my paraphrase of the text | the text |
+| a positional line comparison | line *i* to line *i* | a diff |
+| `git diff` in the applier test | the file and the last commit | the file before and after the applier |
+| the answer-position guard | nothing — it was right, and found the fault in two papers nobody had written | — |
+
+So the first question when writing a check is not "is my rule right?" —
+**it is "am I comparing the right two things?"** Name the two things, out loud,
+before writing the assertion: *the forms the harvest produced* against *the
+forms the corpus attests*; *the total the page shows* against *the total the
+content holds*; *the number of lines a diff reports* against *a bound*.
+
+Most of these failures came from comparing a convenient thing to the right
+thing. The joined string was to hand; the sense list needed loading. The marks
+were in the file; the question count was not published. **Convenience chooses
+one of the two things for you, and it is almost always the wrong one.**
+
+Then, and only then, the rule below: name the wrong implementation your check
+rules out, and watch it fail against that.
+
 ### "What can this shape not express?" — not "is this right?"
 
 « souvenir » sat in the content as a bare infinitive with a conjugation table
@@ -633,8 +665,9 @@ Five checks of mine in one week accused data that was correct:
 | a pace check using marks as items | 25 marks on a DELF reading paper is four exercises, not 25 questions |
 | `/not been verified/` | the text it checked says "none **has** been verified" |
 | a positional line comparison | an inserted line shifts every line after it; one added `note` reported 323 differences |
+| `git diff` in the applier test | compared the file to **HEAD**, so every uncommitted change counted as the applier's work: 936 lines for a four-line write |
 
-**Running total: seven distinct faults, eight occurrences** — the semicolon split
+**Running total: eight distinct faults, ten occurrences** — and at ten, the pattern is above, in "am I comparing the right two things?". Nine of the ten compared the wrong two things; one was a wrong idea about the data. — the semicolon split
 happened twice, having been learned once. Shahin's standing instruction: when
 this table reaches ten, stop and look at what they have in common, because by
 then it is a pattern about how the checks are written and not about any one of
