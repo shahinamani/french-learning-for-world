@@ -303,7 +303,7 @@ const shapes = () => {
  */
 const EXPECTED_SHAPES = {
   'decks.json decks[].title':                          { n: 1,  have: 'en/fr/fa/ar' },
-  'exam-papers.json papers[].name':                    { n: 3,  have: 'en/fr/fa/ar' },
+  'exam-papers.json papers[].name':                    { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.A1[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.A2[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.B1[].name':     { n: 4,  have: 'en/fr/fa/ar' },
@@ -316,11 +316,11 @@ const EXPECTED_SHAPES = {
   // keys at all — so the shape map could not see them and even the French
   // interface showed English. Found by looking at an RTL screenshot, where
   // the English also rendered with its full stops at the wrong end.
-  'exam-papers.json papers[].official.passNote':       { n: 3,  have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].official.source':         { n: 3,  have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].practiceNote':            { n: 3,  have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].items[].prompt':          { n: 28, have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].items[].explain':         { n: 28, have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].official.passNote':       { n: 4,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].official.source':         { n: 4,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].practiceNote':            { n: 4,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].items[].prompt':          { n: 36, have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].items[].explain':         { n: 36, have: 'en/fr/fa' },   // ar: HELD
   'exam-papers.json papers[].items[].stimulus.label':  { n: 16, have: 'en/fr/fa' },   // ar: HELD
   'fr-core-a1.json title':                             { n: 1,  have: 'en/fr/fa/ar' },
   'fr-core-a1.json cards[].meanings':                  { n: 22, have: 'en/fr/fa/ar' },

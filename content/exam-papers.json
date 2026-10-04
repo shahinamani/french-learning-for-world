@@ -1252,6 +1252,351 @@
      }
     }
    ]
+  },
+  {
+   "id": "tcf-b2-structure",
+   "exam": "tcf",
+   "level": "B2",
+   "skill": "grammar",
+   "code": "SLG",
+   "name": {
+    "en": "TCF — Subjunctive or indicative (B2)",
+    "fr": "TCF — Subjonctif ou indicatif (B2)",
+    "fa": "TCF — التزامی یا اخباری (B2)",
+    "ar": "TCF — الالتزامي أم الإخباري (B2)"
+   },
+   "minutes": 5,
+   "official": {
+    "minutes": 15,
+    "marks": 18,
+    "passNote": {
+     "en": "The real paper is 18 multiple-choice questions in 15 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
+     "fr": "L’épreuve réelle compte 18 questions à choix multiple en 15 minutes, du A1 au C2. Elle est notée sur l’échelle de 699 points propre au TCF et donne un niveau du CECRL plutôt qu’une réussite ou un échec.",
+     "fa": "برگهٔ واقعی 18 پرسش چندگزینه‌ای در 15 دقیقه است، از A1 تا C2. نمره بر پایهٔ مقیاس 699 امتیازی خودِ TCF داده می‌شود و به سطح CEFR نگاشته می‌شود، نه قبولی یا ردی."
+    },
+    "source": {
+     "en": "France Éducation international, Test de connaissance du français",
+     "fr": "France Éducation international, Test de connaissance du français",
+     "fa": "France Éducation international، Test de connaissance du français"
+    },
+    "verified": {
+     "on": "2026-10-04",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public?langue=fr",
+     "what": "18 scored multiple-choice questions in 15 minutes on paper; 23 presented in the same 15 minutes on computer, of which 18 are scored",
+     "correction": "This field said 20 minutes until 2026-10-04 and had never been checked against any source. The real paper is 15 minutes. The file's own figures were also internally inconsistent: 25 + 20 + 45 is 90 minutes against the 1 h 25 the exam body states for the three compulsory papers.",
+     "readBy": "the project owner, in a browser. The exam body's site refuses automated clients and the agent could not read it first-hand."
+    },
+    "forms": {
+     "paper": {
+      "items": 18,
+      "minutes": 15,
+      "secondsPerItem": 50
+     },
+     "computer": {
+      "itemsPresented": 23,
+      "scored": 18,
+      "minutes": 15,
+      "secondsPerItem": 39,
+      "note": "Five extra items that do not count toward the score. Same 15 minutes."
+     },
+     "weSimulate": "computer"
+    }
+   },
+   "practiceNote": {
+    "en": "Eight original questions on one B2 point: whether the verb after « que » goes in the subjunctive or the indicative. Four of each, so choosing one mood throughout scores four. The real TCF structures paper has 18 scored questions in 15 minutes — and 23 in the same 15 minutes on computer, five of which are not scored. YOU DO NOT CHOOSE THE FORM; THE CENTRE DOES, so the five minutes here is the computer pace. The real paper also spans A1 to C2.",
+    "fr": "Huit questions originales sur un point de B2 : après « que », subjonctif ou indicatif. Quatre de chaque, pour qu’un même choix répété n’en donne que quatre. L’épreuve réelle compte 18 questions notées en 15 minutes — et 23 dans les mêmes 15 minutes sur ordinateur. VOUS NE CHOISISSEZ PAS LA FORME : C’EST LE CENTRE QUI DÉCIDE, d’où les cinq minutes, calées sur le rythme de l’ordinateur.",
+    "fa": "هشت پرسش اصلی دربارهٔ یک نکتهٔ B2: پس از « que » التزامی یا اخباری. چهار از هر کدام، تا انتخاب یکسان بیش از چهار نمره نشود."
+   },
+   "items": [
+    {
+     "id": "b2-sv-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "Je ne crois pas qu’il ___ raison."
+     },
+     "options": [
+      {
+       "fr": "a"
+      },
+      {
+       "fr": "ait"
+      },
+      {
+       "fr": "aura"
+      },
+      {
+       "fr": "avait"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "Croire in the negative expresses doubt, and doubt takes the subjunctive: « qu’il ait raison ». « A » is the indicative and is right in the affirmative — « je crois qu’il a raison ». « Aura » and « avait » are indicative tenses and cannot follow a negated verb of opinion here.",
+      "fr": "À la forme négative, « croire » exprime le doute, et le doute demande le subjonctif : « qu’il ait raison ». « A » est l’indicatif, correct à l’affirmative : « je crois qu’il a raison ».",
+      "fa": "⁨croire⁩ در حالت منفی تردید را می‌رساند و تردید وجه التزامی می‌خواهد: ⁨qu’il ait raison⁩. ⁨a⁩ اخباری است و در جملهٔ مثبت درست است: ⁨je crois qu’il a raison⁩."
+     }
+    },
+    {
+     "id": "b2-sv-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "J’espère qu’il ___ bientôt."
+     },
+     "options": [
+      {
+       "fr": "vienne"
+      },
+      {
+       "fr": "viendra"
+      },
+      {
+       "fr": "soit venu"
+      },
+      {
+       "fr": "venir"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "In standard French « espérer que » is followed by the INDICATIVE: « qu’il viendra ». This is the trap — « souhaiter que » and « vouloir que » take the subjunctive, and « espérer » looks like them. « Vienne » is the subjunctive, « soit venu » the past subjunctive, « venir » an infinitive after a conjunction that cannot take one.",
+      "fr": "En français standard, « espérer que » est suivi de l’INDICATIF : « qu’il viendra ». C’est le piège : « souhaiter que » et « vouloir que » demandent le subjonctif.",
+      "fa": "در فرانسهٔ معیار پس از ⁨espérer que⁩ وجه اخباری می‌آید: ⁨qu’il viendra⁩. دام همین‌جاست: ⁨souhaiter que⁩ و ⁨vouloir que⁩ التزامی می‌خواهند."
+     }
+    },
+    {
+     "id": "b2-sv-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "Il est probable qu’elle ___ en retard."
+     },
+     "options": [
+      {
+       "fr": "soit"
+      },
+      {
+       "fr": "ait été"
+      },
+      {
+       "fr": "sera"
+      },
+      {
+       "fr": "fût"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Il est probable que » states something likely, so the INDICATIVE: « qu’elle sera ». Compare « il est possible que », which expresses uncertainty and takes the subjunctive — « qu’elle soit ». Probability and possibility behave differently, and this pair is the cleanest way to see it. « Fût » is the imperfect subjunctive, read in old texts and not written today.",
+      "fr": "« Il est probable que » énonce un fait vraisemblable : INDICATIF, « qu’elle sera ». À comparer avec « il est possible que », qui exprime l’incertitude et demande le subjonctif.",
+      "fa": "⁨il est probable que⁩ چیزی را محتمل می‌داند، پس اخباری: ⁨qu’elle sera⁩. در برابرِ ⁨il est possible que⁩ که تردید می‌رساند و التزامی می‌خواهد."
+     }
+    },
+    {
+     "id": "b2-sv-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "Préviens-moi avant qu’il ___."
+     },
+     "options": [
+      {
+       "fr": "part"
+      },
+      {
+       "fr": "parte"
+      },
+      {
+       "fr": "partira"
+      },
+      {
+       "fr": "partait"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Avant que » always takes the subjunctive: « qu’il parte ». The event has not happened yet, so it is not stated as fact. « Après que » is the mirror case and takes the indicative in careful writing — « après qu’il est parti » — although the subjunctive is widely heard there.",
+      "fr": "« Avant que » demande toujours le subjonctif : « qu’il parte ». « Après que » est le cas inverse et demande l’indicatif en langue soignée.",
+      "fa": "پس از ⁨avant que⁩ همیشه التزامی می‌آید: ⁨qu’il parte⁩. ⁨après que⁩ برعکس است و در نوشتار دقیق اخباری می‌خواهد."
+     }
+    },
+    {
+     "id": "b2-sv-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "Bien qu’il ___ fatigué, il a continué."
+     },
+     "options": [
+      {
+       "fr": "est"
+      },
+      {
+       "fr": "soit"
+      },
+      {
+       "fr": "était"
+      },
+      {
+       "fr": "sera"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Bien que » takes the subjunctive: « qu’il soit fatigué ». The concession is not being asserted as a fact in its own right. « Parce qu’il était fatigué » would be the indicative, because a cause IS asserted — the difference is the conjunction, not the tiredness.",
+      "fr": "« Bien que » demande le subjonctif : « qu’il soit fatigué ». « Parce qu’il était fatigué » serait l’indicatif, car une cause s’affirme.",
+      "fa": "پس از ⁨bien que⁩ التزامی می‌آید: ⁨qu’il soit fatigué⁩. ⁨parce qu’il était fatigué⁩ اخباری است، چون علت را بیان می‌کند."
+     }
+    },
+    {
+     "id": "b2-sv-6",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "Je suis sûr qu’elle ___ la vérité."
+     },
+     "options": [
+      {
+       "fr": "dit"
+      },
+      {
+       "fr": "dise"
+      },
+      {
+       "fr": "ait dit"
+      },
+      {
+       "fr": "dirait"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "Certainty takes the INDICATIVE: « qu’elle dit la vérité ». Negate it and the trigger changes — « je ne suis pas sûr qu’elle dise la vérité » — because what is no longer asserted is no longer stated as fact. The verb did not change; the certainty did.",
+      "fr": "La certitude demande l’INDICATIF : « qu’elle dit la vérité ». À la négative, le déclencheur change : « je ne suis pas sûr qu’elle dise la vérité ».",
+      "fa": "یقین وجه اخباری می‌خواهد: ⁨qu’elle dit la vérité⁩. در حالت منفی محرک عوض می‌شود: ⁨je ne suis pas sûr qu’elle dise la vérité⁩."
+     }
+    },
+    {
+     "id": "b2-sv-7",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "Il faut que tu ___ à l’heure."
+     },
+     "options": [
+      {
+       "fr": "es"
+      },
+      {
+       "fr": "sois"
+      },
+      {
+       "fr": "seras"
+      },
+      {
+       "fr": "étais"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Il faut que » takes the subjunctive: « que tu sois ». Necessity is not a statement of fact about the world — it is what somebody requires. « Tu es à l’heure » on its own is a perfectly good indicative sentence; it is the « il faut que » in front of it that changes the mood.",
+      "fr": "« Il faut que » demande le subjonctif : « que tu sois ». La nécessité n’énonce pas un fait. « Tu es à l’heure » seul reste un indicatif parfaitement correct.",
+      "fa": "پس از ⁨il faut que⁩ التزامی می‌آید: ⁨que tu sois⁩. ضرورت بیانِ واقعیت نیست. ⁨tu es à l’heure⁩ به‌تنهایی اخباریِ درستی است."
+     }
+    },
+    {
+     "id": "b2-sv-8",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟"
+     },
+     "stimulus": {
+      "fr": "Il me semble qu’elle ___ raison."
+     },
+     "options": [
+      {
+       "fr": "a"
+      },
+      {
+       "fr": "ait"
+      },
+      {
+       "fr": "aurait eu"
+      },
+      {
+       "fr": "eût"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Il me semble que » — with « me » — reports what the speaker thinks and takes the INDICATIVE: « qu’elle a raison ». Remove the pronoun and it becomes impersonal appearance, which takes the subjunctive: « il semble qu’elle ait raison ». One pronoun changes the mood, and this pair is the reason the concept exists.",
+      "fr": "« Il me semble que » — avec « me » — rapporte un avis et demande l’INDICATIF : « qu’elle a raison ». Sans le pronom, « il semble que » demande le subjonctif.",
+      "fa": "⁨il me semble que⁩ با ضمیر ⁨me⁩ نظر گوینده را می‌رساند و اخباری می‌خواهد: ⁨qu’elle a raison⁩. بدون آن ضمیر، ⁨il semble que⁩ التزامی می‌خواهد."
+     }
+    }
+   ]
   }
  ]
 }

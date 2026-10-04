@@ -1,10 +1,10 @@
 {
 "version": 1,
-"theOneNumber": "71,021 verb forms · 79 flashcards · 63 exam items. 99.8% of every exercise in this product is a verb form. That is the honest state of the project, and it is the measurement that should have existed before anybody asked for more verbs.",
-"note": "Exercises reaching each live, non-group concept, counted at build time from the decks, the verb paradigms and the exam papers. A concept absent from `material` has NO exercise: that is true of 196 of the 261 live concepts, and of every concept at C1 and C2.",
+"theOneNumber": "71,021 verb forms · 79 flashcards · 71 exam items. 99.8% of every exercise in this product is a verb form. That is the honest state of the project, and it is the measurement that should have existed before anybody asked for more verbs.",
+"note": "Exercises reaching each live, non-group concept, counted at build time from the decks, the verb paradigms and the exam papers. A concept absent from `material` has NO exercise: that is true of 195 of the 261 live concepts, and of every concept at C1 and C2.",
 "generatedBy": "scripts/build-concept-material.py",
 "liveConcepts": 261,
-"conceptsWithMaterial": 65,
+"conceptsWithMaterial": 66,
 "material": {
 "gram.adjective.comparative": {
 "cards": 0,
@@ -299,6 +299,12 @@
 "verbForms": 14203,
 "examItems": 2,
 "total": 14205
+},
+"gram.subjunctive.vs-indicative": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 8,
+"total": 8
 },
 "gram.subjunctive.will": {
 "cards": 0,
