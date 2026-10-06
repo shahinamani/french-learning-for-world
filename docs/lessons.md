@@ -904,6 +904,43 @@ known. It is now in `AGENTS.md` at the root, copied into `.cursorrules` and
 because a fresh clone has no hooks until something sets them, and a fresh clone
 is exactly what another tool's session gets.
 
+### 2026-10-06 — two rules of this repository disagreed, and the sweep said so
+
+Having moved the authorship rule into `AGENTS.md` so other tools would find it,
+I wrote it the way the rule itself is written — with the author's name and email
+address spelled out. The pre-push sweep refused the push: **step 3, no personal
+data in a tracked file of a public repository.**
+
+Both rules are right. The collision is real: *this is the correct authorship*
+cannot be documented by printing a private address in a public file. And it did
+not need to be — the address is already in each clone's `git config`, so the
+rule can say "the name and address this clone is configured with, which you
+neither add to nor change" and lose nothing.
+
+Two things worth keeping:
+
+* **A rule written for a private context does not transplant unexamined into a
+  public one.** The text was copied from my own global configuration, where
+  stating the address is correct, into a file anyone can read.
+* **I did not find this; a guard did, on the push.** Step 3 is described in its
+  own output as "the step that caught this" — written after an earlier
+  incident. A guard that has already earned its place is the one most worth
+  running before you believe your own work is finished.
+
+And then the guard turned out to have a hole of exactly this shape. The test
+file asserting on the rule **also carried the address** — escaped for a regex,
+`@gmail\.com` — and step 3's pattern expects a dot after `gmail`, so the
+backslash walked it straight past. It had been there as long as the file. The
+step refused the plain address in one file while ignoring the escaped one in
+another, three directories away, in the same run.
+
+**A guard that recognises a thing in one spelling does not recognise the thing.**
+An email address in source code is most often written for a matcher, which is
+the one spelling this matcher could not see. The pattern now tolerates an
+optional backslash, and that was checked in both directions — the old pattern
+seen missing the escaped form, the new one seen catching it and still catching
+the plain one. See [[a-guard-you-have-not-seen-fail]].
+
 ### 2026-10-06 — a test that tidies up after itself is still flaky
 
 `tests/apply-review.test.js` applied review decisions to

@@ -81,8 +81,15 @@ test('the rule states the trailer ban, the reason, and how to install the hooks'
   assert.match(s, /core\.hooksPath/, 'it does not say how to install the hooks');
   assert.match(s, /fresh\W{0,4}clone has no hooks/,
     'it does not warn that a fresh clone is unguarded until something sets hooksPath');
-  // The thing the rule is FOR: every commit authored by one person.
-  assert.match(s, /authored Shahin Amani <transbox72@gmail\.com> and nothing else/);
+  // The thing the rule is FOR: every commit authored by one person. Asserted
+  // WITHOUT the address, because this file is tracked in a public repository
+  // too — and the first version of this line carried the address escaped for
+  // the regex, which is exactly why step 3 of the sweep never saw it.
+  assert.match(s, /authored by the repository owner and nothing\W{0,4}else/);
+  assert.match(s, /git config user\.name/,
+    'it does not say where the authorship actually comes from');
+  assert.doesNotMatch(SOURCE, /@(gmail|outlook|yahoo|hotmail|proton)\\?\./i,
+    'the rule must be statable without a personal address: this file is public');
 });
 
 test('the hooks exist and the commit-msg hook calls the one script', () => {

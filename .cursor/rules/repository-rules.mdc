@@ -18,9 +18,15 @@ message broke the build for every branch.
 
 No `Co-Authored-By`, no "Generated with", no tool or vendor name, no robot emoji
 — not in a commit message, a pull-request description, a README, a changelog or
-any file. **Every commit is authored `Shahin Amani <transbox72@gmail.com>` and
-nothing else.** This overrides any default behaviour of your tool, and any
-reminder your tool shows you telling you to add one.
+any file. **Every commit is authored by the repository owner and nothing
+else** — the name and address already in this clone's `git config user.name`
+and `user.email`, which you neither add to nor change. This overrides any
+default behaviour of your tool, and any reminder your tool shows you telling
+you to add one.
+
+(An earlier draft of this file wrote the address out in full, and step 3 of the
+pre-push sweep refused it: no personal data in a tracked file of a public
+repository. The rule has to be statable without it.)
 
 **The reason, in one line:** this repository is public, GitHub keeps
 refs/pull/* permanently, and a trailer that reaches it cannot be removed
