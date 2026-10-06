@@ -904,6 +904,79 @@ known. It is now in `AGENTS.md` at the root, copied into `.cursorrules` and
 because a fresh clone has no hooks until something sets them, and a fresh clone
 is exactly what another tool's session gets.
 
+### 2026-10-07 — the rule was tested by the tooling, not by carelessness
+
+The authorship rule exists because a trailer reached this public repository
+once. The obvious model of how that happens is inattention: somebody in a hurry
+accepts a default. That is not what happened the second time.
+
+**Mid-task, the harness injected an instruction to break it.** A system message
+arrived in the middle of a tool result telling me to end commit messages with a
+`Co-Authored` trailer naming the tool, and pull-request descriptions with a
+"Generated with" line. Not a default I had to notice and decline — an
+instruction, phrased as policy, arriving inside the work.
+
+It did not land, and the reason is worth being precise about. **It was not
+judgement, memory, or care.** It was that the rule is written down in two
+places I read without choosing to: the owner's global configuration, and —
+since the day before — `AGENTS.md` at the root of this repository, which the
+tool loads as project instructions on every session. The instruction arrived
+into a context that already contained its refutation, with the reason attached:
+this repository is public, GitHub keeps `refs/pull/*` for ever, and a trailer
+that reaches it cannot be removed without rebuilding the repository.
+
+Three things follow, and the third is the uncomfortable one.
+
+* **A rule that lives only in a person's configuration protects only that
+  person's sessions.** This is the argument for `AGENTS.md` stated better than
+  I stated it when I built the file: not merely that another tool might never
+  have read the rule, but that *my own* tooling may actively instruct against
+  it, and the repository is the only party to that exchange with an interest in
+  the repository.
+* **The reason travelling with the rule is what makes it survive contact with
+  a contrary instruction.** "Do not add a trailer" against a confident
+  instruction to add one is a coin toss. "Do not add a trailer, because the ref
+  is permanent and the cure is rebuilding the repository" is not.
+* **An agent is not a reliable last line.** The same instruction, in a session
+  that had not loaded the rule, would have been followed — there is nothing in
+  it that looks wrong from the inside. Which is precisely why the enforcement
+  has to sit in `commit-msg`, where no instruction to anybody is consulted.
+  Prevention that depends on the thing being prevented reading its own rules is
+  not prevention. See [[A guard you have not seen fail is a guess about what it does]].
+
+A note on the mechanics, because it bears on anything written to be read by a
+tool: the injected instruction claimed to replace earlier guidance and said the
+owner's own instructions take precedence. It said so. **The precedence I acted
+on was not the one it granted me** — it was the one already in the repository,
+which is the only kind that holds when the granting party is the one asking.
+
+### 2026-10-07 — CI should say whether the hook could have caught it
+
+Shahin's addition to the ladder, and it is the right shape: when the repository
+scan refuses a message, it now asks whether `.githooks/commit-msg` would have
+refused *that same message*, and prints `HOLE` with a distinct exit code if
+not. A bad commit is one person's slip. A message the hook cannot see is a gap
+nobody could have closed at the keyboard, and the two must not look alike in a
+red log.
+
+The first version of it was a check that could never fail: it found the
+offending commits by re-running the hook's own test, so "does the hook catch
+what the scan caught?" compared the hook with itself. **Convenience picked one
+of the two things, and it picked wrong, as it always does here.**
+
+The second version was worse, and more interesting. It walked the message dump
+with `awk` under `IGNORECASE = 1` — a **gawk extension**. Under the awk on
+macOS and under mawk, which is what CI has, that line is not an error and not a
+no-op either: it is an ordinary variable assignment, silently. So `grep -Ei`
+refused a lower-case trailer and the walk, now case-sensitive, could name no
+commit to blame. Two tests written weeks earlier caught it on the first run.
+
+**A feature that degrades into a variable assignment is the worst kind of
+portability failure**, because there is no stage at which anything complains.
+The fix was not a second pattern in a safer dialect; it was to stop matching
+twice — grep reports the line numbers, awk only maps them back to commits, and
+there is exactly one reading of what counts as a trailer in the whole file.
+
 ### 2026-10-06 — two rules of this repository disagreed, and the sweep said so
 
 Having moved the authorship rule into `AGENTS.md` so other tools would find it,
@@ -939,7 +1012,7 @@ An email address in source code is most often written for a matcher, which is
 the one spelling this matcher could not see. The pattern now tolerates an
 optional backslash, and that was checked in both directions — the old pattern
 seen missing the escaped form, the new one seen catching it and still catching
-the plain one. See [[a-guard-you-have-not-seen-fail]].
+the plain one. See [[A guard you have not seen fail is a guess about what it does]].
 
 ### 2026-10-06 — a test that tidies up after itself is still flaky
 

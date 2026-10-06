@@ -79,6 +79,69 @@ fi
 
 if grep -nEi "$PATTERNS" "$dump"; then
   echo "::error::A commit message carries tool attribution. Every commit is authored by Shahin Amani and nothing else."
+
+  # --- would the hook have caught this? ------------------------------------
+  #
+  # CI catching a trailer is already a failure of prevention: by the time CI
+  # runs, a pull request has created refs/pull/*. But it is a WORSE failure if
+  # the commit-msg hook could not have refused the same message, because then
+  # no amount of discipline at the keyboard would have helped. That is a hole,
+  # and it must be named rather than buried under the ordinary red.
+  #
+  # The pattern list is shared on purpose — two lists would drift, which is
+  # half of what went wrong on 2026-10-06 — so this is NOT a check that the two
+  # patterns agree. It is a check that the two CODE PATHS agree: one greps a
+  # concatenated dump of every message, the other greps one message file. A
+  # pattern matching across the dump's record boundary, a quoting difference, or
+  # any transform added to one path later would show up here as a message this
+  # scan refuses and the hook accepts.
+  #
+  # Offenders are identified from the dump the scan itself read, not by
+  # re-running the hook's own test — that would compare a thing with itself and
+  # could never fail, which is this project's commonest way of writing a check
+  # that does nothing (docs/lessons.md, "am I comparing the right two things?").
+  #
+  # The matching is done by the SAME grep as above, and awk only maps the line
+  # numbers it reported back to commits. The first version re-tested the lines
+  # with `$0 ~ pat` under `IGNORECASE = 1`, which is a gawk extension: under the
+  # awk on macOS and under mawk on CI it is silently an ordinary variable
+  # assignment, so the walk was case-SENSITIVE while grep was not, and a
+  # lower-case trailer was refused by the scan and then blamed on nobody. Two
+  # existing tests caught it. Doing the matching once is the fix, not a second
+  # dialect-dependent pattern.
+  lines=$(grep -nEi "$PATTERNS" "$dump" | cut -d: -f1)
+  offenders=$(awk -v lines="$lines" '
+    BEGIN { start = 1; n = split(lines, L, "\n"); for (i = 1; i <= n; i++) want[L[i]+0] = 1 }
+    start       { sha = $0; start = 0; next }
+    $0 == "---" { start = 1; next }
+    (FNR in want) { print sha }' "$dump" | sort -u)
+
+  if [ -z "$offenders" ]; then
+    # Two readings of one file disagreeing is itself a fault: grep refused the
+    # dump and the record walk found nothing to blame.
+    echo "::error::INCONSISTENT: the dump was refused but no commit could be named." >&2
+    exit 2
+  fi
+
+  hole=0
+  probe=$(mktemp)
+  for sha in $offenders; do
+    git log -1 --format='%B' "$sha" > "$probe"
+    if bash "$0" --message "$probe" >/dev/null 2>&1; then
+      echo "::error::HOLE — $sha is refused by the repository scan but ACCEPTED by" >&2
+      echo "         the commit-msg hook, so nothing could have stopped it at the" >&2
+      echo "         keyboard. Fix the hook, not just the commit." >&2
+      hole=1
+    else
+      echo "  $sha — the commit-msg hook would also have refused this message."
+    fi
+  done
+  rm -f "$probe"
+
+  if [ "$hole" = 1 ]; then
+    echo "::error::At least one offending message was invisible to the hook. This is a gap in prevention, not only a bad commit." >&2
+    exit 3
+  fi
   exit 1
 fi
 

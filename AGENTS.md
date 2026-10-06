@@ -35,6 +35,11 @@ Three things follow from that permanence:
 - CI runs the same script. **One bad message on one branch reddens CI for every
   branch**, which is deliberate: the rule is about the repository, not about
   your branch.
+- When the scan does refuse a message, it then asks whether
+  `.githooks/commit-msg` **would have refused the same message**, and names it
+  a `HOLE` if not. A bad commit is one person's slip; a message the hook cannot
+  see is a gap nobody could have closed at the keyboard, and the two must not
+  look alike in the log.
 
 If you are *describing* this rule rather than breaking it, the scan cannot tell
 a trailer from a sentence about one. Reword the prose. (This happened too.)

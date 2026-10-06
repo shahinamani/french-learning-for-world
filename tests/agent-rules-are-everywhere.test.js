@@ -14,7 +14,9 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync, existsSync } from 'node:fs';
+import { readFileSync, existsSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
+import { execFileSync } from 'node:child_process';
+import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
 
@@ -113,4 +115,80 @@ test('npm install installs the hooks, because a fresh clone has none', () => {
   const pkg = JSON.parse(read('package.json'));
   assert.match(pkg.scripts.prepare ?? '', /core\.hooksPath \.githooks/,
     'package.json has no `prepare` script setting core.hooksPath');
+});
+
+/* ── The scan and the hook must agree ──────────────────────────────────────
+ *
+ * CI catching a trailer is already a failure of prevention — by then a pull
+ * request has created a permanent ref. It is a worse failure if the commit-msg
+ * hook could NOT have refused the same message, because then nothing at the
+ * keyboard would have helped. The scan now says so, and these two checks are
+ * what keep that saying true: one proves it reports agreement, the other
+ * proves it reports a hole, against a copy whose one-message mode has been
+ * deliberately narrowed to the subject line — which is not a contrived
+ * mistake, it is the most likely way to write that hook wrong.
+ */
+const script = join(root, 'scripts/check-commit-messages.sh');
+
+/** A throwaway repository with one offending message, the trailer on line 5. */
+function repoWithATrailer() {
+  const dir = mkdtempSync(join(tmpdir(), 'attr-'));
+  const git = (...a) => execFileSync('git', a, { cwd: dir, encoding: 'utf8' });
+  git('init', '-q', '.');
+  git('config', 'user.email', 'probe@example.invalid');
+  git('config', 'user.name', 'Probe');
+  git('config', 'commit.gpgsign', 'false');
+  writeFileSync(join(dir, 'a.txt'), 'x\n');
+  git('add', '-A');
+  const msg = join(dir, '.msg');
+  writeFileSync(msg, 'A subject nobody would object to\n\nbody text\n\n'
+    + 'Co-Authored' + '-By: Some Tool <x@example.invalid>\n');
+  git('commit', '-q', '-F', msg);
+  return dir;
+}
+
+/** Run a copy of the scan in that repo and return its exit code and output. */
+function scan(dir, path) {
+  try {
+    const out = execFileSync('bash', [path], {
+      cwd: dir, encoding: 'utf8', env: { ...process.env, SKIP_FETCH: '1' },
+    });
+    return { code: 0, out };
+  } catch (e) {
+    return { code: e.status, out: `${e.stdout ?? ''}${e.stderr ?? ''}` };
+  }
+}
+
+test('the scan reports that the hook would have caught what it caught', () => {
+  const dir = repoWithATrailer();
+  try {
+    const r = scan(dir, script);
+    assert.equal(r.code, 1, 'an offending message must fail the scan');
+    assert.match(r.out, /the commit-msg hook would also have refused this message/,
+      'the scan does not say whether the hook could have stopped this');
+    assert.doesNotMatch(r.out, /HOLE/, 'the two paths agree, so nothing is a hole');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
+});
+
+test('the scan calls it a HOLE when the hook could not have caught it', () => {
+  // Seen red rather than assumed. The sabotage: --message reads only the first
+  // line, so a trailer in its usual place — the end — walks past the hook.
+  const dir = repoWithATrailer();
+  const blind = join(dir, 'blind.sh');
+  const src = readFileSync(script, 'utf8');
+  const narrowed = src.replace('  if grep -nEi "$PATTERNS" "$msg"; then',
+                               '  if head -1 "$msg" | grep -nEi "$PATTERNS"; then');
+  assert.notEqual(narrowed, src, 'the sabotage no longer matches the script');
+  writeFileSync(blind, narrowed);
+  try {
+    const r = scan(dir, blind);
+    assert.match(r.out, /HOLE — [0-9a-f]{40} is refused by the repository scan but ACCEPTED/,
+      'a message invisible to the hook was not reported as a hole');
+    assert.match(r.out, /gap in prevention, not only a bad commit/);
+    assert.equal(r.code, 3, 'a hole must exit differently from an ordinary bad commit');
+  } finally {
+    rmSync(dir, { recursive: true, force: true });
+  }
 });
