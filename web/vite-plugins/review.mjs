@@ -75,7 +75,7 @@ export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.ur
         const decided = new Set(readDecisions().decisions
           .filter((d) => d.verdict !== 'skipped').map((d) => d.itemId));
         // `?paper=` narrows the queue. Without it the queue is every undecided
-        // item in the file — 56 of them — and `?batch=20` then served the DELF
+        // item in the file — 76 of them — and `?batch=20` then served the DELF
         // papers while the batch a reviewer had been asked to read sat at the
         // end. A reviewer who asks for batch one must get batch one.
         const want = new URL(req.url ?? '/', 'http://x').searchParams.get('paper');

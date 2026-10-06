@@ -841,6 +841,27 @@ suffix-matching bug was found, eleven verbs were wrong and finding the eleventh
 took a separate search each time.
 
 
+### 2026-10-06 — a distractor the spelling fold cannot tell from the answer
+
+Batch two of the structure items tested the circumflex. « Nous dansâmes » had
+« dansames » as the wrong option, and « il fut » had « fût ». Both pairs are
+real distinctions in French spelling. Both failed `tests/alternates.test.js`,
+which asks whether a distractor is the answer once accents are folded.
+
+The fold exists so a learner who types « espèrerai » for « espérerai » is not
+marked wrong. Applied to a multiple-choice paper it says the opposite thing
+with the same mechanism: two options the fold cannot separate are one option,
+and marking one of them wrong punishes a difference the rest of the product
+accepts. The circumflex is exactly such a difference. The items were rewritten
+to « dansèrent » and « furent », which the fold can tell apart, and the
+circumflex pairs are not offered.
+
+The rule, which is the same shape as comparing the wrong two things: before
+writing a wrong option, run it through the function that decides what counts as
+the same word. A distinction the folder deletes is not a distinction an exam
+can mark.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

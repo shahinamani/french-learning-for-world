@@ -1,16 +1,22 @@
 {
 "version": 1,
-"theOneNumber": "71,021 verb forms · 79 flashcards · 91 exam items. 99.8% of every exercise in this product is a verb form. That is the honest state of the project, and it is the measurement that should have existed before anybody asked for more verbs.",
-"note": "Exercises reaching each live, non-group concept, counted at build time from the decks, the verb paradigms and the exam papers. A concept absent from `material` has NO exercise: that is true of 191 of the 261 live concepts, and of every concept at C1 and C2.",
+"theOneNumber": "71,021 verb forms · 79 flashcards · 111 exam items. 99.7% of every exercise in this product is a verb form. That is the honest state of the project, and it is the measurement that should have existed before anybody asked for more verbs.",
+"note": "Exercises reaching each live, non-group concept, counted at build time from the decks, the verb paradigms and the exam papers. A concept absent from `material` has NO exercise: that is true of 187 of the 261 live concepts, and of every concept at C1 and C2.",
 "generatedBy": "scripts/build-concept-material.py",
 "liveConcepts": 261,
-"conceptsWithMaterial": 70,
+"conceptsWithMaterial": 74,
 "material": {
 "gram.adjective.comparative": {
 "cards": 0,
 "verbForms": 0,
 "examItems": 1,
 "total": 1
+},
+"gram.adjective.meaning-shift": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 5,
+"total": 5
 },
 "gram.agreement.avoir-cod": {
 "cards": 0,
@@ -67,6 +73,12 @@
 "total": 1
 },
 "gram.expression.emphasis": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 5,
+"total": 5
+},
+"gram.expression.faire-causatif": {
 "cards": 0,
 "verbForms": 0,
 "examItems": 5,
@@ -144,6 +156,12 @@
 "examItems": 3,
 "total": 5
 },
+"gram.nonfinite.participe-present": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 5,
+"total": 5
+},
 "gram.number.irregular": {
 "cards": 1,
 "verbForms": 0,
@@ -167,6 +185,12 @@
 "verbForms": 14203,
 "examItems": 2,
 "total": 14205
+},
+"gram.past.passe-simple": {
+"cards": 0,
+"verbForms": 0,
+"examItems": 5,
+"total": 5
 },
 "gram.past.pc-avoir": {
 "cards": 13,

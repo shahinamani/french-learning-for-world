@@ -72,6 +72,48 @@
   },
   "mood.il-me-semble-indicative-il-semble-subjunctive": {
    "says": "« Il me semble que » reports an opinion and takes the indicative; impersonal « il semble que » takes the subjunctive. One pronoun decides the mood."
+  },
+  "causative.no-preposition": {
+   "says": "« Faire » causatif is followed by a bare infinitive, with no preposition: « elle fait réparer sa voiture », never « fait à réparer » or « fait de réparer »."
+  },
+  "causative.pronouns-before-faire": {
+   "says": "Object pronouns of a causative stand before « faire », not before the infinitive, and in the ordinary order: direct object, then indirect. « Je la fais réparer », « je le lui fais expliquer ».",
+   "risk": "If the pronouns belonged before the infinitive instead, or if « lui le » were the order, both items on this rule fail together."
+  },
+  "causative.fait-invariable": {
+   "says": "The past participle « fait » followed by an infinitive does not agree, with the subject or with the object: « elle s'est fait couper les cheveux ».",
+   "risk": "Agreed forms are common in real writing. If they are accepted, the item punishes ordinary French."
+  },
+  "causative.par-for-the-agent-when-a-is-the-recipient": {
+   "says": "The person caused to act is introduced by « par » when « à » would be read as the recipient: « je la fais écrire par Marie » means Marie writes it. « À Marie » would mean the letter is addressed to her."
+  },
+  "adjective.before-figurative-after-literal": {
+   "says": "For the adjectives that change meaning with position, before the noun the sense is figurative or evaluative and after the noun it is literal: « un grand homme » is a great man, « un homme grand » is a tall one; « un homme pauvre » has no money, « un pauvre homme » is unfortunate.",
+   "risk": "If that direction is reversed, every item on this rule fails together, because all five use the same before/after assignment."
+  },
+  "participe.verbal-is-invariable": {
+   "says": "A present participle with a complement is verbal and does not agree: « des enfants jouant », « des nouvelles rassurant les habitants ». With no complement the same word is an adjective and agrees: « des nouvelles rassurantes ».",
+   "risk": "If a complement triggered agreement instead of blocking it, the three items on this rule fail together."
+  },
+  "gerund.same-subject": {
+   "says": "The gerund, « en » plus a present participle, must have the same subject as the main verb. A present participle without « en » may have its own subject: « le train arrivant en gare, les voyageurs se sont levés ».",
+   "risk": "If those two constraints are swapped, the dangling-gerund item and the absolute-construction item fail together."
+  },
+  "passe-simple.er-verb-ends-in-a": {
+   "says": "An -er verb in the passé simple ends in -a in the third person singular and -èrent in the third person plural: « il parla », « ils fermèrent ». The imperfect, the present and the future are other endings.",
+   "risk": "If the singular ending and the plural ending are not the pair this says, both items fail together."
+  },
+  "passe-simple.vit-is-voir-when-transitive": {
+   "says": "« Vit » is the passé simple of « voir » and the present of « vivre ». A direct object forces « voir », because « vivre » does not take one: « elle vit la mer » means she saw the sea.",
+   "risk": "If the sentence can be read as « vivre », the item has two answers."
+  },
+  "passe-simple.nous-is-not-ils": {
+   "says": "The nous form of the passé simple is « nous dansâmes ». « Dansèrent » is the third person plural, « dansions » the imperfect, « avons dansé » the passé composé.",
+   "risk": "The spelling without the circumflex is the same word under this project's spelling fold, so it is not offered as a wrong option. An item that marked « dansames » wrong would be punishing a difference the product cannot see."
+  },
+  "passe-simple.etre-singular-is-fut": {
+   "says": "The third-person singular passé simple of « être » is « il fut ». « Furent » is the plural, « était » the imperfect, « a été » the passé composé.",
+   "risk": "« Fût », the imperfect subjunctive, differs from « fut » by a circumflex only. The spelling fold treats that as the same word, so it is not an option. Offering it as the wrong answer would mark a learner wrong for a difference the rest of the product accepts."
   }
  }
 }

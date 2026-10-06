@@ -141,6 +141,31 @@ test('a batch flags what its writer was unsure of', () => {
     + flagged.map((i) => i.id).join(', '));
 });
 
+test('batch two is the four B2 concepts that had no exercise, five items each', () => {
+  // Batch one covered combined negation, pronominal agreement, avoiding the
+  // passive, and clefts. These four were the B2 grammar points still empty,
+  // which is why they are the next twenty and not a second pass over the first.
+  const batch = items.filter((i) => i.paper === 'tcf-b2-structure-3');
+  assert.equal(batch.length, 20);
+  const byConcept = {};
+  for (const it of batch) {
+    assert.equal(it.conceptIds.length, 1, `${it.id} tags more than the point it tests`);
+    const c = it.conceptIds[0];
+    (byConcept[c] ??= []).push(it.id);
+  }
+  assert.deepEqual(Object.keys(byConcept).sort(), [
+    'gram.adjective.meaning-shift',
+    'gram.expression.faire-causatif',
+    'gram.nonfinite.participe-present',
+    'gram.past.passe-simple',
+  ]);
+  for (const [c, ids] of Object.entries(byConcept)) assert.equal(ids.length, 5, c);
+  const flagged = batch.filter((i) => i.uncertain).map((i) => i.id).sort();
+  assert.deepEqual(flagged, ['b2-faire-4', 'b2-pp-5', 'b2-ps-5'],
+    'the doubts that were real when the batch was written, named so a silent '
+    + 'deletion of one is visible');
+});
+
 test('every item has an Arabic slot, present and empty', () => {
   // Present: so the backlog is visible the day a reviewer appears.
   // Empty: because Arabic is not machine-filled and will not be.
