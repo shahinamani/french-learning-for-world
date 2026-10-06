@@ -1,6 +1,6 @@
 # Arabic needs a human reader — a launch condition
 
-**Status: open. Updated 2026-10-01 (second pass).**
+**Status: open. Updated 2026-10-06.**
 
 This is not a backlog item and not a nice-to-have. **The platform does not launch
 in Arabic until a person who reads Arabic has reviewed what is below.**
@@ -147,10 +147,18 @@ and can check it. **Arabic is held at zero on purpose**, and the ledger in
 translating a level without updating the ledger fails, and adding an
 untranslated concept fails too.
 
-### 4. Exam papers — **deliberately not written yet**
+### 4. Exam papers — **prompts and explanations deliberately not written in Arabic**
 
-28 prompts, 28 explanations and 16 stimulus labels exist in English, French and
-Persian. **Arabic is held, on purpose.**
+76 prompts, 76 explanations and 16 stimulus labels exist in English, French and
+Persian. **Arabic on those fields is held, on purpose** — every one is
+`"ar": null`. The count was 28 when this section was written; two batches of
+B2 structure items have been added since, and the slots stayed empty.
+
+Paper **titles** are a different, shorter string, and they are in Arabic
+already, on the same judgement as the tense names: short, terminological, and
+unchecked by anyone who reads Arabic. The one added 2026-10-06 is
+`TCF — بنية اللغة B2، الدفعة الثانية` (`tcf-b2-structure-3`). The five titles
+already in the file are the same kind of unreviewed string.
 
 A learner trusts an explanation. A wrong explanation teaches a wrong thing and
 is believed, which makes it worse than no explanation at all. So an Arabic

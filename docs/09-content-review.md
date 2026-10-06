@@ -62,8 +62,9 @@ open 'http://localhost:5199/__review?paper=tcf-b2-structure-2&batch=20'
 ```
 
 **Name the paper.** Without `?paper=` the queue is every undecided item in the
-file — 56 of them — and a batch of 20 serves the DELF papers while the batch you
-were asked to read sits at the end.
+file — 76 of them — and a batch of 20 serves the DELF papers while the batch you
+were asked to read sits at the end. Batch two, not yet sat, is
+`?paper=tcf-b2-structure-3&batch=20`.
 
 ## The rule each item rests on
 
