@@ -35,15 +35,20 @@ ROOT = pathlib.Path(__file__).resolve().parent.parent
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
+    ap.add_argument("--decisions", help="default data/review-decisions.json")
+    ap.add_argument("--papers", help="default content/exam-papers.json. A test points "
+                                     "this at a copy: mutating the real file races with "
+                                     "every other test that reads it.")
     args = ap.parse_args()
 
-    dec_path = ROOT / "data/review-decisions.json"
+    dec_path = pathlib.Path(args.decisions) if args.decisions else ROOT / "data/review-decisions.json"
     if not dec_path.exists():
         print("no decisions to apply: data/review-decisions.json does not exist")
         return 0
     decisions = json.loads(dec_path.read_text(encoding="utf-8"))["decisions"]
 
-    papers_path = ROOT / "content/exam-papers.json"
+    papers_path = (pathlib.Path(args.papers) if args.papers
+                   else ROOT / "content/exam-papers.json")
     papers = json.loads(papers_path.read_text(encoding="utf-8"))
     by_id = {it["id"]: it for p in papers["papers"] for it in p["items"]}
 

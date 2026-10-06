@@ -42,6 +42,16 @@
   .rule { border:1px dashed var(--line); border-radius:.4rem; padding:.6rem .85rem;
           margin:0 0 1rem; font-size:.9rem; color:var(--dim); }
   .rule b { display:block; color:var(--ink); margin-bottom:.2rem; }
+  /* A cluster of three or more is the largest correlated surface in the content
+     and is shown as one: five items rest on adjective position alone. */
+  .rule.cluster { border:2px solid var(--flag); border-style:solid; }
+  .cluster-list { margin-top:.5rem; padding-top:.5rem; border-top:1px solid var(--line); }
+  .chip-id { display:inline-block; border:1px solid var(--line); border-radius:.3rem;
+             padding:.1rem .4rem; margin:.15rem .1rem; font-size:.8rem;
+             font-variant-numeric:tabular-nums; }
+  .chip-id.is-here { border-color:var(--ink); color:var(--ink); font-weight:600; }
+  .chip-id.is-approved { border-color:var(--ok); color:var(--ok); }
+  .chip-id.is-rejected { border-color:var(--no); color:var(--no); }
   .pulled { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
             border-radius:.4rem; padding:.6rem .85rem; margin:0 0 1rem; font-size:.9rem; }
   .recorded { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
@@ -112,12 +122,21 @@ function render() {
   el('item').innerHTML = `
     ${banner}
     ${flag}
-    ${it.ruleSays ? `<div class="rule"><b>The rule it rests on</b>
+    ${it.ruleSays ? `<div class="rule${(it.siblings?.length ?? 0) >= 3 ? ' cluster' : ''}">
+        <b>The rule it rests on${(it.siblings?.length ?? 0) >= 3
+          ? ` — and on ${it.siblings.length} other items`
+          : ''}</b>
         ${it.ruleSays.says}
         ${it.ruleSays.risk ? `<br><i>Risk: ${it.ruleSays.risk}</i>` : ''}
-        ${it.siblings?.length ? `<br><span class="k">${it.siblings.length} other item${
-          it.siblings.length > 1 ? 's' : ''} rest${it.siblings.length > 1 ? '' : 's'} on this:
-          ${it.siblings.join(', ')}</span>` : ''}</div>` : ''}
+        ${it.siblings?.length ? `<div class="cluster-list" data-cluster="${it.rule}"
+            data-cluster-size="${it.siblings.length + 1}">
+            <b>${it.siblings.length + 1} items stand or fall together:</b>
+            ${[it.id, ...it.siblings].map((sid) => `<span class="chip-id${
+              sid === it.id ? ' is-here' : ''}${recorded[sid]
+                ? ' is-' + recorded[sid].verdict : ''}">${sid}${
+              recorded[sid] ? ` · ${recorded[sid].verdict}` : ''}</span>`).join(' ')}
+            <br><span class="k">Reject this and they come next. Approve it and you have
+            approved the rule for all of them.</span></div>` : ''}</div>` : ''}
     <p class="meta">${it.prompt?.en ?? ''}</p>
     <p class="stim" lang="fr" dir="ltr">${it.stimulus?.fr ?? ''}</p>
     <ol class="opts">${opts}</ol>

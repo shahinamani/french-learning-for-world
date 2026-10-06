@@ -15,8 +15,8 @@ test, and before saying a piece of work is finished.
 
 ### Before anything else: am I comparing the right two things?
 
-Eleven checks of mine accused correct data in one week. **Ten of the eleven
-compared the wrong two things.** Only one was a wrong idea about the data — a rule
+Thirteen checks of mine accused correct data in one week. **Twelve of the
+thirteen compared the wrong two things.** Only one was a wrong idea about the data — a rule
 requiring a three-letter word, which rejected « to go ».
 
 | the check | what it compared | what it should have compared |
@@ -30,6 +30,8 @@ requiring a three-letter word, which rejected « to go ».
 | a positional line comparison | line *i* to line *i* | a diff |
 | `git diff` in the applier test | the file and the last commit | the file before and after the applier |
 | the keyboard drive looking for an item | the page's PROSE for an id | the id, read from its own element — it matched a sibling LIST containing that id and walked to the wrong item |
+| a prose assertion over a wrapped document | a one-line pattern against text that wraps | the same text with its line breaks collapsed |
+| the whitespace flattener written to fix that | stripped `*` as emphasis, so `refs/pull/*` lost its star | backticks only — the normalisation broke the comparison it was written to fix |
 | the answer-position guard | nothing — it was right, and found the fault in two papers nobody had written | — |
 
 So the first question when writing a check is not "is my rule right?" —
@@ -668,7 +670,7 @@ Five checks of mine in one week accused data that was correct:
 | a positional line comparison | an inserted line shifts every line after it; one added `note` reported 323 differences |
 | `git diff` in the applier test | compared the file to **HEAD**, so every uncommitted change counted as the applier's work: 936 lines for a four-line write |
 
-**Running total: nine distinct faults, eleven occurrences** — and at ten, the pattern is above, in "am I comparing the right two things?". Nine of the ten compared the wrong two things; one was a wrong idea about the data. — the semicolon split
+**Running total: eleven distinct faults, thirteen occurrences** — and at ten, the pattern is above, in "am I comparing the right two things?". Nine of the ten compared the wrong two things; one was a wrong idea about the data. — the semicolon split
 happened twice, having been learned once. Shahin's standing instruction: when
 this table reaches ten, stop and look at what they have in common, because by
 then it is a pattern about how the checks are written and not about any one of
@@ -860,6 +862,64 @@ The rule, which is the same shape as comparing the wrong two things: before
 writing a wrong option, run it through the function that decides what counts as
 the same word. A distinction the folder deletes is not a distinction an exam
 can mark.
+
+
+### 2026-10-06 — a guard is only as wide as the refs it can see
+
+A session using a different tool committed here with an authorship trailer. CI
+refused it. The pre-push hook, run minutes earlier, had reported **"tool
+attribution in any commit message — clean"**.
+
+The obvious reading is that the hook and CI ask different questions. They do
+not: **both run the same script, `scripts/check-commit-messages.sh`, and its
+pattern list includes the trailer.** Proved by planting the offending commit
+under a ref and running the hook's own command — it fails; removing the ref, it
+passes. Nothing about the question changed.
+
+What differed was the world. The script scans `git log --all`, and **`--all`
+means the refs THIS CLONE has.** CI fetches every branch; my clone had lost that
+branch's tracking ref minutes earlier. Same command, same patterns, two
+different answers, and neither was wrong.
+
+Three things came out of it:
+
+* **`--all` is a claim about completeness that only CI can make.** The hook now
+  fetches before scanning, and says so when it cannot reach the remote rather
+  than silently narrowing to what is local.
+* **The scan reading every ref is right, and the consequence is that one bad
+  message on one branch reddens CI for every branch.** That is the rule being
+  about the repository rather than about a branch. It cost a day to say so out
+  loud.
+* **The real fix is earlier than either.** `commit-msg` refuses the message
+  before a commit object exists. pre-push already requires a rewrite; CI is
+  later still, and by the time CI sees it a pull request has created a
+  `refs/pull/*` ref GitHub keeps for ever. **The only point at which this fault
+  costs nothing is before the commit.**
+
+And the reason it happened at all: **the rule lived in one contributor's editor
+configuration.** A tool that had never read it committed here and could not have
+known. It is now in `AGENTS.md` at the root, copied into `.cursorrules` and
+`.cursor/rules/`, with a guard that fails when a copy drifts — and
+`core.hooksPath` is set by `npm install` as well as by the documented script,
+because a fresh clone has no hooks until something sets them, and a fresh clone
+is exactly what another tool's session gets.
+
+### 2026-10-06 — a test that tidies up after itself is still flaky
+
+`tests/apply-review.test.js` applied review decisions to
+`content/exam-papers.json` and restored it in a `finally`. Careful, correct,
+and flaky: **node runs test FILES in parallel**, so `tests/alternates.test.js`
+read that file inside the window and failed on content that was right a
+millisecond either side. It passed three times and failed the fourth.
+
+`finally` is not isolation. It is a promise to clean up, and a promise about the
+future says nothing about the present. **A test that mutates shared state is
+flaky by construction, however carefully it tidies.**
+
+The fix was not better cleanup, it was not touching the thing: the applier takes
+`--papers` and `--decisions`, and the test points them at copies in a temp
+directory. The real content is now untouched by the whole suite, which is
+checked — three consecutive runs, 331 passing, and `git diff` clean afterwards.
 
 
 ## The checklist

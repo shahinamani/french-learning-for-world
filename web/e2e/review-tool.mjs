@@ -137,9 +137,10 @@ try {
   const ruleShown = await p.locator('.rule').innerText().catch(() => '');
   ok(`the item names the rule it rests on ("${ruleShown.split('\n')[0]}")`,
      /rule it rests on/i.test(ruleShown));
-  ok(`and lists the other items resting on it, excluding itself`,
-     /3 other items rest on this/.test(ruleShown)
-     && /b1-agr-1/.test(ruleShown) && !/this: [^\n]*b1-agr-2/.test(ruleShown));
+  ok(`and lists every item resting on it, including the one being read`,
+     /4 items stand or fall together/.test(ruleShown)
+     && ['b1-agr-1', 'b1-agr-2', 'b1-agr-3', 'b1-agr-4']
+          .every((id) => ruleShown.includes(id)));
   ok('and shows the risk the rule carries',
      /se parler/i.test(ruleShown));
 
@@ -157,6 +158,44 @@ try {
   const next = await currentId();
   ok(`the very next item is a sibling, not the next in paper order (${next})`,
      ['b1-agr-1', 'b1-agr-3', 'b1-agr-4'].includes(next));
+
+  console.log('\n=== a cluster of five is shown AS a cluster ===');
+  // adjective.before-figurative-after-literal carries five items: if that rule
+  // is wrong, five fall together — a larger correlated surface than the
+  // agreement trio that prompted the mechanism. A line of small grey text does
+  // not say that.
+  await p.goto(`${BASE}?paper=tcf-b2-structure-3&batch=20&by=Keyboard%20Test`,
+               { waitUntil: 'networkidle' });
+  await p.waitForSelector('.stim', { timeout: 8000 });
+  let onCluster = false;
+  for (let n = 0; n < 20; n++) {
+    if ((await p.locator('[data-cluster-size]').getAttribute('data-cluster-size')
+          .catch(() => null)) === '5') { onCluster = true; break; }
+    await p.keyboard.press('ArrowRight');
+    await p.waitForTimeout(80);
+  }
+  ok('reached the five-item cluster', onCluster);
+  ok('it is marked as a cluster, not just described',
+     (await p.locator('.rule.cluster').count()) === 1);
+  const cl = await p.locator('.cluster-list').innerText().catch(() => '');
+  ok(`it says how many stand or fall together ("${cl.split('\n')[0]}")`,
+     /5 items stand or fall together/.test(cl));
+  ok('and names every one of them, including the item being read',
+     ['b2-adj-1', 'b2-adj-2', 'b2-adj-3', 'b2-adj-4', 'b2-adj-5']
+       .every((id) => cl.includes(id)));
+  ok('and says what approving it commits the reviewer to',
+     /approved the rule for all of them/.test(cl));
+
+  // Each sibling carries its own verdict once recorded, so a reviewer returning
+  // to the cluster can see how much of it is done.
+  await p.keyboard.press('a');
+  await p.waitForTimeout(300);
+  await p.keyboard.press('ArrowLeft');
+  await p.waitForTimeout(250);
+  const after = await p.locator('.cluster-list').innerText().catch(() => '');
+  ok(`a decided sibling shows its verdict in the cluster ("${
+       (after.match(/b2-adj-\d · \w+/) ?? ['none'])[0]}")`,
+     /b2-adj-\d · approved/.test(after));
 
   console.log('\n=== the batch-done state ===');
   for (let n = 0; n < 24; n++) { await p.keyboard.press('s'); await p.waitForTimeout(120); }
