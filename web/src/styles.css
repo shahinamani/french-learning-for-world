@@ -253,3 +253,112 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
 }
 .accents__key:hover { background: var(--color-accent-soft); }
 .accents__key:active { transform: translateY(1px); }
+
+/* ── The landing page ─────────────────────────────────────────────────────
+ *
+ * The front door, and the one screen a stranger judges the project by. Three
+ * things this stylesheet is responsible for, each of which was wrong before it
+ * existed:
+ *
+ * 1. "What is not here yet" sits BESIDE "what you can do", at the same weight,
+ *    from 900px up — and directly after it on a phone, above the fold's end.
+ *    It is not a footnote. If a later change moves it to the bottom of the
+ *    page, that is a product decision being made in a stylesheet, and
+ *    web/e2e/walk.mjs fails rather than letting it pass quietly.
+ * 2. A desktop layout, not the phone stretched. The complaint that started
+ *    this page was "a phone layout on a wide screen".
+ * 3. The returning-learner swap: the prerendered HTML holds the landing page,
+ *    public/boot.js marks the document before first paint, and the rules at
+ *    the end hide the pitch for somebody who has already studied here.
+ */
+.landing { display: flex; flex-direction: column; gap: var(--space-8); }
+
+.landing__untranslated {
+  margin: 0; padding: var(--space-3) var(--space-4);
+  background: var(--color-info-soft); color: var(--color-info);
+  border-radius: var(--radius-md); font-size: var(--text-sm);
+}
+
+.landing__hero { display: flex; flex-direction: column; gap: var(--space-4); }
+.landing__pitch { display: flex; flex-direction: column; gap: var(--space-4); min-width: 0; }
+.landing__headline {
+  font-family: var(--font-display);
+  font-size: var(--text-3xl); line-height: 1.12; font-weight: var(--weight-semibold);
+  margin: 0; text-wrap: balance;
+}
+.landing__lede { margin: 0; font-size: var(--text-lg); color: var(--color-ink); max-width: 44ch; }
+.landing__audience { margin: 0; color: var(--color-ink-muted); max-width: 52ch; }
+.landing__cta { display: flex; flex-direction: column; gap: var(--space-2); align-items: flex-start; }
+.landing__noaccount { margin: 0; font-size: var(--text-sm); color: var(--color-ink-faint); }
+
+.landing__columns { display: flex; flex-direction: column; gap: var(--space-6); }
+
+.landing__panel {
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-lg); padding: var(--space-5);
+  display: flex; flex-direction: column; gap: var(--space-4);
+}
+.landing__panel p { margin: 0; }
+.landing__item { display: flex; flex-direction: column; gap: var(--space-1); }
+.landing__item p { color: var(--color-ink-muted); }
+.landing__lede-sm { font-size: var(--text-sm); color: var(--color-ink-faint); }
+
+/* The caveat belongs to the claim above it, so it is attached to it rather
+   than floating at the foot of the panel. */
+.landing__caveat {
+  margin-block-start: var(--space-2); padding: var(--space-2) var(--space-3);
+  border-inline-start: 3px solid var(--color-warning);
+  background: var(--color-warning-soft); color: var(--color-warning);
+  font-size: var(--text-sm); border-radius: var(--radius-sm);
+}
+
+/* Not styled as a warning, and not as fine print. It is one of the two things
+   the page is for, so it reads like the other one. */
+.landing__panel--havent { border-color: var(--color-line-strong); background: var(--color-surface-sunken); }
+.landing__gaps { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: var(--space-3); }
+.landing__gaps li { padding-inline-start: var(--space-4); position: relative; }
+.landing__gaps li::before {
+  content: ""; position: absolute; inset-inline-start: 0; top: 0.6em;
+  width: 7px; height: 2px; background: var(--color-ink-faint);
+}
+
+.landing__footer {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  padding-block-start: var(--space-5); border-block-start: 1px solid var(--color-line);
+  font-size: var(--text-sm); color: var(--color-ink-muted);
+}
+.landing__footer p { margin: 0; }
+.landing__independence { font-size: var(--text-xs); color: var(--color-ink-faint); }
+.landing__links a { color: var(--color-accent); }
+
+@media (min-width: 900px) {
+  .landing { gap: var(--space-10); }
+  .landing__headline { font-size: var(--text-4xl); max-width: 22ch; }
+  .landing__hero { gap: var(--space-5); }
+  /* Equal columns, deliberately: 1fr 1fr is the layout saying the two panels
+     carry the same weight. A narrower second column would quietly demote the
+     honesty section, which is the thing most likely to drift. */
+  .landing__columns { flex-direction: row; align-items: stretch; }
+  .landing__columns > * { flex: 1 1 0; min-width: 0; }
+  .landing__panel { padding: var(--space-6); }
+}
+
+@media (min-width: 1200px) {
+  /* The hero becomes two columns of its own: the pitch and the way in on one
+     side, nothing crowding it on the other. */
+  .landing__hero { flex-direction: row; align-items: flex-end; justify-content: space-between; gap: var(--space-10); }
+  .landing__pitch { flex: 1 1 auto; }
+  .landing__cta { flex: none; align-items: flex-start; padding-block-end: var(--space-2); }
+}
+
+/* ── The returning learner ───────────────────────────────────────────────
+ * public/boot.js sets data-started on <html> from a synchronous localStorage
+ * read, before the body is parsed. The prerendered landing markup is therefore
+ * never painted for somebody who has studied here; they see the session
+ * skeleton until React renders the real dashboard over it. Without this, a
+ * returning learner would be shown the sales page for as long as 140 KB of
+ * JavaScript takes to arrive, on every visit.
+ */
+.landing-boot { display: none; }
+:root[data-started="1"] .landing { display: none; }
+:root[data-started="1"] .landing-boot { display: block; }

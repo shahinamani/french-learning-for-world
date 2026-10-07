@@ -1,5 +1,6 @@
 import type { Level, Locale } from './types';
 import { userKey } from './session';
+import { markStarted } from './started';
 
 /**
  * Pick a translation, and say when there is not one.
@@ -104,6 +105,10 @@ export function loadAttempt(userId: string, attemptId: string): Attempt | null {
 
 export function saveAttempt(userId: string, a: Attempt) {
   try { localStorage.setItem(key(userId, a.attemptId), JSON.stringify(a)); } catch { /* private window */ }
+  // Sitting a paper is studying here. This is the fourth and last place a
+  // record is created, and the landing page's "has this person started?"
+  // question is answered by all four or by none of them.
+  markStarted();
 }
 
 /** Every attempt this learner has, newest first. Used by the paper page to

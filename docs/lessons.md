@@ -674,6 +674,92 @@ See also [[suspect-the-assertion-first]] — the same point at the moment a sing
 failure appears, where this entry is about the habit that prevents the pile.
 
 
+### 2026-10-07 — the site had no front door, and the redirect hid it
+
+`/` was one line: `<Navigate to="/learn" replace />`. So there was no landing
+page to criticise — only a redirect, and a redirect is not a thing anybody
+reviews. Somebody who typed the domain got the study map, and **the first words
+they read were a notice about browser storage.**
+
+The second consequence is the one that made it urgent. The build *prerenders the
+home route into index.html*, so the static HTML a crawler reads, and the first
+paint on a slow connection, were also the study map. **The page the site is
+judged by was the one page nobody had written**, and nobody had written it
+because routing made it invisible: there was no file to open and find empty.
+
+Five things came out of building it.
+
+**The brief's own numbers were wrong, in both directions.** It asked for "2,392
+verbs" (it is 2,387) and "nothing at C1 or C2 yet" — but 991 verbs *are* at C1
+and C2; what stops at B2 is the exercises. Both would have shipped as confident
+sentences on the front page. So no number on that page is typed: they come from
+`content/portal-summary.json`, generated from the content, with every figure
+recomputed by a test. **The claims most likely to be believed are the ones least
+likely to be re-measured.**
+
+**A number can be honest and still overstate by half.** `concept-material.json`
+advertises "79 flashcards · 111 exam items". Those are concept-ATTRIBUTIONS — a
+card tagged with four concepts counts four times. The true figures are 22 and
+76. Perfectly good in a build report; a 46% overstatement on a front page. The
+generator refuses to use it and a test asserts the landing figure never exceeds
+it.
+
+**The verification field was not the one I asked for.** The summary first marked
+every examination "verified", including TEF, whose own note reads NOT VERIFIED
+in capitals — because I tested a flag that does not exist in that file instead
+of `structure.verifiedOn`. A front page would have told a stranger we had
+checked a grid nobody has opened. Same shape as every other week:
+`undefined` is falsy, and a check asking the wrong question gets a clean answer.
+
+**I reintroduced a fixed bug within the hour, and the guard that fixed it caught
+me.** The privacy notice was moved to the moment it first becomes true —
+correct, since a notice about stored work shown to somebody who has stored
+nothing is a paragraph about nothing. I gated it on `hasStarted()`. But
+`hasStarted()` reads `localStorage`, and **answers false when it cannot read** —
+so the learner in a private window, whose work will not survive the tab, was
+hidden from again. That exact person had been hidden from once before, by a
+first version that read "cannot read storage" as "already seen", and
+`web/e2e/walk.mjs` has asserted ever since that they are told. The rule is now:
+defer when storage works, never when it does not. **A new rule meeting an old
+one is the moment to check which fixed bug the new rule re-opens.**
+
+**Two faults were visible only in a screenshot.** A study timer counting 15:00
+beside the name, on the screen whose job is to explain what the site is — no
+automated check calls that wrong, because a correctly rendered timer is a
+correct timer. And in Persian, where the page falls back to English: the English
+sat inside `dir="rtl"`, so every full stop jumped to the left of its sentence
+(".No account. Nothing to sign up for"), and `Intl` rendered 2,387 as «۲٬۳۸۷» —
+Persian digits inside an English clause, which is neither language's
+typography. **A page that is in English is in English, including its direction
+and its numerals.** Both now have checks; neither would have been found by one.
+
+### 2026-10-07 — a comment stating a measured size, again
+
+`src/main.tsx` carried "with 8 026 bytes of headroom left against the 150 KB
+budget". The true figure when I read it was 12 882. Not merely stale —
+**understating the headroom, which is the direction that makes people decline
+changes they could afford.**
+
+This is the same fault as the comment claiming a 26 KB index that had grown to
+71 KB, and the lesson written down after that one was already in this file: *a
+comment stating a measured size is a claim, and a claim nothing checks goes
+stale silently.* Writing a lesson down does not apply it.
+
+The budget had been in the project documents since the first week and **nothing
+had ever enforced it.** `web/scripts/budget.mjs` now measures the first load on
+every build and prints it. Two things about how it does so:
+
+* It does not trust `index.html`'s list of assets, which is "whatever Vite chose
+  to preload" and not a specification. It walks the static-import closure from
+  the entry chunk and fails if the two disagree — so a chunk that silently
+  becomes eager is a failure rather than an allowance.
+* **That check's first finding was against me.** I had hand-counted the first
+  load as four chunks; it said three. The import graph settled it: `scheduler`
+  is a *dynamic* import, so it is not first-load at all. The measurement was
+  right and the person was wrong, which is the usual way round and the reason
+  for measuring.
+
+
 ## The checklist
 
 ### #1 — A suite that prints FAIL and exits 0

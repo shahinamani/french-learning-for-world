@@ -42,27 +42,59 @@ html = html.slice(0, start) + `<div id="root">${markup}</div>\n` + html.slice(en
 
 // A prerender that silently emitted nothing would look like a successful build
 // and cost exactly the thing it exists for.
-// What has to be in the HTML is the largest element on the screen — the map.
-// The session card's numbers come from IndexedDB and cannot be known at build
-// time, so it is prerendered in its loading state, which is correct and is
-// what the learner would see for those few milliseconds anyway.
-const rows = (html.match(/<th scope="row"/g) ?? []).length;
-const cells = (html.match(/class="map__cell"/g) ?? []).length;
-const SKILL_COUNT = (readFileSync(new URL('../src/routes/Learn.tsx', import.meta.url), 'utf8')
-  .match(/\{ key: '/g) ?? []).length;
-if (!/class="map"/.test(html) || rows !== 6 || cells !== 6 * SKILL_COUNT) {
-  console.error(`PRERENDER FAILED: expected a 6x${SKILL_COUNT} map, found ${rows} rows and ${cells} cells.`);
-  process.exit(1);
+// What has to be in the HTML is the LANDING page, because `/` now shows that
+// to anybody the build can know about: hasStarted() reads localStorage, node
+// has none, so the stranger's branch is taken. This used to assert a 6xN map
+// and a session card, and those assertions would now pass on a prerender of
+// the wrong page — a crawler and a first-time visitor would both read a study
+// map again, which is the fault this whole change exists to fix.
+const summary = JSON.parse(readFileSync(new URL('../../content/portal-summary.json', import.meta.url), 'utf8'));
+
+for (const [what, re] of [
+  ['the landing page itself', /data-testid="landing"/],
+  ['the headline', /class="landing__headline"/],
+  ['the way in', /data-testid="landing-start"/],
+  ['what you can do today', /data-testid="landing-today"/],
+  ['what is not here yet', /data-testid="landing-notyet"/],
+  ['the examinations section', /data-testid="landing-exams"/],
+  ['the returning-learner placeholder', /data-testid="landing-boot"/],
+  ['the shell chrome', /class="tabs"/],
+  ['the shell bar', /class="bar"/],
+]) {
+  if (!re.test(html)) {
+    console.error(`PRERENDER FAILED: ${what} is missing from the prerendered HTML.`);
+    process.exit(1);
+  }
 }
-if (!/class="tabs"/.test(html) || !/class="bar"/.test(html)) {
-  console.error('PRERENDER FAILED: the shell chrome is missing.');
-  process.exit(1);
+
+// The numbers have to be IN the static HTML, not fetched afterwards: the whole
+// point of importing portal-summary.json rather than fetching it is that a
+// crawler and a slow first paint read real figures. Checked against the
+// generated summary, in the same locale-aware format the page renders, so this
+// cannot pass on a page full of placeholders.
+const fmt = (v) => new Intl.NumberFormat('en').format(v);
+for (const [what, value] of [
+  ['the verb count', summary.verbs],
+  ['the searchable form count', summary.formsSearchable],
+  ['the number of concepts with nothing to practise', summary.conceptsWithoutMaterial],
+]) {
+  if (!html.includes(fmt(value))) {
+    console.error(`PRERENDER FAILED: ${what} (${fmt(value)}) is not in the prerendered HTML — `
+      + 'the page is rendering placeholders instead of the summary.');
+    process.exit(1);
+  }
 }
-// The line below used to claim the session card was present and check nothing.
-// A success message with no assertion behind it is the same fault as a suite
-// that prints FAIL and exits 0 — docs/lessons.md #1.
-if (!/class="today/.test(html)) {
-  console.error('PRERENDER FAILED: the session card is missing from the home route.');
+
+// Honesty is not a footnote: the gap section must appear before the footer, and
+// within the same screenful of structure as what-you-can-do. A stylesheet or a
+// reorder that drops it to the bottom is a product decision, and it fails here
+// rather than shipping quietly.
+const posHave = html.indexOf('data-testid="landing-today"');
+const posGaps = html.indexOf('data-testid="landing-notyet"');
+const posFoot = html.indexOf('class="landing__footer"');
+if (!(posHave < posGaps && posGaps < posFoot)) {
+  console.error('PRERENDER FAILED: "what is not here yet" must come straight after '
+    + '"what you can do today" and before the footer.');
   process.exit(1);
 }
 // A style attribute in the prerendered HTML is blocked by the
@@ -77,4 +109,5 @@ if (styled) {
 }
 writeFileSync(indexPath, html);
 rmSync(out, { recursive: true, force: true });
-console.log(`prerendered home: index.html ${before} → ${html.length} bytes; map and session card present`);
+console.log(`prerendered landing: index.html ${before} → ${html.length} bytes; `
+  + `${summary.verbs} verbs and the gap section present`);

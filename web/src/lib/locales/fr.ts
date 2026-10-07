@@ -5,7 +5,7 @@ import type { Dict } from '../i18n';
 
 const fr: Dict = {
   verbs: 'Verbes', verbsIntro: "Cherchez un verbe et voyez tous ses temps et modes. On s’entraîne directement depuis le tableau, et ce que vous ratez rejoint le même historique que le reste.", verbSearchPlaceholder: 'être, prendre, allons…', irregular: 'irrégulier', regular: 'régulier', auxiliary: 'auxiliaire', imperative: 'Impératif', noImperative: "Ce verbe n’a pas d’impératif en français courant.", practiseTense: "S’entraîner", yourAnswer: 'Votre réponse', check: 'Vérifier', next: 'Suivant', correct: 'Correct.', accentsOnly: 'Juste, mais les accents : {a}', answerIs: 'La réponse est {a}',
-  appName: 'Apprendre le français pour le monde',
+  appName: 'French ma vie',
   mainNav: 'Principal',
   accentBar: 'Caractères français',
   exams: 'Examens', questions: '{n} questions',
@@ -116,6 +116,44 @@ const fr: Dict = {
   mastery_started: 'en cours',
   mastery_weak: 'à retravailler',
   mastery_solid: 'acquis',
+
+  // ── The landing page ────────────────────────────────────────────────────
+  // No number is written into these strings: every figure arrives as a
+  // placeholder from content/portal-summary.json. See i18n.ts.
+  landingHeadline: 'Le français pour l’examen que vous préparez',
+  landingLede: 'Un portail de français libre et ouvert, pour les adultes qui préparent le DELF, le DALF, le TCF et le TEF. Ce n’est pas un jeu, ce n’est pas une application pour enfants, et rien ici ne compte les jours d’affilée.',
+  landingAudience: 'Conçu pour les étudiants en master, les professionnels et toute personne qui passe un examen de français, où qu’elle soit dans le monde. Il suppose que vous êtes adulte et que vous avez une date dans votre agenda.',
+  landingStart: 'Commencer à apprendre',
+  landingNoAccount: 'Aucun compte. Rien à créer. Votre travail reste sur votre appareil.',
+
+  landingTodayHeading: 'Ce que vous pouvez faire ici aujourd’hui',
+  landingVerbsTitle: '{verbs} verbes, entièrement conjugués',
+  landingVerbsBody: 'Tous les temps et tous les modes, et {forms} formes conjuguées interrogeables. Tapez une forme comme « allons » et vous obtenez « aller ». Les six niveaux, de A1 à C2.',
+  landingDrillTitle: 'Entraînement à la conjugaison',
+  landingDrillBody: 'Entraînez-vous directement depuis le tableau de n’importe quel verbe. Ce que vous manquez est retenu et revient au moment où vous êtes sur le point de l’oublier.',
+  landingExamsTitle: '{papers} épreuves, {items} questions',
+  landingExamsBody: '{coverage}. Chronométrées comme l’épreuve réelle et écrites pour ce projet — ce ne sont ni des annales ni des documents officiels.',
+  landingExamsCaveat: 'Rédigées, et pas encore vérifiées par un enseignant. Chaque question le dit là où vous y répondez.',
+  landingCardsTitle: '{cards} cartes, {levels}',
+  landingCardsBody: 'Un seul jeu de base, planifié par répétition espacée. C’est peu, et c’est la partie qui doit le plus grandir.',
+
+  landingNotYetHeading: 'Ce qui n’est pas encore là',
+  landingNotYetLede: 'Dit ici, plutôt que découvert trois écrans plus loin.',
+  landingNoListening: 'Pas de compréhension orale. Ce projet ne diffuse aucun audio, faute d’enregistrement obtenu sous une licence qui le permette — et la voix de synthèse n’est pas proposée comme entraînement à l’écoute.',
+  landingNoWriting: 'Pas d’entraînement à l’écrit ni à l’oral. Les deux demandent une correction humaine, et prétendre le contraire gâcherait la soirée que vous y avez passée.',
+  landingCeiling: 'L’entraînement s’arrête à {ceiling}. La référence des verbes couvre le C1 et le C2 ; les exercices, non. {without} des {live} points de grammaire et de vocabulaire sont listés sans rien à travailler pour l’instant — et chacun le dit avant que vous cliquiez.',
+  landingUnreviewed: 'Aucun contenu n’a encore été vérifié par un enseignant. Tout ce qui est généré naît marqué « non vérifié » et doit gagner le retrait de cette mention, un élément à la fois.',
+
+  landingExamsHeading: 'Les examens, honnêtement',
+  landingExamsVerified: 'Les structures de {verified} sont relevées de première main sur des sujets officiels, chacune avec sa source et la date de lecture.',
+  landingExamsUnverified: '{unverified} est listé et marqué NON VÉRIFIÉ : personne ici n’a lu sa grille officielle, donc aucun chiffre n’est publié à son sujet.',
+  landingExamsPapers: 'Épreuves d’entraînement aujourd’hui : {coverage}. Rien n’est proposé pour les autres niveaux, plutôt que quelque chose de mince.',
+
+  landingFooterFree: 'Libre et open source. Pas de publicité, pas de mesure d’audience, rien qui vous suive.',
+  landingFooterIndependent: 'Indépendant. Sans lien d’affiliation, d’approbation ni de rattachement avec France Éducation international, la Chambre de commerce et d’industrie de Paris, ou tout organisme qui administre ces examens. Aucune annale n’est reproduite ici.',
+  landingFooterPrivacy: 'Comment vos données sont traitées',
+  // Jamais affiché en français — présent pour que les clés restent identiques.
+  landingUntranslated: 'Cette page est affichée en anglais. Elle n’a pas encore été traduite dans votre langue, et aucune traduction automatique n’est proposée à la place.',
 };
 
 export default fr;

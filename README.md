@@ -1,4 +1,4 @@
-# French Learning for World
+# French ma vie
 
 A free, open-source platform for learning French — built around spaced
 repetition, with content that anyone is legally free to use, share and improve.

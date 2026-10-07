@@ -90,11 +90,37 @@ test('every key the components ask for exists in all four dictionaries', () => {
                            ['fa', '../web/src/lib/locales/fa.ts'], ['ar', '../web/src/lib/locales/ar.ts']]) {
     dicts[code] = readFileSync(new URL(p, import.meta.url), 'utf8');
   }
+  // The landing page's strings are the one legitimate absence: a locale without
+  // them is saying nobody has written that page in that language, and the page
+  // shows English behind `landingUntranslated` rather than a machine
+  // translation of the one screen a stranger judges the project by. English
+  // holds them in `landingEn`, which these regexes find in the same file.
+  //
+  // Narrow on purpose: `landing*` keys may be absent from fa and ar and from
+  // nowhere else. A missing key anywhere else still fails, and the
+  // all-or-nothing rule is enforced in tests/i18n-app.test.js.
+  const landingMayBeAbsent = (key, code) => key.startsWith('landing') && (code === 'fa' || code === 'ar');
+
   const missing = [];
   for (const key of [...asked].sort()) {
     for (const [code, src] of Object.entries(dicts)) {
-      if (!new RegExp(`\\b${key}\\s*:`).test(src)) missing.push(`${code} has no "${key}"`);
+      if (new RegExp(`\\b${key}\\s*:`).test(src)) continue;
+      if (landingMayBeAbsent(key, code)) continue;
+      missing.push(`${code} has no "${key}"`);
     }
   }
   assert.deepEqual(missing, [], 'a component asks for a key that does not exist');
+
+  // And the exception must not have swallowed the English, which is what the
+  // fallback actually serves. A landing key missing from `landingEn` would
+  // render the key's own name on the front page.
+  const landingAsked = [...asked].filter((k) => k.startsWith('landing'));
+  assert.ok(landingAsked.length > 20,
+    `only ${landingAsked.length} landing keys are asked for — the scan missed the page`);
+  for (const key of landingAsked) {
+    assert.match(dicts.en, new RegExp(`\\b${key}\\s*:`),
+      `the landing page asks for ${key} and English does not define it`);
+    assert.match(dicts.fr, new RegExp(`\\b${key}\\s*:`),
+      `French has the landing page and is missing ${key}`);
+  }
 });

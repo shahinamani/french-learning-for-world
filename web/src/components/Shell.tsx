@@ -6,6 +6,7 @@
 import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
 import { NavLink, Outlet, useNavigate, useLocation } from 'react-router';
+import { hasStarted } from '../lib/started';
 import * as Popover from '@radix-ui/react-popover';
 import { useApp, useUserId } from '../app-context';
 import { Icon } from './Icon';
@@ -24,6 +25,10 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const userId = useUserId();
   const navigate = useNavigate();
   const location = useLocation();
+  // The landing page is the only screen where the study chrome is wrong, and it
+  // is identified by its route rather than by asking the page: `/` shows the
+  // dashboard to somebody who has studied here, and they should keep the timer.
+  const onLanding = (location.pathname === '/' || location.pathname === '') && !hasStarted();
   const [timerOpen, setTimerOpen] = useState(false);
   const [timer, setTimer] = useState<{ endsAt: number; durationMin: number; running: boolean }>(
     { endsAt: 0, durationMin: 15, running: false });
@@ -117,6 +122,15 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
             <span className="brand-name">{t('appName')}</span>
           </NavLink>
           <div className="bar-actions">
+            {/* The study timer is hidden on the landing page. A stranger who has
+                just arrived and does not yet know what this site is was being
+                shown a 15:00 countdown next to the name — furniture from a
+                study session they have not started, on the one screen that has
+                to explain itself. It returns the moment they are inside.
+                Found in a screenshot; no automated check would have called it
+                wrong, because a correctly rendered timer is a correct timer. */}
+            {!onLanding && (
+            <>
             {/* Radix Popover, not a hand-rolled panel. The hand-rolled one had no
                 Escape, no close on an outside click and no focus management: you
                 could open it, tab straight past it into the page, and never get
@@ -152,6 +166,8 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
+            </>
+            )}
             <NavLink to="/account" className="icon-btn" data-testid="settings-link">
               <Icon name="settings" /><span className="u-hidden-visually">{t('settings')}</span>
             </NavLink>
