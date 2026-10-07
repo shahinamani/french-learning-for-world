@@ -28,7 +28,7 @@ const root = fileURLToPath(new URL('..', import.meta.url));
 
 /** The one spelling of the review endpoint. Changing it here is the only way. */
 const ENDPOINT = '/__review';
-const PLUGIN = join(root, 'web/vite-plugins/review.ts');
+const PLUGIN = join(root, 'web/vite-plugins/review.mjs');
 
 const walk = (dir) => (existsSync(dir) ? readdirSync(dir).flatMap((e) => {
   const p = join(dir, e);
@@ -64,6 +64,21 @@ test('the review plugin, once it exists, is serve-only and never bundled', (t) =
     'a serve-only plugin hooks configureServer; anything else suggests it also runs at build time');
   assert.doesNotMatch(src, /transform\s*\(|renderChunk\s*\(|generateBundle\s*\(/,
     'build hooks in a serve-only plugin mean it is not serve-only');
+});
+
+test('the plugin is handed a decoded path, not a URL pathname', () => {
+  // This repository lives under "Projects Shahin". `new URL(...).pathname`
+  // percent-encodes the space, so the plugin opened every file at a path that
+  // does not exist and the dev server answered nothing — it started cleanly and
+  // died on the first request, which is the worst way for this to fail.
+  // The plugin resolves its own root now, so the check follows it there.
+  const plug = readFileSync(PLUGIN, 'utf8');
+  assert.match(plug, /fileURLToPath/,
+    'the plugin root must come from fileURLToPath, which decodes');
+  for (const f of [plug, readFileSync(join(root, 'web/vite.config.ts'), 'utf8')]) {
+    assert.doesNotMatch(f, /import\.meta\.url\)\.pathname/,
+      '.pathname percent-encodes; a space in the repository path breaks every file read');
+  }
 });
 
 test('the vite config does not add the review plugin unconditionally', (t) => {

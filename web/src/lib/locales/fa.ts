@@ -116,6 +116,10 @@ const fa: Dict = {
   mastery_started: 'در جریان',
   mastery_weak: 'نیاز به کار',
   mastery_solid: 'مسلط',
+  examStructureUnverified: 'این پروژه ساختار این آزمون را با نهاد برگزارکننده‌اش بررسی نکرده است. هر چه این‌جا هست تمرین کلی است و بر پایهٔ برگه‌های آن آزمون تنظیم نشده.',
+  itemsUnreviewed: 'این پرسش‌ها برای همین پروژه نوشته شده‌اند و هیچ آموزگاری آن‌ها را بررسی نکرده است. اگر یکی نادرست به نظرتان می‌رسد، ممکن است نادرست باشد.',
+  itemUnreviewed: 'بررسی‌نشده توسط آموزگار',
+  itemUncertain: 'نویسنده درباره این یکی مطمئن نبود',
 
   // ── The landing page is deliberately ABSENT from this dictionary ─────────
   //

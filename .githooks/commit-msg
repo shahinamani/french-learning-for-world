@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+# Refuse an authorship trailer before the commit exists.
+#
+# The same script CI runs, in its one-message mode, so passing here means
+# passing there. This is the earliest the fault can be stopped: pre-push already
+# requires a rewrite, and CI is later still — by then a pull request has created
+# refs/pull/*, which GitHub keeps for ever.
+#
+# Installed by `npm run hooks` (or `git config core.hooksPath .githooks`).
+set -euo pipefail
+exec bash "$(git rev-parse --show-toplevel)/scripts/check-commit-messages.sh" --message "$1"

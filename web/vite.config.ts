@@ -1,9 +1,16 @@
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import tailwindcss from '@tailwindcss/vite';
+// @ts-ignore — a plain .mjs dev-only plugin, deliberately outside the typed
+// build: see the note at the top of review.mjs.
+import { reviewTool } from './vite-plugins/review.mjs';
 
-export default defineConfig({
-  plugins: [react(), tailwindcss()],
+export default defineConfig(({ command }) => ({
+  // The review tool writes to disk. It is added ONLY when serving, and the
+  // plugin itself also declares apply: 'serve' — two independent gates, because
+  // either alone is one mistake away from shipping a file writer.
+  plugins: [react(), tailwindcss(),
+            ...(command === 'serve' ? [reviewTool()] : [])],
   // Served from a repository subpath on GitHub Pages; relative base keeps it
   // working from any prefix and from file:// during review.
   base: './',
@@ -22,4 +29,4 @@ export default defineConfig({
       },
     },
   },
-});
+}));

@@ -15,12 +15,22 @@
 > language. If one of those models is wrong in a form neither corpus attests, a
 > learner will be taught it and nothing in this project will object.
 >
-> **And the single most important fact about what the product CONTAINS:
-> 71,021 verb forms, 79 flashcards, 63 exam items — 99.8% of every exercise
-> here is a verb form.** 65 of 261 live concepts have any exercise at all, and
+> **And the single most important fact about what the product CONTAINS,
+> copied 2026-10-06 from `content/concept-material.json` `theOneNumber`
+> (re-run `scripts/build-concept-material.py` rather than trust this paragraph):
+> 71,021 verb forms, 79 flashcards, 111 exam items — 99.7% of every exercise
+> here is a verb form.** 74 of 261 live concepts have any exercise at all, and
 > at C1 and C2 it is 0 of 71. This is a verb reference with a course-shaped
-> taxonomy around it, and the measurement is regenerated on every build into
-> `content/concept-material.json` under `theOneNumber`.
+> taxonomy around it. The 111 counts a concept link, not a question: 76
+> questions, twenty of them the unreviewed batch two on four B2 points that
+> had no exercise before 2026-10-06.
+>
+> **And the number that should govern every content decision from here:
+> 15–25 hours of teacher review for 150 exam items** — six to ten minutes each
+> to check the French, the distractors and the explanation. Drafting them takes
+> an afternoon. Measured on 2026-10-04 by writing eight properly and counting
+> what had NOT been done; see the lessons entry "drafting is minutes; the review
+> that makes it safe to teach is the cost".
 >
 > That is the single most important fact about the state of this work.
 

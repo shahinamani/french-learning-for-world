@@ -21,6 +21,7 @@ const MISSING: { code: string; exam: string; whyKey: string }[] = [
   { code: 'PE', exam: 'DELF · TCF · TEF', whyKey: 'whyNoWriting' },
   { code: 'PO', exam: 'DELF · TCF · TEF', whyKey: 'whyNoSpeaking' },
   { code: 'DALF', exam: 'C1 · C2', whyKey: 'whyNoDalf' },
+  { code: 'TEF', exam: 'A1 · C2', whyKey: 'examStructureUnverified' },
 ];
 
 export function ExamList() {

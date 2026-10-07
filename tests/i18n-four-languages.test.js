@@ -352,13 +352,13 @@ const shapes = () => {
  *
  * The three `ar: HELD` rows are a decision, not a backlog item. Arabic exam
  * text waits for a human reader of Arabic (docs/08-arabic-review.md). A wrong
- * explanation teaches a wrong thing and the learner believes it, so 72
- * unreviewed Arabic explanations would be worse than English plus a line
+ * explanation teaches a wrong thing and the learner believes it, so filling
+ * those slots by machine would be worse than English plus a line
  * saying it is English — which is what an Arabic learner now sees.
  */
 const EXPECTED_SHAPES = {
   'decks.json decks[].title':                          { n: 1,  have: 'en/fr/fa/ar' },
-  'exam-papers.json papers[].name':                    { n: 3,  have: 'en/fr/fa/ar' },
+  'exam-papers.json papers[].name':                    { n: 6,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.A1[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.A2[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.B1[].name':     { n: 4,  have: 'en/fr/fa/ar' },
@@ -371,11 +371,11 @@ const EXPECTED_SHAPES = {
   // keys at all — so the shape map could not see them and even the French
   // interface showed English. Found by looking at an RTL screenshot, where
   // the English also rendered with its full stops at the wrong end.
-  'exam-papers.json papers[].official.passNote':       { n: 3,  have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].official.source':         { n: 3,  have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].practiceNote':            { n: 3,  have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].items[].prompt':          { n: 28, have: 'en/fr/fa' },   // ar: HELD
-  'exam-papers.json papers[].items[].explain':         { n: 28, have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].official.passNote':       { n: 6,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].official.source':         { n: 6,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].practiceNote':            { n: 6,  have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].items[].prompt':          { n: 76, have: 'en/fr/fa' },   // ar: HELD
+  'exam-papers.json papers[].items[].explain':         { n: 76, have: 'en/fr/fa' },   // ar: HELD
   'exam-papers.json papers[].items[].stimulus.label':  { n: 16, have: 'en/fr/fa' },   // ar: HELD
   'fr-core-a1.json title':                             { n: 1,  have: 'en/fr/fa/ar' },
   'fr-core-a1.json cards[].meanings':                  { n: 22, have: 'en/fr/fa/ar' },

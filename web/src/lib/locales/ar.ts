@@ -116,6 +116,10 @@ const ar: Dict = {
   mastery_started: 'جارٍ',
   mastery_weak: 'يحتاج عملاً',
   mastery_solid: 'متمكّن',
+  examStructureUnverified: 'لم يتحقّق هذا المشروع من بنية هذا الاختبار لدى الجهة المنظِّمة له. ما يُعرض هنا تدريب عام غير مبني على أوراقه.',
+  itemsUnreviewed: 'كُتبت هذه الأسئلة لهذا المشروع ولم يتحقّق منها أي مدرّس. إن بدا لك أحدها خطأً، فقد يكون كذلك.',
+  itemUnreviewed: 'لم يتحقّق منه مدرّس',
+  itemUncertain: 'لم يكن الكاتب متأكّداً من هذا',
 
   // ── The landing page is deliberately ABSENT from this dictionary ─────────
   //

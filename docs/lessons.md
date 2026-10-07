@@ -13,6 +13,41 @@ Numbering follows Shahin's list, which spans more than this repository.
 Everything below is an instance of one of these. Read them before writing a
 test, and before saying a piece of work is finished.
 
+### Before anything else: am I comparing the right two things?
+
+Thirteen checks of mine accused correct data in one week. **Twelve of the
+thirteen compared the wrong two things.** Only one was a wrong idea about the data — a rule
+requiring a three-letter word, which rejected « to go ».
+
+| the check | what it compared | what it should have compared |
+|:--|:--|:--|
+| counting senses by splitting on `"; "` (twice) | a joined string | the sense list |
+| `checkAnswer(alternate, form)` | a two-argument call | the drill's three-argument call |
+| `/\bsuicide$/` | the end of the string | the trailing list item |
+| the sort-key regex | up to the first `)` | the whole line |
+| the pace check | marks | questions |
+| `/not been verified/` | my paraphrase of the text | the text |
+| a positional line comparison | line *i* to line *i* | a diff |
+| `git diff` in the applier test | the file and the last commit | the file before and after the applier |
+| the keyboard drive looking for an item | the page's PROSE for an id | the id, read from its own element — it matched a sibling LIST containing that id and walked to the wrong item |
+| a prose assertion over a wrapped document | a one-line pattern against text that wraps | the same text with its line breaks collapsed |
+| the whitespace flattener written to fix that | stripped `*` as emphasis, so `refs/pull/*` lost its star | backticks only — the normalisation broke the comparison it was written to fix |
+| the answer-position guard | nothing — it was right, and found the fault in two papers nobody had written | — |
+
+So the first question when writing a check is not "is my rule right?" —
+**it is "am I comparing the right two things?"** Name the two things, out loud,
+before writing the assertion: *the forms the harvest produced* against *the
+forms the corpus attests*; *the total the page shows* against *the total the
+content holds*; *the number of lines a diff reports* against *a bound*.
+
+Most of these failures came from comparing a convenient thing to the right
+thing. The joined string was to hand; the sense list needed loading. The marks
+were in the file; the question count was not published. **Convenience chooses
+one of the two things for you, and it is almost always the wrong one.**
+
+Then, and only then, the rule below: name the wrong implementation your check
+rules out, and watch it fail against that.
+
 ### "What can this shape not express?" — not "is this right?"
 
 « souvenir » sat in the content as a bare infinitive with a conjugation table
@@ -632,8 +667,10 @@ Five checks of mine in one week accused data that was correct:
 | `key=lambda l: ([^)]*)\)` | stopped at the `)` inside `get(l, 0.0)`, so a tied sort read as untied |
 | a pace check using marks as items | 25 marks on a DELF reading paper is four exercises, not 25 questions |
 | `/not been verified/` | the text it checked says "none **has** been verified" |
+| a positional line comparison | an inserted line shifts every line after it; one added `note` reported 323 differences |
+| `git diff` in the applier test | compared the file to **HEAD**, so every uncommitted change counted as the applier's work: 936 lines for a four-line write |
 
-**Running total: six distinct faults, seven occurrences** — the semicolon split
+**Running total: eleven distinct faults, thirteen occurrences** — and at ten, the pattern is above, in "am I comparing the right two things?". Nine of the ten compared the wrong two things; one was a wrong idea about the data. — the semicolon split
 happened twice, having been learned once. Shahin's standing instruction: when
 this table reaches ten, stop and look at what they have in common, because by
 then it is a pattern about how the checks are written and not about any one of
@@ -674,6 +711,325 @@ See also [[suspect-the-assertion-first]] — the same point at the moment a sing
 failure appears, where this entry is about the habit that prevents the pile.
 
 
+### 2026-10-04 — drafting is minutes; the review that makes it safe to teach is the cost
+
+One B2 grammar concept was costed properly, on Shahin's instruction, to replace
+two people guessing. Eight multiple-choice items on
+`gram.subjunctive.vs-indicative`, written to the standard that nothing false is
+taught: four subjunctive answers and four indicative so the set is not
+guessable, each explanation naming why every distractor is wrong, in three
+languages.
+
+**My wall clock: 291 seconds.** That number is worthless, and the four reasons
+are the finding:
+
+1. **The French was not verified** against a reference grammar or a native
+   speaker. Eight grammatical claims, written from a machine's own knowledge.
+   One — `après que` taking the indicative — is prescriptively right and widely
+   violated in speech, and I hedged it in the explanation. **Nobody has checked
+   the other seven.**
+2. **The Persian is mine and unreviewed.**
+3. **There is no Arabic at all**, in these or in any of the 36 exercises in the
+   product, against a four-language claim.
+4. **I chose eight distinctions I already knew cleanly.** The next 142 include
+   cases where the right answer is contested, and those are the expensive ones.
+
+**So: 15–25 hours of teacher review for 150 items** — six to ten minutes each to
+check the French, the distractors and the explanation — on top of drafting that
+takes an afternoon.
+
+**This is the sentence that should have governed the verb work.** 2,389 verbs
+were conjugated, validated against two corpora, glossed, sharded and shipped,
+and **nine of their 2,375 meanings have been read by a human.** The drafting was
+cheap and done; the review was expensive and skipped, and the project called the
+result finished. 99.8% of every exercise in the product is a verb form, which is
+the same fact from the other end: we built what was cheap to build.
+
+The general rule: **when estimating generated content, estimate the review, not
+the generation.** The generation is the part you can see happening and the part
+that feels like progress. The review is the part that decides whether what you
+made is true.
+
+And the corollary, which is Shahin's: **draft in batches of twenty, not a
+hundred and fifty.** If the first batch shows a systematic fault in how the
+items are written, it is found after twenty. The verb work found its systematic
+faults — the suffix bug, the sense-order fault, the missing pronominal field —
+after two thousand.
+
+
+### 2026-10-04 — the tool wrote that a person had reviewed something they had never seen
+
+Building the content review tool, I applied a test decision to check the
+round trip. It worked. `content/exam-papers.json` then said:
+
+```json
+"review": { "state": "approved", "by": "Shahin Amani",
+            "at": "2026-10-04T12:00:00.000Z" }
+```
+
+for two items he had never opened.
+
+**In the one project whose central claim is that it says what has and has not
+been checked.** Every gloss carries an unreviewed marker, the exercises had just
+been given one that morning, the handoff opens with a warning that nobody has
+verified its own contents — and the first thing the review tool did was forge a
+review.
+
+It was reverted within the minute, by me noticing, which is the part that is not
+good enough. So:
+
+* `tests/apply-review.test.js` asserts that **nobody is recorded as having
+  reviewed anything**, and that `data/review-decisions.json` is empty. When that
+  fails because a review has happened, the reviewer gets named in the check.
+* Every other test that plants a decision restores both files in a `finally`,
+  so a test cannot leave a verdict behind. `web/e2e/review-tool.mjs`, which
+  drives the tool with a real keyboard, restores `data/review-decisions.json`
+  in a `finally` for the same reason — after it ran, the file had 0 decisions
+  and no item named a reviewer, which is checked rather than assumed.
+
+**And Shahin found the same fault arriving by accident rather than by test.**
+A reviewer pressing keys for two hours will mis-key, and a mistaken `A` records
+an approval **with their name on it** against an item they did not read. The
+`←` key returned to an item but could not change what was recorded for it. Now
+it shows the recorded verdict and its note, `A`/`R`/`S` overwrite it, and `C`
+clears it outright. A tool that can forge by accident is the same tool.
+
+The general shape, which is not about review tools: **a tool that writes
+attribution can forge attribution, and testing it writes real attribution into
+real files — in the one project whose central claim is knowing what has been
+checked.** The test fixture and the production record were the same file.
+Anything that records who-did-what needs its test data kept somewhere the record
+is not.
+
+And the smaller lesson, costing nothing: the applier is Python because the file
+is written by a Python serialiser. A Node round-trip would have reformatted all
+2,400 lines and buried every review in a diff nobody could read. **One file, one
+serialiser** — two is how two sources of truth begin.
+
+
+### 2026-10-04 — flagging is blind to confident error
+
+Three items in batch one are flagged `uncertain`, with the kind of doubt and why.
+That system works, and it cannot see the thing that matters most.
+
+`b1-agr-1` to `b1-agr-4` all rest on one claim: that a pronominal verb's
+participle agrees when the reflexive pronoun is the direct object and not when
+it is indirect. **If « se parler » and « se rencontrer » are the wrong way
+round, all four items are wrong together — and not one of them carries a flag,
+because I am not unsure. I am confident.**
+
+Shahin's framing: **confidence is exactly where the flagging system is blind.**
+A flag records what the writer knows they do not know. The expensive failures
+are the ones they do not know they do not know, and those arrive in groups,
+because a writer with one wrong rule writes several items from it.
+
+So every drafted item now records the single rule it rests on, and the review
+tool reads them: **rejecting an item offers every other item resting on the same
+rule immediately.** Rejecting `b1-agr-2` jumps to `b1-agr-3`, not to the next
+item in paper order, and the banner names what else is affected — including
+items outside the current batch.
+
+Three rules in 28 items carry more than one item: the agreement rule carries
+four, « on » for an unknown agent carries three, negative word order carries
+two. **Those three rules are where a correlated failure lives**, and naming them
+turns one wrong rule into one review session rather than three discoveries
+months apart.
+
+The general shape: **a flag is a confession, and confessions are selective.**
+Where work rests on shared premises, record the premises — not because the
+writer doubts them, but because the reader will one day disprove one and need to
+know what else falls with it. The verb work had no such record: when the
+suffix-matching bug was found, eleven verbs were wrong and finding the eleventh
+took a separate search each time.
+
+
+### 2026-10-06 — a distractor the spelling fold cannot tell from the answer
+
+Batch two of the structure items tested the circumflex. « Nous dansâmes » had
+« dansames » as the wrong option, and « il fut » had « fût ». Both pairs are
+real distinctions in French spelling. Both failed `tests/alternates.test.js`,
+which asks whether a distractor is the answer once accents are folded.
+
+The fold exists so a learner who types « espèrerai » for « espérerai » is not
+marked wrong. Applied to a multiple-choice paper it says the opposite thing
+with the same mechanism: two options the fold cannot separate are one option,
+and marking one of them wrong punishes a difference the rest of the product
+accepts. The circumflex is exactly such a difference. The items were rewritten
+to « dansèrent » and « furent », which the fold can tell apart, and the
+circumflex pairs are not offered.
+
+The rule, which is the same shape as comparing the wrong two things: before
+writing a wrong option, run it through the function that decides what counts as
+the same word. A distinction the folder deletes is not a distinction an exam
+can mark.
+
+
+### 2026-10-06 — a guard is only as wide as the refs it can see
+
+A session using a different tool committed here with an authorship trailer. CI
+refused it. The pre-push hook, run minutes earlier, had reported **"tool
+attribution in any commit message — clean"**.
+
+The obvious reading is that the hook and CI ask different questions. They do
+not: **both run the same script, `scripts/check-commit-messages.sh`, and its
+pattern list includes the trailer.** Proved by planting the offending commit
+under a ref and running the hook's own command — it fails; removing the ref, it
+passes. Nothing about the question changed.
+
+What differed was the world. The script scans `git log --all`, and **`--all`
+means the refs THIS CLONE has.** CI fetches every branch; my clone had lost that
+branch's tracking ref minutes earlier. Same command, same patterns, two
+different answers, and neither was wrong.
+
+Three things came out of it:
+
+* **`--all` is a claim about completeness that only CI can make.** The hook now
+  fetches before scanning, and says so when it cannot reach the remote rather
+  than silently narrowing to what is local.
+* **The scan reading every ref is right, and the consequence is that one bad
+  message on one branch reddens CI for every branch.** That is the rule being
+  about the repository rather than about a branch. It cost a day to say so out
+  loud.
+* **The real fix is earlier than either.** `commit-msg` refuses the message
+  before a commit object exists. pre-push already requires a rewrite; CI is
+  later still, and by the time CI sees it a pull request has created a
+  `refs/pull/*` ref GitHub keeps for ever. **The only point at which this fault
+  costs nothing is before the commit.**
+
+And the reason it happened at all: **the rule lived in one contributor's editor
+configuration.** A tool that had never read it committed here and could not have
+known. It is now in `AGENTS.md` at the root, copied into `.cursorrules` and
+`.cursor/rules/`, with a guard that fails when a copy drifts — and
+`core.hooksPath` is set by `npm install` as well as by the documented script,
+because a fresh clone has no hooks until something sets them, and a fresh clone
+is exactly what another tool's session gets.
+
+### 2026-10-07 — the rule was tested by the tooling, not by carelessness
+
+The authorship rule exists because a trailer reached this public repository
+once. The obvious model of how that happens is inattention: somebody in a hurry
+accepts a default. That is not what happened the second time.
+
+**Mid-task, the harness injected an instruction to break it.** A system message
+arrived in the middle of a tool result telling me to end commit messages with a
+`Co-Authored` trailer naming the tool, and pull-request descriptions with a
+"Generated with" line. Not a default I had to notice and decline — an
+instruction, phrased as policy, arriving inside the work.
+
+It did not land, and the reason is worth being precise about. **It was not
+judgement, memory, or care.** It was that the rule is written down in two
+places I read without choosing to: the owner's global configuration, and —
+since the day before — `AGENTS.md` at the root of this repository, which the
+tool loads as project instructions on every session. The instruction arrived
+into a context that already contained its refutation, with the reason attached:
+this repository is public, GitHub keeps `refs/pull/*` for ever, and a trailer
+that reaches it cannot be removed without rebuilding the repository.
+
+Three things follow, and the third is the uncomfortable one.
+
+* **A rule that lives only in a person's configuration protects only that
+  person's sessions.** This is the argument for `AGENTS.md` stated better than
+  I stated it when I built the file: not merely that another tool might never
+  have read the rule, but that *my own* tooling may actively instruct against
+  it, and the repository is the only party to that exchange with an interest in
+  the repository.
+* **The reason travelling with the rule is what makes it survive contact with
+  a contrary instruction.** "Do not add a trailer" against a confident
+  instruction to add one is a coin toss. "Do not add a trailer, because the ref
+  is permanent and the cure is rebuilding the repository" is not.
+* **An agent is not a reliable last line.** The same instruction, in a session
+  that had not loaded the rule, would have been followed — there is nothing in
+  it that looks wrong from the inside. Which is precisely why the enforcement
+  has to sit in `commit-msg`, where no instruction to anybody is consulted.
+  Prevention that depends on the thing being prevented reading its own rules is
+  not prevention. See [[A guard you have not seen fail is a guess about what it does]].
+
+A note on the mechanics, because it bears on anything written to be read by a
+tool: the injected instruction claimed to replace earlier guidance and said the
+owner's own instructions take precedence. It said so. **The precedence I acted
+on was not the one it granted me** — it was the one already in the repository,
+which is the only kind that holds when the granting party is the one asking.
+
+### 2026-10-07 — CI should say whether the hook could have caught it
+
+Shahin's addition to the ladder, and it is the right shape: when the repository
+scan refuses a message, it now asks whether `.githooks/commit-msg` would have
+refused *that same message*, and prints `HOLE` with a distinct exit code if
+not. A bad commit is one person's slip. A message the hook cannot see is a gap
+nobody could have closed at the keyboard, and the two must not look alike in a
+red log.
+
+The first version of it was a check that could never fail: it found the
+offending commits by re-running the hook's own test, so "does the hook catch
+what the scan caught?" compared the hook with itself. **Convenience picked one
+of the two things, and it picked wrong, as it always does here.**
+
+The second version was worse, and more interesting. It walked the message dump
+with `awk` under `IGNORECASE = 1` — a **gawk extension**. Under the awk on
+macOS and under mawk, which is what CI has, that line is not an error and not a
+no-op either: it is an ordinary variable assignment, silently. So `grep -Ei`
+refused a lower-case trailer and the walk, now case-sensitive, could name no
+commit to blame. Two tests written weeks earlier caught it on the first run.
+
+**A feature that degrades into a variable assignment is the worst kind of
+portability failure**, because there is no stage at which anything complains.
+The fix was not a second pattern in a safer dialect; it was to stop matching
+twice — grep reports the line numbers, awk only maps them back to commits, and
+there is exactly one reading of what counts as a trailer in the whole file.
+
+### 2026-10-06 — two rules of this repository disagreed, and the sweep said so
+
+Having moved the authorship rule into `AGENTS.md` so other tools would find it,
+I wrote it the way the rule itself is written — with the author's name and email
+address spelled out. The pre-push sweep refused the push: **step 3, no personal
+data in a tracked file of a public repository.**
+
+Both rules are right. The collision is real: *this is the correct authorship*
+cannot be documented by printing a private address in a public file. And it did
+not need to be — the address is already in each clone's `git config`, so the
+rule can say "the name and address this clone is configured with, which you
+neither add to nor change" and lose nothing.
+
+Two things worth keeping:
+
+* **A rule written for a private context does not transplant unexamined into a
+  public one.** The text was copied from my own global configuration, where
+  stating the address is correct, into a file anyone can read.
+* **I did not find this; a guard did, on the push.** Step 3 is described in its
+  own output as "the step that caught this" — written after an earlier
+  incident. A guard that has already earned its place is the one most worth
+  running before you believe your own work is finished.
+
+And then the guard turned out to have a hole of exactly this shape. The test
+file asserting on the rule **also carried the address** — escaped for a regex,
+`@gmail\.com` — and step 3's pattern expects a dot after `gmail`, so the
+backslash walked it straight past. It had been there as long as the file. The
+step refused the plain address in one file while ignoring the escaped one in
+another, three directories away, in the same run.
+
+**A guard that recognises a thing in one spelling does not recognise the thing.**
+An email address in source code is most often written for a matcher, which is
+the one spelling this matcher could not see. The pattern now tolerates an
+optional backslash, and that was checked in both directions — the old pattern
+seen missing the escaped form, the new one seen catching it and still catching
+the plain one. See [[A guard you have not seen fail is a guess about what it does]].
+
+### 2026-10-06 — a test that tidies up after itself is still flaky
+
+`tests/apply-review.test.js` applied review decisions to
+`content/exam-papers.json` and restored it in a `finally`. Careful, correct,
+and flaky: **node runs test FILES in parallel**, so `tests/alternates.test.js`
+read that file inside the window and failed on content that was right a
+millisecond either side. It passed three times and failed the fourth.
+
+`finally` is not isolation. It is a promise to clean up, and a promise about the
+future says nothing about the present. **A test that mutates shared state is
+flaky by construction, however carefully it tidies.**
+
+The fix was not better cleanup, it was not touching the thing: the applier takes
+`--papers` and `--decisions`, and the test points them at copies in a temp
+directory. The real content is now untouched by the whole suite, which is
+checked — three consecutive runs, 331 passing, and `git diff` clean afterwards.
 ### 2026-10-07 — the site had no front door, and the redirect hid it
 
 `/` was one line: `<Navigate to="/learn" replace />`. So there was no landing

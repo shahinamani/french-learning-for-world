@@ -62,3 +62,23 @@ not go in. See [`docs/content-provenance.md`](docs/content-provenance.md).
 
 No internal hostnames, ticket numbers from private trackers, employer names or
 personal details in commit messages, branch names or code comments.
+
+## Rules for agents and other tools
+
+The full text is in [AGENTS.md](AGENTS.md) at the root, repeated in
+`.cursorrules` and `.cursor/rules/` so that no tool has to be told where to
+look. The short version:
+
+- **Never put an authorship trailer in a commit message.** No `Co-Authored-By`,
+  no tool name, nowhere. This repository is public, GitHub keeps refs/pull/*
+  permanently, and a trailer that reaches it cannot be removed without
+  rebuilding the repository. `.githooks/commit-msg` refuses one before the
+  commit exists; the scan reads every ref, so one bad message reddens CI for
+  every branch.
+- **Say what has not been checked.** Generated content is born unreviewed and
+  earns the removal of its marker. Do not fill a gap with something plausible.
+- **Run a new check against the whole corpus before it lands**, and adjudicate
+  every accusation: the data is wrong, the check is wrong, or the exception
+  belongs in the data — never in the check as a loosened rule.
+- **Do not stack pull requests.** Branch from `main`, and verify on `main` after
+  a merge.

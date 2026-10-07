@@ -54,15 +54,20 @@
       "label": {
        "en": "A sign in a shop window",
        "fr": "Une affiche dans une vitrine",
-       "fa": "اعلانی در ویترین یک مغازه"
+       "fa": "اعلانی در ویترین یک مغازه",
+       "ar": null
       }
      },
      "prompt": {
       "en": "The bakery is closed on:",
       "fr": "La boulangerie est fermée le :",
-      "fa": "نانوایی در چه روزهایی بسته است:"
+      "fa": "نانوایی در چه روزهایی بسته است:",
+      "ar": null
      },
      "options": [
+      {
+       "fr": "dimanche et lundi"
+      },
       {
        "fr": "lundi seulement"
       },
@@ -70,13 +75,10 @@
        "fr": "mardi"
       },
       {
-       "fr": "dimanche et lundi"
-      },
-      {
        "fr": "samedi et dimanche"
       }
      ],
-     "answer": 2,
+     "answer": 0,
      "conceptIds": [
       "lex.time",
       "gram.article.definite"
@@ -84,7 +86,13 @@
      "explain": {
       "en": "The sign says « Fermé le dimanche et le lundi ». Note « le dimanche » with the definite article — in French that means every Sunday, not one particular Sunday.",
       "fr": "L’affiche dit « Fermé le dimanche et le lundi ». « Le dimanche » avec l’article défini veut dire tous les dimanches.",
-      "fa": "روی اعلان نوشته ⁨« Fermé le dimanche et le lundi »⁩. به ⁨« le dimanche »⁩ با حرف تعریف معیّن توجه کنید — در فرانسه این یعنی همهٔ یکشنبه‌ها، نه یک یکشنبهٔ بخصوص."
+      "fa": "روی اعلان نوشته ⁨« Fermé le dimanche et le lundi »⁩. به ⁨« le dimanche »⁩ با حرف تعریف معیّن توجه کنید — در فرانسه این یعنی همهٔ یکشنبه‌ها، نه یک یکشنبهٔ بخصوص.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -95,13 +103,15 @@
       "label": {
        "en": "A message",
        "fr": "Un message",
-       "fa": "یک پیام"
+       "fa": "یک پیام",
+       "ar": null
       }
      },
      "prompt": {
       "en": "What does Samir want?",
       "fr": "Qu’est-ce que Samir veut ?",
-      "fa": "سمیر چه می‌خواهد؟"
+      "fa": "سمیر چه می‌خواهد؟",
+      "ar": null
      },
      "options": [
       {
@@ -126,7 +136,13 @@
      "explain": {
       "en": "« Tu peux venir me chercher ? » — « chercher quelqu’un » here means to collect someone, not to look for them. A common trap for English speakers.",
       "fr": "« Venir chercher quelqu’un », c’est aller le prendre quelque part, et non le chercher.",
-      "fa": "⁨« Tu peux venir me chercher ? »⁩ — اینجا ⁨« chercher quelqu’un »⁩ یعنی کسی را سوار کردن و بردن، نه دنبال کسی گشتن. دامی رایج برای انگلیسی‌زبان‌ها."
+      "fa": "⁨« Tu peux venir me chercher ? »⁩ — اینجا ⁨« chercher quelqu’un »⁩ یعنی کسی را سوار کردن و بردن، نه دنبال کسی گشتن. دامی رایج برای انگلیسی‌زبان‌ها.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -137,13 +153,15 @@
       "label": {
        "en": "A description",
        "fr": "Une description",
-       "fa": "یک توصیف"
+       "fa": "یک توصیف",
+       "ar": null
       }
      },
      "prompt": {
       "en": "In the neighbourhood there is no:",
       "fr": "Dans le quartier, il n’y a pas de :",
-      "fa": "در این محله چه چیزی وجود ندارد:"
+      "fa": "در این محله چه چیزی وجود ندارد:",
+      "ar": null
      },
      "options": [
       {
@@ -168,7 +186,13 @@
      "explain": {
       "en": "« Il n’y a pas de cinéma » — after a negative, « un/une/des » becomes « de ». That change is itself the grammar point being tested.",
       "fr": "Après une négation, « un cinéma » devient « pas de cinéma ».",
-      "fa": "⁨« Il n’y a pas de cinéma »⁩ — پس از نفی، ⁨« un/une/des »⁩ به ⁨« de »⁩ تبدیل می‌شود. همین تغییر، خودِ نکتهٔ دستوری این پرسش است."
+      "fa": "⁨« Il n’y a pas de cinéma »⁩ — پس از نفی، ⁨« un/une/des »⁩ به ⁨« de »⁩ تبدیل می‌شود. همین تغییر، خودِ نکتهٔ دستوری این پرسش است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -179,13 +203,15 @@
       "label": {
        "en": "A job advertisement",
        "fr": "Une offre d’emploi",
-       "fa": "یک آگهی استخدام"
+       "fa": "یک آگهی استخدام",
+       "ar": null
       }
      },
      "prompt": {
       "en": "To apply you must:",
       "fr": "Pour répondre, il faut :",
-      "fa": "برای درخواست باید:"
+      "fa": "برای درخواست باید:",
+      "ar": null
      },
      "options": [
       {
@@ -195,13 +221,13 @@
        "fr": "téléphoner le matin"
       },
       {
-       "fr": "écrire un message"
+       "fr": "aller au restaurant le soir"
       },
       {
-       "fr": "aller au restaurant le soir"
+       "fr": "écrire un message"
       }
      ],
-     "answer": 2,
+     "answer": 3,
      "conceptIds": [
       "gram.nonfinite.infinitive",
       "lex.work"
@@ -209,7 +235,13 @@
      "explain": {
       "en": "« Écrire à : … » is an instruction in the infinitive, which is how notices and recipes give orders in French. « Expérience non exigée » rules out option 3.",
       "fr": "« Écrire à… » : l’infinitif sert à donner une consigne. « Expérience non exigée » élimine la troisième réponse.",
-      "fa": "⁨« Écrire à : … »⁩ دستوری است در مصدر؛ در فرانسه اعلان‌ها و دستور پخت به همین شکل امر می‌دهند. ⁨« Expérience non exigée »⁩ گزینهٔ سوم را رد می‌کند."
+      "fa": "⁨« Écrire à : … »⁩ دستوری است در مصدر؛ در فرانسه اعلان‌ها و دستور پخت به همین شکل امر می‌دهند. ⁨« Expérience non exigée »⁩ گزینهٔ سوم را رد می‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -220,15 +252,20 @@
       "label": {
        "en": "An email",
        "fr": "Un courriel",
-       "fa": "یک ایمیل"
+       "fa": "یک ایمیل",
+       "ar": null
       }
      },
      "prompt": {
       "en": "Why is Anna writing?",
       "fr": "Pourquoi Anna écrit-elle ?",
-      "fa": "آنا برای چه می‌نویسد؟"
+      "fa": "آنا برای چه می‌نویسد؟",
+      "ar": null
      },
      "options": [
+      {
+       "fr": "Pour dire qu’elle sera absente."
+      },
       {
        "fr": "Pour changer l’heure du cours."
       },
@@ -237,12 +274,9 @@
       },
       {
        "fr": "Pour demander un document."
-      },
-      {
-       "fr": "Pour dire qu’elle sera absente."
       }
      ],
-     "answer": 3,
+     "answer": 0,
      "conceptIds": [
       "gram.negation.ne-pas",
       "usage.tu-vous",
@@ -251,7 +285,13 @@
      "explain": {
       "en": "« Je ne peux pas venir » is the whole message. Note « Chère Madame » and « Cordialement » — the register is formal, which tells you this is a teacher, not a friend.",
       "fr": "« Je ne peux pas venir » suffit. « Chère Madame » et « Cordialement » indiquent un registre formel.",
-      "fa": "⁨« Je ne peux pas venir »⁩ تمامِ پیام است. به ⁨« Chère Madame »⁩ و ⁨« Cordialement »⁩ توجه کنید — لحن رسمی است، و همین نشان می‌دهد مخاطب معلم است نه یک دوست."
+      "fa": "⁨« Je ne peux pas venir »⁩ تمامِ پیام است. به ⁨« Chère Madame »⁩ و ⁨« Cordialement »⁩ توجه کنید — لحن رسمی است، و همین نشان می‌دهد مخاطب معلم است نه یک دوست.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -262,20 +302,22 @@
       "label": {
        "en": "Museum information",
        "fr": "Informations du musée",
-       "fa": "اطلاعات موزه"
+       "fa": "اطلاعات موزه",
+       "ar": null
       }
      },
      "prompt": {
       "en": "A 15-year-old visitor pays:",
       "fr": "Un visiteur de 15 ans paie :",
-      "fa": "بازدیدکنندهٔ پانزده‌ساله چقدر می‌پردازد:"
+      "fa": "بازدیدکنندهٔ پانزده‌ساله چقدر می‌پردازد:",
+      "ar": null
      },
      "options": [
       {
-       "fr": "rien"
+       "fr": "18 €"
       },
       {
-       "fr": "18 €"
+       "fr": "rien"
       },
       {
        "fr": "8 €"
@@ -284,7 +326,7 @@
        "fr": "4 €"
       }
      ],
-     "answer": 0,
+     "answer": 1,
      "conceptIds": [
       "lex.money",
       "gram.adjective.comparative",
@@ -293,7 +335,13 @@
      "explain": {
       "en": "« Gratuit pour les moins de 18 ans » — a 15-year-old is « moins de 18 ans », so entry is free.",
       "fr": "« Les moins de 18 ans » : à 15 ans, l’entrée est gratuite.",
-      "fa": "⁨« Gratuit pour les moins de 18 ans »⁩ — کسی که پانزده سال دارد ⁨« moins de 18 ans »⁩ است، پس ورود برای او رایگان است."
+      "fa": "⁨« Gratuit pour les moins de 18 ans »⁩ — کسی که پانزده سال دارد ⁨« moins de 18 ans »⁩ است، پس ورود برای او رایگان است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -304,13 +352,15 @@
       "label": {
        "en": "Someone introducing themselves",
        "fr": "Une présentation",
-       "fa": "معرفی خود"
+       "fa": "معرفی خود",
+       "ar": null
       }
      },
      "prompt": {
       "en": "Karim lives:",
       "fr": "Karim habite :",
-      "fa": "کریم کجا زندگی می‌کند:"
+      "fa": "کریم کجا زندگی می‌کند:",
+      "ar": null
      },
      "options": [
       {
@@ -335,7 +385,13 @@
      "explain": {
       "en": "« J’habite à Lyon » is the present; « j’habitais au Maroc » is the imperfect and describes what is no longer true. Note « à Lyon » for a city and « au Maroc » for a masculine country.",
       "fr": "« J’habite » (présent) contre « j’habitais » (imparfait, ce n’est plus vrai). « À » pour une ville, « au » pour un pays masculin.",
-      "fa": "⁨« J’habite à Lyon »⁩ حال است؛ ⁨« j’habitais au Maroc »⁩ ماضی استمراری است و چیزی را توصیف می‌کند که دیگر درست نیست. به ⁨« à Lyon »⁩ برای شهر و ⁨« au Maroc »⁩ برای کشور مذکر توجه کنید."
+      "fa": "⁨« J’habite à Lyon »⁩ حال است؛ ⁨« j’habitais au Maroc »⁩ ماضی استمراری است و چیزی را توصیف می‌کند که دیگر درست نیست. به ⁨« à Lyon »⁩ برای شهر و ⁨« au Maroc »⁩ برای کشور مذکر توجه کنید.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -346,13 +402,15 @@
       "label": {
        "en": "A notice on a coach",
        "fr": "Un avis dans un car",
-       "fa": "اعلانی در اتوبوس"
+       "fa": "اعلانی در اتوبوس",
+       "ar": null
       }
      },
      "prompt": {
       "en": "This notice:",
       "fr": "Cet avis :",
-      "fa": "این اعلان:"
+      "fa": "این اعلان:",
+      "ar": null
      },
      "options": [
       {
@@ -362,13 +420,13 @@
        "fr": "annonce que la fenêtre est cassée"
       },
       {
-       "fr": "interdit d’ouvrir la fenêtre"
+       "fr": "demande d’ouvrir la fenêtre"
       },
       {
-       "fr": "demande d’ouvrir la fenêtre"
+       "fr": "interdit d’ouvrir la fenêtre"
       }
      ],
-     "answer": 2,
+     "answer": 3,
      "conceptIds": [
       "gram.negation.infinitive",
       "gram.nonfinite.infinitive"
@@ -376,7 +434,13 @@
      "explain": {
       "en": "« Ne pas ouvrir » — with an infinitive, both parts of the negation come together in front of the verb, unlike « je n’ouvre pas ». This is how prohibitions are written on signs.",
       "fr": "Devant un infinitif, « ne pas » reste groupé : « ne pas ouvrir », et non « n’ouvre pas ».",
-      "fa": "⁨« Ne pas ouvrir »⁩ — با مصدر، هر دو جزء نفی کنار هم و پیش از فعل می‌آیند، برخلاف ⁨« je n’ouvre pas »⁩. نهی روی تابلوها به همین شکل نوشته می‌شود."
+      "fa": "⁨« Ne pas ouvrir »⁩ — با مصدر، هر دو جزء نفی کنار هم و پیش از فعل می‌آیند، برخلاف ⁨« je n’ouvre pas »⁩. نهی روی تابلوها به همین شکل نوشته می‌شود.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     }
    ]
@@ -428,15 +492,20 @@
       "label": {
        "en": "A memory",
        "fr": "Un souvenir",
-       "fa": "یک خاطره"
+       "fa": "یک خاطره",
+       "ar": null
       }
      },
      "prompt": {
       "en": "Why is « passions » in the imperfect and « ai trouvé » in the perfect?",
       "fr": "Pourquoi « passions » est-il à l’imparfait et « ai trouvé » au passé composé ?",
-      "fa": "چرا ⁨« passions »⁩ ماضی استمراری است و ⁨« ai trouvé »⁩ ماضی نقلی؟"
+      "fa": "چرا ⁨« passions »⁩ ماضی استمراری است و ⁨« ai trouvé »⁩ ماضی نقلی؟",
+      "ar": null
      },
      "options": [
+      {
+       "fr": "« Passions » décrit une habitude, « ai trouvé » un événement unique."
+      },
       {
        "fr": "« Passions » est plus ancien que « ai trouvé »."
       },
@@ -444,13 +513,10 @@
        "fr": "« Ai trouvé » décrit une habitude."
       },
       {
-       "fr": "« Passions » décrit une habitude, « ai trouvé » un événement unique."
-      },
-      {
        "fr": "Les deux sont interchangeables ici."
       }
      ],
-     "answer": 2,
+     "answer": 0,
      "conceptIds": [
       "gram.past.pc-vs-imparfait",
       "gram.past.imparfait"
@@ -458,7 +524,13 @@
      "explain": {
       "en": "The imperfect carries what used to happen repeatedly; the perfect carries the one thing that happened and moved the story on. « Un jour » is the giveaway.",
       "fr": "L’imparfait pour l’habitude, le passé composé pour l’événement. « Un jour » annonce la rupture.",
-      "fa": "ماضی استمراری آنچه را که به‌تکرار رخ می‌داد می‌رساند؛ ماضی نقلی آن یک اتفاق را که ماجرا را پیش برد. ⁨« Un jour »⁩ نشانهٔ آن است."
+      "fa": "ماضی استمراری آنچه را که به‌تکرار رخ می‌داد می‌رساند؛ ماضی نقلی آن یک اتفاق را که ماجرا را پیش برد. ⁨« Un jour »⁩ نشانهٔ آن است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -469,29 +541,31 @@
       "label": {
        "en": "A short exchange",
        "fr": "Un échange",
-       "fa": "یک گفت‌وگوی کوتاه"
+       "fa": "یک گفت‌وگوی کوتاه",
+       "ar": null
       }
      },
      "prompt": {
       "en": "Why « posées » and not « posé »?",
       "fr": "Pourquoi « posées » et non « posé » ?",
-      "fa": "چرا ⁨« posées »⁩ و نه ⁨« posé »⁩؟"
+      "fa": "چرا ⁨« posées »⁩ و نه ⁨« posé »⁩؟",
+      "ar": null
      },
      "options": [
       {
        "fr": "Parce que le sujet est « je »."
       },
       {
+       "fr": "Le complément « les » (= les clés) est placé avant le verbe."
+      },
+      {
        "fr": "Parce que le verbe se conjugue avec être."
       },
       {
        "fr": "C’est une faute ; « posé » serait correct."
-      },
-      {
-       "fr": "Le complément « les » (= les clés) est placé avant le verbe."
       }
      ],
-     "answer": 3,
+     "answer": 1,
      "conceptIds": [
       "gram.agreement.avoir-cod",
       "gram.pronoun.cod"
@@ -499,7 +573,13 @@
      "explain": {
       "en": "With « avoir », the participle agrees with a direct object only when that object comes before the verb. Here « les » stands for « les clés », feminine plural, so « posées ».",
       "fr": "Avec « avoir », le participe s’accorde avec le COD placé avant : « les » = « les clés », féminin pluriel.",
-      "fa": "با ⁨« avoir »⁩، اسم مفعول تنها وقتی با مفعول بی‌واسطه مطابقت می‌کند که آن مفعول پیش از فعل آمده باشد. اینجا ⁨« les »⁩ جانشین ⁨« les clés »⁩ است، مؤنث و جمع، پس ⁨« posées »⁩."
+      "fa": "با ⁨« avoir »⁩، اسم مفعول تنها وقتی با مفعول بی‌واسطه مطابقت می‌کند که آن مفعول پیش از فعل آمده باشد. اینجا ⁨« les »⁩ جانشین ⁨« les clés »⁩ است، مؤنث و جمع، پس ⁨« posées »⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -510,13 +590,15 @@
       "label": {
        "en": "A classified advertisement",
        "fr": "Une petite annonce",
-       "fa": "یک آگهی نیازمندی"
+       "fa": "یک آگهی نیازمندی",
+       "ar": null
       }
      },
      "prompt": {
       "en": "The person wants to:",
       "fr": "La personne veut :",
-      "fa": "این شخص چه می‌خواهد:"
+      "fa": "این شخص چه می‌خواهد:",
+      "ar": null
      },
      "options": [
       {
@@ -526,13 +608,13 @@
        "fr": "louer une chambre à l’année"
       },
       {
-       "fr": "acheter un logement à Montréal"
+       "fr": "échanger son logement pendant un mois"
       },
       {
-       "fr": "échanger son logement pendant un mois"
+       "fr": "acheter un logement à Montréal"
       }
      ],
-     "answer": 3,
+     "answer": 2,
      "conceptIds": [
       "lex.housing",
       "gram.preposition.time"
@@ -540,7 +622,13 @@
      "explain": {
       "en": "« Échange X contre Y, en juillet » — a swap, for the month of July. Nothing here is sold or rented.",
       "fr": "« Échange… contre… en juillet » : un échange, pour le mois de juillet.",
-      "fa": "⁨« Échange X contre Y, en juillet »⁩ — یک مبادله، برای ماه ژوئیه. چیزی نه فروخته می‌شود و نه اجاره داده می‌شود."
+      "fa": "⁨« Échange X contre Y, en juillet »⁩ — یک مبادله، برای ماه ژوئیه. چیزی نه فروخته می‌شود و نه اجاره داده می‌شود.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -551,13 +639,15 @@
       "label": {
        "en": "Advice",
        "fr": "Un conseil",
-       "fa": "یک توصیه"
+       "fa": "یک توصیه",
+       "ar": null
       }
      },
      "prompt": {
       "en": "« Que tu révises » is in the subjunctive because:",
       "fr": "« Que tu révises » est au subjonctif parce que :",
-      "fa": "⁨« Que tu révises »⁩ التزامی است، چون:"
+      "fa": "⁨« Que tu révises »⁩ التزامی است، چون:",
+      "ar": null
      },
      "options": [
       {
@@ -567,13 +657,13 @@
        "fr": "la phrase commence par « si »"
       },
       {
-       "fr": "« il faut que » impose le subjonctif"
+       "fr": "« réviser » est irrégulier"
       },
       {
-       "fr": "« réviser » est irrégulier"
+       "fr": "« il faut que » impose le subjonctif"
       }
      ],
-     "answer": 2,
+     "answer": 3,
      "conceptIds": [
       "gram.subjunctive.present",
       "gram.subjunctive.will",
@@ -582,7 +672,13 @@
      "explain": {
       "en": "« Il faut que » always takes the subjunctive. Note that « si tu veux » does not — « si » never takes the subjunctive in French, which is the mistake this question is built to catch.",
       "fr": "« Il faut que » entraîne le subjonctif. Après « si », jamais de subjonctif.",
-      "fa": "⁨« Il faut que »⁩ همیشه التزامی می‌گیرد. توجه کنید که ⁨« si tu veux »⁩ چنین نیست — ⁨« si »⁩ در فرانسه هرگز التزامی نمی‌گیرد، و این پرسش برای گرفتن همین اشتباه ساخته شده است."
+      "fa": "⁨« Il faut que »⁩ همیشه التزامی می‌گیرد. توجه کنید که ⁨« si tu veux »⁩ چنین نیست — ⁨« si »⁩ در فرانسه هرگز التزامی نمی‌گیرد، و این پرسش برای گرفتن همین اشتباه ساخته شده است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -593,15 +689,20 @@
       "label": {
        "en": "A station announcement",
        "fr": "Une annonce en gare",
-       "fa": "اعلام در ایستگاه"
+       "fa": "اعلام در ایستگاه",
+       "ar": null
       }
      },
      "prompt": {
       "en": "Travellers should:",
       "fr": "Les voyageurs doivent :",
-      "fa": "مسافران باید:"
+      "fa": "مسافران باید:",
+      "ar": null
      },
      "options": [
+      {
+       "fr": "attendre le train de 8 h 47"
+      },
       {
        "fr": "quitter la gare"
       },
@@ -609,13 +710,10 @@
        "fr": "prendre le train de 8 h 12"
       },
       {
-       "fr": "attendre le train de 8 h 47"
-      },
-      {
        "fr": "demander un remboursement"
       }
      ],
-     "answer": 2,
+     "answer": 0,
      "conceptIds": [
       "gram.passive.formation",
       "lex.transport"
@@ -623,7 +721,13 @@
      "explain": {
       "en": "« Sont priés de » is a passive and a very common formal way of giving an instruction in public notices. « Supprimé » means cancelled, not delayed.",
       "fr": "« Sont priés de » : tournure passive et formelle pour donner une consigne. « Supprimé » ne veut pas dire « retardé ».",
-      "fa": "⁨« Sont priés de »⁩ مجهول است و شکلی بسیار رایج و رسمی برای دستور دادن در اعلان‌های عمومی. ⁨« Supprimé »⁩ یعنی لغو شده، نه تأخیرخورده."
+      "fa": "⁨« Sont priés de »⁩ مجهول است و شکلی بسیار رایج و رسمی برای دستور دادن در اعلان‌های عمومی. ⁨« Supprimé »⁩ یعنی لغو شده، نه تأخیرخورده.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -634,13 +738,15 @@
       "label": {
        "en": "In a shop",
        "fr": "Dans un magasin",
-       "fa": "در یک مغازه"
+       "fa": "در یک مغازه",
+       "ar": null
       }
      },
      "prompt": {
       "en": "What does « l’ » stand for?",
       "fr": "Que remplace « l’ » ?",
-      "fa": "⁨« l’ »⁩ جانشین چیست؟"
+      "fa": "⁨« l’ »⁩ جانشین چیست؟",
+      "ar": null
      },
      "options": [
       {
@@ -664,7 +770,13 @@
      "explain": {
       "en": "« L’échanger » = « échanger le manteau ». The object pronoun sits in front of the infinitive, not after it.",
       "fr": "« L’échanger » = « échanger le manteau ». Le pronom se place devant l’infinitif.",
-      "fa": "⁨« L’échanger »⁩ یعنی ⁨« échanger le manteau »⁩. ضمیر مفعولی پیش از مصدر می‌نشیند، نه پس از آن."
+      "fa": "⁨« L’échanger »⁩ یعنی ⁨« échanger le manteau »⁩. ضمیر مفعولی پیش از مصدر می‌نشیند، نه پس از آن.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -675,18 +787,17 @@
       "label": {
        "en": "A call for volunteers",
        "fr": "Un appel à bénévoles",
-       "fa": "فراخوان داوطلب"
+       "fa": "فراخوان داوطلب",
+       "ar": null
       }
      },
      "prompt": {
       "en": "The association:",
       "fr": "L’association :",
-      "fa": "این انجمن:"
+      "fa": "این انجمن:",
+      "ar": null
      },
      "options": [
-      {
-       "fr": "accepte les débutants et les forme"
-      },
       {
        "fr": "ne cherche plus personne"
       },
@@ -694,10 +805,13 @@
        "fr": "demande plusieurs années d’expérience"
       },
       {
+       "fr": "accepte les débutants et les forme"
+      },
+      {
        "fr": "propose un emploi payé"
       }
      ],
-     "answer": 0,
+     "answer": 2,
      "conceptIds": [
       "gram.negation.ne-pas",
       "gram.article.partitive",
@@ -706,7 +820,13 @@
      "explain": {
       "en": "« Il n’est pas nécessaire d’avoir de l’expérience » plus « nous formons tout le monde » — beginners welcome. « Bénévole » means unpaid, which rules out the third option.",
       "fr": "« Il n’est pas nécessaire… » et « nous formons tout le monde ». « Bénévole » signifie non rémunéré.",
-      "fa": "⁨« Il n’est pas nécessaire d’avoir de l’expérience »⁩ به‌اضافهٔ ⁨« nous formons tout le monde »⁩ — تازه‌کارها پذیرفته می‌شوند. ⁨« Bénévole »⁩ یعنی بدون دستمزد، که گزینهٔ سوم را رد می‌کند."
+      "fa": "⁨« Il n’est pas nécessaire d’avoir de l’expérience »⁩ به‌اضافهٔ ⁨« nous formons tout le monde »⁩ — تازه‌کارها پذیرفته می‌شوند. ⁨« Bénévole »⁩ یعنی بدون دستمزد، که گزینهٔ سوم را رد می‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -717,13 +837,15 @@
       "label": {
        "en": "A plan",
        "fr": "Un projet",
-       "fa": "یک برنامه"
+       "fa": "یک برنامه",
+       "ar": null
       }
      },
      "prompt": {
       "en": "The internship:",
       "fr": "Le stage :",
-      "fa": "این کارآموزی:"
+      "fa": "این کارآموزی:",
+      "ar": null
      },
      "options": [
       {
@@ -747,7 +869,13 @@
      "explain": {
       "en": "« Venir de + infinitive » is the recent past — it has just finished. « Aller + infinitive » in the next sentence is the near future. Two tenses built the same way, pointing opposite ways.",
       "fr": "« Venir de » = passé récent ; « aller + infinitif » = futur proche. Deux structures jumelles, deux directions opposées.",
-      "fa": "⁨« Venir de + infinitif »⁩ گذشتهٔ نزدیک است — تازه تمام شده. ⁨« Aller + infinitif »⁩ در جملهٔ بعد آیندهٔ نزدیک است. دو زمان با ساختی یکسان که به دو سوی مخالف اشاره می‌کنند."
+      "fa": "⁨« Venir de + infinitif »⁩ گذشتهٔ نزدیک است — تازه تمام شده. ⁨« Aller + infinitif »⁩ در جملهٔ بعد آیندهٔ نزدیک است. دو زمان با ساختی یکسان که به دو سوی مخالف اشاره می‌کنند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     }
    ]
@@ -813,12 +941,16 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Elle ___ au bureau à huit heures tous les matins."
      },
      "options": [
+      {
+       "fr": "arrive"
+      },
       {
        "fr": "arrives"
       },
@@ -826,13 +958,10 @@
        "fr": "arriver"
       },
       {
-       "fr": "arrive"
-      },
-      {
        "fr": "arrivent"
       }
      ],
-     "answer": 2,
+     "answer": 0,
      "level": "A1",
      "conceptIds": [
       "gram.present.er",
@@ -841,7 +970,13 @@
      "explain": {
       "en": "« Elle » is third person singular, so « arrive ». « Arrives » is second person; « arrivent » is plural.",
       "fr": "« Elle » : troisième personne du singulier, donc « arrive ».",
-      "fa": "⁨« Elle »⁩ سوم‌شخص مفرد است، پس ⁨« arrive »⁩. ⁨« Arrives »⁩ دوم‌شخص است و ⁨« arrivent »⁩ جمع."
+      "fa": "⁨« Elle »⁩ سوم‌شخص مفرد است، پس ⁨« arrive »⁩. ⁨« Arrives »⁩ دوم‌شخص است و ⁨« arrivent »⁩ جمع.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -850,7 +985,8 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Je n’ai pas ___ argent sur moi."
@@ -878,7 +1014,13 @@
      "explain": {
       "en": "After a negative, the partitive « de l’argent » reduces to « d’argent ». This is one of the most common errors at every level.",
       "fr": "Après une négation, « de l’argent » devient « d’argent ».",
-      "fa": "پس از نفی، حرف تبعیضی ⁨« de l’argent »⁩ به ⁨« d’argent »⁩ کاهش می‌یابد. این یکی از رایج‌ترین خطاها در همهٔ سطح‌هاست."
+      "fa": "پس از نفی، حرف تبعیضی ⁨« de l’argent »⁩ به ⁨« d’argent »⁩ کاهش می‌یابد. این یکی از رایج‌ترین خطاها در همهٔ سطح‌هاست.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -887,15 +1029,13 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Nous sommes ___ en retard parce que le métro était bloqué."
      },
      "options": [
-      {
-       "fr": "arrivés"
-      },
       {
        "fr": "arrivées"
       },
@@ -903,10 +1043,13 @@
        "fr": "arrivé"
       },
       {
+       "fr": "arrivés"
+      },
+      {
        "fr": "arriver"
       }
      ],
-     "answer": 0,
+     "answer": 2,
      "level": "A2",
      "conceptIds": [
       "gram.past.pc-etre",
@@ -915,7 +1058,13 @@
      "explain": {
       "en": "« Arriver » takes « être », so the participle agrees with the subject: « nous » gives « arrivés ». « Arrivées » would need an all-female « nous », which nothing here establishes.",
       "fr": "« Arriver » se conjugue avec être : accord avec le sujet. « Arrivées » supposerait un « nous » entièrement féminin.",
-      "fa": "⁨« Arriver »⁩ با ⁨« être »⁩ صرف می‌شود، پس اسم مفعول با فاعل مطابقت می‌کند: ⁨« nous »⁩ می‌دهد ⁨« arrivés »⁩. ⁨« Arrivées »⁩ به ⁨« nous »⁩ی تماماً مؤنث نیاز دارد که اینجا چیزی آن را ثابت نمی‌کند."
+      "fa": "⁨« Arriver »⁩ با ⁨« être »⁩ صرف می‌شود، پس اسم مفعول با فاعل مطابقت می‌کند: ⁨« nous »⁩ می‌دهد ⁨« arrivés »⁩. ⁨« Arrivées »⁩ به ⁨« nous »⁩ی تماماً مؤنث نیاز دارد که اینجا چیزی آن را ثابت نمی‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -924,7 +1073,8 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "C’est le village ___ je suis née."
@@ -937,13 +1087,13 @@
        "fr": "que"
       },
       {
-       "fr": "où"
+       "fr": "dont"
       },
       {
-       "fr": "dont"
+       "fr": "où"
       }
      ],
-     "answer": 2,
+     "answer": 3,
      "level": "B1",
      "conceptIds": [
       "gram.pronoun.relative-ou-dont",
@@ -952,7 +1102,13 @@
      "explain": {
       "en": "« Où » covers place and time. « Que » would need the village to be the direct object of « je suis née », which is impossible — that verb takes no object.",
       "fr": "« Où » pour le lieu. « Que » exigerait un COD, or « naître » n’en a pas.",
-      "fa": "⁨« Où »⁩ هم مکان را می‌پوشاند و هم زمان را. ⁨« Que »⁩ آنگاه لازم بود که دهکده مفعول بی‌واسطهٔ ⁨« je suis née »⁩ باشد، و این ناممکن است — آن فعل مفعول نمی‌گیرد."
+      "fa": "⁨« Où »⁩ هم مکان را می‌پوشاند و هم زمان را. ⁨« Que »⁩ آنگاه لازم بود که دهکده مفعول بی‌واسطهٔ ⁨« je suis née »⁩ باشد، و این ناممکن است — آن فعل مفعول نمی‌گیرد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -961,17 +1117,18 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Si j’avais le temps, je ___ plus souvent."
      },
      "options": [
       {
-       "fr": "voyagerai"
+       "fr": "voyagerais"
       },
       {
-       "fr": "voyagerais"
+       "fr": "voyagerai"
       },
       {
        "fr": "voyagerais pas"
@@ -980,7 +1137,7 @@
        "fr": "voyageais"
       }
      ],
-     "answer": 1,
+     "answer": 0,
      "level": "B1",
      "conceptIds": [
       "gram.si.imparfait-conditional",
@@ -989,7 +1146,13 @@
      "explain": {
       "en": "« Si » + imperfect pairs with the present conditional. « Voyagerai » is the future, which would need « si » + present. The two patterns are never mixed.",
       "fr": "« Si » + imparfait appelle le conditionnel présent. Le futur irait avec « si » + présent.",
-      "fa": "⁨« Si »⁩ + ماضی استمراری با شرطی حال جفت می‌شود. ⁨« Voyagerai »⁩ آینده است و به ⁨« si »⁩ + حال نیاز دارد. این دو الگو هرگز با هم نمی‌آمیزند."
+      "fa": "⁨« Si »⁩ + ماضی استمراری با شرطی حال جفت می‌شود. ⁨« Voyagerai »⁩ آینده است و به ⁨« si »⁩ + حال نیاز دارد. این دو الگو هرگز با هم نمی‌آمیزند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -998,7 +1161,8 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Je doute qu’il ___ raison."
@@ -1026,7 +1190,13 @@
      "explain": {
       "en": "Doubt takes the subjunctive: « je doute qu’il ait raison ». Note that « je ne doute pas que » takes the indicative — negating the doubt removes the subjunctive.",
       "fr": "Le doute entraîne le subjonctif. À l’inverse, « je ne doute pas que » demande l’indicatif.",
-      "fa": "شک التزامی می‌گیرد: ⁨« je doute qu’il ait raison »⁩. توجه کنید که ⁨« je ne doute pas que »⁩ اخباری می‌گیرد — نفیِ شک، التزامی را برمی‌دارد."
+      "fa": "شک التزامی می‌گیرد: ⁨« je doute qu’il ait raison »⁩. توجه کنید که ⁨« je ne doute pas que »⁩ اخباری می‌گیرد — نفیِ شک، التزامی را برمی‌دارد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -1035,15 +1205,13 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Il est parti sans ___ au revoir."
      },
      "options": [
-      {
-       "fr": "dire"
-      },
       {
        "fr": "dit"
       },
@@ -1051,10 +1219,13 @@
        "fr": "disant"
       },
       {
+       "fr": "dire"
+      },
+      {
        "fr": "qu’il dise"
       }
      ],
-     "answer": 0,
+     "answer": 2,
      "level": "B1",
      "conceptIds": [
       "gram.nonfinite.infinitive",
@@ -1063,7 +1234,13 @@
      "explain": {
       "en": "« Sans » is followed by an infinitive, never a gerund. English « without saying » misleads here — « sans disant » is wrong.",
       "fr": "« Sans » est suivi de l’infinitif. L’anglais « without saying » induit en erreur.",
-      "fa": "پس از ⁨« sans »⁩ مصدر می‌آید، هرگز وجه وصفی. انگلیسیِ ⁨“without saying”⁩ اینجا گمراه‌کننده است — ⁨« sans disant »⁩ نادرست است."
+      "fa": "پس از ⁨« sans »⁩ مصدر می‌آید، هرگز وجه وصفی. انگلیسیِ ⁨“without saying”⁩ اینجا گمراه‌کننده است — ⁨« sans disant »⁩ نادرست است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -1072,15 +1249,13 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Ce sont les documents ___ j’ai besoin."
      },
      "options": [
-      {
-       "fr": "dont"
-      },
       {
        "fr": "où"
       },
@@ -1089,9 +1264,12 @@
       },
       {
        "fr": "que"
+      },
+      {
+       "fr": "dont"
       }
      ],
-     "answer": 0,
+     "answer": 3,
      "level": "B1",
      "conceptIds": [
       "gram.pronoun.relative-ou-dont",
@@ -1100,7 +1278,13 @@
      "explain": {
       "en": "« Avoir besoin DE » — the « de » is what forces « dont ». Whenever the verb in the relative clause takes « de », the pronoun is « dont ».",
       "fr": "« Avoir besoin de » : le « de » impose « dont ».",
-      "fa": "⁨« Avoir besoin DE »⁩ — همین ⁨« de »⁩ است که ⁨« dont »⁩ را الزامی می‌کند. هرگاه فعلِ جملهٔ موصولی ⁨« de »⁩ بگیرد، ضمیر ⁨« dont »⁩ است."
+      "fa": "⁨« Avoir besoin DE »⁩ — همین ⁨« de »⁩ است که ⁨« dont »⁩ را الزامی می‌کند. هرگاه فعلِ جملهٔ موصولی ⁨« de »⁩ بگیرد، ضمیر ⁨« dont »⁩ است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -1109,17 +1293,18 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Quand tu ___ à Paris, appelle-moi."
      },
      "options": [
       {
-       "fr": "arrivais"
+       "fr": "arriveras"
       },
       {
-       "fr": "arriveras"
+       "fr": "arrivais"
       },
       {
        "fr": "arriverais"
@@ -1128,7 +1313,7 @@
        "fr": "arrives"
       }
      ],
-     "answer": 1,
+     "answer": 0,
      "level": "B1",
      "conceptIds": [
       "gram.future.after-quand",
@@ -1137,7 +1322,13 @@
      "explain": {
       "en": "French puts the future after « quand » when the action is still to come. English uses the present — « when you arrive » — which is exactly why this is tested.",
       "fr": "Après « quand », le français emploie le futur, là où l’anglais garde le présent.",
-      "fa": "فرانسه پس از ⁨« quand »⁩ آینده می‌آورد، وقتی کار هنوز نیامده است. انگلیسی حال به کار می‌برد — ⁨“when you arrive”⁩ — و دقیقاً به همین دلیل این نکته آزموده می‌شود."
+      "fa": "فرانسه پس از ⁨« quand »⁩ آینده می‌آورد، وقتی کار هنوز نیامده است. انگلیسی حال به کار می‌برد — ⁨“when you arrive”⁩ — و دقیقاً به همین دلیل این نکته آزموده می‌شود.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -1146,17 +1337,18 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Bien qu’il ___ fatigué, il a terminé le travail."
      },
      "options": [
       {
-       "fr": "soit"
+       "fr": "était"
       },
       {
-       "fr": "était"
+       "fr": "soit"
       },
       {
        "fr": "sera"
@@ -1165,7 +1357,7 @@
        "fr": "est"
       }
      ],
-     "answer": 0,
+     "answer": 1,
      "level": "B2",
      "conceptIds": [
       "gram.subjunctive.conjunctions",
@@ -1174,7 +1366,13 @@
      "explain": {
       "en": "« Bien que » always takes the subjunctive. Compare « même si », which takes the indicative and means something slightly different.",
       "fr": "« Bien que » exige le subjonctif ; « même si » prend l’indicatif.",
-      "fa": "⁨« Bien que »⁩ همیشه التزامی می‌گیرد. با ⁨« même si »⁩ مقایسه کنید که اخباری می‌گیرد و معنایی اندکی متفاوت دارد."
+      "fa": "⁨« Bien que »⁩ همیشه التزامی می‌گیرد. با ⁨« même si »⁩ مقایسه کنید که اخباری می‌گیرد و معنایی اندکی متفاوت دارد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -1183,7 +1381,8 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Les mesures ___ le gouvernement a parlé n’ont pas été adoptées."
@@ -1193,16 +1392,16 @@
        "fr": "que"
       },
       {
-       "fr": "dont"
+       "fr": "lesquelles"
       },
       {
-       "fr": "lesquelles"
+       "fr": "dont"
       },
       {
        "fr": "desquelles"
       }
      ],
-     "answer": 1,
+     "answer": 2,
      "level": "B2",
      "conceptIds": [
       "gram.pronoun.relative-lequel",
@@ -1211,7 +1410,13 @@
      "explain": {
       "en": "« Parler DE quelque chose » gives « dont ». « Desquelles » is not wrong in every context but is not used after a bare « de » with a simple antecedent.",
       "fr": "« Parler de » donne « dont ». « Desquelles » s’emploie après une locution prépositive, pas ici.",
-      "fa": "⁨« Parler DE quelque chose »⁩ به ⁨« dont »⁩ می‌انجامد. ⁨« Desquelles »⁩ در هر بافتی نادرست نیست، اما پس از ⁨« de »⁩ی ساده با مرجعی ساده به کار نمی‌رود."
+      "fa": "⁨« Parler DE quelque chose »⁩ به ⁨« dont »⁩ می‌انجامد. ⁨« Desquelles »⁩ در هر بافتی نادرست نیست، اما پس از ⁨« de »⁩ی ساده با مرجعی ساده به کار نمی‌رود.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     },
     {
@@ -1220,7 +1425,8 @@
      "prompt": {
       "en": "Choose the right form.",
       "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید."
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
      },
      "stimulus": {
       "fr": "Si elle avait su, elle ___ autrement."
@@ -1230,16 +1436,16 @@
        "fr": "avait réagi"
       },
       {
-       "fr": "aurait réagi"
-      },
-      {
        "fr": "réagirait"
       },
       {
        "fr": "aura réagi"
+      },
+      {
+       "fr": "aurait réagi"
       }
      ],
-     "answer": 1,
+     "answer": 3,
      "level": "B2",
      "conceptIds": [
       "gram.si.pqp-conditional-past",
@@ -1248,10 +1454,2341 @@
      "explain": {
       "en": "« Si » + pluperfect pairs with the past conditional: something that did not happen. « Réagirait » would be the present conditional, which needs « si » + imperfect.",
       "fr": "« Si » + plus-que-parfait appelle le conditionnel passé : l’irréel du passé.",
-      "fa": "⁨« Si »⁩ + ماضی بعید با شرطی گذشته جفت می‌شود: چیزی که رخ نداد. ⁨« Réagirait »⁩ شرطی حال است و به ⁨« si »⁩ + ماضی استمراری نیاز دارد."
+      "fa": "⁨« Si »⁩ + ماضی بعید با شرطی گذشته جفت می‌شود: چیزی که رخ نداد. ⁨« Réagirait »⁩ شرطی حال است و به ⁨« si »⁩ + ماضی استمراری نیاز دارد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
      }
     }
    ]
+  },
+  {
+   "id": "tcf-b2-structure",
+   "exam": "tcf",
+   "level": "B2",
+   "skill": "grammar",
+   "code": "SLG",
+   "name": {
+    "en": "TCF — Subjunctive or indicative (B2)",
+    "fr": "TCF — Subjonctif ou indicatif (B2)",
+    "fa": "TCF — التزامی یا اخباری (B2)",
+    "ar": "TCF — الالتزامي أم الإخباري (B2)"
+   },
+   "minutes": 5,
+   "official": {
+    "minutes": 15,
+    "marks": 18,
+    "passNote": {
+     "en": "The real paper is 18 multiple-choice questions in 15 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
+     "fr": "L’épreuve réelle compte 18 questions à choix multiple en 15 minutes, du A1 au C2. Elle est notée sur l’échelle de 699 points propre au TCF et donne un niveau du CECRL plutôt qu’une réussite ou un échec.",
+     "fa": "برگهٔ واقعی 18 پرسش چندگزینه‌ای در 15 دقیقه است، از A1 تا C2. نمره بر پایهٔ مقیاس 699 امتیازی خودِ TCF داده می‌شود و به سطح CEFR نگاشته می‌شود، نه قبولی یا ردی."
+    },
+    "source": {
+     "en": "France Éducation international, Test de connaissance du français",
+     "fr": "France Éducation international, Test de connaissance du français",
+     "fa": "France Éducation international، Test de connaissance du français"
+    },
+    "verified": {
+     "on": "2026-10-04",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public?langue=fr",
+     "what": "18 scored multiple-choice questions in 15 minutes on paper; 23 presented in the same 15 minutes on computer, of which 18 are scored",
+     "correction": "This field said 20 minutes until 2026-10-04 and had never been checked against any source. The real paper is 15 minutes. The file's own figures were also internally inconsistent: 25 + 20 + 45 is 90 minutes against the 1 h 25 the exam body states for the three compulsory papers.",
+     "readBy": "the project owner, in a browser. The exam body's site refuses automated clients and the agent could not read it first-hand."
+    },
+    "forms": {
+     "paper": {
+      "items": 18,
+      "minutes": 15,
+      "secondsPerItem": 50
+     },
+     "computer": {
+      "itemsPresented": 23,
+      "scored": 18,
+      "minutes": 15,
+      "secondsPerItem": 39,
+      "note": "Five extra items that do not count toward the score. Same 15 minutes."
+     },
+     "weSimulate": "computer"
+    }
+   },
+   "practiceNote": {
+    "en": "Eight original questions on one B2 point: whether the verb after « que » goes in the subjunctive or the indicative. Four of each, so choosing one mood throughout scores four. The real TCF structures paper has 18 scored questions in 15 minutes — and 23 in the same 15 minutes on computer, five of which are not scored. YOU DO NOT CHOOSE THE FORM; THE CENTRE DOES, so the five minutes here is the computer pace. The real paper also spans A1 to C2.",
+    "fr": "Huit questions originales sur un point de B2 : après « que », subjonctif ou indicatif. Quatre de chaque, pour qu’un même choix répété n’en donne que quatre. L’épreuve réelle compte 18 questions notées en 15 minutes — et 23 dans les mêmes 15 minutes sur ordinateur. VOUS NE CHOISISSEZ PAS LA FORME : C’EST LE CENTRE QUI DÉCIDE, d’où les cinq minutes, calées sur le rythme de l’ordinateur.",
+    "fa": "هشت پرسش اصلی دربارهٔ یک نکتهٔ B2: پس از « que » التزامی یا اخباری. چهار از هر کدام، تا انتخاب یکسان بیش از چهار نمره نشود."
+   },
+   "items": [
+    {
+     "id": "b2-sv-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Je ne crois pas qu’il ___ raison."
+     },
+     "options": [
+      {
+       "fr": "ait"
+      },
+      {
+       "fr": "a"
+      },
+      {
+       "fr": "aura"
+      },
+      {
+       "fr": "avait"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "Croire in the negative expresses doubt, and doubt takes the subjunctive: « qu’il ait raison ». « A » is the indicative and is right in the affirmative — « je crois qu’il a raison ». « Aura » and « avait » are indicative tenses and cannot follow a negated verb of opinion here.",
+      "fr": "À la forme négative, « croire » exprime le doute, et le doute demande le subjonctif : « qu’il ait raison ». « A » est l’indicatif, correct à l’affirmative : « je crois qu’il a raison ».",
+      "fa": "⁨croire⁩ در حالت منفی تردید را می‌رساند و تردید وجه التزامی می‌خواهد: ⁨qu’il ait raison⁩. ⁨a⁩ اخباری است و در جملهٔ مثبت درست است: ⁨je crois qu’il a raison⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "mood.doubt-and-negated-opinion-take-the-subjunctive"
+    },
+    {
+     "id": "b2-sv-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "J’espère qu’il ___ bientôt."
+     },
+     "options": [
+      {
+       "fr": "vienne"
+      },
+      {
+       "fr": "viendra"
+      },
+      {
+       "fr": "soit venu"
+      },
+      {
+       "fr": "venir"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "In standard French « espérer que » is followed by the INDICATIVE: « qu’il viendra ». This is the trap — « souhaiter que » and « vouloir que » take the subjunctive, and « espérer » looks like them. « Vienne » is the subjunctive, « soit venu » the past subjunctive, « venir » an infinitive after a conjunction that cannot take one.",
+      "fr": "En français standard, « espérer que » est suivi de l’INDICATIF : « qu’il viendra ». C’est le piège : « souhaiter que » et « vouloir que » demandent le subjonctif.",
+      "fa": "در فرانسهٔ معیار پس از ⁨espérer que⁩ وجه اخباری می‌آید: ⁨qu’il viendra⁩. دام همین‌جاست: ⁨souhaiter que⁩ و ⁨vouloir que⁩ التزامی می‌خواهند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "prescriptive-rule-widely-violated",
+      "doubt": "« espérer que » takes the indicative in standard French, and « j’espère qu’il vienne » is very widely heard and written. The item marks the indicative correct and the subjunctive wrong. If the TCF would accept either, the item has a second right answer and should be rewritten or dropped — this is the only item in the eight whose CORRECT ANSWER I am unsure of."
+     },
+     "rule": "mood.esperer-takes-the-indicative"
+    },
+    {
+     "id": "b2-sv-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Il est probable qu’elle ___ en retard."
+     },
+     "options": [
+      {
+       "fr": "soit"
+      },
+      {
+       "fr": "ait été"
+      },
+      {
+       "fr": "sera"
+      },
+      {
+       "fr": "fût"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Il est probable que » states something likely, so the INDICATIVE: « qu’elle sera ». Compare « il est possible que », which expresses uncertainty and takes the subjunctive — « qu’elle soit ». Probability and possibility behave differently, and this pair is the cleanest way to see it. « Fût » is the imperfect subjunctive, read in old texts and not written today.",
+      "fr": "« Il est probable que » énonce un fait vraisemblable : INDICATIF, « qu’elle sera ». À comparer avec « il est possible que », qui exprime l’incertitude et demande le subjonctif.",
+      "fa": "⁨il est probable que⁩ چیزی را محتمل می‌داند، پس اخباری: ⁨qu’elle sera⁩. در برابرِ ⁨il est possible que⁩ که تردید می‌رساند و التزامی می‌خواهد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "mood.probable-indicative-possible-subjunctive"
+    },
+    {
+     "id": "b2-sv-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Préviens-moi avant qu’il ___."
+     },
+     "options": [
+      {
+       "fr": "part"
+      },
+      {
+       "fr": "partira"
+      },
+      {
+       "fr": "partait"
+      },
+      {
+       "fr": "parte"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Avant que » always takes the subjunctive: « qu’il parte ». The event has not happened yet, so it is not stated as fact. « Après que » is the mirror case and takes the indicative in careful writing — « après qu’il est parti » — although the subjunctive is widely heard there.",
+      "fr": "« Avant que » demande toujours le subjonctif : « qu’il parte ». « Après que » est le cas inverse et demande l’indicatif en langue soignée.",
+      "fa": "پس از ⁨avant que⁩ همیشه التزامی می‌آید: ⁨qu’il parte⁩. ⁨après que⁩ برعکس است و در نوشتار دقیق اخباری می‌خواهد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "prescriptive-rule-widely-violated",
+      "doubt": "The ANSWER is safe — « avant que » takes the subjunctive and nobody disputes it. The doubt is in the EXPLANATION, which tells the learner that « après que » takes the indicative in careful writing. That is the prescriptive rule and it is violated constantly, including by educated writers. Telling a B2 candidate the rule without saying how little it is observed may be teaching them to correct French that an examiner would accept."
+     },
+     "rule": "mood.avant-que-subjunctive"
+    },
+    {
+     "id": "b2-sv-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Bien qu’il ___ fatigué, il a continué."
+     },
+     "options": [
+      {
+       "fr": "soit"
+      },
+      {
+       "fr": "est"
+      },
+      {
+       "fr": "était"
+      },
+      {
+       "fr": "sera"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Bien que » takes the subjunctive: « qu’il soit fatigué ». The concession is not being asserted as a fact in its own right. « Parce qu’il était fatigué » would be the indicative, because a cause IS asserted — the difference is the conjunction, not the tiredness.",
+      "fr": "« Bien que » demande le subjonctif : « qu’il soit fatigué ». « Parce qu’il était fatigué » serait l’indicatif, car une cause s’affirme.",
+      "fa": "پس از ⁨bien que⁩ التزامی می‌آید: ⁨qu’il soit fatigué⁩. ⁨parce qu’il était fatigué⁩ اخباری است، چون علت را بیان می‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "mood.bien-que-subjunctive"
+    },
+    {
+     "id": "b2-sv-6",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Je suis sûr qu’elle ___ la vérité."
+     },
+     "options": [
+      {
+       "fr": "dise"
+      },
+      {
+       "fr": "dit"
+      },
+      {
+       "fr": "ait dit"
+      },
+      {
+       "fr": "dirait"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "Certainty takes the INDICATIVE: « qu’elle dit la vérité ». Negate it and the trigger changes — « je ne suis pas sûr qu’elle dise la vérité » — because what is no longer asserted is no longer stated as fact. The verb did not change; the certainty did.",
+      "fr": "La certitude demande l’INDICATIF : « qu’elle dit la vérité ». À la négative, le déclencheur change : « je ne suis pas sûr qu’elle dise la vérité ».",
+      "fa": "یقین وجه اخباری می‌خواهد: ⁨qu’elle dit la vérité⁩. در حالت منفی محرک عوض می‌شود: ⁨je ne suis pas sûr qu’elle dise la vérité⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "mood.certainty-takes-the-indicative"
+    },
+    {
+     "id": "b2-sv-7",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Il faut que tu ___ à l’heure."
+     },
+     "options": [
+      {
+       "fr": "es"
+      },
+      {
+       "fr": "seras"
+      },
+      {
+       "fr": "sois"
+      },
+      {
+       "fr": "étais"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Il faut que » takes the subjunctive: « que tu sois ». Necessity is not a statement of fact about the world — it is what somebody requires. « Tu es à l’heure » on its own is a perfectly good indicative sentence; it is the « il faut que » in front of it that changes the mood.",
+      "fr": "« Il faut que » demande le subjonctif : « que tu sois ». La nécessité n’énonce pas un fait. « Tu es à l’heure » seul reste un indicatif parfaitement correct.",
+      "fa": "پس از ⁨il faut que⁩ التزامی می‌آید: ⁨que tu sois⁩. ضرورت بیانِ واقعیت نیست. ⁨tu es à l’heure⁩ به‌تنهایی اخباریِ درستی است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "mood.il-faut-que-subjunctive"
+    },
+    {
+     "id": "b2-sv-8",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Subjunctive or indicative?",
+      "fr": "Subjonctif ou indicatif ?",
+      "fa": "وجه التزامی یا اخباری؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Il me semble qu’elle ___ raison."
+     },
+     "options": [
+      {
+       "fr": "ait"
+      },
+      {
+       "fr": "aurait eu"
+      },
+      {
+       "fr": "eût"
+      },
+      {
+       "fr": "a"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.subjunctive.vs-indicative"
+     ],
+     "explain": {
+      "en": "« Il me semble que » — with « me » — reports what the speaker thinks and takes the INDICATIVE: « qu’elle a raison ». Remove the pronoun and it becomes impersonal appearance, which takes the subjunctive: « il semble qu’elle ait raison ». One pronoun changes the mood, and this pair is the reason the concept exists.",
+      "fr": "« Il me semble que » — avec « me » — rapporte un avis et demande l’INDICATIF : « qu’elle a raison ». Sans le pronom, « il semble que » demande le subjonctif.",
+      "fa": "⁨il me semble que⁩ با ضمیر ⁨me⁩ نظر گوینده را می‌رساند و اخباری می‌خواهد: ⁨qu’elle a raison⁩. بدون آن ضمیر، ⁨il semble que⁩ التزامی می‌خواهد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "mood.il-me-semble-indicative-il-semble-subjunctive"
+    }
+   ]
+  },
+  {
+   "id": "tcf-b2-structure-2",
+   "exam": "tcf",
+   "level": "B2",
+   "skill": "grammar",
+   "code": "SLG",
+   "name": {
+    "en": "TCF — B2 structures, batch one",
+    "fr": "TCF — Structures B2, premier lot",
+    "fa": "TCF — ساختارهای B2، دستهٔ یکم",
+    "ar": "TCF — بنية اللغة B2، الدفعة الأولى"
+   },
+   "minutes": 13,
+   "official": {
+    "minutes": 15,
+    "marks": 18,
+    "passNote": {
+     "en": "The real paper is 18 multiple-choice questions in 15 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
+     "fr": "L’épreuve réelle compte 18 questions à choix multiple en 15 minutes, du A1 au C2. Elle est notée sur l’échelle de 699 points propre au TCF et donne un niveau du CECRL plutôt qu’une réussite ou un échec.",
+     "fa": "برگهٔ واقعی 18 پرسش چندگزینه‌ای در 15 دقیقه است، از A1 تا C2. نمره بر پایهٔ مقیاس 699 امتیازی خودِ TCF داده می‌شود و به سطح CEFR نگاشته می‌شود، نه قبولی یا ردی."
+    },
+    "source": {
+     "en": "France Éducation international, Test de connaissance du français",
+     "fr": "France Éducation international, Test de connaissance du français",
+     "fa": "France Éducation international، Test de connaissance du français"
+    },
+    "verified": {
+     "on": "2026-10-04",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public?langue=fr",
+     "what": "18 scored multiple-choice questions in 15 minutes on paper; 23 presented in the same 15 minutes on computer, of which 18 are scored",
+     "correction": "This field said 20 minutes until 2026-10-04 and had never been checked against any source. The real paper is 15 minutes. The file's own figures were also internally inconsistent: 25 + 20 + 45 is 90 minutes against the 1 h 25 the exam body states for the three compulsory papers.",
+     "readBy": "the project owner, in a browser. The exam body's site refuses automated clients and the agent could not read it first-hand."
+    },
+    "forms": {
+     "paper": {
+      "items": 18,
+      "minutes": 15,
+      "secondsPerItem": 50
+     },
+     "computer": {
+      "itemsPresented": 23,
+      "scored": 18,
+      "minutes": 15,
+      "secondsPerItem": 39,
+      "note": "Five extra items that do not count toward the score. Same 15 minutes."
+     },
+     "weSimulate": "computer"
+    }
+   },
+   "practiceNote": {
+    "en": "Twenty original questions across four B2 points: combining negatives, agreement of reflexive verbs, avoiding the passive with « on », and the cleft constructions « c’est … qui » and « c’est … que ». THREE ARE FLAGGED: the writer was unsure, and says why on the item. The real TCF structures paper has 18 scored questions in 15 minutes — 23 in the same 15 on computer, five of them unscored. YOU DO NOT CHOOSE THE FORM; THE CENTRE DOES, so the thirteen minutes here is the computer pace.",
+    "fr": "Vingt questions originales sur quatre points de B2 : la combinaison des négations, l’accord des verbes pronominaux, l’évitement du passif avec « on », et les tournures « c’est … qui » et « c’est … que ». TROIS SONT SIGNALÉES : l’auteur n’était pas sûr et dit pourquoi. VOUS NE CHOISISSEZ PAS LA FORME : C’EST LE CENTRE QUI DÉCIDE, d’où les treize minutes.",
+    "fa": "بیست پرسش اصلی دربارهٔ چهار نکتهٔ B2. سه مورد نشان‌دار است: نویسنده مطمئن نبود و دلیلش را نوشته."
+   },
+   "items": [
+    {
+     "id": "b1-neg-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Il n’y avait ___ dans le frigo."
+     },
+     "options": [
+      {
+       "fr": "plus rien"
+      },
+      {
+       "fr": "rien plus"
+      },
+      {
+       "fr": "pas rien"
+      },
+      {
+       "fr": "plus pas"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.negation.combined"
+     ],
+     "explain": {
+      "en": "Order is fixed: « plus » comes before « rien ». « Il n’y avait plus rien » — there was nothing left. « Rien plus » reverses them, and « pas » never combines with « rien » or « plus » in the same negation.",
+      "fr": "L’ordre est fixe : « plus » précède « rien ». « Pas » ne se combine jamais avec « rien » ni « plus » dans la même négation.",
+      "fa": "ترتیب ثابت است: ⁨plus⁩ پیش از ⁨rien⁩ می‌آید. ⁨pas⁩ هرگز با ⁨rien⁩ یا ⁨plus⁩ در یک نفی به کار نمی‌رود.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "negation.order-adverb-before-pronoun"
+    },
+    {
+     "id": "b1-neg-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Elle ne dit ___ à personne."
+     },
+     "options": [
+      {
+       "fr": "jamais pas"
+      },
+      {
+       "fr": "jamais rien"
+      },
+      {
+       "fr": "rien jamais"
+      },
+      {
+       "fr": "pas rien"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.negation.combined"
+     ],
+     "explain": {
+      "en": "Three negatives in one clause, in a fixed order: « ne … jamais rien … à personne ». An adverb like « jamais » precedes a pronoun like « rien ».",
+      "fr": "Trois négations dans une proposition, dans un ordre fixe : « ne … jamais rien … à personne ». L’adverbe « jamais » précède le pronom « rien ».",
+      "fa": "سه نفی در یک جمله با ترتیب ثابت. قید ⁨jamais⁩ پیش از ضمیر ⁨rien⁩ می‌آید.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "negation.order-adverb-before-pronoun"
+    },
+    {
+     "id": "b1-neg-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Je n’ai ___ vu personne."
+     },
+     "options": [
+      {
+       "fr": "jamais plus"
+      },
+      {
+       "fr": "pas"
+      },
+      {
+       "fr": "encore"
+      },
+      {
+       "fr": "déjà"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.negation.combined"
+     ],
+     "explain": {
+      "en": "« Je n’ai encore vu personne » — I have not yet seen anybody. « Déjà » belongs to affirmative questions and statements; « pas » cannot stand beside « personne »; « jamais plus » means never again and does not fit a simple « not yet ».",
+      "fr": "« Je n’ai encore vu personne ». « Déjà » appartient à l’affirmative ; « pas » ne peut pas accompagner « personne ».",
+      "fa": "⁨je n’ai encore vu personne⁩ یعنی هنوز کسی را ندیده‌ام. ⁨pas⁩ نمی‌تواند همراه ⁨personne⁩ بیاید.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "negation.encore-not-deja-in-the-negative"
+    },
+    {
+     "id": "b1-neg-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Personne ___ est venu."
+     },
+     "options": [
+      {
+       "fr": "ne l’"
+      },
+      {
+       "fr": "n’y"
+      },
+      {
+       "fr": "pas"
+      },
+      {
+       "fr": "n’"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.negation.combined"
+     ],
+     "explain": {
+      "en": "« Personne » as the subject still needs « ne »: « personne n’est venu ». The « ne » is not optional in writing, even though it disappears in speech — and the TCF is written. « Ne l’ » and « n’y » add a pronoun the sentence does not have.",
+      "fr": "« Personne » sujet exige quand même « ne » : « personne n’est venu ». À l’écrit le « ne » n’est pas facultatif, même s’il tombe à l’oral.",
+      "fa": "⁨personne⁩ در جایگاه فاعل هم ⁨ne⁩ می‌خواهد. در نوشتار حذف‌شدنی نیست، هرچند در گفتار می‌افتد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "negation.ne-required-with-subject-personne"
+    },
+    {
+     "id": "b1-neg-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Il ne reste ___ un peu de pain."
+     },
+     "options": [
+      {
+       "fr": "que"
+      },
+      {
+       "fr": "plus que"
+      },
+      {
+       "fr": "pas que"
+      },
+      {
+       "fr": "rien que"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.negation.combined"
+     ],
+     "explain": {
+      "en": "« Ne … que » is a restriction, not a negation: « il ne reste qu’un peu de pain » — there is only a little bread left. « Plus que » would mean only … remaining after something is gone, which the sentence does not set up.",
+      "fr": "« Ne … que » marque la restriction et non la négation : « il ne reste qu’un peu de pain ».",
+      "fa": "⁨ne … que⁩ محدودیت را می‌رساند نه نفی: فقط کمی نان مانده است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "low",
+      "kind": "contested-usage",
+      "doubt": "« Il ne reste que » and « il ne reste plus que » are both ordinary French and the second is arguably more natural here — « there is only a little bread LEFT » carries the sense of « plus ». I marked « que » correct and « plus que » wrong, and I am not confident the distractor is actually wrong. If both are acceptable the item has two right answers and should be rewritten with a context that excludes one."
+     },
+     "rule": "negation.ne-que-is-restriction"
+    },
+    {
+     "id": "b1-agr-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Elle s’est ___ à sept heures."
+     },
+     "options": [
+      {
+       "fr": "lever"
+      },
+      {
+       "fr": "levée"
+      },
+      {
+       "fr": "levé"
+      },
+      {
+       "fr": "levés"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.agreement.pronominal"
+     ],
+     "explain": {
+      "en": "With a reflexive verb the participle agrees with the subject when the pronoun is the direct object: « elle s’est levée ». She raised herself — « se » is the direct object and is feminine singular.",
+      "fr": "Le participe s’accorde avec le sujet quand le pronoun réfléchi est l’objet direct : « elle s’est levée ».",
+      "fa": "در فعل انعکاسی، وقتی ضمیر مفعول مستقیم است، اسم مفعول با فاعل مطابقت می‌کند: ⁨elle s’est levée⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
+    },
+    {
+     "id": "b1-agr-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Elle s’est ___ les mains."
+     },
+     "options": [
+      {
+       "fr": "lavées"
+      },
+      {
+       "fr": "laver"
+      },
+      {
+       "fr": "lavé"
+      },
+      {
+       "fr": "lavée"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.agreement.pronominal"
+     ],
+     "explain": {
+      "en": "**No agreement here.** « Les mains » is the direct object, so « se » is indirect — she washed the hands TO herself — and the participle stays « lavé ». Compare « elle s’est lavée », where « se » IS the direct object and the agreement appears. The test is what follows the verb, not what the verb means.",
+      "fr": "**Pas d’accord ici.** « Les mains » est l’objet direct, donc « se » est indirect et le participe reste « lavé ». Comparez « elle s’est lavée ».",
+      "fa": "این‌جا مطابقت نیست. ⁨les mains⁩ مفعول مستقیم است، پس ⁨se⁩ غیرمستقیم است و اسم مفعول بی‌تغییر می‌ماند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
+    },
+    {
+     "id": "b1-agr-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ils se sont ___ au téléphone hier."
+     },
+     "options": [
+      {
+       "fr": "parlés"
+      },
+      {
+       "fr": "parlées"
+      },
+      {
+       "fr": "parler"
+      },
+      {
+       "fr": "parlé"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.agreement.pronominal"
+     ],
+     "explain": {
+      "en": "« Se parler » takes an indirect object — one speaks TO somebody — so there is no agreement: « ils se sont parlé ». Reciprocal verbs that take « à » never agree, which catches most learners because the subject is plural and the ear expects an s.",
+      "fr": "« Se parler » se construit avec un objet indirect, donc pas d’accord : « ils se sont parlé ». Les verbes réciproques en « à » ne s’accordent jamais.",
+      "fa": "⁨se parler⁩ مفعول غیرمستقیم می‌گیرد، پس مطابقت ندارد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
+    },
+    {
+     "id": "b1-agr-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Elles se sont ___ hier soir."
+     },
+     "options": [
+      {
+       "fr": "rencontrées"
+      },
+      {
+       "fr": "rencontré"
+      },
+      {
+       "fr": "rencontrés"
+      },
+      {
+       "fr": "rencontrer"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.agreement.pronominal"
+     ],
+     "explain": {
+      "en": "« Se rencontrer » takes a direct object — one meets somebody, not to somebody — so the participle agrees: « elles se sont rencontrées ». This is the pair with « se parler » above: the same reciprocal shape, opposite agreement, and the preposition is what decides.",
+      "fr": "« Se rencontrer » prend un objet direct, donc accord : « elles se sont rencontrées ». C’est le pendant de « se parler » : même forme réciproque, accord inverse.",
+      "fa": "⁨se rencontrer⁩ مفعول مستقیم می‌گیرد، پس مطابقت می‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "pronominal.agreement.pronoun-is-direct-object"
+    },
+    {
+     "id": "b1-agr-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "La robe qu’elle s’est ___ est bleue."
+     },
+     "options": [
+      {
+       "fr": "acheter"
+      },
+      {
+       "fr": "achetée"
+      },
+      {
+       "fr": "acheté"
+      },
+      {
+       "fr": "achetées"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.agreement.pronominal"
+     ],
+     "explain": {
+      "en": "The direct object « la robe » comes BEFORE the verb as « qu’ », so the participle agrees with it: « la robe qu’elle s’est achetée ». « Se » is indirect here — she bought it for herself — and plays no part in the agreement.",
+      "fr": "L’objet direct « la robe » précède le verbe sous la forme « qu’ », donc le participe s’accorde avec lui. « Se » est indirect et n’y joue aucun rôle.",
+      "fa": "مفعول مستقیم ⁨la robe⁩ پیش از فعل آمده، پس اسم مفعول با آن مطابقت می‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "prescriptive-rule-widely-violated",
+      "doubt": "The rule is certain and this is the standard example, but agreement with a preceding direct object in a PRONOMINAL verb is among the most frequently got wrong constructions in written French, including by native writers. My doubt is pedagogical rather than grammatical: whether a B2 candidate is served by an item whose correct answer most native speakers would also miss, or whether this belongs at C1."
+     },
+     "rule": "pronominal.agreement.preceding-direct-object"
+    },
+    {
+     "id": "b1-pas-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "___ m’a dit que le musée était fermé."
+     },
+     "options": [
+      {
+       "fr": "Ça"
+      },
+      {
+       "fr": "Ce"
+      },
+      {
+       "fr": "On"
+      },
+      {
+       "fr": "Il"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.passive.avoiding"
+     ],
+     "explain": {
+      "en": "French prefers « on » where English uses a passive: « on m’a dit » for « I was told ». « Il m’a dit » names a specific man; « ça » and « ce » cannot be the subject of « dire » about a person.",
+      "fr": "Le français préfère « on » là où l’anglais emploie le passif : « on m’a dit ». « Il m’a dit » désigne quelqu’un de précis.",
+      "fa": "فرانسه جای مجهولِ انگلیسی ⁨on⁩ به کار می‌برد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passive.on-for-unknown-agent"
+    },
+    {
+     "id": "b1-pas-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ici ___ parle français."
+     },
+     "options": [
+      {
+       "fr": "il"
+      },
+      {
+       "fr": "ils"
+      },
+      {
+       "fr": "nous"
+      },
+      {
+       "fr": "on"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.passive.avoiding"
+     ],
+     "explain": {
+      "en": "« Ici on parle français » is the idiomatic sign. « Ils parlent » names people who have not been introduced, and « nous parlons » claims the speaker is one of the staff — a different statement.",
+      "fr": "« Ici on parle français » est la formule idiomatique. « Ils parlent » désigne des gens non présentés ; « nous parlons » inclut celui qui parle.",
+      "fa": "⁨ici on parle français⁩ عبارت رایج است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passive.on-for-unknown-agent"
+    },
+    {
+     "id": "b1-pas-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Le pont ___ en 1890."
+     },
+     "options": [
+      {
+       "fr": "a été construit"
+      },
+      {
+       "fr": "on a construit"
+      },
+      {
+       "fr": "est construisant"
+      },
+      {
+       "fr": "se construit"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.passive.avoiding"
+     ],
+     "explain": {
+      "en": "Here the passive IS the right choice, because the sentence is about the bridge and names no agent: « le pont a été construit en 1890 ». « On a construit » would need the bridge as an object — « on a construit le pont ». Knowing when NOT to avoid the passive is half of this concept.",
+      "fr": "Ici le passif est correct : la phrase porte sur le pont et ne nomme pas l’agent. « On a construit » exigerait « le pont » en objet.",
+      "fa": "این‌جا مجهول درست است، چون جمله دربارهٔ پل است و کنشگر نامی ندارد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passive.etre-passive-when-subject-is-the-thing"
+    },
+    {
+     "id": "b1-pas-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "___ construit beaucoup dans ce quartier."
+     },
+     "options": [
+      {
+       "fr": "Ils sont"
+      },
+      {
+       "fr": "On"
+      },
+      {
+       "fr": "Il est"
+      },
+      {
+       "fr": "C’est"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.passive.avoiding"
+     ],
+     "explain": {
+      "en": "« On construit beaucoup » — a lot is being built. The agent is unknown and irrelevant, which is exactly what « on » is for. « Il est construit » makes the unnamed subject the thing built.",
+      "fr": "« On construit beaucoup » : l’agent est inconnu et sans importance, ce qui est précisément l’emploi de « on ».",
+      "fa": "⁨on construit beaucoup⁩: کنشگر ناشناس و بی‌اهمیت است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passive.on-for-unknown-agent"
+    },
+    {
+     "id": "b1-pas-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ce plat ___ avec du riz."
+     },
+     "options": [
+      {
+       "fr": "on mange"
+      },
+      {
+       "fr": "se manger"
+      },
+      {
+       "fr": "se mange"
+      },
+      {
+       "fr": "est mangeant"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.passive.avoiding"
+     ],
+     "explain": {
+      "en": "A pronominal passive: « ce plat se mange avec du riz » — this dish is eaten with rice. French uses it freely for habitual or general statements about things, where English reaches for the passive.",
+      "fr": "Passif pronominal : « ce plat se mange avec du riz ». Le français l’emploie librement pour les énoncés généraux.",
+      "fa": "مجهولِ ضمیری: این غذا را با برنج می‌خورند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passive.pronominal-passive-for-general-statements"
+    },
+    {
+     "id": "b1-emp-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "___ Marie qui a téléphoné."
+     },
+     "options": [
+      {
+       "fr": "Il est"
+      },
+      {
+       "fr": "Ce sont"
+      },
+      {
+       "fr": "C’était"
+      },
+      {
+       "fr": "C’est"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.emphasis"
+     ],
+     "explain": {
+      "en": "« C’est Marie qui a téléphoné » puts the stress on Marie. « Il est » introduces a profession or an adjective, not a name; « ce sont » is for plurals; « c’était » shifts the whole sentence into the past, which the following « a téléphoné » contradicts.",
+      "fr": "« C’est Marie qui a téléphoné » met Marie en relief. « Il est » introduit une profession ou un adjectif, non un nom propre.",
+      "fa": "⁨c’est Marie qui⁩ تأکید را روی ماری می‌گذارد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "cleft.c-est-not-il-est-before-a-name"
+    },
+    {
+     "id": "b1-emp-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "C’est ce livre ___ je cherchais."
+     },
+     "options": [
+      {
+       "fr": "que"
+      },
+      {
+       "fr": "qui"
+      },
+      {
+       "fr": "dont"
+      },
+      {
+       "fr": "quoi"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.emphasis"
+     ],
+     "explain": {
+      "en": "The emphasised element is the OBJECT of « chercher », so « que »: « c’est ce livre que je cherchais ». « Qui » would be right if the book were the subject — « c’est ce livre qui m’a plu ». The choice is decided by the role in the clause, not by whether the thing is a person.",
+      "fr": "L’élément mis en relief est l’objet de « chercher », donc « que ». « Qui » servirait si le livre était sujet : « c’est ce livre qui m’a plu ».",
+      "fa": "عنصر تأکیدشده مفعول است، پس ⁨que⁩. اگر فاعل بود، ⁨qui⁩ می‌آمد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "cleft.qui-for-subject-que-for-object"
+    },
+    {
+     "id": "b1-emp-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "___ eux qui ont décidé."
+     },
+     "options": [
+      {
+       "fr": "C’étaient"
+      },
+      {
+       "fr": "Ce sont"
+      },
+      {
+       "fr": "C’est"
+      },
+      {
+       "fr": "Ils sont"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.emphasis"
+     ],
+     "explain": {
+      "en": "A plural stressed pronoun takes « ce sont »: « ce sont eux qui ont décidé ». « C’est eux » is widely said and is not accepted in careful writing, which the written examinations are.",
+      "fr": "Un pronom tonique pluriel demande « ce sont » : « ce sont eux qui ont décidé ». « C’est eux » s’entend partout mais n’est pas accepté à l’écrit soigné.",
+      "fa": "ضمیر تأکیدی جمع ⁨ce sont⁩ می‌خواهد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "prescriptive-rule-widely-violated",
+      "doubt": "« C’est eux » is extremely common in speech and increasingly in writing, and some reference grammars now accept it. I marked « ce sont » correct and « c’est » wrong. If an examiner would accept either, this item punishes a candidate for ordinary French and should be dropped rather than softened in the explanation."
+     },
+     "rule": "cleft.ce-sont-for-plural"
+    },
+    {
+     "id": "b1-emp-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "C’est à Paris ___ je l’ai rencontré."
+     },
+     "options": [
+      {
+       "fr": "où"
+      },
+      {
+       "fr": "dont"
+      },
+      {
+       "fr": "que"
+      },
+      {
+       "fr": "qui"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.emphasis"
+     ],
+     "explain": {
+      "en": "After an emphasised adverbial — « à Paris » — the link is always « que », never « où »: « c’est à Paris que je l’ai rencontré ». « Où » is the trap, because « où » is right in « la ville où je l’ai rencontré »; the cleft construction does not use it.",
+      "fr": "Après un complément circonstanciel mis en relief, le lien est toujours « que », jamais « où ». « Où » est le piège, correct dans « la ville où je l’ai rencontré ».",
+      "fa": "پس از قید مکانِ تأکیدشده همیشه ⁨que⁩ می‌آید، نه ⁨où⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "cleft.que-after-an-emphasised-adverbial"
+    },
+    {
+     "id": "b1-emp-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "C’est moi ___ ai fait la vaisselle."
+     },
+     "options": [
+      {
+       "fr": "que"
+      },
+      {
+       "fr": "qu’"
+      },
+      {
+       "fr": "dont"
+      },
+      {
+       "fr": "qui"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.emphasis"
+     ],
+     "explain": {
+      "en": "« C’est moi qui ai fait la vaisselle » — and the verb agrees with « moi », so « ai », not « a ». The relative « qui » carries the person of the stressed pronoun, which is the part that catches learners.",
+      "fr": "« C’est moi qui ai fait la vaisselle » : le verbe s’accorde avec « moi », donc « ai » et non « a ». Le relatif « qui » porte la personne du pronom tonique.",
+      "fa": "⁨c’est moi qui ai⁩ — فعل با ⁨moi⁩ مطابقت می‌کند، پس ⁨ai⁩ نه ⁨a⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "cleft.verb-agrees-with-the-stressed-pronoun"
+    }
+   ]
+  },
+  {
+   "id": "tcf-b2-structure-3",
+   "exam": "tcf",
+   "level": "B2",
+   "skill": "grammar",
+   "code": "SLG",
+   "name": {
+    "en": "TCF — B2 structures, batch two",
+    "fr": "TCF — Structures B2, deuxième lot",
+    "fa": "TCF — ساختارهای B2، دستهٔ دوم",
+    "ar": "TCF — بنية اللغة B2، الدفعة الثانية"
+   },
+   "minutes": 13,
+   "official": {
+    "minutes": 15,
+    "marks": 18,
+    "passNote": {
+     "en": "The real paper is 18 multiple-choice questions in 15 minutes, spanning A1 to C2. It is scored on the TCF's own 699-point scale and mapped to a CEFR level rather than passed or failed.",
+     "fr": "L’épreuve réelle compte 18 questions à choix multiple en 15 minutes, du A1 au C2. Elle est notée sur l’échelle de 699 points propre au TCF et donne un niveau du CECRL plutôt qu’une réussite ou un échec.",
+     "fa": "برگهٔ واقعی 18 پرسش چندگزینه‌ای در 15 دقیقه است، از A1 تا C2. نمره بر پایهٔ مقیاس 699 امتیازی خودِ TCF داده می‌شود و به سطح CEFR نگاشته می‌شود، نه قبولی یا ردی."
+    },
+    "source": {
+     "en": "France Éducation international, Test de connaissance du français",
+     "fr": "France Éducation international, Test de connaissance du français",
+     "fa": "France Éducation international، Test de connaissance du français"
+    },
+    "verified": {
+     "on": "2026-10-04",
+     "url": "https://www.france-education-international.fr/test/tcf-tout-public?langue=fr",
+     "what": "18 scored multiple-choice questions in 15 minutes on paper; 23 presented in the same 15 minutes on computer, of which 18 are scored",
+     "correction": "This field said 20 minutes until 2026-10-04 and had never been checked against any source. The real paper is 15 minutes. The file's own figures were also internally inconsistent: 25 + 20 + 45 is 90 minutes against the 1 h 25 the exam body states for the three compulsory papers.",
+     "readBy": "the project owner, in a browser. The exam body's site refuses automated clients and the agent could not read it first-hand."
+    },
+    "forms": {
+     "paper": {
+      "items": 18,
+      "minutes": 15,
+      "secondsPerItem": 50
+     },
+     "computer": {
+      "itemsPresented": 23,
+      "scored": 18,
+      "minutes": 15,
+      "secondsPerItem": 39,
+      "note": "Five extra items that do not count toward the score. Same 15 minutes."
+     },
+     "weSimulate": "computer"
+    }
+   },
+   "practiceNote": {
+    "en": "Twenty original questions on four B2 points that had no exercise: the causative « faire » plus an infinitive, adjectives whose position changes the meaning, the present participle, and recognising the passé simple. THREE ARE FLAGGED: the writer was unsure, and says why on the item. The real TCF structures paper has 18 scored questions in 15 minutes — 23 in the same 15 on computer, five of them unscored. YOU DO NOT CHOOSE THE FORM; THE CENTRE DOES, so the thirteen minutes here is the computer pace.",
+    "fr": "Vingt questions originales sur quatre points de B2 qui n’avaient aucun exercice : le « faire » causatif, les adjectifs dont la place change le sens, le participe présent, et la reconnaissance du passé simple. TROIS SONT SIGNALÉES : l’auteur n’était pas sûr et dit pourquoi. VOUS NE CHOISISSEZ PAS LA FORME : C’EST LE CENTRE QUI DÉCIDE, d’où les treize minutes.",
+    "fa": "بیست پرسش اصلی دربارهٔ چهار نکتهٔ B2 که تمرینی نداشتند. سه مورد نشان‌دار است: نویسنده مطمئن نبود و دلیلش را نوشته.",
+    "ar": null
+   },
+   "items": [
+    {
+     "id": "b2-faire-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Elle fait ___ sa voiture."
+     },
+     "options": [
+      {
+       "fr": "réparer"
+      },
+      {
+       "fr": "à réparer"
+      },
+      {
+       "fr": "de réparer"
+      },
+      {
+       "fr": "réparant"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.faire-causatif"
+     ],
+     "explain": {
+      "en": "« Faire » causatif takes a bare infinitive: « elle fait réparer sa voiture ». « À réparer » and « de réparer » put a preposition where this construction has none, and « réparant » is a participle, not the infinitive it requires.",
+      "fr": "Le « faire » causatif est suivi d’un infinitif nu : « elle fait réparer sa voiture ». « À réparer » et « de réparer » ajoutent une préposition que cette tournure n’a pas, et « réparant » est un participe.",
+      "fa": "بعد از ⁨faire⁩ سببی مصدر بدون حرف اضافه می‌آید: ⁨elle fait réparer sa voiture⁩. ⁨à réparer⁩ و ⁨de réparer⁩ حرف اضافه‌ای می‌گذارند که این ساخت ندارد، و ⁨réparant⁩ وجه وصفی است نه مصدر.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "causative.no-preposition"
+    },
+    {
+     "id": "b2-faire-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ma voiture est en panne. Je ___ fais réparer demain."
+     },
+     "options": [
+      {
+       "fr": "lui"
+      },
+      {
+       "fr": "la"
+      },
+      {
+       "fr": "y"
+      },
+      {
+       "fr": "en"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.faire-causatif"
+     ],
+     "explain": {
+      "en": "The car is « la voiture », so the pronoun is « la », and it stands before « faire »: « je la fais réparer ». « Lui » would be a person, « y » a place, and « en » replaces « de » plus a noun. None of those is the car.",
+      "fr": "La voiture se reprend par « la », et le pronom se place devant « faire » : « je la fais réparer ». « Lui » reprend une personne, « y » un lieu, « en » un nom introduit par « de ».",
+      "fa": "ماشین ⁨la voiture⁩ است، پس ضمیرش ⁨la⁩ است و پیش از ⁨faire⁩ می‌نشیند: ⁨je la fais réparer⁩. ⁨lui⁩ برای شخص است، ⁨y⁩ برای مکان، و ⁨en⁩ جانشین اسمی با ⁨de⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "causative.pronouns-before-faire"
+    },
+    {
+     "id": "b2-faire-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Paul ne comprend pas ce texte. Je ___ fais expliquer."
+     },
+     "options": [
+      {
+       "fr": "lui le"
+      },
+      {
+       "fr": "leur le"
+      },
+      {
+       "fr": "le lui"
+      },
+      {
+       "fr": "se le"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.faire-causatif"
+     ],
+     "explain": {
+      "en": "Both pronouns stand before « faire », in a fixed order: the direct object « le » (the text), then the indirect « lui » (Paul). « Je le lui fais expliquer » — I have it explained to him. « Lui le » reverses that order, and « leur » would be more than one person.",
+      "fr": "Les deux pronoms se placent devant « faire », dans un ordre fixe : le complément direct « le » (le texte), puis l’indirect « lui » (Paul). « Lui le » inverse cet ordre, et « leur » vaudrait pour plusieurs personnes.",
+      "fa": "هر دو ضمیر پیش از ⁨faire⁩ می‌آیند، با ترتیب ثابت: مفعول مستقیم ⁨le⁩ (متن)، بعد مفعول غیرمستقیم ⁨lui⁩ (پل). ⁨lui le⁩ این ترتیب را وارونه می‌کند و ⁨leur⁩ برای چند شخص است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "causative.pronouns-before-faire"
+    },
+    {
+     "id": "b2-faire-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Elle s’est ___ couper les cheveux hier."
+     },
+     "options": [
+      {
+       "fr": "faite"
+      },
+      {
+       "fr": "faits"
+      },
+      {
+       "fr": "faites"
+      },
+      {
+       "fr": "fait"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.faire-causatif"
+     ],
+     "explain": {
+      "en": "Before an infinitive, « fait » does not agree: « elle s'est fait couper les cheveux ». Not « faite » with the subject, and not « faits » with « les cheveux ». The agreed forms are a very common mistake; the form expected here is the invariable one.",
+      "fr": "Devant un infinitif, le participe « fait » reste invariable : « elle s’est fait couper les cheveux ». Ni « faite » avec le sujet, ni « faits » avec « les cheveux ».",
+      "fa": "پیش از مصدر، اسم مفعول ⁨fait⁩ صرف نمی‌شود: ⁨elle s’est fait couper les cheveux⁩. نه ⁨faite⁩ با نهاد، نه ⁨faits⁩ با ⁨les cheveux⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "prescriptive-rule-widely-violated",
+      "doubt": "The invariable « fait » before an infinitive is the rule the structures paper marks correct: « elle s'est fait couper les cheveux ». Agreed forms (« faite », « faits ») are extremely common in real writing, including by native speakers. If an examiner accepts the agreed participle, this item punishes ordinary French and should be dropped rather than explained more gently."
+     },
+     "rule": "causative.fait-invariable"
+    },
+    {
+     "id": "b2-faire-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Marie écrit la lettre à Paul. Je la fais écrire ___ Marie."
+     },
+     "options": [
+      {
+       "fr": "par"
+      },
+      {
+       "fr": "à"
+      },
+      {
+       "fr": "pour"
+      },
+      {
+       "fr": "de"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.expression.faire-causatif"
+     ],
+     "explain": {
+      "en": "Marie is the one who writes, so she is the agent: « par Marie ». « À Marie » would make her the person the letter is written to, and the sentence has already given that role to Paul. « Pour » and « de » do not name the agent of a causative.",
+      "fr": "Marie est celle qui écrit, donc l’agent : « par Marie ». « À Marie » ferait d’elle la destinataire, rôle que la phrase a déjà donné à Paul. « Pour » et « de » ne nomment pas l’agent du causatif.",
+      "fa": "ماری کسی است که نامه را می‌نویسد، پس عامل است: ⁨par Marie⁩. ⁨à Marie⁩ او را گیرندهٔ نامه می‌کند، و این نقش را جمله قبلاً به پل داده است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "causative.par-for-the-agent-when-a-is-the-recipient"
+    },
+    {
+     "id": "b2-adj-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "On admire Victor Hugo pour son œuvre, pas pour sa taille. C’est un ___."
+     },
+     "options": [
+      {
+       "fr": "homme grand"
+      },
+      {
+       "fr": "grand homme"
+      },
+      {
+       "fr": "homme gros"
+      },
+      {
+       "fr": "gros homme"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.adjective.meaning-shift"
+     ],
+     "explain": {
+      "en": "Before the noun, « grand » means great: « un grand homme » is admired for what he did. After the noun it means tall: « un homme grand » says nothing about his work. « Gros » is about size either way, which is not the contrast the sentence draws.",
+      "fr": "Devant le nom, « grand » veut dire illustre : « un grand homme ». Après le nom, il veut dire de haute taille : « un homme grand », ce qui ne dit rien de l’œuvre. « Gros » parle de la corpulence.",
+      "fa": "پیش از اسم، ⁨grand⁩ یعنی بزرگ‌مقام: ⁨un grand homme⁩. بعد از اسم یعنی قدبلند: ⁨un homme grand⁩، که دربارهٔ اثرش چیزی نمی‌گوید. ⁨gros⁩ دربارهٔ جثه است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "adjective.before-figurative-after-literal"
+    },
+    {
+     "id": "b2-adj-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Il n’a pas un sou. C’est un ___."
+     },
+     "options": [
+      {
+       "fr": "pauvre homme"
+      },
+      {
+       "fr": "homme triste"
+      },
+      {
+       "fr": "homme pauvre"
+      },
+      {
+       "fr": "homme seul"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.adjective.meaning-shift"
+     ],
+     "explain": {
+      "en": "After the noun, « pauvre » means without money: « un homme pauvre ». Before it, « un pauvre homme » means unfortunate, which this sentence does not say. « Triste » and « seul » are other misfortunes, not the one named.",
+      "fr": "Après le nom, « pauvre » veut dire sans argent : « un homme pauvre ». Devant, « un pauvre homme » veut dire malheureux, ce que la phrase ne dit pas.",
+      "fa": "بعد از اسم، ⁨pauvre⁩ یعنی بی‌پول: ⁨un homme pauvre⁩. پیش از اسم، ⁨un pauvre homme⁩ یعنی بدبخت، و جمله این را نمی‌گوید.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "adjective.before-figurative-after-literal"
+    },
+    {
+     "id": "b2-adj-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Le ménage est fait : tout est nettoyé. La cuisine est une ___."
+     },
+     "options": [
+      {
+       "fr": "propre pièce"
+      },
+      {
+       "fr": "salle sale"
+      },
+      {
+       "fr": "propre salle"
+      },
+      {
+       "fr": "pièce propre"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.adjective.meaning-shift"
+     ],
+     "explain": {
+      "en": "After the noun, « propre » means clean: « une pièce propre », which is what a finished clean-up produces. Before the noun it means one's own (« sa propre chambre ») and says nothing about cleanliness. « Sale » is the opposite of what the sentence says.",
+      "fr": "Après le nom, « propre » veut dire nettoyé : « une pièce propre ». Devant le nom, il veut dire « à soi » (« sa propre chambre ») et ne dit rien de la propreté. « Sale » dit le contraire.",
+      "fa": "بعد از اسم، ⁨propre⁩ یعنی تمیز: ⁨une pièce propre⁩. پیش از اسم یعنی متعلق به خود، مثل ⁨sa propre chambre⁩، و دربارهٔ تمیزی چیزی نمی‌گوید. ⁨sale⁩ خلاف جمله است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "adjective.before-figurative-after-literal"
+    },
+    {
+     "id": "b2-adj-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Cette église date du XIIe siècle et on y dit encore la messe. On dit que c’est une ___."
+     },
+     "options": [
+      {
+       "fr": "église ancienne"
+      },
+      {
+       "fr": "ancienne église"
+      },
+      {
+       "fr": "église neuve"
+      },
+      {
+       "fr": "ancienne messe"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.adjective.meaning-shift"
+     ],
+     "explain": {
+      "en": "After the noun, « ancien » means old and still that thing: « une église ancienne » was built long ago and is still a church, which is what “mass is still said there” requires. Before the noun, « une ancienne église » means a former church — it no longer is one. « Neuve » is the opposite of old.",
+      "fr": "Après le nom, « ancien » veut dire vieux et toujours cela : « une église ancienne ». Devant, « une ancienne église » veut dire une église qui n’en est plus une. La messe s’y dit encore, donc la seconde est fausse. « Neuve » est le contraire de vieux.",
+      "fa": "بعد از اسم، ⁨ancien⁩ یعنی قدیمی و هنوز همان چیز: ⁨une église ancienne⁩. پیش از اسم، ⁨une ancienne église⁩ یعنی جایی که دیگر کلیسا نیست. چون هنوز در آن مراسم برگزار می‌شود، شکل دوم غلط است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "adjective.before-figurative-after-literal"
+    },
+    {
+     "id": "b2-adj-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Personne ne sait si le film va marcher, mais il a déjà ___."
+     },
+     "options": [
+      {
+       "fr": "un succès certain"
+      },
+      {
+       "fr": "un certain succès"
+      },
+      {
+       "fr": "un succès sûr"
+      },
+      {
+       "fr": "le certain succès"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.adjective.meaning-shift"
+     ],
+     "explain": {
+      "en": "Before the noun, « certain » means some, a degree of: « un certain succès » is success of an unspecified size, which fits “nobody knows whether the film will work”. After the noun, « un succès certain » means a success that is assured — the opposite of that doubt. « Sûr » is the same assured reading.",
+      "fr": "Devant le nom, « certain » veut dire « un certain degré de » : « un certain succès ». Après le nom, « un succès certain » veut dire un succès assuré, le contraire du doute que la phrase exprime. « Sûr » dit la même chose.",
+      "fa": "پیش از اسم، ⁨certain⁩ یعنی مقداری نامعین: ⁨un certain succès⁩. بعد از اسم، ⁨un succès certain⁩ یعنی موفقیتی قطعی، که خلاف تردید جمله است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "adjective.before-figurative-after-literal"
+    },
+    {
+     "id": "b2-pp-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "J’ai vu des enfants ___ dans la cour."
+     },
+     "options": [
+      {
+       "fr": "jouants"
+      },
+      {
+       "fr": "jouantes"
+      },
+      {
+       "fr": "jouant"
+      },
+      {
+       "fr": "en jouant"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.nonfinite.participe-present"
+     ],
+     "explain": {
+      "en": "With a complement (« dans la cour »), « jouant » is the present participle and does not agree: « des enfants jouant ». « Jouants » and « jouantes » treat it as an adjective. « En jouant » is a gerund and cannot modify the noun this way.",
+      "fr": "Avec un complément (« dans la cour »), « jouant » est le participe présent et reste invariable. « Jouants » et « jouantes » en font un adjectif. « En jouant » est un gérondif et ne peut pas déterminer le nom ainsi.",
+      "fa": "با متمم ⁨dans la cour⁩، ⁨jouant⁩ وجه وصفی حال است و صرف نمی‌شود. ⁨jouants⁩ و ⁨jouantes⁩ آن را صفت می‌گیرند. ⁨en jouant⁩ شکل همراه با ⁨en⁩ است و این‌طور اسم را وصف نمی‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "participe.verbal-is-invariable"
+    },
+    {
+     "id": "b2-pp-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ce sont des nouvelles ___ : tout le monde est soulagé."
+     },
+     "options": [
+      {
+       "fr": "rassurant"
+      },
+      {
+       "fr": "rassurants"
+      },
+      {
+       "fr": "rassurée"
+      },
+      {
+       "fr": "rassurantes"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.nonfinite.participe-present"
+     ],
+     "explain": {
+      "en": "Nothing follows the blank, so this is the adjective and it agrees: « des nouvelles rassurantes ». The invariable « rassurant » would be the participle, and it would need a complement. « Rassurée » is the past participle, a different form.",
+      "fr": "Rien ne suit le blanc, donc c’est l’adjectif, qui s’accorde : « des nouvelles rassurantes ». « Rassurant » invariable serait le participe, et il lui faudrait un complément. « Rassurée » est le participe passé.",
+      "fa": "اینجا چیزی بعد از جای خالی نیامده، پس صفت است و مطابقت می‌کند: ⁨des nouvelles rassurantes⁩. ⁨rassurant⁩ بدون صرف وجه وصفی می‌بود و به متمم نیاز داشت. ⁨rassurée⁩ اسم مفعول گذشته است.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "participe.verbal-is-invariable"
+    },
+    {
+     "id": "b2-pp-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Choose the right form.",
+      "fr": "Choisissez la forme correcte.",
+      "fa": "شکل درست را انتخاب کنید.",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ce sont des nouvelles ___ les habitants."
+     },
+     "options": [
+      {
+       "fr": "rassurant"
+      },
+      {
+       "fr": "rassurantes"
+      },
+      {
+       "fr": "rassurants"
+      },
+      {
+       "fr": "rassuré"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.nonfinite.participe-present"
+     ],
+     "explain": {
+      "en": "« Les habitants » is the direct object, so this is the participle, not the adjective, and it does not agree: « des nouvelles rassurant les habitants ». « Rassurantes » would be right only with no object. « Rassuré » would mean the news itself had been reassured.",
+      "fr": "« Les habitants » est le complément d’objet, donc c’est le participe, invariable : « des nouvelles rassurant les habitants ». « Rassurantes » ne vaudrait que sans objet.",
+      "fa": "⁨les habitants⁩ مفعول است، پس این وجه وصفی است نه صفت، و صرف نمی‌شود: ⁨des nouvelles rassurant les habitants⁩. ⁨rassurantes⁩ فقط وقتی درست است که مفعولی در کار نباشد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "participe.verbal-is-invariable"
+    },
+    {
+     "id": "b2-pp-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Which sentence says what the lines above say?",
+      "fr": "Quelle phrase dit ce que disent les lignes ci-dessus ?",
+      "fa": "کدام جمله همان چیزی را می‌گوید که سطرهای بالا می‌گویند؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Paul arrive à la gare. Il constate que le train est déjà parti."
+     },
+     "options": [
+      {
+       "fr": "En arrivant à la gare, le train était déjà parti."
+      },
+      {
+       "fr": "En arrivant à la gare, Paul a vu que le train était parti."
+      },
+      {
+       "fr": "En arrivée à la gare, Paul a vu que le train était parti."
+      },
+      {
+       "fr": "En arrivants à la gare, Paul a vu que le train était parti."
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.nonfinite.participe-present"
+     ],
+     "explain": {
+      "en": "The gerund « en arrivant » must have the same subject as the main verb. Paul arrives and Paul sees, so the first sentence is the one that says both lines. The second makes the train the one who arrives — the classic dangling gerund. « En arrivée » is not a French form, and a gerund never agrees, so « en arrivants » is not one either.",
+      "fr": "Le gérondif « en arrivant » a le même sujet que le verbe principal : Paul arrive et Paul voit. La deuxième phrase fait arriver le train. « En arrivée » n’existe pas, et le gérondif ne s’accorde pas.",
+      "fa": "شکل ⁨en arrivant⁩ باید همان نهاد فعل اصلی را داشته باشد: پل می‌رسد و پل می‌بیند. جملهٔ دوم رسیدن را به قطار نسبت می‌دهد. ⁨en arrivée⁩ وجود ندارد و این شکل مطابقت نمی‌کند.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "gerund.same-subject"
+    },
+    {
+     "id": "b2-pp-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Which sentence says what the lines above say?",
+      "fr": "Quelle phrase dit ce que disent les lignes ci-dessus ?",
+      "fa": "کدام جمله همان چیزی را می‌گوید که سطرهای بالا می‌گویند؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Le train entre en gare. Les voyageurs se lèvent."
+     },
+     "options": [
+      {
+       "fr": "En arrivant en gare, les voyageurs se sont levés."
+      },
+      {
+       "fr": "Le train en arrivant, les voyageurs se sont levés."
+      },
+      {
+       "fr": "Le train arrivant en gare, les voyageurs se sont levés."
+      },
+      {
+       "fr": "En arrivant le train, les voyageurs se sont levés."
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.nonfinite.participe-present"
+     ],
+     "explain": {
+      "en": "Without « en », the present participle may have its own subject: « le train arrivant en gare, les voyageurs se sont levés » — the train arrives, the passengers stand up. With « en », the subject would have to be the passengers, and the sentence would no longer say that the train arrives. The other two are not the construction.",
+      "fr": "Sans « en », le participe présent peut avoir son propre sujet : « le train arrivant en gare, les voyageurs se sont levés ». Avec « en », le sujet serait les voyageurs, et la phrase ne dirait plus que le train arrive.",
+      "fa": "بدون ⁨en⁩، وجه وصفی حال می‌تواند نهاد جدا داشته باشد: ⁨le train arrivant en gare, les voyageurs se sont levés⁩. با ⁨en⁩ نهاد باید مسافران باشند و جمله دیگر نمی‌گوید که قطار می‌رسد.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "other",
+      "doubt": "The French is standard: a present participle without « en » may have its own subject, and the gerund with « en » may not. The doubt is the level. This project files the present participle at B2, but the absolute construction is often taught at C1. If it does not belong on a B2 paper, drop the item; do not rewrite the rule, because the gerund item rests on the other half of the same claim."
+     },
+     "rule": "gerund.same-subject"
+    },
+    {
+     "id": "b2-ps-1",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Which form is the passé simple?",
+      "fr": "Quelle forme est le passé simple ?",
+      "fa": "کدام شکل، ماضی سادهٔ ادبی است؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ce jour-là, le roi ___ à la foule."
+     },
+     "options": [
+      {
+       "fr": "parlait"
+      },
+      {
+       "fr": "a parlé"
+      },
+      {
+       "fr": "parlera"
+      },
+      {
+       "fr": "parla"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.past.passe-simple"
+     ],
+     "explain": {
+      "en": "The passé simple of an -er verb, third person singular, ends in -a: « le roi parla ». « Parlait » is the imperfect, « a parlé » the passé composé, « parlera » the future. The question asks for the literary past, not for any past.",
+      "fr": "Le passé simple d’un verbe en -er, à la troisième personne du singulier, se termine en -a : « parla ». « Parlait » est l’imparfait, « a parlé » le passé composé, « parlera » le futur.",
+      "fa": "ماضی سادهٔ ادبی فعل ⁨-er⁩ در سوم‌شخص مفرد به ⁨-a⁩ ختم می‌شود: ⁨parla⁩. ⁨parlait⁩ ماضی استمراری است، ⁨a parlé⁩ ماضی نقلی، و ⁨parlera⁩ آیندهٔ ساده.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passe-simple.er-verb-ends-in-a"
+    },
+    {
+     "id": "b2-ps-2",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Which form is the passé simple?",
+      "fr": "Quelle forme est le passé simple ?",
+      "fa": "کدام شکل، ماضی سادهٔ ادبی است؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ce soir-là, ils ___ la porte."
+     },
+     "options": [
+      {
+       "fr": "fermèrent"
+      },
+      {
+       "fr": "fermaient"
+      },
+      {
+       "fr": "ferment"
+      },
+      {
+       "fr": "fermeront"
+      }
+     ],
+     "answer": 0,
+     "level": "B2",
+     "conceptIds": [
+      "gram.past.passe-simple"
+     ],
+     "explain": {
+      "en": "The same ending in the plural is -èrent: « ils fermèrent ». « Fermaient » is the imperfect, « ferment » the present, « fermeront » the future. Both persons are here because learning only « parla » still leaves the plural untested.",
+      "fr": "Au pluriel, la même désinence est -èrent : « ils fermèrent ». « Fermaient » est l’imparfait, « ferment » le présent, « fermeront » le futur.",
+      "fa": "در جمع، همان پسوند ⁨-èrent⁩ است: ⁨ils fermèrent⁩. ⁨fermaient⁩ ماضی استمراری است، ⁨ferment⁩ حال ساده، و ⁨fermeront⁩ آیندهٔ ساده.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passe-simple.er-verb-ends-in-a"
+    },
+    {
+     "id": "b2-ps-3",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Which form is the passé simple?",
+      "fr": "Quelle forme est le passé simple ?",
+      "fa": "کدام شکل، ماضی سادهٔ ادبی است؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Ce soir-là, nous ___ jusqu’à minuit."
+     },
+     "options": [
+      {
+       "fr": "dansèrent"
+      },
+      {
+       "fr": "dansâmes"
+      },
+      {
+       "fr": "dansions"
+      },
+      {
+       "fr": "avons dansé"
+      }
+     ],
+     "answer": 1,
+     "level": "B2",
+     "conceptIds": [
+      "gram.past.passe-simple"
+     ],
+     "explain": {
+      "en": "The nous form of the passé simple is « nous dansâmes ». « Dansèrent » is ils, not nous. « Dansions » is the imperfect, « avons dansé » the passé composé. The spelling without the circumflex is not offered as a wrong answer: everywhere a learner types, this project treats that difference as the same word, so marking it wrong here would punish a difference the product cannot see.",
+      "fr": "La forme de « nous » au passé simple est « nous dansâmes ». « Dansèrent » est la troisième personne du pluriel, pas « nous ». « Dansions » est l’imparfait, « avons dansé » le passé composé.",
+      "fa": "شکل ⁨nous⁩ در ماضی سادهٔ ادبی ⁨nous dansâmes⁩ است. ⁨dansèrent⁩ برای ⁨ils⁩ است نه ⁨nous⁩. ⁨dansions⁩ ماضی استمراری است و ⁨avons dansé⁩ ماضی نقلی.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passe-simple.nous-is-not-ils"
+    },
+    {
+     "id": "b2-ps-4",
+     "kind": "cloze",
+     "prompt": {
+      "en": "Which form is the passé simple?",
+      "fr": "Quelle forme est le passé simple ?",
+      "fa": "کدام شکل، ماضی سادهٔ ادبی است؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Il ___ un grand roi."
+     },
+     "options": [
+      {
+       "fr": "était"
+      },
+      {
+       "fr": "furent"
+      },
+      {
+       "fr": "fut"
+      },
+      {
+       "fr": "a été"
+      }
+     ],
+     "answer": 2,
+     "level": "B2",
+     "conceptIds": [
+      "gram.past.passe-simple"
+     ],
+     "explain": {
+      "en": "« Il fut » is the passé simple of « être », singular. « Furent » is the plural. « Il était » is the imperfect, « il a été » the passé composé. The imperfect subjunctive « fût » is not an option: it differs from « fut » only by a circumflex, and the spelling fold used everywhere else in this project treats that as the same word.",
+      "fr": "« Il fut » est le passé simple d’« être », au singulier. « Furent » est le pluriel. « Il était » est l’imparfait, « il a été » le passé composé.",
+      "fa": "⁨il fut⁩ ماضی سادهٔ ادبی مفرد ⁨être⁩ است. ⁨furent⁩ جمع است. ⁨il était⁩ ماضی استمراری است و ⁨il a été⁩ ماضی نقلی.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "rule": "passe-simple.etre-singular-is-fut"
+    },
+    {
+     "id": "b2-ps-5",
+     "kind": "cloze",
+     "prompt": {
+      "en": "In this sentence, « vit » is the passé simple of which verb?",
+      "fr": "Dans cette phrase, « vit » est le passé simple de quel verbe ?",
+      "fa": "در این جمله، ⁨vit⁩ ماضی سادهٔ ادبی کدام فعل است؟",
+      "ar": null
+     },
+     "stimulus": {
+      "fr": "Soudain, elle vit la mer."
+     },
+     "options": [
+      {
+       "fr": "vivre"
+      },
+      {
+       "fr": "venir"
+      },
+      {
+       "fr": "avoir"
+      },
+      {
+       "fr": "voir"
+      }
+     ],
+     "answer": 3,
+     "level": "B2",
+     "conceptIds": [
+      "gram.past.passe-simple"
+     ],
+     "explain": {
+      "en": "« Vit » is the passé simple of « voir » and also the present of « vivre ». Here it has a direct object, « la mer », and « vivre » does not take one: she saw the sea. « Venir » would be « vint », « avoir » would be « eut ».",
+      "fr": "« Vit » est le passé simple de « voir » et aussi le présent de « vivre ». Ici il a un complément d’objet, « la mer », et « vivre » n’en prend pas : elle a vu la mer. « Venir » donnerait « vint », « avoir » donnerait « eut ».",
+      "fa": "⁨vit⁩ هم ماضی سادهٔ ⁨voir⁩ است و هم حال ⁨vivre⁩. اینجا مفعول دارد، ⁨la mer⁩، و ⁨vivre⁩ مفعول مستقیم نمی‌گیرد. ⁨venir⁩ می‌شد ⁨vint⁩ و ⁨avoir⁩ می‌شد ⁨eut⁩.",
+      "ar": null
+     },
+     "review": {
+      "state": "unreviewed",
+      "by": null,
+      "at": null
+     },
+     "uncertain": {
+      "confidence": "medium",
+      "kind": "other",
+      "doubt": "« Vit » is the passé simple of « voir » and the present of « vivre ». The direct object « la mer » is what forces « voir », because « vivre » does not take a direct object. If « elle vit la mer » can be read as « vivre », the item has two answers and should be dropped. This is the item whose correct answer depends on a homograph."
+     },
+     "rule": "passe-simple.vit-is-voir-when-transitive"
+    }
+   ]
   }
- ]
+ ],
+ "reviewNote": "**Unreviewed is the default for anything generated.** An exercise earns the removal of its marker; it does not start without one. Every item carries `review`, and a `state` of \"unreviewed\" means no person has read it — which is true of every item in this file. The glosses have carried this marker since 2026-10-02 and the exercises did not, which was an inconsistency in the project's own standard rather than a difference between the two kinds of content.\nEvery item also carries an Arabic SLOT, present and empty. `null` means the slot exists and nobody has filled it — not that the language was forgotten, and not that three languages is the full set. The product's own claim is four. Arabic is not machine-filled and will not be."
 }

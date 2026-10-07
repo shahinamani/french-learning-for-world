@@ -1,0 +1,5 @@
+{
+ "version": 1,
+ "note": "Decisions from the content review tool, applied by scripts/apply-review.py. Committed deliberately: who approved what, and when, is exactly the kind of record this project exists to be honest about. EMPTY because nobody has reviewed anything yet — the tool exists, the review has not happened.",
+ "decisions": []
+}

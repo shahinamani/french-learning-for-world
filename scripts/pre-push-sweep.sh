@@ -15,12 +15,18 @@ if ! ./.githooks/pre-commit >/dev/null 2>&1; then say "   FAIL"; fail=1; else sa
 say "2. tool attribution in any commit message"
 if ! bash scripts/check-commit-messages.sh >/dev/null; then say "   FAIL"; fail=1; else say "   clean"; fi
 
+# The optional backslash is not decoration. This pattern read `@gmail\.` as
+# "gmail then a literal dot", so an address written for a REGEX — which is how a
+# test asserts on one — had a backslash where the dot was expected and went
+# straight through. One tracked test file carried the address that way for as
+# long as the file existed. Found on 2026-10-06 while the step was refusing the
+# same address spelled plainly three lines away in another file.
 say "3. personal data in tracked files (the step that caught this)"
 if grep -rqnEi --exclude-dir=.git --exclude-dir=node_modules \
-     '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\.[a-z]+' . ; then
+     '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\\?\.[a-z]+' . ; then
   say "   FAIL — an email address appears in a tracked file:"
   grep -rnEi --exclude-dir=.git --exclude-dir=node_modules \
-    '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\.[a-z]+' . | sed 's/^/     /'
+    '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\\?\.[a-z]+' . | sed 's/^/     /'
   fail=1
 else say "   clean"; fi
 

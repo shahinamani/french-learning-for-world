@@ -89,6 +89,15 @@ export function ExamPaperRoute() {
         <p className="muted"><strong>{t('thisPractice')}</strong>{' '}
           <Localised field={paper.practiceNote} /></p>
         <p className="muted">{t('source')}: <Localised field={paper.official.source} /></p>
+        {/* Before they sit it, not after. The glosses have carried this marker
+            since 2026-10-02; the exercises carried nothing, and a learner who
+            has seen the gloss marker reasonably concludes its absence means
+            reviewed. Unevenly applied honesty is worse than none. */}
+        {paper.items.some((it) => it.review?.state !== 'approved') && (
+          <p className="muted" data-testid="paper-unreviewed">
+            <strong>{t('itemUnreviewed')}.</strong>{' '}{t('itemsUnreviewed')}
+          </p>
+        )}
         {anyUntranslated([paper.official.passNote, paper.practiceNote], settings.ui) && (
           <p className="muted" data-testid="not-translated">{t('notTranslatedHere')}</p>
         )}

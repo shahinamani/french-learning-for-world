@@ -1,0 +1,214 @@
+<!doctype html>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Content review</title>
+<!--
+  One reviewer, batches of twenty, a laptop, two hours at a stretch.
+
+  Deliberately plain: no framework, no build step, no dependency on the
+  application's own code. `tests/review-tool-is-dev-only.test.js` forbids
+  anything under web/src from mentioning this endpoint, so the review screen
+  cannot be part of the app — and that turns out to be the right constraint
+  anyway. A reviewer needs the item, the answer, the explanation and four keys.
+
+  No inline editing. The first batch exists to find out what the notes look
+  like; if they are mostly "change this one word", editing earns its extra hours.
+-->
+<style>
+  :root { --ink:#16181d; --dim:#5b6472; --line:#d8dde5; --bg:#fbfcfd;
+          --ok:#0a7d3e; --no:#b3261e; --flag:#8a5a00; --flagbg:#fff6e0; }
+  @media (prefers-color-scheme: dark) {
+    :root { --ink:#e9edf3; --dim:#9aa5b4; --line:#2b313b; --bg:#14161a;
+            --ok:#5bd38c; --no:#ff8a80; --flag:#ffce6a; --flagbg:#2b2310; }
+  }
+  * { box-sizing: border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink); font:16px/1.55 system-ui, sans-serif; }
+  main { max-width: 46rem; margin: 0 auto; padding: 1.5rem 1rem 6rem; }
+  .bar { display:flex; gap:.75rem; align-items:baseline; justify-content:space-between;
+         border-bottom:1px solid var(--line); padding-bottom:.5rem; margin-bottom:1.25rem; }
+  .count { font-variant-numeric: tabular-nums; color:var(--dim); }
+  .meta { color:var(--dim); font-size:.85rem; letter-spacing:.02em; text-transform:uppercase; }
+  .stim { font-size:1.4rem; margin:.5rem 0 1.25rem; }
+  ol.opts { list-style:none; padding:0; margin:0 0 1.25rem; }
+  ol.opts li { padding:.45rem .7rem; border:1px solid var(--line); border-radius:.4rem;
+               margin-bottom:.35rem; display:flex; gap:.6rem; align-items:baseline; }
+  ol.opts li.right { border-color:var(--ok); color:var(--ok); font-weight:600; }
+  .k { color:var(--dim); font-variant-numeric:tabular-nums; min-width:1.2rem; }
+  .expl { border-left:3px solid var(--line); padding-left:.9rem; margin:0 0 1.25rem; }
+  .flag { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
+          border-radius:.4rem; padding:.7rem .9rem; margin:0 0 1.25rem; }
+  .flag strong { display:block; margin-bottom:.25rem; }
+  .gap { color:var(--dim); font-size:.85rem; margin:0 0 1rem; }
+  .rule { border:1px dashed var(--line); border-radius:.4rem; padding:.6rem .85rem;
+          margin:0 0 1rem; font-size:.9rem; color:var(--dim); }
+  .rule b { display:block; color:var(--ink); margin-bottom:.2rem; }
+  /* A cluster of three or more is the largest correlated surface in the content
+     and is shown as one: five items rest on adjective position alone. */
+  .rule.cluster { border:2px solid var(--flag); border-style:solid; }
+  .cluster-list { margin-top:.5rem; padding-top:.5rem; border-top:1px solid var(--line); }
+  .chip-id { display:inline-block; border:1px solid var(--line); border-radius:.3rem;
+             padding:.1rem .4rem; margin:.15rem .1rem; font-size:.8rem;
+             font-variant-numeric:tabular-nums; }
+  .chip-id.is-here { border-color:var(--ink); color:var(--ink); font-weight:600; }
+  .chip-id.is-approved { border-color:var(--ok); color:var(--ok); }
+  .chip-id.is-rejected { border-color:var(--no); color:var(--no); }
+  .pulled { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
+            border-radius:.4rem; padding:.6rem .85rem; margin:0 0 1rem; font-size:.9rem; }
+  .recorded { background:var(--flagbg); border:1px solid var(--flag); color:var(--flag);
+              border-radius:.4rem; padding:.5rem .8rem; margin:0 0 1rem; font-size:.9rem; }
+  textarea { width:100%; min-height:4.5rem; font:inherit; padding:.6rem;
+             border:1px solid var(--line); border-radius:.4rem; background:transparent; color:inherit; }
+  .keys { position:fixed; inset:auto 0 0 0; background:var(--bg); border-top:1px solid var(--line);
+          padding:.6rem 1rem; display:flex; gap:1.25rem; flex-wrap:wrap; justify-content:center;
+          font-size:.85rem; color:var(--dim); }
+  .keys b { color:var(--ink); }
+  .done { text-align:center; padding:3rem 1rem; }
+</style>
+<main>
+  <div class="bar">
+    <span class="meta" id="where">loading…</span>
+    <span class="count" id="count"></span>
+  </div>
+  <div id="item"></div>
+  <label for="note" class="meta">Note — what is wrong, or why you are unsure</label>
+  <textarea id="note" placeholder="Left empty on approve. Required on reject."></textarea>
+</main>
+<div class="keys">
+  <span><b>A</b> approve</span><span><b>R</b> reject</span><span><b>S</b> skip</span>
+  <span><b>N</b> note</span><span><b>C</b> clear</span>
+  <span><b>←</b> <b>→</b> move</span><span><b>Esc</b> leave the note</span>
+</div>
+<script type="module">
+const REVIEWER = new URLSearchParams(location.search).get('by') || 'Shahin Amani';
+const BATCH = Number(new URLSearchParams(location.search).get('batch') || 20);
+const el = (id) => document.getElementById(id);
+let queue = [], i = 0, decided = 0, recorded = {}, pulled = null;
+
+const PAPER = new URLSearchParams(location.search).get('paper');
+const r = await fetch('/__review/queue' + (PAPER ? `?paper=${encodeURIComponent(PAPER)}` : ''))
+  .then((x) => x.json());
+queue = r.queue.slice(0, BATCH); decided = r.decided; recorded = r.recorded ?? {};
+
+function render() {
+  if (i >= queue.length) {
+    el('item').innerHTML = `<div class="done"><h1>Batch done</h1>
+      <p>${queue.length} items, ${decided} decisions recorded in
+      <code>data/review-decisions.json</code>.</p>
+      <p class="gap">Nothing has been written into the content. Run
+      <code>python3 scripts/apply-review.py</code> to apply them.</p></div>`;
+    el('note').style.display = 'none';
+    el('count').textContent = '';
+    return;
+  }
+  const it = queue[i];
+  el('where').textContent = `${it.paperId} · ${it.level} · ${(it.conceptIds || []).join(', ')}`;
+  const banner = pulled && pulled.rule
+    ? `<div class="pulled" data-pulled="${pulled.rule}"><b>You rejected the rule behind
+         this item.</b> ${pulled.next.length
+           ? `${pulled.next.length} other item${pulled.next.length > 1 ? 's' : ''} rest on
+              it and now come next: ${pulled.next.join(', ')}.`
+           : 'No other item in this batch rests on it.'}
+         ${pulled.absent.length
+           ? ` Outside this batch: ${pulled.absent.join(', ')}.` : ''}</div>`
+    : '';
+  el('count').textContent = `${i + 1} of ${queue.length}`;
+  const opts = it.options.map((o, n) => `<li class="${n === it.answer ? 'right' : ''}">
+      <span class="k">${n + 1}</span><span>${o.fr}</span>
+      ${n === it.answer ? '<span class="k">← correct</span>' : ''}</li>`).join('');
+  const flag = it.uncertain ? `<div class="flag"><strong>The writer was unsure —
+      ${it.uncertain.kind}, confidence ${it.uncertain.confidence}</strong>
+      ${it.uncertain.doubt}</div>` : '';
+  const missing = ['en', 'fr', 'fa', 'ar'].filter((l) => !it.explain?.[l]);
+  el('item').innerHTML = `
+    ${banner}
+    ${flag}
+    ${it.ruleSays ? `<div class="rule${(it.siblings?.length ?? 0) >= 3 ? ' cluster' : ''}">
+        <b>The rule it rests on${(it.siblings?.length ?? 0) >= 3
+          ? ` — and on ${it.siblings.length} other items`
+          : ''}</b>
+        ${it.ruleSays.says}
+        ${it.ruleSays.risk ? `<br><i>Risk: ${it.ruleSays.risk}</i>` : ''}
+        ${it.siblings?.length ? `<div class="cluster-list" data-cluster="${it.rule}"
+            data-cluster-size="${it.siblings.length + 1}">
+            <b>${it.siblings.length + 1} items stand or fall together:</b>
+            ${[it.id, ...it.siblings].map((sid) => `<span class="chip-id${
+              sid === it.id ? ' is-here' : ''}${recorded[sid]
+                ? ' is-' + recorded[sid].verdict : ''}">${sid}${
+              recorded[sid] ? ` · ${recorded[sid].verdict}` : ''}</span>`).join(' ')}
+            <br><span class="k">Reject this and they come next. Approve it and you have
+            approved the rule for all of them.</span></div>` : ''}</div>` : ''}
+    <p class="meta">${it.prompt?.en ?? ''}</p>
+    <p class="stim" lang="fr" dir="ltr">${it.stimulus?.fr ?? ''}</p>
+    <ol class="opts">${opts}</ol>
+    <p class="expl">${it.explain?.en ?? '(no English explanation)'}</p>
+    ${missing.length ? `<p class="gap">No explanation in: ${missing.join(', ')} — ${
+      missing.includes('ar') ? 'the Arabic slot is open and will not be machine-filled.' : ''}</p>` : ''}
+    <p class="gap"><span data-item="${it.id}">${it.id}</span> · in the content:
+       <b>${it.review?.state ?? 'unreviewed'}</b></p>
+    ${recorded[it.id] ? `<p class="recorded" data-recorded="${recorded[it.id].verdict}">
+        <b>You recorded: ${recorded[it.id].verdict}</b>${
+          recorded[it.id].note ? ` — ${recorded[it.id].note}` : ''}
+        <br><span class="k">A, R or S overwrites it · C clears it</span></p>`
+      : '<p class="gap" data-recorded="none">Nothing recorded for this item yet.</p>'}`;
+  el('note').style.display = '';
+  // The note of a recorded decision comes back, so a reviewer returning with ←
+  // edits what they wrote rather than retyping it from memory.
+  el('note').value = recorded[it.id]?.note ?? '';
+}
+
+async function decide(verdict, advance = true) {
+  const it = queue[i];
+  const note = el('note').value.trim() || null;
+  if (verdict === 'rejected' && !note) {
+    el('note').focus();
+    el('note').placeholder = 'A rejection needs a reason — what is wrong with it?';
+    el('note').dataset.refused = 'no-reason';
+    return;
+  }
+  await fetch('/__review/decide', {
+    method: 'POST', headers: { 'content-type': 'application/json' },
+    body: JSON.stringify({ itemId: it.id, paperId: it.paperId, verdict, note, by: REVIEWER }),
+  });
+  if (verdict === 'cleared') delete recorded[it.id];
+  else recorded[it.id] = { verdict, note, by: REVIEWER };
+
+  // **A rejected rule is a correlated failure.** Every other item resting on it
+  // is suspect for the same reason, so they come next rather than in three
+  // months. One wrong rule should cost one session.
+  if (verdict === 'rejected' && it.siblings?.length) {
+    const here = new Set(queue.map((q) => q.id));
+    const pull = queue.filter((q, n) => n > i && it.siblings.includes(q.id)
+                                     && !recorded[q.id]);
+    const absent = it.siblings.filter((sid) => !here.has(sid));
+    if (pull.length || absent.length) {
+      queue = [...queue.slice(0, i + 1), ...pull,
+               ...queue.slice(i + 1).filter((q) => !pull.includes(q))];
+      pulled = { rule: it.rule, next: pull.map((q) => q.id), absent };
+    }
+  } else pulled = null;
+  decided = Object.values(recorded).filter((d) => d.verdict !== 'skipped').length;
+  // Clearing does NOT advance: the reviewer cleared it to look at it again.
+  if (advance && verdict !== 'cleared') i += 1;
+  render();
+}
+
+addEventListener('keydown', (e) => {
+  const inNote = document.activeElement === el('note');
+  if (e.key === 'Escape') { el('note').blur(); return; }
+  if (inNote && e.key !== 'Enter') return;
+  if (inNote && e.key === 'Enter' && !e.metaKey && !e.ctrlKey) return;
+  const k = e.key.toLowerCase();
+  const onItem = i < queue.length;
+  if (!onItem && ['a', 'r', 's', 'c'].includes(k)) { e.preventDefault(); return; }
+  if (k === 'a') { e.preventDefault(); decide('approved'); }
+  else if (k === 'r') { e.preventDefault(); decide('rejected'); }
+  else if (k === 's') { e.preventDefault(); decide('skipped'); }
+  else if (k === 'n') { e.preventDefault(); if (onItem) el('note').focus(); }
+  else if (k === 'c') { e.preventDefault(); if (recorded[queue[i]?.id]) decide('cleared'); }
+  // Back one item, and the screen then shows what is recorded for it, so
+  // pressing A there is visibly a change rather than a fresh decision.
+  else if (e.key === 'ArrowLeft') { e.preventDefault(); if (i > 0) { i -= 1; render(); } }
+  else if (e.key === 'ArrowRight') { e.preventDefault(); if (i < queue.length) { i += 1; render(); } }
+});
+render();
+</script>

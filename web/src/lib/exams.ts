@@ -36,6 +36,30 @@ export type ExamItem = {
   level?: Level;
   conceptIds: string[];
   explain: Partial<Record<Locale, string>>;
+  /** Whether a person has read this item. **Unreviewed is what generated content
+   *  is born with** — an exercise earns the removal of its marker, it does not
+   *  start without one. Shown to the learner, because the glosses have shown
+   *  theirs since 2026-10-02 and showing it on one kind of content and not the
+   *  other is worse than showing it on neither: a learner who has seen the
+   *  gloss marker reasonably concludes its absence means reviewed. */
+  review: {
+    state: 'unreviewed' | 'approved' | 'rejected';
+    by: string | null;
+    at: string | null;
+    note?: string | null;
+  };
+  /** Where the writer is NOT sure, and what the doubt is.
+   *
+   *  A flagged item is where a reviewer's six minutes are worth most, so the
+   *  doubt is structured rather than written in prose: "contested among native
+   *  speakers", "a prescriptive rule widely violated" and "I am unsure of the
+   *  register" are different doubts and are reviewed differently. */
+  uncertain?: {
+    confidence: 'low' | 'medium';
+    kind: 'contested-usage' | 'prescriptive-rule-widely-violated'
+        | 'register-unsure' | 'regional-variation' | 'other';
+    doubt: string;
+  } | null;
 };
 
 export type ExamPaper = {
