@@ -22,7 +22,7 @@ import { foldLabel, INVISIBLE, SCRIPT, isolatesBalanced } from './text-identity.
 const LOC = ['en', 'fr', 'fa', 'ar'];
 const R = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const src = R('web/src/lib/i18n.ts');
-const sourceFor = (c) => (c === 'en' || c === 'landingEn' ? src
+const sourceFor = (c) => (c === 'en' || c === 'landingEn' || c === 'nextEn' ? src
   : R(`web/src/lib/locales/${c}.ts`));
 
 function bodyOf(code) {
@@ -81,11 +81,11 @@ function entries(code) {
  * Read from the source, not listed here: a hand-kept copy of the key names is
  * a second place for them to drift.
  */
-const landingEn = entries('landingEn');
-const LANDING = [...landingEn.keys()];
+const optional = new Map([...entries('landingEn'), ...entries('nextEn')]);
+const LANDING = [...optional.keys()];
 
 const dict = Object.fromEntries(LOC.map((c) => [
-  c, c === 'en' ? new Map([...entries('en'), ...landingEn]) : entries(c),
+  c, c === 'en' ? new Map([...entries('en'), ...optional]) : entries(c),
 ]));
 
 test('every dictionary was read whole — not a quote-style subset of itself', () => {
@@ -93,8 +93,8 @@ test('every dictionary was read whole — not a quote-style subset of itself', (
   for (const c of LOC) {
     assert.ok(size[c] > 150, `${c} yielded ${size[c]} values; fix the extraction, not this number`);
   }
-  assert.ok(LANDING.length > 20, `only ${LANDING.length} landing keys were found — `
-    + 'the extraction is missing the landing copy, not the landing copy missing');
+  assert.ok(LANDING.length > 30, `only ${LANDING.length} optional keys were found — `
+    + 'the extraction is missing a group, not the group missing');
 
   const shown = LOC.map((c) => `${c}=${size[c]}`).join(' ');
   // Equal where the page HAS been written, and short by exactly the landing

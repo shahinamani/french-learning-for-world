@@ -24,6 +24,7 @@ import { fold } from '../../lib/fold';
 import { useTick } from '../../hooks/useTick';
 import { Num } from '../../components/Num';
 import { Localised } from '../../components/Localised';
+import { NextActivity } from '../../components/NextActivity';
 import type { Locale } from '../../lib/types';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
@@ -250,8 +251,13 @@ export function FlashcardSession() {
           <p className="empty__body">
             {reviewed > 0 ? `${t('sessionDoneBody')} ${t('reviewed', { n: reviewed })}` : t('nothingDueBody')}
           </p>
-          <Link className="btn btn--primary" to="/learn">{t('learn')}</Link>
         </div>
+        {/* The continuation. `justDid` is passed rather than inferred from the
+            route because only this screen knows whether the learner reviewed a
+            scheduled queue or a single concept — and the concept case must not
+            offer that same concept straight back. The map link lives inside
+            the panel, so "return to the map" is still one press from here. */}
+        <NextActivity justDid={conceptFilter ? 'concept' : 'review'} />
       </div>
     );
   }

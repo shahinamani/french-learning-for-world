@@ -15,6 +15,7 @@ import { emptyState, loadScheduler, SCHEDULER_ID, type Grade } from '../../lib/s
 import { checkAnswer } from '../../lib/answer';
 import type { ReviewRow } from '../../lib/types';
 import { Icon } from '../../components/Icon';
+import { NextActivity } from '../../components/NextActivity';
 import { useSidePanel } from '../../components/SidePanel';
 import { fr as frText } from '../../lib/typography';
 import { reflexivePronoun, verbLabel } from '../../lib/pronominal';
@@ -140,7 +141,12 @@ export function ConjugationDrill() {
             {t('conceptRecord')} <Icon name="chevron" size={12} />
           </button>
         </div>
-      </div></div>
+      </div>
+      {/* A drill is a review of verb forms, so `review` is what was just done —
+          which keeps the panel from offering the due queue straight back when
+          there is anything else worth doing. */}
+      <NextActivity justDid="review" />
+      </div>
     );
   }
 

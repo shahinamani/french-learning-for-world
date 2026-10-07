@@ -135,6 +135,14 @@ const fa: Dict = {
   // test that cares asserts they are all absent or all present — half a
   // translated landing page is worse than an English one, because the reader
   // cannot tell which half they are getting.
+
+  // ── "What next" is deliberately ABSENT, like the landing copy ───────────
+  //
+  // Shahin writes the Farsi himself; it is pasted in unchanged.
+  // Until then the translator falls back to English, which is what every
+  // missing key has always done here. Do NOT fill these from a translation
+  // engine to make a test pass: the test that cares asserts the group is all
+  // present or all absent.
 };
 
 export default fa;

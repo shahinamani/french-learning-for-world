@@ -99,7 +99,12 @@ test('every key the components ask for exists in all four dictionaries', () => {
   // Narrow on purpose: `landing*` keys may be absent from fa and ar and from
   // nowhere else. A missing key anywhere else still fails, and the
   // all-or-nothing rule is enforced in tests/i18n-app.test.js.
-  const landingMayBeAbsent = (key, code) => key.startsWith('landing') && (code === 'fa' || code === 'ar');
+  // Two optional groups now. Named by prefix because that is how they are
+  // named in i18n.ts, and asserted below to be present in English and French so
+  // the exception cannot swallow the fallback the page actually serves.
+  const OPTIONAL = ['landing', 'next'];
+  const landingMayBeAbsent = (key, code) =>
+    OPTIONAL.some((p) => key.startsWith(p)) && (code === 'fa' || code === 'ar');
 
   const missing = [];
   for (const key of [...asked].sort()) {
@@ -114,12 +119,12 @@ test('every key the components ask for exists in all four dictionaries', () => {
   // And the exception must not have swallowed the English, which is what the
   // fallback actually serves. A landing key missing from `landingEn` would
   // render the key's own name on the front page.
-  const landingAsked = [...asked].filter((k) => k.startsWith('landing'));
-  assert.ok(landingAsked.length > 20,
-    `only ${landingAsked.length} landing keys are asked for — the scan missed the page`);
+  const landingAsked = [...asked].filter((k) => OPTIONAL.some((p) => k.startsWith(p)));
+  assert.ok(landingAsked.length > 25,
+    `only ${landingAsked.length} optional keys are asked for — the scan missed a screen`);
   for (const key of landingAsked) {
     assert.match(dicts.en, new RegExp(`\\b${key}\\s*:`),
-      `the landing page asks for ${key} and English does not define it`);
+      `a screen asks for ${key} and English does not define it`);
     assert.match(dicts.fr, new RegExp(`\\b${key}\\s*:`),
       `French has the landing page and is missing ${key}`);
   }
