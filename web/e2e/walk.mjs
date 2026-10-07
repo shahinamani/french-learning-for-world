@@ -1609,6 +1609,15 @@ console.log('\n=== what next ===');
   const kind = await pg.locator('[data-testid="next-activity"]').getAttribute('data-kind');
   ok(`it reaches a decision rather than spinning (${kind})`, !!kind && kind !== 'null');
 
+  // The wording must not claim an assessed level. The band shown is the highest
+  // one this learner has PRACTISED enough for the number to mean something,
+  // which is a way of picking a paper and not a statement about them.
+  if (kind === 'exam') {
+    const w = (await pg.locator('[data-testid="next-why"]').innerText()).toLowerCase();
+    ok('an exam recommendation does not claim an assessed level',
+       w.includes('not an assessed level') || w.includes('not enough practice history'), w);
+  }
+
   const title = (await pg.locator('[data-testid="next-title"]').innerText()).trim();
   const why = (await pg.locator('[data-testid="next-why"]').innerText()).trim();
   ok('it names one activity', title.length > 3, title);

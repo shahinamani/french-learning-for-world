@@ -17,7 +17,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
-  chooseNext, chooseExam, chooseWeakConcept, deriveLevel, LEVELS,
+  chooseNext, chooseExam, chooseWeakConcept, levelFromPractice, LEVELS,
 } from '../web/src/lib/next-activity.ts';
 
 /** A learner with nothing at all. Each test overrides only what it is about. */
@@ -156,19 +156,19 @@ const concepts = [
 test('the level is the highest with enough evidence, not the most reviewed', () => {
   // A learner working at B1 still reviews A1 cards every day. The mode would
   // hold them at A1 for ever.
-  const level = deriveLevel(
+  const level = levelFromPractice(
     [{ conceptId: 'a1.one', reviews: 200 }, { conceptId: 'b1.one', reviews: 4 }], concepts);
   assert.equal(level, 'B1');
 });
 
 test('thin evidence at a level does not count as that level', () => {
-  assert.equal(deriveLevel([{ conceptId: 'b1.one', reviews: 2 }], concepts), null);
-  assert.equal(deriveLevel([{ conceptId: 'b1.one', reviews: 3 }], concepts), 'B1');
+  assert.equal(levelFromPractice([{ conceptId: 'b1.one', reviews: 2 }], concepts), null);
+  assert.equal(levelFromPractice([{ conceptId: 'b1.one', reviews: 3 }], concepts), 'B1');
 });
 
 test('no evidence at all gives null, which is not A1', () => {
-  assert.equal(deriveLevel([], concepts), null);
-  assert.equal(deriveLevel([{ conceptId: 'not.a.concept', reviews: 99 }], concepts), null);
+  assert.equal(levelFromPractice([], concepts), null);
+  assert.equal(levelFromPractice([{ conceptId: 'not.a.concept', reviews: 99 }], concepts), null);
 });
 
 test('an unknown level offers the lowest paper, and says the level is unknown', () => {
@@ -179,7 +179,7 @@ test('an unknown level offers the lowest paper, and says the level is unknown', 
   });
   assert.equal(s.kind, 'exam');
   assert.equal(s.paperId, 'a1', 'start at the bottom rather than guess high');
-  assert.equal(s.levelKnown, false);
+  assert.equal(s.levelFromHistory, false);
 });
 
 test('a known level never offers a paper above it', () => {
@@ -291,7 +291,7 @@ test('a learner accurate at B1 is not read as a beginner', () => {
   });
   assert.equal(s.kind, 'exam');
   assert.equal(s.paperId, 'b1');
-  assert.equal(s.levelKnown, true);
+  assert.equal(s.levelFromHistory, true);
 });
 
 test('without the full log it falls back to the weak list rather than failing', () => {
@@ -302,4 +302,85 @@ test('without the full log it falls back to the weak list rather than failing', 
     papers: [paper('a1', 'A1', 8), paper('b1', 'B1', 12)],
   });
   assert.equal(s.paperId, 'b1');
+});
+
+/* ── A recommendation must never open an empty exercise ───────────────── */
+
+test('a paper with no questions is never recommended', () => {
+  // Nothing ships one today, and "all six have items right now" is a fact about
+  // the content, not a property of the function. A recommendation that opens an
+  // empty paper is worse than no recommendation.
+  assert.equal(chooseExam([paper('empty', 'A1', 0)], new Map(), 'A1'), null);
+  assert.equal(chooseExam([paper('empty', 'A1', 0), paper('real', 'A1', 8)], new Map(), 'A1').id, 'real');
+  assert.equal(chooseNext({ ...base(), papers: [paper('empty', 'A1', 0)] }).kind, 'none');
+});
+
+test('every non-empty suggestion points at work that exists', () => {
+  // The three branches that can open a session, each asserted to carry a
+  // positive quantity — a recommendation of "review 0 cards" is the same fault
+  // as an empty paper.
+  const r = chooseNext({ ...base(), counts: { due: 3, fresh: 0 } });
+  assert.ok(r.count > 0);
+  const n = chooseNext({ ...base(), counts: { due: 0, fresh: 4 } });
+  assert.ok(n.count > 0);
+  const c = chooseNext({
+    ...base(), weak: [{ conceptId: 'c', accuracy: 0.2, reviews: 5 }], material: mat([['c', 2]]),
+  });
+  assert.ok(c.cards > 0, 'a concept is only offered with cards behind it, which is what makes the session non-empty');
+  const e = chooseNext({ ...base(), papers: [paper('p', 'A1', 8)] });
+  assert.ok(e.questions > 0);
+});
+
+/* ── Repeating is marked, for every kind ──────────────────────────────── */
+
+test('a repeated concept is marked, not handed back silently', () => {
+  const s = chooseNext({
+    ...base(),
+    weak: [{ conceptId: 'c.weak', accuracy: 0.4, reviews: 9 }],
+    material: mat([['c.weak', 6]]),
+    justDid: 'concept',
+  });
+  assert.equal(s.kind, 'concept');
+  assert.equal(s.repeat, true, 'the only eligible work is the thing just done, and the screen must say so');
+});
+
+test('a repeated exam is marked', () => {
+  const s = chooseNext({ ...base(), papers: [paper('p1', 'A1', 8)], justDid: 'exam' });
+  assert.equal(s.kind, 'exam');
+  assert.equal(s.repeat, true);
+});
+
+test('a suggestion that is NOT what was just done is never marked a repeat', () => {
+  const s = chooseNext({
+    ...base(), counts: { due: 4, fresh: 0 }, papers: [paper('p1', 'A1', 8)], justDid: 'exam',
+  });
+  assert.equal(s.kind, 'review');
+  assert.equal(s.repeat, false);
+});
+
+test('after an exam, a different paper is preferred over the one just sat', () => {
+  // Attempts are written when a paper is started, so the paper just sat already
+  // has one and the unattempted paper wins on the first tiebreak.
+  const s = chooseNext({
+    ...base(),
+    papers: [paper('sat', 'A1', 8), paper('unsat', 'A1', 8)],
+    attempts: new Map([['sat', 1]]),
+    justDid: 'exam',
+  });
+  assert.equal(s.paperId, 'unsat');
+  assert.equal(s.repeat, true, 'still the same KIND of activity, so still marked');
+});
+
+/* ── The level is a practice heuristic, and the type says so ──────────── */
+
+test('the flag is about history, not proficiency', () => {
+  const thin = chooseNext({ ...base(), concepts, papers: [paper('a1', 'A1', 8)] });
+  assert.equal(thin.levelFromHistory, false, 'no history means no band is claimed');
+  const thick = chooseNext({
+    ...base(), concepts,
+    reviewed: [{ conceptId: 'b1.one', reviews: 10 }],
+    papers: [paper('a1', 'A1', 8), paper('b1', 'B1', 12)],
+  });
+  assert.equal(thick.levelFromHistory, true);
+  assert.equal(thick.level, 'B1');
 });

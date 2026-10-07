@@ -229,14 +229,22 @@ const nextEn = {
   nextReview: 'Review {n} cards that are due',
   nextReviewWhy: 'The scheduler put these in front of you today. Due cards first, always.',
   nextReviewAgain: 'Review {n} cards that are still due',
-  nextReviewAgainWhy: 'There is nothing else to practise yet, and these are still due — so this is the same thing again, on purpose.',
+  // One line, used for a repeat of ANY kind. Shown under the reason, never
+  // instead of it, so the learner is told both what and why-again.
+  nextRepeat: 'Nothing else is eligible right now, so this is the same work again — on purpose, not a loop.',
   nextConcept: 'Practise one weak point',
   nextConceptWhy: 'You are at {pct}% on this, over enough attempts to mean something, and it has {n} cards behind it.',
   nextExam: 'Sit a practice paper',
   // No article before {level}: it is "an A2 paper" and "a B1 paper", and a
   // string cannot know which. Seen as "A A2 paper" in a screenshot.
-  nextExamWhy: 'Level {level}, {n} questions, timed like the real one.',
-  nextExamWhyUnknown: 'No level has been worked out from your record yet, so this is the shortest way in: {n} questions at {level}.',
+  //
+  // And these say PRACTICE HISTORY, not level. Nothing here assesses anybody:
+  // the band is the highest one this learner has practised enough for the
+  // number to mean something, which is a way of picking a paper and not a
+  // statement about them. "Your level is B1" would be a claim this project has
+  // no basis for and no business making.
+  nextExamWhy: 'Level {level}, {n} questions, timed like the real one. {level} is where your practice has been so far — it is not an assessed level.',
+  nextExamWhyUnknown: 'There is not enough practice history yet to suggest a band, so this is the shortest way in: {n} questions at {level}.',
   nextNewCards: 'Start {n} cards you have not seen',
   nextNewCardsWhy: 'Nothing is due and nothing is weak yet. New cards are how the record starts.',
   nextNothing: 'Nothing is waiting for you',

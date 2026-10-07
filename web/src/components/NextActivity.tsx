@@ -100,6 +100,13 @@ export function NextActivity({ justDid = null }: Props) {
       <h2 id="next-h" className="eyebrow">{t('nextHeading')}</h2>
       <p className="next__title" data-testid="next-title">{title}</p>
       <p className="next__why" data-testid="next-why">{why}</p>
+      {/* Shown under the reason and never instead of it, for a repeat of any
+          kind — not only a review. A learner handed their weakest concept back
+          with no explanation cannot tell a considered recommendation from a
+          loop. */}
+      {'repeat' in suggestion && suggestion.repeat && (
+        <p className="next__why" data-testid="next-repeat">{t('nextRepeat')}</p>
+      )}
       <div className="next__actions">
         {suggestion.kind !== 'none' && (
           // `start` rather than the recommendation again: a screenshot showed
@@ -128,9 +135,10 @@ export function NextActivity({ justDid = null }: Props) {
 function describe(s: Suggestion, t: ReturnType<typeof useApp>['t']): { title: string; why: string } {
   switch (s.kind) {
     case 'review':
-      return s.repeat
-        ? { title: t('nextReviewAgain', { n: s.count }), why: t('nextReviewAgainWhy') }
-        : { title: t('nextReview', { n: s.count }), why: t('nextReviewWhy') };
+      return {
+        title: s.repeat ? t('nextReviewAgain', { n: s.count }) : t('nextReview', { n: s.count }),
+        why: t('nextReviewWhy'),
+      };
     case 'concept':
       return {
         title: t('nextConcept'),
@@ -139,7 +147,7 @@ function describe(s: Suggestion, t: ReturnType<typeof useApp>['t']): { title: st
     case 'exam':
       return {
         title: t('nextExam'),
-        why: s.levelKnown
+        why: s.levelFromHistory
           ? t('nextExamWhy', { level: s.level, n: s.questions })
           : t('nextExamWhyUnknown', { level: s.level, n: s.questions }),
       };

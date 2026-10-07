@@ -57,9 +57,10 @@ export type ActivityKind = 'review' | 'concept' | 'exam' | 'new-cards';
 
 export type Suggestion =
   | { kind: 'review'; to: string; count: number; repeat: boolean }
-  | { kind: 'concept'; to: string; conceptId: string; accuracyPct: number; cards: number }
-  | { kind: 'exam'; to: string; paperId: string; level: Level; questions: number; levelKnown: boolean }
-  | { kind: 'new-cards'; to: string; count: number }
+  | { kind: 'concept'; to: string; conceptId: string; accuracyPct: number; cards: number; repeat: boolean }
+  | { kind: 'exam'; to: string; paperId: string; level: Level; questions: number;
+      levelFromHistory: boolean; repeat: boolean }
+  | { kind: 'new-cards'; to: string; count: number; repeat: boolean }
   | { kind: 'none' };
 
 /** Only what this decision needs — deliberately not the real types, so a test
@@ -92,25 +93,32 @@ export type Inputs = {
 };
 
 /**
- * The level to prefer for an exam paper.
+ * Where this learner's PRACTICE HISTORY sits. **Not a proficiency level.**
  *
- * **This product stores no learner level.** `Settings` is `ui`, `meaning`,
- * `theme`, `sound` — there is no placement test and no self-declared level, so
- * any level shown is derived or invented, and inventing one would put a B2
- * paper in front of a beginner on their fourth evening.
+ * The distinction is the whole of this comment. This product stores no learner
+ * level — `Settings` is `ui`, `meaning`, `theme`, `sound`, there is no
+ * placement test and no self-declared level — and nothing here assesses anyone.
+ * What this computes is "the highest CEFR band at which they have practised
+ * enough for the number to mean something", which is a heuristic for choosing
+ * a paper and nothing more. A learner who has drilled thirty B1 cards is not
+ * thereby B1, and the interface must not tell them they are.
  *
- * Derived from what they have actually practised: the HIGHEST level at which
- * they have at least `minReviews` reviews across its concepts. Highest rather
- * than most-reviewed, because a learner working at B1 still reviews A1 cards
- * every day and the mode would hold them at A1 for ever.
+ * `MIN_REVIEWS` is three, which is thin on purpose: it is enough to rule out a
+ * single stray review and not enough to claim anything. Raising it would make
+ * the heuristic slower to move without making it more of an assessment.
  *
- * Returns null when there is not enough evidence, and null means "say nothing
- * about their level" — not "assume A1".
+ * Highest rather than most-reviewed, because a learner working at B1 still
+ * reviews A1 cards every day and the mode would hold them at A1 for ever.
+ *
+ * Returns null when the history is too thin, and **null means say nothing** —
+ * not "assume A1". The caller shows a different sentence for that case.
  */
-export function deriveLevel(
+export const MIN_REVIEWS = 3;
+
+export function levelFromPractice(
   weakOrAll: { conceptId: string; reviews: number }[],
   concepts: { id: string; level: string }[],
-  minReviews = 3,
+  minReviews = MIN_REVIEWS,
 ): Level | null {
   const levelOf = new Map(concepts.map((c) => [c.id, c.level]));
   const byLevel = new Map<string, number>();
@@ -152,8 +160,13 @@ const firstOr = <T,>(list: T[]): T | null => (list.length > 0 ? (list[0] as T) :
  *   4. paper id, ascending — the final tiebreak, so the answer is stable.
  */
 export function chooseExam(
-  papers: Inputs['papers'], attempts: Inputs['attempts'], level: Level | null,
+  all: Inputs['papers'], attempts: Inputs['attempts'], level: Level | null,
 ): Inputs['papers'][number] | null {
+  // A paper with no questions is not an exercise. Nothing ships one today, but
+  // a recommendation that opens an empty paper is worse than no recommendation,
+  // and "all six have items right now" is a fact about the content rather than
+  // a property of this function.
+  const papers = all.filter((p) => p.items.length > 0);
   if (papers.length === 0) return null;
   const want = level ? levelIndex(level) : -1;
 
@@ -215,22 +228,23 @@ function candidates(i: Inputs): Suggestion[] {
       conceptId: concept.conceptId,
       accuracyPct: Math.round(concept.accuracy * 100),
       cards: i.material.get(concept.conceptId)?.cards ?? 0,
+      repeat: false,
     });
   }
 
-  const level = deriveLevel(i.reviewed ?? i.weak, i.concepts);
+  const level = levelFromPractice(i.reviewed ?? i.weak, i.concepts);
   const paper = chooseExam(i.papers, i.attempts, level);
   if (paper) {
     out.push({
       kind: 'exam',
       to: `/practise/exams/${encodeURIComponent(paper.id)}`,
       paperId: paper.id, level: paper.level, questions: paper.items.length,
-      levelKnown: level !== null,
+      levelFromHistory: level !== null, repeat: false,
     });
   }
 
   if ((i.counts?.fresh ?? 0) > 0) {
-    out.push({ kind: 'new-cards', to: '/practise/review', count: i.counts!.fresh });
+    out.push({ kind: 'new-cards', to: '/practise/review', count: i.counts!.fresh, repeat: false });
   }
 
   return out;
@@ -255,8 +269,11 @@ export function chooseNext(i: Inputs): Suggestion {
   const other = list.find((s) => s.kind !== i.justDid);
   if (other) return other;
 
-  // Nothing else is eligible. Repeating is then the honest answer rather than
-  // sending them away — but it is marked, so the screen can say why it is
-  // offering the same thing again instead of looking like a bug.
-  return first.kind === 'review' ? { ...first, repeat: true } : first;
+  // Nothing else is eligible, so repeating is the honest answer rather than
+  // sending them away — but it is MARKED, for every kind and not only reviews,
+  // so the screen says why it is offering the same work again instead of
+  // looking like a loop. The first version marked only `review`, which left a
+  // learner who had just drilled their weakest concept being handed it back
+  // with no explanation at all.
+  return { ...first, repeat: true };
 }
