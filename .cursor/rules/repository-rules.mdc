@@ -109,7 +109,27 @@ twenty minutes before a first change.
 
 ---
 
-## 4. Do not stack pull requests
+## 4. Before a security-sensitive change, read the five
+
+`SECURITY.md` · `AUTHENTICATION.md` · `DATA.md` · `HACK.md` · `CHECKLIST.md`.
+
+They are short and project-specific. Read them before touching storage, the
+service worker, the response headers, the review tool, anything that handles a
+learner's record, or anything that would introduce a server or a credential.
+
+Two things they say that are easy to get wrong here:
+
+- **There is no server, no account and no session.** Most security advice does
+  not apply, and `AUTHENTICATION.md` marks every threshold as **proposed, not
+  enforced** — do not describe any of it as implemented.
+- **The review tool writes to disk.** It is the one write path in the
+  repository, it is dev-only by three independent assertions, and any change
+  that adds another repeats that analysis first.
+
+`CHECKLIST.md` records what is implemented, partial, missing or not applicable,
+with evidence. **A passing build is not proof a control works.**
+
+## 5. Do not stack pull requests
 
 Branch from `main`. A pull request whose base is another branch can report
 success and deliver nothing: that happened on 2026-10-03, and `main` was missing
