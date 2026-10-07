@@ -22,7 +22,8 @@ import { foldLabel, INVISIBLE, SCRIPT, isolatesBalanced } from './text-identity.
 const LOC = ['en', 'fr', 'fa', 'ar'];
 const R = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const src = R('web/src/lib/i18n.ts');
-const sourceFor = (c) => (c === 'en' ? src : R(`web/src/lib/locales/${c}.ts`));
+const sourceFor = (c) => (c === 'en' || c === 'landingEn' ? src
+  : R(`web/src/lib/locales/${c}.ts`));
 
 function bodyOf(code) {
   const text = sourceFor(code);
@@ -69,17 +70,44 @@ function entries(code) {
   return out;
 }
 
-const dict = Object.fromEntries(LOC.map((c) => [c, entries(c)]));
+/**
+ * The landing page's copy is a SEPARATE object in i18n.ts, `landingEn`, because
+ * it is the only part of the dictionary a locale is allowed not to have:
+ * absence means nobody has written that page in that language, and the page
+ * then shows English behind a marker rather than a machine translation. So the
+ * English dictionary for comparison purposes is core + landing, and Farsi and
+ * Arabic are legitimately shorter by exactly the landing keys.
+ *
+ * Read from the source, not listed here: a hand-kept copy of the key names is
+ * a second place for them to drift.
+ */
+const landingEn = entries('landingEn');
+const LANDING = [...landingEn.keys()];
+
+const dict = Object.fromEntries(LOC.map((c) => [
+  c, c === 'en' ? new Map([...entries('en'), ...landingEn]) : entries(c),
+]));
 
 test('every dictionary was read whole — not a quote-style subset of itself', () => {
-  const sizes = LOC.map((c) => dict[c].size);
-  for (const [i, n] of sizes.entries()) {
-    assert.ok(n > 150, `${LOC[i]} yielded ${n} values; fix the extraction, not this number`);
+  const size = Object.fromEntries(LOC.map((c) => [c, dict[c].size]));
+  for (const c of LOC) {
+    assert.ok(size[c] > 150, `${c} yielded ${size[c]} values; fix the extraction, not this number`);
   }
-  assert.equal(new Set(sizes).size, 1,
-    `the four dictionaries read as ${LOC.map((c, i) => `${c}=${sizes[i]}`).join(' ')} — ` +
-    'unequal counts mean the reader is missing values in one language, which is how ' +
-    '13 French strings went unchecked');
+  assert.ok(LANDING.length > 20, `only ${LANDING.length} landing keys were found — `
+    + 'the extraction is missing the landing copy, not the landing copy missing');
+
+  const shown = LOC.map((c) => `${c}=${size[c]}`).join(' ');
+  // Equal where the page HAS been written, and short by exactly the landing
+  // keys where it has not. Not a loosened assertion: a Farsi dictionary missing
+  // one ordinary string still fails, and one missing 29 of the 30 landing keys
+  // fails too, because half a translated landing page is worse than none.
+  assert.equal(size.fr, size.en,
+    `French must carry every English string — read as ${shown}`);
+  for (const c of ['fa', 'ar']) {
+    assert.ok(size[c] === size.en || size[c] === size.en - LANDING.length,
+      `${c} must have every string, or every string except the ${LANDING.length} `
+      + `landing ones — read as ${shown}`);
+  }
 });
 
 // ── Collisions, per language ──────────────────────────────────────────────
@@ -122,14 +150,41 @@ test('no two interface strings read identically in a language where English keep
 });
 
 // ── Script, letterforms and invisible characters ──────────────────────────
+/**
+ * The one value that is Latin script in every language, on purpose.
+ *
+ * Shahin's decision of 2026-10-07: the name a visitor typed is the name they
+ * read. « French ma vie » is the domain and the product's name, so it is a
+ * proper noun and not a string to translate — it used to be rendered as
+ * «Apprendre le français pour le monde» in French and translated again in
+ * Persian and Arabic, so the site called itself four different things.
+ *
+ * The exception is pinned to the exact expected value rather than to the key,
+ * so it cannot be widened later into a hole that any English string fits
+ * through. The brand name is rendered with dir="ltr" in the Shell, which is
+ * what keeps a Latin run from reordering against the Arabic around it.
+ */
+const PROPER_NOUNS = { appName: 'French ma vie' };
+
 test('every Persian and Arabic string is actually in Arabic script', () => {
   const bad = [];
   for (const c of ['fa', 'ar']) {
     for (const [k, v] of dict[c]) {
+      if (k in PROPER_NOUNS) continue;
       if (v.trim() && !SCRIPT.arabic.test(v)) bad.push(`${c}.${k}: "${v}"`);
     }
   }
   assert.deepEqual(bad, [], 'a value left in English or French under an RTL locale');
+});
+
+test('the proper-noun exception covers one name and nothing else', () => {
+  for (const [key, expected] of Object.entries(PROPER_NOUNS)) {
+    for (const c of LOC) {
+      assert.equal(dict[c].get(key), expected,
+        `${c}.${key} must be exactly « ${expected} » — the script exception is pinned `
+        + 'to this value, so anything else here is English escaping the check');
+    }
+  }
 });
 
 test('Persian uses Persian letterforms, not the Arabic ones that look like them', () => {

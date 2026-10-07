@@ -5,7 +5,7 @@ import type { Dict } from '../i18n';
 
 const ar: Dict = {
   verbs: 'الأفعال', verbsIntro: 'ابحث عن أي فعل وشاهد كل أزمنته وصيغه. التمرين يبدأ من الجدول مباشرة، وما تخطئ فيه ينضم إلى السجل نفسه.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'شاذّ', regular: 'منتظم', auxiliary: 'الفعل المساعد', imperative: 'الأمر', noImperative: 'لا صيغة أمر لهذا الفعل في الفرنسية المعتادة.', practiseTense: 'تدرّب', yourAnswer: 'إجابتك', check: 'تحقّق', next: 'التالي', correct: 'صحيح.', accentsOnly: 'صحيح، لكن العلامات: {a}', answerIs: 'الإجابة هي {a}',
-  appName: 'تعلّم الفرنسية للعالم',
+  appName: 'French ma vie',
   mainNav: 'الرئيسية',
   accentBar: 'حروف فرنسية',
   exams: 'الامتحانات', questions: '{n} سؤالًا',
@@ -116,6 +116,22 @@ const ar: Dict = {
   mastery_started: 'جارٍ',
   mastery_weak: 'يحتاج عملاً',
   mastery_solid: 'متمكّن',
+
+  // ── The landing page is deliberately ABSENT from this dictionary ─────────
+  //
+  // The `landing*` keys are the only ones a locale is allowed not to have, and
+  // not having them is a statement: nobody has written this page in this
+  // language. The page then shows English with `landingUntranslated` above it,
+  // which is the truth, rather than a machine translation of the one screen a
+  // stranger judges the whole project by.
+  //
+  // Arabic waits for a reviewer. That is a launch condition for this
+  // project, not a backlog item.
+  //
+  // Do NOT fill these in from a translation engine to make a test pass. The
+  // test that cares asserts they are all absent or all present — half a
+  // translated landing page is worse than an English one, because the reader
+  // cannot tell which half they are getting.
 };
 
 export default ar;

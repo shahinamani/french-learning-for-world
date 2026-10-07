@@ -1357,6 +1357,188 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
   await c.close();
 }
 
+/* ── The front door ───────────────────────────────────────────────────────
+ *
+ * Until 2026-10-07 `/` was `<Navigate to="/learn" replace />`, so a stranger
+ * who typed the domain got the study map and read a notice about browser
+ * storage first. The build prerenders this route, so that was also the HTML a
+ * crawler read.
+ *
+ * Four things are checked, and the third is a product decision defended by a
+ * test rather than by memory.
+ */
+console.log('\n=== the front door ===');
+{
+  // 1. A stranger — a profile that has never stored anything — gets the page.
+  const c = await browser.newContext();
+  const pg = await c.newPage(); watch(pg, ' landing');
+  await pg.goto(BASE, { waitUntil: 'networkidle' });
+  ok('a stranger at / gets the landing page', await pg.locator('[data-testid="landing"]').count() === 1);
+  ok('and not the study map', await pg.locator('.map').count() === 0);
+
+  const text = await pg.locator('[data-testid="landing"]').innerText();
+  // What the brief asked a stranger to be able to answer, in order.
+  for (const [what, re] of [
+    ['what this is', /free, open French portal/i],
+    ['which examinations', /DELF.*DALF.*TCF.*TEF/i],
+    ['who it is for', /masters applicants|adult with a date/i],
+    ['the way in', /Start learning/i],
+    ['no account', /No account/i],
+  ]) {
+    ok(`the landing page answers ${what}`, re.test(text), text.slice(0, 160));
+  }
+
+  // 2. The numbers are the measured ones, not round ones somebody typed. Read
+  //    from the generated summary so this cannot drift from the content.
+  const summary = JSON.parse(readFileSync(new URL('../../content/portal-summary.json', import.meta.url), 'utf8'));
+  const fmt = (v) => new Intl.NumberFormat('en').format(v);
+  for (const [what, value] of [
+    ['the verb count', summary.verbs],
+    ['the searchable forms', summary.formsSearchable],
+    ['the flashcard count', summary.cards],
+    ['the exam questions', summary.examItems],
+    ['the concepts with nothing to practise', summary.conceptsWithoutMaterial],
+  ]) {
+    ok(`${what} on the page is the measured one (${fmt(value)})`, text.includes(fmt(value)));
+  }
+  // The trap: concept-material.json advertises a larger flashcard figure
+  // because a card tagged with four concepts counts four times.
+  const inflated = Number((JSON.parse(readFileSync(new URL('../../content/concept-material.json', import.meta.url), 'utf8'))
+    .theOneNumber.match(/· ([\d,]+) flashcards/) ?? [])[1]?.replace(/,/g, ''));
+  ok('the inflated flashcard figure is NOT on the page',
+     !Number.isFinite(inflated) || inflated === summary.cards || !text.includes(`${fmt(inflated)} flashcards`));
+
+  // 3. Honesty at equal weight. Shahin: "Do not let it drift to the bottom
+  //    later." A stylesheet change that demotes it fails here.
+  ok('what is not here yet is on the page', await pg.locator('[data-testid="landing-notyet"]').count() === 1);
+  for (const [what, re] of [
+    ['no listening', /No listening/i],
+    ['no writing or speaking', /No writing or speaking/i],
+    ['the practice ceiling', new RegExp(`Practice stops at ${summary.practiceCeiling}`, 'i')],
+    ['nothing teacher-reviewed', /reviewed by a teacher/i],
+  ]) {
+    ok(`the gaps section states ${what}`, re.test(text));
+  }
+  if (summary.examsUnverified.length) {
+    ok('an unverified examination says NOT VERIFIED',
+       /NOT VERIFIED/.test(text) && text.includes(summary.examsUnverified[0]));
+  }
+
+  const box = async (sel) => pg.locator(sel).boundingBox();
+  const have = await box('[data-testid="landing-today"]');
+  const gaps = await box('[data-testid="landing-notyet"]');
+  ok('the gaps panel is not a footnote: within 15% of the other panel\'s height',
+     !!have && !!gaps && gaps.height > have.height * 0.45,
+     `have ${Math.round(have?.height)}px, gaps ${Math.round(gaps?.height)}px`);
+
+  // 4. The way in works, and pressing it stores nothing — so somebody who
+  //    looked and left is still a stranger next time.
+  await pg.locator('[data-testid="landing-start"]').click();
+  await pg.waitForTimeout(400);
+  ok('Start learning reaches the study map', await pg.locator('.map').count() === 1);
+  const flagAfterLooking = await pg.evaluate(() => { try { return localStorage.getItem('fmv.started'); } catch { return 'threw'; } });
+  ok('pressing Start stores nothing — reading is not starting', flagAfterLooking === null);
+  await pg.goto(BASE, { waitUntil: 'networkidle' });
+  ok('so / still shows the landing page', await pg.locator('[data-testid="landing"]').count() === 1);
+  ok('and the privacy notice has not been shown to somebody who stored nothing',
+     await pg.locator('[data-testid="data-notice"]').count() === 0);
+  await c.close();
+}
+
+{
+  // A returning learner: the flag set the way lib/started.ts sets it.
+  const c = await browser.newContext();
+  const pg = await c.newPage(); watch(pg, ' returning');
+  await pg.goto(BASE, { waitUntil: 'networkidle' });
+  await pg.evaluate(() => localStorage.setItem('fmv.started', '1'));
+  await pg.reload({ waitUntil: 'networkidle' });
+  ok('a returning learner at / gets the dashboard', await pg.locator('.map').count() === 1);
+  ok('and is not sold to again', await pg.locator('[data-testid="landing"]').count() === 0);
+
+  // The swap happens before the first paint, not after the bundle arrives.
+  // boot.js is a separate file because the CSP forbids an inline script; if it
+  // were refused, this attribute would be missing and the pitch would flash.
+  const started = await pg.evaluate(() => document.documentElement.dataset.started);
+  ok('boot.js marked the document before React ran', started === '1');
+  const hiddenByCss = await pg.evaluate(() => {
+    const probe = document.createElement('div');
+    probe.className = 'landing';
+    document.body.append(probe);
+    const display = getComputedStyle(probe).display;
+    probe.remove();
+    return display;
+  });
+  ok('the stylesheet hides landing markup for a started profile', hiddenByCss === 'none');
+
+  // And the notice appears for them, because now they have something to lose.
+  ok('the privacy notice is shown once something has been stored',
+     await pg.locator('[data-testid="data-notice"]').count() === 1);
+  await c.close();
+}
+
+{
+  // A language nobody has written this page in yet.
+  //
+  // Farsi is being written by hand and Arabic waits for a reviewer, so both get
+  // English behind a marker. Found by screenshot, and the reason this is a
+  // check: an English paragraph inside the document's dir="rtl" put every full
+  // stop on the WRONG SIDE of its sentence — ".No account. Nothing to sign up
+  // for" — and Intl, given the reader's locale, rendered 2,387 as «۲٬۳۸۷»,
+  // Persian digits inside an English clause. A page that is in English is in
+  // English, including its direction and its numerals.
+  const summary = JSON.parse(readFileSync(new URL('../../content/portal-summary.json', import.meta.url), 'utf8'));
+  for (const [locale, name] of [['fa-IR', 'Persian'], ['ar-SA', 'Arabic']]) {
+    const c = await browser.newContext({ locale, viewport: { width: 900, height: 1000 } });
+    const pg = await c.newPage(); watch(pg, ` landing ${name}`);
+    await pg.goto(BASE, { waitUntil: 'networkidle' });
+    await pg.waitForTimeout(500);
+
+    ok(`${name}: the interface is right-to-left`,
+       await pg.evaluate(() => document.documentElement.dir) === 'rtl');
+    ok(`${name}: the untranslated marker is shown`,
+       await pg.locator('[data-testid="landing-untranslated"]').count() === 1);
+    ok(`${name}: the English page is rendered left-to-right`,
+       await pg.locator('[data-testid="landing"]').getAttribute('dir') === 'ltr');
+
+    const text = await pg.locator('[data-testid="landing"]').innerText();
+    ok(`${name}: the numbers are Latin digits, not the locale's`,
+       text.includes(new Intl.NumberFormat('en').format(summary.verbs))
+       && !/[٠-٩۰-۹]/.test(text),
+       text.slice(0, 120));
+    await c.close();
+  }
+}
+
+{
+  // Three widths, named by Shahin. The complaint that started this page was
+  // "a phone layout on a wide screen", so the check is not only overflow: the
+  // two panels must sit side by side on a desktop and stack on a phone.
+  for (const [w, h, expect] of [[390, 844, 'stacked'], [768, 1024, 'stacked'], [1440, 900, 'side by side']]) {
+    const c = await browser.newContext({ viewport: { width: w, height: h } });
+    const pg = await c.newPage(); watch(pg, ` landing ${w}`);
+    await pg.goto(BASE, { waitUntil: 'networkidle' });
+    await pg.waitForTimeout(250);
+    const ov = await pg.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    ok(`landing at ${w}px: no horizontal overflow (${ov}px)`, ov <= 1);
+
+    const a = await pg.locator('[data-testid="landing-today"]').boundingBox();
+    const b = await pg.locator('[data-testid="landing-notyet"]').boundingBox();
+    const sideBySide = !!a && !!b && Math.abs(a.y - b.y) < 24 && Math.abs(a.x - b.x) > 40;
+    ok(`landing at ${w}px: the two panels are ${expect}`,
+       sideBySide === (expect === 'side by side'),
+       `today at (${Math.round(a?.x)},${Math.round(a?.y)}), gaps at (${Math.round(b?.x)},${Math.round(b?.y)})`);
+
+    // A headline that wraps to five lines on a phone is a different fault from
+    // overflow and the overflow check cannot see it.
+    const head = await pg.locator('.landing__headline').boundingBox();
+    ok(`landing at ${w}px: the headline is at most 4 lines (${Math.round(head?.height)}px)`,
+       !!head && head.height < 200);
+
+    if (shots) await pg.screenshot({ path: `${shots}/landing-${w}.png`, fullPage: true });
+    await c.close();
+  }
+}
+
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));
 console.log(real.length ? real.slice(0,8).join('\n') : '  none');

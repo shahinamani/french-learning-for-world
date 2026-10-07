@@ -1,0 +1,44 @@
+{
+  "version": 1,
+  "note": "Counted from the content by scripts/build-portal-summary.py. tests/portal-summary.test.js recomputes all of it and fails when this file is stale. No number on the landing page is typed by hand.",
+  "verbs": 2387,
+  "verbsByLevel": {
+    "A1": 200,
+    "A2": 299,
+    "B1": 400,
+    "B2": 497,
+    "C1": 497,
+    "C2": 494
+  },
+  "formsSearchable": 82621,
+  "formsDrilled": 71021,
+  "cards": 22,
+  "cardDecks": 1,
+  "cardLevels": [
+    "A1"
+  ],
+  "papers": 3,
+  "examItems": 28,
+  "examItemsReviewed": 0,
+  "liveConcepts": 261,
+  "conceptsWithMaterial": 65,
+  "conceptsWithoutMaterial": 196,
+  "practiceCeiling": "B2",
+  "examsVerified": [
+    "DALF",
+    "DELF",
+    "TCF"
+  ],
+  "examsUnverified": [
+    "TEF"
+  ],
+  "paperCoverage": {
+    "DELF": [
+      "A1",
+      "A2"
+    ],
+    "TCF": [
+      "B1"
+    ]
+  }
+}
