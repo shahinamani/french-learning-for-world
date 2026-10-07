@@ -11,7 +11,40 @@
 # docs/lessons.md does — and must not be flagged for it.
 set -uo pipefail
 
-PATTERNS='Co-Authored-By|Claude|Anthropic|Generated with|🤖'
+# ── What blocks, and what deliberately does not ──────────────────────────────
+#
+# This list used to be `Co-Authored-By|Claude|Anthropic|Generated with|🤖`, and
+# it was wrong in a way that had not yet cost anything: it matched the bare word
+# Claude, so a commit message reading "CLAUDE.md rewritten" would have been
+# refused — and so would "Generated with the new harvester", which is ordinary
+# English in a repository full of generators.
+#
+# A BLOCKING check must be more precise than an AUDITING one. False positives
+# are free in an audit, because a person reads the output. In a gate they are
+# expensive: a guard that cries wolf gets bypassed with --no-verify, and then it
+# is worth less than nothing, because everyone believes it is still running.
+#
+# So this matches attribution FORMS rather than vendor names:
+#
+#   Co-Authored-By:          the trailer itself, with its colon. Without the
+#                            colon, the sentence "Co-Authored-By has nothing to
+#                            do with this change" is refused.
+#   noreply@anthropic.com    the identity such a trailer carries
+#   🤖                       an emoji that appears in no human commit message
+#   Claude Code              the product name as a phrase, not the word alone
+#   Generated with <vendor>  only when the line names a tool or carries a URL,
+#                            which is what the real trailers look like
+#
+# `CLAUDE.md` is allowed: a filename is not a byline. The full trailer is caught
+# three separate ways, so narrowing loses no coverage of the thing that actually
+# happened here on 2026-10-06.
+#
+# The portable reference for other repositories is
+# ~/agent-messages/attribution-guard/, with a self-test that asserts both
+# directions — including that ordinary English passes, which is the half that
+# decides whether a guard survives.
+VENDORS='Claude|Anthropic|Copilot|Cursor|ChatGPT|OpenAI|GPT-[0-9]|Gemini|Codex|Devin|Windsurf|Codeium|Aider'
+PATTERNS="Co-Authored-By:|noreply@anthropic\.com|Claude Code|🤖|Generated with.*(${VENDORS})|Generated with.*https?://"
 
 # --- one message, before it becomes a commit --------------------------------
 #
