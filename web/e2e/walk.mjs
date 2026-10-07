@@ -1572,6 +1572,82 @@ console.log('\n=== the front door ===');
   }
 }
 
+/* ── Exam results that cannot be shown ────────────────────────────────────
+ *
+ * Every one of these used to render a loading skeleton for ever: `!scored` sat
+ * in the loading condition, and `scored` is only set for a paper AND a
+ * submitted attempt, so the explanatory state underneath was unreachable by
+ * URL. A permanent skeleton tells a learner "wait" about something that is
+ * never going to arrive, and is indistinguishable from a hung network.
+ *
+ * The valid case is covered by the exam section above, which sits a paper and
+ * reads its score; these are the four ways there is nothing to score.
+ */
+console.log('\n=== exam results with nothing to show ===');
+{
+  const c = await browser.newContext();
+  const pg = await c.newPage(); watch(pg, ' results');
+
+  const paperId = 'delf-a1-ce';
+  const cases = [
+    ['no attempt id at all', `/practise/exams/${paperId}/results`, 'results-missing'],
+    ['an attempt id from another device', `/practise/exams/${paperId}/results?a=nope-not-here`, 'results-missing'],
+    ['a paper that does not exist', '/practise/exams/not-a-paper/results?a=x', 'results-no-paper'],
+  ];
+  for (const [what, hash, expect] of cases) {
+    await go(pg, hash);
+    await pg.waitForTimeout(700);
+    const shown = await pg.locator(`[data-testid="${expect}"]`).count();
+    ok(`${what}: explains itself instead of loading for ever`, shown === 1,
+       `looked for ${expect}, page says "${(await pg.locator('main').innerText()).trim().slice(0, 60)}"`);
+    ok(`${what}: no permanent skeleton`,
+       await pg.locator('[data-testid="results-loading"]').count() === 0);
+    const links = await pg.locator('main a').count();
+    ok(`${what}: offers a way on (${links} links)`, links >= 1);
+  }
+
+  // Writing a stored attempt means writing the key the app reads:
+  // `flw:u:<userId>:exam:<attemptId>`. The first version of these two checks
+  // derived the prefix by splitting some other key on the word "settings",
+  // which produced a key nothing reads — so the malformed case passed for the
+  // wrong reason (not found, rather than found and rejected) and the unfinished
+  // case failed outright. The user id is read from where the app keeps it.
+  await go(pg, '/learn');
+  const wrote = await pg.evaluate(() => {
+    // The active profile id, from where session.ts keeps it. A learner who has
+    // only looked at the map has written nothing under `flw:u:<id>:`, so
+    // scanning for such a key finds nothing and the probe writes where the app
+    // will never read — which is how the first two versions of this check
+    // passed and failed for reasons that had nothing to do with the fix.
+    const userId = localStorage.getItem('flw:lastProfile')
+      || (JSON.parse(localStorage.getItem('flw:profiles') || '[]')[0] || {}).id;
+    if (!userId) return null;
+    const put = (id, value) => localStorage.setItem(`flw:u:${userId}:exam:${id}`, value);
+    put('broken', '{"paperId":"delf-a1-ce"}');              // no endsAt: fails the shape check
+    put('unfinished', JSON.stringify({
+      attemptId: 'unfinished', paperId: 'delf-a1-ce', startedAt: Date.now(),
+      endsAt: Date.now() + 600000, answers: {}, submittedAt: null,
+    }));
+    return userId;
+  });
+  ok('the probe could write where the app reads', !!wrote, `userId=${wrote}`);
+  await go(pg, `/practise/exams/${paperId}/results?a=broken`);
+  await pg.waitForTimeout(700);
+  ok('a malformed stored attempt explains itself too',
+     await pg.locator('[data-testid="results-missing"]').count() === 1);
+
+  // An attempt that exists and was never submitted: offer the paper, not an
+  // explanation of nothing.
+  await go(pg, `/practise/exams/${paperId}/results?a=unfinished`);
+  await pg.waitForTimeout(700);
+  ok('an unfinished attempt offers to resume rather than scoring nothing',
+     await pg.locator('[data-testid="results-unfinished"]').count() === 1);
+  const resume = await pg.locator('[data-testid="results-resume"]').getAttribute('href');
+  ok('and the resume link carries the attempt id',
+     (resume || '').includes('/sit?a=unfinished'), resume || '(none)');
+  await c.close();
+}
+
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));
 console.log(real.length ? real.slice(0,8).join('\n') : '  none');

@@ -107,16 +107,79 @@ export function ExamResults() {
   }, [paper, attempt, userId]);
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
-  if (paper === undefined || attempt === undefined || !scored) {
-    return <div className="page"><div className="skeleton skeleton--title" /></div>;
+
+  // ── Which of these is true decides the screen, and the ORDER is the fix ──
+  //
+  // `!scored` used to sit in the loading condition below, with the not-found
+  // branch after it. `scored` is only ever set for a paper AND a submitted
+  // attempt, so every case where there is nothing to score — no `?a=` in the
+  // URL, an id for an attempt on another device, a malformed stored value, a
+  // paper id we do not ship, an attempt the learner never submitted — fell into
+  // the first branch and stayed on a loading skeleton for ever. The explanatory
+  // state below it was unreachable by URL.
+  //
+  // A permanent skeleton is not one of the four honest states: it tells a
+  // learner "wait" about something that is never going to arrive, and it is
+  // indistinguishable from a hung network. Each case now says what happened and
+  // offers a way on.
+
+  // Genuinely still loading: the papers and the stored attempt are being read.
+  if (paper === undefined || attempt === undefined) {
+    return <div className="page" data-testid="results-loading">
+      <div className="skeleton skeleton--title" /><div className="skeleton skeleton--text" />
+    </div>;
   }
-  if (paper === null || attempt === null) {
+
+  // A paper id that is not one we ship — a typo, or a link from a build that
+  // had different content.
+  if (paper === null) {
     return (
-      <div className="page"><div className="empty" data-testid="results-missing">
-        <p className="empty__title">{t('attemptNotFound')}</p>
+      <div className="page"><div className="empty" data-testid="results-no-paper">
+        <p className="empty__title">{t('paperNotFound')}</p>
         <Link className="btn btn--primary" to="/practise/exams">{t('exams')}</Link>
       </div></div>
     );
+  }
+
+  // No attempt id in the URL, an unknown one, or a stored value that failed
+  // `loadAttempt`'s shape check. All three are the same thing to a learner:
+  // this result is not on this device.
+  if (attempt === null) {
+    return (
+      <div className="page"><div className="empty" data-testid="results-missing">
+        <p className="empty__title">{t('attemptNotFound')}</p>
+        <p className="empty__body">{t('attemptNotFoundBody')}</p>
+        <Link className="btn btn--primary" to={`/practise/exams/${encodeURIComponent(paper.id)}`}>
+          {t('backToPaper')}
+        </Link>
+        <Link className="btn btn--sm" to="/practise/exams">{t('exams')}</Link>
+      </div></div>
+    );
+  }
+
+  // An attempt that exists and was never submitted. There is nothing to score,
+  // and the useful thing is the paper itself rather than an explanation.
+  if (!attempt.submittedAt) {
+    return (
+      <div className="page"><div className="empty" data-testid="results-unfinished">
+        <p className="empty__title">{t('attemptInProgress')}</p>
+        <Link className="btn btn--primary" data-testid="results-resume"
+              to={`/practise/exams/${encodeURIComponent(paper.id)}/sit?a=${encodeURIComponent(attempt.attemptId)}`}>
+          {t('resume')}
+        </Link>
+        <Link className="btn btn--sm" to={`/practise/exams/${encodeURIComponent(paper.id)}`}>
+          {t('backToPaper')}
+        </Link>
+      </div></div>
+    );
+  }
+
+  // Everything is present; scoring is synchronous in an effect, so this is one
+  // paint at most rather than a state a learner waits in.
+  if (!scored) {
+    return <div className="page" data-testid="results-loading">
+      <div className="skeleton skeleton--title" /><div className="skeleton skeleton--text" />
+    </div>;
   }
 
   const label = (id: string) => {
