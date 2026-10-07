@@ -14,6 +14,7 @@
 import { useState } from 'react';
 import { useApp, useUserId } from '../app-context';
 import { userKey } from '../lib/session';
+import { hasStarted } from '../lib/started';
 
 const SEEN = 'dataNoticeSeen';
 
@@ -81,6 +82,28 @@ export function DataNotice() {
   const userId = useUserId();
   const [dismissed, setDismissed] = useState(() => seen(userId));
   if (dismissed) return null;
+  // Not on arrival — but only where waiting is safe, and that qualification is
+  // the whole of this comment.
+  //
+  // The notice is about the durability of a learner's work. Until something has
+  // been stored it is a paragraph about nothing, which is how it came to be the
+  // first thing a stranger read on the front page. So with working storage it
+  // waits for `hasStarted()`: the moment a record is first written — a rating,
+  // a drill answer, an exam attempt, an import — and somebody who read a verb
+  // table and left is never shown it, because they have nothing to lose.
+  //
+  // WHERE STORAGE DOES NOT WORK IT CANNOT WAIT. A private window, or a browser
+  // with site data blocked, means nothing this learner does tonight will
+  // survive the tab — and for them the notice is not premature, it is already
+  // overdue. This exact person was hidden from once before, by a first version
+  // that read "cannot read storage" as "already seen", and web/e2e/walk.mjs has
+  // asserted ever since that they are told. Gating on `hasStarted()` alone
+  // reintroduced that fault within the hour, because `hasStarted()` answers
+  // false when it cannot read — and the walk caught it.
+  //
+  // So: defer when storage works, never when it does not. The full text stays
+  // permanently in Settings either way.
+  if (storageWorks() && !hasStarted()) return null;
   return (
     <section className="card card--raised" data-testid="data-notice"
              aria-labelledby="data-notice-h">

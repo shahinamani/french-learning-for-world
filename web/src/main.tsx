@@ -1,6 +1,6 @@
 import { StrictMode, Suspense, lazy } from 'react';
 import { createRoot } from 'react-dom/client';
-import { HashRouter, Routes, Route, Navigate } from 'react-router';
+import { HashRouter, Routes, Route } from 'react-router';
 import { AppProvider } from './app-context';
 import { Shell } from './components/Shell';
 import { Learn } from './routes/Learn';
@@ -14,10 +14,17 @@ import { VerbDetail } from './features/verbs/VerbDetail';
 import { ConjugationDrill } from './features/verbs/Conjugation';
 import { Stub, NotFound } from './routes/Stub';
 import { LevelSkill } from './routes/LevelSkill';
+import { Home } from './routes/Home';
 
 // Exams is the largest section and no screen needs it until a learner asks for
-// it, so it is a lazy chunk. With 8 026 bytes of headroom left against the
-// 150 KB budget, a section this size in the first load would have spent it.
+// it, so it is a lazy chunk: a section this size in the first load would spend
+// most of what is left of the 150 KB budget.
+//
+// This comment used to state the headroom in bytes. It was typed once, by
+// somebody who had measured it that day, and by the time anybody checked it was
+// wrong — understating the headroom, which is the direction that makes people
+// decline changes they could afford. The figure now lives in
+// scripts/budget.mjs, which measures it on every build and prints it.
 const ExamList = lazy(() => import('./features/exams/ExamList').then((m) => ({ default: m.ExamList })));
 const ExamPaperRoute = lazy(() => import('./features/exams/ExamPaper').then((m) => ({ default: m.ExamPaperRoute })));
 const ExamSit = lazy(() => import('./features/exams/ExamSit').then((m) => ({ default: m.ExamSit })));
@@ -40,7 +47,13 @@ function AppRoutes() {
   return (
     <Routes>
       <Route path="/" element={<AppProvider><Shell /></AppProvider>}>
-        <Route index element={<Navigate to="/learn" replace />} />
+        {/* Was `<Navigate to="/learn" replace />`. A stranger who typed the
+            domain got the study map, and the first thing they read was a
+            notice about browser storage — and because the build prerenders
+            this route, that was also the HTML a crawler read. Home shows the
+            landing page to a stranger and the dashboard to somebody who has
+            studied here; see routes/Home.tsx for how it decides. */}
+        <Route index element={<Home />} />
         <Route path="about" element={<About />} />
         <Route path="learn" element={<Learn />} />
         <Route path="learn/concept/:id" element={<ConceptRoute />} />

@@ -10,6 +10,11 @@
  */
 import { openDB, type DBSchema, type IDBPDatabase } from 'idb';
 import type { ReviewRow, CardState } from './types';
+// Every function below that WRITES calls markStarted(). It is called here, at
+// the four places a record is actually created, rather than when a learner
+// presses a button — pressing "Start learning" stores nothing, and somebody who
+// browsed a verb table and left has not started.
+import { markStarted, clearStarted } from './started';
 
 interface FlwDB extends DBSchema {
   reviews: {
@@ -51,6 +56,7 @@ function db() {
 export async function putCardState(userId: string, cardKey: string, state: CardState) {
   if (!userId) throw new Error('putCardState without a user id');
   await (await db()).put('cards', { ...state, userId, cardKey });
+  markStarted();
 }
 
 export async function getCardState(userId: string, cardKey: string) {
@@ -77,6 +83,7 @@ export async function appendReview(row: ReviewRow, nextState: CardState) {
     tx.objectStore('cards').put({ ...nextState, userId: row.userId, cardKey: row.cardKey }),
     tx.done,
   ]);
+  markStarted();
 }
 
 export async function reviewsForUser(userId: string, limit = 500): Promise<ReviewRow[]> {
@@ -133,6 +140,10 @@ export async function importForUser(
     written++;
   }
   await tx.done;
+  // An imported history is studying here, even though none of it happened on
+  // this device. Without this, somebody restoring six months of work on a new
+  // laptop would be greeted by the page that explains what this site is.
+  if (added || written) markStarted();
   return { rows: added, rowsSkipped: skipped, cards: written };
 }
 
@@ -147,4 +158,7 @@ export async function eraseUser(userId: string) {
   let cc = await tx.objectStore('cards').index('by-user-due').openCursor(range);
   while (cc) { await cc.delete(); cc = await cc.continue(); }
   await tx.done;
+  // Somebody who erased their work is a stranger again, and that is not a
+  // euphemism: there is nothing on this device to show them a dashboard about.
+  clearStarted();
 }

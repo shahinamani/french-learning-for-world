@@ -5,7 +5,7 @@ import type { Dict } from '../i18n';
 
 const fa: Dict = {
   verbs: 'فعل‌ها', verbsIntro: 'هر فعلی را جست‌وجو کنید و همه‌ی زمان‌ها و وجه‌های آن را ببینید. تمرین مستقیم از همین جدول انجام می‌شود و خطاهای شما به همان سابقه‌ی همیشگی می‌پیوندد.', verbSearchPlaceholder: 'être، prendre، allons…', irregular: 'بی‌قاعده', regular: 'باقاعده', auxiliary: 'فعل کمکی', imperative: 'امری', noImperative: 'این فعل در فرانسه‌ی رایج وجه امری ندارد.', practiseTense: 'تمرین', yourAnswer: 'پاسخ شما', check: 'بررسی', next: 'بعدی', correct: 'درست است.', accentsOnly: 'درست بود، اما علامت‌ها: {a}', answerIs: 'پاسخ درست {a} است',
-  appName: 'یادگیری فرانسه برای جهان',
+  appName: 'French ma vie',
   mainNav: 'اصلی',
   accentBar: 'نویسه‌های فرانسوی',
   exams: 'آزمون‌ها', questions: '{n} پرسش',
@@ -120,6 +120,21 @@ const fa: Dict = {
   itemsUnreviewed: 'این پرسش‌ها برای همین پروژه نوشته شده‌اند و هیچ آموزگاری آن‌ها را بررسی نکرده است. اگر یکی نادرست به نظرتان می‌رسد، ممکن است نادرست باشد.',
   itemUnreviewed: 'بررسی‌نشده توسط آموزگار',
   itemUncertain: 'نویسنده درباره این یکی مطمئن نبود',
+
+  // ── The landing page is deliberately ABSENT from this dictionary ─────────
+  //
+  // The `landing*` keys are the only ones a locale is allowed not to have, and
+  // not having them is a statement: nobody has written this page in this
+  // language. The page then shows English with `landingUntranslated` above it,
+  // which is the truth, rather than a machine translation of the one screen a
+  // stranger judges the whole project by.
+  //
+  // Shahin is writing the Farsi by hand; it will be pasted in unchanged.
+  //
+  // Do NOT fill these in from a translation engine to make a test pass. The
+  // test that cares asserts they are all absent or all present — half a
+  // translated landing page is worse than an English one, because the reader
+  // cannot tell which half they are getting.
 };
 
 export default fa;

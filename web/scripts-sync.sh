@@ -12,4 +12,11 @@ cp ../content/*.json public/content/
 # page 404'd. A copy that skips a directory reports success exactly like one
 # that does not.
 cp ../content/verbs/*.json public/content/verbs/
+
+# The portal summary is ALSO copied into src/generated, because the landing page
+# imports it rather than fetching it: the build-time prerender has to state the
+# real figures, and a fetch has not happened yet when the HTML is written. 847
+# bytes in the bundle buys a first screen whose numbers are not placeholders.
+mkdir -p src/generated
+cp ../content/portal-summary.json src/generated/portal-summary.json
 echo "synced $(ls public/fonts | wc -l) font files, $(ls public/content/*.json | wc -l) content files and $(ls public/content/verbs/*.json | wc -l) verb shards"

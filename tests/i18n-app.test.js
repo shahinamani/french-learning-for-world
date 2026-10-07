@@ -119,16 +119,76 @@ test('the key scanner ignores comments, including colons inside them', () => {
   }
 });
 
-test('every locale defines exactly the English key set', () => {
-  const en = keysOf('en');
-  const expected = [...en].sort();
+/**
+ * The landing page's copy lives in its own object, `landingEn`, and it is the
+ * ONE part of the dictionary a locale is allowed not to have.
+ *
+ * Absence is a statement: nobody has written that page in that language, so the
+ * page shows English with `landingUntranslated` above it. That is the truth,
+ * and it is better than a machine translation of the one screen a stranger
+ * judges the whole project by. Farsi is being written by hand; Arabic waits for
+ * a reviewer, which is a launch condition.
+ *
+ * Read from the source rather than listed here, so the exception cannot drift
+ * from the keys it is about.
+ */
+function landingKeys() {
+  const m = /const landingEn\s*=\s*\{/.exec(src);
+  assert.ok(m, 'landingEn was not found in i18n.ts');
+  const open = src.indexOf('{', m.index + m[0].length - 1);
+  let depth = 0, end = -1;
+  for (let i = open; i < src.length; i++) {
+    if (src[i] === '{') depth++;
+    else if (src[i] === '}') { depth--; if (depth === 0) { end = i; break; } }
+  }
+  const body = src.slice(open + 1, end);
+  const keys = [...body.matchAll(/(?:^|\n)\s*([A-Za-z][A-Za-z0-9_$]*)\s*:/g)].map((x) => x[1]);
+  assert.ok(keys.length > 20, `only ${keys.length} landing keys extracted — fix the extraction`);
+  return keys;
+}
+
+test('every locale defines exactly the English key set, landing copy aside', () => {
+  const expected = [...keysOf('en')].sort();
+  const landing = landingKeys();
   for (const code of LOCALES.filter((c) => c !== 'en')) {
     const keys = keysOf(code);
     const missing = expected.filter((k) => !keys.includes(k));
-    const extra = keys.filter((k) => !expected.includes(k));
+    const extra = keys.filter((k) => !expected.includes(k) && !landing.includes(k));
     assert.deepEqual(missing, [], `${code} is missing keys`);
     assert.deepEqual(extra, [], `${code} has keys English does not`);
   }
+});
+
+test('the landing copy is all present or all absent in a locale', () => {
+  // Half a translated landing page is worse than an English one, because the
+  // reader cannot tell which half they are getting — and `landingTranslated()`
+  // in i18n.ts decides whether to show the "this is English" marker by exactly
+  // this all-or-nothing rule. A locale with 29 of the 30 keys would show no
+  // marker and one English sentence in the middle of a Persian page.
+  const landing = landingKeys();
+  const state = {};
+  for (const code of LOCALES) {
+    const keys = new Set(keysOf(code));
+    const have = landing.filter((k) => keys.has(k));
+    state[code] = have.length;
+    assert.ok(have.length === 0 || have.length === landing.length,
+      `${code} has ${have.length} of ${landing.length} landing strings — it must have `
+      + `all of them or none: missing ${landing.filter((k) => !keys.has(k)).join(', ')}`);
+  }
+  // English holds them in landingEn rather than in `en`, so 0 here is right.
+  assert.equal(state.en, 0, 'the landing copy belongs in landingEn, not in en');
+  assert.equal(state.fr, landing.length, 'French has been written and must stay complete');
+  // Recorded rather than asserted as permanent: when Shahin sends the Farsi it
+  // becomes landing.length, and this line is what tells the next reader that
+  // the English on those screens is deliberate and not a bug.
+  for (const code of ['fa', 'ar']) {
+    assert.ok(state[code] === 0 || state[code] === landing.length,
+      `${code} is part-translated`);
+  }
+  console.log(`    landing copy: ${landing.length} strings · `
+    + `fr ${state.fr ? 'written' : 'not written'} · `
+    + `fa ${state.fa ? 'written' : 'English behind the marker'} · `
+    + `ar ${state.ar ? 'written' : 'English behind the marker'}`);
 });
 
 test('no locale repeats a key', () => {

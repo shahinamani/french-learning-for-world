@@ -10,7 +10,7 @@ export const LOCALES: Record<Locale, { name: string; dir: 'ltr' | 'rtl' }> = {
 /** `en` is the structural source of truth; the test asserts the other three match its keys. */
 const en = {
   verbs: 'Verbs', verbsIntro: 'Search any verb and see every tense and mood. Practice runs straight from the table, and what you get wrong joins the same record as everything else.', verbSearchPlaceholder: 'être, to take, allons…', irregular: 'irregular', regular: 'regular', auxiliary: 'auxiliary', imperative: 'Imperative', noImperative: 'This verb has no imperative in ordinary French.', practiseTense: 'Practise', yourAnswer: 'Your answer', check: 'Check', next: 'Next', correct: 'Correct.', accentsOnly: 'Right, but the accents: {a}', answerIs: 'The answer is {a}',
-  appName: 'French Learning for World',
+  appName: 'French ma vie',
   mainNav: 'Main',
   accentBar: 'French characters',
   exams: 'Examinations', questions: '{n} questions',
@@ -150,7 +150,82 @@ const en = {
   readNotWritten: 'Read, not written',
 };
 
-export type Dict = typeof en;
+/**
+ * The landing page — the one screen a stranger judges the whole project by.
+ *
+ * Kept as a SEPARATE object from `en` for one reason: these keys are the only
+ * ones in the product that a locale is allowed not to have. Absence means
+ * nobody has written them in that language, which is not the same as a value,
+ * and the page shows `landingUntranslated` and the English instead of
+ * pretending. Farsi is being written by hand; Arabic stays English behind the
+ * marker until a reviewer exists, which is a launch condition and not a
+ * backlog item. Machine-filling either would make the first screen a
+ * four-language claim without the substance behind it.
+ *
+ * NO NUMBER IS WRITTEN INTO THESE STRINGS. Every figure arrives as a
+ * placeholder from content/portal-summary.json, which is generated from the
+ * content and checked by tests/portal-summary.test.js. A typed number on this
+ * page is a claim with nothing behind it, and this repository has shipped one
+ * before (a comment saying 26 KB about a 71 KB file).
+ *
+ * Substitution happens in `translator` below, which is also where bidi
+ * isolation is applied — there is one substitution point in this product and
+ * adding a second here is how a Persian sentence silently reorders.
+ */
+const landingEn = {
+  landingHeadline: 'French for the exam you are preparing for',
+  landingLede: 'A free, open French portal for adults preparing for DELF, DALF, TCF and TEF. Not a game, not a children’s app, and nothing here keeps a streak.',
+  landingAudience: 'Built for masters applicants, professionals and anyone sitting a French examination, anywhere in the world. It assumes you are an adult with a date in your calendar.',
+  landingStart: 'Start learning',
+  landingNoAccount: 'No account. Nothing to sign up for. Your work stays on your device.',
+
+  landingTodayHeading: 'What you can do here today',
+  landingVerbsTitle: '{verbs} verbs, fully conjugated',
+  landingVerbsBody: 'Every tense and mood, and {forms} conjugated forms you can search. Type a form like « allons » and you get « aller ». All six levels, A1 to C2.',
+  landingDrillTitle: 'Conjugation practice',
+  landingDrillBody: 'Practise straight from any verb’s table. What you get wrong is remembered and comes back when you are about to forget it.',
+  landingExamsTitle: '{papers} exam papers, {items} questions',
+  landingExamsBody: '{coverage}. Timed like the real paper and written for this project — these are not past papers and not official material.',
+  landingExamsCaveat: 'Drafted, and not yet checked by a teacher. Every question says so where you answer it.',
+  landingCardsTitle: '{cards} flashcards, {levels}',
+  landingCardsBody: 'One core deck, scheduled by spaced repetition. This is small, and it is the part that most needs to grow.',
+
+  landingNotYetHeading: 'What is not here yet',
+  landingNotYetLede: 'Stated here rather than discovered three screens in.',
+  landingNoListening: 'No listening. This project ships no audio, because none has been obtained under a licence that permits it — and machine speech is not offered as listening practice.',
+  landingNoWriting: 'No writing or speaking practice. Both need a human to mark them, and pretending otherwise would waste the evening you spent on it.',
+  landingCeiling: 'Practice stops at {ceiling}. The verb reference covers C1 and C2; the exercises do not. {without} of {live} grammar and vocabulary points are listed with nothing to practise yet — and each one says so before you click it.',
+  landingUnreviewed: 'No content here has been reviewed by a teacher yet. Everything generated is born marked unreviewed and has to earn the marker’s removal, one item at a time.',
+
+  landingExamsHeading: 'The examinations, honestly',
+  landingExamsVerified: 'Structures for {verified} are recorded first-hand from official candidate papers, each with its source and the date it was read.',
+  landingExamsUnverified: '{unverified} is listed and marked NOT VERIFIED: nobody here has read its official grid, so no figures for it are published.',
+  landingExamsPapers: 'Practice papers today: {coverage}. Nothing is offered for the other levels rather than something thin.',
+
+  landingFooterFree: 'Free and open source. No adverts, no analytics, nothing that follows you.',
+  landingFooterIndependent: 'Independent. Not affiliated with, endorsed by or connected to France Éducation international, the Chambre de commerce et d’industrie de Paris, or any body that administers these examinations. No past paper is reproduced here.',
+  landingFooterPrivacy: 'How your data works',
+  landingUntranslated: 'This page is shown in English. It has not been translated into your language yet, and a machine translation is not offered in its place.',
+};
+
+/** The keys a locale may legitimately not have. Nothing else may be missing. */
+export const LANDING_KEYS = Object.keys(landingEn) as (keyof typeof landingEn)[];
+
+export type Dict = typeof en & Partial<typeof landingEn>;
+
+/** What the translator and the prerender read: English, landing copy included. */
+const enFull: Dict = { ...en, ...landingEn };
+
+/**
+ * Has anybody written the landing page in this language?
+ *
+ * All-or-nothing on purpose: half a translated page is worse than an English
+ * one, because the reader cannot tell which half they are getting.
+ */
+export function landingTranslated(locale: Locale): boolean {
+  const dict = loaded[locale];
+  return !!dict && LANDING_KEYS.every((k) => typeof dict[k] === 'string');
+}
 
 /**
  * English is bundled; the other three are fetched when a learner actually uses
@@ -161,7 +236,7 @@ export type Dict = typeof en;
  * Until a dictionary arrives the translator falls back to English, which is why
  * `en` cannot itself be lazy: the prerendered HTML is rendered with it.
  */
-const loaded: Partial<Record<Locale, Dict>> = { en };
+const loaded: Partial<Record<Locale, Dict>> = { en: enFull };
 const pending: Partial<Record<Locale, Promise<Dict>>> = {};
 
 export function dictionaryFor(locale: Locale): Dict | undefined {
@@ -203,10 +278,10 @@ const FSI = '\u2068';
 const PDI = '\u2069';
 
 export function translator(locale: Locale) {
-  const dict = loaded[locale] ?? en;
+  const dict = loaded[locale] ?? enFull;
   const isolate = LOCALES[locale].dir === 'rtl';
   return (key: keyof Dict, vars?: Record<string, string | number>): string => {
-    let out: string = dict[key] ?? en[key] ?? String(key);
+    let out: string = dict[key] ?? enFull[key] ?? String(key);
     if (vars) for (const [k, v] of Object.entries(vars)) {
       const value = isolate ? `${FSI}${v}${PDI}` : String(v);
       out = out.split(`{${k}}`).join(value);

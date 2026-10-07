@@ -24,7 +24,7 @@ export const LOCALES = Object.freeze({
 export const MEANING_LOCALES = Object.freeze(['fa', 'en', 'ar', 'fr']);
 
 const en = {
-  appName: 'French Learning for World',
+  appName: 'French ma vie',
   tagline: 'Free French practice for everyone. No account, works offline.',
   study: 'Study', browse: 'Browse', progress: 'Progress', about: 'About',
   dueToday: 'Due now', newCards: 'New', learned: 'Learned', totalCards: 'Cards',
@@ -91,7 +91,7 @@ const en = {
 };
 
 const fa = {
-  appName: 'یادگیری فرانسه برای جهان',
+  appName: 'French ma vie',
   tagline: 'تمرین رایگان زبان فرانسه برای همه. بدون حساب کاربری، بدون اینترنت هم کار می‌کند.',
   study: 'مطالعه', browse: 'مرور', progress: 'پیشرفت', about: 'درباره',
   dueToday: 'اکنون برای مرور', newCards: 'جدید', learned: 'آموخته', totalCards: 'کارت‌ها',
@@ -158,7 +158,7 @@ const fa = {
 };
 
 const fr = {
-  appName: 'Apprendre le français pour le monde',
+  appName: 'French ma vie',
   tagline: 'Pratique gratuite du français pour tous. Sans compte, fonctionne hors ligne.',
   study: 'Étudier', browse: 'Parcourir', progress: 'Progrès', about: 'À propos',
   dueToday: 'À réviser', newCards: 'Nouvelles', learned: 'Apprises', totalCards: 'Cartes',
@@ -225,7 +225,7 @@ const fr = {
 };
 
 const ar = {
-  appName: 'تعلّم الفرنسية للعالم',
+  appName: 'French ma vie',
   tagline: 'تدريب مجاني على اللغة الفرنسية للجميع. بلا حساب، ويعمل دون اتصال بالإنترنت.',
   study: 'الدراسة', browse: 'تصفّح', progress: 'التقدّم', about: 'حول',
   dueToday: 'للمراجعة الآن', newCards: 'جديدة', learned: 'محفوظة', totalCards: 'البطاقات',
