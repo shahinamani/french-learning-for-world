@@ -1594,9 +1594,20 @@ console.log('\n=== exam results with nothing to show ===');
     ['an attempt id from another device', `/practise/exams/${paperId}/results?a=nope-not-here`, 'results-missing'],
     ['a paper that does not exist', '/practise/exams/not-a-paper/results?a=x', 'results-no-paper'],
   ];
+  // Wait for the STATE, not for a number of milliseconds.
+  //
+  // The prerendered index.html is the landing page, so until React has rendered
+  // the route every one of these screens still reads "French for the exam you
+  // are preparing for". A fixed 700 ms wait passed on this branch four runs in
+  // a row and failed on the heavier merged tree, reporting the landing headline
+  // — a race, not a regression, and the kind that lands in main and is blamed
+  // on the next change. The assertion below is unchanged; only the waiting is.
+  const settle = (id) => pg.waitForSelector(`[data-testid="${id}"]`, { timeout: 10000 })
+    .then(() => true).catch(() => false);
+
   for (const [what, hash, expect] of cases) {
     await go(pg, hash);
-    await pg.waitForTimeout(700);
+    await settle(expect);
     const shown = await pg.locator(`[data-testid="${expect}"]`).count();
     ok(`${what}: explains itself instead of loading for ever`, shown === 1,
        `looked for ${expect}, page says "${(await pg.locator('main').innerText()).trim().slice(0, 60)}"`);
@@ -1632,14 +1643,14 @@ console.log('\n=== exam results with nothing to show ===');
   });
   ok('the probe could write where the app reads', !!wrote, `userId=${wrote}`);
   await go(pg, `/practise/exams/${paperId}/results?a=broken`);
-  await pg.waitForTimeout(700);
+  await settle('results-missing');
   ok('a malformed stored attempt explains itself too',
      await pg.locator('[data-testid="results-missing"]').count() === 1);
 
   // An attempt that exists and was never submitted: offer the paper, not an
   // explanation of nothing.
   await go(pg, `/practise/exams/${paperId}/results?a=unfinished`);
-  await pg.waitForTimeout(700);
+  await settle('results-unfinished');
   ok('an unfinished attempt offers to resume rather than scoring nothing',
      await pg.locator('[data-testid="results-unfinished"]').count() === 1);
   const resume = await pg.locator('[data-testid="results-resume"]').getAttribute('href');
