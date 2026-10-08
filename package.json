@@ -10,7 +10,7 @@
     "hooks": "git config core.hooksPath .githooks && echo \"hooks installed: $(ls .githooks | tr '\\n' ' ')\""
   },
   "devDependencies": {
-    "playwright": "1.55.0",
-    "axe-core": "4.10.2"
+    "axe-core": "4.10.2",
+    "playwright": "1.55.1"
   }
 }

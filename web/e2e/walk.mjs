@@ -1409,6 +1409,12 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
     const pg = await c.newPage();
     pg.on('pageerror', (e) => pageErrors.push(e.message.slice(0, 80)));
     await pg.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+    // Wait for the rendered map, not for `networkidle`. The prerendered HTML is
+    // the landing page, so until React has run, `.map` is legitimately absent
+    // and this check reports a blank page that is not blank. It passed alone
+    // and failed inside the full run — load, not a regression — which is the
+    // same race already fixed in the results section.
+    await pg.waitForSelector('.map', { timeout: 10000 }).catch(() => {});
 
     ok(`${label}: the application still renders`,
        await pg.locator('.map').count() === 1,

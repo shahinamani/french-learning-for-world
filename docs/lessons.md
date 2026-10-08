@@ -1145,6 +1145,18 @@ they are what makes a fix possible, and they cost twelve lines.
 Still open: if it recurs, the report above should say which of the three died.
 Until then this entry is the record that it happened.
 
+**Postscript, same day.** The diagnostics paid for themselves within the hour,
+on a different crash. Upgrading Playwright 1.55.0 → 1.55.1 left the cached
+browser behind, and the walk died before its first check — but it died saying
+`last section: (before the first section)`, `checks so far: 0`, the server
+answering `HTTP 200`, and `Executable doesn't exist at …chromium_headless_shell-1193`.
+One line to the cause. The original two crashes have not recurred across eleven
+runs since, and **no new evidence has been captured**, so they stay open rather
+than closed — a crash that stops happening is not a crash that was explained.
+One run during that stretch did print the report's closing rule, and the body
+was lost because the loop capturing it only kept the last line: a measurement
+discarded by the thing measuring it, which is its own small lesson.
+
 
 ## The checklist
 

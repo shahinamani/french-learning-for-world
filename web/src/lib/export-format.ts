@@ -14,6 +14,39 @@ import type { ReviewRow, CardState } from './types';
 
 
 
+/**
+ * Bounds on what will be imported, and why these numbers.
+ *
+ * The import path is: `file.text()` → `JSON.parse` → validate → one IndexedDB
+ * transaction. The first step alone decides whether a phone survives: reading a
+ * 500 MB file produces a 500 MB string (up to 1 GB in memory as UTF-16) before
+ * a single character is parsed, and the parsed graph costs that again. "3.9 MB
+ * parses in 13 ms" says nothing about any of that — it was a speed measurement
+ * on a laptop, and it was wrong to read it as a safety one.
+ *
+ * MEASURED, not guessed: a real export is ~800 bytes per review row
+ * (pretty-printed, which is what `exportRows` emits). So:
+ *
+ *   50 MB  ≈ 60 000 rows as this app writes them, or ~125 000 minified —
+ *            27 years at ten reviews a day, or five years at fifty. Beyond any
+ *            legitimate history, and small enough that the string, its parse
+ *            and the transaction fit on a modest phone.
+ *   150 000 rows / 50 000 cards — the record caps exist because a file can be
+ *            minified: the byte cap alone would admit twice as many rows as the
+ *            byte count suggests.
+ *
+ * A file over either limit is REFUSED with its own message, not silently
+ * truncated. Truncating a backup is worse than refusing it: the learner would
+ * believe they had restored their history.
+ *
+ * These are not a security boundary — the file comes from the learner's own
+ * machine — they are a promise that the app degrades by explaining rather than
+ * by dying.
+ */
+export const MAX_IMPORT_BYTES = 50 * 1024 * 1024;
+export const MAX_IMPORT_ROWS = 150_000;
+export const MAX_IMPORT_CARDS = 50_000;
+
 export const EXPORT_FORMAT = 'french-learning-for-world/review-log';
 export const EXPORT_VERSION = 2;
 
@@ -53,6 +86,10 @@ export type ImportReport = {
 export function parseExport(text: string): { rows: Omit<ReviewRow, 'userId'>[];
                                              cards: (CardState & { cardKey: string })[];
                                              version: number } {
+  // Before parsing, not after: `JSON.parse` on a 200 MB string is the step that
+  // fails a low-memory device, and by then the string already exists.
+  if (text.length > MAX_IMPORT_BYTES) throw new Error('tooLarge');
+
   let parsed: unknown;
   try { parsed = JSON.parse(text); } catch { throw new Error('notJson'); }
   if (!parsed || typeof parsed !== 'object') throw new Error('notOurs');
@@ -62,6 +99,11 @@ export function parseExport(text: string): { rows: Omit<ReviewRow, 'userId'>[];
   if (!Number.isFinite(version) || version < 1 || version > EXPORT_VERSION) throw new Error('version');
   const rows = Array.isArray(o.rows) ? o.rows : [];
   const cards = Array.isArray(o.cards) ? o.cards : [];
+  // A minified file passes the byte cap with roughly twice the rows, and every
+  // row becomes an awaited write inside one IndexedDB transaction.
+  if (rows.length > MAX_IMPORT_ROWS || cards.length > MAX_IMPORT_CARDS) {
+    throw new Error('tooLarge');
+  }
   // Two things here are validated because of what READS them later, not
   // because of what the type says. Both were confirmed by test before being
   // fixed (`tests/parse-export.test.js`):

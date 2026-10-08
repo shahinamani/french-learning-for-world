@@ -28,13 +28,13 @@ const SCRIPT = join(root, 'scripts/check-dependencies.sh');
  * Run the gate with a fake `npm` whose `audit` exits with `code`.
  * `node` stays real, because the script pipes JSON through it.
  */
-function withStubbedNpm(code, json = '{"metadata":{"vulnerabilities":{"high":0,"total":0}}}') {
+function withStubbedNpm(code, json = '{"metadata":{"vulnerabilities":{"high":0,"total":0}}}', message = 'stubbed npm audit') {
   const bin = mkdtempSync(join(tmpdir(), 'bin-'));
   const npm = join(bin, 'npm');
   writeFileSync(npm, `#!/usr/bin/env bash
 if [ "$1" = "audit" ]; then
   for a in "$@"; do if [ "$a" = "--json" ]; then echo '${json}'; exit 0; fi; done
-  echo "stubbed npm audit"
+  echo "${message}"
   exit ${code}
 fi
 exit 0
@@ -103,4 +103,24 @@ test('the real audit agrees: no production advisory today', () => {
     assert.fail(`the real audit reports a production advisory:\n${e.stdout}${e.stderr}`);
   }
   assert.match(out, /No high or critical advisory/);
+});
+
+test('an unreachable audit service is NOT reported as clean', () => {
+  // `npm audit` exits non-zero for a network failure and for a finding alike.
+  // Without separating them, an offline runner reports every dependency as
+  // advisory-laden — and a gate that cries wolf when the network hiccups is one
+  // people disable. Exit 2, its own code, so a caller cannot read "we could not
+  // look" as "we looked and found nothing".
+  const r = withStubbedNpm(1, '{"metadata":{"vulnerabilities":{"total":0}}}', 'npm ERR! code ENOTFOUND');
+  assert.equal(r.code, 2, 'a network failure must not share an exit code with a finding');
+  assert.match(r.out, /could not reach the audit service/i);
+  assert.match(r.out, /NOT a clean scan/i);
+  assert.ok(!/No high or critical advisory/.test(r.out),
+    'it must not also claim the dependencies are clean');
+});
+
+test('a real finding is still distinguished from a network failure', () => {
+  const r = withStubbedNpm(1, '{"metadata":{"vulnerabilities":{"total":0}}}', 'found 1 high severity vulnerability');
+  assert.equal(r.code, 1, 'a genuine advisory keeps its own exit code');
+  assert.match(r.out, /carry a high or critical advisory/);
 });

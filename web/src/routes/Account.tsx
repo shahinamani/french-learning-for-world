@@ -3,7 +3,7 @@ import { useState } from 'react';
 import { useApp } from '../app-context';
 import { createProfile, listProfiles, setActiveProfileId } from '../lib/session';
 import { eraseUser, importForUser } from '../lib/db';
-import { parseExport } from '../lib/progress';
+import { parseExport, MAX_IMPORT_BYTES } from '../lib/export-format';
 import { LOCALES } from '../lib/i18n';
 import type { Locale } from '../lib/types';
 import { DataNoticeBody } from '../components/DataNotice';
@@ -86,13 +86,20 @@ export function Account() {
                    if (!file) return;
                    setImported(null);
                    try {
+                     // Size is known from the File without reading a byte.
+                     // `file.text()` on a 500 MB file allocates it all — up to
+                     // 1 GB as UTF-16 — before any validation could run, so the
+                     // check that protects a phone has to happen here, not in
+                     // the parser.
+                     if (file.size > MAX_IMPORT_BYTES) throw new Error('tooLarge');
                      const data = parseExport(await file.text());
                      const r = await importForUser(profile.id, data);
                      setImported(t('importDone', { n: r.rows, s: r.rowsSkipped, c: r.cards }));
                    } catch (err) {
                      const code = err instanceof Error ? err.message : 'notOurs';
                      setImported(t(code === 'notJson' ? 'importNotJson'
-                       : code === 'version' ? 'importVersion' : 'importNotOurs'));
+                       : code === 'version' ? 'importVersion'
+                       : code === 'tooLarge' ? 'importTooLarge' : 'importNotOurs'));
                    }
                  }} />
         </label>

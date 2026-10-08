@@ -254,11 +254,26 @@ const nextEn = {
 
 export const NEXT_KEYS = Object.keys(nextEn) as (keyof typeof nextEn)[];
 
+/**
+ * Import messages added after the first four locales were written.
+ *
+ * A third optional group rather than a core key, for the standing reason:
+ * adding to `en` obliges Persian and Arabic, and inventing those is what this
+ * project does not do. The translator falls back to English, as it does for
+ * every missing key.
+ */
+const importEn = {
+  importTooLarge: 'That file is too large to import here. The limit is 50 MB, or 150 000 reviews — well beyond any history this app can produce. Nothing on this device was changed.',
+};
 
-export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>;
+export const IMPORT_KEYS = Object.keys(importEn) as (keyof typeof importEn)[];
+
+
+export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
+  & Partial<typeof importEn>;
 
 /** What the translator and the prerender read: English, landing copy included. */
-const enFull: Dict = { ...en, ...landingEn, ...nextEn };
+const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn };
 
 /**
  * Has anybody written the landing page in this language?

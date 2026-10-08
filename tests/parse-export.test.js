@@ -16,6 +16,7 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {
   parseExport, exportRows, EXPORT_FORMAT, EXPORT_VERSION,
+  MAX_IMPORT_BYTES, MAX_IMPORT_ROWS, MAX_IMPORT_CARDS,
 } from '../web/src/lib/export-format.ts';
 
 /** A file this product would itself produce. */
@@ -194,4 +195,86 @@ test('a row with no grade at all is kept, not silently dropped', () => {
     rows: [{ id: 'nograde', cardKey: 'k', reviewedAt: 1, conceptIds: ['c'] }],
   }));
   assert.equal(out.rows.length, 1, 'an older export without the field is still real history');
+});
+
+/* ── Bounds ───────────────────────────────────────────────────────────────
+ *
+ * "3.9 MB parses in 13 ms" was a SPEED measurement on a laptop and was wrong to
+ * read as a safety one. The import path allocates the whole file as a string,
+ * then the parsed graph, then writes every row inside one IndexedDB
+ * transaction — none of which a 3.9 MB benchmark says anything about on a phone.
+ */
+
+test('the limits are stated, and are above any history this app can produce', () => {
+  // ~800 bytes per row, measured from exportRows with realistic rows.
+  assert.equal(MAX_IMPORT_BYTES, 50 * 1024 * 1024);
+  assert.ok(MAX_IMPORT_ROWS >= 100_000, 'the row cap must not cut off a real learner');
+  const yearsAtTenADay = MAX_IMPORT_ROWS / (10 * 365);
+  assert.ok(yearsAtTenADay > 20, `${yearsAtTenADay.toFixed(0)} years at ten reviews a day`);
+});
+
+test('a file over the byte limit is refused before it is parsed', () => {
+  // The string is built, not parsed: this asserts the guard fires on length
+  // alone, which is what protects the step that would allocate the graph.
+  const oversized = `{"format":${JSON.stringify(EXPORT_FORMAT)},"junk":"`
+    + 'x'.repeat(MAX_IMPORT_BYTES) + '"}';
+  assert.equal(codeOf(oversized), 'tooLarge');
+});
+
+test('the byte boundary is exact', () => {
+  const pad = (bytes) => {
+    const base = `{"format":${JSON.stringify(EXPORT_FORMAT)},"version":${EXPORT_VERSION},"rows":[],"cards":[],"j":""}`;
+    return base.replace('"j":""', `"j":"${'x'.repeat(Math.max(0, bytes - base.length))}"`);
+  };
+  const under = pad(MAX_IMPORT_BYTES - 10);
+  assert.ok(under.length <= MAX_IMPORT_BYTES);
+  assert.equal(codeOf(under), null, 'a file just under the limit is accepted');
+  const over = pad(MAX_IMPORT_BYTES + 100);
+  assert.ok(over.length > MAX_IMPORT_BYTES);
+  assert.equal(codeOf(over), 'tooLarge', 'a file just over the limit is refused');
+});
+
+test('a minified file with too many records is refused on the record cap', () => {
+  // The byte cap alone would admit roughly twice as many rows from a minified
+  // file, and every row becomes an awaited write inside one transaction.
+  const rows = Array.from({ length: MAX_IMPORT_ROWS + 1 }, (_, i) => ({ id: `r${i}` }));
+  const text = JSON.stringify({ format: EXPORT_FORMAT, version: EXPORT_VERSION, rows, cards: [] });
+  assert.ok(text.length < MAX_IMPORT_BYTES, 'this file is under the byte cap, so only the record cap can stop it');
+  assert.equal(codeOf(text), 'tooLarge');
+});
+
+test('too many card states is refused too', () => {
+  const cards = Array.from({ length: MAX_IMPORT_CARDS + 1 }, (_, i) => ({ cardKey: `c${i}`, dueAt: 1 }));
+  const text = JSON.stringify({ format: EXPORT_FORMAT, version: EXPORT_VERSION, rows: [], cards });
+  assert.equal(codeOf(text), 'tooLarge');
+});
+
+test('A LARGE BUT LEGITIMATE HISTORY STILL IMPORTS', () => {
+  // The failure that would matter most: a cap that refuses a real backup. This
+  // is five years at thirty reviews a day, written the way this app writes it.
+  const n = 54_750;
+  const rows = Array.from({ length: n }, (_, i) => ({
+    id: `01JA5${String(i).padStart(21, '0')}`, cardKey: 'v:se_souvenir',
+    reviewedAt: 1760000000000 + i, grade: 3, conceptIds: ['verb.tense.present'],
+  }));
+  const text = JSON.stringify({ format: EXPORT_FORMAT, version: EXPORT_VERSION, rows, cards: [] });
+  const out = parseExport(text);
+  assert.equal(out.rows.length, n, 'a five-year history must not be refused');
+  console.log(`    ${n} rows (${(text.length / 1e6).toFixed(1)} MB minified) accepted`);
+});
+
+test('the limits do not narrow which historical formats are valid', () => {
+  // Version 1 still reads, rows without a grade still read, grade 0 still
+  // reads. The bounds are about size, and must not have quietly become a
+  // stricter schema.
+  const old = JSON.stringify({
+    format: EXPORT_FORMAT, version: 1,
+    rows: [{ id: 'a', cardKey: 'k', reviewedAt: 1, conceptIds: [] },
+           { id: 'b', cardKey: 'k', reviewedAt: 2, grade: 0, conceptIds: [] }],
+    cards: [{ cardKey: 'k', dueAt: 1 }],
+  });
+  const out = parseExport(old);
+  assert.equal(out.version, 1);
+  assert.equal(out.rows.length, 2);
+  assert.equal(out.cards.length, 1);
 });
