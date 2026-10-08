@@ -24,7 +24,7 @@ nothing, and there is no `.env.example` because there is nothing to place in it.
 **When a secret first appears**: injected at runtime by the host (Cloudflare
 Pages environment variables), never committed; only a placeholder
 `.env.example`. A public client identifier the browser necessarily receives is
-not a secret; anything that authenticates **as** this project is.
+not a secret; anything authenticating **as** this project is.
 
 Two hooks in `.githooks/` enforce this: **pre-commit** scans staged changes for
 credential patterns, and **pre-push** runs the full sweep — credentials, commit
@@ -58,8 +58,7 @@ prefixed `flw:u:<id>:`. The only write endpoint is the dev-only
 
 **Profiles are the tenant analogue; isolation is real but local.** The walk
 drives two tabs with two profiles and asserts they do not bleed — but it is **no
-boundary against the device's owner**, so nothing confidential may be stored per
-profile.
+boundary against the device's owner** (`DATA.md`).
 
 **The review tool is the highest-risk component here**: a POST that writes JSON
 into `content/` — a review screen in development, an unauthenticated file writer
@@ -67,10 +66,10 @@ anywhere a stranger can load it. `tests/review-tool-is-dev-only.test.js` asserts
 three independent guarantees. **Any change giving the application a write path
 repeats this analysis first.**
 
-**Least privilege:** CI is `permissions: contents: read` with no token that can
-write; nothing cross-origin loads, and adding a CSP origin is a deliberate,
-explained change; **no `console.log` of profile contents, review rows or
-answers** may ship — the walk treats a console error as fatal.
+**Least privilege:** CI is `permissions: contents: read`, with no token that can
+write; nothing cross-origin loads, and adding a CSP origin is deliberate and
+explained; **no `console.log` of profile contents, review rows or answers** may
+ship.
 
 ## Exposure handling
 
@@ -81,10 +80,8 @@ first**, then clean history, then report privately.
 
 ## Dependencies
 
-Few by design: React, react-router, `ts-fsrs`, `idb`, Radix. The CSP blocks code
-from anywhere but `'self'`, so a compromised CDN is not a path in; a compromised
-npm package still is. **Justify a new dependency before adding it.** There is no
-automated dependency scanning today — see `CHECKLIST.md`.
+Few by design: React, react-router, `ts-fsrs`, `idb`, Radix. **Justify a new one
+before adding it.** Threat and response: `HACK.md` → Supply chain.
 
 Before changing storage, the service worker, the headers, the review tool, or
 anything that introduces a server: read `AUTHENTICATION.md`, `DATA.md`,
