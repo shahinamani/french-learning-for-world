@@ -52,21 +52,19 @@ jobs:
           fi
           echo "History is clean."
 
+      # The same script the pre-push hook runs, so passing locally means passing
+      # here. It prints file and line only: this log is public, and a scanner
+      # that echoes the address it found publishes it.
       - name: Personal data must not appear in the files people read
-        run: |
-          # The working tree, not the history. Commit metadata carries the
-          # author's address by design and history is not rewritten, so
-          # scanning history would fail forever on something already public
-          # and intended. What must stay clean is what a visitor reads today.
-          # node_modules is excluded because it is not ours and is not
-          # committed; every other directory is scanned.
-          if grep -rnEi --exclude-dir=.git --exclude-dir=node_modules \
-             '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\.[a-z]+' .
-          then
-            echo "::error::An email address appears in a tracked file."
-            exit 1
-          fi
-          echo "No personal data in tracked files."
+        run: bash scripts/check-personal-data.sh
+
+      # Blocks on PRODUCTION advisories at high or above; reports everything
+      # else. This project ships no server and loads nothing cross-origin, so
+      # the realistic route into a learner's browser is a production package —
+      # and a gate that also failed on a Windows-only dev-server advisory is one
+      # people learn to ignore. Triage is recorded in CHECKLIST.md.
+      - name: Dependency advisories
+        run: bash scripts/check-dependencies.sh
 
   # Until this job existed, every "0 failures" in a report was one moment on one
   # machine: the browser suites were run by hand and nothing stopped a change

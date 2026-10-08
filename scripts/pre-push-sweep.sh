@@ -22,13 +22,16 @@ if ! bash scripts/check-commit-messages.sh >/dev/null; then say "   FAIL"; fail=
 # long as the file existed. Found on 2026-10-06 while the step was refusing the
 # same address spelled plainly three lines away in another file.
 say "3. personal data in tracked files (the step that caught this)"
-if grep -rqnEi --exclude-dir=.git --exclude-dir=node_modules \
-     '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\\?\.[a-z]+' . ; then
-  say "   FAIL — an email address appears in a tracked file:"
-  grep -rnEi --exclude-dir=.git --exclude-dir=node_modules \
-    '[A-Za-z0-9._%+-]+@(gmail|outlook|yahoo|hotmail|proton)\\?\.[a-z]+' . | sed 's/^/     /'
+# One script, shared with CI. The two used to hold the same intent in two
+# patterns, and only this one had been widened to catch a regex-escaped
+# address — so a local pass and a CI pass meant different things.
+if bash scripts/check-personal-data.sh >/dev/null 2>/tmp/pd.txt; then
+  say "   clean"
+else
+  say "   FAIL — locations below; the addresses themselves are not printed"
+  sed 's/^/     /' /tmp/pd.txt
   fail=1
-else say "   clean"; fi
+fi
 
 say "4. unit tests, with web dependencies hidden as CI has them"
 hidden=0
