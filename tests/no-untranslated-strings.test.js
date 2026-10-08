@@ -102,7 +102,7 @@ test('every key the components ask for exists in all four dictionaries', () => {
   // Two optional groups now. Named by prefix because that is how they are
   // named in i18n.ts, and asserted below to be present in English and French so
   // the exception cannot swallow the fallback the page actually serves.
-  const OPTIONAL = ['landing', 'next'];
+  const OPTIONAL = ['landing', 'next', 'importTooLarge'];
   const landingMayBeAbsent = (key, code) =>
     OPTIONAL.some((p) => key.startsWith(p)) && (code === 'fa' || code === 'ar');
 

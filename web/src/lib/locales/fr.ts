@@ -177,6 +177,9 @@ const fr: Dict = {
   nextNothing: 'Rien ne vous attend',
   nextNothingWhy: 'Aucune carte n’est due, rien n’est assez faible pour être isolé, et il ne reste aucune épreuve à proposer. Revenez quand quelque chose arrivera à échéance.',
   nextToMap: 'Revenir à la carte',
+
+  // ── Import ──────────────────────────────────────────────────────────────
+  importTooLarge: 'Ce fichier est trop volumineux pour être importé ici. La limite est de 50 Mo, ou 150 000 révisions — bien au-delà de tout historique que cette application peut produire. Rien n’a été modifié sur cet appareil.',
 };
 
 export default fr;

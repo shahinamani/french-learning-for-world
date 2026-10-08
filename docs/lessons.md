@@ -1115,6 +1115,48 @@ every build and prints it. Two things about how it does so:
   right and the person was wrong, which is the usual way round and the reason
   for measuring.
 
+### 2026-10-08 — two runs died and nobody knows why, which is the entry
+
+While integrating the next-activity work, two consecutive runs of
+`web/e2e/walk.mjs` exited printing nothing but `Node.js v22.23.1`. No section,
+no stack, no failing check. The run before them and four runs after were clean,
+the static server was still answering, and the same tree passed in CI.
+
+**This is recorded as unexplained, not as fixed.** Later runs passing is not a
+diagnosis — it is the same evidence as a race that happens one time in six, and
+treating "it stopped doing it" as a resolution is how a flaky suite becomes a
+suite nobody believes. What is known: it happened twice, back to back, inside a
+tight shell loop that launched Chromium repeatedly on a machine also running a
+build. What is not known: whether the harness, Playwright, or the browser died,
+because **there was no report.**
+
+That absence was the actionable part, and it is the only thing changed. The walk
+now installs handlers for `uncaughtException` and `unhandledRejection` that
+print the last section announced, how many checks had run and how many had
+failed, whether the base URL still answers, and the stack. Twelve lines, seen
+firing against a deliberately thrown error before being trusted.
+
+**The lesson is about what a crash is allowed to leave behind.** A suite that
+dies silently converts a reproducible fault into folklore: the next person hits
+it, sees a version banner, re-runs, gets green, and moves on — and the fault
+survives every one of those encounters untouched. Diagnostics are not a fix, but
+they are what makes a fix possible, and they cost twelve lines.
+
+Still open: if it recurs, the report above should say which of the three died.
+Until then this entry is the record that it happened.
+
+**Postscript, same day.** The diagnostics paid for themselves within the hour,
+on a different crash. Upgrading Playwright 1.55.0 → 1.55.1 left the cached
+browser behind, and the walk died before its first check — but it died saying
+`last section: (before the first section)`, `checks so far: 0`, the server
+answering `HTTP 200`, and `Executable doesn't exist at …chromium_headless_shell-1193`.
+One line to the cause. The original two crashes have not recurred across eleven
+runs since, and **no new evidence has been captured**, so they stay open rather
+than closed — a crash that stops happening is not a crash that was explained.
+One run during that stretch did print the report's closing rule, and the body
+was lost because the loop capturing it only kept the last line: a measurement
+discarded by the thing measuring it, which is its own small lesson.
+
 
 ## The checklist
 

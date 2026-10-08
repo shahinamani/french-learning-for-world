@@ -4,7 +4,9 @@
  * is itself a failure.
  */
 import { chromium } from 'playwright';
-import { existsSync, readFileSync } from 'node:fs';
+import { existsSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { join } from 'node:path';
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:8793/';
 // Browser path: this container ships Chromium at a fixed path; CI uses the one
@@ -13,6 +15,45 @@ const BASE = process.env.BASE ?? 'http://127.0.0.1:8793/';
 const LOCAL_CHROME = '/opt/pw-browsers/chromium-1194/chrome-linux/chrome';
 const EXE = process.env.CHROMIUM || (existsSync(LOCAL_CHROME) ? LOCAL_CHROME : undefined);
 const shots = process.argv[2];
+
+/* ── When this run dies, leave evidence ───────────────────────────────────
+ *
+ * On 2026-10-08 two consecutive runs of this script exited printing nothing but
+ * "Node.js v22.23.1" — no section, no stack, no failing check. Runs before and
+ * after were clean, so the cause is still unknown, and the only honest record
+ * is that it happened twice and was never explained (docs/lessons.md).
+ *
+ * What made it unexplainable was the absence of a report, not the crash. These
+ * twelve lines fix that much and nothing else: a crash now says which section
+ * was running, how far it had got, and whether the server it depends on was
+ * still answering — which is enough to tell "the harness died" from "the server
+ * went away" the next time. It is deliberately not a reliability rewrite.
+ */
+let lastSection = '(before the first section)';
+const realLog = console.log;
+console.log = (...a) => {
+  if (typeof a[0] === 'string' && a[0].includes('===')) {
+    lastSection = a[0].replace(/[\n=]/g, '').trim();
+  }
+  realLog(...a);
+};
+
+for (const event of ['uncaughtException', 'unhandledRejection']) {
+  process.on(event, async (err) => {
+    realLog(`\n── WALK DIED (${event}) ──────────────────────────────────────`);
+    realLog(`  last section   : ${lastSection}`);
+    realLog(`  checks so far  : ${checks}, ${failures.length} failed`);
+    let reachable = 'unknown';
+    try {
+      const r = await fetch(BASE, { signal: AbortSignal.timeout(4000) });
+      reachable = `yes (HTTP ${r.status})`;
+    } catch (e) { reachable = `NO — ${e?.name ?? e}`; }
+    realLog(`  server ${BASE} : ${reachable}`);
+    realLog(`  error          : ${err?.stack ?? err}`);
+    realLog('──────────────────────────────────────────────────────────────');
+    process.exit(1);
+  });
+}
 
 const failures = []; let checks = 0;
 const ok = (l, p, detail) => { checks++; if (!p) failures.push(detail ? `${l} — ${detail}` : l);
@@ -1188,6 +1229,42 @@ console.log('\n=== export, erase, import — the round trip ===');
     return cards.filter((c) => c.reps > 0).length;
   });
   ok(`and the schedule came with it (${due} cards carry their review state)`, due >= 4);
+
+  // ── A FAILED IMPORT MUST NOT COST A LEARNER THEIR HISTORY ──────────────
+  //
+  // This is the half of the parser's contract that unit tests cannot reach:
+  // `parseExport` is covered in node, but "what happens to the rows already in
+  // IndexedDB when a file is rejected" is a question about the database, and
+  // the answer has to be "nothing". Restore is the only recovery path there
+  // is, so an import that half-applied and then failed would be worse than one
+  // that refused outright.
+  const bad = [
+    ['not JSON at all', 'this is not json'],
+    ['JSON that is not ours', '{"format":"something-else","version":1}'],
+    ['a version from the future', '{"format":"french-learning-for-world/review-log","version":99,"rows":[],"cards":[]}'],
+    ['rows that are all junk', '{"format":"french-learning-for-world/review-log","version":2,'
+      + '"rows":[{"id":5},null,"x",{"id":"a","cardKey":"k","reviewedAt":"soon","conceptIds":[]}],"cards":[]}'],
+  ];
+  const tmp = mkdtempSync(join(tmpdir(), 'bad-import-'));
+  for (const [what, body] of bad) {
+    const f = join(tmp, 'bad.json');
+    writeFileSync(f, body);
+    await p.locator('[data-testid="import-file"]').setInputFiles(f);
+    await p.waitForTimeout(700);
+    const said = (await p.locator('[data-testid="import-result"]').innerText().catch(() => '')).trim();
+    ok(`${what}: the learner is told, not left guessing ("${said.slice(0, 44)}")`, said.length > 0);
+    const now = await countRows();
+    ok(`${what}: the existing history is untouched (${now} rows)`, now === before,
+       `expected ${before}, found ${now}`);
+  }
+  rmSync(tmp, { recursive: true, force: true });
+
+  // And a good file still works after all that, so the rejections did not leave
+  // the database or the screen in a state that blocks a real restore.
+  await p.locator('[data-testid="import-file"]').setInputFiles(file);
+  await p.waitForTimeout(900);
+  ok(`a valid import still works afterwards (${await countRows()} rows)`,
+     (await countRows()) === before);
   await c.close();
 }
 
@@ -1332,6 +1409,12 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
     const pg = await c.newPage();
     pg.on('pageerror', (e) => pageErrors.push(e.message.slice(0, 80)));
     await pg.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+    // Wait for the rendered map, not for `networkidle`. The prerendered HTML is
+    // the landing page, so until React has run, `.map` is legitimately absent
+    // and this check reports a blank page that is not blank. It passed alone
+    // and failed inside the full run — load, not a regression — which is the
+    // same race already fixed in the results section.
+    await pg.waitForSelector('.map', { timeout: 10000 }).catch(() => {});
 
     ok(`${label}: the application still renders`,
        await pg.locator('.map').count() === 1,
