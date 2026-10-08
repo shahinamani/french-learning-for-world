@@ -211,10 +211,54 @@ const landingEn = {
 /** The keys a locale may legitimately not have. Nothing else may be missing. */
 export const LANDING_KEYS = Object.keys(landingEn) as (keyof typeof landingEn)[];
 
-export type Dict = typeof en & Partial<typeof landingEn>;
+/**
+ * "What next" — the continuation shown when a session ends.
+ *
+ * In the same optional group as the landing copy, for the same reason: these
+ * are strings a locale is allowed not to have. Farsi and Arabic are absent
+ * because inventing them is exactly what this project does not do — Arabic
+ * waits for a reviewer, which is a launch condition, and Shahin writes the
+ * Farsi himself. Until then the translator falls back to English, which is the
+ * behaviour every missing key has always had here.
+ *
+ * No number is written into these strings. Counts and percentages arrive as
+ * placeholders, substituted — with bidi isolation — by `translator` below.
+ */
+const nextEn = {
+  nextHeading: 'What next',
+  nextReview: 'Review {n} cards that are due',
+  nextReviewWhy: 'The scheduler put these in front of you today. Due cards first, always.',
+  nextReviewAgain: 'Review {n} cards that are still due',
+  // One line, used for a repeat of ANY kind. Shown under the reason, never
+  // instead of it, so the learner is told both what and why-again.
+  nextRepeat: 'Nothing else is eligible right now, so this is the same work again — on purpose, not a loop.',
+  nextConcept: 'Practise one weak point',
+  nextConceptWhy: 'You are at {pct}% on this, over enough attempts to mean something, and it has {n} cards behind it.',
+  nextExam: 'Sit a practice paper',
+  // No article before {level}: it is "an A2 paper" and "a B1 paper", and a
+  // string cannot know which. Seen as "A A2 paper" in a screenshot.
+  //
+  // And these say PRACTICE HISTORY, not level. Nothing here assesses anybody:
+  // the band is the highest one this learner has practised enough for the
+  // number to mean something, which is a way of picking a paper and not a
+  // statement about them. "Your level is B1" would be a claim this project has
+  // no basis for and no business making.
+  nextExamWhy: 'Level {level}, {n} questions, timed like the real one. {level} is where your practice has been so far — it is not an assessed level.',
+  nextExamWhyUnknown: 'There is not enough practice history yet to suggest a band, so this is the shortest way in: {n} questions at {level}.',
+  nextNewCards: 'Start {n} cards you have not seen',
+  nextNewCardsWhy: 'Nothing is due and nothing is weak yet. New cards are how the record starts.',
+  nextNothing: 'Nothing is waiting for you',
+  nextNothingWhy: 'No cards are due, nothing is weak enough to single out, and there is no paper left to suggest. Come back when something falls due.',
+  nextToMap: 'Return to the map',
+};
+
+export const NEXT_KEYS = Object.keys(nextEn) as (keyof typeof nextEn)[];
+
+
+export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>;
 
 /** What the translator and the prerender read: English, landing copy included. */
-const enFull: Dict = { ...en, ...landingEn };
+const enFull: Dict = { ...en, ...landingEn, ...nextEn };
 
 /**
  * Has anybody written the landing page in this language?

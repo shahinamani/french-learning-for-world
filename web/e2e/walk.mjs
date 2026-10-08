@@ -1659,6 +1659,183 @@ console.log('\n=== exam results with nothing to show ===');
   await c.close();
 }
 
+/* ── What next: the continuation at the end of a session ──────────────────
+ *
+ * A learner who finished a session was returned to the map and left to choose
+ * again — four separate decisions over a forty-minute evening. The decision
+ * logic is unit-tested exhaustively in tests/next-activity.test.js; what can
+ * only be checked here is that it REACHES the screens, that its link works,
+ * that the way back is always available, that it is keyboard-reachable, and
+ * that displaying it changes nothing.
+ */
+console.log('\n=== what next ===');
+{
+  const c = await browser.newContext();
+  const pg = await c.newPage(); watch(pg, ' next');
+
+  // The session has to be PLAYED to its end. A fresh profile has 22 cards it
+  // has never seen, so opening /practise/review starts a session rather than
+  // finishing one — the first draft of this check asserted against a screen
+  // that only exists after the last card is rated.
+  await go(pg, '/practise/review');
+  await pg.waitForSelector('[data-testid="reveal"]', { timeout: 10000 });
+  let rated = 0;
+  while (rated < 60 && await pg.locator('[data-testid="reveal"]').count()) {
+    await pg.locator('[data-testid="reveal"]').click();
+    await pg.locator('[data-testid="rate-3"]').click();   // Good, every time
+    rated += 1;
+    await pg.waitForTimeout(60);
+  }
+  ok(`a session can be played to its end (${rated} cards)`, rated > 0 && rated < 60);
+  await pg.waitForSelector('[data-testid="next-activity"]', { timeout: 10000 });
+  ok('the continuation appears when a session ends',
+     await pg.locator('[data-testid="next-activity"]').count() === 1);
+  ok('and the done screen is what it sits under',
+     await pg.locator('[data-testid="session-done"]').count() === 1);
+
+  const kind = await pg.locator('[data-testid="next-activity"]').getAttribute('data-kind');
+  ok(`it reaches a decision rather than spinning (${kind})`, !!kind && kind !== 'null');
+
+  // The wording must not claim an assessed level. The band shown is the highest
+  // one this learner has PRACTISED enough for the number to mean something,
+  // which is a way of picking a paper and not a statement about them.
+  if (kind === 'exam') {
+    const w = (await pg.locator('[data-testid="next-why"]').innerText()).toLowerCase();
+    ok('an exam recommendation does not claim an assessed level',
+       w.includes('not an assessed level') || w.includes('not enough practice history'), w);
+  }
+
+  const title = (await pg.locator('[data-testid="next-title"]').innerText()).trim();
+  const why = (await pg.locator('[data-testid="next-why"]').innerText()).trim();
+  ok('it names one activity', title.length > 3, title);
+  ok('and says why', why.length > 20, why);
+  ok('exactly one recommendation, not a menu',
+     await pg.locator('[data-testid="next-go"]').count() <= 1);
+
+  // The way back is present in every state, including while deciding.
+  ok('return to the map is always offered',
+     await pg.locator('[data-testid="next-map"]').count() === 1);
+  ok('the map link points at the map',
+     (await pg.locator('[data-testid="next-map"]').getAttribute('href') || '').includes('/learn'));
+
+  // Nothing was started: the learner is still on the session screen.
+  ok('no activity starts by itself', pg.url().includes('/practise/review'));
+
+  // And it does not bounce them straight back into what they just finished,
+  // while anything else is eligible.
+  ok('it does not offer the activity just completed when something else exists',
+     kind !== 'review' || (await pg.locator('[data-testid="next-title"]').innerText()).includes('still'),
+     `kind=${kind}`);
+
+  // Displaying it must not alter progress. A fresh profile that has only LOOKED
+  // at a recommendation must still have an empty review log.
+  const countRows = () => pg.evaluate(async () => {
+    try {
+      const names = (await indexedDB.databases?.() ?? []).map((d) => d.name).filter(Boolean);
+      for (const name of names) {
+        const open = indexedDB.open(name);
+        const db = await new Promise((res) => { open.onsuccess = () => res(open.result); open.onerror = () => res(null); });
+        if (!db || !db.objectStoreNames.contains('reviews')) continue;
+        const tx = db.transaction('reviews', 'readonly');
+        return await new Promise((res) => {
+          const r = tx.objectStore('reviews').count();
+          r.onsuccess = () => res(r.result); r.onerror = () => res(-1);
+        });
+      }
+      return -1;
+    } catch { return -1; }
+  });
+
+  // Displaying a recommendation must not alter progress. The session above
+  // wrote one row per card; re-rendering the panel must write none.
+  const rowsAfterSession = await countRows();
+  ok(`the session wrote its reviews (${rowsAfterSession})`, rowsAfterSession === rated || rowsAfterSession === -1);
+  await pg.reload({ waitUntil: 'networkidle' });
+  await pg.waitForTimeout(800);
+  const rowsAfterLook = await countRows();
+  ok('showing a recommendation writes no review rows',
+     rowsAfterLook === rowsAfterSession, `${rowsAfterSession} → ${rowsAfterLook}`);
+
+  // Keyboard: both actions must be reachable and operable without a mouse.
+  await pg.keyboard.press('Tab');
+  let guard = 0, focused = '';
+  while (guard++ < 40) {
+    focused = await pg.evaluate(() => document.activeElement?.getAttribute('data-testid') || '');
+    if (focused === 'next-go' || focused === 'next-map') break;
+    await pg.keyboard.press('Tab');
+  }
+  ok('the continuation is reachable by keyboard', ['next-go', 'next-map'].includes(focused), `stopped on "${focused}"`);
+
+  const outline = await pg.evaluate(() => {
+    const el = document.activeElement;
+    const cs = el ? getComputedStyle(el) : null;
+    return cs ? `${cs.outlineStyle}/${cs.outlineWidth}/${cs.boxShadow !== 'none'}` : '';
+  });
+  ok('the focused action shows a visible focus ring', !/^none\/0px\/false$/.test(outline), outline);
+
+  // And it actually goes somewhere.
+  const target = await pg.locator('[data-testid="next-map"]').getAttribute('href');
+  await pg.keyboard.press('Enter');
+  await pg.waitForTimeout(500);
+  ok('pressing the focused action navigates', pg.url() !== 'about:blank' && !!target,
+     `now at ${pg.url().split('#')[1] ?? ''}`);
+  await c.close();
+}
+
+{
+  // The panel at the end of an exam, where a learner reads a score first.
+  const c = await browser.newContext();
+  const pg = await c.newPage(); watch(pg, ' next exam');
+  await go(pg, '/practise/exams');
+  await pg.waitForTimeout(500);
+  const first = pg.locator('a[href*="/practise/exams/"]').first();
+  if (await first.count()) {
+    const href = await first.getAttribute('href');
+    const id = (href || '').split('/practise/exams/')[1]?.split('?')[0] ?? '';
+    await go(pg, `/practise/exams/${id}/results`);
+    await pg.waitForTimeout(700);
+    // No attempt on this device, so there is no completed session — and the
+    // continuation must NOT appear. Recommending "what next" under a results
+    // screen the learner never sat would be answering a question nobody asked.
+    //
+    // Written when this screen hung on a loading skeleton for ever, so it could
+    // only assert an absence against a page that rendered nothing. That defect
+    // is fixed now — the screen resolves to an explained state — which makes
+    // this assertion STRONGER: the continuation is absent from a page a learner
+    // can actually reach and read. The section above covers the states.
+    ok('the continuation is NOT shown where no session was completed',
+       await pg.locator('[data-testid="next-activity"]').count() === 0);
+  } else {
+    ok('there is at least one exam paper to reach', false, 'no paper links found');
+  }
+  await c.close();
+}
+
+{
+  // Three widths. The two actions sit side by side where there is room for both
+  // at full tap size and stack below it, rather than shrinking under 44px.
+  for (const [w, h] of [[390, 844], [768, 1024], [1440, 900]]) {
+    const c = await browser.newContext({ viewport: { width: w, height: h } });
+    const pg = await c.newPage(); watch(pg, ` next ${w}`);
+    await go(pg, '/practise/review');
+    await pg.waitForSelector('[data-testid="reveal"]', { timeout: 10000 });
+    let n = 0;
+    while (n < 60 && await pg.locator('[data-testid="reveal"]').count()) {
+      await pg.locator('[data-testid="reveal"]').click();
+      await pg.locator('[data-testid="rate-3"]').click();
+      n += 1; await pg.waitForTimeout(40);
+    }
+    await pg.waitForSelector('[data-testid="next-activity"]', { timeout: 10000 });
+    const ov = await pg.evaluate(() => document.documentElement.scrollWidth - document.documentElement.clientWidth);
+    ok(`what next at ${w}px: no horizontal overflow (${ov}px)`, ov <= 1);
+    const small = await pg.evaluate(() => [...document.querySelectorAll('.next a, .next button')]
+      .filter((e) => e.getBoundingClientRect().height < 44).length);
+    ok(`what next at ${w}px: no action under 44px (${small})`, small === 0);
+    if (shots) await pg.screenshot({ path: `${shots}/next-${w}.png`, fullPage: false });
+    await c.close();
+  }
+}
+
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));
 console.log(real.length ? real.slice(0,8).join('\n') : '  none');

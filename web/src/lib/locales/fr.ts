@@ -158,6 +158,25 @@ const fr: Dict = {
   landingFooterPrivacy: 'Comment vos données sont traitées',
   // Jamais affiché en français — présent pour que les clés restent identiques.
   landingUntranslated: 'Cette page est affichée en anglais. Elle n’a pas encore été traduite dans votre langue, et aucune traduction automatique n’est proposée à la place.',
+
+  // ── What next ───────────────────────────────────────────────────────────
+  // Same optional group as the landing copy. No number is written in; the
+  // placeholders are substituted by translator() in i18n.ts.
+  nextHeading: 'Et maintenant',
+  nextReview: 'Réviser {n} cartes à échéance',
+  nextReviewWhy: 'Le planificateur les a prévues pour aujourd’hui. Les cartes dues d’abord, toujours.',
+  nextReviewAgain: 'Réviser {n} cartes encore dues',
+  nextRepeat: 'Rien d’autre n’est éligible pour l’instant : c’est donc le même travail à nouveau, volontairement et non par boucle.',
+  nextConcept: 'Travailler un point faible',
+  nextConceptWhy: 'Vous êtes à {pct} % sur ce point, sur assez de tentatives pour que cela veuille dire quelque chose, et il y a {n} cartes derrière.',
+  nextExam: 'Passer une épreuve d’entraînement',
+  nextExamWhy: 'Niveau {level}, {n} questions, chronométrée comme la vraie. {level} est le niveau où se situe votre pratique jusqu’ici — ce n’est pas un niveau évalué.',
+  nextExamWhyUnknown: 'L’historique de pratique est encore trop mince pour proposer un niveau : voici donc l’entrée la plus courte, {n} questions en {level}.',
+  nextNewCards: 'Commencer {n} cartes jamais vues',
+  nextNewCardsWhy: 'Rien n’est dû et rien n’est encore assez faible pour être signalé. Les nouvelles cartes, c’est ainsi que l’historique commence.',
+  nextNothing: 'Rien ne vous attend',
+  nextNothingWhy: 'Aucune carte n’est due, rien n’est assez faible pour être isolé, et il ne reste aucune épreuve à proposer. Revenez quand quelque chose arrivera à échéance.',
+  nextToMap: 'Revenir à la carte',
 };
 
 export default fr;

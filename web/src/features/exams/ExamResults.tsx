@@ -26,6 +26,7 @@ import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
 import type { Concept, ReviewRow } from '../../lib/types';
 import { Num } from '../../components/Num';
+import { NextActivity } from '../../components/NextActivity';
 
 export function ExamResults() {
   const { paperId = '' } = useParams();
@@ -283,6 +284,12 @@ export function ExamResults() {
           })}
         </ol>
       </section>
+
+      {/* The continuation, below the result and above the way back — a learner
+          reads their score first and then wants to know what now. `justDid` is
+          `exam`, so another paper is not pushed while anything else is
+          eligible. */}
+      <NextActivity justDid="exam" />
 
       <div className="row gap-2 wrap" style={{ marginBlockStart: 'var(--space-5)' }}>
         <Link className="btn" to={`/practise/exams/${encodeURIComponent(paper.id)}`}>{t('backToPaper')}</Link>

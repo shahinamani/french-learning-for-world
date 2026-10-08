@@ -362,3 +362,37 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
 .landing-boot { display: none; }
 :root[data-started="1"] .landing { display: none; }
 :root[data-started="1"] .landing-boot { display: block; }
+
+/* ── What next ────────────────────────────────────────────────────────────
+ *
+ * Shown when a session ends. ONE recommendation and one reason: three offers
+ * would be the learn map again, which is what the learner already had and what
+ * made a forty-minute evening four separate decisions about what to do next.
+ *
+ * "Return to the map" sits beside it in every state, including while the panel
+ * is still deciding — somebody who wants to choose for themselves must never
+ * wait for a recommendation to finish loading.
+ */
+.next {
+  max-width: var(--width-card); margin-inline: auto;
+  margin-block-start: var(--space-6);
+  padding: var(--space-5); border-radius: var(--radius-lg);
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  display: flex; flex-direction: column; gap: var(--space-2);
+}
+.next__title { margin: 0; font-size: var(--text-lg); font-weight: var(--weight-semibold); }
+.next__why { margin: 0; color: var(--color-ink-muted); font-size: var(--text-sm); }
+.next__actions {
+  display: flex; flex-direction: column; gap: var(--space-2);
+  margin-block-start: var(--space-3);
+}
+/* The buttons sit side by side as soon as there is room for both at full tap
+   size, and stack below it rather than shrinking under 44px. */
+@media (min-width: 420px) {
+  .next__actions { flex-direction: row; align-items: center; }
+  .next__actions .btn { flex: 0 1 auto; }
+}
+/* Nothing to recommend is a state, not an error: the panel keeps its shape and
+   says so, so the screen does not change size depending on the learner's
+   record. */
+.next[data-kind="none"] .next__title { color: var(--color-ink-muted); }
