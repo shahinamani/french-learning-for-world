@@ -28,6 +28,7 @@ const item = (review = {}, over = {}) => ({
   options: [{ fr: 'soit' }, { fr: 'était' }],
   answer: 0,
   explain: { en: 'Because the subjunctive follows.', fr: 'Parce que le subjonctif suit.' },
+  stimulus: { fr: 'Bien que ce ___ difficile, il continue.' },
   conceptIds: ['c.subj'],
   review: { state: 'unreviewed', by: null, at: null, ...review },
   ...over,
@@ -101,6 +102,9 @@ test('changing the question invalidates the teacher review', () => {
     { options: [{ fr: 'soit' }, { fr: 'fût' }] },
     { answer: 1 },
     { explain: { en: 'Changed reason.', fr: 'Raison changée.' } },
+    { stimulus: { fr: 'Quoique ce ___ difficile, il continue.' } },
+    // Removing the sentence a learner reads is as material as changing it.
+    { stimulus: undefined },
   ]) {
     const after = item({ teacher: reviewed }, edit);
     assert.equal(teacherVerified(after), false, `editing ${Object.keys(edit)[0]} kept the review`);

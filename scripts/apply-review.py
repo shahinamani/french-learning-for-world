@@ -126,6 +126,11 @@ def main() -> int:
         # `role: "teacher"` on its own is an arbitrary string anybody could
         # type. What makes it attributable is naming the person AND what
         # qualifies them, in a file that is committed and readable.
+        #
+        # This records a DECLARED qualification. Nothing here verifies it
+        # against a registry, and nothing should start pretending to: the value
+        # is that a named claim with a stated basis can be questioned by a
+        # reader, not that the script has checked anyone's credentials.
         if role == "teacher" and not (d.get("credential") or "").strip():
             refused.append(f"{d['itemId']}: a teacher review needs a credential reference")
             continue

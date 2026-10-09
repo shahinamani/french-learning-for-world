@@ -138,6 +138,24 @@ test('a skip is not a verdict and changes nothing', () => {
   });
 });
 
+/**
+ * How many lines appeared and vanished between two versions of the file.
+ *
+ * A multiset difference, which is insensitive to lines shifting: the question
+ * is which lines appeared and disappeared, not which index moved.
+ */
+function lineChurn(before, after) {
+  const count = (ls) => ls.reduce((m, l) => m.set(l, (m.get(l) ?? 0) + 1), new Map());
+  const b = count(before), a = count(after);
+  let appeared = 0, vanished = 0;
+  for (const [l, n] of a) appeared += Math.max(0, n - (b.get(l) ?? 0));
+  for (const [l, n] of b) vanished += Math.max(0, n - (a.get(l) ?? 0));
+  return { appeared, vanished, changed: appeared + vanished, total: before.length };
+}
+
+/** The two bounds the guard below asserts, as one reusable verdict. */
+const isReformat = (c) => c.changed > 24 || c.changed / c.total >= 0.05;
+
 test('applying does not reformat the file', () => {
   // The reason the applier is Python and not Node. Two decisions must change
   // the lines they decide and nothing else.
@@ -145,24 +163,34 @@ test('applying does not reformat the file', () => {
     const before = readFileSync(TMP_PAPERS, 'utf8').split('\n');
     applier();
     const after = readFileSync(TMP_PAPERS, 'utf8').split('\n');
-    // A multiset difference, which is insensitive to lines shifting: the
-    // question is which lines appeared and disappeared, not which index moved.
-    const count = (ls) => ls.reduce((m, l) => m.set(l, (m.get(l) ?? 0) + 1), new Map());
-    const b = count(before), a = count(after);
-    let appeared = 0, vanished = 0;
-    for (const [l, n] of a) appeared += Math.max(0, n - (b.get(l) ?? 0));
-    for (const [l, n] of b) vanished += Math.max(0, n - (a.get(l) ?? 0));
+    const churn = lineChurn(before, after);
     // Bounded AND proportional. The absolute cap rose from 12 to 24 when a
     // decision started writing a nested record — role, reviewer, date, note and
     // the content fingerprint — which is more lines for the same one item. The
     // fraction is what actually guards the original fault: a reformat rewrites
     // the whole file, so it would show as a large share of it, not as a dozen
     // lines either way.
-    const changed = appeared + vanished;
-    assert.ok(changed <= 24,
-      `${appeared} lines appeared and ${vanished} vanished for one decision — it reformatted`);
-    assert.ok(changed / before.length < 0.05,
-      `${changed} of ${before.length} lines changed — that is a reformat, not a decision`);
-    assert.ok(appeared > 0, 'the decision was not written at all');
+    assert.ok(!isReformat(churn),
+      `${churn.appeared} appeared and ${churn.vanished} vanished of ${churn.total} for one decision — it reformatted`);
+    assert.ok(churn.appeared > 0, 'the decision was not written at all');
   });
+});
+
+test('the guard still catches a whole-file rewrite', () => {
+  // Raising a cap is how a guard stops guarding, so the loosened bound is
+  // asked the question it exists to answer. Node's serialiser on this file is
+  // not a hypothetical reformat — it is the exact one the applier is written in
+  // Python to avoid.
+  const before = readFileSync(TMP_PAPERS, 'utf8').split('\n');
+  const reformatted = JSON.stringify(JSON.parse(before.join('\n')), null, 2).split('\n');
+  const churn = lineChurn(before, reformatted);
+  assert.ok(isReformat(churn),
+    `a Node round-trip changed only ${churn.changed} of ${churn.total} lines — the guard would let it through`);
+
+  // And an edit to one unrelated item is a reformat too, by the proportional
+  // bound, even though no line count explodes: a decision touches the item it
+  // decides and nothing else.
+  const wholesale = before.map((l) => l.replace(/"fr": "/g, '"fr": " '));
+  assert.ok(isReformat(lineChurn(before, wholesale)),
+    'a rewrite of every French string would pass as a decision');
 });

@@ -18,6 +18,16 @@
  *                   makes it a claim is that it names who, and what qualifies
  *                   them, in a file that is committed and reviewable.
  *
+ * **A credential is recorded, not verified.** `credential` is a string the
+ * reviewer gives — "DELF/DALF examiner, ref 12345" — and nothing in this
+ * project checks it against a registry, because there is no server, no account
+ * and nobody to do the checking. What requiring it buys is attributability: a
+ * claim with a name and a stated qualification attached can be questioned by
+ * anybody reading the committed file, where `role: "teacher"` alone cannot.
+ * The learner-facing line says so in as many words, and must keep saying so —
+ * do not reword it into a project endorsement of the qualification, and do not
+ * build a verification system to make the stronger wording true.
+ *
  * **A legacy record counts as unverified.** `review.state` without either
  * sub-record is what 76 items carry today; none of it is upgraded, because
  * nobody can retroactively say a teacher looked at something.
