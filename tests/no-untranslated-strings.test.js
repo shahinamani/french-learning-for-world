@@ -102,7 +102,12 @@ test('every key the components ask for exists in all four dictionaries', () => {
   // Two optional groups now. Named by prefix because that is how they are
   // named in i18n.ts, and asserted below to be present in English and French so
   // the exception cannot swallow the fallback the page actually serves.
-  const OPTIONAL = ['landing', 'next', 'importTooLarge'];
+  // The prefixes of the optional groups in i18n.ts. `item*` is NOT a prefix
+  // here — the three review-marker strings are named individually, because
+  // `itemUnreviewed` and `itemUncertain` are core keys that all four locales
+  // do have, and a loose `item` prefix would stop requiring them.
+  const OPTIONAL = ['landing', 'next', 'importTooLarge',
+                    'itemTeacherChecked', 'itemTeacherStale', 'itemOwnerOnly'];
   const landingMayBeAbsent = (key, code) =>
     OPTIONAL.some((p) => key.startsWith(p)) && (code === 'fa' || code === 'ar');
 

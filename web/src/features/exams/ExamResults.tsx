@@ -27,6 +27,7 @@ import { fr as frText } from '../../lib/typography';
 import type { Concept, ReviewRow } from '../../lib/types';
 import { Num } from '../../components/Num';
 import { NextActivity } from '../../components/NextActivity';
+import { teacherVerified } from '../../lib/review-status';
 
 export function ExamResults() {
   const { paperId = '' } = useParams();
@@ -270,7 +271,7 @@ export function ExamResults() {
                   {/* Beside the explanation, because that is where an unchecked
                       item does its damage: a learner who got it wrong reads this
                       to find out why, and takes it as the answer. */}
-                  {item.review?.state !== 'approved' && (
+                  {!teacherVerified(item) && (
                     <p className="fine muted" data-testid={`unreviewed-${item.id}`}>
                       {t('itemUnreviewed')}
                       {item.uncertain

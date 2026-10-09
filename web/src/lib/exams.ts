@@ -1,4 +1,5 @@
 import type { Level, Locale } from './types';
+import type { ReviewRecord, TeacherReviewRecord } from './review-status';
 import { userKey } from './session';
 import { markStarted } from './started';
 
@@ -43,10 +44,22 @@ export type ExamItem = {
    *  other is worse than showing it on neither: a learner who has seen the
    *  gloss marker reasonably concludes its absence means reviewed. */
   review: {
+    /** The legacy summary. Kept because 76 items carry it and because
+     *  `even-out-answers.py` refuses to touch an item that has a verdict. It
+     *  says nothing about WHO decided, which is why the two records below
+     *  exist — and a record with only this counts as unverified for teacher
+     *  purposes. See lib/review-status.ts. */
     state: 'unreviewed' | 'approved' | 'rejected';
     by: string | null;
     at: string | null;
     note?: string | null;
+    /** The author's own check. Recorded, useful, and it never clears the
+     *  "not checked by a teacher" marker. */
+    owner?: ReviewRecord | null;
+    /** An attributable qualified review: who, and what qualifies them. The two
+     *  are kept separate so a later owner decision cannot erase a teacher's
+     *  evidence, and vice versa. */
+    teacher?: TeacherReviewRecord | null;
   };
   /** Where the writer is NOT sure, and what the doubt is.
    *

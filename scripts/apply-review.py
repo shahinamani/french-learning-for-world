@@ -32,6 +32,47 @@ import sys
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 
 
+
+ROLES = ("owner", "teacher")
+DECISIONS = ("approved", "rejected")
+
+
+def fingerprint(item):
+    """FNV-1a over the content a review is a judgement about.
+
+    Mirrors `fingerprintItem` in web/src/lib/review-status.ts exactly — same
+    fields, same order, same hash — because the browser decides whether a
+    review is stale and this script decides what to record, and the two
+    disagreeing would be worse than neither existing.
+
+    Covers only what changes the exercise: prompt, options, answer key,
+    explanation, stimulus. A new concept id must not throw away a teacher's
+    work.
+    """
+    def sorted_entries(o):
+        o = o or {}
+        return [[k, o.get(k)] for k in sorted(o)]
+
+    canonical = json.dumps([
+        sorted_entries(item.get("prompt")),
+        [o.get("fr") for o in (item.get("options") or [])],
+        item.get("answer"),
+        sorted_entries(item.get("explain")),
+        (item.get("stimulus") or {}).get("fr"),
+    ], ensure_ascii=False, separators=(",", ":"))
+
+    # UTF-16 code units, because JavaScript's charCodeAt yields those. Iterating
+    # Python characters instead would agree on every French string and diverge
+    # on anything outside the basic plane — an emoji in an explanation would
+    # make the browser call a fresh teacher review stale.
+    units = canonical.encode("utf-16-le")
+    h = 0x811c9dc5
+    for i in range(0, len(units), 2):
+        h ^= units[i] | (units[i + 1] << 8)
+        h = (h * 0x01000193) & 0xFFFFFFFF
+    return format(h, "08x")
+
+
 def main() -> int:
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
@@ -70,9 +111,49 @@ def main() -> int:
             # throws away the only record that there was a question.
             refused.append(f"{d['itemId']}: approved while flagged uncertain, with no note")
             continue
-        item["review"] = {"state": d["verdict"], "by": d["by"], "at": d["at"],
-                          "note": (d.get("note") or None)}
-        applied.append(f"{d['itemId']} {d['verdict']} by {d['by']}")
+        # ── Role, and what makes a teacher claim a claim ──────────────────
+        #
+        # A missing role is an OWNER decision, never a teacher one: the 76
+        # items in this file predate roles entirely, and nobody can
+        # retroactively say a teacher looked at something.
+        role = d.get("role") or "owner"
+        if role not in ROLES:
+            refused.append(f"{d['itemId']}: role {role!r} is not one of {ROLES}")
+            continue
+        if d["verdict"] not in DECISIONS:
+            refused.append(f"{d['itemId']}: decision {d['verdict']!r} is not one of {DECISIONS}")
+            continue
+        # `role: "teacher"` on its own is an arbitrary string anybody could
+        # type. What makes it attributable is naming the person AND what
+        # qualifies them, in a file that is committed and readable.
+        #
+        # This records a DECLARED qualification. Nothing here verifies it
+        # against a registry, and nothing should start pretending to: the value
+        # is that a named claim with a stated basis can be questioned by a
+        # reader, not that the script has checked anyone's credentials.
+        if role == "teacher" and not (d.get("credential") or "").strip():
+            refused.append(f"{d['itemId']}: a teacher review needs a credential reference")
+            continue
+        if not (d.get("by") or "").strip():
+            refused.append(f"{d['itemId']}: no reviewer named")
+            continue
+
+        record = {"decision": d["verdict"], "by": d["by"], "at": d["at"],
+                  "note": (d.get("note") or None), "fingerprint": fingerprint(item)}
+        if role == "teacher":
+            record["credential"] = d["credential"]
+
+        review = item.get("review") or {}
+        # The two records never overwrite each other. A later owner decision
+        # must not erase a teacher's evidence, and a teacher's must not erase
+        # the author's own note about why they approved it.
+        review[role] = record
+        # The legacy summary still tracks the most recent decision of any role,
+        # because even-out-answers.py refuses to touch an item that has one.
+        review.update({"state": d["verdict"], "by": d["by"], "at": d["at"],
+                       "note": (d.get("note") or None)})
+        item["review"] = review
+        applied.append(f"{d['itemId']} {d['verdict']} by {d['by']} ({role})")
 
     if refused:
         print("REFUSING — nothing was written:", file=sys.stderr)

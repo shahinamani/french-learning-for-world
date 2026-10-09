@@ -263,6 +263,13 @@ export const NEXT_KEYS = Object.keys(nextEn) as (keyof typeof nextEn)[];
  * every missing key.
  */
 const importEn = {
+  // ── Who checked an exercise ──────────────────────────────────────────────
+  // "Checked", never "verified" or "correct": a teacher's reading catches most
+  // mistakes and guarantees none, and a line that promised more would be the
+  // same overclaim this whole change exists to remove.
+  itemTeacherChecked: 'Checked by {who}, stated qualification: {credential}. The qualification is recorded as given, not verified here, and a check is not a guarantee of correctness.',
+  itemTeacherStale: 'This question changed after {who} checked it, so it counts as unchecked again.',
+  itemOwnerOnly: 'Checked by the author, not yet by a teacher.',
   importTooLarge: 'That file is too large to import here. The limit is 50 MB, or 150 000 reviews — well beyond any history this app can produce. Nothing on this device was changed.',
 };
 

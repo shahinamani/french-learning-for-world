@@ -19,6 +19,7 @@ import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
 import { useTick } from '../../hooks/useTick';
 import { Num } from '../../components/Num';
+import { ReviewMarker } from '../../components/ReviewMarker';
 
 export function ExamSit() {
   const { paperId = '' } = useParams();
@@ -170,9 +171,8 @@ export function ExamSit() {
 
       {/* Quiet while sitting — a warning on every question would be noise — but
           present, because the learner is answering an unchecked question now. */}
-      {item.review?.state !== 'approved' && (
-        <p className="fine muted" data-testid="sit-unreviewed">{t('itemUnreviewed')}</p>
-      )}
+      {/* Same question as the paper and results screens, from one place. */}
+      <ReviewMarker item={item} className="fine muted" testId="sit-unreviewed" />
       <p className="muted" data-testid="exam-resumable">{t('examResumable')}</p>
     </div>
   );
