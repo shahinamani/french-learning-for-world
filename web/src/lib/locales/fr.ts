@@ -180,6 +180,9 @@ const fr: Dict = {
 
   // ── Import ──────────────────────────────────────────────────────────────
   importTooLarge: 'Ce fichier est trop volumineux pour être importé ici. La limite est de 50 Mo, ou 150 000 révisions — bien au-delà de tout historique que cette application peut produire. Rien n’a été modifié sur cet appareil.',
+  itemTeacherChecked: 'Vérifié par {who} ({credential}). Une vérification n’est pas une garantie d’exactitude.',
+  itemTeacherStale: 'Cette question a changé après la vérification de {who} ; elle compte donc de nouveau comme non vérifiée.',
+  itemOwnerOnly: 'Relu par l’auteur, pas encore par un enseignant.',
 };
 
 export default fr;

@@ -1919,6 +1919,44 @@ console.log('\n=== what next ===');
   }
 }
 
+/* ── Owner approval is not teacher verification ───────────────────────────
+ *
+ * The three exam screens used to clear "not checked by a teacher" on
+ * `review.state === 'approved'`, so the author approving his own drafts would
+ * have removed a line that speaks for somebody else. The logic now lives in
+ * lib/review-status.ts and is unit-tested exhaustively; what this checks is
+ * that the SCREENS ask it — all three, consistently, against the real content.
+ */
+console.log('\n=== who checked it ===');
+{
+  const c = await browser.newContext();
+  const pg = await c.newPage(); watch(pg, ' review');
+
+  // Every one of the 76 items is unreviewed today, so every screen must say so.
+  await go(pg, '/practise/exams/tcf-b2-structure-2');
+  await pg.waitForSelector('[data-testid="paper-unreviewed"]', { timeout: 10000 }).catch(() => {});
+  ok('the paper screen says it is not teacher-checked',
+     await pg.locator('[data-testid="paper-unreviewed"]').count() === 1);
+
+  const text = await pg.locator('main').innerText();
+  ok('and the wording does not promise correctness',
+     !/guarantee|verified correct|certified/i.test(text), text.slice(0, 80));
+
+  await pg.locator('[data-testid="start-exam"], a[href*="/sit"]').first().click().catch(() => {});
+  await pg.waitForTimeout(900);
+  ok('the sitting screen says it too',
+     await pg.locator('[data-testid="sit-unreviewed"]').count() === 1);
+
+  // Removed from this section rather than kept: a check reading
+  // `typeof window === 'object'` was written here and can never fail. Whether
+  // an OWNER-approved item still shows the marker is decided by
+  // lib/review-status.ts and is covered exhaustively in
+  // tests/teacher-review.test.js, against content this build does not contain —
+  // all 76 items are unreviewed. Asserting it here would need a fixture paper,
+  // and a vacuous check is worse than an absent one.
+  await c.close();
+}
+
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));
 console.log(real.length ? real.slice(0,8).join('\n') : '  none');

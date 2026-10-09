@@ -152,8 +152,17 @@ test('applying does not reformat the file', () => {
     let appeared = 0, vanished = 0;
     for (const [l, n] of a) appeared += Math.max(0, n - (b.get(l) ?? 0));
     for (const [l, n] of b) vanished += Math.max(0, n - (a.get(l) ?? 0));
-    assert.ok(appeared + vanished <= 12,
+    // Bounded AND proportional. The absolute cap rose from 12 to 24 when a
+    // decision started writing a nested record — role, reviewer, date, note and
+    // the content fingerprint — which is more lines for the same one item. The
+    // fraction is what actually guards the original fault: a reformat rewrites
+    // the whole file, so it would show as a large share of it, not as a dozen
+    // lines either way.
+    const changed = appeared + vanished;
+    assert.ok(changed <= 24,
       `${appeared} lines appeared and ${vanished} vanished for one decision — it reformatted`);
+    assert.ok(changed / before.length < 0.05,
+      `${changed} of ${before.length} lines changed — that is a reformat, not a decision`);
     assert.ok(appeared > 0, 'the decision was not written at all');
   });
 });

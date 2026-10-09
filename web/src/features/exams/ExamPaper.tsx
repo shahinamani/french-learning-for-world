@@ -16,6 +16,7 @@ import { newId } from '../../lib/session';
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
+import { allTeacherVerified } from '../../lib/review-status';
 
 export function ExamPaperRoute() {
   const { paperId = '' } = useParams();
@@ -93,7 +94,12 @@ export function ExamPaperRoute() {
             since 2026-10-02; the exercises carried nothing, and a learner who
             has seen the gloss marker reasonably concludes its absence means
             reviewed. Unevenly applied honesty is worse than none. */}
-        {paper.items.some((it) => it.review?.state !== 'approved') && (
+        {/* `state !== 'approved'` used to drive this, so the author's own
+            approval cleared a line that speaks for a teacher. It now asks the
+            one question in lib/review-status.ts, and a paper keeps the marker
+            until every item on it carries an attributable, current, approving
+            teacher record. */}
+        {!allTeacherVerified(paper.items) && (
           <p className="muted" data-testid="paper-unreviewed">
             <strong>{t('itemUnreviewed')}.</strong>{' '}{t('itemsUnreviewed')}
           </p>
