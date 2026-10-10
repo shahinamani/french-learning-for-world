@@ -2117,28 +2117,28 @@
     },
     {
      "id": "b1-neg-5",
-     "kind": "cloze",
+     "kind": "mcq",
      "prompt": {
-      "en": "Choose the right form.",
-      "fr": "Choisissez la forme correcte.",
-      "fa": "شکل درست را انتخاب کنید.",
+      "en": "Which sentence means the same thing?",
+      "fr": "Quelle phrase a le même sens ?",
+      "fa": null,
       "ar": null
      },
      "stimulus": {
-      "fr": "Il ne reste ___ un peu de pain."
+      "fr": "Il ne reste qu’un peu de pain."
      },
      "options": [
       {
-       "fr": "que"
+       "fr": "Il reste seulement un peu de pain."
       },
       {
-       "fr": "plus que"
+       "fr": "Il ne reste plus de pain."
       },
       {
-       "fr": "pas que"
+       "fr": "Il ne reste pas seulement du pain."
       },
       {
-       "fr": "rien que"
+       "fr": "Il reste autant de pain qu’avant."
       }
      ],
      "answer": 0,
@@ -2147,8 +2147,8 @@
       "gram.negation.combined"
      ],
      "explain": {
-      "en": "« Ne … que » is a restriction, not a negation: « il ne reste qu’un peu de pain » — there is only a little bread left. « Plus que » would mean only … remaining after something is gone, which the sentence does not set up.",
-      "fr": "« Ne … que » marque la restriction et non la négation : « il ne reste qu’un peu de pain ».",
+      "en": "« Ne … que » restricts; it does not negate. Here it is equivalent to « seulement »: « il ne reste qu’un peu de pain » means only a small amount of bread remains, which is what « il reste seulement un peu de pain » says. Before the vowel of « un », « que » elides to « qu’ ». The other three sentences are correct French but not equivalent. « Il ne reste plus de pain » says that no bread remains. « Il ne reste pas seulement du pain » is about other things that remain besides bread. « Il reste autant de pain qu’avant » asserts an unchanged quantity, which the original sentence does not establish.",
+      "fr": "« Ne … que » marque la restriction, non la négation : il équivaut ici à « seulement ». « Il ne reste qu’un peu de pain » signifie que seule une petite quantité de pain reste, ce que dit « il reste seulement un peu de pain ». Devant la voyelle de « un », « que » s’élide en « qu’ ». Les trois autres phrases sont correctes, mais pas équivalentes. « Il ne reste plus de pain » dit qu’il ne reste pas de pain. « Il ne reste pas seulement du pain » porte sur d’autres choses qui restent en plus du pain. « Il reste autant de pain qu’avant » affirme une quantité inchangée, ce que la phrase de départ n’établit pas.",
       "fa": "⁨ne … que⁩ محدودیت را می‌رساند نه نفی: فقط کمی نان مانده است.",
       "ar": null
      },
@@ -2156,11 +2156,6 @@
       "state": "unreviewed",
       "by": null,
       "at": null
-     },
-     "uncertain": {
-      "confidence": "low",
-      "kind": "contested-usage",
-      "doubt": "« Il ne reste que » and « il ne reste plus que » are both ordinary French and the second is arguably more natural here — « there is only a little bread LEFT » carries the sense of « plus ». I marked « que » correct and « plus que » wrong, and I am not confident the distractor is actually wrong. If both are acceptable the item has two right answers and should be rewritten with a context that excludes one."
      },
      "rule": "negation.ne-que-is-restriction"
     },
