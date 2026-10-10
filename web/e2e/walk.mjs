@@ -1324,57 +1324,120 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
     ['/practise/exams', 'Exams'],
     ['/practise/exams/delf-a1-ce', 'Exam paper'],
   ];
+
+  // The two open states matter most: a dialog and a popover are exactly what
+  // hand-rolling gets wrong, and both are closed on a plain page load, so
+  // scanning only the routes above would have missed them entirely.
+  const OPEN_STATES = [
+    [async (p) => { await p.goto(BASE + '#/learn?panel=concept:gram.present.irregular',
+        { waitUntil: 'networkidle' }); }, 'side panel open'],
+    [async (p) => { await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+        await p.locator('[data-testid="timer-pill"], .timer-pill').first().click(); }, 'timer popover open'],
+  ];
+
+  /**
+   * One scan, one code path.
+   *
+   * This was two copies of the same `axe.run` payload. It is one function now
+   * because the Persian and Arabic passes below have to run EXACTLY the rule
+   * set the English pass runs — a second copy is how a locale quietly ends up
+   * scanned against fewer rules than the locale it is compared with, and then
+   * "0 violations" means two different things in one log.
+   */
+  const scan = async (p) => {
+    await p.addScriptTag({ content: AXE });
+    return p.evaluate(async () => {
+      const r = await window.axe.run(document, {
+        runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+        resultTypes: ['violations'],
+      });
+      return r.violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length,
+        help: v.help, sample: (v.nodes[0]?.html || '').slice(0, 90) }));
+    });
+  };
+  const describe = (res) => res.length
+    ? res.map((v) => `${v.id}(${v.impact}, ${v.n}): ${v.sample}`).join(' | ')
+    : 'none';
+
   let totalViolations = 0;
-  for (const theme of ['light', 'dark']) {
-    const ctx = await browser.newContext({ viewport: { width: 375, height: 812 },
-      colorScheme: theme });
-    const p = await ctx.newPage(); watch(p, ` axe-${theme}`);
-    await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
-    for (const [hash, name] of SCREENS) {
-      await p.goto(BASE + '#' + hash, { waitUntil: 'networkidle' });
-      await p.waitForTimeout(350);
-      await p.addScriptTag({ content: AXE });
-      const res = await p.evaluate(async () => {
-        const r = await window.axe.run(document, {
-          runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
-          resultTypes: ['violations'],
-        });
-        return r.violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length,
-          help: v.help, sample: (v.nodes[0]?.html || '').slice(0, 90) }));
-      });
-      totalViolations += res.length;
-      const detail = res.length
-        ? res.map((v) => `${v.id}(${v.impact}, ${v.n}): ${v.sample}`).join(' | ')
-        : 'none';
-      ok(`axe ${theme.padEnd(5)} ${name.padEnd(13)} 0 violations`, res.length === 0, detail);
+  let scans = 0;
+
+  /**
+   * `locale: undefined` is the English pass, unchanged: Playwright's default.
+   *
+   * Persian and Arabic are scanned in LIGHT ONLY, and the reason is stated
+   * rather than left to be guessed at. The rules a locale can change are the
+   * ones about language and structure — `html-has-lang`, `valid-lang`,
+   * `html-lang-valid`, every accessible-name rule, and anything that reads
+   * direction. None of them reads a colour. Contrast is the rule that reads
+   * colour: it is scanned in both themes in English here, and against real
+   * rendered backgrounds in `design-system/contrast-check.mjs`. It cannot
+   * differ by locale, because it is computed from the two colours and not from
+   * the glyphs between them. If a rule is ever added that is BOTH
+   * locale-sensitive and colour-sensitive, this comment is wrong and the table
+   * below is where to fix it.
+   */
+  const PASSES = [
+    [undefined, 'en', ['light', 'dark']],
+    ['fa-IR', 'fa', ['light']],
+    ['ar-SA', 'ar', ['light']],
+  ];
+  // Which languages this product writes right to left. Kept separate from the
+  // table above ON PURPOSE: see the guard below.
+  const RTL = new Set(['fa', 'ar']);
+
+  for (const [locale, lang, themes] of PASSES) {
+    for (const theme of themes) {
+      const tag = `${lang}/${theme}`;
+      const ctx = await browser.newContext({ viewport: { width: 375, height: 812 },
+        colorScheme: theme, ...(locale ? { locale } : {}) });
+      const p = await ctx.newPage(); watch(p, ` axe-${tag}`);
+      await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
+
+      // The pass is worthless if it ran against the wrong language. Persian and
+      // Arabic have to be right-to-left BEFORE anything is scanned, and English
+      // has to not be — otherwise an "RTL pass" that silently fell back to
+      // English reports 0 violations and means nothing. docs/lessons.md #6
+      // applied to a locale instead of a screen.
+      //
+      // The expected direction comes from `lang` — the name this log PRINTS —
+      // and not from whether `locale` is set. The first version of this guard
+      // wrote `locale ? 'rtl' : 'ltr'`, and it was checked by planting the
+      // exact fallback it exists to catch: clearing the locale on the Persian
+      // row. It passed. Both sides of the comparison were computed from the
+      // one variable, so breaking the locale moved the expectation with it.
+      // That is AGENTS.md §3 — the question is not whether the rule is right
+      // but whether it compares the right two things, and convenience had
+      // picked one of them. A line that says "really in fa" is now checked
+      // against fa, so a mistyped locale in the table above fails here.
+      const dir = await p.evaluate(() => document.documentElement.dir);
+      const want = RTL.has(lang) ? 'rtl' : 'ltr';
+      ok(`axe ${tag.padEnd(9)} the pass is really in ${lang} (dir=${dir})`, dir === want,
+         `the log calls this pass ${lang}, which is ${want}, and the page rendered`
+         + ` dir="${dir}" — a pass in the wrong direction proves nothing`);
+
+      for (const [hash, name] of SCREENS) {
+        await p.goto(BASE + '#' + hash, { waitUntil: 'networkidle' });
+        await p.waitForTimeout(350);
+        const res = await scan(p);
+        totalViolations += res.length;
+        scans++;
+        ok(`axe ${tag.padEnd(9)} ${name.padEnd(13)} 0 violations`, res.length === 0, describe(res));
+      }
+
+      for (const [setup, name] of OPEN_STATES) {
+        await setup(p);
+        await p.waitForTimeout(400);
+        const res = await scan(p);
+        totalViolations += res.length;
+        scans++;
+        ok(`axe ${tag.padEnd(9)} ${name.padEnd(13)} 0 violations`, res.length === 0, describe(res));
+      }
+      await ctx.close();
     }
-    // The open states matter most: a dialog and a popover are exactly what
-    // hand-rolling gets wrong, and both are closed on a plain page load, so
-    // scanning only the routes above would have missed them entirely.
-    for (const [setup, name] of [
-      [async () => { await p.goto(BASE + '#/learn?panel=concept:gram.present.irregular',
-          { waitUntil: 'networkidle' }); }, 'side panel open'],
-      [async () => { await p.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
-          await p.locator('[data-testid="timer-pill"], .timer-pill').first().click(); }, 'timer popover open'],
-    ]) {
-      await setup();
-      await p.waitForTimeout(400);
-      await p.addScriptTag({ content: AXE });
-      const res = await p.evaluate(async () => {
-        const r = await window.axe.run(document, {
-          runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
-          resultTypes: ['violations'],
-        });
-        return r.violations.map((v) => ({ id: v.id, impact: v.impact, n: v.nodes.length,
-          sample: (v.nodes[0]?.html || '').slice(0, 90) }));
-      });
-      totalViolations += res.length;
-      ok(`axe ${theme.padEnd(5)} ${name.padEnd(13)} 0 violations`, res.length === 0,
-         res.map((v) => `${v.id}(${v.impact}, ${v.n}): ${v.sample}`).join(' | '));
-    }
-    await ctx.close();
   }
-  ok(`axe total across ${SCREENS.length} screens + 2 open states, × 2 themes`, totalViolations === 0,
+  ok(`axe total: ${scans} scans over ${SCREENS.length} screens + ${OPEN_STATES.length} open`
+     + ` states, English in two themes, Persian and Arabic in light`, totalViolations === 0,
      `${totalViolations} violations`);
 }
 

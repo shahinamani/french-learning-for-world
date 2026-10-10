@@ -36,7 +36,26 @@ fi
 say "4. unit tests, with web dependencies hidden as CI has them"
 hidden=0
 if [ -d web/node_modules ]; then mv web/node_modules /tmp/_web_nm && hidden=1; fi
-if node --import ./tests/register.mjs --test tests/*.test.js >/tmp/units.txt 2>&1; then
+# Run the suite WITHOUT git's environment block.
+#
+# This sweep runs from the pre-push hook, and git gives a hook `GIT_DIR` and
+# friends. Two tests build a throwaway repository in a temp directory and pass
+# `cwd`; `GIT_DIR` beats `cwd`, so from a WORKTREE — where the exported value is
+# absolute rather than the relative `.git` the main checkout exports — those
+# tests addressed this repository: fixture commits on the live branch, and
+# `user.email` overwritten in the config every worktree shares. Observed
+# 2026-10-10.
+#
+# The tests clear the environment themselves now, which is the actual fix, and
+# `tests/git-env.mjs` holds it with a test that fails if it regresses. This line
+# is the second lock: a test added later that shells out to git without thinking
+# about `GIT_DIR` is safe when the suite is run from here. It is NOT a
+# substitute, because CI runs the suite directly and never comes through this
+# script.
+if env -u GIT_DIR -u GIT_WORK_TREE -u GIT_INDEX_FILE -u GIT_OBJECT_DIRECTORY \
+       -u GIT_ALTERNATE_OBJECT_DIRECTORIES -u GIT_COMMON_DIR -u GIT_NAMESPACE \
+       -u GIT_PREFIX -u GIT_CONFIG_GLOBAL -u GIT_CONFIG_SYSTEM -u GIT_CONFIG_COUNT \
+       node --import ./tests/register.mjs --test tests/*.test.js >/tmp/units.txt 2>&1; then
   say "   $(grep -E '^# (tests|pass|fail)' /tmp/units.txt | tr '\n' ' ')"
 else
   say "   FAIL"; grep -E '^not ok' /tmp/units.txt | head -5 | sed 's/^/     /'; fail=1
