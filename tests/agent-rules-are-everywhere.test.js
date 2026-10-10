@@ -19,6 +19,7 @@ import { execFileSync } from 'node:child_process';
 import { tmpdir } from 'node:os';
 import { fileURLToPath } from 'node:url';
 import { join } from 'node:path';
+import { gitFreeEnv } from './git-env.mjs';
 
 const root = fileURLToPath(new URL('..', import.meta.url));
 const read = (p) => readFileSync(join(root, p), 'utf8');
@@ -130,10 +131,18 @@ test('npm install installs the hooks, because a fresh clone has none', () => {
  */
 const script = join(root, 'scripts/check-commit-messages.sh');
 
-/** A throwaway repository with one offending message, the trailer on line 5. */
+/**
+ * A throwaway repository with one offending message, the trailer on line 5.
+ *
+ * `env: gitFreeEnv()` is what makes it throwaway; `cwd` alone does not. See
+ * `tests/git-env.mjs`. This function planted its fixture commit on a live
+ * branch of this repository on 2026-10-10, from a worktree, because `GIT_DIR`
+ * was in the environment and beats `cwd`.
+ */
 function repoWithATrailer() {
   const dir = mkdtempSync(join(tmpdir(), 'attr-'));
-  const git = (...a) => execFileSync('git', a, { cwd: dir, encoding: 'utf8' });
+  const env = gitFreeEnv();
+  const git = (...a) => execFileSync('git', a, { cwd: dir, env, encoding: 'utf8' });
   git('init', '-q', '.');
   git('config', 'user.email', 'probe@example.invalid');
   git('config', 'user.name', 'Probe');
@@ -151,7 +160,7 @@ function repoWithATrailer() {
 function scan(dir, path) {
   try {
     const out = execFileSync('bash', [path], {
-      cwd: dir, encoding: 'utf8', env: { ...process.env, SKIP_FETCH: '1' },
+      cwd: dir, encoding: 'utf8', env: gitFreeEnv({ SKIP_FETCH: '1' }),
     });
     return { code: 0, out };
   } catch (e) {

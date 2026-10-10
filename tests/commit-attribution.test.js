@@ -18,13 +18,24 @@ import { mkdtempSync, rmSync, writeFileSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { gitFreeEnv, REDIRECTING_VARIABLES } from './git-env.mjs';
 
 const SCRIPT = fileURLToPath(new URL('../scripts/check-commit-messages.sh', import.meta.url));
 
-/** A throwaway repository with one commit carrying `message`. */
+/**
+ * A throwaway repository with one commit carrying `message`.
+ *
+ * `cwd` is not enough to make this throwaway, and `env` is why — see
+ * `tests/git-env.mjs`. `GIT_DIR` is in the environment whenever the suite runs
+ * from a git hook, which is how the pre-push sweep runs it, and it beats `cwd`:
+ * from a worktree this function committed its fixtures into the real
+ * repository and wrote the identity below into the config every worktree
+ * shares.
+ */
 function repoWith(message) {
   const dir = mkdtempSync(join(tmpdir(), 'attrib-'));
-  const git = (args) => execFileSync('git', args, { cwd: dir, stdio: 'pipe' });
+  const env = gitFreeEnv();
+  const git = (args) => execFileSync('git', args, { cwd: dir, env, stdio: 'pipe' });
   git(['init', '-q', '-b', 'main']);
   git(['config', 'user.name', 'Shahin Amani']);
   // A placeholder, not the owner's real address: this is a public repository
@@ -32,14 +43,23 @@ function repoWith(message) {
   git(['config', 'user.email', 'author@example.invalid']);
   writeFileSync(join(dir, 'a.txt'), 'x'.repeat(80));
   git(['add', 'a.txt']);
-  execSync('git commit -q --allow-empty-message -F -', { cwd: dir, input: message });
+  execSync('git commit -q --allow-empty-message -F -', { cwd: dir, env, input: message });
   return dir;
 }
 
-/** Run the script in `dir`; return its exit code and output. */
+/**
+ * Run the script in `dir`; return its exit code and output.
+ *
+ * The env matters here as much as in `repoWith`. The script scans
+ * `git log --all`, so with `GIT_DIR` inherited it reads the REAL repository's
+ * every ref while the test believes it is reading a one-commit fixture — and
+ * then "the script passes on a clean history" is a statement about this
+ * project's history, which is not what it claims to assert.
+ */
 function run(dir) {
   try {
-    const out = execFileSync('bash', [SCRIPT], { cwd: dir, encoding: 'utf8', stdio: 'pipe' });
+    const out = execFileSync('bash', [SCRIPT],
+      { cwd: dir, env: gitFreeEnv(), encoding: 'utf8', stdio: 'pipe' });
     return { code: 0, out };
   } catch (e) {
     return { code: e.status, out: `${e.stdout ?? ''}${e.stderr ?? ''}` };
@@ -119,7 +139,8 @@ test('the script fails, rather than passing, when it reads nothing', () => {
   // "clean" — that shape has appeared repeatedly on this project.
   const dir = mkdtempSync(join(tmpdir(), 'attrib-empty-'));
   try {
-    execFileSync('git', ['init', '-q', '-b', 'main'], { cwd: dir, stdio: 'pipe' });
+    execFileSync('git', ['init', '-q', '-b', 'main'],
+      { cwd: dir, env: gitFreeEnv(), stdio: 'pipe' });
     const { code } = run(dir);
     assert.equal(code, 2, 'an unreadable or empty history exits 2, not 0');
   } finally { rmSync(dir, { recursive: true, force: true }); }
@@ -132,9 +153,107 @@ test('documentation may discuss the episode without tripping the check', () => {
   try {
     writeFileSync(join(dir, 'lessons.md'),
       'The trailer said Co-Authored-By: Cl' + 'aude, from An' + 'thropic tooling.\n');
-    execFileSync('git', ['add', 'lessons.md'], { cwd: dir, stdio: 'pipe' });
-    execSync('git commit -q -F -', { cwd: dir, input: 'Record the episode in the lessons list\n' });
+    execFileSync('git', ['add', 'lessons.md'], { cwd: dir, env: gitFreeEnv(), stdio: 'pipe' });
+    execSync('git commit -q -F -',
+      { cwd: dir, env: gitFreeEnv(), input: 'Record the episode in the lessons list\n' });
     const { code } = run(dir);
     assert.equal(code, 0, 'file content naming the episode must not fail the check');
   } finally { rmSync(dir, { recursive: true, force: true }); }
+});
+
+/**
+ * The fixtures stay in the temp directory even when git's environment says
+ * otherwise. This is the check that was missing, and the defect it describes
+ * really happened.
+ *
+ * On 2026-10-10 a push from a git worktree ran this suite through the pre-push
+ * hook. `git` exports `GIT_DIR` to a hook, and from a worktree that value is
+ * ABSOLUTE, so every "throwaway" git command above addressed the real
+ * repository instead: two fixture commits landed on the live branch,
+ * `core.bare` was set to true, and `user.email` became
+ * `author@example.invalid` in the config that every worktree of this
+ * repository shares. The next commit anybody made would have carried the
+ * wrong author, which is the GitHub-contributions rule broken by a test run.
+ *
+ * In the MAIN checkout the same code is safe, and that is the part worth
+ * understanding: there git exports the relative string `.git`, which resolves
+ * inside whatever `cwd` the child was given — the throwaway repository. The
+ * isolation was real for a year and it was an accident of one environment.
+ *
+ * The victim here is a second throwaway repository, never this one. A probe
+ * that proved the point by damaging the repository would be the defect, not
+ * the test for it.
+ */
+test('a hostile GIT_DIR cannot reach out of the fixture', () => {
+  const victim = repoWith(CLEAN);
+  const before = {
+    head: execFileSync('git', ['rev-parse', 'HEAD'],
+      { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+    commits: execFileSync('git', ['rev-list', '--count', '--all'],
+      { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+    email: execFileSync('git', ['config', 'user.email'],
+      { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+    bare: execFileSync('git', ['config', '--get', 'core.bare'],
+      { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+  };
+
+  // Exactly what a git hook hands its children, with the absolute form a
+  // worktree produces.
+  const saved = process.env.GIT_DIR;
+  process.env.GIT_DIR = join(victim, '.git');
+  let fixture;
+  try {
+    fixture = repoWith(CLEAN);
+    const { code, out } = run(fixture);
+    assert.equal(code, 0, `the fixture is clean, so the scan passes: ${out}`);
+
+    const after = {
+      head: execFileSync('git', ['rev-parse', 'HEAD'],
+        { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+      commits: execFileSync('git', ['rev-list', '--count', '--all'],
+        { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+      email: execFileSync('git', ['config', 'user.email'],
+        { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+      bare: execFileSync('git', ['config', '--get', 'core.bare'],
+        { cwd: victim, env: gitFreeEnv(), encoding: 'utf8' }).trim(),
+    };
+
+    // Each of the four is one of the four things that actually got damaged.
+    assert.equal(after.head, before.head,
+      'building a fixture moved the HEAD of the repository GIT_DIR pointed at');
+    assert.equal(after.commits, before.commits,
+      'building a fixture added commits to the repository GIT_DIR pointed at');
+    assert.equal(after.email, before.email,
+      'building a fixture rewrote user.email in the repository GIT_DIR pointed at');
+    assert.equal(after.bare, before.bare,
+      'building a fixture rewrote core.bare in the repository GIT_DIR pointed at');
+  } finally {
+    if (saved === undefined) delete process.env.GIT_DIR; else process.env.GIT_DIR = saved;
+    rmSync(victim, { recursive: true, force: true });
+    if (fixture) rmSync(fixture, { recursive: true, force: true });
+  }
+});
+
+test('the helper strips every variable that can redirect a git command', () => {
+  // `GIT_DIR` is the one that bit, and fixing only that one is how the next
+  // variable gets through. The list is asserted whole, so adding a stripped
+  // name without recording it here fails, and so does quietly dropping one.
+  const hostile = {};
+  for (const name of REDIRECTING_VARIABLES) hostile[name] = '/nowhere';
+  const saved = { ...process.env };
+  try {
+    Object.assign(process.env, hostile);
+    const env = gitFreeEnv();
+    const leaked = REDIRECTING_VARIABLES.filter((n) => n in env);
+    assert.deepEqual(leaked, [], `these would still redirect git: ${leaked.join(', ')}`);
+    assert.ok(REDIRECTING_VARIABLES.includes('GIT_DIR'),
+      'GIT_DIR is the variable this whole episode was about');
+    // And it is a filter, not a blank slate: a child still needs its PATH.
+    assert.equal(gitFreeEnv().PATH, process.env.PATH, 'the rest of the environment survives');
+    assert.equal(gitFreeEnv({ SKIP_FETCH: '1' }).SKIP_FETCH, '1', 'a caller may set what it means to');
+  } finally {
+    for (const name of REDIRECTING_VARIABLES) {
+      if (name in saved) process.env[name] = saved[name]; else delete process.env[name];
+    }
+  }
 });
