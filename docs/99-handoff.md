@@ -474,10 +474,15 @@ replaced text that no longer existed and asserted nothing.
 
 ## 10. CI status — the last line, because it is the one that is checkable
 
-**`main` at `346baae`** — required checks `test` **success**, `browser`
+**`main` at `e4197c8`** — required checks `test` **success**, `browser`
 **success**.
-Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/37021813641>
-Observed **2026-10-02T14:43:09Z**. 232 unit tests, 183 browser checks.
+Run: <https://github.com/shahinamani/french-learning-for-world/actions/runs/38040264551>
+Observed **2026-10-10T09:13:30Z**. 450 unit tests, 357 browser checks, plus 40
+on the review-tool drive and 20 on contrast and layout.
+
+That run is the one for the merge of #47, which carried the Persian and Arabic
+axe pass and the fixture-isolation fix. Of the 357, 52 are axe scans and 26 of
+those are in a language this project had never scanned for accessibility.
 
 This block reports the **last CI run observed on this branch**, which is the run
 of the push before this document was last written — a document cannot name the
