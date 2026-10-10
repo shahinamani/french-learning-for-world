@@ -228,8 +228,14 @@ were written in this session and are unreviewed. A2 and B1 wait on it.
 1. **Shahin's verdict on the A1 Persian concept names**, then A2 and B1 in that
    order. Arabic concept names stay held until there is a reader.
 2. **Part 9.1 remainder**: per-language typography on screen (the dictionary is
-   checked; the rendering is not), and an axe-core accessibility pass in the two
-   RTL locales — the existing axe scan runs in English only.
+   checked; the rendering is not). ~~an axe-core accessibility pass in the two
+   RTL locales — the existing axe scan runs in English only.~~ **Done
+   2026-10-10**, in `walk.mjs` rather than `rtl.mjs`, because `rtl.mjs` is not
+   run in CI and a scan on one machine is not a guarantee. 52 scans: English in
+   both themes, Persian and Arabic in light, over 11 screens plus the side
+   panel and the timer popover. 0 violations. Both new guards were seen red on
+   purpose first — a planted `image-alt` found on all 13 Persian scans, and the
+   locale-fallback guard caught the Persian pass rendering `dir="ltr"`.
 3. Then the order Shahin set: **TRANSLATIONS → SLIDES → C1/C2 content →
    landing page.**
 4. `docs/08-arabic-review.md` must be updated whenever Arabic strings are added,
@@ -239,8 +245,17 @@ were written in this session and are unreviewed. A2 and B1 wait on it.
 
 - **No screen reader has been used on this project.** axe-core is not a screen
   reader, and nothing here should be described as screen-reader tested.
-- **The axe accessibility scan runs in English only.** RTL has layout checks but
-  no accessibility scan.
+- **The axe accessibility scan runs in English, Persian and Arabic** since
+  2026-10-10 — 52 scans in `walk.mjs`, English in both themes, the two RTL
+  locales in light only. The stated boundary: a rule that is **both**
+  locale-sensitive and colour-sensitive would not be covered in the RTL
+  locales. None in the WCAG 2.1 A/AA set is; contrast reads two colours, not
+  the glyphs between them. The comment in `walk.mjs` names the place to fix it
+  if that ever stops being true.
+- **`rtl.mjs` is still not run in CI.** Its 1016 layout checks are a local
+  result, and the figure in the heading of §2 should be read that way. The axe
+  pass was deliberately put in `walk.mjs` instead, which is the required
+  `browser` check. Putting the RTL layout walk into CI is not done.
 - **Arabic has had no human review.** See `docs/08`. This is a launch condition.
 - **`app/` still exists and is still deployed.** It is the old vanilla portal.
   Two of the nine parity conditions in `docs/07-claim-sweep.md` are unmet, so it
@@ -415,7 +430,9 @@ honours them.
 
 - **Arabic has no reader.** ~15 strings now wait, the highest-priority being the
   seven data-honesty strings — see docs/08. A launch condition.
-- **No screen reader has been used.** axe runs in English only.
+- **No screen reader has been used.** axe is not a screen reader. It now runs
+  in English, Persian and Arabic (2026-10-10); that widens the scan, and
+  changes nothing about the screen-reader claim.
 - **B2 is the stated ceiling and that is correct.** The taxonomy reaches C2; no
   card, drill or exam item is written against a C1 or C2 id. 2,392 verbs include
   C1 and C2 frequency bands, which does NOT change the ceiling claim.
