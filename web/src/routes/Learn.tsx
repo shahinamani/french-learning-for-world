@@ -98,6 +98,16 @@ export function Learn() {
           </>
         )}
       </section>
+      {/* The workspace, reachable from the screen a learner starts on. It is a
+          link here rather than a fifth item in the bottom tab bar, because a
+          tab needs an icon and a CORE dictionary key — and a core key obliges
+          Persian and Arabic, which nobody has written. `wsTitle` is in the
+          optional group, so fa and ar fall back to English behind the marker
+          the workspace itself shows. */}
+      <Link className="btn btn--block u-mb-3" to="/workspace" data-testid="go-workspace">
+        {t('wsTitle')}
+      </Link>
+
       {/* Second, not first: before there is anything to lose, and after the
           reason the learner opened the page. */}
       <DataNotice />

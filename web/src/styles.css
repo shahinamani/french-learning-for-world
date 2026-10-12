@@ -396,3 +396,109 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
    says so, so the screen does not change size depending on the learner's
    record. */
 .next[data-kind="none"] .next__title { color: var(--color-ink-muted); }
+
+/* ── The learning workspace ───────────────────────────────────────────────
+ *
+ * Light neutral canvas, white card surfaces, restrained gold, compact
+ * controls, one prominent card. Logical properties throughout — no physical
+ * `left`/`right` — so Persian and Arabic mirror without anything being
+ * hand-flipped, while French inside a card stays `ltr` because the markup says
+ * so.
+ */
+.ws { gap: var(--space-4); }
+.ws-head { display: flex; flex-direction: column; gap: var(--space-2); }
+.fine { font-size: var(--text-xs); line-height: var(--leading-relaxed); }
+
+.ws-controls { display: flex; flex-wrap: wrap; gap: var(--space-3); }
+.ws-control { flex: 1 1 15rem; display: flex; flex-direction: column; gap: var(--space-2);
+  background: var(--color-surface); border: 1px solid var(--color-line);
+  border-radius: var(--radius-md); padding: var(--space-3); }
+.ws-control__label { font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-ink-faint); }
+.ws-control__row { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.ws-clock { font-size: var(--text-2xl); font-weight: var(--weight-semibold);
+  font-variant-numeric: tabular-nums; color: var(--color-ink); line-height: 1.1; }
+.ws-check { display: flex; align-items: center; gap: var(--space-2);
+  font-size: var(--text-xs); color: var(--color-ink-muted); min-height: var(--tap-min); }
+
+/* ── Filters ──────────────────────────────────────────────────────────── */
+.ws-filters { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.ws-filters__label { font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-ink-faint);
+  margin-inline-end: var(--space-1); }
+.ws-chip { display: inline-flex; align-items: center; gap: var(--space-2);
+  min-height: var(--tap-min); padding-inline: var(--space-3); font-size: var(--text-sm);
+  color: var(--color-ink-muted); background: var(--color-surface);
+  border: 1px solid var(--color-line); border-radius: var(--radius-full); cursor: pointer; }
+.ws-chip:hover:not(:disabled) { color: var(--color-ink); border-color: var(--color-line-strong); }
+.ws-chip:disabled { opacity: 0.45; cursor: not-allowed; }
+.ws-chip.is-on { color: var(--color-gold); border-color: var(--color-gold);
+  background: var(--color-gold-soft); font-weight: var(--weight-medium); }
+.ws-chip--sm { min-height: 2rem; padding-inline: var(--space-2); font-size: var(--text-xs); }
+.ws-chip__n { font-size: var(--text-2xs); font-variant-numeric: tabular-nums;
+  color: var(--color-ink-faint); }
+.ws-chip.is-on .ws-chip__n { color: var(--color-gold); }
+
+.ws-jump { display: flex; align-items: flex-end; gap: var(--space-2); flex-wrap: wrap; }
+.ws-jump__label { font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-ink-faint); }
+.ws-jump__input { width: 6rem; }
+
+/* ── Tabs ─────────────────────────────────────────────────────────────── */
+.ws-tabs { display: flex; flex-wrap: wrap; gap: var(--space-1);
+  border-block-end: 1px solid var(--color-line); }
+.ws-tab { min-height: var(--tap-min); padding-inline: var(--space-3); font-size: var(--text-sm);
+  font-weight: var(--weight-medium); color: var(--color-ink-muted); background: none;
+  border: none; border-block-end: 2px solid transparent; cursor: pointer;
+  margin-block-end: -1px; }
+.ws-tab:hover { color: var(--color-ink); }
+.ws-tab.is-on { color: var(--color-gold); border-block-end-color: var(--color-gold); }
+
+.ws-panel { display: flex; flex-direction: column; gap: var(--space-4); }
+.ws-cards { display: flex; flex-direction: column; gap: var(--space-3); }
+.ws-lead { display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
+.ws-progress { display: flex; flex-direction: column; gap: var(--space-4); align-items: flex-start; }
+
+/* ── The card: the one prominent thing on the page ────────────────────── */
+.ws-card { background: var(--color-surface); border: 1px solid var(--color-line);
+  border-start-start-radius: var(--radius-lg); border-start-end-radius: var(--radius-lg);
+  border-end-start-radius: var(--radius-lg); border-end-end-radius: var(--radius-lg);
+  box-shadow: var(--shadow-raised); padding: var(--space-6) var(--space-5);
+  min-height: 16rem; display: flex; flex-direction: column; gap: var(--space-3);
+  align-items: center; justify-content: center; text-align: center; cursor: pointer;
+  border-block-start: 3px solid var(--color-gold-solid); }
+.ws-card:hover { border-color: var(--color-line-strong); }
+.ws-card:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 2px; }
+.ws-card__top { display: flex; gap: var(--space-2); align-items: center; justify-content: center;
+  flex-wrap: wrap; }
+.ws-card__level { font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  color: var(--color-gold-ink); background: var(--color-gold-solid);
+  padding: 3px 8px; border-radius: var(--radius-sm); letter-spacing: 0.04em; }
+.ws-card__mark { font-size: var(--text-2xs); color: var(--color-ink-faint); }
+.ws-card__front { font-size: var(--text-3xl); font-weight: var(--weight-semibold);
+  color: var(--color-ink); margin: 0; line-height: 1.2; }
+.ws-card__hint { font-size: var(--text-xs); margin: 0; }
+.ws-card__back { display: flex; flex-direction: column; gap: var(--space-2);
+  font-size: var(--text-lg); color: var(--color-ink); }
+.ws-card__examples { margin-block-start: var(--space-2); }
+.ws-card__example { font-size: var(--text-sm); color: var(--color-ink-muted); margin: 0; }
+
+/* ── Actions ──────────────────────────────────────────────────────────── */
+.ws-actions { display: flex; flex-wrap: wrap; gap: var(--space-2); align-items: center; }
+.ws-position { margin: 0; margin-inline-start: auto; font-size: var(--text-sm);
+  font-variant-numeric: tabular-nums; color: var(--color-ink-muted); }
+.btn--gold { color: var(--color-gold-ink); background: var(--color-gold-solid);
+  border-color: var(--color-gold-solid); font-weight: var(--weight-medium);
+  text-decoration: none; }
+.btn--gold:hover:not(:disabled) { background: var(--color-gold-hover);
+  border-color: var(--color-gold-hover); color: var(--color-gold-ink); }
+.ws-empty { text-align: center; }
+
+/* A phone gets one column and a card that still dominates the screen. */
+@media (max-width: 40rem) {
+  .ws-control { flex-basis: 100%; }
+  .ws-card { padding: var(--space-5) var(--space-4); min-height: 13rem; }
+  .ws-card__front { font-size: var(--text-2xl); }
+  .ws-position { margin-inline-start: 0; width: 100%; }
+  .ws-actions .btn { flex: 1 1 auto; }
+}

@@ -1323,6 +1323,11 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
     ['/learn/concept/gram.present.irregular', 'Concept'],
     ['/practise/exams', 'Exams'],
     ['/practise/exams/delf-a1-ce', 'Exam paper'],
+    // The workspace brings the only new colour this product has had in months
+    // — the gold accent — and axe's contrast rule reads the RENDERED pixels,
+    // which is the one place a token's AA claim is actually tested rather than
+    // asserted in a comment next to it.
+    ['/workspace', 'Workspace'],
   ];
 
   // The two open states matter most: a dialog and a popover are exactly what
@@ -1439,6 +1444,126 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
   ok(`axe total: ${scans} scans over ${SCREENS.length} screens + ${OPEN_STATES.length} open`
      + ` states, English in two themes, Persian and Arabic in light`, totalViolations === 0,
      `${totalViolations} violations`);
+}
+
+// ── The workspace: the half of the pile rule that needs the real engine ────
+//
+// `tests/workspace-cards.test.js` checks `markOf` as a pure function of the
+// schedule. It cannot check that the ENGINE puts a card on the right side of
+// the horizon, because the React scheduler is a dynamic import of `ts-fsrs`
+// and CI runs the unit suite with `web/node_modules` hidden. So that half is
+// here, in a browser, where the real engine exists: press the button, read the
+// pile back.
+//
+// This is the check that caught the two mistakes the feature was built with —
+// the piles reading FSRS's state enum, and the buttons being Good and Again —
+// neither of which any amount of reasoning had found.
+console.log('\n=== the learning workspace ===');
+{
+  const c = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
+  const p = await c.newPage(); watch(p, ' workspace');
+  await p.goto(BASE + '#/workspace', { waitUntil: 'networkidle' });
+  await p.waitForSelector('[data-testid="ws-flashcards"]', { timeout: 20000 });
+  await p.waitForTimeout(600);
+
+  // An empty filtered set shows the empty state and no position at all, so
+  // these tolerate its absence and report 0. Without that, the pile checks
+  // below die on a 30s locator timeout instead of saying which pile was empty
+  // — seen while proving them red, and a check that crashes rather than fails
+  // tells you less than it knows.
+  const position = async () =>
+    (await p.locator('[data-testid="ws-position"]').innerText({ timeout: 4000 })
+      .catch(() => '')).replace(/\s+/g, '');
+  const total = async () => Number((await position()).split('/')[1] ?? '0');
+
+  ok('the workspace renders its card surface',
+     await p.locator('[data-testid="ws-card"]').count() === 1);
+
+  // The counts the page prints must be the counts it filters by. A chip that
+  // says 208 and a set of 207 is the defect this asserts away.
+  await p.locator('[data-testid="ws-level-A2"]').click();
+  await p.waitForTimeout(400);
+  const chip = Number((await p.locator('[data-testid="ws-level-A1"] .ws-chip__n')
+    .innerText()).replace(/[^\d]/g, ''));
+  const filtered = await total();
+  ok(`workspace: the A1 chip count is the filtered total (${chip} / ${filtered})`,
+     chip === filtered && filtered > 0);
+
+  // Reveal on keyboard, because the card is a div with role=button and that is
+  // the whole reason it needs its own key handling.
+  ok('workspace: the answer is hidden until asked for',
+     await p.locator('[data-testid="ws-card-back"]').count() === 0);
+  await p.locator('[data-testid="ws-card"]').focus();
+  await p.keyboard.press('Enter');
+  await p.waitForTimeout(300);
+  ok('workspace: Enter reveals the answer',
+     await p.locator('[data-testid="ws-card-back"]').count() === 1);
+
+  // An unreviewed gloss says so, on the card, where the learner reads it.
+  ok('workspace: an unread gloss is marked as one',
+     await p.locator('[data-testid="ws-card-unreviewed"]').count() === 1);
+
+  // THE check. Known is graded through the real FSRS engine, and the card must
+  // land in the Known pile — not vanish between piles, which is exactly what
+  // happened while the buttons were Good and Again.
+  await p.locator('[data-testid="ws-filter-none"]').click();
+  await p.waitForTimeout(400);
+  const unmarkedBefore = await total();
+  await p.locator('[data-testid="ws-known"]').click();
+  await p.waitForTimeout(900);
+  await p.locator('[data-testid="ws-filter-known"]').click();
+  await p.waitForTimeout(500);
+  const known = await total();
+  await p.locator('[data-testid="ws-filter-none"]').click();
+  await p.waitForTimeout(500);
+  const unmarkedAfter = await total();
+  ok(`workspace: Known puts the card in the Known pile (${known})`, known === 1);
+  ok(`workspace: and takes it out of the unmarked pile (${unmarkedBefore} → ${unmarkedAfter})`,
+     unmarkedAfter === unmarkedBefore - 1, 'the three piles must account for every card');
+
+  // Through a reload, on the existing store, with no second progress record.
+  await p.goto(BASE + '#/workspace', { waitUntil: 'networkidle' });
+  await p.waitForSelector('[data-testid="ws-flashcards"]', { timeout: 20000 });
+  await p.waitForTimeout(900);
+  await p.locator('[data-testid="ws-level-A2"]').click();
+  await p.waitForTimeout(300);
+  await p.locator('[data-testid="ws-filter-known"]').click();
+  await p.waitForTimeout(500);
+  ok('workspace: the mark survives a reload', await total() === 1);
+
+  // Shuffle must not change what it is counting.
+  await p.locator('[data-testid="ws-filter-all"]').click();
+  await p.waitForTimeout(400);
+  const before = await total();
+  await p.locator('[data-testid="ws-shuffle"]').click();
+  await p.waitForTimeout(500);
+  ok(`workspace: shuffle keeps the total (${before} → ${await total()})`,
+     await total() === before);
+
+  // Dialogues is the empty tab, and an empty tab must SAY it is empty.
+  await p.locator('[data-testid="ws-tab-dialogues"]').click();
+  await p.waitForTimeout(400);
+  ok('workspace: the dialogues tab states that it has nothing, rather than showing nothing',
+     await p.locator('[data-testid="ws-dialogues-empty"]').count() === 1);
+
+  await c.close();
+}
+
+// The position is a fraction, and a fraction must not reverse on an RTL page.
+// It did: "1 / 507" rendered as "507 / 1" in Persian, because isolating each
+// number still leaves the paragraph to order them.
+{
+  const c = await browser.newContext({ locale: 'fa-IR', viewport: { width: 1100, height: 900 } });
+  const p = await c.newPage(); watch(p, ' workspace fa');
+  await p.goto(BASE + '#/workspace', { waitUntil: 'networkidle' });
+  await p.waitForSelector('[data-testid="ws-position"]', { timeout: 20000 });
+  await p.waitForTimeout(700);
+  const pos = (await p.locator('[data-testid="ws-position"]').innerText()).trim();
+  ok(`workspace fa: the position reads forwards (${JSON.stringify(pos)})`, /^1\s*\/\s*\d+$/.test(pos),
+     'the learner is on card 1 of many, not card many of 1');
+  ok('workspace fa: the page says the workspace is not translated here',
+     await p.locator('[data-testid="ws-untranslated"]').count() === 1);
+  await c.close();
 }
 
 // ── Storage blocked: the learner whose data will not persist ────────────────
