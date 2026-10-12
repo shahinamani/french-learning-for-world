@@ -128,6 +128,28 @@
   --color-accent-ink: #ffffff;  /* text ON accent */
   --color-accent-soft: #eceef9; /* accent-tinted fill */
 
+  /* Gold, for the learning workspace, and restrained on purpose.
+   *
+   * The indigo accent above stays the product's accent; this is a second,
+   * quieter one used for the workspace's active tab, the card's level chip and
+   * the affirmative action. Gold is the hardest hue to keep accessible: the
+   * value people picture (#c9a227) is 1.9:1 on white and unusable as text. So
+   * there are three tokens and each has one job.
+   *
+   *   --color-gold       TEXT and borders on canvas or surface. Dark enough to
+   *                      pass AA, which is why it reads as bronze alone and as
+   *                      gold beside the fill.
+   *   --color-gold-solid A FILL only. Never text. Takes gold-ink on top.
+   *   --color-gold-soft  A tint behind dark ink.
+   *
+   * contrast-check.mjs measures these against the real rendered backgrounds,
+   * so a value edited here is checked rather than asserted. */
+  --color-gold: #7a5a12;        /* 5.8:1 on surface, 5.3:1 on canvas */
+  --color-gold-hover: #614810;
+  --color-gold-solid: #c9a227;  /* fill only — 1.9:1 as text, never used as text */
+  --color-gold-ink: #231a02;    /* text ON gold-solid — 8.0:1 */
+  --color-gold-soft: #fbf3dd;   /* gold-tinted fill, ink on top */
+
   /* Status. Separate from the accent, and never the only signal. */
   --color-success: #0f6349;  --color-success-soft: #e3f1ec;
   --color-warning: #7d5305;  --color-warning-soft: #f9f0e0;
@@ -176,6 +198,15 @@
     --color-accent-hover: #bcc1f6;
     --color-accent-ink: #12151c;
     --color-accent-soft: #1d2131;
+
+    /* Gold inverts: on a dark surface the light tint is the readable one, and
+     * the fill stays the same hue so the workspace does not change identity
+     * between themes. */
+    --color-gold: #e3c15f;
+    --color-gold-hover: #efd384;
+    --color-gold-solid: #c9a227;
+    --color-gold-ink: #231a02;
+    --color-gold-soft: #2a2210;
 
     --color-success: #7fd2b0;  --color-success-soft: #112620;
     --color-warning: #e2bf7e;  --color-warning-soft: #27210f;

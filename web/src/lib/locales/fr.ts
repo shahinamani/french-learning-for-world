@@ -183,6 +183,74 @@ const fr: Dict = {
   itemTeacherChecked: 'Vérifié par {who}, qualification déclarée : {credential}. Cette qualification est consignée telle qu’elle a été donnée, sans être vérifiée ici, et une vérification n’est pas une garantie d’exactitude.',
   itemTeacherStale: 'Cette question a changé après la vérification de {who} ; elle compte donc de nouveau comme non vérifiée.',
   itemOwnerOnly: 'Relu par l’auteur, pas encore par un enseignant.',
+
+  // ── Espace de travail ───────────────────────────────────────────────────
+  wsTitle: 'Espace d’apprentissage',
+  wsSummaryLead: 'Des cartes de vocabulaire, constituées à partir du jeu rédigé et de l’index des verbes.',
+  wsSummaryRich: 'cartes rédigées, avec des phrases d’exemple et quatre langues',
+  wsSummaryGloss: 'cartes de verbes dont le sens anglais vient de Wiktionary et que personne n’a relu',
+  wsCeiling: 'Les exercices notés et les explications s’arrêtent à B2. Les niveaux au-dessus sont des bandes de fréquence pour le vocabulaire, et non une affirmation que le C1 ou le C2 est enseigné ici.',
+  wsLocalOnly: 'Les marques restent sur cet appareil, dans ce navigateur. Il n’y a pas de compte et rien n’est envoyé ailleurs.',
+
+  // « Cartes » is already `cards` on the dashboard, and « À revoir » is already
+  // `again`, the first FSRS rating. Both are kept apart here on purpose: the
+  // collision check caught all three and a label the learner reads twice for
+  // two different things is the defect, not the check.
+  wsTabFlashcards: 'Cartes mémoire',
+  wsTabQuiz: 'Épreuves',
+  wsTabDialogues: 'Dialogues',
+  wsTabGrammar: 'Grammaire',
+  wsTabVocabulary: 'Vocabulaire',
+  wsTabProgress: 'Suivi',
+
+  wsTimer: 'Minuteur de séance',
+  wsTimerStart: 'Démarrer',
+  wsTimerPause: 'Pause',
+  wsTimerResume: 'Reprendre',
+  wsTimerReset: 'Réinitialiser',
+  wsTimerSound: 'Carillon à la fin',
+  wsVoiceSpeed: 'Vitesse de la voix',
+  wsVoice: 'Voix',
+  wsVoiceNone: 'Aucune voix française sur cet appareil',
+  wsVoiceNoneHelp: 'L’écoute exige une voix française du système. Cette page ne télécharge rien, donc le bouton reste inactif jusqu’à ce qu’une voix soit installée.',
+  wsRegionFrance: 'France',
+  wsRegionCanada: 'Canada',
+  wsRegionOther: 'Autre français',
+  wsSpeechAid: 'Voix de synthèse, comme aide à la prononciation. Ce n’est pas un exercice de compréhension orale ni un modèle de locuteur natif.',
+
+  wsFilters: 'Filtres',
+  wsFilterAll: 'Toutes',
+  wsFilterUnmarked: 'Pas encore marquées',
+  wsFilterReview: 'Pile à revoir',
+  wsFilterKnown: 'Sues',
+  wsShuffle: 'Mélanger',
+  wsShuffleOff: 'Dans l’ordre',
+  wsLevels: 'Niveaux',
+  wsJump: 'Aller à la carte',
+  wsJumpGo: 'Aller',
+
+  wsReveal: 'Afficher la réponse',
+  wsRevealHint: 'Cliquez sur la carte, ou appuyez sur Entrée ou Espace',
+  wsHide: 'Masquer la réponse',
+  wsGlossUnreviewed: 'Ce sens vient de Wiktionary. Aucun enseignant ne l’a relu.',
+  wsExamples: 'Exemples',
+  wsPrev: 'Précédente',
+  wsNext: 'Suivante',
+  wsListen: 'Écouter',
+  wsKnown: 'Sue',
+  wsToReview: 'Mettre à revoir',
+  wsMarkedKnown: 'Marquée comme sue',
+  wsMarkedReview: 'Marquée à revoir',
+
+  wsEmptyFiltered: 'Aucune carte ne correspond à ces filtres.',
+  wsEmptyFilteredHelp: 'Élargissez les niveaux, ou choisissez Toutes.',
+  wsNoDialogues: 'Il n’y a aucun dialogue dans ce projet.',
+  wsNoDialoguesWhy: 'Aucun n’a été rédigé, et aucun enregistrement n’a été obtenu sous une licence qui en permette l’usage. Cet onglet reste vide jusqu’à ce qu’un contenu réel existe.',
+  wsOpen: 'Ouvrir',
+  wsQuizLead: 'Des épreuves, avec une explication pour chaque question après la remise.',
+  wsGrammarLead: 'Les points de grammaire, et la quantité de matière derrière chacun.',
+  wsVocabLead: 'Tous les verbes du projet, avec leurs tableaux, et la recherche.',
+  wsProgressLead: 'Ce que cet appareil a enregistré.',
 };
 
 export default fr;

@@ -106,7 +106,11 @@ test('every key the components ask for exists in all four dictionaries', () => {
   // here — the three review-marker strings are named individually, because
   // `itemUnreviewed` and `itemUncertain` are core keys that all four locales
   // do have, and a loose `item` prefix would stop requiring them.
-  const OPTIONAL = ['landing', 'next', 'importTooLarge',
+  // `ws` is the workspace group, added 2026-10-12. A prefix is safe here for
+  // the same reason `landing` is: every key in `workspaceEn` carries it, and
+  // no core key does — asserted immediately below, where the group must still
+  // be complete in English and French.
+  const OPTIONAL = ['landing', 'next', 'importTooLarge', 'ws',
                     'itemTeacherChecked', 'itemTeacherStale', 'itemOwnerOnly'];
   const landingMayBeAbsent = (key, code) =>
     OPTIONAL.some((p) => key.startsWith(p)) && (code === 'fa' || code === 'ar');

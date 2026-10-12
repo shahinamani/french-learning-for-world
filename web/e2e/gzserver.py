@@ -25,5 +25,17 @@ class H(http.server.SimpleHTTPRequestHandler):
         self.end_headers()
         return io.BytesIO(data)
     def log_message(self, *a): pass
-socketserver.TCPServer.allow_reuse_address = True
-with socketserver.TCPServer(('127.0.0.1', PORT), H) as s: s.serve_forever()
+    # A browser is not a script. It opens several sockets at once and holds
+    # them open, and `TCPServer` serves exactly one connection at a time — so
+    # the first idle keep-alive connection blocked `serve_forever` and the
+    # server answered nothing for two days while still holding the port. The
+    # link looked correct and the page never loaded, which is the worst shape a
+    # failure can take. Sequential tools (curl, the Playwright walks) never
+    # revealed it because they only ever opened one connection at a time.
+    protocol_version = 'HTTP/1.1'   # safe: every response above sets Content-Length
+class Threaded(socketserver.ThreadingTCPServer):
+    daemon_threads = True           # a stuck request cannot keep the process alive
+    allow_reuse_address = True
+with Threaded(('127.0.0.1', PORT), H) as s:
+    print(f'serving {ROOT} on http://127.0.0.1:{PORT}/  (loopback only)', flush=True)
+    s.serve_forever()

@@ -275,12 +275,93 @@ const importEn = {
 
 export const IMPORT_KEYS = Object.keys(importEn) as (keyof typeof importEn)[];
 
+/**
+ * The learning workspace, added 2026-10-12.
+ *
+ * A fourth optional group, for the same standing reason as the third: adding
+ * to `en` obliges Persian and Arabic, and inventing those is what this project
+ * does not do. French is written here because French is written here; Persian
+ * and Arabic fall back to English behind `notTranslatedHere`, which is the
+ * established pattern and not a gap being hidden.
+ */
+const workspaceEn = {
+  wsTitle: 'Learning workspace',
+  wsSummaryLead: 'Vocabulary cards, built from the written deck and the verb index.',
+  wsSummaryRich: 'written cards, with example sentences and four languages',
+  wsSummaryGloss: 'verb cards whose English meaning comes from Wiktionary and has been read by nobody',
+  wsCeiling: 'Graded practice and explanations stop at B2. The levels above it are frequency bands for vocabulary, not a claim that C1 or C2 is taught here.',
+  wsLocalOnly: 'Marks are kept on this device, in this browser. There is no account and nothing is uploaded.',
+
+  // Tabs
+  wsTabFlashcards: 'Flashcards',
+  wsTabQuiz: 'Quiz',
+  wsTabDialogues: 'Dialogues',
+  wsTabGrammar: 'Grammar',
+  wsTabVocabulary: 'Vocabulary',
+  wsTabProgress: 'Progress',
+
+  // Top controls
+  wsTimer: 'Session timer',
+  wsTimerStart: 'Start',
+  wsTimerPause: 'Pause',
+  wsTimerResume: 'Resume',
+  wsTimerReset: 'Reset',
+  wsTimerSound: 'Chime at the end',
+  wsVoiceSpeed: 'Voice speed',
+  wsVoice: 'Voice',
+  wsVoiceNone: 'No French voice on this device',
+  wsVoiceNoneHelp: 'Listen needs a French system voice. Nothing is downloaded by this page, so until one is installed the button stays off.',
+  wsRegionFrance: 'France',
+  wsRegionCanada: 'Canada',
+  wsRegionOther: 'Other French',
+  wsSpeechAid: 'Machine speech, as a pronunciation aid. It is not listening practice and is not a model of a native speaker.',
+
+  // Filters
+  wsFilters: 'Filters',
+  wsFilterAll: 'All',
+  wsFilterUnmarked: 'Not yet marked',
+  wsFilterReview: 'To review',
+  wsFilterKnown: 'Known',
+  wsShuffle: 'Shuffle',
+  wsShuffleOff: 'In order',
+  wsLevels: 'Levels',
+  wsJump: 'Go to card',
+  wsJumpGo: 'Go',
+
+  // The card
+  wsReveal: 'Show the answer',
+  wsRevealHint: 'Click the card, or press Enter or Space',
+  wsHide: 'Hide the answer',
+  wsGlossUnreviewed: 'This meaning comes from Wiktionary. No teacher has read it.',
+  wsExamples: 'Examples',
+  wsPrev: 'Previous',
+  wsNext: 'Next',
+  wsListen: 'Listen',
+  wsKnown: 'Known',
+  wsToReview: 'To review',
+  wsMarkedKnown: 'Marked known',
+  wsMarkedReview: 'Marked for review',
+
+  // Empty and honest states
+  wsEmptyFiltered: 'No cards match these filters.',
+  wsEmptyFilteredHelp: 'Widen the levels, or choose All.',
+  wsNoDialogues: 'There are no dialogues in this project.',
+  wsNoDialoguesWhy: 'None has been written, and no recording has been obtained under a licence that permits use. This tab stays empty until there is real content behind it.',
+  wsOpen: 'Open',
+  wsQuizLead: 'Exam papers, with an explanation for every question after you submit.',
+  wsGrammarLead: 'Grammar points, and how much material sits behind each one.',
+  wsVocabLead: 'Every verb in the project, with its tables, searchable.',
+  wsProgressLead: 'What this device has recorded.',
+};
+
+export const WORKSPACE_KEYS = Object.keys(workspaceEn) as (keyof typeof workspaceEn)[];
+
 
 export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
-  & Partial<typeof importEn>;
+  & Partial<typeof importEn> & Partial<typeof workspaceEn>;
 
 /** What the translator and the prerender read: English, landing copy included. */
-const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn };
+const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn, ...workspaceEn };
 
 /**
  * Has anybody written the landing page in this language?

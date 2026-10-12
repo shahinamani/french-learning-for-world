@@ -30,6 +30,12 @@ const ExamPaperRoute = lazy(() => import('./features/exams/ExamPaper').then((m) 
 const ExamSit = lazy(() => import('./features/exams/ExamSit').then((m) => ({ default: m.ExamSit })));
 const ExamResults = lazy(() => import('./features/exams/ExamResults').then((m) => ({ default: m.ExamResults })));
 
+// The workspace is lazy for the same reason exams are: it pulls the verb index
+// reader, the speech layer and the whole card surface, and the first load has
+// 15.7 KB of headroom against the 150 KB budget. A learner who never opens it
+// does not pay for it.
+const Workspace = lazy(() => import('./features/workspace/Workspace').then((m) => ({ default: m.Workspace })));
+
 /** A lazy route still has to render something while its chunk arrives, and a
  *  blank screen is not one of the four honest states. */
 const lazily = (node: React.ReactNode) => (
@@ -65,6 +71,7 @@ function AppRoutes() {
         <Route path="practise/exams/:paperId" element={lazily(<ExamPaperRoute />)} />
         <Route path="practise/exams/:paperId/sit" element={lazily(<ExamSit />)} />
         <Route path="practise/exams/:paperId/results" element={lazily(<ExamResults />)} />
+        <Route path="workspace" element={lazily(<Workspace />)} />
         <Route path="progress" element={<Progress />} />
         <Route path="search" element={<SearchRoute />} />
         <Route path="account" element={<Account />} />
