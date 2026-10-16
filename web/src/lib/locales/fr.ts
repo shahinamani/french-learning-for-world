@@ -251,6 +251,22 @@ const fr: Dict = {
   wsGrammarLead: 'Les points de grammaire, et la quantité de matière derrière chacun.',
   wsVocabLead: 'Tous les verbes du projet, avec leurs tableaux, et la recherche.',
   wsProgressLead: 'Ce que cet appareil a enregistré.',
+
+  wsMeaning: 'Sens',
+  wsShowExamples: 'Afficher les exemples',
+  wsHideExamples: 'Masquer les exemples',
+  wsUsage: 'Remarque',
+  wsGlossOnly: 'Cette carte ne porte qu’une définition de dictionnaire — aucun exemple n’a encore été rédigé pour elle.',
+  wsDrafted: 'Le sens, les exemples et le persan ont été rédigés ici. Aucun enseignant ne les a lus et aucun lecteur persanophone ne les a vérifiés.',
+  wsPatternImpersonal: 'Verbe impersonnel',
+  wsPatternPronominal: 'Verbe pronominal',
+  wsCoverageEnriched: 'avec des exemples travaillés',
+  wsCoverageReviewed: 'vérifiées par un enseignant',
+  wsComprehension: 'Compréhension',
+  wsCorrect: 'Correct.',
+  wsNotQuite: 'Pas tout à fait.',
+  wsRetry: 'Réessayer',
+  wsMarkMapping: 'Sue enregistre la note « Facile » et Mettre à revoir enregistre « À revoir », dans le même historique de répétition espacée que la séance à quatre notes — laquelle existe toujours dans Entraînement et reste l’instrument le plus fin. Rien n’est fusionné : « Difficile » et « Bien » ne sont pas accessibles d’ici, et une carte notée là-bas conserve sa note.',
 };
 
 export default fr;

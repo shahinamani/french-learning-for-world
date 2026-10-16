@@ -502,3 +502,62 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
   .ws-position { margin-inline-start: 0; width: 100%; }
   .ws-actions .btn { flex: 1 1 auto; }
 }
+
+/* ── The educational back of a card ───────────────────────────────────────
+ * Progressive disclosure: meaning first, examples on request. The card is a
+ * single click target, so every control inside it stops propagation — a
+ * button that also flips the card is a dead button with extra steps.
+ */
+.ws-card__meaning { font-size: var(--text-xl); color: var(--color-ink); margin: 0; }
+.ws-card__fa { font-size: var(--text-lg); color: var(--color-ink); margin: 0; }
+.ws-tagline { display: inline-block; font-size: var(--text-2xs);
+  font-weight: var(--weight-semibold); letter-spacing: 0.03em;
+  color: var(--color-gold); background: var(--color-gold-soft);
+  border: 1px solid var(--color-gold); border-radius: var(--radius-full);
+  padding: 2px 10px; }
+.ws-disclose { margin-block-start: var(--space-2); }
+
+.ws-card__examples { display: flex; flex-direction: column; gap: var(--space-3);
+  text-align: start; inline-size: 100%; margin-block-start: var(--space-2);
+  border-block-start: 1px solid var(--color-line); padding-block-start: var(--space-3); }
+.ws-ex { display: flex; flex-direction: column; gap: 2px; }
+.ws-ex__head { display: flex; align-items: center; gap: var(--space-2); }
+.ws-ex__tense { font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-ink-faint); }
+.ws-ex__listen { min-width: 2rem; min-height: 2rem; font-size: var(--text-sm); }
+.ws-ex__fr { font-size: var(--text-lg); color: var(--color-ink); margin: 0; }
+/* The conjugated form, marked. `mark` is the element that means "this is the
+   bit to look at", so a screen reader and a sighted learner get the same
+   signal; the gold tint is the visual half of it, not the whole of it. */
+.ws-ex__form { background: var(--color-gold-soft); color: var(--color-ink);
+  border-block-end: 2px solid var(--color-gold); border-radius: 3px;
+  padding: 0 2px; font-weight: var(--weight-semibold); }
+.ws-ex__fa { font-size: var(--text-base); color: var(--color-ink-muted); margin: 0; }
+.ws-ex__en { font-size: var(--text-sm); margin: 0; }
+.ws-usage { font-size: var(--text-sm); color: var(--color-ink-muted); margin: 0;
+  background: var(--color-surface-sunken); border-radius: var(--radius-sm);
+  padding: var(--space-2) var(--space-3); }
+
+/* ── Dialogues ────────────────────────────────────────────────────────── */
+.ws-dlg { display: flex; flex-direction: column; gap: var(--space-4); }
+.ws-dlg__count { font-size: var(--text-2xs); font-weight: var(--weight-semibold);
+  text-transform: uppercase; letter-spacing: 0.04em; color: var(--color-ink-faint); margin: 0; }
+.ws-dlg__script { display: flex; flex-direction: column; gap: var(--space-4); }
+.ws-dlg__line { display: flex; flex-direction: column; gap: 2px;
+  border-inline-start: 3px solid var(--color-gold-soft); padding-inline-start: var(--space-3); }
+.ws-dlg__who { display: flex; align-items: center; gap: var(--space-2); }
+.ws-dlg__questions { display: flex; flex-direction: column; gap: var(--space-4); }
+.ws-dlg__q { display: flex; flex-direction: column; gap: var(--space-2); }
+.ws-dlg__prompt { margin: 0; font-weight: var(--weight-medium); color: var(--color-ink); }
+.ws-dlg__options { display: flex; flex-wrap: wrap; gap: var(--space-2); }
+/* Never colour alone: the right answer also gains a weight change and the
+   wrong one a strike, so the feedback survives a colour-blind reader and a
+   greyscale print. */
+.ws-chip.is-right { color: var(--color-success); border-color: var(--color-success);
+  background: var(--color-success-soft); font-weight: var(--weight-semibold); }
+.ws-chip.is-wrong { color: var(--color-danger); border-color: var(--color-danger);
+  background: var(--color-danger-soft); text-decoration: line-through; }
+.ws-dlg__feedback { display: flex; flex-direction: column; gap: var(--space-2);
+  align-items: flex-start; }
+.ws-dlg__right { margin: 0; color: var(--color-success); font-weight: var(--weight-semibold); }
+.ws-dlg__wrong { margin: 0; color: var(--color-danger); font-weight: var(--weight-semibold); }

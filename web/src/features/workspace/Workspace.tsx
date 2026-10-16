@@ -17,7 +17,8 @@ import { NextActivity } from '../../components/NextActivity';
 import { onVoicesReady, RATES, stop, type FrenchVoice } from '../../lib/speech';
 import { landingTranslated } from '../../lib/i18n';
 import * as timer from '../../lib/timer';
-import { Flashcards } from './Flashcards';
+import { Flashcards, type Corpus } from './Flashcards';
+import { Dialogues } from './Dialogues';
 
 const TABS = ['flashcards', 'quiz', 'dialogues', 'grammar', 'vocabulary', 'progress'] as const;
 type Tab = (typeof TABS)[number];
@@ -38,8 +39,9 @@ export function Workspace() {
   const raw = params.get('tab');
   const tab: Tab = (TABS as readonly string[]).includes(raw ?? '') ? (raw as Tab) : 'flashcards';
 
-  const [corpus, setCorpus] = useState({ total: 0, rich: 0, gloss: 0 });
-  const onCorpus = useCallback((c: typeof corpus) => setCorpus(c), []);
+  const [corpus, setCorpus] = useState<Corpus>(
+    { total: 0, rich: 0, gloss: 0, enriched: 0, reviewed: 0 });
+  const onCorpus = useCallback((c: Corpus) => setCorpus(c), []);
 
   // ── Voices, read from the device and never assumed ───────────────────────
   const [voiceList, setVoiceList] = useState<FrenchVoice[]>([]);
@@ -110,6 +112,16 @@ export function Workspace() {
           <strong><Num>{corpus.total}</Num></strong>{' · '}
           <Num>{corpus.rich}</Num> {t('wsSummaryRich')}{' · '}
           <Num>{corpus.gloss}</Num> {t('wsSummaryGloss')}
+        </p>
+        {/* Coverage, counted against the whole corpus rather than the batch
+            that happens to be written. Both figures are measurements: a card
+            counts as enriched when it has a written back, and `reviewed` is 0
+            because nobody has reviewed any of it. Neither is a plan. */}
+        <p className="muted" data-testid="ws-coverage">
+          <strong><Num>{corpus.enriched}</Num></strong>{' / '}
+          <Num>{corpus.total}</Num> {t('wsCoverageEnriched')}{' · '}
+          <strong><Num>{corpus.reviewed}</Num></strong>{' / '}
+          <Num>{corpus.total}</Num> {t('wsCoverageReviewed')}
         </p>
         <p className="fine muted" data-testid="ws-ceiling">{t('wsCeiling')}</p>
         <p className="fine muted" data-testid="ws-local-only">{t('wsLocalOnly')}</p>
@@ -211,12 +223,14 @@ export function Workspace() {
           </div>
         )}
 
-        {/* The one tab with nothing behind it, and it says so. */}
+        {/* Was the tab with nothing behind it. It has one complete starter
+            unit now — a situation, the French, the Persian and comprehension
+            questions with explanations — and it reports that there is one
+            rather than implying a library. The empty state it used to show is
+            still in Dialogues.tsx and is what appears if the content file ever
+            goes missing. */}
         {tab === 'dialogues' && (
-          <div className="card ws-lead" data-testid="ws-dialogues-empty">
-            <p><strong>{t('wsNoDialogues')}</strong></p>
-            <p className="muted">{t('wsNoDialoguesWhy')}</p>
-          </div>
+          <Dialogues voiceId={voiceId} rate={rate} voiceAvailable={voiceList.length > 0} />
         )}
 
         {tab === 'grammar' && (
