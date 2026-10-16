@@ -352,6 +352,23 @@ const workspaceEn = {
   wsGrammarLead: 'Grammar points, and how much material sits behind each one.',
   wsVocabLead: 'Every verb in the project, with its tables, searchable.',
   wsProgressLead: 'What this device has recorded.',
+
+  // ── The educational back of a card ───────────────────────────────────────
+  wsMeaning: 'Meaning',
+  wsShowExamples: 'Show examples',
+  wsHideExamples: 'Hide examples',
+  wsUsage: 'Note',
+  wsGlossOnly: 'This card has a dictionary gloss only — no examples have been written for it yet.',
+  wsDrafted: 'Meaning, examples and Persian drafted here. No teacher has read them and no Persian reader has checked them.',
+  wsPatternImpersonal: 'Impersonal verb',
+  wsPatternPronominal: 'Pronominal verb',
+  wsCoverageEnriched: 'with worked examples',
+  wsCoverageReviewed: 'checked by a teacher',
+  wsComprehension: 'Comprehension',
+  wsCorrect: 'Correct.',
+  wsNotQuite: 'Not quite.',
+  wsRetry: 'Try again',
+  wsMarkMapping: 'Known writes the Easy grade and To review writes Again, into the same spaced-repetition record as the four-grade session — which still exists under Practise and is the finer instrument. Nothing is collapsed: Hard and Good are not reachable from here, and a card you graded there keeps that grade.',
 };
 
 export const WORKSPACE_KEYS = Object.keys(workspaceEn) as (keyof typeof workspaceEn)[];

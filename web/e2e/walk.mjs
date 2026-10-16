@@ -1540,11 +1540,68 @@ console.log('\n=== the learning workspace ===');
   ok(`workspace: shuffle keeps the total (${before} → ${await total()})`,
      await total() === before);
 
-  // Dialogues is the empty tab, and an empty tab must SAY it is empty.
+  // The educational back, and the fact that it is NOT shown all at once.
+  await p.locator('[data-testid="ws-filter-all"]').click();
+  await p.waitForTimeout(300);
+  let foundEnriched = false;
+  for (let i = 0; i < 40 && !foundEnriched; i++) {
+    await p.locator('[data-testid="ws-card"]').click();
+    await p.waitForTimeout(120);
+    if (await p.locator('[data-testid="ws-examples-toggle"]').count()) { foundEnriched = true; break; }
+    await p.locator('[data-testid="ws-card"]').click();
+    await p.locator('[data-testid="ws-next"]').click();
+    await p.waitForTimeout(100);
+  }
+  ok('workspace: a card with worked examples is reachable', foundEnriched);
+  if (foundEnriched) {
+    ok('workspace: the examples are closed until asked for',
+       await p.locator('[data-testid="ws-examples"]').count() === 0);
+    await p.locator('[data-testid="ws-examples-toggle"]').click();
+    await p.waitForTimeout(300);
+    // A control inside the card must not also flip the card.
+    ok('workspace: opening the examples does not turn the card back over',
+       await p.locator('[data-testid="ws-card-back"]').count() === 1);
+    ok('workspace: three tenses, each with its conjugated form marked',
+       await p.locator('[data-testid^="ws-tense-"]').count() === 3
+       && await p.locator('.ws-ex__form').count() === 3);
+    ok('workspace: the card says the content is drafted and unreviewed',
+       await p.locator('[data-testid="ws-drafted"]').count() === 1);
+  }
+
+  // Coverage is a measurement and must not round itself up.
+  const coverageText = (await p.locator('[data-testid="ws-coverage"]').innerText()).replace(/\s+/g, ' ');
+  ok(`workspace: coverage is stated and claims no review (${coverageText.slice(0, 60)})`,
+     /\d+ \/ \d+/.test(coverageText) && /\b0 \/ \d+ checked by a teacher/.test(coverageText),
+     coverageText);
+  ok('workspace: what the two marking buttons write is stated on screen',
+     await p.locator('[data-testid="ws-mark-mapping"]').count() === 1);
+
+  // Dialogues: a complete loop — answer, feedback, explanation, retry.
   await p.locator('[data-testid="ws-tab-dialogues"]').click();
-  await p.waitForTimeout(400);
-  ok('workspace: the dialogues tab states that it has nothing, rather than showing nothing',
-     await p.locator('[data-testid="ws-dialogues-empty"]').count() === 1);
+  await p.waitForTimeout(700);
+  ok('workspace: the dialogues tab has a unit rather than an empty state',
+     await p.locator('[data-testid="ws-dialogue"]').count() === 1);
+  ok('workspace: the dialogue says its speech is the device\'s, not a recording',
+     await p.locator('[data-testid="ws-dialogue-speech"]').count() === 1);
+  {
+    const q = 'a1-au-cafe-q1';
+    ok('workspace: no feedback before the question is answered',
+       await p.locator(`[data-testid="ws-dlg-feedback-${q}"]`).count() === 0);
+    await p.locator(`[data-testid="ws-dlg-opt-${q}-1"]`).click();
+    await p.waitForTimeout(300);
+    const explain = await p.locator(`[data-testid="ws-dlg-feedback-${q}"] .ws-usage`)
+      .innerText().catch(() => '');
+    ok('workspace: a wrong answer is told so, and explained', explain.length > 20, explain.slice(0, 60));
+    await p.locator(`[data-testid="ws-dlg-retry-${q}"]`).click();
+    await p.waitForTimeout(250);
+    ok('workspace: retry puts the question back',
+       await p.locator(`[data-testid="ws-dlg-feedback-${q}"]`).count() === 0);
+    await p.locator(`[data-testid="ws-dlg-opt-${q}-0"]`).click();
+    await p.waitForTimeout(300);
+    ok('workspace: a right answer is marked right and still explains itself',
+       await p.locator(`[data-testid="ws-dlg-feedback-${q}"] .ws-dlg__right`).count() === 1
+       && (await p.locator(`[data-testid="ws-dlg-feedback-${q}"] .ws-usage`).innerText()).length > 20);
+  }
 
   await c.close();
 }

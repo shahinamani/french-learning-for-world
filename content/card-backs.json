@@ -1,0 +1,413 @@
+{
+  "version": 1,
+  "licence": "CC BY-SA 4.0",
+  "note": "The educational back of a flashcard: a Persian meaning, and worked examples in which the conjugated form is named and can be heard. Tense ids are the ones in content/tense-names.json, which already carries their names in four languages, so nothing here invents a label. `form` is a LITERAL substring of its own `fr` sentence — tests/card-backs.test.js asserts that, because the screen highlights it by searching for it.",
+  "reviewNote": "DRAFTED, NOT REVIEWED. The French and the Persian here were written by the agent that built this file. No teacher has read any of it and no Persian reader has checked the translations; `review.owner` and `review.teacher` are null on every entry and the card says so on screen. The Persian aims at the natural meaning of the sentence, not at French word order.",
+  "sources": {
+    "fr-core-a1": "content/fr-core-a1.json — the 22 written cards. Their Persian meanings and their two example sentences are REUSED verbatim here, with the same licence. Only the présent example is new, and the `form` strings were widened from the bare participle to the whole verb group so that the auxiliary is highlighted with it.",
+    "drafted": "Written for this file."
+  },
+  "backs": {
+    "v:etre": {
+      "type": "verb", "level": "A1", "fa": "بودن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "usage": "Être is the verb of identity and state, and it is the auxiliary of the verbs of movement and of every pronominal verb.",
+      "examples": [
+        { "tense": "present", "form": "suis", "fr": "Je suis à la maison.",
+          "fa": "من خانه هستم.", "en": "I am at home." },
+        { "tense": "passe-compose", "form": "ai été", "fr": "Hier, j'ai été très fatigué.",
+          "fa": "دیروز خیلی خسته بودم.", "en": "Yesterday I was very tired." },
+        { "tense": "futur", "form": "serai", "fr": "Demain, je serai à la maison.",
+          "fa": "فردا خانه خواهم بود.", "en": "Tomorrow I will be at home." }
+      ]
+    },
+    "v:avoir": {
+      "type": "verb", "level": "A1", "fa": "داشتن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "usage": "Avoir is also the auxiliary of most verbs in the passé composé.",
+      "examples": [
+        { "tense": "present", "form": "ai", "fr": "J'ai deux frères.",
+          "fa": "دو برادر دارم.", "en": "I have two brothers." },
+        { "tense": "passe-compose", "form": "ai eu", "fr": "J'ai eu une bonne idée ce matin.",
+          "fa": "امروز صبح ایده‌ی خوبی داشتم.", "en": "I had a good idea this morning." },
+        { "tense": "futur", "form": "aurons", "fr": "Nous aurons le temps demain.",
+          "fa": "فردا وقت خواهیم داشت.", "en": "We will have time tomorrow." }
+      ]
+    },
+    "v:aller": {
+      "type": "verb", "level": "A1", "fa": "رفتن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "usage": "Aller takes être in the passé composé, so its participle agrees with the subject: elle est allée.",
+      "examples": [
+        { "tense": "present", "form": "allons", "fr": "Nous allons au marché.",
+          "fa": "به بازار می‌رویم.", "en": "We are going to the market." },
+        { "tense": "passe-compose", "form": "suis allé", "fr": "Je suis allé à Paris la semaine dernière.",
+          "fa": "هفته‌ی گذشته به پاریس رفتم.", "en": "I went to Paris last week." },
+        { "tense": "futur", "form": "ira", "fr": "Elle ira à l'école lundi.",
+          "fa": "او دوشنبه به مدرسه خواهد رفت.", "en": "She will go to school on Monday." }
+      ]
+    },
+    "v:faire": {
+      "type": "verb", "level": "A1", "fa": "انجام دادن، کردن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "fais", "fr": "Je fais mes devoirs.",
+          "fa": "تکالیفم را انجام می‌دهم.", "en": "I am doing my homework." },
+        { "tense": "passe-compose", "form": "avons fait", "fr": "Nous avons fait les courses samedi.",
+          "fa": "شنبه خرید کردیم.", "en": "We did the shopping on Saturday." },
+        { "tense": "futur", "form": "ferai", "fr": "Je ferai la cuisine ce soir.",
+          "fa": "امشب آشپزی خواهم کرد.", "en": "I will cook this evening." }
+      ]
+    },
+    "v:pouvoir": {
+      "type": "verb", "level": "A1", "fa": "توانستن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "peux", "fr": "Tu peux entrer.",
+          "fa": "می‌توانی وارد شوی.", "en": "You can come in." },
+        { "tense": "passe-compose", "form": "n'ai pas pu", "fr": "Je n'ai pas pu venir hier.",
+          "fa": "دیروز نتوانستم بیایم.", "en": "I could not come yesterday." },
+        { "tense": "futur", "form": "pourras", "fr": "Tu pourras m'appeler demain.",
+          "fa": "فردا می‌توانی به من زنگ بزنی.", "en": "You will be able to call me tomorrow." }
+      ]
+    },
+    "v:vouloir": {
+      "type": "verb", "level": "A1", "fa": "خواستن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "veux", "fr": "Je veux un café.",
+          "fa": "یک قهوه می‌خواهم.", "en": "I want a coffee." },
+        { "tense": "passe-compose", "form": "a voulu", "fr": "Elle a voulu partir tôt.",
+          "fa": "او خواست زود برود.", "en": "She wanted to leave early." },
+        { "tense": "futur", "form": "voudront", "fr": "Ils voudront des explications.",
+          "fa": "آن‌ها توضیح خواهند خواست.", "en": "They will want an explanation." }
+      ]
+    },
+    "v:devoir": {
+      "type": "verb", "level": "A1", "fa": "باید، مجبور بودن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "devons", "fr": "Nous devons partir maintenant.",
+          "fa": "الان باید برویم.", "en": "We must leave now." },
+        { "tense": "passe-compose", "form": "ai dû", "fr": "J'ai dû rentrer à pied.",
+          "fa": "مجبور شدم پیاده برگردم.", "en": "I had to walk home." },
+        { "tense": "futur", "form": "devrez", "fr": "Vous devrez remplir ce formulaire.",
+          "fa": "باید این فرم را پر کنید.", "en": "You will have to fill in this form." }
+      ]
+    },
+    "v:dire": {
+      "type": "verb", "level": "A1", "fa": "گفتن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "dit", "fr": "Il dit toujours la vérité.",
+          "fa": "او همیشه حقیقت را می‌گوید.", "en": "He always tells the truth." },
+        { "tense": "passe-compose", "form": "a dit", "fr": "Il m'a dit la vérité.",
+          "fa": "او به من حقیقت را گفت.", "en": "He told me the truth." },
+        { "tense": "futur", "form": "dirai", "fr": "Je te dirai tout demain.",
+          "fa": "فردا همه چیز را به تو خواهم گفت.", "en": "I will tell you everything tomorrow." }
+      ]
+    },
+    "v:voir": {
+      "type": "verb", "level": "A1", "fa": "دیدن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "vois", "fr": "Je vois la mer d'ici.",
+          "fa": "از اینجا دریا را می‌بینم.", "en": "I can see the sea from here." },
+        { "tense": "passe-compose", "form": "avons vu", "fr": "Nous avons vu un bon film.",
+          "fa": "فیلم خوبی دیدیم.", "en": "We saw a good film." },
+        { "tense": "futur", "form": "verras", "fr": "Tu verras la différence.",
+          "fa": "تفاوت را خواهی دید.", "en": "You will see the difference." }
+      ]
+    },
+    "v:prendre": {
+      "type": "verb", "level": "A1", "fa": "گرفتن، برداشتن",
+      "pattern": "standard",
+      "usage": "With a means of transport, prendre is the ordinary verb: prendre le bus, prendre le train.",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "prend", "fr": "Elle prend le bus tous les matins.",
+          "fa": "او هر روز صبح با اتوبوس می‌رود.", "en": "She takes the bus every morning." },
+        { "tense": "passe-compose", "form": "ai pris", "fr": "J'ai pris le train de huit heures.",
+          "fa": "با قطار ساعت هشت رفتم.", "en": "I took the eight o'clock train." },
+        { "tense": "futur", "form": "prendrons", "fr": "Nous prendrons un café ensemble.",
+          "fa": "با هم قهوه خواهیم خورد.", "en": "We will have a coffee together." }
+      ]
+    },
+    "v:parler": {
+      "type": "verb", "level": "A1", "fa": "صحبت کردن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "parlons", "fr": "Nous parlons français en classe.",
+          "fa": "در کلاس فرانسوی صحبت می‌کنیم.", "en": "We speak French in class." },
+        { "tense": "passe-compose", "form": "ai parlé", "fr": "J'ai parlé à mon professeur.",
+          "fa": "با معلمم صحبت کردم.", "en": "I spoke to my teacher." },
+        { "tense": "futur", "form": "parlerons", "fr": "Nous parlerons de ce projet lundi.",
+          "fa": "دوشنبه درباره‌ی این پروژه صحبت خواهیم کرد.", "en": "We will talk about this project on Monday." }
+      ]
+    },
+    "v:manger": {
+      "type": "verb", "level": "A1", "fa": "خوردن",
+      "pattern": "standard",
+      "usage": "Manger keeps the e of its stem before a and o, so that the g stays soft: nous mangeons.",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "mangent", "fr": "Les enfants mangent à midi.",
+          "fa": "بچه‌ها ظهر غذا می‌خورند.", "en": "The children eat at noon." },
+        { "tense": "passe-compose", "form": "avons mangé", "fr": "Nous avons mangé au restaurant.",
+          "fa": "در رستوران غذا خوردیم.", "en": "We ate at the restaurant." },
+        { "tense": "futur", "form": "mangerai", "fr": "Je mangerai plus tard.",
+          "fa": "بعداً غذا خواهم خورد.", "en": "I will eat later." }
+      ]
+    },
+    "v:commencer": {
+      "type": "verb", "level": "A1", "fa": "شروع کردن",
+      "pattern": "standard",
+      "usage": "Commencer takes a cedilla before a and o, so that the c stays soft: nous commençons.",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "commence", "fr": "Le film commence à huit heures.",
+          "fa": "فیلم ساعت هشت شروع می‌شود.", "en": "The film starts at eight." },
+        { "tense": "passe-compose", "form": "a commencé", "fr": "Il a commencé à travailler en janvier.",
+          "fa": "او در ژانویه شروع به کار کرد.", "en": "He started work in January." },
+        { "tense": "futur", "form": "commencera", "fr": "Le cours commencera à neuf heures.",
+          "fa": "کلاس ساعت نه شروع خواهد شد.", "en": "The class will start at nine." }
+      ]
+    },
+    "v:finir": {
+      "type": "verb", "level": "A1", "fa": "تمام کردن",
+      "pattern": "standard",
+      "source": "fr-core-a1",
+      "examples": [
+        { "tense": "present", "form": "finis", "fr": "Je finis mon travail à cinq heures.",
+          "fa": "کارم را ساعت پنج تمام می‌کنم.", "en": "I finish my work at five." },
+        { "tense": "passe-compose", "form": "ai fini", "fr": "J'ai fini de lire ce livre.",
+          "fa": "خواندن این کتاب را تمام کردم.", "en": "I finished reading this book." },
+        { "tense": "futur", "form": "finira", "fr": "Elle finira son travail ce soir.",
+          "fa": "او کارش را امشب تمام خواهد کرد.", "en": "She will finish her work this evening." }
+      ]
+    },
+
+    "v:savoir": {
+      "type": "verb", "level": "A1", "fa": "دانستن",
+      "pattern": "standard",
+      "source": "drafted",
+      "usage": "In the passé composé, savoir usually means found out rather than knew. For the continuing state, French uses the imparfait: je savais.",
+      "examples": [
+        { "tense": "present", "form": "sais", "fr": "Je sais la réponse.",
+          "fa": "پاسخ را می‌دانم.", "en": "I know the answer." },
+        { "tense": "passe-compose", "form": "ai su", "fr": "J'ai su la nouvelle hier.",
+          "fa": "دیروز از این خبر باخبر شدم.", "en": "I found out the news yesterday." },
+        { "tense": "futur", "form": "sauras", "fr": "Tu sauras bientôt.",
+          "fa": "به‌زودی خواهی دانست.", "en": "You will know soon." }
+      ]
+    },
+    "v:venir": {
+      "type": "verb", "level": "A1", "fa": "آمدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "usage": "Venir takes être in the passé composé, so the participle agrees: elle est venue.",
+      "examples": [
+        { "tense": "present", "form": "vient", "fr": "Elle vient avec nous.",
+          "fa": "او با ما می‌آید.", "en": "She is coming with us." },
+        { "tense": "passe-compose", "form": "est venu", "fr": "Il est venu hier soir.",
+          "fa": "دیشب آمد.", "en": "He came yesterday evening." },
+        { "tense": "futur", "form": "viendrons", "fr": "Nous viendrons demain.",
+          "fa": "فردا خواهیم آمد.", "en": "We will come tomorrow." }
+      ]
+    },
+    "v:croire": {
+      "type": "verb", "level": "A1", "fa": "باور کردن، گمان کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "examples": [
+        { "tense": "present", "form": "crois", "fr": "Je crois que c'est vrai.",
+          "fa": "گمان می‌کنم درست باشد.", "en": "I think that is true." },
+        { "tense": "passe-compose", "form": "avons cru", "fr": "Nous avons cru son histoire.",
+          "fa": "داستانش را باور کردیم.", "en": "We believed his story." },
+        { "tense": "futur", "form": "croira", "fr": "Personne ne te croira.",
+          "fa": "هیچ‌کس حرفت را باور نخواهد کرد.", "en": "Nobody will believe you." }
+      ]
+    },
+    "v:aimer": {
+      "type": "verb", "level": "A1", "fa": "دوست داشتن",
+      "pattern": "standard",
+      "source": "drafted",
+      "usage": "With a person, aimer alone means to love; aimer bien softens it to to like.",
+      "examples": [
+        { "tense": "present", "form": "aime", "fr": "J'aime le chocolat.",
+          "fa": "شکلات دوست دارم.", "en": "I like chocolate." },
+        { "tense": "passe-compose", "form": "a aimé", "fr": "Elle a aimé ce film.",
+          "fa": "این فیلم را دوست داشت.", "en": "She liked this film." },
+        { "tense": "futur", "form": "aimeras", "fr": "Tu aimeras cette ville.",
+          "fa": "این شهر را دوست خواهی داشت.", "en": "You will like this city." }
+      ]
+    },
+    "v:falloir": {
+      "type": "verb", "level": "A1", "fa": "لازم بودن، باید",
+      "pattern": "impersonal",
+      "source": "drafted",
+      "usage": "Falloir exists only in the third person singular, with an il that stands for nobody. There is no je faux and no nous fallons, so these three examples are the whole verb rather than one person out of six.",
+      "examples": [
+        { "tense": "present", "form": "faut", "fr": "Il faut partir maintenant.",
+          "fa": "باید همین حالا برویم.", "en": "We have to leave now." },
+        { "tense": "passe-compose", "form": "a fallu", "fr": "Il a fallu attendre une heure.",
+          "fa": "مجبور شدیم یک ساعت صبر کنیم.", "en": "We had to wait an hour." },
+        { "tense": "futur", "form": "faudra", "fr": "Il faudra réserver.",
+          "fa": "باید رزرو کرد.", "en": "It will be necessary to book." }
+      ]
+    },
+    "v:penser": {
+      "type": "verb", "level": "A1", "fa": "فکر کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "usage": "Penser à is to have something in mind; penser de is to have an opinion of it.",
+      "examples": [
+        { "tense": "present", "form": "pense", "fr": "Je pense à toi.",
+          "fa": "به تو فکر می‌کنم.", "en": "I am thinking of you." },
+        { "tense": "passe-compose", "form": "avons pensé", "fr": "Nous avons pensé à une solution.",
+          "fa": "به یک راه‌حل فکر کردیم.", "en": "We thought of a solution." },
+        { "tense": "futur", "form": "pensera", "fr": "Il y pensera plus tard.",
+          "fa": "بعداً به آن فکر خواهد کرد.", "en": "He will think about it later." }
+      ]
+    },
+    "v:attendre": {
+      "type": "verb", "level": "A1", "fa": "منتظر ماندن",
+      "pattern": "standard",
+      "source": "drafted",
+      "usage": "Attendre takes its object directly: on attend le bus, with no preposition.",
+      "examples": [
+        { "tense": "present", "form": "attends", "fr": "J'attends le bus.",
+          "fa": "منتظر اتوبوس هستم.", "en": "I am waiting for the bus." },
+        { "tense": "passe-compose", "form": "avons attendu", "fr": "Nous avons attendu vingt minutes.",
+          "fa": "بیست دقیقه منتظر ماندیم.", "en": "We waited twenty minutes." },
+        { "tense": "futur", "form": "attendra", "fr": "Elle attendra devant la gare.",
+          "fa": "جلوی ایستگاه منتظر خواهد ماند.", "en": "She will wait in front of the station." }
+      ]
+    },
+    "v:trouver": {
+      "type": "verb", "level": "A1", "fa": "پیدا کردن؛ به نظر آمدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "usage": "With an adjective, trouver gives an opinion: je trouve ce livre intéressant.",
+      "examples": [
+        { "tense": "present", "form": "trouve", "fr": "Je trouve ce livre intéressant.",
+          "fa": "این کتاب به نظرم جالب است.", "en": "I find this book interesting." },
+        { "tense": "passe-compose", "form": "ai trouvé", "fr": "J'ai trouvé mes clés.",
+          "fa": "کلیدهایم را پیدا کردم.", "en": "I found my keys." },
+        { "tense": "futur", "form": "trouveras", "fr": "Tu trouveras facilement la rue.",
+          "fa": "خیابان را به‌راحتی پیدا خواهی کرد.", "en": "You will find the street easily." }
+      ]
+    },
+    "v:donner": {
+      "type": "verb", "level": "A1", "fa": "دادن",
+      "pattern": "standard",
+      "source": "drafted",
+      "examples": [
+        { "tense": "present", "form": "donne", "fr": "Je donne un cadeau à ma sœur.",
+          "fa": "به خواهرم هدیه‌ای می‌دهم.", "en": "I am giving a present to my sister." },
+        { "tense": "passe-compose", "form": "ont donné", "fr": "Ils ont donné leur réponse.",
+          "fa": "پاسخشان را دادند.", "en": "They gave their answer." },
+        { "tense": "futur", "form": "donnerai", "fr": "Je te donnerai l'adresse.",
+          "fa": "آدرس را به تو خواهم داد.", "en": "I will give you the address." }
+      ]
+    },
+    "v:souvenir": {
+      "type": "verb", "level": "A1", "fa": "به یاد آوردن، به یاد داشتن",
+      "pattern": "pronominal",
+      "source": "drafted",
+      "usage": "Se souvenir exists only with its pronoun — there is no je souviens — and what is remembered follows de. It takes être in the passé composé, so the participle agrees: elle s'est souvenue.",
+      "examples": [
+        { "tense": "present", "form": "me souviens", "fr": "Je me souviens de ce jour.",
+          "fa": "آن روز را به یاد دارم.", "en": "I remember that day." },
+        { "tense": "passe-compose", "form": "s'est souvenue", "fr": "Elle s'est souvenue de mon nom.",
+          "fa": "اسم مرا به یاد آورد.", "en": "She remembered my name." },
+        { "tense": "futur", "form": "te souviendras", "fr": "Tu te souviendras de cette ville.",
+          "fa": "این شهر را به یاد خواهی داشت.", "en": "You will remember this city." }
+      ]
+    },
+
+    "n:maison": {
+      "type": "noun", "level": "A1", "fa": "خانه", "article": "la", "source": "fr-core-a1",
+      "examples": [
+        { "form": "maison", "fr": "Nous avons vendu notre maison.",
+          "fa": "خانه‌مان را فروختیم.", "en": "We sold our house." },
+        { "form": "maison", "fr": "Ils construiront une maison ici.",
+          "fa": "اینجا خانه‌ای خواهند ساخت.", "en": "They will build a house here." }
+      ]
+    },
+    "n:livre": {
+      "type": "noun", "level": "A1", "fa": "کتاب", "article": "le", "source": "fr-core-a1",
+      "examples": [
+        { "form": "livre", "fr": "J'ai acheté ce livre hier.",
+          "fa": "این کتاب را دیروز خریدم.", "en": "I bought this book yesterday." },
+        { "form": "livre", "fr": "Ce livre vous aidera beaucoup.",
+          "fa": "این کتاب خیلی به شما کمک خواهد کرد.", "en": "This book will help you a lot." }
+      ]
+    },
+    "n:eau": {
+      "type": "noun", "level": "A1", "fa": "آب", "article": "l'", "source": "fr-core-a1",
+      "examples": [
+        { "form": "eau", "fr": "J'ai bu beaucoup d'eau.",
+          "fa": "آب زیادی نوشیدم.", "en": "I drank a lot of water." },
+        { "form": "eau", "fr": "L'eau sera froide ce matin.",
+          "fa": "امروز صبح آب سرد خواهد بود.", "en": "The water will be cold this morning." }
+      ]
+    },
+    "n:travail": {
+      "type": "noun", "level": "A1", "fa": "کار", "article": "le", "source": "fr-core-a1",
+      "examples": [
+        { "form": "travail", "fr": "Le travail a été difficile.",
+          "fa": "کار سخت بود.", "en": "The work was difficult." },
+        { "form": "travail", "fr": "Mon travail finira à six heures.",
+          "fa": "کارم ساعت شش تمام خواهد شد.", "en": "My work will finish at six." }
+      ]
+    },
+    "n:ville": {
+      "type": "noun", "level": "A1", "fa": "شهر", "article": "la", "source": "fr-core-a1",
+      "examples": [
+        { "form": "ville", "fr": "Cette ville a beaucoup changé.",
+          "fa": "این شهر خیلی تغییر کرده است.", "en": "This city has changed a lot." },
+        { "form": "ville", "fr": "La ville sera calme en août.",
+          "fa": "شهر در اوت آرام خواهد بود.", "en": "The city will be quiet in August." }
+      ]
+    },
+    "n:temps": {
+      "type": "noun", "level": "A1", "fa": "زمان؛ هوا", "article": "le", "source": "fr-core-a1",
+      "usage": "Le temps is both the time that passes and the weather.",
+      "examples": [
+        { "form": "temps", "fr": "Je n'ai pas eu le temps.",
+          "fa": "وقت نداشتم.", "en": "I did not have time." },
+        { "form": "temps", "fr": "Le temps passera vite.",
+          "fa": "زمان زود خواهد گذشت.", "en": "Time will pass quickly." }
+      ]
+    },
+    "n:femme": {
+      "type": "noun", "level": "A1", "fa": "زن؛ همسر", "article": "la", "source": "fr-core-a1",
+      "examples": [
+        { "form": "femme", "fr": "Cette femme a écrit trois livres.",
+          "fa": "این زن سه کتاب نوشته است.", "en": "This woman has written three books." },
+        { "form": "femme", "fr": "La femme au guichet vous aidera.",
+          "fa": "زنِ پشت باجه به شما کمک خواهد کرد.", "en": "The woman at the counter will help you." }
+      ]
+    },
+    "n:homme": {
+      "type": "noun", "level": "A1", "fa": "مرد", "article": "l'", "source": "fr-core-a1",
+      "examples": [
+        { "form": "homme", "fr": "Un homme a demandé ton adresse.",
+          "fa": "مردی آدرس تو را پرسید.", "en": "A man asked for your address." },
+        { "form": "homme", "fr": "Cet homme deviendra célèbre.",
+          "fa": "این مرد مشهور خواهد شد.", "en": "This man will become famous." }
+      ]
+    }
+  }
+}

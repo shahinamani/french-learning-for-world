@@ -1,0 +1,83 @@
+{
+  "version": 1,
+  "licence": "CC BY-SA 4.0",
+  "note": "Starter units for the dialogues section. One unit, written to be complete rather than to make the tab look full: a situation, the French, the Persian, and comprehension questions with explanations. The section says how many units exist and does not imply more.",
+  "reviewNote": "DRAFTED, NOT REVIEWED. Written by the agent that built the section. No teacher has read the French and no Persian reader has checked the translations. There is no recorded audio here and none is claimed: the listen buttons are the device's own speech synthesiser, which the screen says plainly.",
+  "dialogues": [
+    {
+      "id": "a1-au-cafe",
+      "level": "A1",
+      "title": { "en": "At the café", "fr": "Au café", "fa": "در کافه" },
+      "situation": {
+        "en": "Claire orders a coffee and something to eat, asks the price, and pays.",
+        "fr": "Claire commande un café et quelque chose à manger, demande le prix et paie.",
+        "fa": "کلر یک قهوه و چیزی برای خوردن سفارش می‌دهد، قیمت را می‌پرسد و پول را می‌پردازد."
+      },
+      "conceptIds": ["lex.food", "gram.question.intonation"],
+      "lines": [
+        { "speaker": "Le serveur", "fr": "Bonjour ! Qu'est-ce que vous prenez ?",
+          "fa": "سلام! چه میل دارید؟", "en": "Hello! What will you have?" },
+        { "speaker": "Claire", "fr": "Bonjour. Un café, s'il vous plaît.",
+          "fa": "سلام. یک قهوه، لطفاً.", "en": "Hello. A coffee, please." },
+        { "speaker": "Le serveur", "fr": "Un café. Et avec ça ?",
+          "fa": "یک قهوه. چیز دیگری هم می‌خواهید؟", "en": "One coffee. Anything else?" },
+        { "speaker": "Claire", "fr": "Un croissant aussi. C'est combien ?",
+          "fa": "یک کروسان هم. چقدر می‌شود؟", "en": "A croissant as well. How much is it?" },
+        { "speaker": "Le serveur", "fr": "Quatre euros cinquante.",
+          "fa": "چهار یورو و پنجاه سنت.", "en": "Four euros fifty." },
+        { "speaker": "Claire", "fr": "Voilà cinq euros.",
+          "fa": "بفرمایید، پنج یورو.", "en": "Here is five euros." },
+        { "speaker": "Le serveur", "fr": "Merci. Voici votre monnaie.",
+          "fa": "ممنون. این هم پول خردتان.", "en": "Thank you. Here is your change." }
+      ],
+      "questions": [
+        {
+          "id": "a1-au-cafe-q1",
+          "prompt": { "en": "What does Claire order?", "fa": "کلر چه سفارش می‌دهد؟" },
+          "options": [
+            { "en": "A coffee and a croissant", "fa": "یک قهوه و یک کروسان" },
+            { "en": "A tea and a croissant", "fa": "یک چای و یک کروسان" },
+            { "en": "Only a coffee", "fa": "فقط یک قهوه" },
+            { "en": "A coffee and a sandwich", "fa": "یک قهوه و یک ساندویچ" }
+          ],
+          "answer": 0,
+          "explain": {
+            "en": "She asks for « un café » first, then adds « un croissant aussi » — aussi is what makes it two things rather than a change of mind.",
+            "fa": "ابتدا «un café» می‌خواهد و سپس «un croissant aussi» را اضافه می‌کند. واژه‌ی aussi نشان می‌دهد که سفارش دوم به اولی افزوده شده، نه جایگزین آن."
+          }
+        },
+        {
+          "id": "a1-au-cafe-q2",
+          "prompt": { "en": "How much does it cost?", "fa": "قیمتش چقدر است؟" },
+          "options": [
+            { "en": "4.50 €", "fa": "۴٫۵۰ یورو" },
+            { "en": "5.00 €", "fa": "۵٫۰۰ یورو" },
+            { "en": "4.15 €", "fa": "۴٫۱۵ یورو" },
+            { "en": "14.50 €", "fa": "۱۴٫۵۰ یورو" }
+          ],
+          "answer": 0,
+          "explain": {
+            "en": "« Quatre euros cinquante » — French says the euros, then the cents, with no word between them. The five euros Claire hands over is what she pays with, not the price.",
+            "fa": "«Quatre euros cinquante» یعنی چهار یورو و پنجاه سنت. در فرانسوی نخست یورو و سپس سنت گفته می‌شود، بدون واژه‌ای میان آن دو. پنج یورویی که کلر می‌دهد مبلغ پرداختی اوست، نه قیمت."
+          }
+        },
+        {
+          "id": "a1-au-cafe-q3",
+          "prompt": { "en": "What is Claire asking with « C'est combien ? »",
+                      "fa": "کلر با جمله‌ی «C'est combien ?» چه می‌پرسد؟" },
+          "options": [
+            { "en": "The price", "fa": "قیمت" },
+            { "en": "The time", "fa": "ساعت" },
+            { "en": "The quantity she will receive", "fa": "مقداری که دریافت می‌کند" },
+            { "en": "Where to pay", "fa": "اینکه کجا باید پرداخت کند" }
+          ],
+          "answer": 0,
+          "explain": {
+            "en": "« Combien » is how much or how many; with « c'est » it asks the price. For a quantity you would hear « combien de croissants ? » with de and a noun after it.",
+            "fa": "واژه‌ی combien به معنای «چقدر» یا «چند تا» است و همراه c'est قیمت را می‌پرسد. برای پرسیدن تعداد، ساختار «combien de croissants ?» به کار می‌رود که در آن de و سپس اسم می‌آید."
+          }
+        }
+      ]
+    }
+  ]
+}

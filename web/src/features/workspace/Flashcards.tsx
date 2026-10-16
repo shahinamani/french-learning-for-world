@@ -20,9 +20,19 @@ import {
   WS_LEVELS, type Filter, type Mark, type WsCard,
 } from '../../lib/workspace-cards';
 import { speak, stop } from '../../lib/speech';
+import { loadCardBacks, splitOnForm, type CardBack } from '../../lib/card-backs';
+import { fr as frText } from '../../lib/typography';
+import { loadTenseNames, type TenseNames } from '../../lib/verbs';
 import type { CardState, Level, ReviewRow } from '../../lib/types';
 import { Num } from '../../components/Num';
 import { Localised } from '../../components/Localised';
+
+export type Corpus = {
+  total: number; rich: number; gloss: number;
+  /** Cards with a written back, and cards a teacher has checked. Counted
+   *  against the whole corpus so the heading cannot overstate the batch. */
+  enriched: number; reviewed: number;
+};
 
 type Props = {
   /** Chosen in the page's top controls, so Listen obeys them. */
@@ -30,7 +40,7 @@ type Props = {
   rate: number;
   voiceAvailable: boolean;
   /** So the page heading can state the real size of the corpus. */
-  onCorpus: (c: { total: number; rich: number; gloss: number }) => void;
+  onCorpus: (c: Corpus) => void;
 };
 
 export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
@@ -45,6 +55,11 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
   const [revealed, setRevealed] = useState(false);
   const [jumpValue, setJumpValue] = useState('');
   const [failedToSpeak, setFailedToSpeak] = useState(false);
+  const [backs, setBacks] = useState<Map<string, CardBack>>(new Map());
+  const [tenseNames, setTenseNames] = useState<TenseNames>({});
+  // Sticky across cards on purpose: somebody studying WITH the examples
+  // should not have to re-open them on every card.
+  const [showExamples, setShowExamples] = useState(false);
   // Loaded the same way the ordinary flashcard session loads it: the
   // scheduler is a lazy chunk, so it is a promise, and marking is disabled
   // until it has arrived rather than silently doing nothing.
@@ -61,12 +76,16 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
   useEffect(() => {
     let live = true;
     void (async () => {
-      const [content, verbs, rows] = await Promise.all([
+      const [content, verbs, rows, cardBacks, tenses] = await Promise.all([
         loadContent(),
         loadVerbIndex().catch(() => [] as VerbSummary[]),
         allCardStates(userId).catch(() => []),
+        loadCardBacks(),
+        loadTenseNames().catch(() => ({} as TenseNames)),
       ]);
       if (!live) return;
+      setBacks(cardBacks);
+      setTenseNames(tenses);
       const cards = buildCards(content.cards, verbs, settings.meaning);
       setAll(cards);
       setStates(new Map(rows.map((r) => [r.cardKey, r as CardState])));
@@ -74,6 +93,10 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
         total: cards.length,
         rich: cards.filter((c) => c.rich).length,
         gloss: cards.filter((c) => c.glossUnreviewed).length,
+        // Counted against the real corpus, not against the batch that was
+        // written. Most cards still have only a gloss and the heading says so.
+        enriched: cards.filter((c) => cardBacks.has(c.key)).length,
+        reviewed: 0,
       });
     })();
     return () => { live = false; };
@@ -193,6 +216,7 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
   }
 
   const mine = marks.get(card?.key ?? '') ?? 'none';
+  const back = card ? backs.get(card.key) ?? null : null;
 
   return (
     <div className="ws-cards" data-testid="ws-flashcards">
@@ -280,23 +304,99 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
 
             {revealed ? (
               <div className="ws-card__back" data-testid="ws-card-back">
-                <Localised field={card.rich ? card.rich.meanings : { en: card.back }}
-                           locale={settings.meaning} />
-                {card.glossUnreviewed && (
+                {/* Progressive disclosure: the meaning alone first, because
+                    that is what a learner came to the back of the card for.
+                    Three worked examples and a usage note on top of it would
+                    be a wall of text at exactly the moment they are trying to
+                    recall one word. The examples open on request and stay open
+                    across cards, so somebody studying with them does not
+                    re-click on every card. */}
+                <p className="ws-card__meaning">
+                  <Localised field={card.rich ? card.rich.meanings : { en: card.back }}
+                             locale={settings.meaning} />
+                </p>
+                {back && back.fa !== (card.rich?.meanings?.fa ?? '') && settings.meaning !== 'fa' && (
+                  <p className="ws-card__fa" lang="fa" dir="rtl" data-testid="ws-card-fa">{back.fa}</p>
+                )}
+                {back?.pattern === 'impersonal' && (
+                  <span className="ws-tagline" data-testid="ws-pattern">{t('wsPatternImpersonal')}</span>
+                )}
+                {back?.pattern === 'pronominal' && (
+                  <span className="ws-tagline" data-testid="ws-pattern">{t('wsPatternPronominal')}</span>
+                )}
+
+                {card.glossUnreviewed && !back && (
                   <p className="fine muted" data-testid="ws-card-unreviewed">
                     {t('wsGlossUnreviewed')}
                   </p>
                 )}
-                {card.rich?.examples?.length ? (
-                  <div className="ws-card__examples">
-                    <h3 className="h3">{t('wsExamples')}</h3>
-                    {card.rich.examples.map((ex) => (
-                      <p key={ex.form} className="ws-card__example">
-                        <span lang="fr" dir="ltr">{ex.fr}</span>
-                      </p>
-                    ))}
-                  </div>
-                ) : null}
+
+                {back ? (
+                  <>
+                    <button type="button" className="btn btn--sm ws-disclose"
+                            data-testid="ws-examples-toggle"
+                            aria-expanded={showExamples}
+                            onClick={(e) => { e.stopPropagation(); setShowExamples((v) => !v); }}>
+                      {showExamples ? t('wsHideExamples') : t('wsShowExamples')}
+                    </button>
+
+                    {showExamples && (
+                      <div className="ws-card__examples" data-testid="ws-examples">
+                        {back.examples.map((ex, i) => {
+                          // Through the project's French typographer, as every other
+                          // French string on screen is: the content files store a straight
+                          // apostrophe and `fr()` turns it into U+2019. Applied BEFORE the
+                          // split, and to the form too, or the needle stops matching the
+                          // haystack and the highlight silently disappears.
+                          const sentence = frText(ex.fr);
+                          const parts = splitOnForm(sentence, frText(ex.form));
+                          return (
+                            <div key={`${ex.form}-${i}`} className="ws-ex">
+                              <div className="ws-ex__head">
+                                {/* A tense label only where there IS a tense.
+                                    A noun has none, and labelling one would be
+                                    a grammatical claim the word cannot carry. */}
+                                {ex.tense && (
+                                  <span className="ws-ex__tense" data-testid={`ws-tense-${ex.tense}`}>
+                                    <Localised field={tenseNames[ex.tense]} />
+                                  </span>
+                                )}
+                                <button type="button" className="icon-btn ws-ex__listen"
+                                        data-testid={`ws-ex-listen-${i}`}
+                                        aria-label={`${t('wsListen')} — ${sentence}`}
+                                        disabled={!voiceAvailable}
+                                        onClick={(e) => {
+                                          e.stopPropagation();
+                                          setFailedToSpeak(!speak(ex.fr, voiceId, rate));
+                                        }}>
+                                  ♪
+                                </button>
+                              </div>
+                              <p className="ws-ex__fr" lang="fr" dir="ltr">
+                                {parts
+                                  ? <>{parts.before}<mark className="ws-ex__form">{parts.match}</mark>{parts.after}</>
+                                  : sentence}
+                              </p>
+                              <p className="ws-ex__fa" lang="fa" dir="rtl">{ex.fa}</p>
+                              {settings.meaning !== 'fa' && (
+                                <p className="ws-ex__en muted" lang="en" dir="ltr">{ex.en}</p>
+                              )}
+                            </div>
+                          );
+                        })}
+
+                        {back.usage && (
+                          <p className="ws-usage" data-testid="ws-usage">
+                            <strong>{t('wsUsage')}</strong> {back.usage}
+                          </p>
+                        )}
+                        <p className="fine muted" data-testid="ws-drafted">{t('wsDrafted')}</p>
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <p className="fine muted" data-testid="ws-gloss-only">{t('wsGlossOnly')}</p>
+                )}
               </div>
             ) : (
               <p className="ws-card__hint muted" data-testid="ws-card-hint">{t('wsRevealHint')}</p>
@@ -341,6 +441,12 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
           {failedToSpeak && (
             <p className="fine muted" data-testid="ws-speak-failed">{t('wsVoiceNone')}</p>
           )}
+
+          {/* What the two buttons actually write, on screen rather than only in
+              a commit message. A learner with review history elsewhere in the
+              app deserves to know that these feed the same record and which
+              grades they correspond to. */}
+          <p className="fine muted" data-testid="ws-mark-mapping">{t('wsMarkMapping')}</p>
         </>
       ) : (
         <div className="card ws-empty" data-testid="ws-empty">
