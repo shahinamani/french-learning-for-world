@@ -1554,9 +1554,13 @@ console.log('\n=== the learning workspace ===');
 
   let verbCard = null;      // an enriched card that has tense labels
   let nounCard = null;      // an enriched card that has none
-  for (let i = 0; i < 60 && !(verbCard && nounCard); i++) {
+  for (let i = 0; i < 140 && !(verbCard && nounCard); i++) {
     await p.locator('[data-testid="ws-card"]').click();
-    await p.waitForTimeout(110);
+    // Wait for the back, rather than hoping 110 ms was enough. It was not on
+    // a slow runner: the toggle had not rendered when the scan looked, every
+    // enriched card was counted as un-enriched, and the check then announced
+    // that no enriched noun exists — a fact about the timeout, not the corpus.
+    await p.waitForSelector('[data-testid="ws-card-back"]', { timeout: 4000 }).catch(() => {});
     if (await p.locator('[data-testid="ws-examples-toggle"]').count()) {
       if (await p.locator('[data-testid="ws-examples"]').count() === 0) {
         await p.locator('[data-testid="ws-examples-toggle"]').click();
@@ -1575,7 +1579,7 @@ console.log('\n=== the learning workspace ===');
   }
 
   ok('workspace: a verb card with worked examples is reachable', !!verbCard,
-     'none of the first 60 cards had a back with tense labels');
+     'no card with tense labels in the cards scanned');
   if (verbCard) {
     ok(`workspace: ${verbCard.front} shows three tenses, each form marked`
        + ` (${verbCard.tenses} / ${verbCard.marks})`,
@@ -1587,7 +1591,7 @@ console.log('\n=== the learning workspace ===');
   // carries examples and NO tense, because a tense on a noun is a grammatical
   // claim the word cannot carry.
   ok('workspace: a non-verb card with examples is reachable', !!nounCard,
-     'no enriched noun was found in the first 60 cards');
+     'no enriched non-verb card in the cards scanned');
   if (nounCard) {
     ok(`workspace: ${nounCard.front} is a noun — examples, and no tense label`
        + ` (${nounCard.tenses} tenses, ${nounCard.marks} marked)`,
@@ -1607,7 +1611,7 @@ console.log('\n=== the learning workspace ===');
   await p.waitForTimeout(700);
   for (let i = 0; i < 60; i++) {
     await p.locator('[data-testid="ws-card"]').click();
-    await p.waitForTimeout(110);
+    await p.waitForSelector('[data-testid="ws-card-back"]', { timeout: 4000 }).catch(() => {});
     if (await p.locator('[data-testid="ws-examples-toggle"]').count()) break;
     await p.locator('[data-testid="ws-card"]').click();
     await p.locator('[data-testid="ws-next"]').click();
