@@ -1541,32 +1541,84 @@ console.log('\n=== the learning workspace ===');
      await total() === before);
 
   // The educational back, and the fact that it is NOT shown all at once.
+  //
+  // Both kinds of enriched card are looked for by name rather than taking
+  // whichever turns up first. The first version took the first one and
+  // asserted three tense labels on it — and the corpus is ordered by level
+  // then alphabetically, so « eau » and « femme » sit among the verbs. It
+  // passed locally, landed on a noun in CI, and failed there: a noun has no
+  // tense and is RIGHT to have none. Comparing the wrong two things, caught by
+  // the one run that happened to order them differently.
   await p.locator('[data-testid="ws-filter-all"]').click();
   await p.waitForTimeout(300);
-  let foundEnriched = false;
-  for (let i = 0; i < 40 && !foundEnriched; i++) {
+
+  let verbCard = null;      // an enriched card that has tense labels
+  let nounCard = null;      // an enriched card that has none
+  for (let i = 0; i < 60 && !(verbCard && nounCard); i++) {
     await p.locator('[data-testid="ws-card"]').click();
-    await p.waitForTimeout(120);
-    if (await p.locator('[data-testid="ws-examples-toggle"]').count()) { foundEnriched = true; break; }
+    await p.waitForTimeout(110);
+    if (await p.locator('[data-testid="ws-examples-toggle"]').count()) {
+      if (await p.locator('[data-testid="ws-examples"]').count() === 0) {
+        await p.locator('[data-testid="ws-examples-toggle"]').click();
+        await p.waitForTimeout(220);
+      }
+      const tenses = await p.locator('[data-testid^="ws-tense-"]').count();
+      const marks = await p.locator('.ws-ex__form').count();
+      const front = await p.locator('[data-testid="ws-card-front"]').innerText();
+      const drafted = await p.locator('[data-testid="ws-drafted"]').count();
+      if (tenses > 0 && !verbCard) verbCard = { front, tenses, marks, drafted };
+      if (tenses === 0 && !nounCard) nounCard = { front, tenses, marks, drafted };
+    }
     await p.locator('[data-testid="ws-card"]').click();
     await p.locator('[data-testid="ws-next"]').click();
-    await p.waitForTimeout(100);
+    await p.waitForTimeout(90);
   }
-  ok('workspace: a card with worked examples is reachable', foundEnriched);
-  if (foundEnriched) {
-    ok('workspace: the examples are closed until asked for',
-       await p.locator('[data-testid="ws-examples"]').count() === 0);
-    await p.locator('[data-testid="ws-examples-toggle"]').click();
-    await p.waitForTimeout(300);
-    // A control inside the card must not also flip the card.
-    ok('workspace: opening the examples does not turn the card back over',
-       await p.locator('[data-testid="ws-card-back"]').count() === 1);
-    ok('workspace: three tenses, each with its conjugated form marked',
-       await p.locator('[data-testid^="ws-tense-"]').count() === 3
-       && await p.locator('.ws-ex__form').count() === 3);
-    ok('workspace: the card says the content is drafted and unreviewed',
-       await p.locator('[data-testid="ws-drafted"]').count() === 1);
+
+  ok('workspace: a verb card with worked examples is reachable', !!verbCard,
+     'none of the first 60 cards had a back with tense labels');
+  if (verbCard) {
+    ok(`workspace: ${verbCard.front} shows three tenses, each form marked`
+       + ` (${verbCard.tenses} / ${verbCard.marks})`,
+       verbCard.tenses === 3 && verbCard.marks === 3);
+    ok('workspace: the card says its content is drafted and unreviewed', verbCard.drafted === 1);
   }
+
+  // The other half, and the one a quick reading would get wrong: a noun card
+  // carries examples and NO tense, because a tense on a noun is a grammatical
+  // claim the word cannot carry.
+  ok('workspace: a non-verb card with examples is reachable', !!nounCard,
+     'no enriched noun was found in the first 60 cards');
+  if (nounCard) {
+    ok(`workspace: ${nounCard.front} is a noun — examples, and no tense label`
+       + ` (${nounCard.tenses} tenses, ${nounCard.marks} marked)`,
+       nounCard.tenses === 0 && nounCard.marks >= 1);
+  }
+
+  // Disclosure, asserted on a card known to have a back rather than on
+  // whichever card the scan stopped on.
+  //
+  // `reload()`, not `goto()` of the same address: the toggle is deliberately
+  // sticky across cards, and goto to an identical hash URL is a same-document
+  // navigation that does not remount anything — so the scan above left the
+  // examples open and this check read its own leftovers. The product was
+  // right; the check was looking at a page it had not actually reset.
+  await p.reload({ waitUntil: 'networkidle' });
+  await p.waitForSelector('[data-testid="ws-flashcards"]', { timeout: 20000 });
+  await p.waitForTimeout(700);
+  for (let i = 0; i < 60; i++) {
+    await p.locator('[data-testid="ws-card"]').click();
+    await p.waitForTimeout(110);
+    if (await p.locator('[data-testid="ws-examples-toggle"]').count()) break;
+    await p.locator('[data-testid="ws-card"]').click();
+    await p.locator('[data-testid="ws-next"]').click();
+    await p.waitForTimeout(90);
+  }
+  ok('workspace: the examples are closed until asked for',
+     await p.locator('[data-testid="ws-examples"]').count() === 0);
+  await p.locator('[data-testid="ws-examples-toggle"]').click();
+  await p.waitForTimeout(300);
+  ok('workspace: opening the examples does not turn the card back over',
+     await p.locator('[data-testid="ws-card-back"]').count() === 1);
 
   // Coverage is a measurement and must not round itself up.
   const coverageText = (await p.locator('[data-testid="ws-coverage"]').innerText()).replace(/\s+/g, ' ');
