@@ -18,8 +18,8 @@
 const A1 = 'reading.a1-samedi-au-marche';
 
 /** Rows as a reload would see them. Saved items and positions are the shared stores in the `flw` database
- *  (lib/db.ts); the questions' result is the one thing the Reader keeps in `flw-reader`. */
-const WHERE = { saved: ['flw', 'saved'], position: ['flw', 'readingPositions'], result: ['flw-reader', 'result'] };
+ *  (lib/db.ts); the questions' result is the `readerResults` store, in the same database since schema version 3. */
+const WHERE = { saved: ['flw', 'saved'], position: ['flw', 'readingPositions'], result: ['flw', 'readerResults'] };
 const rows = (page, which) => page.evaluate(async ([name, store]) => {
   const db = await new Promise((res, rej) => { const r = indexedDB.open(name); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
   if (![...db.objectStoreNames].includes(store)) return [];
@@ -208,10 +208,17 @@ export async function readerWalk({ browser, BASE, go, ok, watch }) {
     await pg.waitForSelector('[data-testid="rd-text"]');
     for (let i = 0; i < 3; i++) await pg.locator('[data-testid="rd-larger"]').click();   // longer page, so it scrolls
 
-    await pg.evaluate(() => {
-      const m = document.querySelector('main'); const s = document.querySelector('[data-seg="10"]');
-      m.scrollTop += s.getClientRects()[0].top - (document.querySelector('.rd-bar').getBoundingClientRect().bottom + 4);
-    });
+    // The bar is sticky, and inside the portal shell it starts well below the top of <main> (on a phone,
+    // under the shell's own header and the page heading), so its bottom edge MOVES while the page scrolls
+    // until it sticks. Aiming once, at where it was, lands short. Aim twice: the second pass uses the
+    // position it has stuck at, which is the line the Reader itself measures against.
+    for (let pass = 0; pass < 2; pass++) {
+      await pg.evaluate(() => {
+        const m = document.querySelector('main'); const s = document.querySelector('[data-seg="10"]');
+        m.scrollTop += s.getClientRects()[0].top - (document.querySelector('.rd-bar').getBoundingClientRect().bottom + 4);
+      });
+      await pg.waitForTimeout(150);
+    }
     await pg.waitForTimeout(900);
     const pos = (await rows(pg, 'position')).find((r) => r.itemId === A1);
     ok(`${label}: scrolling into the text records where the learner is`, !!pos && pos.paragraph >= 8, JSON.stringify(pos));

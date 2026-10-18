@@ -115,10 +115,10 @@ test('opening at the new version twice is harmless', () => {
   assert.equal(db.store('reviews').count, reviews.length);
 });
 
-test('a brand-new database gets all six stores', () => {
+test('a brand-new database gets all seven stores', () => {
   const db = new Database().open(DB_VERSION, upgradeSchema);
   assert.deepEqual([...db.stores.keys()].sort(),
-    ['cards', 'notes', 'playbackPositions', 'readingPositions', 'reviews', 'saved']);
+    ['cards', 'notes', 'playbackPositions', 'readerResults', 'readingPositions', 'reviews', 'saved']);
 });
 
 test('the shipped code opens the database through upgradeSchema, at DB_VERSION, under the old name', () => {
@@ -127,7 +127,7 @@ test('the shipped code opens the database through upgradeSchema, at DB_VERSION, 
   assert.match(src, /upgradeSchema\(/);
   const schema = readFileSync(new URL('../web/src/lib/personal-store.ts', import.meta.url), 'utf8');
   assert.match(schema, /DB_NAME = 'flw'/);
-  assert.equal(DB_VERSION, 2);
+  assert.equal(DB_VERSION, 3);
   // The upgrade is typed so it cannot reach these; this keeps it that way.
   assert.doesNotMatch(schema.replace(/\/\*[\s\S]*?\*\//g, ''), /deleteObjectStore|deleteIndex|\.clear\(/);
 });

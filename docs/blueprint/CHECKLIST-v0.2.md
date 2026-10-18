@@ -90,15 +90,15 @@ the acceptance row honest rather than faked, and it is reversible.
 | `/app/vocabulary` | واژگان | adapt existing | §8 library standard | TODO |
 | `/app/cards` | فلش‌کارت | exists (`/workspace` flashcards) — port | §9 full | TODO |
 | `/app/verbs` | فعل و زمان‌ها | exists (`/learn/verbs`) — port + compare tab | §10 | TODO |
-| `/app/grammar` | گرامر | adapt `/learn/concept/:id` | §10 grammar loop | TODO |
+| `/app/grammar` | گرامر | adapt `/learn/concept/:id` | §10 grammar loop | mounted (integration/app-routes), browser walk passes |
 | `/app/listening` | شنیدن | **stub today** | §12 | TODO (B2) |
-| `/app/reading` | خواندن | new Reader | §11 | TODO |
+| `/app/reading` | خواندن | new Reader | §11 | mounted (integration/app-routes), browser walk passes |
 | `/app/output` | گفتن و نوشتن | new | §13 | TODO |
 | `/app/news` | خبرها | new | §11 + B2 | TODO (B2) |
 | `/app/podcasts` | پادکست‌ها | new | §12 + B2 | TODO (B2) |
 | `/app/exams` | آزمون‌ها | exists (`/practise/exams`) — port | §14 | TODO |
 | `/app/saved` | کتابخانهٔ من | new | §8 | TODO |
-| `/app/progress` | پیشرفت و ضعف‌ها | exists — extend with §15 weaknesses | §15 | TODO |
+| `/app/progress` | پیشرفت و ضعف‌ها | exists — extend with §15 weaknesses | §15 | WeaknessCard mounted, no percentage (integration/app-routes) |
 
 Old routes must redirect, not 404 — Appendix §1 "direct link and refresh
 preserve the path".

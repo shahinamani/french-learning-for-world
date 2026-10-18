@@ -6,7 +6,6 @@ import { Shell } from './components/Shell';
 import { Learn } from './routes/Learn';
 import { Progress } from './routes/Progress';
 import { Account } from './routes/Account';
-import { ConceptRoute } from './routes/Concept';
 import { SearchRoute } from './components/Search';
 import { FlashcardSession } from './features/flashcards/Session';
 import { VerbList } from './features/verbs/VerbList';
@@ -43,6 +42,13 @@ const ExamResults = lazy(() => import('./features/exams/ExamResults').then((m) =
 // 15.7 KB of headroom against the 150 KB budget. A learner who never opens it
 // does not pay for it.
 const Workspace = lazy(() => import('./features/workspace/Workspace').then((m) => ({ default: m.Workspace })));
+
+// Grammar and the Reader are lazy chunks for the same reason: the first load
+// is measured against a 150 KB ceiling (scripts/budget.mjs) and neither screen
+// is needed until a learner opens it.
+const GrammarList = lazy(() => import('./features/grammar').then((m) => ({ default: m.GrammarList })));
+const GrammarLesson = lazy(() => import('./features/grammar').then((m) => ({ default: m.GrammarLesson })));
+const Reader = lazy(() => import('./features/reader').then((m) => ({ default: m.Reader })));
 
 /** A lazy route still has to render something while its chunk arrives, and a
  *  blank screen is not one of the four honest states. */
@@ -86,10 +92,12 @@ function AppRoutes() {
               ?verb=, so it is mounted here until the verb stream adds the tab. */}
           <Route path="verbs/drill" element={<ConjugationDrill />} />
           <Route path="verbs/:infinitive" element={<VerbDetail />} />
-          <Route path="grammar" element={<PlaceholderRoute id="grammar" />} />
-          <Route path="grammar/:id" element={<ConceptRoute />} />
+          <Route path="grammar" element={lazily(<GrammarList />)} />
+          {/* :id is a lesson id or a concept id, so the old /learn/concept/:id
+              redirect (routes/app/Redirects.tsx) lands here unchanged. */}
+          <Route path="grammar/:id" element={lazily(<GrammarLesson />)} />
           <Route path="listening" element={<Stub titleKey="stubSoundsTitle" bodyKey="stubSoundsBody" />} />
-          <Route path="reading" element={<PlaceholderRoute id="reading" />} />
+          <Route path="reading/*" element={lazily(<Reader />)} />
           <Route path="output" element={<PlaceholderRoute id="output" />} />
           <Route path="news" element={<PlaceholderRoute id="news" />} />
           <Route path="podcasts" element={<PlaceholderRoute id="podcasts" />} />

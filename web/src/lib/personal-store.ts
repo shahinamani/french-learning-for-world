@@ -8,8 +8,9 @@
  */
 
 export const DB_NAME = 'flw';
-/** 1: reviews + cards.  2: saved, readingPositions, playbackPositions, notes. */
-export const DB_VERSION = 2;
+/** 1: reviews + cards.  2: saved, readingPositions, playbackPositions, notes.
+ *  3: readerResults (the score of a text's comprehension questions). */
+export const DB_VERSION = 3;
 
 /** The slice of IDBDatabase / IDBObjectStore that the upgrade uses. Note what
  *  is NOT here: no deleteObjectStore, no deleteIndex. An upgrade that cannot
@@ -41,6 +42,12 @@ export function upgradeSchema(d: UpgradeDb, oldVersion: number) {
     make('readingPositions', 'by-user-updated', 'updatedAt');
     make('playbackPositions', 'by-user-updated', 'updatedAt');
     make('notes', 'by-user-updated', 'updatedAt');
+  }
+  if (oldVersion < 3) {
+    if (!d.objectStoreNames.contains('readerResults')) {
+      d.createObjectStore('readerResults', { keyPath: ['userId', 'itemId'] })
+        .createIndex('by-user-updated', ['userId', 'updatedAt']);
+    }
   }
 }
 

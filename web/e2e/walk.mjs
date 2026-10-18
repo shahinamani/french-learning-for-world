@@ -305,9 +305,16 @@ await page.waitForTimeout(300);
 const conceptHref = await page.locator('[data-testid="search-concepts"] a').first().getAttribute('href');
 await page.goto(BASE + conceptHref.replace(/^#?/, '#'), { waitUntil: 'networkidle' });
 await page.waitForTimeout(350);
-ok('a search result opens the real concept page', await page.locator('h1.h2').count() === 1);
-ok('a concept with no cards yet says so rather than showing a dead button',
-   (await page.locator('[data-testid="concept-no-cards"]').count()) + (await page.locator('[data-testid="concept-practise"]').count()) === 1);
+// Since the grammar routes were mounted, /learn/concept/:id forwards to
+// /app/grammar/:id, the lesson page, which accepts a concept id. A concept with
+// a written lesson opens it; one without says so and keeps the way back. Either
+// is acceptable here; a 404, a blank page or a dead end is not.
+await page.waitForSelector('[data-testid="grammar-lesson"], [data-testid="grl-nolesson-back"]', { timeout: 6000 }).catch(() => {});
+ok('a search result opens the grammar page, forwarded from the old concept address',
+   /^#\/app\/grammar\//.test(await page.evaluate(() => location.hash)) && await page.locator('[data-testid="not-found"]').count() === 0,
+   await page.evaluate(() => location.hash));
+ok('and it is a lesson, or says there is none and offers the way back',
+   (await page.locator('[data-testid="grammar-lesson"]').count()) + (await page.locator('[data-testid="grl-nolesson-back"]').count()) === 1);
 
 // ===================================================================
 // The learn map, which is the portal's main navigation. It offered 42 cells and
@@ -1197,7 +1204,7 @@ console.log('\n=== export, erase, import — the round trip ===');
   const file = await (await dl).path();
   const saved = JSON.parse(readFileSync(file, 'utf8'));
   ok(`the export carries ${saved.rows?.length ?? 0} rows AND ${saved.cards?.length ?? 0} card states (v${saved.version})`,
-     (saved.rows?.length ?? 0) >= 4 && (saved.cards?.length ?? 0) >= 4 && saved.version === 3);
+     (saved.rows?.length ?? 0) >= 4 && (saved.cards?.length ?? 0) >= 4 && saved.version === 4 && Array.isArray(saved.readerResults));
   ok('and does not carry the local profile id',
      !JSON.stringify(saved).includes('"userId"'));
 
@@ -2343,8 +2350,8 @@ console.log('\n=== migration: v1 database with history survives the upgrade ==='
     out.saved = await all('saved');
     db.close(); return out;
   });
-  ok(`the app upgraded the database to version ${after.version}`, after.version === 2);
-  ok(`all six stores exist (${after.names.join(', ')})`, after.names.join() === 'cards,notes,playbackPositions,readingPositions,reviews,saved');
+  ok(`the app upgraded the database to version ${after.version}`, after.version === 3);
+  ok(`all seven stores exist (${after.names.join(', ')})`, after.names.join() === 'cards,notes,playbackPositions,readerResults,readingPositions,reviews,saved');
   ok(`every review row survived (${after.reviews} of 60) and is readable`, after.reviews === 60 && after.reviewsIntact);
   ok(`every card state survived (${after.cards} of 20) and is readable`, after.cards === 20 && after.cardsIntact);
   ok('the v1 indexes are still there', after.reviewIdx.join() === 'by-user-card,by-user-session,by-user-time' && after.cardIdx.join() === 'by-user-due');
@@ -2593,8 +2600,9 @@ console.log('\n=== grammar: the learning loop (§10) and the Exercise component 
        await txt(p, 'grammar-finished'));
     await T(p, 'grammar-return').click();
     await p.waitForTimeout(300);
-    ok('7 return: finishing a lesson reached from /learn goes back to /learn',
-       (await hashOf(p)) === '#/learn', await hashOf(p));
+    // /learn is a legacy address that forwards (with replace) to Today.
+    ok('7 return: finishing a lesson reached from /learn goes back to where /learn leads (Today)',
+       (await hashOf(p)) === '#/app/today', await hashOf(p));
 
     // The origin lives in the address, so refresh and a fresh tab keep it.
     await go(p, `/app/grammar/${SLUG}?from=${encodeURIComponent('/learn')}`);

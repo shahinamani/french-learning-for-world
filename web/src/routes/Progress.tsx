@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../app-context';
-import { reviewsForUser, allCardStates } from '../lib/db';
+import { reviewsForUser, allCardStates, personalForUser } from '../lib/db';
 import { conceptStats, weekSummary, exportRows, type ConceptStat } from '../lib/progress';
 import { loadContent } from '../lib/content';
 import type { Concept, ReviewRow } from '../lib/types';
@@ -10,6 +10,7 @@ import { Icon } from '../components/Icon';
 import { Localised } from '../components/Localised';
 import { pick } from '../lib/exams';
 import { Num } from '../components/Num';
+import { WeaknessCard } from '../features/weakness/WeaknessCard';
 
 export function Progress() {
   const { t, settings } = useApp();
@@ -51,8 +52,11 @@ export function Progress() {
     // The card states go with the log. Without them the history arrives on the
     // new device and every card is due-new, because the schedule lives in the
     // states rather than in the log.
-    const states = await allCardStates(userId);
-    const url = URL.createObjectURL(new Blob([exportRows(rows, states)], { type: 'application/json' }));
+    // Saved items, reading and listening positions, notes and the Reader's
+    // scores go too: a file that left them out would restore the log and
+    // quietly lose the rest.
+    const [states, personal] = await Promise.all([allCardStates(userId), personalForUser(userId)]);
+    const url = URL.createObjectURL(new Blob([exportRows(rows, states, personal)], { type: 'application/json' }));
     const a = document.createElement('a');
     a.href = url; a.download = 'french-learning-progress.json';
     document.body.append(a); a.click(); a.remove();
@@ -72,6 +76,8 @@ export function Progress() {
         )}
       </section>
 
+      <WeaknessCard />
+
       <section aria-labelledby="moved-h">
         <h2 id="moved-h" className="h3">{t('whatMoved')}</h2>
         {rows === null && <div className="skeleton skeleton--text" />}
@@ -90,7 +96,9 @@ export function Progress() {
                           data-testid={`disclose-${s.conceptId}`}
                           onClick={() => setOpen(open === s.conceptId ? null : s.conceptId)}>
                     <span>{name(s.conceptId)}</span>
-                    <span className="muted"><Num>{Math.round(s.accuracy * 100)} % · {s.reviews}</Num></span>
+                    {/* A count of answers, not a score: the blueprint allows no mastery
+                        percentage on a weakness surface. */}
+                    <span className="muted">{t('reviewsCount', { n: s.reviews })}</span>
                     <Icon name="chevron" size={16} />
                   </button>
                   <Link className="btn btn--sm" to={`/practise/review?concept=${encodeURIComponent(s.conceptId)}`}>

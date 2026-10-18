@@ -29,6 +29,15 @@ things.
 `main` at the merge of PR #50. Merged recently: #49 the workspace, #50 the
 educational card backs and the first dialogue unit.
 
+Branch `integration/app-routes` (2026-10-18) merges the grammar loop and the
+Reader and mounts both lazily under `/app/grammar` and `/app/reading`.
+`Progress` shows `WeaknessCard` and no accuracy percentage, and its export
+carries the personal stores. The Reader's quiz scores moved from a separate
+`flw-reader` database into `flw` (schema 3, store `readerResults`); the export
+format is version 4. Known gap: a concept with no written lesson now lands on
+the grammar "no lesson" page, because the old concept page (routes/Concept.tsx)
+is no longer routed.
+
 - **Workspace** at `/workspace`, lazy-loaded. Six tabs, all opening real
   content. Filters, shuffle, jump-to-card and the position always agree.
 - **Cards**: 2,371 eligible records = 2,363 verbs with a gloss + 8 deck nouns.

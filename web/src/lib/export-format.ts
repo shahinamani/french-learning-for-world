@@ -10,7 +10,7 @@
  *
  * `progress.ts` re-exports everything here, so no caller changed.
  */
-import type { ReviewRow, CardState, SavedItem, ReadingPosition, PlaybackPosition, Note } from './types';
+import type { ReviewRow, CardState, SavedItem, ReadingPosition, PlaybackPosition, Note, ReaderResult } from './types';
 
 
 
@@ -48,17 +48,19 @@ export const MAX_IMPORT_ROWS = 150_000;
 export const MAX_IMPORT_CARDS = 50_000;
 
 export const EXPORT_FORMAT = 'french-learning-for-world/review-log';
-export const EXPORT_VERSION = 3;
+export const EXPORT_VERSION = 4;
 
-/** Version 3 adds the personal stores. Files of version 1 and 2 have none, and
- *  still import: `personal` is simply empty. userId is never exported. */
+/** Version 3 adds the personal stores; version 4 adds `readerResults`. Older
+ *  files lack them and still import: those lists are simply empty. userId is
+ *  never exported. */
 export type PersonalExport = {
   saved: Omit<SavedItem, 'userId'>[];
   reading: Omit<ReadingPosition, 'userId'>[];
   playback: Omit<PlaybackPosition, 'userId'>[];
   notes: Omit<Note, 'userId'>[];
+  readerResults: Omit<ReaderResult, 'userId'>[];
 };
-export const emptyPersonal = (): PersonalExport => ({ saved: [], reading: [], playback: [], notes: [] });
+export const emptyPersonal = (): PersonalExport => ({ saved: [], reading: [], playback: [], notes: [], readerResults: [] });
 
 /**
  * The export carries the review log AND the card states.
@@ -75,7 +77,7 @@ export const emptyPersonal = (): PersonalExport => ({ saved: [], reading: [], pl
  */
 export function exportRows(
   rows: ReviewRow[], states: (CardState & { cardKey: string })[] = [],
-  personal: { saved?: SavedItem[]; reading?: ReadingPosition[]; playback?: PlaybackPosition[]; notes?: Note[] } = {},
+  personal: { saved?: SavedItem[]; reading?: ReadingPosition[]; playback?: PlaybackPosition[]; notes?: Note[]; readerResults?: ReaderResult[] } = {},
 ) {
   return JSON.stringify({
     format: EXPORT_FORMAT, version: EXPORT_VERSION,
@@ -86,6 +88,7 @@ export function exportRows(
     reading: (personal.reading ?? []).map(stripUser),
     playback: (personal.playback ?? []).map(stripUser),
     notes: (personal.notes ?? []).map(stripUser),
+    readerResults: (personal.readerResults ?? []).map(stripUser),
   }, null, 2);
 }
 
@@ -112,7 +115,11 @@ function parsePersonal(o: Record<string, unknown>): PersonalExport {
   const notes = list('notes').filter(isObj)
     .filter((r) => str(r.itemId) && num(r.updatedAt) && typeof r.text === 'string')
     .map((r) => ({ itemId: r.itemId as string, text: r.text as string, updatedAt: r.updatedAt as number }));
-  return { saved, reading, playback, notes };
+  const readerResults = list('readerResults').filter(isObj)
+    .filter((r) => str(r.itemId) && num(r.updatedAt) && Number.isInteger(r.correct) && Number.isInteger(r.total)
+      && (r.correct as number) >= 0 && (r.total as number) >= (r.correct as number))
+    .map((r) => ({ itemId: r.itemId as string, correct: r.correct as number, total: r.total as number, updatedAt: r.updatedAt as number }));
+  return { saved, reading, playback, notes, readerResults };
 }
 
 function stripUser<T extends object>(o: T) {

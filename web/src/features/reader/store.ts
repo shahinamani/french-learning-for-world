@@ -6,18 +6,15 @@
  * same database as the learner's reviews, is exported with them, and is erased
  * with them. This file only gives them the names the Reader's components use.
  *
- * ONE thing is still held here: the result of a text's comprehension
- * questions. The contract has no store for it, and `db.ts` is not this stream's
- * file, so it lives in a small database of its own (`flw-reader`), keyed
- * [userId, itemId] like everything else. Consequences, stated rather than
- * hidden: `eraseUser()` in db.ts does not remove it and the learner's export
- * does not include it. `eraseReaderResults` is exported for whoever wires erase.
- * It holds a score and a time, never a word or a sentence.
+ * The result of a text's comprehension questions is the `readerResults` store
+ * in the same database (schema version 3), so `eraseUser()` removes it and the
+ * export carries it. It holds a score and a time, never a word or a sentence.
  */
-import { openDB, type IDBPDatabase } from 'idb';
 import {
   saveItem, unsaveItem, allSaved, putReadingPosition, getReadingPosition,
+  putReaderResult, readerResultsForUser,
 } from '../../lib/db';
+import type { ReaderResult } from '../../lib/types';
 import type { ReadingPosition, SavedItem } from './types';
 
 /* Saved items ------------------------------------------------------------- */
@@ -48,32 +45,15 @@ export async function positionsFor(userId: string, itemIds: string[]): Promise<M
   return new Map(rows.flatMap((r) => (r ? [[r.itemId, r.paragraph] as [string, number]] : [])));
 }
 
-/* Results (the one adapter that remains) ---------------------------------- */
+/* Results ---------------------------------------------------------------- */
 
-export type ReaderResult = {
-  userId: string; itemId: string; correct: number; total: number; updatedAt: number;
-};
-
-let dbp: Promise<IDBPDatabase> | null = null;
-function resultsDb(): Promise<IDBPDatabase> {
-  if (!dbp) {
-    dbp = openDB('flw-reader', 1, {
-      upgrade(d) { d.createObjectStore('result', { keyPath: ['userId', 'itemId'] }); },
-    }).catch((e) => { dbp = null; throw e; });
-  }
-  return dbp;
-}
-const userRange = (userId: string) => IDBKeyRange.bound([userId, ''], [userId, '￿']);
+/** Held in the shared `flw` database (store `readerResults`, keyed
+ *  [userId, itemId]) so it is exported and erased with everything else. */
+export type { ReaderResult };
 
 export async function putResult(r: ReaderResult): Promise<void> {
-  if (!r.userId) throw new Error('putResult without a user id');
-  await (await resultsDb()).put('result', r);
+  await putReaderResult(r);
 }
 export async function resultsForUser(userId: string): Promise<ReaderResult[]> {
-  if (!userId) throw new Error('resultsForUser without a user id');
-  return (await resultsDb()).getAll('result', userRange(userId));
-}
-export async function eraseReaderResults(userId: string): Promise<void> {
-  if (!userId) throw new Error('eraseReaderResults without a user id');
-  await (await resultsDb()).delete('result', userRange(userId));
+  return readerResultsForUser(userId);
 }
