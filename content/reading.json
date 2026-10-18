@@ -1,0 +1,994 @@
+{
+  "version": 1,
+  "licence": "CC BY-SA 4.0",
+  "note": "Four original French reading texts for the Reader page, one per category (daily life, work, science, culture), two at A1/A2 and two at B1. Each carries the French, a Persian and an English rendering of the whole text, comprehension questions with explanations, and target vocabulary. `vocabulary[].sentenceFromText` is a LITERAL substring of `body.fr` — tests/reading-content.test.js asserts that, because the Reader highlights it by searching for it. Reading time is words divided by `readingTime.wordsPerMinute` (100: an ASSUMED pace for a learner reading in a second language, not a measurement); words are whitespace-separated tokens, so « l'école » counts as one. `relations` are empty arrays: nobody has linked these texts to word, verb or grammar items, and an empty list says so; it does not claim there is nothing to link.",
+  "levelNote": "`level` was ASSIGNED BY THE AUTHOR (`levelBasis: \"author\"`) from the grammar and vocabulary the author chose to use. It was not measured against a frequency corpus or checked by a teacher, and it may be wrong by a band.",
+  "reviewNote": "DRAFTED, NOT REVIEWED. The French, the Persian, the English, the questions and the explanations were written by the agent that built this file. No teacher has read the French and no Persian reader has checked the translations; `review.owner` and `review.teacher` are null on every item. The Persian aims at the natural meaning of each passage, not at French word order. The facts in the science and culture texts (the memory-consolidation account of sleep; the Fête de la musique starting in 1982 on 21 June) are stated from the author's general knowledge and have not been checked against a source.",
+  "texts": [
+    {
+      "id": "reading.a1-samedi-au-marche",
+      "type": "text",
+      "category": "daily",
+      "level": "A1",
+      "levelBasis": "author",
+      "topics": [
+        "lex.food",
+        "lex.shopping"
+      ],
+      "goals": [
+        "general",
+        "daily"
+      ],
+      "skill": [
+        "reading",
+        "vocab"
+      ],
+      "version": "0.1.0",
+      "title": {
+        "fr": "Mon samedi au marché",
+        "en": "My Saturday at the market",
+        "fa": "شنبه‌ی من در بازار"
+      },
+      "description": {
+        "fr": "Un samedi matin simple : le marché, la famille, le déjeuner.",
+        "en": "A simple Saturday morning: the market, the family, lunch.",
+        "fa": "یک صبح شنبه‌ی ساده: بازار، خانواده و ناهار."
+      },
+      "body": {
+        "fr": "Le samedi, je me lève à huit heures. Je prends un café et je mange du pain avec de la confiture. Ensuite, je vais au marché avec mon frère. Il y a beaucoup de monde. Les marchands crient : « Des tomates, des tomates ! » J'achète un kilo de pommes, une salade et du fromage. Mon frère prend des fleurs pour notre mère. Elles sont jaunes et rouges. Le marchand de fromage est très gentil. Il me donne un petit morceau à goûter. C'est délicieux, alors j'en prends deux cents grammes. Nous payons et nous rentrons à pied. Il fait beau, mais le sac est lourd. À midi, nous préparons le déjeuner ensemble. Ma mère met les fleurs sur la table. L'après-midi, nous restons à la maison et nous regardons un film. J'aime beaucoup le samedi.",
+        "fa": "شنبه‌ها ساعت هشت از خواب بیدار می‌شوم. یک قهوه می‌نوشم و نان و مربا می‌خورم. بعد با برادرم به بازار می‌روم. آنجا خیلی شلوغ است. فروشنده‌ها فریاد می‌زنند: «گوجه! گوجه!» من یک کیلو سیب، یک کاهو و کمی پنیر می‌خرم. برادرم برای مادرمان گل می‌خرد. گل‌ها زرد و قرمزند. پنیرفروش خیلی مهربان است. تکه‌ی کوچکی به من می‌دهد تا بچشم. خوشمزه است، برای همین دویست گرم می‌خرم. پول را می‌دهیم و پیاده به خانه برمی‌گردیم. هوا خوب است، اما کیسه سنگین است. ظهر با هم ناهار درست می‌کنیم. مادرم گل‌ها را روی میز می‌گذارد. بعدازظهر در خانه می‌مانیم و فیلم تماشا می‌کنیم. شنبه را خیلی دوست دارم.",
+        "en": "On Saturdays I get up at eight o'clock. I have a coffee and I eat bread with jam. Then I go to the market with my brother. There are lots of people. The traders shout: \"Tomatoes, tomatoes!\" I buy a kilo of apples, a lettuce and some cheese. My brother gets flowers for our mother. They are yellow and red. The cheese seller is very kind. He gives me a small piece to taste. It is delicious, so I take two hundred grams. We pay and walk home. The weather is nice, but the bag is heavy. At noon we make lunch together. My mother puts the flowers on the table. In the afternoon we stay at home and watch a film. I really like Saturdays."
+      },
+      "words": 137,
+      "readingTime": {
+        "wordsPerMinute": 100,
+        "seconds": 82
+      },
+      "source": {
+        "kind": "original",
+        "name": "Written for French ma vie",
+        "licence": "CC BY-SA 4.0",
+        "rightOfUse": "own",
+        "readAt": "2026-10-18"
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      },
+      "relations": {
+        "words": [],
+        "verbs": [],
+        "grammar": []
+      },
+      "questions": [
+        {
+          "id": "reading.a1-samedi-au-marche.q1",
+          "prompt": {
+            "en": "Why does the narrator buy cheese?",
+            "fa": "چرا راوی پنیر می‌خرد؟"
+          },
+          "options": [
+            {
+              "en": "The seller lets him taste a piece and it is delicious",
+              "fa": "فروشنده اجازه می‌دهد تکه‌ای بچشد و خوشمزه است"
+            },
+            {
+              "en": "His mother asked him to",
+              "fa": "مادرش از او خواسته است"
+            },
+            {
+              "en": "It is cheaper than apples",
+              "fa": "از سیب ارزان‌تر است"
+            },
+            {
+              "en": "His brother chose it",
+              "fa": "برادرش آن را انتخاب کرده است"
+            }
+          ],
+          "answer": 0,
+          "explain": {
+            "en": "The text says the seller gives a small piece to taste, and then « C'est délicieux, alors j'en prends » — alors links the taste to the decision to buy.",
+            "fa": "متن می‌گوید فروشنده تکه‌ی کوچکی برای چشیدن می‌دهد و بعد «C'est délicieux, alors j'en prends» می‌آید. واژه‌ی «alors» خوشمزه بودن را به تصمیم خرید پیوند می‌دهد."
+          }
+        },
+        {
+          "id": "reading.a1-samedi-au-marche.q2",
+          "prompt": {
+            "en": "Who are the flowers for?",
+            "fa": "گل‌ها برای چه کسی هستند؟"
+          },
+          "options": [
+            {
+              "en": "The narrator",
+              "fa": "راوی"
+            },
+            {
+              "en": "The cheese seller",
+              "fa": "پنیرفروش"
+            },
+            {
+              "en": "Their mother",
+              "fa": "مادرشان"
+            },
+            {
+              "en": "A friend",
+              "fa": "یک دوست"
+            }
+          ],
+          "answer": 2,
+          "explain": {
+            "en": "The brother takes flowers « pour notre mère », and later the mother puts them on the table. The narrator himself buys apples, lettuce and cheese.",
+            "fa": "برادر گل‌ها را «pour notre mère» برمی‌دارد و بعداً مادر آن‌ها را روی میز می‌گذارد. خود راوی سیب، کاهو و پنیر می‌خرد."
+          }
+        },
+        {
+          "id": "reading.a1-samedi-au-marche.q3",
+          "prompt": {
+            "en": "How do the narrator and his brother get home?",
+            "fa": "راوی و برادرش چطور به خانه برمی‌گردند؟"
+          },
+          "options": [
+            {
+              "en": "By bus",
+              "fa": "با اتوبوس"
+            },
+            {
+              "en": "By car",
+              "fa": "با ماشین"
+            },
+            {
+              "en": "By bicycle",
+              "fa": "با دوچرخه"
+            },
+            {
+              "en": "On foot",
+              "fa": "پیاده"
+            }
+          ],
+          "answer": 3,
+          "explain": {
+            "en": "« Nous rentrons à pied » — à pied means on foot. The heavy bag is mentioned as a small difficulty, not as a reason to take transport.",
+            "fa": "جمله‌ی «Nous rentrons à pied» می‌گوید پیاده برمی‌گردند. سنگین بودن کیسه فقط یک زحمت کوچک است، نه دلیلی برای سوار شدن بر وسیله‌ای."
+          }
+        },
+        {
+          "id": "reading.a1-samedi-au-marche.q4",
+          "prompt": {
+            "en": "What do they do in the afternoon?",
+            "fa": "بعدازظهر چه می‌کنند؟"
+          },
+          "options": [
+            {
+              "en": "They go back to the market",
+              "fa": "دوباره به بازار می‌روند"
+            },
+            {
+              "en": "They watch a film at home",
+              "fa": "در خانه فیلم تماشا می‌کنند"
+            },
+            {
+              "en": "They visit their mother",
+              "fa": "به دیدن مادرشان می‌روند"
+            },
+            {
+              "en": "They cook lunch",
+              "fa": "ناهار درست می‌کنند"
+            }
+          ],
+          "answer": 1,
+          "explain": {
+            "en": "Lunch is prepared at noon (« À midi »). In the afternoon (« L'après-midi ») they stay home and watch a film — the question depends on keeping the two times apart.",
+            "fa": "ناهار ظهر («À midi») درست می‌شود. بعدازظهر («L'après-midi») در خانه می‌مانند و فیلم می‌بینند. پاسخ درست به جدا کردن این دو زمان بستگی دارد."
+          }
+        }
+      ],
+      "vocabulary": [
+        {
+          "fr": "se lever",
+          "fa": "بیدار شدن، از جای برخاستن",
+          "en": "to get up",
+          "sentenceFromText": "Le samedi, je me lève à huit heures."
+        },
+        {
+          "fr": "le marché",
+          "fa": "بازار",
+          "en": "market",
+          "sentenceFromText": "Ensuite, je vais au marché avec mon frère."
+        },
+        {
+          "fr": "acheter",
+          "fa": "خریدن",
+          "en": "to buy",
+          "sentenceFromText": "Les marchands crient : « Des tomates, des tomates ! » J'achète un kilo de pommes, une salade et du fromage."
+        },
+        {
+          "fr": "le fromage",
+          "fa": "پنیر",
+          "en": "cheese",
+          "sentenceFromText": "Les marchands crient : « Des tomates, des tomates ! » J'achète un kilo de pommes, une salade et du fromage."
+        },
+        {
+          "fr": "goûter",
+          "fa": "چشیدن",
+          "en": "to taste",
+          "sentenceFromText": "Il me donne un petit morceau à goûter."
+        },
+        {
+          "fr": "délicieux",
+          "fa": "خوشمزه",
+          "en": "delicious",
+          "sentenceFromText": "C'est délicieux, alors j'en prends deux cents grammes."
+        },
+        {
+          "fr": "lourd",
+          "fa": "سنگین",
+          "en": "heavy",
+          "sentenceFromText": "Il fait beau, mais le sac est lourd."
+        },
+        {
+          "fr": "le déjeuner",
+          "fa": "ناهار",
+          "en": "lunch",
+          "sentenceFromText": "À midi, nous préparons le déjeuner ensemble."
+        }
+      ]
+    },
+    {
+      "id": "reading.a2-premiere-journee",
+      "type": "text",
+      "category": "work",
+      "level": "A2",
+      "levelBasis": "author",
+      "topics": [
+        "lex.work",
+        "lex.business"
+      ],
+      "goals": [
+        "work",
+        "general"
+      ],
+      "skill": [
+        "reading",
+        "vocab"
+      ],
+      "version": "0.1.0",
+      "title": {
+        "fr": "Une première journée de travail",
+        "en": "A first day at work",
+        "fa": "نخستین روز کار"
+      },
+      "description": {
+        "fr": "Léa débute dans une agence de voyages et apprend vite.",
+        "en": "Léa starts at a travel agency and learns fast.",
+        "fa": "لئا در یک آژانس مسافرتی کار را شروع می‌کند و سریع یاد می‌گیرد."
+      },
+      "body": {
+        "fr": "Lundi dernier, Léa a commencé son nouveau travail dans une agence de voyages à Lyon. Elle est arrivée à neuf heures, mais son chef, M. Dupuis, n'était pas encore là. Une collègue, Sonia, lui a montré son bureau et lui a présenté l'équipe. Léa était un peu stressée, parce qu'elle ne connaissait personne. Le matin, elle a lu des dossiers et elle a appris à utiliser le logiciel de réservation. À midi, elle a mangé avec Sonia dans un petit restaurant près du bureau. Sonia lui a expliqué qu'il y a beaucoup de clients en été et que l'agence doit répondre vite aux courriels. L'après-midi, Léa a téléphoné à une cliente qui voulait annuler son voyage. Elle n'a pas su quoi répondre et elle a demandé de l'aide. Sonia a pris le téléphone et a proposé une autre date. Le soir, Léa est rentrée fatiguée, mais contente. Elle a dit à sa mère : « Ce n'est pas facile, mais l'équipe est sympa. »",
+        "fa": "دوشنبه‌ی گذشته لئا کار تازه‌اش را در یک آژانس مسافرتی در شهر لیون شروع کرد. ساعت نه رسید، اما رئیسش، آقای دوپویی، هنوز نیامده بود. یکی از همکارها به نام سونیا میزش را به او نشان داد و او را با بقیه‌ی گروه آشنا کرد. لئا کمی دلشوره داشت، چون هیچ‌کس را نمی‌شناخت. صبح چند پرونده خواند و یاد گرفت چطور از نرم‌افزار رزرو استفاده کند. ظهر با سونیا در رستورانی کوچک نزدیک دفتر ناهار خورد. سونیا برایش توضیح داد که در تابستان مشتری زیاد است و آژانس باید زود به ایمیل‌ها جواب بدهد. بعدازظهر لئا با مشتری‌ای تماس گرفت که می‌خواست سفرش را لغو کند. نمی‌دانست چه جوابی بدهد و کمک خواست. سونیا گوشی را گرفت و تاریخ دیگری پیشنهاد داد. شب لئا خسته اما راضی به خانه برگشت. به مادرش گفت: «آسان نیست، ولی گروه کاری خوبی است.»",
+        "en": "Last Monday, Léa started her new job at a travel agency in Lyon. She arrived at nine, but her boss, Mr Dupuis, was not there yet. A colleague, Sonia, showed her her desk and introduced her to the team. Léa was a little stressed, because she did not know anyone. In the morning she read files and learned how to use the booking software. At noon she ate with Sonia in a small restaurant near the office. Sonia explained that there are many customers in summer and that the agency has to answer emails quickly. In the afternoon Léa phoned a customer who wanted to cancel her trip. She did not know what to answer and asked for help. Sonia took the phone and suggested another date. In the evening Léa went home tired but happy. She told her mother: \"It's not easy, but the team is nice.\""
+      },
+      "words": 164,
+      "readingTime": {
+        "wordsPerMinute": 100,
+        "seconds": 98
+      },
+      "source": {
+        "kind": "original",
+        "name": "Written for French ma vie",
+        "licence": "CC BY-SA 4.0",
+        "rightOfUse": "own",
+        "readAt": "2026-10-18"
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      },
+      "relations": {
+        "words": [],
+        "verbs": [],
+        "grammar": []
+      },
+      "questions": [
+        {
+          "id": "reading.a2-premiere-journee.q1",
+          "prompt": {
+            "en": "What was unexpected when Léa arrived?",
+            "fa": "وقتی لئا رسید، چه چیزی غیرمنتظره بود؟"
+          },
+          "options": [
+            {
+              "en": "Her boss was not there yet",
+              "fa": "رئیسش هنوز نیامده بود"
+            },
+            {
+              "en": "The office was closed",
+              "fa": "دفتر بسته بود"
+            },
+            {
+              "en": "Sonia was late",
+              "fa": "سونیا دیر کرده بود"
+            },
+            {
+              "en": "The software was broken",
+              "fa": "نرم‌افزار خراب بود"
+            }
+          ],
+          "answer": 0,
+          "explain": {
+            "en": "« Son chef, M. Dupuis, n'était pas encore là » — the verb is in the imparfait: he was still absent at the moment she arrived. Sonia, by contrast, is the one who welcomes her.",
+            "fa": "جمله‌ی «Son chef, M. Dupuis, n'était pas encore là» می‌گوید رئیس هنوز نیامده بود. سونیا برعکس کسی است که از او استقبال می‌کند."
+          }
+        },
+        {
+          "id": "reading.a2-premiere-journee.q2",
+          "prompt": {
+            "en": "Why was Léa stressed?",
+            "fa": "چرا لئا دلشوره داشت؟"
+          },
+          "options": [
+            {
+              "en": "She was afraid of her boss",
+              "fa": "از رئیسش می‌ترسید"
+            },
+            {
+              "en": "She did not know anyone",
+              "fa": "هیچ‌کس را نمی‌شناخت"
+            },
+            {
+              "en": "She had no desk",
+              "fa": "میز نداشت"
+            },
+            {
+              "en": "She was late",
+              "fa": "دیر رسیده بود"
+            }
+          ],
+          "answer": 1,
+          "explain": {
+            "en": "The reason is given right after « parce que »: « elle ne connaissait personne ». Nothing in the text says she feared her boss, whom she has not even met yet.",
+            "fa": "دلیل بعد از «parce que» آمده است: «elle ne connaissait personne». در متن نیامده که از رئیس می‌ترسد؛ هنوز او را ندیده است."
+          }
+        },
+        {
+          "id": "reading.a2-premiere-journee.q3",
+          "prompt": {
+            "en": "What did the customer Léa phoned want?",
+            "fa": "مشتری‌ای که لئا با او تماس گرفت چه می‌خواست؟"
+          },
+          "options": [
+            {
+              "en": "To book a trip for the summer",
+              "fa": "برای تابستان سفر رزرو کند"
+            },
+            {
+              "en": "To change her address",
+              "fa": "نشانی‌اش را عوض کند"
+            },
+            {
+              "en": "To cancel her trip",
+              "fa": "سفرش را لغو کند"
+            },
+            {
+              "en": "To speak to the boss",
+              "fa": "با رئیس صحبت کند"
+            }
+          ],
+          "answer": 2,
+          "explain": {
+            "en": "The customer « voulait annuler son voyage ». The summer rush is mentioned earlier, by Sonia, as a general fact about the agency, not about this call.",
+            "fa": "مشتری «voulait annuler son voyage» یعنی می‌خواست سفرش را لغو کند. شلوغی تابستان را سونیا پیش‌تر به‌عنوان واقعیتی درباره‌ی آژانس گفته بود، نه درباره‌ی این تماس."
+          }
+        },
+        {
+          "id": "reading.a2-premiere-journee.q4",
+          "prompt": {
+            "en": "What happened when Léa did not know what to say?",
+            "fa": "وقتی لئا نمی‌دانست چه بگوید، چه اتفاقی افتاد؟"
+          },
+          "options": [
+            {
+              "en": "The customer hung up",
+              "fa": "مشتری گوشی را گذاشت"
+            },
+            {
+              "en": "She cancelled the trip herself",
+              "fa": "خودش سفر را لغو کرد"
+            },
+            {
+              "en": "She wrote an email instead",
+              "fa": "به‌جای آن ایمیل نوشت"
+            },
+            {
+              "en": "Sonia took over and suggested another date",
+              "fa": "سونیا ادامه داد و تاریخ دیگری پیشنهاد کرد"
+            }
+          ],
+          "answer": 3,
+          "explain": {
+            "en": "Léa « a demandé de l'aide », and then Sonia « a pris le téléphone et a proposé une autre date ». The two verbs in the passé composé follow one another in time.",
+            "fa": "لئا «a demandé de l'aide» و بعد سونیا «a pris le téléphone et a proposé une autre date». این دو فعل در گذشته‌ی نقلی پشت سر هم رخ می‌دهند."
+          }
+        },
+        {
+          "id": "reading.a2-premiere-journee.q5",
+          "prompt": {
+            "en": "What did Sonia explain about the summer?",
+            "fa": "سونیا درباره‌ی تابستان چه توضیحی داد؟"
+          },
+          "options": [
+            {
+              "en": "The agency is closed",
+              "fa": "آژانس تعطیل است"
+            },
+            {
+              "en": "There are many customers and emails must be answered fast",
+              "fa": "مشتری زیاد است و باید زود به ایمیل‌ها پاسخ داد"
+            },
+            {
+              "en": "Nobody takes holidays",
+              "fa": "هیچ‌کس مرخصی نمی‌گیرد"
+            },
+            {
+              "en": "The software is updated",
+              "fa": "نرم‌افزار به‌روز می‌شود"
+            }
+          ],
+          "answer": 1,
+          "explain": {
+            "en": "She says there are many customers in summer and that the agency « doit répondre vite aux courriels ». Both halves of the answer are needed; the others are not in the text.",
+            "fa": "او می‌گوید در تابستان مشتری زیاد است و آژانس «doit répondre vite aux courriels». هر دو بخش پاسخ لازم است و گزینه‌های دیگر در متن نیستند."
+          }
+        }
+      ],
+      "vocabulary": [
+        {
+          "fr": "une agence de voyages",
+          "fa": "آژانس مسافرتی",
+          "en": "travel agency",
+          "sentenceFromText": "Lundi dernier, Léa a commencé son nouveau travail dans une agence de voyages à Lyon."
+        },
+        {
+          "fr": "une collègue",
+          "fa": "همکار (زن)",
+          "en": "colleague (female)",
+          "sentenceFromText": "Une collègue, Sonia, lui a montré son bureau et lui a présenté l'équipe."
+        },
+        {
+          "fr": "présenter",
+          "fa": "معرفی کردن",
+          "en": "to introduce",
+          "sentenceFromText": "Une collègue, Sonia, lui a montré son bureau et lui a présenté l'équipe."
+        },
+        {
+          "fr": "un dossier",
+          "fa": "پرونده",
+          "en": "file, folder",
+          "sentenceFromText": "Le matin, elle a lu des dossiers et elle a appris à utiliser le logiciel de réservation."
+        },
+        {
+          "fr": "le logiciel",
+          "fa": "نرم‌افزار",
+          "en": "software",
+          "sentenceFromText": "Le matin, elle a lu des dossiers et elle a appris à utiliser le logiciel de réservation."
+        },
+        {
+          "fr": "une réservation",
+          "fa": "رزرو",
+          "en": "booking",
+          "sentenceFromText": "Le matin, elle a lu des dossiers et elle a appris à utiliser le logiciel de réservation."
+        },
+        {
+          "fr": "annuler",
+          "fa": "لغو کردن",
+          "en": "to cancel",
+          "sentenceFromText": "L'après-midi, Léa a téléphoné à une cliente qui voulait annuler son voyage."
+        },
+        {
+          "fr": "proposer",
+          "fa": "پیشنهاد دادن",
+          "en": "to suggest",
+          "sentenceFromText": "Sonia a pris le téléphone et a proposé une autre date."
+        }
+      ]
+    },
+    {
+      "id": "reading.b1-sommeil-et-memoire",
+      "type": "text",
+      "category": "science",
+      "level": "B1",
+      "levelBasis": "author",
+      "topics": [
+        "lex.science",
+        "lex.health",
+        "lex.study"
+      ],
+      "goals": [
+        "general",
+        "study"
+      ],
+      "skill": [
+        "reading",
+        "vocab"
+      ],
+      "version": "0.1.0",
+      "title": {
+        "fr": "Le sommeil et la mémoire",
+        "en": "Sleep and memory",
+        "fa": "خواب و حافظه"
+      },
+      "description": {
+        "fr": "Ce que fait le cerveau pendant la nuit, et pourquoi réviser sans dormir est un mauvais calcul.",
+        "en": "What the brain does at night, and why revising without sleeping is a poor bargain.",
+        "fa": "مغز شب‌ها چه می‌کند و چرا مرور بدون خواب حساب خوبی نیست."
+      },
+      "body": {
+        "fr": "Pendant longtemps, on a cru que le cerveau se reposait complètement la nuit. Les chercheurs savent aujourd'hui que c'est faux : pendant le sommeil, le cerveau reste très actif et il trie les informations reçues dans la journée. Certaines sont conservées, d'autres sont oubliées. On appelle ce phénomène la consolidation de la mémoire. Imaginons une expérience simple. Deux groupes d'étudiants apprennent la même liste de mots. Le premier groupe dort ensuite normalement, tandis que le second reste éveillé toute la nuit. Le lendemain, on teste leur mémoire. Les études de ce type montrent en général que ceux qui ont dormi se souviennent de bien plus de mots, même si tous ont eu le même temps pour apprendre. Cela ne signifie pas qu'il suffit de dormir pour réussir un examen. Il faut d'abord travailler, car le cerveau ne peut pas consolider ce qu'il n'a jamais appris. En revanche, sacrifier une nuit de sommeil pour réviser davantage est rarement une bonne idée, surtout si l'on veut retenir ses connaissances à long terme.",
+        "fa": "مدت‌ها تصور می‌شد مغز شب‌ها کاملاً استراحت می‌کند. امروز پژوهشگران می‌دانند که چنین نیست: در خواب، مغز بسیار فعال می‌ماند و اطلاعاتی را که در طول روز گرفته مرتب می‌کند. بعضی از آن‌ها نگه داشته می‌شوند و بعضی فراموش می‌شوند. به این پدیده «تثبیت حافظه» می‌گویند. آزمایشی ساده را در نظر بگیرید. دو گروه از دانشجویان یک فهرست واژه را یاد می‌گیرند. گروه نخست پس از آن طبق معمول می‌خوابد، اما گروه دوم تمام شب بیدار می‌ماند. فردا حافظه‌ی آن‌ها آزمایش می‌شود. پژوهش‌هایی از این دست معمولاً نشان می‌دهند کسانی که خوابیده‌اند واژه‌های بسیار بیشتری به یاد دارند، هرچند همه به یک اندازه وقت برای یادگیری داشته‌اند. این به آن معنا نیست که برای قبول شدن در امتحان فقط خوابیدن کافی است. اول باید کار کرد، چون مغز نمی‌تواند چیزی را تثبیت کند که هرگز یاد نگرفته است. از سوی دیگر، کم‌خوابی برای مرور بیشتر به‌ندرت فکر خوبی است، به‌ویژه اگر بخواهید دانسته‌هایتان را در بلندمدت نگه دارید.",
+        "en": "For a long time people believed the brain rested completely at night. Researchers now know this is wrong: during sleep the brain stays very active and sorts the information received during the day. Some of it is kept, some is forgotten. This phenomenon is called memory consolidation. Let us imagine a simple experiment. Two groups of students learn the same list of words. The first group then sleeps normally, while the second stays awake all night. The next day their memory is tested. Studies of this kind generally show that those who slept remember far more words, even though everyone had the same time to learn. This does not mean that sleeping is enough to pass an exam. You have to work first, because the brain cannot consolidate what it has never learned. On the other hand, giving up a night's sleep to revise more is rarely a good idea, especially if you want to retain your knowledge in the long term."
+      },
+      "words": 170,
+      "readingTime": {
+        "wordsPerMinute": 100,
+        "seconds": 102
+      },
+      "source": {
+        "kind": "original",
+        "name": "Written for French ma vie",
+        "licence": "CC BY-SA 4.0",
+        "rightOfUse": "own",
+        "readAt": "2026-10-18"
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      },
+      "relations": {
+        "words": [],
+        "verbs": [],
+        "grammar": []
+      },
+      "questions": [
+        {
+          "id": "reading.b1-sommeil-et-memoire.q1",
+          "prompt": {
+            "en": "Which old belief does the text say is now considered wrong?",
+            "fa": "متن به کدام باور قدیمی اشاره می‌کند که اکنون نادرست شمرده می‌شود؟"
+          },
+          "options": [
+            {
+              "en": "That sleep is useless",
+              "fa": "اینکه خواب بی‌فایده است"
+            },
+            {
+              "en": "That the brain rests completely at night",
+              "fa": "اینکه مغز شب‌ها کاملاً استراحت می‌کند"
+            },
+            {
+              "en": "That students need little sleep",
+              "fa": "اینکه دانشجویان به خواب کم نیاز دارند"
+            },
+            {
+              "en": "That memory cannot be tested",
+              "fa": "اینکه حافظه را نمی‌توان آزمود"
+            }
+          ],
+          "answer": 1,
+          "explain": {
+            "en": "The first sentence says people long believed « le cerveau se reposait complètement la nuit », and the next one says researchers know « c'est faux ».",
+            "fa": "جمله‌ی نخست می‌گوید مدت‌ها فکر می‌کردند «le cerveau se reposait complètement la nuit» و جمله‌ی بعد می‌گوید پژوهشگران می‌دانند «c'est faux»."
+          }
+        },
+        {
+          "id": "reading.b1-sommeil-et-memoire.q2",
+          "prompt": {
+            "en": "What does « consolidation de la mémoire » refer to in the text?",
+            "fa": "«تثبیت حافظه» در متن یعنی چه؟"
+          },
+          "options": [
+            {
+              "en": "The brain sorting what it received during the day, keeping some and forgetting some",
+              "fa": "مغز اطلاعات روز را مرتب می‌کند، بخشی را نگه می‌دارد و بخشی را فراموش می‌کند"
+            },
+            {
+              "en": "Learning a list of words by heart",
+              "fa": "حفظ کردن یک فهرست واژه"
+            },
+            {
+              "en": "Staying awake to study",
+              "fa": "بیدار ماندن برای درس خواندن"
+            },
+            {
+              "en": "Testing students the next day",
+              "fa": "آزمودن دانشجویان در روز بعد"
+            }
+          ],
+          "answer": 0,
+          "explain": {
+            "en": "The phrase names the process just described: the brain « trie les informations », keeping some (« conservées ») and dropping others (« oubliées »). The test is the way of measuring it, not the process itself.",
+            "fa": "این عبارت نام همان فرایندی است که پیش‌تر وصف شد: مغز «trie les informations»، بخشی را نگه می‌دارد («conservées») و بخشی را رها می‌کند («oubliées»). آزمون روش اندازه‌گیری است، نه خود فرایند."
+          }
+        },
+        {
+          "id": "reading.b1-sommeil-et-memoire.q3",
+          "prompt": {
+            "en": "In the imagined experiment, how do the two groups differ?",
+            "fa": "در آزمایشِ فرضی، دو گروه در چه چیزی با هم فرق دارند؟"
+          },
+          "options": [
+            {
+              "en": "The words they learn",
+              "fa": "واژه‌هایی که یاد می‌گیرند"
+            },
+            {
+              "en": "The time they have to learn",
+              "fa": "وقتی که برای یادگیری دارند"
+            },
+            {
+              "en": "What they do after learning: one sleeps, one stays awake",
+              "fa": "کاری که پس از یادگیری می‌کنند: یکی می‌خوابد و دیگری بیدار می‌ماند"
+            },
+            {
+              "en": "Their age",
+              "fa": "سن آن‌ها"
+            }
+          ],
+          "answer": 2,
+          "explain": {
+            "en": "Both groups learn « la même liste de mots » and have « le même temps »; the only difference is that one sleeps and the other stays awake. That is what makes the comparison fair.",
+            "fa": "هر دو گروه «la même liste de mots» را یاد می‌گیرند و «le même temps» دارند؛ تنها تفاوت خوابیدن یا بیدار ماندن است. همین مقایسه را منصفانه می‌کند."
+          }
+        },
+        {
+          "id": "reading.b1-sommeil-et-memoire.q4",
+          "prompt": {
+            "en": "What does the author make clear with « Cela ne signifie pas qu'il suffit de dormir… »?",
+            "fa": "نویسنده با جمله‌ی «Cela ne signifie pas qu'il suffit de dormir…» چه نکته‌ای را روشن می‌کند؟"
+          },
+          "options": [
+            {
+              "en": "That sleeping replaces studying",
+              "fa": "که خوابیدن جای درس خواندن را می‌گیرد"
+            },
+            {
+              "en": "That the brain can only consolidate what has already been learned",
+              "fa": "که مغز فقط چیزی را تثبیت می‌کند که پیش‌تر یاد گرفته شده"
+            },
+            {
+              "en": "That exams are not important",
+              "fa": "که امتحان اهمیتی ندارد"
+            },
+            {
+              "en": "That students should sleep during lessons",
+              "fa": "که دانشجویان باید در کلاس بخوابند"
+            }
+          ],
+          "answer": 1,
+          "explain": {
+            "en": "The next sentence gives the reason: you must work first, « car le cerveau ne peut pas consolider ce qu'il n'a jamais appris ». Sleep helps what was learned; it does not create learning.",
+            "fa": "جمله‌ی بعد دلیل را می‌آورد: اول باید کار کرد، «car le cerveau ne peut pas consolider ce qu'il n'a jamais appris». خواب به آنچه یاد گرفته شده کمک می‌کند، یادگیری نمی‌سازد."
+          }
+        },
+        {
+          "id": "reading.b1-sommeil-et-memoire.q5",
+          "prompt": {
+            "en": "What is the author's view of staying up a whole night to revise?",
+            "fa": "نویسنده درباره‌ی بیدار ماندن یک شب برای مرور چه نظری دارد؟"
+          },
+          "options": [
+            {
+              "en": "It is the best method before an exam",
+              "fa": "بهترین روش پیش از امتحان است"
+            },
+            {
+              "en": "It is rarely a good idea if you want to remember in the long term",
+              "fa": "اگر بخواهید در بلندمدت به یاد داشته باشید، به‌ندرت فکر خوبی است"
+            },
+            {
+              "en": "It is forbidden",
+              "fa": "ممنوع است"
+            },
+            {
+              "en": "The text does not say",
+              "fa": "متن چیزی نمی‌گوید"
+            }
+          ],
+          "answer": 1,
+          "explain": {
+            "en": "The last sentence: sacrificing a night's sleep to revise is « rarement une bonne idée, surtout si l'on veut retenir ses connaissances à long terme ». « Rarement » is a mild word — not « jamais ».",
+            "fa": "جمله‌ی آخر: از دست دادن یک شب خواب برای مرور «rarement une bonne idée, surtout si l'on veut retenir ses connaissances à long terme» است. واژه‌ی «rarement» ملایم است، نه «jamais»."
+          }
+        }
+      ],
+      "vocabulary": [
+        {
+          "fr": "le cerveau",
+          "fa": "مغز",
+          "en": "brain",
+          "sentenceFromText": "Pendant longtemps, on a cru que le cerveau se reposait complètement la nuit."
+        },
+        {
+          "fr": "le sommeil",
+          "fa": "خواب",
+          "en": "sleep",
+          "sentenceFromText": "Les chercheurs savent aujourd'hui que c'est faux : pendant le sommeil, le cerveau reste très actif et il trie les informations reçues dans la journée."
+        },
+        {
+          "fr": "un chercheur",
+          "fa": "پژوهشگر",
+          "en": "researcher",
+          "sentenceFromText": "Les chercheurs savent aujourd'hui que c'est faux : pendant le sommeil, le cerveau reste très actif et il trie les informations reçues dans la journée."
+        },
+        {
+          "fr": "trier",
+          "fa": "مرتب کردن، جدا کردن",
+          "en": "to sort",
+          "sentenceFromText": "Les chercheurs savent aujourd'hui que c'est faux : pendant le sommeil, le cerveau reste très actif et il trie les informations reçues dans la journée."
+        },
+        {
+          "fr": "oublier",
+          "fa": "فراموش کردن",
+          "en": "to forget",
+          "sentenceFromText": "Certaines sont conservées, d'autres sont oubliées."
+        },
+        {
+          "fr": "se souvenir de",
+          "fa": "به یاد داشتن",
+          "en": "to remember",
+          "sentenceFromText": "Les études de ce type montrent en général que ceux qui ont dormi se souviennent de bien plus de mots, même si tous ont eu le même temps pour apprendre."
+        },
+        {
+          "fr": "suffire",
+          "fa": "کافی بودن",
+          "en": "to be enough",
+          "sentenceFromText": "Cela ne signifie pas qu'il suffit de dormir pour réussir un examen."
+        },
+        {
+          "fr": "retenir",
+          "fa": "در ذهن نگه داشتن",
+          "en": "to retain",
+          "sentenceFromText": "En revanche, sacrifier une nuit de sommeil pour réviser davantage est rarement une bonne idée, surtout si l'on veut retenir ses connaissances à long terme."
+        },
+        {
+          "fr": "en revanche",
+          "fa": "در عوض، از سوی دیگر",
+          "en": "on the other hand",
+          "sentenceFromText": "En revanche, sacrifier une nuit de sommeil pour réviser davantage est rarement une bonne idée, surtout si l'on veut retenir ses connaissances à long terme."
+        }
+      ]
+    },
+    {
+      "id": "reading.b1-fete-de-la-musique",
+      "type": "text",
+      "category": "culture",
+      "level": "B1",
+      "levelBasis": "author",
+      "topics": [
+        "lex.arts",
+        "lex.leisure"
+      ],
+      "goals": [
+        "general",
+        "daily"
+      ],
+      "skill": [
+        "reading",
+        "vocab"
+      ],
+      "version": "0.1.0",
+      "title": {
+        "fr": "La Fête de la musique",
+        "en": "The Fête de la musique",
+        "fa": "جشن موسیقی"
+      },
+      "description": {
+        "fr": "Un soir de juin où la rue devient une scène pour tout le monde.",
+        "en": "A June evening when the street becomes a stage for everyone.",
+        "fa": "شبی در ژوئن که خیابان برای همه صحنه می‌شود."
+      },
+      "body": {
+        "fr": "Chaque année, le 21 juin, les rues françaises se transforment en scène géante. C'est la Fête de la musique, lancée en 1982 et devenue depuis un rendez-vous incontournable. L'idée est simple : ce jour-là, tout le monde peut jouer de la musique en public, et tout le monde peut écouter gratuitement. Des musiciens amateurs sortent leur guitare sur un trottoir, une chorale chante devant une mairie, un jeune groupe de rock s'installe sur une place, et les professionnels donnent des concerts dans les théâtres ou en plein air. La date n'a pas été choisie au hasard : le 21 juin est le jour le plus long de l'année dans l'hémisphère nord, et la fête se prolonge souvent jusque tard dans la nuit. Certains habitants se plaignent du bruit, d'autres regrettent que les grands noms attirent plus de monde que les musiciens du quartier. Pourtant, la plupart des gens apprécient surtout l'atmosphère : on croise des inconnus, on s'arrête pour écouter, on découvre des styles qu'on n'aurait jamais choisis soi-même. Aujourd'hui, l'événement existe dans de nombreux pays.",
+        "fa": "هر سال، در بیست‌ویکم ژوئن، خیابان‌های فرانسه به صحنه‌ای عظیم تبدیل می‌شوند. این «جشن موسیقی» است که در سال ۱۹۸۲ راه افتاد و از آن زمان به رویدادی تقریباً ناگزیر بدل شده است. ایده ساده است: در آن روز هر کسی می‌تواند در جمع موسیقی بنوازد و هر کسی می‌تواند رایگان گوش بدهد. نوازنده‌های آماتور گیتارشان را کنار پیاده‌رو درمی‌آورند، یک گروه کر جلوی شهرداری می‌خواند، گروه راک جوانی در میدانی مستقر می‌شود و هنرمندان حرفه‌ای در تئاتر یا فضای باز کنسرت می‌دهند. تاریخ را بی‌دلیل انتخاب نکرده‌اند: بیست‌ویکم ژوئن در نیمکره‌ی شمالی بلندترین روز سال است و جشن اغلب تا دیروقت شب ادامه پیدا می‌کند. بعضی ساکنان از سروصدا گله می‌کنند و بعضی دیگر افسوس می‌خورند که نام‌های بزرگ بیشتر از نوازندگان محله جمعیت جذب می‌کنند. با این حال بیشتر مردم بیش از هر چیز از فضای جشن لذت می‌برند: آدم با غریبه‌ها برخورد می‌کند، می‌ایستد تا گوش بدهد و سبک‌هایی را کشف می‌کند که هیچ‌وقت خودش انتخابشان نمی‌کرد. امروز این رویداد در کشورهای بسیاری برگزار می‌شود.",
+        "en": "Every year, on 21 June, French streets turn into a giant stage. It is the Fête de la musique, launched in 1982 and since then an unmissable event. The idea is simple: on that day anyone can play music in public, and anyone can listen for free. Amateur musicians take out a guitar on a pavement, a choir sings in front of a town hall, a young rock band sets up on a square, and professionals give concerts in theatres or in the open air. The date was not chosen at random: 21 June is the longest day of the year in the northern hemisphere, and the festival often goes on until late at night. Some residents complain about the noise; others regret that big names draw more people than the neighbourhood's own musicians. Still, most people appreciate the atmosphere above all: you run into strangers, you stop to listen, you discover styles you would never have chosen yourself. Today the event exists in many countries."
+      },
+      "words": 176,
+      "readingTime": {
+        "wordsPerMinute": 100,
+        "seconds": 106
+      },
+      "source": {
+        "kind": "original",
+        "name": "Written for French ma vie",
+        "licence": "CC BY-SA 4.0",
+        "rightOfUse": "own",
+        "readAt": "2026-10-18"
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      },
+      "relations": {
+        "words": [],
+        "verbs": [],
+        "grammar": []
+      },
+      "questions": [
+        {
+          "id": "reading.b1-fete-de-la-musique.q1",
+          "prompt": {
+            "en": "What is the basic rule of the festival?",
+            "fa": "قاعده‌ی اصلی جشن چیست؟"
+          },
+          "options": [
+            {
+              "en": "Only professionals may play",
+              "fa": "فقط حرفه‌ای‌ها می‌توانند بنوازند"
+            },
+            {
+              "en": "Concerts are paid",
+              "fa": "کنسرت‌ها پولی هستند"
+            },
+            {
+              "en": "It happens only in theatres",
+              "fa": "فقط در تئاترها برگزار می‌شود"
+            },
+            {
+              "en": "Anyone can play in public and anyone can listen for free",
+              "fa": "هر کسی می‌تواند در جمع بنوازد و هر کسی رایگان گوش بدهد"
+            }
+          ],
+          "answer": 3,
+          "explain": {
+            "en": "« Tout le monde peut jouer de la musique en public, et tout le monde peut écouter gratuitement » — amateurs are included and nothing is paid. Theatres are only one of several places mentioned.",
+            "fa": "«Tout le monde peut jouer de la musique en public, et tout le monde peut écouter gratuitement». آماتورها هم شرکت دارند و چیزی پرداخت نمی‌شود. تئاتر فقط یکی از چند مکانِ نام‌برده است."
+          }
+        },
+        {
+          "id": "reading.b1-fete-de-la-musique.q2",
+          "prompt": {
+            "en": "Why was 21 June chosen?",
+            "fa": "چرا ۲۱ ژوئن انتخاب شده است؟"
+          },
+          "options": [
+            {
+              "en": "It is the longest day of the year in the northern hemisphere",
+              "fa": "در نیمکره‌ی شمالی بلندترین روز سال است"
+            },
+            {
+              "en": "It is a public holiday",
+              "fa": "تعطیل رسمی است"
+            },
+            {
+              "en": "It is the day the first concert took place",
+              "fa": "روزی است که نخستین کنسرت برگزار شد"
+            },
+            {
+              "en": "It is the shortest night in the south",
+              "fa": "کوتاه‌ترین شب در جنوب است"
+            }
+          ],
+          "answer": 0,
+          "explain": {
+            "en": "The text states the date « n'a pas été choisie au hasard » and gives the reason: it is « le jour le plus long de l'année dans l'hémisphère nord ».",
+            "fa": "متن می‌گوید تاریخ «n'a pas été choisie au hasard» و دلیلش را می‌آورد: «le jour le plus long de l'année dans l'hémisphère nord»."
+          }
+        },
+        {
+          "id": "reading.b1-fete-de-la-musique.q3",
+          "prompt": {
+            "en": "What do some residents criticise?",
+            "fa": "برخی ساکنان چه انتقادهایی دارند؟"
+          },
+          "options": [
+            {
+              "en": "The price of the tickets",
+              "fa": "قیمت بلیت‌ها"
+            },
+            {
+              "en": "The noise, and big names drawing the crowds away from local musicians",
+              "fa": "سروصدا، و اینکه نام‌های بزرگ جمعیت را از نوازندگان محلی دور می‌کنند"
+            },
+            {
+              "en": "The lack of professional musicians",
+              "fa": "نبود نوازندگان حرفه‌ای"
+            },
+            {
+              "en": "The date of the festival",
+              "fa": "تاریخ جشن"
+            }
+          ],
+          "answer": 1,
+          "explain": {
+            "en": "Two complaints are reported: some « se plaignent du bruit », others regret that « les grands noms attirent plus de monde que les musiciens du quartier ». Tickets are never mentioned, since entry is free.",
+            "fa": "دو گله نقل شده است: بعضی «se plaignent du bruit» و بعضی افسوس می‌خورند که «les grands noms attirent plus de monde que les musiciens du quartier». از بلیت حرفی نیست، چون ورود رایگان است."
+          }
+        },
+        {
+          "id": "reading.b1-fete-de-la-musique.q4",
+          "prompt": {
+            "en": "According to the text, what do most people enjoy most?",
+            "fa": "به گفته‌ی متن، بیشتر مردم از چه چیزی لذت می‌برند؟"
+          },
+          "options": [
+            {
+              "en": "Seeing famous singers",
+              "fa": "دیدن خواننده‌های مشهور"
+            },
+            {
+              "en": "Playing their own instrument",
+              "fa": "نواختن ساز خودشان"
+            },
+            {
+              "en": "The atmosphere, and discovering unexpected styles",
+              "fa": "فضای جشن و کشف سبک‌های غیرمنتظره"
+            },
+            {
+              "en": "Staying at home",
+              "fa": "ماندن در خانه"
+            }
+          ],
+          "answer": 2,
+          "explain": {
+            "en": "« La plupart des gens apprécient surtout l'atmosphère » — then the text lists meeting strangers and discovering styles « qu'on n'aurait jamais choisis soi-même ». The conditional shows these are things you would not seek out alone.",
+            "fa": "«La plupart des gens apprécient surtout l'atmosphère» و سپس برخورد با غریبه‌ها و کشف سبک‌هایی را می‌شمارد که «qu'on n'aurait jamais choisis soi-même». وجه شرطی نشان می‌دهد این‌ها چیزهایی است که آدم خودش دنبالشان نمی‌رود."
+          }
+        }
+      ],
+      "vocabulary": [
+        {
+          "fr": "incontournable",
+          "fa": "ناگزیر، غیرقابل‌چشم‌پوشی",
+          "en": "unmissable",
+          "sentenceFromText": "C'est la Fête de la musique, lancée en 1982 et devenue depuis un rendez-vous incontournable."
+        },
+        {
+          "fr": "gratuitement",
+          "fa": "رایگان",
+          "en": "for free",
+          "sentenceFromText": "L'idée est simple : ce jour-là, tout le monde peut jouer de la musique en public, et tout le monde peut écouter gratuitement."
+        },
+        {
+          "fr": "amateur",
+          "fa": "آماتور، غیرحرفه‌ای",
+          "en": "amateur",
+          "sentenceFromText": "Des musiciens amateurs sortent leur guitare sur un trottoir, une chorale chante devant une mairie, un jeune groupe de rock s'installe sur une place, et les professionnels donnent des concerts dans les théâtres ou en plein air."
+        },
+        {
+          "fr": "une chorale",
+          "fa": "گروه کر",
+          "en": "choir",
+          "sentenceFromText": "Des musiciens amateurs sortent leur guitare sur un trottoir, une chorale chante devant une mairie, un jeune groupe de rock s'installe sur une place, et les professionnels donnent des concerts dans les théâtres ou en plein air."
+        },
+        {
+          "fr": "en plein air",
+          "fa": "در فضای باز",
+          "en": "in the open air",
+          "sentenceFromText": "Des musiciens amateurs sortent leur guitare sur un trottoir, une chorale chante devant une mairie, un jeune groupe de rock s'installe sur une place, et les professionnels donnent des concerts dans les théâtres ou en plein air."
+        },
+        {
+          "fr": "au hasard",
+          "fa": "تصادفی",
+          "en": "at random",
+          "sentenceFromText": "La date n'a pas été choisie au hasard : le 21 juin est le jour le plus long de l'année dans l'hémisphère nord, et la fête se prolonge souvent jusque tard dans la nuit."
+        },
+        {
+          "fr": "se plaindre de",
+          "fa": "گله کردن از",
+          "en": "to complain about",
+          "sentenceFromText": "Certains habitants se plaignent du bruit, d'autres regrettent que les grands noms attirent plus de monde que les musiciens du quartier."
+        },
+        {
+          "fr": "regretter",
+          "fa": "افسوس خوردن",
+          "en": "to regret",
+          "sentenceFromText": "Certains habitants se plaignent du bruit, d'autres regrettent que les grands noms attirent plus de monde que les musiciens du quartier."
+        },
+        {
+          "fr": "apprécier",
+          "fa": "قدر دانستن، لذت بردن از",
+          "en": "to appreciate",
+          "sentenceFromText": "Pourtant, la plupart des gens apprécient surtout l'atmosphère : on croise des inconnus, on s'arrête pour écouter, on découvre des styles qu'on n'aurait jamais choisis soi-même."
+        }
+      ]
+    }
+  ]
+}
