@@ -156,7 +156,8 @@ function optionalKeys(name) {
  * Arabic waits for a reviewer. A third group must be added HERE, not by
  * widening a prefix match somewhere else.
  */
-const OPTIONAL_GROUPS = ['landingEn', 'nextEn', 'importEn', 'workspaceEn', 'weaknessEn'];
+const OPTIONAL_GROUPS = ['landingEn', 'nextEn', 'importEn', 'workspaceEn',
+                         'shellEn', 'weaknessEn'];
 const allOptionalKeys = () => OPTIONAL_GROUPS.flatMap(optionalKeys);
 
 test('every locale defines exactly the English key set, optional groups aside', () => {

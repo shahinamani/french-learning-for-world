@@ -7,6 +7,7 @@ import { chromium } from 'playwright';
 import { existsSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { portalRoutes } from './portal-routes.mjs';
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:8793/';
 // Browser path: this container ships Chromium at a fixed path; CI uses the one
@@ -66,6 +67,11 @@ function watch(page, tag = '') {
   page.on('console', (m) => { if (m.type() === 'error') errors.push(`CONSOLE${tag}: ${m.text()}`); });
 }
 const go = async (page, hash) => { await page.goto(BASE + '#' + hash, { waitUntil: 'networkidle' }); await page.waitForTimeout(220); };
+
+if (process.env.PORTAL_ONLY) {
+  await portalRoutes({ browser, BASE, ok, watch, go });
+  await finish();
+}
 
 /* ── 1. Multi-user isolation ─────────────────────────────────────────── */
 console.log('\n=== multi-user isolation (two tabs, two profiles, one origin) ===');
@@ -219,7 +225,7 @@ await page.locator('[data-testid="panel-practise"]').click();
 await page.waitForTimeout(350);
 ok('from the panel, practice on that concept alone', /concept=/.test(page.url()));
 await page.goBack(); await page.waitForTimeout(300);
-ok('back from the panel returns into the session', page.url().includes('practise/review'));
+ok('back from the panel returns into the session', page.url().includes('app/cards'));
 
 console.log('\n=== French typography, in the rendered output ===');
 {
@@ -583,7 +589,7 @@ await page.locator('[data-testid="verb-list"] a').first().click();
 await page.waitForTimeout(500);
 await page.locator('[data-testid="practise-subjonctif"]').click();
 await page.waitForTimeout(600);
-ok('practice starts straight from the table', /practise\/conjugation\?verb=.*tense=subjonctif/.test(page.url()));
+ok('practice starts straight from the table', /app\/verbs\/drill\?verb=.*tense=subjonctif/.test(page.url()));
 await page.fill('[data-testid="drill-input"]', 'aille');
 await page.locator('[data-testid="drill-check"]').click();
 await page.waitForTimeout(350);
@@ -632,7 +638,7 @@ await page.keyboard.press('Tab');
 const focused = await page.evaluate(() => document.activeElement?.className || document.activeElement?.tagName);
 ok(`Tab moves focus into the page (${focused})`, !!focused && focused !== 'BODY');
 const ring = await page.evaluate(() => {
-  const el = document.querySelector('.tab'); el.focus();
+  const el = [...document.querySelectorAll('.tab')].find((e) => e.offsetParent); el.focus();
   const cs = getComputedStyle(el);
   return { style: cs.outlineStyle, width: cs.outlineWidth };
 });
@@ -2103,7 +2109,7 @@ console.log('\n=== what next ===');
      (await pg.locator('[data-testid="next-map"]').getAttribute('href') || '').includes('/learn'));
 
   // Nothing was started: the learner is still on the session screen.
-  ok('no activity starts by itself', pg.url().includes('/practise/review'));
+  ok('no activity starts by itself', pg.url().includes('/app/cards'));
 
   // And it does not bounce them straight back into what they just finished,
   // while anything else is eligible.
@@ -2258,6 +2264,16 @@ console.log('\n=== who checked it ===');
   await c.close();
 }
 
+// The portal section lives in its own module so it can be run alone
+// (PORTAL_ONLY=1): a mutation that breaks the app early would otherwise
+// kill the walk before this section is reached, and a check that is never
+// reached has not been seen to fail.
+await portalRoutes({ browser, BASE, ok, watch, go });
+
+await finish();
+
+async function finish() {
+
 /* ── Migration: a real version-1 database, opened by the real app ─────────
  * The unit tests prove the upgrade logic against a MODEL of IndexedDB
  * (tests/db-migration.test.js). Only a browser can prove a real browser keeps
@@ -2344,3 +2360,4 @@ if (checks === 0) { console.log('NO CHECKS RAN'); await browser.close(); process
 for (const f of failures) console.log('  FAILED: ' + f);
 await browser.close();
 process.exit(failures.length || real.length ? 1 : 0);
+}
