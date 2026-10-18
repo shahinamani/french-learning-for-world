@@ -372,6 +372,61 @@ def _circumflex(base: str) -> str:
     return base[:last_vowel] + swap.get(ch, ch) + base[last_vowel + 1:]
 
 
+# ── The auxiliary ───────────────────────────────────────────────────────────
+#
+# **The model family does not know the auxiliary.** `forms["aux"]` above is what
+# the irregular model says, and that is a fact about how the verb is
+# conjugated, not about which verb it is. Used as the answer it made every
+# regular -er verb « avoir » (so « j'ai arrivé ») and every verb ending in
+# -venir « être » (so « je suis prévenu » for « j'ai prévenu »). It survives
+# only as the last resort for a lemma that no source has spoken on, and a
+# lemma that reaches it is marked `provenance: "rule"` so the page and the test
+# can tell a looked-up value from a guessed one.
+
+def resolve_auxiliary(lemma: str, model_aux: str, evidence: dict | None,
+                      pronominal: bool, rulings: dict) -> dict:
+    """The auxiliaries of one verb, in the order a learner meets them.
+
+    Precedence, strongest first, each step naming why it is the answer:
+
+      ruling          a decision in scripts/auxiliary_rulings.py, with its reason
+      pronominal      a pronominal-only verb: every reflexive verb takes être
+      reflexive-only  fr.wiktionary has a table for « se X » and none for « X »
+      fr.wiktionary   the non-pronominal table on the verb's page
+      rule            the model default; only when nobody has said anything
+
+    A verb whose page carries BOTH auxiliaries and has no ruling is refused
+    rather than guessed at: choosing which comes first is a judgement and must
+    be written down as one.
+    """
+    if lemma in rulings:
+        r = rulings[lemma]
+        aux = list(r["auxiliary"])
+        prov = "ruling"
+        examples = r.get("examples") or None
+    elif pronominal:
+        aux, prov, examples = ["être"], "pronominal-only", None
+    elif evidence and not evidence["plain"] and evidence["reflexive"]:
+        aux, prov, examples = ["être"], "fr-wiktionary-reflexive-only", None
+    elif evidence and len(evidence["plain"]) == 1:
+        aux, prov, examples = list(evidence["plain"]), "fr-wiktionary", None
+    elif evidence and len(evidence["plain"]) == 2:
+        raise ValueError(
+            f"{lemma}: fr.wiktionary names both auxiliaries and there is no ruling "
+            "for which comes first - add one to scripts/auxiliary_rulings.py")
+    else:
+        aux, prov, examples = [model_aux], "rule", None
+    assert (1 <= len(aux) <= 2 and set(aux) <= {"avoir", "être"}
+            and len(set(aux)) == len(aux)), f"{lemma}: malformed auxiliary {aux}"
+    return {
+        "auxiliary": aux[0],
+        # Null means this verb takes the one auxiliary; it is a statement, not a gap.
+        "auxiliaryAlso": aux[1] if len(aux) == 2 else None,
+        "auxiliaryExamples": examples,
+        "auxiliaryProvenance": prov,
+    }
+
+
 # ── Validation against the corpus ───────────────────────────────────────────
 
 SLOT_FROM_TAG = {

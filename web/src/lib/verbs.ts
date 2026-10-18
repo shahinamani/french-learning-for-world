@@ -51,7 +51,24 @@ export type Verb = {
   group: string; pattern: string; irregular: boolean;
   /** « il faut », « il pleut » — a third person and nothing else. */
   impersonal: boolean;
+  /** The auxiliary a learner meets first. « arriver » is « être »: je suis
+   *  arrivé. Never derived from the conjugation model; see
+   *  scripts/conjugate.py `resolve_auxiliary`. */
   auxiliary: 'avoir' | 'être';
+  /** The other auxiliary, for a verb that takes both: « passer » (je suis passé
+   *  devant la gare / j'ai passé un examen). **Null means this verb takes only
+   *  `auxiliary`** — a statement, not a gap; `auxiliaryProvenance` says how
+   *  well it is known. */
+  auxiliaryAlso: 'avoir' | 'être' | null;
+  /** French sentences, one per auxiliary, where somebody wrote them. A missing
+   *  key means nobody has said, not that the construction does not exist. */
+  auxiliaryExamples: Partial<Record<'avoir' | 'être', string>> | null;
+  /** "fr-wiktionary" read from the verb's page · "ruling" decided in
+   *  scripts/auxiliary_rulings.py, not yet read by a teacher ·
+   *  "pronominal-only" / "fr-wiktionary-reflexive-only" (être, because the verb
+   *  is reflexive) · "rule" the model default, which nobody looked up. */
+  auxiliaryProvenance: 'fr-wiktionary' | 'ruling' | 'pronominal-only'
+    | 'fr-wiktionary-reflexive-only' | 'rule';
   meanings: Partial<Record<Locale, string>>;
   participles: { past: string; present: string };
   imperative: string[] | null;
@@ -107,6 +124,8 @@ export type Verb = {
 export type VerbSummary = {
   infinitive: string; key: string; level: Level; rank: number;
   group: string; irregular: boolean; auxiliary: 'avoir' | 'être';
+  /** Present only for a verb that takes both: « passer ». */
+  auxiliaryAlso?: 'avoir' | 'être';
   en: string;
   /** Set where no meaning is shown, so the LIST can say so rather than
    *  printing an empty cell. */

@@ -1875,3 +1875,19 @@ page — a visual review would have passed it. And `.gitignore` said
 `node_modules/` with a trailing slash, which matches directories only, so a
 `node_modules` **symlink** was not ignored and would have been committed into a
 public repository.
+
+## « arriver » was « avoir » (2026-10-18)
+
+Twin of « souvenir ». The auxiliary on every verb was read off the conjugation
+MODEL (`être` for seven irregular families, `avoir` for everything else), so
+« arriver », « rester », « tomber » and « entrer » shipped as `avoir` and the
+verb page told a learner « j'ai arrivé »; « prévenir », which ends in -venir,
+shipped as `être`. Every value was in the closed set `avoir | être`, so nothing
+could object. Found by comparing the content against an independent source (the
+verb's own fr.wiktionary page) instead of against the generator's rule: 80 verbs
+were wrong, 42 of them pronominal-only verbs that must take être. The
+single-value field was also a false claim for the 19 verbs that take both, so
+the data now carries `auxiliaryAlso`, `auxiliaryExamples` and
+`auxiliaryProvenance`. The check passes vacuously in JavaScript if written the
+obvious way: `\b` is ASCII-only, `/\bêtre\b/` matches nothing, and a scan built
+on it reports a clean corpus (`tests/auxiliary.test.js` pins this).
