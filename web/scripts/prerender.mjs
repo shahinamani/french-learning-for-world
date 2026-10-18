@@ -26,7 +26,15 @@ await build({
 });
 
 const { render } = await import(pathToFileURL(resolve(out, 'prerender.mjs')).href);
-const markup = render();
+// StaticRouter writes path hrefs ("/learn"), but the app is a HASH router, so the
+// address of /learn is "#/learn". A root-absolute href in the static HTML is
+// harmless on a domain root (the catch-all serves the shell) and wrong on a
+// project site: "/learn" leaves "/<repo>/" and lands on the host's own 404.
+// It only matters before the bundle runs, for a crawler, and with JavaScript
+// off, which is why the browser walk never noticed. Rewriting the markup keeps
+// the real components as the source of truth; protocol-relative and absolute
+// URLs are left alone.
+const markup = render().replace(/href="\/(?!\/)([^"]*)"/g, 'href="#/$1"');
 
 const indexPath = resolve(root, 'dist/index.html');
 let html = readFileSync(indexPath, 'utf8');
@@ -105,6 +113,14 @@ const styled = html.replace(/<!--[\s\S]*?-->/g, '').match(/<[a-z0-9]+[^>]*\sstyl
 if (styled) {
   console.error(`PRERENDER FAILED: ${styled.length} inline style attribute(s) in the `
     + `prerendered HTML. The CSP forbids them; use a utility class.`);
+  process.exit(1);
+}
+// No href in the file may be root-absolute: it would leave a project site's
+// prefix. (The stylesheet and scripts are relative because vite's base is './'.)
+const rooted = html.match(/(?:href|src)="\/(?!\/)[^"]*"/g);
+if (rooted) {
+  console.error(`PRERENDER FAILED: root-absolute URL(s) in index.html: ${rooted.slice(0, 3).join(' ')}. `
+    + 'They break under a sub-path such as /french-learning-for-world/.');
   process.exit(1);
 }
 writeFileSync(indexPath, html);

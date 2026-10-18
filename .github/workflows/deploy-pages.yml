@@ -1,0 +1,164 @@
+name: Deploy to GitHub Pages (manual)
+
+# NOTHING IN THIS FILE RUNS ON ITS OWN, AND IT HAS NEVER RUN.
+#
+# It is the reviewable, unexecuted half of a decision that has not been made:
+# Cloudflare Pages on the project's own domain is the documented plan, and this
+# is the alternative. Read docs/deploying-github-pages.md before enabling
+# anything. In particular, what it loses is not cosmetic: GitHub Pages ignores
+# web/public/_headers, so the response headers that file sets are not sent.
+#
+# Three things have to be true before a run can do anything, and none is done
+# by this file (a workflow cannot do them, and should not):
+#   1. Settings > Pages > Build and deployment > Source: GitHub Actions.
+#   2. The `github-pages` environment exists (Pages creates it) and its
+#      deployment-branch rule permits the ref you dispatch from.
+#   3. Somebody with write access presses Run workflow.
+#
+# Manual only. There is deliberately no `push` trigger: a merge to main must not
+# publish a site, and a trigger that is added later should be a reviewed change.
+on:
+  workflow_dispatch:
+    inputs:
+      ref:
+        description: >-
+          Commit SHA, tag or branch to build. Must be reachable from main.
+          Leave empty for the tip of main. To ROLL BACK, run this workflow
+          again with the SHA of the last good deploy (shown in that run's
+          summary and in /build-info.json on the live site).
+        required: false
+        default: ''
+        type: string
+
+# Least privilege at the top; the deploy job raises only what it needs.
+permissions:
+  contents: read
+
+# One deploy at a time, and never cancel one halfway: a half-published site is
+# worse than a queued one.
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      sha: ${{ steps.pin.outputs.sha }}
+    steps:
+      # Full history, for the one check below that needs it (is the requested
+      # ref on main?). The build itself does not read history.
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ inputs.ref || 'main' }}
+          fetch-depth: 0
+
+      - name: Pin the commit being built
+        id: pin
+        env:
+          REQUESTED: ${{ inputs.ref }}
+        run: |
+          set -euo pipefail
+          # The input is user-controlled text; it was only ever passed to
+          # checkout, never interpolated into this script.
+          sha="$(git rev-parse HEAD)"
+          git fetch --quiet origin main
+          if ! git merge-base --is-ancestor "$sha" origin/main; then
+            echo "::error::$sha is not reachable from main. Only reviewed commits may be published."
+            exit 1
+          fi
+          echo "sha=$sha" >> "$GITHUB_OUTPUT"
+          {
+            echo "### Building"
+            echo ""
+            echo "- commit: \`$sha\`"
+            echo "- requested ref: \`${REQUESTED:-main (default)}\`"
+          } >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+          cache-dependency-path: web/package-lock.json
+
+      - name: Install
+        working-directory: web
+        run: npm ci
+
+      # FLW_META_CSP=1 copies the Content-Security-Policy from public/_headers
+      # into a <meta http-equiv> (web/scripts/meta-csp.mjs), because this host
+      # cannot send the header. Vite's base is './' already (see
+      # docs/deploying-github-pages.md), so no base-path variable is needed and
+      # the same build works at a domain root and under /<repo>/.
+      - name: Build
+        working-directory: web
+        env:
+          FLW_META_CSP: '1'
+        run: npm run build
+
+      - name: Check what is about to be published
+        working-directory: web
+        run: |
+          set -euo pipefail
+          # 1. The meta CSP must be there. If the step silently skipped, the
+          #    site would ship with no CSP at all and look identical.
+          grep -q 'http-equiv="Content-Security-Policy"' dist/index.html \
+            || { echo "::error::No <meta> CSP in dist/index.html."; exit 1; }
+          # 2. Nothing may be root-absolute: it would leave /<repo>/ and 404.
+          if grep -nE '(href|src)="/[^/]' dist/index.html; then
+            echo "::error::Root-absolute URL in dist/index.html; it breaks under a sub-path."
+            exit 1
+          fi
+          # 3. These files configure Cloudflare. Publishing them would put a
+          #    policy file on the site that nothing reads, which looks like a
+          #    working control to anyone who browses to it.
+          rm -f dist/_headers dist/_redirects
+          # 4. The review tool must never be in a build (SECURITY.md).
+          if grep -rIl 'review-tool\|__review' dist >/dev/null 2>&1; then
+            echo "::error::Review tool strings found in dist/."; exit 1
+          fi
+
+      # Surfaces the version where a human can find it after the fact: on the
+      # live site, so "what is deployed?" is a URL and not an investigation.
+      # Contains a commit hash, a ref and a time. No secrets, no personal data.
+      - name: Write build-info.json
+        env:
+          SHA: ${{ steps.pin.outputs.sha }}
+        run: |
+          set -euo pipefail
+          printf '{"commit":"%s","built_at":"%s","workflow_run":"%s","target":"github-pages"}\n' \
+            "$SHA" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" "$GITHUB_RUN_ID" > web/dist/build-info.json
+          cat web/dist/build-info.json
+
+      - uses: actions/configure-pages@v6
+
+      - uses: actions/upload-pages-artifact@v5
+        with:
+          path: web/dist
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write      # to deploy to Pages
+      id-token: write   # to verify the deployment originates from this workflow
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v5
+
+      - name: Record what was published
+        env:
+          SHA: ${{ needs.build.outputs.sha }}
+          URL: ${{ steps.deployment.outputs.page_url }}
+        run: |
+          {
+            echo "### Published"
+            echo ""
+            echo "- commit: \`$SHA\`"
+            echo "- url: $URL"
+            echo "- version check: \`${URL}build-info.json\`"
+            echo "- rollback: run this workflow again with the previous good commit as \`ref\`"
+          } >> "$GITHUB_STEP_SUMMARY"
