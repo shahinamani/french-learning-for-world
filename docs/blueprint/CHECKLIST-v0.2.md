@@ -172,6 +172,15 @@ data or replacing working foundations.* Preserved:
 
 ---
 
+## D2. Integration risks being tracked
+
+| Risk | Evidence | What happens if ignored |
+|:--|:--|:--|
+| **The 150 KB first-load budget is tightening.** `main` was 134.3 KB before this work, is 137.4 KB after six merges, and the portal shell takes it to 140.0 KB — **10.0 KB spare** with the Reader and the grammar loop still to land. | the figure the build prints on every run | The build fails, and the project's one never-slipped discipline slips. Mitigation: every remaining feature is a lazy chunk, and anything that cannot be is reported before it merges rather than after. |
+| **Several streams append to `web/src/lib/i18n.ts` and to the same three test files.** | four optional groups added so far: `shellEn`, `readerEn`, `grammarEn`, `weaknessEn` | Rebase conflicts. Mechanical to resolve — keep both groups — but they must not be resolved by dropping one. |
+| **`scripts/preview.sh` kills whatever holds its port.** Two streams killed each other's preview server mid-run, and one mutant verification had to be discarded and redone. | reported independently by three streams | Invalid test runs that look like real ones. Fixed by assigning each stream a distinct `PORT`; the script itself should probably refuse a port it did not start. |
+| **Hardcoded old links remain in `features/**`, `Learn.tsx`, `Search.tsx`, `Stub.tsx`.** | shell stream's report | They work today only because the redirects catch them. Each owner rewrites their own. |
+
 ## E. Honest state at the time of writing
 
 `main` = `e0af679`. Routes are `/learn`, `/practise/*`, `/workspace` — the

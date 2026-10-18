@@ -50,12 +50,36 @@ require it; an icon row without names is a named rejection reason in §21.
 | `/learn/verbs/:infinitive` | `/app/verbs/:infinitive` |
 | `/learn/concept/:id` | `/app/grammar/:id` |
 | `/practise/review` | `/app/cards` |
-| `/practise/conjugation` | `/app/verbs/:infinitive` (drill tab) |
+| `/practise/conjugation` | `/app/verbs/drill` — **amended, see below** |
 | `/practise/exams/*` | `/app/exams/*` |
 | `/practise/listening` | `/app/listening` |
 | `/progress` | `/app/progress` |
-| `/workspace` | `/app/today` |
+| `/workspace` | `/app/workspace` — **amended, see below** |
 | `/search` | `/app/search` |
+| `/learn/level/:level/:skill` | `/app/path/:level/:skill` — **added, was missing** |
+
+### Amendment 1 — three corrections to the table above
+
+Raised by the stream that implemented it, accepted by the coordinator. In each
+case the contract was wrong or incomplete and the code is right; recording it
+here rather than making working code match a mistake.
+
+1. **`/practise/conjugation` → `/app/verbs/drill`.** The contract said
+   `/app/verbs/:infinitive` with a drill tab. No such tab exists, and the drill
+   page takes `?verb=` rather than a path parameter, so the contract's target
+   would have dropped the learner on a verb page with their drill lost. When
+   the verbs stream adds a real drill tab it may retarget this.
+2. **`/workspace` → `/app/workspace`.** The contract said `/app/today`. But
+   Today *is* the existing Learn page, and Learn carries a button to the
+   workspace — so the contract's target would have made that button a
+   self-loop, which is a dead control and a §21 rejection reason.
+3. **`/learn/level/:level/:skill` was missing from the table entirely.** It is
+   a real route with real links pointing at it, and leaving it out would have
+   produced exactly the 404 the redirect section exists to prevent.
+
+The general rule this establishes: **a stream that finds the contract wrong
+says so and implements the correct thing, and the coordinator amends the
+contract.** A contract that is silently worked around stops being one.
 
 Appendix §1: direct link, refresh and open-in-new-tab must all preserve the
 path. A redirect is `replace`, never a push, so Back does not loop.
