@@ -96,10 +96,24 @@ export function VerbDetail() {
       <div className="row gap-2 wrap">
         <span className={`chip chip--${verb.level.toLowerCase()}`}>{verb.level}</span>
         <span className="chip">{verb.irregular ? t('irregular') : t('regular')}</span>
-        <span className="chip" lang="fr" dir="ltr">{t('auxiliary')}: {verb.auxiliary}</span>
+        {/* « arriver » takes être and « passer » takes both; a single value
+            would be a false claim either way. The first is the one a learner
+            meets first. */}
+        <span className="chip" lang="fr" dir="ltr" data-testid="verb-auxiliary">
+          {t('auxiliary')}: {verb.auxiliary}{verb.auxiliaryAlso && ` / ${verb.auxiliaryAlso}`}
+        </span>
         <span className="chip" lang="fr" dir="ltr">{frText(verb.participles.past)}</span>
         <span className="chip" lang="fr" dir="ltr">{frText(verb.participles.present)}</span>
       </div>
+      {/* Where a verb takes both, a sentence for each shows which is which: the
+          auxiliary is visible in the sentence itself. A sentence is the same for
+          every learner, so it needs no translation; a verb with none shows only
+          the two values above. */}
+      {verb.auxiliaryExamples && (
+        <p className="fine" lang="fr" dir="ltr" data-testid="verb-auxiliary-examples">
+          {Object.values(verb.auxiliaryExamples).join('  ·  ')}
+        </p>
+      )}
 
       {verb.tenses.map((tn) => (
         <section key={tn.id} className="card" aria-labelledby={`t-${tn.id}`}>

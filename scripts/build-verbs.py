@@ -36,7 +36,8 @@ import re
 import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
-from conjugate import conjugate, PERSONS                    # noqa: E402
+from conjugate import conjugate, resolve_auxiliary, PERSONS  # noqa: E402
+from auxiliary_rulings import RULINGS as AUX_RULINGS        # noqa: E402
 from conjugation_exceptions import (ALTERNATES, CORPUS_NOISE, DEFECTIVE,   # noqa: E402
                                     KNOWN_WRONG, NOT_A_VERB, ORACLES_DISAGREE)
 from harvest_glosses import headword                          # noqa: E402
@@ -290,8 +291,21 @@ def main() -> int:
     # file invites: the ruling is recorded, the typo is invisible, and everyone
     # believes the correction is live.
     shippable = set(ranked)
+
+    # What fr.wiktionary says each verb's auxiliary is, committed as derived
+    # data so this build needs no network and no 182 MiB cache. Its absence is a
+    # refusal and not a quiet fall back to the model default, which is the
+    # defect this replaces: « arriver » shipped as « avoir ».
+    aux_file = ROOT / "data/auxiliaries.json"
+    if not aux_file.exists():
+        print("refusing: data/auxiliaries.json is missing — run "
+              "scripts/harvest_auxiliaries.py. Without it every regular verb "
+              "would be given avoir.", file=sys.stderr)
+        return 2
+    aux_evidence = json.loads(aux_file.read_text(encoding="utf-8"))["verbs"]
+
     for name, table in (("TEACHER_GLOSS", TEACHER_GLOSS), ("HOMOGRAPH", HOMOGRAPH),
-                        ("NOT_USED_AS_VERB", NOT_USED_AS_VERB)):
+                        ("NOT_USED_AS_VERB", NOT_USED_AS_VERB), ("AUX_RULINGS", AUX_RULINGS)):
         unknown = sorted(set(table) - shippable)
         if unknown:
             print(f"refusing: {name} names verbs that are not in the content: "
@@ -368,7 +382,14 @@ def main() -> int:
             "group": group,
             "pattern": pattern,
             "irregular": pattern not in ("-er", "-ir regular", "-dre regular"),
-            "auxiliary": forms.get("aux", "avoir"),
+            # The auxiliary is a property of the VERB, not of its conjugation
+            # model — see resolve_auxiliary. Spread: auxiliary (principal),
+            # auxiliaryAlso (null for a verb with one), auxiliaryExamples, and
+            # auxiliaryProvenance (which says whether it was looked up, ruled
+            # on, or merely defaulted).
+            **resolve_auxiliary(lemma, forms.get("aux", "avoir"),
+                                aux_evidence.get(lemma), lemma in pronominal,
+                                AUX_RULINGS),
             "persons": PERSONS and ["je", "tu", "il/elle", "nous", "vous", "ils/elles"],
             "participles": {"past": (forms.get("par:pas") or [""])[0],
                             "present": (forms.get("par:pre") or [""])[0]},
@@ -427,6 +448,7 @@ def main() -> int:
             "infinitive": lemma, "key": entry["key"], "level": level,
             "rank": entry["rank"], "group": entry["group"],
             "irregular": entry["irregular"], "auxiliary": entry["auxiliary"],
+            **({"auxiliaryAlso": entry["auxiliaryAlso"]} if entry["auxiliaryAlso"] else {}),
             "en": entry["meanings"].get("en", ""),
             # So the LIST can say "not shown here" rather than printing nothing.
             # A blank meaning is worse than a stated refusal whatever the

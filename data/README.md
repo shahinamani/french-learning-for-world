@@ -60,3 +60,20 @@ Both scripts write one file per page and read it back before fetching, so an
 interrupted harvest resumes and costs only what it had not already done.
 `~/.cache` rather than a scratchpad, because a scratchpad is cleared between
 sessions and that is how the first copy was nearly lost.
+
+## `auxiliaries.json` — which auxiliary each verb's fr.wiktionary page names
+
+The output of `scripts/harvest_auxiliaries.py`. **No network:** it reads the
+fr.wiktionary page cache above (2,400 pages, read 2026-10-02) and records, per
+lemma, the auxiliaries named by the non-pronominal tables (`plain`) and by the
+« se … » tables (`reflexive`). It records what the page SAYS and decides
+nothing; the decisions, each with its reason, are in
+`scripts/auxiliary_rulings.py`, and `resolve_auxiliary` in `scripts/conjugate.py`
+combines the two. Committed so `content/` rebuilds without the 182 MiB cache.
+
+```sh
+python3 scripts/harvest_auxiliaries.py \
+  --verbs data/verb-frequency-list.txt \
+  --cache ~/.cache/flw/wiktionary-conjugations \
+  --out data/auxiliaries.json --read 2026-10-02
+```

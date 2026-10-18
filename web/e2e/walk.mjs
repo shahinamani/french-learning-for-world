@@ -511,6 +511,34 @@ ok('a vowel-initial pronominal verb elides',
      return norm(h) === "s'évanouir" && /^m'évanouis/.test(norm(f));
    })());
 
+// The auxiliary. « arriver » was printed with « avoir » — « j'ai arrivé » — on
+// an A1 verb, because the generator took the auxiliary from the conjugation
+// model. The chip is read as text, with a Unicode-aware match: `\b` treats ê as
+// a non-word character, so /\bêtre\b/ would match nothing and pass nothing.
+const auxChip = async (verb) => {
+  await go(page, `/learn/verbs/${encodeURIComponent(verb)}`);
+  await page.waitForSelector('[data-testid="verb-auxiliary"]', { timeout: 8000 });
+  // textContent, not innerText: the chip is upper-cased by CSS, and innerText
+  // returns what is painted, so « être » would be read back as « ÊTRE ».
+  return (await page.locator('[data-testid="verb-auxiliary"]').textContent()).replace(/\s+/g, ' ').trim();
+};
+const aux = (s) => s.split(':').slice(1).join(':').trim();
+const arriver = await auxChip('arriver');
+ok(`arriver shows être (read: "${arriver}")`, aux(arriver) === 'être');
+ok('and not avoir, as a Unicode-aware search would see it',
+   !/(?<![\p{L}])avoir(?![\p{L}])/u.test(aux(arriver)));
+ok('a verb that takes avoir still shows avoir',
+   aux(await auxChip('manger')) === 'avoir');
+const passer = await auxChip('passer');
+ok(`a verb that takes both says both (read: "${passer}")`, aux(passer) === 'avoir / être');
+ok('and shows a sentence for each, in French',
+   await (async () => {
+     const s = await page.locator('[data-testid="verb-auxiliary-examples"]').innerText();
+     return /suis passé/.test(s) && /ai passé/.test(s);
+   })());
+ok('a pronominal-only verb shows être (je me suis évanoui)',
+   aux(await auxChip('évanouir')) === 'être');
+
 // The LIST, which a learner meets before the detail page. It printed the bare
 // infinitive for a day after the detail page and the drill were fixed, because
 // the fix was applied at call sites and this was a call site nobody listed.
