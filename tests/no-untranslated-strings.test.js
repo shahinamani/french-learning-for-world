@@ -110,7 +110,7 @@ test('every key the components ask for exists in all four dictionaries', () => {
   // the same reason `landing` is: every key in `workspaceEn` carries it, and
   // no core key does — asserted immediately below, where the group must still
   // be complete in English and French.
-  const OPTIONAL = ['landing', 'next', 'importTooLarge', 'ws',
+  const OPTIONAL = ['landing', 'next', 'importTooLarge', 'ws', 'grl',
                     'itemTeacherChecked', 'itemTeacherStale', 'itemOwnerOnly'];
   const landingMayBeAbsent = (key, code) =>
     OPTIONAL.some((p) => key.startsWith(p)) && (code === 'fa' || code === 'ar');

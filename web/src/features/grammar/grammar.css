@@ -1,0 +1,29 @@
+/* Grammar loop and library. Own file; the shared stylesheet is not touched. */
+.grl-page { display: flex; flex-direction: column; gap: var(--space-4); }
+.grl-back { align-self: flex-start; }
+.grl-step { display: flex; flex-direction: column; gap: var(--space-3); align-items: flex-start; }
+.grl-step > * { max-width: 100%; }
+.grl-text { margin: 0; line-height: 1.7; max-width: 70ch; }
+.grl-examples { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column;
+  gap: var(--space-3); }
+.grl-examples p { margin: 0; }
+.grl-ex__fr { font-family: var(--font-display); font-size: var(--text-lg, 1.125rem); }
+.grl-controls { display: flex; flex-direction: column; gap: var(--space-3); }
+.grl-search { display: flex; flex-direction: column; gap: var(--space-1); }
+.grl-search input { min-height: var(--tap-min); padding-inline: var(--space-3); font: inherit;
+  color: var(--color-ink); background: var(--color-surface);
+  border: 1px solid var(--color-line-strong, var(--color-line)); border-radius: var(--radius-sm); }
+.grl-search input:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.grl-status { align-items: center; }
+.grl-count { margin: 0; font-weight: var(--weight-medium); }
+.grl-chips { margin: 0; align-items: center; }
+.grl-cards { list-style: none; margin: 0; padding: 0; display: grid; gap: var(--space-3);
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 18rem), 1fr)); }
+.grl-card { display: flex; flex-direction: column; gap: var(--space-2); height: 100%;
+  align-items: flex-start; }
+.grl-card h2 { margin: 0; }
+.grl-card__line { margin: 0; flex: 1; }
+.grl-state { display: flex; flex-direction: column; gap: var(--space-2); }
+.grl-state p { margin: 0; }
+button:focus-visible, a.btn:focus-visible, .ws-chip:focus-visible { outline: 3px solid var(--color-focus);
+  outline-offset: 2px; }
