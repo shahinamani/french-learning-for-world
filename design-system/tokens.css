@@ -58,10 +58,14 @@
    * absurd on a 1440px one. */
   --text-word: clamp(2.5rem, 11vw, 3.75rem);
 
+  /* Line spacing is the reader's to adjust. --leading-scale is the one control:
+   * <html data-leading="compact|loose"> (or --leading-scale set by a settings
+   * control) scales running-text leading; headings stay tight on purpose. */
+  --leading-scale: 1;
   --leading-tight: 1.15;
   --leading-snug: 1.35;
-  --leading-normal: 1.55;
-  --leading-relaxed: 1.7;   /* French with accents needs more room than English */
+  --leading-normal: calc(1.55 * var(--leading-scale));
+  --leading-relaxed: calc(1.7 * var(--leading-scale));   /* French with accents needs more room than English */
 
   --tracking-tight: -0.015em;
   --tracking-normal: 0;
@@ -103,54 +107,80 @@
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 
   /* ── Layout ─────────────────────────────────────────────────────────── */
-  --width-prose: 42rem;    /* ~65 characters at --text-base */
+  --width-prose: 32rem;   /* measured: ~70 Latin characters per line at 16px in Vazirmatn (60-75 required) */
   --width-card: 34rem;
   --width-page: 78rem;
   --height-bar: 52px;
   --height-tabs: 58px;
   --tap-min: 44px;         /* the floor for anything a thumb must hit */
 
-  /* ── Colour — light ─────────────────────────────────────────────────── *
-   * Neutrals carry a slight blue bias toward the accent. A pure grey next
-   * to a coloured accent reads as unconsidered.
+  /* ── Colour — the blueprint palette (CONTRACTS-v0.2 §4) ─────────────────
+   * The six blueprint values, verbatim. Everything below is a semantic token
+   * mapped onto them or derived from them for a measured reason; nothing else
+   * in the product names a hue directly. These are LIGHT-theme values — the
+   * dark theme below is measured on its own, not computed from these.
    */
-  --color-canvas: #f2f4f7;      /* the page behind everything */
-  --color-surface: #ffffff;     /* cards, bars, sheets */
-  --color-surface-sunken: #e9ecf1;  /* wells, track backgrounds */
-  --color-ink: #14171f;         /* primary text */
-  --color-ink-muted: #59616e;   /* secondary text */
-  --color-ink-faint: #5c6470;   /* labels, metadata — 5.98 surface, 5.43 canvas, 5.05 sunken */
-  --color-line: #dfe3ea;        /* borders */
-  --color-line-strong: #c3c9d4; /* borders that must read as a boundary */
+  --bp-canvas:   #f7f8fc;   /* page background */
+  --bp-surface:  #ffffff;   /* cards and sheets */
+  --bp-ink:      #17233b;   /* text — 14.77 on canvas */
+  --bp-primary:  #2457c5;   /* primary action — 6.47 on surface, 6.10 on canvas */
+  --bp-accent:   #087f8c;   /* complement — see --color-complement for its limit */
+  --bp-emphasis: #d4a34a;   /* limited emphasis — FILL ONLY, 2.30 on surface */
 
-  --color-accent: #38407f;
-  --color-accent-hover: #2d3468;
-  --color-accent-ink: #ffffff;  /* text ON accent */
-  --color-accent-soft: #eceef9; /* accent-tinted fill */
+  /* ── Colour — light ─────────────────────────────────────────────────── *
+   * Neutrals carry the blue bias of the ink, so a grey next to the primary
+   * does not read as unconsidered. Ratios are against the three grounds a
+   * label can sit on: surface / canvas / sunken.
+   */
+  --color-canvas: var(--bp-canvas);
+  --color-surface: var(--bp-surface);
+  --color-surface-sunken: #e9ecf4;  /* wells, track backgrounds */
+  --color-ink: var(--bp-ink);       /* primary text — 14.77 canvas, 13.26 sunken */
+  --color-ink-muted: #4a5672;       /* secondary text — 7.33 surface, 6.91 canvas, 6.20 sunken */
+  --color-ink-faint: #566380;       /* labels, metadata — 6.01 surface, 5.67 canvas, 5.09 sunken */
+  --color-line: #dce1ec;            /* borders */
+  --color-line-strong: #bfc7d8;     /* borders that must read as a boundary */
 
-  /* Gold, for the learning workspace, and restrained on purpose.
+  /* The primary action. One role in both themes: the filled button, the link
+   * and the active tab. --color-accent is both the fill and the text colour of
+   * that role, so in each theme it is measured as text AND as a fill. */
+  --color-accent: var(--bp-primary);   /* 6.47 on surface, 6.10 on canvas, 5.56 on accent-soft */
+  --color-accent-hover: #1b479f;       /* 8.58 on surface; white on it 8.58 */
+  --color-accent-ink: #ffffff;         /* text ON accent — 6.47 */
+  --color-accent-soft: #e8eefb;        /* accent-tinted fill; accent text on it 5.56 */
+
+  /* The complement. #087f8c is 4.75 on a white surface and white text on it is
+   * 4.75, but on the canvas it is 4.47 — 0.03 short of AA for body text. So
+   * the blueprint value is kept for fills and for text on --color-surface, and
+   * text anywhere else uses --color-complement-text, the nearest value that
+   * clears AA on every ground. */
+  --color-complement: var(--bp-accent);   /* fill; text on surface only (4.75) */
+  --color-complement-text: #077a87;       /* text on any ground: 5.07 surface, 4.78 canvas */
+  --color-complement-ink: #ffffff;        /* text ON complement — 4.75 */
+  --color-complement-soft: #e3f3f5;       /* complement-tinted fill, ink on top */
+
+  /* Limited emphasis. Light is the one thing about #d4a34a: 2.30:1 on a white
+   * surface and 2.17:1 on the canvas. As text it fails by a wide margin, and
+   * no tint of it fixes that — so it is a FILL and a rule, never a text colour.
+   * Three tokens, one job each (contrast-check.mjs measures the rendered
+   * result; this comment is only the reason):
    *
-   * The indigo accent above stays the product's accent; this is a second,
-   * quieter one used for the workspace's active tab, the card's level chip and
-   * the affirmative action. Gold is the hardest hue to keep accessible: the
-   * value people picture (#c9a227) is 1.9:1 on white and unusable as text. So
-   * there are three tokens and each has one job.
-   *
-   *   --color-gold       TEXT and borders on canvas or surface. Dark enough to
-   *                      pass AA, which is why it reads as bronze alone and as
-   *                      gold beside the fill.
-   *   --color-gold-solid A FILL only. Never text. Takes gold-ink on top.
-   *   --color-gold-soft  A tint behind dark ink.
-   *
-   * contrast-check.mjs measures these against the real rendered backgrounds,
-   * so a value edited here is checked rather than asserted. */
-  --color-gold: #7a5a12;        /* 5.8:1 on surface, 5.3:1 on canvas */
-  --color-gold-hover: #614810;
-  --color-gold-solid: #c9a227;  /* fill only — 1.9:1 as text, never used as text */
-  --color-gold-ink: #231a02;    /* text ON gold-solid — 8.0:1 */
+   *   --color-gold        TEXT and borders on canvas or surface: the emphasis
+   *                       hue taken dark enough to pass AA. Reads as bronze.
+   *   --color-gold-solid  The blueprint value. A FILL only; never text.
+   *   --color-gold-ink    Text ON gold-solid — 6.82 (and on gold-hover 5.80).
+   *   --color-gold-soft   A tint behind dark ink.
+   */
+  --color-gold: #7a5a12;        /* text: 6.37 on surface, 6.00 on canvas, 5.75 on gold-soft */
+  --color-gold-hover: #c4963a;  /* a FILL hover; ink on it 5.80 */
+  --color-gold-solid: var(--bp-emphasis);  /* fill only — 2.30:1 as text, never used as text */
+  --color-gold-ink: var(--bp-ink);         /* text ON gold-solid — 6.82 */
   --color-gold-soft: #fbf3dd;   /* gold-tinted fill, ink on top */
 
-  /* Status. Separate from the accent, and never the only signal. */
+  /* Status. INDEPENDENT of the preferred palette: success, warning, danger and
+   * info are literal values on purpose, not references to --bp-*. Changing the
+   * brand colours must never change what "error" looks like. Each is measured
+   * as text on its own -soft tint. */
   --color-success: #0f6349;  --color-success-soft: #e3f1ec;
   --color-warning: #7d5305;  --color-warning-soft: #f9f0e0;
   --color-danger:  #a52a21;  --color-danger-soft:  #fbeceb;
@@ -173,8 +203,12 @@
   --color-c1: #6f4494;  --color-c1-soft: #efe7f5;
   --color-c2: #8f3d6b;  --color-c2-soft: #f6e6ef;
 
-  --color-focus: #38407f;   /* focus ring — AA against canvas and surface */
+  --color-focus: var(--bp-primary);   /* focus ring — 6.10 on canvas, 6.47 on surface (needs 3) */
 }
+
+/* Reader-chosen line spacing. Applies to both themes and both directions. */
+:root[data-leading="compact"] { --leading-scale: 0.92; }
+:root[data-leading="loose"]   { --leading-scale: 1.2; }
 
 /* ── Colour — dark ──────────────────────────────────────────────────────
  * Two blocks with identical values. The media query, guarded so an explicit
@@ -185,28 +219,37 @@
  */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-canvas: #0c0f14;
-    --color-surface: #151920;
-    --color-surface-sunken: #1c212a;
-    --color-ink: #e7eaf0;
-    --color-ink-muted: #9aa3b1;
-    --color-ink-faint: #8d96a5;
-    --color-line: #262c37;
-    --color-line-strong: #3a4250;
+    --color-canvas: #0d1424;
+    --color-surface: #151e33;
+    --color-surface-sunken: #1c2740;
+    --color-ink: #e8ecf6;
+    --color-ink-muted: #a3aec5;
+    --color-ink-faint: #8e99b3;
+    --color-line: #27324d;
+    --color-line-strong: #3d4a69;
 
-    --color-accent: #a6acf2;
-    --color-accent-hover: #bcc1f6;
-    --color-accent-ink: #12151c;
-    --color-accent-soft: #1d2131;
+    --color-accent: #8fb1f4;
+    --color-accent-hover: #a9c3f7;
+    --color-accent-ink: #0d1424;
+    --color-accent-soft: #1b2745;
 
-    /* Gold inverts: on a dark surface the light tint is the readable one, and
-     * the fill stays the same hue so the workspace does not change identity
-     * between themes. */
-    --color-gold: #e3c15f;
-    --color-gold-hover: #efd384;
-    --color-gold-solid: #c9a227;
-    --color-gold-ink: #231a02;
-    --color-gold-soft: #2a2210;
+    /* Dark primary: the same ROLE (the filled button, the link, the active tab),
+       measured on its own. #2457c5 is 2.56:1 on the dark surface, so as text it is
+       unusable; the dark value is the lightest tint that keeps the role legible,
+       with dark ink on it. A button is still the primary button in both themes. */
+    /* Complement and emphasis are re-measured here: #087f8c is 3.5:1 on the dark
+       surface, so text uses a lighter teal; #d4a34a is 7.22 on it, so in dark the
+       emphasis hue CAN be text as well as a fill. */
+    --color-complement: #087f8c;       /* fill, white on it 4.75 */
+    --color-complement-text: #4db8c4;  /* text: 7.85 canvas, 7.09 surface, 6.34 sunken */
+    --color-complement-ink: #ffffff;
+    --color-complement-soft: #12262e;
+    --color-gold: #d4a34a;        /* text AND fill in dark: 8.00 canvas, 7.22 surface, 6.78 on gold-soft */
+    --color-gold-hover: #e0b565;  /* ink on it 8.18 */
+    --color-gold-solid: #d4a34a;  /* fill; ink on it 6.82 */
+    --color-gold-ink: #17233b;
+    --color-gold-soft: #2a2312;
+
 
     --color-success: #7fd2b0;  --color-success-soft: #112620;
     --color-warning: #e2bf7e;  --color-warning-soft: #27210f;
@@ -225,7 +268,7 @@
     --color-c1: #bc94db;  --color-c1-soft: #211829;
     --color-c2: #dd93bb;  --color-c2-soft: #2a1722;
 
-    --color-focus: #a6acf2;
+    --color-focus: #8fb1f4;
 
     --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -8px rgb(0 0 0 / 0.6);
     --shadow-overlay: 0 4px 6px rgb(0 0 0 / 0.45), 0 18px 40px -12px rgb(0 0 0 / 0.7);
@@ -235,19 +278,36 @@
 }
 
 :root[data-theme="dark"] {
-  --color-canvas: #0c0f14;
-  --color-surface: #151920;
-  --color-surface-sunken: #1c212a;
-  --color-ink: #e7eaf0;
-  --color-ink-muted: #9aa3b1;
-  --color-ink-faint: #8d96a5;
-  --color-line: #262c37;
-  --color-line-strong: #3a4250;
+  --color-canvas: #0d1424;
+  --color-surface: #151e33;
+  --color-surface-sunken: #1c2740;
+  --color-ink: #e8ecf6;
+  --color-ink-muted: #a3aec5;
+  --color-ink-faint: #8e99b3;
+  --color-line: #27324d;
+  --color-line-strong: #3d4a69;
 
-  --color-accent: #a6acf2;
-  --color-accent-hover: #bcc1f6;
-  --color-accent-ink: #12151c;
-  --color-accent-soft: #1d2131;
+  --color-accent: #8fb1f4;
+  --color-accent-hover: #a9c3f7;
+  --color-accent-ink: #0d1424;
+  --color-accent-soft: #1b2745;
+
+  /* Dark primary: the same ROLE (the filled button, the link, the active tab),
+     measured on its own. #2457c5 is 2.56:1 on the dark surface, so as text it is
+     unusable; the dark value is the lightest tint that keeps the role legible,
+     with dark ink on it. A button is still the primary button in both themes. */
+  /* Complement and emphasis are re-measured here: #087f8c is 3.5:1 on the dark
+     surface, so text uses a lighter teal; #d4a34a is 7.22 on it, so in dark the
+     emphasis hue CAN be text as well as a fill. */
+  --color-complement: #087f8c;       /* fill, white on it 4.75 */
+  --color-complement-text: #4db8c4;  /* text: 7.85 canvas, 7.09 surface, 6.34 sunken */
+  --color-complement-ink: #ffffff;
+  --color-complement-soft: #12262e;
+  --color-gold: #d4a34a;        /* text AND fill in dark: 8.00 canvas, 7.22 surface, 6.78 on gold-soft */
+  --color-gold-hover: #e0b565;  /* ink on it 8.18 */
+  --color-gold-solid: #d4a34a;  /* fill; ink on it 6.82 */
+  --color-gold-ink: #17233b;
+  --color-gold-soft: #2a2312;
 
   --color-success: #7fd2b0;  --color-success-soft: #112620;
   --color-warning: #e2bf7e;  --color-warning-soft: #27210f;
@@ -266,7 +326,7 @@
   --color-c1: #bc94db;  --color-c1-soft: #211829;
   --color-c2: #dd93bb;  --color-c2-soft: #2a1722;
 
-  --color-focus: #a6acf2;
+  --color-focus: #8fb1f4;
 
   --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -8px rgb(0 0 0 / 0.6);
   --shadow-overlay: 0 4px 6px rgb(0 0 0 / 0.45), 0 18px 40px -12px rgb(0 0 0 / 0.7);

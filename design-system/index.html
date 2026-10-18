@@ -96,6 +96,18 @@
     <div class="sw"><div class="sw__chip" style="background:var(--color-accent)"></div><div class="sw__meta"><div class="sw__name">accent</div><div class="sw__val">one, used sparingly</div></div></div>
   </div>
 
+  <h3>Blueprint palette — complement and emphasis</h3>
+  <p class="sg-note">The accent is the primary action in both themes. The complement is a
+    second hue for secondary information. The emphasis is gold, and gold is light:
+    on a white surface it is 2.30:1, so it is a fill and a rule, never text. Text on it is
+    ink; text <em>in</em> gold uses <code>--color-gold</code>.</p>
+  <div class="sg-grid">
+    <div class="sw"><div class="sw__chip" style="background:var(--color-complement)"></div><div class="sw__meta"><div class="sw__name">complement</div><div class="sw__val">fill; text on surface only</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-complement-text)"></div><div class="sw__meta"><div class="sw__name">complement-text</div><div class="sw__val">text on any ground</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-gold-solid)"></div><div class="sw__meta"><div class="sw__name">gold-solid</div><div class="sw__val">fill only, never text</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-gold)"></div><div class="sw__meta"><div class="sw__name">gold</div><div class="sw__val">text and borders</div></div></div>
+  </div>
+
   <h3>Status — never the only signal</h3>
   <div class="sg-grid">
     <div class="sw"><div class="sw__chip" style="background:var(--color-success)"></div><div class="sw__meta"><div class="sw__name">success</div></div></div>
@@ -395,6 +407,10 @@
       ['faint on surface', '--color-ink-faint', '--color-surface'],
       ['accent on canvas', '--color-accent', '--color-canvas'],
       ['accent-ink on accent', '--color-accent-ink', '--color-accent'],
+      ['complement-text on canvas', '--color-complement-text', '--color-canvas'],
+      ['complement-ink on complement', '--color-complement-ink', '--color-complement'],
+      ['gold (text) on surface', '--color-gold', '--color-surface'],
+      ['gold-ink on gold-solid', '--color-gold-ink', '--color-gold-solid'],
       ['danger on danger-soft', '--color-danger', '--color-danger-soft'],
       ['success on success-soft', '--color-success', '--color-success-soft'],
       ['warning on warning-soft', '--color-warning', '--color-warning-soft'],
