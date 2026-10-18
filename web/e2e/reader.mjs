@@ -17,12 +17,14 @@
  */
 const A1 = 'reading.a1-samedi-au-marche';
 
-/** Rows in the Reader's own IndexedDB, read the way a reload would see them. */
-const rows = (page, store) => page.evaluate(async (s) => {
-  const db = await new Promise((res, rej) => { const r = indexedDB.open('flw-reader'); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
-  if (![...db.objectStoreNames].includes(s)) return [];
-  return await new Promise((res) => { const q = db.transaction(s).objectStore(s).getAll(); q.onsuccess = () => res(q.result); });
-}, store);
+/** Rows as a reload would see them. Saved items and positions are the shared stores in the `flw` database
+ *  (lib/db.ts); the questions' result is the one thing the Reader keeps in `flw-reader`. */
+const WHERE = { saved: ['flw', 'saved'], position: ['flw', 'readingPositions'], result: ['flw-reader', 'result'] };
+const rows = (page, which) => page.evaluate(async ([name, store]) => {
+  const db = await new Promise((res, rej) => { const r = indexedDB.open(name); r.onsuccess = () => res(r.result); r.onerror = () => rej(r.error); });
+  if (![...db.objectStoreNames].includes(store)) return [];
+  return await new Promise((res) => { const q = db.transaction(store).objectStore(store).getAll(); q.onsuccess = () => res(q.result); });
+}, WHERE[which]);
 
 const scrollTop = (page) => page.evaluate(() => document.querySelector('main').scrollTop);
 

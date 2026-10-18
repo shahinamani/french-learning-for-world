@@ -20,7 +20,7 @@ import {
   type Duration, type Filters,
 } from './model';
 import { CATEGORIES, type ReadingCategory, type ReadingText } from './types';
-import { deleteSaved, putSaved, positionsForUser, resultsForUser, savedForUser, type ReaderResult } from './store';
+import { deleteSaved, putSaved, positionsFor, resultsForUser, savedForUser, type ReaderResult } from './store';
 import { ReaderState, useReadingTexts, useWide } from './ui';
 import './reader.css';
 
@@ -53,15 +53,16 @@ export function ReaderList() {
     let live = true;
     (async () => {
       try {
-        const [s, p, r] = await Promise.all([savedForUser(userId), positionsForUser(userId), resultsForUser(userId)]);
+        const ids = data.state === 'ready' ? data.texts.map((x) => x.id) : [];
+        const [s, p, r] = await Promise.all([savedForUser(userId), positionsFor(userId, ids), resultsForUser(userId)]);
         if (!live) return;
         setSaved(new Set(s.map((x) => x.itemId)));
-        setStarted(new Map(p.map((x) => [x.itemId, x.paragraph])));
+        setStarted(p);
         setResults(new Map(r.map((x) => [x.itemId, x])));
       } catch { /* no marks to show */ }
     })();
     return () => { live = false; };
-  }, [userId]);
+  }, [userId, data]);
 
   const toggleSave = async (id: string) => {
     const was = saved.has(id);

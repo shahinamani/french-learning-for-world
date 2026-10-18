@@ -165,7 +165,7 @@ function ReaderView({ text, back }: { text: ReadingText; back: string }) {
   const persist = useCallback((idx: number) => {
     window.clearTimeout(timer.current);
     timer.current = window.setTimeout(() => {
-      putPosition({ userId, itemId: text.id, paragraph: idx, updatedAt: Date.now() })
+      putPosition(userId, text.id, idx)
         .then(() => { hasRecord.current = true; }).catch(() => { /* position not kept */ });
     }, 350);
   }, [userId, text.id]);
@@ -224,7 +224,7 @@ function ReaderView({ text, back }: { text: ReadingText; back: string }) {
   useEffect(() => () => {
     if (timer.current !== undefined && lastIdx.current >= 0) {
       window.clearTimeout(timer.current);
-      putPosition({ userId, itemId: text.id, paragraph: lastIdx.current, updatedAt: Date.now() }).catch(() => {});
+      putPosition(userId, text.id, lastIdx.current).catch(() => {});
     }
   }, [userId, text.id]);
 
@@ -236,7 +236,7 @@ function ReaderView({ text, back }: { text: ReadingText; back: string }) {
     setResumed(null);
     lastIdx.current = 0;
     toTop();
-    putPosition({ userId, itemId: text.id, paragraph: 0, updatedAt: Date.now() }).catch(() => {});
+    putPosition(userId, text.id, 0).catch(() => {});
   };
 
   /* ── Selecting ────────────────────────────────────────────────────────── */
