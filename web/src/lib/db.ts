@@ -9,7 +9,9 @@
  * reads a row without naming whose row it is.
  */
 import { openDB, type DBSchema, type IDBPDatabase } from 'idb';
-import type { ReviewRow, CardState } from './types';
+import type { ReviewRow, CardState, SavedItem, ReadingPosition, PlaybackPosition, Note } from './types';
+import type { PersonalExport } from './export-format';
+import { DB_NAME, DB_VERSION, upgradeSchema, saveRow, readingRow, playbackRow, noteRow } from './personal-store';
 // Every function below that WRITES calls markStarted(). It is called here, at
 // the four places a record is actually created, rather than when a learner
 // presses a button — pressing "Start learning" stores nothing, and somebody who
@@ -31,6 +33,11 @@ interface FlwDB extends DBSchema {
     value: CardState & { userId: string; cardKey: string };
     indexes: { 'by-user-due': [string, number] };
   };
+  // Version 2. Keyed [userId, itemId]: a second write is an overwrite.
+  saved: { key: [string, string]; value: SavedItem; indexes: { 'by-user-time': [string, number] } };
+  readingPositions: { key: [string, string]; value: ReadingPosition; indexes: { 'by-user-updated': [string, number] } };
+  playbackPositions: { key: [string, string]; value: PlaybackPosition; indexes: { 'by-user-updated': [string, number] } };
+  notes: { key: [string, string]; value: Note; indexes: { 'by-user-updated': [string, number] } };
 }
 
 let dbPromise: Promise<IDBPDatabase<FlwDB>> | null = null;
@@ -39,15 +46,11 @@ let dbPromise: Promise<IDBPDatabase<FlwDB>> | null = null;
 // leak between users. Every call below still takes a userId.
 function db() {
   if (!dbPromise) {
-    dbPromise = openDB<FlwDB>('flw', 1, {
-      upgrade(d) {
-        const reviews = d.createObjectStore('reviews', { keyPath: 'id' });
-        reviews.createIndex('by-user-time', ['userId', 'reviewedAt']);
-        reviews.createIndex('by-user-card', ['userId', 'cardKey']);
-        reviews.createIndex('by-user-session', ['userId', 'sessionId']);
-        const cards = d.createObjectStore('cards', { keyPath: ['userId', 'cardKey'] });
-        cards.createIndex('by-user-due', ['userId', 'dueAt']);
-      },
+    // The schema lives in personal-store.ts so it can be tested without a
+    // browser. An upgrade only CREATES missing stores; the reviews and cards
+    // written at version 1 are never touched.
+    dbPromise = openDB<FlwDB>(DB_NAME, DB_VERSION, {
+      upgrade(d, oldVersion) { upgradeSchema(d as never, oldVersion); },
     });
   }
   return dbPromise;
@@ -101,6 +104,76 @@ export async function reviewsForCard(userId: string, cardKey: string): Promise<R
   return (await db()).getAllFromIndex('reviews', 'by-user-card', [userId, cardKey]);
 }
 
+/* ── Saved items, positions, notes ─────────────────────────────────────────
+ * Every call names the learner. Writes call markStarted() like the others. */
+
+/** Idempotent: [userId, itemId] is the key, so pressing save twice is one row.
+ *  The first savedAt is kept; a later save may add or replace the context. */
+export async function saveItem(userId: string, itemId: string,
+                               context?: { sentence: string; fromId: string }) {
+  if (!userId) throw new Error('saveItem without a user id');
+  const d = await db();
+  const tx = d.transaction('saved', 'readwrite');
+  const existing = await tx.store.get([userId, itemId]);
+  const row = saveRow(existing, userId, itemId, Date.now(), context);
+  await tx.store.put(row);
+  await tx.done;
+  markStarted();
+  return row;
+}
+export async function unsaveItem(userId: string, itemId: string) {
+  if (!userId) throw new Error('unsaveItem without a user id');
+  await (await db()).delete('saved', [userId, itemId]);
+}
+export async function getSaved(userId: string, itemId: string) {
+  if (!userId) throw new Error('getSaved without a user id');
+  return (await db()).get('saved', [userId, itemId]);
+}
+export async function allSaved(userId: string) {
+  if (!userId) throw new Error('allSaved without a user id');
+  return (await db()).getAllFromIndex('saved', 'by-user-time',
+    IDBKeyRange.bound([userId, -Infinity], [userId, Infinity]));
+}
+
+export async function putReadingPosition(userId: string, itemId: string, paragraph: number) {
+  await (await db()).put('readingPositions', readingRow(userId, itemId, paragraph, Date.now()));
+  markStarted();
+}
+export async function getReadingPosition(userId: string, itemId: string) {
+  if (!userId) throw new Error('getReadingPosition without a user id');
+  return (await db()).get('readingPositions', [userId, itemId]);
+}
+export async function putPlaybackPosition(userId: string, itemId: string, seconds: number) {
+  await (await db()).put('playbackPositions', playbackRow(userId, itemId, seconds, Date.now()));
+  markStarted();
+}
+export async function getPlaybackPosition(userId: string, itemId: string) {
+  if (!userId) throw new Error('getPlaybackPosition without a user id');
+  return (await db()).get('playbackPositions', [userId, itemId]);
+}
+export async function putNote(userId: string, itemId: string, text: string) {
+  await (await db()).put('notes', noteRow(userId, itemId, text, Date.now()));
+  markStarted();
+}
+export async function getNote(userId: string, itemId: string) {
+  if (!userId) throw new Error('getNote without a user id');
+  return (await db()).get('notes', [userId, itemId]);
+}
+
+/** Everything personal beyond reviews and cards, shaped for the export file. */
+export async function personalForUser(userId: string) {
+  if (!userId) throw new Error('personalForUser without a user id');
+  const d = await db();
+  const range = IDBKeyRange.bound([userId, -Infinity], [userId, Infinity]);
+  const [saved, reading, playback, notes] = await Promise.all([
+    d.getAllFromIndex('saved', 'by-user-time', range),
+    d.getAllFromIndex('readingPositions', 'by-user-updated', range),
+    d.getAllFromIndex('playbackPositions', 'by-user-updated', range),
+    d.getAllFromIndex('notes', 'by-user-updated', range),
+  ]);
+  return { saved, reading, playback, notes };
+}
+
 /**
  * Import a parsed export into THIS profile. The rows arrive without a user id —
  * it is a local profile id and means nothing on another device — so every row
@@ -115,11 +188,35 @@ export async function reviewsForCard(userId: string, cardKey: string): Promise<R
  */
 export async function importForUser(
   userId: string,
-  data: { rows: Omit<ReviewRow, 'userId'>[]; cards: (CardState & { cardKey: string })[] },
+  data: { rows: Omit<ReviewRow, 'userId'>[]; cards: (CardState & { cardKey: string })[];
+          personal?: PersonalExport },
 ): Promise<{ rows: number; rowsSkipped: number; cards: number }> {
   if (!userId) throw new Error('importForUser without a user id');
   const d = await db();
-  const tx = d.transaction(['reviews', 'cards'], 'readwrite');
+  const tx = d.transaction(['reviews', 'cards', 'saved', 'readingPositions', 'playbackPositions', 'notes'], 'readwrite');
+  // Personal rows: a saved item is kept if already here (its first savedAt and
+  // context stand); positions and notes are taken only when newer, so an
+  // import can never move a learner backwards.
+  const p = data.personal;
+  let personal = 0;
+  if (p) {
+    for (const s of p.saved) {
+      if (await tx.objectStore('saved').get([userId, s.itemId])) continue;
+      await tx.objectStore('saved').put({ ...s, userId }); personal++;
+    }
+    const newer = async <S extends 'readingPositions' | 'playbackPositions' | 'notes'>(
+      name: S, rows: { itemId: string; updatedAt: number }[]) => {
+      const st = tx.objectStore(name);
+      for (const r of rows) {
+        const have = await st.get([userId, r.itemId]);
+        if (have && have.updatedAt >= r.updatedAt) continue;
+        await st.put({ ...r, userId } as never); personal++;
+      }
+    };
+    await newer('readingPositions', p.reading);
+    await newer('playbackPositions', p.playback);
+    await newer('notes', p.notes);
+  }
   const reviews = tx.objectStore('reviews');
   const cards = tx.objectStore('cards');
   let added = 0, skipped = 0, written = 0;
@@ -143,7 +240,7 @@ export async function importForUser(
   // An imported history is studying here, even though none of it happened on
   // this device. Without this, somebody restoring six months of work on a new
   // laptop would be greeted by the page that explains what this site is.
-  if (added || written) markStarted();
+  if (added || written || personal) markStarted();
   return { rows: added, rowsSkipped: skipped, cards: written };
 }
 
@@ -151,8 +248,13 @@ export async function importForUser(
 export async function eraseUser(userId: string) {
   if (!userId) throw new Error('eraseUser without a user id');
   const d = await db();
-  const tx = d.transaction(['reviews', 'cards'], 'readwrite');
+  const tx = d.transaction(['reviews', 'cards', 'saved', 'readingPositions', 'playbackPositions', 'notes'], 'readwrite');
   const range = IDBKeyRange.bound([userId, -Infinity], [userId, Infinity]);
+  for (const [name, index] of [['saved', 'by-user-time'], ['readingPositions', 'by-user-updated'],
+                               ['playbackPositions', 'by-user-updated'], ['notes', 'by-user-updated']] as const) {
+    let c = await tx.objectStore(name).index(index as never).openCursor(range);
+    while (c) { await c.delete(); c = await c.continue(); }
+  }
   let rc = await tx.objectStore('reviews').index('by-user-time').openCursor(range);
   while (rc) { await rc.delete(); rc = await rc.continue(); }
   let cc = await tx.objectStore('cards').index('by-user-due').openCursor(range);
