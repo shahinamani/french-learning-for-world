@@ -111,7 +111,7 @@ test('every key the components ask for exists in all four dictionaries', () => {
   // no core key does — asserted immediately below, where the group must still
   // be complete in English and French.
   const OPTIONAL = ['landing', 'next', 'importTooLarge', 'ws',
-                    'itemTeacherChecked', 'itemTeacherStale', 'itemOwnerOnly', 'wk'];
+                    'itemTeacherChecked', 'itemTeacherStale', 'itemOwnerOnly', 'wk', 'rd'];
   const landingMayBeAbsent = (key, code) =>
     OPTIONAL.some((p) => key.startsWith(p)) && (code === 'fa' || code === 'ar');
 

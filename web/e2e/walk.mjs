@@ -7,6 +7,7 @@ import { chromium } from 'playwright';
 import { existsSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
+import { readerWalk } from './reader.mjs';
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:8793/';
 // Browser path: this container ships Chromium at a fixed path; CI uses the one
@@ -2335,6 +2336,8 @@ console.log('\n=== migration: v1 database with history survives the upgrade ==='
   await pg.evaluate(() => new Promise((res) => { const q = indexedDB.deleteDatabase('flw'); q.onsuccess = res; q.onerror = res; q.onblocked = res; }));
   await c.close();
 }
+// The Reader (blueprint section 11). Its own file, because it is long and runs alone too.
+await readerWalk({ browser, BASE, go, ok, watch });
 
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));

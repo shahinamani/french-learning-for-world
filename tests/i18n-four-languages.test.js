@@ -22,7 +22,7 @@ import { foldLabel, INVISIBLE, SCRIPT, isolatesBalanced } from './text-identity.
 const LOC = ['en', 'fr', 'fa', 'ar'];
 const R = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const src = R('web/src/lib/i18n.ts');
-const sourceFor = (c) => (['en', 'landingEn', 'nextEn', 'importEn', 'workspaceEn', 'weaknessEn'].includes(c) ? src
+const sourceFor = (c) => (['en', 'landingEn', 'nextEn', 'importEn', 'workspaceEn', 'weaknessEn', 'readerEn'].includes(c) ? src
   : R(`web/src/lib/locales/${c}.ts`));
 
 function bodyOf(code) {
@@ -82,7 +82,7 @@ function entries(code) {
  * a second place for them to drift.
  */
 const optional = new Map([...entries('landingEn'), ...entries('nextEn'),
-                          ...entries('importEn'), ...entries('workspaceEn'), ...entries('weaknessEn')]);
+                          ...entries('importEn'), ...entries('workspaceEn'), ...entries('weaknessEn'), ...entries('readerEn')]);
 const LANDING = [...optional.keys()];
 
 const dict = Object.fromEntries(LOC.map((c) => [
