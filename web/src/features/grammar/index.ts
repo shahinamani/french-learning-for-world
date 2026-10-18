@@ -12,6 +12,9 @@
  * build the link with `lessonPath(id, currentPath)`. The lesson's last step
  * returns to `currentPath`, and Back, refresh and a new tab all keep it.
  */
+// This chunk registers its English: the grammar strings are not in the first load.
+import '../../lib/locales/en/grammarEn';
+
 export { GrammarList } from './GrammarList';
 export { GrammarLesson } from './GrammarLesson';
 export { lessonPath, safeOrigin } from './lessons';

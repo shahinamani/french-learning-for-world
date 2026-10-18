@@ -90,6 +90,11 @@ test('every key the components ask for exists in all four dictionaries', () => {
                            ['fa', '../web/src/lib/locales/fa.ts'], ['ar', '../web/src/lib/locales/ar.ts']]) {
     dicts[code] = readFileSync(new URL(p, import.meta.url), 'utf8');
   }
+  // English is i18n.ts plus the four groups that travel with lazy routes
+  // (locales/en/*.ts). Reading only i18n.ts would report their keys missing.
+  for (const g of ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn']) {
+    dicts.en += readFileSync(new URL(`../web/src/lib/locales/en/${g}.ts`, import.meta.url), 'utf8');
+  }
   // The landing page's strings are the one legitimate absence: a locale without
   // them is saying nobody has written that page in that language, and the page
   // shows English behind `landingUntranslated` rather than a machine

@@ -117,9 +117,12 @@ console.log('\n=== multi-user isolation (two tabs, two profiles, one origin) ===
   ok(`tab B has ${bOwn} rows — none of tab A's`, bOwn === 0);
 
   await go(b, '/progress');
+  // Progress is a lazy chunk now; a hash-only navigation resolves before it lands.
+  await b.waitForSelector('[data-testid="progress-empty"], [data-testid="concept-stats"]', { timeout: 6000 }).catch(() => {});
   const bEmpty = await b.locator('[data-testid="progress-empty"]').count();
   ok('tab B\'s Progress shows its own empty state, not tab A\'s data', bEmpty === 1);
   await go(a, '/progress');
+  await a.waitForSelector('[data-testid="concept-stats"], [data-testid="progress-empty"]', { timeout: 6000 }).catch(() => {});
   const aStats = await a.locator('[data-testid="concept-stats"] > li').count();
   ok(`tab A's Progress shows its own ${aStats} concepts`, aStats > 0);
 
@@ -1157,6 +1160,60 @@ console.log('\n=== languages load on demand ===');
   ok('  and back to English, left-to-right',
      (await p.evaluate(() => document.documentElement.dir)) === 'ltr');
   await c.close();
+}
+
+// ── English groups that travel with a lazy route ──────────────────────────────
+// Grammar, the Reader, the workspace and the weakness card keep their English
+// strings in the chunk of the screen that uses them (src/lib/locales/en/). The
+// learner who most needs the fallback is the Persian one, whose dictionary
+// legitimately lacks these groups. So: the chunk carrying each group is HELD
+// for 1.2 s, the route is opened in Persian, and the page must show no key
+// name while it waits and the English text once it arrives. The check only
+// means something if the held chunk was really requested, so that is asserted.
+console.log('\n=== lazy English groups: a route opened before its strings arrive ===');
+{
+  const group = (name) => readFileSync(new URL(`../src/lib/locales/en/${name}.ts`, import.meta.url), 'utf8');
+  const firstValue = (name, key) => new RegExp(`\\b${key}:\\s*'([^']+)'`).exec(group(name))?.[1];
+  const RAW = /\b(?:grl|rd|wk|ws)[A-Z][A-Za-z]+\b/;
+  for (const [hash, file, key, label] of [
+    ['/app/grammar', 'grammarEn', 'grlTitle', 'grammar'],
+    ['/app/reading', 'readerEn', 'rdTitle', 'the Reader'],
+    ['/app/progress', 'weaknessEn', 'wkHeading', 'the weakness card'],
+    ['/workspace', 'workspaceEn', 'wsSummaryLead', 'the workspace'],
+  ]) {
+    const c = await browser.newContext({ locale: 'fa-IR', viewport: { width: 1100, height: 900 } });
+    const p = await c.newPage(); watch(p, ` lazy ${label}`);
+    const marker = `${key}:`;
+    let held = 0, heldEntry = false;
+    await p.route('**/assets/*.js', async (route) => {
+      const r = await route.fetch();
+      const body = await r.text();
+      if (body.includes(marker)) {
+        held++; heldEntry ||= body.includes('createRoot');
+        await new Promise((res) => setTimeout(res, 1200));
+      }
+      await route.fulfill({ response: r, body });
+    });
+    await p.goto(BASE + '#' + hash, { waitUntil: 'commit' });
+    await p.waitForTimeout(500);
+    const during = await p.locator('body').innerText().catch(() => '');
+    ok(`${label}, Persian, strings still in flight: no key name on screen`,
+       !RAW.test(during), RAW.exec(during)?.[0]);
+    await p.waitForLoadState('networkidle');
+    await p.waitForTimeout(500);
+    const after = await p.locator('body').innerText();
+    ok(`${label}, Persian: the chunk holding "${key}" was requested, so the window was real`,
+       held >= 1 && !heldEntry, `held ${held}, entry held ${heldEntry}`);
+    ok(`${label}, Persian, strings arrived: no key name on screen`, !RAW.test(after), RAW.exec(after)?.[0]);
+    const want = firstValue(file, key);
+    if (file === 'weaknessEn' || file === 'readerEn') {
+      // the heading may not be shown for an empty profile; the route itself must have rendered
+      ok(`${label}, Persian: the route rendered something`, after.trim().length > 40);
+    } else {
+      ok(`${label}, Persian: shows the English "${want.slice(0, 30)}…" behind the marker`, after.includes(want));
+    }
+    await c.close();
+  }
 }
 
 console.log('\n=== export, erase, import — the round trip ===');

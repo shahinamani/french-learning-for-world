@@ -16,13 +16,22 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { translator } from '../web/src/lib/i18n.ts';
+// The lazy English groups register themselves when their route chunk loads; here
+// there is no route, so register them all, or `translator('en')` below would
+// answer with raw key names for them and every check on those keys would pass
+// vacuously (a key name contains no placeholder).
+import '../web/src/lib/locales/english-all.ts';
 import { pick } from '../web/src/lib/exams.ts';
 import { foldLabel, INVISIBLE, SCRIPT, isolatesBalanced } from './text-identity.mjs';
 
 const LOC = ['en', 'fr', 'fa', 'ar'];
 const R = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const src = R('web/src/lib/i18n.ts');
-const sourceFor = (c) => (['en', 'landingEn', 'nextEn', 'importEn', 'workspaceEn', 'shellEn', 'weaknessEn', 'grammarEn', 'readerEn'].includes(c) ? src
+// Four optional English groups belong to lazy routes and live in their own files
+// (web/src/lib/locales/en/); the rest stay in i18n.ts, which the first load needs.
+const LAZY_EN = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn'];
+const sourceFor = (c) => (['en', 'landingEn', 'nextEn', 'importEn', 'shellEn'].includes(c) ? src
+  : LAZY_EN.includes(c) ? R(`web/src/lib/locales/en/${c}.ts`)
   : R(`web/src/lib/locales/${c}.ts`));
 
 function bodyOf(code) {

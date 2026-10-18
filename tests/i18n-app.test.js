@@ -132,16 +132,22 @@ test('the key scanner ignores comments, including colons inside them', () => {
  * Read from the source rather than listed here, so the exception cannot drift
  * from the keys it is about.
  */
+// The groups that belong to lazy routes are their own modules; the rest are in
+// i18n.ts. Looked up here so the list of group NAMES below stays complete.
+const LAZY_EN = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn'];
 function optionalKeys(name) {
-  const m = new RegExp(`const ${name}\\s*=\\s*\\{`).exec(src);
-  assert.ok(m, `${name} was not found in i18n.ts`);
-  const open = src.indexOf('{', m.index + m[0].length - 1);
+  const text = LAZY_EN.includes(name)
+    ? readFileSync(new URL(`../web/src/lib/locales/en/${name}.ts`, import.meta.url), 'utf8')
+    : src;
+  const m = new RegExp(`const ${name}\\s*=\\s*\\{`).exec(text);
+  assert.ok(m, `${name} was not found where ${LAZY_EN.includes(name) ? 'locales/en/' : ''}i18n.ts keeps it`);
+  const open = text.indexOf('{', m.index + m[0].length - 1);
   let depth = 0, end = -1;
-  for (let i = open; i < src.length; i++) {
-    if (src[i] === '{') depth++;
-    else if (src[i] === '}') { depth--; if (depth === 0) { end = i; break; } }
+  for (let i = open; i < text.length; i++) {
+    if (text[i] === '{') depth++;
+    else if (text[i] === '}') { depth--; if (depth === 0) { end = i; break; } }
   }
-  const body = src.slice(open + 1, end);
+  const body = text.slice(open + 1, end);
   const keys = [...body.matchAll(/(?:^|\n)\s*([A-Za-z][A-Za-z0-9_$]*)\s*:/g)].map((x) => x[1]);
   assert.ok(keys.length >= 1, `no keys extracted from ${name} — fix the extraction`);
   return keys;

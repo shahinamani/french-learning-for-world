@@ -71,6 +71,14 @@ A2. Do not mass-produce — reuse existing written material first, keep
 - **New interface strings go in an OPTIONAL i18n group** (`workspaceEn`),
   English + French only, so fa/ar fall back behind `notTranslatedHere` rather
   than obliging invented translations. Four such groups exist now.
+- **Optional groups for LAZY routes live in `web/src/lib/locales/en/<group>.ts`**
+  (workspaceEn, weaknessEn, grammarEn, readerEn), not in `i18n.ts`, and register
+  themselves via `registerEnglish()` when the route chunk loads. A new route's
+  group goes there and is imported by that route's entry module; only a key the
+  first load asks for belongs in `i18n.ts`. `tests/i18n-lazy-groups.test.js`
+  enforces both halves. First load 146.9 -> 139.2 KB; `node web/scripts/attribute.mjs`
+  attributes the bytes. Biggest remaining candidate: Radix Popover/Dialog +
+  floating-ui in the entry chunk (~16 KB gzip, measured with a stub).
 - **The preview is loopback only.** No deployment is authorised.
 
 ## Gotchas

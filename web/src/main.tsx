@@ -4,7 +4,6 @@ import { HashRouter, Routes, Route, Navigate } from 'react-router';
 import { AppProvider } from './app-context';
 import { Shell } from './components/Shell';
 import { Learn } from './routes/Learn';
-import { Progress } from './routes/Progress';
 import { Account } from './routes/Account';
 import { SearchRoute } from './components/Search';
 import { FlashcardSession } from './features/flashcards/Session';
@@ -48,6 +47,9 @@ const Workspace = lazy(() => import('./features/workspace/Workspace').then((m) =
 // is needed until a learner opens it.
 const GrammarList = lazy(() => import('./features/grammar').then((m) => ({ default: m.GrammarList })));
 const GrammarLesson = lazy(() => import('./features/grammar').then((m) => ({ default: m.GrammarLesson })));
+// Progress carries the weakness card and its engine, whose strings are a lazy
+// English group (lib/locales/en/weaknessEn.ts).
+const Progress = lazy(() => import('./routes/Progress').then((m) => ({ default: m.Progress })));
 const Reader = lazy(() => import('./features/reader').then((m) => ({ default: m.Reader })));
 
 /** A lazy route still has to render something while its chunk arrives, and a
@@ -106,7 +108,7 @@ function AppRoutes() {
           <Route path="exams/:paperId/sit" element={lazily(<ExamSit />)} />
           <Route path="exams/:paperId/results" element={lazily(<ExamResults />)} />
           <Route path="saved" element={<PlaceholderRoute id="saved" />} />
-          <Route path="progress" element={<Progress />} />
+          <Route path="progress" element={lazily(<Progress />)} />
           <Route path="search" element={<SearchRoute />} />
           {/* Not in the contract's table. The workspace is a finished page that
               Learn links to; the table sends /workspace to Today, which would
