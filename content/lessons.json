@@ -1,0 +1,735 @@
+{
+  "version": 1,
+  "licence": "CC BY-SA 4.0",
+  "note": "Six short lessons in one loop: concept, a short explanation in the learner's language, two examples, the difference from a NEARBY concept, practice, the answer with its reason, and the way back to the activity the learner came from. `conceptId` and `nearbyConceptId` are ids in content/concepts.json. The return to the source activity is not data: the screen knows where the learner came from. `simplerExplanation` is stored here so that the 'simpler' button never has to generate text at runtime. Persian may contain Latin letters ONLY inside a French form quoted from the lesson, and each lesson lists those forms in `quotedInFa` so the exception is in the data, not in the test.",
+  "reviewNote": "DRAFTED, NOT REVIEWED. The French, the English and the Persian here were written by the agent that built this file. No teacher has read any of it, no Persian reader has checked the Persian, and nobody has checked the grammar against a reference grammar; `review.owner` and `review.teacher` are null on every lesson. Treat every explanation, example and answer key as a draft until a person has read it. `level` is copied from the concept record, not judged here.",
+  "sources": {
+    "drafted": "Written for this file. No external text was copied."
+  },
+  "lessons": [
+    {
+      "id": "lesson:pc-vs-imparfait",
+      "conceptId": "gram.past.pc-vs-imparfait",
+      "nearbyConceptId": "gram.past.imparfait",
+      "level": "A2",
+      "source": "drafted",
+      "explanation": {
+        "en": "Use the passé composé for something that happened and is finished: an event, a change, a step in the story. Use the imparfait for the background: how things were, what was going on, what used to happen.",
+        "fr": "Le passé composé raconte ce qui s'est passé : un événement terminé. L'imparfait décrit le décor : ce qui était en cours ou habituel.",
+        "fa": "«passé composé» را برای کاری به کار ببر که اتفاق افتاده و تمام شده است: یک رویداد، یک تغییر، یک گام در داستان. «imparfait» را برای زمینه به کار ببر: اوضاع چگونه بود، چه چیزی در جریان بود، چه کاری عادت همیشگی بود."
+      },
+      "simplerExplanation": {
+        "en": "Ask one question: is this a moment that happened (passé composé), or a picture of how things were (imparfait)?",
+        "fa": "یک سؤال بپرس: این لحظه‌ای است که اتفاق افتاد («passé composé»)، یا تصویری از اوضاع آن زمان («imparfait»)؟"
+      },
+      "examples": [
+        {
+          "fr": "Il pleuvait quand je suis sorti.",
+          "fa": "وقتی از خانه بیرون رفتم، باران می‌بارید.",
+          "en": "It was raining when I went out."
+        },
+        {
+          "fr": "Quand j'étais petit, j'allais chaque été chez ma grand-mère.",
+          "fa": "وقتی بچه بودم، هر تابستان پیش مادربزرگم می‌رفتم.",
+          "en": "When I was little, I went to my grandmother's every summer."
+        }
+      ],
+      "difference": {
+        "en": "Both talk about the past, but the passé composé moves the story forward and the imparfait stands still behind it. «Il pleuvait» describes the weather; «il a plu» says it rained and that it is over. When the two meet, the imparfait is the background and the passé composé is what breaks into it.",
+        "fa": "هر دو درباره گذشته‌اند، اما «passé composé» داستان را جلو می‌برد و «imparfait» پشت آن ایستاده است. «Il pleuvait» وضع هوا را توصیف می‌کند؛ «il a plu» می‌گوید باران بارید و تمام شد. وقتی این دو کنار هم می‌آیند، «imparfait» زمینه است و «passé composé» همان است که وارد آن می‌شود."
+      },
+      "questions": [
+        {
+          "prompt": {
+            "fr": "Hier soir, pendant que je ___, le téléphone a sonné.",
+            "en": "Last night, while I was asleep, the phone rang.",
+            "fa": "دیشب، در حالی که خواب بودم، تلفن زنگ زد."
+          },
+          "options": ["dormais", "ai dormi", "dormirai", "dormi"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "Sleeping was in progress when the phone interrupted it, so it is the background: imparfait.",
+              "fa": "خواب در جریان بود که تلفن آن را قطع کرد؛ پس زمینه است و «imparfait» می‌خواهد."
+            },
+            "tempting": {
+              "en": "«ai dormi» would present the sleep as one finished event, but here it is the situation the phone interrupted.",
+              "fa": "«ai dormi» خواب را یک رویداد تمام‌شده نشان می‌دهد، اما اینجا خواب وضعیتی است که تلفن آن را قطع کرد."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Soudain, la porte ___.",
+            "en": "Suddenly, the door opened.",
+            "fa": "ناگهان، در باز شد."
+          },
+          "options": ["s'ouvrait", "s'est ouverte", "s'ouvre", "ouvert"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Soudain» marks a single event that happened and ended: passé composé.",
+              "fa": "«Soudain» یک رویداد یگانه را نشان می‌دهد که اتفاق افتاد و تمام شد: «passé composé»."
+            },
+            "tempting": {
+              "en": "«s'ouvrait» would describe a door that was opening slowly, a scene, not the sudden event.",
+              "fa": "«s'ouvrait» دری را توصیف می‌کند که آهسته در حال باز شدن بود؛ یک صحنه است، نه آن رویداد ناگهانی."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Quand j'étais enfant, nous ___ toujours à la mer en août.",
+            "en": "When I was a child, we always went to the sea in August.",
+            "fa": "وقتی بچه بودم، همیشه در مرداد به دریا می‌رفتیم."
+          },
+          "options": ["sommes allés", "allions", "irons", "allés"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "A repeated habit in the past («toujours») takes the imparfait.",
+              "fa": "عادتی که در گذشته تکرار می‌شد («toujours») «imparfait» می‌گیرد."
+            },
+            "tempting": {
+              "en": "«sommes allés» fits one trip, but «toujours» and «quand j'étais enfant» describe a habit.",
+              "fa": "«sommes allés» به یک سفر می‌خورد، اما «toujours» و «quand j'étais enfant» یک عادت را نشان می‌دهند."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Samedi dernier, nous ___ au cinéma.",
+            "en": "Last Saturday, we went to the cinema.",
+            "fa": "شنبهٔ گذشته به سینما رفتیم."
+          },
+          "options": ["allions", "sommes allés", "allons", "irons"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "One occasion on a named day, finished: passé composé.",
+              "fa": "یک بار، در روزی مشخص، و تمام‌شده: «passé composé»."
+            },
+            "tempting": {
+              "en": "«allions» sounds like the past but would suggest a habit or a background, and «samedi dernier» names one day.",
+              "fa": "«allions» گذشته به نظر می‌آید ولی عادت یا زمینه را می‌رساند، در حالی که «samedi dernier» یک روز مشخص است."
+            }
+          }
+        }
+      ],
+      "quotedInFa": [
+        "passé composé", "imparfait", "Il pleuvait", "il a plu", "ai dormi",
+        "Soudain", "s'ouvrait", "toujours", "sommes allés", "quand j'étais enfant",
+        "allions", "samedi dernier"
+      ],
+      "review": { "owner": null, "teacher": null }
+    },
+    {
+      "id": "lesson:partitive",
+      "conceptId": "gram.article.partitive",
+      "nearbyConceptId": "gram.article.definite",
+      "level": "A1",
+      "source": "drafted",
+      "explanation": {
+        "en": "Du, de la and de l' mean \"some\": an unspecified amount of something you do not count one by one. Je bois de l'eau; elle mange du pain.",
+        "fr": "Du, de la et de l' expriment une quantité non précisée de quelque chose qu'on ne compte pas : je bois de l'eau, elle mange du pain.",
+        "fa": "«du»، «de la» و «de l'» یعنی «مقداری»: مقدار نامشخصی از چیزی که تک‌تک نمی‌شماریم. «du» برای مذکر، «de la» برای مؤنث و «de l'» پیش از حرف صدادار."
+      },
+      "simplerExplanation": {
+        "en": "If you could say \"some\" in English (some water, some bread), use du, de la or de l'.",
+        "fa": "اگر در فارسی بتوانی بگویی «مقداری» (مقداری آب، مقداری نان)، از «du»، «de la» یا «de l'» استفاده کن."
+      },
+      "examples": [
+        {
+          "fr": "Je bois de l'eau le matin.",
+          "fa": "صبح‌ها آب می‌نوشم.",
+          "en": "I drink water in the morning."
+        },
+        {
+          "fr": "Elle prend du café, mais elle préfère le thé.",
+          "fa": "او قهوه می‌خورد، اما چای را ترجیح می‌دهد.",
+          "en": "She has coffee, but she prefers tea."
+        }
+      ],
+      "difference": {
+        "en": "The partitive is an amount; the definite article (le, la, les) is the thing itself, in general or already known. After aimer, adorer, détester and préférer you talk about the thing in general, so the definite article comes back: j'adore le chocolat, not du chocolat. Compare je mange du chocolat (some of it, now) with j'aime le chocolat (chocolate as a whole).",
+        "fa": "«partitive» مقدار است؛ حرف تعریف («le»، «la»، «les») خود چیز است، به‌طور کلی یا به‌صورت شناخته‌شده. بعد از «aimer»، «adorer»، «détester» و «préférer» دربارهٔ کل آن چیز حرف می‌زنیم، پس حرف تعریف برمی‌گردد: «j'adore le chocolat» و نه «du chocolat». «je mange du chocolat» یعنی مقداری شکلات می‌خورم، و «j'aime le chocolat» یعنی شکلات را به‌طور کلی دوست دارم."
+      },
+      "questions": [
+        {
+          "prompt": {
+            "fr": "J'adore ___ chocolat.",
+            "en": "I love chocolate.",
+            "fa": "من شکلات را خیلی دوست دارم."
+          },
+          "options": ["le", "du", "un", "de"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "After a verb of liking you speak of the thing in general, so the definite article is used.",
+              "fa": "بعد از فعلی که دوست داشتن را می‌رساند، دربارهٔ کل آن چیز حرف می‌زنیم، پس حرف تعریف می‌آید."
+            },
+            "tempting": {
+              "en": "«du chocolat» sounds right because chocolate is food, but «du» means an amount and loving is not about an amount.",
+              "fa": "«du chocolat» درست به نظر می‌رسد چون شکلات خوراکی است، اما «du» مقدار را می‌رساند و دوست داشتن به مقدار ربطی ندارد."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Il y a ___ lait dans le frigo.",
+            "en": "There is some milk in the fridge.",
+            "fa": "در یخچال مقداری شیر هست."
+          },
+          "options": ["le", "du", "un", "de"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "An unspecified amount of milk, which is not counted: «du».",
+              "fa": "مقدار نامشخصی شیر که شمرده نمی‌شود: «du»."
+            },
+            "tempting": {
+              "en": "«le lait» names one particular, known milk; «il y a» introduces something new, so it does not fit.",
+              "fa": "«le lait» شیر مشخص و شناخته‌شده‌ای را می‌رساند؛ «il y a» چیز تازه‌ای را معرفی می‌کند و با آن جور نیست."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Ma sœur déteste ___ café.",
+            "en": "My sister hates coffee.",
+            "fa": "خواهرم از قهوه بدش می‌آید."
+          },
+          "options": ["le", "du", "de", "un"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "Détester, like aimer, takes the definite article for the thing in general.",
+              "fa": "«détester» هم مثل «aimer» برای کل آن چیز حرف تعریف می‌گیرد."
+            },
+            "tempting": {
+              "en": "«du café» is a real phrase, but it means some coffee, and hating is not directed at an amount.",
+              "fa": "«du café» عبارت درستی است، اما یعنی مقداری قهوه، و بیزاری به مقدار مربوط نمی‌شود."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Pour la recette, il faut ___ farine et deux œufs.",
+            "en": "For the recipe you need some flour and two eggs.",
+            "fa": "برای این دستور پخت مقداری آرد و دو تخم‌مرغ لازم است."
+          },
+          "options": ["la", "de la", "une", "des"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "Flour is feminine and uncounted, and no particular flour is meant: «de la».",
+              "fa": "«farine» مؤنث است و شمرده نمی‌شود و آرد مشخصی منظور نیست: «de la»."
+            },
+            "tempting": {
+              "en": "«la farine» names flour as a known thing; the recipe asks for an amount, so the partitive is needed.",
+              "fa": "«la farine» آرد را چیزی شناخته‌شده نشان می‌دهد؛ دستور پخت مقدار می‌خواهد، پس «partitive» لازم است."
+            }
+          }
+        }
+      ],
+      "quotedInFa": [
+        "du", "de la", "de l'", "le", "la", "les", "aimer", "adorer", "détester",
+        "préférer", "j'adore le chocolat", "du chocolat", "je mange du chocolat",
+        "j'aime le chocolat", "partitive", "du café", "le lait", "il y a", "la farine", "farine"
+      ],
+      "review": { "owner": null, "teacher": null }
+    },
+    {
+      "id": "lesson:ne-que",
+      "conceptId": "gram.negation.ne-que",
+      "nearbyConceptId": "gram.negation.ne-pas",
+      "level": "B1",
+      "source": "drafted",
+      "explanation": {
+        "en": "Ne … que means \"only\". It looks like a negation but it is not one: the sentence stays positive in meaning. Put ne before the verb and que directly in front of the thing that is limited.",
+        "fr": "Ne … que veut dire « seulement ». Cela ressemble à une négation, mais le sens reste positif : ne se place devant le verbe, que juste devant ce qui est limité.",
+        "fa": "«ne … que» یعنی «فقط». شبیه منفی است ولی منفی نیست: معنی جمله مثبت می‌ماند. «ne» پیش از فعل می‌آید و «que» درست پیش از چیزی که محدود شده است."
+      },
+      "simplerExplanation": {
+        "en": "Ne … que = only. Say the sentence with \"only\" in English first; if it works, use ne … que.",
+        "fa": "«ne … que» = فقط. اول جمله را با «فقط» بگو؛ اگر درست درآمد، «ne … que» بگذار."
+      },
+      "examples": [
+        {
+          "fr": "Je n'ai qu'un frère.",
+          "fa": "من فقط یک برادر دارم.",
+          "en": "I have only one brother."
+        },
+        {
+          "fr": "Il ne boit que de l'eau.",
+          "fa": "او فقط آب می‌نوشد.",
+          "en": "He drinks only water."
+        }
+      ],
+      "difference": {
+        "en": "Ne … pas says there is none; ne … que says there is some, but limited. Je n'ai pas de frère: I have no brother. Je n'ai qu'un frère: I have one, and no more. The article also behaves differently: after ne … pas, un and du become de (pas de pain); after ne … que they stay as they are (que du pain).",
+        "fa": "«ne … pas» می‌گوید هیچ نیست؛ «ne … que» می‌گوید هست ولی محدود. «Je n'ai pas de frère» یعنی برادر ندارم. «Je n'ai qu'un frère» یعنی یک برادر دارم و بیشتر نه. حرف تعریف هم فرق می‌کند: بعد از «ne … pas»، «un» و «du» به «de» تبدیل می‌شوند، ولی بعد از «ne … que» همان می‌مانند."
+      },
+      "questions": [
+        {
+          "prompt": {
+            "fr": "Je n'ai ___ deux euros.",
+            "en": "I have only two euros.",
+            "fa": "من فقط دو یورو دارم."
+          },
+          "options": ["pas", "que", "plus", "jamais"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Only» is «ne … que»: you have two euros, and that is all.",
+              "fa": "«فقط» یعنی «ne … que»: دو یورو داری و بیشتر نه."
+            },
+            "tempting": {
+              "en": "«ne … pas» is the negation you know best, but «je n'ai pas deux euros» says you do not have two euros.",
+              "fa": "«ne … pas» منفی‌ای است که بهتر می‌شناسی، ولی «je n'ai pas deux euros» می‌گوید دو یورو نداری."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Il ne mange ___ poisson.",
+            "en": "He eats only fish.",
+            "fa": "او فقط ماهی می‌خورد."
+          },
+          "options": ["que du", "pas de", "pas du", "que de"],
+          "answer": 0,
+          "temptingWrong": 3,
+          "explanation": {
+            "right": {
+              "en": "After «ne … que» the partitive stays: «que du poisson».",
+              "fa": "بعد از «ne … que» حرف تعریف «partitive» همان می‌ماند: «que du poisson»."
+            },
+            "tempting": {
+              "en": "«que de» applies the rule «pas de» to the wrong frame; that rule belongs to «ne … pas», not to «ne … que».",
+              "fa": "«que de» قاعدهٔ «pas de» را به قالب اشتباهی می‌برد؛ آن قاعده مال «ne … pas» است، نه «ne … que»."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Il ___ travaille que le lundi.",
+            "en": "He works only on Mondays.",
+            "fa": "او فقط دوشنبه‌ها کار می‌کند."
+          },
+          "options": ["n'", "ne", "pas", "ne pas"],
+          "answer": 1,
+          "temptingWrong": 3,
+          "explanation": {
+            "right": {
+              "en": "The frame is «ne … que»: «ne» before the verb, «que» before the limited word. «Travaille» starts with a consonant, so «ne», not «n'».",
+              "fa": "قالب «ne … que» است: «ne» پیش از فعل و «que» پیش از واژهٔ محدودشده. «travaille» با صامت شروع می‌شود، پس «ne» می‌آید نه «n'»."
+            },
+            "tempting": {
+              "en": "«ne pas» adds a second negative word; with «que» there is no «pas».",
+              "fa": "«ne pas» واژهٔ منفی دومی اضافه می‌کند؛ با «que» «pas» نداریم."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Laquelle de ces phrases veut dire « Elle a seulement une sœur » ?",
+            "en": "Which of these sentences means \"She has only one sister\"?",
+            "fa": "کدام جمله یعنی «او فقط یک خواهر دارد»؟"
+          },
+          "options": ["Elle n'a qu'une sœur.", "Elle n'a pas de sœur.", "Elle n'a plus de sœur.", "Elle n'a jamais une sœur."],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "«n'a qu'une» = has only one.",
+              "fa": "«n'a qu'une» یعنی فقط یک دارد."
+            },
+            "tempting": {
+              "en": "«n'a pas de sœur» also has «ne», but it means she has no sister at all.",
+              "fa": "«n'a pas de sœur» هم «ne» دارد، ولی یعنی اصلاً خواهر ندارد."
+            }
+          }
+        }
+      ],
+      "quotedInFa": [
+        "ne … que", "ne … pas", "ne", "que", "pas", "un", "du", "de", "Je n'ai pas de frère",
+        "Je n'ai qu'un frère", "partitive", "je n'ai pas deux euros", "que du poisson",
+        "pas de", "que de", "travaille", "n'", "n'a qu'une", "n'a pas de sœur", "ne pas"
+      ],
+      "review": { "owner": null, "teacher": null }
+    },
+    {
+      "id": "lesson:subjunctive-after-wanting",
+      "conceptId": "gram.subjunctive.will",
+      "nearbyConceptId": "gram.subjunctive.vs-indicative",
+      "level": "B1",
+      "source": "drafted",
+      "explanation": {
+        "en": "After verbs of wanting, wishing and demanding (vouloir que, souhaiter que, préférer que, exiger que), the verb after que goes in the subjunctive. This is when the subject changes: je veux que tu viennes. If the subject stays the same, use the infinitive: je veux venir.",
+        "fr": "Après vouloir que, souhaiter que, préférer que, exiger que, le verbe se met au subjonctif quand le sujet change : je veux que tu viennes. Si le sujet est le même, on utilise l'infinitif : je veux venir.",
+        "fa": "بعد از فعل‌هایی که خواستن، آرزو کردن و مطالبه کردن را می‌رسانند («vouloir que»، «souhaiter que»، «préférer que»، «exiger que») فعل بعد از «que» در «subjonctif» می‌آید. این وقتی است که فاعل عوض می‌شود: «je veux que tu viennes». اگر فاعل همان باشد، مصدر می‌آید: «je veux venir»."
+      },
+      "simplerExplanation": {
+        "en": "I want that YOU do something: que + subjunctive. I want to do something myself: infinitive, no que.",
+        "fa": "من می‌خواهم که «تو» کاری بکنی: «que» به‌علاوهٔ «subjonctif». من می‌خواهم خودم کاری بکنم: مصدر، بدون «que»."
+      },
+      "examples": [
+        {
+          "fr": "Je veux que tu viennes ce soir.",
+          "fa": "می‌خواهم امشب تو بیایی.",
+          "en": "I want you to come tonight."
+        },
+        {
+          "fr": "Elle préfère qu'on parte tôt.",
+          "fa": "او ترجیح می‌دهد زود راه بیفتیم.",
+          "en": "She prefers us to leave early."
+        }
+      ],
+      "difference": {
+        "en": "The nearby question is when to use the indicative instead. Verbs of hoping, thinking and saying (espérer, penser, dire) look similar but take the indicative (l'indicatif): j'espère qu'il viendra, not qu'il vienne. Wanting something is not the same as stating a fact, which is why the mood changes.",
+        "fa": "پرسش نزدیک این است که چه وقت «indicatif» می‌آید. فعل‌های امید داشتن، فکر کردن و گفتن («espérer»، «penser»، «dire») شبیه به نظر می‌رسند ولی «indicatif» می‌گیرند: «j'espère qu'il viendra» و نه «qu'il vienne». خواستن یک چیز با بیان یک واقعیت فرق دارد، و به همین دلیل وجه فعل عوض می‌شود."
+      },
+      "questions": [
+        {
+          "prompt": {
+            "fr": "Je veux que tu ___ ce soir.",
+            "en": "I want you to come tonight.",
+            "fa": "می‌خواهم امشب تو بیایی."
+          },
+          "options": ["viens", "viennes", "viendras", "venais"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Vouloir que» with a different subject takes the subjunctive: «viennes».",
+              "fa": "«vouloir que» با فاعل متفاوت «subjonctif» می‌گیرد: «viennes»."
+            },
+            "tempting": {
+              "en": "«viens» is the indicative, the form after «tu» you use every day, and it is the form the ear expects.",
+              "fa": "«viens» «indicatif» است، همان شکلی که هر روز بعد از «tu» می‌گویی، و گوش انتظار همان را دارد."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "J'espère qu'il ___ demain.",
+            "en": "I hope he comes tomorrow.",
+            "fa": "امیدوارم او فردا بیاید."
+          },
+          "options": ["vienne", "viendra", "viens", "venir"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Espérer que» takes the indicative; tomorrow points to the future: «viendra».",
+              "fa": "«espérer que» «indicatif» می‌گیرد؛ «demain» به آینده اشاره می‌کند: «viendra»."
+            },
+            "tempting": {
+              "en": "«vienne» follows the pattern of wishing verbs, but «espérer» is not on that list.",
+              "fa": "«vienne» از الگوی فعل‌های خواستن پیروی می‌کند، اما «espérer» جزو آن‌ها نیست."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Le professeur exige que nous ___ les devoirs.",
+            "en": "The teacher demands that we do the homework.",
+            "fa": "معلم می‌خواهد که ما تکالیف را انجام دهیم."
+          },
+          "options": ["faisons", "fassions", "faisions", "ferons"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Exiger que» is a demand; «faire» becomes «fassions» in the subjunctive.",
+              "fa": "«exiger que» مطالبه است؛ «faire» در «subjonctif» به «fassions» تبدیل می‌شود."
+            },
+            "tempting": {
+              "en": "«faisons» is the indicative «nous» form and looks regular, but the subjunctive of «faire» has a different stem.",
+              "fa": "«faisons» شکل «indicatif» برای «nous» است و منظم به نظر می‌رسد، ولی «subjonctif» فعل «faire» ریشهٔ دیگری دارد."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Je veux ___ ce film.",
+            "en": "I want to see this film.",
+            "fa": "می‌خواهم این فیلم را ببینم."
+          },
+          "options": ["voir", "que je voie", "que voir", "voyais"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "The one who wants and the one who sees are the same person, so the infinitive is used: «voir».",
+              "fa": "کسی که می‌خواهد و کسی که می‌بیند یکی است، پس مصدر می‌آید: «voir»."
+            },
+            "tempting": {
+              "en": "«que je voie» is built by the rule for wishing verbs, but that rule needs two different subjects.",
+              "fa": "«que je voie» طبق قاعدهٔ فعل‌های خواستن ساخته شده، اما آن قاعده دو فاعل متفاوت می‌خواهد."
+            }
+          }
+        }
+      ],
+      "quotedInFa": [
+        "vouloir que", "souhaiter que", "préférer que", "exiger que", "je veux que tu viennes",
+        "je veux venir", "que", "espérer", "penser", "dire", "j'espère qu'il viendra",
+        "qu'il vienne", "viens", "viennes", "demain", "viendra", "vienne", "espérer que",
+        "faisons", "fassions", "faire", "nous", "tu", "voir", "que je voie", "subjonctif", "indicatif"
+      ],
+      "review": { "owner": null, "teacher": null }
+    },
+    {
+      "id": "lesson:agreement-with-etre",
+      "conceptId": "gram.agreement.etre",
+      "nearbyConceptId": "gram.agreement.avoir-cod",
+      "level": "A2",
+      "source": "drafted",
+      "explanation": {
+        "en": "With être, the past participle agrees with the subject, like an adjective: add -e for feminine, -s for plural. Elle est partie; ils sont partis; elles sont parties.",
+        "fr": "Avec être, le participe passé s'accorde avec le sujet, comme un adjectif : -e au féminin, -s au pluriel. Elle est partie ; ils sont partis ; elles sont parties.",
+        "fa": "با «être»، اسم مفعول با فاعل مطابقت می‌کند، مثل یک صفت: برای مؤنث «-e» و برای جمع «-s» اضافه می‌شود. «Elle est partie»، «ils sont partis»، «elles sont parties»."
+      },
+      "simplerExplanation": {
+        "en": "Être + participle: look at WHO did it. A woman: add -e. More than one: add -s.",
+        "fa": "«être» به‌علاوهٔ اسم مفعول: ببین «چه کسی» این کار را کرده. زن است: «-e» اضافه کن. بیش از یکی است: «-s» اضافه کن."
+      },
+      "examples": [
+        {
+          "fr": "Marie est arrivée hier.",
+          "fa": "ماری دیروز رسید.",
+          "en": "Marie arrived yesterday."
+        },
+        {
+          "fr": "Nous sommes allés au marché.",
+          "fa": "ما به بازار رفتیم.",
+          "en": "We went to the market. (a group of men, or a mixed group)"
+        }
+      ],
+      "difference": {
+        "en": "With avoir there is no agreement with the subject: elle a mangé, not elle a mangée. The participle after avoir changes only when a direct object comes BEFORE the verb: les pommes qu'elle a mangées. So the same woman is partie with être and a mangé with avoir.",
+        "fa": "با «avoir» مطابقت با فاعل وجود ندارد: «elle a mangé» و نه «elle a mangée». اسم مفعول بعد از «avoir» فقط وقتی تغییر می‌کند که مفعول مستقیم «پیش از» فعل بیاید: «les pommes qu'elle a mangées». پس یک زن با «être» می‌شود «partie» و با «avoir» می‌شود «a mangé»."
+      },
+      "questions": [
+        {
+          "prompt": {
+            "fr": "Sophie est ___ à huit heures.",
+            "en": "Sophie left at eight o'clock.",
+            "fa": "سوفی ساعت هشت رفت."
+          },
+          "options": ["partie", "parti", "partis", "parties"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "«Sophie» is one woman and the auxiliary is «être», so the participle takes -e: «partie».",
+              "fa": "«Sophie» یک زن است و فعل کمکی «être» است، پس اسم مفعول «-e» می‌گیرد: «partie»."
+            },
+            "tempting": {
+              "en": "«parti» is the form in the dictionary and in the sound you hear, but the written form must agree with Sophie.",
+              "fa": "«parti» شکلی است که در فرهنگ لغت و در تلفظ می‌شنوی، ولی شکل نوشتاری باید با سوفی مطابقت کند."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Mes parents sont ___ hier.",
+            "en": "My parents arrived yesterday.",
+            "fa": "پدر و مادرم دیروز رسیدند."
+          },
+          "options": ["arrivé", "arrivée", "arrivés", "arrivées"],
+          "answer": 2,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Mes parents» is plural and treated as masculine, so the participle is «arrivés».",
+              "fa": "«Mes parents» جمع است و مذکر حساب می‌شود، پس اسم مفعول «arrivés» است."
+            },
+            "tempting": {
+              "en": "«arrivé» is singular; it sounds the same as «arrivés», and that is why the -s is easy to forget.",
+              "fa": "«arrivé» مفرد است؛ تلفظش با «arrivés» یکی است و به همین دلیل فراموش کردن «-s» آسان است."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Elle a ___ un gâteau.",
+            "en": "She ate a cake.",
+            "fa": "او یک کیک خورد."
+          },
+          "options": ["mangé", "mangée", "mangés", "mangées"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "The auxiliary is «avoir», so the participle does not agree with the subject: «mangé». The direct object «un gâteau» comes after the verb.",
+              "fa": "فعل کمکی «avoir» است، پس اسم مفعول با فاعل مطابقت نمی‌کند: «mangé». مفعول مستقیم «un gâteau» بعد از فعل می‌آید."
+            },
+            "tempting": {
+              "en": "«mangée» applies the être rule to an avoir verb; the subject is feminine, but avoir does not look at it.",
+              "fa": "«mangée» قاعدهٔ «être» را روی فعلی با «avoir» به کار می‌برد؛ فاعل مؤنث است، ولی «avoir» به آن نگاه نمی‌کند."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Les filles sont ___ au cinéma.",
+            "en": "The girls went to the cinema.",
+            "fa": "دخترها به سینما رفتند."
+          },
+          "options": ["allés", "allées", "allé", "allée"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Les filles» is feminine plural, so both marks are needed: -e and -s, «allées».",
+              "fa": "«Les filles» مؤنث جمع است، پس هر دو نشانه لازم است: «-e» و «-s»، یعنی «allées»."
+            },
+            "tempting": {
+              "en": "«allés» uses the plural but forgets that the group is all girls; the masculine plural is only for a mixed or male group.",
+              "fa": "«allés» جمع را رعایت می‌کند ولی فراموش می‌کند که همه دختر هستند؛ جمع مذکر فقط برای گروه مختلط یا مردانه است."
+            }
+          }
+        }
+      ],
+      "quotedInFa": [
+        "être", "avoir", "Elle est partie", "ils sont partis", "elles sont parties",
+        "elle a mangé", "elle a mangée", "les pommes qu'elle a mangées", "partie", "a mangé",
+        "-e", "-s", "Sophie", "parti", "Mes parents", "arrivés", "arrivé", "mangé", "mangée",
+        "un gâteau", "Les filles", "allées", "allés"
+      ],
+      "review": { "owner": null, "teacher": null }
+    },
+    {
+      "id": "lesson:de-after-negative",
+      "conceptId": "gram.article.de-negative",
+      "nearbyConceptId": "gram.article.indefinite",
+      "level": "A2",
+      "chosenBecause": "Chosen by the author, not by the brief. Two exam items already reach gram.article.de-negative in content/concept-material.json, and it is the rule learners most often apply too widely: de replaces un, une, des and the partitive after a negation, but it must not replace the definite article, and it must not follow être.",
+      "source": "drafted",
+      "explanation": {
+        "en": "After a negation of quantity (ne … pas, jamais, plus), un, une, des, du and de la become de (d' before a vowel). J'ai un frère becomes je n'ai pas de frère.",
+        "fr": "Après une négation de quantité (ne … pas, jamais, plus), un, une, des, du et de la deviennent de (d' devant une voyelle) : j'ai un frère, je n'ai pas de frère.",
+        "fa": "بعد از منفی‌ای که مقدار را نفی می‌کند («ne … pas»، «jamais»، «plus»)، «un»، «une»، «des»، «du» و «de la» به «de» تبدیل می‌شوند (پیش از حرف صدادار «d'»). «J'ai un frère» می‌شود «je n'ai pas de frère»."
+      },
+      "simplerExplanation": {
+        "en": "\"None\" or \"not any\": the article becomes de. \"Not THE\" or \"not a, but …\": it stays.",
+        "fa": "اگر «هیچ» یا «حتی یکی» نیست: حرف تعریف به «de» تبدیل می‌شود. اگر «نه این، بلکه آن» است: همان می‌ماند."
+      },
+      "examples": [
+        {
+          "fr": "Il n'a pas de voiture.",
+          "fa": "او ماشین ندارد.",
+          "en": "He does not have a car."
+        },
+        {
+          "fr": "Je ne mange jamais de viande.",
+          "fa": "من هرگز گوشت نمی‌خورم.",
+          "en": "I never eat meat."
+        }
+      ],
+      "difference": {
+        "en": "The indefinite article is the one you start from: un livre, des enfants. It changes to de when the thing is absent, but it stays after être, because there you are saying what something is, not whether it exists: ce n'est pas un chat, c'est un lapin. The definite article never changes: je n'aime pas le poisson.",
+        "fa": "حرف تعریف نکره نقطهٔ شروع است: «un livre»، «des enfants». وقتی چیزی وجود ندارد به «de» تبدیل می‌شود، اما بعد از «être» همان می‌ماند، چون آنجا می‌گویی چیزی چیست، نه اینکه هست یا نیست: «ce n'est pas un chat, c'est un lapin». حرف تعریف معرفه هیچ‌وقت عوض نمی‌شود: «je n'aime pas le poisson»."
+      },
+      "questions": [
+        {
+          "prompt": {
+            "fr": "Nous n'avons pas ___ enfants.",
+            "en": "We do not have children.",
+            "fa": "ما بچه نداریم."
+          },
+          "options": ["d'", "des", "les", "de la"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "«Pas» negates the quantity, so «des» becomes «de», and «de» elides to «d'» before the vowel of «enfants».",
+              "fa": "«pas» مقدار را نفی می‌کند، پس «des» به «de» تبدیل می‌شود و پیش از حرف صدادار «enfants» به «d'» تغییر می‌کند."
+            },
+            "tempting": {
+              "en": "«des enfants» is correct in the positive sentence «nous avons des enfants», and the habit carries over.",
+              "fa": "«des enfants» در جملهٔ مثبت «nous avons des enfants» درست است و عادت همان را تکرار می‌کند."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Elle ne boit jamais ___ café.",
+            "en": "She never drinks coffee.",
+            "fa": "او هرگز قهوه نمی‌نوشد."
+          },
+          "options": ["du", "de", "le", "un"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "«Jamais» is a negation of quantity, so «du» turns into «de»: «de café».",
+              "fa": "«jamais» مقدار را نفی می‌کند، پس «du» به «de» تبدیل می‌شود: «de café»."
+            },
+            "tempting": {
+              "en": "«du café» is what you would say in the positive sentence, and «jamais» is easy to read as only a time word.",
+              "fa": "«du café» همان است که در جملهٔ مثبت می‌گویی، و «jamais» را راحت می‌شود فقط واژهٔ زمان خواند."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Ce n'est pas ___ chat, c'est un lapin.",
+            "en": "It is not a cat, it is a rabbit.",
+            "fa": "این گربه نیست، خرگوش است."
+          },
+          "options": ["un", "de", "d'", "des"],
+          "answer": 0,
+          "temptingWrong": 1,
+          "explanation": {
+            "right": {
+              "en": "After «être» the article stays: you are saying what it is, not whether there is any.",
+              "fa": "بعد از «être» حرف تعریف همان می‌ماند: می‌گویی چیست، نه اینکه هست یا نه."
+            },
+            "tempting": {
+              "en": "«pas de chat» is the rule just learned, but it would mean there is no cat, which is another claim.",
+              "fa": "«pas de chat» همان قاعده‌ای است که تازه یاد گرفتی، ولی یعنی گربه‌ای وجود ندارد، که ادعای دیگری است."
+            }
+          }
+        },
+        {
+          "prompt": {
+            "fr": "Je n'aime pas ___ poisson.",
+            "en": "I do not like fish.",
+            "fa": "من ماهی را دوست ندارم."
+          },
+          "options": ["de", "le", "du", "d'"],
+          "answer": 1,
+          "temptingWrong": 0,
+          "explanation": {
+            "right": {
+              "en": "Liking and disliking use the definite article for the thing in general, and a negation does not change it: «le poisson».",
+              "fa": "برای دوست داشتن و دوست نداشتن حرف تعریف معرفه به کار می‌رود و منفی آن را عوض نمی‌کند: «le poisson»."
+            },
+            "tempting": {
+              "en": "«pas de poisson» applies the de rule, but the de rule replaces un, une, des and du, not le, la or les.",
+              "fa": "«pas de poisson» قاعدهٔ «de» را به کار می‌برد، ولی این قاعده «un»، «une»، «des» و «du» را عوض می‌کند، نه «le»، «la» و «les» را."
+            }
+          }
+        }
+      ],
+      "quotedInFa": [
+        "ne … pas", "jamais", "plus", "un", "une", "des", "du", "de la", "de", "d'", "J'ai un frère",
+        "je n'ai pas de frère", "un livre", "des enfants", "être", "ce n'est pas un chat, c'est un lapin",
+        "je n'aime pas le poisson", "pas", "enfants", "nous avons des enfants",
+        "du café", "de café", "pas de chat", "le poisson", "pas de poisson", "le", "la", "les"
+      ],
+      "review": { "owner": null, "teacher": null }
+    }
+  ]
+}
