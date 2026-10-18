@@ -34,9 +34,9 @@ Reader and mounts both lazily under `/app/grammar` and `/app/reading`.
 `Progress` shows `WeaknessCard` and no accuracy percentage, and its export
 carries the personal stores. The Reader's quiz scores moved from a separate
 `flw-reader` database into `flw` (schema 3, store `readerResults`); the export
-format is version 4. Known gap: a concept with no written lesson now lands on
-the grammar "no lesson" page, because the old concept page (routes/Concept.tsx)
-is no longer routed.
+format is version 4. `/app/grammar/:id` renders the lesson where one exists and otherwise the concept
+page (routes/app/GrammarOrConcept.tsx, a lazy chunk), so the 6 lessons are an
+upgrade over 297 working concept pages.
 
 - **Workspace** at `/workspace`, lazy-loaded. Six tabs, all opening real
   content. Filters, shuffle, jump-to-card and the position always agree.

@@ -47,7 +47,8 @@ const Workspace = lazy(() => import('./features/workspace/Workspace').then((m) =
 // is measured against a 150 KB ceiling (scripts/budget.mjs) and neither screen
 // is needed until a learner opens it.
 const GrammarList = lazy(() => import('./features/grammar').then((m) => ({ default: m.GrammarList })));
-const GrammarLesson = lazy(() => import('./features/grammar').then((m) => ({ default: m.GrammarLesson })));
+// :id is a lesson where one has been written and the concept page otherwise.
+const GrammarOrConcept = lazy(() => import('./routes/app/GrammarOrConcept').then((m) => ({ default: m.GrammarOrConcept })));
 const Reader = lazy(() => import('./features/reader').then((m) => ({ default: m.Reader })));
 
 /** A lazy route still has to render something while its chunk arrives, and a
@@ -94,8 +95,9 @@ function AppRoutes() {
           <Route path="verbs/:infinitive" element={<VerbDetail />} />
           <Route path="grammar" element={lazily(<GrammarList />)} />
           {/* :id is a lesson id or a concept id, so the old /learn/concept/:id
-              redirect (routes/app/Redirects.tsx) lands here unchanged. */}
-          <Route path="grammar/:id" element={lazily(<GrammarLesson />)} />
+              redirect (routes/app/Redirects.tsx) lands here unchanged. A
+              concept with no lesson shows the concept page, not a dead end. */}
+          <Route path="grammar/:id" element={lazily(<GrammarOrConcept />)} />
           <Route path="listening" element={<Stub titleKey="stubSoundsTitle" bodyKey="stubSoundsBody" />} />
           <Route path="reading/*" element={lazily(<Reader />)} />
           <Route path="output" element={<PlaceholderRoute id="output" />} />
