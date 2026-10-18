@@ -13,6 +13,7 @@
       "pattern": "standard",
       "source": "fr-core-a1",
       "usage": "Être is the verb of identity and state, and it is the auxiliary of the verbs of movement and of every pronominal verb.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "suis", "fr": "Je suis à la maison.",
           "fa": "من خانه هستم.", "en": "I am at home." },
@@ -27,6 +28,7 @@
       "pattern": "standard",
       "source": "fr-core-a1",
       "usage": "Avoir is also the auxiliary of most verbs in the passé composé.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "ai", "fr": "J'ai deux frères.",
           "fa": "دو برادر دارم.", "en": "I have two brothers." },
@@ -41,6 +43,7 @@
       "pattern": "standard",
       "source": "fr-core-a1",
       "usage": "Aller takes être in the passé composé, so its participle agrees with the subject: elle est allée.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "allons", "fr": "Nous allons au marché.",
           "fa": "به بازار می‌رویم.", "en": "We are going to the market." },
@@ -54,6 +57,7 @@
       "type": "verb", "level": "A1", "fa": "انجام دادن، کردن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "fais", "fr": "Je fais mes devoirs.",
           "fa": "تکالیفم را انجام می‌دهم.", "en": "I am doing my homework." },
@@ -67,6 +71,7 @@
       "type": "verb", "level": "A1", "fa": "توانستن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "peux", "fr": "Tu peux entrer.",
           "fa": "می‌توانی وارد شوی.", "en": "You can come in." },
@@ -80,6 +85,7 @@
       "type": "verb", "level": "A1", "fa": "خواستن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "veux", "fr": "Je veux un café.",
           "fa": "یک قهوه می‌خواهم.", "en": "I want a coffee." },
@@ -93,6 +99,7 @@
       "type": "verb", "level": "A1", "fa": "باید، مجبور بودن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "devons", "fr": "Nous devons partir maintenant.",
           "fa": "الان باید برویم.", "en": "We must leave now." },
@@ -106,6 +113,7 @@
       "type": "verb", "level": "A1", "fa": "گفتن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "dit", "fr": "Il dit toujours la vérité.",
           "fa": "او همیشه حقیقت را می‌گوید.", "en": "He always tells the truth." },
@@ -119,6 +127,7 @@
       "type": "verb", "level": "A1", "fa": "دیدن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "vois", "fr": "Je vois la mer d'ici.",
           "fa": "از اینجا دریا را می‌بینم.", "en": "I can see the sea from here." },
@@ -133,6 +142,7 @@
       "pattern": "standard",
       "usage": "With a means of transport, prendre is the ordinary verb: prendre le bus, prendre le train.",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "prend", "fr": "Elle prend le bus tous les matins.",
           "fa": "او هر روز صبح با اتوبوس می‌رود.", "en": "She takes the bus every morning." },
@@ -146,6 +156,7 @@
       "type": "verb", "level": "A1", "fa": "صحبت کردن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "parlons", "fr": "Nous parlons français en classe.",
           "fa": "در کلاس فرانسوی صحبت می‌کنیم.", "en": "We speak French in class." },
@@ -160,6 +171,7 @@
       "pattern": "standard",
       "usage": "Manger keeps the e of its stem before a and o, so that the g stays soft: nous mangeons.",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "mangent", "fr": "Les enfants mangent à midi.",
           "fa": "بچه‌ها ظهر غذا می‌خورند.", "en": "The children eat at noon." },
@@ -174,6 +186,7 @@
       "pattern": "standard",
       "usage": "Commencer takes a cedilla before a and o, so that the c stays soft: nous commençons.",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "commence", "fr": "Le film commence à huit heures.",
           "fa": "فیلم ساعت هشت شروع می‌شود.", "en": "The film starts at eight." },
@@ -187,6 +200,7 @@
       "type": "verb", "level": "A1", "fa": "تمام کردن",
       "pattern": "standard",
       "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "finis", "fr": "Je finis mon travail à cinq heures.",
           "fa": "کارم را ساعت پنج تمام می‌کنم.", "en": "I finish my work at five." },
@@ -202,6 +216,7 @@
       "pattern": "standard",
       "source": "drafted",
       "usage": "In the passé composé, savoir usually means found out rather than knew. For the continuing state, French uses the imparfait: je savais.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "sais", "fr": "Je sais la réponse.",
           "fa": "پاسخ را می‌دانم.", "en": "I know the answer." },
@@ -216,6 +231,7 @@
       "pattern": "standard",
       "source": "drafted",
       "usage": "Venir takes être in the passé composé, so the participle agrees: elle est venue.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "vient", "fr": "Elle vient avec nous.",
           "fa": "او با ما می‌آید.", "en": "She is coming with us." },
@@ -229,6 +245,7 @@
       "type": "verb", "level": "A1", "fa": "باور کردن، گمان کردن",
       "pattern": "standard",
       "source": "drafted",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "crois", "fr": "Je crois que c'est vrai.",
           "fa": "گمان می‌کنم درست باشد.", "en": "I think that is true." },
@@ -243,6 +260,7 @@
       "pattern": "standard",
       "source": "drafted",
       "usage": "With a person, aimer alone means to love; aimer bien softens it to to like.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "aime", "fr": "J'aime le chocolat.",
           "fa": "شکلات دوست دارم.", "en": "I like chocolate." },
@@ -257,6 +275,7 @@
       "pattern": "impersonal",
       "source": "drafted",
       "usage": "Falloir exists only in the third person singular, with an il that stands for nobody. There is no je faux and no nous fallons, so these three examples are the whole verb rather than one person out of six.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "faut", "fr": "Il faut partir maintenant.",
           "fa": "باید همین حالا برویم.", "en": "We have to leave now." },
@@ -271,6 +290,7 @@
       "pattern": "standard",
       "source": "drafted",
       "usage": "Penser à is to have something in mind; penser de is to have an opinion of it.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "pense", "fr": "Je pense à toi.",
           "fa": "به تو فکر می‌کنم.", "en": "I am thinking of you." },
@@ -285,6 +305,7 @@
       "pattern": "standard",
       "source": "drafted",
       "usage": "Attendre takes its object directly: on attend le bus, with no preposition.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "attends", "fr": "J'attends le bus.",
           "fa": "منتظر اتوبوس هستم.", "en": "I am waiting for the bus." },
@@ -299,6 +320,7 @@
       "pattern": "standard",
       "source": "drafted",
       "usage": "With an adjective, trouver gives an opinion: je trouve ce livre intéressant.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "trouve", "fr": "Je trouve ce livre intéressant.",
           "fa": "این کتاب به نظرم جالب است.", "en": "I find this book interesting." },
@@ -312,6 +334,7 @@
       "type": "verb", "level": "A1", "fa": "دادن",
       "pattern": "standard",
       "source": "drafted",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "donne", "fr": "Je donne un cadeau à ma sœur.",
           "fa": "به خواهرم هدیه‌ای می‌دهم.", "en": "I am giving a present to my sister." },
@@ -326,6 +349,7 @@
       "pattern": "pronominal",
       "source": "drafted",
       "usage": "Se souvenir exists only with its pronoun — there is no je souviens — and what is remembered follows de. It takes être in the passé composé, so the participle agrees: elle s'est souvenue.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "tense": "present", "form": "me souviens", "fr": "Je me souviens de ce jour.",
           "fa": "آن روز را به یاد دارم.", "en": "I remember that day." },
@@ -336,8 +360,370 @@
       ]
     },
 
+    "v:suivre": {
+      "type": "verb", "level": "A1", "fa": "دنبال کردن، پیروی کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Je suis is both suivre and être; the rest of the sentence decides. Suivre takes its object directly, and suivre un cours means to take a class.",
+      "examples": [
+        { "tense": "present", "form": "suis", "fr": "Je suis ce chemin.",
+          "fa": "این مسیر را دنبال می‌کنم.", "en": "I am following this path." },
+        { "tense": "passe-compose", "form": "a suivi", "fr": "Elle a suivi un cours de français.",
+          "fa": "او در یک کلاس فرانسه شرکت کرد.", "en": "She took a French class." },
+        { "tense": "futur", "form": "suivrai", "fr": "Je te suivrai demain.",
+          "fa": "فردا دنبالت می‌آیم.", "en": "I will follow you tomorrow." }
+      ]
+    },
+    "v:passer": {
+      "type": "verb", "level": "A1", "fa": "گذشتن، گذراندن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Passer takes être in the passé composé when it has no object, so the participle agrees: elle est passée par Lyon. With an object it takes avoir and means to spend time: j'ai passé une semaine à Nice.",
+      "examples": [
+        { "tense": "present", "form": "passons", "fr": "Nous passons devant la gare.",
+          "fa": "از جلوی ایستگاه می‌گذریم.", "en": "We are walking past the station." },
+        { "tense": "passe-compose", "form": "est passée", "fr": "Elle est passée par Lyon.",
+          "fa": "او از لیون عبور کرد.", "en": "She went through Lyon." },
+        { "tense": "futur", "form": "passerai", "fr": "Je passerai chez toi ce soir.",
+          "fa": "امشب سری به خانه‌ات می‌زنم.", "en": "I will drop by your place tonight." }
+      ]
+    },
+    "v:laisser": {
+      "type": "verb", "level": "A1", "fa": "گذاشتن، جا گذاشتن، اجازه دادن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Laisser is to leave something somewhere, and with an infinitive it is to let someone do something: laisser jouer les enfants.",
+      "examples": [
+        { "tense": "present", "form": "laisse", "fr": "Je laisse mes clés ici.",
+          "fa": "کلیدهایم را اینجا می‌گذارم.", "en": "I am leaving my keys here." },
+        { "tense": "passe-compose", "form": "a laissé", "fr": "Elle a laissé son sac à la maison.",
+          "fa": "او کیفش را در خانه جا گذاشت.", "en": "She left her bag at home." },
+        { "tense": "futur", "form": "laisserons", "fr": "Nous laisserons les enfants jouer.",
+          "fa": "می‌گذاریم بچه‌ها بازی کنند.", "en": "We will let the children play." }
+      ]
+    },
+    "v:arriver": {
+      "type": "verb", "level": "A1", "fa": "رسیدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Arriver takes être in the passé composé, so the participle agrees with the subject: elle est arrivée, ils sont arrivés.",
+      "examples": [
+        { "tense": "present", "form": "arrive", "fr": "J'arrive à la gare à huit heures.",
+          "fa": "ساعت هشت به ایستگاه می‌رسم.", "en": "I arrive at the station at eight." },
+        { "tense": "passe-compose", "form": "est arrivée", "fr": "Elle est arrivée en retard.",
+          "fa": "او دیر رسید.", "en": "She arrived late." },
+        { "tense": "futur", "form": "arriverons", "fr": "Nous arriverons demain matin.",
+          "fa": "فردا صبح می‌رسیم.", "en": "We will arrive tomorrow morning." }
+      ]
+    },
+    "v:regarder": {
+      "type": "verb", "level": "A1", "fa": "نگاه کردن، تماشا کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Regarder takes its object directly, with no preposition: on regarde un film. It is to look or watch on purpose, where voir is simply to see.",
+      "examples": [
+        { "tense": "present", "form": "regardons", "fr": "Nous regardons un film.",
+          "fa": "داریم فیلم تماشا می‌کنیم.", "en": "We are watching a film." },
+        { "tense": "passe-compose", "form": "ai regardé", "fr": "J'ai regardé par la fenêtre.",
+          "fa": "از پنجره بیرون را نگاه کردم.", "en": "I looked out of the window." },
+        { "tense": "futur", "form": "regarderez", "fr": "Vous regarderez la télé après le dîner.",
+          "fa": "بعد از شام تلویزیون تماشا خواهید کرد.", "en": "You will watch TV after dinner." }
+      ]
+    },
+    "v:appeler": {
+      "type": "verb", "level": "A1", "fa": "صدا زدن، زنگ زدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Appeler doubles its l before a silent ending: j'appelle and j'appellerai, but nous appelons.",
+      "examples": [
+        { "tense": "present", "form": "appelle", "fr": "J'appelle ma mère tous les soirs.",
+          "fa": "هر شب به مادرم زنگ می‌زنم.", "en": "I call my mother every evening." },
+        { "tense": "passe-compose", "form": "a appelé", "fr": "Il a appelé un taxi.",
+          "fa": "او یک تاکسی خبر کرد.", "en": "He called a taxi." },
+        { "tense": "futur", "form": "appellerons", "fr": "Nous t'appellerons demain.",
+          "fa": "فردا به تو زنگ می‌زنیم.", "en": "We will call you tomorrow." }
+      ]
+    },
+    "v:partir": {
+      "type": "verb", "level": "A1", "fa": "رفتن، حرکت کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Partir takes être in the passé composé, so the participle agrees with the subject: elle est partie, ils sont partis. It is to leave or set off.",
+      "examples": [
+        { "tense": "present", "form": "partons", "fr": "Nous partons à huit heures.",
+          "fa": "ساعت هشت حرکت می‌کنیم.", "en": "We leave at eight." },
+        { "tense": "passe-compose", "form": "est partie", "fr": "Elle est partie très tôt.",
+          "fa": "او خیلی زود رفت.", "en": "She left very early." },
+        { "tense": "futur", "form": "partirai", "fr": "Je partirai en vacances en juillet.",
+          "fa": "در ژوئیه به تعطیلات می‌روم.", "en": "I will go on holiday in July." }
+      ]
+    },
+    "v:mettre": {
+      "type": "verb", "level": "A1", "fa": "گذاشتن، پوشیدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Mettre is to put something somewhere, and also to put on clothes.",
+      "examples": [
+        { "tense": "present", "form": "mets", "fr": "Je mets le livre sur la table.",
+          "fa": "کتاب را روی میز می‌گذارم.", "en": "I am putting the book on the table." },
+        { "tense": "passe-compose", "form": "a mis", "fr": "Il a mis son manteau.",
+          "fa": "او کتش را پوشید.", "en": "He put on his coat." },
+        { "tense": "futur", "form": "mettrons", "fr": "Nous mettrons la table à midi.",
+          "fa": "ظهر میز را می‌چینیم.", "en": "We will set the table at noon." }
+      ]
+    },
+    "v:rester": {
+      "type": "verb", "level": "A1", "fa": "ماندن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Rester takes être in the passé composé, so the participle agrees with the subject: elle est restée, ils sont restés.",
+      "examples": [
+        { "tense": "present", "form": "reste", "fr": "Je reste chez moi ce soir.",
+          "fa": "امشب خانه می‌مانم.", "en": "I am staying at home tonight." },
+        { "tense": "passe-compose", "form": "sont restés", "fr": "Les enfants sont restés à l'école.",
+          "fa": "بچه‌ها در مدرسه ماندند.", "en": "The children stayed at school." },
+        { "tense": "futur", "form": "resterez", "fr": "Vous resterez ici jusqu'à midi.",
+          "fa": "تا ظهر اینجا خواهید ماند.", "en": "You will stay here until noon." }
+      ]
+    },
+    "v:arrêter": {
+      "type": "verb", "level": "A1", "fa": "متوقف کردن، دست کشیدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Arrêter is to stop something; arrêter de plus an infinitive is to stop doing it.",
+      "examples": [
+        { "tense": "present", "form": "arrête", "fr": "Il arrête la voiture devant la maison.",
+          "fa": "او ماشین را جلوی خانه نگه می‌دارد.", "en": "He stops the car in front of the house." },
+        { "tense": "passe-compose", "form": "ai arrêté", "fr": "J'ai arrêté de fumer.",
+          "fa": "سیگار کشیدن را ترک کردم.", "en": "I stopped smoking." },
+        { "tense": "futur", "form": "arrêterons", "fr": "Nous arrêterons le travail à midi.",
+          "fa": "ظهر دست از کار می‌کشیم.", "en": "We will stop work at noon." }
+      ]
+    },
+    "v:connaître": {
+      "type": "verb", "level": "A1", "fa": "شناختن، آشنا بودن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Connaître is to know a person, a place or a thing; savoir is to know a fact or how to do something. In the passé composé it means to have met or got to know: il a connu sa femme à Lyon.",
+      "examples": [
+        { "tense": "present", "form": "connais", "fr": "Je connais ce restaurant.",
+          "fa": "این رستوران را می‌شناسم.", "en": "I know this restaurant." },
+        { "tense": "passe-compose", "form": "a connu", "fr": "Il a connu sa femme à Lyon.",
+          "fa": "او در لیون با همسرش آشنا شد.", "en": "He met his wife in Lyon." },
+        { "tense": "futur", "form": "connaîtrez", "fr": "Vous connaîtrez bientôt la ville.",
+          "fa": "به زودی شهر را خواهید شناخت.", "en": "You will soon know the city." }
+      ]
+    },
+    "v:tuer": {
+      "type": "verb", "level": "A1", "fa": "کشتن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Tuer always has an object: something or someone is killed. It is not the verb for the one who dies, which is mourir.",
+      "examples": [
+        { "tense": "present", "form": "tue", "fr": "Le chat tue la souris.",
+          "fa": "گربه موش را می‌کشد.", "en": "The cat kills the mouse." },
+        { "tense": "passe-compose", "form": "a tué", "fr": "Le froid a tué les plantes.",
+          "fa": "سرما گیاه‌ها را کشت.", "en": "The cold killed the plants." },
+        { "tense": "futur", "form": "tuera", "fr": "Le gel tuera les fleurs cette nuit.",
+          "fa": "امشب یخبندان گل‌ها را خواهد کشت.", "en": "The frost will kill the flowers tonight." }
+      ]
+    },
+    "v:mourir": {
+      "type": "verb", "level": "A1", "fa": "مردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Mourir takes être in the passé composé, so the participle agrees with the subject: elle est morte, ils sont morts. It is irregular: il meurt, but nous mourons and ils meurent.",
+      "examples": [
+        { "tense": "present", "form": "meurt", "fr": "Cette plante meurt de soif.",
+          "fa": "این گیاه از تشنگی می‌میرد.", "en": "This plant is dying of thirst." },
+        { "tense": "passe-compose", "form": "est morte", "fr": "Ma grand-mère est morte l'an dernier.",
+          "fa": "مادربزرگم پارسال درگذشت.", "en": "My grandmother died last year." },
+        { "tense": "futur", "form": "mourront", "fr": "Les poissons mourront sans eau.",
+          "fa": "ماهی‌ها بدون آب خواهند مرد.", "en": "The fish will die without water." }
+      ]
+    },
+    "v:demander": {
+      "type": "verb", "level": "A1", "fa": "پرسیدن، خواستن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Demander is to ask a question or to ask for something. The person asked comes after à: je demande à Marie.",
+      "examples": [
+        { "tense": "present", "form": "demande", "fr": "Je demande mon chemin.",
+          "fa": "آدرس را می‌پرسم.", "en": "I am asking the way." },
+        { "tense": "passe-compose", "form": "a demandé", "fr": "Elle a demandé l'addition.",
+          "fa": "او صورت‌حساب را خواست.", "en": "She asked for the bill." },
+        { "tense": "futur", "form": "demanderons", "fr": "Nous demanderons à Marie.",
+          "fa": "از ماری می‌پرسیم.", "en": "We will ask Marie." }
+      ]
+    },
+    "v:comprendre": {
+      "type": "verb", "level": "A1", "fa": "فهمیدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Comprendre is conjugated like prendre. It takes its object directly: je comprends la question.",
+      "examples": [
+        { "tense": "present", "form": "comprends", "fr": "Je ne comprends pas la question.",
+          "fa": "سؤال را نمی‌فهمم.", "en": "I do not understand the question." },
+        { "tense": "passe-compose", "form": "a compris", "fr": "Il a compris la leçon.",
+          "fa": "او درس را فهمید.", "en": "He understood the lesson." },
+        { "tense": "futur", "form": "comprendrez", "fr": "Vous comprendrez plus tard.",
+          "fa": "بعداً خواهید فهمید.", "en": "You will understand later." }
+      ]
+    },
+    "v:sortir": {
+      "type": "verb", "level": "A1", "fa": "بیرون رفتن، بیرون آمدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Sortir without an object takes être in the passé composé, so the participle agrees with the subject: elle est sortie. With a direct object (to take something out) it takes avoir: il a sorti la voiture.",
+      "examples": [
+        { "tense": "present", "form": "sortons", "fr": "Nous sortons ce soir.",
+          "fa": "امشب بیرون می‌رویم.", "en": "We are going out tonight." },
+        { "tense": "passe-compose", "form": "est sortie", "fr": "Elle est sortie de la maison à midi.",
+          "fa": "او ظهر از خانه بیرون رفت.", "en": "She went out of the house at noon." },
+        { "tense": "futur", "form": "sortirai", "fr": "Je sortirai avec mes amis samedi.",
+          "fa": "شنبه با دوستانم بیرون می‌روم.", "en": "I will go out with my friends on Saturday." }
+      ]
+    },
+    "v:entendre": {
+      "type": "verb", "level": "A1", "fa": "شنیدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Entendre is to hear a sound whether or not you were paying attention; écouter is to listen on purpose.",
+      "examples": [
+        { "tense": "present", "form": "entends", "fr": "J'entends un bruit.",
+          "fa": "صدایی می‌شنوم.", "en": "I hear a noise." },
+        { "tense": "passe-compose", "form": "avons entendu", "fr": "Nous avons entendu la nouvelle.",
+          "fa": "خبر را شنیدیم.", "en": "We heard the news." },
+        { "tense": "futur", "form": "entendras", "fr": "Tu entendras la musique d'ici.",
+          "fa": "موسیقی را از اینجا خواهی شنید.", "en": "You will hear the music from here." }
+      ]
+    },
+    "v:chercher": {
+      "type": "verb", "level": "A1", "fa": "گشتن، جستجو کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Chercher takes its object directly, with no preposition: je cherche mes clés. Aller chercher is to go and get.",
+      "examples": [
+        { "tense": "present", "form": "cherche", "fr": "Je cherche mes clés.",
+          "fa": "دنبال کلیدهایم می‌گردم.", "en": "I am looking for my keys." },
+        { "tense": "passe-compose", "form": "a cherché", "fr": "Elle a cherché son sac partout.",
+          "fa": "او همه‌جا دنبال کیفش گشت.", "en": "She looked for her bag everywhere." },
+        { "tense": "futur", "form": "chercherons", "fr": "Nous chercherons un hôtel demain.",
+          "fa": "فردا دنبال هتل می‌گردیم.", "en": "We will look for a hotel tomorrow." }
+      ]
+    },
+    "v:aider": {
+      "type": "verb", "level": "A1", "fa": "کمک کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "The person helped is a direct object: je l'aide. Before an infinitive the verb takes à: aider quelqu'un à porter.",
+      "examples": [
+        { "tense": "present", "form": "aide", "fr": "J'aide mon frère.",
+          "fa": "به برادرم کمک می‌کنم.", "en": "I am helping my brother." },
+        { "tense": "passe-compose", "form": "a aidé", "fr": "Elle a aidé sa voisine à porter les sacs.",
+          "fa": "او به همسایه‌اش کمک کرد کیسه‌ها را ببرد.", "en": "She helped her neighbour carry the bags." },
+        { "tense": "futur", "form": "aiderons", "fr": "Nous aiderons les enfants.",
+          "fa": "به بچه‌ها کمک خواهیم کرد.", "en": "We will help the children." }
+      ]
+    },
+    "v:essayer": {
+      "type": "verb", "level": "A1", "fa": "امتحان کردن، سعی کردن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Essayer de plus an infinitive is to try to do something; with a thing as its object it is to try it or try it on. The y becomes i before a silent ending: j'essaie (j'essaye is also seen).",
+      "examples": [
+        { "tense": "present", "form": "essaie", "fr": "J'essaie cette veste.",
+          "fa": "این کت را پرو می‌کنم.", "en": "I am trying on this jacket." },
+        { "tense": "passe-compose", "form": "a essayé", "fr": "Il a essayé de répondre.",
+          "fa": "او سعی کرد جواب بدهد.", "en": "He tried to answer." },
+        { "tense": "futur", "form": "essaierons", "fr": "Nous essaierons encore.",
+          "fa": "دوباره تلاش خواهیم کرد.", "en": "We will try again." }
+      ]
+    },
+    "v:revenir": {
+      "type": "verb", "level": "A1", "fa": "برگشتن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Revenir is conjugated like venir and takes être in the passé composé, so the participle agrees with the subject: elle est revenue, ils sont revenus.",
+      "examples": [
+        { "tense": "present", "form": "reviens", "fr": "Je reviens dans cinq minutes.",
+          "fa": "پنج دقیقه‌ی دیگر برمی‌گردم.", "en": "I will be back in five minutes." },
+        { "tense": "passe-compose", "form": "sont revenus", "fr": "Mes amis sont revenus hier.",
+          "fa": "دوستانم دیروز برگشتند.", "en": "My friends came back yesterday." },
+        { "tense": "futur", "form": "reviendra", "fr": "Elle reviendra lundi.",
+          "fa": "او دوشنبه برمی‌گردد.", "en": "She will come back on Monday." }
+      ]
+    },
+    "v:plaire": {
+      "type": "verb", "level": "A1", "fa": "خوشایند بودن، خوش آمدن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Plaire turns the sentence round: the thing that pleases is the subject and the person is the indirect object, so ce film me plaît is literally 'this film pleases me'. S'il vous plaît is the polite 'please'.",
+      "examples": [
+        { "tense": "present", "form": "plaît", "fr": "Ce film me plaît.",
+          "fa": "از این فیلم خوشم می‌آید.", "en": "I like this film." },
+        { "tense": "passe-compose", "form": "a plu", "fr": "Le cadeau a plu à ma mère.",
+          "fa": "مادرم از هدیه خوشش آمد.", "en": "My mother liked the present." },
+        { "tense": "futur", "form": "plairont", "fr": "Ces fleurs lui plairont.",
+          "fa": "از این گل‌ها خوشش خواهد آمد.", "en": "He or she will like these flowers." }
+      ]
+    },
+    "v:jouer": {
+      "type": "verb", "level": "A1", "fa": "بازی کردن، نواختن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Jouer à a game or sport (jouer au football) but jouer de an instrument (jouer de la guitare).",
+      "examples": [
+        { "tense": "present", "form": "jouent", "fr": "Les enfants jouent dans la cour.",
+          "fa": "بچه‌ها در حیاط بازی می‌کنند.", "en": "The children are playing in the yard." },
+        { "tense": "passe-compose", "form": "a joué", "fr": "Il a joué de la guitare hier soir.",
+          "fa": "او دیشب گیتار زد.", "en": "He played the guitar last night." },
+        { "tense": "futur", "form": "jouerons", "fr": "Nous jouerons au football demain.",
+          "fa": "فردا فوتبال بازی می‌کنیم.", "en": "We will play football tomorrow." }
+      ]
+    },
+    "v:perdre": {
+      "type": "verb", "level": "A1", "fa": "گم کردن، باختن",
+      "pattern": "standard",
+      "source": "drafted",
+      "review": { "owner": null, "teacher": null },
+      "usage": "Perdre is to lose something you cannot find, and also to lose a game or match, the opposite of gagner.",
+      "examples": [
+        { "tense": "present", "form": "perds", "fr": "Je perds toujours mon téléphone.",
+          "fa": "من همیشه گوشی‌ام را گم می‌کنم.", "en": "I always lose my phone." },
+        { "tense": "passe-compose", "form": "a perdu", "fr": "Notre équipe a perdu le match.",
+          "fa": "تیم ما بازی را باخت.", "en": "Our team lost the match." },
+        { "tense": "futur", "form": "perdrez", "fr": "Vous perdrez du temps.",
+          "fa": "وقتتان را تلف خواهید کرد.", "en": "You will waste time." }
+      ]
+    },
+
     "n:maison": {
       "type": "noun", "level": "A1", "fa": "خانه", "article": "la", "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "maison", "fr": "Nous avons vendu notre maison.",
           "fa": "خانه‌مان را فروختیم.", "en": "We sold our house." },
@@ -347,6 +733,7 @@
     },
     "n:livre": {
       "type": "noun", "level": "A1", "fa": "کتاب", "article": "le", "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "livre", "fr": "J'ai acheté ce livre hier.",
           "fa": "این کتاب را دیروز خریدم.", "en": "I bought this book yesterday." },
@@ -356,6 +743,7 @@
     },
     "n:eau": {
       "type": "noun", "level": "A1", "fa": "آب", "article": "l'", "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "eau", "fr": "J'ai bu beaucoup d'eau.",
           "fa": "آب زیادی نوشیدم.", "en": "I drank a lot of water." },
@@ -365,6 +753,7 @@
     },
     "n:travail": {
       "type": "noun", "level": "A1", "fa": "کار", "article": "le", "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "travail", "fr": "Le travail a été difficile.",
           "fa": "کار سخت بود.", "en": "The work was difficult." },
@@ -374,6 +763,7 @@
     },
     "n:ville": {
       "type": "noun", "level": "A1", "fa": "شهر", "article": "la", "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "ville", "fr": "Cette ville a beaucoup changé.",
           "fa": "این شهر خیلی تغییر کرده است.", "en": "This city has changed a lot." },
@@ -384,6 +774,7 @@
     "n:temps": {
       "type": "noun", "level": "A1", "fa": "زمان؛ هوا", "article": "le", "source": "fr-core-a1",
       "usage": "Le temps is both the time that passes and the weather.",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "temps", "fr": "Je n'ai pas eu le temps.",
           "fa": "وقت نداشتم.", "en": "I did not have time." },
@@ -393,6 +784,7 @@
     },
     "n:femme": {
       "type": "noun", "level": "A1", "fa": "زن؛ همسر", "article": "la", "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "femme", "fr": "Cette femme a écrit trois livres.",
           "fa": "این زن سه کتاب نوشته است.", "en": "This woman has written three books." },
@@ -402,6 +794,7 @@
     },
     "n:homme": {
       "type": "noun", "level": "A1", "fa": "مرد", "article": "l'", "source": "fr-core-a1",
+      "review": { "owner": null, "teacher": null },
       "examples": [
         { "form": "homme", "fr": "Un homme a demandé ton adresse.",
           "fa": "مردی آدرس تو را پرسید.", "en": "A man asked for your address." },

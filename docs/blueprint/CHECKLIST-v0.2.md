@@ -124,7 +124,7 @@ unreviewed. Recorded, not silently dropped.
 |:--|:--|:--|
 | ورود از لندینگ | guest reaches a working sample without a long form | TODO |
 | پیدا کردن کار | ≤2 actions from home to vocab/listening/news list | TODO |
-| کارت غنی | meaning, tense examples, audio, translation, save, next review all work | PARTIAL — 32/2371 cards enriched |
+| کارت غنی | meaning, tense examples, audio, translation, save, next review all work | PARTIAL — 56/2371 cards enriched |
 | اتصال داده | word from news appears in cards with source sentence, survives reload | TODO (B2) |
 | Reader | meaning panel, translation, return to position | TODO |
 | Player | play, speed, repeat, text, resume after return | TODO (B2) |
@@ -175,7 +175,7 @@ data or replacing working foundations.* Preserved:
 ## E. Honest state at the time of writing
 
 `main` = `e0af679`. Routes are `/learn`, `/practise/*`, `/workspace` — the
-`/app/*` architecture does not exist yet. 32 of 2,371 cards enriched, 0
+`/app/*` architecture does not exist yet. 56 of 2,371 cards enriched, 0
 teacher-reviewed. One dialogue unit. Listening is a stub. No production
 deployment exists and none has ever existed.
 
