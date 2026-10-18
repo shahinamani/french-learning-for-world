@@ -9,7 +9,7 @@
  * reads a row without naming whose row it is.
  */
 import { openDB, type DBSchema, type IDBPDatabase } from 'idb';
-import type { ReviewRow, CardState, SavedItem, ReadingPosition, PlaybackPosition, Note } from './types';
+import type { ReviewRow, CardState, SavedItem, ReadingPosition, PlaybackPosition, Note, ReaderResult } from './types';
 import type { PersonalExport } from './export-format';
 import { DB_NAME, DB_VERSION, upgradeSchema, saveRow, readingRow, playbackRow, noteRow } from './personal-store';
 // Every function below that WRITES calls markStarted(). It is called here, at
@@ -38,6 +38,8 @@ interface FlwDB extends DBSchema {
   readingPositions: { key: [string, string]; value: ReadingPosition; indexes: { 'by-user-updated': [string, number] } };
   playbackPositions: { key: [string, string]; value: PlaybackPosition; indexes: { 'by-user-updated': [string, number] } };
   notes: { key: [string, string]; value: Note; indexes: { 'by-user-updated': [string, number] } };
+  // Version 3. The Reader's comprehension score; same keying, same export, same erase.
+  readerResults: { key: [string, string]; value: ReaderResult; indexes: { 'by-user-updated': [string, number] } };
 }
 
 let dbPromise: Promise<IDBPDatabase<FlwDB>> | null = null;
@@ -160,18 +162,31 @@ export async function getNote(userId: string, itemId: string) {
   return (await db()).get('notes', [userId, itemId]);
 }
 
+export async function putReaderResult(r: ReaderResult) {
+  if (!r.userId) throw new Error('putReaderResult without a user id');
+  if (!r.itemId) throw new Error('putReaderResult without an item id');
+  await (await db()).put('readerResults', r);
+  markStarted();
+}
+export async function readerResultsForUser(userId: string) {
+  if (!userId) throw new Error('readerResultsForUser without a user id');
+  const range = IDBKeyRange.bound([userId, -Infinity], [userId, Infinity]);
+  return (await db()).getAllFromIndex('readerResults', 'by-user-updated', range);
+}
+
 /** Everything personal beyond reviews and cards, shaped for the export file. */
 export async function personalForUser(userId: string) {
   if (!userId) throw new Error('personalForUser without a user id');
   const d = await db();
   const range = IDBKeyRange.bound([userId, -Infinity], [userId, Infinity]);
-  const [saved, reading, playback, notes] = await Promise.all([
+  const [saved, reading, playback, notes, readerResults] = await Promise.all([
     d.getAllFromIndex('saved', 'by-user-time', range),
     d.getAllFromIndex('readingPositions', 'by-user-updated', range),
     d.getAllFromIndex('playbackPositions', 'by-user-updated', range),
     d.getAllFromIndex('notes', 'by-user-updated', range),
+    d.getAllFromIndex('readerResults', 'by-user-updated', range),
   ]);
-  return { saved, reading, playback, notes };
+  return { saved, reading, playback, notes, readerResults };
 }
 
 /**
@@ -193,7 +208,7 @@ export async function importForUser(
 ): Promise<{ rows: number; rowsSkipped: number; cards: number }> {
   if (!userId) throw new Error('importForUser without a user id');
   const d = await db();
-  const tx = d.transaction(['reviews', 'cards', 'saved', 'readingPositions', 'playbackPositions', 'notes'], 'readwrite');
+  const tx = d.transaction(['reviews', 'cards', 'saved', 'readingPositions', 'playbackPositions', 'notes', 'readerResults'], 'readwrite');
   // Personal rows: a saved item is kept if already here (its first savedAt and
   // context stand); positions and notes are taken only when newer, so an
   // import can never move a learner backwards.
@@ -204,7 +219,7 @@ export async function importForUser(
       if (await tx.objectStore('saved').get([userId, s.itemId])) continue;
       await tx.objectStore('saved').put({ ...s, userId }); personal++;
     }
-    const newer = async <S extends 'readingPositions' | 'playbackPositions' | 'notes'>(
+    const newer = async <S extends 'readingPositions' | 'playbackPositions' | 'notes' | 'readerResults'>(
       name: S, rows: { itemId: string; updatedAt: number }[]) => {
       const st = tx.objectStore(name);
       for (const r of rows) {
@@ -216,6 +231,7 @@ export async function importForUser(
     await newer('readingPositions', p.reading);
     await newer('playbackPositions', p.playback);
     await newer('notes', p.notes);
+    await newer('readerResults', p.readerResults ?? []);
   }
   const reviews = tx.objectStore('reviews');
   const cards = tx.objectStore('cards');
@@ -248,10 +264,11 @@ export async function importForUser(
 export async function eraseUser(userId: string) {
   if (!userId) throw new Error('eraseUser without a user id');
   const d = await db();
-  const tx = d.transaction(['reviews', 'cards', 'saved', 'readingPositions', 'playbackPositions', 'notes'], 'readwrite');
+  const tx = d.transaction(['reviews', 'cards', 'saved', 'readingPositions', 'playbackPositions', 'notes', 'readerResults'], 'readwrite');
   const range = IDBKeyRange.bound([userId, -Infinity], [userId, Infinity]);
   for (const [name, index] of [['saved', 'by-user-time'], ['readingPositions', 'by-user-updated'],
-                               ['playbackPositions', 'by-user-updated'], ['notes', 'by-user-updated']] as const) {
+                               ['playbackPositions', 'by-user-updated'], ['notes', 'by-user-updated'],
+                               ['readerResults', 'by-user-updated']] as const) {
     let c = await tx.objectStore(name).index(index as never).openCursor(range);
     while (c) { await c.delete(); c = await c.continue(); }
   }

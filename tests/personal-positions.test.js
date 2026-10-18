@@ -84,7 +84,7 @@ test('an export from before these stores existed (version 2) still imports, with
   const r = parseExport(v2);
   assert.equal(r.rows.length, 1);
   assert.equal(r.cards.length, 1);
-  assert.deepEqual(r.personal, { saved: [], reading: [], playback: [], notes: [] });
+  assert.deepEqual(r.personal, { saved: [], reading: [], playback: [], notes: [], readerResults: [] });
 });
 
 test('malformed personal rows are dropped, good ones beside them kept', () => {
@@ -98,4 +98,22 @@ test('malformed personal rows are dropped, good ones beside them kept', () => {
   assert.deepEqual(p.reading.map((r) => r.itemId), ['b']);
   assert.deepEqual(p.playback, []);
   assert.deepEqual(p.notes.map((r) => r.itemId), ['b']);
+});
+
+test('the Reader\'s score lives in the shared database, is exported and is read back', () => {
+  const s = fresh().store('readerResults');
+  s.put({ userId: 'u1', itemId: 'text.a2.gare', correct: 3, total: 4, updatedAt: 9 });
+  s.put({ userId: 'u1', itemId: 'text.a2.gare', correct: 4, total: 4, updatedAt: 10 });
+  assert.equal(s.count, 1, 'keyed [userId, itemId]: a second write is an overwrite');
+  const file = exportRows([], [], { readerResults: [s.get(['u1', 'text.a2.gare'])] });
+  assert.ok(!file.includes('"u1"'), 'the local profile id is not exported');
+  assert.deepEqual(parseExport(file).personal.readerResults,
+    [{ itemId: 'text.a2.gare', correct: 4, total: 4, updatedAt: 10 }]);
+});
+
+test('a malformed reader result is dropped, not repaired', () => {
+  const file = JSON.stringify({ format: EXPORT_FORMAT, version: 4, exportedAt: 'x', rows: [], cards: [],
+    readerResults: [{ itemId: 'a', correct: 5, total: 4, updatedAt: 1 }, { itemId: 'b', correct: '2', total: 4, updatedAt: 1 },
+                    { itemId: 'c', correct: 2, total: 4, updatedAt: 1 }] });
+  assert.deepEqual(parseExport(file).personal.readerResults.map((r) => r.itemId), ['c']);
 });

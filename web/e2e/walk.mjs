@@ -8,6 +8,7 @@ import { existsSync, readFileSync, writeFileSync, mkdtempSync, rmSync } from 'no
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { portalRoutes } from './portal-routes.mjs';
+import { readerWalk } from './reader.mjs';
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:8793/';
 // Browser path: this container ships Chromium at a fixed path; CI uses the one
@@ -57,6 +58,8 @@ for (const event of ['uncaughtException', 'unhandledRejection']) {
 }
 
 const failures = []; let checks = 0;
+/** Sections that could not run (a route another stream has not mounted). Never counted as passed. */
+const skipped = [];
 const ok = (l, p, detail) => { checks++; if (!p) failures.push(detail ? `${l} — ${detail}` : l);
   console.log(`${p ? '  PASS' : '  FAIL'}  ${l}`); if (!p && detail) console.log(`          ${detail}`); };
 const errors = [];
@@ -302,9 +305,16 @@ await page.waitForTimeout(300);
 const conceptHref = await page.locator('[data-testid="search-concepts"] a').first().getAttribute('href');
 await page.goto(BASE + conceptHref.replace(/^#?/, '#'), { waitUntil: 'networkidle' });
 await page.waitForTimeout(350);
-ok('a search result opens the real concept page', await page.locator('h1.h2').count() === 1);
-ok('a concept with no cards yet says so rather than showing a dead button',
-   (await page.locator('[data-testid="concept-no-cards"]').count()) + (await page.locator('[data-testid="concept-practise"]').count()) === 1);
+// Since the grammar routes were mounted, /learn/concept/:id forwards to
+// /app/grammar/:id, the lesson page, which accepts a concept id. A concept with
+// a written lesson opens it; one without says so and keeps the way back. Either
+// is acceptable here; a 404, a blank page or a dead end is not.
+await page.waitForSelector('[data-testid="grammar-lesson"], [data-testid="grl-nolesson-back"]', { timeout: 6000 }).catch(() => {});
+ok('a search result opens the grammar page, forwarded from the old concept address',
+   /^#\/app\/grammar\//.test(await page.evaluate(() => location.hash)) && await page.locator('[data-testid="not-found"]').count() === 0,
+   await page.evaluate(() => location.hash));
+ok('and it is a lesson, or says there is none and offers the way back',
+   (await page.locator('[data-testid="grammar-lesson"]').count()) + (await page.locator('[data-testid="grl-nolesson-back"]').count()) === 1);
 
 // ===================================================================
 // The learn map, which is the portal's main navigation. It offered 42 cells and
@@ -1194,7 +1204,7 @@ console.log('\n=== export, erase, import — the round trip ===');
   const file = await (await dl).path();
   const saved = JSON.parse(readFileSync(file, 'utf8'));
   ok(`the export carries ${saved.rows?.length ?? 0} rows AND ${saved.cards?.length ?? 0} card states (v${saved.version})`,
-     (saved.rows?.length ?? 0) >= 4 && (saved.cards?.length ?? 0) >= 4 && saved.version === 3);
+     (saved.rows?.length ?? 0) >= 4 && (saved.cards?.length ?? 0) >= 4 && saved.version === 4 && Array.isArray(saved.readerResults));
   ok('and does not carry the local profile id',
      !JSON.stringify(saved).includes('"userId"'));
 
@@ -2340,8 +2350,8 @@ console.log('\n=== migration: v1 database with history survives the upgrade ==='
     out.saved = await all('saved');
     db.close(); return out;
   });
-  ok(`the app upgraded the database to version ${after.version}`, after.version === 2);
-  ok(`all six stores exist (${after.names.join(', ')})`, after.names.join() === 'cards,notes,playbackPositions,readingPositions,reviews,saved');
+  ok(`the app upgraded the database to version ${after.version}`, after.version === 3);
+  ok(`all seven stores exist (${after.names.join(', ')})`, after.names.join() === 'cards,notes,playbackPositions,readerResults,readingPositions,reviews,saved');
   ok(`every review row survived (${after.reviews} of 60) and is readable`, after.reviews === 60 && after.reviewsIntact);
   ok(`every card state survived (${after.cards} of 20) and is readable`, after.cards === 20 && after.cardsIntact);
   ok('the v1 indexes are still there', after.reviewIdx.join() === 'by-user-card,by-user-session,by-user-time' && after.cardIdx.join() === 'by-user-due');
@@ -2351,11 +2361,355 @@ console.log('\n=== migration: v1 database with history survives the upgrade ==='
   await pg.evaluate(() => new Promise((res) => { const q = indexedDB.deleteDatabase('flw'); q.onsuccess = res; q.onerror = res; q.onblocked = res; }));
   await c.close();
 }
+// The Reader (blueprint section 11). Its own file, because it is long and runs alone too.
+await readerWalk({ browser, BASE, go, ok, watch });
+
+/* ── Grammar: the §10 loop and the §16 Exercise component ────────────────
+ *
+ * Checks are written against content/lessons.json, read from disk, so the
+ * expected text is the content's and not a copy typed here. Every check was
+ * made to fail on purpose before it was trusted (see the PR for how).
+ *
+ * If /app/grammar is not mounted yet the section SAYS it did not run and is
+ * counted under "skipped" in the summary. It does not pass, and it does not
+ * fail a build whose only fault is that another stream has not mounted a route.
+ */
+console.log('\n=== grammar: the learning loop (§10) and the Exercise component (§16) ===');
+{
+  const probeCtx = await browser.newContext({ serviceWorkers: 'block' });
+  const probe = await probeCtx.newPage(); watch(probe, ' grammar-probe');
+  await go(probe, '/app/grammar');
+  await probe.waitForSelector('[data-testid="grammar-list"]', { timeout: 8000 }).catch(() => {});
+  const mounted = await probe.locator('[data-testid="grammar-list"]').count() === 1;
+  await probeCtx.close();
+
+  if (!mounted) {
+    skipped.push('grammar loop: /app/grammar is not mounted in this build');
+    console.log('  SKIPPED — /app/grammar is not mounted in this build, so nothing here ran.');
+  } else {
+    const cdir = '../../content/';
+    const lessonFile = JSON.parse(readFileSync(new URL(cdir + 'lessons.json', import.meta.url), 'utf8'));
+    const conceptFile = JSON.parse(readFileSync(new URL(cdir + 'concepts.json', import.meta.url), 'utf8'));
+    const concepts = new Map(conceptFile.concepts.map((c) => [c.id, c]));
+    const LESSONS = lessonFile.lessons;
+    const L = LESSONS.find((l) => l.id === 'lesson:pc-vs-imparfait');
+    const SLUG = 'pc-vs-imparfait';
+    const norm = (s) => (s ?? '').replace(/\s+/g, ' ').trim();
+    const T = (p, id) => p.locator(`[data-testid="${id}"]`);
+    const txt = async (p, id) => norm(await T(p, id).first().innerText({ timeout: 4000 }).catch(() => ''));
+    const hashOf = (p) => p.evaluate(() => location.hash);
+
+    // The error and offline pages abort a request ON PURPOSE; the browser logs
+    // that as a console error, which is the test working, so only real page
+    // errors are watched there.
+    const watchPageErrors = (pg) => pg.on('pageerror', (e) => errors.push(`PAGE grammar-state: ${e.message}`));
+    const c = await browser.newContext({ viewport: { width: 1000, height: 1100 }, serviceWorkers: 'block' });
+    const p = await c.newPage(); watch(p, ' grammar');
+
+    /** Answer the current question correctly, using the content's answer key. */
+    const answerRight = async (lesson) => {
+      const n = Number((await txt(p, 'grammar-progress')).match(/(\d+)\s+\D+\s+(\d+)/)?.[1] ?? 0);
+      const q = lesson.questions[n - 1];
+      await T(p, `exercise-option-${q.answer}`).click();
+      await T(p, 'exercise-check').click();
+      await T(p, 'exercise-continue').click();
+    };
+    const finish = async (lesson) => {
+      for (let i = 0; i < lesson.questions.length; i++) {
+        if (await T(p, 'grammar-finished').count()) break;
+        if (!(await T(p, 'grammar-progress').count())) break;
+        await answerRight(lesson);
+      }
+    };
+
+    /* ── the library (§8) ─────────────────────────────────────────────── */
+    await go(p, '/app/grammar');
+    await p.waitForSelector('[data-testid="grammar-cards"]', { timeout: 8000 }).catch(() => {});
+    ok('the library has a title and a one-line description',
+       (await txt(p, 'grammar-title')).length > 2 && (await txt(p, 'grammar-lead')).length > 10);
+    ok(`it lists every lesson in the content (${LESSONS.length}) and says how many`,
+       await T(p, 'grammar-cards').locator('li').count() === LESSONS.length
+       && (await txt(p, 'grammar-count')).startsWith(`${LESSONS.length} of ${LESSONS.length}`),
+       await txt(p, 'grammar-count'));
+
+    await T(p, 'grammar-search').fill('pleuvait');
+    await p.waitForTimeout(150);
+    ok('search narrows the list and the count follows',
+       (await txt(p, 'grammar-count')).startsWith(`1 of ${LESSONS.length}`), await txt(p, 'grammar-count'));
+    ok('the search appears as a removable chip, and the address holds it',
+       await T(p, 'grammar-chip-q').count() === 1 && (await hashOf(p)).includes('q=pleuvait'));
+    await T(p, 'grammar-chip-q').click();
+    await p.waitForTimeout(150);
+    ok('removing the chip restores the list and clears the address',
+       (await txt(p, 'grammar-count')).startsWith(`${LESSONS.length} of`) && !(await hashOf(p)).includes('q='));
+
+    const b1 = LESSONS.filter((l) => l.level === 'B1');
+    await T(p, 'grammar-filter-level-B1').click();
+    await p.waitForTimeout(150);
+    ok('a level filter narrows to exactly that level\'s lessons',
+       (await txt(p, 'grammar-count')).startsWith(`${b1.length} of`) && await T(p, 'grammar-cards').locator('li').count() === b1.length,
+       await txt(p, 'grammar-count'));
+
+    // State kept on return: open a lesson from the filtered list, finish it,
+    // and the way back must be THE FILTERED LIST — not the index.
+    await T(p, `grammar-open-${b1[0].id}`).click();
+    await p.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 });
+    ok('a lesson opened from the list carries the list as its origin',
+       (await hashOf(p)).includes('from=') && decodeURIComponent(await hashOf(p)).includes('level=B1'), await hashOf(p));
+    await finish(b1[0]);
+    await T(p, 'grammar-return').click();
+    await p.waitForSelector('[data-testid="grammar-cards"]', { timeout: 8000 });
+    ok('returning from a lesson lands on the list with its filter still applied',
+       (await hashOf(p)).endsWith('/app/grammar?level=B1')
+       && await T(p, 'grammar-cards').locator('li').count() === b1.length, await hashOf(p));
+
+    await T(p, 'grammar-search').fill('zzzz-nothing');
+    await p.waitForTimeout(150);
+    ok('no match is an explained empty state with a way out',
+       await T(p, 'grl-empty').count() === 1 && await T(p, 'grammar-empty-clear').count() === 1);
+    await T(p, 'grammar-empty-clear').click();
+    await p.waitForTimeout(150);
+    ok('and the way out restores every lesson',
+       (await txt(p, 'grammar-count')).startsWith(`${LESSONS.length} of`));
+
+    /* ── one lesson, in §10's order ───────────────────────────────────── */
+    await go(p, `/app/grammar/${SLUG}?from=${encodeURIComponent('/learn')}`);
+    await p.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 });
+    const concept = concepts.get(L.conceptId);
+    const nearby = concepts.get(L.nearbyConceptId);
+
+    ok('1 concept: the lesson names its concept',
+       (await txt(p, 'grammar-concept')) === norm(concept.name.en), await txt(p, 'grammar-concept'));
+    const order = await p.locator('[data-testid^="grammar-step-"]')
+      .evaluateAll((els) => els.map((e) => e.getAttribute('data-testid')));
+    ok('the steps come in the order §10 gives',
+       order.join() === 'grammar-step-explanation,grammar-step-examples,grammar-step-difference,grammar-step-practice',
+       order.join());
+    ok('2 explanation: the lesson\'s own text, in the learner\'s language',
+       (await txt(p, 'grammar-explanation-text')) === norm(L.explanation.en));
+    ok('3 examples: exactly two, French first',
+       await p.locator('[data-testid^="grammar-example-"]').count() === 2
+       && (await txt(p, 'grammar-example-0')).startsWith(norm(L.examples[0].fr)));
+    ok('4 difference: the text for the nearby concept is shown',
+       (await txt(p, 'grammar-difference-text')) === norm(L.difference.en), await txt(p, 'grammar-difference-text'));
+    ok('and its heading names the nearby concept',
+       (await p.locator('#grl-h-difference').innerText()).includes(norm(nearby.name.en)),
+       await p.locator('#grl-h-difference').innerText());
+    ok('the draft marker is shown while no teacher has reviewed the lesson',
+       await T(p, 'grammar-unreviewed').count() === 1);
+
+    /* ── the simpler explanation ──────────────────────────────────────── */
+    const full0 = await txt(p, 'grammar-explanation-text');
+    await T(p, 'grammar-simpler').click();
+    const simple1 = await txt(p, 'grammar-explanation-text');
+    ok('the simpler-explanation control swaps in the stored simpler text',
+       simple1 === norm(L.simplerExplanation.en) && simple1 !== full0, simple1);
+    ok('and says it is pressed',
+       await T(p, 'grammar-simpler').getAttribute('aria-pressed') === 'true');
+    await T(p, 'grammar-simpler').click();
+    ok('pressing again restores the full explanation',
+       (await txt(p, 'grammar-explanation-text')) === full0);
+
+    /* ── a wrong answer explains why it is wrong ──────────────────────── */
+    const Q0 = L.questions[0];
+    await T(p, `exercise-option-${Q0.temptingWrong}`).click();
+    await T(p, 'exercise-check').click();
+    ok('a wrong answer is named as wrong, in words',
+       (await txt(p, 'exercise-verdict')).startsWith('✗ Not quite') || (await txt(p, 'exercise-verdict')).includes('Not quite'),
+       await txt(p, 'exercise-verdict'));
+    ok('it explains WHY the tempting answer is wrong, from the content',
+       (await txt(p, 'exercise-why-wrong')).includes(norm(Q0.explanation.tempting.en)),
+       await txt(p, 'exercise-why-wrong'));
+    ok('and why the right answer is right',
+       (await txt(p, 'exercise-why-right')).includes(norm(Q0.explanation.right.en)),
+       await txt(p, 'exercise-why-right'));
+    ok('right and wrong are marked in words, not by colour alone',
+       (await txt(p, 'exercise-tag-answer')).includes('Correct answer')
+       && (await txt(p, 'exercise-tag-mine')).includes('Your answer'));
+    ok('focus moves to the feedback, so a screen reader hears it',
+       await p.evaluate(() => document.activeElement?.getAttribute('data-testid')) === 'exercise-feedback');
+
+    // axe, with the feedback open — the state with the most going on in it.
+    {
+      const AXE = readFileSync(new URL('../../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
+      await p.addScriptTag({ content: AXE });
+      const v = await p.evaluate(async () => {
+        const r = await window.axe.run(document, {
+          runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+          resultTypes: ['violations'] });
+        return r.violations.map((x) => `${x.id}(${x.nodes.length}): ${(x.nodes[0]?.html || '').slice(0, 80)}`);
+      });
+      ok('axe finds no WCAG A/AA violation on the lesson with a wrong answer showing', v.length === 0, v.join(' | '));
+    }
+
+    /* ── retry ────────────────────────────────────────────────────────── */
+    await T(p, 'exercise-retry').click();
+    ok('retry clears the feedback',
+       await T(p, 'exercise-feedback').count() === 0);
+    ok('retry clears the selection and offers Check again',
+       await p.locator('form[data-state="ready"] input[type=radio]:checked').count() === 0
+       && await T(p, 'exercise-check').count() === 1);
+    ok('retry puts focus back on the options',
+       await p.evaluate(() => document.activeElement?.getAttribute('type')) === 'radio');
+
+    // A wrong answer nobody wrote a note for must not get an invented one.
+    const other = [0, 1, 2, 3].find((i) => i !== Q0.answer && i !== Q0.temptingWrong);
+    await T(p, `exercise-option-${other}`).click();
+    await T(p, 'exercise-check').click();
+    ok('a wrong choice with no written note says so instead of inventing one',
+       await T(p, 'exercise-no-note').count() === 1 && await T(p, 'exercise-why-wrong').count() === 0);
+    await T(p, 'exercise-retry').click();
+    await T(p, `exercise-option-${Q0.answer}`).click();
+    await T(p, 'exercise-check').click();
+    ok('a second attempt can be right, and is told so with the reason',
+       (await txt(p, 'exercise-verdict')).includes('Correct')
+       && await T(p, 'exercise-retry').count() === 0
+       && await T(p, 'exercise-why-wrong').count() === 0
+       && (await txt(p, 'exercise-why-right')).includes(norm(Q0.explanation.right.en)));
+    await T(p, 'exercise-continue').click();
+    ok('continue moves to the next question',
+       (await txt(p, 'grammar-progress')).includes('2'), await txt(p, 'grammar-progress'));
+
+    /* ── keyboard ─────────────────────────────────────────────────────── */
+    await T(p, 'grammar-simpler').focus();
+    let reached = false;
+    for (let i = 0; i < 8 && !reached; i++) {
+      await p.keyboard.press('Tab');
+      reached = await p.evaluate(() => document.activeElement?.getAttribute('type') === 'radio');
+    }
+    ok('Tab reaches the answer options from the page', reached);
+    ok('the focused option shows a visible focus ring',
+       await p.evaluate(() => {
+         const l = document.activeElement?.closest('label');
+         if (!l) return false;
+         const s = getComputedStyle(l);
+         return s.outlineStyle !== 'none' && parseFloat(s.outlineWidth) >= 2;
+       }));
+    await p.keyboard.press('ArrowDown');
+    ok('arrow keys move through the options',
+       await p.evaluate(() => document.activeElement?.closest('label')?.getAttribute('data-testid')) === 'exercise-option-1');
+    await p.keyboard.press('Enter');
+    ok('Enter checks the answer, with no mouse',
+       await T(p, 'exercise-feedback').count() === 1);
+
+    // Finish: the rest of the questions, then the way back.
+    await T(p, 'exercise-continue').click();
+    await finish(L);
+    ok('the end of practice is a finished state with a score',
+       await T(p, 'grammar-finished').count() === 1 && /\d of \d right/.test(await txt(p, 'grammar-finished')),
+       await txt(p, 'grammar-finished'));
+    await T(p, 'grammar-return').click();
+    await p.waitForTimeout(300);
+    // /learn is a legacy address that forwards (with replace) to Today.
+    ok('7 return: finishing a lesson reached from /learn goes back to where /learn leads (Today)',
+       (await hashOf(p)) === '#/app/today', await hashOf(p));
+
+    // The origin lives in the address, so refresh and a fresh tab keep it.
+    await go(p, `/app/grammar/${SLUG}?from=${encodeURIComponent('/learn')}`);
+    await p.reload({ waitUntil: 'networkidle' });
+    await p.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 });
+    ok('the origin survives a refresh',
+       await T(p, 'grammar-back').getAttribute('href') === '#/learn');
+    const fresh = await c.newPage(); watch(fresh, ' grammar-newtab');
+    await fresh.goto(p.url(), { waitUntil: 'networkidle' });
+    await fresh.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 });
+    ok('and a new tab',
+       await fresh.locator('[data-testid="grammar-back"]').getAttribute('href') === '#/learn');
+    await fresh.close();
+    await go(p, `/app/grammar/${SLUG}?from=${encodeURIComponent('//evil.example/x')}`);
+    await p.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 });
+    ok('a hostile origin is ignored, and the way back is the library',
+       await T(p, 'grammar-back').getAttribute('href') === '#/app/grammar',
+       await T(p, 'grammar-back').getAttribute('href'));
+
+    // A concept id works as well as a lesson id (the old /learn/concept links).
+    await go(p, `/app/grammar/${encodeURIComponent(L.conceptId)}`);
+    ok('a concept id opens its lesson',
+       await p.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 }).then(() => true, () => false));
+
+    /* ── the other states, each with a way forward ────────────────────── */
+    await go(p, '/app/grammar/nothing-here?from=%2Flearn');
+    ok('a concept with no lesson says so and keeps the way back',
+       await T(p, 'grl-empty').count() === 1 && await T(p, 'grl-nolesson-back').getAttribute('href') === '#/learn');
+
+    {
+      const ec = await browser.newContext({ serviceWorkers: 'block' });
+      const ep = await ec.newPage(); watchPageErrors(ep);
+      await ec.route('**/content/lessons.json', (r) => r.abort());
+      await ep.goto(BASE + '#/app/grammar/' + SLUG, { waitUntil: 'networkidle' });
+      await ep.waitForSelector('[data-testid="grl-error"]', { timeout: 8000 }).catch(() => {});
+      ok('a failed load is an error with a Try again button',
+         await ep.locator('[data-testid="grl-error"]').count() === 1 && await ep.locator('[data-testid="grl-retry"]').count() === 1);
+      await ec.unroute('**/content/lessons.json');
+      await ep.locator('[data-testid="grl-retry"]').click();
+      ok('and Try again recovers without a reload',
+         await ep.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 }).then(() => true, () => false));
+      await ec.close();
+
+      const oc = await browser.newContext({ serviceWorkers: 'block' });
+      await oc.addInitScript(() => { Object.defineProperty(navigator, 'onLine', { get: () => false }); });
+      const op = await oc.newPage(); watchPageErrors(op);
+      await oc.route('**/content/lessons.json', (r) => r.abort());
+      await op.goto(BASE + '#/app/grammar', { waitUntil: 'networkidle' });
+      await op.waitForSelector('[data-testid="grl-offline"]', { timeout: 8000 }).catch(() => {});
+      ok('offline is its own state, not a generic error, with Try again',
+         await op.locator('[data-testid="grl-offline"]').count() === 1 && await op.locator('[data-testid="grl-retry"]').count() === 1);
+      await oc.close();
+
+      const lc = await browser.newContext({ serviceWorkers: 'block' });
+      const lp = await lc.newPage(); watchPageErrors(lp);
+      await lc.route('**/content/lessons.json', async (r) => { await new Promise((s) => setTimeout(s, 1500)); await r.continue(); });
+      await lp.goto(BASE + '#/app/grammar', { waitUntil: 'domcontentloaded' });
+      await lp.waitForSelector('[data-testid="grl-loading"]', { timeout: 6000 }).catch(() => {});
+      ok('while loading it says so, and marks itself busy',
+         await lp.locator('[data-testid="grl-loading"]').getAttribute('aria-busy') === 'true');
+      ok('and then the library arrives',
+         await lp.waitForSelector('[data-testid="grammar-cards"]', { timeout: 10000 }).then(() => true, () => false));
+      await lc.close();
+    }
+
+    /* ── the learner's own language ───────────────────────────────────── */
+    {
+      const userId = await p.evaluate(() => sessionStorage.getItem('flw:activeProfile')
+        || localStorage.getItem('flw:lastProfile')
+        || (JSON.parse(localStorage.getItem('flw:profiles') || '[]')[0] || {}).id);
+      await p.evaluate((id) => localStorage.setItem(`flw:u:${id}:settings`,
+        JSON.stringify({ ui: 'fa', meaning: 'fa', theme: 'system', sound: true })), userId);
+      await go(p, `/app/grammar/${SLUG}`);
+      // A hash change is not a reload: settings are read once at start-up.
+      await p.reload({ waitUntil: 'networkidle' });
+      await p.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 8000 });
+      ok('Persian interface: the explanation is the lesson\'s Persian, marked lang=fa',
+         (await txt(p, 'grammar-explanation-text')) === norm(L.explanation.fa)
+         && await p.locator('[data-testid="grammar-explanation-text"] [lang="fa"]').count() === 1,
+         await txt(p, 'grammar-explanation-text'));
+      await T(p, 'grammar-simpler').click();
+      ok('and the simpler explanation is the Persian one',
+         (await txt(p, 'grammar-explanation-text')) === norm(L.simplerExplanation.fa));
+      await T(p, `exercise-option-${Q0.temptingWrong}`).click();
+      await T(p, 'exercise-check').click();
+      ok('and the reason a wrong answer is wrong is the Persian one',
+         (await txt(p, 'exercise-why-wrong')).includes(norm(Q0.explanation.tempting.fa)),
+         await txt(p, 'exercise-why-wrong'));
+      const AXE = readFileSync(new URL('../../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
+      await p.addScriptTag({ content: AXE });
+      const v = await p.evaluate(async () => {
+        const r = await window.axe.run(document, {
+          runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
+          resultTypes: ['violations'] });
+        return r.violations.map((x) => `${x.id}(${x.nodes.length}): ${(x.nodes[0]?.html || '').slice(0, 80)}`);
+      });
+      ok('axe finds no violation on the Persian lesson with a wrong answer showing', v.length === 0, v.join(' | '));
+    }
+    await c.close();
+  }
+}
 
 console.log('\n=== console ===');
 const real = errors.filter((e) => !/ERR_CERT_AUTHORITY|favicon/.test(e));
 console.log(real.length ? real.slice(0,8).join('\n') : '  none');
 console.log(`\n${checks} checks · ${failures.length} failed · ${real.length} console errors`);
+for (const x of skipped) console.log('  SKIPPED: ' + x);
 if (checks === 0) { console.log('NO CHECKS RAN'); await browser.close(); process.exit(2); }
 for (const f of failures) console.log('  FAILED: ' + f);
 await browser.close();

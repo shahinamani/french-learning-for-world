@@ -107,7 +107,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
   // 2. Every learner route renders, and the placeholders say what is missing.
   const ROUTES = ['today', 'path', 'vocabulary', 'cards', 'verbs', 'grammar', 'listening', 'reading', 'output',
                   'news', 'podcasts', 'exams', 'saved', 'progress', 'search', 'workspace'];
-  const PLACEHOLDER = ['path', 'vocabulary', 'grammar', 'reading', 'output', 'news', 'podcasts', 'saved'];
+  // Grammar and reading were placeholders until they were mounted; they are real pages now.
+  const PLACEHOLDER = ['path', 'vocabulary', 'output', 'news', 'podcasts', 'saved'];
   for (const id of ROUTES) {
     await go(r, `/app/${id}`);
     const nf = await r.locator('[data-testid="not-found"]').count();

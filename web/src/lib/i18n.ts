@@ -496,14 +496,193 @@ const weaknessEn = {
 
 export const WEAKNESS_KEYS = Object.keys(weaknessEn) as (keyof typeof weaknessEn)[];
 
+/**
+ * The grammar loop and the Exercise component (stream S2-grammar, 2026-10-18).
+ *
+ * A fifth optional group, for the standing reason of the other four: adding to
+ * `en` obliges Persian and Arabic, and inventing those is what this project
+ * does not do. English and French are written here; Persian and Arabic fall
+ * back to English behind `notTranslatedHere`. Every key carries the prefix
+ * `grl` (NOT `gram`: the core key `grammar` begins with it).
+ *
+ * The lesson TEXT is not in this group. It is in content/lessons.json, in the
+ * languages its writer supplied; these are only the words around it.
+ */
+const grammarEn = {
+  grlTitle: 'Grammar',
+  grlLead: 'Short lessons: the idea, two examples, how it differs from its neighbour, then practice that explains every answer.',
+  grlSearch: 'Search grammar',
+  grlSearchPlaceholder: 'passé composé, partitive…',
+  grlFilterLevel: 'Level',
+  grlFilterTopic: 'Topic',
+  grlAll: 'All',
+  grlCount: '{n} of {total} lessons',
+  grlActiveFilters: 'Active filters',
+  grlRemoveFilter: 'Remove filter: {name}',
+  grlClearFilters: 'Clear all filters',
+  grlSearchChip: 'Search: {q}',
+  grlNoMatch: 'No lesson matches these filters.',
+  grlNoMatchHelp: 'Remove a filter or clear the search.',
+  grlQuestionsN: '{n} practice questions',
+  grlOpenLesson: 'Open lesson',
+  grlLoading: 'Loading the lessons…',
+  grlLoadError: 'The lessons could not be loaded.',
+  grlLoadErrorHelp: 'Nothing is wrong with your progress. Try again.',
+  grlOffline: 'You are offline, and these lessons are not stored on this device yet.',
+  grlOfflineHelp: 'Reconnect, then try again.',
+  grlRetryLoad: 'Try again',
+  grlEmpty: 'There are no grammar lessons yet.',
+  grlEmptyHelp: 'None has been written. The vocabulary and verbs sections still work.',
+  grlNoLesson: 'There is no lesson for this yet.',
+  grlNoLessonHelp: 'The concept exists, but nobody has written a lesson on it.',
+  grlBackToList: 'All grammar lessons',
+  grlBackToOrigin: 'Back to what you were doing',
+  grlStepExplanation: 'The idea',
+  grlStepExamples: 'Two examples',
+  grlStepDifference: 'How it differs from {name}',
+  grlStepPractice: 'Practice',
+  grlSimpler: 'Simpler explanation',
+  grlFullAgain: 'Full explanation',
+  grlOpenNearby: 'Open the lesson on {name}',
+  grlNotInYourLanguage: 'Part of this lesson is not written in your language yet. Those parts are shown in English.',
+  grlDrafted: 'Drafted, not reviewed. No teacher has read this lesson, and nobody has checked the grammar against a reference.',
+  grlQuestionOf: 'Question {n} of {total}',
+  grlFinishedTitle: 'Practice finished',
+  grlFinishedScore: '{n} of {total} right on the first try.',
+  grlPracticeAgain: 'Practise again',
+  grlReturnOrigin: 'Return to where you came from',
+  grlReturnList: 'Back to all grammar lessons',
+  grlExCheck: 'Check',
+  grlExChoose: 'Choose an answer first.',
+  grlExRight: 'Correct.',
+  grlExWrong: 'Not quite.',
+  grlExAnswerIs: 'The answer is {a}.',
+  grlExWhyRight: 'Why this is right',
+  grlExWhyWrong: 'Why “{a}” is wrong',
+  grlExNoNote: 'No note was written for the choice you made.',
+  grlExYours: 'Your answer',
+  grlExTheAnswer: 'Correct answer',
+  grlExRetry: 'Try again',
+  grlExContinue: 'Continue',
+  grlExLoading: 'Loading the question…',
+  grlExError: 'This question could not be loaded.',
+  grlExOffline: 'You are offline.',
+  grlExEmpty: 'There is no question here.',
+  grlExFinished: 'Finished.',
+};
+
+export const GRAMMAR_KEYS = Object.keys(grammarEn) as (keyof typeof grammarEn)[];
+
+
+/**
+ * Another optional group: the Reader (blueprint section 11). Same standing
+ * reason as the earlier ones — English and French are written here, Persian and
+ * Arabic are not, and fall back to English behind `notTranslatedHere`.
+ * Every key starts with `rd`.
+ */
+const readerEn = {
+  rdTitle: 'Reading',
+  rdLead: 'Short original French texts. Select any word to see what it means in its sentence, and add it to your words with that sentence attached.',
+  rdDraftedNote: 'Drafted for this project and not yet read by a teacher. The level was set by the author, not measured.',
+  rdSearchLabel: 'Search the texts',
+  rdSearchPlaceholder: 'A title or a topic…',
+  rdFilterLevel: 'Level',
+  rdFilterTopic: 'Topic',
+  rdFilterDuration: 'Length',
+  rdFilterType: 'Type',
+  rdFilters: 'Filters',
+  rdTopicDaily: 'Daily life',
+  rdTopicWork: 'Work',
+  rdTopicScience: 'Science',
+  rdTopicCulture: 'Culture',
+  rdDurShort: 'Short (under 90 s)',
+  rdDurMedium: 'Medium (90–104 s)',
+  rdDurLong: 'Longer (105 s or more)',
+  rdTypeText: 'Text',
+  rdLevelNone: 'Level not stated',
+  rdResultCount: '{n} texts shown',
+  rdResultCountOne: '1 text shown',
+  rdClearFilters: 'Clear all filters',
+  rdRemoveFilter: 'Remove filter: {name}',
+  rdMinutes: '{n} min',
+  rdRead: 'Read',
+  rdContinue: 'Continue reading',
+  rdSavedBadge: 'Saved',
+  rdResultBadge: 'Questions: {c} of {n}',
+  rdBack: 'Back to the texts',
+  rdSave: 'Save for later',
+  rdSavedForLater: 'Saved for later',
+  rdSaveNote: 'Saving a text is not the same as having learned it.',
+  rdFontSize: 'Text size',
+  rdFontSmaller: 'Smaller text',
+  rdFontLarger: 'Larger text',
+  rdShowTranslation: 'Show the translation',
+  rdHideTranslation: 'Hide the translation',
+  rdTranslationHeading: 'Translation',
+  rdTranslationNone: 'This text has no translation in your meaning language.',
+  rdTextLabel: 'French text. Select a word or a phrase to see its meaning. Arrow keys move between words; Enter opens the meaning.',
+  rdResumed: 'You are back at sentence {n} of {total}.',
+  rdFromStart: 'Start from the beginning',
+  rdPanelTitle: 'Meaning',
+  rdPanelEmpty: 'Select a word or a phrase in the text to see what it means in its sentence.',
+  rdPanelClose: 'Close the meaning panel',
+  rdSelected: 'Selected',
+  rdItsSentence: 'Its sentence',
+  rdMeaningHere: 'Meaning in this text',
+  rdNoGloss: 'This text’s word list has no entry for this. You can still add it: its sentence is saved with it.',
+  rdSpellingMatch: 'Matched by spelling only. It may be another form or another word.',
+  rdGlossDrafted: 'Meanings were written together with the text and no teacher has checked them.',
+  rdHear: 'Hear it',
+  rdSpeechAid: 'Your device’s voice, not a recording.',
+  rdNoVoice: 'This device has no French voice, so it cannot be read aloud here.',
+  rdAddWord: 'Add to my words',
+  rdWordAdded: 'In my words',
+  rdWordAddedNote: 'Saved with its sentence from this text.',
+  rdSaveFailed: 'Could not save to this browser. Nothing was stored.',
+  rdDictionary: 'Look up in the dictionary',
+  rdWhatStructure: 'What is this structure?',
+  rdStructureNone: 'No grammar explanation is linked to this text yet, so none is shown rather than a guess.',
+  rdStructureOpen: 'Open grammar',
+  rdGlossedHere: 'Glossed in this sentence',
+  rdAddGlossed: 'Add {word}',
+  rdListen: 'Listen to the text',
+  rdNoAudio: 'No recording of this text exists yet; none has been licensed.',
+  rdWordsHeading: 'Words from this text',
+  rdFinishReading: 'I have finished reading',
+  rdQuizTitle: 'Check your understanding',
+  rdQuizLead: 'Answer in your own time. Each answer is explained, right or wrong.',
+  rdQuestionN: 'Question {i} of {n}',
+  rdCheck: 'Check',
+  rdCorrect: 'Correct.',
+  rdNotQuite: 'Not quite.',
+  rdTryAgain: 'Try again',
+  rdExplanation: 'Why',
+  rdFinishedTitle: 'You have answered every question',
+  rdFinishedScore: '{c} of {n} right on the first try.',
+  rdFinishedNext: 'What next?',
+  rdReread: 'Read it again',
+  rdMyWords: 'Review my words',
+  rdLoading: 'Loading the texts…',
+  rdErrorTitle: 'The texts could not be loaded',
+  rdErrorBody: 'The file did not arrive. Nothing on your device has been lost.',
+  rdRetry: 'Try again',
+  rdOfflineTitle: 'You are offline',
+  rdOfflineBody: 'The texts have not been stored on this device yet. Connect once and they will open here.',
+  rdEmptyTitle: 'No text matches these filters',
+  rdEmptyBody: 'Remove a filter or clear them all to see the texts again.',
+  rdNoTextsTitle: 'There are no reading texts yet',
+  rdNoTextsBody: 'Come back later, or study words and verbs meanwhile.',
+  rdNotFoundTitle: 'This text does not exist',
+  rdNotFoundBody: 'The link may be old. The list has every text there is.',
+};
 
 export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
   & Partial<typeof importEn> & Partial<typeof workspaceEn> & Partial<typeof shellEn>
-  & Partial<typeof weaknessEn>;
+  & Partial<typeof weaknessEn> & Partial<typeof grammarEn> & Partial<typeof readerEn>;
 
 /** What the translator and the prerender read: English, landing copy included. */
 const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn, ...workspaceEn,
-  ...shellEn, ...weaknessEn };
+  ...shellEn, ...weaknessEn, ...grammarEn, ...readerEn };
 
 /**
  * Has anybody written the landing page in this language?

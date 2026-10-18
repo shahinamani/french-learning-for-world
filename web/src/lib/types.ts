@@ -96,3 +96,5 @@ export type SavedItem = {
 export type ReadingPosition = { userId: string; itemId: string; paragraph: number; updatedAt: number };
 export type PlaybackPosition = { userId: string; itemId: string; seconds: number; updatedAt: number };
 export type Note = { userId: string; itemId: string; text: string; updatedAt: number };
+/** How a learner did on a text's comprehension questions: a count, never a grade. */
+export type ReaderResult = { userId: string; itemId: string; correct: number; total: number; updatedAt: number };
