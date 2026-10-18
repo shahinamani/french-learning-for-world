@@ -1,7 +1,8 @@
 /**
- * The shell: session rail, top bar with the timer pill, the routed page, and
- * four bottom tabs. Account and About live behind the settings control — at
- * 320 px a fifth tab costs every other tab its label.
+ * The portal shell: top bar with the timer pill, the grouped sidebar (from
+ * 1024 px), the five-item mobile bar (below it), and the routed page under a
+ * breadcrumb and a global search. The route map and the reasons for it are
+ * docs/blueprint/CONTRACTS-v0.2.md section 1; the tables are routes/app/nav.ts.
  */
 import { useEffect, useRef, useState } from 'react';
 import type { ReactNode } from 'react';
@@ -11,14 +12,9 @@ import * as Popover from '@radix-ui/react-popover';
 import { useApp, useUserId } from '../app-context';
 import { Icon } from './Icon';
 import { SidePanel } from './SidePanel';
+import { Sidebar, MobileBar } from '../routes/app/PortalNav';
+import { TopLine } from '../routes/app/TopLine';
 import { PRESETS, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
-
-const TABS = [
-  { to: '/learn', icon: 'learn', key: 'learn' },
-  { to: '/practise/review', icon: 'practise', key: 'practise' },
-  { to: '/progress', icon: 'progress', key: 'progress' },
-  { to: '/search', icon: 'search', key: 'search' },
-] as const;
 
 export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const { t, settings, update } = useApp();
@@ -29,6 +25,9 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   // is identified by its route rather than by asking the page: `/` shows the
   // dashboard to somebody who has studied here, and they should keep the timer.
   const onLanding = (location.pathname === '/' || location.pathname === '') && !hasStarted();
+  // Persian and Arabic have no portal-navigation copy: the labels are English,
+  // and the page says so rather than showing English as if it were theirs.
+  const labelsTranslated = settings.ui === 'en' || settings.ui === 'fr';
   const [timerOpen, setTimerOpen] = useState(false);
   const [timer, setTimer] = useState<{ endsAt: number; durationMin: number; running: boolean }>(
     { endsAt: 0, durationMin: 15, running: false });
@@ -95,7 +94,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   // ⌘K / Ctrl-K from anywhere. Search is a route, so this is a navigation.
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
-      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); navigate('/search'); }
+      if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') { e.preventDefault(); navigate('/app/search'); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
@@ -117,7 +116,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
       <header className="bar">
         <div className="bar-in">
-          <NavLink to="/learn" className="brand" aria-label={t('appName')}>
+          <NavLink to="/app/today" className="brand" aria-label={t('appName')}>
             <span className="brand-mark" aria-hidden="true">Fr</span>
             <span className="brand-name">{t('appName')}</span>
           </NavLink>
@@ -185,23 +184,18 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
         )}
       </header>
 
-      <main id="main" key={location.pathname}>{prerenderChild ?? <Outlet />}</main>
+      <main id="main" key={location.pathname}>
+        {!onLanding && <TopLine />}
+        {!onLanding && !labelsTranslated && (
+          <p className="muted topline__note" data-testid="shell-untranslated">{t('shellUntranslated')}</p>
+        )}
+        {prerenderChild ?? <Outlet />}
+      </main>
 
-      <nav className="tabs" aria-label={t('mainNav')}>
-        {TABS.map((tab) => (
-          // A tab BAR is navigation, not a tablist: it changes the page, it does
-          // not switch panels within one. So the active state is `aria-current`
-          // on the link, which react-router sets, and not `aria-selected` — which
-          // axe reports as a critical error on every screen, because it was on a
-          // `role="presentation"` span that was also hiding the label from the
-          // accessibility tree. This is the one Radix Tabs would have got wrong too.
-          <NavLink key={tab.key} to={tab.to} className="tab" data-testid={`tab-${tab.key}`}>
-            <span className="tab__in">
-              <Icon name={tab.icon} /><span>{t(tab.key)}</span>
-            </span>
-          </NavLink>
-        ))}
-      </nav>
+      {/* One navigation per width. On the landing page there is no sidebar:
+          a stranger has no portal to navigate yet. */}
+      {!onLanding && <Sidebar />}
+      <MobileBar />
 
       <SidePanel />
     </div>

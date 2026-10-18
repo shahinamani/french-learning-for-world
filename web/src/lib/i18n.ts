@@ -373,12 +373,64 @@ const workspaceEn = {
 
 export const WORKSPACE_KEYS = Object.keys(workspaceEn) as (keyof typeof workspaceEn)[];
 
+/**
+ * The portal shell and its routes, added 2026-10-18 (blueprint v0.2, section 5).
+ *
+ * A fifth optional group, for the standing reason: adding to `en` obliges
+ * Persian and Arabic, and inventing those is what this project does not do.
+ * English and French are written; Persian and Arabic fall back to English
+ * behind the `shellUntranslated` notice. Labels that already exist in the core
+ * dictionary (today, cards, verbs, grammar, vocabulary, exams, progress,
+ * search, account, learn) are reused, not repeated, so those are translated in
+ * all four languages.
+ */
+const shellEn = {
+  shellSections: 'Sections',
+  shellQuickNav: 'Quick navigation',
+  shellBreadcrumb: 'You are here',
+  shellUntranslated: 'Navigation labels and the notes on unbuilt sections are shown in English: they have not been translated into your language yet.',
+  shellSearchLabel: 'Search the portal',
+  shellSearchPlaceholder: 'What do you want to learn?',
+  shellSearchGo: 'Search',
+  shellNavPath: 'My path',
+  shellNavListening: 'Listening',
+  shellNavReading: 'Reading',
+  shellNavOutput: 'Speaking and writing',
+  shellNavNews: 'News',
+  shellNavPodcasts: 'Podcasts',
+  shellNavSaved: 'My library',
+  shellNavReview: 'Review',
+  shellNavSavedShort: 'Saved',
+  shellNavMore: 'More',
+  shellGroupFree: 'Free learning',
+  shellGroupDiscover: 'Discover content',
+  shellAppearance: 'Appearance and language',
+  shellHelp: 'Help',
+  shellExit: 'Exit to the landing page',
+  shellSheetLearn: 'Learn',
+  shellSheetMore: 'More',
+  shellInstead: 'What you can do instead',
+  shellMissingPath: 'There is no personal path yet. Nothing here records a goal or builds a plan from one. What exists: the level-and-skill map, where every cell opens a lesson page, and the spaced-repetition review.',
+  shellMissingVocabulary: 'There is no vocabulary index page yet. The vocabulary cards, with example sentences, exist in the learning workspace, and every word is searchable.',
+  shellMissingGrammar: 'There is no grammar index yet. Each grammar concept has its own page and is found through search or from the level map.',
+  shellMissingReading: 'There is no reader yet and no text to read in it: every text needs a source and a licence that permits reuse, and none has been obtained. The verb tables and grammar pages are readable now.',
+  shellMissingOutput: 'There is no speaking or writing practice yet. Speaking needs recording and a marker, and nothing here can mark free writing. Conjugation drills are the closest written practice that exists.',
+  shellMissingNews: 'There are no news items yet: each one needs a source whose licence permits reuse, and none has been obtained. Nothing is shown rather than copying text we may not use.',
+  shellMissingPodcasts: 'There are no podcasts yet: this project holds no licensed recording, and machine speech is not offered in its place.',
+  shellMissingSaved: 'Saving a word or sentence to a personal library is not built. Your review history is kept on this device and is visible under Progress.',
+  shellGoWorkspace: 'Learning workspace',
+  shellGoDrill: 'Conjugation drill',
+  shellGoMap: 'Level map (Today)',
+};
+
+export const SHELL_KEYS = Object.keys(shellEn) as (keyof typeof shellEn)[];
+
 
 export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
-  & Partial<typeof importEn> & Partial<typeof workspaceEn>;
+  & Partial<typeof importEn> & Partial<typeof workspaceEn> & Partial<typeof shellEn>;
 
 /** What the translator and the prerender read: English, landing copy included. */
-const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn, ...workspaceEn };
+const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn, ...workspaceEn, ...shellEn };
 
 /**
  * Has anybody written the landing page in this language?
