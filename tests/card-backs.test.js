@@ -26,7 +26,10 @@ const byKey = new Map(cards.map((c) => [c.key, c]));
 const entries = Object.entries(backs);
 
 test('every back belongs to a card that actually exists', () => {
-  assert.ok(entries.length >= 30, `only ${entries.length} backs — the batch shrank`);
+  // Exact, not a floor: 22 reused + 10 drafted + 24 drafted in the S3-cards-2
+  // batch. A count that only ever says "at least" lets a batch shrink unseen.
+  // Raising this number is a deliberate act that goes with adding backs.
+  assert.equal(entries.length, 56, `${entries.length} backs — recount, then change this deliberately`);
   for (const [key] of entries) {
     assert.ok(byKey.has(key), `${key} has a back but is not an eligible card`);
   }
@@ -142,6 +145,7 @@ test('nothing is padded: every slot has real French, Persian and English', () =>
 test('provenance is recorded, and reuse is declared as reuse', () => {
   const reused = entries.filter(([, b]) => b.source === 'fr-core-a1');
   assert.equal(reused.length, 22, 'the 22 written cards are reused, not rewritten');
+  assert.equal(entries.length - reused.length, 34, 'everything else is drafted: 10 + 24');
   const deckByKey = new Map(deck.map((c) => [c.key, c]));
   for (const [key, b] of reused) {
     const card = deckByKey.get(key);
@@ -157,6 +161,25 @@ test('provenance is recorded, and reuse is declared as reuse', () => {
   for (const [key, b] of entries) {
     assert.ok(['fr-core-a1', 'drafted'].includes(b.source), `${key}: unknown source ${b.source}`);
   }
+});
+
+test('a verb whose passé composé takes être says so, and shows the agreement', () => {
+  // Found by the example, not by a list: if the passé composé form opens with
+  // a form of être, the participle must be able to agree, and the note must
+  // say that is why. A list of verbs would be a second source of truth about
+  // auxiliaries, and content/verbs-index.json is known to carry only one
+  // auxiliary per verb (it says avoir for arriver, rester, tomber, entrer).
+  const etreForms = /^(suis|es|est|sommes|êtes|sont|me suis|t'es|s'est|s’est|nous sommes|vous êtes|se sont)\b/;
+  let seen = 0;
+  for (const [key, b] of entries) {
+    if (b.type !== 'verb') continue;
+    const pc = b.examples.find((e) => e.tense === 'passe-compose');
+    if (!etreForms.test(pc.form)) continue;
+    seen++;
+    assert.ok(/(?<!\p{L})être(?!\p{L})/u.test(b.usage ?? ''), `${key}: takes être but the note does not say so`);
+    assert.ok(/agree/i.test(b.usage ?? ''), `${key}: takes être but the note does not mention agreement`);
+  }
+  assert.ok(seen >= 8, `only ${seen} être-auxiliary backs found — the check may be looking at the wrong thing`);
 });
 
 test('nothing here claims to have been reviewed', () => {
