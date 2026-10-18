@@ -1188,7 +1188,7 @@ console.log('\n=== export, erase, import — the round trip ===');
   const file = await (await dl).path();
   const saved = JSON.parse(readFileSync(file, 'utf8'));
   ok(`the export carries ${saved.rows?.length ?? 0} rows AND ${saved.cards?.length ?? 0} card states (v${saved.version})`,
-     (saved.rows?.length ?? 0) >= 4 && (saved.cards?.length ?? 0) >= 4 && saved.version === 2);
+     (saved.rows?.length ?? 0) >= 4 && (saved.cards?.length ?? 0) >= 4 && saved.version === 3);
   ok('and does not carry the local profile id',
      !JSON.stringify(saved).includes('"userId"'));
 
@@ -2255,6 +2255,84 @@ console.log('\n=== who checked it ===');
   // tests/teacher-review.test.js, against content this build does not contain —
   // all 76 items are unreviewed. Asserting it here would need a fixture paper,
   // and a vacuous check is worse than an absent one.
+  await c.close();
+}
+
+/* ── Migration: a real version-1 database, opened by the real app ─────────
+ * The unit tests prove the upgrade logic against a MODEL of IndexedDB
+ * (tests/db-migration.test.js). Only a browser can prove a real browser keeps
+ * real rows, so this does it: build a v1 database by hand with the raw API on
+ * a page that has no app code, then load the app, which upgrades it. */
+console.log('\n=== migration: v1 database with history survives the upgrade ===');
+{
+  const c = await browser.newContext({ viewport: { width: 420, height: 900 } });
+  const pg = await c.newPage(); watch(pg, ' MIGRATE');
+  await pg.route(BASE + '__probe', (r) => r.fulfill({ contentType: 'text/html', body: '<!doctype html><title>probe</title>' }));
+  await pg.goto(BASE + '__probe');
+  const seeded = await pg.evaluate(async () => {
+    await new Promise((res, rej) => { const q = indexedDB.deleteDatabase('flw'); q.onsuccess = res; q.onerror = rej; });
+    const db = await new Promise((res, rej) => {
+      const q = indexedDB.open('flw', 1);
+      q.onupgradeneeded = () => {
+        const d = q.result;
+        const rv = d.createObjectStore('reviews', { keyPath: 'id' });
+        rv.createIndex('by-user-time', ['userId', 'reviewedAt']);
+        rv.createIndex('by-user-card', ['userId', 'cardKey']);
+        rv.createIndex('by-user-session', ['userId', 'sessionId']);
+        d.createObjectStore('cards', { keyPath: ['userId', 'cardKey'] })
+          .createIndex('by-user-due', ['userId', 'dueAt']);
+      };
+      q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error);
+    });
+    const tx = db.transaction(['reviews', 'cards'], 'readwrite');
+    for (let i = 0; i < 60; i++) {
+      tx.objectStore('reviews').add({ id: `mig-${i}`, userId: 'mig-user', cardKey: `verb:${i % 20}`,
+        sessionId: 's1', reviewedAt: 1_758_000_000_000 + i, grade: 1 + (i % 4), conceptIds: ['c.x'] });
+    }
+    for (let i = 0; i < 20; i++) {
+      tx.objectStore('cards').put({ userId: 'mig-user', cardKey: `verb:${i}`, dueAt: 1_760_000_000_000 + i, reps: 3 });
+    }
+    await new Promise((res) => { tx.oncomplete = res; });
+    const v = db.version; db.close(); return v;
+  });
+  ok(`seeded a real version-${seeded} database with 60 reviews and 20 card states`, seeded === 1);
+
+  await pg.goto(BASE + '#/progress', { waitUntil: 'networkidle' });
+  await pg.waitForTimeout(500);
+  const after = await pg.evaluate(async () => {
+    const db = await new Promise((res, rej) => { const q = indexedDB.open('flw'); q.onsuccess = () => res(q.result); q.onerror = () => rej(q.error); });
+    const names = [...db.objectStoreNames].sort();
+    const all = (n) => new Promise((res) => { const q = db.transaction(n).objectStore(n).getAll(); q.onsuccess = () => res(q.result); });
+    const reviews = await all('reviews'), cards = await all('cards');
+    const idx = (n) => [...db.transaction(n).objectStore(n).indexNames].sort();
+    const out = {
+      version: db.version, names, reviews: reviews.length, cards: cards.length,
+      reviewsIntact: reviews.every((r) => /^mig-\d+$/.test(r.id) && r.userId === 'mig-user' && r.conceptIds[0] === 'c.x'),
+      cardsIntact: cards.every((r) => r.reps === 3 && r.userId === 'mig-user'),
+      reviewIdx: idx('reviews'), cardIdx: idx('cards'),
+      savedKey: db.transaction('saved').objectStore('saved').keyPath,
+    };
+    // Idempotence in a real store: the same [userId, itemId] written twice is one row.
+    await new Promise((res) => {
+      const tx = db.transaction('saved', 'readwrite');
+      const s = tx.objectStore('saved');
+      s.put({ userId: 'mig-user', itemId: 'word.prendre', savedAt: 1 });
+      s.put({ userId: 'mig-user', itemId: 'word.prendre', savedAt: 1,
+              context: { sentence: 'Elle a pris le train.', fromId: 'text.a2.gare' } });
+      tx.oncomplete = res;
+    });
+    out.saved = await all('saved');
+    db.close(); return out;
+  });
+  ok(`the app upgraded the database to version ${after.version}`, after.version === 2);
+  ok(`all six stores exist (${after.names.join(', ')})`, after.names.join() === 'cards,notes,playbackPositions,readingPositions,reviews,saved');
+  ok(`every review row survived (${after.reviews} of 60) and is readable`, after.reviews === 60 && after.reviewsIntact);
+  ok(`every card state survived (${after.cards} of 20) and is readable`, after.cards === 20 && after.cardsIntact);
+  ok('the v1 indexes are still there', after.reviewIdx.join() === 'by-user-card,by-user-session,by-user-time' && after.cardIdx.join() === 'by-user-due');
+  ok('the new store is keyed [userId, itemId]', JSON.stringify(after.savedKey) === '["userId","itemId"]');
+  ok('saving the same item twice in the real store leaves one row, with the later context',
+     after.saved.length === 1 && after.saved[0].context?.fromId === 'text.a2.gare');
+  await pg.evaluate(() => new Promise((res) => { const q = indexedDB.deleteDatabase('flw'); q.onsuccess = res; q.onerror = res; q.onblocked = res; }));
   await c.close();
 }
 

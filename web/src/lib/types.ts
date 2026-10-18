@@ -82,3 +82,17 @@ export type Card = {
   /** Which concepts this card exercises. Joins the card to the weakness model. */
   conceptIds: string[];
 };
+
+/* ── Personal stores (blueprint CONTRACTS-v0.2 §3) ─────────────────────────
+ * Additions only. Every row is keyed [userId, itemId], so a second write for
+ * the same item is an overwrite, never a second row. */
+
+/** A word or phrase the learner saved. `context` is the sentence it was met in
+ *  and the id of the text or news item it came from, so they can go back. */
+export type SavedItem = {
+  userId: string; itemId: string; savedAt: number;
+  context?: { sentence: string; fromId: string };
+};
+export type ReadingPosition = { userId: string; itemId: string; paragraph: number; updatedAt: number };
+export type PlaybackPosition = { userId: string; itemId: string; seconds: number; updatedAt: number };
+export type Note = { userId: string; itemId: string; text: string; updatedAt: number };

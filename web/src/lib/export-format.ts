@@ -10,7 +10,7 @@
  *
  * `progress.ts` re-exports everything here, so no caller changed.
  */
-import type { ReviewRow, CardState } from './types';
+import type { ReviewRow, CardState, SavedItem, ReadingPosition, PlaybackPosition, Note } from './types';
 
 
 
@@ -48,7 +48,17 @@ export const MAX_IMPORT_ROWS = 150_000;
 export const MAX_IMPORT_CARDS = 50_000;
 
 export const EXPORT_FORMAT = 'french-learning-for-world/review-log';
-export const EXPORT_VERSION = 2;
+export const EXPORT_VERSION = 3;
+
+/** Version 3 adds the personal stores. Files of version 1 and 2 have none, and
+ *  still import: `personal` is simply empty. userId is never exported. */
+export type PersonalExport = {
+  saved: Omit<SavedItem, 'userId'>[];
+  reading: Omit<ReadingPosition, 'userId'>[];
+  playback: Omit<PlaybackPosition, 'userId'>[];
+  notes: Omit<Note, 'userId'>[];
+};
+export const emptyPersonal = (): PersonalExport => ({ saved: [], reading: [], playback: [], notes: [] });
 
 /**
  * The export carries the review log AND the card states.
@@ -63,13 +73,46 @@ export const EXPORT_VERSION = 2;
  * `userId` is deliberately NOT exported. It is a local profile id, meaningless
  * on another device, and the import assigns the importing profile's own.
  */
-export function exportRows(rows: ReviewRow[], states: (CardState & { cardKey: string })[] = []) {
+export function exportRows(
+  rows: ReviewRow[], states: (CardState & { cardKey: string })[] = [],
+  personal: { saved?: SavedItem[]; reading?: ReadingPosition[]; playback?: PlaybackPosition[]; notes?: Note[] } = {},
+) {
   return JSON.stringify({
     format: EXPORT_FORMAT, version: EXPORT_VERSION,
     exportedAt: new Date().toISOString(),
     rows: rows.map(({ userId: _userId, ...rest }) => rest),
     cards: states.map(({ cardKey, ...state }) => ({ cardKey, ...stripUser(state) })),
+    saved: (personal.saved ?? []).map(stripUser),
+    reading: (personal.reading ?? []).map(stripUser),
+    playback: (personal.playback ?? []).map(stripUser),
+    notes: (personal.notes ?? []).map(stripUser),
   }, null, 2);
+}
+
+const isObj = (x: unknown): x is Record<string, unknown> => !!x && typeof x === 'object';
+const str = (x: unknown) => typeof x === 'string' && x.length > 0;
+const num = (x: unknown) => typeof x === 'number' && Number.isFinite(x);
+
+/** Each kind is checked for what a later read depends on; a row that is not
+ *  that kind is dropped, never repaired into something plausible. */
+function parsePersonal(o: Record<string, unknown>): PersonalExport {
+  const list = (k: string) => (Array.isArray(o[k]) ? (o[k] as unknown[]).slice(0, MAX_IMPORT_ROWS) : []);
+  const saved = list('saved').filter(isObj).filter((r) => str(r.itemId) && num(r.savedAt)).map((r) => {
+    const c = r.context;
+    const base = { itemId: r.itemId as string, savedAt: r.savedAt as number };
+    return isObj(c) && typeof c.sentence === 'string' && str(c.fromId)
+      ? { ...base, context: { sentence: c.sentence, fromId: c.fromId as string } } : base;
+  });
+  const reading = list('reading').filter(isObj)
+    .filter((r) => str(r.itemId) && num(r.updatedAt) && Number.isInteger(r.paragraph) && (r.paragraph as number) >= 0)
+    .map((r) => ({ itemId: r.itemId as string, paragraph: r.paragraph as number, updatedAt: r.updatedAt as number }));
+  const playback = list('playback').filter(isObj)
+    .filter((r) => str(r.itemId) && num(r.updatedAt) && num(r.seconds) && (r.seconds as number) >= 0)
+    .map((r) => ({ itemId: r.itemId as string, seconds: r.seconds as number, updatedAt: r.updatedAt as number }));
+  const notes = list('notes').filter(isObj)
+    .filter((r) => str(r.itemId) && num(r.updatedAt) && typeof r.text === 'string')
+    .map((r) => ({ itemId: r.itemId as string, text: r.text as string, updatedAt: r.updatedAt as number }));
+  return { saved, reading, playback, notes };
 }
 
 function stripUser<T extends object>(o: T) {
@@ -85,6 +128,7 @@ export type ImportReport = {
  *  that is not one of our exports, rather than guessing at a stranger's JSON. */
 export function parseExport(text: string): { rows: Omit<ReviewRow, 'userId'>[];
                                              cards: (CardState & { cardKey: string })[];
+                                             personal: PersonalExport;
                                              version: number } {
   // Before parsing, not after: `JSON.parse` on a 200 MB string is the step that
   // fails a low-memory device, and by then the string already exists.
@@ -143,5 +187,5 @@ export function parseExport(text: string): { rows: Omit<ReviewRow, 'userId'>[];
     !!c && typeof c === 'object'
     && typeof (c as { cardKey?: unknown }).cardKey === 'string'
     && Number.isFinite((c as { dueAt?: unknown }).dueAt as number));
-  return { rows: goodRows, cards: goodCards, version };
+  return { rows: goodRows, cards: goodCards, personal: parsePersonal(o), version };
 }
