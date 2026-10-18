@@ -305,16 +305,23 @@ await page.waitForTimeout(300);
 const conceptHref = await page.locator('[data-testid="search-concepts"] a').first().getAttribute('href');
 await page.goto(BASE + conceptHref.replace(/^#?/, '#'), { waitUntil: 'networkidle' });
 await page.waitForTimeout(350);
-// Since the grammar routes were mounted, /learn/concept/:id forwards to
-// /app/grammar/:id, the lesson page, which accepts a concept id. A concept with
-// a written lesson opens it; one without says so and keeps the way back. Either
-// is acceptable here; a 404, a blank page or a dead end is not.
-await page.waitForSelector('[data-testid="grammar-lesson"], [data-testid="grl-nolesson-back"]', { timeout: 6000 }).catch(() => {});
-ok('a search result opens the grammar page, forwarded from the old concept address',
-   /^#\/app\/grammar\//.test(await page.evaluate(() => location.hash)) && await page.locator('[data-testid="not-found"]').count() === 0,
-   await page.evaluate(() => location.hash));
-ok('and it is a lesson, or says there is none and offers the way back',
-   (await page.locator('[data-testid="grammar-lesson"]').count()) + (await page.locator('[data-testid="grl-nolesson-back"]').count()) === 1);
+// /learn/concept/:id forwards to /app/grammar/:id. There are 6 lessons and ~297
+// concepts: a concept with a lesson shows the lesson, every other one shows the
+// concept page and its practise button. Neither may end on a "no lesson yet"
+// dead end. "subjonctif" is gram.subjunctive, which has no lesson of its own.
+await page.waitForSelector('[data-testid="concept-practise"], [data-testid="concept-no-cards"], [data-testid="grammar-lesson"]', { timeout: 6000 }).catch(() => {});
+ok('a search result for a concept with no lesson opens the concept page, via the forward',
+   /^#\/app\/grammar\/gram\.subjunctive/.test(await page.evaluate(() => location.hash)) && await page.locator('h1.h2').count() === 1
+   && await page.locator('[data-testid="grammar-lesson"]').count() === 0, await page.evaluate(() => location.hash));
+ok('a concept with no cards yet says so rather than showing a dead button',
+   (await page.locator('[data-testid="concept-no-cards"]').count()) + (await page.locator('[data-testid="concept-practise"]').count()) === 1);
+ok('and it is not a "no lesson yet" dead end', await page.locator('[data-testid="grl-empty"], [data-testid="grl-nolesson-back"]').count() === 0);
+await page.locator('[data-testid="search-input"]').count();
+await page.goto(BASE + '#/learn/concept/gram.article.partitive', { waitUntil: 'networkidle' });
+await page.waitForSelector('[data-testid="grammar-lesson"]', { timeout: 6000 }).catch(() => {});
+ok('a pasted legacy link to a concept WITH a lesson opens the lesson',
+   await page.locator('[data-testid="grammar-lesson"][data-lesson="lesson:partitive"]').count() === 1
+   && await page.locator('[data-testid="concept-practise"], [data-testid="concept-no-cards"]').count() === 0, await page.evaluate(() => location.hash));
 
 // ===================================================================
 // The learn map, which is the portal's main navigation. It offered 42 cells and
@@ -2629,8 +2636,17 @@ console.log('\n=== grammar: the learning loop (§10) and the Exercise component 
 
     /* ── the other states, each with a way forward ────────────────────── */
     await go(p, '/app/grammar/nothing-here?from=%2Flearn');
-    ok('a concept with no lesson says so and keeps the way back',
-       await T(p, 'grl-empty').count() === 1 && await T(p, 'grl-nolesson-back').getAttribute('href') === '#/learn');
+    // A concept that has no lesson shows the concept page; an id that is neither
+    // a lesson nor a concept is an honest 404. Neither is a "no lesson yet" dead end.
+    await go(p, '/app/grammar/gram.subjunctive.will-not-a-real-concept');
+    await p.waitForTimeout(300);
+    ok('an id that is neither a lesson nor a concept is the not-found page, not a dead end',
+       await p.locator('[data-testid="not-found"]').count() === 1 && await T(p, 'grl-empty').count() === 0);
+    await go(p, '/app/grammar/gram.subjunctive.present');
+    await p.waitForSelector('[data-testid="concept-practise"], [data-testid="concept-no-cards"]', { timeout: 6000 }).catch(() => {});
+    ok('a real concept with no lesson shows the concept page and its practise control',
+       await T(p, 'grammar-lesson').count() === 0 && await T(p, 'grl-empty').count() === 0
+       && (await T(p, 'concept-practise').count()) + (await T(p, 'concept-no-cards').count()) === 1);
 
     {
       const ec = await browser.newContext({ serviceWorkers: 'block' });
