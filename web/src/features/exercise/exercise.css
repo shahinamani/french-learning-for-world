@@ -1,0 +1,48 @@
+/* Exercise. Own file so the shared stylesheet is not touched by this stream.
+   Right and wrong are never colour alone: the tag carries a word, the answer
+   gets a thick solid border and the learner's wrong pick a dashed one with a
+   strike, so greyscale and colour-blind readers get the same information. */
+.ex { display: flex; flex-direction: column; gap: var(--space-3); }
+.ex-fieldset { border: 0; padding: 0; margin: 0; min-width: 0; display: flex;
+  flex-direction: column; gap: var(--space-3); }
+.ex-prompt { padding: 0; font-weight: var(--weight-medium); font-size: var(--text-lg, 1.125rem);
+  color: var(--color-ink); line-height: 1.5; }
+.ex-hint { margin: 0; }
+.ex-options { display: grid; gap: var(--space-2); }
+.ex-opt { display: flex; align-items: center; gap: var(--space-3); flex-wrap: wrap;
+  min-height: var(--tap-min); padding: var(--space-2) var(--space-3);
+  background: var(--color-surface); color: var(--color-ink);
+  border: 1px solid var(--color-line-strong, var(--color-line)); border-radius: var(--radius-sm);
+  cursor: pointer; }
+.ex-opt:hover { border-color: var(--color-accent); }
+.ex-opt input { width: 1.1rem; height: 1.1rem; margin: 0; accent-color: var(--color-accent); }
+/* The radio is the focus target; the whole row shows it. */
+.ex-opt:has(input:focus-visible) { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.ex-opt.is-selected { border-color: var(--color-accent); border-width: 2px; }
+.ex-opt__text { font-size: var(--text-md, 1rem); }
+.ex-fieldset:disabled .ex-opt { cursor: default; }
+.ex-opt.is-answer { border: 3px solid var(--color-success); background: var(--color-success-soft);
+  color: var(--color-ink); font-weight: var(--weight-semibold); }
+.ex-opt.is-mine-wrong { border: 3px dashed var(--color-danger); background: var(--color-danger-soft);
+  color: var(--color-ink); }
+.ex-opt.is-mine-wrong .ex-opt__text { text-decoration: line-through; }
+.ex-opt__tag { margin-inline-start: auto; font-size: var(--text-sm); font-weight: var(--weight-semibold); }
+.ex-opt__tag--right { color: var(--color-success); }
+.ex-opt__tag--wrong { color: var(--color-danger); }
+.ex-need { margin: 0; color: var(--color-danger); font-weight: var(--weight-medium); }
+.ex-actions { display: flex; gap: var(--space-2); flex-wrap: wrap; }
+.ex-feedback { display: flex; flex-direction: column; gap: var(--space-3);
+  padding: var(--space-4); border-radius: var(--radius-sm); background: var(--color-surface);
+  border-inline-start: 6px solid var(--color-line-strong, var(--color-line)); }
+.ex-feedback:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.ex-feedback.is-right { border-inline-start-color: var(--color-success); }
+.ex-feedback.is-wrong { border-inline-start-color: var(--color-danger); border-inline-start-style: double; }
+.ex-feedback__verdict { margin: 0; font-size: var(--text-lg, 1.125rem); }
+.ex-feedback p { margin: 0; }
+.ex-why { display: flex; flex-direction: column; gap: var(--space-1); }
+.ex-why__h { margin: 0; font-size: var(--text-sm); font-weight: var(--weight-semibold);
+  color: var(--color-ink-muted); }
+.ex-state { padding: var(--space-4); background: var(--color-surface);
+  border: 1px solid var(--color-line); border-radius: var(--radius-sm); gap: var(--space-3); }
+.ex-state p { margin: 0; }
+@media (prefers-reduced-motion: reduce) { .ex * { transition: none !important; animation: none !important; } }

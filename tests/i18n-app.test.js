@@ -157,7 +157,7 @@ function optionalKeys(name) {
  * widening a prefix match somewhere else.
  */
 const OPTIONAL_GROUPS = ['landingEn', 'nextEn', 'importEn', 'workspaceEn',
-                         'shellEn', 'weaknessEn'];
+                         'shellEn', 'weaknessEn', 'grammarEn'];
 const allOptionalKeys = () => OPTIONAL_GROUPS.flatMap(optionalKeys);
 
 test('every locale defines exactly the English key set, optional groups aside', () => {
