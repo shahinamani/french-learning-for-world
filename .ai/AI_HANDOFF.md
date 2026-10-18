@@ -47,7 +47,7 @@ is no longer routed.
   Persian + English, and per-example listen. Nouns get examples and no tense.
 - **Dialogues**: one complete A1 unit (Au café) with comprehension questions,
   feedback, explanation and retry.
-- **Coverage is printed on the page**: `32 / 2371 with worked examples ·
+- **Coverage is printed on the page**: `56 / 2371 with worked examples ·
   0 / 2371 checked by a teacher`. Both counted at runtime.
 - Checks: 467 unit tests, 387 browser checks, 20 contrast checks, all green.
 
