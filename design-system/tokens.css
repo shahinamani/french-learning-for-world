@@ -114,82 +114,102 @@
   --height-tabs: 58px;
   --tap-min: 44px;         /* the floor for anything a thumb must hit */
 
-  /* ── Colour — the blueprint palette (CONTRACTS-v0.2 §4) ─────────────────
-   * The six blueprint values, verbatim. Everything below is a semantic token
-   * mapped onto them or derived from them for a measured reason; nothing else
-   * in the product names a hue directly. These are LIGHT-theme values — the
-   * dark theme below is measured on its own, not computed from these.
+  /* ── Colour — bleu, blanc, rouge (docs/blueprint/PALETTE-bleu-blanc-rouge.md) ──
+   * The owner's palette decision, replacing the blueprint's indigo, teal and
+   * gold. BRAND tokens (--fr-*) are the only place a brand hue is written.
+   * Components never read them: they read the semantic --color-* tokens below,
+   * which are remapped onto these, so the brand can change in this one file.
+   *
+   * The two flag colours are the French state design system's (DSFR) values,
+   * not the poster flag's: #EF4135 is 3.83 on white and fails AA, #E1000F is
+   * 4.99. Every number below was computed with the WCAG 2.x relative-luminance
+   * formula, and contrast-check.mjs + the axe walk re-measure the rendered
+   * pixels. These are LIGHT values; the dark theme is measured on its own.
+   *
+   * Usage rules (also enforced in components.css):
+   *   1. White dominates: cards are --fr-blanc on a near-white --fr-canvas.
+   *   2. Blue carries structure and action: headings, primary button, links,
+   *      active navigation.
+   *   3. Red is punctuation, never a field behind body text: an underline, a
+   *      rule, one emphasis. It is NEVER a text colour and never a fill that
+   *      carries a label, so its ratio only has to clear 3:1 as a mark.
    */
-  --bp-canvas:   #f7f8fc;   /* page background */
-  --bp-surface:  #ffffff;   /* cards and sheets */
-  --bp-ink:      #17233b;   /* text — 14.77 on canvas */
-  --bp-primary:  #2457c5;   /* primary action — 6.47 on surface, 6.10 on canvas */
-  --bp-accent:   #087f8c;   /* complement — see --color-complement for its limit */
-  --bp-emphasis: #d4a34a;   /* limited emphasis — FILL ONLY, 2.30 on surface */
+  --fr-blanc:       #ffffff;   /* card and sheet surface */
+  --fr-canvas:      #f5f6fb;   /* page behind the cards. ink on it 16.46; bleu on it 13.81 */
+  --fr-ink:         #13162e;   /* body text, a near-black with a blue cast: 17.77 white, 16.46 canvas, 14.80 sunken */
+
+  --fr-bleu:        #000091;   /* Bleu France. 14.91 on white, 13.81 on canvas, 12.52 on bleu-soft; white on it 14.91 */
+  --fr-bleu-hover:  #1212ff;   /* DSFR hover. White on it 8.22; as text 8.22 on white, 7.61 on canvas, 6.90 on bleu-soft */
+  --fr-bleu-ink:    #ffffff;   /* text ON a blue fill: 14.91 (8.22 on hover) */
+  --fr-bleu-soft:   #e8eaff;   /* blue-tinted fill; --fr-bleu on it 12.52, --fr-ink on it 14.93 */
+
+  --fr-rouge:       #e1000f;   /* Rouge Marianne. 4.99 on white, 4.62 on canvas; white on it 4.99. A mark, not a text colour */
+  --fr-rouge-ink:   #ffffff;   /* text ON a red fill: 4.99 (only ever a few words, e.g. a badge) */
+  --fr-rouge-soft:  #fdebec;   /* red-tinted fill; --fr-ink on it 15.46; --fr-rouge on it 4.34, so no red text on it */
 
   /* ── Colour — light ─────────────────────────────────────────────────── *
-   * Neutrals carry the blue bias of the ink, so a grey next to the primary
-   * does not read as unconsidered. Ratios are against the three grounds a
-   * label can sit on: surface / canvas / sunken.
+   * Neutrals carry the blue cast of the ink, so a grey beside the primary does
+   * not read as unconsidered. Ratios: surface / canvas / sunken.
    */
-  --color-canvas: var(--bp-canvas);
-  --color-surface: var(--bp-surface);
-  --color-surface-sunken: #e9ecf4;  /* wells, track backgrounds */
-  --color-ink: var(--bp-ink);       /* primary text — 14.77 canvas, 13.26 sunken */
-  --color-ink-muted: #4a5672;       /* secondary text — 7.33 surface, 6.91 canvas, 6.20 sunken */
-  --color-ink-faint: #566380;       /* labels, metadata — 6.01 surface, 5.67 canvas, 5.09 sunken */
-  --color-line: #dce1ec;            /* borders */
+  --color-canvas: var(--fr-canvas);
+  --color-surface: var(--fr-blanc);
+  --color-surface-sunken: #e8eaf3;  /* wells, track backgrounds */
+  --color-ink: var(--fr-ink);       /* primary text — 17.77 / 16.46 / 14.80 */
+  --color-ink-muted: #454a68;       /* secondary text — 8.63 / 8.00 / 7.19 */
+  --color-ink-faint: #555b7a;       /* labels, metadata — 6.64 / 6.15 / 5.53 */
+  --color-line: #dcdfea;            /* borders */
   --color-line-strong: #bfc7d8;     /* borders that must read as a boundary */
 
   /* The primary action. One role in both themes: the filled button, the link
    * and the active tab. --color-accent is both the fill and the text colour of
    * that role, so in each theme it is measured as text AND as a fill. */
-  --color-accent: var(--bp-primary);   /* 6.47 on surface, 6.10 on canvas, 5.56 on accent-soft */
-  --color-accent-hover: #1b479f;       /* 8.58 on surface; white on it 8.58 */
-  --color-accent-ink: #ffffff;         /* text ON accent — 6.47 */
-  --color-accent-soft: #e8eefb;        /* accent-tinted fill; accent text on it 5.56 */
+  --color-accent: var(--fr-bleu);         /* 14.91 on surface, 13.81 on canvas, 12.52 on accent-soft */
+  --color-accent-hover: var(--fr-bleu-hover);  /* 8.22 on surface; white on it 8.22 */
+  --color-accent-ink: var(--fr-bleu-ink); /* text ON accent — 14.91 */
+  --color-accent-soft: var(--fr-bleu-soft);    /* accent-tinted fill; accent text on it 12.52 */
 
-  /* The complement. #087f8c is 4.75 on a white surface and white text on it is
-   * 4.75, but on the canvas it is 4.47 — 0.03 short of AA for body text. So
-   * the blueprint value is kept for fills and for text on --color-surface, and
-   * text anywhere else uses --color-complement-text, the nearest value that
-   * clears AA on every ground. */
-  --color-complement: var(--bp-accent);   /* fill; text on surface only (4.75) */
-  --color-complement-text: #077a87;       /* text on any ground: 5.07 surface, 4.78 canvas */
-  --color-complement-ink: #ffffff;        /* text ON complement — 4.75 */
-  --color-complement-soft: #e3f3f5;       /* complement-tinted fill, ink on top */
+  /* Punctuation: the red mark. The active tab's underline, an accent rule, the
+   * one emphasis on a hero. Non-text only (3:1): 4.99 on surface, 4.62 on
+   * canvas. Never a background for a sentence. */
+  --color-punctuation: var(--fr-rouge);
+  --color-punctuation-soft: var(--fr-rouge-soft);  /* a tint; ink on it 15.46 */
 
-  /* Limited emphasis. Light is the one thing about #d4a34a: 2.30:1 on a white
-   * surface and 2.17:1 on the canvas. As text it fails by a wide margin, and
-   * no tint of it fixes that — so it is a FILL and a rule, never a text colour.
-   * Three tokens, one job each (contrast-check.mjs measures the rendered
-   * result; this comment is only the reason):
+  /* The complement and emphasis roles of the old palette (teal, gold) are
+   * RETIRED as hues: the contract has two brand colours and white. The token
+   * names stay because web/src still reads them; they now resolve to the blue
+   * family, so the ROLE (a second, quieter emphasis) survives and the HUE does
+   * not. A consumer that wants the red mark should move to --color-punctuation. */
+  --color-complement: var(--fr-bleu);            /* fill; white on it 14.91 */
+  --color-complement-text: var(--fr-bleu);       /* text on any ground: 14.91 / 13.81 / 12.42 */
+  --color-complement-ink: var(--fr-bleu-ink);
+  --color-complement-soft: var(--fr-bleu-soft);  /* complement-tinted fill, ink on top */
+
+  --color-gold: var(--fr-bleu);                  /* text and borders: 14.91 surface, 13.81 canvas, 12.52 on gold-soft */
+  --color-gold-hover: var(--fr-bleu-hover);      /* a FILL hover; white on it 8.22 */
+  --color-gold-solid: var(--fr-bleu);            /* fill; ink on it 14.91 */
+  --color-gold-ink: var(--fr-bleu-ink);          /* text ON gold-solid */
+  --color-gold-soft: var(--fr-bleu-soft);        /* tinted fill, ink on top: 14.93 */
+
+  /* Status. INDEPENDENT of the brand: literal values on purpose, never
+   * references to --fr-*. Changing the brand must never change what "error"
+   * looks like. Each is measured as text on its own -soft tint.
    *
-   *   --color-gold        TEXT and borders on canvas or surface: the emphasis
-   *                       hue taken dark enough to pass AA. Reads as bronze.
-   *   --color-gold-solid  The blueprint value. A FILL only; never text.
-   *   --color-gold-ink    Text ON gold-solid — 6.82 (and on gold-hover 5.80).
-   *   --color-gold-soft   A tint behind dark ink.
-   */
-  --color-gold: #7a5a12;        /* text: 6.37 on surface, 6.00 on canvas, 5.75 on gold-soft */
-  --color-gold-hover: #c4963a;  /* a FILL hover; ink on it 5.80 */
-  --color-gold-solid: var(--bp-emphasis);  /* fill only — 2.30:1 as text, never used as text */
-  --color-gold-ink: var(--bp-ink);         /* text ON gold-solid — 6.82 */
-  --color-gold-soft: #fbf3dd;   /* gold-tinted fill, ink on top */
-
-  /* Status. INDEPENDENT of the preferred palette: success, warning, danger and
-   * info are literal values on purpose, not references to --bp-*. Changing the
-   * brand colours must never change what "error" looks like. Each is measured
-   * as text on its own -soft tint. */
+   * DANGER is the one that matters, because red is now a brand colour. It is a
+   * crimson-magenta, not a red: #a3124f. Simulated for deuteranopia and
+   * protanopia (Machado 2009, severity 1.0) it stays far from --fr-rouge
+   * (CIE76 dE 49.2 and 51.0; the old brick #a52a21 was 21.8 and 16.7), and it
+   * is also 55.6 apart under normal vision. Colour is still never the only
+   * signal: every danger surface carries a word or an icon (components.css,
+   * .alert--danger, .field__error). */
   --color-success: #0f6349;  --color-success-soft: #e3f1ec;
   --color-warning: #7d5305;  --color-warning-soft: #f9f0e0;
-  --color-danger:  #a52a21;  --color-danger-soft:  #fbeceb;
+  --color-danger:  #a3124f;  --color-danger-soft:  #fbeaf2;   /* 7.62 surface, 7.06 canvas, 6.59 on soft */
   --color-info:    #1a4b9c;  --color-info-soft:    #e8effa;
 
   /* Ratings. Their own ramp: they are a four-point scale, not four statuses,
    * and they must stay distinguishable from success/warning/danger used
    * elsewhere on the same screen. */
-  --color-again: #a52a21;  --color-again-soft: #fbeceb;
+  --color-again: #a3124f;  --color-again-soft: #fbeaf2;
   --color-hard:  #7d5305;  --color-hard-soft:  #f9f0e0;
   --color-good:  #0f6349;  --color-good-soft:  #e3f1ec;
   --color-easy:  #1a4b9c;  --color-easy-soft:  #e8effa;
@@ -203,7 +223,7 @@
   --color-c1: #6f4494;  --color-c1-soft: #efe7f5;
   --color-c2: #8f3d6b;  --color-c2-soft: #f6e6ef;
 
-  --color-focus: var(--bp-primary);   /* focus ring — 6.10 on canvas, 6.47 on surface (needs 3) */
+  --color-focus: var(--fr-bleu);   /* focus ring — 13.81 on canvas, 14.91 on surface (needs 3) */
 }
 
 /* Reader-chosen line spacing. Applies to both themes and both directions. */
@@ -215,48 +235,44 @@
  * light choice wins, covers the majority whose system is set to "auto" and
  * who therefore have no data-theme attribute at all. The attribute selector
  * covers an explicit choice. Omitting either leaves one group with a broken
- * page and no error.
+ * page and no error. Only the brand tokens and the neutrals/status are set
+ * here; the semantic --color-* roles are mapped once, on :root above, and
+ * follow the --fr-* values automatically (primary stays primary).
  */
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --color-canvas: #0d1424;
-    --color-surface: #151e33;
-    --color-surface-sunken: #1c2740;
-    --color-ink: #e8ecf6;
-    --color-ink-muted: #a3aec5;
-    --color-ink-faint: #8e99b3;
-    --color-line: #27324d;
-    --color-line-strong: #3d4a69;
+    /* Brand tokens, re-measured for dark. NOT an inversion: #000091 is 1.2:1 on
+       the dark surface and unreadable, so the blue becomes a light tint and the
+       red lifts above 4.5. Roles are unchanged: --fr-bleu is still the primary
+       action, --fr-rouge is still punctuation. Ratios: surface / canvas / sunken. */
+    --fr-blanc:       #12162b;   /* the card surface: white does not dominate a dark theme, the surface does */
+    --fr-canvas:      #0b0e1f;
+    --fr-ink:         #e9ebf7;   /* 15.05 / 16.13 / 13.48 */
 
-    --color-accent: #8fb1f4;
-    --color-accent-hover: #a9c3f7;
-    --color-accent-ink: #0d1424;
-    --color-accent-soft: #1b2745;
+    --fr-bleu:        #a9b3ff;   /* 9.00 / 9.65 / 8.06; 7.74 on bleu-soft */
+    --fr-bleu-hover:  #c4cbff;   /* 11.34 / 12.16 / 10.16; ink on it 12.16 */
+    --fr-bleu-ink:    #0b0e1f;   /* text ON a blue fill: 9.65 (12.16 on hover) */
+    --fr-bleu-soft:   #1a2050;   /* blue-tinted fill; --fr-bleu on it 7.74 */
 
-    /* Dark primary: the same ROLE (the filled button, the link, the active tab),
-       measured on its own. #2457c5 is 2.56:1 on the dark surface, so as text it is
-       unusable; the dark value is the lightest tint that keeps the role legible,
-       with dark ink on it. A button is still the primary button in both themes. */
-    /* Complement and emphasis are re-measured here: #087f8c is 3.5:1 on the dark
-       surface, so text uses a lighter teal; #d4a34a is 7.22 on it, so in dark the
-       emphasis hue CAN be text as well as a fill. */
-    --color-complement: #087f8c;       /* fill, white on it 4.75 */
-    --color-complement-text: #4db8c4;  /* text: 7.85 canvas, 7.09 surface, 6.34 sunken */
-    --color-complement-ink: #ffffff;
-    --color-complement-soft: #12262e;
-    --color-gold: #d4a34a;        /* text AND fill in dark: 8.00 canvas, 7.22 surface, 6.78 on gold-soft */
-    --color-gold-hover: #e0b565;  /* ink on it 8.18 */
-    --color-gold-solid: #d4a34a;  /* fill; ink on it 6.82 */
-    --color-gold-ink: #17233b;
-    --color-gold-soft: #2a2312;
+    --fr-rouge:       #ff6b74;   /* 6.47 / 6.94 / 5.80; 6.25 on rouge-soft */
+    --fr-rouge-ink:   #0b0e1f;   /* text ON a red fill: 6.94 */
+    --fr-rouge-soft:  #2e1219;   /* red-tinted fill; --fr-ink on it 14.54 */
 
+    --color-surface-sunken: #1b2039;
+    --color-ink-muted: #aab0cc;       /* 8.33 / 8.93 / 7.46 */
+    --color-ink-faint: #959bb8;       /* 6.52 / 6.98 / 5.84 */
+    --color-line: #262c48;
+    --color-line-strong: #434b6e;
 
+    /* Danger in dark: a light pink-magenta, not the salmon of --fr-rouge.
+       7.93 surface, 8.49 canvas, 7.61 on soft. CIE76 dE to dark --fr-rouge
+       under deuteranopia 38.1, protanopia 34.1, normal 37.9. */
     --color-success: #7fd2b0;  --color-success-soft: #112620;
     --color-warning: #e2bf7e;  --color-warning-soft: #27210f;
-    --color-danger:  #f2a59e;  --color-danger-soft:  #2a1817;
+    --color-danger:  #f58ac4;  --color-danger-soft:  #2e1220;
     --color-info:    #97bff8;  --color-info-soft:    #121f30;
 
-    --color-again: #f2a59e;  --color-again-soft: #2a1817;
+    --color-again: #f58ac4;  --color-again-soft: #2e1220;
     --color-hard:  #e2bf7e;  --color-hard-soft:  #27210f;
     --color-good:  #7fd2b0;  --color-good-soft:  #112620;
     --color-easy:  #97bff8;  --color-easy-soft:  #121f30;
@@ -268,8 +284,6 @@
     --color-c1: #bc94db;  --color-c1-soft: #211829;
     --color-c2: #dd93bb;  --color-c2-soft: #2a1722;
 
-    --color-focus: #8fb1f4;
-
     --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -8px rgb(0 0 0 / 0.6);
     --shadow-overlay: 0 4px 6px rgb(0 0 0 / 0.45), 0 18px 40px -12px rgb(0 0 0 / 0.7);
 
@@ -278,43 +292,38 @@
 }
 
 :root[data-theme="dark"] {
-  --color-canvas: #0d1424;
-  --color-surface: #151e33;
-  --color-surface-sunken: #1c2740;
-  --color-ink: #e8ecf6;
-  --color-ink-muted: #a3aec5;
-  --color-ink-faint: #8e99b3;
-  --color-line: #27324d;
-  --color-line-strong: #3d4a69;
+  /* Brand tokens, re-measured for dark. NOT an inversion: #000091 is 1.2:1 on
+     the dark surface and unreadable, so the blue becomes a light tint and the
+     red lifts above 4.5. Roles are unchanged: --fr-bleu is still the primary
+     action, --fr-rouge is still punctuation. Ratios: surface / canvas / sunken. */
+  --fr-blanc:       #12162b;   /* the card surface: white does not dominate a dark theme, the surface does */
+  --fr-canvas:      #0b0e1f;
+  --fr-ink:         #e9ebf7;   /* 15.05 / 16.13 / 13.48 */
 
-  --color-accent: #8fb1f4;
-  --color-accent-hover: #a9c3f7;
-  --color-accent-ink: #0d1424;
-  --color-accent-soft: #1b2745;
+  --fr-bleu:        #a9b3ff;   /* 9.00 / 9.65 / 8.06; 7.74 on bleu-soft */
+  --fr-bleu-hover:  #c4cbff;   /* 11.34 / 12.16 / 10.16; ink on it 12.16 */
+  --fr-bleu-ink:    #0b0e1f;   /* text ON a blue fill: 9.65 (12.16 on hover) */
+  --fr-bleu-soft:   #1a2050;   /* blue-tinted fill; --fr-bleu on it 7.74 */
 
-  /* Dark primary: the same ROLE (the filled button, the link, the active tab),
-     measured on its own. #2457c5 is 2.56:1 on the dark surface, so as text it is
-     unusable; the dark value is the lightest tint that keeps the role legible,
-     with dark ink on it. A button is still the primary button in both themes. */
-  /* Complement and emphasis are re-measured here: #087f8c is 3.5:1 on the dark
-     surface, so text uses a lighter teal; #d4a34a is 7.22 on it, so in dark the
-     emphasis hue CAN be text as well as a fill. */
-  --color-complement: #087f8c;       /* fill, white on it 4.75 */
-  --color-complement-text: #4db8c4;  /* text: 7.85 canvas, 7.09 surface, 6.34 sunken */
-  --color-complement-ink: #ffffff;
-  --color-complement-soft: #12262e;
-  --color-gold: #d4a34a;        /* text AND fill in dark: 8.00 canvas, 7.22 surface, 6.78 on gold-soft */
-  --color-gold-hover: #e0b565;  /* ink on it 8.18 */
-  --color-gold-solid: #d4a34a;  /* fill; ink on it 6.82 */
-  --color-gold-ink: #17233b;
-  --color-gold-soft: #2a2312;
+  --fr-rouge:       #ff6b74;   /* 6.47 / 6.94 / 5.80; 6.25 on rouge-soft */
+  --fr-rouge-ink:   #0b0e1f;   /* text ON a red fill: 6.94 */
+  --fr-rouge-soft:  #2e1219;   /* red-tinted fill; --fr-ink on it 14.54 */
 
+  --color-surface-sunken: #1b2039;
+  --color-ink-muted: #aab0cc;       /* 8.33 / 8.93 / 7.46 */
+  --color-ink-faint: #959bb8;       /* 6.52 / 6.98 / 5.84 */
+  --color-line: #262c48;
+  --color-line-strong: #434b6e;
+
+  /* Danger in dark: a light pink-magenta, not the salmon of --fr-rouge.
+     7.93 surface, 8.49 canvas, 7.61 on soft. CIE76 dE to dark --fr-rouge
+     under deuteranopia 38.1, protanopia 34.1, normal 37.9. */
   --color-success: #7fd2b0;  --color-success-soft: #112620;
   --color-warning: #e2bf7e;  --color-warning-soft: #27210f;
-  --color-danger:  #f2a59e;  --color-danger-soft:  #2a1817;
+  --color-danger:  #f58ac4;  --color-danger-soft:  #2e1220;
   --color-info:    #97bff8;  --color-info-soft:    #121f30;
 
-  --color-again: #f2a59e;  --color-again-soft: #2a1817;
+  --color-again: #f58ac4;  --color-again-soft: #2e1220;
   --color-hard:  #e2bf7e;  --color-hard-soft:  #27210f;
   --color-good:  #7fd2b0;  --color-good-soft:  #112620;
   --color-easy:  #97bff8;  --color-easy-soft:  #121f30;
@@ -325,8 +334,6 @@
   --color-b2: #9a9ee4;  --color-b2-soft: #191a2b;
   --color-c1: #bc94db;  --color-c1-soft: #211829;
   --color-c2: #dd93bb;  --color-c2-soft: #2a1722;
-
-  --color-focus: #8fb1f4;
 
   --shadow-raised: 0 1px 2px rgb(0 0 0 / 0.5), 0 8px 24px -8px rgb(0 0 0 / 0.6);
   --shadow-overlay: 0 4px 6px rgb(0 0 0 / 0.45), 0 18px 40px -12px rgb(0 0 0 / 0.7);

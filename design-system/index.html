@@ -96,16 +96,17 @@
     <div class="sw"><div class="sw__chip" style="background:var(--color-accent)"></div><div class="sw__meta"><div class="sw__name">accent</div><div class="sw__val">one, used sparingly</div></div></div>
   </div>
 
-  <h3>Blueprint palette — complement and emphasis</h3>
-  <p class="sg-note">The accent is the primary action in both themes. The complement is a
-    second hue for secondary information. The emphasis is gold, and gold is light:
-    on a white surface it is 2.30:1, so it is a fill and a rule, never text. Text on it is
-    ink; text <em>in</em> gold uses <code>--color-gold</code>.</p>
+  <h3>Bleu, blanc, rouge — blue and the red mark</h3>
+  <p class="sg-note">White dominates: the surface is white and the page sits on a near-white canvas.
+    Blue carries structure and action: headings, the primary button, links, the active tab.
+    Red is punctuation: a 2px rule under the active tab, never a field behind a sentence and never
+    text. Danger is a different hue on purpose (crimson-magenta) and always carries a word or a
+    ✕ — compare the two swatches below.</p>
   <div class="sg-grid">
-    <div class="sw"><div class="sw__chip" style="background:var(--color-complement)"></div><div class="sw__meta"><div class="sw__name">complement</div><div class="sw__val">fill; text on surface only</div></div></div>
-    <div class="sw"><div class="sw__chip" style="background:var(--color-complement-text)"></div><div class="sw__meta"><div class="sw__name">complement-text</div><div class="sw__val">text on any ground</div></div></div>
-    <div class="sw"><div class="sw__chip" style="background:var(--color-gold-solid)"></div><div class="sw__meta"><div class="sw__name">gold-solid</div><div class="sw__val">fill only, never text</div></div></div>
-    <div class="sw"><div class="sw__chip" style="background:var(--color-gold)"></div><div class="sw__meta"><div class="sw__name">gold</div><div class="sw__val">text and borders</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-accent)"></div><div class="sw__meta"><div class="sw__name">accent</div><div class="sw__val">blue: action, structure</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-accent-soft)"></div><div class="sw__meta"><div class="sw__name">accent-soft</div><div class="sw__val">blue tint, ink on top</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-punctuation)"></div><div class="sw__meta"><div class="sw__name">punctuation</div><div class="sw__val">red mark, never text</div></div></div>
+    <div class="sw"><div class="sw__chip" style="background:var(--color-danger)"></div><div class="sw__meta"><div class="sw__name">danger</div><div class="sw__val">not the brand red</div></div></div>
   </div>
 
   <h3>Status — never the only signal</h3>
@@ -313,7 +314,7 @@
     <div class="alert alert--info"><div class="alert__body">Hors ligne — 14 cartes sont prêtes sur cet appareil.</div></div>
     <div class="alert alert--success"><div class="alert__body">Séance terminée. 24 cartes révisées en 9 minutes.</div></div>
     <div class="alert alert--warning"><div class="alert__body">Ce navigateur n’enregistre pas votre progression — fenêtre privée ?</div></div>
-    <div class="alert alert--danger"><div class="alert__body">Impossible de charger le contenu. Vérifiez votre connexion.</div></div>
+    <div class="alert alert--danger"><div class="alert__body"><strong>Erreur.</strong> Impossible de charger le contenu. Vérifiez votre connexion.</div></div>
   </div>
 
   <h3>Loading — the shape of what is coming, never a spinner</h3>
