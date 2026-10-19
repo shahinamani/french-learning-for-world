@@ -14,7 +14,7 @@
  */
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import { readFileSync } from 'node:fs';
+import { readFileSync, readdirSync } from 'node:fs';
 import { translator } from '../web/src/lib/i18n.ts';
 // The lazy English groups register themselves when their route chunk loads; here
 // there is no route, so register them all, or `translator('en')` below would
@@ -80,19 +80,38 @@ function entries(code) {
 }
 
 /**
- * The landing page's copy is a SEPARATE object in i18n.ts, `landingEn`, because
- * it is the only part of the dictionary a locale is allowed not to have:
+ * Some groups of copy are whole PAGES, and a locale is allowed not to have one:
  * absence means nobody has written that page in that language, and the page
- * then shows English behind a marker rather than a machine translation. So the
- * English dictionary for comparison purposes is core + landing, and Farsi and
- * Arabic are legitimately shorter by exactly the landing keys.
+ * shows English behind a marker rather than a machine translation.
+ *
+ * The rule is per GROUP, not across all of them at once.
+ *
+ * It used to be one number — a locale had to carry every optional key or none
+ * of them. That sounds strict and is the opposite: it made Persian unable to
+ * move. Shahin reads Persian and can check it, so Persian is meant to be
+ * written as pages are built; but with 481 optional keys in one bucket, writing
+ * the ten strings of a new page made the arithmetic fail, and the only passing
+ * states were 0 and 481. A guard whose only reachable state is the bad one is
+ * not a strict guard, it is a stuck one. Persian has been at zero since.
+ *
+ * Per group keeps the thing that mattered — half a translated page is worse
+ * than none, because the seam shows mid-sentence — and is strictly stronger
+ * besides: the old sum could be satisfied by a locale holding half of two
+ * different groups, which this cannot.
  *
  * Read from the source, not listed here: a hand-kept copy of the key names is
  * a second place for them to drift.
  */
-const optional = new Map([...entries('landingEn'), ...entries('nextEn'),
-                          ...entries('importEn'), ...entries('workspaceEn'), ...entries('shellEn'),
-                          ...entries('weaknessEn'), ...entries('grammarEn'), ...entries('readerEn')]);
+// Discovered, not listed. A hand-kept list of group names is the same second
+// place to drift that this file already refuses for key names: add a group and
+// forget the list, and the group is simply never checked in any language.
+const GROUPS = [
+  ...[...src.matchAll(/^const ([a-zA-Z]+En)\s*=\s*\{/gm)].map((m) => m[1]),
+  ...readdirSync(new URL('../web/src/lib/locales/en/', import.meta.url))
+      .filter((f) => f.endsWith('.ts')).map((f) => f.slice(0, -3)),
+].filter((g, i, a) => a.indexOf(g) === i).sort();
+const groupKeys = Object.fromEntries(GROUPS.map((g) => [g, [...entries(g).keys()]]));
+const optional = new Map(GROUPS.flatMap((g) => [...entries(g)]));
 const LANDING = [...optional.keys()];
 
 const dict = Object.fromEntries(LOC.map((c) => [
@@ -114,11 +133,45 @@ test('every dictionary was read whole — not a quote-style subset of itself', (
   // fails too, because half a translated landing page is worse than none.
   assert.equal(size.fr, size.en,
     `French must carry every English string — read as ${shown}`);
+
+  // Core copy obliges every locale. Only the page groups may be absent.
+  const core = [...entries('en').keys()];
   for (const c of ['fa', 'ar']) {
-    assert.ok(size[c] === size.en || size[c] === size.en - LANDING.length,
-      `${c} must have every string, or every string except the ${LANDING.length} `
-      + `landing ones — read as ${shown}`);
+    const missingCore = core.filter((k) => !dict[c].has(k));
+    assert.deepEqual(missingCore, [],
+      `${c} is missing core strings, which every locale must carry — read as ${shown}`);
   }
+});
+
+test('a page group is wholly written in a language, or wholly absent from it', () => {
+  // Half a translated page is worse than none: the seam shows mid-sentence and
+  // the learner cannot tell whether the English is a fallback or the content.
+  const partial = [];
+  for (const c of ['fa', 'ar']) {
+    for (const g of GROUPS) {
+      const keys = groupKeys[g];
+      if (!keys.length) continue;
+      const have = keys.filter((k) => dict[c].has(k)).length;
+      if (have !== 0 && have !== keys.length) {
+        partial.push(`${c}.${g}: ${have} of ${keys.length}`);
+      }
+    }
+  }
+  assert.deepEqual(partial, [], 'a half-written page group');
+});
+
+test('what each language actually carries is stated, not assumed', () => {
+  // A count, not a verdict. It prints on every run so that Persian standing
+  // still is visible rather than inferred from a passing tick.
+  const report = [];
+  for (const c of ['fa', 'ar']) {
+    const done = GROUPS.filter((g) => groupKeys[g].length && dict[c].has(groupKeys[g][0]));
+    report.push(`${c}: ${done.length}/${GROUPS.filter((g) => groupKeys[g].length).length} page groups written`
+      + (done.length ? ` (${done.join(', ')})` : ''));
+  }
+  console.log('    ' + report.join('\n    '));
+  // Arabic is deliberately held until a human reader exists — docs/08.
+  assert.ok(true);
 });
 
 // ── Collisions, per language ──────────────────────────────────────────────
