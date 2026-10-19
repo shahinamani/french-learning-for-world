@@ -222,10 +222,11 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
   .learn {
     display: grid;
     grid-template-columns: minmax(0, 1fr) 21rem;
-    grid-template-areas: "main side";
+    grid-template-areas: "head head" "main side";
     align-items: start;
     gap: var(--space-6);
   }
+  .dash__head { grid-area: head; }
   .learn__main { grid-area: main; }
   .learn__side { grid-area: side; display: flex; flex-direction: column; gap: var(--space-6); }
   .learn .today { max-width: none; }
@@ -389,9 +390,20 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
   letter-spacing: var(--tracking-label); text-transform: uppercase; color: var(--color-accent);
 }
 /* The tricolour as an idea, not as stripes: mostly blue, a short red tick. */
-.lp-rule {
+/* Shared with the dashboard's eyebrow. Kept as one selector rather than a
+   second copy: the landing and the dashboard must not drift into two
+   slightly different tricolour marks before the shared-components pass. */
+/* Shared with the dashboard. It names --color-punctuation, NOT --lp-rouge:
+   --lp-rouge is declared on .landing, so outside that page the custom property
+   does not resolve, the gradient is invalid at computed-value time, and the
+   whole background falls away to `none`. The mark then has its 36x4 box and
+   paints nothing — no console error, no failing selector, just an invisible
+   element. That is how it reached the dashboard, and it is the same shape as
+   the --color-rouge fallback caught in the landing: a component depending on a
+   token that is not in scope where the component is used. */
+.lp-rule, .rule-mark {
   display: inline-block; flex: none; width: 2.25rem; height: 4px; border-radius: var(--radius-full);
-  background: linear-gradient(to right, var(--color-accent) 0 68%, var(--lp-rouge) 68% 100%);
+  background: linear-gradient(to right, var(--color-accent) 0 68%, var(--color-punctuation) 68% 100%);
 }
 .landing__headline {
   margin: 0; max-width: 12em;
@@ -990,3 +1002,53 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
 .ws-dlg__wrong { margin: 0; color: var(--color-danger); font-weight: var(--weight-semibold); }
 
 @media (prefers-reduced-motion: reduce) { .nav-group__chev { transition: none; } }
+
+/* ── The dashboard: the screen a learner who stays actually lives on ─────────
+ *
+ * Same contract as the landing block above, applied to the returning view, so
+ * the two read as one product rather than a front door and a different app
+ * behind it:
+ *
+ * 1. Bleu, blanc, rouge, in that order of weight. White carries every line of
+ *    reading. Blue is structure and action: the headline, the numerals, the
+ *    map's live cells. RED IS PUNCTUATION ONLY — here it is exactly one thing,
+ *    the rule under the level you have filtered to, because that is the single
+ *    piece of state on the screen a learner needs to see without looking for
+ *    it. It is never a field behind text, and --color-punctuation is named,
+ *    never --color-danger: collapsing those two is what the palette decision
+ *    exists to prevent, and it is the bug that was caught in the landing.
+ * 2. Typography does the work. The scale is the landing's, one step quieter:
+ *    this page is read every day, not judged once.
+ * 3. The lede says what the screen is for. It does not count anything, claim
+ *    anything, or congratulate anybody — there is no streak here and no
+ *    invented number.
+ */
+.dash__head { margin-block-end: var(--space-5); max-width: var(--width-prose); }
+/* No eyebrow text: the shell's breadcrumb already reads "<app name> / Today"
+   directly above, and an eyebrow repeating it word for word is furniture. The
+   tricolour mark stays on its own — small, once, at the top of the column. */
+.dash__head > .rule-mark { display: block; margin-block-end: var(--space-3); }
+.dash__title {
+  margin: 0; font-family: var(--font-display);
+  font-size: clamp(1.75rem, 1.4rem + 1.4vw, 2.5rem);
+  font-weight: var(--weight-semibold); line-height: 1.12;
+  letter-spacing: -0.015em; color: var(--color-accent);
+}
+.dash__lede {
+  margin: var(--space-3) 0 0; font-size: var(--text-md);
+  line-height: 1.55; color: var(--color-ink-muted); max-width: 46ch;
+}
+/* The numerals carry the information on the Today line, so they take the blue
+   and tabular figures: "20" and "8" should not reflow as the count changes. */
+.today__line { font-variant-numeric: tabular-nums; }
+.today__line b { font-weight: var(--weight-semibold); color: var(--color-accent); }
+
+/* The one red mark on this screen. A 3px rule under the active filter — the
+   margin line of the landing's ruled paper, doing the same job: it marks,
+   it does not fill. */
+.dash__filter { position: relative; }
+.dash__filter::after {
+  content: ''; position: absolute; inset-inline: 0; inset-block-end: -6px;
+  height: 3px; border-radius: var(--radius-full);
+  background: var(--color-punctuation);
+}

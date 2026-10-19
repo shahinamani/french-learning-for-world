@@ -67,6 +67,17 @@ export function Learn() {
 
   return (
     <div className="page learn">
+      {/* The page's own heading. It used to be the Today card's eyebrow — an h1
+          set at the smallest size on the screen, naming a card rather than the
+          page — so the document began with a label and the hierarchy started
+          one level down. The serif lead is the landing's, one step quieter:
+          this screen is read every day, not judged once. */}
+      <header className="dash__head">
+        <span className="rule-mark" aria-hidden="true" />
+        <h1 className="dash__title">{t('dashTitle')}</h1>
+        <p className="dash__lede">{t('dashLede')}</p>
+      </header>
+
       <aside className="learn__side">
       {/* One pinned card: what to do now, before anything else. The data notice
           used to sit above this, so the first thing a learner met on opening the
@@ -74,7 +85,7 @@ export function Learn() {
           now immediately below — same screen, same first visit, one position
           later — because what leads should be the thing to do. */}
       <section className="today card card--raised" aria-labelledby="today-h">
-        <h1 id="today-h" className="eyebrow">{t('today')}</h1>
+        <h2 id="today-h" className="eyebrow">{t('today')}</h2>
         {c === null ? (
           <div className="skeleton skeleton--title" data-testid="today-loading" />
         ) : c.due + c.fresh === 0 ? (
@@ -146,7 +157,7 @@ export function Learn() {
         <div className="row u-between">
           <h2 id="map-h" className="h3">{t('yourLevel')}</h2>
           {level && (
-            <button className="btn btn--sm" data-testid="clear-level"
+            <button className="btn btn--sm dash__filter" data-testid="clear-level"
                     onClick={() => { const p = new URLSearchParams(params); p.delete('level'); setParams(p); }}>
               {t('showingLevel', { level })} · {t('allLevels')}
             </button>

@@ -50,6 +50,8 @@ const fa: Dict = {
   sessionOfMinutes: 'جلسهٔ {n} دقیقه‌ای شما تمام شد.', keepGoing: 'ادامه بده', timeLeft: '{c} باقی مانده',
   learn: 'آموزش', practise: 'تمرین', progress: 'پیشرفت', search: 'جست‌وجو',
   settings: 'تنظیمات', account: 'حساب', about: 'درباره', close: 'بستن', back: 'بازگشت',
+  dashTitle: 'فرانسهٔ شما',
+  dashLede: 'اینکه اکنون چه باید خواند، چه چیزهایی را اشتباه می‌کنید، و در هر سطح چه چیزی موجود است. هیچ‌کدام از اینها نمره نیست.',
   today: 'امروز', dueNow: 'برای مرور', newCards: 'جدید', learned: 'آموخته', cards: 'کارت‌ها',
   yourLevel: 'سطح شما', allLevels: 'همه‌ی سطح‌ها', showingLevel: 'فقط سطح {level}', toWorkOn: 'نیازمند تمرین', start: 'شروع', startSession: 'شروع مطالعه',
   minutes: '{n} دقیقه', sessionOf: '{n} کارت · {m} دقیقه',

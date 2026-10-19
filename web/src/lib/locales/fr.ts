@@ -50,6 +50,8 @@ const fr: Dict = {
   sessionOfMinutes: 'Votre session de {n} minutes est terminée.', keepGoing: 'Continuer', timeLeft: 'il reste {c}',
   learn: 'Apprendre', practise: 'Pratiquer', progress: 'Progrès', search: 'Chercher',
   settings: 'Réglages', account: 'Compte', about: 'À propos', close: 'Fermer', back: 'Retour',
+  dashTitle: 'Votre français',
+  dashLede: 'Ce qu’il faut travailler maintenant, ce que vous ratez, et ce qui existe à chaque niveau. Rien ici n’est une note.',
   today: "Aujourd’hui", dueNow: 'À réviser', newCards: 'Nouvelles', learned: 'Apprises', cards: 'Cartes',
   yourLevel: 'Votre niveau', allLevels: 'Tous les niveaux', showingLevel: 'Niveau {level} seulement', toWorkOn: 'À travailler', start: 'Commencer', startSession: 'Commencer',
   minutes: '{n} min', sessionOf: '{n} cartes · {m} min',

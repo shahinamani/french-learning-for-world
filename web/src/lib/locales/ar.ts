@@ -50,6 +50,8 @@ const ar: Dict = {
   sessionOfMinutes: 'انتهت جلستك التي مدتها {n} دقيقة.', keepGoing: 'واصل', timeLeft: 'بقي {c}',
   learn: 'التعلّم', practise: 'التمرين', progress: 'التقدّم', search: 'البحث',
   settings: 'الإعدادات', account: 'الحساب', about: 'حول', close: 'إغلاق', back: 'رجوع',
+  dashTitle: 'فرنسيّتك',
+  dashLede: 'ما ينبغي دراسته الآن، وما تُخطئ فيه، وما هو متاح في كل مستوى. لا شيء هنا درجة.',
   today: 'اليوم', dueNow: 'للمراجعة', newCards: 'جديدة', learned: 'محفوظة', cards: 'البطاقات',
   yourLevel: 'مستواك', allLevels: 'كل المستويات', showingLevel: 'المستوى {level} فقط', toWorkOn: 'بحاجة إلى عمل', start: 'ابدأ', startSession: 'ابدأ الدراسة',
   minutes: '{n} دقيقة', sessionOf: '{n} بطاقة · {m} دقيقة',

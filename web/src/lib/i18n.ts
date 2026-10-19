@@ -55,6 +55,8 @@ const en = {
   sessionOfMinutes: 'Your {n}-minute session is finished.', keepGoing: 'Keep studying', timeLeft: '{c} left',
   learn: 'Learn', practise: 'Practise', progress: 'Progress', search: 'Search',
   settings: 'Settings', account: 'Account', about: 'About', close: 'Close', back: 'Back',
+  dashTitle: 'Your French',
+  dashLede: 'What to study now, what you have been getting wrong, and what exists at each level. Nothing here is a score.',
   today: 'Today', dueNow: 'Due now', newCards: 'New', learned: 'Learned', cards: 'Cards',
   yourLevel: 'Your level', allLevels: 'All levels', showingLevel: 'Showing {level} only', toWorkOn: 'To work on', start: 'Start', startSession: 'Start studying',
   minutes: '{n} min', sessionOf: '{n} cards · {m} min',
