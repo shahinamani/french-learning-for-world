@@ -275,103 +275,6 @@ const importEn = {
 
 export const IMPORT_KEYS = Object.keys(importEn) as (keyof typeof importEn)[];
 
-/**
- * The learning workspace, added 2026-10-12.
- *
- * A fourth optional group, for the same standing reason as the third: adding
- * to `en` obliges Persian and Arabic, and inventing those is what this project
- * does not do. French is written here because French is written here; Persian
- * and Arabic fall back to English behind `notTranslatedHere`, which is the
- * established pattern and not a gap being hidden.
- */
-const workspaceEn = {
-  wsTitle: 'Learning workspace',
-  wsSummaryLead: 'Vocabulary cards, built from the written deck and the verb index.',
-  wsSummaryRich: 'written cards, with example sentences and four languages',
-  wsSummaryGloss: 'verb cards whose English meaning comes from Wiktionary and has been read by nobody',
-  wsCeiling: 'Graded practice and explanations stop at B2. The levels above it are frequency bands for vocabulary, not a claim that C1 or C2 is taught here.',
-  wsLocalOnly: 'Marks are kept on this device, in this browser. There is no account and nothing is uploaded.',
-
-  // Tabs
-  wsTabFlashcards: 'Flashcards',
-  wsTabQuiz: 'Quiz',
-  wsTabDialogues: 'Dialogues',
-  wsTabGrammar: 'Grammar',
-  wsTabVocabulary: 'Vocabulary',
-  wsTabProgress: 'Progress',
-
-  // Top controls
-  wsTimer: 'Session timer',
-  wsTimerStart: 'Start',
-  wsTimerPause: 'Pause',
-  wsTimerResume: 'Resume',
-  wsTimerReset: 'Reset',
-  wsTimerSound: 'Chime at the end',
-  wsVoiceSpeed: 'Voice speed',
-  wsVoice: 'Voice',
-  wsVoiceNone: 'No French voice on this device',
-  wsVoiceNoneHelp: 'Listen needs a French system voice. Nothing is downloaded by this page, so until one is installed the button stays off.',
-  wsRegionFrance: 'France',
-  wsRegionCanada: 'Canada',
-  wsRegionOther: 'Other French',
-  wsSpeechAid: 'Machine speech, as a pronunciation aid. It is not listening practice and is not a model of a native speaker.',
-
-  // Filters
-  wsFilters: 'Filters',
-  wsFilterAll: 'All',
-  wsFilterUnmarked: 'Not yet marked',
-  wsFilterReview: 'To review',
-  wsFilterKnown: 'Known',
-  wsShuffle: 'Shuffle',
-  wsShuffleOff: 'In order',
-  wsLevels: 'Levels',
-  wsJump: 'Go to card',
-  wsJumpGo: 'Go',
-
-  // The card
-  wsReveal: 'Show the answer',
-  wsRevealHint: 'Click the card, or press Enter or Space',
-  wsHide: 'Hide the answer',
-  wsGlossUnreviewed: 'This meaning comes from Wiktionary. No teacher has read it.',
-  wsExamples: 'Examples',
-  wsPrev: 'Previous',
-  wsNext: 'Next',
-  wsListen: 'Listen',
-  wsKnown: 'Known',
-  wsToReview: 'To review',
-  wsMarkedKnown: 'Marked known',
-  wsMarkedReview: 'Marked for review',
-
-  // Empty and honest states
-  wsEmptyFiltered: 'No cards match these filters.',
-  wsEmptyFilteredHelp: 'Widen the levels, or choose All.',
-  wsNoDialogues: 'There are no dialogues in this project.',
-  wsNoDialoguesWhy: 'None has been written, and no recording has been obtained under a licence that permits use. This tab stays empty until there is real content behind it.',
-  wsOpen: 'Open',
-  wsQuizLead: 'Exam papers, with an explanation for every question after you submit.',
-  wsGrammarLead: 'Grammar points, and how much material sits behind each one.',
-  wsVocabLead: 'Every verb in the project, with its tables, searchable.',
-  wsProgressLead: 'What this device has recorded.',
-
-  // ── The educational back of a card ───────────────────────────────────────
-  wsMeaning: 'Meaning',
-  wsShowExamples: 'Show examples',
-  wsHideExamples: 'Hide examples',
-  wsUsage: 'Note',
-  wsGlossOnly: 'This card has a dictionary gloss only — no examples have been written for it yet.',
-  wsDrafted: 'Meaning, examples and Persian drafted here. No teacher has read them and no Persian reader has checked them.',
-  wsPatternImpersonal: 'Impersonal verb',
-  wsPatternPronominal: 'Pronominal verb',
-  wsCoverageEnriched: 'with worked examples',
-  wsCoverageReviewed: 'checked by a teacher',
-  wsComprehension: 'Comprehension',
-  wsCorrect: 'Correct.',
-  wsNotQuite: 'Not quite.',
-  wsRetry: 'Try again',
-  wsMarkMapping: 'Known writes the Easy grade and To review writes Again, into the same spaced-repetition record as the four-grade session — which still exists under Practise and is the finer instrument. Nothing is collapsed: Hard and Good are not reachable from here, and a card you graded there keeps that grade.',
-};
-
-export const WORKSPACE_KEYS = Object.keys(workspaceEn) as (keyof typeof workspaceEn)[];
 
 /**
  * The portal shell and its routes, added 2026-10-18 (blueprint v0.2, section 5).
@@ -385,6 +288,10 @@ export const WORKSPACE_KEYS = Object.keys(workspaceEn) as (keyof typeof workspac
  * all four languages.
  */
 const shellEn = {
+  // Asked for by Learn and TopLine, which are in the first load, so it lives in
+  // this eager group and not with the rest of the workspace copy (locales/en/
+  // workspaceEn.ts), which travels with the lazy workspace chunk.
+  wsTitle: 'Learning workspace',
   shellSections: 'Sections',
   shellQuickNav: 'Quick navigation',
   shellBreadcrumb: 'You are here',
@@ -425,264 +332,45 @@ const shellEn = {
 
 export const SHELL_KEYS = Object.keys(shellEn) as (keyof typeof shellEn)[];
 
-/**
- * The weakness suggestion (blueprint §15), added 2026-10-18.
- *
- * A fifth optional group, for the standing reason: adding to `en` obliges
- * Persian and Arabic, and inventing those is what this project does not do.
- * English and French only; the other two fall back to English behind
- * `notTranslatedHere`.
- *
- * Copy rules from the blueprint: a reason and a link, never a mastery figure,
- * and nothing that reads as a guilt trip.
- */
-const weaknessEn = {
-  wkHeading: 'A topic worth another look',
-  wkThresholdNote: 'A topic is raised after 5 wrong answers and cleared after 5 correct answers in a row. These two numbers are an engineering choice made for this app. They are not a proven scientific criterion.',
-  wkNoPressure: 'You can skip this. Nothing here is a streak, and skipping costs nothing.',
-
-  // The reason — one per situation
-  wkWhyNotEnough: 'There is not enough yet to conclude anything about “{topic}”. You have given {n} wrong answers on it, and it takes 5 before this page says a topic needs work.',
-  wkWhyRepeated: 'In your last few exercises you needed “{topic}” again: {n} wrong answers so far.',
-  wkWhyListening: 'On “{topic}” your written answers are going well, but the listening ones are not: {n} wrong. The same level with shorter clips may help.',
-  wkWhyImproving: 'Your answers on “{topic}” improved in later review: {run} correct in a row. A lighter practice and a later review should be enough.',
-  wkWhyCleared: 'Your answers on “{topic}” improved: 5 correct in a row since it was raised. A lighter practice and a later review are enough.',
-
-  // The evidence
-  wkLatest: 'Latest evidence',
-  wkExample: 'An example of the mistake',
-  wkShown: 'You were shown',
-  wkAnswered: 'You answered',
-  wkSelfRated: 'You marked this card to review.',
-  wkWhen: 'on {date}',
-  wkExplain: 'Read the explanation of this topic',
-  wkExplainNote: 'This panel shows what your answers recorded. It does not guess why.',
-
-  // The action
-  wkActPractise: 'Practise this for 5 minutes',
-  wkActDiagnostic: 'Take an optional short check',
-  wkActListening: 'Shorter listening clips, 5 minutes',
-  wkActLighter: 'A lighter practice, 5 minutes',
-  wkListeningNone: 'Listening practice is not built yet, so this link opens the placeholder page.',
-
-  // The re-check
-  wkRecheckNone: 'Re-check: answer 5 in a row correctly and this topic clears.',
-  wkRecheckProgress: 'Re-check: {n} of 5 correct in a row.',
-  wkRecheckPassed: 'Re-check passed: 5 correct in a row.',
-
-  // Postpone or ignore
-  wkPostpone: 'Not now — ask again in 7 days',
-  wkIgnore: 'Ignore this topic',
-  wkIgnoreNote: 'An ignored topic comes back only if 5 more answers go wrong.',
-  wkPostponedDone: 'Postponed for 7 days.',
-  wkIgnoredDone: 'Ignored. It will not come back unless 5 new answers go wrong.',
-  wkNotSaved: 'This choice could not be saved on this device, so it lasts only until you close this tab.',
-  wkWaiting: '{n} more suggestions are waiting. They are shown one at a time.',
-
-  // The five states
-  wkLoading: 'Looking at your recent answers…',
-  wkErrorTitle: 'Your answers could not be read.',
-  wkErrorBody: 'Nothing was changed. Trying again is safe.',
-  wkRetry: 'Try again',
-  wkOfflineTitle: 'You are offline.',
-  wkOfflineBody: 'Your answers are stored on this device, but topic names and practice links need a connection to load.',
-  wkEmptyTitle: 'No answers yet, so nothing to say.',
-  wkEmptyBody: 'This page only speaks once it has something your own answers back up.',
-  wkEmptyAction: 'Start a 5-minute review',
-  wkFinishedTitle: 'Nothing needs another look right now.',
-  wkFinishedBody: 'No topic has reached 5 wrong answers, or the ones that did were postponed, ignored or have improved.',
-  wkFinishedAction: 'Practise something else',
-};
-
-export const WEAKNESS_KEYS = Object.keys(weaknessEn) as (keyof typeof weaknessEn)[];
-
-/**
- * The grammar loop and the Exercise component (stream S2-grammar, 2026-10-18).
- *
- * A fifth optional group, for the standing reason of the other four: adding to
- * `en` obliges Persian and Arabic, and inventing those is what this project
- * does not do. English and French are written here; Persian and Arabic fall
- * back to English behind `notTranslatedHere`. Every key carries the prefix
- * `grl` (NOT `gram`: the core key `grammar` begins with it).
- *
- * The lesson TEXT is not in this group. It is in content/lessons.json, in the
- * languages its writer supplied; these are only the words around it.
- */
-const grammarEn = {
-  grlTitle: 'Grammar',
-  grlLead: 'Short lessons: the idea, two examples, how it differs from its neighbour, then practice that explains every answer.',
-  grlSearch: 'Search grammar',
-  grlSearchPlaceholder: 'passé composé, partitive…',
-  grlFilterLevel: 'Level',
-  grlFilterTopic: 'Topic',
-  grlAll: 'All',
-  grlCount: '{n} of {total} lessons',
-  grlActiveFilters: 'Active filters',
-  grlRemoveFilter: 'Remove filter: {name}',
-  grlClearFilters: 'Clear all filters',
-  grlSearchChip: 'Search: {q}',
-  grlNoMatch: 'No lesson matches these filters.',
-  grlNoMatchHelp: 'Remove a filter or clear the search.',
-  grlQuestionsN: '{n} practice questions',
-  grlOpenLesson: 'Open lesson',
-  grlLoading: 'Loading the lessons…',
-  grlLoadError: 'The lessons could not be loaded.',
-  grlLoadErrorHelp: 'Nothing is wrong with your progress. Try again.',
-  grlOffline: 'You are offline, and these lessons are not stored on this device yet.',
-  grlOfflineHelp: 'Reconnect, then try again.',
-  grlRetryLoad: 'Try again',
-  grlEmpty: 'There are no grammar lessons yet.',
-  grlEmptyHelp: 'None has been written. The vocabulary and verbs sections still work.',
-  grlNoLesson: 'There is no lesson for this yet.',
-  grlNoLessonHelp: 'The concept exists, but nobody has written a lesson on it.',
-  grlBackToList: 'All grammar lessons',
-  grlBackToOrigin: 'Back to what you were doing',
-  grlStepExplanation: 'The idea',
-  grlStepExamples: 'Two examples',
-  grlStepDifference: 'How it differs from {name}',
-  grlStepPractice: 'Practice',
-  grlSimpler: 'Simpler explanation',
-  grlFullAgain: 'Full explanation',
-  grlOpenNearby: 'Open the lesson on {name}',
-  grlNotInYourLanguage: 'Part of this lesson is not written in your language yet. Those parts are shown in English.',
-  grlDrafted: 'Drafted, not reviewed. No teacher has read this lesson, and nobody has checked the grammar against a reference.',
-  grlQuestionOf: 'Question {n} of {total}',
-  grlFinishedTitle: 'Practice finished',
-  grlFinishedScore: '{n} of {total} right on the first try.',
-  grlPracticeAgain: 'Practise again',
-  grlReturnOrigin: 'Return to where you came from',
-  grlReturnList: 'Back to all grammar lessons',
-  grlExCheck: 'Check',
-  grlExChoose: 'Choose an answer first.',
-  grlExRight: 'Correct.',
-  grlExWrong: 'Not quite.',
-  grlExAnswerIs: 'The answer is {a}.',
-  grlExWhyRight: 'Why this is right',
-  grlExWhyWrong: 'Why “{a}” is wrong',
-  grlExNoNote: 'No note was written for the choice you made.',
-  grlExYours: 'Your answer',
-  grlExTheAnswer: 'Correct answer',
-  grlExRetry: 'Try again',
-  grlExContinue: 'Continue',
-  grlExLoading: 'Loading the question…',
-  grlExError: 'This question could not be loaded.',
-  grlExOffline: 'You are offline.',
-  grlExEmpty: 'There is no question here.',
-  grlExFinished: 'Finished.',
-};
-
-export const GRAMMAR_KEYS = Object.keys(grammarEn) as (keyof typeof grammarEn)[];
 
 
-/**
- * Another optional group: the Reader (blueprint section 11). Same standing
- * reason as the earlier ones — English and French are written here, Persian and
- * Arabic are not, and fall back to English behind `notTranslatedHere`.
- * Every key starts with `rd`.
- */
-const readerEn = {
-  rdTitle: 'Reading',
-  rdLead: 'Short original French texts. Select any word to see what it means in its sentence, and add it to your words with that sentence attached.',
-  rdDraftedNote: 'Drafted for this project and not yet read by a teacher. The level was set by the author, not measured.',
-  rdSearchLabel: 'Search the texts',
-  rdSearchPlaceholder: 'A title or a topic…',
-  rdFilterLevel: 'Level',
-  rdFilterTopic: 'Topic',
-  rdFilterDuration: 'Length',
-  rdFilterType: 'Type',
-  rdFilters: 'Filters',
-  rdTopicDaily: 'Daily life',
-  rdTopicWork: 'Work',
-  rdTopicScience: 'Science',
-  rdTopicCulture: 'Culture',
-  rdDurShort: 'Short (under 90 s)',
-  rdDurMedium: 'Medium (90–104 s)',
-  rdDurLong: 'Longer (105 s or more)',
-  rdTypeText: 'Text',
-  rdLevelNone: 'Level not stated',
-  rdResultCount: '{n} texts shown',
-  rdResultCountOne: '1 text shown',
-  rdClearFilters: 'Clear all filters',
-  rdRemoveFilter: 'Remove filter: {name}',
-  rdMinutes: '{n} min',
-  rdRead: 'Read',
-  rdContinue: 'Continue reading',
-  rdSavedBadge: 'Saved',
-  rdResultBadge: 'Questions: {c} of {n}',
-  rdBack: 'Back to the texts',
-  rdSave: 'Save for later',
-  rdSavedForLater: 'Saved for later',
-  rdSaveNote: 'Saving a text is not the same as having learned it.',
-  rdFontSize: 'Text size',
-  rdFontSmaller: 'Smaller text',
-  rdFontLarger: 'Larger text',
-  rdShowTranslation: 'Show the translation',
-  rdHideTranslation: 'Hide the translation',
-  rdTranslationHeading: 'Translation',
-  rdTranslationNone: 'This text has no translation in your meaning language.',
-  rdTextLabel: 'French text. Select a word or a phrase to see its meaning. Arrow keys move between words; Enter opens the meaning.',
-  rdResumed: 'You are back at sentence {n} of {total}.',
-  rdFromStart: 'Start from the beginning',
-  rdPanelTitle: 'Meaning',
-  rdPanelEmpty: 'Select a word or a phrase in the text to see what it means in its sentence.',
-  rdPanelClose: 'Close the meaning panel',
-  rdSelected: 'Selected',
-  rdItsSentence: 'Its sentence',
-  rdMeaningHere: 'Meaning in this text',
-  rdNoGloss: 'This text’s word list has no entry for this. You can still add it: its sentence is saved with it.',
-  rdSpellingMatch: 'Matched by spelling only. It may be another form or another word.',
-  rdGlossDrafted: 'Meanings were written together with the text and no teacher has checked them.',
-  rdHear: 'Hear it',
-  rdSpeechAid: 'Your device’s voice, not a recording.',
-  rdNoVoice: 'This device has no French voice, so it cannot be read aloud here.',
-  rdAddWord: 'Add to my words',
-  rdWordAdded: 'In my words',
-  rdWordAddedNote: 'Saved with its sentence from this text.',
-  rdSaveFailed: 'Could not save to this browser. Nothing was stored.',
-  rdDictionary: 'Look up in the dictionary',
-  rdWhatStructure: 'What is this structure?',
-  rdStructureNone: 'No grammar explanation is linked to this text yet, so none is shown rather than a guess.',
-  rdStructureOpen: 'Open grammar',
-  rdGlossedHere: 'Glossed in this sentence',
-  rdAddGlossed: 'Add {word}',
-  rdListen: 'Listen to the text',
-  rdNoAudio: 'No recording of this text exists yet; none has been licensed.',
-  rdWordsHeading: 'Words from this text',
-  rdFinishReading: 'I have finished reading',
-  rdQuizTitle: 'Check your understanding',
-  rdQuizLead: 'Answer in your own time. Each answer is explained, right or wrong.',
-  rdQuestionN: 'Question {i} of {n}',
-  rdCheck: 'Check',
-  rdCorrect: 'Correct.',
-  rdNotQuite: 'Not quite.',
-  rdTryAgain: 'Try again',
-  rdExplanation: 'Why',
-  rdFinishedTitle: 'You have answered every question',
-  rdFinishedScore: '{c} of {n} right on the first try.',
-  rdFinishedNext: 'What next?',
-  rdReread: 'Read it again',
-  rdMyWords: 'Review my words',
-  rdLoading: 'Loading the texts…',
-  rdErrorTitle: 'The texts could not be loaded',
-  rdErrorBody: 'The file did not arrive. Nothing on your device has been lost.',
-  rdRetry: 'Try again',
-  rdOfflineTitle: 'You are offline',
-  rdOfflineBody: 'The texts have not been stored on this device yet. Connect once and they will open here.',
-  rdEmptyTitle: 'No text matches these filters',
-  rdEmptyBody: 'Remove a filter or clear them all to see the texts again.',
-  rdNoTextsTitle: 'There are no reading texts yet',
-  rdNoTextsBody: 'Come back later, or study words and verbs meanwhile.',
-  rdNotFoundTitle: 'This text does not exist',
-  rdNotFoundBody: 'The link may be old. The list has every text there is.',
-};
+
+
+// The four groups below belong to lazy routes, so they are NOT part of this
+// module. Only their types are imported here (erased at build time); the
+// strings are registered by the route chunk that uses them. See
+// registerEnglish() and tests/i18n-lazy-groups.test.js.
+import type { workspaceEn } from './locales/en/workspaceEn';
+import type { weaknessEn } from './locales/en/weaknessEn';
+import type { grammarEn } from './locales/en/grammarEn';
+import type { readerEn } from './locales/en/readerEn';
 
 export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
   & Partial<typeof importEn> & Partial<typeof workspaceEn> & Partial<typeof shellEn>
   & Partial<typeof weaknessEn> & Partial<typeof grammarEn> & Partial<typeof readerEn>;
 
-/** What the translator and the prerender read: English, landing copy included. */
-const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn, ...workspaceEn,
-  ...shellEn, ...weaknessEn, ...grammarEn, ...readerEn };
+/**
+ * What the translator and the prerender read: English, landing copy included.
+ *
+ * It is one object that grows. The eager groups are spread in here; each lazy
+ * group adds itself with registerEnglish() when its route chunk is evaluated,
+ * which is strictly before any component in that chunk can render. The
+ * translator reads this object on every call rather than copying it, so a
+ * group registered after the translator was made is still seen.
+ */
+const enFull: Dict = { ...en, ...landingEn, ...nextEn, ...importEn, ...shellEn };
+
+/**
+ * Add a lazy English group. Called by the group's own module, for its side
+ * effect, when the chunk of the screen that uses it is loaded.
+ *
+ * Persian and Arabic never need this: they lack these groups by design and the
+ * translator falls back to `enFull`, which is where the group lands. French
+ * carries every key itself and does not need it either.
+ */
+export function registerEnglish(group: Partial<Dict>): void {
+  Object.assign(enFull, group);
+}
 
 /**
  * Has anybody written the landing page in this language?

@@ -9,6 +9,8 @@
  *
  * or as two routes, `app/reading` -> ReaderList and `app/reading/:id` -> ReaderPage.
  */
+// This chunk registers its English: the Reader strings are not in the first load.
+import '../../lib/locales/en/readerEn';
 import { Route, Routes } from 'react-router';
 import { ReaderList } from './ReaderList';
 import { ReaderPage } from './ReaderPage';

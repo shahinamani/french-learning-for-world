@@ -20,6 +20,9 @@
  * Displaying this writes nothing to the review log. Postpone and ignore write
  * only to this feature's own key, and only when the learner presses them.
  */
+// This chunk registers its English: the weakness strings are not in the first load.
+// (Not lib/weakness.ts, which is deliberately importable in plain Node with no imports.)
+import '../../lib/locales/en/weaknessEn';
 import { useCallback, useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';

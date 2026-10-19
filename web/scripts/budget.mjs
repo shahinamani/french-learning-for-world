@@ -19,6 +19,8 @@
  * learner who never opens the exams section never pays for it. The lazy chunks
  * are printed anyway, so that a route quietly becoming eager is visible rather
  * than merely allowed.
+ *
+ * This says how much; `node scripts/attribute.mjs` (after a build) says whose.
  */
 import { readFileSync, readdirSync } from 'node:fs';
 import { gzipSync } from 'node:zlib';

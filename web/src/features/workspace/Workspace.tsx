@@ -9,6 +9,8 @@
  * return to and link to. Hash routing means the whole address survives a
  * reload, which is the same reason every other view here has an address.
  */
+// This chunk registers its English: the workspace strings are not in the first load.
+import '../../lib/locales/en/workspaceEn';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp } from '../../app-context';

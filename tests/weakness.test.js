@@ -24,6 +24,8 @@ import {
   WRONG_TO_RAISE, CORRECT_TO_CLEAR,
 } from '../web/src/lib/weakness.ts';
 import { translator, loadDictionary } from '../web/src/lib/i18n.ts';
+// The weakness strings are a lazy English group; the card registers them in the app.
+import '../web/src/lib/locales/en/weaknessEn.ts';
 import { pick } from '../web/src/lib/exams.ts';
 
 const read = (p) => JSON.parse(readFileSync(new URL(`../${p}`, import.meta.url), 'utf8'));
@@ -249,7 +251,7 @@ test('no output a learner can read contains a percentage or a mastery figure', (
 });
 
 test('no string in the weakness group, and no line of the card, carries a percentage', () => {
-  const i18n = text('web/src/lib/i18n.ts');
+  const i18n = text('web/src/lib/locales/en/weaknessEn.ts');
   const group = /const weaknessEn = \{([\s\S]*?)\n\};/.exec(i18n)[1];
   assert.ok(group.length > 2000, 'the group was extracted');
   assert.doesNotMatch(group, /%|percent|mastery/i);
