@@ -83,7 +83,19 @@ Arabic grammar terminology for Arabic, but whether an Arabic-speaking learner of
 French would recognise it as the name of that French tense. If the convention in
 Arabic-language French teaching differs, the convention wins.
 
-### 3. Content titles
+### 3. The dashboard heading — added 2026-10-19 without a reader
+
+`dashTitle` = `فرنسيّتك`, `dashLede` =
+`ما ينبغي دراسته الآن، وما تُخطئ فيه، وما هو متاح في كل مستوى. لا شيء هنا درجة.`
+
+On the home screen, so it is the first Arabic a learner reads. Shipped without
+a reader on the same judgement as the tense names: it names the page and makes
+a plain statement, rather than teaching French, so a clumsy phrasing is
+embarrassing and not harmful. Confirm the register is right for addressing a
+learner directly, and that the last sentence lands as intended — it exists to
+say the screen is not a score.
+
+### 4. Content titles
 
 `content/decks.json` and `content/fr-core-a1.json` both carry
 `الفرنسية الأساسية A1`. Added without a reader, same caveat.
