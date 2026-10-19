@@ -185,6 +185,9 @@ mark.form {
 .input::placeholder { color: var(--color-ink-faint); }
 .input[aria-invalid="true"] { border-color: var(--color-danger); }
 .field__error { font-size: var(--text-xs); color: var(--color-danger); }
+/* Danger is never colour alone, and it is not the brand red. The glyph is
+ * decorative ("/ ''" gives it an empty accessible name); the message is the word. */
+.field__error::before { content: "\2715\00a0" / ""; font-weight: var(--weight-bold); }
 
 /* ── Progress ───────────────────────────────────────────────────────────── */
 .rail { height: 3px; background: var(--color-surface-sunken); }
@@ -229,6 +232,7 @@ mark.form {
 .alert--success { color: var(--color-success); background: var(--color-success-soft); }
 .alert--warning { color: var(--color-warning); background: var(--color-warning-soft); }
 .alert--danger  { color: var(--color-danger);  background: var(--color-danger-soft); }
+.alert--danger::before { content: "\2715" / ""; flex: none; font-weight: var(--weight-bold); }
 .alert__body { color: var(--color-ink); }
 
 /* ── Skeleton — the shape of the content it replaces, never a spinner ──── */
@@ -259,7 +263,9 @@ mark.form {
   color: var(--color-ink-faint); background: none;
   border: 0; border-block-start: 2px solid transparent; cursor: pointer;
 }
-.tab[aria-selected="true"] { color: var(--color-accent); border-block-start-color: var(--color-accent); }
+/* Blue carries the active state (the label, the icon); red is the punctuation
+ * under it. The underline is a 2px MARK, never a field behind the label. */
+.tab[aria-selected="true"] { color: var(--color-accent); border-block-start-color: var(--color-punctuation); }
 .tab svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
 
 /* ── Command palette ────────────────────────────────────────────────────── */
