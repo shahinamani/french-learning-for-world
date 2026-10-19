@@ -1952,9 +1952,17 @@ console.log('\n=== the front door ===');
   const box = async (sel) => pg.locator(sel).boundingBox();
   const have = await box('[data-testid="landing-today"]');
   const gaps = await box('[data-testid="landing-notyet"]');
-  ok('the gaps panel is not a footnote: within 15% of the other panel\'s height',
-     !!have && !!gaps && gaps.height > have.height * 0.45,
-     `have ${Math.round(have?.height)}px, gaps ${Math.round(gaps?.height)}px`);
+  // The honesty section is a band of its own, straight after the tiles: it
+  // must be tall enough to be read as a section (not a footnote line), and it
+  // must start before the first screenful past the tiles ends.
+  ok('the gaps section is not a footnote: a section of its own, directly below the tiles',
+     !!have && !!gaps && gaps.height > 150 && gaps.y >= have.y + have.height - 2 && gaps.y - (have.y + have.height) < 200,
+     `today ${Math.round(have?.height)}px, gaps ${Math.round(gaps?.height)}px at y ${Math.round(gaps?.y)}`);
+  ok('the landing page has no invented proof: no testimonial, no learner count',
+     !/testimonial|\bhappy learners\b|\b\d[\d,]* (learners|students|users)\b/i.test(text));
+  ok('the language control is text, and no flag is used for a language',
+     await pg.locator('[data-testid="landing-lang"] option').count() === 4
+     && !/[\u{1F1E6}-\u{1F1FF}]/u.test(text));
 
   // 4. The way in works, and pressing it stores nothing — so somebody who
   //    looked and left is still a stranger next time.
@@ -2038,7 +2046,7 @@ console.log('\n=== the front door ===');
   // Three widths, named by Shahin. The complaint that started this page was
   // "a phone layout on a wide screen", so the check is not only overflow: the
   // two panels must sit side by side on a desktop and stack on a phone.
-  for (const [w, h, expect] of [[390, 844, 'stacked'], [768, 1024, 'stacked'], [1440, 900, 'side by side']]) {
+  for (const [w, h, expect] of [[360, 780, 'stacked'], [390, 844, 'stacked'], [768, 1024, 'stacked'], [1440, 900, 'side by side']]) {
     const c = await browser.newContext({ viewport: { width: w, height: h } });
     const pg = await c.newPage(); watch(pg, ` landing ${w}`);
     await pg.goto(BASE, { waitUntil: 'networkidle' });
@@ -2048,10 +2056,19 @@ console.log('\n=== the front door ===');
 
     const a = await pg.locator('[data-testid="landing-today"]').boundingBox();
     const b = await pg.locator('[data-testid="landing-notyet"]').boundingBox();
-    const sideBySide = !!a && !!b && Math.abs(a.y - b.y) < 24 && Math.abs(a.x - b.x) > 40;
-    ok(`landing at ${w}px: the two panels are ${expect}`,
-       sideBySide === (expect === 'side by side'),
+    ok(`landing at ${w}px: the gaps section follows the tiles, stacked, at the same width`,
+       !!a && !!b && b.y > a.y + a.height - 2 && Math.abs(a.x - b.x) < 2 && Math.abs(a.width - b.width) < 2,
        `today at (${Math.round(a?.x)},${Math.round(a?.y)}), gaps at (${Math.round(b?.x)},${Math.round(b?.y)})`);
+    // The scene is BESIDE the pitch on a desktop and under it on a phone.
+    const copy = await pg.locator('.lp-hero__copy').boundingBox();
+    const scene = await pg.locator('#preview').boundingBox();
+    const beside = !!copy && !!scene && Math.abs(copy.y - scene.y) < 200 && scene.x > copy.x + copy.width - 2;
+    ok(`landing at ${w}px: the live preview is ${expect}`, beside === (expect === 'side by side'),
+       `copy (${Math.round(copy?.x)},${Math.round(copy?.y)}), scene (${Math.round(scene?.x)},${Math.round(scene?.y)})`);
+    // The cards are live: turning the card shows its meaning, with no storage.
+    await pg.locator('[data-testid="landing-card-turn"]').click();
+    ok(`landing at ${w}px: the preview card turns to its meaning`,
+       (await pg.locator('[data-testid="landing-card"]').innerText()).includes('to be'));
 
     // A headline that wraps to five lines on a phone is a different fault from
     // overflow and the overflow check cannot see it.
@@ -2062,6 +2079,66 @@ console.log('\n=== the front door ===');
     if (shots) await pg.screenshot({ path: `${shots}/landing-${w}.png`, fullPage: true });
     await c.close();
   }
+}
+
+{
+  // The landing page's controls do what they say, and writing nothing.
+  const c = await browser.newContext({ viewport: { width: 1280, height: 900 } });
+  const pg = await c.newPage(); watch(pg, ' landing controls');
+  await pg.goto(BASE, { waitUntil: 'networkidle' });
+  await pg.waitForTimeout(900);
+
+  // The goal is pre-selected, editable, and changes the list.
+  const checked = await pg.locator('[data-testid="landing-goal"] input:checked').count();
+  ok('a goal is pre-selected', checked === 1);
+  const before = await pg.locator('.lp-goal__list').innerText();
+  await pg.locator('.lp-chip', { hasText: 'An exam' }).click();
+  const after = await pg.locator('.lp-goal__list').innerText();
+  ok('choosing another goal changes the list to real exam papers', before !== after && /DELF A1/.test(after));
+  for (const href of await pg.locator('.lp-goal__link').evaluateAll((a) => a.map((x) => x.getAttribute('href')))) {
+    ok(`goal link ${href} is a real route`, !!href && href.startsWith('#/app/'));
+  }
+
+  // The sequence steps by hand, and plays and stops on request.
+  await pg.locator('.lp-step').nth(2).click();
+  ok('picking step 3 shows the card', (await pg.locator('.lp-flow__stage').innerText()).includes('to be'));
+  await pg.locator('[data-testid="landing-flow-play"]').click();
+  await pg.waitForTimeout(500);
+  ok('play starts at step 1 and Stop is offered',
+     (await pg.locator('.lp-step[aria-current="step"]').innerText()).includes('Text')
+     && /Stop/.test(await pg.locator('[data-testid="landing-flow-play"]').innerText()));
+  await pg.locator('[data-testid="landing-flow-play"]').click();
+
+  // In-page navigation scrolls and does not leave the route (the router is a
+  // hash router, so a fragment link would have opened the 404 page).
+  await pg.locator('.lp-navlink', { hasText: 'Questions' }).click();
+  await pg.waitForTimeout(900);
+  ok('an in-page link stays on the landing page', await pg.locator('[data-testid="landing"]').count() === 1
+     && !/\/(faq|preview|today)/.test(pg.url()));
+
+  // Choosing a goal, turning a card, switching step: all reading, nothing stored.
+  ok('none of it stored a started flag',
+     await pg.evaluate(() => { try { return localStorage.getItem('fmv.started'); } catch { return 'threw'; } }) === null);
+
+  // Keyboard: every control reachable, focus visible.
+  await pg.keyboard.press('Tab');
+  const focus = await pg.evaluate(() => {
+    const el = document.activeElement; if (!el) return null;
+    const cs = getComputedStyle(el); return { tag: el.tagName, outline: cs.outlineStyle };
+  });
+  ok('the first Tab lands on a control with a visible focus ring', !!focus && focus.outline !== 'none', JSON.stringify(focus));
+
+  // Reduced motion: the movement goes, the content and the controls stay.
+  const rc = await browser.newContext({ viewport: { width: 1280, height: 900 }, reducedMotion: 'reduce' });
+  const rp = await rc.newPage(); watch(rp, ' landing reduced-motion');
+  await rp.goto(BASE, { waitUntil: 'networkidle' });
+  const anim = await rp.evaluate(() => getComputedStyle(document.querySelector('.landing__headline')).animationName);
+  ok('reduced motion: the headline does not animate', anim === 'none');
+  ok('reduced motion: the preview card still turns',
+     await (async () => { await rp.locator('[data-testid="landing-card-turn"]').click();
+       return (await rp.locator('[data-testid="landing-card"]').innerText()).includes('to be'); })());
+  await rc.close();
+  await c.close();
 }
 
 /* ── Exam results that cannot be shown ────────────────────────────────────
