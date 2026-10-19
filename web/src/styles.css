@@ -316,8 +316,11 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
  *    headline, the numerals, the buttons, the links. RED IS PUNCTUATION ONLY: a
  *    4px mark in the eyebrow, the margin line of the ruled paper, the underline
  *    of a highlighted word. It is never a field behind text and never a band.
- *    --lp-rouge reads --color-rouge when the token stream provides one and falls
- *    back to the danger red until then; no component names a --fr-* value.
+ *    --lp-rouge is --color-punctuation, the semantic name the palette gives
+ *    the red mark. It must NOT fall back to --color-danger: red is a brand
+ *    colour now, danger has its own distinct value, and collapsing the two
+ *    is exactly what the palette decision exists to prevent. No component
+ *    names a --fr-* value.
  * 2. Typography does the work: a real scale (the --lp-* sizes below), a serif
  *    for French, generous leading, and a measure no wider than --width-prose.
  * 3. "What is not here yet" sits straight after the tiles, at the same weight.
@@ -335,7 +338,7 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
   --lp-h2: clamp(1.75rem, 1.3rem + 1.7vw, 2.625rem);
   --lp-lede: clamp(1.125rem, 1.03rem + 0.4vw, 1.3125rem);
   --lp-gap: clamp(3.5rem, 2rem + 6vw, 6.5rem);
-  --lp-rouge: var(--color-rouge, var(--color-danger));
+  --lp-rouge: var(--color-punctuation);
   display: flex; flex-direction: column; gap: 0;
   padding-block: 0 var(--space-12);
 }
