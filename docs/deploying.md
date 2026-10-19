@@ -14,6 +14,12 @@
 > none, and the server that would have hosted it carries salary and HR data for
 > an unrelated project. A public, world-facing site does not belong beside that.
 
+> **2026-10-19:** a second, prepared-but-unexecuted route (GitHub Pages, manual
+> workflow only) and its header findings are in `docs/deploying-github-pages.md`.
+> One correction to the box above: GitHub Pages cannot send the headers, but a
+> `<meta>` CSP can carry 12 of the 13 CSP directives there. Everything else in
+> `_headers` is lost on that host, and the page says which.
+
 **Status: nothing is deployed, and nothing ever has been. Deliberately.**
 Updated 2026-10-01.
 

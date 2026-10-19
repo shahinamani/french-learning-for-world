@@ -1458,7 +1458,7 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
    * "0 violations" means two different things in one log.
    */
   const scan = async (p) => {
-    await p.addScriptTag({ content: AXE });
+    await p.evaluate(AXE); // evaluate, not addScriptTag: an injected <script> is refused by a CSP, which this walk must be able to run under
     return p.evaluate(async () => {
       const r = await window.axe.run(document, {
         runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
@@ -2624,7 +2624,7 @@ console.log('\n=== grammar: the learning loop (§10) and the Exercise component 
     // axe, with the feedback open — the state with the most going on in it.
     {
       const AXE = readFileSync(new URL('../../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
-      await p.addScriptTag({ content: AXE });
+      await p.evaluate(AXE); // evaluate, not addScriptTag: an injected <script> is refused by a CSP, which this walk must be able to run under
       const v = await p.evaluate(async () => {
         const r = await window.axe.run(document, {
           runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
@@ -2793,7 +2793,7 @@ console.log('\n=== grammar: the learning loop (§10) and the Exercise component 
          (await txt(p, 'exercise-why-wrong')).includes(norm(Q0.explanation.tempting.fa)),
          await txt(p, 'exercise-why-wrong'));
       const AXE = readFileSync(new URL('../../node_modules/axe-core/axe.min.js', import.meta.url), 'utf8');
-      await p.addScriptTag({ content: AXE });
+      await p.evaluate(AXE); // evaluate, not addScriptTag: an injected <script> is refused by a CSP, which this walk must be able to run under
       const v = await p.evaluate(async () => {
         const r = await window.axe.run(document, {
           runOnly: { type: 'tag', values: ['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'] },
