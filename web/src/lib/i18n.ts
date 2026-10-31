@@ -453,6 +453,45 @@ export const IMPORT_KEYS = Object.keys(importEn) as (keyof typeof importEn)[];
  * all four languages.
  */
 const shellEn = {
+  // Exam-centred portal (redesign v1, 2026-10-31). English only for now:
+  // Persian and Arabic fall back to English behind the shell's own marker.
+  shellExamChoose: 'Choose your exam',
+  shellExamChooseLede: 'Pick the exam you are preparing for. The sidebar then follows its four sections, and you can change it at any time.',
+  shellExamSwitch: 'Change exam',
+  shellExamMy: 'My exam',
+  shellExamOverview: 'Overview and format',
+  shellExamPapers: 'Practice papers',
+  shellExamBuildSkills: 'Build your skills',
+  shellExamSecCo: 'Listening',
+  shellExamSecCe: 'Reading',
+  shellExamSecPe: 'Writing',
+  shellExamSecPo: 'Speaking',
+  shellExamSoon: 'not yet',
+  shellExamFamilyDelf: 'DELF, levels A1 to B2',
+  shellExamFamilyDalf: 'DALF, the advanced levels C1 and C2',
+  shellExamFamilyTcf: 'TCF, one test across all levels',
+  shellExamFamilyCanada: 'For Canadian immigration',
+  shellExamNotVerified: 'This format has not been verified yet, so no figures are shown. They appear once they have been read from the official source.',
+  shellExamTotal: '{minutes} minutes in all',
+  shellExamMinutes: '{n} min',
+  shellExamMarks: '{n} marks',
+  shellExamItems: '{n} questions',
+  shellExamTasks: '{n} tasks',
+  shellExamPassing: 'To pass',
+  shellExamSections: 'The four sections',
+  shellExamOtherSection: 'Also in this exam',
+  shellExamPractiseHere: 'Practise here',
+  shellExamNothingHereYet: 'There is no practice for this section here yet.',
+  shellExamFreeElsewhere: 'Free practice elsewhere',
+  shellExamOfficial: 'Official pages',
+  shellExamSources: 'Where these figures come from',
+  shellExamReadOn: 'read on {date}',
+  shellExamRelated: 'Build the skill here',
+  shellExamOpen: 'Open',
+  shellExamChooseFirst: 'Choose your exam to see its sections.',
+  shellExamCurrent: 'Your exam',
+  shellExamFormat: 'Format',
+  shellExamQuestions: '{n} questions',
   // Asked for by Learn and TopLine, which are in the first load, so it lives in
   // this eager group and not with the rest of the workspace copy (locales/en/
   // workspaceEn.ts), which travels with the lazy workspace chunk.

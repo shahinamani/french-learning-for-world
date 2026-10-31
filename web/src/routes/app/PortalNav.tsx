@@ -1,31 +1,51 @@
 /**
- * The portal's two navigations: a grouped sidebar from 1024px up, and a
- * five-item bar below it. Which one shows is CSS (display:none removes the
- * other from the accessibility tree), so there is only ever one set of links
- * for assistive technology.
+ * The portal's two navigations: a sidebar from 1024px up, and a five-item bar
+ * below it. Which one shows is CSS (display:none removes the other from the
+ * accessibility tree), so there is only ever one set of links for assistive
+ * technology.
  *
- * Every icon sits inside a link or button that has a visible text label, or
- * carries an aria-label. The Icon itself is aria-hidden; the name belongs to
- * the control.
+ * Redesign v1 (owner decision 2026-10-31): the portal is organised around the
+ * learner's exam. The sidebar opens with an exam switcher; under it are that
+ * exam's overview and its four sections, then the tools that build the
+ * skills, then progress. Sections with no practice here say "not yet" on the
+ * menu itself, so nobody discovers it by clicking.
  */
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
+import {
+  BookOpen, ChevronDown, ClipboardCheck, Compass, Ear, Home, Layers, LineChart, Mic, PenLine,
+  BookA, Clock3, FileText, MoreHorizontal, GraduationCap,
+} from 'lucide-react';
 import { useApp, useUserId } from '../../app-context';
 import { Icon } from '../../components/Icon';
 import { BottomSheet } from './BottomSheet';
+import { ExamSwitcher } from '../../components/ExamSwitcher';
 import {
-  CARDS, FOOTER, FREE_GROUP, LEARN_SHEET, MORE_SHEET, TODAY,
-  EXAMS, PROGRESS, type NavItem,
-} from './nav';
+  Sidebar as SidebarRoot, SidebarContent, SidebarFooter, SidebarGroup, SidebarGroupLabel,
+  SidebarHeader, SidebarMenu, SidebarMenuButton, SidebarMenuItem,
+} from '../../components/ui/sidebar';
+import { useTarget, SECTIONS, SKILL_OF, type SectionKey, type Target } from '../../lib/exam-targets';
+import { loadPapers, type ExamPaper } from '../../lib/exams';
+import type { Dict } from '../../lib/i18n';
+import { FOOTER, type NavItem } from './nav';
 
-function Link({ it, onNavigate, prefix = 'nav' }: { it: NavItem; onNavigate?: () => void; prefix?: string }) {
-  const { t } = useApp();
-  return (
-    <NavLink to={it.to} className="tab" data-testid={`${prefix}-${it.id}`} onClick={onNavigate}
-             end={it.to === '/'}>
-      <span className="tab__in"><Icon name={it.icon} /><span>{t(it.label)}</span></span>
-    </NavLink>
-  );
+export const SECTION_LABEL: Record<SectionKey, keyof Dict> =
+  { co: 'shellExamSecCo', ce: 'shellExamSecCe', pe: 'shellExamSecPe', po: 'shellExamSecPo' };
+const SECTION_ICON: Record<SectionKey, typeof Ear> = { co: Ear, ce: BookOpen, pe: PenLine, po: Mic };
+
+/** Practice papers in this portal for a target, by section. */
+export function practiceFor(papers: ExamPaper[] | null, target: Target | null) {
+  const out: Record<SectionKey, ExamPaper[]> = { co: [], ce: [], pe: [], po: [] };
+  if (!papers || !target) return { bySection: out, all: [] as ExamPaper[] };
+  const mine = papers.filter((p) => p.exam === target.exam && (!target.level || p.level === target.level));
+  for (const k of SECTIONS) out[k] = mine.filter((p) => p.skill === SKILL_OF[k]);
+  return { bySection: out, all: mine };
+}
+
+function usePapers() {
+  const [papers, setPapers] = useState<ExamPaper[] | null>(null);
+  useEffect(() => { let live = true; loadPapers().then((p) => { if (live) setPapers(p); }).catch(() => {}); return () => { live = false; }; }, []);
+  return papers;
 }
 
 /** Remembered per profile, in the profile's own namespace; every access can throw. */
@@ -37,87 +57,188 @@ function writeOpen(userId: string, open: boolean) {
   try { localStorage.setItem(openKey(userId), open ? '1' : '0'); } catch { /* private mode */ }
 }
 
+const SKILLS: { id: string; to: string; icon: typeof Ear; label: keyof Dict }[] = [
+  { id: 'cards', to: '/app/cards', icon: Layers, label: 'cards' },
+  { id: 'verbs', to: '/app/verbs', icon: Clock3, label: 'verbs' },
+  { id: 'grammar', to: '/app/grammar', icon: BookA, label: 'grammar' },
+  { id: 'reading', to: '/app/reading', icon: FileText, label: 'shellNavReading' },
+];
+
 export function Sidebar() {
   const { t } = useApp();
   const userId = useUserId();
   const { pathname } = useLocation();
-  const [freeOpen, setFreeOpen] = useState(() => readOpen(userId));
-  // A page inside the group must never be hidden by the group being collapsed:
-  // the learner would be somewhere the navigation cannot show.
-  const insideFree = FREE_GROUP.some((i) => pathname.startsWith(i.to));
-  const expanded = freeOpen || insideFree;
+  const [target] = useTarget(userId);
+  const papers = usePapers();
+  const { bySection, all } = practiceFor(papers, target);
+  const [skillsOpen, setSkillsOpen] = useState(() => readOpen(userId));
+  const insideSkills = SKILLS.some((i) => pathname.startsWith(i.to));
+  const expanded = skillsOpen || insideSkills;
+  const notYet = <span className="sb-badge--soon">{t('shellExamSoon')}</span>;
 
   return (
-    <nav className="sidebar" aria-label={t('shellSections')} data-testid="sidebar">
-      <div className="sidebar__main">
-        <Link it={TODAY} />
+    <SidebarRoot className="sidebar" aria-label={t('shellSections')} data-testid="sidebar">
+      <SidebarHeader><ExamSwitcher /></SidebarHeader>
 
-        <div className="nav-group">
-          <button className="nav-group__head" aria-expanded={expanded} aria-controls="nav-free"
+      <SidebarContent>
+        <SidebarGroup>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton to="/app/today" icon={<Home />} testId="nav-today">{t('today')}</SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <SidebarGroupLabel>{target ? `${t('shellExamMy')} · ${target.label}` : t('shellExamMy')}</SidebarGroupLabel>
+          <SidebarMenu>
+            {target ? (
+              <>
+                <SidebarMenuItem>
+                  <SidebarMenuButton to={`/app/exam/${target.id}`} end icon={<Compass />} testId="nav-exam-overview">
+                    {t('shellExamOverview')}
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+                {SECTIONS.map((k) => {
+                  const I = SECTION_ICON[k];
+                  const n = bySection[k].length;
+                  return (
+                    <SidebarMenuItem key={k}>
+                      <SidebarMenuButton to={`/app/exam/${target.id}/${k}`} icon={<I />} testId={`nav-exam-${k}`}
+                                         badge={n > 0 ? n : notYet}>
+                        {t(SECTION_LABEL[k])}
+                      </SidebarMenuButton>
+                    </SidebarMenuItem>
+                  );
+                })}
+                <SidebarMenuItem>
+                  <SidebarMenuButton to="/app/exams" icon={<ClipboardCheck />} testId="nav-exams"
+                                     badge={papers ? all.length || notYet : undefined}>
+                    {t('shellExamPapers')}
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </>
+            ) : (
+              <SidebarMenuItem>
+                <SidebarMenuButton to="/app/exam" end icon={<GraduationCap />} testId="nav-exam-choose">
+                  {t('shellExamChoose')}
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            )}
+          </SidebarMenu>
+        </SidebarGroup>
+
+        <SidebarGroup>
+          <button type="button" className="sb-group-toggle" aria-expanded={expanded} aria-controls="nav-free"
                   data-testid="nav-free-toggle"
-                  onClick={() => { const next = !expanded; setFreeOpen(next); writeOpen(userId, next); }}>
-            <span>{t('shellGroupFree')}</span>
-            <span className="nav-group__chev" data-open={expanded}><Icon name="chevrondown" size={16} /></span>
+                  onClick={() => { const next = !expanded; setSkillsOpen(next); writeOpen(userId, next); }}>
+            <span>{t('shellExamBuildSkills')}</span>
+            <ChevronDown className="size-4" data-open={expanded} aria-hidden="true" />
           </button>
-          <div id="nav-free" hidden={!expanded} data-testid="nav-free">
-            {FREE_GROUP.map((i) => <Link key={i.id} it={i} />)}
-          </div>
-        </div>
+          <SidebarMenu id="nav-free" hidden={!expanded} data-testid="nav-free">
+            {SKILLS.map((i) => (
+              <SidebarMenuItem key={i.id}>
+                <SidebarMenuButton to={i.to} icon={<i.icon />} testId={`nav-${i.id}`}>{t(i.label)}</SidebarMenuButton>
+              </SidebarMenuItem>
+            ))}
+          </SidebarMenu>
+        </SidebarGroup>
 
-        <Link it={EXAMS} />
-        <Link it={PROGRESS} />
-      </div>
+        <SidebarGroup>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton to="/app/progress" icon={<LineChart />} testId="nav-progress">{t('progress')}</SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+      </SidebarContent>
 
-      <div className="sidebar__foot">
-        {FOOTER.map((i) => <Link key={i.id} it={i} />)}
-      </div>
-    </nav>
+      <SidebarFooter>
+        <SidebarMenu>
+          {FOOTER.map((i) => (
+            <SidebarMenuItem key={i.id}>
+              <SidebarMenuButton to={i.to} icon={<Icon name={i.icon} size={16} />} testId={`nav-${i.id}`} muted>
+                {t(i.label)}
+              </SidebarMenuButton>
+            </SidebarMenuItem>
+          ))}
+        </SidebarMenu>
+      </SidebarFooter>
+    </SidebarRoot>
   );
 }
 
-type Sheet = null | 'learn' | 'more';
+type Sheet = null | 'exam' | 'learn' | 'more';
 
-/** Today · Cards · Learn · Exams · More — exactly five (REDESIGN-v1 §4). */
+function SheetLink({ to, label, onNavigate, testId }: { to: string; label: string; onNavigate: () => void; testId: string }) {
+  return (
+    <NavLink to={to} className="tab" data-testid={testId} onClick={onNavigate} end>
+      <span className="tab__in"><span>{label}</span></span>
+    </NavLink>
+  );
+}
+
+/** Today · My exam · Cards · Learn · More — exactly five (REDESIGN-v1 §4). */
 export function MobileBar() {
   const { t } = useApp();
+  const userId = useUserId();
   const { pathname } = useLocation();
+  const [target] = useTarget(userId);
   const [sheet, setSheet] = useState<Sheet>(null);
   const opener = useRef<HTMLElement | null>(null);
   const openSheet = (which: Exclude<Sheet, null>) => (e: { currentTarget: HTMLElement }) => {
     opener.current = e.currentTarget; setSheet(which);
   };
   const close = () => setSheet(null);
-  const inLearn = LEARN_SHEET.some((i) => pathname.startsWith(i.to) && i !== CARDS);
-  const inMore = MORE_SHEET.some((i) => pathname.startsWith(i.to)) || pathname === '/account' || pathname === '/about';
+  const inExam = pathname.startsWith('/app/exam');
+  const inLearn = ['/app/verbs', '/app/grammar', '/app/reading'].some((p) => pathname.startsWith(p));
+  const inMore = ['/app/progress', '/app/path', '/account', '/about'].some((p) => pathname.startsWith(p));
 
-  const sheetItems = sheet === 'learn' ? LEARN_SHEET : [...MORE_SHEET, ...FOOTER];
+  let items: { to: string; label: string; id: string }[] = [];
+  if (sheet === 'exam') {
+    items = target
+      ? [{ to: `/app/exam/${target.id}`, label: t('shellExamOverview'), id: 'exam-overview' },
+         ...SECTIONS.map((k) => ({ to: `/app/exam/${target.id}/${k}`, label: t(SECTION_LABEL[k]), id: `exam-${k}` })),
+         { to: '/app/exams', label: t('shellExamPapers'), id: 'exams' },
+         { to: '/app/exam', label: t('shellExamSwitch'), id: 'exam-choose' }]
+      : [{ to: '/app/exam', label: t('shellExamChoose'), id: 'exam-choose' }];
+  } else if (sheet === 'learn') {
+    items = SKILLS.filter((s) => s.id !== 'cards').map((s) => ({ to: s.to, label: t(s.label), id: s.id }));
+  } else if (sheet === 'more') {
+    items = [{ to: '/app/progress', label: t('progress'), id: 'progress' }, { to: '/app/path', label: t('shellNavPath'), id: 'path' },
+      ...FOOTER.map((i: NavItem) => ({ to: i.to, label: t(i.label), id: i.id }))];
+  }
+  const title = sheet === 'exam' ? (target ? target.label : t('shellExamChoose'))
+    : sheet === 'learn' ? t('shellSheetLearn') : t('shellSheetMore');
+
   return (
     <>
       <nav className="tabs" aria-label={t('shellQuickNav')} data-testid="mobile-bar">
-        <NavLink to={TODAY.to} className="tab" data-testid="mbar-today">
-          <span className="tab__in"><Icon name={TODAY.icon} /><span>{t('today')}</span></span>
+        <NavLink to="/app/today" className="tab" data-testid="mbar-today">
+          <span className="tab__in"><Home className="size-5" aria-hidden="true" /><span>{t('today')}</span></span>
         </NavLink>
-        <NavLink to={CARDS.to} className="tab" data-testid="mbar-review">
-          <span className="tab__in"><Icon name={CARDS.icon} /><span>{t('shellNavReview')}</span></span>
+        <button className={`tab${inExam ? ' active' : ''}`} aria-haspopup="dialog" data-testid="mbar-exam"
+                aria-current={inExam ? 'page' : undefined} onClick={openSheet('exam')}>
+          <span className="tab__in"><GraduationCap className="size-5" aria-hidden="true" /><span>{t('shellExamMy')}</span></span>
+        </button>
+        <NavLink to="/app/cards" className="tab" data-testid="mbar-review">
+          <span className="tab__in"><Layers className="size-5" aria-hidden="true" /><span>{t('shellNavReview')}</span></span>
         </NavLink>
         <button className={`tab${inLearn ? ' active' : ''}`} aria-haspopup="dialog" data-testid="mbar-learn"
                 aria-current={inLearn ? 'page' : undefined} onClick={openSheet('learn')}>
-          <span className="tab__in"><Icon name="learn" /><span>{t('learn')}</span></span>
+          <span className="tab__in"><BookOpen className="size-5" aria-hidden="true" /><span>{t('learn')}</span></span>
         </button>
-        <NavLink to={EXAMS.to} className="tab" data-testid="mbar-exams">
-          <span className="tab__in"><Icon name={EXAMS.icon} /><span>{t('exams')}</span></span>
-        </NavLink>
         <button className={`tab${inMore ? ' active' : ''}`} aria-haspopup="dialog" data-testid="mbar-more"
                 aria-current={inMore ? 'page' : undefined} onClick={openSheet('more')}>
-          <span className="tab__in"><Icon name="more" /><span>{t('shellNavMore')}</span></span>
+          <span className="tab__in"><MoreHorizontal className="size-5" aria-hidden="true" /><span>{t('shellNavMore')}</span></span>
         </button>
       </nav>
 
       <BottomSheet open={sheet !== null} onOpenChange={(o) => { if (!o) close(); }}
-                   title={sheet === 'learn' ? t('shellSheetLearn') : t('shellSheetMore')} testId="nav-sheet" returnFocusTo={opener}>
+                   title={title} testId="nav-sheet" returnFocusTo={opener}>
         <ul className="sheet__list">
-          {sheetItems.map((i) => (
-            <li key={i.id}><Link it={i} onNavigate={close} prefix="sheet" /></li>
+          {items.map((i) => (
+            <li key={i.id}><SheetLink to={i.to} label={i.label} onNavigate={close} testId={`sheet-${i.id}`} /></li>
           ))}
         </ul>
       </BottomSheet>

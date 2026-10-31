@@ -12,6 +12,9 @@ import { Link, useLocation, useNavigate } from 'react-router';
 import { useApp } from '../../app-context';
 import { Icon } from '../../components/Icon';
 import { itemFor, groupFor, FOOTER } from './nav';
+import { targetById } from '../../lib/exam-targets';
+
+const SECTION_KEY = { co: 'shellExamSecCo', ce: 'shellExamSecCe', pe: 'shellExamSecPe', po: 'shellExamSecPo' } as const;
 
 type Crumb = { label: string; to?: string };
 
@@ -27,6 +30,15 @@ export function useCrumbs(pathname: string): Crumb[] {
   const seg = parts[1];
   if (seg === 'search') { crumbs.push({ label: t('search') }); return crumbs; }
   if (seg === 'workspace') { crumbs.push({ label: t('wsTitle') }); return crumbs; }
+  // The exam pages name the exam and the section, not their address.
+  if (seg === 'exam') {
+    const target = targetById(parts[2]);
+    const sec = parts[3] as keyof typeof SECTION_KEY | undefined;
+    crumbs.push(target ? { label: t('shellExamMy'), to: '/app/exam' } : { label: t('shellExamMy') });
+    if (target) crumbs.push(sec && SECTION_KEY[sec] ? { label: target.label, to: `/app/exam/${target.id}` } : { label: target.label });
+    if (target && sec && SECTION_KEY[sec]) crumbs.push({ label: t(SECTION_KEY[sec]) });
+    return crumbs;
+  }
   const it = itemFor(pathname);
   if (!it) return crumbs;
   const group = groupFor(it);

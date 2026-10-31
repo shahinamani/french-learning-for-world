@@ -41,9 +41,13 @@ Work is on branch `redesign/v1` (from `origin/main` at `b1545aa`) in a worktree 
 
 Sidebar and mobile bar list only built sections (nav.ts NOT_YET keeps the rest routable). Today = French greeting, one session card (`today-card`), ways-in rows, weak points, data notice; the level map moved to `/app/path` (`Learn mode="path"`). Card session centred. Labels sentence case (`--tracking-label: 0`). Portal CSS: `web/src/routes/portal.css`. e2e updated for the new design: walk 652/652, rtl clear, reader 54/54.
 
+## Phase 2b (exam-centred portal) done 2026-10-31
+
+Owner asked for a portal built around exams. Sidebar = shadcn-style anatomy (`components/ui/sidebar.tsx`) with an exam switcher (`components/ExamSwitcher.tsx`, Radix dropdown) on top; under it the chosen exam's overview, CO/CE/PE/PO and practice papers, then skill tools. Targets in `lib/exam-targets.ts` (DELF A1-B2, DALF C1-C2, TCF, TCF Canada, TEF Canada), choice stored per profile. Pages `/app/exam`, `/app/exam/:target`, `/app/exam/:target/:section` (`routes/exam/ExamPages.tsx`) show only verified format figures from exams.json. TEF Canada format added from the owner's 2026 booklet; TCF Canada NOT VERIFIED (FEI site blocks automated reads; owner can paste the page). New UI keys are `shellExam*` (optional group: fa/ar fall back to English). Walk 656/656, rtl clear, reader 54/54.
+
 ## Next step
 
-Owner review of the portal screenshots, then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
+Owner review of the exam portal; TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
 
 ## Decisions
 

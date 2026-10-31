@@ -2074,9 +2074,12 @@ console.log('\n=== the front door ===');
 
     // A headline that wraps to five lines on a phone is a different fault from
     // overflow and the overflow check cannot see it.
+    // Counted in lines, not pixels: "under 200px" stood in for four lines at
+    // the old size, and failed on three lines of the redesign's larger type.
     const head = await pg.locator('.landing__headline').boundingBox();
-    ok(`landing at ${w}px: the headline is at most 4 lines (${Math.round(head?.height)}px)`,
-       !!head && head.height < 200);
+    const lineH = await pg.locator('.landing__headline').evaluate((el) => parseFloat(getComputedStyle(el).lineHeight));
+    const lines = head && lineH ? Math.round(head.height / lineH) : 99;
+    ok(`landing at ${w}px: the headline is at most 4 lines (${lines})`, lines <= 4);
 
     if (shots) await pg.screenshot({ path: `${shots}/landing-${w}.png`, fullPage: true });
     await c.close();

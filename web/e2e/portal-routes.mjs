@@ -135,9 +135,11 @@ console.log('\n=== portal routes, redirects and icon names ===');
   // 3. Shell structure, desktop.
   await go(r, '/app/verbs');
   const sidebarLinks = await r.locator('[data-testid="sidebar"] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
-  // Redesign v1 (REDESIGN-v1.md §4): the sidebar lists only what is built.
-  const wanted = ['today', 'cards', 'verbs', 'grammar', 'reading', 'exams', 'progress'].map((s) => `#/app/${s}`);
-  ok('the sidebar lists the seven built sections in order',
+  // Redesign v1 (REDESIGN-v1.md §4, owner 2026-10-31): the sidebar is built
+  // around the learner's exam. A new profile has none yet, so it is offered
+  // the chooser where the exam's sections will be.
+  const wanted = ['today', 'exam', 'cards', 'verbs', 'grammar', 'reading', 'progress'].map((s) => `#/app/${s}`);
+  ok('the sidebar lists Today, the exam chooser, the skill tools and progress, in order',
      JSON.stringify(sidebarLinks.slice(0, 7)) === JSON.stringify(wanted), sidebarLinks.slice(0, 7).join(' '));
   ok('and no empty section is in it',
      !sidebarLinks.some((h) => /vocabulary|listening|output|news|podcasts|saved/.test(h ?? '')), sidebarLinks.join(' '));
@@ -147,6 +149,23 @@ console.log('\n=== portal routes, redirects and icon names ===');
      await r.locator('[data-testid="nav-verbs"][aria-current="page"]').count() === 1);
   ok('the breadcrumb shows where you are',
      (await r.locator('[data-testid="breadcrumb"]').innerText()).replace(/\s+/g, ' ').includes('Free learning'));
+  // Choosing an exam turns the chooser into that exam's four sections.
+  await go(r, '/app/exam');
+  await r.locator('[data-testid="choose-delf-b1"]').click(); await r.waitForTimeout(600);
+  ok('choosing DELF B1 opens its overview', pathOf(r) === '/app/exam/delf-b1', pathOf(r));
+  const examLinks = await r.locator('[data-testid="sidebar"] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+  ok('and the sidebar now shows its overview, four sections and practice papers',
+     ['overview', 'co', 'ce', 'pe', 'po'].every((k) => examLinks.includes(k === 'overview' ? '#/app/exam/delf-b1' : `#/app/exam/delf-b1/${k}`))
+     && examLinks.includes('#/app/exams'), examLinks.join(' '));
+  await go(r, '/app/exam/delf-b1/co');
+  ok('a section with no practice here says so, and points to free practice elsewhere',
+     await r.locator('[data-testid="exam-section-co"]').count() === 1
+     && /no practice for this section here yet/i.test(await r.locator('main').innerText()));
+  await go(r, '/app/exam/tcf-canada');
+  ok('an exam whose format is not verified shows no figures',
+     await r.locator('[data-testid="exam-not-verified"]').count() === 1
+     && !/\d+ min/.test(await r.locator('.exam-sections').innerText()));
+  await go(r, '/app/verbs');
   await r.locator('#gsearch-q').fill('manger');
   await r.locator('#gsearch-q').press('Enter');
   await r.waitForTimeout(500);

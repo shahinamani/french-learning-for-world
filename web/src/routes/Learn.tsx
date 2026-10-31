@@ -12,6 +12,7 @@ import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
 import { Localised } from '../components/Localised';
 import { DataNotice } from '../components/DataNotice';
+import { useTarget } from '../lib/exam-targets';
 
 const LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 /** `label` is an interface key. The column used to show the French abbreviation
@@ -80,6 +81,7 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
 
+  const [target] = useTarget(userId);
   const size = c ? c.due + Math.min(c.fresh, 20) : 0;
   const minutes = Math.max(1, Math.round(size * 0.4));
 
@@ -115,6 +117,13 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
           </>
         )}
       </section>
+
+      {/* The learner's exam, or the invitation to choose one. */}
+      <Link to={target ? `/app/exam/${target.id}` : '/app/exam'} className="today-exam" data-testid="today-exam">
+        <span className="today-exam__label">{t('shellExamMy')}</span>
+        <span className="today-exam__name">{target ? target.label : t('shellExamChoose')}</span>
+        <span className="today-exam__go">{target ? t('shellExamOverview') : t('shellExamChooseFirst')}</span>
+      </Link>
 
       {/* Ways in: the parts of the portal that exist, one line each. */}
       <ul className="today-ways">

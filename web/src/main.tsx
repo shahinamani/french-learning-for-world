@@ -60,6 +60,8 @@ const GrammarOrConcept = lazy(() => import('./routes/app/GrammarOrConcept').then
 // Progress carries the weakness card and its engine, whose strings are a lazy
 // English group (lib/locales/en/weaknessEn.ts).
 const Progress = lazy(() => import('./routes/Progress').then((m) => ({ default: m.Progress })));
+const ExamChooser = lazy(() => import('./routes/exam/ExamPages').then((m) => ({ default: m.ExamChooser })));
+const ExamPage = lazy(() => import('./routes/exam/ExamPages').then((m) => ({ default: m.ExamPage })));
 const Reader = lazy(() => import('./features/reader').then((m) => ({ default: m.Reader })));
 
 /** A lazy route still has to render something while its chunk arrives, and a
@@ -114,6 +116,10 @@ function AppRoutes() {
           <Route path="output" element={<PlaceholderRoute id="output" />} />
           <Route path="news" element={<PlaceholderRoute id="news" />} />
           <Route path="podcasts" element={<PlaceholderRoute id="podcasts" />} />
+          {/* The exam-centred pages (redesign v1, 2026-10-31). */}
+          <Route path="exam" element={lazily(<ExamChooser />)} />
+          <Route path="exam/:target" element={lazily(<ExamPage />)} />
+          <Route path="exam/:target/:section" element={lazily(<ExamPage />)} />
           <Route path="exams" element={lazily(<ExamList />)} />
           <Route path="exams/:paperId" element={lazily(<ExamPaperRoute />)} />
           <Route path="exams/:paperId/sit" element={lazily(<ExamSit />)} />

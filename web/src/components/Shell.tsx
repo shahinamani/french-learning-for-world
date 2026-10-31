@@ -12,7 +12,10 @@ import * as Popover from '@radix-ui/react-popover';
 import { useApp, useUserId } from '../app-context';
 import { Icon } from './Icon';
 import { SidePanel } from './SidePanel';
-import { Sidebar, MobileBar } from '../routes/app/PortalNav';
+import { lazy, Suspense } from 'react';
+// The portal menus load with the portal, not with the landing page.
+const Sidebar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.Sidebar })));
+const MobileBar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.MobileBar })));
 import { TopLine } from '../routes/app/TopLine';
 import { PRESETS, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
 
@@ -198,8 +201,8 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
       {/* One navigation per width. On the landing page there is no sidebar:
           a stranger has no portal to navigate yet. */}
-      {!onLanding && <Sidebar />}
-      {!onLanding && <MobileBar />}
+      {!onLanding && <Suspense fallback={null}><Sidebar /></Suspense>}
+      {!onLanding && <Suspense fallback={null}><MobileBar /></Suspense>}
 
       <SidePanel />
     </div>

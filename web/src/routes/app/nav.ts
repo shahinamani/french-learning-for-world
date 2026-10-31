@@ -29,6 +29,8 @@ export const PODCASTS = item('podcasts', 'soundwave', 'shellNavPodcasts');
 export const EXAMS = item('exams', 'examsheet', 'exams');
 export const SAVED = item('saved', 'bookmark', 'shellNavSaved');
 export const PROGRESS = item('progress', 'chart', 'progress');
+/** The learner's exam (redesign v1): named here so the breadcrumb finds it. */
+export const EXAM = item('exam', 'examsheet', 'shellExamMy');
 
 /** Redesign v1 (docs/blueprint/REDESIGN-v1.md §4): the navigation shows only
  *  what exists. Vocabulary, listening, speaking and writing, news, podcasts and
@@ -40,7 +42,7 @@ export const FREE_GROUP: NavItem[] = [CARDS, VERBS, GRAMMAR, READING];
 export const NOT_YET: NavItem[] = [VOCABULARY, LISTENING, OUTPUT, NEWS, PODCASTS, SAVED];
 
 export const ALL_ITEMS: NavItem[] =
-  [TODAY, PATH, ...FREE_GROUP, EXAMS, PROGRESS, ...NOT_YET];
+  [TODAY, EXAM, PATH, ...FREE_GROUP, EXAMS, PROGRESS, ...NOT_YET];
 
 /** Bottom of the sidebar. Not a group: four standing exits from the learning. */
 export const FOOTER: NavItem[] = [

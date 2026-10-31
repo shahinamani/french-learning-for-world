@@ -376,7 +376,9 @@ const EXPECTED_SHAPES = {
   'exams.json exams[].structure.papers.B2[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.C1[].name':     { n: 4,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.papers.C2[].name':     { n: 2,  have: 'en/fr/fa/ar' },
-  'exams.json exams[].structure.compulsory[].name':    { n: 3,  have: 'en/fr/fa/ar' },
+  // 3 → 7 on 2026-10-31: TEF Canada's four sections. Their Persian and Arabic
+  // names are the exact strings already used for the same sections above.
+  'exams.json exams[].structure.compulsory[].name':    { n: 7,  have: 'en/fr/fa/ar' },
   'exams.json exams[].structure.optional[].name':      { n: 2,  have: 'en/fr/fa/ar' },
   // These three were PLAIN ENGLISH STRINGS until 2026-10-01, with no locale
   // keys at all — so the shape map could not see them and even the French
