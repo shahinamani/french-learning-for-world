@@ -180,6 +180,7 @@ export function Landing() {
           <h1 id="lp3-h1" className="landing__headline lp3-h1" lang="fr">{fr(HEADLINE_FR)}</h1>
           {english && <p className="lp3-h1-en">{tx('landingHeadline')}</p>}
           <p className="lp3-hero__lede">{tx('landingLede')}</p>
+          <p className="lp3-hero__audience">{tx('landingAudience')}</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
             <Button asChild size="lg" data-testid="landing-start" className="bg-white text-primary hover:bg-[#e9edf5] rounded-md font-bold">
               <Link to="/app/today">{tx('landingStart')}</Link>

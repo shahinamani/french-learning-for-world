@@ -14,7 +14,7 @@ import { useApp, useUserId } from '../../app-context';
 import { Icon } from '../../components/Icon';
 import { BottomSheet } from './BottomSheet';
 import {
-  CARDS, DISCOVER_GROUP, FOOTER, FREE_GROUP, LEARN_SHEET, MORE_SHEET, PATH, SAVED, TODAY,
+  CARDS, FOOTER, FREE_GROUP, LEARN_SHEET, MORE_SHEET, TODAY,
   EXAMS, PROGRESS, type NavItem,
 } from './nav';
 
@@ -51,7 +51,6 @@ export function Sidebar() {
     <nav className="sidebar" aria-label={t('shellSections')} data-testid="sidebar">
       <div className="sidebar__main">
         <Link it={TODAY} />
-        <Link it={PATH} />
 
         <div className="nav-group">
           <button className="nav-group__head" aria-expanded={expanded} aria-controls="nav-free"
@@ -65,13 +64,7 @@ export function Sidebar() {
           </div>
         </div>
 
-        <div className="nav-group">
-          <p className="nav-group__head nav-group__head--static">{t('shellGroupDiscover')}</p>
-          {DISCOVER_GROUP.map((i) => <Link key={i.id} it={i} />)}
-        </div>
-
         <Link it={EXAMS} />
-        <Link it={SAVED} />
         <Link it={PROGRESS} />
       </div>
 
@@ -84,7 +77,7 @@ export function Sidebar() {
 
 type Sheet = null | 'learn' | 'more';
 
-/** امروز · یادگیری · مرور · ذخیره‌ها · بیشتر — exactly five. */
+/** Today · Cards · Learn · Exams · More — exactly five (REDESIGN-v1 §4). */
 export function MobileBar() {
   const { t } = useApp();
   const { pathname } = useLocation();
@@ -104,15 +97,15 @@ export function MobileBar() {
         <NavLink to={TODAY.to} className="tab" data-testid="mbar-today">
           <span className="tab__in"><Icon name={TODAY.icon} /><span>{t('today')}</span></span>
         </NavLink>
+        <NavLink to={CARDS.to} className="tab" data-testid="mbar-review">
+          <span className="tab__in"><Icon name={CARDS.icon} /><span>{t('shellNavReview')}</span></span>
+        </NavLink>
         <button className={`tab${inLearn ? ' active' : ''}`} aria-haspopup="dialog" data-testid="mbar-learn"
                 aria-current={inLearn ? 'page' : undefined} onClick={openSheet('learn')}>
           <span className="tab__in"><Icon name="learn" /><span>{t('learn')}</span></span>
         </button>
-        <NavLink to={CARDS.to} className="tab" data-testid="mbar-review">
-          <span className="tab__in"><Icon name={CARDS.icon} /><span>{t('shellNavReview')}</span></span>
-        </NavLink>
-        <NavLink to={SAVED.to} className="tab" data-testid="mbar-saved">
-          <span className="tab__in"><Icon name={SAVED.icon} /><span>{t('shellNavSavedShort')}</span></span>
+        <NavLink to={EXAMS.to} className="tab" data-testid="mbar-exams">
+          <span className="tab__in"><Icon name={EXAMS.icon} /><span>{t('exams')}</span></span>
         </NavLink>
         <button className={`tab${inMore ? ' active' : ''}`} aria-haspopup="dialog" data-testid="mbar-more"
                 aria-current={inMore ? 'page' : undefined} onClick={openSheet('more')}>

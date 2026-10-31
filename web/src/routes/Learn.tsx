@@ -1,4 +1,6 @@
-/** Home: the level × skill map, one pinned session card, and weak points. */
+/** Two pages from one data load (redesign v1, REDESIGN-v1.md §6):
+ *  `today` — one next action, a few ways in, weak points;
+ *  `path`  — the level × skill map, which used to crowd Today. */
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../app-context';
@@ -26,7 +28,20 @@ const SKILLS = [
   { key: 'phonetics', label: 'phonetics' }, { key: 'usage', label: 'usage' },
 ] as const;
 
-export function Learn() {
+/** French as content, the same in every interface language. */
+const HELLO_FR = 'Bonjour.';
+
+/** Ways into the parts of the portal that exist. The French word is content,
+ *  the same in every interface language; the label is the dictionary's. */
+const WAYS: { to: string; fr: string; label: 'verbs' | 'shellNavReading' | 'exams' | 'wsTitle' | 'shellNavPath'; testId?: string }[] = [
+  { to: '/app/verbs/drill', fr: 'les verbes', label: 'verbs' },
+  { to: '/app/reading', fr: 'la lecture', label: 'shellNavReading' },
+  { to: '/app/exams', fr: 'les examens', label: 'exams' },
+  { to: '/app/workspace', fr: 'l’atelier', label: 'wsTitle', testId: 'go-workspace' },
+  { to: '/app/path', fr: 'le parcours', label: 'shellNavPath' },
+];
+
+export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
   const { t } = useApp();
   // Search produces /learn?level=B1. A link whose target ignores its parameter
   // is a broken connection, however well each end works alone.
@@ -65,52 +80,50 @@ export function Learn() {
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
 
-  return (
-    <div className="page learn">
-      <aside className="learn__side">
-      {/* One pinned card: what to do now, before anything else. The data notice
-          used to sit above this, so the first thing a learner met on opening the
-          portal was a privacy notice rather than an invitation to study. It is
-          now immediately below — same screen, same first visit, one position
-          later — because what leads should be the thing to do. */}
-      <section className="today card card--raised" aria-labelledby="today-h">
-        <h1 id="today-h" className="eyebrow">{t('today')}</h1>
+  const size = c ? c.due + Math.min(c.fresh, 20) : 0;
+  const minutes = Math.max(1, Math.round(size * 0.4));
+
+  if (mode === 'today') return (
+    <div className="page today-page">
+      <header className="today-hello">
+        <p className="today-hello__fr" lang="fr" dir="ltr">{HELLO_FR}</p>
+        <h1 id="today-h" className="today-hello__h">{t('today')}</h1>
+      </header>
+
+      {/* One thing to do now, before anything else. */}
+      <section className="today-main" aria-labelledby="today-h" data-testid="today-card">
         {c === null ? (
           <div className="skeleton skeleton--title" data-testid="today-loading" />
-        ) : c.due + c.fresh === 0 ? (
-          <>
-            <p className="today__line">{t('nothingDue')}</p>
-            <p className="muted">{t('nothingDueBody')}</p>
-          </>
+        ) : size === 0 ? (
+          <div className="today-main__copy">
+            <p className="today-main__line">{t('nothingDue')}</p>
+            <p className="today-main__sub">{t('nothingDueBody')}</p>
+          </div>
         ) : (
           <>
-            <p className="today__line" data-testid="today-line">
-              {t('sessionOf', { n: c.due + Math.min(c.fresh, 20), m: Math.max(1, Math.round((c.due + Math.min(c.fresh, 20)) * 0.4)) })}
-            </p>
-            <div className="row gap-2 wrap u-mb-3">
-              {[5, 15, 30].map((m) => (
-                <Link key={m} className="btn btn--sm" to={`/practise/review?minutes=${m}`}>{t('minutes', { n: m })}</Link>
-              ))}
+            <div className="today-main__copy">
+              <p className="today-main__line" data-testid="today-line">{t('sessionOf', { n: size, m: minutes })}</p>
             </div>
-            <Link className="btn btn--primary btn--block" to="/practise/review" data-testid="start-session">
-              {t('startSession')}
-            </Link>
+            <div className="today-main__actions">
+              <div className="today-main__lengths" role="group" aria-label={t('timer')}>
+                {[5, 15, 30].map((m) => (
+                  <Link key={m} className="today-chip" to={`/app/cards?minutes=${m}`}>{t('minutes', { n: m })}</Link>
+                ))}
+              </div>
+              <Link className="today-start" to="/app/cards" data-testid="start-session">{t('startSession')}</Link>
+            </div>
           </>
         )}
       </section>
-      {/* The workspace, reachable from the screen a learner starts on. It is a
-          link here rather than a fifth item in the bottom tab bar, because a
-          tab needs an icon and a CORE dictionary key — and a core key obliges
-          Persian and Arabic, which nobody has written. `wsTitle` is in the
-          optional group, so fa and ar fall back to English behind the marker
-          the workspace itself shows. */}
-      <Link className="btn btn--block u-mb-3" to="/workspace" data-testid="go-workspace">
-        {t('wsTitle')}
-      </Link>
 
-      {/* Second, not first: before there is anything to lose, and after the
-          reason the learner opened the page. */}
-      <DataNotice />
+      {/* Ways in: the parts of the portal that exist, one line each. */}
+      <ul className="today-ways">
+        {WAYS.map((w) => (
+          <li key={w.to}>
+            <Link to={w.to} data-testid={w.testId}><span lang="fr" dir="ltr">{w.fr}</span><span>{t(w.label)}</span></Link>
+          </li>
+        ))}
+      </ul>
 
       <section className="learn__weak" aria-labelledby="weak-h">
         <h2 id="weak-h" className="h3">{t('toWorkOn')}</h2>
@@ -129,7 +142,7 @@ export function Learn() {
               return (
                 <li key={w.conceptId}>
                   {/* Straight into practice on that concept, not a generic page. */}
-                  <Link className="row row--link" to={`/practise/review?concept=${encodeURIComponent(w.conceptId)}`}>
+                  <Link className="row row--link" to={`/app/cards?concept=${encodeURIComponent(w.conceptId)}`}>
                     {concept ? <Localised field={concept.name} /> : <span>{w.conceptId}</span>}
                     <span className="muted">{Math.round(w.accuracy * 100)} % · {t('reviewsCount', { n: w.reviews })}</span>
                     <Icon name="chevron" size={16} />
@@ -140,11 +153,17 @@ export function Learn() {
           </ul>
         )}
       </section>
-      </aside>
+
+      <DataNotice />
+    </div>
+  );
+
+  return (
+    <div className="page learn learn--path">
 
       <section className="learn__main" aria-labelledby="map-h">
         <div className="row u-between">
-          <h2 id="map-h" className="h3">{t('yourLevel')}</h2>
+          <h1 id="map-h" className="today-hello__h">{t('yourLevel')}</h1>
           {level && (
             <button className="btn btn--sm" data-testid="clear-level"
                     onClick={() => { const p = new URLSearchParams(params); p.delete('level'); setParams(p); }}>
@@ -188,7 +207,7 @@ export function Learn() {
                           <span className="map__cell" data-state="locked"
                                 aria-label={`${label} — ${t('notBuilt')}`}>—</span>
                         ) : (
-                          <Link className="map__cell" data-state={state} to={`/learn/level/${lv}/${s.key}`}
+                          <Link className="map__cell" data-state={state} to={`/app/path/${lv}/${s.key}`}
                                 aria-label={cell
                                   ? `${label} — ${cell.withMaterial}/${cell.concepts} ${t('conceptsWithExercises')}`
                                   : label}

@@ -17,7 +17,7 @@ function AccordionItem({ className, ...props }: React.ComponentProps<'details'>)
 function AccordionTrigger({ className, children, ...props }: React.ComponentProps<'summary'>) {
   return (
     <summary data-slot="accordion-trigger"
-      className={cn('flex items-center justify-between gap-4 py-5 text-start text-base font-medium min-h-11 cursor-pointer list-none rounded-md outline-none focus-visible:ring-2 focus-visible:ring-ring hover:text-primary [&::-webkit-details-marker]:hidden', className)}
+      className={cn('flex items-center justify-between gap-4 py-5 text-start text-base font-medium min-h-11 cursor-pointer list-none rounded-md focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring hover:text-primary [&::-webkit-details-marker]:hidden', className)}
       {...props}>
       {children}
       <ChevronDown className="size-4 shrink-0 text-muted-foreground transition-transform duration-200 group-open:rotate-180" aria-hidden="true" />

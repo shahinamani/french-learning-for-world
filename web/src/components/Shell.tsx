@@ -118,9 +118,9 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
           and the mobile bar are for the portal only. */}
       {!onLanding && (
       <header className="bar">
+        <span className="lp3-tricolore" aria-hidden="true"><span /><span /><span /></span>
         <div className="bar-in">
           <NavLink to="/app/today" className="brand" aria-label={t('appName')}>
-            <span className="brand-mark" aria-hidden="true">Fr</span>
             <span className="brand-name">{t('appName')}</span>
           </NavLink>
           <div className="bar-actions">

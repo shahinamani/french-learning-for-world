@@ -92,8 +92,8 @@ function AppRoutes() {
             has built render an honest placeholder (routes/app/Placeholder). */}
         <Route path="app">
           <Route index element={<Navigate replace to="/app/today" />} />
-          <Route path="today" element={lazily(<Learn />)} />
-          <Route path="path" element={<PlaceholderRoute id="path" />} />
+          <Route path="today" element={lazily(<Learn mode="today" />)} />
+          <Route path="path" element={lazily(<Learn mode="path" />)} />
           <Route path="path/:level/:skill" element={lazily(<LevelSkill />)} />
           <Route path="vocabulary" element={<PlaceholderRoute id="vocabulary" />} />
           <Route path="cards" element={lazily(<FlashcardSession />)} />

@@ -30,12 +30,17 @@ export const EXAMS = item('exams', 'examsheet', 'exams');
 export const SAVED = item('saved', 'bookmark', 'shellNavSaved');
 export const PROGRESS = item('progress', 'chart', 'progress');
 
-/** The group the contract calls "free learning": collapsible in the sidebar. */
-export const FREE_GROUP: NavItem[] = [VOCABULARY, CARDS, VERBS, GRAMMAR, LISTENING, READING, OUTPUT];
-export const DISCOVER_GROUP: NavItem[] = [NEWS, PODCASTS];
+/** Redesign v1 (docs/blueprint/REDESIGN-v1.md §4): the navigation shows only
+ *  what exists. Vocabulary, listening, speaking and writing, news, podcasts and
+ *  saved have no content yet; their routes stay and say so, but no menu sends a
+ *  learner to an empty page. Each returns to these lists when it is built. */
+export const FREE_GROUP: NavItem[] = [CARDS, VERBS, GRAMMAR, READING];
+/** Built later. Kept here so the breadcrumb and the placeholder pages still
+ *  find their names. */
+export const NOT_YET: NavItem[] = [VOCABULARY, LISTENING, OUTPUT, NEWS, PODCASTS, SAVED];
 
 export const ALL_ITEMS: NavItem[] =
-  [TODAY, PATH, ...FREE_GROUP, ...DISCOVER_GROUP, EXAMS, SAVED, PROGRESS];
+  [TODAY, PATH, ...FREE_GROUP, EXAMS, PROGRESS, ...NOT_YET];
 
 /** Bottom of the sidebar. Not a group: four standing exits from the learning. */
 export const FOOTER: NavItem[] = [
@@ -46,8 +51,8 @@ export const FOOTER: NavItem[] = [
 ];
 
 /** What the mobile "Learn" sheet lists, and what "More" lists. */
-export const LEARN_SHEET: NavItem[] = [...FREE_GROUP, ...DISCOVER_GROUP];
-export const MORE_SHEET: NavItem[] = [PATH, EXAMS, PROGRESS];
+export const LEARN_SHEET: NavItem[] = [VERBS, GRAMMAR, READING];
+export const MORE_SHEET: NavItem[] = [PROGRESS, PATH];
 
 /** Which top-level nav item a pathname belongs to, for the breadcrumb. */
 export function itemFor(pathname: string): NavItem | undefined {
@@ -57,6 +62,5 @@ export function itemFor(pathname: string): NavItem | undefined {
 
 export function groupFor(item: NavItem): keyof Dict | null {
   if (FREE_GROUP.includes(item)) return 'shellGroupFree';
-  if (DISCOVER_GROUP.includes(item)) return 'shellGroupDiscover';
   return null;
 }

@@ -136,7 +136,12 @@ for (const locale of ['fa', 'ar']) {
           const frWrong = [...document.querySelectorAll('[lang="fr"]')]
             .filter((el) => getComputedStyle(el).direction !== 'ltr')
             .map((el) => el.className || el.tagName);
-          const nav = document.querySelector('nav');
+          // The menu, not the first <nav> on the page: that is the breadcrumb,
+          // and measuring it compared the wrong two things (docs/lessons.md).
+          // At desktop width the sidebar, below it the bottom bar.
+          const nav = window.innerWidth >= 1024
+            ? document.querySelector('[data-testid="sidebar"]')
+            : document.querySelector('[data-testid="mobile-bar"]');
           const main = document.getElementById('main') || document.querySelector('main');
           return {
             dir: d.dir, lang: d.lang, vw,

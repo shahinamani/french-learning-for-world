@@ -232,8 +232,8 @@ export function FlashcardSession() {
           <div className="empty__icon"><Icon name="check" size={34} /></div>
           <p className="empty__title">{t('timerDone')}</p>
           <p className="empty__body">{`${t('sessionOfMinutes', { n: minutesParam })} ${t('reviewed', { n: reviewed })}`}</p>
-          <Link className="btn btn--primary" to="/practise/review">{t('keepGoing')}</Link>
-          <Link className="btn btn--sm" to="/learn">{t('learn')}</Link>
+          <Link className="btn btn--primary" to="/app/cards">{t('keepGoing')}</Link>
+          <Link className="btn btn--sm" to="/app/today">{t('learn')}</Link>
         </div>
       </div>
     );

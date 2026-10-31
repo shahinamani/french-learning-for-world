@@ -69,7 +69,7 @@
 
   --tracking-tight: -0.015em;
   --tracking-normal: 0;
-  --tracking-label: 0.08em; /* uppercase labels only; lowercase never needs it */
+  --tracking-label: 0;     /* redesign v1: labels are sentence case, not tracked capitals */
 
   --weight-normal: 400;
   --weight-medium: 500;

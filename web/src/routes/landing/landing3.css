@@ -217,3 +217,4 @@
 
 /* The preview cards' small labels: sentence case, like the rest of the page. */
 .lp3 .lp-card__kind, .lp3 .lp-read__who { text-transform: none; letter-spacing: 0; font-size: 0.875rem; }
+.lp3-hero__audience { max-width: 36rem; margin-top: -0.5rem; font-size: 0.9375rem; line-height: 1.6; color: rgb(255 255 255 / 0.72); }

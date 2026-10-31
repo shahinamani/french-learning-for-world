@@ -6,7 +6,7 @@ import { cn } from '../../lib/cn';
 // shadcn/ui Button, adapted: every size keeps a 44px target (REDESIGN-v1 §6),
 // and hover fills use `secondary`, not `accent` (see theme.css).
 const buttonVariants = cva(
-  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] text-[0.9375rem] font-medium transition-[color,background-color,border-color,box-shadow] duration-150 ease-out cursor-pointer disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4 outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background no-underline',
+  'inline-flex items-center justify-center gap-2 whitespace-nowrap rounded-[10px] text-[0.9375rem] font-medium transition-[color,background-color,border-color,box-shadow] duration-150 ease-out cursor-pointer disabled:pointer-events-none disabled:opacity-50 [&_svg]:pointer-events-none [&_svg]:shrink-0 [&_svg:not([class*=size-])]:size-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-ring no-underline',
   {
     variants: {
       variant: {

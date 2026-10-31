@@ -37,9 +37,13 @@ Work is on branch `redesign/v1` (from `origin/main` at `b1545aa`) in a worktree 
 - New `Landing.tsx` + `routes/landing/landing2.css`; UI parts in `web/src/components/ui/`.
 - Portal routes are lazy now; first load 149.2 / 150 KB. `npm test` 580/580.
 
+## Phase 2 (portal) done 2026-10-31
+
+Sidebar and mobile bar list only built sections (nav.ts NOT_YET keeps the rest routable). Today = French greeting, one session card (`today-card`), ways-in rows, weak points, data notice; the level map moved to `/app/path` (`Learn mode="path"`). Card session centred. Labels sentence case (`--tracking-label: 0`). Portal CSS: `web/src/routes/portal.css`. e2e updated for the new design: walk 652/652, rtl clear, reader 54/54.
+
 ## Next step
 
-Phase 2: portal shell (sidebar shows only built sections) and Today.
+Owner review of the portal screenshots, then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
 
 ## Decisions
 
