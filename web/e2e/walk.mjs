@@ -1218,7 +1218,9 @@ console.log('\n=== lazy English groups: a route opened before its strings arrive
     ['/app/progress', 'weaknessEn', 'wkHeading', 'the weakness card'],
     ['/workspace', 'workspaceEn', 'wsSummaryLead', 'the workspace'],
   ]) {
-    const c = await browser.newContext({ locale: 'fa-IR', viewport: { width: 1100, height: 900 } });
+    // Arabic since 2026-10-31: Persian now carries these groups (owner-requested
+    // drafts), so only Arabic still exercises the English fallback.
+    const c = await browser.newContext({ locale: 'ar-SA', viewport: { width: 1100, height: 900 } });
     const p = await c.newPage(); watch(p, ` lazy ${label}`);
     const marker = `${key}:`;
     let held = 0, heldEntry = false;
@@ -1234,20 +1236,20 @@ console.log('\n=== lazy English groups: a route opened before its strings arrive
     await p.goto(BASE + '#' + hash, { waitUntil: 'commit' });
     await p.waitForTimeout(500);
     const during = await p.locator('body').innerText().catch(() => '');
-    ok(`${label}, Persian, strings still in flight: no key name on screen`,
+    ok(`${label}, Arabic, strings still in flight: no key name on screen`,
        !RAW.test(during), RAW.exec(during)?.[0]);
     await p.waitForLoadState('networkidle');
     await p.waitForTimeout(500);
     const after = await p.locator('body').innerText();
-    ok(`${label}, Persian: the chunk holding "${key}" was requested, so the window was real`,
+    ok(`${label}, Arabic: the chunk holding "${key}" was requested, so the window was real`,
        held >= 1 && !heldEntry, `held ${held}, entry held ${heldEntry}`);
-    ok(`${label}, Persian, strings arrived: no key name on screen`, !RAW.test(after), RAW.exec(after)?.[0]);
+    ok(`${label}, Arabic, strings arrived: no key name on screen`, !RAW.test(after), RAW.exec(after)?.[0]);
     const want = firstValue(file, key);
     if (file === 'weaknessEn' || file === 'readerEn') {
       // the heading may not be shown for an empty profile; the route itself must have rendered
-      ok(`${label}, Persian: the route rendered something`, after.trim().length > 40);
+      ok(`${label}, Arabic: the route rendered something`, after.trim().length > 40);
     } else {
-      ok(`${label}, Persian: shows the English "${want.slice(0, 30)}…" behind the marker`, after.includes(want));
+      ok(`${label}, Arabic: shows the English "${want.slice(0, 30)}…" behind the marker`, after.includes(want));
     }
     await c.close();
   }
@@ -1784,8 +1786,11 @@ console.log('\n=== the learning workspace ===');
   const pos = (await p.locator('[data-testid="ws-position"]').innerText()).trim();
   ok(`workspace fa: the position reads forwards (${JSON.stringify(pos)})`, /^1\s*\/\s*\d+$/.test(pos),
      'the learner is on card 1 of many, not card many of 1');
-  ok('workspace fa: the page says the workspace is not translated here',
-     await p.locator('[data-testid="ws-untranslated"]').count() === 1);
+  // Persian has the workspace's own text since 2026-10-31, drafted and marked
+  // as awaiting review, so the page says "draft" rather than "not translated".
+  ok('workspace fa: the page says its Persian is a draft awaiting review',
+     await p.locator('[data-testid="shell-fa-draft"]').count() === 1
+     && await p.locator('[data-testid="ws-untranslated"]').count() === 0);
   await c.close();
 }
 
@@ -2022,7 +2027,8 @@ console.log('\n=== the front door ===');
   // Persian digits inside an English clause. A page that is in English is in
   // English, including its direction and its numerals.
   const summary = JSON.parse(readFileSync(new URL('../../content/portal-summary.json', import.meta.url), 'utf8'));
-  for (const [locale, name] of [['fa-IR', 'Persian'], ['ar-SA', 'Arabic']]) {
+  // Arabic only: Persian has its own landing page since 2026-10-31 (below).
+  for (const [locale, name] of [['ar-SA', 'Arabic']]) {
     const c = await browser.newContext({ locale, viewport: { width: 900, height: 1000 } });
     const pg = await c.newPage(); watch(pg, ` landing ${name}`);
     await pg.goto(BASE, { waitUntil: 'networkidle' });
@@ -2042,6 +2048,22 @@ console.log('\n=== the front door ===');
        text.slice(0, 120));
     await c.close();
   }
+}
+{
+  // Persian: the landing page is in Persian, right-to-left, and says the
+  // Persian is an agent draft awaiting the owner's review.
+  const c = await browser.newContext({ locale: 'fa-IR', viewport: { width: 900, height: 1000 } });
+  const pg = await c.newPage(); watch(pg, ' landing Persian');
+  await pg.goto(BASE, { waitUntil: 'networkidle' }); await pg.waitForTimeout(500);
+  ok('Persian: the landing page is right-to-left',
+     await pg.evaluate(() => document.documentElement.dir) === 'rtl'
+     && await pg.locator('[data-testid="landing"]').getAttribute('dir') === null);
+  ok('Persian: the page is in Persian', /[\u0600-\u06FF]{4,}/.test(await pg.locator('[data-testid="landing"]').innerText()));
+  ok('Persian: and says its Persian is a draft awaiting review',
+     await pg.locator('[data-testid="landing-fa-draft"]').count() === 1);
+  ok('Persian: the French headline stays left-to-right',
+     await pg.locator('.landing__headline').getAttribute('dir') === 'ltr');
+  await c.close();
 }
 
 {

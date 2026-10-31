@@ -148,6 +148,9 @@ export function Landing() {
       {!translated && (
         <p className="landing__untranslated" data-testid="landing-untranslated">{t('landingUntranslated')}</p>
       )}
+      {translated && ui === 'fa' && (
+        <p className="landing__untranslated" data-testid="landing-fa-draft">{t('shellFaDraft')}</p>
+      )}
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className="lp3-header">
@@ -177,7 +180,7 @@ export function Landing() {
         </picture>
         <div className="lp3-hero__shade" aria-hidden="true" />
         <div className="lp3-wrap lp3-hero__in">
-          <h1 id="lp3-h1" className="landing__headline lp3-h1" lang="fr">{fr(HEADLINE_FR)}</h1>
+          <h1 id="lp3-h1" className="landing__headline lp3-h1" lang="fr" dir="ltr">{fr(HEADLINE_FR)}</h1>
           {english && <p className="lp3-h1-en">{tx('landingHeadline')}</p>}
           <p className="lp3-hero__lede">{tx('landingLede')}</p>
           <p className="lp3-hero__audience">{tx('landingAudience')}</p>
@@ -346,7 +349,7 @@ export function Landing() {
              className="lp3-close__photo" />
         <div className="lp3-close__shade" aria-hidden="true" />
         <div className="lp3-wrap lp3-close__in">
-          <h2 id="lp-close-h" className="lp3-close__fr" lang="fr">{fr(CLOSE_FR)}</h2>
+          <h2 id="lp-close-h" className="lp3-close__fr" lang="fr" dir="ltr">{fr(CLOSE_FR)}</h2>
           <p className="lp3-close__en">{tx('landingCloseHeading')}. {tx('landingCloseBody')}</p>
           <Button asChild size="lg" className="bg-white text-primary hover:bg-[#e9edf5] rounded-md font-bold">
             <Link to="/app/today">{tx('landingStart')}</Link>

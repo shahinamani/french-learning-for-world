@@ -50,6 +50,7 @@ export function useCrumbs(pathname: string): Crumb[] {
     // shown as written: they are identifiers, not interface strings.
     let label = decodeURIComponent(p);
     if (p === 'sit' || p === 'results') label = p;
+    if (p === 'drill') label = t('practiseTense');
     crumbs.push(n === rest.length - 1 ? { label } : { label, to: '/app/' + parts.slice(1, 3 + n).join('/') });
   });
   return crumbs;

@@ -466,6 +466,7 @@ const fr: Dict = {
   shellExamCurrent: 'Votre examen',
   shellExamFormat: 'Format',
   shellExamQuestions: '{n} questions',
+  shellFaDraft: 'Le texte persan de ce portail est un brouillon et n’a pas encore été relu.',
   shellNavListening: 'Écoute',
   shellNavReading: 'Lecture',
   shellNavOutput: 'Oral et écrit',

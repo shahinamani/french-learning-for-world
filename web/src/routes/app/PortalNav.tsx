@@ -245,3 +245,30 @@ export function MobileBar() {
     </>
   );
 }
+
+/** A slim photograph of France at the top of each list page, with the
+ *  section's name in French. Study pages (a card, a text, an exam paper)
+ *  have none: nothing should sit between the learner and the French.
+ *  French as content, the same in every interface language. */
+const BANNERS: { match: RegExp; photo: string; size: number; fr: string }[] = [
+  { match: /^\/app\/verbs\/?$/, photo: 'bouquinistes', size: 900, fr: 'Les verbes' },
+  { match: /^\/app\/grammar\/?$/, photo: 'bookshelves', size: 900, fr: 'La grammaire' },
+  { match: /^\/app\/reading\/?$/, photo: 'terrace', size: 900, fr: 'La lecture' },
+  { match: /^\/app\/exams\/?$/, photo: 'flag-balcony', size: 900, fr: 'Les sujets d’entraînement' },
+  { match: /^\/app\/exam(\/[a-z0-9-]+)?\/?$/, photo: 'flag-balcony', size: 900, fr: 'Mon examen' },
+  { match: /^\/app\/progress\/?$/, photo: 'montmartre', size: 800, fr: 'Mes progrès' },
+  { match: /^\/app\/path\/?$/, photo: 'market', size: 900, fr: 'Mon parcours' },
+];
+
+export function RouteBanner() {
+  const { pathname } = useLocation();
+  const b = BANNERS.find((x) => x.match.test(pathname));
+  if (!b) return null;
+  return (
+    <div className="fr-banner" aria-hidden="true">
+      <img src={`photos/${b.photo}-${b.size}.webp`} alt="" width={b.size} height={Math.round(b.size * 0.75)} />
+      <span className="fr-banner__shade" />
+      <span className="fr-banner__fr" lang="fr" dir="ltr">{b.fr}</span>
+    </div>
+  );
+}

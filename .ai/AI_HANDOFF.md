@@ -8,19 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-10-31 11:03 +03 (git metadata only, written by a Stop hook)
+- Updated: 2026-10-31 13:34 +03 (git metadata only, written by a Stop hook)
 - Branch: redesign/v1
-- HEAD: b1545aa Merge pull request #68 from shahinamani/d2-landing
-- Uncommitted: 37 file(s)
-  -  M .ai/AI_HANDOFF.md
-  -  M content/attribution.json
-  -  M design-system/tokens.css
-  -  M public/fonts/fonts.css
+- HEAD: 428ff3b Build the portal around the learner's exam
+- Uncommitted: 14 file(s)
   -  M tests/i18n-lazy-groups.test.js
-  -  M web/package-lock.json
-  -  M web/package.json
-  -  M web/scripts/prerender.mjs
-  - … and 29 more
+  -  M web/src/components/Shell.tsx
+  -  M web/src/features/flashcards/Session.tsx
+  -  M web/src/features/verbs/Conjugation.tsx
+  -  M web/src/lib/i18n.ts
+  -  M web/src/lib/locales/fa.ts
+  -  M web/src/lib/locales/fr.ts
+  -  M web/src/lib/timer.ts
+  - … and 6 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -45,9 +45,13 @@ Sidebar and mobile bar list only built sections (nav.ts NOT_YET keeps the rest r
 
 Owner asked for a portal built around exams. Sidebar = shadcn-style anatomy (`components/ui/sidebar.tsx`) with an exam switcher (`components/ExamSwitcher.tsx`, Radix dropdown) on top; under it the chosen exam's overview, CO/CE/PE/PO and practice papers, then skill tools. Targets in `lib/exam-targets.ts` (DELF A1-B2, DALF C1-C2, TCF, TCF Canada, TEF Canada), choice stored per profile. Pages `/app/exam`, `/app/exam/:target`, `/app/exam/:target/:section` (`routes/exam/ExamPages.tsx`) show only verified format figures from exams.json. TEF Canada format added from the owner's 2026 booklet; TCF Canada NOT VERIFIED (FEI site blocks automated reads; owner can paste the page). New UI keys are `shellExam*` (optional group: fa/ar fall back to English). Walk 656/656, rtl clear, reader 54/54.
 
+## Phase 2c done 2026-10-31
+
+Timer presets 5/10/20/30/60 (default 20), finish toast + system notification (permission asked on first start). Theme toggle in top bar. Card back: past/future side by side. Today: Bonjour/Bonsoir, French date, mot du jour (real card). French photo banners on list pages (RouteBanner in PortalNav, lazy). Verb drill opens on a verb of the day instead of an error. Persian: 533 strings drafted by an agent, marked DRAFT in fa.ts, listed in docs/review/fa-ui-drafts.md, app shows a draft notice (`shellFaDraft`). Arabic unchanged (falls back to English). Tests moved fallback checks to Arabic.
+
 ## Next step
 
-Owner review of the exam portal; TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
+Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
 
 ## Decisions
 

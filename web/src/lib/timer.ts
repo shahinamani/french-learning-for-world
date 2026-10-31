@@ -7,7 +7,9 @@
  */
 import { userKey } from './session';
 
-export const PRESETS = [5, 15, 30, 45, 60] as const;
+// 10, 20 and 30 are the owner's (2026-10-31); 5 for a quick look, 60 for a long sitting.
+export const PRESETS = [5, 10, 20, 30, 60] as const;
+export const DEFAULT_PRESET = 20;
 
 export type Restored =
   | { state: 'none' }

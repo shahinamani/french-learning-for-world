@@ -16,8 +16,9 @@ import { lazy, Suspense } from 'react';
 // The portal menus load with the portal, not with the landing page.
 const Sidebar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.Sidebar })));
 const MobileBar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.MobileBar })));
+const RouteBanner = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.RouteBanner })));
 import { TopLine } from '../routes/app/TopLine';
-import { PRESETS, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
+import { PRESETS, DEFAULT_PRESET, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
 
 export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const { t, settings, update } = useApp();
@@ -30,13 +31,17 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const onLanding = (location.pathname === '/' || location.pathname === '') && !hasStarted();
   // Persian and Arabic have no portal-navigation copy: the labels are English,
   // and the page says so rather than showing English as if it were theirs.
-  const labelsTranslated = settings.ui === 'en' || settings.ui === 'fr';
+  // Persian was drafted for the whole portal on 2026-10-31 and awaits the
+  // owner's review, so it is shown, with a line saying it is a draft.
+  const labelsTranslated = settings.ui === 'en' || settings.ui === 'fr' || settings.ui === 'fa';
+  const isDark = () => settings.theme === 'dark' || (settings.theme === 'system'
+    && typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches);
   const [timerOpen, setTimerOpen] = useState(false);
   const [timer, setTimer] = useState<{ endsAt: number; durationMin: number; running: boolean }>(
-    { endsAt: 0, durationMin: 15, running: false });
+    { endsAt: 0, durationMin: DEFAULT_PRESET, running: false });
   const [finished, setFinished] = useState<null | 'done' | 'silent' | 'away'>(null);
-  const [clock, setClock] = useState('15:00');
-  const [selected, setSelected] = useState(15);
+  const [clock, setClock] = useState(formatClock(DEFAULT_PRESET * 60));
+  const [selected, setSelected] = useState<number>(DEFAULT_PRESET);
   const finishedOnce = useRef(false);
 
   // Restored per user, after mount. A timer belonging to another profile in
@@ -89,6 +94,13 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
         clear(userId);
         void announceFinish(settings.sound ? chime : undefined)
           .then((o) => setFinished(settings.sound && !o.soundPlayed ? 'silent' : 'done'));
+        // A system notification as well, for a learner who is in another tab.
+        // Only if they allowed it when they started the timer; never asked here.
+        try {
+          if ('Notification' in window && Notification.permission === 'granted' && document.hidden) {
+            new Notification(t('appName'), { body: t('timerDone'), tag: 'flw-timer' });
+          }
+        } catch { /* some browsers only allow notifications from a service worker */ }
       }
     }, 250);
     return () => clearInterval(id);
@@ -109,6 +121,9 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
     setTimer({ endsAt, durationMin: selected, running: true });
     setFinished(null);
     save(userId, endsAt, selected);
+    // Asked once, inside the click that starts a timer, so the browser treats
+    // it as the learner's own request. Refusing changes nothing else.
+    try { if ('Notification' in window && Notification.permission === 'default') void Notification.requestPermission(); } catch { /* unsupported */ }
     if (settings.sound) void chime().catch(() => {});   // prime audio in the gesture
   };
   const stop = () => { setTimer({ endsAt: 0, durationMin: selected, running: false }); clear(userId); };
@@ -173,6 +188,11 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
             </Popover.Root>
             </>
             )}
+            {/* Light or dark in one click; "follow my device" stays in Settings. */}
+            <button type="button" className="icon-btn" data-testid="theme-toggle" aria-pressed={isDark()}
+                    onClick={() => update({ theme: isDark() ? 'light' : 'dark' })}>
+              <Icon name="appearance" /><span className="u-hidden-visually">{isDark() ? t('themeLight') : t('themeDark')}</span>
+            </button>
             <NavLink to="/account" className="icon-btn" data-testid="settings-link">
               <Icon name="settings" /><span className="u-hidden-visually">{t('settings')}</span>
             </NavLink>
@@ -181,8 +201,9 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
 
         {finished && (
-          <div className="finished" role="status" data-testid="timer-finished">
-            <span>{finished === 'away' ? t('timerAway') : finished === 'silent' ? t('timerDoneSilent') : t('timerDone')}</span>
+          <div className="finished toast" role="status" data-testid="timer-finished">
+            <span className="toast__icon" aria-hidden="true"><Icon name="timer" size={20} /></span>
+            <span className="toast__text">{finished === 'away' ? t('timerAway') : finished === 'silent' ? t('timerDoneSilent') : t('timerDone')}</span>
             <button className="btn btn--ghost btn--sm" data-testid="timer-dismiss" onClick={() => setFinished(null)}>
               {t('dismiss')}
             </button>
@@ -193,8 +214,12 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
       <main id="main" key={location.pathname}>
         {!onLanding && <TopLine />}
+        {!onLanding && <Suspense fallback={null}><RouteBanner /></Suspense>}
         {!onLanding && !labelsTranslated && (
           <p className="muted topline__note" data-testid="shell-untranslated">{t('shellUntranslated')}</p>
+        )}
+        {!onLanding && settings.ui === 'fa' && (
+          <p className="muted topline__note" data-testid="shell-fa-draft">{t('shellFaDraft')}</p>
         )}
         {prerenderChild ?? <Outlet />}
       </main>

@@ -31,6 +31,8 @@ const SKILLS = [
 
 /** French as content, the same in every interface language. */
 const HELLO_FR = 'Bonjour.';
+const EVENING_FR = 'Bonsoir.';
+const MOT_FR = 'Le mot du jour';
 
 /** Ways into the parts of the portal that exist. The French word is content,
  *  the same in every interface language; the label is the dictionary's. */
@@ -43,7 +45,7 @@ const WAYS: { to: string; fr: string; label: 'verbs' | 'shellNavReading' | 'exam
 ];
 
 export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
-  const { t } = useApp();
+  const { t, settings } = useApp();
   // Search produces /learn?level=B1. A link whose target ignores its parameter
   // is a broken connection, however well each end works alone.
   const [params, setParams] = useSearchParams();
@@ -82,13 +84,20 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
   if (error) return <ErrorState onRetry={() => location.reload()} />;
 
   const [target] = useTarget(userId);
+  const now = new Date();
+  const hour = now.getHours();
+  let dateFr = '';
+  try { dateFr = new Intl.DateTimeFormat('fr', { weekday: 'long', day: 'numeric', month: 'long' }).format(now); } catch { /* no Intl */ }
+  // One real card a day, the same all day: the day number picks it.
+  const mot = data && data.cards.length ? data.cards[Math.floor(now.getTime() / 86_400_000) % data.cards.length] : null;
   const size = c ? c.due + Math.min(c.fresh, 20) : 0;
   const minutes = Math.max(1, Math.round(size * 0.4));
 
   if (mode === 'today') return (
     <div className="page today-page">
       <header className="today-hello">
-        <p className="today-hello__fr" lang="fr" dir="ltr">{HELLO_FR}</p>
+        <p className="today-hello__fr" lang="fr" dir="ltr">{hour >= 18 || hour < 5 ? EVENING_FR : HELLO_FR}</p>
+        <p className="today-hello__date" lang="fr" dir="ltr">{dateFr}</p>
         <h1 id="today-h" className="today-hello__h">{t('today')}</h1>
       </header>
 
@@ -108,7 +117,7 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
             </div>
             <div className="today-main__actions">
               <div className="today-main__lengths" role="group" aria-label={t('timer')}>
-                {[5, 15, 30].map((m) => (
+                {[10, 20, 30].map((m) => (
                   <Link key={m} className="today-chip" to={`/app/cards?minutes=${m}`}>{t('minutes', { n: m })}</Link>
                 ))}
               </div>
@@ -117,6 +126,18 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
           </>
         )}
       </section>
+
+      {mot && (
+        <section className="mot" aria-labelledby="mot-h" data-testid="mot-du-jour">
+          <p id="mot-h" className="mot__label" lang="fr" dir="ltr">{MOT_FR}</p>
+          <p className="mot__word" lang="fr" dir="ltr">{mot.article ? `${mot.article} ` : ''}{mot.fr}</p>
+          <p className="mot__meaning" lang={settings.meaning}
+             dir={settings.meaning === 'fa' || settings.meaning === 'ar' ? 'rtl' : 'ltr'}>
+            {mot.meanings[settings.meaning] ?? mot.meanings.en}
+          </p>
+          {mot.examples[0] && <p className="mot__ex" lang="fr" dir="ltr">{mot.examples[0].fr}</p>}
+        </section>
+      )}
 
       {/* The learner's exam, or the invitation to choose one. */}
       <Link to={target ? `/app/exam/${target.id}` : '/app/exam'} className="today-exam" data-testid="today-exam">

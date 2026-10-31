@@ -492,6 +492,7 @@ const shellEn = {
   shellExamCurrent: 'Your exam',
   shellExamFormat: 'Format',
   shellExamQuestions: '{n} questions',
+  shellFaDraft: 'The Persian text of this portal is a draft and has not been reviewed yet.',
   // Asked for by Learn and TopLine, which are in the first load, so it lives in
   // this eager group and not with the rest of the workspace copy (locales/en/
   // workspaceEn.ts), which travels with the lazy workspace chunk.

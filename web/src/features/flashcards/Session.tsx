@@ -295,8 +295,10 @@ export function FlashcardSession() {
             <div className="flashcard__meaning" lang={settings.meaning}
                  dir={settings.meaning === 'fa' || settings.meaning === 'ar' ? 'rtl' : 'ltr'}>{meaning}</div>
             {alt && <div className="flashcard__alt" dir={settings.meaning === 'en' ? 'rtl' : 'ltr'}>{alt}</div>}
+            {/* Past and future side by side, so the difference is seen at once. */}
+            <div className="examples">
             {card.examples.map((ex) => (
-              <div className="example" key={ex.tense}>
+              <div className="example" key={ex.tense} data-tense={ex.tense}>
                 <span className="example__label">{t(ex.tense)} · <b lang="fr">{frText(ex.form)}</b></span>
                 <div className="example__fr" lang="fr" dir="ltr">{highlight(ex.fr, ex.form)}</div>
                 <div className="example__tr" lang={settings.meaning}
@@ -305,6 +307,7 @@ export function FlashcardSession() {
                 </div>
               </div>
             ))}
+            </div>
             <div className="concepts-row">
               <span className="eyebrow">{t('relatedConcepts')}</span>
               <div className="row gap-2 wrap">

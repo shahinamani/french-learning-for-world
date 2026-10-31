@@ -29,12 +29,17 @@ function newId() {
   return [...b].map((x) => x.toString(16).padStart(2, '0')).join('');
 }
 
+/** The ten most used French verbs, one a day when no verb is asked for. */
+const DAILY_VERBS = ['être', 'avoir', 'aller', 'faire', 'dire', 'pouvoir', 'vouloir', 'savoir', 'venir', 'prendre'];
+
 export function ConjugationDrill() {
   const { t, settings } = useApp();
   const userId = useUserId();
   const panel = useSidePanel();
   const [params, setParams] = useSearchParams();
-  const wanted = params.get('verb') ?? '';
+  // No verb in the address (the drill opened from Today or the menu): drill
+  // the verb of the day, one of the ten most used, rather than an error page.
+  const wanted: string = params.get('verb') || DAILY_VERBS[Math.floor(Date.now() / 86_400_000) % DAILY_VERBS.length] || 'être';
   const tenseId = params.get('tense') ?? 'present';
   const index = Math.max(0, Number(params.get('i') ?? 0) | 0);
 

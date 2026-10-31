@@ -152,7 +152,10 @@ test('the split is real: before a route registers its group, i18n.ts does not ca
   }
 });
 
-test('Persian and Arabic fall back to English once the group is registered, and never to a key name', async () => {
+// Arabic only since 2026-10-31: the owner had Persian drafted for every group
+// that day (awaiting his review), so Persian no longer falls back. Arabic still
+// lacks these groups, which is what lets this test exercise the fallback.
+test('Arabic falls back to English once the group is registered, and never to a key name', async () => {
   // Made BEFORE the group exists: the translator reads the English dictionary on
   // every call, so a group registered later must still be seen by it.
   const early = { fa: translator('fa'), ar: translator('ar') };
@@ -163,16 +166,15 @@ test('Persian and Arabic fall back to English once the group is registered, and 
   for (const g of GROUPS) for (const k of KEYS[g]) {
     const english = en(k);
     if (english === k) { bad.push(`en cannot say ${k}`); continue; }
-    for (const loc of ['fa', 'ar']) {
+    for (const loc of ['ar']) {
       if (translator(loc)(k) !== english) bad.push(`${loc}.${k} is not the English fallback`);
       if (early[loc](k) !== english) bad.push(`${loc}.${k}: a translator made before registration missed it`);
     }
   }
   assert.deepEqual(bad.slice(0, 10), []);
   // and they really are absent from those dictionaries: the fallback is exercised, not bypassed
-  const faSrc = read(join(ROOT, 'lib/locales/fa.ts')), arSrc = read(join(ROOT, 'lib/locales/ar.ts'));
+  const arSrc = read(join(ROOT, 'lib/locales/ar.ts'));
   for (const g of GROUPS) {
-    assert.ok(!new RegExp(`\\b${KEYS[g][0]}\\s*:`).test(faSrc), `fa has no ${g}`);
     assert.ok(!new RegExp(`\\b${KEYS[g][0]}\\s*:`).test(arSrc), `ar has no ${g}`);
   }
 });
