@@ -114,6 +114,9 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
     <div className="shell">
       <a className="skip" href="#main">{t('skipToContent')}</a>
 
+      {/* The landing page carries its own header (redesign v1), so the shell bar
+          and the mobile bar are for the portal only. */}
+      {!onLanding && (
       <header className="bar">
         <div className="bar-in">
           <NavLink to="/app/today" className="brand" aria-label={t('appName')}>
@@ -183,6 +186,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
           </div>
         )}
       </header>
+      )}
 
       <main id="main" key={location.pathname}>
         {!onLanding && <TopLine />}
@@ -195,7 +199,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
       {/* One navigation per width. On the landing page there is no sidebar:
           a stranger has no portal to navigate yet. */}
       {!onLanding && <Sidebar />}
-      <MobileBar />
+      {!onLanding && <MobileBar />}
 
       <SidePanel />
     </div>

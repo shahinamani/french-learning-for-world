@@ -60,14 +60,14 @@ const summary = JSON.parse(readFileSync(new URL('../../content/portal-summary.js
 
 for (const [what, re] of [
   ['the landing page itself', /data-testid="landing"/],
-  ['the headline', /class="landing__headline"/],
+  ['the headline', /class="landing__headline[ "]/],
   ['the way in', /data-testid="landing-start"/],
   ['what you can do today', /data-testid="landing-today"/],
   ['what is not here yet', /data-testid="landing-notyet"/],
   ['the examinations section', /data-testid="landing-exams"/],
   ['the returning-learner placeholder', /data-testid="landing-boot"/],
-  ['the shell chrome', /class="tabs"/],
-  ['the shell bar', /class="bar"/],
+  // The shell bar and the mobile tabs are no longer on the landing page: since
+  // redesign v1 (docs/blueprint/REDESIGN-v1.md) it carries its own header.
 ]) {
   if (!re.test(html)) {
     console.error(`PRERENDER FAILED: ${what} is missing from the prerendered HTML.`);
@@ -99,7 +99,7 @@ for (const [what, value] of [
 // rather than shipping quietly.
 const posHave = html.indexOf('data-testid="landing-today"');
 const posGaps = html.indexOf('data-testid="landing-notyet"');
-const posFoot = html.indexOf('class="landing__footer"');
+const posFoot = html.search(/class="landing__footer[ "]/);
 if (!(posHave < posGaps && posGaps < posFoot)) {
   console.error('PRERENDER FAILED: "what is not here yet" must come straight after '
     + '"what you can do today" and before the footer.');

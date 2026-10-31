@@ -1,6 +1,15 @@
+/* Layer order (redesign v1): the pre-redesign stylesheet sits in its own
+   layer, BELOW Tailwind's utilities, so a utility class on a new component
+   always wins over an old element or class rule. Unlayered, the old rules
+   beat every utility regardless of specificity. */
+@layer theme, base, legacy, components, utilities;
 @import "tailwindcss";
 @import "../../design-system/tokens.css";
-@import "../../design-system/components.css";
+@import "../../design-system/components.css" layer(legacy);
+@import "./theme.css";
+@import "./routes/landing/landing3.css" layer(components);
+
+@layer legacy {
 
 /* App-specific layout, all from tokens. */
 .shell { display: flex; flex-direction: column; min-height: 100%; }
@@ -990,3 +999,4 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
 .ws-dlg__wrong { margin: 0; color: var(--color-danger); font-weight: var(--weight-semibold); }
 
 @media (prefers-reduced-motion: reduce) { .nav-group__chev { transition: none; } }
+} /* @layer legacy */

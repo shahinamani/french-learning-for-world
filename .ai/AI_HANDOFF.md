@@ -8,100 +8,56 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-10-18 22:18 +03 (git metadata only, written by a Stop hook)
-- Branch: HEAD
-- HEAD: a9d0211 Merge pull request #55 from shahinamani/feat/weakness-engine
-- Uncommitted: 1 file(s)
-  - ?? .ai/
+- Updated: 2026-10-31 11:03 +03 (git metadata only, written by a Stop hook)
+- Branch: redesign/v1
+- HEAD: b1545aa Merge pull request #68 from shahinamani/d2-landing
+- Uncommitted: 37 file(s)
+  -  M .ai/AI_HANDOFF.md
+  -  M content/attribution.json
+  -  M design-system/tokens.css
+  -  M public/fonts/fonts.css
+  -  M tests/i18n-lazy-groups.test.js
+  -  M web/package-lock.json
+  -  M web/package.json
+  -  M web/scripts/prerender.mjs
+  - … and 29 more
 <!-- ai:state:end -->
 
 ## Goal
-A French learning portal the owner can test privately and eventually sell. The
-current push is turning a verb reference into a learning environment: a
-workspace with flashcards, quiz, dialogues, grammar, vocabulary and progress.
 
-**Read `AGENTS.md` first.** Its §2 (say what has not been checked) and §3 (run
-a check against the whole corpus and adjudicate every accusation) are not
-decoration — most of the defects found here were checks comparing the wrong two
-things.
+Redesign v1: rebuild the landing page and the learning portal on shadcn/ui with a warm, Babbel-like look, then publish on Cloudflare Pages. Brief: `docs/blueprint/REDESIGN-v1.md` (owner-approved 2026-10-31). It supersedes `FRONTEND-START.md` for visual design.
 
 ## Current state
-`main` at the merge of PR #50. Merged recently: #49 the workspace, #50 the
-educational card backs and the first dialogue unit.
 
-Branch `integration/app-routes` (2026-10-18) merges the grammar loop and the
-Reader and mounts both lazily under `/app/grammar` and `/app/reading`.
-`Progress` shows `WeaknessCard` and no accuracy percentage, and its export
-carries the personal stores. The Reader's quiz scores moved from a separate
-`flw-reader` database into `flw` (schema 3, store `readerResults`); the export
-format is version 4. `/app/grammar/:id` renders the lesson where one exists and otherwise the concept
-page (routes/app/GrammarOrConcept.tsx, a lazy chunk), so the 6 lessons are an
-upgrade over 297 working concept pages.
-
-- **Workspace** at `/workspace`, lazy-loaded. Six tabs, all opening real
-  content. Filters, shuffle, jump-to-card and the position always agree.
-- **Cards**: 2,371 eligible records = 2,363 verbs with a gloss + 8 deck nouns.
-  **32 have worked educational backs**; the rest say they are a gloss.
-- **Card back**: Persian meaning, then présent / passé composé / futur simple
-  behind one click, each with tense label, the conjugated group highlighted,
-  Persian + English, and per-example listen. Nouns get examples and no tense.
-- **Dialogues**: one complete A1 unit (Au café) with comprehension questions,
-  feedback, explanation and retry.
-- **Coverage is printed on the page**: `56 / 2371 with worked examples ·
-  0 / 2371 checked by a teacher`. Both counted at runtime.
-- Checks: 467 unit tests, 387 browser checks, 20 contrast checks, all green.
+Work is on branch `redesign/v1` (from `origin/main` at `b1545aa`) in a worktree under the session scratchpad (`/private/tmp/.../scratchpad/main-wt`). Phase 0 (foundation) and phase 1 (landing) are built and committed locally (not pushed):
+- Packages added, pinned, installed with `--ignore-scripts`: radix-ui 1.8.1, lucide-react 1.61.0, class-variance-authority, clsx, tailwind-merge.
+- Palette retuned in `design-system/tokens.css` (warm paper `#faf7f2`, deep blue `#1e3a8a`, terracotta mark `#c2410c`); `npm run test:contrast` passes.
+- Inter self-hosted in `public/fonts/`. Unsplash photos in `web/public/photos/` (credits not yet written to `content/attribution.json`).
+- `web/src/theme.css` maps shadcn colour names onto the tokens; old CSS moved to `@layer legacy` so Tailwind utilities win.
+- New `Landing.tsx` + `routes/landing/landing2.css`; UI parts in `web/src/components/ui/`.
+- Portal routes are lazy now; first load 149.2 / 150 KB. `npm test` 580/580.
 
 ## Next step
-Continue the content batches: A1 has 208 eligible cards and 32 are done.
-Draft the next bounded batch of A1 verbs into `content/card-backs.json`, then
-A2. Do not mass-produce — reuse existing written material first, keep
-`tests/card-backs.test.js` passing, and never mark anything reviewed.
+
+Phase 2: portal shell (sidebar shows only built sections) and Today.
 
 ## Decisions
-- **Known = FSRS Easy (4), To review = Again (1)**, written through
-  `appendReview` under the existing card keys. Not a second store. The
-  four-grade session under Practise is unchanged and is the finer instrument.
-  Measured reason: this engine's learning steps are 1/6/10 minutes and only
-  Easy leaves learning, so Good and Again are indistinguishable afterwards.
-- **Piles are read from the schedule, not FSRS's state enum** — a first
-  sighting enters Learning however it is graded, so the enum cannot express
-  "known". Horizon is 12 h (`KNOWN_HORIZON_MS`).
-- **Persian may be drafted for educational content; it is never marked
-  reviewed.** Arabic is still held — no Arabic reader exists.
-- **New interface strings go in an OPTIONAL i18n group** (`workspaceEn`),
-  English + French only, so fa/ar fall back behind `notTranslatedHere` rather
-  than obliging invented translations. Four such groups exist now.
-- **Optional groups for LAZY routes live in `web/src/lib/locales/en/<group>.ts`**
-  (workspaceEn, weaknessEn, grammarEn, readerEn), not in `i18n.ts`, and register
-  themselves via `registerEnglish()` when the route chunk loads. A new route's
-  group goes there and is imported by that route's entry module; only a key the
-  first load asks for belongs in `i18n.ts`. `tests/i18n-lazy-groups.test.js`
-  enforces both halves. First load 146.9 -> 139.2 KB; `node web/scripts/attribute.mjs`
-  attributes the bytes. Biggest remaining candidate: Radix Popover/Dialog +
-  floating-ui in the entry chunk (~16 KB gzip, measured with a stub).
-- **The preview is loopback only.** No deployment is authorised.
+
+- Owner chose shadcn/ui, Magic UI free parts only, Babbel-like feel, English-first landing, keep the name, Unsplash photos, everything free.
+- No Docker Desktop (owner will uninstall it). Packages installed directly with scripts off, pinned to versions older than 10 days.
+- No server. Cloudflare Pages free plan; backend only when accounts/sync/payments are wanted.
+- shadcn `accent` is not mapped: `--color-accent` already means primary blue in the old screens.
+
+- 2026-10-31, third landing pass (owner said passes 1-2 looked AI-made): built with the frontend-design skill. Dropped cream/terracotta, italic accent word, caps eyebrows, card grid, stats strip. Now: Paris photo hero with French headline + English line, sommaire rows, Seyes-ruled practice desk, Spectral + Inria Sans, street-sign blue #1f3a6e. Landing CSS is `web/src/routes/landing/landing3.css`.
+- If the owner rejects again: ask for a reference site, do not iterate blind.
 
 ## Gotchas
-- **The written deck and the verb index disagree on one key**: the deck has
-  `v:etre`, the index `v:être`. `buildCards` matches on folded identity and the
-  DECK key wins, because the review log already uses it. Do not "simplify" it.
-- **`gzserver.py` must stay threaded.** It was `TCPServer`, which serves one
-  connection at a time; a browser held it open and the preview answered nobody
-  for two days while the port stayed bound.
-- **Tests cannot import `ts-fsrs`.** CI and the pre-push sweep run the unit
-  suite with `web/node_modules` hidden, so anything needing the real scheduler
-  belongs in `web/e2e/walk.mjs`.
-- **Throwaway git repos in tests must use `gitFreeEnv()`** (`tests/git-env.mjs`).
-  `GIT_DIR` is in a hook's environment and beats `cwd`; from a worktree this
-  once committed fixtures onto a live branch and rewrote `user.email`.
-- Walk scans must wait for a selector, not a fixed delay, and must not assume
-  which card they land on — nouns sit alphabetically among the verbs.
+
+- Radix Accordion writes inline styles, which the CSP prerender check refuses; FAQ uses native `<details>`.
+- Prerender checks were updated: the landing no longer has the shell bar or mobile tabs.
+- The main checkout is on the stale `content/b1-neg-5-meaning` branch; do not implement there.
+- Full-page screenshots need `main{overflow:visible}`: the page scrolls inside `main`.
 
 ## How to run and test
-```sh
-./scripts/preview.sh          # private preview, loopback only, 127.0.0.1:8793
-npm test                      # unit suite
-node web/e2e/walk.mjs         # browser walk (needs the preview running)
-node design-system/contrast-check.mjs
-```
-Branch from `main`, never stack PRs, and verify on `main` after a merge.
+
+From the worktree root: `npm test`; `cd web && npm run build && npx vite preview --port 4173`; contrast: serve the repo on 127.0.0.1:8765 and run `CHROMIUM=<Chrome binary> npm run test:contrast`.

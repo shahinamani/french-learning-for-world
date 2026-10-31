@@ -39,8 +39,8 @@
    * Self-hosting is the step-4 action: it fixes that, the offline case, and
    * the GDPR exposure of a third-party font request.
    */
-  --font-display: "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
-  --font-ui: "Vazirmatn", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Spectral", "Newsreader", ui-serif, Georgia, "Times New Roman", serif;
+  --font-ui: "Inria Sans", "Vazirmatn", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
   --font-mono: ui-monospace, "SF Mono", Menlo, Consolas, monospace;
 
   /* Modular scale, ratio 1.2 at the small end opening to 1.25 for display.
@@ -135,17 +135,17 @@
    *      carries a label, so its ratio only has to clear 3:1 as a mark.
    */
   --fr-blanc:       #ffffff;   /* card and sheet surface */
-  --fr-canvas:      #f5f6fb;   /* page behind the cards. ink on it 16.46; bleu on it 13.81 */
-  --fr-ink:         #13162e;   /* body text, a near-black with a blue cast: 17.77 white, 16.46 canvas, 14.80 sunken */
+  --fr-canvas:      #f4f5f7;   /* Paris limestone, cool: the page behind the cards. Ratios: npm run test:contrast */
+  --fr-ink:         #1a1a1a;   /* ink: a neutral near-black */
 
-  --fr-bleu:        #000091;   /* Bleu France. 14.91 on white, 13.81 on canvas, 12.52 on bleu-soft; white on it 14.91 */
-  --fr-bleu-hover:  #1212ff;   /* DSFR hover. White on it 8.22; as text 8.22 on white, 7.61 on canvas, 6.90 on bleu-soft */
+  --fr-bleu:        #1f3a6e;   /* the enamel blue of a Paris street sign: primary action and focus */
+  --fr-bleu-hover:  #2a4d8f;   /* hover of the primary fill; white on it */
   --fr-bleu-ink:    #ffffff;   /* text ON a blue fill: 14.91 (8.22 on hover) */
-  --fr-bleu-soft:   #e8eaff;   /* blue-tinted fill; --fr-bleu on it 12.52, --fr-ink on it 14.93 */
+  --fr-bleu-soft:   #e7ecf5;   /* blue-tinted fill */
 
-  --fr-rouge:       #e1000f;   /* Rouge Marianne. 4.99 on white, 4.62 on canvas; white on it 4.99. A mark, not a text colour */
+  --fr-rouge:       #e1000f;   /* the red of the tricolore: a mark only, never text */
   --fr-rouge-ink:   #ffffff;   /* text ON a red fill: 4.99 (only ever a few words, e.g. a badge) */
-  --fr-rouge-soft:  #fdebec;   /* red-tinted fill; --fr-ink on it 15.46; --fr-rouge on it 4.34, so no red text on it */
+  --fr-rouge-soft:  #fdecec;   /* red-tinted fill; ink on top only */
 
   /* ── Colour — light ─────────────────────────────────────────────────── *
    * Neutrals carry the blue cast of the ink, so a grey beside the primary does
@@ -153,12 +153,12 @@
    */
   --color-canvas: var(--fr-canvas);
   --color-surface: var(--fr-blanc);
-  --color-surface-sunken: #e8eaf3;  /* wells, track backgrounds */
+  --color-surface-sunken: #edeff2;  /* wells, alternate sections */
   --color-ink: var(--fr-ink);       /* primary text — 17.77 / 16.46 / 14.80 */
-  --color-ink-muted: #454a68;       /* secondary text — 8.63 / 8.00 / 7.19 */
-  --color-ink-faint: #555b7a;       /* labels, metadata — 6.64 / 6.15 / 5.53 */
-  --color-line: #dcdfea;            /* borders */
-  --color-line-strong: #bfc7d8;     /* borders that must read as a boundary */
+  --color-ink-muted: #4a4f57;       /* secondary text */
+  --color-ink-faint: #5d636c;       /* labels, metadata */
+  --color-line: #dde0e5;            /* borders */
+  --color-line-strong: #c3c8d0;     /* borders that must read as a boundary */
 
   /* The primary action. One role in both themes: the filled button, the link
    * and the active tab. --color-accent is both the fill and the text colour of
@@ -245,24 +245,24 @@
        the dark surface and unreadable, so the blue becomes a light tint and the
        red lifts above 4.5. Roles are unchanged: --fr-bleu is still the primary
        action, --fr-rouge is still punctuation. Ratios: surface / canvas / sunken. */
-    --fr-blanc:       #12162b;   /* the card surface: white does not dominate a dark theme, the surface does */
-    --fr-canvas:      #0b0e1f;
-    --fr-ink:         #e9ebf7;   /* 15.05 / 16.13 / 13.48 */
+    --fr-blanc:       #1a1d21;
+    --fr-canvas:      #121417;
+    --fr-ink:         #f2f3f5;
 
-    --fr-bleu:        #a9b3ff;   /* 9.00 / 9.65 / 8.06; 7.74 on bleu-soft */
-    --fr-bleu-hover:  #c4cbff;   /* 11.34 / 12.16 / 10.16; ink on it 12.16 */
-    --fr-bleu-ink:    #0b0e1f;   /* text ON a blue fill: 9.65 (12.16 on hover) */
-    --fr-bleu-soft:   #1a2050;   /* blue-tinted fill; --fr-bleu on it 7.74 */
+    --fr-bleu:        #a9bcf5;
+    --fr-bleu-hover:  #c6d3fa;
+    --fr-bleu-ink:    #121417;
+    --fr-bleu-soft:   #1f2a40;
 
-    --fr-rouge:       #ff6b74;   /* 6.47 / 6.94 / 5.80; 6.25 on rouge-soft */
-    --fr-rouge-ink:   #0b0e1f;   /* text ON a red fill: 6.94 */
-    --fr-rouge-soft:  #2e1219;   /* red-tinted fill; --fr-ink on it 14.54 */
+    --fr-rouge:       #ff6b6b;
+    --fr-rouge-ink:   #121417;
+    --fr-rouge-soft:  #3a1c1e;
 
-    --color-surface-sunken: #1b2039;
-    --color-ink-muted: #aab0cc;       /* 8.33 / 8.93 / 7.46 */
-    --color-ink-faint: #959bb8;       /* 6.52 / 6.98 / 5.84 */
-    --color-line: #262c48;
-    --color-line-strong: #434b6e;
+    --color-surface-sunken: #22262b;
+    --color-ink-muted: #b8bdc6;
+    --color-ink-faint: #9aa0aa;
+    --color-line: #2c3036;
+    --color-line-strong: #444a52;
 
     /* Danger in dark: a light pink-magenta, not the salmon of --fr-rouge.
        7.93 surface, 8.49 canvas, 7.61 on soft. CIE76 dE to dark --fr-rouge
@@ -296,24 +296,24 @@
      the dark surface and unreadable, so the blue becomes a light tint and the
      red lifts above 4.5. Roles are unchanged: --fr-bleu is still the primary
      action, --fr-rouge is still punctuation. Ratios: surface / canvas / sunken. */
-  --fr-blanc:       #12162b;   /* the card surface: white does not dominate a dark theme, the surface does */
-  --fr-canvas:      #0b0e1f;
-  --fr-ink:         #e9ebf7;   /* 15.05 / 16.13 / 13.48 */
+  --fr-blanc:       #1a1d21;
+  --fr-canvas:      #121417;
+  --fr-ink:         #f2f3f5;
 
-  --fr-bleu:        #a9b3ff;   /* 9.00 / 9.65 / 8.06; 7.74 on bleu-soft */
-  --fr-bleu-hover:  #c4cbff;   /* 11.34 / 12.16 / 10.16; ink on it 12.16 */
-  --fr-bleu-ink:    #0b0e1f;   /* text ON a blue fill: 9.65 (12.16 on hover) */
-  --fr-bleu-soft:   #1a2050;   /* blue-tinted fill; --fr-bleu on it 7.74 */
+  --fr-bleu:        #a9bcf5;
+  --fr-bleu-hover:  #c6d3fa;
+  --fr-bleu-ink:    #121417;
+  --fr-bleu-soft:   #1f2a40;
 
-  --fr-rouge:       #ff6b74;   /* 6.47 / 6.94 / 5.80; 6.25 on rouge-soft */
-  --fr-rouge-ink:   #0b0e1f;   /* text ON a red fill: 6.94 */
-  --fr-rouge-soft:  #2e1219;   /* red-tinted fill; --fr-ink on it 14.54 */
+  --fr-rouge:       #ff6b6b;
+  --fr-rouge-ink:   #121417;
+  --fr-rouge-soft:  #3a1c1e;
 
-  --color-surface-sunken: #1b2039;
-  --color-ink-muted: #aab0cc;       /* 8.33 / 8.93 / 7.46 */
-  --color-ink-faint: #959bb8;       /* 6.52 / 6.98 / 5.84 */
-  --color-line: #262c48;
-  --color-line-strong: #434b6e;
+  --color-surface-sunken: #22262b;
+  --color-ink-muted: #b8bdc6;
+  --color-ink-faint: #9aa0aa;
+  --color-line: #2c3036;
+  --color-line-strong: #444a52;
 
   /* Danger in dark: a light pink-magenta, not the salmon of --fr-rouge.
      7.93 surface, 8.49 canvas, 7.61 on soft. CIE76 dE to dark --fr-rouge

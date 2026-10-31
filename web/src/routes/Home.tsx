@@ -23,7 +23,9 @@
  * `started` here is read at render time rather than passed down, because the
  * prerender has no storage at all and must take the stranger's branch.
  */
-import { Learn } from './Learn';
+import { Suspense, lazy } from 'react';
+// Lazy since redesign v1: a stranger downloads the landing page only.
+const Learn = lazy(() => import('./Learn').then((m) => ({ default: m.Learn })));
 import { Landing } from './Landing';
 import { hasStarted } from '../lib/started';
 
@@ -31,5 +33,7 @@ export function Home() {
   // Read once per mount, not in state: this is not a value that changes while
   // somebody is looking at the page. The one thing that would change it —
   // starting to study — navigates away from here first.
-  return hasStarted() ? <Learn /> : <Landing />;
+  return hasStarted()
+    ? <Suspense fallback={<div className="page"><div className="skeleton skeleton--title" /><div className="skeleton skeleton--text" /></div>}><Learn /></Suspense>
+    : <Landing />;
 }

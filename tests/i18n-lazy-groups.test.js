@@ -90,7 +90,10 @@ const MAIN = join(ROOT, 'main.tsx');
 const EAGER = closure(MAIN);
 
 test('the scan is wired to something: main.tsx reaches the shell, and the lazy routes are not in its closure', () => {
-  assert.ok(EAGER.size > 40, `only ${EAGER.size} modules reached from main.tsx; the import walk is broken`);
+  // Was > 40. Redesign v1 made the portal routes lazy, so the first load is the
+  // landing page and the shell: 36 modules on 2026-10-31. A broken walk reaches
+  // a handful, so 25 still tells the two apart.
+  assert.ok(EAGER.size > 25, `only ${EAGER.size} modules reached from main.tsx; the import walk is broken`);
   assert.ok([...EAGER].some((f) => f.endsWith('components/Shell.tsx')), 'Shell is in the first load');
   for (const lazy of ['features/reader/index.tsx', 'features/grammar/index.ts',
                       'features/workspace/Workspace.tsx', 'features/weakness/WeaknessCard.tsx']) {
