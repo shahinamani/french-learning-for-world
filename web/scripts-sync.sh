@@ -4,7 +4,7 @@
 # there is no second copy to drift.
 set -euo pipefail
 cd "$(dirname "$0")"
-mkdir -p public/fonts public/content public/content/verbs
+mkdir -p public/fonts public/content public/content/verbs public/content/verb-cards
 cp ../public/fonts/* public/fonts/
 cp ../content/*.json public/content/
 # The verb paradigms live in a subdirectory, and a flat *.json glob silently
@@ -12,6 +12,7 @@ cp ../content/*.json public/content/
 # page 404'd. A copy that skips a directory reports success exactly like one
 # that does not.
 cp ../content/verbs/*.json public/content/verbs/
+cp ../content/verb-cards/*.json public/content/verb-cards/
 
 # The portal summary is ALSO copied into src/generated, because the landing page
 # imports it rather than fetching it: the build-time prerender has to state the

@@ -21,7 +21,10 @@ const fonts = walk('fonts', 'fonts/').filter((f) => f.endsWith('.woff2') || f.en
 // is stale-while-revalidate, so a shard caches itself the first time it is
 // opened and is available offline from then on — which is the behaviour we
 // want, without making every first visit pay for five levels nobody opened.
-const content = walk('content', 'content/').filter((f) => !f.startsWith('content/verbs/'));
+// The verb cards are kept out for the same reason: one level is opened at a
+// time, and it caches itself on first use.
+const content = walk('content', 'content/')
+  .filter((f) => !f.startsWith('content/verbs/') && !f.startsWith('content/verb-cards/'));
 const shell = ['./', 'index.html', ...assets, ...fonts, ...content];
 const version = readFileSync(resolve(dist, 'index.html'), 'utf8').length + '-' + assets.join('').length;
 

@@ -330,3 +330,9 @@
    the page's direction, not from its own. */
 .fr-banner__fr { inset-inline-start: auto; left: 1.5rem; }
 [dir="rtl"] .fr-banner__fr { left: auto; right: 1.5rem; }
+
+/* Flashcards: the level picker above the first card. */
+.card-levels { display: grid; gap: var(--space-2, .5rem); margin-block-end: var(--space-4, 1rem); }
+.card-levels .chip { min-height: 2.75rem; min-width: 2.75rem; justify-content: center; text-decoration: none; }
+.card-levels .chip.is-current { outline: 2px solid currentColor; outline-offset: 2px; font-weight: 700; }
+.flashcard__answer .gloss-note { margin-block-start: var(--space-3, .75rem); }

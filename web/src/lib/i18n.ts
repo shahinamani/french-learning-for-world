@@ -489,6 +489,8 @@ const shellEn = {
   shellExamRelated: 'Build the skill here',
   shellExamOpen: 'Open',
   shellExamChooseFirst: 'Choose your exam to see its sections.',
+  shellCardsLevel: 'Cards by level',
+  shellCardsCount: '{n} cards at this level. 20 new ones each session, plus the ones due again.',
   shellExamCurrent: 'Your exam',
   shellExamFormat: 'Format',
   shellExamQuestions: '{n} questions',

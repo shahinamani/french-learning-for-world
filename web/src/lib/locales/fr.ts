@@ -463,6 +463,8 @@ const fr: Dict = {
   shellExamRelated: 'Travailler la compétence ici',
   shellExamOpen: 'Ouvrir',
   shellExamChooseFirst: 'Choisissez votre examen pour voir ses épreuves.',
+  shellCardsLevel: 'Cartes par niveau',
+  shellCardsCount: '{n} cartes à ce niveau. 20 nouvelles par séance, plus celles à revoir.',
   shellExamCurrent: 'Votre examen',
   shellExamFormat: 'Format',
   shellExamQuestions: '{n} questions',

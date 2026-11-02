@@ -81,6 +81,13 @@ export type Card = {
   }>;
   /** Which concepts this card exercises. Joins the card to the weakness model. */
   conceptIds: string[];
+  /** Verb cards built from the conjugation tables: the past and the future as
+   *  forms (« il a parlé », « il parlera »), with the conjugated part named. */
+  forms?: { past: { fr: string; form: string }; future: { fr: string; form: string } };
+  /** familier, soutenu, argotique — from Wiktionary, shown as a label. */
+  register?: string | null;
+  /** The meaning is a Wiktionary gloss nobody has reviewed for this deck. */
+  glossUnreviewed?: boolean;
 };
 
 /* ── Personal stores (blueprint CONTRACTS-v0.2 §3) ─────────────────────────

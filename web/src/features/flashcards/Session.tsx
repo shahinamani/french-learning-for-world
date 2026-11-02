@@ -25,7 +25,10 @@ import { useTick } from '../../hooks/useTick';
 import { Num } from '../../components/Num';
 import { Localised } from '../../components/Localised';
 import { NextActivity } from '../../components/NextActivity';
-import type { Locale } from '../../lib/types';
+import type { Level, Locale } from '../../lib/types';
+import { CARD_LEVELS, loadVerbCards, mergeCards, NEW_PER_SESSION } from '../../lib/verb-cards';
+import { loadVerbIndex } from '../../lib/verbs';
+import { useTarget } from '../../lib/exam-targets';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
 
@@ -43,6 +46,13 @@ export function FlashcardSession() {
 
   const conceptFilter = params.get('concept');
   const cardFilter = params.get('card');
+  // The level whose NEW cards this session introduces. Due cards come from
+  // every level the learner has history in, whichever level is chosen.
+  const [target] = useTarget(userId);
+  const rawLevel = (params.get('level') ?? '').toUpperCase();
+  const level: Level = (CARD_LEVELS as string[]).includes(rawLevel) ? rawLevel as Level
+    : (target?.level && (CARD_LEVELS as string[]).includes(target.level) ? target.level as Level : 'A1');
+  const [levelCount, setLevelCount] = useState<number | null>(null);
   const index = Math.max(0, Number(params.get('i') ?? 0) | 0);
   // The session id is in the URL, so the address alone identifies the session.
   // A reload, a back button, or the same link pasted into a reopened tab all
@@ -95,12 +105,23 @@ export function FlashcardSession() {
     let live = true;
     (async () => {
       try {
-        const { cards } = await loadContent();
-        const saved = await allCardStates(userId);
+        // Everything is requested at once: the first card should not wait on
+        // four round trips in a row.
+        const chosen = loadVerbCards(level);
+        const [{ cards: written }, saved, index] = await Promise.all([
+          loadContent(), allCardStates(userId), loadVerbIndex().catch(() => []), chosen.catch(() => [])]);
         const byKey = new Map(saved.map((s) => [s.cardKey, s as CardState]));
+        // Load the chosen level, and every level a reviewed verb belongs to, so
+        // a card due today is never missed because its level was not opened.
+        const levelOfKey = new Map(index.map((v) => [v.key, v.level]));
+        const levels = new Set<Level>([level]);
+        for (const st of saved) { const l = levelOfKey.get(st.cardKey); if (l) levels.add(l); }
+        const verbCards = (await Promise.all([...levels].map(loadVerbCards))).flat();
+        const cards = mergeCards(written, verbCards);
         if (!live) return;
+        setLevelCount(cards.filter((c) => c.level === level).length);
         const now = Date.now();
-        const filter = `${conceptFilter ?? ''}|${cardFilter ?? ''}`;
+        const filter = `${conceptFilter ?? ''}|${cardFilter ?? ''}|${level}`;
         // localStorage, not sessionStorage: a reopened tab must be able to
         // resume. Isolation still holds because the key carries the user id,
         // and two learners in two tabs write to different keys entirely.
@@ -143,13 +164,16 @@ export function FlashcardSession() {
           const due: Card[] = [], fresh: Card[] = [], early: Card[] = [];
           for (const c of pool) {
             const s = byKey.get(c.key);
-            if (!s || s.reps === 0) fresh.push(c);
+            if (!s || s.reps === 0) { if (asked || c.level === level) fresh.push(c); }
             else if (s.dueAt <= now) due.push(c);
             else if (asked) early.push(c);
           }
           due.sort((a, b) => (byKey.get(a.key)!.dueAt) - (byKey.get(b.key)!.dueAt));
           early.sort((a, b) => (byKey.get(a.key)!.dueAt) - (byKey.get(b.key)!.dueAt));
-          queueOut = [...due, ...fresh, ...early];
+          // New cards are introduced twenty at a time, in frequency order, so
+          // a session is something a learner can finish. A concept or a single
+          // card asked for by name is not capped.
+          queueOut = [...due, ...(asked ? fresh : fresh.slice(0, NEW_PER_SESSION)), ...early];
           sid = sessionId.current;
           try {
             localStorage.setItem(store(sid), JSON.stringify({
@@ -175,7 +199,7 @@ export function FlashcardSession() {
     // `params`/`setParams` are intentionally not dependencies: this effect
     // writes `s` into them, and depending on them would rebuild in a loop.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId, conceptFilter, cardFilter, sessionParam]);
+  }, [userId, conceptFilter, cardFilter, sessionParam, level]);
 
   const card = queue?.[index] ?? null;
   useEffect(() => { setRevealed(false); shownAt.current = Date.now(); }, [index, card?.key]);
@@ -232,7 +256,7 @@ export function FlashcardSession() {
           <div className="empty__icon"><Icon name="check" size={34} /></div>
           <p className="empty__title">{t('timerDone')}</p>
           <p className="empty__body">{`${t('sessionOfMinutes', { n: minutesParam })} ${t('reviewed', { n: reviewed })}`}</p>
-          <Link className="btn btn--primary" to="/app/cards">{t('keepGoing')}</Link>
+          <Link className="btn btn--primary" to={`/app/cards?level=${level}`}>{t('keepGoing')}</Link>
           <Link className="btn btn--sm" to="/app/today">{t('learn')}</Link>
         </div>
       </div>
@@ -251,7 +275,12 @@ export function FlashcardSession() {
           <p className="empty__body">
             {reviewed > 0 ? `${t('sessionDoneBody')} ${t('reviewed', { n: reviewed })}` : t('nothingDueBody')}
           </p>
+          {!conceptFilter && !cardFilter && (
+            <Link className="btn btn--primary" to={`/app/cards?level=${level}`}
+                  data-testid="session-more">{t('keepGoing')}</Link>
+          )}
         </div>
+        {!conceptFilter && !cardFilter && <LevelPicker level={level} count={levelCount} />}
         {/* The continuation. `justDid` is passed rather than inferred from the
             route because only this screen knows whether the learner reviewed a
             scheduled queue or a single concept — and the concept case must not
@@ -277,6 +306,7 @@ export function FlashcardSession() {
           {t('timeLeft', { c: formatClock(boxLeft) })}
         </p>
       )}
+      {!conceptFilter && !cardFilter && index === 0 && <LevelPicker level={level} count={levelCount} />}
       <p className="session-count"><Num testId="session-count">{index + 1} / {queue.length}</Num></p>
 
       <article className="card card--raised flashcard" data-testid="flashcard">
@@ -285,6 +315,7 @@ export function FlashcardSession() {
           <span className="chip">{t(card.type as 'verb')}</span>
           {card.gender && <span className="chip">{t(card.gender === 'f' ? 'feminine' : 'masculine')}</span>}
           {card.prep && <span className="chip chip--prep" lang="fr" dir="ltr">{card.prep}</span>}
+          {card.register && <span className="chip" lang="fr" dir="ltr" data-testid="card-register">{card.register}</span>}
         </div>
         <p className="flashcard__word" lang="fr" dir="ltr">
           {card.article && <span className="article">{frText(card.article)}</span>}{frText(card.fr)}
@@ -297,6 +328,12 @@ export function FlashcardSession() {
             {alt && <div className="flashcard__alt" dir={settings.meaning === 'en' ? 'rtl' : 'ltr'}>{alt}</div>}
             {/* Past and future side by side, so the difference is seen at once. */}
             <div className="examples">
+            {card.forms && (['past', 'future'] as const).map((k) => (
+              <div className="example" key={k} data-tense={k} data-testid={`form-${k}`}>
+                <span className="example__label">{t(k)}</span>
+                <div className="example__fr" lang="fr" dir="ltr">{highlight(card.forms![k].fr, card.forms![k].form)}</div>
+              </div>
+            ))}
             {card.examples.map((ex) => (
               <div className="example" key={ex.tense} data-tense={ex.tense}>
                 <span className="example__label">{t(ex.tense)} · <b lang="fr">{frText(ex.form)}</b></span>
@@ -308,7 +345,8 @@ export function FlashcardSession() {
               </div>
             ))}
             </div>
-            <div className="concepts-row">
+            {card.glossUnreviewed && <p className="fine muted gloss-note" data-testid="gloss-unreviewed">{t('glossSource')}</p>}
+            {card.conceptIds.length > 0 && <div className="concepts-row">
               <span className="eyebrow">{t('relatedConcepts')}</span>
               <div className="row gap-2 wrap">
                 {card.conceptIds.map((id) => (
@@ -318,7 +356,7 @@ export function FlashcardSession() {
                   </button>
                 ))}
               </div>
-            </div>
+            </div>}
           </div>
         )}
       </article>
@@ -339,6 +377,24 @@ export function FlashcardSession() {
         </div>
       </div>
     </div>
+  );
+}
+
+/** The six levels as links. Choosing one starts a session of that level's
+ *  new cards; whatever is due from other levels still comes first. */
+function LevelPicker({ level, count }: { level: Level; count: number | null }) {
+  const { t } = useApp();
+  return (
+    <nav className="card-levels" aria-label={t('shellCardsLevel')} data-testid="card-levels">
+      <div className="row gap-2 wrap">
+        {CARD_LEVELS.map((lv) => (
+          <Link key={lv} to={`/app/cards?level=${lv}`} data-testid={`card-level-${lv}`}
+                className={`chip chip--${lv.toLowerCase()}${lv === level ? ' is-current' : ''}`}
+                aria-current={lv === level ? 'true' : undefined}>{lv}</Link>
+        ))}
+      </div>
+      {count !== null && <p className="fine muted">{t('shellCardsCount', { n: count })}</p>}
+    </nav>
   );
 }
 

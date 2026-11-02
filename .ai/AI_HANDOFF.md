@@ -8,19 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-10-31 13:34 +03 (git metadata only, written by a Stop hook)
+- Updated: 2026-11-02 16:31 +03 (git metadata only, written by a Stop hook)
 - Branch: redesign/v1
-- HEAD: 428ff3b Build the portal around the learner's exam
-- Uncommitted: 14 file(s)
-  -  M tests/i18n-lazy-groups.test.js
-  -  M web/src/components/Shell.tsx
+- HEAD: 7224c6d Persian interface, timer notice, French touches across the portal
+- Uncommitted: 13 file(s)
+  -  M .ai/AI_HANDOFF.md
+  -  M web/scripts-sync.sh
+  -  M web/scripts/sw.mjs
   -  M web/src/features/flashcards/Session.tsx
-  -  M web/src/features/verbs/Conjugation.tsx
   -  M web/src/lib/i18n.ts
   -  M web/src/lib/locales/fa.ts
   -  M web/src/lib/locales/fr.ts
-  -  M web/src/lib/timer.ts
-  - … and 6 more
+  -  M web/src/lib/types.ts
+  - … and 5 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -49,9 +49,13 @@ Owner asked for a portal built around exams. Sidebar = shadcn-style anatomy (`co
 
 Timer presets 5/10/20/30/60 (default 20), finish toast + system notification (permission asked on first start). Theme toggle in top bar. Card back: past/future side by side. Today: Bonjour/Bonsoir, French date, mot du jour (real card). French photo banners on list pages (RouteBanner in PortalNav, lazy). Verb drill opens on a verb of the day instead of an error. Persian: 533 strings drafted by an agent, marked DRAFT in fa.ts, listed in docs/review/fa-ui-drafts.md, app shows a draft notice (`shellFaDraft`). Arabic unchanged (falls back to English). Tests moved fallback checks to Arabic.
 
+## Phase 2d: verb flashcards 2026-11-02
+
+Owner asked for 200-500 cards per level. `scripts/build-verb-cards.py` builds `content/verb-cards/<level>.json` from the checked verb tables: 2,349 cards (A1 200, A2 299, B1 391, B2 492, C1 491, C2 476). Back = English Wiktionary gloss (marked unreviewed on screen) + past « il a parlé » and future « il parlera » composed from auxiliary/participle/futur ("il", not "je", to avoid elision guesses). `/app/cards?level=X` picks the level (default: exam target level, else A1); 20 new cards per session plus due cards from any level; key = verb index key, so history is shared with the Cards workspace. `decks.json` deliberately unchanged (legacy app/ and tests need four-language cards there). Test: `tests/verb-cards.test.js`. NOT done: nouns/adjectives (no word source in the repo yet; would need Lexique 3.83 for frequency and gender, plus an en.wiktionary harvest), Persian meanings for verbs.
+
 ## Next step
 
-Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
+Nouns/adjectives decks if the owner approves the data source. Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
 
 ## Decisions
 
@@ -68,6 +72,8 @@ Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format 
 - Radix Accordion writes inline styles, which the CSP prerender check refuses; FAQ uses native `<details>`.
 - Prerender checks were updated: the landing no longer has the shell bar or mobile tabs.
 - The main checkout is on the stale `content/b1-neg-5-meaning` branch; do not implement there.
+- Playwright's own browser is not installed: run e2e with `CHROMIUM="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"` and `BASE=http://localhost:4173/`.
+- Persian strings use Latin digits; the app substitutes them (a test enforces it).
 - Full-page screenshots need `main{overflow:visible}`: the page scrolls inside `main`.
 
 ## How to run and test
