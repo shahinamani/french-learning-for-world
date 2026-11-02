@@ -247,7 +247,14 @@ export function FlashcardSession() {
   }, [card, revealed, grade]);
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
-  if (!queue || !engine) return <SessionSkeleton />;
+  // The countdown is shown from the first frame: the timer is already
+  // running, and a learner on a slow line should see it while cards load.
+  const timebox = minutesParam > 0 && boxLeft !== null ? (
+    <p className="session__timebox" data-testid="timebox" role="status">
+      {t('timeLeft', { c: formatClock(boxLeft) })}
+    </p>
+  ) : null;
+  if (!queue || !engine) return <>{timebox && <div className="page">{timebox}</div>}<SessionSkeleton /></>;
 
   if (timeUp) {
     return (
@@ -301,11 +308,7 @@ export function FlashcardSession() {
            aria-valuenow={index} aria-label={t('practise')}>
         <span className="rail__fill" style={{ width: `${(index / Math.max(1, queue.length)) * 100}%` }} />
       </div>
-      {minutesParam > 0 && boxLeft !== null && (
-        <p className="session__timebox" data-testid="timebox" role="status">
-          {t('timeLeft', { c: formatClock(boxLeft) })}
-        </p>
-      )}
+      {timebox}
       {!conceptFilter && !cardFilter && index === 0 && <LevelPicker level={level} count={levelCount} />}
       <p className="session-count"><Num testId="session-count">{index + 1} / {queue.length}</Num></p>
 
@@ -320,12 +323,19 @@ export function FlashcardSession() {
         <p className="flashcard__word" lang="fr" dir="ltr">
           {card.article && <span className="article">{frText(card.article)}</span>}{frText(card.fr)}
         </p>
+        {/* What kind of word this is, and the preposition it takes, on the
+            front: a learner should meet « penser à » as one unit. */}
+        <p className="flashcard__pos" data-testid="card-pos">
+          <span>{t(card.type as 'verb')}</span>
+          {card.prep && <> · <bdi lang="fr" dir="ltr">+ {card.prep}</bdi></>}
+        </p>
 
         {revealed && (
           <div className="flashcard__answer" data-testid="answer">
             <div className="flashcard__meaning" lang={settings.meaning}
                  dir={settings.meaning === 'fa' || settings.meaning === 'ar' ? 'rtl' : 'ltr'}>{meaning}</div>
             {alt && <div className="flashcard__alt" dir={settings.meaning === 'en' ? 'rtl' : 'ltr'}>{alt}</div>}
+            {card.construction && <p className="flashcard__construction" lang="fr" dir="ltr" data-testid="card-construction">{frText(card.construction)}</p>}
             {/* Past and future side by side, so the difference is seen at once. */}
             <div className="examples">
             {card.forms && (['past', 'future'] as const).map((k) => (
@@ -345,7 +355,8 @@ export function FlashcardSession() {
               </div>
             ))}
             </div>
-            {card.glossUnreviewed && <p className="fine muted gloss-note" data-testid="gloss-unreviewed">{t('glossSource')}</p>}
+            {card.glossUnreviewed && <p className="fine muted gloss-note" data-testid="gloss-unreviewed">
+              {card.examples.length ? t('shellCardsDraft') : t('glossSource')}</p>}
             {card.conceptIds.length > 0 && <div className="concepts-row">
               <span className="eyebrow">{t('relatedConcepts')}</span>
               <div className="row gap-2 wrap">

@@ -39,6 +39,14 @@ def reflexive(form: str) -> str:
     return f"s'{form}" if VOWEL.match(form) else f"se {form}"
 
 
+def sentences(level: str) -> dict:
+    """The drafted sentences for a level, by verb key, if they exist yet."""
+    path = ROOT / "content" / "verb-sentences" / f"{level}.json"
+    if not path.exists():
+        return {}
+    return {e["key"]: e for e in json.loads(path.read_text())["entries"]}
+
+
 def card(v: dict) -> dict | None:
     if not v.get("produce") or v.get("glossWithheld") or not v["meanings"].get("en"):
         return None
@@ -73,13 +81,36 @@ def card(v: dict) -> dict | None:
     return out
 
 
+def with_sentences(c: dict, s: dict | None) -> dict:
+    """Attach the drafted past and future sentences, the preposition and the
+    Persian meaning. Unreviewed, and the card says so."""
+    if not s:
+        return c
+    c = dict(c)
+    if s.get("meaningNote"):
+        c["en"] = s["meaningNote"]
+    if s.get("fa"):
+        c["fa"] = s["fa"]
+    if s.get("prep"):
+        c["prep"] = s["prep"]
+    if s.get("construction"):
+        c["construction"] = s["construction"]
+    c["examples"] = [
+        {"tense": t, "form": s[k]["form"], "fr": s[k]["fr"],
+         "translations": {"en": s[k]["en"], "fa": s[k]["fa"]}}
+        for k, t in (("past", "past"), ("future", "future"))]
+    return c
+
+
 def main() -> None:
     outdir = ROOT / "content" / "verb-cards"
     outdir.mkdir(exist_ok=True)
     total = 0
     for level in LEVELS:
         verbs = json.loads((ROOT / "content" / "verbs" / f"{level}.json").read_text())["verbs"]
-        cards = [c for c in (card(v) for v in verbs) if c]
+        drafted = sentences(level)
+        cards = [with_sentences(c, drafted.get(c["key"])) for c in (card(v) for v in verbs)
+                 if c and not drafted.get(c["key"], {}).get("exclude")]
         cards.sort(key=lambda c: c["rank"])
         doc = {
             "version": 1,
@@ -90,6 +121,10 @@ def main() -> None:
             "reviewNote": "The English meanings are en.wiktionary glosses that no human has "
                           "read for this deck, and the card says so. The past and future "
                           "forms are composed from the checked conjugation tables.",
+            "sentences": "Past and future sentences, their translations, the Persian "
+                         "meaning and the preposition are drafted, NOT REVIEWED: "
+                         "content/verb-sentences/" + level + ".json, checked against the "
+                         "tables by scripts/check-verb-sentences.py." if drafted else None,
             "count": len(cards),
             "cards": cards,
         }

@@ -464,6 +464,7 @@ const fr: Dict = {
   shellExamOpen: 'Ouvrir',
   shellExamChooseFirst: 'Choisissez votre examen pour voir ses épreuves.',
   shellCardsLevel: 'Cartes par niveau',
+  shellCardsDraft: 'Les phrases, traductions et sens de cette carte sont des brouillons : aucun enseignant ne les a encore relus.',
   shellCardsCount: '{n} cartes à ce niveau. 20 nouvelles par séance, plus celles à revoir.',
   shellExamCurrent: 'Votre examen',
   shellExamFormat: 'Format',

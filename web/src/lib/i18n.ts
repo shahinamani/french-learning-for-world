@@ -490,6 +490,7 @@ const shellEn = {
   shellExamOpen: 'Open',
   shellExamChooseFirst: 'Choose your exam to see its sections.',
   shellCardsLevel: 'Cards by level',
+  shellCardsDraft: 'The sentences, translations and meanings on this card are drafts: no teacher has checked them yet.',
   shellCardsCount: '{n} cards at this level. 20 new ones each session, plus the ones due again.',
   shellExamCurrent: 'Your exam',
   shellExamFormat: 'Format',

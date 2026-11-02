@@ -23,6 +23,8 @@ export const CARD_LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 type Rec = {
   key: string; rank: number; fr: string; en: string; register?: string;
   past: { fr: string; form: string }; future: { fr: string; form: string };
+  fa?: string; prep?: string; construction?: string;
+  examples?: Card['examples'];
 };
 
 const cache = new Map<Level, Promise<Card[]>>();
@@ -34,8 +36,11 @@ export function loadVerbCards(level: Level): Promise<Card[]> {
       .then((r) => { if (!r.ok) throw new Error(`verb-cards ${level}`); return r.json(); })
       .then((doc: { cards: Rec[] }) => doc.cards.map((c): Card => ({
         key: c.key, type: 'verb', level, fr: c.fr,
-        meanings: { en: c.en }, examples: [], conceptIds: [],
-        forms: { past: c.past, future: c.future },
+        meanings: c.fa ? { en: c.en, fa: c.fa } : { en: c.en },
+        examples: c.examples ?? [], conceptIds: [],
+        // Written sentences replace the bare forms once a level has them.
+        forms: c.examples?.length ? undefined : { past: c.past, future: c.future },
+        prep: c.prep ?? null, construction: c.construction ?? null,
         register: c.register ?? null,
         glossUnreviewed: true,
       })))

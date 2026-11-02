@@ -8,19 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-11-02 16:31 +03 (git metadata only, written by a Stop hook)
+- Updated: 2026-11-02 18:03 +03 (git metadata only, written by a Stop hook)
 - Branch: redesign/v1
-- HEAD: 7224c6d Persian interface, timer notice, French touches across the portal
-- Uncommitted: 13 file(s)
+- HEAD: a5f414b Verb flashcards for every level, 200 to 492 each
+- Uncommitted: 19 file(s)
   -  M .ai/AI_HANDOFF.md
-  -  M web/scripts-sync.sh
-  -  M web/scripts/sw.mjs
-  -  M web/src/features/flashcards/Session.tsx
-  -  M web/src/lib/i18n.ts
-  -  M web/src/lib/locales/fa.ts
-  -  M web/src/lib/locales/fr.ts
-  -  M web/src/lib/types.ts
-  - … and 5 more
+  -  M content/verb-cards/A1.json
+  -  M content/verb-cards/A2.json
+  -  M content/verb-cards/B1.json
+  -  M content/verb-cards/B2.json
+  -  M content/verb-cards/C1.json
+  -  M content/verb-cards/C2.json
+  -  M scripts/build-verb-cards.py
+  - … and 11 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -53,9 +53,11 @@ Timer presets 5/10/20/30/60 (default 20), finish toast + system notification (pe
 
 Owner asked for 200-500 cards per level. `scripts/build-verb-cards.py` builds `content/verb-cards/<level>.json` from the checked verb tables: 2,349 cards (A1 200, A2 299, B1 391, B2 492, C1 491, C2 476). Back = English Wiktionary gloss (marked unreviewed on screen) + past « il a parlé » and future « il parlera » composed from auxiliary/participle/futur ("il", not "je", to avoid elision guesses). `/app/cards?level=X` picks the level (default: exam target level, else A1); 20 new cards per session plus due cards from any level; key = verb index key, so history is shared with the Cards workspace. `decks.json` deliberately unchanged (legacy app/ and tests need four-language cards there). Test: `tests/verb-cards.test.js`. NOT done: nouns/adjectives (no word source in the repo yet; would need Lexique 3.83 for frequency and gender, plus an en.wiktionary harvest), Persian meanings for verbs.
 
+Later 2026-11-02 the owner asked for real sentences on the back: `content/verb-sentences/<level>.json` holds, per verb, a passé composé and a futur sentence with en+fa translations, a Persian meaning, the usual preposition and construction (agent-drafted, NOT REVIEWED; review sheet `docs/review/verb-sentences.md`). `scripts/check-verb-sentences.py` checks every form against the tables; the build merges them in. 11 verbs held back (`exclude` + reason: vulgar/drugs/violence, and frire). Card front shows word type + preposition (« verb · + à »). 2,338 cards now.
+
 ## Next step
 
-Nouns/adjectives decks if the owner approves the data source. Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
+Fix « frire » in the verb tables (modelled on suffire: participle « fri », should be « frit »; also defective), then un-hold it. Nouns/adjectives decks if the owner approves the data source. Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
 
 ## Decisions
 

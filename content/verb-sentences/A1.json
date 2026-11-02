@@ -1,0 +1,3604 @@
+{
+ "version": 1,
+ "level": "A1",
+ "status": "drafted, not reviewed",
+ "drafter": "agent",
+ "review": {
+  "owner": null,
+  "teacher": null
+ },
+ "entries": [
+  {
+   "key": "v:être",
+   "fa": "بودن",
+   "prep": null,
+   "past": {
+    "fr": "La semaine dernière, j'ai été très fatigué.",
+    "form": "ai été",
+    "en": "Last week I was very tired.",
+    "fa": "هفته پیش خیلی خسته بودم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, nous serons à la maison.",
+    "form": "serons",
+    "en": "Next week we will be at home.",
+    "fa": "هفته آینده ما در خانه خواهیم بود."
+   }
+  },
+  {
+   "key": "v:avoir",
+   "fa": "داشتن",
+   "prep": null,
+   "past": {
+    "fr": "Samedi dernier, tu as eu une bonne idée.",
+    "form": "as eu",
+    "en": "Last Saturday you had a good idea.",
+    "fa": "شنبه گذشته تو فکر خوبی داشتی."
+   },
+   "future": {
+    "fr": "Samedi prochain, vous aurez du temps.",
+    "form": "aurez",
+    "en": "Next Saturday you will have some time.",
+    "fa": "شنبه آینده شما وقت خواهید داشت."
+   }
+  },
+  {
+   "key": "v:aller",
+   "fa": "رفتن",
+   "prep": "à",
+   "construction": "aller à + lieu",
+   "past": {
+    "fr": "Hier, Marie est allée à l'école.",
+    "form": "est allée",
+    "en": "Yesterday Marie went to school.",
+    "fa": "دیروز ماری به مدرسه رفت."
+   },
+   "future": {
+    "fr": "Demain, nous irons au cinéma.",
+    "form": "irons",
+    "en": "Tomorrow we will go to the cinema.",
+    "fa": "فردا ما به سینما خواهیم رفت."
+   }
+  },
+  {
+   "key": "v:faire",
+   "fa": "انجام دادن، درست کردن",
+   "prep": null,
+   "construction": "faire quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai fait mes devoirs.",
+    "form": "ai fait",
+    "en": "This morning I did my homework.",
+    "fa": "امروز صبح تکالیفم را انجام دادم."
+   },
+   "future": {
+    "fr": "Ce soir, on fera la cuisine.",
+    "form": "fera",
+    "en": "Tonight we will do the cooking.",
+    "fa": "امشب ما آشپزی خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:dire",
+   "fa": "گفتن",
+   "prep": "à",
+   "construction": "dire quelque chose à quelqu'un",
+   "past": {
+    "fr": "L'été dernier, j'ai dit bonjour à Paul.",
+    "form": "ai dit",
+    "en": "Last summer I said hello to Paul.",
+    "fa": "تابستان گذشته به پل سلام کردم."
+   },
+   "future": {
+    "fr": "Le mois prochain, elle dira la vérité à sa mère.",
+    "form": "dira",
+    "en": "Next month she will tell her mother the truth.",
+    "fa": "ماه آینده او حقیقت را به مادرش خواهد گفت."
+   }
+  },
+  {
+   "key": "v:pouvoir",
+   "fa": "توانستن",
+   "prep": null,
+   "construction": "pouvoir + infinitif",
+   "past": {
+    "fr": "Il y a deux jours, nous avons pu venir.",
+    "form": "avons pu",
+    "en": "Two days ago we were able to come.",
+    "fa": "دو روز پیش توانستیم بیاییم."
+   },
+   "future": {
+    "fr": "Dans deux jours, tu pourras dormir tard.",
+    "form": "pourras",
+    "en": "In two days you will be able to sleep late.",
+    "fa": "دو روز دیگر خواهی توانست تا دیر وقت بخوابی."
+   }
+  },
+  {
+   "key": "v:vouloir",
+   "fa": "خواستن",
+   "prep": null,
+   "construction": "vouloir quelque chose",
+   "past": {
+    "fr": "Ce matin, il a voulu un café.",
+    "form": "a voulu",
+    "en": "This morning he wanted a coffee.",
+    "fa": "امروز صبح او یک قهوه خواست."
+   },
+   "future": {
+    "fr": "Demain, ils voudront du gâteau.",
+    "form": "voudront",
+    "en": "Tomorrow they will want some cake.",
+    "fa": "فردا آن‌ها کیک خواهند خواست."
+   }
+  },
+  {
+   "key": "v:savoir",
+   "fa": "دانستن، بلد بودن",
+   "prep": null,
+   "construction": "savoir + infinitif",
+   "past": {
+    "fr": "Hier, nous avons su la nouvelle.",
+    "form": "avons su",
+    "en": "Yesterday we heard the news.",
+    "fa": "دیروز از خبر مطلع شدیم."
+   },
+   "future": {
+    "fr": "L'année prochaine, tu sauras nager.",
+    "form": "sauras",
+    "en": "Next year you will know how to swim.",
+    "fa": "سال آینده شنا کردن بلد خواهی بود."
+   }
+  },
+  {
+   "key": "v:voir",
+   "fa": "دیدن",
+   "prep": null,
+   "construction": "voir quelque chose",
+   "past": {
+    "fr": "Cet après-midi, j'ai vu un chat noir.",
+    "form": "ai vu",
+    "en": "This afternoon I saw a black cat.",
+    "fa": "امروز بعدازظهر یک گربه سیاه دیدم."
+   },
+   "future": {
+    "fr": "Lundi prochain, nous verrons Marie.",
+    "form": "verrons",
+    "en": "Next Monday we will see Marie.",
+    "fa": "دوشنبه آینده ما ماری را خواهیم دید."
+   }
+  },
+  {
+   "key": "v:devoir",
+   "fa": "مجبور بودن، بدهکار بودن",
+   "prep": null,
+   "construction": "devoir + infinitif",
+   "past": {
+    "fr": "Le mois dernier, j'ai dû partir tôt.",
+    "form": "ai dû",
+    "en": "Last month I had to leave early.",
+    "fa": "ماه گذشته مجبور شدم زود بروم."
+   },
+   "future": {
+    "fr": "Cet après-midi, vous devrez travailler.",
+    "form": "devrez",
+    "en": "This afternoon you will have to work.",
+    "fa": "امروز بعدازظهر مجبور خواهید بود کار کنید."
+   }
+  },
+  {
+   "key": "v:venir",
+   "fa": "آمدن",
+   "prep": "de",
+   "construction": "venir de + lieu",
+   "past": {
+    "fr": "Hier, Sophie est venue de Lyon.",
+    "form": "est venue",
+    "en": "Yesterday Sophie came from Lyon.",
+    "fa": "دیروز سوفی از لیون آمد."
+   },
+   "future": {
+    "fr": "Lundi prochain, ils viendront chez nous.",
+    "form": "viendront",
+    "en": "Next Monday they will come to our place.",
+    "fa": "دوشنبه آینده آن‌ها به خانه ما خواهند آمد."
+   }
+  },
+  {
+   "key": "v:suivre",
+   "fa": "دنبال کردن",
+   "prep": null,
+   "construction": "suivre quelqu'un",
+   "past": {
+    "fr": "Ce matin, j'ai suivi un cours de français.",
+    "form": "ai suivi",
+    "en": "This morning I took a French class.",
+    "fa": "امروز صبح در یک کلاس فرانسه شرکت کردم."
+   },
+   "future": {
+    "fr": "Bientôt, nous suivrons le guide.",
+    "form": "suivrons",
+    "en": "Soon we will follow the guide.",
+    "fa": "به‌زودی ما راهنما را دنبال خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:parler",
+   "fa": "صحبت کردن",
+   "prep": "à",
+   "construction": "parler à quelqu'un",
+   "past": {
+    "fr": "La semaine dernière, j'ai parlé à mon voisin.",
+    "form": "ai parlé",
+    "en": "Last week I talked to my neighbour.",
+    "fa": "هفته پیش با همسایه‌ام صحبت کردم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, nous parlerons au professeur.",
+    "form": "parlerons",
+    "en": "Next week we will talk to the teacher.",
+    "fa": "هفته آینده با استاد صحبت خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:prendre",
+   "fa": "گرفتن، برداشتن",
+   "prep": null,
+   "construction": "prendre quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai pris le bus.",
+    "form": "ai pris",
+    "en": "This morning I took the bus.",
+    "fa": "امروز صبح سوار اتوبوس شدم."
+   },
+   "future": {
+    "fr": "Demain, elle prendra son sac.",
+    "form": "prendra",
+    "en": "Tomorrow she will take her bag.",
+    "fa": "فردا او کیفش را برخواهد داشت."
+   }
+  },
+  {
+   "key": "v:croire",
+   "fa": "باور کردن",
+   "prep": "à",
+   "construction": "croire à quelque chose",
+   "past": {
+    "fr": "Samedi dernier, j'ai cru mon ami.",
+    "form": "ai cru",
+    "en": "Last Saturday I believed my friend.",
+    "fa": "شنبه گذشته دوستم را باور کردم."
+   },
+   "future": {
+    "fr": "Samedi prochain, tu croiras à cette histoire.",
+    "form": "croiras",
+    "en": "Next Saturday you will believe this story.",
+    "fa": "شنبه آینده تو این داستان را باور خواهی کرد."
+   }
+  },
+  {
+   "key": "v:aimer",
+   "fa": "دوست داشتن",
+   "prep": null,
+   "construction": "aimer quelque chose",
+   "past": {
+    "fr": "Hier, nous avons aimé le film.",
+    "form": "avons aimé",
+    "en": "Yesterday we liked the film.",
+    "fa": "دیروز از فیلم خوشمان آمد."
+   },
+   "future": {
+    "fr": "Le mois prochain, elle aimera ce gâteau.",
+    "form": "aimera",
+    "en": "Next month she will like this cake.",
+    "fa": "ماه آینده از این کیک خوشش خواهد آمد."
+   }
+  },
+  {
+   "key": "v:falloir",
+   "fa": "لازم بودن",
+   "prep": null,
+   "construction": "il faut + infinitif",
+   "past": {
+    "fr": "L'été dernier, il a fallu attendre.",
+    "form": "a fallu",
+    "en": "Last summer we had to wait.",
+    "fa": "تابستان گذشته لازم بود صبر کنیم."
+   },
+   "future": {
+    "fr": "Demain, il faudra partir tôt.",
+    "form": "faudra",
+    "en": "Tomorrow we will have to leave early.",
+    "fa": "فردا لازم خواهد بود زود برویم."
+   }
+  },
+  {
+   "key": "v:passer",
+   "fa": "گذشتن، گذراندن",
+   "prep": "par",
+   "construction": "passer par un lieu",
+   "past": {
+    "fr": "Il y a deux jours, j'ai passé la journée au parc.",
+    "form": "ai passé",
+    "en": "Two days ago I spent the day at the park.",
+    "fa": "دو روز پیش روز را در پارک گذراندم."
+   },
+   "future": {
+    "fr": "Dans deux jours, nous passerons par la boulangerie.",
+    "form": "passerons",
+    "en": "In two days we will go past the bakery.",
+    "fa": "دو روز دیگر از نانوایی رد خواهیم شد."
+   }
+  },
+  {
+   "key": "v:penser",
+   "fa": "فکر کردن",
+   "prep": "à",
+   "construction": "penser à quelqu'un",
+   "past": {
+    "fr": "Hier, j'ai pensé à ma mère.",
+    "form": "ai pensé",
+    "en": "Yesterday I thought about my mother.",
+    "fa": "دیروز به مادرم فکر کردم."
+   },
+   "future": {
+    "fr": "Ce soir, elle pensera à ses vacances.",
+    "form": "pensera",
+    "en": "Tonight she will think about her holidays.",
+    "fa": "امشب او به تعطیلاتش فکر خواهد کرد."
+   }
+  },
+  {
+   "key": "v:attendre",
+   "fa": "منتظر بودن",
+   "prep": null,
+   "construction": "attendre quelqu'un",
+   "past": {
+    "fr": "Ce matin, tu as attendu le bus.",
+    "form": "as attendu",
+    "en": "This morning you waited for the bus.",
+    "fa": "امروز صبح منتظر اتوبوس بودی."
+   },
+   "future": {
+    "fr": "Ce soir, nous attendrons Paul.",
+    "form": "attendrons",
+    "en": "Tonight we will wait for Paul.",
+    "fa": "امشب منتظر پل خواهیم بود."
+   }
+  },
+  {
+   "key": "v:trouver",
+   "fa": "پیدا کردن",
+   "prep": null,
+   "construction": "trouver quelque chose",
+   "past": {
+    "fr": "Cet après-midi, Léa a trouvé un stylo.",
+    "form": "a trouvé",
+    "en": "This afternoon Léa found a pen.",
+    "fa": "امروز بعدازظهر لیا یک خودکار پیدا کرد."
+   },
+   "future": {
+    "fr": "Lundi prochain, nous trouverons la maison.",
+    "form": "trouverons",
+    "en": "Next Monday we will find the house.",
+    "fa": "دوشنبه آینده خانه را پیدا خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:laisser",
+   "fa": "گذاشتن، جا گذاشتن",
+   "prep": null,
+   "construction": "laisser quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai laissé mes clés à la maison.",
+    "form": "ai laissé",
+    "en": "This morning I left my keys at home.",
+    "fa": "امروز صبح کلیدهایم را در خانه جا گذاشتم."
+   },
+   "future": {
+    "fr": "Ce soir, vous laisserez un message.",
+    "form": "laisserez",
+    "en": "Tonight you will leave a message.",
+    "fa": "امشب یک پیام خواهید گذاشت."
+   }
+  },
+  {
+   "key": "v:arriver",
+   "fa": "رسیدن",
+   "prep": "à",
+   "construction": "arriver à + lieu",
+   "past": {
+    "fr": "Tout à l'heure, ils sont arrivés à Paris.",
+    "form": "sont arrivés",
+    "en": "A moment ago they arrived in Paris.",
+    "fa": "کمی پیش آن‌ها به پاریس رسیدند."
+   },
+   "future": {
+    "fr": "Demain, elle arrivera à huit heures.",
+    "form": "arrivera",
+    "en": "Tomorrow she will arrive at eight o'clock.",
+    "fa": "فردا او ساعت هشت خواهد رسید."
+   }
+  },
+  {
+   "key": "v:donner",
+   "fa": "دادن",
+   "prep": "à",
+   "construction": "donner quelque chose à quelqu'un",
+   "past": {
+    "fr": "Hier, j'ai donné un livre à Marie.",
+    "form": "ai donné",
+    "en": "Yesterday I gave a book to Marie.",
+    "fa": "دیروز یک کتاب به ماری دادم."
+   },
+   "future": {
+    "fr": "Cet après-midi, il donnera du pain au chien.",
+    "form": "donnera",
+    "en": "This afternoon he will give some bread to the dog.",
+    "fa": "امروز بعدازظهر او به سگ نان خواهد داد."
+   }
+  },
+  {
+   "key": "v:regarder",
+   "fa": "نگاه کردن، تماشا کردن",
+   "prep": null,
+   "construction": "regarder quelque chose",
+   "past": {
+    "fr": "Hier soir, nous avons regardé un film.",
+    "form": "avons regardé",
+    "en": "Last night we watched a film.",
+    "fa": "دیشب یک فیلم تماشا کردیم."
+   },
+   "future": {
+    "fr": "Ce soir, tu regarderas la télé.",
+    "form": "regarderas",
+    "en": "Tonight you will watch TV.",
+    "fa": "امشب تلویزیون تماشا خواهی کرد."
+   }
+  },
+  {
+   "key": "v:appeler",
+   "fa": "صدا زدن، زنگ زدن",
+   "prep": null,
+   "construction": "appeler quelqu'un",
+   "past": {
+    "fr": "Ce matin, j'ai appelé ma sœur.",
+    "form": "ai appelé",
+    "en": "This morning I called my sister.",
+    "fa": "امروز صبح به خواهرم زنگ زدم."
+   },
+   "future": {
+    "fr": "Bientôt, il appellera le médecin.",
+    "form": "appellera",
+    "en": "Soon he will call the doctor.",
+    "fa": "به‌زودی او به دکتر زنگ خواهد زد."
+   }
+  },
+  {
+   "key": "v:partir",
+   "fa": "رفتن، حرکت کردن",
+   "prep": "pour",
+   "construction": "partir pour + lieu",
+   "past": {
+    "fr": "Le mois dernier, ils sont partis tôt.",
+    "form": "sont partis",
+    "en": "Last month they left early.",
+    "fa": "ماه گذشته آن‌ها زود رفتند."
+   },
+   "future": {
+    "fr": "Demain, je partirai pour Lyon.",
+    "form": "partirai",
+    "en": "Tomorrow I will leave for Lyon.",
+    "fa": "فردا به سمت لیون حرکت خواهم کرد."
+   },
+   "meaningNote": "to leave, to go away"
+  },
+  {
+   "key": "v:mettre",
+   "fa": "گذاشتن، پوشیدن",
+   "prep": null,
+   "construction": "mettre quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai mis mon manteau.",
+    "form": "ai mis",
+    "en": "This morning I put on my coat.",
+    "fa": "امروز صبح کتم را پوشیدم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, nous mettrons la table.",
+    "form": "mettrons",
+    "en": "Next week we will set the table.",
+    "fa": "هفته آینده میز را خواهیم چید."
+   }
+  },
+  {
+   "key": "v:rester",
+   "fa": "ماندن",
+   "prep": null,
+   "construction": "rester + lieu",
+   "past": {
+    "fr": "La semaine dernière, Paul est resté à la maison.",
+    "form": "est resté",
+    "en": "Last week Paul stayed at home.",
+    "fa": "هفته پیش پل در خانه ماند."
+   },
+   "future": {
+    "fr": "Ce soir, nous resterons chez nous.",
+    "form": "resterons",
+    "en": "Tonight we will stay at home.",
+    "fa": "امشب در خانه خواهیم ماند."
+   }
+  },
+  {
+   "key": "v:arrêter",
+   "fa": "متوقف کردن، قطع کردن",
+   "prep": "de",
+   "construction": "arrêter de + infinitif",
+   "past": {
+    "fr": "Hier, Paul a arrêté de fumer.",
+    "form": "a arrêté",
+    "en": "Yesterday Paul stopped smoking.",
+    "fa": "دیروز پل سیگار کشیدن را ترک کرد."
+   },
+   "future": {
+    "fr": "Samedi prochain, nous arrêterons la musique.",
+    "form": "arrêterons",
+    "en": "Next Saturday we will turn off the music.",
+    "fa": "شنبه آینده موسیقی را قطع خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:connaître",
+   "fa": "شناختن، آشنا بودن",
+   "prep": null,
+   "construction": "connaître quelqu'un",
+   "past": {
+    "fr": "L'année dernière, j'ai connu mon meilleur ami.",
+    "form": "ai connu",
+    "en": "Last year I met my best friend.",
+    "fa": "پارسال با بهترین دوستم آشنا شدم."
+   },
+   "future": {
+    "fr": "L'année prochaine, tu connaîtras bien la ville.",
+    "form": "connaîtras",
+    "en": "Next year you will know the city well.",
+    "fa": "سال آینده شهر را خوب خواهی شناخت."
+   }
+  },
+  {
+   "key": "v:tuer",
+   "fa": "کشتن",
+   "prep": null,
+   "construction": "tuer le temps",
+   "past": {
+    "fr": "Samedi dernier, nous avons tué le temps au café.",
+    "form": "avons tué",
+    "en": "Last Saturday we killed time at the café.",
+    "fa": "شنبه گذشته در کافه وقت را کشتیم."
+   },
+   "future": {
+    "fr": "Ce soir, tu tueras le temps avec un jeu.",
+    "form": "tueras",
+    "en": "Tonight you will kill time with a game.",
+    "fa": "امشب با یک بازی وقتت را خواهی کشت."
+   }
+  },
+  {
+   "key": "v:mourir",
+   "fa": "مردن",
+   "prep": "de",
+   "construction": "mourir de faim",
+   "past": {
+    "fr": "L'été dernier, la fleur est morte.",
+    "form": "est morte",
+    "en": "Last summer the flower died.",
+    "fa": "تابستان گذشته گل مرد."
+   },
+   "future": {
+    "fr": "Ce soir, nous mourrons de faim.",
+    "form": "mourrons",
+    "en": "Tonight we will be starving.",
+    "fa": "امشب از گرسنگی خواهیم مرد."
+   }
+  },
+  {
+   "key": "v:demander",
+   "fa": "پرسیدن، خواستن",
+   "prep": "à",
+   "construction": "demander quelque chose à quelqu'un",
+   "past": {
+    "fr": "Hier, j'ai demandé l'heure à un monsieur.",
+    "form": "ai demandé",
+    "en": "Yesterday I asked a man the time.",
+    "fa": "دیروز ساعت را از یک آقا پرسیدم."
+   },
+   "future": {
+    "fr": "Demain, elle demandera de l'aide à sa mère.",
+    "form": "demandera",
+    "en": "Tomorrow she will ask her mother for help.",
+    "fa": "فردا او از مادرش کمک خواهد خواست."
+   }
+  },
+  {
+   "key": "v:comprendre",
+   "fa": "فهمیدن",
+   "prep": null,
+   "construction": "comprendre quelque chose",
+   "past": {
+    "fr": "Il y a deux jours, nous avons compris la leçon.",
+    "form": "avons compris",
+    "en": "Two days ago we understood the lesson.",
+    "fa": "دو روز پیش درس را فهمیدیم."
+   },
+   "future": {
+    "fr": "L'année prochaine, tu comprendras le français.",
+    "form": "comprendras",
+    "en": "Next year you will understand French.",
+    "fa": "سال آینده فرانسه را خواهی فهمید."
+   }
+  },
+  {
+   "key": "v:sortir",
+   "fa": "بیرون رفتن، خارج شدن",
+   "prep": "de",
+   "construction": "sortir de + lieu",
+   "past": {
+    "fr": "Hier soir, nous sommes sortis avec des amis.",
+    "form": "sommes sortis",
+    "en": "Last night we went out with friends.",
+    "fa": "دیشب با دوستانمان بیرون رفتیم."
+   },
+   "future": {
+    "fr": "Le mois prochain, elle sortira de l'école à midi.",
+    "form": "sortira",
+    "en": "Next month she will leave school at noon.",
+    "fa": "ماه آینده او ظهر از مدرسه بیرون خواهد آمد."
+   }
+  },
+  {
+   "key": "v:entendre",
+   "fa": "شنیدن",
+   "prep": null,
+   "construction": "entendre quelque chose",
+   "past": {
+    "fr": "Cette nuit, j'ai entendu un bruit.",
+    "form": "ai entendu",
+    "en": "Last night I heard a noise.",
+    "fa": "دیشب صدایی شنیدم."
+   },
+   "future": {
+    "fr": "Dans deux jours, vous entendrez la cloche.",
+    "form": "entendrez",
+    "en": "In two days you will hear the bell.",
+    "fa": "دو روز دیگر شما صدای زنگ را خواهید شنید."
+   }
+  },
+  {
+   "key": "v:chercher",
+   "fa": "جست‌وجو کردن، گشتن",
+   "prep": null,
+   "construction": "chercher quelque chose",
+   "past": {
+    "fr": "Cet après-midi, j'ai cherché mes lunettes.",
+    "form": "ai cherché",
+    "en": "This afternoon I looked for my glasses.",
+    "fa": "امروز بعدازظهر دنبال عینکم گشتم."
+   },
+   "future": {
+    "fr": "Demain, ils chercheront un appartement.",
+    "form": "chercheront",
+    "en": "Tomorrow they will look for an apartment.",
+    "fa": "فردا آن‌ها دنبال یک آپارتمان خواهند گشت."
+   }
+  },
+  {
+   "key": "v:aider",
+   "fa": "کمک کردن",
+   "prep": null,
+   "construction": "aider quelqu'un",
+   "past": {
+    "fr": "Ce matin, j'ai aidé ma voisine.",
+    "form": "ai aidé",
+    "en": "This morning I helped my neighbour.",
+    "fa": "امروز صبح به همسایه‌ام کمک کردم."
+   },
+   "future": {
+    "fr": "Lundi prochain, nous aiderons Paul.",
+    "form": "aiderons",
+    "en": "Next Monday we will help Paul.",
+    "fa": "دوشنبه آینده به پل کمک خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:essayer",
+   "fa": "سعی کردن، امتحان کردن",
+   "prep": "de",
+   "construction": "essayer de + infinitif",
+   "past": {
+    "fr": "Hier, j'ai essayé de cuisiner.",
+    "form": "ai essayé",
+    "en": "Yesterday I tried to cook.",
+    "fa": "دیروز سعی کردم آشپزی کنم."
+   },
+   "future": {
+    "fr": "Bientôt, il essaiera de dormir tôt.",
+    "form": "essaiera",
+    "en": "Soon he will try to sleep early.",
+    "fa": "به‌زودی او سعی خواهد کرد زود بخوابد."
+   }
+  },
+  {
+   "key": "v:revenir",
+   "fa": "برگشتن",
+   "prep": "de",
+   "construction": "revenir de + lieu",
+   "past": {
+    "fr": "Tout à l'heure, elle est revenue de Paris.",
+    "form": "est revenue",
+    "en": "A moment ago she came back from Paris.",
+    "fa": "کمی پیش او از پاریس برگشت."
+   },
+   "future": {
+    "fr": "Demain, je reviendrai à huit heures.",
+    "form": "reviendrai",
+    "en": "Tomorrow I will come back at eight o'clock.",
+    "fa": "فردا ساعت هشت برخواهم گشت."
+   }
+  },
+  {
+   "key": "v:plaire",
+   "fa": "خوش آمدن",
+   "prep": "à",
+   "construction": "plaire à quelqu'un",
+   "past": {
+    "fr": "Le mois dernier, ce film a plu à mes amis.",
+    "form": "a plu",
+    "en": "Last month my friends liked this film.",
+    "fa": "ماه گذشته دوستانم از این فیلم خوششان آمد."
+   },
+   "future": {
+    "fr": "La semaine prochaine, ce cadeau plaira à ma mère.",
+    "form": "plaira",
+    "en": "Next week my mother will like this gift.",
+    "fa": "هفته آینده مادرم از این هدیه خوشش خواهد آمد."
+   }
+  },
+  {
+   "key": "v:jouer",
+   "fa": "بازی کردن",
+   "prep": "à",
+   "construction": "jouer à un jeu",
+   "past": {
+    "fr": "Hier, nous avons joué au football.",
+    "form": "avons joué",
+    "en": "Yesterday we played football.",
+    "fa": "دیروز فوتبال بازی کردیم."
+   },
+   "future": {
+    "fr": "Ce soir, tu joueras aux cartes avec Paul.",
+    "form": "joueras",
+    "en": "Tonight you will play cards with Paul.",
+    "fa": "امشب با پل ورق بازی خواهی کرد."
+   }
+  },
+  {
+   "key": "v:finir",
+   "fa": "تمام کردن، تمام شدن",
+   "prep": null,
+   "construction": "finir quelque chose",
+   "past": {
+    "fr": "La semaine dernière, j'ai fini mon travail à six heures.",
+    "form": "ai fini",
+    "en": "Last week I finished my work at six o'clock.",
+    "fa": "هفته پیش کارم را ساعت شش تمام کردم."
+   },
+   "future": {
+    "fr": "Samedi prochain, le cours finira à midi.",
+    "form": "finira",
+    "en": "Next Saturday the class will end at noon.",
+    "fa": "شنبه آینده کلاس ظهر تمام خواهد شد."
+   }
+  },
+  {
+   "key": "v:perdre",
+   "fa": "گم کردن، باختن",
+   "prep": null,
+   "construction": "perdre quelque chose",
+   "past": {
+    "fr": "Samedi dernier, Paul a perdu son téléphone.",
+    "form": "a perdu",
+    "en": "Last Saturday Paul lost his phone.",
+    "fa": "شنبه گذشته پل تلفنش را گم کرد."
+   },
+   "future": {
+    "fr": "Demain, nous perdrons le match.",
+    "form": "perdrons",
+    "en": "Tomorrow we will lose the match.",
+    "fa": "فردا ما بازی را خواهیم باخت."
+   }
+  },
+  {
+   "key": "v:sentir",
+   "fa": "احساس کردن، بو کردن",
+   "prep": null,
+   "construction": "sentir quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai senti une bonne odeur.",
+    "form": "ai senti",
+    "en": "This morning I smelled a nice scent.",
+    "fa": "امروز صبح بوی خوبی احساس کردم."
+   },
+   "future": {
+    "fr": "Le mois prochain, elle sentira les fleurs.",
+    "form": "sentira",
+    "en": "Next month she will smell the flowers.",
+    "fa": "ماه آینده او گل‌ها را خواهد بویید."
+   }
+  },
+  {
+   "key": "v:rentrer",
+   "fa": "به خانه برگشتن",
+   "prep": null,
+   "construction": "rentrer à la maison",
+   "past": {
+    "fr": "Hier, Marie est rentrée tard.",
+    "form": "est rentrée",
+    "en": "Yesterday Marie came home late.",
+    "fa": "دیروز ماری دیر به خانه برگشت."
+   },
+   "future": {
+    "fr": "Ce soir, nous rentrerons à pied.",
+    "form": "rentrerons",
+    "en": "Tonight we will walk home.",
+    "fa": "امشب پیاده به خانه برخواهیم گشت."
+   }
+  },
+  {
+   "key": "v:vivre",
+   "fa": "زندگی کردن",
+   "prep": null,
+   "construction": "vivre + lieu",
+   "past": {
+    "fr": "L'année dernière, nous avons vécu à Nice.",
+    "form": "avons vécu",
+    "en": "Last year we lived in Nice.",
+    "fa": "پارسال در نیس زندگی کردیم."
+   },
+   "future": {
+    "fr": "Un jour, tu vivras près de la mer.",
+    "form": "vivras",
+    "en": "One day you will live near the sea.",
+    "fa": "روزی کنار دریا زندگی خواهی کرد."
+   }
+  },
+  {
+   "key": "v:rendre",
+   "fa": "پس دادن",
+   "prep": "à",
+   "construction": "rendre quelque chose à quelqu'un",
+   "past": {
+    "fr": "L'été dernier, j'ai rendu le livre à la bibliothèque.",
+    "form": "ai rendu",
+    "en": "Last summer I returned the book to the library.",
+    "fa": "تابستان گذشته کتاب را به کتابخانه پس دادم."
+   },
+   "future": {
+    "fr": "Dans deux jours, il rendra son stylo à Marie.",
+    "form": "rendra",
+    "en": "In two days he will give his pen back to Marie.",
+    "fa": "دو روز دیگر او خودکارش را به ماری پس خواهد داد."
+   }
+  },
+  {
+   "key": "v:tenir",
+   "fa": "نگه داشتن، در دست گرفتن",
+   "prep": null,
+   "construction": "tenir quelque chose",
+   "past": {
+    "fr": "Ce matin, le petit a tenu ma main.",
+    "form": "a tenu",
+    "en": "This morning the little boy held my hand.",
+    "fa": "امروز صبح پسر کوچولو دستم را در دست گرفت."
+   },
+   "future": {
+    "fr": "Demain, tu tiendras le sac.",
+    "form": "tiendras",
+    "en": "Tomorrow you will hold the bag.",
+    "fa": "فردا تو کیف را نگه خواهی داشت."
+   }
+  },
+  {
+   "key": "v:oublier",
+   "fa": "فراموش کردن",
+   "prep": "de",
+   "construction": "oublier de + infinitif",
+   "past": {
+    "fr": "Ce matin, il a oublié de fermer la porte.",
+    "form": "a oublié",
+    "en": "This morning he forgot to close the door.",
+    "fa": "امروز صبح او فراموش کرد در را ببندد."
+   },
+   "future": {
+    "fr": "Lundi prochain, vous oublierez ce problème.",
+    "form": "oublierez",
+    "en": "Next Monday you will forget this problem.",
+    "fa": "دوشنبه آینده شما این مشکل را فراموش خواهید کرد."
+   }
+  },
+  {
+   "key": "v:travailler",
+   "fa": "کار کردن",
+   "prep": null,
+   "construction": "travailler + lieu",
+   "past": {
+    "fr": "Il y a deux jours, nous avons travaillé toute la journée.",
+    "form": "avons travaillé",
+    "en": "Two days ago we worked all day.",
+    "fa": "دو روز پیش تمام روز کار کردیم."
+   },
+   "future": {
+    "fr": "Cet après-midi, elle travaillera dans un bureau.",
+    "form": "travaillera",
+    "en": "This afternoon she will work in an office.",
+    "fa": "امروز بعدازظهر او در یک اداره کار خواهد کرد."
+   }
+  },
+  {
+   "key": "v:écouter",
+   "fa": "گوش دادن",
+   "prep": null,
+   "construction": "écouter quelque chose",
+   "past": {
+    "fr": "Hier soir, j'ai écouté de la musique.",
+    "form": "ai écouté",
+    "en": "Last night I listened to some music.",
+    "fa": "دیشب موسیقی گوش دادم."
+   },
+   "future": {
+    "fr": "Dans deux jours, nous écouterons la radio.",
+    "form": "écouterons",
+    "en": "In two days we will listen to the radio.",
+    "fa": "دو روز دیگر به رادیو گوش خواهیم داد."
+   }
+  },
+  {
+   "key": "v:manger",
+   "fa": "خوردن",
+   "prep": null,
+   "construction": "manger quelque chose",
+   "past": {
+    "fr": "Ce midi, nous avons mangé du riz.",
+    "form": "avons mangé",
+    "en": "At lunch today we ate some rice.",
+    "fa": "امروز ظهر برنج خوردیم."
+   },
+   "future": {
+    "fr": "Ce soir, tu mangeras une pizza.",
+    "form": "mangeras",
+    "en": "Tonight you will eat a pizza.",
+    "fa": "امشب پیتزا خواهی خورد."
+   }
+  },
+  {
+   "key": "v:entrer",
+   "fa": "وارد شدن",
+   "prep": "dans",
+   "construction": "entrer dans un lieu",
+   "past": {
+    "fr": "Hier, le professeur est entré dans la classe.",
+    "form": "est entré",
+    "en": "Yesterday the teacher came into the classroom.",
+    "fa": "دیروز معلم وارد کلاس شد."
+   },
+   "future": {
+    "fr": "Bientôt, nous entrerons dans le musée.",
+    "form": "entrerons",
+    "en": "Soon we will go into the museum.",
+    "fa": "به‌زودی وارد موزه خواهیم شد."
+   }
+  },
+  {
+   "key": "v:devenir",
+   "fa": "شدن",
+   "prep": null,
+   "construction": "devenir + nom ou adjectif",
+   "past": {
+    "fr": "L'année dernière, Léa est devenue médecin.",
+    "form": "est devenue",
+    "en": "Last year Léa became a doctor.",
+    "fa": "پارسال لیا پزشک شد."
+   },
+   "future": {
+    "fr": "Un jour, tu deviendras grand.",
+    "form": "deviendras",
+    "en": "One day you will become tall.",
+    "fa": "روزی بزرگ خواهی شد."
+   }
+  },
+  {
+   "key": "v:commencer",
+   "fa": "شروع کردن",
+   "prep": "à",
+   "construction": "commencer à + infinitif",
+   "past": {
+    "fr": "Cet après-midi, il a commencé à pleuvoir.",
+    "form": "a commencé",
+    "en": "This afternoon it started to rain.",
+    "fa": "امروز بعدازظهر باران شروع به باریدن کرد."
+   },
+   "future": {
+    "fr": "La semaine prochaine, nous commencerons à travailler tôt.",
+    "form": "commencerons",
+    "en": "Next week we will start working early.",
+    "fa": "هفته آینده زود شروع به کار کردن خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:payer",
+   "fa": "پرداخت کردن",
+   "prep": null,
+   "construction": "payer quelque chose",
+   "past": {
+    "fr": "Tout à l'heure, j'ai payé le café.",
+    "form": "ai payé",
+    "en": "A moment ago I paid for the coffee.",
+    "fa": "کمی پیش پول قهوه را دادم."
+   },
+   "future": {
+    "fr": "Demain, il paiera le repas.",
+    "form": "paiera",
+    "en": "Tomorrow he will pay for the meal.",
+    "fa": "فردا او پول غذا را خواهد داد."
+   }
+  },
+  {
+   "key": "v:tirer",
+   "fa": "کشیدن",
+   "prep": null,
+   "construction": "tirer quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai tiré la porte.",
+    "form": "ai tiré",
+    "en": "This morning I pulled the door.",
+    "fa": "امروز صبح در را کشیدم."
+   },
+   "future": {
+    "fr": "Samedi prochain, nous tirerons la chaise.",
+    "form": "tirerons",
+    "en": "Next Saturday we will pull the chair.",
+    "fa": "شنبه آینده صندلی را خواهیم کشید."
+   }
+  },
+  {
+   "key": "v:ouvrir",
+   "fa": "باز کردن",
+   "prep": null,
+   "construction": "ouvrir quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai ouvert la fenêtre.",
+    "form": "ai ouvert",
+    "en": "This morning I opened the window.",
+    "fa": "امروز صبح پنجره را باز کردم."
+   },
+   "future": {
+    "fr": "Le mois prochain, le magasin ouvrira à neuf heures.",
+    "form": "ouvrira",
+    "en": "Next month the shop will open at nine o'clock.",
+    "fa": "ماه آینده مغازه ساعت نه باز خواهد شد."
+   }
+  },
+  {
+   "key": "v:changer",
+   "fa": "عوض کردن، تغییر دادن",
+   "prep": "de",
+   "construction": "changer de + nom",
+   "past": {
+    "fr": "Hier, j'ai changé de chemise.",
+    "form": "ai changé",
+    "en": "Yesterday I changed my shirt.",
+    "fa": "دیروز پیراهنم را عوض کردم."
+   },
+   "future": {
+    "fr": "Demain, nous changerons de train.",
+    "form": "changerons",
+    "en": "Tomorrow we will change trains.",
+    "fa": "فردا قطارمان را عوض خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:tomber",
+   "fa": "افتادن",
+   "prep": null,
+   "construction": "tomber + lieu",
+   "past": {
+    "fr": "Le mois dernier, Paul est tombé dans la rue.",
+    "form": "est tombé",
+    "en": "Last month Paul fell in the street.",
+    "fa": "ماه گذشته پل در خیابان افتاد."
+   },
+   "future": {
+    "fr": "Dans deux jours, la neige tombera sur la ville.",
+    "form": "tombera",
+    "en": "In two days snow will fall on the city.",
+    "fa": "دو روز دیگر برف بر شهر خواهد بارید."
+   }
+  },
+  {
+   "key": "v:excuser",
+   "fa": "بخشیدن",
+   "prep": null,
+   "construction": "excuser quelqu'un",
+   "past": {
+    "fr": "Ce matin, la maîtresse a excusé Paul.",
+    "form": "a excusé",
+    "en": "This morning the teacher excused Paul.",
+    "fa": "امروز صبح معلم پل را بخشید."
+   },
+   "future": {
+    "fr": "Lundi prochain, ma mère excusera mon retard.",
+    "form": "excusera",
+    "en": "Next Monday my mother will excuse my lateness.",
+    "fa": "دوشنبه آینده مادرم تأخیر مرا خواهد بخشید."
+   }
+  },
+  {
+   "key": "v:dormir",
+   "fa": "خوابیدن",
+   "prep": null,
+   "construction": "dormir + lieu",
+   "past": {
+    "fr": "Cette nuit, j'ai dormi huit heures.",
+    "form": "ai dormi",
+    "en": "Last night I slept for eight hours.",
+    "fa": "دیشب هشت ساعت خوابیدم."
+   },
+   "future": {
+    "fr": "Demain, nous dormirons tard.",
+    "form": "dormirons",
+    "en": "Tomorrow we will sleep late.",
+    "fa": "فردا دیر وقت خواهیم خوابید."
+   }
+  },
+  {
+   "key": "v:occuper",
+   "fa": "اشغال کردن، مشغول کردن",
+   "prep": null,
+   "construction": "occuper quelque chose",
+   "past": {
+    "fr": "La semaine dernière, un monsieur a occupé ma place.",
+    "form": "a occupé",
+    "en": "Last week a man took my seat.",
+    "fa": "هفته پیش یک آقا جای مرا اشغال کرد."
+   },
+   "future": {
+    "fr": "Cet après-midi, ce travail occupera Paul.",
+    "form": "occupera",
+    "en": "This afternoon this job will keep Paul busy.",
+    "fa": "امروز بعدازظهر این کار پل را مشغول خواهد کرد."
+   }
+  },
+  {
+   "key": "v:marcher",
+   "fa": "راه رفتن",
+   "prep": null,
+   "construction": "marcher + durée ou lieu",
+   "past": {
+    "fr": "Hier, nous avons marché dans le parc.",
+    "form": "avons marché",
+    "en": "Yesterday we walked in the park.",
+    "fa": "دیروز در پارک قدم زدیم."
+   },
+   "future": {
+    "fr": "Bientôt, tu marcheras une heure.",
+    "form": "marcheras",
+    "en": "Soon you will walk for an hour.",
+    "fa": "به‌زودی یک ساعت راه خواهی رفت."
+   }
+  },
+  {
+   "key": "v:envoyer",
+   "fa": "فرستادن",
+   "prep": "à",
+   "construction": "envoyer quelque chose à quelqu'un",
+   "past": {
+    "fr": "Ce matin, j'ai envoyé un message à Paul.",
+    "form": "ai envoyé",
+    "en": "This morning I sent a message to Paul.",
+    "fa": "امروز صبح یک پیام برای پل فرستادم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, elle enverra une carte à sa grand-mère.",
+    "form": "enverra",
+    "en": "Next week she will send a card to her grandmother.",
+    "fa": "هفته آینده او یک کارت پستال برای مادربزرگش خواهد فرستاد."
+   }
+  },
+  {
+   "key": "v:apprendre",
+   "fa": "یاد گرفتن",
+   "prep": "à",
+   "construction": "apprendre à + infinitif",
+   "past": {
+    "fr": "Samedi dernier, j'ai appris à nager.",
+    "form": "ai appris",
+    "en": "Last Saturday I learned to swim.",
+    "fa": "شنبه گذشته شنا کردن یاد گرفتم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, nous apprendrons un poème.",
+    "form": "apprendrons",
+    "en": "Next week we will learn a poem.",
+    "fa": "هفته آینده شعری یاد خواهیم گرفت."
+   }
+  },
+  {
+   "key": "v:boire",
+   "fa": "نوشیدن",
+   "prep": null,
+   "construction": "boire quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai bu du thé.",
+    "form": "ai bu",
+    "en": "This morning I drank some tea.",
+    "fa": "امروز صبح چای نوشیدم."
+   },
+   "future": {
+    "fr": "Ce soir, ils boiront de l'eau.",
+    "form": "boiront",
+    "en": "Tonight they will drink water.",
+    "fa": "امشب آن‌ها آب خواهند نوشید."
+   }
+  },
+  {
+   "key": "v:garder",
+   "fa": "نگه داشتن، نگهداری کردن",
+   "prep": null,
+   "construction": "garder quelque chose",
+   "past": {
+    "fr": "L'été dernier, Marie a gardé mon chat.",
+    "form": "a gardé",
+    "en": "Last summer Marie looked after my cat.",
+    "fa": "تابستان گذشته ماری از گربه‌ام نگهداری کرد."
+   },
+   "future": {
+    "fr": "Samedi prochain, tu garderas ce livre.",
+    "form": "garderas",
+    "en": "Next Saturday you will keep this book.",
+    "fa": "شنبه آینده این کتاب را پیش خود نگه خواهی داشت."
+   }
+  },
+  {
+   "key": "v:montrer",
+   "fa": "نشان دادن",
+   "prep": "à",
+   "construction": "montrer quelque chose à quelqu'un",
+   "past": {
+    "fr": "Hier, j'ai montré ma photo à Paul.",
+    "form": "ai montré",
+    "en": "Yesterday I showed my photo to Paul.",
+    "fa": "دیروز عکسم را به پل نشان دادم."
+   },
+   "future": {
+    "fr": "Demain, elle montrera la ville à ses amis.",
+    "form": "montrera",
+    "en": "Tomorrow she will show the city to her friends.",
+    "fa": "فردا او شهر را به دوستانش نشان خواهد داد."
+   }
+  },
+  {
+   "key": "v:asseoir",
+   "fa": "نشاندن",
+   "prep": null,
+   "construction": "asseoir quelqu'un",
+   "past": {
+    "fr": "Il y a deux jours, j'ai assis le bébé sur une chaise.",
+    "form": "ai assis",
+    "en": "Two days ago I sat the baby on a chair.",
+    "fa": "دو روز پیش بچه را روی یک صندلی نشاندم."
+   },
+   "future": {
+    "fr": "Le mois prochain, elle assiéra son fils près d'elle.",
+    "form": "assiéra",
+    "en": "Next month she will sit her son down next to her.",
+    "fa": "ماه آینده او پسرش را کنار خودش خواهد نشاند."
+   }
+  },
+  {
+   "key": "v:porter",
+   "fa": "حمل کردن، پوشیدن",
+   "prep": null,
+   "construction": "porter quelque chose",
+   "past": {
+    "fr": "Ce matin, elle a porté une robe rouge.",
+    "form": "a porté",
+    "en": "This morning she wore a red dress.",
+    "fa": "امروز صبح او یک لباس قرمز پوشید."
+   },
+   "future": {
+    "fr": "Dans deux jours, nous porterons les valises.",
+    "form": "porterons",
+    "en": "In two days we will carry the suitcases.",
+    "fa": "دو روز دیگر چمدان‌ها را خواهیم برد."
+   }
+  },
+  {
+   "key": "v:souvenir",
+   "fa": "به یاد آوردن",
+   "prep": "de",
+   "construction": "se souvenir de quelque chose",
+   "past": {
+    "fr": "Cet après-midi, je me suis souvenu de ton nom.",
+    "form": "me suis souvenu",
+    "en": "This afternoon I remembered your name.",
+    "fa": "امروز بعدازظهر اسم تو را به یاد آوردم."
+   },
+   "future": {
+    "fr": "Lundi prochain, elle se souviendra de son rêve.",
+    "form": "se souviendra",
+    "en": "Next Monday she will remember her dream.",
+    "fa": "دوشنبه آینده او رویایش را به یاد خواهد آورد."
+   }
+  },
+  {
+   "key": "v:prier",
+   "fa": "دعا کردن",
+   "prep": "pour",
+   "construction": "prier pour quelqu'un",
+   "past": {
+    "fr": "Hier soir, Marie a prié pour sa grand-mère.",
+    "form": "a prié",
+    "en": "Last night Marie prayed for her grandmother.",
+    "fa": "دیشب ماری برای مادربزرگش دعا کرد."
+   },
+   "future": {
+    "fr": "Lundi prochain, nous prierons pour la paix.",
+    "form": "prierons",
+    "en": "Next Monday we will pray for peace.",
+    "fa": "دوشنبه آینده برای صلح دعا خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:servir",
+   "fa": "سرو کردن، به کار آمدن",
+   "prep": "à",
+   "construction": "servir à + infinitif",
+   "past": {
+    "fr": "Hier, ce couteau a servi à couper le pain.",
+    "form": "a servi",
+    "en": "Yesterday this knife was used to cut the bread.",
+    "fa": "دیروز این چاقو برای بریدن نان به کار رفت."
+   },
+   "future": {
+    "fr": "Ce soir, Paul servira le thé.",
+    "form": "servira",
+    "en": "Tonight Paul will serve the tea.",
+    "fa": "امشب پل چای سرو خواهد کرد."
+   }
+  },
+  {
+   "key": "v:écrire",
+   "fa": "نوشتن",
+   "prep": "à",
+   "construction": "écrire à quelqu'un",
+   "past": {
+    "fr": "Tout à l'heure, j'ai écrit une lettre à mon ami.",
+    "form": "ai écrit",
+    "en": "A moment ago I wrote a letter to my friend.",
+    "fa": "کمی پیش برای دوستم نامه‌ای نوشتم."
+   },
+   "future": {
+    "fr": "Cet après-midi, il écrira son nom.",
+    "form": "écrira",
+    "en": "This afternoon he will write his name.",
+    "fa": "امروز بعدازظهر او نامش را خواهد نوشت."
+   }
+  },
+  {
+   "key": "v:espérer",
+   "fa": "امیدوار بودن",
+   "prep": null,
+   "construction": "espérer + infinitif",
+   "past": {
+    "fr": "Le mois dernier, j'ai espéré gagner le match.",
+    "form": "ai espéré",
+    "en": "Last month I hoped to win the match.",
+    "fa": "ماه گذشته امیدوار بودم بازی را ببرم."
+   },
+   "future": {
+    "fr": "Demain, vous espérerez une bonne réponse.",
+    "form": "espérerez",
+    "en": "Tomorrow you will hope for a good answer.",
+    "fa": "فردا شما امید به پاسخ خوبی خواهید داشت."
+   }
+  },
+  {
+   "key": "v:désoler",
+   "fa": "غمگین کردن، ناراحت کردن",
+   "prep": null,
+   "construction": "désoler quelqu'un",
+   "past": {
+    "fr": "Hier, cette nouvelle a désolé ma mère.",
+    "form": "a désolé",
+    "en": "Yesterday this news saddened my mother.",
+    "fa": "دیروز این خبر مادرم را غمگین کرد."
+   },
+   "future": {
+    "fr": "Bientôt, ce retard désolera Paul.",
+    "form": "désolera",
+    "en": "Soon this delay will upset Paul.",
+    "fa": "به‌زودی این تأخیر پل را ناراحت خواهد کرد."
+   }
+  },
+  {
+   "key": "v:retrouver",
+   "fa": "دوباره پیدا کردن، ملاقات کردن",
+   "prep": null,
+   "construction": "retrouver quelqu'un ou quelque chose",
+   "past": {
+    "fr": "La semaine dernière, j'ai retrouvé mes clés.",
+    "form": "ai retrouvé",
+    "en": "Last week I found my keys again.",
+    "fa": "هفته پیش کلیدهایم را دوباره پیدا کردم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, nous retrouverons nos amis au café.",
+    "form": "retrouverons",
+    "en": "Next week we will meet our friends at the café.",
+    "fa": "هفته آینده در کافه دوستانمان را خواهیم دید."
+   }
+  },
+  {
+   "key": "v:gagner",
+   "fa": "بردن، به دست آوردن",
+   "prep": null,
+   "construction": "gagner quelque chose",
+   "past": {
+    "fr": "Samedi dernier, notre équipe a gagné le match.",
+    "form": "a gagné",
+    "en": "Last Saturday our team won the match.",
+    "fa": "شنبه گذشته تیم ما بازی را برد."
+   },
+   "future": {
+    "fr": "L'été prochain, elle gagnera de l'argent.",
+    "form": "gagnera",
+    "en": "Next summer she will earn some money.",
+    "fa": "تابستان آینده او پول در خواهد آورد."
+   }
+  },
+  {
+   "key": "v:acheter",
+   "fa": "خریدن",
+   "prep": null,
+   "construction": "acheter quelque chose",
+   "past": {
+    "fr": "Hier, j'ai acheté du pain.",
+    "form": "ai acheté",
+    "en": "Yesterday I bought some bread.",
+    "fa": "دیروز نان خریدم."
+   },
+   "future": {
+    "fr": "Demain, nous achèterons des fleurs.",
+    "form": "achèterons",
+    "en": "Tomorrow we will buy some flowers.",
+    "fa": "فردا گل خواهیم خرید."
+   }
+  },
+  {
+   "key": "v:rappeler",
+   "fa": "دوباره تماس گرفتن، یادآوری کردن",
+   "prep": null,
+   "construction": "rappeler quelqu'un",
+   "past": {
+    "fr": "Ce matin, j'ai rappelé le médecin.",
+    "form": "ai rappelé",
+    "en": "This morning I called the doctor back.",
+    "fa": "امروز صبح دوباره به دکتر زنگ زدم."
+   },
+   "future": {
+    "fr": "Ce soir, il rappellera sa mère.",
+    "form": "rappellera",
+    "en": "Tonight he will call his mother back.",
+    "fa": "امشب او دوباره به مادرش زنگ خواهد زد."
+   }
+  },
+  {
+   "key": "v:lire",
+   "fa": "خواندن",
+   "prep": null,
+   "construction": "lire quelque chose",
+   "past": {
+    "fr": "Hier soir, j'ai lu un livre.",
+    "form": "ai lu",
+    "en": "Last night I read a book.",
+    "fa": "دیشب یک کتاب خواندم."
+   },
+   "future": {
+    "fr": "Samedi prochain, les enfants liront une histoire.",
+    "form": "liront",
+    "en": "Next Saturday the children will read a story.",
+    "fa": "شنبه آینده بچه‌ها یک داستان خواهند خواند."
+   }
+  },
+  {
+   "key": "v:monter",
+   "fa": "بالا رفتن، سوار شدن",
+   "prep": "dans",
+   "construction": "monter dans un véhicule",
+   "past": {
+    "fr": "L'été dernier, Marie est montée au troisième étage.",
+    "form": "est montée",
+    "en": "Last summer Marie went up to the third floor.",
+    "fa": "تابستان گذشته ماری به طبقه سوم بالا رفت."
+   },
+   "future": {
+    "fr": "Le mois prochain, nous monterons dans le train.",
+    "form": "monterons",
+    "en": "Next month we will get on the train.",
+    "fa": "ماه آینده سوار قطار خواهیم شد."
+   }
+  },
+  {
+   "key": "v:quitter",
+   "fa": "ترک کردن",
+   "prep": null,
+   "construction": "quitter un lieu",
+   "past": {
+    "fr": "Ce matin, j'ai quitté la maison à sept heures.",
+    "form": "ai quitté",
+    "en": "This morning I left the house at seven o'clock.",
+    "fa": "امروز صبح ساعت هفت خانه را ترک کردم."
+   },
+   "future": {
+    "fr": "Demain, ils quitteront la ville.",
+    "form": "quitteront",
+    "en": "Tomorrow they will leave the city.",
+    "fa": "فردا آن‌ها شهر را ترک خواهند کرد."
+   },
+   "meaningNote": "to leave (a place or a person)"
+  },
+  {
+   "key": "v:emmener",
+   "fa": "همراه بردن، بردن",
+   "prep": null,
+   "construction": "emmener quelqu'un",
+   "past": {
+    "fr": "Il y a deux jours, j'ai emmené mon fils au parc.",
+    "form": "ai emmené",
+    "en": "Two days ago I took my son to the park.",
+    "fa": "دو روز پیش پسرم را به پارک بردم."
+   },
+   "future": {
+    "fr": "Dans deux jours, elle emmènera sa fille à l'école.",
+    "form": "emmènera",
+    "en": "In two days she will take her daughter to school.",
+    "fa": "دو روز دیگر او دخترش را به مدرسه خواهد برد."
+   }
+  },
+  {
+   "key": "v:toucher",
+   "fa": "لمس کردن، دست زدن",
+   "prep": null,
+   "construction": "toucher quelque chose",
+   "past": {
+    "fr": "Hier, j'ai touché le chat.",
+    "form": "ai touché",
+    "en": "Yesterday I touched the cat.",
+    "fa": "دیروز گربه را لمس کردم."
+   },
+   "future": {
+    "fr": "Lundi prochain, elle touchera la neige.",
+    "form": "touchera",
+    "en": "Next Monday she will touch the snow.",
+    "fa": "دوشنبه آینده او برف را لمس خواهد کرد."
+   }
+  },
+  {
+   "key": "v:continuer",
+   "fa": "ادامه دادن",
+   "prep": "à",
+   "construction": "continuer à + infinitif",
+   "past": {
+    "fr": "Cet après-midi, nous avons continué à marcher.",
+    "form": "avons continué",
+    "en": "This afternoon we kept on walking.",
+    "fa": "امروز بعدازظهر به راه رفتن ادامه دادیم."
+   },
+   "future": {
+    "fr": "Demain, il continuera à travailler.",
+    "form": "continuera",
+    "en": "Tomorrow he will keep on working.",
+    "fa": "فردا او به کار کردن ادامه خواهد داد."
+   }
+  },
+  {
+   "key": "v:importer",
+   "fa": "وارد کردن، اهمیت داشتن",
+   "prep": null,
+   "construction": "importer quelque chose",
+   "past": {
+    "fr": "L'année dernière, ce magasin a importé du café.",
+    "form": "a importé",
+    "en": "Last year this shop imported coffee.",
+    "fa": "پارسال این فروشگاه قهوه وارد کرد."
+   },
+   "future": {
+    "fr": "L'année prochaine, nous importerons du thé.",
+    "form": "importerons",
+    "en": "Next year we will import tea.",
+    "fa": "سال آینده ما چای وارد خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:manquer",
+   "fa": "کم داشتن، از دست دادن",
+   "prep": "de",
+   "construction": "manquer de quelque chose",
+   "past": {
+    "fr": "Ce matin, nous avons manqué de pain.",
+    "form": "avons manqué",
+    "en": "This morning we ran short of bread.",
+    "fa": "امروز صبح نان کم آوردیم."
+   },
+   "future": {
+    "fr": "Cet après-midi, vous manquerez le bus.",
+    "form": "manquerez",
+    "en": "This afternoon you will miss the bus.",
+    "fa": "امروز بعدازظهر اتوبوس را از دست خواهید داد."
+   }
+  },
+  {
+   "key": "v:raconter",
+   "fa": "تعریف کردن، روایت کردن",
+   "prep": "à",
+   "construction": "raconter quelque chose à quelqu'un",
+   "past": {
+    "fr": "Tout à l'heure, grand-père a raconté une histoire aux enfants.",
+    "form": "a raconté",
+    "en": "A moment ago Grandpa told the children a story.",
+    "fa": "کمی پیش پدربزرگ یک داستان برای بچه‌ها تعریف کرد."
+   },
+   "future": {
+    "fr": "Bientôt, je raconterai ma journée à Paul.",
+    "form": "raconterai",
+    "en": "Soon I will tell Paul about my day.",
+    "fa": "به‌زودی روزم را برای پل تعریف خواهم کرد."
+   }
+  },
+  {
+   "key": "v:répondre",
+   "fa": "جواب دادن",
+   "prep": "à",
+   "construction": "répondre à quelqu'un ou à quelque chose",
+   "past": {
+    "fr": "Hier, j'ai répondu à ton message.",
+    "form": "ai répondu",
+    "en": "Yesterday I replied to your message.",
+    "fa": "دیروز به پیام تو جواب دادم."
+   },
+   "future": {
+    "fr": "Demain, elle répondra à la question.",
+    "form": "répondra",
+    "en": "Tomorrow she will answer the question.",
+    "fa": "فردا او به پرسش جواب خواهد داد."
+   }
+  },
+  {
+   "key": "v:sauver",
+   "fa": "نجات دادن",
+   "prep": null,
+   "construction": "sauver quelqu'un",
+   "past": {
+    "fr": "Le mois dernier, le chien a sauvé un enfant.",
+    "form": "a sauvé",
+    "en": "Last month the dog saved a child.",
+    "fa": "ماه گذشته سگ یک بچه را نجات داد."
+   },
+   "future": {
+    "fr": "La semaine prochaine, tu sauveras le chat.",
+    "form": "sauveras",
+    "en": "Next week you will save the cat.",
+    "fa": "هفته آینده تو گربه را نجات خواهی داد."
+   }
+  },
+  {
+   "key": "v:retourner",
+   "fa": "برگشتن",
+   "prep": "à",
+   "construction": "retourner à + lieu",
+   "past": {
+    "fr": "La semaine dernière, ils sont retournés au village.",
+    "form": "sont retournés",
+    "en": "Last week they went back to the village.",
+    "fa": "هفته پیش آن‌ها به روستا برگشتند."
+   },
+   "future": {
+    "fr": "L'été prochain, nous retournerons à la mer.",
+    "form": "retournerons",
+    "en": "Next summer we will go back to the sea.",
+    "fa": "تابستان آینده به دریا برخواهیم گشت."
+   }
+  },
+  {
+   "key": "v:rencontrer",
+   "fa": "ملاقات کردن",
+   "prep": null,
+   "construction": "rencontrer quelqu'un",
+   "past": {
+    "fr": "Hier, j'ai rencontré Paul au marché.",
+    "form": "ai rencontré",
+    "en": "Yesterday I met Paul at the market.",
+    "fa": "دیروز در بازار با پل برخورد کردم."
+   },
+   "future": {
+    "fr": "Samedi prochain, nous rencontrerons la directrice.",
+    "form": "rencontrerons",
+    "en": "Next Saturday we will meet the headmistress.",
+    "fa": "شنبه آینده با مدیر مدرسه ملاقات خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:voler",
+   "fa": "پرواز کردن، دزدیدن",
+   "prep": null,
+   "construction": "voler dans l'air",
+   "past": {
+    "fr": "Samedi dernier, un oiseau a volé au-dessus de la maison.",
+    "form": "a volé",
+    "en": "Last Saturday a bird flew over the house.",
+    "fa": "شنبه گذشته یک پرنده بالای خانه پرواز کرد."
+   },
+   "future": {
+    "fr": "Demain, l'avion volera vers Rome.",
+    "form": "volera",
+    "en": "Tomorrow the plane will fly towards Rome.",
+    "fa": "فردا هواپیما به سمت رم پرواز خواهد کرد."
+   },
+   "meaningNote": "to fly (also: to steal)"
+  },
+  {
+   "key": "v:fermer",
+   "fa": "بستن",
+   "prep": null,
+   "construction": "fermer quelque chose",
+   "past": {
+    "fr": "Hier soir, j'ai fermé la porte.",
+    "form": "ai fermé",
+    "en": "Last night I closed the door.",
+    "fa": "دیشب در را بستم."
+   },
+   "future": {
+    "fr": "Le mois prochain, le magasin fermera à six heures.",
+    "form": "fermera",
+    "en": "Next month the shop will close at six o'clock.",
+    "fa": "ماه آینده مغازه ساعت شش بسته خواهد شد."
+   }
+  },
+  {
+   "key": "v:valoir",
+   "fa": "ارزش داشتن، قیمت داشتن",
+   "prep": null,
+   "construction": "valoir + prix",
+   "past": {
+    "fr": "L'été dernier, ce billet a valu dix euros.",
+    "form": "a valu",
+    "en": "Last summer this ticket cost ten euros.",
+    "fa": "تابستان گذشته این بلیت ده یورو قیمت داشت."
+   },
+   "future": {
+    "fr": "Dans deux jours, ce billet vaudra douze euros.",
+    "form": "vaudra",
+    "en": "In two days this ticket will cost twelve euros.",
+    "fa": "دو روز دیگر این بلیت دوازده یورو قیمت خواهد داشت."
+   }
+  },
+  {
+   "key": "v:descendre",
+   "fa": "پایین رفتن، پیاده شدن",
+   "prep": "de",
+   "construction": "descendre d'un véhicule",
+   "past": {
+    "fr": "Hier, Paul est descendu du bus à la gare.",
+    "form": "est descendu",
+    "en": "Yesterday Paul got off the bus at the station.",
+    "fa": "دیروز پل در ایستگاه از اتوبوس پیاده شد."
+   },
+   "future": {
+    "fr": "Demain, nous descendrons de l'avion à midi.",
+    "form": "descendrons",
+    "en": "Tomorrow we will get off the plane at noon.",
+    "fa": "فردا ظهر از هواپیما پیاده خواهیم شد."
+   }
+  },
+  {
+   "key": "v:suffire",
+   "fa": "کافی بودن",
+   "prep": null,
+   "construction": "suffire pour quelque chose",
+   "past": {
+    "fr": "Il y a deux jours, un seul gâteau a suffi.",
+    "form": "a suffi",
+    "en": "Two days ago one cake was enough.",
+    "fa": "دو روز پیش یک کیک به‌تنهایی کافی بود."
+   },
+   "future": {
+    "fr": "Lundi prochain, dix euros suffiront.",
+    "form": "suffiront",
+    "en": "Next Monday ten euros will be enough.",
+    "fa": "دوشنبه آینده ده یورو کافی خواهد بود."
+   }
+  },
+  {
+   "key": "v:sembler",
+   "fa": "به نظر رسیدن",
+   "prep": null,
+   "construction": "sembler + adjectif",
+   "past": {
+    "fr": "Cet après-midi, Paul a semblé fatigué.",
+    "form": "a semblé",
+    "en": "This afternoon Paul seemed tired.",
+    "fa": "امروز بعدازظهر پل خسته به نظر رسید."
+   },
+   "future": {
+    "fr": "Cet après-midi, le test semblera facile.",
+    "form": "semblera",
+    "en": "This afternoon the test will seem easy.",
+    "fa": "امروز بعدازظهر امتحان آسان به نظر خواهد رسید."
+   }
+  },
+  {
+   "key": "v:compter",
+   "fa": "شمردن، حساب کردن",
+   "prep": "sur",
+   "construction": "compter sur quelqu'un",
+   "past": {
+    "fr": "Hier, j'ai compté sur mon frère.",
+    "form": "ai compté",
+    "en": "Yesterday I counted on my brother.",
+    "fa": "دیروز روی برادرم حساب کردم."
+   },
+   "future": {
+    "fr": "Demain, les enfants compteront de un à dix.",
+    "form": "compteront",
+    "en": "Tomorrow the children will count from one to ten.",
+    "fa": "فردا بچه‌ها از یک تا ده خواهند شمرد."
+   }
+  },
+  {
+   "key": "v:marier",
+   "fa": "به عقد درآوردن، ازدواج دادن",
+   "prep": null,
+   "construction": "marier deux personnes",
+   "past": {
+    "fr": "Tout à l'heure, le maire a marié Paul et Léa.",
+    "form": "a marié",
+    "en": "A moment ago the mayor married Paul and Léa.",
+    "fa": "کمی پیش شهردار پل و لیا را به عقد هم درآورد."
+   },
+   "future": {
+    "fr": "Bientôt, le maire mariera deux amis.",
+    "form": "mariera",
+    "en": "Soon the mayor will marry two friends.",
+    "fa": "به‌زودی شهردار دو دوست را به عقد هم درخواهد آورد."
+   }
+  },
+  {
+   "key": "v:poser",
+   "fa": "گذاشتن، پرسیدن (سؤال)",
+   "prep": "sur",
+   "construction": "poser quelque chose sur quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai posé mon sac sur la table.",
+    "form": "ai posé",
+    "en": "This morning I put my bag on the table.",
+    "fa": "امروز صبح کیفم را روی میز گذاشتم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, elle posera une question au professeur.",
+    "form": "posera",
+    "en": "Next week she will ask the teacher a question.",
+    "fa": "هفته آینده او از استاد یک سؤال خواهد پرسید."
+   }
+  },
+  {
+   "key": "v:inquiéter",
+   "fa": "نگران کردن",
+   "prep": null,
+   "construction": "inquiéter quelqu'un",
+   "past": {
+    "fr": "Le mois dernier, ce bruit a inquiété les enfants.",
+    "form": "a inquiété",
+    "en": "Last month this noise worried the children.",
+    "fa": "ماه گذشته این صدا بچه‌ها را نگران کرد."
+   },
+   "future": {
+    "fr": "Demain, l'orage inquiétera ma mère.",
+    "form": "inquiétera",
+    "en": "Tomorrow the storm will worry my mother.",
+    "fa": "فردا طوفان مادرم را نگران خواهد کرد."
+   }
+  },
+  {
+   "key": "v:bouger",
+   "fa": "تکان خوردن، جابه‌جا کردن",
+   "prep": null,
+   "construction": "bouger quelque chose",
+   "past": {
+    "fr": "Ce matin, le bébé a bougé.",
+    "form": "a bougé",
+    "en": "This morning the baby moved.",
+    "fa": "امروز صبح بچه تکان خورد."
+   },
+   "future": {
+    "fr": "Samedi prochain, nous bougerons les meubles.",
+    "form": "bougerons",
+    "en": "Next Saturday we will move the furniture.",
+    "fa": "شنبه آینده مبل‌ها را جابه‌جا خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:apporter",
+   "fa": "آوردن",
+   "prep": null,
+   "construction": "apporter quelque chose",
+   "past": {
+    "fr": "Hier, j'ai apporté des fleurs à ma mère.",
+    "form": "ai apporté",
+    "en": "Yesterday I brought flowers to my mother.",
+    "fa": "دیروز برای مادرم گل آوردم."
+   },
+   "future": {
+    "fr": "Le mois prochain, tu apporteras ton livre.",
+    "form": "apporteras",
+    "en": "Next month you will bring your book.",
+    "fa": "ماه آینده کتابت را خواهی آورد."
+   }
+  },
+  {
+   "key": "v:décider",
+   "fa": "تصمیم گرفتن",
+   "prep": "de",
+   "construction": "décider de + infinitif",
+   "past": {
+    "fr": "La semaine dernière, nous avons décidé de partir.",
+    "form": "avons décidé",
+    "en": "Last week we decided to leave.",
+    "fa": "هفته پیش تصمیم گرفتیم برویم."
+   },
+   "future": {
+    "fr": "Dans deux jours, elle décidera de rester.",
+    "form": "décidera",
+    "en": "In two days she will decide to stay.",
+    "fa": "دو روز دیگر او تصمیم خواهد گرفت بماند."
+   }
+  },
+  {
+   "key": "v:vendre",
+   "fa": "فروختن",
+   "prep": null,
+   "construction": "vendre quelque chose",
+   "past": {
+    "fr": "Samedi dernier, Paul a vendu son vélo.",
+    "form": "a vendu",
+    "en": "Last Saturday Paul sold his bike.",
+    "fa": "شنبه گذشته پل دوچرخه‌اش را فروخت."
+   },
+   "future": {
+    "fr": "Dans deux jours, nous vendrons des gâteaux.",
+    "form": "vendrons",
+    "en": "In two days we will sell cakes.",
+    "fa": "دو روز دیگر کیک خواهیم فروخت."
+   }
+  },
+  {
+   "key": "v:tourner",
+   "fa": "چرخیدن، پیچیدن",
+   "prep": "à",
+   "construction": "tourner à gauche ou à droite",
+   "past": {
+    "fr": "Hier, elle a tourné à gauche.",
+    "form": "a tourné",
+    "en": "Yesterday she turned left.",
+    "fa": "دیروز او به چپ پیچید."
+   },
+   "future": {
+    "fr": "Lundi prochain, tu tourneras à droite.",
+    "form": "tourneras",
+    "en": "Next Monday you will turn right.",
+    "fa": "دوشنبه آینده به راست خواهی پیچید."
+   }
+  },
+  {
+   "key": "v:cacher",
+   "fa": "پنهان کردن",
+   "prep": null,
+   "construction": "cacher quelque chose",
+   "past": {
+    "fr": "L'été dernier, l'enfant a caché son jouet.",
+    "form": "a caché",
+    "en": "Last summer the child hid his toy.",
+    "fa": "تابستان گذشته بچه اسباب‌بازی‌اش را پنهان کرد."
+   },
+   "future": {
+    "fr": "Demain, je cacherai le cadeau.",
+    "form": "cacherai",
+    "en": "Tomorrow I will hide the gift.",
+    "fa": "فردا هدیه را پنهان خواهم کرد."
+   }
+  },
+  {
+   "key": "v:expliquer",
+   "fa": "توضیح دادن",
+   "prep": "à",
+   "construction": "expliquer quelque chose à quelqu'un",
+   "past": {
+    "fr": "Il y a deux jours, la professeure a expliqué la leçon aux élèves.",
+    "form": "a expliqué",
+    "en": "Two days ago the teacher explained the lesson to the pupils.",
+    "fa": "دو روز پیش معلم درس را به دانش‌آموزان توضیح داد."
+   },
+   "future": {
+    "fr": "Cet après-midi, j'expliquerai le problème à Paul.",
+    "form": "expliquerai",
+    "en": "This afternoon I will explain the problem to Paul.",
+    "fa": "امروز بعدازظهر مشکل را به پل توضیح خواهم داد."
+   }
+  },
+  {
+   "key": "v:battre",
+   "fa": "شکست دادن، هم زدن",
+   "prep": null,
+   "construction": "battre quelqu'un ou quelque chose",
+   "past": {
+    "fr": "Hier, notre équipe a battu l'équipe de Lyon.",
+    "form": "a battu",
+    "en": "Yesterday our team beat the Lyon team.",
+    "fa": "دیروز تیم ما تیم لیون را شکست داد."
+   },
+   "future": {
+    "fr": "Bientôt, je battrai les œufs.",
+    "form": "battrai",
+    "en": "Soon I will beat the eggs.",
+    "fa": "به‌زودی تخم‌مرغ‌ها را هم خواهم زد."
+   }
+  },
+  {
+   "key": "v:agir",
+   "fa": "اقدام کردن، عمل کردن",
+   "prep": null,
+   "construction": "agir + manière",
+   "past": {
+    "fr": "Cet après-midi, le médecin a agi vite.",
+    "form": "a agi",
+    "en": "This afternoon the doctor acted quickly.",
+    "fa": "امروز بعدازظهر پزشک سریع اقدام کرد."
+   },
+   "future": {
+    "fr": "Demain, nous agirons ensemble.",
+    "form": "agirons",
+    "en": "Tomorrow we will act together.",
+    "fa": "فردا با هم اقدام خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:imaginer",
+   "fa": "تصور کردن",
+   "prep": null,
+   "construction": "imaginer quelque chose",
+   "past": {
+    "fr": "Tout à l'heure, j'ai imaginé une belle maison.",
+    "form": "ai imaginé",
+    "en": "A moment ago I imagined a beautiful house.",
+    "fa": "کمی پیش یک خانه زیبا را تصور کردم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, les enfants imagineront une histoire.",
+    "form": "imagineront",
+    "en": "Next week the children will imagine a story.",
+    "fa": "هفته آینده بچه‌ها داستانی تصور خواهند کرد."
+   }
+  },
+  {
+   "key": "v:adorer",
+   "fa": "خیلی دوست داشتن",
+   "prep": null,
+   "construction": "adorer quelque chose",
+   "past": {
+    "fr": "Hier, les enfants ont adoré le spectacle.",
+    "form": "ont adoré",
+    "en": "Yesterday the children loved the show.",
+    "fa": "دیروز بچه‌ها نمایش را خیلی دوست داشتند."
+   },
+   "future": {
+    "fr": "Samedi prochain, tu adoreras ce gâteau.",
+    "form": "adoreras",
+    "en": "Next Saturday you will love this cake.",
+    "fa": "شنبه آینده عاشق این کیک خواهی شد."
+   }
+  },
+  {
+   "key": "v:recevoir",
+   "fa": "دریافت کردن، پذیرایی کردن",
+   "prep": null,
+   "construction": "recevoir quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai reçu une lettre.",
+    "form": "ai reçu",
+    "en": "This morning I received a letter.",
+    "fa": "امروز صبح یک نامه دریافت کردم."
+   },
+   "future": {
+    "fr": "Demain, vous recevrez un colis.",
+    "form": "recevrez",
+    "en": "Tomorrow you will receive a parcel.",
+    "fa": "فردا شما یک بسته دریافت خواهید کرد."
+   }
+  },
+  {
+   "key": "v:jeter",
+   "fa": "پرتاب کردن، دور انداختن",
+   "prep": null,
+   "construction": "jeter quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai jeté le vieux journal.",
+    "form": "ai jeté",
+    "en": "This morning I threw away the old newspaper.",
+    "fa": "امروز صبح روزنامه قدیمی را دور انداختم."
+   },
+   "future": {
+    "fr": "Le mois prochain, nous jetterons les bouteilles.",
+    "form": "jetterons",
+    "en": "Next month we will throw away the bottles.",
+    "fa": "ماه آینده بطری‌ها را دور خواهیم انداخت."
+   }
+  },
+  {
+   "key": "v:pleurer",
+   "fa": "گریه کردن",
+   "prep": "de",
+   "construction": "pleurer de joie",
+   "past": {
+    "fr": "Cette nuit, le bébé a pleuré.",
+    "form": "a pleuré",
+    "en": "Last night the baby cried.",
+    "fa": "دیشب بچه گریه کرد."
+   },
+   "future": {
+    "fr": "Dans deux jours, elle pleurera de joie.",
+    "form": "pleurera",
+    "en": "In two days she will cry for joy.",
+    "fa": "دو روز دیگر او از شادی گریه خواهد کرد."
+   }
+  },
+  {
+   "key": "v:amener",
+   "fa": "آوردن (کسی را)",
+   "prep": null,
+   "construction": "amener quelqu'un",
+   "past": {
+    "fr": "Le mois dernier, j'ai amené mon ami à la fête.",
+    "form": "ai amené",
+    "en": "Last month I brought my friend to the party.",
+    "fa": "ماه گذشته دوستم را به مهمانی آوردم."
+   },
+   "future": {
+    "fr": "Demain, il amènera sa sœur.",
+    "form": "amènera",
+    "en": "Tomorrow he will bring his sister.",
+    "fa": "فردا او خواهرش را با خود خواهد آورد."
+   }
+  },
+  {
+   "key": "v:promettre",
+   "fa": "قول دادن",
+   "prep": "à",
+   "construction": "promettre quelque chose à quelqu'un",
+   "past": {
+    "fr": "La semaine dernière, j'ai promis un cadeau à mon fils.",
+    "form": "ai promis",
+    "en": "Last week I promised my son a gift.",
+    "fa": "هفته پیش به پسرم قول یک هدیه دادم."
+   },
+   "future": {
+    "fr": "Lundi prochain, tu promettras à Paul de venir.",
+    "form": "promettras",
+    "en": "Next Monday you will promise Paul to come.",
+    "fa": "دوشنبه آینده به پل قول خواهی داد که بیایی."
+   }
+  },
+  {
+   "key": "v:mentir",
+   "fa": "دروغ گفتن",
+   "prep": "à",
+   "construction": "mentir à quelqu'un",
+   "past": {
+    "fr": "Hier, Paul a menti à son professeur.",
+    "form": "a menti",
+    "en": "Yesterday Paul lied to his teacher.",
+    "fa": "دیروز پل به معلمش دروغ گفت."
+   },
+   "future": {
+    "fr": "Cet après-midi, il mentira à son ami.",
+    "form": "mentira",
+    "en": "This afternoon he will lie to his friend.",
+    "fa": "امروز بعدازظهر او به دوستش دروغ خواهد گفت."
+   }
+  },
+  {
+   "key": "v:utiliser",
+   "fa": "استفاده کردن",
+   "prep": null,
+   "construction": "utiliser quelque chose",
+   "past": {
+    "fr": "Samedi dernier, j'ai utilisé ton stylo.",
+    "form": "ai utilisé",
+    "en": "Last Saturday I used your pen.",
+    "fa": "شنبه گذشته از خودکار تو استفاده کردم."
+   },
+   "future": {
+    "fr": "Demain, nous utiliserons l'ordinateur.",
+    "form": "utiliserons",
+    "en": "Tomorrow we will use the computer.",
+    "fa": "فردا از کامپیوتر استفاده خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:coucher",
+   "fa": "خواباندن",
+   "prep": null,
+   "construction": "coucher quelqu'un",
+   "past": {
+    "fr": "Hier soir, j'ai couché les enfants à huit heures.",
+    "form": "ai couché",
+    "en": "Last night I put the children to bed at eight o'clock.",
+    "fa": "دیشب بچه‌ها را ساعت هشت خواباندم."
+   },
+   "future": {
+    "fr": "Ce soir, elle couchera le bébé.",
+    "form": "couchera",
+    "en": "Tonight she will put the baby to bed.",
+    "fa": "امشب او بچه را خواهد خواباند."
+   }
+  },
+  {
+   "key": "v:préférer",
+   "fa": "ترجیح دادن",
+   "prep": null,
+   "construction": "préférer quelque chose",
+   "past": {
+    "fr": "L'été dernier, j'ai préféré le thé.",
+    "form": "ai préféré",
+    "en": "Last summer I preferred the tea.",
+    "fa": "تابستان گذشته چای را ترجیح دادم."
+   },
+   "future": {
+    "fr": "Bientôt, elle préférera la mer.",
+    "form": "préférera",
+    "en": "Soon she will prefer the sea.",
+    "fa": "به‌زودی او دریا را ترجیح خواهد داد."
+   }
+  },
+  {
+   "key": "v:offrir",
+   "fa": "هدیه دادن",
+   "prep": "à",
+   "construction": "offrir quelque chose à quelqu'un",
+   "past": {
+    "fr": "Hier, j'ai offert des fleurs à ma mère.",
+    "form": "ai offert",
+    "en": "Yesterday I gave flowers to my mother.",
+    "fa": "دیروز به مادرم گل هدیه دادم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, nous offrirons un livre à Paul.",
+    "form": "offrirons",
+    "en": "Next week we will give Paul a book.",
+    "fa": "هفته آینده به پل یک کتاب هدیه خواهیم داد."
+   }
+  },
+  {
+   "key": "v:réveiller",
+   "fa": "بیدار کردن",
+   "prep": null,
+   "construction": "réveiller quelqu'un",
+   "past": {
+    "fr": "Ce matin, j'ai réveillé mon fils à sept heures.",
+    "form": "ai réveillé",
+    "en": "This morning I woke my son up at seven o'clock.",
+    "fa": "امروز صبح پسرم را ساعت هفت بیدار کردم."
+   },
+   "future": {
+    "fr": "Demain, le bruit réveillera le bébé.",
+    "form": "réveillera",
+    "en": "Tomorrow the noise will wake the baby.",
+    "fa": "فردا صدا بچه را بیدار خواهد کرد."
+   }
+  },
+  {
+   "key": "v:préparer",
+   "fa": "آماده کردن، تهیه کردن",
+   "prep": null,
+   "construction": "préparer quelque chose",
+   "past": {
+    "fr": "Il y a deux jours, nous avons préparé le dîner.",
+    "form": "avons préparé",
+    "en": "Two days ago we prepared dinner.",
+    "fa": "دو روز پیش شام را آماده کردیم."
+   },
+   "future": {
+    "fr": "Samedi prochain, elle préparera un gâteau.",
+    "form": "préparera",
+    "en": "Next Saturday she will make a cake.",
+    "fa": "شنبه آینده او یک کیک درست خواهد کرد."
+   }
+  },
+  {
+   "key": "v:permettre",
+   "fa": "اجازه دادن",
+   "prep": "à",
+   "construction": "permettre à quelqu'un de + infinitif",
+   "past": {
+    "fr": "Cet après-midi, ma mère a permis à Paul de sortir.",
+    "form": "a permis",
+    "en": "This afternoon my mother allowed Paul to go out.",
+    "fa": "امروز بعدازظهر مادرم به پل اجازه داد بیرون برود."
+   },
+   "future": {
+    "fr": "Le mois prochain, le médecin permettra à Léa de manger.",
+    "form": "permettra",
+    "en": "Next month the doctor will allow Léa to eat.",
+    "fa": "ماه آینده دکتر به لیا اجازه خواهد داد غذا بخورد."
+   }
+  },
+  {
+   "key": "v:ramener",
+   "fa": "برگرداندن",
+   "prep": null,
+   "construction": "ramener quelqu'un ou quelque chose",
+   "past": {
+    "fr": "Hier, j'ai ramené le chien à la maison.",
+    "form": "ai ramené",
+    "en": "Yesterday I took the dog back home.",
+    "fa": "دیروز سگ را به خانه برگرداندم."
+   },
+   "future": {
+    "fr": "Ce soir, il ramènera ses enfants.",
+    "form": "ramènera",
+    "en": "Tonight he will bring his children back.",
+    "fa": "امشب او بچه‌هایش را برخواهد گرداند."
+   }
+  },
+  {
+   "key": "v:enlever",
+   "fa": "درآوردن، برداشتن",
+   "prep": null,
+   "construction": "enlever quelque chose",
+   "past": {
+    "fr": "Tout à l'heure, j'ai enlevé mes chaussures.",
+    "form": "ai enlevé",
+    "en": "A moment ago I took off my shoes.",
+    "fa": "کمی پیش کفش‌هایم را درآوردم."
+   },
+   "future": {
+    "fr": "Demain, nous enlèverons la neige.",
+    "form": "enlèverons",
+    "en": "Tomorrow we will clear away the snow.",
+    "fa": "فردا برف را پاک خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:lâcher",
+   "fa": "رها کردن",
+   "prep": null,
+   "construction": "lâcher quelque chose",
+   "past": {
+    "fr": "Le mois dernier, l'enfant a lâché ma main.",
+    "form": "a lâché",
+    "en": "Last month the child let go of my hand.",
+    "fa": "ماه گذشته بچه دستم را رها کرد."
+   },
+   "future": {
+    "fr": "Dans deux jours, tu lâcheras la corde.",
+    "form": "lâcheras",
+    "en": "In two days you will let go of the rope.",
+    "fa": "دو روز دیگر طناب را رها خواهی کرد."
+   }
+  },
+  {
+   "key": "v:choisir",
+   "fa": "انتخاب کردن",
+   "prep": null,
+   "construction": "choisir quelque chose",
+   "past": {
+    "fr": "Hier, j'ai choisi une robe bleue.",
+    "form": "ai choisi",
+    "en": "Yesterday I chose a blue dress.",
+    "fa": "دیروز یک لباس آبی انتخاب کردم."
+   },
+   "future": {
+    "fr": "Lundi prochain, vous choisirez un film.",
+    "form": "choisirez",
+    "en": "Next Monday you will choose a film.",
+    "fa": "دوشنبه آینده شما یک فیلم انتخاب خواهید کرد."
+   }
+  },
+  {
+   "key": "v:conduire",
+   "fa": "رانندگی کردن، راندن",
+   "prep": null,
+   "construction": "conduire une voiture",
+   "past": {
+    "fr": "La semaine dernière, mon père a conduit la voiture.",
+    "form": "a conduit",
+    "en": "Last week my father drove the car.",
+    "fa": "هفته پیش پدرم ماشین را راند."
+   },
+   "future": {
+    "fr": "Demain, je conduirai la voiture de Paul.",
+    "form": "conduirai",
+    "en": "Tomorrow I will drive Paul's car.",
+    "fa": "فردا ماشین پل را خواهم راند."
+   }
+  },
+  {
+   "key": "v:calmer",
+   "fa": "آرام کردن",
+   "prep": null,
+   "construction": "calmer quelqu'un",
+   "past": {
+    "fr": "Samedi dernier, la mère a calmé le bébé.",
+    "form": "a calmé",
+    "en": "Last Saturday the mother calmed the baby.",
+    "fa": "شنبه گذشته مادر بچه را آرام کرد."
+   },
+   "future": {
+    "fr": "Cet après-midi, la musique calmera Paul.",
+    "form": "calmera",
+    "en": "This afternoon the music will calm Paul.",
+    "fa": "امروز بعدازظهر موسیقی پل را آرام خواهد کرد."
+   }
+  },
+  {
+   "key": "v:chanter",
+   "fa": "آواز خواندن",
+   "prep": null,
+   "construction": "chanter une chanson",
+   "past": {
+    "fr": "Hier soir, nous avons chanté une chanson.",
+    "form": "avons chanté",
+    "en": "Last night we sang a song.",
+    "fa": "دیشب یک آهنگ خواندیم."
+   },
+   "future": {
+    "fr": "Bientôt, elle chantera à l'école.",
+    "form": "chantera",
+    "en": "Soon she will sing at school.",
+    "fa": "به‌زودی او در مدرسه آواز خواهد خواند."
+   }
+  },
+  {
+   "key": "v:disparaître",
+   "fa": "ناپدید شدن",
+   "prep": null,
+   "construction": "disparaître",
+   "past": {
+    "fr": "Hier, mon stylo a disparu.",
+    "form": "a disparu",
+    "en": "Yesterday my pen disappeared.",
+    "fa": "دیروز خودکارم ناپدید شد."
+   },
+   "future": {
+    "fr": "Demain, la neige disparaîtra.",
+    "form": "disparaîtra",
+    "en": "Tomorrow the snow will disappear.",
+    "fa": "فردا برف از بین خواهد رفت."
+   }
+  },
+  {
+   "key": "v:lever",
+   "fa": "بالا بردن",
+   "prep": null,
+   "construction": "lever quelque chose",
+   "past": {
+    "fr": "Ce matin, j'ai levé la main.",
+    "form": "ai levé",
+    "en": "This morning I raised my hand.",
+    "fa": "امروز صبح دستم را بالا بردم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, les élèves lèveront la main.",
+    "form": "lèveront",
+    "en": "Next week the pupils will raise their hands.",
+    "fa": "هفته آینده دانش‌آموزان دستشان را بالا خواهند برد."
+   }
+  },
+  {
+   "key": "v:présenter",
+   "fa": "معرفی کردن",
+   "prep": "à",
+   "construction": "présenter quelqu'un à quelqu'un",
+   "past": {
+    "fr": "L'été dernier, j'ai présenté Paul à ma mère.",
+    "form": "ai présenté",
+    "en": "Last summer I introduced Paul to my mother.",
+    "fa": "تابستان گذشته پل را به مادرم معرفی کردم."
+   },
+   "future": {
+    "fr": "Samedi prochain, elle présentera son ami à Marie.",
+    "form": "présentera",
+    "en": "Next Saturday she will introduce her friend to Marie.",
+    "fa": "شنبه آینده او دوستش را به ماری معرفی خواهد کرد."
+   }
+  },
+  {
+   "key": "v:accepter",
+   "fa": "پذیرفتن",
+   "prep": null,
+   "construction": "accepter quelque chose",
+   "past": {
+    "fr": "Il y a deux jours, Paul a accepté mon invitation.",
+    "form": "a accepté",
+    "en": "Two days ago Paul accepted my invitation.",
+    "fa": "دو روز پیش پل دعوت مرا پذیرفت."
+   },
+   "future": {
+    "fr": "Demain, elle acceptera le cadeau.",
+    "form": "acceptera",
+    "en": "Tomorrow she will accept the gift.",
+    "fa": "فردا او هدیه را خواهد پذیرفت."
+   }
+  },
+  {
+   "key": "v:revoir",
+   "fa": "دوباره دیدن",
+   "prep": null,
+   "construction": "revoir quelqu'un ou quelque chose",
+   "past": {
+    "fr": "Hier, j'ai revu mon ancien professeur.",
+    "form": "ai revu",
+    "en": "Yesterday I saw my old teacher again.",
+    "fa": "دیروز معلم سابقم را دوباره دیدم."
+   },
+   "future": {
+    "fr": "Le mois prochain, nous reverrons ce film.",
+    "form": "reverrons",
+    "en": "Next month we will watch this film again.",
+    "fa": "ماه آینده این فیلم را دوباره خواهیم دید."
+   }
+  },
+  {
+   "key": "v:casser",
+   "fa": "شکستن",
+   "prep": null,
+   "construction": "casser quelque chose",
+   "past": {
+    "fr": "Cet après-midi, Paul a cassé une assiette.",
+    "form": "a cassé",
+    "en": "This afternoon Paul broke a plate.",
+    "fa": "امروز بعدازظهر پل یک بشقاب شکست."
+   },
+   "future": {
+    "fr": "Ce soir, nous casserons des noix.",
+    "form": "casserons",
+    "en": "Tonight we will crack some nuts.",
+    "fa": "امشب گردو خواهیم شکست."
+   }
+  },
+  {
+   "key": "v:frapper",
+   "fa": "زدن، در زدن",
+   "prep": "à",
+   "construction": "frapper à la porte",
+   "past": {
+    "fr": "Tout à l'heure, quelqu'un a frappé à la porte.",
+    "form": "a frappé",
+    "en": "A moment ago someone knocked at the door.",
+    "fa": "کمی پیش کسی در زد."
+   },
+   "future": {
+    "fr": "Dans deux jours, tu frapperas à la porte.",
+    "form": "frapperas",
+    "en": "In two days you will knock at the door.",
+    "fa": "دو روز دیگر در خواهی زد."
+   }
+  },
+  {
+   "key": "v:ignorer",
+   "fa": "نادیده گرفتن، ندانستن",
+   "prep": null,
+   "construction": "ignorer quelqu'un ou quelque chose",
+   "past": {
+    "fr": "Ce matin, le chat a ignoré le chien.",
+    "form": "a ignoré",
+    "en": "This morning the cat ignored the dog.",
+    "fa": "امروز صبح گربه سگ را نادیده گرفت."
+   },
+   "future": {
+    "fr": "Demain, tu ignoreras le bruit.",
+    "form": "ignoreras",
+    "en": "Tomorrow you will ignore the noise.",
+    "fa": "فردا صدا را نادیده خواهی گرفت."
+   }
+  },
+  {
+   "key": "v:couper",
+   "fa": "بریدن",
+   "prep": null,
+   "construction": "couper quelque chose",
+   "past": {
+    "fr": "Hier, j'ai coupé du pain.",
+    "form": "ai coupé",
+    "en": "Yesterday I cut some bread.",
+    "fa": "دیروز نان بریدم."
+   },
+   "future": {
+    "fr": "Lundi prochain, nous couperons le gâteau.",
+    "form": "couperons",
+    "en": "Next Monday we will cut the cake.",
+    "fa": "دوشنبه آینده کیک را خواهیم برید."
+   }
+  },
+  {
+   "key": "v:taire",
+   "fa": "ساکت شدن، ساکت بودن",
+   "prep": null,
+   "construction": "se taire",
+   "past": {
+    "fr": "Le mois dernier, Paul s'est tu pendant le repas.",
+    "form": "s'est tu",
+    "en": "Last month Paul stayed quiet during the meal.",
+    "fa": "ماه گذشته پل در طول غذا ساکت ماند."
+   },
+   "future": {
+    "fr": "Cet après-midi, elle se taira pendant le film.",
+    "form": "se taira",
+    "en": "This afternoon she will stay quiet during the film.",
+    "fa": "امروز بعدازظهر او در طول فیلم ساکت خواهد ماند."
+   },
+   "meaningNote": "to be silent, to fall silent (se taire)"
+  },
+  {
+   "key": "v:tromper",
+   "fa": "فریب دادن، گمراه کردن",
+   "prep": null,
+   "construction": "tromper quelqu'un",
+   "past": {
+    "fr": "La semaine dernière, ce faux message a trompé ma sœur.",
+    "form": "a trompé",
+    "en": "Last week this fake message fooled my sister.",
+    "fa": "هفته پیش این پیام جعلی خواهرم را فریب داد."
+   },
+   "future": {
+    "fr": "Demain, ce panneau trompera les touristes.",
+    "form": "trompera",
+    "en": "Tomorrow this sign will mislead the tourists.",
+    "fa": "فردا این تابلو گردشگران را گمراه خواهد کرد."
+   }
+  },
+  {
+   "key": "v:ressembler",
+   "fa": "شبیه بودن",
+   "prep": "à",
+   "construction": "ressembler à quelqu'un",
+   "past": {
+    "fr": "Hier, Paul a ressemblé à un clown.",
+    "form": "a ressemblé",
+    "en": "Yesterday Paul looked like a clown.",
+    "fa": "دیروز پل شبیه یک دلقک بود."
+   },
+   "future": {
+    "fr": "Un jour, ce bébé ressemblera à son père.",
+    "form": "ressemblera",
+    "en": "One day this baby will look like his father.",
+    "fa": "روزی این نوزاد شبیه پدرش خواهد بود."
+   }
+  },
+  {
+   "key": "v:jurer",
+   "fa": "قسم خوردن",
+   "prep": "de",
+   "construction": "jurer de + infinitif",
+   "past": {
+    "fr": "Samedi dernier, j'ai juré de dire la vérité.",
+    "form": "ai juré",
+    "en": "Last Saturday I swore to tell the truth.",
+    "fa": "شنبه گذشته قسم خوردم که حقیقت را بگویم."
+   },
+   "future": {
+    "fr": "Bientôt, il jurera de revenir.",
+    "form": "jurera",
+    "en": "Soon he will swear to come back.",
+    "fa": "به‌زودی او قسم خواهد خورد که برگردد."
+   }
+  },
+  {
+   "key": "v:courir",
+   "fa": "دویدن",
+   "prep": null,
+   "construction": "courir + lieu",
+   "past": {
+    "fr": "L'été dernier, nous avons couru dans le parc.",
+    "form": "avons couru",
+    "en": "Last summer we ran in the park.",
+    "fa": "تابستان گذشته در پارک دویدیم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, tu courras avec Paul.",
+    "form": "courras",
+    "en": "Next week you will run with Paul.",
+    "fa": "هفته آینده با پل خواهی دوید."
+   }
+  },
+  {
+   "key": "v:remettre",
+   "fa": "دوباره گذاشتن، تحویل دادن",
+   "prep": null,
+   "construction": "remettre quelque chose",
+   "past": {
+    "fr": "Hier, j'ai remis le livre sur l'étagère.",
+    "form": "ai remis",
+    "en": "Yesterday I put the book back on the shelf.",
+    "fa": "دیروز کتاب را دوباره روی قفسه گذاشتم."
+   },
+   "future": {
+    "fr": "Demain, elle remettra son manteau.",
+    "form": "remettra",
+    "en": "Tomorrow she will put her coat back on.",
+    "fa": "فردا او کتش را دوباره خواهد پوشید."
+   }
+  },
+  {
+   "key": "v:refuser",
+   "fa": "رد کردن، امتناع کردن",
+   "prep": "de",
+   "construction": "refuser de + infinitif",
+   "past": {
+    "fr": "Il y a deux jours, Paul a refusé de manger.",
+    "form": "a refusé",
+    "en": "Two days ago Paul refused to eat.",
+    "fa": "دو روز پیش پل از غذا خوردن امتناع کرد."
+   },
+   "future": {
+    "fr": "Samedi prochain, elle refusera de venir.",
+    "form": "refusera",
+    "en": "Next Saturday she will refuse to come.",
+    "fa": "شنبه آینده او از آمدن امتناع خواهد کرد."
+   }
+  },
+  {
+   "key": "v:terminer",
+   "fa": "به پایان رساندن",
+   "prep": null,
+   "construction": "terminer quelque chose",
+   "past": {
+    "fr": "Cet après-midi, nous avons terminé le projet.",
+    "form": "avons terminé",
+    "en": "This afternoon we finished the project.",
+    "fa": "امروز بعدازظهر پروژه را به پایان رساندیم."
+   },
+   "future": {
+    "fr": "Le mois prochain, elle terminera ses devoirs.",
+    "form": "terminera",
+    "en": "Next month she will finish her homework.",
+    "fa": "ماه آینده او تکالیفش را تمام خواهد کرد."
+   }
+  },
+  {
+   "key": "v:amuser",
+   "fa": "سرگرم کردن",
+   "prep": null,
+   "construction": "amuser quelqu'un",
+   "past": {
+    "fr": "Hier, ce clown a amusé les enfants.",
+    "form": "a amusé",
+    "en": "Yesterday this clown entertained the children.",
+    "fa": "دیروز این دلقک بچه‌ها را سرگرم کرد."
+   },
+   "future": {
+    "fr": "Demain, le jeu amusera Paul.",
+    "form": "amusera",
+    "en": "Tomorrow the game will amuse Paul.",
+    "fa": "فردا بازی پل را سرگرم خواهد کرد."
+   }
+  },
+  {
+   "key": "v:intéresser",
+   "fa": "علاقه‌مند کردن، جالب بودن",
+   "prep": null,
+   "construction": "intéresser quelqu'un",
+   "past": {
+    "fr": "Tout à l'heure, ce film a intéressé les élèves.",
+    "form": "a intéressé",
+    "en": "A moment ago this film interested the pupils.",
+    "fa": "کمی پیش این فیلم دانش‌آموزان را علاقه‌مند کرد."
+   },
+   "future": {
+    "fr": "Dans deux jours, cette histoire intéressera Paul.",
+    "form": "intéressera",
+    "en": "In two days this story will interest Paul.",
+    "fa": "دو روز دیگر این داستان پل را علاقه‌مند خواهد کرد."
+   }
+  },
+  {
+   "key": "v:reconnaître",
+   "fa": "شناختن، تشخیص دادن",
+   "prep": null,
+   "construction": "reconnaître quelqu'un",
+   "past": {
+    "fr": "Le mois dernier, j'ai reconnu ma voisine.",
+    "form": "ai reconnu",
+    "en": "Last month I recognised my neighbour.",
+    "fa": "ماه گذشته همسایه‌ام را شناختم."
+   },
+   "future": {
+    "fr": "Lundi prochain, tu reconnaîtras sa voix.",
+    "form": "reconnaîtras",
+    "en": "Next Monday you will recognise his voice.",
+    "fa": "دوشنبه آینده صدای او را خواهی شناخت."
+   }
+  },
+  {
+   "key": "v:rire",
+   "fa": "خندیدن",
+   "prep": null,
+   "construction": "rire",
+   "past": {
+    "fr": "Hier, nous avons ri en classe.",
+    "form": "avons ri",
+    "en": "Yesterday we laughed in class.",
+    "fa": "دیروز در کلاس خندیدیم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, tu riras avec Paul.",
+    "form": "riras",
+    "en": "Next week you will laugh with Paul.",
+    "fa": "هفته آینده با پل خواهی خندید."
+   }
+  },
+  {
+   "key": "v:pardonner",
+   "fa": "بخشیدن",
+   "prep": "à",
+   "construction": "pardonner à quelqu'un",
+   "past": {
+    "fr": "La semaine dernière, j'ai pardonné à mon frère.",
+    "form": "ai pardonné",
+    "en": "Last week I forgave my brother.",
+    "fa": "هفته پیش برادرم را بخشیدم."
+   },
+   "future": {
+    "fr": "Cet après-midi, elle pardonnera à Paul.",
+    "form": "pardonnera",
+    "en": "This afternoon she will forgive Paul.",
+    "fa": "امروز بعدازظهر او پل را خواهد بخشید."
+   }
+  },
+  {
+   "key": "v:embrasser",
+   "fa": "بوسیدن، در آغوش گرفتن",
+   "prep": null,
+   "construction": "embrasser quelqu'un",
+   "past": {
+    "fr": "Samedi dernier, j'ai embrassé ma grand-mère.",
+    "form": "ai embrassé",
+    "en": "Last Saturday I kissed my grandmother.",
+    "fa": "شنبه گذشته مادربزرگم را بوسیدم."
+   },
+   "future": {
+    "fr": "Bientôt, elle embrassera son père.",
+    "form": "embrassera",
+    "en": "Soon she will kiss her father.",
+    "fa": "به‌زودی او پدرش را خواهد بوسید."
+   },
+   "meaningNote": "to kiss (also: to hug)"
+  },
+  {
+   "key": "v:danser",
+   "fa": "رقصیدن",
+   "prep": null,
+   "construction": "danser avec quelqu'un",
+   "past": {
+    "fr": "Hier soir, nous avons dansé à la fête.",
+    "form": "avons dansé",
+    "en": "Last night we danced at the party.",
+    "fa": "دیشب در مهمانی رقصیدیم."
+   },
+   "future": {
+    "fr": "Demain, elle dansera avec Paul.",
+    "form": "dansera",
+    "en": "Tomorrow she will dance with Paul.",
+    "fa": "فردا او با پل خواهد رقصید."
+   }
+  },
+  {
+   "key": "v:exister",
+   "fa": "وجود داشتن",
+   "prep": null,
+   "construction": "exister",
+   "past": {
+    "fr": "Pendant dix ans, ce café a existé ici.",
+    "form": "a existé",
+    "en": "For ten years this café existed here.",
+    "fa": "ده سال این کافه اینجا وجود داشت."
+   },
+   "future": {
+    "fr": "Un jour, ce nouveau métro existera.",
+    "form": "existera",
+    "en": "One day this new metro will exist.",
+    "fa": "روزی این مترو وجود خواهد داشت."
+   }
+  },
+  {
+   "key": "v:réussir",
+   "fa": "موفق شدن",
+   "prep": "à",
+   "construction": "réussir à + infinitif",
+   "past": {
+    "fr": "Hier, j'ai réussi à ouvrir la porte.",
+    "form": "ai réussi",
+    "en": "Yesterday I managed to open the door.",
+    "fa": "دیروز موفق شدم در را باز کنم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, elle réussira son examen.",
+    "form": "réussira",
+    "en": "Next week she will pass her exam.",
+    "fa": "هفته آینده او در امتحانش موفق خواهد شد."
+   }
+  },
+  {
+   "key": "v:protéger",
+   "fa": "محافظت کردن",
+   "prep": "contre",
+   "construction": "protéger quelqu'un contre quelque chose",
+   "past": {
+    "fr": "L'été dernier, le toit a protégé les enfants contre la pluie.",
+    "form": "a protégé",
+    "en": "Last summer the roof protected the children from the rain.",
+    "fa": "تابستان گذشته سقف در برابر باران از بچه‌ها محافظت کرد."
+   },
+   "future": {
+    "fr": "Samedi prochain, ce chapeau protégera Léa contre le soleil.",
+    "form": "protégera",
+    "en": "Next Saturday this hat will protect Léa from the sun.",
+    "fa": "شنبه آینده این کلاه در برابر آفتاب از لیا محافظت خواهد کرد."
+   }
+  },
+  {
+   "key": "v:prévenir",
+   "fa": "خبر دادن، هشدار دادن",
+   "prep": "de",
+   "construction": "prévenir quelqu'un de quelque chose",
+   "past": {
+    "fr": "Il y a deux jours, j'ai prévenu ma mère de mon retard.",
+    "form": "ai prévenu",
+    "en": "Two days ago I told my mother I would be late.",
+    "fa": "دو روز پیش مادرم را از دیر آمدنم باخبر کردم."
+   },
+   "future": {
+    "fr": "Lundi prochain, nous préviendrons Paul.",
+    "form": "préviendrons",
+    "en": "Next Monday we will let Paul know.",
+    "fa": "دوشنبه آینده به پل خبر خواهیم داد."
+   }
+  },
+  {
+   "key": "v:habiter",
+   "fa": "سکونت داشتن، زندگی کردن",
+   "prep": "à",
+   "construction": "habiter à + ville",
+   "past": {
+    "fr": "L'année dernière, nous avons habité à Marseille.",
+    "form": "avons habité",
+    "en": "Last year we lived in Marseille.",
+    "fa": "پارسال در مارسی ساکن بودیم."
+   },
+   "future": {
+    "fr": "L'année prochaine, elle habitera chez sa grand-mère.",
+    "form": "habitera",
+    "en": "Next year she will live at her grandmother's.",
+    "fa": "سال آینده او نزد مادربزرگش زندگی خواهد کرد."
+   }
+  },
+  {
+   "key": "v:déranger",
+   "fa": "مزاحم شدن، اذیت کردن",
+   "prep": null,
+   "construction": "déranger quelqu'un",
+   "past": {
+    "fr": "Hier, le bruit a dérangé les voisins.",
+    "form": "a dérangé",
+    "en": "Yesterday the noise disturbed the neighbours.",
+    "fa": "دیروز صدا مزاحم همسایه‌ها شد."
+   },
+   "future": {
+    "fr": "Le mois prochain, la musique dérangera le bébé.",
+    "form": "dérangera",
+    "en": "Next month the music will disturb the baby.",
+    "fa": "ماه آینده موسیقی مزاحم بچه خواهد شد."
+   }
+  },
+  {
+   "key": "v:reprendre",
+   "fa": "دوباره گرفتن، از سر گرفتن",
+   "prep": null,
+   "construction": "reprendre quelque chose",
+   "past": {
+    "fr": "Ce midi, nous avons repris du riz.",
+    "form": "avons repris",
+    "en": "At lunch today we had more rice.",
+    "fa": "امروز ظهر باز هم برنج برداشتیم."
+   },
+   "future": {
+    "fr": "Dans deux jours, les cours reprendront à huit heures.",
+    "form": "reprendront",
+    "en": "In two days classes will start again at eight o'clock.",
+    "fa": "دو روز دیگر کلاس‌ها ساعت هشت دوباره شروع خواهند شد."
+   }
+  },
+  {
+   "key": "v:détruire",
+   "fa": "ویران کردن، خراب کردن",
+   "prep": null,
+   "construction": "détruire quelque chose",
+   "past": {
+    "fr": "Cet après-midi, la tempête a détruit le vieux mur.",
+    "form": "a détruit",
+    "en": "This afternoon the storm destroyed the old wall.",
+    "fa": "امروز بعدازظهر طوفان دیوار قدیمی را ویران کرد."
+   },
+   "future": {
+    "fr": "Demain, ils détruiront la vieille maison.",
+    "form": "détruiront",
+    "en": "Tomorrow they will tear down the old house.",
+    "fa": "فردا آن‌ها خانه قدیمی را خراب خواهند کرد."
+   }
+  },
+  {
+   "key": "v:pousser",
+   "fa": "هل دادن، روییدن",
+   "prep": null,
+   "construction": "pousser quelque chose",
+   "past": {
+    "fr": "Tout à l'heure, j'ai poussé la porte.",
+    "form": "ai poussé",
+    "en": "A moment ago I pushed the door.",
+    "fa": "کمی پیش در را هل دادم."
+   },
+   "future": {
+    "fr": "Au printemps, les fleurs pousseront.",
+    "form": "pousseront",
+    "en": "In spring the flowers will grow.",
+    "fa": "در بهار گل‌ها خواهند رویید."
+   }
+  },
+  {
+   "key": "v:découvrir",
+   "fa": "کشف کردن",
+   "prep": null,
+   "construction": "découvrir quelque chose",
+   "past": {
+    "fr": "Hier, nous avons découvert un petit café.",
+    "form": "avons découvert",
+    "en": "Yesterday we discovered a little café.",
+    "fa": "دیروز یک کافه کوچک کشف کردیم."
+   },
+   "future": {
+    "fr": "Lundi prochain, tu découvriras la ville.",
+    "form": "découvriras",
+    "en": "Next Monday you will discover the city.",
+    "fa": "دوشنبه آینده شهر را کشف خواهی کرد."
+   }
+  },
+  {
+   "key": "v:sauter",
+   "fa": "پریدن",
+   "prep": null,
+   "construction": "sauter + lieu",
+   "past": {
+    "fr": "Le mois dernier, le chat a sauté sur la table.",
+    "form": "a sauté",
+    "en": "Last month the cat jumped onto the table.",
+    "fa": "ماه گذشته گربه روی میز پرید."
+   },
+   "future": {
+    "fr": "Cet après-midi, nous sauterons à la corde.",
+    "form": "sauterons",
+    "en": "This afternoon we will skip rope.",
+    "fa": "امروز بعدازظهر طناب‌بازی خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:rêver",
+   "fa": "خواب دیدن، رویا دیدن",
+   "prep": "de",
+   "construction": "rêver de quelque chose",
+   "past": {
+    "fr": "Cette nuit, j'ai rêvé de la mer.",
+    "form": "ai rêvé",
+    "en": "Last night I dreamed about the sea.",
+    "fa": "دیشب خواب دریا را دیدم."
+   },
+   "future": {
+    "fr": "Ce soir, tu rêveras de tes vacances.",
+    "form": "rêveras",
+    "en": "Tonight you will dream about your holidays.",
+    "fa": "امشب خواب تعطیلاتت را خواهی دید."
+   }
+  },
+  {
+   "key": "v:détester",
+   "fa": "متنفر بودن، بدم آمدن",
+   "prep": null,
+   "construction": "détester quelque chose",
+   "past": {
+    "fr": "La semaine dernière, j'ai détesté ce film.",
+    "form": "ai détesté",
+    "en": "Last week I hated this film.",
+    "fa": "هفته پیش از این فیلم بدم آمد."
+   },
+   "future": {
+    "fr": "Demain, il détestera la pluie.",
+    "form": "détestera",
+    "en": "Tomorrow he will hate the rain.",
+    "fa": "فردا او از باران بدش خواهد آمد."
+   }
+  },
+  {
+   "key": "v:paraître",
+   "fa": "به نظر رسیدن، منتشر شدن",
+   "prep": null,
+   "construction": "paraître + adjectif",
+   "past": {
+    "fr": "Hier, Marie a paru contente.",
+    "form": "a paru",
+    "en": "Yesterday Marie seemed happy.",
+    "fa": "دیروز ماری خوشحال به نظر رسید."
+   },
+   "future": {
+    "fr": "Bientôt, ce journal paraîtra à six heures.",
+    "form": "paraîtra",
+    "en": "Soon this newspaper will come out at six o'clock.",
+    "fa": "به‌زودی این روزنامه ساعت شش منتشر خواهد شد."
+   }
+  },
+  {
+   "key": "v:empêcher",
+   "fa": "جلوگیری کردن، مانع شدن",
+   "prep": "de",
+   "construction": "empêcher quelqu'un de + infinitif",
+   "past": {
+    "fr": "Samedi dernier, la pluie a empêché Paul de sortir.",
+    "form": "a empêché",
+    "en": "Last Saturday the rain stopped Paul from going out.",
+    "fa": "شنبه گذشته باران مانع بیرون رفتن پل شد."
+   },
+   "future": {
+    "fr": "La semaine prochaine, le bruit empêchera Léa de dormir.",
+    "form": "empêchera",
+    "en": "Next week the noise will keep Léa from sleeping.",
+    "fa": "هفته آینده صدا مانع خوابیدن لیا خواهد شد."
+   }
+  },
+  {
+   "key": "v:maintenir",
+   "fa": "برقرار نگه داشتن",
+   "prep": null,
+   "construction": "maintenir quelque chose",
+   "past": {
+    "fr": "L'été dernier, j'ai maintenu la porte ouverte.",
+    "form": "ai maintenu",
+    "en": "Last summer I held the door open.",
+    "fa": "تابستان گذشته در را باز نگه داشتم."
+   },
+   "future": {
+    "fr": "Demain, nous maintiendrons le rendez-vous.",
+    "form": "maintiendrons",
+    "en": "Tomorrow we will keep the appointment.",
+    "fa": "فردا قرار ملاقات را همچنان برقرار خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:supposer",
+   "fa": "فرض کردن، حدس زدن",
+   "prep": null,
+   "construction": "supposer que + phrase",
+   "past": {
+    "fr": "Hier, j'ai supposé que tu dormais.",
+    "form": "ai supposé",
+    "en": "Yesterday I assumed you were sleeping.",
+    "fa": "دیروز فکر کردم که تو خوابی."
+   },
+   "future": {
+    "fr": "Samedi prochain, nous supposerons que Paul viendra.",
+    "form": "supposerons",
+    "en": "Next Saturday we will assume that Paul will come.",
+    "fa": "شنبه آینده فرض خواهیم کرد که پل خواهد آمد."
+   }
+  },
+  {
+   "key": "v:épouser",
+   "fa": "ازدواج کردن با",
+   "prep": null,
+   "construction": "épouser quelqu'un",
+   "past": {
+    "fr": "L'année dernière, Marie a épousé Paul.",
+    "form": "a épousé",
+    "en": "Last year Marie married Paul.",
+    "fa": "پارسال ماری با پل ازدواج کرد."
+   },
+   "future": {
+    "fr": "L'année prochaine, Léa épousera Marc.",
+    "form": "épousera",
+    "en": "Next year Léa will marry Marc.",
+    "fa": "سال آینده لیا با مارک ازدواج خواهد کرد."
+   }
+  },
+  {
+   "key": "v:approcher",
+   "fa": "نزدیک کردن، نزدیک شدن",
+   "prep": "de",
+   "construction": "approcher de + lieu",
+   "past": {
+    "fr": "Ce matin, j'ai approché la chaise de la table.",
+    "form": "ai approché",
+    "en": "This morning I moved the chair closer to the table.",
+    "fa": "امروز صبح صندلی را به میز نزدیک کردم."
+   },
+   "future": {
+    "fr": "Le mois prochain, nous approcherons de la montagne.",
+    "form": "approcherons",
+    "en": "Next month we will get close to the mountain.",
+    "fa": "ماه آینده به کوه نزدیک خواهیم شد."
+   }
+  },
+  {
+   "key": "v:craindre",
+   "fa": "ترسیدن",
+   "prep": null,
+   "construction": "craindre quelque chose",
+   "past": {
+    "fr": "Il y a deux jours, nous avons craint l'orage.",
+    "form": "avons craint",
+    "en": "Two days ago we feared the storm.",
+    "fa": "دو روز پیش از طوفان ترسیدیم."
+   },
+   "future": {
+    "fr": "Demain, elle craindra le froid.",
+    "form": "craindra",
+    "en": "Tomorrow she will fear the cold.",
+    "fa": "فردا او از سرما خواهد ترسید."
+   }
+  },
+  {
+   "key": "v:crier",
+   "fa": "فریاد زدن، داد زدن",
+   "prep": null,
+   "construction": "crier",
+   "past": {
+    "fr": "Cet après-midi, les enfants ont crié dans le jardin.",
+    "form": "ont crié",
+    "en": "This afternoon the children shouted in the garden.",
+    "fa": "امروز بعدازظهر بچه‌ها در باغ فریاد زدند."
+   },
+   "future": {
+    "fr": "Dans deux jours, nous crierons «bravo».",
+    "form": "crierons",
+    "en": "In two days we will shout “bravo”.",
+    "fa": "دو روز دیگر «آفرین» فریاد خواهیم زد."
+   }
+  },
+  {
+   "key": "v:inviter",
+   "fa": "دعوت کردن",
+   "prep": "à",
+   "construction": "inviter quelqu'un à + nom ou infinitif",
+   "past": {
+    "fr": "Hier, j'ai invité Paul à dîner.",
+    "form": "ai invité",
+    "en": "Yesterday I invited Paul to dinner.",
+    "fa": "دیروز پل را به شام دعوت کردم."
+   },
+   "future": {
+    "fr": "Lundi prochain, elle invitera ses amis à la fête.",
+    "form": "invitera",
+    "en": "Next Monday she will invite her friends to the party.",
+    "fa": "دوشنبه آینده او دوستانش را به مهمانی دعوت خواهد کرد."
+   }
+  },
+  {
+   "key": "v:réfléchir",
+   "fa": "فکر کردن، تأمل کردن",
+   "prep": "à",
+   "construction": "réfléchir à quelque chose",
+   "past": {
+    "fr": "Hier soir, nous avons réfléchi à ce problème.",
+    "form": "avons réfléchi",
+    "en": "Last night we thought about this problem.",
+    "fa": "دیشب درباره این مشکل فکر کردیم."
+   },
+   "future": {
+    "fr": "Demain, tu réfléchiras à ta réponse.",
+    "form": "réfléchiras",
+    "en": "Tomorrow you will think about your answer.",
+    "fa": "فردا درباره پاسخت فکر خواهی کرد."
+   }
+  },
+  {
+   "key": "v:arranger",
+   "fa": "مرتب کردن، جور کردن",
+   "prep": null,
+   "construction": "arranger quelque chose",
+   "past": {
+    "fr": "Tout à l'heure, j'ai arrangé ma chambre.",
+    "form": "ai arrangé",
+    "en": "A moment ago I tidied my room.",
+    "fa": "کمی پیش اتاقم را مرتب کردم."
+   },
+   "future": {
+    "fr": "Cet après-midi, nous arrangerons les fleurs.",
+    "form": "arrangerons",
+    "en": "This afternoon we will arrange the flowers.",
+    "fa": "امروز بعدازظهر گل‌ها را مرتب خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:naître",
+   "fa": "به دنیا آمدن",
+   "prep": null,
+   "construction": "naître + lieu ou date",
+   "past": {
+    "fr": "L'année dernière, ma petite sœur est née à Lyon.",
+    "form": "est née",
+    "en": "Last year my little sister was born in Lyon.",
+    "fa": "پارسال خواهر کوچکم در لیون به دنیا آمد."
+   },
+   "future": {
+    "fr": "L'année prochaine, un bébé naîtra dans ma famille.",
+    "form": "naîtra",
+    "en": "Next year a baby will be born in my family.",
+    "fa": "سال آینده نوزادی در خانواده من به دنیا خواهد آمد."
+   }
+  },
+  {
+   "key": "v:souffrir",
+   "fa": "رنج بردن، درد کشیدن",
+   "prep": "de",
+   "construction": "souffrir de quelque chose",
+   "past": {
+    "fr": "Le mois dernier, j'ai souffert d'un mal de dos.",
+    "form": "ai souffert",
+    "en": "Last month I suffered from a backache.",
+    "fa": "ماه گذشته از کمردرد رنج بردم."
+   },
+   "future": {
+    "fr": "Bientôt, nous souffrirons du froid.",
+    "form": "souffrirons",
+    "en": "Soon we will suffer from the cold.",
+    "fa": "به‌زودی از سرما رنج خواهیم برد."
+   }
+  },
+  {
+   "key": "v:remercier",
+   "fa": "تشکر کردن",
+   "prep": "pour",
+   "construction": "remercier quelqu'un pour quelque chose",
+   "past": {
+    "fr": "Hier, j'ai remercié Paul pour son cadeau.",
+    "form": "ai remercié",
+    "en": "Yesterday I thanked Paul for his gift.",
+    "fa": "دیروز از پل بابت هدیه‌اش تشکر کردم."
+   },
+   "future": {
+    "fr": "Demain, nous remercierons le professeur.",
+    "form": "remercierons",
+    "en": "Tomorrow we will thank the teacher.",
+    "fa": "فردا از استاد تشکر خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:baiser",
+   "exclude": true,
+   "reason": "vulgar in modern French"
+  },
+  {
+   "key": "v:attraper",
+   "fa": "گرفتن، به دام انداختن",
+   "prep": null,
+   "construction": "attraper quelque chose",
+   "past": {
+    "fr": "La semaine dernière, j'ai attrapé un rhume.",
+    "form": "ai attrapé",
+    "en": "Last week I caught a cold.",
+    "fa": "هفته پیش سرما خوردم."
+   },
+   "future": {
+    "fr": "La semaine prochaine, tu attraperas le ballon.",
+    "form": "attraperas",
+    "en": "Next week you will catch the ball.",
+    "fa": "هفته آینده توپ را خواهی گرفت."
+   }
+  },
+  {
+   "key": "v:dépêcher",
+   "fa": "عجله کردن",
+   "prep": "de",
+   "construction": "se dépêcher de + infinitif",
+   "past": {
+    "fr": "Samedi dernier, Paul s'est dépêché de partir.",
+    "form": "s'est dépêché",
+    "en": "Last Saturday Paul hurried to leave.",
+    "fa": "شنبه گذشته پل عجله کرد که برود."
+   },
+   "future": {
+    "fr": "Samedi prochain, je me dépêcherai de rentrer.",
+    "form": "me dépêcherai",
+    "en": "Next Saturday I will hurry home.",
+    "fa": "شنبه آینده عجله خواهم کرد که به خانه برگردم."
+   },
+   "meaningNote": "to hurry (se dépêcher)"
+  },
+  {
+   "key": "v:abandonner",
+   "fa": "رها کردن، کنار گذاشتن",
+   "prep": null,
+   "construction": "abandonner quelque chose",
+   "past": {
+    "fr": "Hier, Paul a abandonné le jeu.",
+    "form": "a abandonné",
+    "en": "Yesterday Paul gave up the game.",
+    "fa": "دیروز پل بازی را رها کرد."
+   },
+   "future": {
+    "fr": "Demain, nous abandonnerons ce projet.",
+    "form": "abandonnerons",
+    "en": "Tomorrow we will give up this project.",
+    "fa": "فردا این پروژه را رها خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:vérifier",
+   "fa": "بررسی کردن، چک کردن",
+   "prep": null,
+   "construction": "vérifier quelque chose",
+   "past": {
+    "fr": "L'été dernier, j'ai vérifié mon sac.",
+    "form": "ai vérifié",
+    "en": "Last summer I checked my bag.",
+    "fa": "تابستان گذشته کیفم را چک کردم."
+   },
+   "future": {
+    "fr": "Le mois prochain, nous vérifierons l'heure du train.",
+    "form": "vérifierons",
+    "en": "Next month we will check the train time.",
+    "fa": "ماه آینده ساعت قطار را بررسی خواهیم کرد."
+   }
+  },
+  {
+   "key": "v:brûler",
+   "fa": "سوزاندن، سوختن",
+   "prep": null,
+   "construction": "brûler quelque chose",
+   "past": {
+    "fr": "Il y a deux jours, j'ai brûlé le pain.",
+    "form": "ai brûlé",
+    "en": "Two days ago I burned the bread.",
+    "fa": "دو روز پیش نان را سوزاندم."
+   },
+   "future": {
+    "fr": "Ce soir, nous brûlerons du bois.",
+    "form": "brûlerons",
+    "en": "Tonight we will burn some wood.",
+    "fa": "امشب هیزم خواهیم سوزاند."
+   }
+  },
+  {
+   "key": "v:assurer",
+   "fa": "بیمه کردن، اطمینان دادن",
+   "prep": null,
+   "construction": "assurer quelque chose",
+   "past": {
+    "fr": "Hier, j'ai assuré ma maison.",
+    "form": "ai assuré",
+    "en": "Yesterday I insured my house.",
+    "fa": "دیروز خانه‌ام را بیمه کردم."
+   },
+   "future": {
+    "fr": "Dans deux jours, il assurera sa voiture.",
+    "form": "assurera",
+    "en": "In two days he will insure his car.",
+    "fa": "دو روز دیگر او ماشینش را بیمه خواهد کرد."
+   }
+  },
+  {
+   "key": "v:traiter",
+   "fa": "درمان کردن، پرداختن به",
+   "prep": null,
+   "construction": "traiter quelqu'un ou quelque chose",
+   "past": {
+    "fr": "Cet après-midi, le docteur a traité mon rhume.",
+    "form": "a traité",
+    "en": "This afternoon the doctor treated my cold.",
+    "fa": "امروز بعدازظهر دکتر سرماخوردگی‌ام را درمان کرد."
+   },
+   "future": {
+    "fr": "Demain, nous traiterons ce sujet.",
+    "form": "traiterons",
+    "en": "Tomorrow we will deal with this subject.",
+    "fa": "فردا به این موضوع خواهیم پرداخت."
+   }
+  },
+  {
+   "key": "v:blesser",
+   "fa": "زخمی کردن، رنجاندن",
+   "prep": null,
+   "construction": "blesser quelqu'un",
+   "past": {
+    "fr": "Tout à l'heure, ta remarque a blessé Paul.",
+    "form": "a blessé",
+    "en": "A moment ago your remark hurt Paul's feelings.",
+    "fa": "کمی پیش حرف تو پل را رنجاند."
+   },
+   "future": {
+    "fr": "Lundi prochain, ces chaussures blesseront mes pieds.",
+    "form": "blesseront",
+    "en": "Next Monday these shoes will hurt my feet.",
+    "fa": "دوشنبه آینده این کفش‌ها پاهایم را زخم خواهند کرد."
+   }
+  },
+  {
+   "key": "v:dégager",
+   "fa": "آزاد کردن، پاک کردن",
+   "prep": null,
+   "construction": "dégager quelque chose",
+   "past": {
+    "fr": "Hier, nous avons dégagé la route.",
+    "form": "avons dégagé",
+    "en": "Yesterday we cleared the road.",
+    "fa": "دیروز راه را باز کردیم."
+   },
+   "future": {
+    "fr": "Cet après-midi, il dégagera la neige devant la porte.",
+    "form": "dégagera",
+    "en": "This afternoon he will clear the snow in front of the door.",
+    "fa": "امروز بعدازظهر او برف جلوی در را کنار خواهد زد."
+   }
+  },
+  {
+   "key": "v:filer",
+   "fa": "تند رفتن، ریسیدن",
+   "prep": null,
+   "construction": "filer + lieu",
+   "past": {
+    "fr": "Ce matin, le chat a filé sous la table.",
+    "form": "a filé",
+    "en": "This morning the cat dashed under the table.",
+    "fa": "امروز صبح گربه به سرعت زیر میز دوید."
+   },
+   "future": {
+    "fr": "Demain, nous filerons à la gare.",
+    "form": "filerons",
+    "en": "Tomorrow we will dash to the station.",
+    "fa": "فردا به سرعت راهی ایستگاه خواهیم شد."
+   },
+   "meaningNote": "to dash off, to speed away (informal); also to spin (thread)"
+  },
+  {
+   "key": "v:risquer",
+   "fa": "ریسک کردن، خطر کردن",
+   "prep": "de",
+   "construction": "risquer de + infinitif",
+   "past": {
+    "fr": "Le mois dernier, nous avons risqué de rater le train.",
+    "form": "avons risqué",
+    "en": "Last month we ran the risk of missing the train.",
+    "fa": "ماه گذشته در خطر از دست دادن قطار بودیم."
+   },
+   "future": {
+    "fr": "Bientôt, vous risquerez d'être en retard.",
+    "form": "risquerez",
+    "en": "Soon you will risk being late.",
+    "fa": "به‌زودی در خطر دیر کردن خواهید بود."
+   }
+  }
+ ]
+}

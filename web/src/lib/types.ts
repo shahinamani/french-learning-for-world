@@ -86,6 +86,8 @@ export type Card = {
   forms?: { past: { fr: string; form: string }; future: { fr: string; form: string } };
   /** familier, soutenu, argotique — from Wiktionary, shown as a label. */
   register?: string | null;
+  /** How the verb is used with its preposition: « penser à quelqu'un ». */
+  construction?: string | null;
   /** The meaning is a Wiktionary gloss nobody has reviewed for this deck. */
   glossUnreviewed?: boolean;
 };
