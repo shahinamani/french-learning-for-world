@@ -41,7 +41,12 @@ html, body, #root { height: 100%; }
 .timer-panel { max-width: var(--width-page); margin-inline: auto; padding: var(--space-3) var(--space-4);
   display: flex; flex-direction: column; gap: var(--space-3); border-block-start: 1px solid var(--color-line); }
 
-main { flex: 1 1 auto; min-height: 0; overflow-y: auto; }
+/* position: relative makes main the containing block of anything absolutely
+   positioned inside it (the visually-hidden step labels on the landing page),
+   so main's scroll clips them. Without it they were placed against the page,
+   stretched the document below the footer, and the page scrolled into an
+   empty band (owner, 2026-11-03). */
+main { flex: 1 1 auto; min-height: 0; overflow-y: auto; position: relative; }
 .page { max-width: var(--width-page); margin-inline: auto; padding: var(--space-4) var(--space-4) var(--space-10);
   display: flex; flex-direction: column; gap: var(--space-6); }
 .page--session { gap: var(--space-3); }
