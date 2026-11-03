@@ -8,6 +8,10 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { execFileSync } from 'node:child_process';
+import { fileURLToPath } from 'node:url';
+// fileURLToPath: the checkout path can contain a space, which a URL keeps
+// as %20 and Python then cannot open.
+const script = (name) => fileURLToPath(new URL(`../scripts/${name}`, import.meta.url));
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
 const read = (p) => JSON.parse(readFileSync(new URL(`../content/${p}`, import.meta.url), 'utf8'));
@@ -32,7 +36,7 @@ test('every level offers between 200 and 500 cards, and the count field says so'
 });
 
 test('every drafted sentence passes the table check', () => {
-  execFileSync('python3', [new URL('../scripts/check-verb-sentences.py', import.meta.url).pathname]);
+  execFileSync('python3', [script('check-verb-sentences.py')]);
 });
 
 test('a card with sentences carries both tenses, translated, and is marked as a draft', () => {
@@ -48,7 +52,7 @@ test('a card with sentences carries both tenses, translated, and is marked as a 
 
 test('the committed files are what the script builds today', () => {
   const before = LEVELS.map((l) => readFileSync(new URL(`../content/verb-cards/${l}.json`, import.meta.url), 'utf8'));
-  execFileSync('python3', [new URL('../scripts/build-verb-cards.py', import.meta.url).pathname]);
+  execFileSync('python3', [script('build-verb-cards.py')]);
   const after = LEVELS.map((l) => readFileSync(new URL(`../content/verb-cards/${l}.json`, import.meta.url), 'utf8'));
   assert.deepEqual(after, before, 'content/verb-cards is stale: run scripts/build-verb-cards.py');
 });

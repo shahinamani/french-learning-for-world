@@ -8,19 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-11-02 18:03 +03 (git metadata only, written by a Stop hook)
+- Updated: 2026-11-03 11:25 +03 (git metadata only, written by a Stop hook)
 - Branch: redesign/v1
-- HEAD: a5f414b Verb flashcards for every level, 200 to 492 each
-- Uncommitted: 19 file(s)
+- HEAD: 70a1b4a Past and future sentences on every verb card
+- Uncommitted: 10 file(s)
   -  M .ai/AI_HANDOFF.md
-  -  M content/verb-cards/A1.json
-  -  M content/verb-cards/A2.json
-  -  M content/verb-cards/B1.json
-  -  M content/verb-cards/B2.json
-  -  M content/verb-cards/C1.json
-  -  M content/verb-cards/C2.json
-  -  M scripts/build-verb-cards.py
-  - … and 11 more
+  -  M tests/verb-cards.test.js
+  -  M tests/web-modules.test.js
+  -  M web/src/components/Shell.tsx
+  -  M web/src/features/flashcards/Session.tsx
+  -  M web/src/lib/i18n.ts
+  -  M web/src/lib/locales/fa.ts
+  -  M web/src/lib/locales/fr.ts
+  - … and 2 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -55,6 +55,10 @@ Owner asked for 200-500 cards per level. `scripts/build-verb-cards.py` builds `c
 
 Later 2026-11-02 the owner asked for real sentences on the back: `content/verb-sentences/<level>.json` holds, per verb, a passé composé and a futur sentence with en+fa translations, a Persian meaning, the usual preposition and construction (agent-drafted, NOT REVIEWED; review sheet `docs/review/verb-sentences.md`). `scripts/check-verb-sentences.py` checks every form against the tables; the build merges them in. 11 verbs held back (`exclude` + reason: vulgar/drugs/violence, and frire). Card front shows word type + preposition (« verb · + à »). 2,338 cards now.
 
+## Phase 2e: flip card and timer 2026-11-03
+
+Owner chose the "flip card" style (no reference app). `Session.tsx` card is now a 3D-flipping paper card (`.fc*` in `routes/portal.css`): tricolore band, big word + type/preposition pill on the front; back = first sense large, other senses small, construction, past|aujourd'hui|future axis (always LTR), sentences. Swipe on touch only (right Good, left Again, 96 px). Grade buttons tinted with key hints. No new package. Timer presets 5/10/20/30/45 (owner); audio is opened silently on Start (`primeAudio`) so the end chime is not blocked.
+
 ## Next step
 
 Fix « frire » in the verb tables (modelled on suffire: participle « fri », should be « frit »; also defective), then un-hold it. Nouns/adjectives decks if the owner approves the data source. Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
@@ -75,6 +79,8 @@ Fix « frire » in the verb tables (modelled on suffire: participle « fri », s
 - Prerender checks were updated: the landing no longer has the shell bar or mobile tabs.
 - The main checkout is on the stale `content/b1-neg-5-meaning` branch; do not implement there.
 - Playwright's own browser is not installed: run e2e with `CHROMIUM="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"` and `BASE=http://localhost:4173/`.
+- The worktree now lives at `.claude/worktrees/redesign-v1` (the scratchpad one was wiped by a reboot). Its path has a space: build script paths with fileURLToPath, never URL.pathname.
+- The global `kbd` rule has a light background; override it on coloured buttons (axe caught it).
 - Persian strings use Latin digits; the app substitutes them (a test enforces it).
 - Full-page screenshots need `main{overflow:visible}`: the page scrolls inside `main`.
 

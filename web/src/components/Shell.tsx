@@ -18,7 +18,7 @@ const Sidebar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ defa
 const MobileBar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.MobileBar })));
 const RouteBanner = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.RouteBanner })));
 import { TopLine } from '../routes/app/TopLine';
-import { PRESETS, DEFAULT_PRESET, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
+import { PRESETS, DEFAULT_PRESET, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime, primeAudio } from '../lib/timer';
 
 export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const { t, settings, update } = useApp();
@@ -124,7 +124,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
     // Asked once, inside the click that starts a timer, so the browser treats
     // it as the learner's own request. Refusing changes nothing else.
     try { if ('Notification' in window && Notification.permission === 'default') void Notification.requestPermission(); } catch { /* unsupported */ }
-    if (settings.sound) void chime().catch(() => {});   // prime audio in the gesture
+    if (settings.sound) primeAudio();   // open audio in the gesture; the chime plays at the end
   };
   const stop = () => { setTimer({ endsAt: 0, durationMin: selected, running: false }); clear(userId); };
 

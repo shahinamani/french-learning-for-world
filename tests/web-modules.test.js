@@ -159,7 +159,8 @@ test('remainingSeconds counts down from an absolute moment and floors at zero', 
 });
 
 test('the presets are the durations the brief asked for', () => {
-  assert.ok(PRESETS.includes(5) && PRESETS.includes(60), 'from a short session to an hour');
+  // The owner's list of 2026-11-02 (5, 10, 20, 30, 45) replaced the hour.
+  assert.deepEqual([...PRESETS], [5, 10, 20, 30, 45]);
   assert.deepEqual([...PRESETS].sort((a, b) => a - b), [...PRESETS], 'in order');
 });
 

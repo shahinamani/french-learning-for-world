@@ -338,3 +338,110 @@
 .flashcard__answer .gloss-note { margin-block-start: var(--space-3, .75rem); }
 .flashcard__pos { margin-block-start: .25rem; font-size: 1rem; color: var(--color-muted-foreground, #555); }
 .flashcard__construction { margin-block-start: .5rem; font-style: italic; }
+
+/* ── Flashcard, 2026-11-03: a paper card that turns over ──────────────────
+   The owner asked for a livelier card (flip, colour, swipe on phones). One
+   orchestrated motion — the turn — and nothing else moves on its own. */
+.page--session { gap: 1rem; }
+.fc-top { display: flex; align-items: center; gap: 0.75rem; }
+.fc-top .rail { flex: 1; height: 6px; border-radius: 999px; overflow: hidden; }
+.fc-top .rail__fill { border-radius: 999px; background: var(--fr-bleu); transition: width .3s ease; }
+.fc-top .session-count { margin: 0; font-size: 0.875rem; font-weight: 600; color: var(--color-ink-muted); }
+
+.fc-stage { perspective: 1600px; }
+.fc { position: relative; touch-action: pan-y; transition: transform .2s ease; animation: fc-in .35s cubic-bezier(.2,.7,.2,1); }
+@keyframes fc-in { from { opacity: 0; transform: translateY(12px) scale(.98); } }
+.fc__inner { display: grid; transform-style: preserve-3d; transition: transform .55s cubic-bezier(.2,.7,.2,1); }
+.fc[data-flipped="true"] .fc__inner { transform: rotateY(180deg); }
+.fc__face {
+  grid-area: 1 / 1; backface-visibility: hidden; -webkit-backface-visibility: hidden;
+  background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 18px;
+  box-shadow: 0 1px 0 var(--color-line), 0 30px 60px -36px rgb(16 33 63 / .45);
+  padding: clamp(1.25rem, 1rem + 2vw, 2.25rem); position: relative; overflow: hidden;
+}
+/* The tricolore, as a thin band along the top edge of the card. */
+.fc__face::before {
+  content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
+  background: linear-gradient(90deg, var(--fr-bleu) 0 33.3%, #fff 33.3% 66.6%, var(--fr-rouge) 66.6%);
+}
+.fc__back { transform: rotateY(180deg); }
+
+.fc__front {
+  min-height: 22rem; display: flex; flex-direction: column; align-items: center; justify-content: center;
+  text-align: center; cursor: pointer; gap: .5rem;
+  background:
+    radial-gradient(120% 80% at 50% 0%, var(--fr-bleu-soft), transparent 60%),
+    var(--color-surface);
+}
+.fc__front:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 4px; }
+.fc__meta { position: absolute; inset-block-start: 1.25rem; inset-inline-start: 1.25rem; display: flex; gap: .375rem; }
+.page--session .fc__word { margin: 0; font-size: clamp(3rem, 2rem + 5vw, 5.25rem); line-height: 1.05; color: var(--color-ink); }
+.fc__pos {
+  margin: 0; display: inline-flex; gap: .375rem; align-items: center; padding: .25rem .75rem;
+  border-radius: 999px; background: var(--color-surface-sunken); color: var(--color-ink-muted); font-weight: 600; font-size: .9375rem;
+}
+.fc__pos bdi { color: var(--fr-bleu); }
+.fc__hint { position: absolute; inset-block-end: 1.25rem; margin: 0; font-size: .8125rem; color: var(--color-ink-faint); }
+
+.fc__head { padding-block: .75rem 1rem; border-block-end: 1px dashed var(--color-line); }
+.fc__headword { margin: 0 0 .25rem; font-family: var(--font-display); font-size: 1.5rem; color: var(--color-ink-muted); }
+.fc__prep { color: var(--fr-bleu); }
+.page--session .fc__meaning { font-family: var(--font-display); font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.25rem); line-height: 1.2; color: var(--color-ink); }
+.fc__alt { margin-block-start: .25rem; color: var(--color-ink-muted); font-size: .9375rem; }
+.fc__construction { margin: .5rem 0 0; font-style: italic; color: var(--fr-bleu); }
+
+.fc__time { margin-block-start: 1.25rem; }
+.fc__axis { display: flex; align-items: center; gap: .5rem; font-size: .75rem; font-weight: 700; color: var(--color-ink-muted); margin-block-end: .625rem; }
+.fc__axis i { flex: 1; height: 2px; background: linear-gradient(90deg, #9aa3b2, var(--fr-bleu)); border-radius: 2px; }
+.fc__axis b { padding: .125rem .5rem; border-radius: 999px; background: var(--fr-rouge); color: #fff; font-weight: 600; }
+.page--session .fc__time .examples { margin: 0; }
+.page--session .fc__time .example { border-radius: 12px; padding: .875rem 1rem; text-align: start; }
+.page--session .fc__time .example__tr { margin-block-start: .375rem; color: var(--color-ink-muted); }
+.page--session .example mark.form { background: color-mix(in srgb, var(--fr-bleu) 14%, transparent); color: inherit; border-radius: 3px; padding-inline: 2px; text-decoration: underline 2px var(--fr-bleu); text-underline-offset: 3px; }
+
+/* While swiping: the word the swipe will send, fading in with the distance. */
+.fc__swipe {
+  position: absolute; z-index: 2; inset-block-start: 1.5rem; padding: .375rem .875rem; border-radius: 8px;
+  font-weight: 800; font-size: 1.125rem; border: 3px solid currentColor; background: var(--color-surface); pointer-events: none;
+}
+.fc__swipe--good { inset-inline-start: 1.5rem; color: var(--color-good); transform: rotate(-8deg); }
+.fc__swipe--again { inset-inline-end: 1.5rem; color: var(--color-again); transform: rotate(8deg); }
+[dir="rtl"] .fc__swipe--good { inset-inline-start: auto; inset-inline-end: 1.5rem; }
+[dir="rtl"] .fc__swipe--again { inset-inline-end: auto; inset-inline-start: 1.5rem; }
+
+/* The answer buttons: a coloured tint, the key that presses them, the interval. */
+.page--session .actions-in { gap: .5rem; }
+.page--session .reveal { border-radius: 12px; font-weight: 700; display: inline-flex; justify-content: center; align-items: center; gap: .625rem; }
+.page--session .rate {
+  border-radius: 12px; display: grid; justify-items: center; gap: .125rem; padding-block: .625rem;
+  border: 1.5px solid color-mix(in srgb, currentColor 35%, transparent); position: relative;
+}
+.page--session .rate--again { background: var(--color-again-soft); }
+.page--session .rate--hard { background: var(--color-hard-soft); }
+.page--session .rate--good { background: var(--color-good-soft); }
+.page--session .rate--easy { background: var(--color-easy-soft); }
+.page--session .rate:hover { border-color: currentColor; transform: translateY(-1px); }
+.page--session .rate__name { font-weight: 700; }
+.fc__key {
+  font: 600 .6875rem/1 var(--font-ui); padding: .2rem .4rem; border-radius: 5px;
+  border: 1px solid currentColor; opacity: .55;
+}
+.fc__swipe-hint { display: none; margin: .5rem 0 0; text-align: center; font-size: .75rem; color: var(--color-ink-faint); }
+@media (hover: none) and (pointer: coarse) {
+  .fc__key { display: none; }
+  .fc__swipe-hint { display: block; }
+}
+@media (max-width: 640px) {
+  .fc__front { min-height: 18rem; }
+  .fc__meta { inset-block-start: 1rem; inset-inline-start: 1rem; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .fc, .fc__inner, .fc-top .rail__fill { transition: none; animation: none; }
+}
+.fc .flashcard__answer { border: 0; margin: 0; padding: 0; }
+.fc__more { margin-block-start: .25rem; font-size: .875rem; color: var(--color-ink-muted); }
+.page--session .reveal .fc__key { border-color: currentColor; opacity: .8; color: inherit; }
+/* Full-strength text: a faded key label failed the contrast check. Only the
+   frame is softened. */
+.fc__key, .page--session .reveal .fc__key { opacity: 1; border-color: color-mix(in srgb, currentColor 45%, transparent); }
+.fc__key { background: transparent; color: inherit; }

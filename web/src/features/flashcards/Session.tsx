@@ -31,6 +31,8 @@ import { loadVerbIndex } from '../../lib/verbs';
 import { useTarget } from '../../lib/exam-targets';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
+/** How far a card must be dragged, in pixels, to count as a swipe. */
+const SWIPE_AT = 96;
 
 function newId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
@@ -233,6 +235,29 @@ export function FlashcardSession() {
     setParams(next, { replace: true });   // replace: the back button leaves the session
   }, [card, queue, userId, params, index, setParams, engine]);
 
+  // Swipe, on touch screens only: right is Good, left is Again. A mouse
+  // click still just turns the card, and the buttons stay the main way in.
+  const [drag, setDrag] = useState(0);
+  const start = useRef<{ x: number; id: number } | null>(null);
+  const moved = useRef(false);
+  const onPointerDown = (e: React.PointerEvent) => {
+    moved.current = false;
+    if (e.pointerType === 'mouse' || !revealed) return;
+    start.current = { x: e.clientX, id: e.pointerId };
+  };
+  const onPointerMove = (e: React.PointerEvent) => {
+    if (!start.current || start.current.id !== e.pointerId) return;
+    const dx = e.clientX - start.current.x;
+    if (Math.abs(dx) > 8) moved.current = true;
+    setDrag(dx);
+  };
+  const onPointerUp = () => {
+    const dx = drag;
+    start.current = null; setDrag(0);
+    if (dx > SWIPE_AT) void grade(3);
+    else if (dx < -SWIPE_AT) void grade(1);
+  };
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
@@ -302,90 +327,134 @@ export function FlashcardSession() {
   const alt = settings.meaning === 'en' ? card.meanings.fa : card.meanings.en;
   const previews = engine.preview(stateOf(card.key), Date.now());
 
+  const rtlMeaning = settings.meaning === 'fa' || settings.meaning === 'ar';
+  const tilt = drag ? Math.max(-1, Math.min(1, drag / SWIPE_AT)) : 0;
+
   return (
     <div className="page page--session">
-      <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={queue.length}
-           aria-valuenow={index} aria-label={t('practise')}>
-        <span className="rail__fill" style={{ width: `${(index / Math.max(1, queue.length)) * 100}%` }} />
+      <div className="fc-top">
+        <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={queue.length}
+             aria-valuenow={index} aria-label={t('practise')}>
+          <span className="rail__fill" style={{ width: `${(index / Math.max(1, queue.length)) * 100}%` }} />
+        </div>
+        <p className="session-count"><Num testId="session-count">{index + 1} / {queue.length}</Num></p>
       </div>
       {timebox}
       {!conceptFilter && !cardFilter && index === 0 && <LevelPicker level={level} count={levelCount} />}
-      <p className="session-count"><Num testId="session-count">{index + 1} / {queue.length}</Num></p>
 
-      <article className="card card--raised flashcard" data-testid="flashcard">
-        <div className="tags">
-          <span className={`chip chip--${card.level.toLowerCase()}`}>{card.level}</span>
-          <span className="chip">{t(card.type as 'verb')}</span>
-          {card.gender && <span className="chip">{t(card.gender === 'f' ? 'feminine' : 'masculine')}</span>}
-          {card.prep && <span className="chip chip--prep" lang="fr" dir="ltr">{card.prep}</span>}
-          {card.register && <span className="chip" lang="fr" dir="ltr" data-testid="card-register">{card.register}</span>}
-        </div>
-        <p className="flashcard__word" lang="fr" dir="ltr">
-          {card.article && <span className="article">{frText(card.article)}</span>}{frText(card.fr)}
-        </p>
-        {/* What kind of word this is, and the preposition it takes, on the
-            front: a learner should meet « penser à » as one unit. */}
-        <p className="flashcard__pos" data-testid="card-pos">
-          <span>{t(card.type as 'verb')}</span>
-          {card.prep && <> · <bdi lang="fr" dir="ltr">+ {card.prep}</bdi></>}
-        </p>
-
-        {revealed && (
-          <div className="flashcard__answer" data-testid="answer">
-            <div className="flashcard__meaning" lang={settings.meaning}
-                 dir={settings.meaning === 'fa' || settings.meaning === 'ar' ? 'rtl' : 'ltr'}>{meaning}</div>
-            {alt && <div className="flashcard__alt" dir={settings.meaning === 'en' ? 'rtl' : 'ltr'}>{alt}</div>}
-            {card.construction && <p className="flashcard__construction" lang="fr" dir="ltr" data-testid="card-construction">{frText(card.construction)}</p>}
-            {/* Past and future side by side, so the difference is seen at once. */}
-            <div className="examples">
-            {card.forms && (['past', 'future'] as const).map((k) => (
-              <div className="example" key={k} data-tense={k} data-testid={`form-${k}`}>
-                <span className="example__label">{t(k)}</span>
-                <div className="example__fr" lang="fr" dir="ltr">{highlight(card.forms![k].fr, card.forms![k].form)}</div>
+      {/* The card turns over like a paper card. Keyed by the card, so the next
+          one arrives face up instead of turning back in front of the learner. */}
+      <div className="fc-stage">
+        <article key={card.key} className="fc" data-testid="flashcard" data-flipped={revealed}
+                 style={drag ? { transform: `translateX(${drag}px) rotate(${drag / 24}deg)` } : undefined}
+                 onPointerDown={onPointerDown} onPointerMove={onPointerMove}
+                 onPointerUp={onPointerUp} onPointerCancel={() => setDrag(0)}>
+          {revealed && tilt !== 0 && (
+            <span className={`fc__swipe fc__swipe--${tilt > 0 ? 'good' : 'again'}`} style={{ opacity: Math.abs(tilt) }}
+                  aria-hidden="true">{t(tilt > 0 ? 'good' : 'again')}</span>
+          )}
+          <div className="fc__inner">
+            <section className="fc__face fc__front" aria-hidden={revealed || undefined}
+                     role={revealed ? undefined : 'button'} tabIndex={revealed ? -1 : 0}
+                     aria-label={revealed ? undefined : `${card.fr} — ${t('showAnswer')}`}
+                     onClick={() => { if (!moved.current) setRevealed(true); }}>
+              <div className="fc__meta">
+                <span className={`chip chip--${card.level.toLowerCase()}`}>{card.level}</span>
+                {card.gender && <span className="chip">{t(card.gender === 'f' ? 'feminine' : 'masculine')}</span>}
+                {card.register && <span className="chip" lang="fr" dir="ltr" data-testid="card-register">{card.register}</span>}
               </div>
-            ))}
-            {card.examples.map((ex) => (
-              <div className="example" key={ex.tense} data-tense={ex.tense}>
-                <span className="example__label">{t(ex.tense)} · <b lang="fr">{frText(ex.form)}</b></span>
-                <div className="example__fr" lang="fr" dir="ltr">{highlight(ex.fr, ex.form)}</div>
-                <div className="example__tr" lang={settings.meaning}
-                     dir={settings.meaning === 'fa' || settings.meaning === 'ar' ? 'rtl' : 'ltr'}>
-                  {ex.translations[settings.meaning] ?? ex.translations.en}
+              <p className="flashcard__word fc__word" lang="fr" dir="ltr">
+                {card.article && <span className="article">{frText(card.article)}</span>}{frText(card.fr)}
+              </p>
+              {/* What kind of word this is, and the preposition it takes, on the
+                  front: a learner should meet « penser à » as one unit. */}
+              <p className="flashcard__pos fc__pos" data-testid="card-pos">
+                <span>{t(card.type as 'verb')}</span>
+                {card.prep && <> · <bdi lang="fr" dir="ltr">+ {card.prep}</bdi></>}
+              </p>
+              <p className="fc__hint">{t('shellCardsFlipHint')}</p>
+            </section>
+
+            <section className="fc__face fc__back" aria-hidden={!revealed || undefined}>
+              {revealed && (
+                <div className="flashcard__answer" data-testid="answer">
+                  <header className="fc__head">
+                    <p className="fc__headword" lang="fr" dir="ltr">{frText(card.fr)}
+                      {card.prep && <span className="fc__prep"> + {card.prep}</span>}</p>
+                    {/* A Wiktionary gloss can run to four senses; the first is
+                        the one to learn, the rest are there in small type. */}
+                    <div className="flashcard__meaning fc__meaning" lang={settings.meaning}
+                         dir={rtlMeaning ? 'rtl' : 'ltr'}>{meaning.split(';')[0]}</div>
+                    {meaning.includes(';') && <div className="fc__more" lang={settings.meaning} dir={rtlMeaning ? 'rtl' : 'ltr'}>
+                      {meaning.split(';').slice(1).join(';').trim()}</div>}
+                    {alt && <div className="flashcard__alt fc__alt" dir={settings.meaning === 'en' ? 'rtl' : 'ltr'}>{alt}</div>}
+                    {card.construction && <p className="flashcard__construction fc__construction" lang="fr" dir="ltr"
+                                             data-testid="card-construction">{frText(card.construction)}</p>}
+                  </header>
+
+                  {/* Past on the left and future on the right, as on a French
+                      timeline, whatever the direction of the interface. */}
+                  {(card.examples.length > 0 || card.forms) && (
+                    <div className="fc__time" dir="ltr">
+                      <div className="fc__axis" aria-hidden="true">
+                        <span>{t('past')}</span><i /><b lang="fr">aujourd’hui</b><i /><span>{t('future')}</span>
+                      </div>
+                      <div className="examples">
+                        {card.forms && (['past', 'future'] as const).map((k) => (
+                          <div className="example" key={k} data-tense={k} data-testid={`form-${k}`}>
+                            <span className="example__label" dir="auto">{t(k)}</span>
+                            <div className="example__fr" lang="fr">{highlight(card.forms![k].fr, card.forms![k].form)}</div>
+                          </div>
+                        ))}
+                        {card.examples.map((ex) => (
+                          <div className="example" key={ex.tense} data-tense={ex.tense}>
+                            <span className="example__label" dir="auto">{t(ex.tense)} · <b lang="fr">{frText(ex.form)}</b></span>
+                            <div className="example__fr" lang="fr">{highlight(ex.fr, ex.form)}</div>
+                            <div className="example__tr" lang={settings.meaning} dir={rtlMeaning ? 'rtl' : 'ltr'}>
+                              {ex.translations[settings.meaning] ?? ex.translations.en}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
+
+                  {card.conceptIds.length > 0 && <div className="concepts-row">
+                    <span className="eyebrow">{t('relatedConcepts')}</span>
+                    <div className="row gap-2 wrap">
+                      {card.conceptIds.map((id) => (
+                        <button key={id} className="chip chip--link" data-testid={`concept-${id}`}
+                                onClick={() => panel.open(`concept:${id}`)}>
+                          <ConceptName id={id} /> <Icon name="chevron" size={12} />
+                        </button>
+                      ))}
+                    </div>
+                  </div>}
+                  {card.glossUnreviewed && <p className="fine muted gloss-note" data-testid="gloss-unreviewed">
+                    {card.examples.length ? t('shellCardsDraft') : t('glossSource')}</p>}
                 </div>
-              </div>
-            ))}
-            </div>
-            {card.glossUnreviewed && <p className="fine muted gloss-note" data-testid="gloss-unreviewed">
-              {card.examples.length ? t('shellCardsDraft') : t('glossSource')}</p>}
-            {card.conceptIds.length > 0 && <div className="concepts-row">
-              <span className="eyebrow">{t('relatedConcepts')}</span>
-              <div className="row gap-2 wrap">
-                {card.conceptIds.map((id) => (
-                  <button key={id} className="chip chip--link" data-testid={`concept-${id}`}
-                          onClick={() => panel.open(`concept:${id}`)}>
-                    <ConceptName id={id} /> <Icon name="chevron" size={12} />
-                  </button>
-                ))}
-              </div>
-            </div>}
+              )}
+            </section>
           </div>
-        )}
-      </article>
+        </article>
+      </div>
 
       <div className="actions">
         <div className="actions-in">
           {!revealed ? (
             <button className="reveal" data-testid="reveal" onClick={() => setRevealed(true)}>
-              {t('showAnswer')}
+              {t('showAnswer')} <kbd className="fc__key" aria-hidden="true">{t('shellKeySpace')}</kbd>
             </button>
           ) : GRADES.map((g) => (
             <button key={g} className={`rate rate--${RATING_KEY[g]}`} data-testid={`rate-${g}`}
                     onClick={() => void grade(g)}>
+              <kbd className="fc__key" aria-hidden="true">{g}</kbd>
               <span className="rate__name">{t(RATING_KEY[g])}</span>
               <span className="rate__when">{previews[g] === 0 ? t('now') : t('days', { n: previews[g] })}</span>
             </button>
           ))}
         </div>
+        {revealed && <p className="fc__swipe-hint">{t('shellCardsSwipeHint')}</p>}
       </div>
     </div>
   );
