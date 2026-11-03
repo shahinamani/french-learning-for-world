@@ -8,19 +8,11 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-11-03 14:07 +03 (git metadata only, written by a Stop hook)
+- Updated: 2026-11-03 15:28 +03 (git metadata only, written by a Stop hook)
 - Branch: redesign/v1
-- HEAD: 7be958b Turn the card back and forth, move between cards, a timer panel
-- Uncommitted: 18 file(s)
+- HEAD: c51ba39 Noun and adjective cards for every level
+- Uncommitted: 1 file(s)
   -  M .ai/AI_HANDOFF.md
-  -  M web/scripts-sync.sh
-  -  M web/scripts/sw.mjs
-  -  M web/src/features/flashcards/Session.tsx
-  -  M web/src/lib/i18n.ts
-  -  M web/src/lib/locales/fa.ts
-  -  M web/src/lib/locales/fr.ts
-  -  M web/src/lib/types.ts
-  - … and 10 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -63,9 +55,13 @@ Owner chose the "flip card" style (no reference app). `Session.tsx` card is now 
 
 `scripts/build-word-list.py` reads Lexique 3.83 (kept at `~/.cache/flw/lexique/Lexique383.tsv`, 25 MB, sha256 637ba37a…) into `data/word-frequency-list.json`: top 2,400 NOM/ADJ lemmas in the verb bands, with gender, plural, feminine. Rules worth knowing: gender read from all rows (Lexique often blanks the singular); a separate feminine form makes the headword m; `NOT_FEMININE` and `AMBIGUOUS_GENDER` are explicit exceptions; « oe » before u/i restored to « œ »; keys that fold together get `#2` (côte, marché, tâche, passe, pêche). Agents drafted `content/word-sentences/<level>.json` (meaning en/fa, article, one example; 40 held back); `scripts/check-word-sentences.py` checks them; `scripts/build-word-cards.py` writes `content/word-cards/`. Sessions interleave verbs and words (`loadLevelCards`). Review sheet `docs/review/word-sentences.md`.
 
+## Publishing 2026-11-03
+
+Cloudflare Pages project `frenchmavie` (owner's existing Cloudflare account), Git-connected to this repo: production branch `main`, root directory `web`, build `npm ci && npm run build`, output `dist`, env `NODE_VERSION=22`. Every push to main deploys; PRs get preview builds. `frenchmavie.pages.dev` is blocked by Turkish ISPs (the resolver returns a Superonline address; SNI reset on the real Cloudflare IP), so the owner cannot open it without a VPN; the custom domain avoids this. Owner chose to move frenchmavie.com's nameservers from Namecheap to Cloudflare (registration stays at Namecheap); this reverses the older "DNS stays at Namecheap" line in docs/deploying.md, which still needs updating. CI runners pinned to ubuntu-24.04 (ubuntu-latest became 26.04, where Playwright 1.55 cannot install Chromium).
+
 ## Next step
 
-Fix « frire » in the verb tables (modelled on suffire: participle « fri », should be « frit »; also defective), then un-hold it. Nouns/adjectives decks if the owner approves the data source. Owner review of docs/review/fa-ui-drafts.md (Persian drafts); TCF Canada format from the owner's browser; then phase 8: publish on Cloudflare Pages (owner creates the account and DNS). Remaining polish: grammar, progress, verb detail and exam screens still use the older component styles.
+Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences.
 
 ## Decisions
 
