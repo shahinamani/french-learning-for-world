@@ -12,6 +12,7 @@ import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
 import { Localised } from '../components/Localised';
 import { DataNotice } from '../components/DataNotice';
+import { BackupReminder } from '../components/BackupReminder';
 import { useTarget } from '../lib/exam-targets';
 
 const LEVELS: Level[] = ['A1', 'A2', 'B1', 'B2', 'C1', 'C2'];
@@ -184,6 +185,7 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
         )}
       </section>
 
+      <BackupReminder />
       <DataNotice />
     </div>
   );
