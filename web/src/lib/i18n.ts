@@ -490,13 +490,6 @@ const shellEn = {
   shellExamOpen: 'Open',
   shellExamChooseFirst: 'Choose your exam to see its sections.',
   shellCardsLevel: 'Cards by level',
-  shellBackupTitle: 'Save a copy of your progress',
-  shellBackupBody: 'Your progress lives only in this browser. A copy saved to your device brings it back if the browser is cleared, and moves it to a new device.',
-  shellBackupSave: 'Save a copy',
-  shellBackupLater: 'Later',
-  shellBackupDone: 'Saved. Keep the file somewhere safe; Settings can load it on any device.',
-  shellPersistOn: 'This browser has agreed to keep your progress and will not delete it on its own.',
-  shellPersistOff: 'This browser has not yet agreed to keep your progress permanently. Saving a copy now and then keeps it safe.',
   shellCardsExample: 'Example',
   shellCardsPlural: 'plural',
   shellCardsPrev: 'Previous card',
@@ -562,7 +555,7 @@ export const SHELL_KEYS = Object.keys(shellEn) as (keyof typeof shellEn)[];
 
 
 
-// The four groups below belong to lazy routes, so they are NOT part of this
+// The groups below belong to lazy routes, so they are NOT part of this
 // module. Only their types are imported here (erased at build time); the
 // strings are registered by the route chunk that uses them. See
 // registerEnglish() and tests/i18n-lazy-groups.test.js.
@@ -570,10 +563,12 @@ import type { workspaceEn } from './locales/en/workspaceEn';
 import type { weaknessEn } from './locales/en/weaknessEn';
 import type { grammarEn } from './locales/en/grammarEn';
 import type { readerEn } from './locales/en/readerEn';
+import type { todayEn } from './locales/en/todayEn';
 
 export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
   & Partial<typeof importEn> & Partial<typeof workspaceEn> & Partial<typeof shellEn>
-  & Partial<typeof weaknessEn> & Partial<typeof grammarEn> & Partial<typeof readerEn>;
+  & Partial<typeof weaknessEn> & Partial<typeof grammarEn> & Partial<typeof readerEn>
+  & Partial<typeof todayEn>;
 
 /**
  * What the translator and the prerender read: English, landing copy included.

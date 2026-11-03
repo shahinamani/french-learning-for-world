@@ -8,11 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-11-03 15:28 +03 (git metadata only, written by a Stop hook)
-- Branch: redesign/v1
-- HEAD: c51ba39 Noun and adjective cards for every level
-- Uncommitted: 1 file(s)
+- Updated: 2026-11-03 20:31 +03 (git metadata only, written by a Stop hook)
+- Branch: feat/keep-progress-safe
+- HEAD: acf1201 Keep a learner's progress safer, without a server
+- Uncommitted: 19 file(s)
   -  M .ai/AI_HANDOFF.md
+  -  M tests/i18n-app.test.js
+  -  M tests/i18n-four-languages.test.js
+  -  M tests/i18n-lazy-groups.test.js
+  -  M tests/no-untranslated-strings.test.js
+  -  M web/src/components/BackupReminder.tsx
+  -  M web/src/features/flashcards/Session.tsx
+  -  M web/src/features/verbs/VerbList.tsx
+  - … and 11 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -58,6 +66,14 @@ Owner chose the "flip card" style (no reference app). `Session.tsx` card is now 
 ## Publishing 2026-11-03
 
 Cloudflare Pages project `frenchmavie` (owner's existing Cloudflare account), Git-connected to this repo: production branch `main`, root directory `web`, build `npm ci && npm run build`, output `dist`, env `NODE_VERSION=22`. Every push to main deploys; PRs get preview builds. `frenchmavie.pages.dev` is blocked by Turkish ISPs (the resolver returns a Superonline address; SNI reset on the real Cloudflare IP), so the owner cannot open it without a VPN; the custom domain avoids this. Owner chose to move frenchmavie.com's nameservers from Namecheap to Cloudflare (registration stays at Namecheap); this reverses the older "DNS stays at Namecheap" line in docs/deploying.md, which still needs updating. CI runners pinned to ubuntu-24.04 (ubuntu-latest became 26.04, where Playwright 1.55 cannot install Chromium).
+
+## Live site changes after launch (2026-11-03)
+
+- PR #70: `main` is `position: relative` (hidden landing labels stretched the document past the footer); white hero buttons fixed to #1f3a6e in dark mode.
+- PR #71: progress kept safer without a server (owner chose option 1 of 3; options 2 sync-code and 3 accounts are documented in that conversation, not built). `lib/backup-rules.ts` (persist request + reminder rules, no package imports so CI's unit job loads it) and `lib/backup.ts` (download). Reminder on Today at 30+ reviewed cards and no backup in 14 days; Later = 7 days. Export now includes the whole review log (it used to stop at 500 rows).
+- First-load budget is at 149.7 / 150 KB: new eager strings or code need room made first.
+
+- Wide dashboard (owner chose "dashboard with side column"): `.dash` / `.dash__main` / `.dash__aside` in `routes/portal.css`, two columns from 1100 px, one below. Used by Today (week chart, mot du jour, my exam on the side), exam overview, cards session (levels, session, keys on the side), Progress. Verbs is a card grid, Account two columns, exam chooser families side by side. `--width-page` is set on `.shell` (tokens.css :root is unlayered and would win). New lazy text group `todayEn` (prefix `td`) because the first-load budget was full; French and Persian carry it, Arabic falls back.
 
 ## Next step
 

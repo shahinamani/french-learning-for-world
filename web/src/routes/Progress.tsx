@@ -54,19 +54,10 @@ export function Progress() {
   const download = () => downloadBackup(userId);
 
   return (
-    <div className="page">
+    <div className="page dash progress-page">
+      <div className="dash__main">
       <h1 className="h2">{t('progress')}</h1>
 
-      <section className="card" aria-labelledby="week-h">
-        <h2 id="week-h" className="eyebrow">{t('thisWeek')}</h2>
-        {week === null ? <div className="skeleton skeleton--text" /> : (
-          <p className="today__line" data-testid="week-summary">
-            {t('reviewsCount', { n: week.reviews })} · <Num>{week.minutes} min</Num> · <Num>{week.days}/7</Num>
-          </p>
-        )}
-      </section>
-
-      <WeaknessCard />
 
       <section aria-labelledby="moved-h">
         <h2 id="moved-h" className="h3">{t('whatMoved')}</h2>
@@ -113,8 +104,21 @@ export function Progress() {
           </ul>
         )}
       </section>
+      </div>
 
-      <section aria-labelledby="data-h">
+      {/* The side column: the week at a glance, a topic worth a look, the backup. */}
+      <aside className="dash__aside">
+      <section className="card dash-card" aria-labelledby="week-h">
+        <h2 id="week-h" className="eyebrow">{t('thisWeek')}</h2>
+        {week === null ? <div className="skeleton skeleton--text" /> : (
+          <p className="today__line" data-testid="week-summary">
+            {t('reviewsCount', { n: week.reviews })} · <Num>{week.minutes} min</Num> · <Num>{week.days}/7</Num>
+          </p>
+        )}
+      </section>
+
+      <WeaknessCard />
+      <section className="dash-card" aria-labelledby="data-h">
         <h2 id="data-h" className="h3">{t('exportData')}</h2>
         <p className="muted" style={{ marginBlockEnd: 'var(--space-3)' }}>
           {t('reviewsCount', { n: rows?.length ?? 0 })}
@@ -123,6 +127,7 @@ export function Progress() {
           {t('exportData')}
         </button>
       </section>
+      </aside>
     </div>
   );
 }

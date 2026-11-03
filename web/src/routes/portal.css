@@ -518,3 +518,123 @@
 .backup-note__title { margin: 0 0 .25rem; font: 700 1rem var(--font-ui); }
 .backup-note__body { margin: 0; font-size: .9375rem; color: var(--color-ink-muted); max-width: 46rem; }
 .backup-note__actions { display: flex; gap: .5rem; }
+
+/* ── Dashboard layout, 2026-11-03 ────────────────────────────────────────
+   The owner asked the portal to use the whole width. Wide screens get a main
+   column and a side column (like Duolingo and Babbel); narrow ones keep one
+   column, side content after the main. Reading text keeps a sensible measure
+   inside the columns: wide is for more things side by side, not longer lines. */
+/* Set on the shell rather than :root: tokens.css declares :root outside the
+   cascade layers and would win. A custom property set on an ancestor element
+   reaches every descendant whatever the layer. */
+.shell { --width-page: 96rem; }
+.dash { display: grid; gap: 2rem; align-items: start; }
+.dash__main { display: flex; flex-direction: column; gap: 2rem; min-width: 0; }
+.dash__aside { display: flex; flex-direction: column; gap: 1.25rem; min-width: 0; }
+@media (min-width: 1100px) {
+  .dash { grid-template-columns: minmax(0, 1fr) 21rem; }
+  .dash__aside { position: sticky; top: 1rem; }
+}
+@media (min-width: 1500px) { .dash { grid-template-columns: minmax(0, 1fr) 24rem; gap: 2.5rem; } }
+.page.today-page { max-width: var(--width-page); }
+.dash-card { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 14px; padding: 1.25rem; }
+.dash-card__title { margin: 0 0 .5rem; font: 700 .875rem var(--font-ui); color: var(--color-ink-muted); }
+.dash__aside .mot, .dash__aside .today-exam { margin: 0; }
+
+/* This week: a total and seven bars. */
+.week__total { margin: 0; font-size: .9375rem; color: var(--color-ink-muted); }
+.week__total b { font: 600 2rem/1 var(--font-display); color: var(--color-ink); margin-inline-end: .25rem; }
+.week__bars { display: grid; grid-template-columns: repeat(7, 1fr); gap: .375rem; height: 5.5rem; margin-block: .875rem .5rem; }
+.week__bar { display: grid; grid-template-rows: 1fr auto; justify-items: center; gap: .25rem; min-height: 0; }
+.week__bar i { align-self: end; width: 100%; max-width: 1.75rem; border-radius: 6px 6px 3px 3px; background: var(--color-surface-sunken); }
+.week__bar i[data-on] { background: var(--fr-bleu); }
+.week__bar small { font-size: .6875rem; color: var(--color-ink-faint); text-transform: uppercase; }
+.week__sub { margin: 0; font-size: .8125rem; color: var(--color-ink-muted); }
+
+/* Ways in, as tiles across the main column. */
+.dash__main .today-ways { display: grid; grid-template-columns: repeat(auto-fill, minmax(11rem, 1fr)); gap: .75rem; border: 0; }
+.dash__main .today-ways li { border: 0; }
+.dash__main .today-ways a {
+  display: grid; grid-template-columns: auto 1fr; grid-template-rows: auto auto; column-gap: .75rem; align-items: center;
+  padding: 1rem 1.125rem; border: 1px solid var(--color-line); border-radius: 14px; background: var(--color-surface);
+  text-decoration: none; color: var(--color-ink); height: 100%;
+}
+.dash__main .today-ways a:hover { border-color: var(--fr-bleu); box-shadow: 0 8px 24px -16px rgb(16 33 63 / .35); }
+.today-ways__icon { grid-row: 1 / 3; display: grid; place-items: center; width: 2.5rem; height: 2.5rem; border-radius: 10px; background: var(--fr-bleu-soft); color: var(--fr-bleu); }
+.dash__main .today-ways a > span:nth-child(2) { font: 400 1.25rem var(--font-display); }
+.dash__main .today-ways a > span:nth-child(3) { font-size: .8125rem; color: var(--color-ink-muted); }
+
+/* My exam, in the side column: label, name and link stacked. */
+.dash__aside .today-exam { display: flex; flex-direction: column; align-items: flex-start; gap: .25rem; padding: 1.25rem; border-radius: 14px; }
+.dash__aside .today-exam__name { font-size: 1.5rem; line-height: 1.2; }
+.dash__aside .today-exam__go { margin-block-start: .375rem; }
+
+/* Exam pages across the width (2026-11-03). The overview is a dashboard; the
+   chooser lays the four families side by side; a section page reads wider. */
+.exam-page { max-width: var(--width-page); }
+.exam-page.dash { gap: 2rem 2.5rem; }
+.exam-page .dash__main { gap: 2rem; }
+.exam-page .dash__aside .exam-block { margin: 0; }
+.exam-page .dash__aside .exam-sources { background: var(--color-surface); border: 1px solid var(--color-line); border-radius: 14px; padding: 1rem 1.25rem; }
+.exam-page--choose { display: grid; grid-template-columns: 1fr; gap: 2rem 2.5rem; align-items: start; }
+@media (min-width: 1100px) {
+  .exam-page--choose { grid-template-columns: 1fr 1fr; }
+  .exam-page--choose > .exam-head, .exam-page--choose > :not(.exam-family) { grid-column: 1 / -1; }
+}
+.exam-page[data-testid^="exam-section-"] { max-width: 72rem; }
+
+/* Verbs: the list as a grid of rows, three or four across (2026-11-03). */
+.verbs-page .rows { display: grid; grid-template-columns: repeat(auto-fill, minmax(21rem, 1fr)); gap: .625rem; }
+.verbs-page .rows > li { margin: 0; }
+.verbs-page .rows .row { height: 100%; }
+
+/* Account: the settings boxes in two columns on a wide screen. */
+@media (min-width: 1100px) {
+  .account-page { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem 1.5rem; align-items: start; }
+  .account-page > h1, .account-page > .foot-legal, .account-page > :first-child { grid-column: 1 / -1; }
+}
+
+/* Progress: the side column cards. */
+.progress-page .dash__aside > section, .progress-page .dash__aside > * { margin: 0; }
+
+/* Cards: the card keeps a comfortable width in the main column; the side column
+   holds the levels, the session's progress and the keys (2026-11-03). */
+.page--session.session-dash { max-width: var(--width-page); }
+.session-dash .dash__main { align-items: stretch; max-width: 52rem; width: 100%; margin-inline: auto; gap: 1rem; }
+.session-aside { display: none; }
+@media (min-width: 1100px) {
+  .session-aside { display: flex; }
+  .session-inline { display: none; }
+}
+.session-aside .card-levels { margin: 0; }
+.session-aside__done { margin: 0 0 .5rem; font: 600 1.5rem var(--font-display); }
+.session-aside__rail { height: 6px; border-radius: 999px; overflow: hidden; }
+.session-aside__rail .rail__fill { background: var(--fr-bleu); border-radius: 999px; }
+.session-keys dl { display: grid; grid-template-columns: auto 1fr; gap: .5rem .75rem; margin: 0; align-items: center; font-size: .875rem; }
+.session-keys dt { white-space: nowrap; }
+.session-keys dd { margin: 0; color: var(--color-ink-muted); }
+.session-keys kbd { background: var(--color-surface-sunken); color: var(--color-ink); }
+/* In the side column, an official page's title and publisher stack. */
+.dash__aside .exam-row { flex-direction: column; align-items: flex-start; gap: .25rem; }
+.dash__aside .exam-row__name { font-size: 1rem; }
+
+/* Verbs as small cards: the verb on top, its first sense underneath, the
+   irregular tag and the arrow on the top line (2026-11-03). */
+.verbs-page .rows .row {
+  display: grid; grid-template-columns: 1fr auto auto; grid-template-rows: auto auto;
+  align-items: center; column-gap: .5rem; row-gap: .25rem; padding: .875rem 1rem; min-height: 0;
+}
+.verbs-page .rows .row > .row-fr { grid-column: 1; grid-row: 1; font-size: 1.25rem; }
+.verbs-page .rows .row > .chip { grid-column: 2; grid-row: 1; }
+.verbs-page .rows .row > svg { grid-column: 3; grid-row: 1; }
+.verbs-page .rows .row > .muted {
+  grid-column: 1 / -1; grid-row: 2; text-align: start; font-size: .875rem;
+  overflow: hidden; display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical;
+}
+.verbs-page .rows .row > .muted:empty { display: none; }
+
+/* The exam chooser: two exams per row inside each family. */
+@media (min-width: 1100px) { .exam-page--choose .exam-choices { grid-template-columns: repeat(2, 1fr); } }
+.verbs-page .rows .row > .muted { justify-self: start; margin: 0; }
+.session-aside .card-levels .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
+.session-aside .card-levels .chip { width: 100%; }

@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { translator, loadDictionary } from '../web/src/lib/i18n.ts';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../web/src');
-const GROUPS = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn'];
+const GROUPS = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn'];   // todayEn added 2026-11-03 (Today side column, backup)
 const groupFile = (g) => join(ROOT, 'lib/locales/en', `${g}.ts`);
 const read = (p) => readFileSync(p, 'utf8');
 
@@ -99,7 +99,11 @@ test('the scan is wired to something: main.tsx reaches the shell, and the lazy r
                       'features/workspace/Workspace.tsx', 'features/weakness/WeaknessCard.tsx']) {
     assert.ok(!EAGER.has(join(ROOT, lazy)), `${lazy} is a chunk of its own, not part of the first load`);
   }
-  for (const g of GROUPS) assert.ok(KEYS[g].length >= 20, `${g}: ${KEYS[g].length} keys read; fix the extraction`);
+  // A floor per group, to catch an extraction that reads a handful. todayEn is
+  // small by nature (Today's side column and the backup reminder, 11 keys,
+  // 2026-11-03), so it has its own floor rather than lowering everyone's.
+  const FLOOR = { todayEn: 10 };
+  for (const g of GROUPS) assert.ok(KEYS[g].length >= (FLOOR[g] ?? 20), `${g}: ${KEYS[g].length} keys read; fix the extraction`);
 });
 
 test('no module in the first load asks for a key of a lazy group', () => {

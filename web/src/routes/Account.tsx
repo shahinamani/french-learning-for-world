@@ -1,4 +1,5 @@
 /** Profiles, languages, theme, data. Switching profile changes this tab only. */
+import '../lib/locales/en/todayEn';   // registers its English (lazy group)
 import { useEffect, useState } from 'react';
 import { useApp } from '../app-context';
 import { createProfile, listProfiles, setActiveProfileId } from '../lib/session';
@@ -24,7 +25,7 @@ export function Account() {
   };
 
   return (
-    <div className="page">
+    <div className="page account-page">
       <h1 className="h2">{t('account')}</h1>
       {!storageWorks && <div className="alert alert--warning"><div className="alert__body">{t('storageBlocked')}</div></div>}
 
@@ -144,5 +145,5 @@ function PersistStatus() {
   const [state, setState] = useState<boolean | null | undefined>(undefined);
   useEffect(() => { let live = true; isPersisted().then((v) => { if (live) setState(v); }); return () => { live = false; }; }, []);
   if (state === undefined || state === null) return null;
-  return <p className="muted" data-testid="persist-status">{state ? t('shellPersistOn') : t('shellPersistOff')}</p>;
+  return <p className="muted" data-testid="persist-status">{state ? t('tdPersistOn') : t('tdPersistOff')}</p>;
 }
