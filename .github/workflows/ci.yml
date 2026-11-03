@@ -12,7 +12,9 @@ permissions:
 
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest: on 2026-11-03 ubuntu-latest became 26.04, where
+    # Playwright 1.55 cannot install Chromium, and the browser job failed in setup.
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -71,7 +73,9 @@ jobs:
   # that broke them from merging. It runs on every push and every pull request,
   # and a failure fails the run.
   browser:
-    runs-on: ubuntu-latest
+    # Pinned, not ubuntu-latest: on 2026-11-03 ubuntu-latest became 26.04, where
+    # Playwright 1.55 cannot install Chromium, and the browser job failed in setup.
+    runs-on: ubuntu-24.04
     steps:
       # Whole history, like the unit job. Nothing in the walk reads history
       # today, which is exactly the state the Pages job was in until the first

@@ -210,7 +210,7 @@ await page.waitForTimeout(400);
 const weak = await page.locator('[data-testid="weak-list"] > li').count();
 ok(`those wrong answers surfaced as ${weak} weak points on the home screen`, weak > 0);
 const weakHref = await page.locator('[data-testid="weak-list"] a').first().getAttribute('href');
-ok(`a weak point links into practice on that concept alone (${weakHref})`, /practise\/review\?concept=/.test(weakHref ?? ''));
+ok(`a weak point links into practice on that concept alone (${weakHref})`, /app\/cards\?concept=/.test(weakHref ?? ''));  // redesign v1: straight to /app/cards
 
 console.log('\n=== the connection contract ===');
 await page.goto(BASE + weakHref.replace(/^#?/, '#'), { waitUntil: 'networkidle' });
@@ -363,7 +363,8 @@ ok(`a flagged item shows the doubt itself ("${flagged.slice(0, 64).replace(/\n/g
    /unsure/i.test(flagged) && /esp|indicative|subjunctive/i.test(flagged));
 
 console.log('\n=== the learn map leads somewhere ===');
-await go(page, '/learn');
+// Redesign v1 (REDESIGN-v1.md §6): the map moved from Today to My path.
+await go(page, '/app/path');
 await page.waitForSelector('.map', { timeout: 8000 });
 const cells = await page.locator('.map__cell').count();
 ok(`the map renders ${cells} cells`, cells >= 40);
@@ -378,7 +379,8 @@ const hrefs = await page.locator('a.map__cell').evaluateAll(
 let stubs = 0, listed = 0, withConcepts = 0;
 for (const href of hrefs) {
   await page.goto(BASE + href.replace(/^#/, '#'), { waitUntil: 'networkidle' });
-  await page.waitForTimeout(250);
+  // The page is a lazy chunk since redesign v1: wait for what it renders.
+  await page.waitForSelector('[data-testid="level-skill-count"], [data-testid="stub"]', { timeout: 5000 }).catch(() => {});
   if (await page.locator('[data-testid="stub"]').count()) { stubs += 1; continue; }
   const count = await page.locator('[data-testid="level-skill-count"]').count();
   if (count) {
@@ -853,7 +855,7 @@ console.log('\n=== carried-forward items ===');
   // And the route that stopped being a stub is no longer one, asserted here so
   // a regression to the stub fails rather than passing quietly.
   await q.goto(BASE + '#/learn/level/B1/grammar', { waitUntil: 'networkidle' });
-  await q.waitForTimeout(250);
+  await q.waitForSelector('[data-testid="level-skill-count"], [data-testid="stub"]', { timeout: 5000 }).catch(() => {});
   ok('/learn/level/B1/grammar is no longer a stub',
      (await q.locator('[data-testid="stub"]').count()) === 0
      && (await q.locator('[data-testid="level-skill-count"]').count()) === 1);
@@ -1021,7 +1023,7 @@ ok('and the two drilled concepts do not',
    !/not started/i.test(futureState) && !/not started/i.test(imparfaitState));
 
 // The usage column, added because 32 live concepts were unreachable from the map.
-await go(page, '/learn');
+await go(page, '/app/path');
 await page.waitForSelector('.map', { timeout: 8000 });
 ok(`the map now has ${await page.locator('.map thead th').count()} columns including usage`,
    (await page.locator('[data-testid="cell-A1-usage"]').count()) === 1);
@@ -1216,7 +1218,9 @@ console.log('\n=== lazy English groups: a route opened before its strings arrive
     ['/app/progress', 'weaknessEn', 'wkHeading', 'the weakness card'],
     ['/workspace', 'workspaceEn', 'wsSummaryLead', 'the workspace'],
   ]) {
-    const c = await browser.newContext({ locale: 'fa-IR', viewport: { width: 1100, height: 900 } });
+    // Arabic since 2026-10-31: Persian now carries these groups (owner-requested
+    // drafts), so only Arabic still exercises the English fallback.
+    const c = await browser.newContext({ locale: 'ar-SA', viewport: { width: 1100, height: 900 } });
     const p = await c.newPage(); watch(p, ` lazy ${label}`);
     const marker = `${key}:`;
     let held = 0, heldEntry = false;
@@ -1232,20 +1236,20 @@ console.log('\n=== lazy English groups: a route opened before its strings arrive
     await p.goto(BASE + '#' + hash, { waitUntil: 'commit' });
     await p.waitForTimeout(500);
     const during = await p.locator('body').innerText().catch(() => '');
-    ok(`${label}, Persian, strings still in flight: no key name on screen`,
+    ok(`${label}, Arabic, strings still in flight: no key name on screen`,
        !RAW.test(during), RAW.exec(during)?.[0]);
     await p.waitForLoadState('networkidle');
     await p.waitForTimeout(500);
     const after = await p.locator('body').innerText();
-    ok(`${label}, Persian: the chunk holding "${key}" was requested, so the window was real`,
+    ok(`${label}, Arabic: the chunk holding "${key}" was requested, so the window was real`,
        held >= 1 && !heldEntry, `held ${held}, entry held ${heldEntry}`);
-    ok(`${label}, Persian, strings arrived: no key name on screen`, !RAW.test(after), RAW.exec(after)?.[0]);
+    ok(`${label}, Arabic, strings arrived: no key name on screen`, !RAW.test(after), RAW.exec(after)?.[0]);
     const want = firstValue(file, key);
     if (file === 'weaknessEn' || file === 'readerEn') {
       // the heading may not be shown for an empty profile; the route itself must have rendered
-      ok(`${label}, Persian: the route rendered something`, after.trim().length > 40);
+      ok(`${label}, Arabic: the route rendered something`, after.trim().length > 40);
     } else {
-      ok(`${label}, Persian: shows the English "${want.slice(0, 30)}…" behind the marker`, after.includes(want));
+      ok(`${label}, Arabic: shows the English "${want.slice(0, 30)}…" behind the marker`, after.includes(want));
     }
     await c.close();
   }
@@ -1782,8 +1786,11 @@ console.log('\n=== the learning workspace ===');
   const pos = (await p.locator('[data-testid="ws-position"]').innerText()).trim();
   ok(`workspace fa: the position reads forwards (${JSON.stringify(pos)})`, /^1\s*\/\s*\d+$/.test(pos),
      'the learner is on card 1 of many, not card many of 1');
-  ok('workspace fa: the page says the workspace is not translated here',
-     await p.locator('[data-testid="ws-untranslated"]').count() === 1);
+  // Persian has the workspace's own text since 2026-10-31, drafted and marked
+  // as awaiting review, so the page says "draft" rather than "not translated".
+  ok('workspace fa: the page says its Persian is a draft awaiting review',
+     await p.locator('[data-testid="shell-fa-draft"]').count() === 1
+     && await p.locator('[data-testid="ws-untranslated"]').count() === 0);
   await c.close();
 }
 
@@ -1818,15 +1825,14 @@ console.log('\n=== the learning workspace ===');
     const pg = await c.newPage();
     pg.on('pageerror', (e) => pageErrors.push(e.message.slice(0, 80)));
     await pg.goto(BASE + '#/learn', { waitUntil: 'networkidle' });
-    // Wait for the rendered map, not for `networkidle`. The prerendered HTML is
-    // the landing page, so until React has run, `.map` is legitimately absent
-    // and this check reports a blank page that is not blank. It passed alone
-    // and failed inside the full run — load, not a regression — which is the
-    // same race already fixed in the results section.
-    await pg.waitForSelector('.map', { timeout: 10000 }).catch(() => {});
+    // Wait for Today's session card, not for `networkidle`. The prerendered
+    // HTML is the landing page, so until React has run the card is
+    // legitimately absent. (Was the map, which moved to My path in redesign
+    // v1; Today is where the data notice lives.)
+    await pg.waitForSelector('[data-testid="today-card"]', { timeout: 10000 }).catch(() => {});
 
     ok(`${label}: the application still renders`,
-       await pg.locator('.map').count() === 1,
+       await pg.locator('[data-testid="today-card"]').count() === 1,
        'a blank page is what this looked like before it was guarded');
     ok(`${label}: no uncaught page error (${pageErrors.length})`,
        pageErrors.length === 0, pageErrors.join(' | '));
@@ -1968,7 +1974,8 @@ console.log('\n=== the front door ===');
   //    looked and left is still a stranger next time.
   await pg.locator('[data-testid="landing-start"]').click();
   await pg.waitForTimeout(400);
-  ok('Start learning reaches the study map', await pg.locator('.map').count() === 1);
+  // Redesign v1: the way in lands on Today, whose first thing is the session card.
+  ok('Start learning reaches Today', await pg.locator('[data-testid="today-card"]').count() === 1);
   const flagAfterLooking = await pg.evaluate(() => { try { return localStorage.getItem('fmv.started'); } catch { return 'threw'; } });
   ok('pressing Start stores nothing — reading is not starting', flagAfterLooking === null);
   await pg.goto(BASE, { waitUntil: 'networkidle' });
@@ -1985,7 +1992,7 @@ console.log('\n=== the front door ===');
   await pg.goto(BASE, { waitUntil: 'networkidle' });
   await pg.evaluate(() => localStorage.setItem('fmv.started', '1'));
   await pg.reload({ waitUntil: 'networkidle' });
-  ok('a returning learner at / gets the dashboard', await pg.locator('.map').count() === 1);
+  ok('a returning learner at / gets the dashboard', await pg.locator('[data-testid="today-card"]').count() === 1);
   ok('and is not sold to again', await pg.locator('[data-testid="landing"]').count() === 0);
 
   // The swap happens before the first paint, not after the bundle arrives.
@@ -2020,7 +2027,8 @@ console.log('\n=== the front door ===');
   // Persian digits inside an English clause. A page that is in English is in
   // English, including its direction and its numerals.
   const summary = JSON.parse(readFileSync(new URL('../../content/portal-summary.json', import.meta.url), 'utf8'));
-  for (const [locale, name] of [['fa-IR', 'Persian'], ['ar-SA', 'Arabic']]) {
+  // Arabic only: Persian has its own landing page since 2026-10-31 (below).
+  for (const [locale, name] of [['ar-SA', 'Arabic']]) {
     const c = await browser.newContext({ locale, viewport: { width: 900, height: 1000 } });
     const pg = await c.newPage(); watch(pg, ` landing ${name}`);
     await pg.goto(BASE, { waitUntil: 'networkidle' });
@@ -2041,6 +2049,22 @@ console.log('\n=== the front door ===');
     await c.close();
   }
 }
+{
+  // Persian: the landing page is in Persian, right-to-left, and says the
+  // Persian is an agent draft awaiting the owner's review.
+  const c = await browser.newContext({ locale: 'fa-IR', viewport: { width: 900, height: 1000 } });
+  const pg = await c.newPage(); watch(pg, ' landing Persian');
+  await pg.goto(BASE, { waitUntil: 'networkidle' }); await pg.waitForTimeout(500);
+  ok('Persian: the landing page is right-to-left',
+     await pg.evaluate(() => document.documentElement.dir) === 'rtl'
+     && await pg.locator('[data-testid="landing"]').getAttribute('dir') === null);
+  ok('Persian: the page is in Persian', /[\u0600-\u06FF]{4,}/.test(await pg.locator('[data-testid="landing"]').innerText()));
+  ok('Persian: and says its Persian is a draft awaiting review',
+     await pg.locator('[data-testid="landing-fa-draft"]').count() === 1);
+  ok('Persian: the French headline stays left-to-right',
+     await pg.locator('.landing__headline').getAttribute('dir') === 'ltr');
+  await c.close();
+}
 
 {
   // Three widths, named by Shahin. The complaint that started this page was
@@ -2059,22 +2083,25 @@ console.log('\n=== the front door ===');
     ok(`landing at ${w}px: the gaps section follows the tiles, stacked, at the same width`,
        !!a && !!b && b.y > a.y + a.height - 2 && Math.abs(a.x - b.x) < 2 && Math.abs(a.width - b.width) < 2,
        `today at (${Math.round(a?.x)},${Math.round(a?.y)}), gaps at (${Math.round(b?.x)},${Math.round(b?.y)})`);
-    // The scene is BESIDE the pitch on a desktop and under it on a phone.
-    const copy = await pg.locator('.lp-hero__copy').boundingBox();
-    const scene = await pg.locator('#preview').boundingBox();
-    const beside = !!copy && !!scene && Math.abs(copy.y - scene.y) < 200 && scene.x > copy.x + copy.width - 2;
-    ok(`landing at ${w}px: the live preview is ${expect}`, beside === (expect === 'side by side'),
-       `copy (${Math.round(copy?.x)},${Math.round(copy?.y)}), scene (${Math.round(scene?.x)},${Math.round(scene?.y)})`);
-    // The cards are live: turning the card shows its meaning, with no storage.
+    // Redesign v1: the real card and dialogue sit together on the practice
+    // desk, side by side on a desktop and stacked on a phone.
+    const cardBox = await pg.locator('[data-testid="landing-card"]').boundingBox();
+    const dlgBox = await pg.locator('[data-testid="landing-dialogue"]').boundingBox();
+    const beside = !!cardBox && !!dlgBox && Math.abs(cardBox.y - dlgBox.y) < 40 && dlgBox.x > cardBox.x + cardBox.width - 2;
+    ok(`landing at ${w}px: the practice desk is ${expect}`, beside === (expect === 'side by side'),
+       `card (${Math.round(cardBox?.x)},${Math.round(cardBox?.y)}), dialogue (${Math.round(dlgBox?.x)},${Math.round(dlgBox?.y)})`);
     await pg.locator('[data-testid="landing-card-turn"]').click();
     ok(`landing at ${w}px: the preview card turns to its meaning`,
        (await pg.locator('[data-testid="landing-card"]').innerText()).includes('to be'));
 
     // A headline that wraps to five lines on a phone is a different fault from
     // overflow and the overflow check cannot see it.
+    // Counted in lines, not pixels: "under 200px" stood in for four lines at
+    // the old size, and failed on three lines of the redesign's larger type.
     const head = await pg.locator('.landing__headline').boundingBox();
-    ok(`landing at ${w}px: the headline is at most 4 lines (${Math.round(head?.height)}px)`,
-       !!head && head.height < 200);
+    const lineH = await pg.locator('.landing__headline').evaluate((el) => parseFloat(getComputedStyle(el).lineHeight));
+    const lines = head && lineH ? Math.round(head.height / lineH) : 99;
+    ok(`landing at ${w}px: the headline is at most 4 lines (${lines})`, lines <= 4);
 
     if (shots) await pg.screenshot({ path: `${shots}/landing-${w}.png`, fullPage: true });
     await c.close();
@@ -2111,7 +2138,7 @@ console.log('\n=== the front door ===');
 
   // In-page navigation scrolls and does not leave the route (the router is a
   // hash router, so a fragment link would have opened the 404 page).
-  await pg.locator('.lp-navlink', { hasText: 'Questions' }).click();
+  await pg.locator('.lp3-nav button', { hasText: 'Questions' }).click();
   await pg.waitForTimeout(900);
   ok('an in-page link stays on the landing page', await pg.locator('[data-testid="landing"]').count() === 1
      && !/\/(faq|preview|today)/.test(pg.url()));

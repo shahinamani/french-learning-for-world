@@ -3,15 +3,23 @@ import { createRoot } from 'react-dom/client';
 import { HashRouter, Routes, Route, Navigate } from 'react-router';
 import { AppProvider } from './app-context';
 import { Shell } from './components/Shell';
-import { Learn } from './routes/Learn';
-import { Account } from './routes/Account';
-import { SearchRoute } from './components/Search';
-import { FlashcardSession } from './features/flashcards/Session';
-import { VerbList } from './features/verbs/VerbList';
-import { VerbDetail } from './features/verbs/VerbDetail';
-import { ConjugationDrill } from './features/verbs/Conjugation';
+// Lazy since redesign v1: the first load is the landing page alone.
+const Learn = lazy(() => import('./routes/Learn').then((m) => ({ default: m.Learn })));
+// Lazy since redesign v1: the first load is the landing page alone.
+const Account = lazy(() => import('./routes/Account').then((m) => ({ default: m.Account })));
+// Lazy since redesign v1: the first load is the landing page alone.
+const SearchRoute = lazy(() => import('./components/Search').then((m) => ({ default: m.SearchRoute })));
+// Lazy since redesign v1: the first load is the landing page alone.
+const FlashcardSession = lazy(() => import('./features/flashcards/Session').then((m) => ({ default: m.FlashcardSession })));
+// Lazy since redesign v1: the first load is the landing page alone.
+const VerbList = lazy(() => import('./features/verbs/VerbList').then((m) => ({ default: m.VerbList })));
+// Lazy since redesign v1: the first load is the landing page alone.
+const VerbDetail = lazy(() => import('./features/verbs/VerbDetail').then((m) => ({ default: m.VerbDetail })));
+// Lazy since redesign v1: the first load is the landing page alone.
+const ConjugationDrill = lazy(() => import('./features/verbs/Conjugation').then((m) => ({ default: m.ConjugationDrill })));
 import { Stub, NotFound } from './routes/Stub';
-import { LevelSkill } from './routes/LevelSkill';
+// Lazy since redesign v1: the first load is the landing page alone.
+const LevelSkill = lazy(() => import('./routes/LevelSkill').then((m) => ({ default: m.LevelSkill })));
 import { Home } from './routes/Home';
 import { Redirect, LEGACY } from './routes/app/Redirects';
 import { Placeholder, PLACEHOLDERS } from './routes/app/Placeholder';
@@ -52,6 +60,8 @@ const GrammarOrConcept = lazy(() => import('./routes/app/GrammarOrConcept').then
 // Progress carries the weakness card and its engine, whose strings are a lazy
 // English group (lib/locales/en/weaknessEn.ts).
 const Progress = lazy(() => import('./routes/Progress').then((m) => ({ default: m.Progress })));
+const ExamChooser = lazy(() => import('./routes/exam/ExamPages').then((m) => ({ default: m.ExamChooser })));
+const ExamPage = lazy(() => import('./routes/exam/ExamPages').then((m) => ({ default: m.ExamPage })));
 const Reader = lazy(() => import('./features/reader').then((m) => ({ default: m.Reader })));
 
 /** A lazy route still has to render something while its chunk arrives, and a
@@ -84,18 +94,18 @@ function AppRoutes() {
             has built render an honest placeholder (routes/app/Placeholder). */}
         <Route path="app">
           <Route index element={<Navigate replace to="/app/today" />} />
-          <Route path="today" element={<Learn />} />
-          <Route path="path" element={<PlaceholderRoute id="path" />} />
-          <Route path="path/:level/:skill" element={<LevelSkill />} />
+          <Route path="today" element={lazily(<Learn mode="today" />)} />
+          <Route path="path" element={lazily(<Learn mode="path" />)} />
+          <Route path="path/:level/:skill" element={lazily(<LevelSkill />)} />
           <Route path="vocabulary" element={<PlaceholderRoute id="vocabulary" />} />
-          <Route path="cards" element={<FlashcardSession />} />
-          <Route path="verbs" element={<VerbList />} />
+          <Route path="cards" element={lazily(<FlashcardSession />)} />
+          <Route path="verbs" element={lazily(<VerbList />)} />
           {/* Static segment, so it outranks :infinitive. The contract sends the
               old conjugation page to /app/verbs/:infinitive (drill tab); that
               tab does not exist, and this page is the drill with its own
               ?verb=, so it is mounted here until the verb stream adds the tab. */}
-          <Route path="verbs/drill" element={<ConjugationDrill />} />
-          <Route path="verbs/:infinitive" element={<VerbDetail />} />
+          <Route path="verbs/drill" element={lazily(<ConjugationDrill />)} />
+          <Route path="verbs/:infinitive" element={lazily(<VerbDetail />)} />
           <Route path="grammar" element={lazily(<GrammarList />)} />
           {/* :id is a lesson id or a concept id, so the old /learn/concept/:id
               redirect (routes/app/Redirects.tsx) lands here unchanged. A
@@ -106,13 +116,17 @@ function AppRoutes() {
           <Route path="output" element={<PlaceholderRoute id="output" />} />
           <Route path="news" element={<PlaceholderRoute id="news" />} />
           <Route path="podcasts" element={<PlaceholderRoute id="podcasts" />} />
+          {/* The exam-centred pages (redesign v1, 2026-10-31). */}
+          <Route path="exam" element={lazily(<ExamChooser />)} />
+          <Route path="exam/:target" element={lazily(<ExamPage />)} />
+          <Route path="exam/:target/:section" element={lazily(<ExamPage />)} />
           <Route path="exams" element={lazily(<ExamList />)} />
           <Route path="exams/:paperId" element={lazily(<ExamPaperRoute />)} />
           <Route path="exams/:paperId/sit" element={lazily(<ExamSit />)} />
           <Route path="exams/:paperId/results" element={lazily(<ExamResults />)} />
           <Route path="saved" element={<PlaceholderRoute id="saved" />} />
           <Route path="progress" element={lazily(<Progress />)} />
-          <Route path="search" element={<SearchRoute />} />
+          <Route path="search" element={lazily(<SearchRoute />)} />
           {/* Not in the contract's table. The workspace is a finished page that
               Learn links to; the table sends /workspace to Today, which would
               make that link a loop back to where it was clicked. */}
@@ -122,7 +136,7 @@ function AppRoutes() {
         {/* Old addresses. Every one forwards with `replace`; none may 404. */}
         {LEGACY.map((r) => <Route key={r.from} path={r.from} element={<Redirect to={r.to} />} />)}
 
-        <Route path="account" element={<Account />} />
+        <Route path="account" element={lazily(<Account />)} />
         <Route path="*" element={<NotFound />} />
       </Route>
     </Routes>

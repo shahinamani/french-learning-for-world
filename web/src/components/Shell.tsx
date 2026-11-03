@@ -12,9 +12,14 @@ import * as Popover from '@radix-ui/react-popover';
 import { useApp, useUserId } from '../app-context';
 import { Icon } from './Icon';
 import { SidePanel } from './SidePanel';
-import { Sidebar, MobileBar } from '../routes/app/PortalNav';
+import { lazy, Suspense } from 'react';
+// The portal menus load with the portal, not with the landing page.
+const Sidebar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.Sidebar })));
+const MobileBar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.MobileBar })));
+const TimerPanel = lazy(() => import('./TimerPanel'));
+const RouteBanner = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.RouteBanner })));
 import { TopLine } from '../routes/app/TopLine';
-import { PRESETS, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime } from '../lib/timer';
+import { DEFAULT_PRESET, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime, primeAudio } from '../lib/timer';
 
 export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const { t, settings, update } = useApp();
@@ -27,13 +32,17 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const onLanding = (location.pathname === '/' || location.pathname === '') && !hasStarted();
   // Persian and Arabic have no portal-navigation copy: the labels are English,
   // and the page says so rather than showing English as if it were theirs.
-  const labelsTranslated = settings.ui === 'en' || settings.ui === 'fr';
+  // Persian was drafted for the whole portal on 2026-10-31 and awaits the
+  // owner's review, so it is shown, with a line saying it is a draft.
+  const labelsTranslated = settings.ui === 'en' || settings.ui === 'fr' || settings.ui === 'fa';
+  const isDark = () => settings.theme === 'dark' || (settings.theme === 'system'
+    && typeof matchMedia === 'function' && matchMedia('(prefers-color-scheme: dark)').matches);
   const [timerOpen, setTimerOpen] = useState(false);
   const [timer, setTimer] = useState<{ endsAt: number; durationMin: number; running: boolean }>(
-    { endsAt: 0, durationMin: 15, running: false });
+    { endsAt: 0, durationMin: DEFAULT_PRESET, running: false });
   const [finished, setFinished] = useState<null | 'done' | 'silent' | 'away'>(null);
-  const [clock, setClock] = useState('15:00');
-  const [selected, setSelected] = useState(15);
+  const [clock, setClock] = useState(formatClock(DEFAULT_PRESET * 60));
+  const [selected, setSelected] = useState<number>(DEFAULT_PRESET);
   const finishedOnce = useRef(false);
 
   // Restored per user, after mount. A timer belonging to another profile in
@@ -86,6 +95,13 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
         clear(userId);
         void announceFinish(settings.sound ? chime : undefined)
           .then((o) => setFinished(settings.sound && !o.soundPlayed ? 'silent' : 'done'));
+        // A system notification as well, for a learner who is in another tab.
+        // Only if they allowed it when they started the timer; never asked here.
+        try {
+          if ('Notification' in window && Notification.permission === 'granted' && document.hidden) {
+            new Notification(t('appName'), { body: t('timerDone'), tag: 'flw-timer' });
+          }
+        } catch { /* some browsers only allow notifications from a service worker */ }
       }
     }, 250);
     return () => clearInterval(id);
@@ -106,7 +122,10 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
     setTimer({ endsAt, durationMin: selected, running: true });
     setFinished(null);
     save(userId, endsAt, selected);
-    if (settings.sound) void chime().catch(() => {});   // prime audio in the gesture
+    // Asked once, inside the click that starts a timer, so the browser treats
+    // it as the learner's own request. Refusing changes nothing else.
+    try { if ('Notification' in window && Notification.permission === 'default') void Notification.requestPermission(); } catch { /* unsupported */ }
+    if (settings.sound) primeAudio();   // open audio in the gesture; the chime plays at the end
   };
   const stop = () => { setTimer({ endsAt: 0, durationMin: selected, running: false }); clear(userId); };
 
@@ -114,10 +133,13 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
     <div className="shell">
       <a className="skip" href="#main">{t('skipToContent')}</a>
 
+      {/* The landing page carries its own header (redesign v1), so the shell bar
+          and the mobile bar are for the portal only. */}
+      {!onLanding && (
       <header className="bar">
+        <span className="lp3-tricolore" aria-hidden="true"><span /><span /><span /></span>
         <div className="bar-in">
           <NavLink to="/app/today" className="brand" aria-label={t('appName')}>
-            <span className="brand-mark" aria-hidden="true">Fr</span>
             <span className="brand-name">{t('appName')}</span>
           </NavLink>
           <div className="bar-actions">
@@ -144,29 +166,21 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
               <Popover.Portal>
                 <Popover.Content className="timer-panel" data-testid="timer-panel"
                                  aria-label={t('timer')} sideOffset={8} align="end" collisionPadding={8}>
-            <div className="presets">
-              {PRESETS.map((m) => (
-                <button key={m} className="preset" aria-pressed={selected === m} disabled={timer.running}
-                        data-testid={`preset-${m}`} onClick={() => setSelected(m)}>{m}m</button>
-              ))}
-            </div>
-            <div className="row gap-2">
-              <button className="btn btn--primary btn--sm" data-testid="timer-start"
-                      onClick={() => (timer.running ? stop() : start())}>
-                {timer.running ? t('pause') : t('start')}
-              </button>
-              <button className="btn btn--ghost btn--sm" onClick={stop}>{t('reset')}</button>
-              <button className="icon-btn" aria-pressed={settings.sound} data-testid="timer-sound"
-                      aria-label={settings.sound ? t('soundOn') : t('soundOff')}
-                      onClick={() => update({ sound: !settings.sound })}>
-                <Icon name={settings.sound ? 'sound' : 'mute'} />
-              </button>
-            </div>
+                  <Suspense fallback={<div className="tp tp--loading" />}>
+                    <TimerPanel clock={clock} running={timer.running} selected={selected}
+                                left={timer.running ? remainingSeconds(timer.endsAt, Date.now()) / (timer.durationMin * 60) : 1}
+                                onSelect={setSelected} onStart={start} onStop={stop} />
+                  </Suspense>
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>
             </>
             )}
+            {/* Light or dark in one click; "follow my device" stays in Settings. */}
+            <button type="button" className="icon-btn" data-testid="theme-toggle" aria-pressed={isDark()}
+                    onClick={() => update({ theme: isDark() ? 'light' : 'dark' })}>
+              <Icon name="appearance" /><span className="u-hidden-visually">{isDark() ? t('themeLight') : t('themeDark')}</span>
+            </button>
             <NavLink to="/account" className="icon-btn" data-testid="settings-link">
               <Icon name="settings" /><span className="u-hidden-visually">{t('settings')}</span>
             </NavLink>
@@ -175,27 +189,33 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
 
         {finished && (
-          <div className="finished" role="status" data-testid="timer-finished">
-            <span>{finished === 'away' ? t('timerAway') : finished === 'silent' ? t('timerDoneSilent') : t('timerDone')}</span>
+          <div className="finished toast" role="status" data-testid="timer-finished">
+            <span className="toast__icon" aria-hidden="true"><Icon name="timer" size={20} /></span>
+            <span className="toast__text">{finished === 'away' ? t('timerAway') : finished === 'silent' ? t('timerDoneSilent') : t('timerDone')}</span>
             <button className="btn btn--ghost btn--sm" data-testid="timer-dismiss" onClick={() => setFinished(null)}>
               {t('dismiss')}
             </button>
           </div>
         )}
       </header>
+      )}
 
       <main id="main" key={location.pathname}>
         {!onLanding && <TopLine />}
+        {!onLanding && <Suspense fallback={null}><RouteBanner /></Suspense>}
         {!onLanding && !labelsTranslated && (
           <p className="muted topline__note" data-testid="shell-untranslated">{t('shellUntranslated')}</p>
+        )}
+        {!onLanding && settings.ui === 'fa' && (
+          <p className="muted topline__note" data-testid="shell-fa-draft">{t('shellFaDraft')}</p>
         )}
         {prerenderChild ?? <Outlet />}
       </main>
 
       {/* One navigation per width. On the landing page there is no sidebar:
           a stranger has no portal to navigate yet. */}
-      {!onLanding && <Sidebar />}
-      <MobileBar />
+      {!onLanding && <Suspense fallback={null}><Sidebar /></Suspense>}
+      {!onLanding && <Suspense fallback={null}><MobileBar /></Suspense>}
 
       <SidePanel />
     </div>

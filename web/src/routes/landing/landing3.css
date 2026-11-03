@@ -1,0 +1,220 @@
+/* Landing page, redesign v1, third pass (see the plan at the top of
+ * routes/Landing.tsx). Imported into the `components` layer: above the legacy
+ * layer, below Tailwind's utilities.
+ *
+ * Type scale (a classical one: 14 · 16 · 18 · 21 · 24 · 36 · 48 · 72):
+ * Spectral carries headings and every French word; Inria Sans the rest. */
+
+.landing.lp3 {
+  --lp3-ink: var(--color-ink);
+  --lp3-blue: var(--fr-bleu);
+  --lp3-red: var(--fr-rouge);
+  --lp3-stone: var(--color-surface-sunken);
+  --lp3-rule: var(--color-line);
+  display: block; padding: 0; background: var(--color-surface); color: var(--lp3-ink);
+  font-family: var(--font-ui); font-size: 1.0625rem; line-height: 1.6;
+}
+.landing.lp3 > * + * { margin-block-start: 0; }
+.landing.lp3 > .landing__untranslated { margin: 0; padding: 0.75rem 1.25rem; text-align: center; background: var(--lp3-stone); }
+.lp3 :where(h1, h2, h3, p, ul, ol, dl, dd) { margin: 0; }
+
+.lp3-wrap { width: 100%; max-width: 75rem; margin-inline: auto; padding-inline: 1.25rem; }
+@media (min-width: 640px) { .lp3-wrap { padding-inline: 2.5rem; } }
+.lp3-section { display: flex; flex-direction: column; gap: 3rem; padding-block: 5rem; }
+@media (min-width: 1024px) { .lp3-section { padding-block: 7rem; } }
+.lp3-alt { background: var(--lp3-stone); }
+
+/* The tricolore: three equal bands. Official values. */
+.lp3-tricolore { display: flex; height: 4px; }
+.lp3-tricolore > span { flex: 1; }
+.lp3-tricolore > span:nth-child(1) { background: #0055a4; }
+.lp3-tricolore > span:nth-child(2) { background: #ffffff; }
+.lp3-tricolore > span:nth-child(3) { background: #ef4135; }
+
+/* Header. */
+.lp3-header { position: sticky; top: 0; z-index: 30; background: var(--color-surface); border-block-end: 1px solid var(--lp3-rule); }
+.lp3-header__in { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 4.25rem; }
+.lp3-brand {
+  font-family: var(--font-display); font-size: 1.5rem; font-weight: 500; letter-spacing: -0.01em;
+  color: var(--lp3-ink); text-decoration: none; white-space: nowrap;
+}
+.lp3-nav { display: none; gap: 0.25rem; }
+@media (min-width: 1024px) { .lp3-nav { display: flex; } }
+.lp3-nav button {
+  min-height: 2.75rem; padding-inline: 0.875rem; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 0.9375rem; color: var(--color-ink-muted);
+}
+.lp3-nav button:hover { color: var(--lp3-ink); text-decoration: underline; text-underline-offset: 0.3em; }
+
+/* Hero: the photograph is the page's one bold move. */
+.lp3-hero { position: relative; isolation: isolate; overflow: hidden; background: #10213f; color: #ffffff; }
+.lp3-hero__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.lp3-hero__shade {
+  position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(180deg, rgb(8 16 34 / 0.15) 0%, rgb(8 16 34 / 0.35) 40%, rgb(8 16 34 / 0.88) 100%);
+}
+@media (min-width: 1024px) {
+  .lp3-hero__shade { background:
+    linear-gradient(90deg, rgb(8 16 34 / 0.82) 0%, rgb(8 16 34 / 0.45) 55%, rgb(8 16 34 / 0) 100%),
+    linear-gradient(0deg, rgb(8 16 34 / 0.5) 0%, transparent 45%); }
+}
+[dir="rtl"] .lp3-hero__shade { transform: scaleX(-1); }
+.lp3-hero__in {
+  display: flex; flex-direction: column; justify-content: flex-end; gap: 1.5rem;
+  min-height: min(88vh, 50rem); padding-block: 8rem 4rem;
+}
+.landing .landing__headline.lp3-h1 {
+  max-width: 13ch; color: #ffffff; animation: none;
+  font-family: var(--font-display); font-weight: 300; letter-spacing: -0.02em;
+  font-size: clamp(2.75rem, 1.5rem + 5vw, 4.5rem); line-height: 1.04; text-wrap: balance;
+}
+.lp3-h1-en { font-size: clamp(1.125rem, 1rem + 0.5vw, 1.3125rem); color: rgb(255 255 255 / 0.78); margin-top: -0.5rem; }
+.lp3-hero__lede { max-width: 36rem; font-size: 1.125rem; line-height: 1.65; color: rgb(255 255 255 / 0.9); }
+.lp3-points { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem 1.5rem; font-size: 0.9375rem; color: rgb(255 255 255 / 0.82); }
+.lp3-points li { display: flex; align-items: center; gap: 0.5rem; }
+.lp3-hero :focus-visible { outline-color: #ffffff; }
+
+.lp3-btn-light, .lp3-btn-light:hover { background: #ffffff; color: var(--lp3-blue); border-radius: 6px; font-weight: 700; }
+.lp3-btn-light:hover { background: #e9edf5; }
+.lp3-textlink {
+  display: inline-flex; align-items: center; min-height: 2.75rem; padding: 0; border: 0; background: none; cursor: pointer;
+  font: inherit; font-weight: 700; color: var(--lp3-blue);
+  text-decoration: underline; text-decoration-thickness: 1px; text-underline-offset: 0.3em;
+}
+.lp3-textlink--light { color: #ffffff; }
+.lp3-textlink:hover { text-decoration-thickness: 2px; }
+
+/* Section heads: a heading and, when needed, one sentence. */
+.lp3-head { display: flex; flex-direction: column; gap: 1rem; max-width: 42rem; }
+.lp3-h2 {
+  font-family: var(--font-display); font-weight: 400; letter-spacing: -0.015em;
+  font-size: clamp(2rem, 1.4rem + 2.2vw, 3rem); line-height: 1.1; text-wrap: balance;
+}
+.lp3-h2:focus { outline: none; }
+.lp3-lede { font-size: 1.125rem; line-height: 1.65; color: var(--color-ink-muted); max-width: 38rem; }
+
+/* Contents: a French book's sommaire. Rules between rows carry the structure. */
+.lp3-contents { list-style: none; padding: 0; border-block-start: 1px solid var(--lp3-ink); }
+.lp3-contents > li { border-block-end: 1px solid var(--lp3-rule); }
+.lp3-row {
+  display: grid; grid-template-columns: 5.5rem 1fr; gap: 0.75rem 1.25rem; align-items: center;
+  padding-block: 1.5rem; color: inherit; text-decoration: none;
+}
+@media (min-width: 900px) {
+  .lp3-row { grid-template-columns: 8.5rem 15rem 1fr 9rem; gap: 2rem; padding-block: 1.75rem; }
+}
+.lp3-row__photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; }
+.lp3-row__word { font-family: var(--font-display); font-weight: 300; font-size: clamp(1.75rem, 1.4rem + 1vw, 2.25rem); line-height: 1.1; }
+.lp3-row__text { display: flex; flex-direction: column; gap: 0.25rem; grid-column: 1 / -1; }
+@media (min-width: 900px) { .lp3-row__text { grid-column: auto; } }
+.lp3-row__title { font-weight: 700; }
+.lp3-row__body { color: var(--color-ink-muted); font-size: 1rem; max-width: 34rem; }
+.lp3-row__count { display: none; }
+@media (min-width: 900px) {
+  .lp3-row__count { display: flex; flex-direction: column; align-items: flex-end; text-align: end; }
+  .lp3-row__count > span { font-family: var(--font-display); font-size: 2.25rem; font-weight: 300; line-height: 1; font-variant-numeric: lining-nums; }
+  .lp3-row__count > small { font-size: 0.875rem; color: var(--color-ink-muted); margin-top: 0.375rem; }
+}
+.lp3-row:hover .lp3-row__word { color: var(--lp3-blue); }
+.lp3-row:hover .lp3-row__title { text-decoration: underline; text-underline-offset: 0.25em; }
+.lp3-row:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
+.lp3-note { font-size: 0.875rem; color: var(--color-ink-faint); }
+
+/* What is not here yet. A red mark per line, nothing else. */
+.lp3-gaps { display: grid; gap: 2rem; padding-block: 0 5rem; }
+@media (min-width: 1024px) { .lp3-gaps { grid-template-columns: 1fr 1.4fr; gap: 4rem; padding-block-end: 7rem; } }
+.lp3-gaps .lp3-h2 { font-size: clamp(1.75rem, 1.4rem + 1.2vw, 2.25rem); }
+.landing.lp3 .lp3-gaps__list { list-style: none; padding: 0; display: flex; flex-direction: column; gap: 1.25rem; }
+.landing.lp3 .lp3-gaps__list li {
+  position: relative; padding-inline-start: 1.5rem; max-width: none; font-size: 1rem; line-height: 1.6;
+}
+.landing.lp3 .lp3-gaps__list li::before {
+  content: ""; position: absolute; inset-inline-start: 0; top: 0.6em; width: 0.5rem; height: 0.5rem;
+  background: var(--lp3-red); border-radius: 0;
+}
+
+/* The practice desk, on Seyès ruling: fine lines every 8px, a heavier one
+   every 32px, and the red margin line of a French cahier. */
+.lp3-desk {
+  background-color: #fbfbfd;
+  background-image:
+    linear-gradient(90deg, transparent calc(8% - 1px), rgb(225 0 15 / 0.35) calc(8% - 1px), rgb(225 0 15 / 0.35) 8%, transparent 8%),
+    linear-gradient(0deg, rgb(110 120 200 / 0.28) 1px, transparent 1px),
+    linear-gradient(0deg, rgb(110 120 200 / 0.12) 1px, transparent 1px);
+  background-size: 100% 100%, 100% 32px, 100% 8px;
+  border-block: 1px solid var(--lp3-rule);
+}
+.lp3-desk__grid { display: grid; gap: 1.5rem; align-items: start; }
+@media (min-width: 900px) { .lp3-desk__grid { grid-template-columns: 0.9fr 1.1fr; gap: 2.5rem; } }
+.lp3-desk .lp-card, .lp3-desk .lp-read {
+  background: var(--color-surface); border: 1px solid var(--lp3-rule); border-radius: 4px;
+  box-shadow: 0 1px 0 var(--lp3-rule), 0 18px 40px -28px rgb(16 33 63 / 0.45);
+}
+
+/* A day in French. */
+.lp3-day { list-style: none; padding: 0; display: grid; gap: 2.5rem 1.5rem; }
+@media (min-width: 640px) { .lp3-day { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .lp3-day { grid-template-columns: repeat(4, 1fr); } }
+.lp3-story { display: flex; flex-direction: column; gap: 0.625rem; color: inherit; text-decoration: none; }
+.lp3-story__photo { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: 2px; margin-bottom: 0.375rem; }
+.lp3-story__meta { display: flex; align-items: center; gap: 0.625rem; font-size: 0.875rem; color: var(--color-ink-muted); }
+.lp3-story__title { font-family: var(--font-display); font-size: 1.5rem; font-weight: 400; line-height: 1.2; }
+.lp3-story__en { font-size: 0.9375rem; color: var(--color-ink-muted); }
+.lp3-story:hover .lp3-story__title { color: var(--lp3-blue); text-decoration: underline; text-underline-offset: 0.2em; text-decoration-thickness: 1px; }
+.lp3-story:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 4px; }
+
+/* Goal. */
+.lp3-goal { display: grid; gap: 3rem; }
+@media (min-width: 1024px) { .lp3-goal { grid-template-columns: 1fr 1.2fr; align-items: start; gap: 5rem; } }
+.lp3-goal__photo { display: none; width: 100%; aspect-ratio: 3 / 2; object-fit: cover; border-radius: 2px; }
+@media (min-width: 1024px) { .lp3-goal__photo { display: block; } }
+
+/* Trust and examinations. */
+.lp3-trust { display: grid; gap: 2rem; }
+@media (min-width: 640px) { .lp3-trust { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .lp3-trust { grid-template-columns: repeat(4, 1fr); gap: 2.5rem; } }
+.lp3-trust > div { display: flex; flex-direction: column; gap: 0.5rem; }
+.lp3-trust dt { font-weight: 700; }
+.lp3-trust dd { color: var(--color-ink-muted); font-size: 1rem; }
+.lp3-exams { display: grid; gap: 1rem; padding-block-start: 2.5rem; border-block-start: 1px solid var(--lp3-ink); }
+@media (min-width: 1024px) { .lp3-exams { grid-template-columns: 1fr 2fr; gap: 4rem; } }
+.lp3-exams h3 { font-family: var(--font-display); font-size: 1.75rem; font-weight: 400; line-height: 1.2; }
+.lp3-exams > div { display: flex; flex-direction: column; gap: 0.75rem; color: var(--color-ink-muted); }
+
+/* FAQ. */
+.lp3-faq { display: grid; gap: 2rem; }
+@media (min-width: 1024px) { .lp3-faq { grid-template-columns: 1fr 1.6fr; gap: 5rem; } }
+.lp3-faq [data-slot="accordion"] { border-block-start: 1px solid var(--lp3-ink); }
+.lp3-faq [data-slot="accordion-trigger"] { font-size: 1.125rem; font-weight: 400; }
+
+/* Closing: Montmartre, full width. */
+.lp3-close { position: relative; isolation: isolate; overflow: hidden; background: #10213f; color: #ffffff; }
+.lp3-close__photo { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: -2; }
+.lp3-close__shade { position: absolute; inset: 0; z-index: -1;
+  background: linear-gradient(90deg, rgb(8 16 34 / 0.85) 0%, rgb(8 16 34 / 0.5) 55%, rgb(8 16 34 / 0.15) 100%); }
+[dir="rtl"] .lp3-close__shade { transform: scaleX(-1); }
+.lp3-close__in { display: flex; flex-direction: column; align-items: flex-start; gap: 1.25rem; padding-block: 7rem; }
+.lp3-close__fr { font-family: var(--font-display); font-weight: 300; font-size: clamp(2.75rem, 1.5rem + 4.5vw, 4.5rem); line-height: 1.05; letter-spacing: -0.02em; }
+.lp3-close__fr:focus { outline: none; }
+.lp3-close__en { font-size: 1.1875rem; color: rgb(255 255 255 / 0.85); max-width: 34rem; margin-bottom: 0.75rem; }
+.lp3-close :focus-visible { outline-color: #ffffff; }
+
+/* Footer. */
+.landing.lp3 .lp3-footer { display: block; padding: 0; gap: 0; font-size: inherit; color: inherit; border: 0; background: var(--lp3-stone); }
+.lp3-footer__grid { display: grid; gap: 2.5rem; padding-block: 4rem 2.5rem; }
+@media (min-width: 640px) { .lp3-footer__grid { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1024px) { .lp3-footer__grid { grid-template-columns: 1.6fr 1fr 1fr 1fr; } }
+.lp3-footer__free { margin-top: 0.75rem; max-width: 20rem; font-size: 0.9375rem; color: var(--color-ink-muted); }
+.lp3-footer h2 { font-family: var(--font-ui); font-size: 0.9375rem; font-weight: 700; margin-bottom: 0.75rem; }
+.lp3-footer ul { list-style: none; padding: 0; display: flex; flex-direction: column; }
+.lp3-footer li a, .lp3-footer li button {
+  display: inline-block; padding-block: 0.375rem; border: 0; background: none; cursor: pointer;
+  font: inherit; font-size: 0.9375rem; color: var(--color-ink-muted); text-decoration: none; text-align: start;
+}
+.lp3-footer li a:hover, .lp3-footer li button:hover { color: var(--lp3-ink); text-decoration: underline; }
+.lp3-footer li button[aria-pressed="true"] { color: var(--lp3-ink); font-weight: 700; }
+.landing.lp3 .lp3-footer__legal { padding-block: 0 2.5rem; font-size: 0.8125rem; line-height: 1.6; color: var(--color-ink-faint); max-width: 75rem; }
+
+/* The preview cards' small labels: sentence case, like the rest of the page. */
+.lp3 .lp-card__kind, .lp3 .lp-read__who { text-transform: none; letter-spacing: 0; font-size: 0.875rem; }
+.lp3-hero__audience { max-width: 36rem; margin-top: -0.5rem; font-size: 0.9375rem; line-height: 1.6; color: rgb(255 255 255 / 0.72); }

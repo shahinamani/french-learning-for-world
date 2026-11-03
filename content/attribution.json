@@ -10,8 +10,8 @@
       "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "takenFrom": "Université Savoie Mont Blanc / Laboratoire de Psychologie et NeuroCognition",
       "usedFor": {
-        "en": "The list of French verbs and their frequency, which decides which verbs appear at which level. Frequency counts are also used to check our generated conjugations against forms that really occur.",
-        "fr": "La liste des verbes français et leur fréquence, qui détermine quel verbe apparaît à quel niveau. Les relevés de fréquence servent aussi à vérifier nos conjugaisons face aux formes réellement attestées."
+        "en": "The list of French verbs, nouns and adjectives and their frequency, which decides which words appear at which level, and the gender, plural and feminine of each noun and adjective. Frequency counts are also used to check our generated conjugations against forms that really occur.",
+        "fr": "La liste des verbes, noms et adjectifs français et leur fréquence, qui détermine quel mot apparaît à quel niveau, ainsi que le genre, le pluriel et le féminin de chaque nom et adjectif. Les relevés de fréquence servent aussi à vérifier nos conjugaisons face aux formes réellement attestées."
       }
     },
     {
@@ -25,6 +25,80 @@
         "en": "Complete conjugation tables, used to check every form this project generates — including the passé simple and the imperfect subjunctive, which a corpus of real speech rarely contains. Three errors in our own conjugator were found this way.",
         "fr": "Les tableaux de conjugaison complets, qui servent à vérifier chaque forme produite par ce projet — y compris le passé simple et l’imparfait du subjonctif, que les corpus de langue parlée contiennent rarement. Trois erreurs de notre conjugueur ont été trouvées ainsi."
       }
+    },
+    {
+      "id": "unsplash",
+      "name": "Unsplash",
+      "url": "https://unsplash.com/",
+      "licence": "Unsplash License",
+      "licenceUrl": "https://unsplash.com/license",
+      "takenFrom": "The photographers credited per photo below",
+      "usedFor": {
+        "en": "The photographs on the landing page. Free to use under the Unsplash License; each is credited to its photographer here.",
+        "fr": "Les photographies de la page d’accueil. Libres d’utilisation sous la licence Unsplash ; chacune est créditée ici à son auteur."
+      },
+      "photos": [
+        {
+          "file": "web/public/photos/paris-rooftops-*.webp",
+          "page": "https://unsplash.com/photos/aerial-view-of-city-buildings-during-sunset-pjRxijdMGuE",
+          "photographer": "https://unsplash.com/@bethanjames"
+        },
+        {
+          "file": "web/public/photos/flag-balcony-*.webp",
+          "page": "https://unsplash.com/photos/a-flag-flying-in-front-of-a-tall-building-u0dyiC_O4Hw",
+          "photographer": "https://unsplash.com/@aminzabardast"
+        },
+        {
+          "file": "web/public/photos/market-*.webp",
+          "page": "https://unsplash.com/photos/person-standing-outside-flower-shop-MB092g2FF_U",
+          "photographer": "https://unsplash.com/@callmehangry"
+        },
+        {
+          "file": "web/public/photos/metro-*.webp",
+          "page": "https://unsplash.com/photos/person-at-the-concorde-metro-station-platform-2MI1yZtZvZs",
+          "photographer": "https://unsplash.com/@miraxh"
+        },
+        {
+          "file": "web/public/photos/terrace-*.webp",
+          "page": "https://unsplash.com/photos/people-sitting-on-brown-wooden-chairs-during-daytime-bD-d0T8zSm4",
+          "photographer": "https://unsplash.com/@hoangdat302"
+        },
+        {
+          "file": "web/public/photos/cafe-night-*.webp",
+          "page": "https://unsplash.com/photos/people-standing-near-storefront-upZmA5PCLwU",
+          "photographer": "https://unsplash.com/@venusmajor"
+        },
+        {
+          "file": "web/public/photos/bouquinistes-*.webp",
+          "page": "https://unsplash.com/photos/a-bunch-of-books-are-on-display-outside-Mj0dJJ4KIZ0",
+          "photographer": "https://unsplash.com/@xavierqu"
+        },
+        {
+          "file": "web/public/photos/bookshelves-*.webp",
+          "page": "https://unsplash.com/photos/brown-wooden-shelf-with-books-iceY_o-zcsU",
+          "photographer": "https://unsplash.com/@akydnem"
+        },
+        {
+          "file": "web/public/photos/montmartre-*.webp",
+          "page": "https://unsplash.com/photos/cobblestone-street-in-paris-with-buildings-at-sunset-MJPRzG4Bqak",
+          "photographer": "https://unsplash.com/@lens_by_benji"
+        },
+        {
+          "file": "web/public/photos/musicians-*.webp",
+          "page": "https://unsplash.com/photos/adults-playing-musical-instruments-in-a-flute-workshop-Vec8QTHIyu4",
+          "photographer": "https://unsplash.com/@pir"
+        },
+        {
+          "file": "web/public/photos/croissant-*.webp",
+          "page": "https://unsplash.com/photos/a-close-up-of-a-plate-of-food-on-a-table-8aSR_-CHjPo",
+          "photographer": "https://unsplash.com/@whereiskylenow"
+        },
+        {
+          "file": "web/public/photos/boulangerie-*.webp",
+          "page": "https://unsplash.com/photos/man-riding-bicycle-near-building-IjThzZ53riE",
+          "photographer": "https://unsplash.com/@sandrocenni"
+        }
+      ]
     }
   ]
 }

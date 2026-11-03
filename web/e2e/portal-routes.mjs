@@ -108,7 +108,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
   const ROUTES = ['today', 'path', 'vocabulary', 'cards', 'verbs', 'grammar', 'listening', 'reading', 'output',
                   'news', 'podcasts', 'exams', 'saved', 'progress', 'search', 'workspace'];
   // Grammar and reading were placeholders until they were mounted; they are real pages now.
-  const PLACEHOLDER = ['path', 'vocabulary', 'output', 'news', 'podcasts', 'saved'];
+  // My path became the level map in redesign v1 (REDESIGN-v1.md §6).
+  const PLACEHOLDER = ['vocabulary', 'output', 'news', 'podcasts', 'saved'];
   for (const id of ROUTES) {
     await go(r, `/app/${id}`);
     const nf = await r.locator('[data-testid="not-found"]').count();
@@ -134,16 +135,37 @@ console.log('\n=== portal routes, redirects and icon names ===');
   // 3. Shell structure, desktop.
   await go(r, '/app/verbs');
   const sidebarLinks = await r.locator('[data-testid="sidebar"] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
-  const wanted = ['today', 'path', 'vocabulary', 'cards', 'verbs', 'grammar', 'listening', 'reading', 'output',
-                  'news', 'podcasts', 'exams', 'saved', 'progress'].map((s) => `#/app/${s}`);
-  ok('the sidebar lists the fourteen contract routes in order',
-     JSON.stringify(sidebarLinks.slice(0, 14)) === JSON.stringify(wanted), sidebarLinks.slice(0, 14).join(' '));
+  // Redesign v1 (REDESIGN-v1.md §4, owner 2026-10-31): the sidebar is built
+  // around the learner's exam. A new profile has none yet, so it is offered
+  // the chooser where the exam's sections will be.
+  const wanted = ['today', 'exam', 'cards', 'verbs', 'grammar', 'reading', 'progress'].map((s) => `#/app/${s}`);
+  ok('the sidebar lists Today, the exam chooser, the skill tools and progress, in order',
+     JSON.stringify(sidebarLinks.slice(0, 7)) === JSON.stringify(wanted), sidebarLinks.slice(0, 7).join(' '));
+  ok('and no empty section is in it',
+     !sidebarLinks.some((h) => /vocabulary|listening|output|news|podcasts|saved/.test(h ?? '')), sidebarLinks.join(' '));
   ok('the sidebar ends with account, appearance and language, help, exit',
-     JSON.stringify(sidebarLinks.slice(14)) === JSON.stringify(['#/account', '#/account', '#/about', '#/']), sidebarLinks.slice(14).join(' '));
+     JSON.stringify(sidebarLinks.slice(7)) === JSON.stringify(['#/account', '#/account', '#/about', '#/']), sidebarLinks.slice(7).join(' '));
   ok('the sidebar marks the current page with aria-current',
      await r.locator('[data-testid="nav-verbs"][aria-current="page"]').count() === 1);
   ok('the breadcrumb shows where you are',
      (await r.locator('[data-testid="breadcrumb"]').innerText()).replace(/\s+/g, ' ').includes('Free learning'));
+  // Choosing an exam turns the chooser into that exam's four sections.
+  await go(r, '/app/exam');
+  await r.locator('[data-testid="choose-delf-b1"]').click(); await r.waitForTimeout(600);
+  ok('choosing DELF B1 opens its overview', pathOf(r) === '/app/exam/delf-b1', pathOf(r));
+  const examLinks = await r.locator('[data-testid="sidebar"] a').evaluateAll((as) => as.map((a) => a.getAttribute('href')));
+  ok('and the sidebar now shows its overview, four sections and practice papers',
+     ['overview', 'co', 'ce', 'pe', 'po'].every((k) => examLinks.includes(k === 'overview' ? '#/app/exam/delf-b1' : `#/app/exam/delf-b1/${k}`))
+     && examLinks.includes('#/app/exams'), examLinks.join(' '));
+  await go(r, '/app/exam/delf-b1/co');
+  ok('a section with no practice here says so, and points to free practice elsewhere',
+     await r.locator('[data-testid="exam-section-co"]').count() === 1
+     && /no practice for this section here yet/i.test(await r.locator('main').innerText()));
+  await go(r, '/app/exam/tcf-canada');
+  ok('an exam whose format is not verified shows no figures',
+     await r.locator('[data-testid="exam-not-verified"]').count() === 1
+     && !/\d+ min/.test(await r.locator('.exam-sections').innerText()));
+  await go(r, '/app/verbs');
   await r.locator('#gsearch-q').fill('manger');
   await r.locator('#gsearch-q').press('Enter');
   await r.waitForTimeout(500);
@@ -155,7 +177,7 @@ console.log('\n=== portal routes, redirects and icon names ===');
   const toggle = r.locator('[data-testid="nav-free-toggle"]');
   ok('the free-learning group starts open', await toggle.getAttribute('aria-expanded') === 'true');
   await toggle.click();
-  ok('it collapses', await toggle.getAttribute('aria-expanded') === 'false' && !(await r.locator('[data-testid="nav-vocabulary"]').isVisible()));
+  ok('it collapses', await toggle.getAttribute('aria-expanded') === 'false' && !(await r.locator('[data-testid="nav-verbs"]').isVisible()));
   await r.reload({ waitUntil: 'networkidle' }); await r.waitForTimeout(300);
   ok('and is still collapsed after a reload', await r.locator('[data-testid="nav-free-toggle"]').getAttribute('aria-expanded') === 'false');
   await go(r, '/app/verbs');
@@ -188,8 +210,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
   ok(`the Learn menu opens as a bottom sheet (bottom ${Math.round(box.y + box.height)} of 844, width ${Math.round(box.width)} of 390)`,
      Math.abs(box.y + box.height - 844) <= 1 && Math.abs(box.width - 390) <= 1);
   ok('the sheet has an accessible title', await m.locator('[data-testid="nav-sheet"]').getAttribute('aria-labelledby') !== null);
-  ok('the sheet lists the seven free-learning items and the two discovery ones',
-     await m.locator('[data-testid="nav-sheet"] a').count() === 9);
+  ok('the sheet lists verbs, grammar and reading (cards has its own tab)',
+     await m.locator('[data-testid="nav-sheet"] a').count() === 3);
   const unnamedSheet = await m.evaluate(unnamedIn);
   ok('no control is unnamed with the sheet open', unnamedSheet.length === 0, unnamedSheet.join(' | '));
   await m.keyboard.press('Escape'); await m.waitForTimeout(250);
@@ -198,9 +220,9 @@ console.log('\n=== portal routes, redirects and icon names ===');
      await m.evaluate(() => document.activeElement?.getAttribute('data-testid')) === 'mbar-learn');
   await m.locator('[data-testid="mbar-more"]').click();
   await m.waitForSelector('[data-testid="nav-sheet"]');
-  await m.locator('[data-testid="sheet-exams"]').click(); await m.waitForTimeout(400);
+  await m.locator('[data-testid="sheet-progress"]').click(); await m.waitForTimeout(400);
   ok('choosing an item in the sheet navigates and closes it',
-     pathOf(m) === '/app/exams' && await m.locator('[data-testid="nav-sheet"]').count() === 0, pathOf(m));
+     pathOf(m) === '/app/progress' && await m.locator('[data-testid="nav-sheet"]').count() === 0, pathOf(m));
   let unnamedMobile = [];
   for (const id of [...ROUTES, 'account']) {
     await go(m, id === 'account' ? '/account' : `/app/${id}`);

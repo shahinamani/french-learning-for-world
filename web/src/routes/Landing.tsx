@@ -1,43 +1,33 @@
 /**
  * The front door — what a stranger meets at `/`.
  *
- * A landing page is judged in the first screen and trusted or not by the
- * fourth. This one is built to be read in this order (the blueprint's section
- * 6): header · hero with a live preview · what do you want to do today · what
- * is not here yet · one learning, many shapes · learning for my goal · fresh
- * content · what you get wrong decides what comes back · what you can rely on ·
- * questions · a closing call to action · a footer.
+ * Redesign v1 (docs/blueprint/REDESIGN-v1.md §5), third pass. The design plan,
+ * so the next person does not drift back to a template:
  *
- * Four rules this file follows, each of which has cost something before:
+ *   - Subject first. The page is about French, so French leads: the headline
+ *     is a French sentence with its English beneath it, the contents are a
+ *     French book's sommaire, and the practice desk sits on Seyès ruling, the
+ *     paper of every French school exercise book.
+ *   - Paris limestone, the enamel blue of a Paris street sign, ink, and the red
+ *     of the tricolore used only as a mark. No cream, no terracotta.
+ *   - Spectral (Production Type, Paris) for French and headings, Inria Sans for
+ *     the interface. One family each, two clear roles.
+ *   - No all-caps labels above headings, no strings joined with middle dots, no
+ *     arrows on buttons, no single coloured word in a headline, no grid of
+ *     identical cards, no stats strip. The counts live in the contents rows.
  *
- * **No number here is typed.** Every figure comes from
- * content/portal-summary.json, generated from the content and checked by
- * tests/portal-summary.test.js. The brief for the first landing page said
- * "2,392 verbs" and "nothing at C1 or C2 yet"; it is 2,387, and 991 verbs ARE
- * at C1 and C2. The few pieces of quoted content (one card, four lines of one
- * dialogue) live in landing/data.ts and are checked by
- * tests/landing-data.test.js.
- *
- * **"What is not here yet" carries the same weight as "what you can do".** It
- * sits straight after the tiles, in the same band, not in a footnote. A
- * stranger who reads that there is no listening and comes anyway is the person
- * this is for; one who finds out on the third screen has been misled by
- * omission. Tiles for things that do not exist say so ON the tile.
- *
- * **No invented proof.** No learner count, no testimonial, no "success rate".
- * Where a section has nothing true to show it says what IS there. The worked
- * example of a mistake is labelled an example.
- *
- * **Copy is written in English and French only.** Persian and Arabic are not
- * machine-filled: the page is English behind the existing marker, and then
- * ALL of it is English, including its direction and its digits (see
- * `copyLocale` below, and the walk's Persian check, which exists because the
- * mixed version printed full stops on the wrong side).
+ * Rules that still hold from the first version:
+ * **No number here is typed** — every figure is content/portal-summary.json,
+ * checked by tests/portal-summary.test.js and scripts/prerender.mjs.
+ * **"What is not here yet" comes straight after what you can do** — the
+ * prerender fails if it moves. **No invented proof.** **Copy is English and
+ * French only**; in Persian and Arabic the page is English, in English's
+ * direction and digits, behind a line that says so.
  */
 import { useId } from 'react';
 import { Link } from 'react-router';
+import { Check, WifiOff, Lock } from 'lucide-react';
 import { useApp } from '../app-context';
-import { Icon } from '../components/Icon';
 import { LOCALES, landingTranslated, translator, type Dict } from '../lib/i18n';
 import { fr } from '../lib/typography';
 import type { Locale } from '../lib/types';
@@ -45,40 +35,20 @@ import summary from '../generated/portal-summary.json';
 import { Flow } from './landing/Flow';
 import { Goals } from './landing/Goals';
 import { DialoguePreview, FlashcardPreview } from './landing/Preview';
-import {
-  DIALOGUE, EXAMPLE_ERROR, EXAMS, READING, READING_LEVELS, type Item,
-} from './landing/data';
-import { TYPE } from './landing/Goals';
+import { READING, READING_LEVELS } from './landing/data';
 import type { CopyLocale, Tx } from './landing/types';
+import { Button } from '../components/ui/button';
+import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '../components/ui/accordion';
+import { cn } from '../lib/cn';
 
-/** 2387 → "2,387" in the page's own language, which is not always a comma. */
 function n(value: number, locale: string): string {
-  try {
-    return new Intl.NumberFormat(locale).format(value);
-  } catch {
-    return String(value);
-  }
+  try { return new Intl.NumberFormat(locale).format(value); } catch { return String(value); }
 }
-
-/**
- * A list in the page's language: "A1, A2" in English, "A1 et A2" in French.
- * Deliberately not a dictionary key: a separator and the word "and" would have
- * meant two more strings to write in each language, and Intl already knows.
- */
 function list(items: string[], locale: string, type: 'unit' | 'conjunction'): string {
-  try {
-    return new Intl.ListFormat(locale, { style: 'short', type }).format(items);
-  } catch {
-    return items.join(', ');
-  }
+  try { return new Intl.ListFormat(locale, { style: 'short', type }).format(items); } catch { return items.join(', '); }
 }
-
-/** {"DELF":["A1","A2"],"TCF":["B1"]} → "DELF A1, A2 · TCF B1". No prose: exam
- *  names and level codes are the same in every language. */
 function coverage(papers: Record<string, string[]>, locale: string): string {
-  return Object.entries(papers)
-    .map(([exam, levels]) => `${exam} ${list(levels, locale, 'unit')}`)
-    .join(' · ');
+  return Object.entries(papers).map(([exam, levels]) => `${exam} ${list(levels, locale, 'unit')}`).join('; ');
 }
 
 /** In-page navigation. A button, not `<a href="#id">`: the router is a HASH
@@ -89,27 +59,27 @@ function goTo(id: string) {
   let reduce = false;
   try { reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches; } catch { /* default */ }
   el.scrollIntoView({ behavior: reduce ? 'auto' : 'smooth', block: 'start' });
-  const heading = el.querySelector<HTMLElement>('h2');
-  heading?.focus({ preventScroll: true });
+  el.querySelector<HTMLElement>('h2')?.focus({ preventScroll: true });
 }
 
-type TileStatus = 'ready' | 'notbuilt' | 'noaudio';
-type Tile = {
-  id: string; icon: string; to: string; status: TileStatus;
-  title: keyof Dict; body: keyof Dict; vars?: Record<string, string | number>;
-};
+/** The tricolore as a thin rule along an edge. */
+function Tricolore({ className }: { className?: string }) {
+  return <span className={cn('lp3-tricolore', className)} aria-hidden="true"><span /><span /><span /></span>;
+}
 
-const STATUS: Record<TileStatus, keyof Dict> = {
-  ready: 'landingStatusReady', notbuilt: 'landingStatusNotBuilt', noaudio: 'landingStatusNoAudio',
-};
+/** The French the page is about, the same in every interface language. The
+ *  headline is `landingHeadline` in lib/locales/fr.ts, written out here
+ *  because that dictionary is a lazy chunk, absent from the prerender. */
+const HEADLINE_FR = 'Le français, pour la vie que tu veux.';
+const CLOSE_FR = 'On commence ?';
 
 function LanguageSelect({ tx, ui, onChange }: { tx: Tx; ui: Locale; onChange: (l: Locale) => void }) {
   const id = useId();
   return (
-    <div className="lp-lang">
+    <div>
       <label htmlFor={id} className="u-hidden-visually">{tx('landingLangLabel')}</label>
-      <select id={id} className="select lp-lang__select" value={ui} data-testid="landing-lang"
-              onChange={(e) => onChange(e.target.value as Locale)}>
+      <select id={id} value={ui} data-testid="landing-lang" onChange={(e) => onChange(e.target.value as Locale)}
+        className="min-h-11 rounded-md border border-border-strong bg-card px-3 pe-8 text-sm text-foreground cursor-pointer">
         {(Object.keys(LOCALES) as Locale[]).map((l) => (
           <option key={l} value={l} lang={l}>{LOCALES[l].name}</option>
         ))}
@@ -118,302 +88,246 @@ function LanguageSelect({ tx, ui, onChange }: { tx: Tx; ui: Locale; onChange: (l
   );
 }
 
-function ItemCard({ item, tx, locale }: { item: Item; tx: Tx; locale: CopyLocale }) {
-  const type = TYPE[item.kind];
-  const source = item.kind === 'reading' ? 'landingFreshReadingSource'
-    : item.kind === 'dialogue' ? 'landingFreshDialogueSource' : 'landingFreshExamSource';
-  const levelBasis = item.kind === 'exam' ? 'landingFreshLevelStated' : 'landingFreshLevelAuthor';
+function Head({ id, title, lede }: { id: string; title: string; lede?: string }) {
   return (
-    <li className="lp-fresh__item">
-      <div className="lp-fresh__top">
-        <span className="lp-fresh__type"><Icon name={type.icon} size={18} />{tx(type.label)}</span>
-        <span className={`chip chip--${item.level.toLowerCase()}`}>{item.level}</span>
-      </div>
-      <h3 className="lp-fresh__title" lang="fr">{fr(item.fr)}</h3>
-      {locale !== 'fr' && <p className="lp-fresh__gloss" lang="en">{item.en}</p>}
-      <p className="lp-fresh__facts">
-        {item.seconds !== undefined && <>{tx('landingFreshMinRead', { minutes: Math.max(1, Math.round(item.seconds / 60)) })}</>}
-        {item.minutes !== undefined && <>{tx('landingFreshMinSit', { minutes: item.minutes })}</>}
-        {item.kind === 'dialogue' && <>{tx('landingFreshNoAudio')}</>}
-      </p>
-      <p className="lp-fresh__source">{tx(source)}</p>
-      <p className="lp-fresh__source">{tx(levelBasis)}</p>
-      <p className="lp-fresh__flag">{tx('landingFreshUnchecked')}</p>
-      <Link to={item.to} className="btn lp-fresh__open">
-        {tx('landingFreshOpen')}<span className="u-hidden-visually">: {item.en}</span>
-      </Link>
-    </li>
+    <div className="lp3-head">
+      <h2 id={id} tabIndex={-1} className="lp3-h2">{title}</h2>
+      {lede && <p className="lp3-lede">{lede}</p>}
+    </div>
   );
 }
+
+type Row = {
+  id: string; to: string; word: string; title: keyof Dict; body: keyof Dict;
+  vars?: Record<string, string | number>; count: string; unit: string; photo: string;
+};
 
 export function Landing() {
   const { t, settings, update } = useApp();
   const ui = settings.ui;
   const translated = landingTranslated(ui);
-
-  /**
-   * When nobody has written this page in the reader's language they get
-   * English — and then EVERYTHING on it is English, including its direction,
-   * its digits, its list separators and its navigation words.
-   *
-   * Both halves were wrong when this was first rendered in Persian. English
-   * sentences sat inside the document's `dir="rtl"`, so every full stop jumped
-   * to the left of its sentence. And `Intl` was given the reader's locale, so
-   * "2,387" came out as «۲٬۳۸۷» — Persian digits in the middle of an English
-   * clause, which is neither language's typography. A page that is in English
-   * is in English; the marker above says so; the direction and the numerals
-   * have to agree with it. The translator is bound to the same decision for
-   * the same reason: `verbs` in Persian would otherwise appear in the footer
-   * of an English page.
-   */
   const copyLocale: CopyLocale = translated ? (ui as CopyLocale) : 'en';
   const base = translated ? t : translator('en');
-  // French is typeset on the way out (narrow no-break space before ; ! ?, the
-  // typographic apostrophe), so the dictionary does not have to carry it.
   const tx: Tx = (key, vars) => (copyLocale === 'fr' ? fr(base(key, vars)) : base(key, vars));
   const num = (v: number) => n(v, copyLocale);
-  const where = coverage(summary.paperCoverage, copyLocale);
+  const english = copyLocale !== 'fr';
 
-  const tiles: Tile[] = [
-    { id: 'word', icon: 'wordtag', to: '/app/vocabulary', status: 'notbuilt',
-      title: 'landingTileTermTitle', body: 'landingTileTermBody' },
-    { id: 'verb', icon: 'bookclock', to: '/app/verbs', status: 'ready',
-      title: 'landingTileVerbTitle', body: 'landingTileVerbBody', vars: { verbs: num(summary.verbs) } },
-    { id: 'listening', icon: 'headphones', to: '/app/listening', status: 'noaudio',
-      title: 'landingTileListenTitle', body: 'landingTileListenBody' },
-    { id: 'reading', icon: 'textpage', to: '/app/reading', status: 'ready',
-      title: 'landingTileReadTitle', body: 'landingTileReadBody',
-      vars: { from: READING_LEVELS[0], to: READING_LEVELS[1] } },
-    { id: 'news', icon: 'newspaper', to: '/app/news', status: 'notbuilt',
-      title: 'landingTileNewsTitle', body: 'landingTileNewsBody' },
-    { id: 'podcast', icon: 'soundwave', to: '/app/podcasts', status: 'notbuilt',
-      title: 'landingTilePodcastTitle', body: 'landingTilePodcastBody' },
-    { id: 'exam', icon: 'examsheet', to: '/app/exams', status: 'ready',
-      title: 'landingTileExamTitle', body: 'landingTileExamBody',
-      vars: { papers: num(summary.papers), items: num(summary.examItems) } },
-    { id: 'cards', icon: 'stackedcards', to: '/app/cards', status: 'ready',
-      title: 'landingTileCardsTitle', body: 'landingTileCardsBody',
-      vars: { cards: num(summary.cards), levels: list(summary.cardLevels, copyLocale, 'conjunction') } },
+  // The contents of the portal, as a French book lists its chapters. The
+  // French word is content (lang="fr"); the count is counted, not typed.
+  const rows: Row[] = [
+    { id: 'verb', to: '/app/verbs', word: 'les verbes', title: 'landingTypeVerbs', body: 'landingTileVerbBody',
+      vars: { verbs: num(summary.verbs) }, count: num(summary.verbs), unit: tx('landingStatVerbs'), photo: 'bouquinistes' },
+    { id: 'cards', to: '/app/cards', word: 'les cartes', title: 'landingTypeCards', body: 'landingTileCardsBody',
+      vars: { cards: num(summary.cards), levels: list(summary.cardLevels, copyLocale, 'conjunction') },
+      count: num(summary.cards), unit: tx('landingStatCards'), photo: 'croissant' },
+    { id: 'reading', to: '/app/reading', word: 'la lecture', title: 'landingTypeReading', body: 'landingTileReadBody',
+      vars: { from: READING_LEVELS[0], to: READING_LEVELS[1] },
+      count: `${READING_LEVELS[0]}–${READING_LEVELS[1]}`, unit: tx('landingTypeReading'), photo: 'terrace' },
+    { id: 'exam', to: '/app/exams', word: 'les examens', title: 'landingTypeExam', body: 'landingTileExamBody',
+      vars: { papers: num(summary.papers), items: num(summary.examItems) },
+      count: num(summary.papers), unit: tx('landingStatPapers'), photo: 'flag-balcony' },
   ];
 
-  const fresh: Item[] = [READING.market, READING.sleep, DIALOGUE, EXAMS.delfA1];
+  const day = [
+    { item: READING.market, photo: 'market' },
+    { item: READING.work, photo: 'metro' },
+    { item: READING.sleep, photo: 'bookshelves' },
+    { item: READING.music, photo: 'musicians' },
+  ];
+
   const nav: [string, keyof Dict][] = [
-    ['preview', 'landingNavTry'], ['today', 'landingNavToday'], ['goal', 'landingNavGoal'],
-    ['fresh', 'landingNavFresh'], ['faq', 'landingNavFaq'],
+    ['today', 'landingNavToday'], ['desk', 'landingNavTry'], ['goal', 'landingNavGoal'], ['faq', 'landingNavFaq'],
   ];
+
+  const pic = (name: string, small: number, large: number) =>
+    ({ src: `photos/${name}-${small}.webp`, srcSet: `photos/${name}-${small}.webp ${small}w, photos/${name}-${large}.webp ${large}w` });
 
   return (
     <>
-    <div className="page landing" data-testid="landing"
-         dir={translated ? undefined : 'ltr'}>
-      {/* Shown when nobody has written this page in the reader's language. The
-          English below is then the honest fallback, and this line says so
-          rather than letting them assume the whole site is English. */}
+    <div className="landing lp3" data-testid="landing" dir={translated ? undefined : 'ltr'}>
       {!translated && (
-        <p className="landing__untranslated" data-testid="landing-untranslated">
-          {t('landingUntranslated')}
-        </p>
+        <p className="landing__untranslated" data-testid="landing-untranslated">{t('landingUntranslated')}</p>
+      )}
+      {translated && ui === 'fa' && (
+        <p className="landing__untranslated" data-testid="landing-fa-draft">{t('shellFaDraft')}</p>
       )}
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
-      <div className="lp-top">
-        <nav className="lp-top__nav" aria-label={tx('landingNavLabel')}>
-          {nav.map(([id, key]) => (
-            <button key={id} type="button" className="lp-navlink" onClick={() => goTo(id)}>{tx(key)}</button>
-          ))}
-        </nav>
-        <div className="lp-top__end">
-          <LanguageSelect tx={tx} ui={ui} onChange={(l) => update({ ui: l })} />
-          <Link to="/app/today" className="btn btn--primary btn--sm lp-top__cta">{tx('landingStart')}</Link>
+      <header className="lp3-header">
+        <Tricolore />
+        <div className="lp3-wrap lp3-header__in">
+          <Link to="/" className="lp3-brand">{t('appName')}</Link>
+          <nav className="lp3-nav" aria-label={tx('landingNavLabel')}>
+            {nav.map(([id, key]) => (
+              <button key={id} type="button" onClick={() => goTo(id)}>{tx(key)}</button>
+            ))}
+          </nav>
+          <div className="flex items-center gap-2">
+            <LanguageSelect tx={tx} ui={ui} onChange={(l) => update({ ui: l })} />
+            <Button asChild className="hidden sm:inline-flex rounded-md">
+              <Link to="/app/today">{tx('landingStart')}</Link>
+            </Button>
+          </div>
         </div>
-      </div>
+      </header>
 
-      {/* ── Hero ───────────────────────────────────────────────────────── */}
-      <header className="landing__hero lp-hero">
-        <div className="landing__pitch lp-hero__copy">
-          <p className="lp-eyebrow lp-rise lp-d1"><span className="lp-rule" aria-hidden="true" />{tx('landingEyebrow')}</p>
-          <h1 className="landing__headline">{tx('landingHeadline')}</h1>
-          <p className="landing__lede lp-rise lp-d3">{tx('landingLede')}</p>
-          <div className="landing__cta lp-rise lp-d4">
-            <div className="lp-actions">
-              <Link to="/app/today" className="btn btn--primary btn--lg" data-testid="landing-start">
-                {tx('landingStart')}
+      {/* ── Hero: Paris, and the sentence the page is about ────────────── */}
+      <section className="lp3-hero" aria-labelledby="lp3-h1">
+        <picture>
+          <source media="(max-width: 960px)" srcSet="photos/paris-rooftops-960.webp" />
+          <img src="photos/paris-rooftops-1920.webp" width={1920} height={1080} alt={tx('landingHeroPhotoAltParis')}
+               fetchPriority="high" className="lp3-hero__photo" />
+        </picture>
+        <div className="lp3-hero__shade" aria-hidden="true" />
+        <div className="lp3-wrap lp3-hero__in">
+          <h1 id="lp3-h1" className="landing__headline lp3-h1" lang="fr" dir="ltr">{fr(HEADLINE_FR)}</h1>
+          {english && <p className="lp3-h1-en">{tx('landingHeadline')}</p>}
+          <p className="lp3-hero__lede">{tx('landingLede')}</p>
+          <p className="lp3-hero__audience">{tx('landingAudience')}</p>
+          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
+            <Button asChild size="lg" data-testid="landing-start" className="bg-white text-primary hover:bg-[#e9edf5] rounded-md font-bold">
+              <Link to="/app/today">{tx('landingStart')}</Link>
+            </Button>
+            <button type="button" className="lp3-textlink lp3-textlink--light" onClick={() => goTo('today')}>
+              {tx('landingSeeHow')}
+            </button>
+          </div>
+          <ul className="lp3-points">
+            {([['landingPointFree', Check], ['landingPointOffline', WifiOff], ['landingPointPrivate', Lock]] as const)
+              .map(([k, I]) => <li key={k}><I className="size-4" aria-hidden="true" />{tx(k)}</li>)}
+          </ul>
+        </div>
+      </section>
+
+      {/* ── Contents: what is here, counted ────────────────────────────── */}
+      <section className="lp3-wrap lp3-section" id="today" aria-labelledby="landing-today-h" data-testid="landing-today">
+        <Head id="landing-today-h" title={tx('landingTodayHeading')} lede={tx('landingTodayLedeReady')} />
+        <ol className="lp3-contents">
+          {rows.map((r) => (
+            <li key={r.id}>
+              <Link to={r.to} className="lp3-row" data-testid={`landing-tile-${r.id}`}>
+                <img {...pic(r.photo, 480, 900)} sizes="160px" width={480} height={360} alt="" loading="lazy" className="lp3-row__photo" />
+                <span className="lp3-row__word" lang="fr">{r.word}</span>
+                <span className="lp3-row__text">
+                  <span className="lp3-row__title">{tx(r.title)}</span>
+                  <span className="lp3-row__body">{tx(r.body, r.vars)}</span>
+                </span>
+                <span className="lp3-row__count"><span>{r.count}</span><small>{r.unit}</small></span>
               </Link>
-              <button type="button" className="btn btn--lg" onClick={() => goTo('today')}>
-                {tx('landingSeeHow')}
-              </button>
-            </div>
-            <p className="landing__noaccount">{tx('landingNoAccount')}</p>
-          </div>
-          <p className="landing__audience lp-rise lp-d4">{tx('landingAudience')}</p>
-        </div>
+            </li>
+          ))}
+        </ol>
+        <p className="lp3-note">
+          {tx('landingStatsNote')} {num(summary.formsSearchable)} {tx('landingStatForms')}.
+        </p>
+      </section>
 
-        <section className="lp-scene lp-rise lp-d5" id="preview" aria-labelledby="lp-preview-h">
-          <div className="lp-scene__intro">
-            <h2 id="lp-preview-h" className="lp-scene__title" tabIndex={-1}>{tx('landingPreviewHeading')}</h2>
-            <p className="lp-scene__lede">{tx('landingPreviewLede')}</p>
-          </div>
-          <div className="lp-scene__stage">
+      {/* ── What is not here yet: straight after, same weight ──────────── */}
+      <section className="lp3-wrap lp3-gaps" aria-labelledby="landing-notyet-h" data-testid="landing-notyet">
+        <Head id="landing-notyet-h" title={tx('landingNotYetHeading')} lede={tx('landingNotYetLede')} />
+        <ul className="landing__gaps lp3-gaps__list">
+          <li>{tx('landingNoListening')}</li>
+          <li>{tx('landingNoWriting')}</li>
+          <li>{tx('landingCeiling', {
+            ceiling: summary.practiceCeiling ?? '—',
+            without: num(summary.conceptsWithoutMaterial),
+            live: num(summary.liveConcepts),
+          })}</li>
+          <li>{tx('landingUnreviewed')}</li>
+        </ul>
+      </section>
+
+      {/* ── The practice desk: a real card and a real dialogue, on Seyès ─ */}
+      <section className="lp3-desk" id="desk" aria-labelledby="lp3-desk-h">
+        <div className="lp3-wrap lp3-section">
+          <Head id="lp3-desk-h" title={tx('landingPreviewHeading')} lede={tx('landingPreviewLede')} />
+          <div className="lp3-desk__grid">
             <FlashcardPreview tx={tx} locale={copyLocale} />
             <DialoguePreview tx={tx} locale={copyLocale} />
           </div>
-        </section>
-      </header>
-
-      <ul className="lp-stats" aria-label={tx('landingStatsLabel')}>
-        <li><span className="lp-stats__n">{num(summary.verbs)}</span><span className="lp-stats__l">{tx('landingStatVerbs')}</span></li>
-        <li><span className="lp-stats__n">{num(summary.formsSearchable)}</span><span className="lp-stats__l">{tx('landingStatForms')}</span></li>
-        <li><span className="lp-stats__n">{num(summary.cards)}</span><span className="lp-stats__l">{tx('landingStatCards')}</span></li>
-        <li><span className="lp-stats__n">{num(summary.papers)}</span><span className="lp-stats__l">{tx('landingStatPapers')}</span></li>
-        <li className="lp-stats__note">{tx('landingStatsNote')}</li>
-      </ul>
-
-      {/* ── What do you want to do today ────────────────────────────────── */}
-      <section className="lp-section" id="today" aria-labelledby="landing-today-h" data-testid="landing-today">
-        <div className="lp-section__head">
-          <h2 id="landing-today-h" className="lp-h2" tabIndex={-1}>{tx('landingTodayHeading')}</h2>
-          <p className="lp-section__lede">{tx('landingTodayLede')}</p>
         </div>
-        <ul className="lp-tiles">
-          {tiles.map((tile) => (
-            <li key={tile.id}>
-              <Link to={tile.to} className="lp-tile" data-status={tile.status} data-testid={`landing-tile-${tile.id}`}>
-                <span className="lp-tile__icon"><Icon name={tile.icon} size={22} /></span>
-                <span className="lp-tile__title">{tx(tile.title)}</span>
-                <span className="lp-tile__body">{tx(tile.body, tile.vars)}</span>
-                <span className="lp-tile__status">
-                  {tile.status === 'ready' && <Icon name="check" size={14} />}
-                  {tx(STATUS[tile.status])}
+      </section>
+
+      {/* ── A day in French: the reading texts ─────────────────────────── */}
+      <section className="lp3-wrap lp3-section" aria-labelledby="lp3-day-h">
+        <Head id="lp3-day-h" title={tx('landingDayHeading')} lede={tx('landingDayLede')} />
+        <ul className="lp3-day">
+          {day.map(({ item, photo }) => (
+            <li key={item.id}>
+              <Link to={item.to} className="lp3-story">
+                <img {...pic(photo, 480, 900)} sizes="(min-width: 1024px) 280px, (min-width: 640px) 50vw, 100vw"
+                     width={480} height={360} alt="" loading="lazy" className="lp3-story__photo" />
+                <span className="lp3-story__meta">
+                  <span className={`chip chip--${item.level.toLowerCase()}`}>{item.level}</span>
+                  {tx('landingFreshMinRead', { minutes: Math.max(1, Math.round((item.seconds ?? 60) / 60)) })}
                 </span>
+                <span className="lp3-story__title" lang="fr">{fr(item.fr)}</span>
+                {english && <span className="lp3-story__en">{item.en}</span>}
               </Link>
             </li>
           ))}
         </ul>
       </section>
 
-      {/* ── What is not here yet ────────────────────────────────────────── */}
-      <section className="lp-gaps" aria-labelledby="landing-notyet-h" data-testid="landing-notyet">
-        <div className="lp-gaps__head">
-          <h2 id="landing-notyet-h" className="lp-h2">{tx('landingNotYetHeading')}</h2>
-          <p className="lp-section__lede">{tx('landingNotYetLede')}</p>
+      {/* ── How it works ───────────────────────────────────────────────── */}
+      <section className="lp3-alt" id="flow" aria-labelledby="lp-flow-h">
+        <div className="lp3-wrap lp3-section">
+          <Head id="lp-flow-h" title={tx('landingFlowHeading')} lede={tx('landingFlowLede')} />
+          <Flow tx={tx} locale={copyLocale} />
         </div>
-        <ul className="landing__gaps lp-gaps__list">
-          <li>{tx('landingNoListening')}</li>
-          <li>{tx('landingNoWriting')}</li>
-          <li>
-            {tx('landingCeiling', {
-              ceiling: summary.practiceCeiling ?? '—',
-              without: num(summary.conceptsWithoutMaterial),
-              live: num(summary.liveConcepts),
-            })}
-          </li>
-          <li>{tx('landingUnreviewed')}</li>
-        </ul>
       </section>
 
-      {/* ── One learning, many shapes ───────────────────────────────────── */}
-      <section className="lp-section" id="flow" aria-labelledby="lp-flow-h">
-        <div className="lp-section__head">
-          <h2 id="lp-flow-h" className="lp-h2" tabIndex={-1}>{tx('landingFlowHeading')}</h2>
-          <p className="lp-section__lede">{tx('landingFlowLede')}</p>
-        </div>
-        <Flow tx={tx} locale={copyLocale} />
-      </section>
-
-      {/* ── Learning for my goal ────────────────────────────────────────── */}
-      <section className="lp-section" id="goal" aria-labelledby="lp-goal-h">
-        <div className="lp-section__head">
-          <h2 id="lp-goal-h" className="lp-h2" tabIndex={-1}>{tx('landingGoalHeading')}</h2>
-          <p className="lp-section__lede">{tx('landingGoalLede')}</p>
+      {/* ── Learning for my goal ───────────────────────────────────────── */}
+      <section className="lp3-wrap lp3-section lp3-goal" id="goal" aria-labelledby="lp-goal-h">
+        <div className="flex flex-col gap-8">
+          <Head id="lp-goal-h" title={tx('landingGoalHeading')} lede={tx('landingGoalLede')} />
+          <img {...pic('boulangerie', 600, 1200)} sizes="(min-width: 1024px) 40vw, 100vw" width={1200} height={800}
+               alt="" loading="lazy" className="lp3-goal__photo" />
         </div>
         <Goals tx={tx} locale={copyLocale} />
       </section>
 
-      {/* ── Fresh content ───────────────────────────────────────────────── */}
-      <section className="lp-section" id="fresh" aria-labelledby="lp-fresh-h" data-testid="landing-fresh">
-        <div className="lp-section__head">
-          <h2 id="lp-fresh-h" className="lp-h2" tabIndex={-1}>{tx('landingFreshHeading')}</h2>
-          <p className="lp-section__lede">{tx('landingFreshLede')}</p>
-        </div>
-        <ul className="lp-fresh">
-          {fresh.map((it) => <ItemCard key={it.id} item={it} tx={tx} locale={copyLocale} />)}
-        </ul>
-      </section>
-
-      {/* ── Personal progress ───────────────────────────────────────────── */}
-      <section className="lp-section" id="progress" aria-labelledby="lp-progress-h" data-testid="landing-progress">
-        <div className="lp-section__head">
-          <h2 id="lp-progress-h" className="lp-h2" tabIndex={-1}>{tx('landingProgressHeading')}</h2>
-          <p className="lp-section__lede">{tx('landingProgressLede')}</p>
-        </div>
-        <div className="lp-prog">
-          <figure className="lp-fix">
-            <figcaption className="lp-fix__tag">{tx('landingProgressExample')}</figcaption>
-            <dl className="lp-fix__rows">
-              <div className="lp-fix__row">
-                <dt>{tx('landingProgressWrote')}</dt>
-                <dd><del lang="fr">{fr(EXAMPLE_ERROR.wrote)}</del></dd>
+      {/* ── What you can rely on, and the examinations ─────────────────── */}
+      <section className="lp3-alt" id="trust" aria-labelledby="lp-trust-h">
+        <div className="lp3-wrap lp3-section">
+          <Head id="lp-trust-h" title={tx('landingTrustHeading')} />
+          <dl className="lp3-trust">
+            {([
+              ['landingTrustOpenTitle', 'landingTrustOpenBody'],
+              ['landingTrustSourcesTitle', 'landingTrustSourcesBody'],
+              ['landingTrustHonestTitle', 'landingTrustHonestBody'],
+              ['landingTrustIndependentTitle', 'landingTrustIndependentBody'],
+            ] as [keyof Dict, keyof Dict][]).map(([h, b]) => (
+              <div key={h}>
+                <dt>{tx(h)}</dt>
+                <dd>
+                  {tx(b)}
+                  {h === 'landingTrustSourcesTitle' && (
+                    <> <Link className="lp3-textlink" to="/about">{tx('landingTrustSourcesLink')}</Link></>
+                  )}
+                </dd>
               </div>
-              <div className="lp-fix__row">
-                <dt>{tx('landingProgressCorrect')}</dt>
-                <dd><ins lang="fr">{fr(EXAMPLE_ERROR.correct)}</ins></dd>
-              </div>
-            </dl>
-            <p className="lp-fix__why">{tx('landingProgressWhy')}</p>
-            <div className="lp-fix__remedy">
-              <h3 className="lp-fix__remedy-title">{tx('landingProgressRemedyTitle')}</h3>
-              <p>{tx('landingProgressRemedy')}</p>
-              <Link to={EXAMPLE_ERROR.drill} className="btn">{tx('landingProgressRemedyLink')}</Link>
+            ))}
+          </dl>
+          <div className="lp3-exams" role="group" aria-labelledby="landing-exams-h" data-testid="landing-exams">
+            <h3 id="landing-exams-h">{tx('landingExamsHeading')}</h3>
+            <div>
+              <p>{tx('landingExamsVerified', { verified: list(summary.examsVerified, copyLocale, 'conjunction') })}</p>
+              {summary.examsUnverified.length > 0 && (
+                <p data-testid="landing-unverified">
+                  {tx('landingExamsUnverified', { unverified: list(summary.examsUnverified, copyLocale, 'conjunction') })}
+                </p>
+              )}
+              <p>{tx('landingExamsPapers', { coverage: coverage(summary.paperCoverage, copyLocale) })}</p>
             </div>
-          </figure>
-          <div className="lp-path">
-            <span className="lp-path__icon"><Icon name="path" size={22} /></span>
-            <h3 className="lp-path__title">{tx('landingPathHeading')}</h3>
-            <p>{tx('landingPathBody')}</p>
-            <Link to="/app/progress" className="btn btn--primary">{tx('landingPathLink')}</Link>
           </div>
         </div>
       </section>
 
-      {/* ── What you can rely on, and the examinations ──────────────────── */}
-      <section className="lp-section" id="trust" aria-labelledby="lp-trust-h">
-        <div className="lp-section__head">
-          <h2 id="lp-trust-h" className="lp-h2" tabIndex={-1}>{tx('landingTrustHeading')}</h2>
-        </div>
-        <ul className="lp-trust">
-          <li><h3>{tx('landingTrustOpenTitle')}</h3><p>{tx('landingTrustOpenBody')}</p></li>
-          <li>
-            <h3>{tx('landingTrustSourcesTitle')}</h3>
-            <p>{tx('landingTrustSourcesBody')}</p>
-            <Link className="lp-textlink" to="/about">{tx('landingTrustSourcesLink')}</Link>
-          </li>
-          <li><h3>{tx('landingTrustHonestTitle')}</h3><p>{tx('landingTrustHonestBody')}</p></li>
-          <li><h3>{tx('landingTrustIndependentTitle')}</h3><p>{tx('landingTrustIndependentBody')}</p></li>
-        </ul>
-
-        <div className="lp-exams" aria-labelledby="landing-exams-h" role="group" data-testid="landing-exams">
-          <h3 id="landing-exams-h" className="lp-exams__title">{tx('landingExamsHeading')}</h3>
-          <div className="lp-exams__body">
-            <p>{tx('landingExamsVerified', { verified: list(summary.examsVerified, copyLocale, 'conjunction') })}</p>
-            {/* Rendered only when something IS unverified, so the day somebody
-                reads the TEF grid this sentence disappears by itself rather
-                than becoming a stale admission. */}
-            {summary.examsUnverified.length > 0 && (
-              <p data-testid="landing-unverified">
-                {tx('landingExamsUnverified', { unverified: list(summary.examsUnverified, copyLocale, 'conjunction') })}
-              </p>
-            )}
-            <p>{tx('landingExamsPapers', { coverage: where })}</p>
-          </div>
-        </div>
-      </section>
-
-      {/* ── Questions ───────────────────────────────────────────────────── */}
-      <section className="lp-section" id="faq" aria-labelledby="lp-faq-h">
-        <div className="lp-section__head">
-          <h2 id="lp-faq-h" className="lp-h2" tabIndex={-1}>{tx('landingFaqHeading')}</h2>
-        </div>
-        <div className="lp-faq">
+      {/* ── Questions ──────────────────────────────────────────────────── */}
+      <section className="lp3-wrap lp3-section lp3-faq" id="faq" aria-labelledby="lp-faq-h">
+        <Head id="lp-faq-h" title={tx('landingFaqHeading')} />
+        <Accordion>
           {([
             ['landingFaqAccountQ', 'landingFaqAccountA'],
             ['landingFaqWhereQ', 'landingFaqWhereA'],
@@ -421,30 +335,37 @@ export function Landing() {
             ['landingFaqAudioQ', 'landingFaqAudioA'],
             ['landingFaqTeacherQ', 'landingFaqTeacherA'],
           ] as [keyof Dict, keyof Dict][]).map(([q, a]) => (
-            <details key={q} className="lp-faq__item">
-              <summary>{tx(q)}</summary>
-              <p>{tx(a)}</p>
-            </details>
+            <AccordionItem key={q}>
+              <AccordionTrigger>{tx(q)}</AccordionTrigger>
+              <AccordionContent>{tx(a)}</AccordionContent>
+            </AccordionItem>
           ))}
+        </Accordion>
+      </section>
+
+      {/* ── Closing: Montmartre ────────────────────────────────────────── */}
+      <section className="lp3-close" aria-labelledby="lp-close-h">
+        <img {...pic('montmartre', 800, 1600)} sizes="100vw" width={1600} height={900} alt="" loading="lazy"
+             className="lp3-close__photo" />
+        <div className="lp3-close__shade" aria-hidden="true" />
+        <div className="lp3-wrap lp3-close__in">
+          <h2 id="lp-close-h" className="lp3-close__fr" lang="fr" dir="ltr">{fr(CLOSE_FR)}</h2>
+          <p className="lp3-close__en">{tx('landingCloseHeading')}. {tx('landingCloseBody')}</p>
+          <Button asChild size="lg" className="bg-white text-primary hover:bg-[#e9edf5] rounded-md font-bold">
+            <Link to="/app/today">{tx('landingStart')}</Link>
+          </Button>
         </div>
       </section>
 
-      {/* ── Closing call to action ──────────────────────────────────────── */}
-      <section className="lp-close" aria-labelledby="lp-close-h">
-        <h2 id="lp-close-h" className="lp-close__title">{tx('landingCloseHeading')}</h2>
-        <p className="lp-close__body">{tx('landingCloseBody')}</p>
-        <Link to="/app/today" className="btn btn--lg lp-close__cta">{tx('landingStart')}</Link>
-      </section>
-
-      {/* ── Footer ──────────────────────────────────────────────────────── */}
-      <footer className="landing__footer">
-        <div className="lp-foot__grid">
-          <div className="lp-foot__brand">
-            <p className="lp-foot__name"><span className="lp-rule" aria-hidden="true" />{t('appName')}</p>
-            <p>{tx('landingFooterFree')}</p>
+      {/* ── Footer ─────────────────────────────────────────────────────── */}
+      <footer className="landing__footer lp3-footer">
+        <div className="lp3-wrap lp3-footer__grid">
+          <div>
+            <p className="lp3-brand">{t('appName')}</p>
+            <p className="lp3-footer__free">{tx('landingFooterFree')}</p>
           </div>
           <nav aria-labelledby="lp-foot-learn">
-            <h2 id="lp-foot-learn" className="lp-foot__h">{tx('landingFooterLearn')}</h2>
+            <h2 id="lp-foot-learn">{tx('landingFooterLearn')}</h2>
             <ul>
               <li><Link to="/app/verbs">{tx('landingTypeVerbs')}</Link></li>
               <li><Link to="/app/reading">{tx('landingTypeReading')}</Link></li>
@@ -453,38 +374,33 @@ export function Landing() {
             </ul>
           </nav>
           <nav aria-labelledby="lp-foot-project">
-            <h2 id="lp-foot-project" className="lp-foot__h">{tx('landingFooterProject')}</h2>
+            <h2 id="lp-foot-project">{tx('landingFooterProject')}</h2>
             <ul className="landing__links">
               <li><Link to="/about#data">{tx('landingFooterPrivacy')}</Link></li>
-              {/* The About screen's own heading, reused: the same words for the
-                  same page. */}
               <li><Link to="/about">{tx('landingTrustSourcesLink')}</Link></li>
               <li><Link to="/account">{tx('landingFooterSettings')}</Link></li>
             </ul>
           </nav>
           <div>
-            <h2 className="lp-foot__h">{tx('landingFooterLanguage')}</h2>
-            <ul className="lp-foot__langs">
+            <h2>{tx('landingFooterLanguage')}</h2>
+            <ul>
               {(Object.keys(LOCALES) as Locale[]).map((l) => (
                 <li key={l}>
-                  <button type="button" className="lp-foot__lang" lang={l} aria-pressed={ui === l}
-                          onClick={() => update({ ui: l })}>{LOCALES[l].name}</button>
+                  <button type="button" lang={l} aria-pressed={ui === l} onClick={() => update({ ui: l })}>
+                    {LOCALES[l].name}
+                  </button>
                 </li>
               ))}
             </ul>
           </div>
         </div>
-        <p className="landing__independence">{tx('landingFooterIndependent')}</p>
+        <p className="lp3-wrap landing__independence lp3-footer__legal">{tx('landingFooterIndependent')}</p>
+        <Tricolore />
       </footer>
     </div>
 
-    {/* For a returning learner only, and hidden from everybody else by CSS.
-        The prerendered HTML is this landing page, so without something to put
-        in its place a learner who has studied here would see the pitch flash
-        past on every visit while the bundle loads. public/boot.js reveals this
-        block instead, before the first paint, and React replaces it with the
-        real dashboard a moment later. aria-hidden because it carries no
-        information: it is the shape of a card, not a card. */}
+    {/* For a returning learner only, hidden from everybody else by CSS: see
+        public/boot.js. aria-hidden because it is the shape of a card, not one. */}
     <div className="landing-boot" aria-hidden="true" data-testid="landing-boot">
       <div className="page">
         <div className="skeleton skeleton--title" />

@@ -7,7 +7,9 @@
  */
 import { userKey } from './session';
 
-export const PRESETS = [5, 15, 30, 45, 60] as const;
+// The owner's list (2026-11-02): 5, 10, 20, 30 and 45 minutes.
+export const PRESETS = [5, 10, 20, 30, 45] as const;
+export const DEFAULT_PRESET = 20;
 
 export type Restored =
   | { state: 'none' }
@@ -57,10 +59,24 @@ export async function announceFinish(play?: () => Promise<void> | void) {
 }
 
 /** Two sine tones. No audio file: no bytes, no format question, no licence. */
+let audio: AudioContext | null = null;
+
+/** Open the audio channel silently, inside the press on Start, so the chime
+ *  at the end is allowed to play. */
+export function primeAudio(): void {
+  const Ctor = (globalThis as { AudioContext?: typeof AudioContext }).AudioContext;
+  if (!Ctor) return;
+  try { audio ??= new Ctor(); if (audio.state === 'suspended') void audio.resume(); } catch { /* no audio */ }
+}
+
 export async function chime(): Promise<void> {
   const Ctor = (globalThis as { AudioContext?: typeof AudioContext }).AudioContext;
   if (!Ctor) throw new Error('no audio');
-  const ac = new Ctor();
+  // One context, made the first time — which is the press on Start. A
+  // context created later, when the timer ends with nobody touching the page,
+  // can be refused by the browser, and the chime would fail in silence.
+  audio ??= new Ctor();
+  const ac = audio;
   if (ac.state === 'suspended') await ac.resume();
   if (ac.state !== 'running') throw new Error('audio blocked');
   const tone = (freq: number, at: number, dur: number, peak: number) => {

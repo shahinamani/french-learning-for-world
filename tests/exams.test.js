@@ -23,7 +23,9 @@ test('the examinations are present, with unique ids', () => {
   // which is what they were always about — until today every exam in the file
   // was one, so the distinction had never needed stating.
   const offered = exams.exams.filter((e) => e.preparationOffered).map((e) => e.code);
-  assert.deepEqual([...offered].sort(), ['DALF', 'DELF', 'TCF', 'TEF']);
+  // TEF Canada joined on 2026-10-31: its format was read from the owner's own
+  // booklet that day, and the exam-centred portal gives it a page.
+  assert.deepEqual([...offered].sort(), ['DALF', 'DELF', 'TCF', 'TEF', 'TEF Canada']);
   const listed = exams.exams.filter((e) => !e.preparationOffered).map((e) => e.id);
   assert.deepEqual([...listed].sort(), ['tcf-canada', 'tcf-irn', 'tcf-quebec']);
   assert.equal(new Set(exams.exams.map((e) => e.id)).size, exams.exams.length);

@@ -8,100 +8,82 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-10-18 22:18 +03 (git metadata only, written by a Stop hook)
-- Branch: HEAD
-- HEAD: a9d0211 Merge pull request #55 from shahinamani/feat/weakness-engine
+- Updated: 2026-11-03 15:28 +03 (git metadata only, written by a Stop hook)
+- Branch: redesign/v1
+- HEAD: c51ba39 Noun and adjective cards for every level
 - Uncommitted: 1 file(s)
-  - ?? .ai/
+  -  M .ai/AI_HANDOFF.md
 <!-- ai:state:end -->
 
 ## Goal
-A French learning portal the owner can test privately and eventually sell. The
-current push is turning a verb reference into a learning environment: a
-workspace with flashcards, quiz, dialogues, grammar, vocabulary and progress.
 
-**Read `AGENTS.md` first.** Its §2 (say what has not been checked) and §3 (run
-a check against the whole corpus and adjudicate every accusation) are not
-decoration — most of the defects found here were checks comparing the wrong two
-things.
+Redesign v1: rebuild the landing page and the learning portal on shadcn/ui with a warm, Babbel-like look, then publish on Cloudflare Pages. Brief: `docs/blueprint/REDESIGN-v1.md` (owner-approved 2026-10-31). It supersedes `FRONTEND-START.md` for visual design.
 
 ## Current state
-`main` at the merge of PR #50. Merged recently: #49 the workspace, #50 the
-educational card backs and the first dialogue unit.
 
-Branch `integration/app-routes` (2026-10-18) merges the grammar loop and the
-Reader and mounts both lazily under `/app/grammar` and `/app/reading`.
-`Progress` shows `WeaknessCard` and no accuracy percentage, and its export
-carries the personal stores. The Reader's quiz scores moved from a separate
-`flw-reader` database into `flw` (schema 3, store `readerResults`); the export
-format is version 4. `/app/grammar/:id` renders the lesson where one exists and otherwise the concept
-page (routes/app/GrammarOrConcept.tsx, a lazy chunk), so the 6 lessons are an
-upgrade over 297 working concept pages.
+Work is on branch `redesign/v1` (from `origin/main` at `b1545aa`) in a worktree under the session scratchpad (`/private/tmp/.../scratchpad/main-wt`). Phase 0 (foundation) and phase 1 (landing) are built and committed locally (not pushed):
+- Packages added, pinned, installed with `--ignore-scripts`: radix-ui 1.8.1, lucide-react 1.61.0, class-variance-authority, clsx, tailwind-merge.
+- Palette retuned in `design-system/tokens.css` (warm paper `#faf7f2`, deep blue `#1e3a8a`, terracotta mark `#c2410c`); `npm run test:contrast` passes.
+- Inter self-hosted in `public/fonts/`. Unsplash photos in `web/public/photos/` (credits not yet written to `content/attribution.json`).
+- `web/src/theme.css` maps shadcn colour names onto the tokens; old CSS moved to `@layer legacy` so Tailwind utilities win.
+- New `Landing.tsx` + `routes/landing/landing2.css`; UI parts in `web/src/components/ui/`.
+- Portal routes are lazy now; first load 149.2 / 150 KB. `npm test` 580/580.
 
-- **Workspace** at `/workspace`, lazy-loaded. Six tabs, all opening real
-  content. Filters, shuffle, jump-to-card and the position always agree.
-- **Cards**: 2,371 eligible records = 2,363 verbs with a gloss + 8 deck nouns.
-  **32 have worked educational backs**; the rest say they are a gloss.
-- **Card back**: Persian meaning, then présent / passé composé / futur simple
-  behind one click, each with tense label, the conjugated group highlighted,
-  Persian + English, and per-example listen. Nouns get examples and no tense.
-- **Dialogues**: one complete A1 unit (Au café) with comprehension questions,
-  feedback, explanation and retry.
-- **Coverage is printed on the page**: `56 / 2371 with worked examples ·
-  0 / 2371 checked by a teacher`. Both counted at runtime.
-- Checks: 467 unit tests, 387 browser checks, 20 contrast checks, all green.
+## Phase 2 (portal) done 2026-10-31
+
+Sidebar and mobile bar list only built sections (nav.ts NOT_YET keeps the rest routable). Today = French greeting, one session card (`today-card`), ways-in rows, weak points, data notice; the level map moved to `/app/path` (`Learn mode="path"`). Card session centred. Labels sentence case (`--tracking-label: 0`). Portal CSS: `web/src/routes/portal.css`. e2e updated for the new design: walk 652/652, rtl clear, reader 54/54.
+
+## Phase 2b (exam-centred portal) done 2026-10-31
+
+Owner asked for a portal built around exams. Sidebar = shadcn-style anatomy (`components/ui/sidebar.tsx`) with an exam switcher (`components/ExamSwitcher.tsx`, Radix dropdown) on top; under it the chosen exam's overview, CO/CE/PE/PO and practice papers, then skill tools. Targets in `lib/exam-targets.ts` (DELF A1-B2, DALF C1-C2, TCF, TCF Canada, TEF Canada), choice stored per profile. Pages `/app/exam`, `/app/exam/:target`, `/app/exam/:target/:section` (`routes/exam/ExamPages.tsx`) show only verified format figures from exams.json. TEF Canada format added from the owner's 2026 booklet; TCF Canada NOT VERIFIED (FEI site blocks automated reads; owner can paste the page). New UI keys are `shellExam*` (optional group: fa/ar fall back to English). Walk 656/656, rtl clear, reader 54/54.
+
+## Phase 2c done 2026-10-31
+
+Timer presets 5/10/20/30/60 (default 20), finish toast + system notification (permission asked on first start). Theme toggle in top bar. Card back: past/future side by side. Today: Bonjour/Bonsoir, French date, mot du jour (real card). French photo banners on list pages (RouteBanner in PortalNav, lazy). Verb drill opens on a verb of the day instead of an error. Persian: 533 strings drafted by an agent, marked DRAFT in fa.ts, listed in docs/review/fa-ui-drafts.md, app shows a draft notice (`shellFaDraft`). Arabic unchanged (falls back to English). Tests moved fallback checks to Arabic.
+
+## Phase 2d: verb flashcards 2026-11-02
+
+Owner asked for 200-500 cards per level. `scripts/build-verb-cards.py` builds `content/verb-cards/<level>.json` from the checked verb tables: 2,349 cards (A1 200, A2 299, B1 391, B2 492, C1 491, C2 476). Back = English Wiktionary gloss (marked unreviewed on screen) + past « il a parlé » and future « il parlera » composed from auxiliary/participle/futur ("il", not "je", to avoid elision guesses). `/app/cards?level=X` picks the level (default: exam target level, else A1); 20 new cards per session plus due cards from any level; key = verb index key, so history is shared with the Cards workspace. `decks.json` deliberately unchanged (legacy app/ and tests need four-language cards there). Test: `tests/verb-cards.test.js`. NOT done: nouns/adjectives (no word source in the repo yet; would need Lexique 3.83 for frequency and gender, plus an en.wiktionary harvest), Persian meanings for verbs.
+
+Later 2026-11-02 the owner asked for real sentences on the back: `content/verb-sentences/<level>.json` holds, per verb, a passé composé and a futur sentence with en+fa translations, a Persian meaning, the usual preposition and construction (agent-drafted, NOT REVIEWED; review sheet `docs/review/verb-sentences.md`). `scripts/check-verb-sentences.py` checks every form against the tables; the build merges them in. 11 verbs held back (`exclude` + reason: vulgar/drugs/violence, and frire). Card front shows word type + preposition (« verb · + à »). 2,338 cards now.
+
+## Phase 2e: flip card and timer 2026-11-03
+
+Owner chose the "flip card" style (no reference app). `Session.tsx` card is now a 3D-flipping paper card (`.fc*` in `routes/portal.css`): tricolore band, big word + type/preposition pill on the front; back = first sense large, other senses small, construction, past|aujourd'hui|future axis (always LTR), sentences. Swipe on touch only (right Good, left Again, 96 px). Grade buttons tinted with key hints. No new package. Timer presets 5/10/20/30/45 (owner); the timer popover is `components/TimerPanel.tsx` (lazy: ring, preset tiles, start/reset, chime switch). Card taps toggle front/back; prev/next buttons and arrow keys move without grading (`goTo`); audio is opened silently on Start (`primeAudio`) so the end chime is not blocked.
+
+## Phase 2f: noun and adjective cards 2026-11-03
+
+`scripts/build-word-list.py` reads Lexique 3.83 (kept at `~/.cache/flw/lexique/Lexique383.tsv`, 25 MB, sha256 637ba37a…) into `data/word-frequency-list.json`: top 2,400 NOM/ADJ lemmas in the verb bands, with gender, plural, feminine. Rules worth knowing: gender read from all rows (Lexique often blanks the singular); a separate feminine form makes the headword m; `NOT_FEMININE` and `AMBIGUOUS_GENDER` are explicit exceptions; « oe » before u/i restored to « œ »; keys that fold together get `#2` (côte, marché, tâche, passe, pêche). Agents drafted `content/word-sentences/<level>.json` (meaning en/fa, article, one example; 40 held back); `scripts/check-word-sentences.py` checks them; `scripts/build-word-cards.py` writes `content/word-cards/`. Sessions interleave verbs and words (`loadLevelCards`). Review sheet `docs/review/word-sentences.md`.
+
+## Publishing 2026-11-03
+
+Cloudflare Pages project `frenchmavie` (owner's existing Cloudflare account), Git-connected to this repo: production branch `main`, root directory `web`, build `npm ci && npm run build`, output `dist`, env `NODE_VERSION=22`. Every push to main deploys; PRs get preview builds. `frenchmavie.pages.dev` is blocked by Turkish ISPs (the resolver returns a Superonline address; SNI reset on the real Cloudflare IP), so the owner cannot open it without a VPN; the custom domain avoids this. Owner chose to move frenchmavie.com's nameservers from Namecheap to Cloudflare (registration stays at Namecheap); this reverses the older "DNS stays at Namecheap" line in docs/deploying.md, which still needs updating. CI runners pinned to ubuntu-24.04 (ubuntu-latest became 26.04, where Playwright 1.55 cannot install Chromium).
 
 ## Next step
-Continue the content batches: A1 has 208 eligible cards and 32 are done.
-Draft the next bounded batch of A1 verbs into `content/card-backs.json`, then
-A2. Do not mass-produce — reuse existing written material first, keep
-`tests/card-backs.test.js` passing, and never mark anything reviewed.
+
+Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences.
 
 ## Decisions
-- **Known = FSRS Easy (4), To review = Again (1)**, written through
-  `appendReview` under the existing card keys. Not a second store. The
-  four-grade session under Practise is unchanged and is the finer instrument.
-  Measured reason: this engine's learning steps are 1/6/10 minutes and only
-  Easy leaves learning, so Good and Again are indistinguishable afterwards.
-- **Piles are read from the schedule, not FSRS's state enum** — a first
-  sighting enters Learning however it is graded, so the enum cannot express
-  "known". Horizon is 12 h (`KNOWN_HORIZON_MS`).
-- **Persian may be drafted for educational content; it is never marked
-  reviewed.** Arabic is still held — no Arabic reader exists.
-- **New interface strings go in an OPTIONAL i18n group** (`workspaceEn`),
-  English + French only, so fa/ar fall back behind `notTranslatedHere` rather
-  than obliging invented translations. Four such groups exist now.
-- **Optional groups for LAZY routes live in `web/src/lib/locales/en/<group>.ts`**
-  (workspaceEn, weaknessEn, grammarEn, readerEn), not in `i18n.ts`, and register
-  themselves via `registerEnglish()` when the route chunk loads. A new route's
-  group goes there and is imported by that route's entry module; only a key the
-  first load asks for belongs in `i18n.ts`. `tests/i18n-lazy-groups.test.js`
-  enforces both halves. First load 146.9 -> 139.2 KB; `node web/scripts/attribute.mjs`
-  attributes the bytes. Biggest remaining candidate: Radix Popover/Dialog +
-  floating-ui in the entry chunk (~16 KB gzip, measured with a stub).
-- **The preview is loopback only.** No deployment is authorised.
+
+- Owner chose shadcn/ui, Magic UI free parts only, Babbel-like feel, English-first landing, keep the name, Unsplash photos, everything free.
+- No Docker Desktop (owner will uninstall it). Packages installed directly with scripts off, pinned to versions older than 10 days.
+- No server. Cloudflare Pages free plan; backend only when accounts/sync/payments are wanted.
+- shadcn `accent` is not mapped: `--color-accent` already means primary blue in the old screens.
+
+- 2026-10-31, third landing pass (owner said passes 1-2 looked AI-made): built with the frontend-design skill. Dropped cream/terracotta, italic accent word, caps eyebrows, card grid, stats strip. Now: Paris photo hero with French headline + English line, sommaire rows, Seyes-ruled practice desk, Spectral + Inria Sans, street-sign blue #1f3a6e. Landing CSS is `web/src/routes/landing/landing3.css`.
+- If the owner rejects again: ask for a reference site, do not iterate blind.
 
 ## Gotchas
-- **The written deck and the verb index disagree on one key**: the deck has
-  `v:etre`, the index `v:être`. `buildCards` matches on folded identity and the
-  DECK key wins, because the review log already uses it. Do not "simplify" it.
-- **`gzserver.py` must stay threaded.** It was `TCPServer`, which serves one
-  connection at a time; a browser held it open and the preview answered nobody
-  for two days while the port stayed bound.
-- **Tests cannot import `ts-fsrs`.** CI and the pre-push sweep run the unit
-  suite with `web/node_modules` hidden, so anything needing the real scheduler
-  belongs in `web/e2e/walk.mjs`.
-- **Throwaway git repos in tests must use `gitFreeEnv()`** (`tests/git-env.mjs`).
-  `GIT_DIR` is in a hook's environment and beats `cwd`; from a worktree this
-  once committed fixtures onto a live branch and rewrote `user.email`.
-- Walk scans must wait for a selector, not a fixed delay, and must not assume
-  which card they land on — nouns sit alphabetically among the verbs.
+
+- Radix Accordion writes inline styles, which the CSP prerender check refuses; FAQ uses native `<details>`.
+- Prerender checks were updated: the landing no longer has the shell bar or mobile tabs.
+- The main checkout is on the stale `content/b1-neg-5-meaning` branch; do not implement there.
+- Playwright's own browser is not installed: run e2e with `CHROMIUM="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"` and `BASE=http://localhost:4173/`.
+- The worktree now lives at `.claude/worktrees/redesign-v1` (the scratchpad one was wiped by a reboot). Its path has a space: build script paths with fileURLToPath, never URL.pathname.
+- The global `kbd` rule has a light background; override it on coloured buttons (axe caught it).
+- Persian strings use Latin digits; the app substitutes them (a test enforces it).
+- Full-page screenshots need `main{overflow:visible}`: the page scrolls inside `main`.
 
 ## How to run and test
-```sh
-./scripts/preview.sh          # private preview, loopback only, 127.0.0.1:8793
-npm test                      # unit suite
-node web/e2e/walk.mjs         # browser walk (needs the preview running)
-node design-system/contrast-check.mjs
-```
-Branch from `main`, never stack PRs, and verify on `main` after a merge.
+
+From the worktree root: `npm test`; `cd web && npm run build && npx vite preview --port 4173`; contrast: serve the repo on 127.0.0.1:8765 and run `CHROMIUM=<Chrome binary> npm run test:contrast`.
