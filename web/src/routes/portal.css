@@ -638,3 +638,47 @@
 .verbs-page .rows .row > .muted { justify-self: start; margin: 0; }
 .session-aside .card-levels .row { display: grid; grid-template-columns: repeat(3, 1fr); gap: .5rem; }
 .session-aside .card-levels .chip { width: 100%; }
+
+/* ── Sidebar « bleu de France », chosen by the owner 2026-11-03 ─────────────
+   The rail is the deep blue of a Paris street sign, the page beside it is
+   white, and the current item carries the red: read across, the screen is the
+   tricolore. A thin tricolore line caps the rail. Fixed colours, not the theme
+   tokens: --fr-bleu turns light in dark mode, and the rail must stay blue. */
+.sidebar.sb {
+  --sb-top: #1f3a6e; --sb-bottom: #172c55;
+  --sb-ink: rgb(255 255 255 / .9); --sb-ink-soft: rgb(255 255 255 / .68);
+  --sb-hover: rgb(255 255 255 / .09); --sb-line: rgb(255 255 255 / .16);
+}
+:root[data-theme="dark"] .sidebar.sb { --sb-top: #182d57; --sb-bottom: #0f1d3b; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sidebar.sb { --sb-top: #182d57; --sb-bottom: #0f1d3b; } }
+@media (min-width: 1024px) {
+  /* background-color is the gradient's LIGHTER end, its worst case for white
+     text: the contrast check reads colours, not gradients, and measured white
+     on white without it (2026-11-03). */
+  .sidebar.sb { position: relative; background-color: var(--sb-top);
+    background-image: linear-gradient(180deg, var(--sb-top) 0%, var(--sb-bottom) 100%); border-inline-end: 0; color: var(--sb-ink); }
+  .sidebar.sb::before { content: ""; position: absolute; inset-inline: 0; inset-block-start: 0; height: 4px;
+    background: linear-gradient(90deg, #1f3a6e 0 33.3%, #fff 33.3% 66.6%, #e1000f 66.6%); }
+}
+.sidebar.sb .sb-button { color: var(--sb-ink); }
+.sidebar.sb .sb-icon { color: var(--sb-ink-soft); }
+.sidebar.sb .sb-button:hover { background: var(--sb-hover); }
+.sidebar.sb .sb-button[aria-current="page"] { background: #fff; color: #1f3a6e; box-shadow: inset 4px 0 0 #e1000f; }
+[dir="rtl"] .sidebar.sb .sb-button[aria-current="page"] { box-shadow: inset -4px 0 0 #e1000f; }
+.sidebar.sb .sb-button[aria-current="page"] .sb-icon { color: #1f3a6e; }
+.sidebar.sb .sb-group-label, .sidebar.sb .sb-group-toggle { color: var(--sb-ink-soft); }
+.sidebar.sb .sb-group-toggle:hover { color: #fff; }
+.sidebar.sb .sb-badge, .sidebar.sb .sb-badge--soon { color: var(--sb-ink-soft); }
+.sidebar.sb .sb-button[aria-current="page"] .sb-badge { color: #1f3a6e; }
+.sidebar.sb .sb-header, .sidebar.sb .sb-footer { border-color: var(--sb-line); }
+/* Solid colours, pre-blended (8 % and 14 % white over the rail's blue): a
+   translucent fill is measured as white by the contrast check. */
+.sidebar.sb .exsw { background: #304a79; border-color: rgb(255 255 255 / .2); color: #fff; }
+.sidebar.sb .exsw:hover { background: #3c5583; }
+:root[data-theme="dark"] .sidebar.sb .exsw { background: #2b4065; }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .sidebar.sb .exsw { background: #2b4065; } }
+.sidebar.sb .exsw__mark { background: #fff; color: #1f3a6e; }
+.sidebar.sb .exsw__sub, .sidebar.sb .exsw__chev { color: var(--sb-ink-soft); }
+/* A blue focus ring would vanish on the blue rail: white here. */
+.sidebar.sb :focus-visible { outline: 2px solid #fff; outline-offset: 2px; }
+.sidebar.sb .sb-button[aria-current="page"]:focus-visible { outline-color: #e1000f; }
