@@ -1,5 +1,5 @@
 /** Profiles, languages, theme, data. Switching profile changes this tab only. */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useApp } from '../app-context';
 import { createProfile, listProfiles, setActiveProfileId } from '../lib/session';
 import { eraseUser, importForUser } from '../lib/db';
@@ -7,6 +7,7 @@ import { parseExport, MAX_IMPORT_BYTES } from '../lib/export-format';
 import { LOCALES } from '../lib/i18n';
 import type { Locale } from '../lib/types';
 import { DataNoticeBody } from '../components/DataNotice';
+import { isPersisted } from '../lib/backup';
 import { Link } from 'react-router';
 
 export function Account() {
@@ -111,6 +112,7 @@ export function Account() {
       <section className="card" aria-labelledby="dn-h" data-testid="data-notice-always">
         <h2 id="dn-h" className="h3">{t('dataTitle')}</h2>
         <DataNoticeBody />
+        <PersistStatus />
       </section>
 
       <section className="card" aria-labelledby="d-h">
@@ -134,4 +136,13 @@ export function Account() {
       <p className="muted foot-legal">{t('independence')}</p>
     </div>
   );
+}
+
+/** Whether this browser has agreed to keep the learner's data (lib/backup.ts). */
+function PersistStatus() {
+  const { t } = useApp();
+  const [state, setState] = useState<boolean | null | undefined>(undefined);
+  useEffect(() => { let live = true; isPersisted().then((v) => { if (live) setState(v); }); return () => { live = false; }; }, []);
+  if (state === undefined || state === null) return null;
+  return <p className="muted" data-testid="persist-status">{state ? t('shellPersistOn') : t('shellPersistOff')}</p>;
 }

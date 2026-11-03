@@ -2,8 +2,9 @@
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../app-context';
-import { reviewsForUser, allCardStates, personalForUser } from '../lib/db';
-import { conceptStats, weekSummary, exportRows, type ConceptStat } from '../lib/progress';
+import { reviewsForUser } from '../lib/db';
+import { downloadBackup } from '../lib/backup';
+import { conceptStats, weekSummary, type ConceptStat } from '../lib/progress';
 import { loadContent } from '../lib/content';
 import type { Concept, ReviewRow } from '../lib/types';
 import { Icon } from '../components/Icon';
@@ -47,21 +48,10 @@ export function Progress() {
       return c ? !pick(c.name, settings.ui).translated : false;
     });
 
-  const download = async () => {
-    if (!rows) return;
-    // The card states go with the log. Without them the history arrives on the
-    // new device and every card is due-new, because the schedule lives in the
-    // states rather than in the log.
-    // Saved items, reading and listening positions, notes and the Reader's
-    // scores go too: a file that left them out would restore the log and
-    // quietly lose the rest.
-    const [states, personal] = await Promise.all([allCardStates(userId), personalForUser(userId)]);
-    const url = URL.createObjectURL(new Blob([exportRows(rows, states, personal)], { type: 'application/json' }));
-    const a = document.createElement('a');
-    a.href = url; a.download = 'french-learning-progress.json';
-    document.body.append(a); a.click(); a.remove();
-    setTimeout(() => URL.revokeObjectURL(url), 1000);
-  };
+  // The whole record, not the 500 rows this page shows: the old export reused
+  // them, so a learner with a longer history got a backup missing its older
+  // reviews (found 2026-11-03). lib/backup.ts reads everything.
+  const download = () => downloadBackup(userId);
 
   return (
     <div className="page">

@@ -510,3 +510,11 @@
 .page--session .fc__word .article { font-size: .5em; vertical-align: .3em; color: var(--color-ink-muted); font-weight: 600; margin-inline-end: .2em; }
 .page--session .fc__word .article[data-gender="m"] { color: var(--fr-bleu); }
 .page--session .fc__word .article[data-gender="f"] { color: var(--fr-rouge); }
+
+/* Backup reminder on Today (lib/backup.ts). */
+.backup-note { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: .75rem 1.25rem;
+  padding: 1rem 1.25rem; border-radius: 12px; border: 1px solid var(--color-line);
+  border-inline-start: 4px solid var(--fr-bleu); background: var(--fr-bleu-soft); color: var(--color-ink); }
+.backup-note__title { margin: 0 0 .25rem; font: 700 1rem var(--font-ui); }
+.backup-note__body { margin: 0; font-size: .9375rem; color: var(--color-ink-muted); max-width: 46rem; }
+.backup-note__actions { display: flex; gap: .5rem; }

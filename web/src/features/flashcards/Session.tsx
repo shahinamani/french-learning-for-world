@@ -29,6 +29,7 @@ import type { Level, Locale } from '../../lib/types';
 import { CARD_LEVELS, loadLevelCards, loadWordIndex, mergeCards, NEW_PER_SESSION } from '../../lib/verb-cards';
 import { loadVerbIndex } from '../../lib/verbs';
 import { useTarget } from '../../lib/exam-targets';
+import { requestPersistence } from '../../lib/backup';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
 /** How far a card must be dragged, in pixels, to count as a swipe. */
@@ -230,6 +231,8 @@ export function FlashcardSession() {
     };
     // One transaction: the row and the new card state, or neither.
     await appendReview(row, after);
+    // Now there is something to lose: ask the browser to keep it (lib/backup.ts).
+    void requestPersistence();
     setStates((m) => new Map(m).set(card.key, after));
     setReviewed((n) => n + 1);
     const next = new URLSearchParams(params);
