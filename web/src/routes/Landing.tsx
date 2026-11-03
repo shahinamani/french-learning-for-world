@@ -185,7 +185,7 @@ export function Landing() {
           <p className="lp3-hero__lede">{tx('landingLede')}</p>
           <p className="lp3-hero__audience">{tx('landingAudience')}</p>
           <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Button asChild size="lg" data-testid="landing-start" className="bg-white text-primary hover:bg-[#e9edf5] rounded-md font-bold">
+            <Button asChild size="lg" data-testid="landing-start" className="bg-white text-[#1f3a6e] hover:bg-[#e9edf5] rounded-md font-bold">
               <Link to="/app/today">{tx('landingStart')}</Link>
             </Button>
             <button type="button" className="lp3-textlink lp3-textlink--light" onClick={() => goTo('today')}>
@@ -351,7 +351,7 @@ export function Landing() {
         <div className="lp3-wrap lp3-close__in">
           <h2 id="lp-close-h" className="lp3-close__fr" lang="fr" dir="ltr">{fr(CLOSE_FR)}</h2>
           <p className="lp3-close__en">{tx('landingCloseHeading')}. {tx('landingCloseBody')}</p>
-          <Button asChild size="lg" className="bg-white text-primary hover:bg-[#e9edf5] rounded-md font-bold">
+          <Button asChild size="lg" className="bg-white text-[#1f3a6e] hover:bg-[#e9edf5] rounded-md font-bold">
             <Link to="/app/today">{tx('landingStart')}</Link>
           </Button>
         </div>
