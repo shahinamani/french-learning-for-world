@@ -8,19 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-11-03 12:48 +03 (git metadata only, written by a Stop hook)
+- Updated: 2026-11-03 14:07 +03 (git metadata only, written by a Stop hook)
 - Branch: redesign/v1
-- HEAD: a5a9abb A flashcard that turns over, and a 45-minute timer
-- Uncommitted: 9 file(s)
+- HEAD: 7be958b Turn the card back and forth, move between cards, a timer panel
+- Uncommitted: 18 file(s)
   -  M .ai/AI_HANDOFF.md
-  -  M web/src/components/Icon.tsx
-  -  M web/src/components/Shell.tsx
+  -  M web/scripts-sync.sh
+  -  M web/scripts/sw.mjs
   -  M web/src/features/flashcards/Session.tsx
   -  M web/src/lib/i18n.ts
   -  M web/src/lib/locales/fa.ts
   -  M web/src/lib/locales/fr.ts
-  -  M web/src/routes/portal.css
-  - … and 1 more
+  -  M web/src/lib/types.ts
+  - … and 10 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -58,6 +58,10 @@ Later 2026-11-02 the owner asked for real sentences on the back: `content/verb-s
 ## Phase 2e: flip card and timer 2026-11-03
 
 Owner chose the "flip card" style (no reference app). `Session.tsx` card is now a 3D-flipping paper card (`.fc*` in `routes/portal.css`): tricolore band, big word + type/preposition pill on the front; back = first sense large, other senses small, construction, past|aujourd'hui|future axis (always LTR), sentences. Swipe on touch only (right Good, left Again, 96 px). Grade buttons tinted with key hints. No new package. Timer presets 5/10/20/30/45 (owner); the timer popover is `components/TimerPanel.tsx` (lazy: ring, preset tiles, start/reset, chime switch). Card taps toggle front/back; prev/next buttons and arrow keys move without grading (`goTo`); audio is opened silently on Start (`primeAudio`) so the end chime is not blocked.
+
+## Phase 2f: noun and adjective cards 2026-11-03
+
+`scripts/build-word-list.py` reads Lexique 3.83 (kept at `~/.cache/flw/lexique/Lexique383.tsv`, 25 MB, sha256 637ba37a…) into `data/word-frequency-list.json`: top 2,400 NOM/ADJ lemmas in the verb bands, with gender, plural, feminine. Rules worth knowing: gender read from all rows (Lexique often blanks the singular); a separate feminine form makes the headword m; `NOT_FEMININE` and `AMBIGUOUS_GENDER` are explicit exceptions; « oe » before u/i restored to « œ »; keys that fold together get `#2` (côte, marché, tâche, passe, pêche). Agents drafted `content/word-sentences/<level>.json` (meaning en/fa, article, one example; 40 held back); `scripts/check-word-sentences.py` checks them; `scripts/build-word-cards.py` writes `content/word-cards/`. Sessions interleave verbs and words (`loadLevelCards`). Review sheet `docs/review/word-sentences.md`.
 
 ## Next step
 

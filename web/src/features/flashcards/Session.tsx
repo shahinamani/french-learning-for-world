@@ -26,7 +26,7 @@ import { Num } from '../../components/Num';
 import { Localised } from '../../components/Localised';
 import { NextActivity } from '../../components/NextActivity';
 import type { Level, Locale } from '../../lib/types';
-import { CARD_LEVELS, loadVerbCards, mergeCards, NEW_PER_SESSION } from '../../lib/verb-cards';
+import { CARD_LEVELS, loadLevelCards, loadWordIndex, mergeCards, NEW_PER_SESSION } from '../../lib/verb-cards';
 import { loadVerbIndex } from '../../lib/verbs';
 import { useTarget } from '../../lib/exam-targets';
 
@@ -109,16 +109,18 @@ export function FlashcardSession() {
       try {
         // Everything is requested at once: the first card should not wait on
         // four round trips in a row.
-        const chosen = loadVerbCards(level);
-        const [{ cards: written }, saved, index] = await Promise.all([
-          loadContent(), allCardStates(userId), loadVerbIndex().catch(() => []), chosen.catch(() => [])]);
+        const chosen = loadLevelCards(level);
+        const [{ cards: written }, saved, index, words] = await Promise.all([
+          loadContent(), allCardStates(userId), loadVerbIndex().catch(() => []), loadWordIndex(), chosen.catch(() => [])]);
         const byKey = new Map(saved.map((s) => [s.cardKey, s as CardState]));
         // Load the chosen level, and every level a reviewed verb belongs to, so
         // a card due today is never missed because its level was not opened.
-        const levelOfKey = new Map(index.map((v) => [v.key, v.level]));
+        const levelOfKey = new Map<string, Level>([...index.map((v) => [v.key, v.level] as [string, Level]), ...words]);
         const levels = new Set<Level>([level]);
         for (const st of saved) { const l = levelOfKey.get(st.cardKey); if (l) levels.add(l); }
-        const verbCards = (await Promise.all([...levels].map(loadVerbCards))).flat();
+        // A link to one card (`?card=`) must find it whatever level is open.
+        if (cardFilter) { const l = levelOfKey.get(cardFilter); if (l) levels.add(l); }
+        const verbCards = (await Promise.all([...levels].map(loadLevelCards))).flat();
         const cards = mergeCards(written, verbCards);
         if (!live) return;
         setLevelCount(cards.filter((c) => c.level === level).length);
@@ -382,7 +384,8 @@ export function FlashcardSession() {
                 {card.register && <span className="chip" lang="fr" dir="ltr" data-testid="card-register">{card.register}</span>}
               </div>
               <p className="flashcard__word fc__word" lang="fr" dir="ltr">
-                {card.article && <span className="article">{frText(card.article)}</span>}{frText(card.fr)}
+                {/* The article in the gender's colour: blue le, red la. */}
+                {card.article && <span className="article" data-gender={card.gender ?? undefined}>{frText(card.article)}</span>}{frText(card.fr)}
               </p>
               {/* What kind of word this is, and the preposition it takes, on the
                   front: a learner should meet « penser à » as one unit. */}
@@ -402,7 +405,7 @@ export function FlashcardSession() {
               {revealed && (
                 <div className="flashcard__answer" data-testid="answer">
                   <header className="fc__head">
-                    <p className="fc__headword" lang="fr" dir="ltr">{frText(card.fr)}
+                    <p className="fc__headword" lang="fr" dir="ltr">{card.article && `${card.article}${card.article.endsWith("'") ? '' : ' '}`}{frText(card.fr)}
                       {card.prep && <span className="fc__prep"> + {card.prep}</span>}</p>
                     {/* A Wiktionary gloss can run to four senses; the first is
                         the one to learn, the rest are there in small type. */}
@@ -417,7 +420,27 @@ export function FlashcardSession() {
 
                   {/* Past on the left and future on the right, as on a French
                       timeline, whatever the direction of the interface. */}
-                  {(card.examples.length > 0 || card.forms) && (
+                  {/* A noun or adjective: its other forms, then one example. */}
+                  {(card.plural || card.feminine) && (
+                    <p className="fc__forms" lang="fr" dir="ltr" data-testid="card-forms">
+                      {card.feminine && <span><em>{t('feminine')}</em> {frText(card.feminine)}</span>}
+                      {card.plural && <span><em>{t('shellCardsPlural')}</em> les {frText(card.plural)}</span>}
+                    </p>
+                  )}
+                  {card.examples.some((ex) => ex.tense === 'present') && (
+                    <div className="examples examples--one">
+                      {card.examples.map((ex) => (
+                        <div className="example" key={ex.tense} data-tense="present">
+                          <span className="example__label" dir="auto">{t('shellCardsExample')}</span>
+                          <div className="example__fr" lang="fr" dir="ltr">{highlight(ex.fr, ex.form)}</div>
+                          <div className="example__tr" lang={settings.meaning} dir={rtlMeaning ? 'rtl' : 'ltr'}>
+                            {ex.translations[settings.meaning] ?? ex.translations.en}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                  {(card.examples.some((ex) => ex.tense !== 'present') || card.forms) && (
                     <div className="fc__time" dir="ltr">
                       <div className="fc__axis" aria-hidden="true">
                         <span>{t('past')}</span><i /><b lang="fr">aujourd’hui</b><i /><span>{t('future')}</span>
@@ -429,9 +452,9 @@ export function FlashcardSession() {
                             <div className="example__fr" lang="fr">{highlight(card.forms![k].fr, card.forms![k].form)}</div>
                           </div>
                         ))}
-                        {card.examples.map((ex) => (
+                        {card.examples.filter((ex) => ex.tense !== 'present').map((ex) => (
                           <div className="example" key={ex.tense} data-tense={ex.tense}>
-                            <span className="example__label" dir="auto">{t(ex.tense)} · <b lang="fr">{frText(ex.form)}</b></span>
+                            <span className="example__label" dir="auto">{t(ex.tense as 'past')} · <b lang="fr">{frText(ex.form)}</b></span>
                             <div className="example__fr" lang="fr">{highlight(ex.fr, ex.form)}</div>
                             <div className="example__tr" lang={settings.meaning} dir={rtlMeaning ? 'rtl' : 'ltr'}>
                               {ex.translations[settings.meaning] ?? ex.translations.en}

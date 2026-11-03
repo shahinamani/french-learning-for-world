@@ -464,6 +464,8 @@ const fr: Dict = {
   shellExamOpen: 'Ouvrir',
   shellExamChooseFirst: 'Choisissez votre examen pour voir ses épreuves.',
   shellCardsLevel: 'Cartes par niveau',
+  shellCardsExample: 'Exemple',
+  shellCardsPlural: 'pluriel',
   shellCardsPrev: 'Carte précédente',
   shellCardsNext: 'Carte suivante',
   shellTimerMin: 'min',

@@ -490,6 +490,8 @@ const shellEn = {
   shellExamOpen: 'Open',
   shellExamChooseFirst: 'Choose your exam to see its sections.',
   shellCardsLevel: 'Cards by level',
+  shellCardsExample: 'Example',
+  shellCardsPlural: 'plural',
   shellCardsPrev: 'Previous card',
   shellCardsNext: 'Next card',
   shellTimerMin: 'min',

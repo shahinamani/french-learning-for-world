@@ -74,7 +74,8 @@ export type Card = {
   gender?: 'm' | 'f' | null;
   meanings: Partial<Record<Locale, string>>;
   examples: Array<{
-    tense: 'past' | 'future';
+    /** `present` is the single example sentence of a noun or adjective card. */
+    tense: 'past' | 'future' | 'present';
     form: string;
     fr: string;
     translations: Partial<Record<Locale, string>>;
@@ -86,6 +87,12 @@ export type Card = {
   forms?: { past: { fr: string; form: string }; future: { fr: string; form: string } };
   /** familier, soutenu, argotique — from Wiktionary, shown as a label. */
   register?: string | null;
+  /** Nouns: the plural, where it is not the singular. Adjectives (and nouns
+   *  like ami/amie): the feminine. Both read from Lexique. */
+  plural?: string | null;
+  feminine?: string | null;
+  /** Where the card sits in its level's file, 0–1: interleaves verbs and words. */
+  pos?: number;
   /** How the verb is used with its preposition: « penser à quelqu'un ». */
   construction?: string | null;
   /** The meaning is a Wiktionary gloss nobody has reviewed for this deck. */

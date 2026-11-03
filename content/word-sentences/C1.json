@@ -1,0 +1,5878 @@
+{
+ "version": 1,
+ "level": "C1",
+ "status": "drafted, not reviewed",
+ "drafter": "agent",
+ "review": {
+  "owner": null,
+  "teacher": null
+ },
+ "entries": [
+  {
+   "key": "a:expres",
+   "en": "deliberate, express",
+   "fa": "عمدی، صریح",
+   "example": {
+    "fr": "Le directeur a donné un ordre exprès : personne ne sort.",
+    "form": "exprès",
+    "en": "The director gave an express order: no one goes out.",
+    "fa": "مدیر دستوری صریح داد: هیچ‌کس بیرون نمی‌رود."
+   }
+  },
+  {
+   "key": "n:incident",
+   "article": "l'",
+   "en": "incident, mishap",
+   "fa": "حادثه، اتفاق ناگوار",
+   "example": {
+    "fr": "Un incident technique a retardé le départ du train.",
+    "form": "incident",
+    "en": "A technical incident delayed the train's departure.",
+    "fa": "یک حادثه‌ی فنی حرکت قطار را به تأخیر انداخت."
+   }
+  },
+  {
+   "key": "n:grain",
+   "article": "le",
+   "en": "grain, seed",
+   "fa": "دانه",
+   "example": {
+    "fr": "Le fermier garde les grains de blé dans un grand sac.",
+    "form": "grains",
+    "en": "The farmer keeps the grains of wheat in a big sack.",
+    "fa": "کشاورز دانه‌های گندم را در یک کیسه‌ی بزرگ نگه می‌دارد."
+   }
+  },
+  {
+   "key": "n:couille",
+   "exclude": true,
+   "reason": "vulgar slang for a body part; no clean common sense"
+  },
+  {
+   "key": "n:telegramme",
+   "article": "le",
+   "en": "telegram",
+   "fa": "تلگراف",
+   "example": {
+    "fr": "Mon grand-père a envoyé un télégramme à toute la famille.",
+    "form": "télégramme",
+    "en": "My grandfather sent a telegram to the whole family.",
+    "fa": "پدربزرگم برای تمام خانواده تلگراف فرستاد."
+   }
+  },
+  {
+   "key": "n:comptoir",
+   "article": "le",
+   "en": "counter, bar",
+   "fa": "پیشخوان، میز بار",
+   "example": {
+    "fr": "Le serveur essuie le comptoir du café chaque matin.",
+    "form": "comptoir",
+    "en": "The waiter wipes the café counter every morning.",
+    "fa": "گارسون هر صبح پیشخوان کافه را پاک می‌کند."
+   }
+  },
+  {
+   "key": "n:muscle",
+   "article": "le",
+   "en": "muscle",
+   "fa": "ماهیچه، عضله",
+   "example": {
+    "fr": "Il fait du sport pour développer ses muscles.",
+    "form": "muscles",
+    "en": "He does sport to build his muscles.",
+    "fa": "او برای تقویت ماهیچه‌هایش ورزش می‌کند."
+   }
+  },
+  {
+   "key": "n:champion",
+   "article": "le",
+   "en": "champion",
+   "fa": "قهرمان",
+   "example": {
+    "fr": "La championne du monde s'entraîne tous les matins.",
+    "form": "championne",
+    "en": "The world champion trains every morning.",
+    "fa": "قهرمان جهان هر صبح تمرین می‌کند."
+   }
+  },
+  {
+   "key": "n:commande",
+   "article": "la",
+   "en": "order, command",
+   "fa": "سفارش",
+   "example": {
+    "fr": "Votre commande sera livrée demain matin.",
+    "form": "commande",
+    "en": "Your order will be delivered tomorrow morning.",
+    "fa": "سفارش شما فردا صبح تحویل داده می‌شود."
+   }
+  },
+  {
+   "key": "n:exercice",
+   "article": "l'",
+   "en": "exercise",
+   "fa": "تمرین",
+   "example": {
+    "fr": "Cet exercice de grammaire est plus difficile que le premier.",
+    "form": "exercice",
+    "en": "This grammar exercise is harder than the first one.",
+    "fa": "این تمرین دستور زبان از اولی سخت‌تر است."
+   }
+  },
+  {
+   "key": "n:ecriture",
+   "article": "l'",
+   "en": "writing, handwriting",
+   "fa": "نوشتن، دست‌خط",
+   "example": {
+    "fr": "Son écriture est si petite que personne ne peut la lire.",
+    "form": "écriture",
+    "en": "His handwriting is so small that nobody can read it.",
+    "fa": "دست‌خط او آن‌قدر ریز است که هیچ‌کس نمی‌تواند آن را بخواند."
+   }
+  },
+  {
+   "key": "a:foutu",
+   "exclude": true,
+   "reason": "vulgar slang adjective derived from a crude verb"
+  },
+  {
+   "key": "n:depit",
+   "article": "le",
+   "en": "spite, resentment",
+   "fa": "دلخوری، کینه",
+   "prep": "de",
+   "construction": "en dépit de quelque chose (malgré)",
+   "example": {
+    "fr": "Elle a gagné le match en dépit de sa blessure.",
+    "form": "dépit",
+    "en": "She won the match despite her injury.",
+    "fa": "او با وجود مصدومیتش بازی را برد."
+   }
+  },
+  {
+   "key": "n:exterieur",
+   "article": "l'",
+   "en": "outside, exterior",
+   "fa": "بیرون، نمای بیرونی",
+   "example": {
+    "fr": "L'extérieur de la maison est peint en bleu.",
+    "form": "extérieur",
+    "en": "The outside of the house is painted blue.",
+    "fa": "نمای بیرونی خانه آبی رنگ شده است."
+   }
+  },
+  {
+   "key": "n:studio",
+   "article": "le",
+   "en": "studio, studio flat",
+   "fa": "استودیو، آپارتمان یک‌اتاقه",
+   "example": {
+    "fr": "Elle loue un petit studio près du centre-ville.",
+    "form": "studio",
+    "en": "She rents a small studio flat near the city centre.",
+    "fa": "او یک آپارتمان یک‌اتاقه‌ی کوچک نزدیک مرکز شهر اجاره می‌کند."
+   }
+  },
+  {
+   "key": "n:voeu",
+   "article": "le",
+   "en": "wish, vow",
+   "fa": "آرزو، نذر",
+   "example": {
+    "fr": "Je vous présente tous mes vœux pour la nouvelle année.",
+    "form": "vœux",
+    "en": "I send you all my best wishes for the new year.",
+    "fa": "بهترین آرزوهایم را برای سال نو به شما تقدیم می‌کنم."
+   }
+  },
+  {
+   "key": "a:etonnant",
+   "en": "surprising, astonishing",
+   "fa": "شگفت‌انگیز، حیرت‌آور",
+   "example": {
+    "fr": "Le résultat de l'examen est vraiment étonnant.",
+    "form": "étonnant",
+    "en": "The exam result is truly surprising.",
+    "fa": "نتیجه‌ی امتحان واقعاً شگفت‌انگیز است."
+   }
+  },
+  {
+   "key": "n:demi-heure",
+   "article": "la",
+   "en": "half an hour",
+   "fa": "نیم ساعت",
+   "example": {
+    "fr": "Le film commence dans une demi-heure.",
+    "form": "demi-heure",
+    "en": "The film starts in half an hour.",
+    "fa": "فیلم نیم ساعت دیگر شروع می‌شود."
+   }
+  },
+  {
+   "key": "n:eternite",
+   "article": "l'",
+   "en": "eternity",
+   "fa": "ابدیت، جاودانگی",
+   "example": {
+    "fr": "J'ai l'impression d'attendre depuis une éternité.",
+    "form": "éternité",
+    "en": "I feel as if I have been waiting for an eternity.",
+    "fa": "احساس می‌کنم یک ابدیت است که منتظرم."
+   }
+  },
+  {
+   "key": "n:carreau",
+   "article": "le",
+   "en": "tile, windowpane",
+   "fa": "کاشی، شیشه‌ی پنجره",
+   "example": {
+    "fr": "Le carreau de la fenêtre est cassé.",
+    "form": "carreau",
+    "en": "The windowpane is broken.",
+    "fa": "شیشه‌ی پنجره شکسته است."
+   }
+  },
+  {
+   "key": "a:feminin",
+   "en": "feminine",
+   "fa": "مؤنث، زنانه",
+   "example": {
+    "fr": "Elle a choisi un prénom féminin pour sa fille.",
+    "form": "féminin",
+    "en": "She chose a feminine first name for her daughter.",
+    "fa": "او برای دخترش نامی زنانه انتخاب کرد."
+   }
+  },
+  {
+   "key": "n:methode",
+   "article": "la",
+   "en": "method",
+   "fa": "روش",
+   "example": {
+    "fr": "Cette méthode permet d'apprendre plus vite.",
+    "form": "méthode",
+    "en": "This method makes it possible to learn faster.",
+    "fa": "این روش امکان می‌دهد سریع‌تر یاد بگیریم."
+   }
+  },
+  {
+   "key": "a:regulier",
+   "en": "regular, steady",
+   "fa": "منظم، پیوسته",
+   "example": {
+    "fr": "Il fait un effort régulier pour améliorer son français.",
+    "form": "régulier",
+    "en": "He makes a steady effort to improve his French.",
+    "fa": "او برای بهتر کردن فرانسه‌اش تلاشی پیوسته می‌کند."
+   }
+  },
+  {
+   "key": "n:jeudi",
+   "article": "le",
+   "en": "Thursday",
+   "fa": "پنجشنبه",
+   "example": {
+    "fr": "Le jeudi, nous allons au marché en famille.",
+    "form": "jeudi",
+    "en": "On Thursdays we go to the market as a family.",
+    "fa": "پنجشنبه‌ها با خانواده به بازار می‌رویم."
+   }
+  },
+  {
+   "key": "n:commerce",
+   "article": "le",
+   "en": "trade, shop, business",
+   "fa": "تجارت، مغازه",
+   "example": {
+    "fr": "Mon oncle tient un commerce de fruits au centre-ville.",
+    "form": "commerce",
+    "en": "My uncle runs a fruit business in the city centre.",
+    "fa": "عمویم در مرکز شهر یک کسب‌وکار میوه‌فروشی دارد."
+   }
+  },
+  {
+   "key": "n:photographie",
+   "article": "la",
+   "en": "photograph, photography",
+   "fa": "عکس، عکاسی",
+   "example": {
+    "fr": "Cette photographie a été prise à Paris en 1950.",
+    "form": "photographie",
+    "en": "This photograph was taken in Paris in 1950.",
+    "fa": "این عکس در سال ۱۹۵۰ در پاریس گرفته شده است."
+   }
+  },
+  {
+   "key": "n:garage",
+   "article": "le",
+   "en": "garage",
+   "fa": "گاراژ، تعمیرگاه",
+   "example": {
+    "fr": "Il range sa voiture dans le garage.",
+    "form": "garage",
+    "en": "He puts his car in the garage.",
+    "fa": "او ماشینش را در گاراژ می‌گذارد."
+   }
+  },
+  {
+   "key": "n:population",
+   "article": "la",
+   "en": "population",
+   "fa": "جمعیت",
+   "example": {
+    "fr": "La population de la ville a doublé en vingt ans.",
+    "form": "population",
+    "en": "The city's population has doubled in twenty years.",
+    "fa": "جمعیت شهر در بیست سال دو برابر شده است."
+   }
+  },
+  {
+   "key": "n:degre",
+   "article": "le",
+   "en": "degree",
+   "fa": "درجه",
+   "example": {
+    "fr": "Il fait moins deux degrés ce matin.",
+    "form": "degrés",
+    "en": "It is minus two degrees this morning.",
+    "fa": "امروز صبح هوا منفی دو درجه است."
+   }
+  },
+  {
+   "key": "n:ecart",
+   "article": "l'",
+   "en": "gap, difference",
+   "fa": "فاصله، اختلاف",
+   "prep": "entre",
+   "construction": "un écart entre A et B",
+   "example": {
+    "fr": "Il y a un grand écart entre leurs deux salaires.",
+    "form": "écart",
+    "en": "There is a big gap between their two salaries.",
+    "fa": "بین دو حقوقشان اختلاف زیادی وجود دارد."
+   }
+  },
+  {
+   "key": "n:pipe",
+   "article": "la",
+   "en": "pipe",
+   "fa": "پیپ",
+   "example": {
+    "fr": "Mon grand-père fume sa pipe sur le balcon.",
+    "form": "pipe",
+    "en": "My grandfather smokes his pipe on the balcony.",
+    "fa": "پدربزرگم روی بالکن پیپش را می‌کشد."
+   }
+  },
+  {
+   "key": "n:vallee",
+   "article": "la",
+   "en": "valley",
+   "fa": "دره",
+   "example": {
+    "fr": "Le village se trouve au fond d'une vallée.",
+    "form": "vallée",
+    "en": "The village is at the bottom of a valley.",
+    "fa": "روستا در انتهای یک دره قرار دارد."
+   }
+  },
+  {
+   "key": "n:union",
+   "article": "l'",
+   "en": "union, unity",
+   "fa": "اتحاد، اتحادیه",
+   "example": {
+    "fr": "L'Union européenne compte vingt-sept pays membres.",
+    "form": "Union",
+    "en": "The European Union has twenty-seven member countries.",
+    "fa": "اتحادیه‌ی اروپا بیست‌وهفت کشور عضو دارد."
+   }
+  },
+  {
+   "key": "n:star",
+   "article": "la",
+   "en": "star, celebrity",
+   "fa": "ستاره‌ی سینما، چهره‌ی مشهور",
+   "example": {
+    "fr": "Cette star du cinéma vit à Los Angeles.",
+    "form": "star",
+    "en": "This film star lives in Los Angeles.",
+    "fa": "این ستاره‌ی سینما در لس‌آنجلس زندگی می‌کند."
+   }
+  },
+  {
+   "key": "n:sacrifice",
+   "article": "le",
+   "en": "sacrifice",
+   "fa": "فداکاری، قربانی",
+   "example": {
+    "fr": "Ses parents ont fait de grands sacrifices pour ses études.",
+    "form": "sacrifices",
+    "en": "His parents made great sacrifices for his studies.",
+    "fa": "والدینش برای تحصیل او فداکاری‌های بزرگی کردند."
+   }
+  },
+  {
+   "key": "n:musee",
+   "article": "le",
+   "en": "museum",
+   "fa": "موزه",
+   "example": {
+    "fr": "Nous visitons le musée d'Orsay dimanche prochain.",
+    "form": "musée",
+    "en": "We are visiting the Orsay museum next Sunday.",
+    "fa": "یکشنبه‌ی آینده از موزه‌ی ارسه بازدید می‌کنیم."
+   }
+  },
+  {
+   "key": "n:baron",
+   "article": "le",
+   "en": "baron",
+   "fa": "بارون",
+   "example": {
+    "fr": "La baronne habitait un château dans le Berry.",
+    "form": "baronne",
+    "en": "The baroness lived in a château in the Berry.",
+    "fa": "بارونس در قصری در منطقه‌ی بری زندگی می‌کرد."
+   }
+  },
+  {
+   "key": "a:civil",
+   "en": "civil, civilian",
+   "fa": "مدنی، غیرنظامی",
+   "example": {
+    "fr": "Ils se sont mariés lors d'une cérémonie civile.",
+    "form": "civile",
+    "en": "They got married in a civil ceremony.",
+    "fa": "آن‌ها در یک مراسم مدنی ازدواج کردند."
+   }
+  },
+  {
+   "key": "n:miss",
+   "article": "la",
+   "en": "beauty queen",
+   "fa": "ملکه‌ی زیبایی",
+   "example": {
+    "fr": "La miss de cette année vient de notre région.",
+    "form": "miss",
+    "en": "This year's beauty queen comes from our region.",
+    "fa": "ملکه‌ی زیبایی امسال اهل منطقه‌ی ماست."
+   }
+  },
+  {
+   "key": "n:panier",
+   "article": "le",
+   "en": "basket",
+   "fa": "سبد",
+   "example": {
+    "fr": "Elle porte un panier plein de pommes.",
+    "form": "panier",
+    "en": "She is carrying a basket full of apples.",
+    "fa": "او سبدی پر از سیب در دست دارد."
+   }
+  },
+  {
+   "key": "n:danseur",
+   "article": "le",
+   "en": "dancer",
+   "fa": "رقصنده",
+   "example": {
+    "fr": "La danseuse répète son spectacle depuis trois mois.",
+    "form": "danseuse",
+    "en": "The dancer has been rehearsing her show for three months.",
+    "fa": "رقصنده سه ماه است که نمایشش را تمرین می‌کند."
+   }
+  },
+  {
+   "key": "n:boucle",
+   "article": "la",
+   "en": "buckle, curl",
+   "fa": "سگک، حلقه",
+   "example": {
+    "fr": "Sa ceinture a une grande boucle en argent.",
+    "form": "boucle",
+    "en": "His belt has a big silver buckle.",
+    "fa": "کمربندش یک سگک نقره‌ای بزرگ دارد."
+   }
+  },
+  {
+   "key": "a:discret",
+   "en": "discreet, unobtrusive",
+   "fa": "خوددار، کم‌سروصدا",
+   "example": {
+    "fr": "Il est très discret et ne parle jamais de sa vie privée.",
+    "form": "discret",
+    "en": "He is very discreet and never talks about his private life.",
+    "fa": "او بسیار خوددار است و هرگز درباره‌ی زندگی خصوصی‌اش حرف نمی‌زند."
+   }
+  },
+  {
+   "key": "n:ble",
+   "article": "le",
+   "en": "wheat",
+   "fa": "گندم",
+   "example": {
+    "fr": "Les agriculteurs récoltent le blé en juillet.",
+    "form": "blé",
+    "en": "Farmers harvest wheat in July.",
+    "fa": "کشاورزان گندم را در ماه ژوئیه برداشت می‌کنند."
+   }
+  },
+  {
+   "key": "n:caillou",
+   "article": "le",
+   "en": "pebble, stone",
+   "fa": "سنگ‌ریزه، قلوه‌سنگ",
+   "example": {
+    "fr": "L'enfant lance un caillou dans la rivière.",
+    "form": "caillou",
+    "en": "The child throws a pebble into the river.",
+    "fa": "کودک سنگ‌ریزه‌ای را به رودخانه می‌اندازد."
+   }
+  },
+  {
+   "key": "n:satisfaction",
+   "article": "la",
+   "en": "satisfaction",
+   "fa": "رضایت",
+   "example": {
+    "fr": "Le client exprime sa satisfaction après la réparation.",
+    "form": "satisfaction",
+    "en": "The customer expresses his satisfaction after the repair.",
+    "fa": "مشتری پس از تعمیر رضایتش را ابراز می‌کند."
+   }
+  },
+  {
+   "key": "a:direct",
+   "en": "direct, straight",
+   "fa": "مستقیم",
+   "example": {
+    "fr": "Il existe un train direct pour Lyon.",
+    "form": "direct",
+    "en": "There is a direct train to Lyon.",
+    "fa": "یک قطار مستقیم به لیون وجود دارد."
+   }
+  },
+  {
+   "key": "a:tiede",
+   "en": "lukewarm",
+   "fa": "ولرم، نیم‌گرم",
+   "example": {
+    "fr": "Je préfère boire mon thé tiède plutôt que brûlant.",
+    "form": "tiède",
+    "en": "I prefer to drink my tea lukewarm rather than scalding.",
+    "fa": "ترجیح می‌دهم چایم را ولرم بنوشم تا سوزان."
+   }
+  },
+  {
+   "key": "n:enterrement",
+   "article": "l'",
+   "en": "funeral, burial",
+   "fa": "مراسم خاک‌سپاری، تشییع",
+   "example": {
+    "fr": "Tout le village vient à l'enterrement.",
+    "form": "enterrement",
+    "en": "The whole village comes to the funeral.",
+    "fa": "تمام روستا به مراسم خاک‌سپاری می‌آید."
+   }
+  },
+  {
+   "key": "n:aiguille",
+   "article": "l'",
+   "en": "needle, clock hand",
+   "fa": "سوزن، عقربه",
+   "example": {
+    "fr": "Ma grand-mère coud avec une aiguille très fine.",
+    "form": "aiguille",
+    "en": "My grandmother sews with a very fine needle.",
+    "fa": "مادربزرگم با یک سوزن بسیار ظریف می‌دوزد."
+   }
+  },
+  {
+   "key": "a:ordinaire",
+   "en": "ordinary, usual",
+   "fa": "معمولی، عادی",
+   "example": {
+    "fr": "C'était une journée ordinaire, sans aucune surprise.",
+    "form": "ordinaire",
+    "en": "It was an ordinary day, without any surprise.",
+    "fa": "روزی عادی بود، بدون هیچ شگفتی."
+   }
+  },
+  {
+   "key": "a:urgent",
+   "en": "urgent",
+   "fa": "فوری، اضطراری",
+   "example": {
+    "fr": "Elle reçoit un message urgent de son patron.",
+    "form": "urgent",
+    "en": "She receives an urgent message from her boss.",
+    "fa": "او پیامی فوری از رئیسش دریافت می‌کند."
+   }
+  },
+  {
+   "key": "a:familial",
+   "en": "family, familial",
+   "fa": "خانوادگی",
+   "example": {
+    "fr": "Nous organisons un repas familial chaque dimanche.",
+    "form": "familial",
+    "en": "We hold a family meal every Sunday.",
+    "fa": "ما هر یکشنبه یک ناهار خانوادگی ترتیب می‌دهیم."
+   }
+  },
+  {
+   "key": "n:credit",
+   "article": "le",
+   "en": "credit, loan",
+   "fa": "اعتبار، وام",
+   "example": {
+    "fr": "Ils demandent un crédit pour acheter leur appartement.",
+    "form": "crédit",
+    "en": "They are applying for a loan to buy their flat.",
+    "fa": "آن‌ها برای خرید آپارتمانشان درخواست وام می‌کنند."
+   }
+  },
+  {
+   "key": "n:royaume",
+   "article": "le",
+   "en": "kingdom",
+   "fa": "پادشاهی، قلمرو",
+   "example": {
+    "fr": "Le royaume était gouverné par une jeune reine.",
+    "form": "royaume",
+    "en": "The kingdom was ruled by a young queen.",
+    "fa": "پادشاهی را یک ملکه‌ی جوان اداره می‌کرد."
+   }
+  },
+  {
+   "key": "n:courrier",
+   "article": "le",
+   "en": "mail, post",
+   "fa": "نامه‌ها، پست",
+   "example": {
+    "fr": "Le facteur apporte le courrier vers dix heures.",
+    "form": "courrier",
+    "en": "The postman brings the mail around ten o'clock.",
+    "fa": "نامه‌رسان حدود ساعت ده نامه‌ها را می‌آورد."
+   }
+  },
+  {
+   "key": "n:file",
+   "article": "la",
+   "en": "queue, line, lane",
+   "fa": "صف، خط",
+   "example": {
+    "fr": "Il y a une longue file devant la boulangerie.",
+    "form": "file",
+    "en": "There is a long queue in front of the bakery.",
+    "fa": "جلوی نانوایی یک صف طولانی هست."
+   }
+  },
+  {
+   "key": "n:baton",
+   "article": "le",
+   "en": "stick, baton",
+   "fa": "چوب‌دستی، عصا",
+   "example": {
+    "fr": "Le berger marche avec un long bâton.",
+    "form": "bâton",
+    "en": "The shepherd walks with a long stick.",
+    "fa": "چوپان با یک چوب‌دستی بلند راه می‌رود."
+   }
+  },
+  {
+   "key": "n:acier",
+   "article": "l'",
+   "en": "steel",
+   "fa": "فولاد",
+   "example": {
+    "fr": "Ce pont est construit en acier et en béton.",
+    "form": "acier",
+    "en": "This bridge is built of steel and concrete.",
+    "fa": "این پل از فولاد و بتن ساخته شده است."
+   }
+  },
+  {
+   "key": "n:casquette",
+   "article": "la",
+   "en": "cap",
+   "fa": "کلاه لبه‌دار",
+   "example": {
+    "fr": "Il porte toujours une casquette pour se protéger du soleil.",
+    "form": "casquette",
+    "en": "He always wears a cap to protect himself from the sun.",
+    "fa": "او همیشه برای محافظت از آفتاب کلاه لبه‌دار بر سر می‌گذارد."
+   }
+  },
+  {
+   "key": "n:joueur",
+   "article": "le",
+   "en": "player, gambler",
+   "fa": "بازیکن، قمارباز",
+   "example": {
+    "fr": "La joueuse a marqué le but de la victoire.",
+    "form": "joueuse",
+    "en": "The player scored the winning goal.",
+    "fa": "بازیکن گل پیروزی را زد."
+   }
+  },
+  {
+   "key": "a:confus",
+   "en": "confused, muddled",
+   "fa": "گیج، درهم و برهم",
+   "example": {
+    "fr": "Ses explications sont confuses et difficiles à suivre.",
+    "form": "confuses",
+    "en": "His explanations are muddled and hard to follow.",
+    "fa": "توضیحاتش درهم و دنبال کردنشان سخت است."
+   }
+  },
+  {
+   "key": "n:progres",
+   "article": "le",
+   "en": "progress",
+   "fa": "پیشرفت",
+   "example": {
+    "fr": "Ce petit garçon fait beaucoup de progrès en lecture.",
+    "form": "progrès",
+    "en": "This little boy is making a lot of progress in reading.",
+    "fa": "این پسربچه در خواندن پیشرفت زیادی می‌کند."
+   }
+  },
+  {
+   "key": "a:amusant",
+   "en": "fun, amusing",
+   "fa": "سرگرم‌کننده، بامزه",
+   "example": {
+    "fr": "Ce jeu est amusant pour toute la famille.",
+    "form": "amusant",
+    "en": "This game is fun for the whole family.",
+    "fa": "این بازی برای تمام خانواده سرگرم‌کننده است."
+   }
+  },
+  {
+   "key": "n:bougie",
+   "article": "la",
+   "en": "candle",
+   "fa": "شمع",
+   "example": {
+    "fr": "Elle allume une bougie sur la table.",
+    "form": "bougie",
+    "en": "She lights a candle on the table.",
+    "fa": "او روی میز یک شمع روشن می‌کند."
+   }
+  },
+  {
+   "key": "n:barre",
+   "article": "la",
+   "en": "bar, rod",
+   "fa": "میله",
+   "example": {
+    "fr": "Le danseur s'appuie sur la barre pendant l'échauffement.",
+    "form": "barre",
+    "en": "The dancer leans on the barre during the warm-up.",
+    "fa": "رقصنده هنگام گرم کردن بدن به میله تکیه می‌دهد."
+   }
+  },
+  {
+   "key": "n:assistant",
+   "article": "l'",
+   "en": "assistant",
+   "fa": "دستیار",
+   "example": {
+    "fr": "L'assistante du directeur prépare la réunion.",
+    "form": "assistante",
+    "en": "The director's assistant is preparing the meeting.",
+    "fa": "دستیار مدیر جلسه را آماده می‌کند."
+   }
+  },
+  {
+   "key": "n:visiteur",
+   "article": "le",
+   "en": "visitor",
+   "fa": "بازدیدکننده، مهمان",
+   "example": {
+    "fr": "Chaque visiteur reçoit un plan du musée.",
+    "form": "visiteur",
+    "en": "Each visitor receives a map of the museum.",
+    "fa": "هر بازدیدکننده یک نقشه‌ی موزه دریافت می‌کند."
+   }
+  },
+  {
+   "key": "a:marrant",
+   "en": "funny (informal)",
+   "fa": "بامزه، خنده‌دار",
+   "example": {
+    "fr": "Ton frère est vraiment marrant quand il imite le prof.",
+    "form": "marrant",
+    "en": "Your brother is really funny when he imitates the teacher.",
+    "fa": "برادرت وقتی از معلم تقلید می‌کند واقعاً بامزه است."
+   }
+  },
+  {
+   "key": "n:octobre",
+   "article": "l'",
+   "en": "October",
+   "fa": "اکتبر",
+   "example": {
+    "fr": "Les feuilles des arbres tombent en octobre.",
+    "form": "octobre",
+    "en": "The leaves fall from the trees in October.",
+    "fa": "برگ‌های درختان در ماه اکتبر می‌ریزند."
+   }
+  },
+  {
+   "key": "n:rein",
+   "article": "le",
+   "en": "kidney",
+   "fa": "کلیه، کمر",
+   "example": {
+    "fr": "Un rein suffit pour vivre en bonne santé.",
+    "form": "rein",
+    "en": "One kidney is enough to live in good health.",
+    "fa": "یک کلیه برای زندگی سالم کافی است."
+   }
+  },
+  {
+   "key": "a:complique",
+   "en": "complicated",
+   "fa": "پیچیده",
+   "example": {
+    "fr": "Cette histoire est trop compliquée à expliquer.",
+    "form": "compliquée",
+    "en": "This story is too complicated to explain.",
+    "fa": "توضیح دادن این ماجرا بیش از حد پیچیده است."
+   }
+  },
+  {
+   "key": "n:sherif",
+   "article": "le",
+   "en": "sheriff",
+   "fa": "کلانتر",
+   "example": {
+    "fr": "Le shérif arrive en ville à cheval.",
+    "form": "shérif",
+    "en": "The sheriff rides into town on horseback.",
+    "fa": "کلانتر سوار بر اسب وارد شهر می‌شود."
+   }
+  },
+  {
+   "key": "n:galerie",
+   "article": "la",
+   "en": "gallery",
+   "fa": "گالری، نگارخانه",
+   "example": {
+    "fr": "Cette galerie d'art ouvre tous les jours à dix heures.",
+    "form": "galerie",
+    "en": "This art gallery opens every day at ten.",
+    "fa": "این گالری هنری هر روز ساعت ده باز می‌شود."
+   }
+  },
+  {
+   "key": "n:legende",
+   "article": "la",
+   "en": "legend, caption",
+   "fa": "افسانه، شرح تصویر",
+   "example": {
+    "fr": "Cette légende est racontée depuis des siècles.",
+    "form": "légende",
+    "en": "This legend has been told for centuries.",
+    "fa": "این افسانه قرن‌هاست که روایت می‌شود."
+   }
+  },
+  {
+   "key": "n:appetit",
+   "article": "l'",
+   "en": "appetite",
+   "fa": "اشتها",
+   "example": {
+    "fr": "Les enfants ont un grand appétit après la piscine.",
+    "form": "appétit",
+    "en": "The children have a big appetite after the pool.",
+    "fa": "بچه‌ها بعد از استخر اشتهای زیادی دارند."
+   }
+  },
+  {
+   "key": "n:education",
+   "article": "l'",
+   "en": "education, upbringing",
+   "fa": "آموزش، تربیت",
+   "example": {
+    "fr": "L'éducation des enfants commence à la maison.",
+    "form": "éducation",
+    "en": "Children's education begins at home.",
+    "fa": "تربیت کودکان از خانه شروع می‌شود."
+   }
+  },
+  {
+   "key": "n:motif",
+   "article": "le",
+   "en": "reason, pattern",
+   "fa": "دلیل، نقش و نگار",
+   "example": {
+    "fr": "Quel est le motif de votre visite ?",
+    "form": "motif",
+    "en": "What is the reason for your visit?",
+    "fa": "دلیل بازدید شما چیست؟"
+   }
+  },
+  {
+   "key": "n:theorie",
+   "article": "la",
+   "en": "theory",
+   "fa": "نظریه",
+   "example": {
+    "fr": "Cette théorie n'a jamais été prouvée.",
+    "form": "théorie",
+    "en": "This theory has never been proven.",
+    "fa": "این نظریه هرگز اثبات نشده است."
+   }
+  },
+  {
+   "key": "n:brume",
+   "article": "la",
+   "en": "mist",
+   "fa": "مه سبک، غبار",
+   "example": {
+    "fr": "Une légère brume couvre la vallée ce matin.",
+    "form": "brume",
+    "en": "A light mist covers the valley this morning.",
+    "fa": "امروز صبح مه‌ی سبکی دره را پوشانده است."
+   }
+  },
+  {
+   "key": "n:humanite",
+   "article": "l'",
+   "en": "humanity",
+   "fa": "بشریت، انسانیت",
+   "example": {
+    "fr": "L'humanité doit protéger la planète.",
+    "form": "humanité",
+    "en": "Humanity must protect the planet.",
+    "fa": "بشریت باید از زمین محافظت کند."
+   }
+  },
+  {
+   "key": "a:arme",
+   "en": "armed",
+   "fa": "مسلح",
+   "example": {
+    "fr": "Les forces armées protègent la frontière.",
+    "form": "armées",
+    "en": "The armed forces protect the border.",
+    "fa": "نیروهای مسلح از مرز محافظت می‌کنند."
+   }
+  },
+  {
+   "key": "n:dessous",
+   "article": "le",
+   "en": "underside, bottom",
+   "fa": "قسمت زیرین، زیر",
+   "example": {
+    "fr": "Le dessous de la chaussure est en caoutchouc.",
+    "form": "dessous",
+    "en": "The underside of the shoe is made of rubber.",
+    "fa": "قسمت زیرین کفش از لاستیک است."
+   }
+  },
+  {
+   "key": "a:quotidien",
+   "en": "daily, everyday",
+   "fa": "روزمره، روزانه",
+   "example": {
+    "fr": "Le sport fait partie de sa vie quotidienne.",
+    "form": "quotidienne",
+    "en": "Sport is part of his daily life.",
+    "fa": "ورزش بخشی از زندگی روزمره‌ی اوست."
+   }
+  },
+  {
+   "key": "n:ambassadeur",
+   "article": "l'",
+   "en": "ambassador",
+   "fa": "سفیر",
+   "example": {
+    "fr": "L'ambassadrice de France rencontre le président demain.",
+    "form": "ambassadrice",
+    "en": "France's ambassador meets the president tomorrow.",
+    "fa": "سفیر فرانسه فردا با رئیس‌جمهور دیدار می‌کند."
+   }
+  },
+  {
+   "key": "n:volet",
+   "article": "le",
+   "en": "shutter",
+   "fa": "کرکره، پنجره‌ی چوبی",
+   "example": {
+    "fr": "Elle ferme les volets avant de dormir.",
+    "form": "volets",
+    "en": "She closes the shutters before sleeping.",
+    "fa": "او پیش از خواب کرکره‌ها را می‌بندد."
+   }
+  },
+  {
+   "key": "n:pli",
+   "article": "le",
+   "en": "fold, crease",
+   "fa": "چین، تا",
+   "example": {
+    "fr": "Il repasse sa chemise pour enlever chaque pli.",
+    "form": "pli",
+    "en": "He irons his shirt to remove every crease.",
+    "fa": "او پیراهنش را اتو می‌کند تا هر چین را از بین ببرد."
+   }
+  },
+  {
+   "key": "n:dignite",
+   "article": "la",
+   "en": "dignity",
+   "fa": "عزت، شأن",
+   "example": {
+    "fr": "Il garde sa dignité malgré les difficultés.",
+    "form": "dignité",
+    "en": "He keeps his dignity despite the difficulties.",
+    "fa": "او با وجود دشواری‌ها عزت‌نفسش را حفظ می‌کند."
+   }
+  },
+  {
+   "key": "n:marin",
+   "article": "le",
+   "en": "sailor",
+   "fa": "ملوان، دریانورد",
+   "example": {
+    "fr": "Le vieux marin raconte ses voyages en mer.",
+    "form": "marin",
+    "en": "The old sailor tells of his voyages at sea.",
+    "fa": "ملوان پیر از سفرهایش به دریا تعریف می‌کند."
+   }
+  },
+  {
+   "key": "n:tuyau",
+   "article": "le",
+   "en": "pipe, hose",
+   "fa": "لوله، شلنگ",
+   "example": {
+    "fr": "Le tuyau de la douche fuit depuis hier.",
+    "form": "tuyau",
+    "en": "The shower hose has been leaking since yesterday.",
+    "fa": "شلنگ دوش از دیروز نشت می‌کند."
+   }
+  },
+  {
+   "key": "a:tendu",
+   "en": "tense, taut",
+   "fa": "پرتنش، کشیده",
+   "example": {
+    "fr": "L'ambiance est tendue depuis la dispute.",
+    "form": "tendue",
+    "en": "The atmosphere has been tense since the argument.",
+    "fa": "فضا از زمان دعوا تنش‌آلود است."
+   }
+  },
+  {
+   "key": "n:portee",
+   "article": "la",
+   "en": "reach, range",
+   "fa": "دسترس، برد",
+   "example": {
+    "fr": "Gardez ces médicaments hors de la portée des enfants.",
+    "form": "portée",
+    "en": "Keep these medicines out of children's reach.",
+    "fa": "این داروها را دور از دسترس کودکان نگه دارید."
+   }
+  },
+  {
+   "key": "a:raide",
+   "en": "stiff, steep",
+   "fa": "خشک، پرشیب",
+   "example": {
+    "fr": "Cette pente est trop raide pour les vélos.",
+    "form": "raide",
+    "en": "This slope is too steep for bikes.",
+    "fa": "این شیب برای دوچرخه‌ها بیش‌ازحد تند است."
+   }
+  },
+  {
+   "key": "a:genereux",
+   "en": "generous",
+   "fa": "بخشنده، سخاوتمند",
+   "prep": "envers",
+   "construction": "être généreux envers quelqu'un",
+   "example": {
+    "fr": "Ma voisine est généreuse envers tout le monde.",
+    "form": "généreuse",
+    "en": "My neighbour is generous to everyone.",
+    "fa": "همسایه‌ام با همه بخشنده است."
+   }
+  },
+  {
+   "key": "n:reveil",
+   "article": "le",
+   "en": "alarm clock, waking up",
+   "fa": "ساعت زنگ‌دار، بیدار شدن",
+   "example": {
+    "fr": "Mon réveil sonne à sept heures chaque matin.",
+    "form": "réveil",
+    "en": "My alarm clock rings at seven every morning.",
+    "fa": "ساعت زنگ‌دارم هر صبح ساعت هفت زنگ می‌زند."
+   }
+  },
+  {
+   "key": "n:ecran",
+   "article": "l'",
+   "en": "screen",
+   "fa": "صفحه‌نمایش، پرده",
+   "example": {
+    "fr": "Les enfants passent trop de temps devant l'écran.",
+    "form": "écran",
+    "en": "Children spend too much time in front of the screen.",
+    "fa": "بچه‌ها زمان زیادی را جلوی صفحه‌نمایش می‌گذرانند."
+   }
+  },
+  {
+   "key": "n:formule",
+   "article": "la",
+   "en": "formula",
+   "fa": "فرمول، شیوه",
+   "example": {
+    "fr": "Cette formule chimique est très simple.",
+    "form": "formule",
+    "en": "This chemical formula is very simple.",
+    "fa": "این فرمول شیمیایی بسیار ساده است."
+   }
+  },
+  {
+   "key": "n:secteur",
+   "article": "le",
+   "en": "sector, area",
+   "fa": "بخش، حوزه",
+   "example": {
+    "fr": "Ce secteur de l'économie recrute beaucoup en ce moment.",
+    "form": "secteur",
+    "en": "This sector of the economy is hiring a lot right now.",
+    "fa": "این بخش از اقتصاد در حال حاضر نیروی زیادی استخدام می‌کند."
+   }
+  },
+  {
+   "key": "a:lumineux",
+   "en": "bright, luminous",
+   "fa": "روشن، پرنور",
+   "example": {
+    "fr": "La chambre est lumineuse grâce à la grande fenêtre.",
+    "form": "lumineuse",
+    "en": "The room is bright thanks to the big window.",
+    "fa": "اتاق به لطف پنجره‌ی بزرگ پرنور است."
+   }
+  },
+  {
+   "key": "n:individu",
+   "article": "l'",
+   "en": "individual",
+   "fa": "فرد",
+   "example": {
+    "fr": "Chaque individu a le droit d'être respecté.",
+    "form": "individu",
+    "en": "Every individual has the right to be respected.",
+    "fa": "هر فرد حق دارد مورد احترام قرار گیرد."
+   }
+  },
+  {
+   "key": "a:brulant",
+   "en": "scalding, burning hot",
+   "fa": "داغ، سوزان",
+   "example": {
+    "fr": "Attention, le café est encore brûlant.",
+    "form": "brûlant",
+    "en": "Careful, the coffee is still scalding hot.",
+    "fa": "مواظب باش، قهوه هنوز خیلی داغ است."
+   }
+  },
+  {
+   "key": "n:kilo",
+   "article": "le",
+   "en": "kilo",
+   "fa": "کیلو",
+   "example": {
+    "fr": "J'achète un kilo de pommes au marché.",
+    "form": "kilo",
+    "en": "I buy a kilo of apples at the market.",
+    "fa": "من یک کیلو سیب از بازار می‌خرم."
+   }
+  },
+  {
+   "key": "n:negre",
+   "exclude": true,
+   "reason": "offensive racial term; its main modern use is a slur"
+  },
+  {
+   "key": "n:entretien",
+   "article": "l'",
+   "en": "interview, maintenance",
+   "fa": "مصاحبه، نگهداری",
+   "example": {
+    "fr": "Il a un entretien d'embauche demain matin.",
+    "form": "entretien",
+    "en": "He has a job interview tomorrow morning.",
+    "fa": "او فردا صبح مصاحبه‌ی استخدامی دارد."
+   }
+  },
+  {
+   "key": "n:catastrophe",
+   "article": "la",
+   "en": "disaster, catastrophe",
+   "fa": "فاجعه، بلای بزرگ",
+   "example": {
+    "fr": "Cette inondation est une véritable catastrophe pour la région.",
+    "form": "catastrophe",
+    "en": "This flood is a real disaster for the region.",
+    "fa": "این سیل برای منطقه یک فاجعه‌ی واقعی است."
+   }
+  },
+  {
+   "key": "n:matinee",
+   "article": "la",
+   "en": "morning",
+   "fa": "صبح، پیش از ظهر",
+   "example": {
+    "fr": "Nous passons la matinée au parc avec les enfants.",
+    "form": "matinée",
+    "en": "We spend the morning at the park with the children.",
+    "fa": "ما صبح را با بچه‌ها در پارک می‌گذرانیم."
+   }
+  },
+  {
+   "key": "n:moine",
+   "article": "le",
+   "en": "monk",
+   "fa": "راهب",
+   "example": {
+    "fr": "Le moine vit dans un monastère de montagne.",
+    "form": "moine",
+    "en": "The monk lives in a mountain monastery.",
+    "fa": "راهب در یک صومعه‌ی کوهستانی زندگی می‌کند."
+   }
+  },
+  {
+   "key": "n:vente",
+   "article": "la",
+   "en": "sale, selling",
+   "fa": "فروش، حراج",
+   "example": {
+    "fr": "Cette boutique organise une grande vente en janvier.",
+    "form": "vente",
+    "en": "This shop holds a big sale in January.",
+    "fa": "این مغازه در ژانویه حراج بزرگی برگزار می‌کند."
+   }
+  },
+  {
+   "key": "n:jouet",
+   "article": "le",
+   "en": "toy",
+   "fa": "اسباب‌بازی",
+   "example": {
+    "fr": "L'enfant range ses jouets dans une boîte.",
+    "form": "jouets",
+    "en": "The child puts his toys away in a box.",
+    "fa": "کودک اسباب‌بازی‌هایش را در یک جعبه می‌گذارد."
+   }
+  },
+  {
+   "key": "a:moche",
+   "en": "ugly (informal)",
+   "fa": "زشت",
+   "example": {
+    "fr": "Je trouve cette chemise vraiment moche.",
+    "form": "moche",
+    "en": "I find this shirt really ugly.",
+    "fa": "به نظرم این پیراهن واقعاً زشت است."
+   }
+  },
+  {
+   "key": "a:chinois",
+   "en": "Chinese",
+   "fa": "چینی",
+   "example": {
+    "fr": "Nous mangeons dans un restaurant chinois ce soir.",
+    "form": "chinois",
+    "en": "We are eating in a Chinese restaurant tonight.",
+    "fa": "امشب در یک رستوران چینی غذا می‌خوریم."
+   }
+  },
+  {
+   "key": "n:bouquet",
+   "article": "le",
+   "en": "bouquet",
+   "fa": "دسته‌گل",
+   "example": {
+    "fr": "Il offre un bouquet de roses à sa mère.",
+    "form": "bouquet",
+    "en": "He gives his mother a bouquet of roses.",
+    "fa": "او یک دسته‌گل رز به مادرش هدیه می‌دهد."
+   }
+  },
+  {
+   "key": "a:mouille",
+   "en": "wet",
+   "fa": "خیس",
+   "example": {
+    "fr": "Mes chaussures sont toutes mouillées après la pluie.",
+    "form": "mouillées",
+    "en": "My shoes are all wet after the rain.",
+    "fa": "کفش‌هایم بعد از باران کاملاً خیس شده‌اند."
+   }
+  },
+  {
+   "key": "n:pilote",
+   "article": "le",
+   "en": "pilot, racing driver (m. or f.)",
+   "fa": "خلبان، راننده‌ی مسابقه",
+   "gender": "mf",
+   "example": {
+    "fr": "Le pilote annonce un léger retard à l'arrivée.",
+    "form": "pilote",
+    "en": "The pilot announces a slight delay on arrival.",
+    "fa": "خلبان تأخیر کمی در رسیدن اعلام می‌کند."
+   }
+  },
+  {
+   "key": "a:fini",
+   "en": "finished, over",
+   "fa": "تمام‌شده، پایان‌یافته",
+   "example": {
+    "fr": "Le travail est fini, nous pouvons rentrer.",
+    "form": "fini",
+    "en": "The work is finished, we can go home.",
+    "fa": "کار تمام شده است، می‌توانیم برگردیم."
+   }
+  },
+  {
+   "key": "n:faiblesse",
+   "article": "la",
+   "en": "weakness",
+   "fa": "ضعف",
+   "example": {
+    "fr": "Il reconnaît sa faiblesse en mathématiques.",
+    "form": "faiblesse",
+    "en": "He admits his weakness in maths.",
+    "fa": "او ضعفش را در ریاضی می‌پذیرد."
+   }
+  },
+  {
+   "key": "n:precaution",
+   "article": "la",
+   "en": "precaution, care",
+   "fa": "احتیاط، پیشگیری",
+   "example": {
+    "fr": "Il prend toutes ses précautions avant de partir en montagne.",
+    "form": "précautions",
+    "en": "He takes every precaution before heading to the mountains.",
+    "fa": "او پیش از رفتن به کوه همه‌ی احتیاط‌ها را به کار می‌بندد."
+   }
+  },
+  {
+   "key": "n:arabe",
+   "article": "l'",
+   "en": "Arabic, Arab (m. or f.)",
+   "fa": "عربی، عرب",
+   "gender": "mf",
+   "example": {
+    "fr": "L'arabe est parlé dans de nombreux pays.",
+    "form": "arabe",
+    "en": "Arabic is spoken in many countries.",
+    "fa": "عربی در کشورهای بسیاری صحبت می‌شود."
+   }
+  },
+  {
+   "key": "n:suicide",
+   "exclude": true,
+   "reason": "sensitive subject, not suitable for a flashcard deck for all ages"
+  },
+  {
+   "key": "n:eclair",
+   "article": "l'",
+   "en": "lightning, éclair (pastry)",
+   "fa": "برق، اکلر",
+   "example": {
+    "fr": "Un éclair illumine tout le ciel.",
+    "form": "éclair",
+    "en": "A flash of lightning lights up the whole sky.",
+    "fa": "برقی تمام آسمان را روشن می‌کند."
+   }
+  },
+  {
+   "key": "n:voyou",
+   "article": "le",
+   "en": "hooligan, thug",
+   "fa": "شرور، بزهکار",
+   "example": {
+    "fr": "Ce voyou a cassé la vitre du voisin.",
+    "form": "voyou",
+    "en": "This hooligan broke the neighbour's window.",
+    "fa": "این شرور شیشه‌ی همسایه را شکست."
+   }
+  },
+  {
+   "key": "n:habitant",
+   "article": "l'",
+   "en": "inhabitant, resident",
+   "fa": "ساکن، شهروند",
+   "example": {
+    "fr": "Cette ville compte dix mille habitants.",
+    "form": "habitants",
+    "en": "This town has ten thousand inhabitants.",
+    "fa": "این شهر ده هزار ساکن دارد."
+   }
+  },
+  {
+   "key": "n:mouchoir",
+   "article": "le",
+   "en": "handkerchief",
+   "fa": "دستمال",
+   "example": {
+    "fr": "Elle sort un mouchoir de son sac.",
+    "form": "mouchoir",
+    "en": "She takes a handkerchief out of her bag.",
+    "fa": "او از کیفش یک دستمال بیرون می‌آورد."
+   }
+  },
+  {
+   "key": "n:offre",
+   "article": "l'",
+   "en": "offer, supply",
+   "fa": "پیشنهاد، عرضه",
+   "example": {
+    "fr": "L'entreprise fait une offre intéressante à ses clients.",
+    "form": "offre",
+    "en": "The company makes an attractive offer to its customers.",
+    "fa": "شرکت به مشتریانش پیشنهاد جذابی می‌دهد."
+   }
+  },
+  {
+   "key": "n:brouillard",
+   "article": "le",
+   "en": "fog",
+   "fa": "مه",
+   "example": {
+    "fr": "Le brouillard est si épais qu'on ne voit rien.",
+    "form": "brouillard",
+    "en": "The fog is so thick that you can't see anything.",
+    "fa": "مه آن‌قدر غلیظ است که هیچ‌چیز دیده نمی‌شود."
+   }
+  },
+  {
+   "key": "n:enveloppe",
+   "article": "l'",
+   "en": "envelope",
+   "fa": "پاکت",
+   "example": {
+    "fr": "Elle glisse la lettre dans une enveloppe blanche.",
+    "form": "enveloppe",
+    "en": "She slips the letter into a white envelope.",
+    "fa": "او نامه را در یک پاکت سفید می‌گذارد."
+   }
+  },
+  {
+   "key": "n:salade",
+   "article": "la",
+   "en": "salad",
+   "fa": "سالاد",
+   "example": {
+    "fr": "Nous mangeons une salade de tomates en entrée.",
+    "form": "salade",
+    "en": "We eat a tomato salad as a starter.",
+    "fa": "ما به‌عنوان پیش‌غذا سالاد گوجه می‌خوریم."
+   }
+  },
+  {
+   "key": "n:cendre",
+   "article": "la",
+   "en": "ash",
+   "fa": "خاکستر",
+   "example": {
+    "fr": "Il ne reste que des cendres après le feu de camp.",
+    "form": "cendres",
+    "en": "Only ashes remain after the campfire.",
+    "fa": "پس از آتش اردو فقط خاکستر باقی می‌ماند."
+   }
+  },
+  {
+   "key": "n:hippo",
+   "article": "l'",
+   "en": "hippo",
+   "fa": "اسب‌آبی",
+   "example": {
+    "fr": "L'hippo se repose dans l'eau toute la journée.",
+    "form": "hippo",
+    "en": "The hippo rests in the water all day.",
+    "fa": "اسب‌آبی تمام روز در آب استراحت می‌کند."
+   }
+  },
+  {
+   "key": "a:ivre",
+   "en": "drunk, intoxicated",
+   "fa": "مست، سرمست",
+   "prep": "de",
+   "construction": "être ivre de joie",
+   "example": {
+    "fr": "Le vainqueur est ivre de joie.",
+    "form": "ivre",
+    "en": "The winner is drunk with joy.",
+    "fa": "برنده از شادی سرمست است."
+   }
+  },
+  {
+   "key": "n:conduite",
+   "article": "la",
+   "en": "behaviour, driving",
+   "fa": "رفتار، رانندگی",
+   "example": {
+    "fr": "Sa conduite en classe est parfaite.",
+    "form": "conduite",
+    "en": "His behaviour in class is perfect.",
+    "fa": "رفتار او در کلاس بی‌نقص است."
+   }
+  },
+  {
+   "key": "a:espagnol",
+   "en": "Spanish",
+   "fa": "اسپانیایی",
+   "example": {
+    "fr": "Elle prépare une omelette espagnole pour le dîner.",
+    "form": "espagnole",
+    "en": "She is making a Spanish omelette for dinner.",
+    "fa": "او برای شام املت اسپانیایی درست می‌کند."
+   }
+  },
+  {
+   "key": "n:profondeur",
+   "article": "la",
+   "en": "depth",
+   "fa": "عمق",
+   "example": {
+    "fr": "La profondeur du lac dépasse cent mètres.",
+    "form": "profondeur",
+    "en": "The depth of the lake exceeds one hundred metres.",
+    "fa": "عمق دریاچه از صد متر بیشتر است."
+   }
+  },
+  {
+   "key": "a:roux",
+   "en": "red-haired, russet",
+   "fa": "حنایی، سرخ‌رنگ",
+   "example": {
+    "fr": "Mon petit frère a les cheveux roux.",
+    "form": "roux",
+    "en": "My little brother has red hair.",
+    "fa": "برادر کوچکم موهای حنایی دارد."
+   }
+  },
+  {
+   "key": "n:echelle",
+   "article": "l'",
+   "en": "ladder, scale",
+   "fa": "نردبان، مقیاس",
+   "example": {
+    "fr": "Il monte sur l'échelle pour peindre le mur.",
+    "form": "échelle",
+    "en": "He climbs the ladder to paint the wall.",
+    "fa": "او برای رنگ کردن دیوار از نردبان بالا می‌رود."
+   }
+  },
+  {
+   "key": "a:endormi",
+   "en": "asleep, sleepy",
+   "fa": "خوابیده، خواب‌آلود",
+   "example": {
+    "fr": "Le bébé est enfin endormi dans son lit.",
+    "form": "endormi",
+    "en": "The baby is finally asleep in his bed.",
+    "fa": "نوزاد بالاخره در تختش خوابیده است."
+   }
+  },
+  {
+   "key": "n:mouton",
+   "article": "le",
+   "en": "sheep, mutton",
+   "fa": "گوسفند، گوشت گوسفند",
+   "example": {
+    "fr": "Les moutons broutent l'herbe dans le pré.",
+    "form": "moutons",
+    "en": "The sheep graze the grass in the meadow.",
+    "fa": "گوسفندها در چمنزار علف می‌چرند."
+   }
+  },
+  {
+   "key": "n:soulier",
+   "article": "le",
+   "en": "shoe",
+   "fa": "کفش",
+   "example": {
+    "fr": "Il cire ses souliers avant le mariage.",
+    "form": "souliers",
+    "en": "He polishes his shoes before the wedding.",
+    "fa": "او پیش از عروسی کفش‌هایش را واکس می‌زند."
+   }
+  },
+  {
+   "key": "n:jus",
+   "article": "le",
+   "en": "juice",
+   "fa": "آب‌میوه",
+   "example": {
+    "fr": "Je bois un jus d'orange au petit-déjeuner.",
+    "form": "jus",
+    "en": "I drink an orange juice at breakfast.",
+    "fa": "من سر صبحانه آب‌پرتقال می‌نوشم."
+   }
+  },
+  {
+   "key": "n:litterature",
+   "article": "la",
+   "en": "literature",
+   "fa": "ادبیات",
+   "example": {
+    "fr": "Elle étudie la littérature française à l'université.",
+    "form": "littérature",
+    "en": "She studies French literature at university.",
+    "fa": "او در دانشگاه ادبیات فرانسه می‌خواند."
+   }
+  },
+  {
+   "key": "a:laid",
+   "en": "ugly",
+   "fa": "زشت",
+   "example": {
+    "fr": "Cette ville est laide mais très vivante.",
+    "form": "laide",
+    "en": "This town is ugly but very lively.",
+    "fa": "این شهر زشت است اما بسیار پرجنب‌وجوش."
+   }
+  },
+  {
+   "key": "n:vengeance",
+   "article": "la",
+   "en": "revenge",
+   "fa": "انتقام",
+   "example": {
+    "fr": "Il ne cherche pas la vengeance, seulement la justice.",
+    "form": "vengeance",
+    "en": "He is not seeking revenge, only justice.",
+    "fa": "او به دنبال انتقام نیست، فقط عدالت می‌خواهد."
+   }
+  },
+  {
+   "key": "a:sain",
+   "en": "healthy, sound",
+   "fa": "سالم",
+   "example": {
+    "fr": "Une alimentation saine est bonne pour le cœur.",
+    "form": "saine",
+    "en": "A healthy diet is good for the heart.",
+    "fa": "یک تغذیه‌ی سالم برای قلب خوب است."
+   }
+  },
+  {
+   "key": "n:canne",
+   "article": "la",
+   "en": "cane, walking stick",
+   "fa": "عصا",
+   "example": {
+    "fr": "Mon grand-père marche avec une canne.",
+    "form": "canne",
+    "en": "My grandfather walks with a cane.",
+    "fa": "پدربزرگم با یک عصا راه می‌رود."
+   }
+  },
+  {
+   "key": "n:rigueur",
+   "article": "la",
+   "en": "rigour, strictness",
+   "fa": "دقت، سخت‌گیری",
+   "example": {
+    "fr": "Ce scientifique travaille avec beaucoup de rigueur.",
+    "form": "rigueur",
+    "en": "This scientist works with great rigour.",
+    "fa": "این دانشمند با سخت‌گیری علمی فراوان کار می‌کند."
+   }
+  },
+  {
+   "key": "a:brutal",
+   "en": "brutal, sudden",
+   "fa": "خشن، ناگهانی",
+   "example": {
+    "fr": "Le choc a été brutal pour toute la famille.",
+    "form": "brutal",
+    "en": "The shock was brutal for the whole family.",
+    "fa": "شوک برای تمام خانواده شدید بود."
+   }
+  },
+  {
+   "key": "n:cavalier",
+   "article": "le",
+   "en": "rider, horseman",
+   "fa": "سوارکار",
+   "example": {
+    "fr": "La cavalière monte son cheval dans le manège.",
+    "form": "cavalière",
+    "en": "The horsewoman rides her horse in the arena.",
+    "fa": "سوارکار در میدان اسب‌سواری اسبش را می‌راند."
+   }
+  },
+  {
+   "key": "n:brique",
+   "article": "la",
+   "en": "brick",
+   "fa": "آجر",
+   "example": {
+    "fr": "La maison est construite en briques rouges.",
+    "form": "briques",
+    "en": "The house is built of red bricks.",
+    "fa": "خانه با آجرهای قرمز ساخته شده است."
+   }
+  },
+  {
+   "key": "n:creme",
+   "article": "la",
+   "en": "cream",
+   "fa": "کرم، خامه",
+   "gender": "f",
+   "example": {
+    "fr": "Elle met de la crème sur ses mains.",
+    "form": "crème",
+    "en": "She puts cream on her hands.",
+    "fa": "او روی دستانش کرم می‌مالد."
+   }
+  },
+  {
+   "key": "n:outil",
+   "article": "l'",
+   "en": "tool",
+   "fa": "ابزار",
+   "example": {
+    "fr": "Le marteau est un outil très utile.",
+    "form": "outil",
+    "en": "The hammer is a very useful tool.",
+    "fa": "چکش ابزاری بسیار مفید است."
+   }
+  },
+  {
+   "key": "n:carnet",
+   "article": "le",
+   "en": "notebook",
+   "fa": "دفترچه",
+   "example": {
+    "fr": "Elle note l'adresse dans un petit carnet.",
+    "form": "carnet",
+    "en": "She writes the address in a small notebook.",
+    "fa": "او آدرس را در یک دفترچه‌ی کوچک یادداشت می‌کند."
+   }
+  },
+  {
+   "key": "n:orgueil",
+   "article": "l'",
+   "en": "pride",
+   "fa": "غرور",
+   "example": {
+    "fr": "Son orgueil l'empêche de demander de l'aide.",
+    "form": "orgueil",
+    "en": "His pride prevents him from asking for help.",
+    "fa": "غرورش او را از کمک خواستن باز می‌دارد."
+   }
+  },
+  {
+   "key": "n:ouverture",
+   "article": "l'",
+   "en": "opening",
+   "fa": "گشایش، افتتاح",
+   "example": {
+    "fr": "L'ouverture du magasin est prévue pour lundi.",
+    "form": "ouverture",
+    "en": "The opening of the shop is planned for Monday.",
+    "fa": "افتتاح مغازه برای دوشنبه برنامه‌ریزی شده است."
+   }
+  },
+  {
+   "key": "n:communication",
+   "article": "la",
+   "en": "communication",
+   "fa": "ارتباط، مکالمه",
+   "example": {
+    "fr": "La communication entre les deux services est difficile.",
+    "form": "communication",
+    "en": "Communication between the two departments is difficult.",
+    "fa": "ارتباط بین دو بخش دشوار است."
+   }
+  },
+  {
+   "key": "n:scandale",
+   "article": "le",
+   "en": "scandal",
+   "fa": "رسوایی",
+   "example": {
+    "fr": "Ce scandale a choqué tout le pays.",
+    "form": "scandale",
+    "en": "This scandal shocked the whole country.",
+    "fa": "این رسوایی تمام کشور را شوکه کرد."
+   }
+  },
+  {
+   "key": "a:casse",
+   "en": "broken",
+   "fa": "شکسته، خراب",
+   "example": {
+    "fr": "Mon téléphone est cassé depuis hier.",
+    "form": "cassé",
+    "en": "My phone has been broken since yesterday.",
+    "fa": "گوشی‌ام از دیروز شکسته است."
+   }
+  },
+  {
+   "key": "n:cabane",
+   "article": "la",
+   "en": "hut, shed",
+   "fa": "کلبه، آلونک",
+   "example": {
+    "fr": "Les enfants construisent une cabane dans le jardin.",
+    "form": "cabane",
+    "en": "The children are building a hut in the garden.",
+    "fa": "بچه‌ها در باغ یک کلبه می‌سازند."
+   }
+  },
+  {
+   "key": "n:saloperie",
+   "exclude": true,
+   "reason": "vulgar slang (rubbish, dirty trick)"
+  },
+  {
+   "key": "a:absent",
+   "en": "absent",
+   "fa": "غایب",
+   "example": {
+    "fr": "Le professeur est absent aujourd'hui.",
+    "form": "absent",
+    "en": "The teacher is absent today.",
+    "fa": "معلم امروز غایب است."
+   }
+  },
+  {
+   "key": "n:casque",
+   "article": "le",
+   "en": "helmet, headphones",
+   "fa": "کلاه ایمنی، هدفون",
+   "example": {
+    "fr": "Le cycliste porte toujours un casque.",
+    "form": "casque",
+    "en": "The cyclist always wears a helmet.",
+    "fa": "دوچرخه‌سوار همیشه کلاه ایمنی بر سر می‌گذارد."
+   }
+  },
+  {
+   "key": "n:canal",
+   "article": "le",
+   "en": "canal, channel",
+   "fa": "کانال، مجرا",
+   "example": {
+    "fr": "Le bateau traverse le canal de Suez.",
+    "form": "canal",
+    "en": "The boat crosses the Suez Canal.",
+    "fa": "کشتی از کانال سوئز عبور می‌کند."
+   }
+  },
+  {
+   "key": "n:marechal",
+   "article": "le",
+   "en": "marshal",
+   "fa": "مارشال",
+   "example": {
+    "fr": "Le maréchal salue les soldats devant le palais.",
+    "form": "maréchal",
+    "en": "The marshal salutes the soldiers in front of the palace.",
+    "fa": "مارشال جلوی کاخ به سربازان سلام می‌دهد."
+   }
+  },
+  {
+   "key": "n:souris",
+   "article": "la",
+   "en": "mouse",
+   "fa": "موش، ماوس",
+   "gender": "f",
+   "example": {
+    "fr": "Une souris se cache derrière le canapé.",
+    "form": "souris",
+    "en": "A mouse is hiding behind the sofa.",
+    "fa": "یک موش پشت مبل پنهان شده است."
+   }
+  },
+  {
+   "key": "n:reflexion",
+   "article": "la",
+   "en": "thought, reflection",
+   "fa": "تأمل، بازتاب",
+   "example": {
+    "fr": "Après réflexion, je préfère rester à la maison.",
+    "form": "réflexion",
+    "en": "On reflection, I prefer to stay at home.",
+    "fa": "پس از تأمل، ترجیح می‌دهم در خانه بمانم."
+   }
+  },
+  {
+   "key": "n:moto",
+   "article": "la",
+   "en": "motorbike",
+   "fa": "موتورسیکلت",
+   "example": {
+    "fr": "Mon cousin répare sa moto tous les week-ends.",
+    "form": "moto",
+    "en": "My cousin repairs his motorbike every weekend.",
+    "fa": "پسرعمویم هر آخر هفته موتورش را تعمیر می‌کند."
+   }
+  },
+  {
+   "key": "n:racine",
+   "article": "la",
+   "en": "root",
+   "fa": "ریشه",
+   "example": {
+    "fr": "Les racines de cet arbre sont très profondes.",
+    "form": "racines",
+    "en": "The roots of this tree are very deep.",
+    "fa": "ریشه‌های این درخت بسیار عمیق‌اند."
+   }
+  },
+  {
+   "key": "n:four",
+   "article": "le",
+   "en": "oven",
+   "fa": "فر، تنور",
+   "example": {
+    "fr": "Le gâteau cuit dans le four depuis vingt minutes.",
+    "form": "four",
+    "en": "The cake has been baking in the oven for twenty minutes.",
+    "fa": "کیک بیست دقیقه است که در فر می‌پزد."
+   }
+  },
+  {
+   "key": "n:tournee",
+   "article": "la",
+   "en": "tour, round",
+   "fa": "تور، گردش",
+   "example": {
+    "fr": "Le chanteur commence sa tournée en Europe en mars.",
+    "form": "tournée",
+    "en": "The singer starts his tour of Europe in March.",
+    "fa": "خواننده تور اروپایی‌اش را در ماه مارس شروع می‌کند."
+   }
+  },
+  {
+   "key": "n:citoyen",
+   "article": "le",
+   "en": "citizen",
+   "fa": "شهروند",
+   "example": {
+    "fr": "Chaque citoyen doit respecter la loi.",
+    "form": "citoyen",
+    "en": "Every citizen must respect the law.",
+    "fa": "هر شهروند باید قانون را رعایت کند."
+   }
+  },
+  {
+   "key": "n:cercueil",
+   "article": "le",
+   "en": "coffin",
+   "fa": "تابوت",
+   "example": {
+    "fr": "Le cercueil est porté par six hommes.",
+    "form": "cercueil",
+    "en": "The coffin is carried by six men.",
+    "fa": "تابوت را شش مرد حمل می‌کنند."
+   }
+  },
+  {
+   "key": "n:cible",
+   "article": "la",
+   "en": "target",
+   "fa": "هدف",
+   "example": {
+    "fr": "Il vise la cible avec son arc.",
+    "form": "cible",
+    "en": "He aims at the target with his bow.",
+    "fa": "او با کمانش به هدف نشانه می‌رود."
+   }
+  },
+  {
+   "key": "n:affection",
+   "article": "l'",
+   "en": "affection",
+   "fa": "محبت، دلبستگی",
+   "prep": "pour",
+   "construction": "avoir de l'affection pour quelqu'un",
+   "example": {
+    "fr": "Elle montre beaucoup d'affection pour ses petits-enfants.",
+    "form": "affection",
+    "en": "She shows great affection for her grandchildren.",
+    "fa": "او نسبت به نوه‌هایش محبت زیادی نشان می‌دهد."
+   }
+  },
+  {
+   "key": "n:assaut",
+   "article": "l'",
+   "en": "assault, rush",
+   "fa": "هجوم، یورش",
+   "example": {
+    "fr": "Les touristes prennent d'assaut les plages en été.",
+    "form": "assaut",
+    "en": "Tourists storm the beaches in summer.",
+    "fa": "گردشگران در تابستان به ساحل‌ها هجوم می‌آورند."
+   }
+  },
+  {
+   "key": "n:poubelle",
+   "article": "la",
+   "en": "bin, dustbin",
+   "fa": "سطل زباله",
+   "example": {
+    "fr": "Il sort la poubelle tous les mardis soir.",
+    "form": "poubelle",
+    "en": "He takes out the bin every Tuesday evening.",
+    "fa": "او هر سه‌شنبه عصر سطل زباله را بیرون می‌برد."
+   }
+  },
+  {
+   "key": "n:plaisanterie",
+   "article": "la",
+   "en": "joke",
+   "fa": "شوخی",
+   "example": {
+    "fr": "Ce n'est qu'une plaisanterie, ne te fâche pas.",
+    "form": "plaisanterie",
+    "en": "It's only a joke, don't get angry.",
+    "fa": "فقط یک شوخی است، ناراحت نشو."
+   }
+  },
+  {
+   "key": "a:mortel",
+   "en": "deadly, mortal",
+   "fa": "مرگبار، فانی",
+   "example": {
+    "fr": "Ce poison est mortel pour les poissons.",
+    "form": "mortel",
+    "en": "This poison is deadly to fish.",
+    "fa": "این سم برای ماهی‌ها مرگبار است."
+   }
+  },
+  {
+   "key": "n:vehicule",
+   "article": "le",
+   "en": "vehicle",
+   "fa": "وسیله‌ی نقلیه",
+   "example": {
+    "fr": "Ce véhicule électrique ne fait presque aucun bruit.",
+    "form": "véhicule",
+    "en": "This electric vehicle makes almost no noise.",
+    "fa": "این وسیله‌ی نقلیه‌ی برقی تقریباً هیچ صدایی ندارد."
+   }
+  },
+  {
+   "key": "n:enfoire",
+   "exclude": true,
+   "reason": "insult; vulgar slang"
+  },
+  {
+   "key": "n:perspective",
+   "article": "la",
+   "en": "prospect, perspective",
+   "fa": "چشم‌انداز، دورنما",
+   "example": {
+    "fr": "La perspective d'un voyage la rend heureuse.",
+    "form": "perspective",
+    "en": "The prospect of a trip makes her happy.",
+    "fa": "چشم‌انداز یک سفر او را خوشحال می‌کند."
+   }
+  },
+  {
+   "key": "a:continue",
+   "en": "continuous",
+   "fa": "پیوسته، مداوم",
+   "example": {
+    "fr": "Une ligne continue sépare les deux voies.",
+    "form": "continue",
+    "en": "A continuous line separates the two lanes.",
+    "fa": "یک خط پیوسته دو مسیر را از هم جدا می‌کند."
+   }
+  },
+  {
+   "key": "n:revue",
+   "article": "la",
+   "en": "magazine, review",
+   "fa": "مجله، بازبینی",
+   "example": {
+    "fr": "Elle lit une revue de mode chez le coiffeur.",
+    "form": "revue",
+    "en": "She reads a fashion magazine at the hairdresser's.",
+    "fa": "او در آرایشگاه یک مجله‌ی مد می‌خواند."
+   }
+  },
+  {
+   "key": "n:flotte",
+   "article": "la",
+   "en": "fleet, (informal) rain",
+   "fa": "ناوگان، (محاوره) باران",
+   "example": {
+    "fr": "La flotte de pêche quitte le port à l'aube.",
+    "form": "flotte",
+    "en": "The fishing fleet leaves the port at dawn.",
+    "fa": "ناوگان ماهیگیری سپیده‌دم بندر را ترک می‌کند."
+   }
+  },
+  {
+   "key": "a:paisible",
+   "en": "peaceful",
+   "fa": "آرام",
+   "example": {
+    "fr": "Ils vivent dans un village paisible au bord du lac.",
+    "form": "paisible",
+    "en": "They live in a peaceful village by the lake.",
+    "fa": "آن‌ها در روستایی آرام کنار دریاچه زندگی می‌کنند."
+   }
+  },
+  {
+   "key": "n:mepris",
+   "article": "le",
+   "en": "contempt, scorn",
+   "fa": "تحقیر، بی‌اعتنایی",
+   "example": {
+    "fr": "Il regarde les autres avec mépris.",
+    "form": "mépris",
+    "en": "He looks at others with contempt.",
+    "fa": "او با تحقیر به دیگران نگاه می‌کند."
+   }
+  },
+  {
+   "key": "a:connu",
+   "en": "known, famous",
+   "fa": "شناخته‌شده، مشهور",
+   "prep": "pour",
+   "construction": "être connu pour quelque chose",
+   "example": {
+    "fr": "Ce village est connu pour son fromage.",
+    "form": "connu",
+    "en": "This village is known for its cheese.",
+    "fa": "این روستا به پنیرش معروف است."
+   }
+  },
+  {
+   "key": "n:reputation",
+   "article": "la",
+   "en": "reputation",
+   "fa": "شهرت، اعتبار",
+   "example": {
+    "fr": "Ce restaurant a une excellente réputation dans la ville.",
+    "form": "réputation",
+    "en": "This restaurant has an excellent reputation in the city.",
+    "fa": "این رستوران در شهر شهرت بسیار خوبی دارد."
+   }
+  },
+  {
+   "key": "n:traitement",
+   "article": "le",
+   "en": "treatment",
+   "fa": "درمان، رفتار",
+   "example": {
+    "fr": "Le médecin prescrit un nouveau traitement.",
+    "form": "traitement",
+    "en": "The doctor prescribes a new treatment.",
+    "fa": "پزشک یک درمان جدید تجویز می‌کند."
+   }
+  },
+  {
+   "key": "n:soupir",
+   "article": "le",
+   "en": "sigh",
+   "fa": "آه، نفس عمیق",
+   "example": {
+    "fr": "Elle pousse un long soupir de soulagement.",
+    "form": "soupir",
+    "en": "She lets out a long sigh of relief.",
+    "fa": "او آه بلندی از سر آسودگی می‌کشد."
+   }
+  },
+  {
+   "key": "a:intact",
+   "en": "intact, unharmed",
+   "fa": "سالم، دست‌نخورده",
+   "example": {
+    "fr": "Après la tempête, le toit reste intact.",
+    "form": "intact",
+    "en": "After the storm, the roof remains intact.",
+    "fa": "پس از طوفان، سقف دست‌نخورده باقی می‌ماند."
+   }
+  },
+  {
+   "key": "n:couronne",
+   "article": "la",
+   "en": "crown",
+   "fa": "تاج",
+   "example": {
+    "fr": "La reine porte une couronne en or.",
+    "form": "couronne",
+    "en": "The queen wears a gold crown.",
+    "fa": "ملکه تاجی از طلا بر سر دارد."
+   }
+  },
+  {
+   "key": "n:vase",
+   "article": "le",
+   "en": "vase",
+   "fa": "گلدان",
+   "gender": "m",
+   "example": {
+    "fr": "Elle met les tulipes dans un vase bleu.",
+    "form": "vase",
+    "en": "She puts the tulips in a blue vase.",
+    "fa": "او لاله‌ها را در یک گلدان آبی می‌گذارد."
+   }
+  },
+  {
+   "key": "a:professionnel",
+   "en": "professional",
+   "fa": "حرفه‌ای",
+   "example": {
+    "fr": "C'est un joueur de tennis professionnel.",
+    "form": "professionnel",
+    "en": "He is a professional tennis player.",
+    "fa": "او یک تنیس‌باز حرفه‌ای است."
+   }
+  },
+  {
+   "key": "n:criminel",
+   "article": "le",
+   "en": "criminal",
+   "fa": "جنایتکار، مجرم",
+   "example": {
+    "fr": "La police recherche un criminel dangereux.",
+    "form": "criminel",
+    "en": "The police are looking for a dangerous criminal.",
+    "fa": "پلیس به دنبال یک جنایتکار خطرناک است."
+   }
+  },
+  {
+   "key": "n:essai",
+   "article": "l'",
+   "en": "trial, essay",
+   "fa": "آزمایش، مقاله",
+   "example": {
+    "fr": "Elle écrit un essai sur la liberté.",
+    "form": "essai",
+    "en": "She is writing an essay on freedom.",
+    "fa": "او مقاله‌ای درباره‌ی آزادی می‌نویسد."
+   }
+  },
+  {
+   "key": "n:alliance",
+   "article": "l'",
+   "en": "alliance, wedding ring",
+   "fa": "اتحاد، حلقه‌ی ازدواج",
+   "example": {
+    "fr": "Ils portent tous les deux une alliance en or.",
+    "form": "alliance",
+    "en": "They both wear a gold wedding ring.",
+    "fa": "هر دوی آن‌ها یک حلقه‌ی ازدواج طلا به دست دارند."
+   }
+  },
+  {
+   "key": "n:profil",
+   "article": "le",
+   "en": "profile",
+   "fa": "نیم‌رخ، پروفایل",
+   "example": {
+    "fr": "Elle change la photo de son profil chaque mois.",
+    "form": "profil",
+    "en": "She changes her profile picture every month.",
+    "fa": "او هر ماه عکس پروفایلش را عوض می‌کند."
+   }
+  },
+  {
+   "key": "n:meme",
+   "article": "la",
+   "en": "granny (informal)",
+   "fa": "مادربزرگ (محاوره‌ای)",
+   "example": {
+    "fr": "Ma mémé fait des crêpes tous les dimanches.",
+    "form": "mémé",
+    "en": "My granny makes pancakes every Sunday.",
+    "fa": "مادربزرگ من هر یکشنبه کرپ درست می‌کند."
+   }
+  },
+  {
+   "key": "n:partenaire",
+   "article": "le",
+   "en": "partner (m. or f.)",
+   "fa": "شریک، همراه",
+   "gender": "mf",
+   "example": {
+    "fr": "Mon partenaire de tennis joue très bien.",
+    "form": "partenaire",
+    "en": "My tennis partner plays very well.",
+    "fa": "شریک تنیس من خیلی خوب بازی می‌کند."
+   }
+  },
+  {
+   "key": "n:fierte",
+   "article": "la",
+   "en": "pride",
+   "fa": "افتخار، غرور",
+   "example": {
+    "fr": "Il parle de ses enfants avec fierté.",
+    "form": "fierté",
+    "en": "He talks about his children with pride.",
+    "fa": "او با افتخار از فرزندانش حرف می‌زند."
+   }
+  },
+  {
+   "key": "n:diamant",
+   "article": "le",
+   "en": "diamond",
+   "fa": "الماس",
+   "example": {
+    "fr": "Cette bague est ornée d'un petit diamant.",
+    "form": "diamant",
+    "en": "This ring is set with a small diamond.",
+    "fa": "این انگشتر با یک الماس کوچک تزیین شده است."
+   }
+  },
+  {
+   "key": "n:laine",
+   "article": "la",
+   "en": "wool",
+   "fa": "پشم",
+   "example": {
+    "fr": "Ce pull est fait en laine de mouton.",
+    "form": "laine",
+    "en": "This sweater is made of sheep's wool.",
+    "fa": "این ژاکت از پشم گوسفند ساخته شده است."
+   }
+  },
+  {
+   "key": "n:plaine",
+   "article": "la",
+   "en": "plain",
+   "fa": "دشت",
+   "example": {
+    "fr": "Le troupeau traverse la plaine au lever du jour.",
+    "form": "plaine",
+    "en": "The herd crosses the plain at daybreak.",
+    "fa": "گله هنگام طلوع آفتاب از دشت می‌گذرد."
+   }
+  },
+  {
+   "key": "a:medical",
+   "en": "medical",
+   "fa": "پزشکی",
+   "example": {
+    "fr": "Il passe un examen médical avant le voyage.",
+    "form": "médical",
+    "en": "He undergoes a medical examination before the trip.",
+    "fa": "او پیش از سفر یک معاینه‌ی پزشکی انجام می‌دهد."
+   }
+  },
+  {
+   "key": "n:phare",
+   "article": "le",
+   "en": "lighthouse, headlight",
+   "fa": "فانوس دریایی، چراغ جلوی ماشین",
+   "example": {
+    "fr": "Le phare éclaire la côte toute la nuit.",
+    "form": "phare",
+    "en": "The lighthouse lights up the coast all night.",
+    "fa": "فانوس دریایی تمام شب ساحل را روشن می‌کند."
+   }
+  },
+  {
+   "key": "n:propriete",
+   "article": "la",
+   "en": "property, ownership",
+   "fa": "ملک، مالکیت",
+   "example": {
+    "fr": "Cette propriété appartient à la même famille depuis deux siècles.",
+    "form": "propriété",
+    "en": "This property has belonged to the same family for two centuries.",
+    "fa": "این ملک دو قرن است که به یک خانواده تعلق دارد."
+   }
+  },
+  {
+   "key": "n:chapelle",
+   "article": "la",
+   "en": "chapel",
+   "fa": "کلیسای کوچک، نیایشگاه",
+   "example": {
+    "fr": "La petite chapelle est ouverte tous les dimanches.",
+    "form": "chapelle",
+    "en": "The little chapel is open every Sunday.",
+    "fa": "کلیسای کوچک هر یکشنبه باز است."
+   }
+  },
+  {
+   "key": "n:avril",
+   "article": "l'",
+   "en": "April",
+   "fa": "آوریل",
+   "example": {
+    "fr": "En avril, les jardins sont pleins de fleurs.",
+    "form": "avril",
+    "en": "In April, the gardens are full of flowers.",
+    "fa": "در ماه آوریل باغ‌ها پر از گل هستند."
+   }
+  },
+  {
+   "key": "n:emission",
+   "article": "l'",
+   "en": "programme, broadcast",
+   "fa": "برنامه‌ی رادیو و تلویزیون، پخش",
+   "example": {
+    "fr": "Cette émission de radio passe tous les soirs.",
+    "form": "émission",
+    "en": "This radio programme airs every evening.",
+    "fa": "این برنامه‌ی رادیویی هر عصر پخش می‌شود."
+   }
+  },
+  {
+   "key": "n:beurre",
+   "article": "le",
+   "en": "butter",
+   "fa": "کره",
+   "example": {
+    "fr": "Elle étale du beurre sur sa tartine.",
+    "form": "beurre",
+    "en": "She spreads butter on her slice of bread.",
+    "fa": "او روی نانش کره می‌مالد."
+   }
+  },
+  {
+   "key": "n:proie",
+   "article": "la",
+   "en": "prey",
+   "fa": "طعمه، شکار",
+   "example": {
+    "fr": "L'aigle fond sur sa proie du haut du ciel.",
+    "form": "proie",
+    "en": "The eagle swoops down on its prey from high in the sky.",
+    "fa": "عقاب از اوج آسمان بر طعمه‌اش فرود می‌آید."
+   }
+  },
+  {
+   "key": "n:oreiller",
+   "article": "l'",
+   "en": "pillow",
+   "fa": "بالش",
+   "example": {
+    "fr": "Il dort avec un oreiller très moelleux.",
+    "form": "oreiller",
+    "en": "He sleeps with a very soft pillow.",
+    "fa": "او با یک بالش بسیار نرم می‌خوابد."
+   }
+  },
+  {
+   "key": "n:wagon",
+   "article": "le",
+   "en": "carriage, wagon",
+   "fa": "واگن",
+   "example": {
+    "fr": "Le dernier wagon du train est réservé aux vélos.",
+    "form": "wagon",
+    "en": "The last carriage of the train is reserved for bikes.",
+    "fa": "آخرین واگن قطار برای دوچرخه‌ها رزرو شده است."
+   }
+  },
+  {
+   "key": "n:couvent",
+   "article": "le",
+   "en": "convent",
+   "fa": "صومعه، دیر",
+   "example": {
+    "fr": "Les religieuses prient dans le couvent chaque matin.",
+    "form": "couvent",
+    "en": "The nuns pray in the convent every morning.",
+    "fa": "راهبه‌ها هر صبح در صومعه دعا می‌کنند."
+   }
+  },
+  {
+   "key": "n:plomb",
+   "article": "le",
+   "en": "lead",
+   "fa": "سرب",
+   "example": {
+    "fr": "Les tuyaux de cette vieille maison sont en plomb.",
+    "form": "plomb",
+    "en": "The pipes of this old house are made of lead.",
+    "fa": "لوله‌های این خانه‌ی قدیمی از سرب است."
+   }
+  },
+  {
+   "key": "a:nocturne",
+   "en": "night, nocturnal",
+   "fa": "شبانه",
+   "example": {
+    "fr": "Le zoo organise une visite nocturne chaque été.",
+    "form": "nocturne",
+    "en": "The zoo organises a night visit every summer.",
+    "fa": "باغ‌وحش هر تابستان یک بازدید شبانه ترتیب می‌دهد."
+   }
+  },
+  {
+   "key": "n:tente",
+   "article": "la",
+   "en": "tent",
+   "fa": "چادر",
+   "example": {
+    "fr": "Nous montons la tente avant la tombée de la nuit.",
+    "form": "tente",
+    "en": "We put up the tent before nightfall.",
+    "fa": "ما پیش از فرارسیدن شب چادر را برپا می‌کنیم."
+   }
+  },
+  {
+   "key": "n:ouvrage",
+   "article": "l'",
+   "en": "work, book",
+   "fa": "اثر، کتاب",
+   "example": {
+    "fr": "Cet ouvrage sur l'histoire de France est très complet.",
+    "form": "ouvrage",
+    "en": "This work on French history is very complete.",
+    "fa": "این کتاب درباره‌ی تاریخ فرانسه بسیار جامع است."
+   }
+  },
+  {
+   "key": "n:cirque",
+   "article": "le",
+   "en": "circus",
+   "fa": "سیرک",
+   "example": {
+    "fr": "Les enfants adorent le clown du cirque.",
+    "form": "cirque",
+    "en": "The children love the circus clown.",
+    "fa": "بچه‌ها دلقک سیرک را دوست دارند."
+   }
+  },
+  {
+   "key": "n:bol",
+   "article": "le",
+   "en": "bowl",
+   "fa": "کاسه",
+   "example": {
+    "fr": "Il boit son café dans un grand bol.",
+    "form": "bol",
+    "en": "He drinks his coffee from a big bowl.",
+    "fa": "او قهوه‌اش را در یک کاسه‌ی بزرگ می‌نوشد."
+   }
+  },
+  {
+   "key": "a:interminable",
+   "en": "endless, interminable",
+   "fa": "بی‌پایان، تمام‌نشدنی",
+   "example": {
+    "fr": "Le trajet en voiture semble interminable.",
+    "form": "interminable",
+    "en": "The car journey seems endless.",
+    "fa": "سفر با ماشین بی‌پایان به نظر می‌رسد."
+   }
+  },
+  {
+   "key": "a:lache",
+   "en": "cowardly, loose",
+   "fa": "ترسو، شل",
+   "example": {
+    "fr": "Il est trop lâche pour dire la vérité.",
+    "form": "lâche",
+    "en": "He is too cowardly to tell the truth.",
+    "fa": "او برای گفتن حقیقت بیش از حد ترسوست."
+   }
+  },
+  {
+   "key": "n:baraque",
+   "article": "la",
+   "en": "shack, hut",
+   "fa": "کلبه، آلونک",
+   "example": {
+    "fr": "Il construit une petite baraque en bois près du lac.",
+    "form": "baraque",
+    "en": "He builds a small wooden shack near the lake.",
+    "fa": "او یک کلبه‌ی چوبی کوچک کنار دریاچه می‌سازد."
+   }
+  },
+  {
+   "key": "n:enthousiasme",
+   "article": "l'",
+   "en": "enthusiasm",
+   "fa": "شور و شوق",
+   "example": {
+    "fr": "Les élèves travaillent avec enthousiasme.",
+    "form": "enthousiasme",
+    "en": "The pupils work with enthusiasm.",
+    "fa": "دانش‌آموزان با شور و شوق کار می‌کنند."
+   }
+  },
+  {
+   "key": "n:province",
+   "article": "la",
+   "en": "province, the provinces",
+   "fa": "استان، شهرستان",
+   "example": {
+    "fr": "Elle vient d'une petite ville de province.",
+    "form": "province",
+    "en": "She comes from a small provincial town.",
+    "fa": "او از یک شهر کوچک شهرستانی می‌آید."
+   }
+  },
+  {
+   "key": "n:reprise",
+   "article": "la",
+   "en": "resumption, revival",
+   "fa": "ازسرگیری، بازگشت",
+   "example": {
+    "fr": "La reprise du travail a lieu lundi prochain.",
+    "form": "reprise",
+    "en": "The resumption of work takes place next Monday.",
+    "fa": "ازسرگیری کار دوشنبه‌ی آینده انجام می‌شود."
+   }
+  },
+  {
+   "key": "n:collection",
+   "article": "la",
+   "en": "collection",
+   "fa": "مجموعه",
+   "example": {
+    "fr": "Il garde sa collection de timbres dans un album.",
+    "form": "collection",
+    "en": "He keeps his stamp collection in an album.",
+    "fa": "او مجموعه‌ی تمبرهایش را در یک آلبوم نگه می‌دارد."
+   }
+  },
+  {
+   "key": "n:proposition",
+   "article": "la",
+   "en": "proposal, suggestion",
+   "fa": "پیشنهاد",
+   "example": {
+    "fr": "Je trouve ta proposition très intéressante.",
+    "form": "proposition",
+    "en": "I find your suggestion very interesting.",
+    "fa": "پیشنهاد تو را بسیار جالب می‌دانم."
+   }
+  },
+  {
+   "key": "n:section",
+   "article": "la",
+   "en": "section",
+   "fa": "بخش",
+   "example": {
+    "fr": "Vous trouverez les jouets dans la section du fond.",
+    "form": "section",
+    "en": "You will find the toys in the back section.",
+    "fa": "اسباب‌بازی‌ها را در بخش انتهایی پیدا می‌کنید."
+   }
+  },
+  {
+   "key": "n:tenebres",
+   "article": "les",
+   "en": "darkness, gloom",
+   "fa": "تاریکی، ظلمت",
+   "example": {
+    "fr": "Dans les ténèbres, on entend seulement le vent.",
+    "form": "ténèbres",
+    "en": "In the darkness, you can only hear the wind.",
+    "fa": "در تاریکی فقط صدای باد شنیده می‌شود."
+   }
+  },
+  {
+   "key": "n:transport",
+   "article": "le",
+   "en": "transport",
+   "fa": "حمل‌ونقل",
+   "example": {
+    "fr": "Je prends les transports en commun pour aller au travail.",
+    "form": "transports",
+    "en": "I take public transport to get to work.",
+    "fa": "من برای رفتن به سر کار از حمل‌ونقل عمومی استفاده می‌کنم."
+   }
+  },
+  {
+   "key": "n:assemblee",
+   "article": "l'",
+   "en": "assembly",
+   "fa": "مجمع، مجلس",
+   "example": {
+    "fr": "L'assemblée vote la loi demain matin.",
+    "form": "assemblée",
+    "en": "The assembly votes on the law tomorrow morning.",
+    "fa": "مجلس فردا صبح درباره‌ی قانون رأی می‌دهد."
+   }
+  },
+  {
+   "key": "n:ours",
+   "article": "l'",
+   "en": "bear",
+   "fa": "خرس",
+   "example": {
+    "fr": "L'ours brun dort pendant tout l'hiver.",
+    "form": "ours",
+    "en": "The brown bear sleeps all winter.",
+    "fa": "خرس قهوه‌ای تمام زمستان می‌خوابد."
+   }
+  },
+  {
+   "key": "n:tronc",
+   "article": "le",
+   "en": "trunk",
+   "fa": "تنه",
+   "example": {
+    "fr": "Le bûcheron coupe le tronc de l'arbre.",
+    "form": "tronc",
+    "en": "The lumberjack cuts the tree trunk.",
+    "fa": "هیزم‌شکن تنه‌ی درخت را می‌برد."
+   }
+  },
+  {
+   "key": "n:greve",
+   "article": "la",
+   "en": "strike",
+   "fa": "اعتصاب",
+   "example": {
+    "fr": "Les cheminots font grève depuis lundi.",
+    "form": "grève",
+    "en": "The railway workers have been on strike since Monday.",
+    "fa": "کارگران راه‌آهن از دوشنبه اعتصاب کرده‌اند."
+   }
+  },
+  {
+   "key": "n:protection",
+   "article": "la",
+   "en": "protection",
+   "fa": "محافظت، حفاظت",
+   "prep": "contre",
+   "construction": "la protection contre quelque chose",
+   "example": {
+    "fr": "Ce casque offre une bonne protection contre les chocs.",
+    "form": "protection",
+    "en": "This helmet offers good protection against impacts.",
+    "fa": "این کلاه ایمنی محافظت خوبی در برابر ضربه فراهم می‌کند."
+   }
+  },
+  {
+   "key": "a:attentif",
+   "en": "attentive",
+   "fa": "دقیق، حواس‌جمع",
+   "prep": "à",
+   "construction": "être attentif à quelque chose",
+   "example": {
+    "fr": "Elle est toujours attentive aux besoins des autres.",
+    "form": "attentive",
+    "en": "She is always attentive to the needs of others.",
+    "fa": "او همیشه به نیازهای دیگران توجه دارد."
+   }
+  },
+  {
+   "key": "n:conge",
+   "article": "le",
+   "en": "leave, time off",
+   "fa": "مرخصی",
+   "example": {
+    "fr": "Elle prend un congé de trois semaines en août.",
+    "form": "congé",
+    "en": "She takes three weeks' leave in August.",
+    "fa": "او در ماه اوت سه هفته مرخصی می‌گیرد."
+   }
+  },
+  {
+   "key": "n:sentier",
+   "article": "le",
+   "en": "path, trail",
+   "fa": "گذرگاه، مسیر کوهستانی",
+   "example": {
+    "fr": "Ce sentier mène au sommet de la montagne.",
+    "form": "sentier",
+    "en": "This path leads to the top of the mountain.",
+    "fa": "این مسیر به قله‌ی کوه می‌رسد."
+   }
+  },
+  {
+   "key": "a:modeste",
+   "en": "modest, humble",
+   "fa": "ساده، فروتن",
+   "example": {
+    "fr": "Ils vivent dans une maison modeste mais confortable.",
+    "form": "modeste",
+    "en": "They live in a modest but comfortable house.",
+    "fa": "آن‌ها در خانه‌ای ساده اما راحت زندگی می‌کنند."
+   }
+  },
+  {
+   "key": "n:cuisinier",
+   "article": "le",
+   "en": "cook",
+   "fa": "آشپز",
+   "example": {
+    "fr": "Le cuisinier prépare le plat du jour.",
+    "form": "cuisinier",
+    "en": "The cook prepares the dish of the day.",
+    "fa": "آشپز غذای روز را آماده می‌کند."
+   }
+  },
+  {
+   "key": "n:incendie",
+   "article": "l'",
+   "en": "fire, blaze",
+   "fa": "آتش‌سوزی",
+   "example": {
+    "fr": "Les pompiers éteignent l'incendie avant la nuit.",
+    "form": "incendie",
+    "en": "The firefighters put out the fire before night.",
+    "fa": "آتش‌نشان‌ها آتش‌سوزی را پیش از شب خاموش می‌کنند."
+   }
+  },
+  {
+   "key": "n:terreur",
+   "article": "la",
+   "en": "terror",
+   "fa": "وحشت",
+   "example": {
+    "fr": "Les enfants crient de terreur dans la maison hantée.",
+    "form": "terreur",
+    "en": "The children scream with terror in the haunted house.",
+    "fa": "بچه‌ها در خانه‌ی ارواح از وحشت فریاد می‌زنند."
+   }
+  },
+  {
+   "key": "n:dalle",
+   "article": "la",
+   "en": "slab, paving stone",
+   "fa": "دال، سنگ‌فرش",
+   "example": {
+    "fr": "Les ouvriers posent une dalle de béton dans le jardin.",
+    "form": "dalle",
+    "en": "The workers lay a concrete slab in the garden.",
+    "fa": "کارگران در باغ یک دال بتنی نصب می‌کنند."
+   }
+  },
+  {
+   "key": "n:aeroport",
+   "article": "l'",
+   "en": "airport",
+   "fa": "فرودگاه",
+   "example": {
+    "fr": "L'aéroport est à trente minutes du centre-ville.",
+    "form": "aéroport",
+    "en": "The airport is thirty minutes from the city centre.",
+    "fa": "فرودگاه سی دقیقه با مرکز شهر فاصله دارد."
+   }
+  },
+  {
+   "key": "n:cretin",
+   "article": "le",
+   "en": "idiot, fool (informal)",
+   "fa": "احمق، نادان",
+   "example": {
+    "fr": "Quel crétin je suis, j'ai oublié mon parapluie !",
+    "form": "crétin",
+    "en": "What an idiot I am, I forgot my umbrella!",
+    "fa": "چه احمقم من، چترم را فراموش کردم!"
+   }
+  },
+  {
+   "key": "n:cigare",
+   "article": "le",
+   "en": "cigar",
+   "fa": "سیگار برگ",
+   "example": {
+    "fr": "Le vieux monsieur fume un cigare sur sa terrasse.",
+    "form": "cigare",
+    "en": "The old gentleman smokes a cigar on his terrace.",
+    "fa": "پیرمرد روی تراس خانه‌اش سیگار برگ می‌کشد."
+   }
+  },
+  {
+   "key": "n:rock",
+   "article": "le",
+   "en": "rock (music)",
+   "fa": "راک",
+   "example": {
+    "fr": "Ce groupe joue du rock depuis trente ans.",
+    "form": "rock",
+    "en": "This band has been playing rock for thirty years.",
+    "fa": "این گروه سی سال است که راک می‌نوازد."
+   }
+  },
+  {
+   "key": "n:maire",
+   "article": "le",
+   "en": "mayor",
+   "fa": "شهردار",
+   "example": {
+    "fr": "Le maire inaugure la nouvelle école ce matin.",
+    "form": "maire",
+    "en": "The mayor opens the new school this morning.",
+    "fa": "شهردار امروز صبح مدرسه‌ی جدید را افتتاح می‌کند."
+   }
+  },
+  {
+   "key": "a:sincere",
+   "en": "sincere, genuine",
+   "fa": "صادق، صمیمانه",
+   "example": {
+    "fr": "Il est sincère quand il dit qu'il regrette.",
+    "form": "sincère",
+    "en": "He is sincere when he says he is sorry.",
+    "fa": "او وقتی می‌گوید پشیمان است، صادق است."
+   }
+  },
+  {
+   "key": "a:amer",
+   "en": "bitter",
+   "fa": "تلخ",
+   "example": {
+    "fr": "Ce café est trop amer sans sucre.",
+    "form": "amer",
+    "en": "This coffee is too bitter without sugar.",
+    "fa": "این قهوه بدون شکر بیش از حد تلخ است."
+   }
+  },
+  {
+   "key": "n:decouverte",
+   "article": "la",
+   "en": "discovery",
+   "fa": "کشف",
+   "example": {
+    "fr": "La découverte de ce trésor a surpris les archéologues.",
+    "form": "découverte",
+    "en": "The discovery of this treasure surprised the archaeologists.",
+    "fa": "کشف این گنج باستان‌شناسان را شگفت‌زده کرد."
+   }
+  },
+  {
+   "key": "n:menteur",
+   "article": "le",
+   "en": "liar",
+   "fa": "دروغگو",
+   "example": {
+    "fr": "Personne ne croit ce menteur.",
+    "form": "menteur",
+    "en": "Nobody believes this liar.",
+    "fa": "هیچ‌کس این دروغگو را باور نمی‌کند."
+   }
+  },
+  {
+   "key": "n:commission",
+   "article": "la",
+   "en": "committee, commission",
+   "fa": "کمیته، کمیسیون",
+   "example": {
+    "fr": "La commission examine le projet cette semaine.",
+    "form": "commission",
+    "en": "The committee examines the project this week.",
+    "fa": "کمیته این هفته پروژه را بررسی می‌کند."
+   }
+  },
+  {
+   "key": "n:indifference",
+   "article": "l'",
+   "en": "indifference",
+   "fa": "بی‌تفاوتی",
+   "example": {
+    "fr": "Il répond à la question avec indifférence.",
+    "form": "indifférence",
+    "en": "He answers the question with indifference.",
+    "fa": "او با بی‌تفاوتی به پرسش پاسخ می‌دهد."
+   }
+  },
+  {
+   "key": "n:cheque",
+   "article": "le",
+   "en": "cheque",
+   "fa": "چک",
+   "example": {
+    "fr": "Il paie le loyer par chèque chaque mois.",
+    "form": "chèque",
+    "en": "He pays the rent by cheque every month.",
+    "fa": "او هر ماه اجاره را با چک می‌پردازد."
+   }
+  },
+  {
+   "key": "n:conference",
+   "article": "la",
+   "en": "lecture, conference",
+   "fa": "سخنرانی، کنفرانس",
+   "example": {
+    "fr": "Le professeur donne une conférence sur le climat.",
+    "form": "conférence",
+    "en": "The professor gives a lecture on the climate.",
+    "fa": "استاد یک سخنرانی درباره‌ی اقلیم ارائه می‌دهد."
+   }
+  },
+  {
+   "key": "n:renseignement",
+   "article": "le",
+   "en": "information, inquiry",
+   "fa": "اطلاعات، راهنمایی",
+   "example": {
+    "fr": "Je voudrais un renseignement sur les horaires du train.",
+    "form": "renseignement",
+    "en": "I would like some information about the train times.",
+    "fa": "می‌خواهم درباره‌ی ساعت حرکت قطارها اطلاعاتی بگیرم."
+   }
+  },
+  {
+   "key": "n:panique",
+   "article": "la",
+   "en": "panic",
+   "fa": "هراس، وحشت",
+   "example": {
+    "fr": "Elle garde son calme malgré la panique générale.",
+    "form": "panique",
+    "en": "She keeps calm despite the general panic.",
+    "fa": "او با وجود هراس عمومی آرامشش را حفظ می‌کند."
+   }
+  },
+  {
+   "key": "n:novembre",
+   "article": "le",
+   "en": "November",
+   "fa": "نوامبر",
+   "example": {
+    "fr": "Il pleut souvent en novembre dans notre région.",
+    "form": "novembre",
+    "en": "It often rains in November in our region.",
+    "fa": "در منطقه‌ی ما در ماه نوامبر اغلب باران می‌بارد."
+   }
+  },
+  {
+   "key": "n:fureur",
+   "article": "la",
+   "en": "fury, rage",
+   "fa": "خشم، غضب",
+   "example": {
+    "fr": "Il claque la porte dans une grande fureur.",
+    "form": "fureur",
+    "en": "He slams the door in a great fury.",
+    "fa": "او در اوج خشم در را محکم می‌بندد."
+   }
+  },
+  {
+   "key": "n:plainte",
+   "article": "la",
+   "en": "complaint",
+   "fa": "شکایت",
+   "example": {
+    "fr": "Le voisin dépose une plainte à propos du bruit.",
+    "form": "plainte",
+    "en": "The neighbour files a complaint about the noise.",
+    "fa": "همسایه درباره‌ی سروصدا شکایتی ثبت می‌کند."
+   }
+  },
+  {
+   "key": "n:taule",
+   "article": "la",
+   "en": "jail (slang)",
+   "fa": "زندان (محاوره‌ای)",
+   "example": {
+    "fr": "Il a passé trois ans en taule pour vol.",
+    "form": "taule",
+    "en": "He spent three years in jail for theft.",
+    "fa": "او برای دزدی سه سال در زندان بود."
+   }
+  },
+  {
+   "key": "n:cuivre",
+   "article": "le",
+   "en": "copper",
+   "fa": "مس",
+   "example": {
+    "fr": "Ces casseroles sont faites en cuivre rouge.",
+    "form": "cuivre",
+    "en": "These pots are made of red copper.",
+    "fa": "این قابلمه‌ها از مس سرخ ساخته شده‌اند."
+   }
+  },
+  {
+   "key": "n:bijoux",
+   "article": "les",
+   "en": "jewels, jewellery",
+   "fa": "جواهرات، زیورآلات",
+   "example": {
+    "fr": "Elle range ses bijoux dans une petite boîte.",
+    "form": "bijoux",
+    "en": "She keeps her jewellery in a small box.",
+    "fa": "او جواهراتش را در یک جعبه‌ی کوچک نگه می‌دارد."
+   }
+  },
+  {
+   "key": "a:grec",
+   "en": "Greek",
+   "fa": "یونانی",
+   "example": {
+    "fr": "Elle aime la musique grecque.",
+    "form": "grecque",
+    "en": "She loves Greek music.",
+    "fa": "او موسیقی یونانی را دوست دارد."
+   }
+  },
+  {
+   "key": "n:declaration",
+   "article": "la",
+   "en": "statement, declaration",
+   "fa": "بیانیه، اظهارات",
+   "example": {
+    "fr": "Le président fait une déclaration à la presse.",
+    "form": "déclaration",
+    "en": "The president makes a statement to the press.",
+    "fa": "رئیس‌جمهور به رسانه‌ها بیانیه‌ای می‌دهد."
+   }
+  },
+  {
+   "key": "a:international",
+   "en": "international",
+   "fa": "بین‌المللی",
+   "example": {
+    "fr": "Elle travaille dans une organisation internationale.",
+    "form": "internationale",
+    "en": "She works in an international organisation.",
+    "fa": "او در یک سازمان بین‌المللی کار می‌کند."
+   }
+  },
+  {
+   "key": "a:timide",
+   "en": "shy, timid",
+   "fa": "خجالتی، کم‌رو",
+   "example": {
+    "fr": "La petite fille est trop timide pour parler.",
+    "form": "timide",
+    "en": "The little girl is too shy to speak.",
+    "fa": "دختربچه برای حرف زدن بیش از حد خجالتی است."
+   }
+  },
+  {
+   "key": "n:ambition",
+   "article": "l'",
+   "en": "ambition, aspiration",
+   "fa": "آرزو، جاه‌طلبی",
+   "example": {
+    "fr": "Sa plus grande ambition est de devenir pilote.",
+    "form": "ambition",
+    "en": "His greatest ambition is to become a pilot.",
+    "fa": "بزرگ‌ترین آرزوی او خلبان شدن است."
+   }
+  },
+  {
+   "key": "n:demeure",
+   "article": "la",
+   "en": "residence, mansion",
+   "fa": "اقامتگاه، عمارت",
+   "example": {
+    "fr": "Cette demeure ancienne appartient à ma famille.",
+    "form": "demeure",
+    "en": "This old residence belongs to my family.",
+    "fa": "این عمارت قدیمی به خانواده‌ی من تعلق دارد."
+   }
+  },
+  {
+   "key": "n:foie",
+   "article": "le",
+   "en": "liver",
+   "fa": "کبد، جگر",
+   "example": {
+    "fr": "Le foie est un organe très important du corps.",
+    "form": "foie",
+    "en": "The liver is a very important organ of the body.",
+    "fa": "کبد عضو بسیار مهمی از بدن است."
+   }
+  },
+  {
+   "key": "n:crayon",
+   "article": "le",
+   "en": "pencil",
+   "fa": "مداد",
+   "example": {
+    "fr": "Elle dessine un chat avec un crayon gris.",
+    "form": "crayon",
+    "en": "She draws a cat with a grey pencil.",
+    "fa": "او با یک مداد خاکستری گربه‌ای می‌کشد."
+   }
+  },
+  {
+   "key": "n:ordinateur",
+   "article": "l'",
+   "en": "computer",
+   "fa": "رایانه، کامپیوتر",
+   "example": {
+    "fr": "Mon nouvel ordinateur démarre très vite.",
+    "form": "ordinateur",
+    "en": "My new computer starts up very quickly.",
+    "fa": "کامپیوتر جدید من خیلی سریع روشن می‌شود."
+   }
+  },
+  {
+   "key": "n:respiration",
+   "article": "la",
+   "en": "breathing",
+   "fa": "تنفس، نفس کشیدن",
+   "example": {
+    "fr": "Le médecin écoute la respiration du patient.",
+    "form": "respiration",
+    "en": "The doctor listens to the patient's breathing.",
+    "fa": "پزشک به تنفس بیمار گوش می‌دهد."
+   }
+  },
+  {
+   "key": "n:impatience",
+   "article": "l'",
+   "en": "impatience",
+   "fa": "بی‌صبری",
+   "example": {
+    "fr": "Les enfants attendent le père Noël avec impatience.",
+    "form": "impatience",
+    "en": "The children wait for Father Christmas with impatience.",
+    "fa": "بچه‌ها با بی‌صبری منتظر بابانوئل هستند."
+   }
+  },
+  {
+   "key": "n:carrefour",
+   "article": "le",
+   "en": "crossroads",
+   "fa": "چهارراه",
+   "example": {
+    "fr": "La voiture s'arrête au carrefour devant la boulangerie.",
+    "form": "carrefour",
+    "en": "The car stops at the crossroads in front of the bakery.",
+    "fa": "ماشین در چهارراه جلوی نانوایی می‌ایستد."
+   }
+  },
+  {
+   "key": "n:clou",
+   "article": "le",
+   "en": "nail",
+   "fa": "میخ",
+   "example": {
+    "fr": "Il enfonce un clou dans le mur avec un marteau.",
+    "form": "clou",
+    "en": "He drives a nail into the wall with a hammer.",
+    "fa": "او با چکش میخی را در دیوار می‌کوبد."
+   }
+  },
+  {
+   "key": "n:pede",
+   "exclude": true,
+   "reason": "offensive slur; no clean sense"
+  },
+  {
+   "key": "n:hanche",
+   "article": "la",
+   "en": "hip",
+   "fa": "لگن، مفصل ران",
+   "example": {
+    "fr": "Elle a mal à la hanche depuis sa chute.",
+    "form": "hanche",
+    "en": "Her hip has hurt since her fall.",
+    "fa": "از زمان افتادنش لگنش درد می‌کند."
+   }
+  },
+  {
+   "key": "n:chanteur",
+   "article": "le",
+   "en": "singer",
+   "fa": "خواننده",
+   "example": {
+    "fr": "La chanteuse remplit toujours la salle de concert.",
+    "form": "chanteuse",
+    "en": "The singer always fills the concert hall.",
+    "fa": "خواننده همیشه سالن کنسرت را پر می‌کند."
+   }
+  },
+  {
+   "key": "n:puits",
+   "article": "le",
+   "en": "well",
+   "fa": "چاه",
+   "example": {
+    "fr": "Les villageois puisent l'eau dans un vieux puits.",
+    "form": "puits",
+    "en": "The villagers draw water from an old well.",
+    "fa": "روستاییان از یک چاه قدیمی آب می‌کشند."
+   }
+  },
+  {
+   "key": "n:pate",
+   "article": "la",
+   "en": "dough, batter",
+   "fa": "خمیر",
+   "gender": "f",
+   "example": {
+    "fr": "Il prépare la pâte à crêpes avec de la farine.",
+    "form": "pâte",
+    "en": "He prepares the pancake batter with flour.",
+    "fa": "او خمیر کرپ را با آرد آماده می‌کند."
+   }
+  },
+  {
+   "key": "n:bouquin",
+   "article": "le",
+   "en": "book (informal)",
+   "fa": "کتاب (محاوره‌ای)",
+   "example": {
+    "fr": "Il lit un bon bouquin sur la plage.",
+    "form": "bouquin",
+    "en": "He reads a good book on the beach.",
+    "fa": "او روی ساحل یک کتاب خوب می‌خواند."
+   }
+  },
+  {
+   "key": "a:penible",
+   "en": "tiresome, painful",
+   "fa": "خسته‌کننده، دشوار",
+   "example": {
+    "fr": "Ce long voyage en bus est vraiment pénible.",
+    "form": "pénible",
+    "en": "This long bus journey is really tiresome.",
+    "fa": "این سفر طولانی با اتوبوس واقعاً خسته‌کننده است."
+   }
+  },
+  {
+   "key": "n:com",
+   "exclude": true,
+   "reason": "unclear abbreviation with no stable standard meaning"
+  },
+  {
+   "key": "n:mars",
+   "article": "le",
+   "en": "March",
+   "fa": "مارس",
+   "example": {
+    "fr": "Le printemps commence en mars.",
+    "form": "mars",
+    "en": "Spring begins in March.",
+    "fa": "بهار از ماه مارس شروع می‌شود."
+   }
+  },
+  {
+   "key": "n:execution",
+   "article": "l'",
+   "en": "execution, carrying out",
+   "fa": "اجرا",
+   "example": {
+    "fr": "L'exécution du plan demande beaucoup de temps.",
+    "form": "exécution",
+    "en": "The execution of the plan takes a lot of time.",
+    "fa": "اجرای طرح زمان زیادی می‌طلبد."
+   }
+  },
+  {
+   "key": "n:poesie",
+   "article": "la",
+   "en": "poetry, poem",
+   "fa": "شعر، شاعری",
+   "example": {
+    "fr": "Elle apprend une poésie de Victor Hugo par cœur.",
+    "form": "poésie",
+    "en": "She learns a poem by Victor Hugo by heart.",
+    "fa": "او شعری از ویکتور هوگو را از بر می‌کند."
+   }
+  },
+  {
+   "key": "a:local",
+   "en": "local",
+   "fa": "محلی",
+   "example": {
+    "fr": "Nous achetons des fruits chez un producteur local.",
+    "form": "local",
+    "en": "We buy fruit from a local producer.",
+    "fa": "ما میوه را از یک تولیدکننده‌ی محلی می‌خریم."
+   }
+  },
+  {
+   "key": "a:pourri",
+   "en": "rotten",
+   "fa": "پوسیده، گندیده",
+   "example": {
+    "fr": "Cette pomme est pourrie à l'intérieur.",
+    "form": "pourrie",
+    "en": "This apple is rotten inside.",
+    "fa": "این سیب از داخل پوسیده است."
+   }
+  },
+  {
+   "key": "n:agence",
+   "article": "l'",
+   "en": "agency",
+   "fa": "آژانس",
+   "example": {
+    "fr": "Elle travaille dans une agence de voyages.",
+    "form": "agence",
+    "en": "She works at a travel agency.",
+    "fa": "او در یک آژانس مسافرتی کار می‌کند."
+   }
+  },
+  {
+   "key": "n:melange",
+   "article": "le",
+   "en": "mixture, blend",
+   "fa": "مخلوط، ترکیب",
+   "example": {
+    "fr": "Ce gâteau est un mélange de chocolat et de noisettes.",
+    "form": "mélange",
+    "en": "This cake is a mixture of chocolate and hazelnuts.",
+    "fa": "این کیک ترکیبی از شکلات و فندق است."
+   }
+  },
+  {
+   "key": "n:meche",
+   "article": "la",
+   "en": "lock of hair, wick",
+   "fa": "دسته‌ی مو، فتیله",
+   "example": {
+    "fr": "Une mèche de cheveux tombe sur son front.",
+    "form": "mèche",
+    "en": "A lock of hair falls onto his forehead.",
+    "fa": "یک دسته مو روی پیشانی‌اش می‌افتد."
+   }
+  },
+  {
+   "key": "n:document",
+   "article": "le",
+   "en": "document",
+   "fa": "سند، مدرک",
+   "example": {
+    "fr": "Vous devez signer ce document avant de partir.",
+    "form": "document",
+    "en": "You must sign this document before leaving.",
+    "fa": "باید پیش از رفتن این سند را امضا کنید."
+   }
+  },
+  {
+   "key": "n:magie",
+   "article": "la",
+   "en": "magic",
+   "fa": "جادو، شعبده",
+   "example": {
+    "fr": "Ce spectacle de magie plaît beaucoup aux enfants.",
+    "form": "magie",
+    "en": "This magic show pleases children a lot.",
+    "fa": "این نمایش شعبده‌بازی بچه‌ها را بسیار خوش می‌آید."
+   }
+  },
+  {
+   "key": "n:vitrine",
+   "article": "la",
+   "en": "shop window, display case",
+   "fa": "ویترین",
+   "example": {
+    "fr": "Elle regarde les robes dans la vitrine du magasin.",
+    "form": "vitrine",
+    "en": "She looks at the dresses in the shop window.",
+    "fa": "او لباس‌ها را در ویترین مغازه تماشا می‌کند."
+   }
+  },
+  {
+   "key": "n:exception",
+   "article": "l'",
+   "en": "exception",
+   "fa": "استثنا",
+   "example": {
+    "fr": "Cette règle ne souffre aucune exception.",
+    "form": "exception",
+    "en": "This rule allows no exceptions.",
+    "fa": "این قاعده هیچ استثنایی را نمی‌پذیرد."
+   }
+  },
+  {
+   "key": "n:economie",
+   "article": "l'",
+   "en": "economy, saving",
+   "fa": "اقتصاد، صرفه‌جویی",
+   "example": {
+    "fr": "L'économie du pays se redresse lentement.",
+    "form": "économie",
+    "en": "The country's economy is slowly recovering.",
+    "fa": "اقتصاد کشور به‌آهستگی بهبود می‌یابد."
+   }
+  },
+  {
+   "key": "n:excellence",
+   "article": "l'",
+   "en": "excellence",
+   "fa": "برتری، تعالی",
+   "example": {
+    "fr": "Cette école est connue pour son excellence.",
+    "form": "excellence",
+    "en": "This school is known for its excellence.",
+    "fa": "این مدرسه به‌خاطر برتری‌اش مشهور است."
+   }
+  },
+  {
+   "key": "n:piscine",
+   "article": "la",
+   "en": "swimming pool",
+   "fa": "استخر",
+   "example": {
+    "fr": "Nous nageons à la piscine tous les samedis.",
+    "form": "piscine",
+    "en": "We swim at the pool every Saturday.",
+    "fa": "ما هر شنبه در استخر شنا می‌کنیم."
+   }
+  },
+  {
+   "key": "n:essentiel",
+   "article": "l'",
+   "en": "the main thing, essentials",
+   "fa": "اصل مطلب، مهم‌ترین چیز",
+   "example": {
+    "fr": "L'essentiel est de rester en bonne santé.",
+    "form": "essentiel",
+    "en": "The main thing is to stay healthy.",
+    "fa": "مهم این است که سالم بمانیم."
+   }
+  },
+  {
+   "key": "n:apparition",
+   "article": "l'",
+   "en": "appearance, apparition",
+   "fa": "پدیدار شدن، ظهور",
+   "example": {
+    "fr": "L'apparition du soleil après l'orage rassure tout le monde.",
+    "form": "apparition",
+    "en": "The appearance of the sun after the storm reassures everyone.",
+    "fa": "پدیدار شدن خورشید پس از طوفان همه را آرام می‌کند."
+   }
+  },
+  {
+   "key": "a:courageux",
+   "en": "brave, courageous",
+   "fa": "شجاع",
+   "example": {
+    "fr": "Cette jeune infirmière est très courageuse.",
+    "form": "courageuse",
+    "en": "This young nurse is very brave.",
+    "fa": "این پرستار جوان بسیار شجاع است."
+   }
+  },
+  {
+   "key": "n:possession",
+   "article": "la",
+   "en": "possession, ownership",
+   "fa": "مالکیت، تصرف",
+   "example": {
+    "fr": "Cette maison est en sa possession depuis dix ans.",
+    "form": "possession",
+    "en": "This house has been in his possession for ten years.",
+    "fa": "این خانه ده سال است که در تصرف اوست."
+   }
+  },
+  {
+   "key": "n:annonce",
+   "article": "l'",
+   "en": "advertisement, announcement",
+   "fa": "آگهی، اعلام",
+   "example": {
+    "fr": "J'ai lu une annonce pour un appartement à louer.",
+    "form": "annonce",
+    "en": "I read an ad for a flat to rent.",
+    "fa": "من آگهی یک آپارتمان اجاره‌ای را خواندم."
+   }
+  },
+  {
+   "key": "n:bonhomme",
+   "article": "le",
+   "en": "chap, fellow (informal)",
+   "fa": "مرد، پیرمرد (محاوره‌ای)",
+   "example": {
+    "fr": "Le vieux bonhomme sourit à tous les passants.",
+    "form": "bonhomme",
+    "en": "The old chap smiles at all the passers-by.",
+    "fa": "پیرمرد به همه‌ی رهگذران لبخند می‌زند."
+   }
+  },
+  {
+   "key": "n:guide",
+   "article": "le",
+   "en": "guide (m. or f.), guidebook",
+   "fa": "راهنما، کتاب راهنما",
+   "gender": "mf",
+   "example": {
+    "fr": "Le guide nous explique l'histoire du château.",
+    "form": "guide",
+    "en": "The guide explains the history of the castle to us.",
+    "fa": "راهنما تاریخ قلعه را برای ما توضیح می‌دهد."
+   }
+  },
+  {
+   "key": "a:catholique",
+   "en": "Catholic",
+   "fa": "کاتولیک",
+   "example": {
+    "fr": "Ma grand-mère est catholique et va à la messe.",
+    "form": "catholique",
+    "en": "My grandmother is Catholic and goes to Mass.",
+    "fa": "مادربزرگم کاتولیک است و به مراسم عشای ربانی می‌رود."
+   }
+  },
+  {
+   "key": "n:quant",
+   "exclude": true,
+   "reason": "not a noun: only occurs in the fixed phrase \"quant à\""
+  },
+  {
+   "key": "n:concierge",
+   "article": "la",
+   "en": "caretaker, concierge (m. or f.)",
+   "fa": "سرایدار، دربان",
+   "gender": "mf",
+   "example": {
+    "fr": "La concierge distribue le courrier aux habitants.",
+    "form": "concierge",
+    "en": "The caretaker hands out the mail to the residents.",
+    "fa": "سرایدار نامه‌ها را بین ساکنان پخش می‌کند."
+   }
+  },
+  {
+   "key": "n:velours",
+   "article": "le",
+   "en": "velvet",
+   "fa": "مخمل",
+   "example": {
+    "fr": "Le canapé est recouvert de velours rouge.",
+    "form": "velours",
+    "en": "The sofa is covered in red velvet.",
+    "fa": "مبل با مخمل قرمز پوشانده شده است."
+   }
+  },
+  {
+   "key": "a:solitaire",
+   "en": "solitary, lonely",
+   "fa": "تنها، منزوی",
+   "example": {
+    "fr": "Le vieux pêcheur mène une vie solitaire.",
+    "form": "solitaire",
+    "en": "The old fisherman leads a solitary life.",
+    "fa": "ماهیگیر پیر زندگی تنهایی دارد."
+   }
+  },
+  {
+   "key": "n:asile",
+   "article": "l'",
+   "en": "shelter, asylum",
+   "fa": "پناهگاه، پناهندگی",
+   "example": {
+    "fr": "La famille cherche un asile pour la nuit.",
+    "form": "asile",
+    "en": "The family is looking for a shelter for the night.",
+    "fa": "خانواده برای شب به دنبال پناهگاهی است."
+   }
+  },
+  {
+   "key": "n:pause",
+   "article": "la",
+   "en": "break, pause",
+   "fa": "استراحت، وقفه",
+   "example": {
+    "fr": "Nous faisons une pause de dix minutes.",
+    "form": "pause",
+    "en": "We take a ten-minute break.",
+    "fa": "ما ده دقیقه استراحت می‌کنیم."
+   }
+  },
+  {
+   "key": "n:gouverneur",
+   "article": "le",
+   "en": "governor",
+   "fa": "استاندار، فرماندار",
+   "example": {
+    "fr": "Le gouverneur de la région visite l'école demain.",
+    "form": "gouverneur",
+    "en": "The governor of the region visits the school tomorrow.",
+    "fa": "استاندار منطقه فردا از مدرسه بازدید می‌کند."
+   }
+  },
+  {
+   "key": "n:cite",
+   "article": "la",
+   "en": "city, housing estate",
+   "fa": "شهر تاریخی، شهرک",
+   "example": {
+    "fr": "La vieille cité de Carcassonne attire des millions de visiteurs.",
+    "form": "cité",
+    "en": "The old city of Carcassonne attracts millions of visitors.",
+    "fa": "شهر قدیمی کارکاسون میلیون‌ها بازدیدکننده را جذب می‌کند."
+   }
+  },
+  {
+   "key": "n:puce",
+   "article": "la",
+   "en": "flea, chip",
+   "fa": "کک، تراشه",
+   "example": {
+    "fr": "Une puce saute sur le dos du chien.",
+    "form": "puce",
+    "en": "A flea jumps on the dog's back.",
+    "fa": "یک کک روی پشت سگ می‌پرد."
+   }
+  },
+  {
+   "key": "n:ticket",
+   "article": "le",
+   "en": "ticket, receipt",
+   "fa": "بلیت، رسید",
+   "example": {
+    "fr": "Il montre son ticket de métro au contrôleur.",
+    "form": "ticket",
+    "en": "He shows his metro ticket to the inspector.",
+    "fa": "او بلیت مترویش را به بازرس نشان می‌دهد."
+   }
+  },
+  {
+   "key": "a:vilain",
+   "en": "nasty, naughty",
+   "fa": "بد، شیطان",
+   "example": {
+    "fr": "Le temps est vilain ce matin.",
+    "form": "vilain",
+    "en": "The weather is nasty this morning.",
+    "fa": "هوا امروز صبح بد است."
+   }
+  },
+  {
+   "key": "n:capitale",
+   "article": "la",
+   "en": "capital city",
+   "fa": "پایتخت",
+   "example": {
+    "fr": "Brasília est la capitale du Brésil depuis 1960.",
+    "form": "capitale",
+    "en": "Brasília has been the capital of Brazil since 1960.",
+    "fa": "برازیلیا از سال ۱۹۶۰ پایتخت برزیل است."
+   }
+  },
+  {
+   "key": "n:copie",
+   "article": "la",
+   "en": "copy",
+   "fa": "رونوشت، نسخه",
+   "example": {
+    "fr": "Elle fait une copie du document pour son patron.",
+    "form": "copie",
+    "en": "She makes a copy of the document for her boss.",
+    "fa": "او برای رئیسش از سند یک رونوشت تهیه می‌کند."
+   }
+  },
+  {
+   "key": "n:tranchee",
+   "article": "la",
+   "en": "trench",
+   "fa": "گودال، سنگر",
+   "example": {
+    "fr": "Les ouvriers creusent une tranchée pour poser un câble.",
+    "form": "tranchée",
+    "en": "The workers dig a trench to lay a cable.",
+    "fa": "کارگران برای کشیدن کابل یک گودال می‌کنند."
+   }
+  },
+  {
+   "key": "n:mardi",
+   "article": "le",
+   "en": "Tuesday",
+   "fa": "سه‌شنبه",
+   "example": {
+    "fr": "Le marché a lieu chaque mardi matin.",
+    "form": "mardi",
+    "en": "The market takes place every Tuesday morning.",
+    "fa": "بازار هر سه‌شنبه صبح برگزار می‌شود."
+   }
+  },
+  {
+   "key": "n:collier",
+   "article": "le",
+   "en": "necklace, collar",
+   "fa": "گردنبند، قلاده",
+   "example": {
+    "fr": "Elle porte un collier de perles.",
+    "form": "collier",
+    "en": "She wears a pearl necklace.",
+    "fa": "او یک گردنبند مروارید به گردن دارد."
+   }
+  },
+  {
+   "key": "n:administration",
+   "article": "l'",
+   "en": "administration",
+   "fa": "اداره، مدیریت",
+   "example": {
+    "fr": "L'administration ferme ses bureaux à dix-sept heures.",
+    "form": "administration",
+    "en": "The administration closes its offices at five o'clock.",
+    "fa": "اداره دفترهایش را ساعت پنج عصر می‌بندد."
+   }
+  },
+  {
+   "key": "n:bouge",
+   "article": "le",
+   "en": "dump, seedy place",
+   "fa": "جای کثیف، خرابه",
+   "example": {
+    "fr": "Cet hôtel est un bouge, il faut aller ailleurs.",
+    "form": "bouge",
+    "en": "This hotel is a dump, we must go elsewhere.",
+    "fa": "این هتل یک خرابه است، باید جای دیگری برویم."
+   }
+  },
+  {
+   "key": "a:religieux",
+   "en": "religious",
+   "fa": "مذهبی",
+   "example": {
+    "fr": "Ma grand-mère est une femme très religieuse.",
+    "form": "religieuse",
+    "en": "My grandmother is a very religious woman.",
+    "fa": "مادربزرگم زنی بسیار مذهبی است."
+   }
+  },
+  {
+   "key": "a:definitif",
+   "en": "final, definitive",
+   "fa": "قطعی، نهایی",
+   "example": {
+    "fr": "Voici la version définitive du contrat.",
+    "form": "définitive",
+    "en": "Here is the final version of the contract.",
+    "fa": "این نسخه‌ی نهایی قرارداد است."
+   }
+  },
+  {
+   "key": "n:decembre",
+   "article": "le",
+   "en": "December",
+   "fa": "دسامبر",
+   "example": {
+    "fr": "Il neige souvent dans les Alpes en décembre.",
+    "form": "décembre",
+    "en": "It often snows in the Alps in December.",
+    "fa": "در ماه دسامبر در آلپ اغلب برف می‌بارد."
+   }
+  },
+  {
+   "key": "n:necessite",
+   "article": "la",
+   "en": "necessity, need",
+   "fa": "ضرورت، نیاز",
+   "example": {
+    "fr": "Il explique la nécessité de boire beaucoup d'eau.",
+    "form": "nécessité",
+    "en": "He explains the need to drink a lot of water.",
+    "fa": "او ضرورت نوشیدن آب فراوان را توضیح می‌دهد."
+   }
+  },
+  {
+   "key": "n:disparition",
+   "article": "la",
+   "en": "disappearance",
+   "fa": "ناپدید شدن، از بین رفتن",
+   "example": {
+    "fr": "La disparition du chat inquiète toute la famille.",
+    "form": "disparition",
+    "en": "The disappearance of the cat worries the whole family.",
+    "fa": "ناپدید شدن گربه تمام خانواده را نگران می‌کند."
+   }
+  },
+  {
+   "key": "n:opera",
+   "article": "l'",
+   "en": "opera",
+   "fa": "اپرا",
+   "example": {
+    "fr": "Nous allons à l'opéra pour l'anniversaire de ma mère.",
+    "form": "opéra",
+    "en": "We are going to the opera for my mother's birthday.",
+    "fa": "ما برای تولد مادرم به اپرا می‌رویم."
+   }
+  },
+  {
+   "key": "n:serveur",
+   "article": "le",
+   "en": "waiter",
+   "fa": "گارسون، پیشخدمت",
+   "example": {
+    "fr": "La serveuse apporte les menus à notre table.",
+    "form": "serveuse",
+    "en": "The waitress brings the menus to our table.",
+    "fa": "پیشخدمت منوها را به میز ما می‌آورد."
+   }
+  },
+  {
+   "key": "n:hote",
+   "article": "l'",
+   "en": "host, guest",
+   "fa": "میزبان، مهمان",
+   "example": {
+    "fr": "L'hôte accueille ses invités avec un grand sourire.",
+    "form": "hôte",
+    "en": "The host welcomes his guests with a big smile.",
+    "fa": "میزبان با لبخندی بزرگ از مهمانانش استقبال می‌کند."
+   }
+  },
+  {
+   "key": "n:appui",
+   "article": "l'",
+   "en": "support, backing",
+   "fa": "حمایت، تکیه‌گاه",
+   "example": {
+    "fr": "Elle a besoin de l'appui de sa famille.",
+    "form": "appui",
+    "en": "She needs her family's support.",
+    "fa": "او به حمایت خانواده‌اش نیاز دارد."
+   }
+  },
+  {
+   "key": "n:traitre",
+   "article": "le",
+   "en": "traitor",
+   "fa": "خائن",
+   "example": {
+    "fr": "Le traître a révélé le secret à l'ennemi.",
+    "form": "traître",
+    "en": "The traitor revealed the secret to the enemy.",
+    "fa": "خائن راز را به دشمن فاش کرد."
+   }
+  },
+  {
+   "key": "a:visible",
+   "en": "visible",
+   "fa": "قابل‌رؤیت، آشکار",
+   "example": {
+    "fr": "L'étoile est bien visible ce soir.",
+    "form": "visible",
+    "en": "The star is clearly visible tonight.",
+    "fa": "ستاره امشب به‌خوبی دیده می‌شود."
+   }
+  },
+  {
+   "key": "n:mandat",
+   "article": "le",
+   "en": "term of office, mandate",
+   "fa": "دوره‌ی نمایندگی، حواله",
+   "example": {
+    "fr": "Le maire est élu pour un mandat de six ans.",
+    "form": "mandat",
+    "en": "The mayor is elected for a six-year term.",
+    "fa": "شهردار برای یک دوره‌ی شش‌ساله انتخاب می‌شود."
+   }
+  },
+  {
+   "key": "a:fichu",
+   "en": "ruined, wretched (informal)",
+   "fa": "خراب، ازکارافتاده",
+   "example": {
+    "fr": "Ce parapluie est fichu, il est complètement tordu.",
+    "form": "fichu",
+    "en": "This umbrella is ruined, it is completely bent.",
+    "fa": "این چتر خراب شده است، کاملاً کج شده."
+   }
+  },
+  {
+   "key": "n:char",
+   "article": "le",
+   "en": "float, tank, chariot",
+   "fa": "ارابه، گاری",
+   "example": {
+    "fr": "Un char décoré ouvre le défilé du carnaval.",
+    "form": "char",
+    "en": "A decorated float opens the carnival parade.",
+    "fa": "یک ارابه‌ی تزیین‌شده رژه‌ی کارناوال را آغاز می‌کند."
+   }
+  },
+  {
+   "key": "n:etape",
+   "article": "l'",
+   "en": "stage, step",
+   "fa": "مرحله، منزل",
+   "example": {
+    "fr": "La dernière étape du voyage est la plus longue.",
+    "form": "étape",
+    "en": "The last stage of the trip is the longest.",
+    "fa": "آخرین مرحله‌ی سفر طولانی‌ترین است."
+   }
+  },
+  {
+   "key": "n:gre",
+   "article": "le",
+   "en": "will, liking",
+   "fa": "میل، رضایت",
+   "example": {
+    "fr": "Il fait ce travail de bon gré.",
+    "form": "gré",
+    "en": "He does this work willingly.",
+    "fa": "او این کار را با میل و رغبت انجام می‌دهد."
+   }
+  },
+  {
+   "key": "n:panneau",
+   "article": "le",
+   "en": "sign, panel",
+   "fa": "تابلو، پنل",
+   "example": {
+    "fr": "Le panneau indique la direction de la gare.",
+    "form": "panneau",
+    "en": "The sign shows the direction of the station.",
+    "fa": "تابلو جهت ایستگاه را نشان می‌دهد."
+   }
+  },
+  {
+   "key": "n:chaussette",
+   "article": "la",
+   "en": "sock",
+   "fa": "جوراب",
+   "example": {
+    "fr": "Il met des chaussettes de laine en hiver.",
+    "form": "chaussettes",
+    "en": "He wears wool socks in winter.",
+    "fa": "او در زمستان جوراب پشمی می‌پوشد."
+   }
+  },
+  {
+   "key": "n:profit",
+   "article": "le",
+   "en": "profit",
+   "fa": "سود",
+   "example": {
+    "fr": "Cette entreprise réalise un grand profit chaque année.",
+    "form": "profit",
+    "en": "This company makes a large profit every year.",
+    "fa": "این شرکت هر سال سود زیادی به دست می‌آورد."
+   }
+  },
+  {
+   "key": "n:plaie",
+   "article": "la",
+   "en": "wound",
+   "fa": "زخم",
+   "example": {
+    "fr": "L'infirmière nettoie la plaie avec soin.",
+    "form": "plaie",
+    "en": "The nurse cleans the wound with care.",
+    "fa": "پرستار زخم را با دقت پاک می‌کند."
+   }
+  },
+  {
+   "key": "n:ambulance",
+   "article": "l'",
+   "en": "ambulance",
+   "fa": "آمبولانس",
+   "example": {
+    "fr": "L'ambulance arrive en quelques minutes.",
+    "form": "ambulance",
+    "en": "The ambulance arrives in a few minutes.",
+    "fa": "آمبولانس در چند دقیقه می‌رسد."
+   }
+  },
+  {
+   "key": "n:issue",
+   "article": "l'",
+   "en": "exit, way out, outcome",
+   "fa": "خروجی، راه خروج، پایان",
+   "example": {
+    "fr": "La porte est bloquée, il n'y a aucune issue.",
+    "form": "issue",
+    "en": "The door is blocked, there is no way out.",
+    "fa": "در مسدود است، هیچ راه خروجی وجود ندارد."
+   }
+  },
+  {
+   "key": "a:severe",
+   "en": "strict, severe",
+   "fa": "سخت‌گیر، شدید",
+   "example": {
+    "fr": "Le professeur est sévère mais très juste.",
+    "form": "sévère",
+    "en": "The teacher is strict but very fair.",
+    "fa": "معلم سخت‌گیر اما بسیار منصف است."
+   }
+  },
+  {
+   "key": "n:pari",
+   "article": "le",
+   "en": "bet, wager",
+   "fa": "شرط‌بندی، شرط",
+   "example": {
+    "fr": "Il gagne son pari contre ses amis.",
+    "form": "pari",
+    "en": "He wins his bet against his friends.",
+    "fa": "او شرطش را با دوستانش می‌برد."
+   }
+  },
+  {
+   "key": "n:anneau",
+   "article": "l'",
+   "en": "ring",
+   "fa": "حلقه، انگشتر",
+   "example": {
+    "fr": "Il passe un anneau d'or à son doigt.",
+    "form": "anneau",
+    "en": "He slips a gold ring onto his finger.",
+    "fa": "او یک حلقه‌ی طلا به انگشتش می‌کند."
+   }
+  },
+  {
+   "key": "n:soupcon",
+   "article": "le",
+   "en": "suspicion, hint",
+   "fa": "سوءظن، ذره‌ای",
+   "example": {
+    "fr": "Un soupçon de sel suffit dans cette soupe.",
+    "form": "soupçon",
+    "en": "A hint of salt is enough in this soup.",
+    "fa": "یک ذره نمک در این سوپ کافی است."
+   }
+  },
+  {
+   "key": "n:portefeuille",
+   "article": "le",
+   "en": "wallet",
+   "fa": "کیف پول",
+   "example": {
+    "fr": "Il a perdu son portefeuille dans le métro.",
+    "form": "portefeuille",
+    "en": "He lost his wallet on the metro.",
+    "fa": "او کیف پولش را در مترو گم کرد."
+   }
+  },
+  {
+   "key": "a:elegant",
+   "en": "elegant",
+   "fa": "شیک، برازنده",
+   "example": {
+    "fr": "Cette femme élégante porte toujours des robes longues.",
+    "form": "élégante",
+    "en": "This elegant woman always wears long dresses.",
+    "fa": "این زنِ شیک همیشه لباس بلند می‌پوشد."
+   }
+  },
+  {
+   "key": "n:janvier",
+   "article": "le",
+   "en": "January",
+   "fa": "ژانویه",
+   "example": {
+    "fr": "En janvier, les soldes attirent beaucoup de monde.",
+    "form": "janvier",
+    "en": "In January, the sales attract a lot of people.",
+    "fa": "در ماه ژانویه حراج‌ها افراد زیادی را جذب می‌کنند."
+   }
+  },
+  {
+   "key": "a:quelconque",
+   "en": "ordinary, any",
+   "fa": "معمولی، هر",
+   "example": {
+    "fr": "Ce n'est pas un livre quelconque, c'est un livre rare.",
+    "form": "quelconque",
+    "en": "It is not just any book, it is a rare book.",
+    "fa": "این یک کتاب معمولی نیست، یک کتاب کمیاب است."
+   }
+  },
+  {
+   "key": "n:salaire",
+   "article": "le",
+   "en": "salary, wage",
+   "fa": "حقوق، دستمزد",
+   "example": {
+    "fr": "Son salaire augmente un peu chaque année.",
+    "form": "salaire",
+    "en": "His salary rises a little each year.",
+    "fa": "حقوق او هر سال کمی بالا می‌رود."
+   }
+  },
+  {
+   "key": "n:jalousie",
+   "article": "la",
+   "en": "jealousy",
+   "fa": "حسادت، رشک",
+   "example": {
+    "fr": "La jalousie peut détruire une belle amitié.",
+    "form": "jalousie",
+    "en": "Jealousy can destroy a lovely friendship.",
+    "fa": "حسادت می‌تواند یک دوستی زیبا را نابود کند."
+   }
+  },
+  {
+   "key": "n:espion",
+   "article": "l'",
+   "en": "spy",
+   "fa": "جاسوس",
+   "example": {
+    "fr": "Le roman raconte l'histoire d'un espion russe.",
+    "form": "espion",
+    "en": "The novel tells the story of a Russian spy.",
+    "fa": "این رمان داستان یک جاسوس روس را روایت می‌کند."
+   }
+  },
+  {
+   "key": "n:canape",
+   "article": "le",
+   "en": "sofa, couch",
+   "fa": "مبل، کاناپه",
+   "example": {
+    "fr": "Le chat dort sur le canapé du salon.",
+    "form": "canapé",
+    "en": "The cat sleeps on the living-room sofa.",
+    "fa": "گربه روی مبل اتاق نشیمن می‌خوابد."
+   }
+  },
+  {
+   "key": "n:adjudant",
+   "article": "l'",
+   "en": "warrant officer",
+   "fa": "استوار (درجه‌ی نظامی)",
+   "example": {
+    "fr": "L'adjudant donne ses ordres aux jeunes soldats.",
+    "form": "adjudant",
+    "en": "The warrant officer gives orders to the young soldiers.",
+    "fa": "استوار به سربازان جوان دستور می‌دهد."
+   }
+  },
+  {
+   "key": "n:cassette",
+   "article": "la",
+   "en": "cassette",
+   "fa": "کاست",
+   "example": {
+    "fr": "Mon père garde encore ses vieilles cassettes de musique.",
+    "form": "cassettes",
+    "en": "My father still keeps his old music cassettes.",
+    "fa": "پدرم هنوز کاست‌های قدیمی موسیقی‌اش را نگه می‌دارد."
+   }
+  },
+  {
+   "key": "n:fraicheur",
+   "article": "la",
+   "en": "coolness, freshness",
+   "fa": "خنکی، طراوت",
+   "example": {
+    "fr": "J'aime la fraîcheur du matin en été.",
+    "form": "fraîcheur",
+    "en": "I like the coolness of the morning in summer.",
+    "fa": "خنکی صبح تابستان را دوست دارم."
+   }
+  },
+  {
+   "key": "n:plancher",
+   "article": "le",
+   "en": "wooden floor",
+   "fa": "کف چوبی",
+   "example": {
+    "fr": "Le vieux plancher craque à chaque pas.",
+    "form": "plancher",
+    "en": "The old wooden floor creaks at every step.",
+    "fa": "کف چوبی قدیمی با هر قدم صدا می‌دهد."
+   }
+  },
+  {
+   "key": "n:paume",
+   "article": "la",
+   "en": "palm",
+   "fa": "کف دست",
+   "example": {
+    "fr": "Il tient la pièce dans la paume de sa main.",
+    "form": "paume",
+    "en": "He holds the coin in the palm of his hand.",
+    "fa": "او سکه را در کف دستش نگه می‌دارد."
+   }
+  },
+  {
+   "key": "n:triomphe",
+   "article": "le",
+   "en": "triumph",
+   "fa": "پیروزی، موفقیت درخشان",
+   "example": {
+    "fr": "Le spectacle est un triomphe auprès du public.",
+    "form": "triomphe",
+    "en": "The show is a triumph with the audience.",
+    "fa": "این نمایش نزد تماشاگران موفقیتی درخشان است."
+   }
+  },
+  {
+   "key": "n:legume",
+   "article": "le",
+   "en": "vegetable",
+   "fa": "سبزی، سبزیجات",
+   "example": {
+    "fr": "Elle mange beaucoup de légumes frais.",
+    "form": "légumes",
+    "en": "She eats a lot of fresh vegetables.",
+    "fa": "او سبزیجات تازه‌ی فراوان می‌خورد."
+   }
+  },
+  {
+   "key": "n:demarche",
+   "article": "la",
+   "en": "step, procedure",
+   "fa": "اقدام، رویه",
+   "example": {
+    "fr": "Cette démarche administrative prend beaucoup de temps.",
+    "form": "démarche",
+    "en": "This administrative procedure takes a lot of time.",
+    "fa": "این اقدام اداری زمان زیادی می‌برد."
+   }
+  },
+  {
+   "key": "n:tentative",
+   "article": "la",
+   "en": "attempt",
+   "fa": "تلاش، سعی",
+   "example": {
+    "fr": "Après trois tentatives, elle réussit enfin le test.",
+    "form": "tentatives",
+    "en": "After three attempts, she finally passes the test.",
+    "fa": "پس از سه تلاش، سرانجام در آزمون موفق می‌شود."
+   }
+  },
+  {
+   "key": "n:touriste",
+   "article": "le",
+   "en": "tourist (m. or f.)",
+   "fa": "گردشگر",
+   "gender": "mf",
+   "example": {
+    "fr": "Les touristes visitent la tour Eiffel en été.",
+    "form": "touristes",
+    "en": "Tourists visit the Eiffel Tower in summer.",
+    "fa": "گردشگران در تابستان از برج ایفل بازدید می‌کنند."
+   }
+  },
+  {
+   "key": "n:cahier",
+   "article": "le",
+   "en": "exercise book",
+   "fa": "دفتر",
+   "example": {
+    "fr": "L'élève écrit sa leçon dans son cahier.",
+    "form": "cahier",
+    "en": "The pupil writes his lesson in his exercise book.",
+    "fa": "دانش‌آموز درسش را در دفترش می‌نویسد."
+   }
+  },
+  {
+   "key": "n:trouble",
+   "article": "le",
+   "en": "disorder, disturbance",
+   "fa": "اختلال، آشفتگی",
+   "example": {
+    "fr": "Ce trouble du sommeil touche beaucoup de gens.",
+    "form": "trouble",
+    "en": "This sleep disorder affects many people.",
+    "fa": "این اختلال خواب بسیاری از مردم را درگیر می‌کند."
+   }
+  },
+  {
+   "key": "n:deuil",
+   "article": "le",
+   "en": "mourning, bereavement",
+   "fa": "عزا، سوگ",
+   "example": {
+    "fr": "La famille porte le deuil pendant un an.",
+    "form": "deuil",
+    "en": "The family is in mourning for a year.",
+    "fa": "خانواده یک سال عزادار است."
+   }
+  },
+  {
+   "key": "n:bonbon",
+   "article": "le",
+   "en": "sweet, candy",
+   "fa": "آب‌نبات، شیرینی",
+   "example": {
+    "fr": "Le petit garçon mange un bonbon à la fraise.",
+    "form": "bonbon",
+    "en": "The little boy eats a strawberry sweet.",
+    "fa": "پسربچه یک آب‌نبات توت‌فرنگی می‌خورد."
+   }
+  },
+  {
+   "key": "a:prefere",
+   "en": "favourite",
+   "fa": "مورد علاقه",
+   "example": {
+    "fr": "Quel est ton film préféré ?",
+    "form": "préféré",
+    "en": "What is your favourite film?",
+    "fa": "فیلم مورد علاقه‌ی تو کدام است؟"
+   }
+  },
+  {
+   "key": "n:reglement",
+   "article": "le",
+   "en": "regulations, payment",
+   "fa": "آیین‌نامه، مقررات",
+   "example": {
+    "fr": "Le règlement de l'école interdit les téléphones.",
+    "form": "règlement",
+    "en": "The school rules forbid phones.",
+    "fa": "آیین‌نامه‌ی مدرسه گوشی را ممنوع می‌کند."
+   }
+  },
+  {
+   "key": "n:college",
+   "article": "le",
+   "en": "middle school",
+   "fa": "دوره‌ی اول متوسطه",
+   "example": {
+    "fr": "Mon frère entre au collège en septembre.",
+    "form": "collège",
+    "en": "My brother starts middle school in September.",
+    "fa": "برادرم در سپتامبر وارد دوره‌ی اول متوسطه می‌شود."
+   }
+  },
+  {
+   "key": "n:caresse",
+   "article": "la",
+   "en": "caress",
+   "fa": "نوازش",
+   "example": {
+    "fr": "Le chat aime les caresses de l'enfant.",
+    "form": "caresses",
+    "en": "The cat likes the child's caresses.",
+    "fa": "گربه نوازش‌های کودک را دوست دارد."
+   }
+  },
+  {
+   "key": "n:blouse",
+   "article": "la",
+   "en": "smock, overall",
+   "fa": "روپوش، بلوز",
+   "example": {
+    "fr": "L'infirmière enfile sa blouse blanche.",
+    "form": "blouse",
+    "en": "The nurse puts on her white coat.",
+    "fa": "پرستار روپوش سفیدش را می‌پوشد."
+   }
+  },
+  {
+   "key": "n:remords",
+   "article": "le",
+   "en": "remorse",
+   "fa": "پشیمانی، عذاب وجدان",
+   "example": {
+    "fr": "Il ressent un grand remords après son mensonge.",
+    "form": "remords",
+    "en": "He feels great remorse after his lie.",
+    "fa": "او پس از دروغش عذاب وجدان بزرگی احساس می‌کند."
+   }
+  },
+  {
+   "key": "n:dette",
+   "article": "la",
+   "en": "debt",
+   "fa": "بدهی",
+   "example": {
+    "fr": "Il rembourse sa dette à la banque chaque mois.",
+    "form": "dette",
+    "en": "He pays back his debt to the bank every month.",
+    "fa": "او هر ماه بدهی‌اش را به بانک پرداخت می‌کند."
+   }
+  },
+  {
+   "key": "a:supreme",
+   "en": "supreme, ultimate",
+   "fa": "برتر، نهایی",
+   "example": {
+    "fr": "Elle fait un effort suprême pour finir la course.",
+    "form": "suprême",
+    "en": "She makes a supreme effort to finish the race.",
+    "fa": "او برای تمام کردن مسابقه تلاشی نهایی می‌کند."
+   }
+  },
+  {
+   "key": "a:ideal",
+   "en": "ideal",
+   "fa": "ایده‌آل، کامل",
+   "example": {
+    "fr": "Ce village est l'endroit idéal pour se reposer.",
+    "form": "idéal",
+    "en": "This village is the ideal place to rest.",
+    "fa": "این روستا مکان ایده‌آل برای استراحت است."
+   }
+  },
+  {
+   "key": "n:poumon",
+   "article": "le",
+   "en": "lung",
+   "fa": "ریه",
+   "example": {
+    "fr": "Respirer l'air pur est bon pour les poumons.",
+    "form": "poumons",
+    "en": "Breathing pure air is good for the lungs.",
+    "fa": "تنفس هوای پاک برای ریه‌ها خوب است."
+   }
+  },
+  {
+   "key": "a:admirable",
+   "en": "admirable",
+   "fa": "تحسین‌برانگیز",
+   "example": {
+    "fr": "Son courage face à la maladie est admirable.",
+    "form": "admirable",
+    "en": "Her courage in the face of illness is admirable.",
+    "fa": "شجاعت او در برابر بیماری تحسین‌برانگیز است."
+   }
+  },
+  {
+   "key": "n:noce",
+   "article": "la",
+   "en": "wedding",
+   "fa": "عروسی، جشن ازدواج",
+   "example": {
+    "fr": "Toute la famille est invitée à la noce.",
+    "form": "noce",
+    "en": "The whole family is invited to the wedding.",
+    "fa": "تمام خانواده به عروسی دعوت شده‌اند."
+   }
+  },
+  {
+   "key": "n:vaisselle",
+   "article": "la",
+   "en": "dishes, crockery",
+   "fa": "ظروف، شستن ظرف",
+   "example": {
+    "fr": "Nous faisons la vaisselle après le dîner.",
+    "form": "vaisselle",
+    "en": "We do the dishes after dinner.",
+    "fa": "ما بعد از شام ظرف‌ها را می‌شوییم."
+   }
+  },
+  {
+   "key": "n:reconnaissance",
+   "article": "la",
+   "en": "gratitude, recognition",
+   "fa": "قدردانی، شناسایی",
+   "example": {
+    "fr": "Il exprime sa reconnaissance à tous ses amis.",
+    "form": "reconnaissance",
+    "en": "He expresses his gratitude to all his friends.",
+    "fa": "او قدردانی‌اش را به همه‌ی دوستانش ابراز می‌کند."
+   }
+  },
+  {
+   "key": "a:brusque",
+   "en": "abrupt, curt",
+   "fa": "تند، ناگهانی",
+   "example": {
+    "fr": "Il a un ton brusque quand il est fatigué.",
+    "form": "brusque",
+    "en": "He has a curt tone when he is tired.",
+    "fa": "او وقتی خسته است لحن تندی دارد."
+   }
+  },
+  {
+   "key": "n:abbe",
+   "article": "l'",
+   "en": "abbot, priest",
+   "fa": "کشیش، رئیس صومعه",
+   "example": {
+    "fr": "L'abbé célèbre la messe chaque dimanche.",
+    "form": "abbé",
+    "en": "The priest celebrates Mass every Sunday.",
+    "fa": "کشیش هر یکشنبه مراسم عشای ربانی را برگزار می‌کند."
+   }
+  },
+  {
+   "key": "n:comportement",
+   "article": "le",
+   "en": "behaviour",
+   "fa": "رفتار",
+   "example": {
+    "fr": "Le comportement de ce chien change avec les inconnus.",
+    "form": "comportement",
+    "en": "This dog's behaviour changes with strangers.",
+    "fa": "رفتار این سگ با غریبه‌ها تغییر می‌کند."
+   }
+  },
+  {
+   "key": "n:oubli",
+   "article": "l'",
+   "en": "oversight, forgetting",
+   "fa": "فراموشی، غفلت",
+   "gender": "m",
+   "plural": "oublis",
+   "example": {
+    "fr": "Un oubli de sa part a retardé tout le projet.",
+    "form": "oubli",
+    "en": "An oversight on his part delayed the whole project.",
+    "fa": "غفلت او کل پروژه را به تأخیر انداخت."
+   }
+  },
+  {
+   "key": "n:longueur",
+   "article": "la",
+   "en": "length",
+   "fa": "طول، درازا",
+   "example": {
+    "fr": "La longueur de la table est de deux mètres.",
+    "form": "longueur",
+    "en": "The length of the table is two metres.",
+    "fa": "طول میز دو متر است."
+   }
+  },
+  {
+   "key": "n:tube",
+   "article": "le",
+   "en": "tube",
+   "fa": "تیوپ، لوله",
+   "example": {
+    "fr": "La pâte dentifrice est dans le tube bleu.",
+    "form": "tube",
+    "en": "The toothpaste is in the blue tube.",
+    "fa": "خمیردندان در تیوپ آبی است."
+   }
+  },
+  {
+   "key": "n:regiment",
+   "article": "le",
+   "en": "regiment",
+   "fa": "هنگ",
+   "example": {
+    "fr": "Le régiment défile sur les Champs-Élysées le 14 juillet.",
+    "form": "régiment",
+    "en": "The regiment parades down the Champs-Élysées on 14 July.",
+    "fa": "هنگ در ۱۴ ژوئیه در شانزه‌لیزه رژه می‌رود."
+   }
+  },
+  {
+   "key": "n:pecheur",
+   "article": "le",
+   "en": "fisherman",
+   "fa": "ماهیگیر",
+   "example": {
+    "fr": "Le pêcheur rentre au port avec ses filets pleins.",
+    "form": "pêcheur",
+    "en": "The fisherman returns to port with his nets full.",
+    "fa": "ماهیگیر با تورهای پُر به بندر برمی‌گردد."
+   }
+  },
+  {
+   "key": "n:fleche",
+   "article": "la",
+   "en": "arrow, spire",
+   "fa": "تیر، پیکان",
+   "example": {
+    "fr": "L'archer tire une flèche vers la cible.",
+    "form": "flèche",
+    "en": "The archer shoots an arrow at the target.",
+    "fa": "کمانگیر تیری به سوی هدف پرتاب می‌کند."
+   }
+  },
+  {
+   "key": "n:bonte",
+   "article": "la",
+   "en": "kindness",
+   "fa": "مهربانی، نیکی",
+   "example": {
+    "fr": "Tout le monde admire la bonté de cette femme.",
+    "form": "bonté",
+    "en": "Everyone admires this woman's kindness.",
+    "fa": "همه مهربانی این زن را تحسین می‌کنند."
+   }
+  },
+  {
+   "key": "n:bataillon",
+   "article": "le",
+   "en": "battalion",
+   "fa": "گردان",
+   "example": {
+    "fr": "Le bataillon part en mission demain matin.",
+    "form": "bataillon",
+    "en": "The battalion leaves on a mission tomorrow morning.",
+    "fa": "گردان فردا صبح به مأموریت می‌رود."
+   }
+  },
+  {
+   "key": "n:liquide",
+   "article": "le",
+   "en": "liquid, cash",
+   "fa": "مایع، پول نقد",
+   "example": {
+    "fr": "L'eau est un liquide transparent.",
+    "form": "liquide",
+    "en": "Water is a transparent liquid.",
+    "fa": "آب مایعی شفاف است."
+   }
+  },
+  {
+   "key": "a:final",
+   "en": "final, last",
+   "fa": "پایانی، نهایی",
+   "example": {
+    "fr": "La phase finale du tournoi commence demain.",
+    "form": "finale",
+    "en": "The final stage of the tournament begins tomorrow.",
+    "fa": "مرحله‌ی پایانی مسابقات فردا آغاز می‌شود."
+   }
+  },
+  {
+   "key": "n:magazine",
+   "article": "le",
+   "en": "magazine",
+   "fa": "مجله",
+   "example": {
+    "fr": "Elle lit un magazine de cuisine chaque semaine.",
+    "form": "magazine",
+    "en": "She reads a cooking magazine every week.",
+    "fa": "او هر هفته یک مجله‌ی آشپزی می‌خواند."
+   }
+  },
+  {
+   "key": "a:chouette",
+   "en": "great, nice (informal)",
+   "fa": "عالی، باحال (محاوره‌ای)",
+   "example": {
+    "fr": "Nous avons passé une chouette soirée entre amis.",
+    "form": "chouette",
+    "en": "We had a great evening with friends.",
+    "fa": "ما یک شب عالی را با دوستان گذراندیم."
+   }
+  },
+  {
+   "key": "n:drifter",
+   "exclude": true,
+   "reason": "English loanword, not a standard French noun"
+  },
+  {
+   "key": "n:influence",
+   "article": "l'",
+   "en": "influence",
+   "fa": "تأثیر، نفوذ",
+   "prep": "sur",
+   "construction": "avoir de l'influence sur quelqu'un",
+   "example": {
+    "fr": "Les parents ont une grande influence sur leurs enfants.",
+    "form": "influence",
+    "en": "Parents have a great influence on their children.",
+    "fa": "والدین تأثیر زیادی بر فرزندانشان دارند."
+   }
+  },
+  {
+   "key": "a:gratuit",
+   "en": "free, free of charge",
+   "fa": "رایگان",
+   "example": {
+    "fr": "L'entrée du musée est gratuite pour les enfants.",
+    "form": "gratuite",
+    "en": "Museum entry is free for children.",
+    "fa": "ورودی موزه برای کودکان رایگان است."
+   }
+  },
+  {
+   "key": "n:occupation",
+   "article": "l'",
+   "en": "occupation, activity",
+   "fa": "کار، مشغله",
+   "example": {
+    "fr": "Sa principale occupation est de jardiner.",
+    "form": "occupation",
+    "en": "His main occupation is gardening.",
+    "fa": "کار اصلی او باغبانی است."
+   }
+  },
+  {
+   "key": "a:dit",
+   "en": "said, agreed",
+   "fa": "گفته‌شده، مقرر",
+   "example": {
+    "fr": "Elle arrive à l'heure dite, comme promis.",
+    "form": "dite",
+    "en": "She arrives at the agreed time, as promised.",
+    "fa": "او سر ساعت مقرر، همان‌طور که قول داده بود، می‌رسد."
+   }
+  },
+  {
+   "key": "n:communiste",
+   "article": "le",
+   "en": "communist (m. or f.)",
+   "fa": "کمونیست",
+   "gender": "mf",
+   "example": {
+    "fr": "Son grand-père était communiste dans sa jeunesse.",
+    "form": "communiste",
+    "en": "His grandfather was a communist in his youth.",
+    "fa": "پدربزرگش در جوانی کمونیست بود."
+   }
+  },
+  {
+   "key": "a:degueulasse",
+   "en": "disgusting (informal)",
+   "fa": "نفرت‌انگیز (محاوره‌ای)",
+   "example": {
+    "fr": "Cette soupe est dégueulasse, je n'en veux plus.",
+    "form": "dégueulasse",
+    "en": "This soup is disgusting, I don't want any more.",
+    "fa": "این سوپ نفرت‌انگیز است، دیگر نمی‌خواهم."
+   }
+  },
+  {
+   "key": "n:admiration",
+   "article": "l'",
+   "en": "admiration",
+   "fa": "تحسین",
+   "example": {
+    "fr": "Les élèves regardent leur professeur avec admiration.",
+    "form": "admiration",
+    "en": "The pupils look at their teacher with admiration.",
+    "fa": "دانش‌آموزان با تحسین به معلمشان نگاه می‌کنند."
+   }
+  },
+  {
+   "key": "n:construction",
+   "article": "la",
+   "en": "construction, building",
+   "fa": "ساخت، ساختمان",
+   "example": {
+    "fr": "La construction du pont dure trois ans.",
+    "form": "construction",
+    "en": "The construction of the bridge takes three years.",
+    "fa": "ساخت پل سه سال طول می‌کشد."
+   }
+  },
+  {
+   "key": "a:fantastique",
+   "en": "fantastic, amazing",
+   "fa": "شگفت‌انگیز، خیالی",
+   "example": {
+    "fr": "Le paysage de la vallée est fantastique.",
+    "form": "fantastique",
+    "en": "The landscape of the valley is fantastic.",
+    "fa": "منظره‌ی دره شگفت‌انگیز است."
+   }
+  },
+  {
+   "key": "a:aigu",
+   "en": "sharp, acute",
+   "fa": "تیز، حاد",
+   "example": {
+    "fr": "Il ressent une douleur aiguë dans le dos.",
+    "form": "aiguë",
+    "en": "He feels a sharp pain in his back.",
+    "fa": "او درد تیزی در پشتش احساس می‌کند."
+   }
+  },
+  {
+   "key": "a:insupportable",
+   "en": "unbearable",
+   "fa": "غیرقابل‌تحمل",
+   "example": {
+    "fr": "Ce bruit est insupportable à cette heure-ci.",
+    "form": "insupportable",
+    "en": "This noise is unbearable at this hour.",
+    "fa": "این صدا در این ساعت غیرقابل‌تحمل است."
+   }
+  },
+  {
+   "key": "n:grandeur",
+   "article": "la",
+   "en": "size, grandeur",
+   "fa": "بزرگی، عظمت",
+   "example": {
+    "fr": "Les visiteurs admirent la grandeur du château.",
+    "form": "grandeur",
+    "en": "Visitors admire the grandeur of the castle.",
+    "fa": "بازدیدکنندگان عظمت قلعه را تحسین می‌کنند."
+   }
+  },
+  {
+   "key": "n:trahison",
+   "article": "la",
+   "en": "betrayal, treason",
+   "fa": "خیانت",
+   "example": {
+    "fr": "Le roi punit la trahison avec sévérité.",
+    "form": "trahison",
+    "en": "The king punishes treason severely.",
+    "fa": "پادشاه خیانت را به‌سختی مجازات می‌کند."
+   }
+  },
+  {
+   "key": "n:equipage",
+   "article": "l'",
+   "en": "crew",
+   "fa": "خدمه",
+   "example": {
+    "fr": "L'équipage du bateau compte dix marins.",
+    "form": "équipage",
+    "en": "The boat's crew numbers ten sailors.",
+    "fa": "خدمه‌ی کشتی ده ملوان دارد."
+   }
+  },
+  {
+   "key": "a:lisse",
+   "en": "smooth",
+   "fa": "صاف، هموار",
+   "example": {
+    "fr": "Le galet est lisse et très doux au toucher.",
+    "form": "lisse",
+    "en": "The pebble is smooth and very soft to the touch.",
+    "fa": "سنگ‌ریزه صاف است و لمسش بسیار نرم است."
+   }
+  },
+  {
+   "key": "n:troupeau",
+   "article": "le",
+   "en": "flock, herd",
+   "fa": "گله",
+   "example": {
+    "fr": "Le berger conduit son troupeau vers la montagne.",
+    "form": "troupeau",
+    "en": "The shepherd leads his flock towards the mountain.",
+    "fa": "چوپان گله‌اش را به سوی کوه می‌برد."
+   }
+  },
+  {
+   "key": "n:obus",
+   "article": "l'",
+   "en": "shell (artillery)",
+   "fa": "گلوله‌ی توپ",
+   "example": {
+    "fr": "Le musée expose un obus de la guerre de 1914.",
+    "form": "obus",
+    "en": "The museum displays a shell from the 1914 war.",
+    "fa": "موزه یک گلوله‌ی توپ از جنگ ۱۹۱۴ را به نمایش می‌گذارد."
+   }
+  },
+  {
+   "key": "n:pension",
+   "article": "la",
+   "en": "boarding house, pension",
+   "fa": "پانسیون، مستمری",
+   "example": {
+    "fr": "Il vit dans une pension de famille près de la mer.",
+    "form": "pension",
+    "en": "He lives in a family guesthouse near the sea.",
+    "fa": "او در یک پانسیون خانوادگی نزدیک دریا زندگی می‌کند."
+   }
+  },
+  {
+   "key": "n:tension",
+   "article": "la",
+   "en": "tension, pressure",
+   "fa": "تنش، فشار",
+   "example": {
+    "fr": "La tension monte entre les deux voisins.",
+    "form": "tension",
+    "en": "Tension is rising between the two neighbours.",
+    "fa": "تنش میان دو همسایه بالا می‌گیرد."
+   }
+  },
+  {
+   "key": "n:neveu",
+   "article": "le",
+   "en": "nephew",
+   "fa": "برادرزاده، خواهرزاده",
+   "example": {
+    "fr": "Mon neveu joue au football tous les mercredis.",
+    "form": "neveu",
+    "en": "My nephew plays football every Wednesday.",
+    "fa": "برادرزاده‌ام هر چهارشنبه فوتبال بازی می‌کند."
+   }
+  },
+  {
+   "key": "n:personnalite",
+   "article": "la",
+   "en": "personality",
+   "fa": "شخصیت",
+   "example": {
+    "fr": "Cet acteur a une forte personnalité.",
+    "form": "personnalité",
+    "en": "This actor has a strong personality.",
+    "fa": "این بازیگر شخصیت قوی‌ای دارد."
+   }
+  },
+  {
+   "key": "a:exceptionnel",
+   "en": "exceptional",
+   "fa": "استثنایی",
+   "example": {
+    "fr": "Le chef prépare un repas exceptionnel pour le mariage.",
+    "form": "exceptionnel",
+    "en": "The chef prepares an exceptional meal for the wedding.",
+    "fa": "سرآشپز برای عروسی یک غذای استثنایی آماده می‌کند."
+   }
+  },
+  {
+   "key": "n:ruelle",
+   "article": "la",
+   "en": "narrow street, alley",
+   "fa": "کوچه‌ی باریک",
+   "example": {
+    "fr": "Le chat marche dans une ruelle étroite.",
+    "form": "ruelle",
+    "en": "The cat walks down a narrow alley.",
+    "fa": "گربه در یک کوچه‌ی باریک راه می‌رود."
+   }
+  },
+  {
+   "key": "n:reproche",
+   "article": "le",
+   "en": "reproach, criticism",
+   "fa": "سرزنش، ایراد",
+   "example": {
+    "fr": "Il fait un reproche à son fils sur ses notes.",
+    "form": "reproche",
+    "en": "He reproaches his son about his marks.",
+    "fa": "او پسرش را به‌خاطر نمره‌هایش سرزنش می‌کند."
+   }
+  },
+  {
+   "key": "n:representant",
+   "article": "le",
+   "en": "representative",
+   "fa": "نماینده",
+   "example": {
+    "fr": "Le représentant de la marque visite nos magasins.",
+    "form": "représentant",
+    "en": "The brand's representative visits our shops.",
+    "fa": "نماینده‌ی برند از مغازه‌های ما بازدید می‌کند."
+   }
+  },
+  {
+   "key": "n:hall",
+   "article": "le",
+   "en": "hall, lobby",
+   "fa": "سالن ورودی",
+   "example": {
+    "fr": "Les clients attendent dans le hall de l'hôtel.",
+    "form": "hall",
+    "en": "The guests wait in the hotel lobby.",
+    "fa": "مهمانان در سالن ورودی هتل منتظرند."
+   }
+  },
+  {
+   "key": "n:obstacle",
+   "article": "l'",
+   "en": "obstacle",
+   "fa": "مانع",
+   "example": {
+    "fr": "Cet arbre tombé est un obstacle sur la route.",
+    "form": "obstacle",
+    "en": "This fallen tree is an obstacle on the road.",
+    "fa": "این درخت افتاده روی جاده مانع است."
+   }
+  },
+  {
+   "key": "a:rude",
+   "en": "harsh, rough",
+   "fa": "سخت، خشن",
+   "example": {
+    "fr": "L'hiver est très rude dans cette région.",
+    "form": "rude",
+    "en": "Winter is very harsh in this region.",
+    "fa": "زمستان در این منطقه بسیار سخت است."
+   }
+  },
+  {
+   "key": "n:berger",
+   "article": "le",
+   "en": "shepherd",
+   "fa": "چوپان",
+   "example": {
+    "fr": "La bergère garde les moutons sur la colline.",
+    "form": "bergère",
+    "en": "The shepherdess watches over the sheep on the hill.",
+    "fa": "چوپان زن از گوسفندها روی تپه مراقبت می‌کند."
+   }
+  },
+  {
+   "key": "a:classique",
+   "en": "classical, classic",
+   "fa": "کلاسیک",
+   "example": {
+    "fr": "Elle écoute de la musique classique le soir.",
+    "form": "classique",
+    "en": "She listens to classical music in the evening.",
+    "fa": "او شب‌ها موسیقی کلاسیک گوش می‌دهد."
+   }
+  },
+  {
+   "key": "n:bicyclette",
+   "article": "la",
+   "en": "bicycle",
+   "fa": "دوچرخه",
+   "example": {
+    "fr": "Mon grand-père va au marché à bicyclette.",
+    "form": "bicyclette",
+    "en": "My grandfather goes to the market by bicycle.",
+    "fa": "پدربزرگم با دوچرخه به بازار می‌رود."
+   }
+  },
+  {
+   "key": "a:suffisant",
+   "en": "sufficient, enough",
+   "fa": "کافی",
+   "example": {
+    "fr": "Ce repas est suffisant pour deux personnes.",
+    "form": "suffisant",
+    "en": "This meal is enough for two people.",
+    "fa": "این غذا برای دو نفر کافی است."
+   }
+  },
+  {
+   "key": "n:desastre",
+   "article": "le",
+   "en": "disaster",
+   "fa": "فاجعه، بلا",
+   "example": {
+    "fr": "L'orage est un désastre pour les récoltes.",
+    "form": "désastre",
+    "en": "The storm is a disaster for the crops.",
+    "fa": "طوفان برای محصولات فاجعه است."
+   }
+  },
+  {
+   "key": "n:allumette",
+   "article": "l'",
+   "en": "match",
+   "fa": "کبریت",
+   "example": {
+    "fr": "Il craque une allumette pour allumer la bougie.",
+    "form": "allumette",
+    "en": "He strikes a match to light the candle.",
+    "fa": "او کبریتی می‌کشد تا شمع را روشن کند."
+   }
+  },
+  {
+   "key": "n:invitation",
+   "article": "l'",
+   "en": "invitation",
+   "fa": "دعوت‌نامه، دعوت",
+   "example": {
+    "fr": "J'ai reçu une invitation pour leur mariage.",
+    "form": "invitation",
+    "en": "I received an invitation to their wedding.",
+    "fa": "من برای عروسی‌شان دعوت‌نامه‌ای دریافت کردم."
+   }
+  },
+  {
+   "key": "a:encule",
+   "exclude": true,
+   "reason": "vulgar insult; no clean sense"
+  },
+  {
+   "key": "n:insecte",
+   "article": "l'",
+   "en": "insect",
+   "fa": "حشره",
+   "example": {
+    "fr": "Un petit insecte marche sur la feuille.",
+    "form": "insecte",
+    "en": "A small insect is walking on the leaf.",
+    "fa": "یک حشره‌ی کوچک روی برگ راه می‌رود."
+   }
+  },
+  {
+   "key": "a:portable",
+   "en": "portable, mobile",
+   "fa": "قابل‌حمل، همراه",
+   "example": {
+    "fr": "Elle utilise un ordinateur portable au travail.",
+    "form": "portable",
+    "en": "She uses a portable computer at work.",
+    "fa": "او در محل کار از یک رایانه‌ی قابل‌حمل استفاده می‌کند."
+   }
+  },
+  {
+   "key": "n:encre",
+   "article": "l'",
+   "en": "ink",
+   "fa": "جوهر",
+   "example": {
+    "fr": "Le stylo n'a plus d'encre bleue.",
+    "form": "encre",
+    "en": "The pen has no more blue ink.",
+    "fa": "خودکار دیگر جوهر آبی ندارد."
+   }
+  },
+  {
+   "key": "n:coton",
+   "article": "le",
+   "en": "cotton",
+   "fa": "پنبه، نخ",
+   "example": {
+    "fr": "Cette chemise est faite en coton léger.",
+    "form": "coton",
+    "en": "This shirt is made of light cotton.",
+    "fa": "این پیراهن از پنبه‌ی سبک ساخته شده است."
+   }
+  },
+  {
+   "key": "a:transparent",
+   "en": "transparent, clear",
+   "fa": "شفاف",
+   "example": {
+    "fr": "L'eau du lac est si transparente qu'on voit le fond.",
+    "form": "transparente",
+    "en": "The lake water is so clear that you can see the bottom.",
+    "fa": "آب دریاچه آن‌قدر شفاف است که کف آن دیده می‌شود."
+   }
+  },
+  {
+   "key": "n:panne",
+   "article": "la",
+   "en": "breakdown, failure",
+   "fa": "خرابی، از کار افتادن",
+   "example": {
+    "fr": "La voiture tombe en panne sur l'autoroute.",
+    "form": "panne",
+    "en": "The car breaks down on the motorway.",
+    "fa": "ماشین در بزرگراه خراب می‌شود."
+   }
+  },
+  {
+   "key": "a:infini",
+   "en": "infinite, endless",
+   "fa": "بی‌نهایت، بی‌پایان",
+   "example": {
+    "fr": "L'espace semble infini quand on regarde les étoiles.",
+    "form": "infini",
+    "en": "Space seems infinite when you look at the stars.",
+    "fa": "وقتی به ستاره‌ها نگاه می‌کنی، فضا بی‌نهایت به نظر می‌رسد."
+   }
+  },
+  {
+   "key": "n:fillette",
+   "article": "la",
+   "en": "little girl",
+   "fa": "دخترک، دختربچه",
+   "example": {
+    "fr": "La fillette dessine un arc-en-ciel sur son cahier.",
+    "form": "fillette",
+    "en": "The little girl draws a rainbow in her notebook.",
+    "fa": "دخترک روی دفترش یک رنگین‌کمان می‌کشد."
+   }
+  },
+  {
+   "key": "n:riz",
+   "article": "le",
+   "en": "rice",
+   "fa": "برنج",
+   "example": {
+    "fr": "Nous servons le poisson avec du riz blanc.",
+    "form": "riz",
+    "en": "We serve the fish with white rice.",
+    "fa": "ما ماهی را با برنج سفید سرو می‌کنیم."
+   }
+  },
+  {
+   "key": "n:degout",
+   "article": "le",
+   "en": "disgust",
+   "fa": "نفرت، انزجار",
+   "example": {
+    "fr": "Il regarde la nourriture avec dégoût.",
+    "form": "dégoût",
+    "en": "He looks at the food with disgust.",
+    "fa": "او با انزجار به غذا نگاه می‌کند."
+   }
+  },
+  {
+   "key": "a:miserable",
+   "en": "wretched, miserable",
+   "fa": "فلاکت‌بار، بدبخت",
+   "example": {
+    "fr": "Ils vivent dans des conditions misérables.",
+    "form": "misérables",
+    "en": "They live in wretched conditions.",
+    "fa": "آن‌ها در شرایطی فلاکت‌بار زندگی می‌کنند."
+   }
+  },
+  {
+   "key": "n:adversaire",
+   "article": "l'",
+   "en": "opponent (m. or f.)",
+   "fa": "حریف، رقیب",
+   "gender": "mf",
+   "example": {
+    "fr": "Le joueur serre la main de son adversaire.",
+    "form": "adversaire",
+    "en": "The player shakes his opponent's hand.",
+    "fa": "بازیکن با حریفش دست می‌دهد."
+   }
+  },
+  {
+   "key": "n:suspect",
+   "article": "le",
+   "en": "suspect",
+   "fa": "مظنون",
+   "example": {
+    "fr": "La police interroge le suspect depuis ce matin.",
+    "form": "suspect",
+    "en": "The police have been questioning the suspect since this morning.",
+    "fa": "پلیس از صبح مظنون را بازجویی می‌کند."
+   }
+  },
+  {
+   "key": "n:carre",
+   "article": "le",
+   "en": "square",
+   "fa": "مربع",
+   "example": {
+    "fr": "Un carré a quatre côtés égaux.",
+    "form": "carré",
+    "en": "A square has four equal sides.",
+    "fa": "مربع چهار ضلع برابر دارد."
+   }
+  },
+  {
+   "key": "n:coiffeur",
+   "article": "le",
+   "en": "hairdresser",
+   "fa": "آرایشگر مو",
+   "example": {
+    "fr": "Ma coiffeuse coupe les cheveux très bien.",
+    "form": "coiffeuse",
+    "en": "My hairdresser cuts hair very well.",
+    "fa": "آرایشگرم مو را خیلی خوب کوتاه می‌کند."
+   }
+  },
+  {
+   "key": "n:loge",
+   "article": "la",
+   "en": "dressing room, box",
+   "fa": "اتاق گریم، لژ",
+   "example": {
+    "fr": "L'actrice attend dans sa loge avant le spectacle.",
+    "form": "loge",
+    "en": "The actress waits in her dressing room before the show.",
+    "fa": "بازیگر زن پیش از نمایش در اتاق گریمش منتظر می‌ماند."
+   }
+  },
+  {
+   "key": "n:refus",
+   "article": "le",
+   "en": "refusal",
+   "fa": "امتناع، رد کردن",
+   "example": {
+    "fr": "Son refus m'a beaucoup surpris.",
+    "form": "refus",
+    "en": "His refusal surprised me a lot.",
+    "fa": "امتناع او مرا بسیار شگفت‌زده کرد."
+   }
+  },
+  {
+   "key": "n:araignee",
+   "article": "l'",
+   "en": "spider",
+   "fa": "عنکبوت",
+   "example": {
+    "fr": "Une araignée tisse sa toile dans le coin.",
+    "form": "araignée",
+    "en": "A spider spins its web in the corner.",
+    "fa": "یک عنکبوت در گوشه تار می‌تند."
+   }
+  },
+  {
+   "key": "n:cap",
+   "article": "le",
+   "en": "course, cape",
+   "fa": "مسیر، دماغه",
+   "example": {
+    "fr": "Le bateau change de cap pour éviter la tempête.",
+    "form": "cap",
+    "en": "The boat changes course to avoid the storm.",
+    "fa": "قایق برای دوری از طوفان مسیرش را عوض می‌کند."
+   }
+  },
+  {
+   "key": "n:pose",
+   "article": "la",
+   "en": "pose, installation",
+   "fa": "ژست، نصب",
+   "example": {
+    "fr": "La photographe demande une pose naturelle.",
+    "form": "pose",
+    "en": "The photographer asks for a natural pose.",
+    "fa": "عکاس یک ژست طبیعی می‌خواهد."
+   }
+  },
+  {
+   "key": "n:damoiseau",
+   "article": "le",
+   "en": "young nobleman (old-fashioned)",
+   "fa": "نجیب‌زاده‌ی جوان (قدیمی)",
+   "example": {
+    "fr": "Dans ce conte, le damoiseau délivre la belle demoiselle.",
+    "form": "damoiseau",
+    "en": "In this tale, the young nobleman frees the beautiful maiden.",
+    "fa": "در این قصه، نجیب‌زاده‌ی جوان دوشیزه‌ی زیبا را آزاد می‌کند."
+   }
+  },
+  {
+   "key": "n:communaute",
+   "article": "la",
+   "en": "community",
+   "fa": "جامعه، اجتماع",
+   "example": {
+    "fr": "Notre communauté organise une fête chaque été.",
+    "form": "communauté",
+    "en": "Our community organises a party every summer.",
+    "fa": "جامعه‌ی ما هر تابستان یک جشن برگزار می‌کند."
+   }
+  },
+  {
+   "key": "n:grimace",
+   "article": "la",
+   "en": "grimace, face",
+   "fa": "قیافه‌ی درهم، اخم",
+   "example": {
+    "fr": "Le bébé fait une grimace en goûtant le citron.",
+    "form": "grimace",
+    "en": "The baby makes a face on tasting the lemon.",
+    "fa": "نوزاد با چشیدن لیمو قیافه‌اش را درهم می‌کشد."
+   }
+  },
+  {
+   "key": "n:medecine",
+   "article": "la",
+   "en": "medicine",
+   "fa": "پزشکی",
+   "example": {
+    "fr": "Elle étudie la médecine à l'université de Lyon.",
+    "form": "médecine",
+    "en": "She studies medicine at the University of Lyon.",
+    "fa": "او در دانشگاه لیون پزشکی می‌خواند."
+   }
+  },
+  {
+   "key": "n:duc",
+   "article": "le",
+   "en": "duke",
+   "fa": "دوک",
+   "example": {
+    "fr": "La duchesse reçoit ses invités dans le grand salon.",
+    "form": "duchesse",
+    "en": "The duchess receives her guests in the great drawing room.",
+    "fa": "دوشس در سالن بزرگ از مهمانانش پذیرایی می‌کند."
+   }
+  },
+  {
+   "key": "n:dialogue",
+   "article": "le",
+   "en": "dialogue",
+   "fa": "گفت‌وگو",
+   "example": {
+    "fr": "Le dialogue entre les deux pays reprend enfin.",
+    "form": "dialogue",
+    "en": "The dialogue between the two countries finally resumes.",
+    "fa": "گفت‌وگو میان دو کشور سرانجام از سر گرفته می‌شود."
+   }
+  },
+  {
+   "key": "n:temple",
+   "article": "le",
+   "en": "temple",
+   "fa": "معبد",
+   "example": {
+    "fr": "Les touristes visitent un ancien temple à Athènes.",
+    "form": "temple",
+    "en": "Tourists visit an ancient temple in Athens.",
+    "fa": "گردشگران از یک معبد باستانی در آتن بازدید می‌کنند."
+   }
+  },
+  {
+   "key": "n:orange",
+   "article": "l'",
+   "en": "orange (fruit)",
+   "fa": "پرتقال",
+   "gender": "f",
+   "example": {
+    "fr": "Il presse une orange pour le petit-déjeuner.",
+    "form": "orange",
+    "en": "He squeezes an orange for breakfast.",
+    "fa": "او برای صبحانه یک پرتقال آب می‌گیرد."
+   }
+  },
+  {
+   "key": "n:allusion",
+   "article": "l'",
+   "en": "allusion, hint",
+   "fa": "اشاره، کنایه",
+   "prep": "à",
+   "construction": "faire allusion à quelque chose",
+   "example": {
+    "fr": "Il fait allusion à notre dernière conversation.",
+    "form": "allusion",
+    "en": "He alludes to our last conversation.",
+    "fa": "او به گفت‌وگوی آخر ما اشاره می‌کند."
+   }
+  },
+  {
+   "key": "a:recent",
+   "en": "recent",
+   "fa": "جدید، اخیر",
+   "example": {
+    "fr": "C'est un livre récent qui parle du climat.",
+    "form": "récent",
+    "en": "It is a recent book about the climate.",
+    "fa": "این کتابی تازه است که درباره‌ی اقلیم صحبت می‌کند."
+   }
+  },
+  {
+   "key": "n:comble",
+   "article": "le",
+   "en": "limit, height",
+   "fa": "اوج، نهایت",
+   "example": {
+    "fr": "C'est un comble : la boulangerie n'a plus de pain !",
+    "form": "comble",
+    "en": "That's the limit: the bakery has no more bread!",
+    "fa": "این دیگر نهایتش است: نانوایی نان ندارد!"
+   }
+  },
+  {
+   "key": "n:temoignage",
+   "article": "le",
+   "en": "testimony",
+   "fa": "شهادت، گواهی",
+   "example": {
+    "fr": "Le témoignage du voisin aide la police.",
+    "form": "témoignage",
+    "en": "The neighbour's testimony helps the police.",
+    "fa": "شهادت همسایه به پلیس کمک می‌کند."
+   }
+  },
+  {
+   "key": "n:episode",
+   "article": "l'",
+   "en": "episode",
+   "fa": "قسمت، اپیزود",
+   "example": {
+    "fr": "Nous regardons un épisode de la série chaque soir.",
+    "form": "épisode",
+    "en": "We watch an episode of the series every evening.",
+    "fa": "ما هر شب یک قسمت از سریال را تماشا می‌کنیم."
+   }
+  },
+  {
+   "key": "n:analyse",
+   "article": "l'",
+   "en": "analysis",
+   "fa": "تحلیل، آزمایش",
+   "example": {
+    "fr": "L'analyse du texte demande beaucoup d'attention.",
+    "form": "analyse",
+    "en": "The analysis of the text demands a lot of attention.",
+    "fa": "تحلیل متن توجه زیادی می‌طلبد."
+   }
+  },
+  {
+   "key": "n:vertige",
+   "article": "le",
+   "en": "dizziness, vertigo",
+   "fa": "سرگیجه، ترس از ارتفاع",
+   "example": {
+    "fr": "Elle a le vertige en haut de l'escalier.",
+    "form": "vertige",
+    "en": "She feels dizzy at the top of the stairs.",
+    "fa": "او بالای پله‌ها سرگیجه می‌گیرد."
+   }
+  },
+  {
+   "key": "n:bible",
+   "article": "la",
+   "en": "Bible",
+   "fa": "کتاب مقدس، انجیل",
+   "example": {
+    "fr": "Ma grand-mère lit la Bible chaque soir.",
+    "form": "Bible",
+    "en": "My grandmother reads the Bible every evening.",
+    "fa": "مادربزرگم هر شب کتاب مقدس را می‌خواند."
+   }
+  },
+  {
+   "key": "n:coutume",
+   "article": "la",
+   "en": "custom",
+   "fa": "رسم، عادت",
+   "example": {
+    "fr": "Dans cette région, c'est la coutume de s'embrasser en se saluant.",
+    "form": "coutume",
+    "en": "In this region it is the custom to kiss when greeting.",
+    "fa": "در این منطقه رسم است که هنگام سلام یکدیگر را ببوسند."
+   }
+  },
+  {
+   "key": "n:procureur",
+   "article": "le",
+   "en": "prosecutor",
+   "fa": "دادستان",
+   "example": {
+    "fr": "Le procureur demande une peine de cinq ans.",
+    "form": "procureur",
+    "en": "The prosecutor asks for a five-year sentence.",
+    "fa": "دادستان درخواست پنج سال حبس می‌کند."
+   }
+  },
+  {
+   "key": "n:manoeuvre",
+   "article": "la",
+   "en": "manoeuvre, labourer (m. or f.)",
+   "fa": "مانور، عملیات",
+   "gender": "mf",
+   "example": {
+    "fr": "Le conducteur réussit une manœuvre difficile.",
+    "form": "manœuvre",
+    "en": "The driver pulls off a difficult manoeuvre.",
+    "fa": "راننده یک مانور دشوار را با موفقیت انجام می‌دهد."
+   }
+  },
+  {
+   "key": "n:passeport",
+   "article": "le",
+   "en": "passport",
+   "fa": "گذرنامه",
+   "example": {
+    "fr": "Il montre son passeport à la frontière.",
+    "form": "passeport",
+    "en": "He shows his passport at the border.",
+    "fa": "او گذرنامه‌اش را در مرز نشان می‌دهد."
+   }
+  },
+  {
+   "key": "n:pilule",
+   "article": "la",
+   "en": "pill",
+   "fa": "قرص",
+   "example": {
+    "fr": "Elle avale une pilule avec un verre d'eau.",
+    "form": "pilule",
+    "en": "She swallows a pill with a glass of water.",
+    "fa": "او یک قرص را با یک لیوان آب می‌خورد."
+   }
+  },
+  {
+   "key": "a:actuel",
+   "en": "current, present",
+   "fa": "کنونی، فعلی",
+   "example": {
+    "fr": "La situation actuelle demande des décisions rapides.",
+    "form": "actuelle",
+    "en": "The current situation calls for quick decisions.",
+    "fa": "وضعیت کنونی تصمیم‌های سریع می‌طلبد."
+   }
+  },
+  {
+   "key": "n:oignon",
+   "article": "l'",
+   "en": "onion",
+   "fa": "پیاز",
+   "example": {
+    "fr": "Ma mère fait revenir un oignon dans l'huile.",
+    "form": "oignon",
+    "en": "My mother fries an onion in oil.",
+    "fa": "مادرم یک پیاز را در روغن سرخ می‌کند."
+   }
+  },
+  {
+   "key": "n:vendeur",
+   "article": "le",
+   "en": "salesperson, shop assistant",
+   "fa": "فروشنده",
+   "example": {
+    "fr": "La vendeuse conseille une robe bleue à la cliente.",
+    "form": "vendeuse",
+    "en": "The saleswoman recommends a blue dress to the customer.",
+    "fa": "فروشنده یک لباس آبی را به مشتری پیشنهاد می‌کند."
+   }
+  },
+  {
+   "key": "n:chantier",
+   "article": "le",
+   "en": "building site, project",
+   "fa": "کارگاه ساختمانی، پروژه",
+   "example": {
+    "fr": "Le chantier de la nouvelle école avance vite.",
+    "form": "chantier",
+    "en": "The building site of the new school is moving along quickly.",
+    "fa": "کارگاه ساختمانی مدرسه‌ی جدید سریع پیش می‌رود."
+   }
+  },
+  {
+   "key": "n:fumier",
+   "article": "le",
+   "en": "manure",
+   "fa": "کود حیوانی",
+   "example": {
+    "fr": "L'agriculteur étale du fumier dans son champ.",
+    "form": "fumier",
+    "en": "The farmer spreads manure in his field.",
+    "fa": "کشاورز در مزرعه‌اش کود حیوانی پخش می‌کند."
+   }
+  },
+  {
+   "key": "n:noeud",
+   "article": "le",
+   "en": "knot",
+   "fa": "گره",
+   "example": {
+    "fr": "Il fait un nœud à ses lacets avant la course.",
+    "form": "nœud",
+    "en": "He ties a knot in his laces before the race.",
+    "fa": "او پیش از مسابقه بند کفش‌هایش را گره می‌زند."
+   }
+  },
+  {
+   "key": "n:richesse",
+   "article": "la",
+   "en": "wealth, richness",
+   "fa": "ثروت، غنا",
+   "example": {
+    "fr": "La richesse d'un pays ne se mesure pas seulement à l'argent.",
+    "form": "richesse",
+    "en": "A country's wealth is not measured only in money.",
+    "fa": "ثروت یک کشور فقط با پول سنجیده نمی‌شود."
+   }
+  },
+  {
+   "key": "n:demi-tour",
+   "article": "le",
+   "en": "U-turn, about-turn",
+   "fa": "دور زدن، بازگشت",
+   "example": {
+    "fr": "La voiture fait demi-tour au bout de la rue.",
+    "form": "demi-tour",
+    "en": "The car makes a U-turn at the end of the street.",
+    "fa": "ماشین در انتهای خیابان دور می‌زند."
+   }
+  },
+  {
+   "key": "a:geant",
+   "en": "giant, huge",
+   "fa": "غول‌پیکر، عظیم",
+   "example": {
+    "fr": "Un sapin géant décore la place du village.",
+    "form": "géant",
+    "en": "A giant fir tree decorates the village square.",
+    "fa": "یک درخت صنوبر غول‌پیکر میدان روستا را تزیین می‌کند."
+   }
+  },
+  {
+   "key": "n:passant",
+   "article": "le",
+   "en": "passer-by",
+   "fa": "رهگذر",
+   "example": {
+    "fr": "Un passant demande son chemin au boulanger.",
+    "form": "passant",
+    "en": "A passer-by asks the baker for directions.",
+    "fa": "یک رهگذر از نانوا آدرس می‌پرسد."
+   }
+  },
+  {
+   "key": "n:tablier",
+   "article": "le",
+   "en": "apron",
+   "fa": "پیش‌بند",
+   "example": {
+    "fr": "Ma mère met un tablier pour faire la cuisine.",
+    "form": "tablier",
+    "en": "My mother puts on an apron to cook.",
+    "fa": "مادرم برای آشپزی پیش‌بند می‌بندد."
+   }
+  },
+  {
+   "key": "n:clarte",
+   "article": "la",
+   "en": "light, clarity",
+   "fa": "روشنایی، وضوح",
+   "example": {
+    "fr": "La clarté de la lune éclaire le jardin.",
+    "form": "clarté",
+    "en": "The moonlight lights up the garden.",
+    "fa": "روشنایی ماه باغ را روشن می‌کند."
+   }
+  },
+  {
+   "key": "a:musical",
+   "en": "musical",
+   "fa": "موسیقایی، موسیقی",
+   "example": {
+    "fr": "Cette école propose une éducation musicale dès six ans.",
+    "form": "musicale",
+    "en": "This school offers a musical education from age six.",
+    "fa": "این مدرسه از شش‌سالگی آموزش موسیقی ارائه می‌دهد."
+   }
+  },
+  {
+   "key": "a:sovietique",
+   "en": "Soviet",
+   "fa": "شوروی",
+   "example": {
+    "fr": "L'Union soviétique a disparu en 1991.",
+    "form": "soviétique",
+    "en": "The Soviet Union disappeared in 1991.",
+    "fa": "اتحاد جماهیر شوروی در سال ۱۹۹۱ از بین رفت."
+   }
+  },
+  {
+   "key": "a:surpris",
+   "en": "surprised",
+   "fa": "شگفت‌زده، متعجب",
+   "prep": "de",
+   "construction": "être surpris de + infinitif",
+   "example": {
+    "fr": "Elle est surprise de voir autant de monde.",
+    "form": "surprise",
+    "en": "She is surprised to see so many people.",
+    "fa": "او از دیدن این‌همه آدم شگفت‌زده است."
+   }
+  },
+  {
+   "key": "n:sagesse",
+   "article": "la",
+   "en": "wisdom",
+   "fa": "خرد، فرزانگی",
+   "example": {
+    "fr": "Ma grand-mère nous transmet sa sagesse.",
+    "form": "sagesse",
+    "en": "My grandmother passes on her wisdom to us.",
+    "fa": "مادربزرگم خردش را به ما منتقل می‌کند."
+   }
+  },
+  {
+   "key": "n:instituteur",
+   "article": "l'",
+   "en": "primary-school teacher",
+   "fa": "معلم دبستان",
+   "example": {
+    "fr": "L'institutrice lit une histoire à ses élèves.",
+    "form": "institutrice",
+    "en": "The primary-school teacher reads a story to her pupils.",
+    "fa": "معلم برای شاگردانش داستانی می‌خواند."
+   }
+  },
+  {
+   "key": "a:fatal",
+   "en": "fatal, disastrous",
+   "fa": "مهلک، مرگبار",
+   "example": {
+    "fr": "Une erreur fatale a ruiné tout le projet.",
+    "form": "fatale",
+    "en": "A fatal mistake ruined the whole project.",
+    "fa": "اشتباهی مهلک کل پروژه را نابود کرد."
+   }
+  },
+  {
+   "key": "n:philosophie",
+   "article": "la",
+   "en": "philosophy",
+   "fa": "فلسفه",
+   "example": {
+    "fr": "Elle étudie la philosophie à la Sorbonne.",
+    "form": "philosophie",
+    "en": "She studies philosophy at the Sorbonne.",
+    "fa": "او در سوربن فلسفه می‌خواند."
+   }
+  }
+ ]
+}

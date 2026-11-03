@@ -10,8 +10,8 @@
       "licenceUrl": "https://creativecommons.org/licenses/by-sa/4.0/",
       "takenFrom": "Université Savoie Mont Blanc / Laboratoire de Psychologie et NeuroCognition",
       "usedFor": {
-        "en": "The list of French verbs and their frequency, which decides which verbs appear at which level. Frequency counts are also used to check our generated conjugations against forms that really occur.",
-        "fr": "La liste des verbes français et leur fréquence, qui détermine quel verbe apparaît à quel niveau. Les relevés de fréquence servent aussi à vérifier nos conjugaisons face aux formes réellement attestées."
+        "en": "The list of French verbs, nouns and adjectives and their frequency, which decides which words appear at which level, and the gender, plural and feminine of each noun and adjective. Frequency counts are also used to check our generated conjugations against forms that really occur.",
+        "fr": "La liste des verbes, noms et adjectifs français et leur fréquence, qui détermine quel mot apparaît à quel niveau, ainsi que le genre, le pluriel et le féminin de chaque nom et adjectif. Les relevés de fréquence servent aussi à vérifier nos conjugaisons face aux formes réellement attestées."
       }
     },
     {

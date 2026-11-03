@@ -365,6 +365,8 @@ const fa: Dict = {
   shellExamOpen: 'باز کردن',
   shellExamChooseFirst: 'برای دیدن بخش‌ها، آزمون خود را انتخاب کنید.',
   shellCardsLevel: 'کارت‌ها بر اساس سطح',
+  shellCardsExample: 'مثال',
+  shellCardsPlural: 'جمع',
   shellCardsPrev: 'کارت قبلی',
   shellCardsNext: 'کارت بعدی',
   shellTimerMin: 'دقیقه',

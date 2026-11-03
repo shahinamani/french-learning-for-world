@@ -458,8 +458,7 @@
 .fc-nav__btn:disabled { opacity: .45; cursor: default; }
 .fc-nav__chev { display: inline-flex; }
 .fc-nav__chev--back { transform: scaleX(-1); }
-[dir="rtl"] .fc-nav__chev { transform: scaleX(-1); }
-[dir="rtl"] .fc-nav__chev--back { transform: none; }
+/* The icon already mirrors itself in right-to-left; no second flip here. */
 
 /* ── Study timer panel, 2026-11-03 ─────────────────────────────────────── */
 .timer-panel:has(.tp) { padding: 0; max-width: none; border-radius: 16px; overflow: hidden;
@@ -503,3 +502,11 @@
 }
 .tp__note { margin: 0; font-size: .75rem; color: var(--color-ink-muted); text-align: center; }
 @media (prefers-reduced-motion: reduce) { .tp__arc { transition: none; } }
+/* Nouns and adjectives: their other forms, and a single full-width example. */
+.fc__forms { display: flex; flex-wrap: wrap; gap: .5rem 1.25rem; margin: .75rem 0 0; font-family: var(--font-display); font-size: 1.125rem; color: var(--color-ink); }
+.fc__forms em { font: 600 .75rem var(--font-ui); font-style: normal; color: var(--color-ink-muted); margin-inline-end: .25rem; }
+.page--session .examples--one { margin-block-start: 1.25rem; grid-template-columns: 1fr; }
+.page--session .example[data-tense="present"] { border-inline-start-color: var(--fr-rouge); background: var(--color-mark-soft, var(--color-surface-sunken)); text-align: start; border-radius: 12px; padding: .875rem 1rem; }
+.page--session .fc__word .article { font-size: .5em; vertical-align: .3em; color: var(--color-ink-muted); font-weight: 600; margin-inline-end: .2em; }
+.page--session .fc__word .article[data-gender="m"] { color: var(--fr-bleu); }
+.page--session .fc__word .article[data-gender="f"] { color: var(--fr-rouge); }
