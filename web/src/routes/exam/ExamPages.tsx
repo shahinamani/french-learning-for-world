@@ -75,7 +75,7 @@ export function ExamChooser() {
   const [target, choose] = useTarget(userId);
   const navigate = useNavigate();
   return (
-    <div className="page exam-page">
+    <div className="page exam-page exam-page--choose">
       <header className="exam-head">
         <h1 className="exam-title">{t('shellExamChoose')}</h1>
         <p className="exam-lede">{t('shellExamChooseLede')}</p>
@@ -221,7 +221,8 @@ export function ExamPage() {
   const caveat = entry.structure.caveat
     ? (typeof entry.structure.caveat === 'string' ? entry.structure.caveat : pick(entry.structure.caveat, ui).text) : null;
   return (
-    <div className="page exam-page" data-testid="exam-overview">
+    <div className="page exam-page dash" data-testid="exam-overview">
+      <div className="dash__main">
       <header className="exam-head">
         <h1 className="exam-title">{target.label}</h1>
         <p className="exam-fr" lang="fr" dir="ltr">{entry.fullName}</p>
@@ -264,8 +265,12 @@ export function ExamPage() {
         )}
       </section>
 
+      </div>
+
+      {/* The side column: what it takes to pass, and where the facts come from. */}
+      <aside className="dash__aside">
       {verified && (passing || entry.structure.scoring?.scale || validity) && (
-        <section className="exam-block" aria-labelledby="ov-pass">
+        <section className="exam-block dash-card" aria-labelledby="ov-pass">
           <h2 id="ov-pass" className="exam-block__h">{t('shellExamPassing')}</h2>
           <ul className="exam-facts exam-facts--prose">
             {passing?.overall && <li>{passing.overall}</li>}
@@ -277,7 +282,7 @@ export function ExamPage() {
       )}
 
       {officialPages.length > 0 && (
-        <section className="exam-block" aria-labelledby="ov-official">
+        <section className="exam-block dash-card" aria-labelledby="ov-official">
           <h2 id="ov-official" className="exam-block__h">{t('shellExamOfficial')}</h2>
           <ul className="exam-rows">
             {officialPages.map((r) => (
@@ -306,6 +311,7 @@ export function ExamPage() {
           {caveat && <p className="exam-note">{caveat}</p>}
         </details>
       )}
+      </aside>
     </div>
   );
 }

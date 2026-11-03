@@ -1,12 +1,13 @@
 /** Two pages from one data load (redesign v1, REDESIGN-v1.md §6):
  *  `today` — one next action, a few ways in, weak points;
  *  `path`  — the level × skill map, which used to crowd Today. */
+import '../lib/locales/en/todayEn';   // registers its English (lazy group)
 import { useEffect, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { loadContent } from '../lib/content';
 import { loadMaterial, cellState, type Material } from '../lib/material';
-import { counts, weakPoints, type Counts, type ConceptStat } from '../lib/progress';
+import { counts, weakPoints, weekSummary, type Counts, type ConceptStat } from '../lib/progress';
 import { Icon } from '../components/Icon';
 import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
@@ -37,13 +38,48 @@ const MOT_FR = 'Le mot du jour';
 
 /** Ways into the parts of the portal that exist. The French word is content,
  *  the same in every interface language; the label is the dictionary's. */
-const WAYS: { to: string; fr: string; label: 'verbs' | 'shellNavReading' | 'exams' | 'wsTitle' | 'shellNavPath'; testId?: string }[] = [
-  { to: '/app/verbs/drill', fr: 'les verbes', label: 'verbs' },
-  { to: '/app/reading', fr: 'la lecture', label: 'shellNavReading' },
-  { to: '/app/exams', fr: 'les examens', label: 'exams' },
-  { to: '/app/workspace', fr: 'l’atelier', label: 'wsTitle', testId: 'go-workspace' },
-  { to: '/app/path', fr: 'le parcours', label: 'shellNavPath' },
+const WAYS: { to: string; fr: string; label: 'verbs' | 'shellNavReading' | 'exams' | 'wsTitle' | 'shellNavPath'; testId?: string; icon: string }[] = [
+  { to: '/app/verbs/drill', fr: 'les verbes', label: 'verbs', icon: 'bookclock' },
+  { to: '/app/reading', fr: 'la lecture', label: 'shellNavReading', icon: 'openbook' },
+  { to: '/app/exams', fr: 'les examens', label: 'exams', icon: 'practise' },
+  { to: '/app/workspace', fr: 'l’atelier', label: 'wsTitle', testId: 'go-workspace', icon: 'stackedcards' },
+  { to: '/app/path', fr: 'le parcours', label: 'shellNavPath', icon: 'path' },
 ];
+
+/** Seven bars, today on the end: how many cards were reviewed each day. */
+function WeekCard() {
+  const { t } = useApp();
+  const userId = useUserId();
+  const [week, setWeek] = useState<Awaited<ReturnType<typeof weekSummary>> | null>(null);
+  useEffect(() => {
+    let live = true;
+    weekSummary(userId, Date.now()).then((w) => { if (live) setWeek(w); }).catch(() => {});
+    return () => { live = false; };
+  }, [userId]);
+  const days = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(Date.now() - (6 - i) * 86_400_000);
+    const key = d.toISOString().slice(0, 10);
+    let label = '';
+    try { label = new Intl.DateTimeFormat('fr', { weekday: 'narrow' }).format(d); } catch { /* no Intl */ }
+    return { key, label, n: week?.byDay.get(key) ?? 0 };
+  });
+  const max = Math.max(1, ...days.map((d) => d.n));
+  return (
+    <section className="dash-card week" aria-labelledby="week-h" data-testid="week-card">
+      <h2 id="week-h" className="dash-card__title">{t('tdWeek')}</h2>
+      <p className="week__total"><b>{week?.reviews ?? 0}</b> {t('tdCards')}</p>
+      <div className="week__bars" aria-hidden="true">
+        {days.map((d) => (
+          <span key={d.key} className="week__bar">
+            <i style={{ height: `${Math.max(4, (d.n / max) * 100)}%` }} data-on={d.n > 0 || undefined} />
+            <small lang="fr" dir="ltr">{d.label}</small>
+          </span>
+        ))}
+      </div>
+      <p className="week__sub">{t('tdDays', { n: week?.days ?? 0 })}</p>
+    </section>
+  );
+}
 
 export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
   const { t, settings } = useApp();
@@ -95,7 +131,8 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
   const minutes = Math.max(1, Math.round(size * 0.4));
 
   if (mode === 'today') return (
-    <div className="page today-page">
+    <div className="page today-page dash">
+      <div className="dash__main">
       <header className="today-hello">
         <p className="today-hello__fr" lang="fr" dir="ltr">{hour >= 18 || hour < 5 ? EVENING_FR : HELLO_FR}</p>
         <p className="today-hello__date" lang="fr" dir="ltr">{dateFr}</p>
@@ -128,30 +165,15 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
         )}
       </section>
 
-      {mot && (
-        <section className="mot" aria-labelledby="mot-h" data-testid="mot-du-jour">
-          <p id="mot-h" className="mot__label" lang="fr" dir="ltr">{MOT_FR}</p>
-          <p className="mot__word" lang="fr" dir="ltr">{mot.article ? `${mot.article} ` : ''}{mot.fr}</p>
-          <p className="mot__meaning" lang={settings.meaning}
-             dir={settings.meaning === 'fa' || settings.meaning === 'ar' ? 'rtl' : 'ltr'}>
-            {mot.meanings[settings.meaning] ?? mot.meanings.en}
-          </p>
-          {mot.examples[0] && <p className="mot__ex" lang="fr" dir="ltr">{mot.examples[0].fr}</p>}
-        </section>
-      )}
-
-      {/* The learner's exam, or the invitation to choose one. */}
-      <Link to={target ? `/app/exam/${target.id}` : '/app/exam'} className="today-exam" data-testid="today-exam">
-        <span className="today-exam__label">{t('shellExamMy')}</span>
-        <span className="today-exam__name">{target ? target.label : t('shellExamChoose')}</span>
-        <span className="today-exam__go">{target ? t('shellExamOverview') : t('shellExamChooseFirst')}</span>
-      </Link>
 
       {/* Ways in: the parts of the portal that exist, one line each. */}
       <ul className="today-ways">
         {WAYS.map((w) => (
           <li key={w.to}>
-            <Link to={w.to} data-testid={w.testId}><span lang="fr" dir="ltr">{w.fr}</span><span>{t(w.label)}</span></Link>
+            <Link to={w.to} data-testid={w.testId}>
+              <span className="today-ways__icon" aria-hidden="true"><Icon name={w.icon} size={20} /></span>
+              <span lang="fr" dir="ltr">{w.fr}</span><span>{t(w.label)}</span>
+            </Link>
           </li>
         ))}
       </ul>
@@ -187,6 +209,30 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
 
       <BackupReminder />
       <DataNotice />
+      </div>
+
+      {/* The side column: how the week went, the word of the day, the exam. */}
+      <aside className="dash__aside" aria-label={t('tdAside')}>
+        <WeekCard />
+        {mot && (
+          <section className="mot" aria-labelledby="mot-h" data-testid="mot-du-jour">
+            <p id="mot-h" className="mot__label" lang="fr" dir="ltr">{MOT_FR}</p>
+            <p className="mot__word" lang="fr" dir="ltr">{mot.article ? `${mot.article} ` : ''}{mot.fr}</p>
+            <p className="mot__meaning" lang={settings.meaning}
+               dir={settings.meaning === 'fa' || settings.meaning === 'ar' ? 'rtl' : 'ltr'}>
+              {mot.meanings[settings.meaning] ?? mot.meanings.en}
+            </p>
+            {mot.examples[0] && <p className="mot__ex" lang="fr" dir="ltr">{mot.examples[0].fr}</p>}
+          </section>
+        )}
+
+        {/* The learner's exam, or the invitation to choose one. */}
+        <Link to={target ? `/app/exam/${target.id}` : '/app/exam'} className="today-exam" data-testid="today-exam">
+          <span className="today-exam__label">{t('shellExamMy')}</span>
+          <span className="today-exam__name">{target ? target.label : t('shellExamChoose')}</span>
+          <span className="today-exam__go">{target ? t('shellExamOverview') : t('shellExamChooseFirst')}</span>
+        </Link>
+      </aside>
     </div>
   );
 

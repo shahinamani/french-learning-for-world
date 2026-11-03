@@ -70,7 +70,7 @@ export function VerbList() {
   if (error) return <ErrorState onRetry={() => location.reload()} />;
 
   return (
-    <div className="page">
+    <div className="page verbs-page">
       <h1 className="h2">{t('verbs')}</h1>
       <p className="muted">{t('verbsIntro')}</p>
       <WithAccentBar inputRef={input} onInsert={setQuery}>

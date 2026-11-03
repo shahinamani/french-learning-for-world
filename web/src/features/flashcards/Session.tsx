@@ -30,6 +30,7 @@ import { CARD_LEVELS, loadLevelCards, loadWordIndex, mergeCards, NEW_PER_SESSION
 import { loadVerbIndex } from '../../lib/verbs';
 import { useTarget } from '../../lib/exam-targets';
 import { requestPersistence } from '../../lib/backup';
+import '../../lib/locales/en/todayEn';   // registers its English (lazy group)
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
 /** How far a card must be dragged, in pixels, to count as a swipe. */
@@ -354,7 +355,8 @@ export function FlashcardSession() {
   const tilt = drag ? Math.max(-1, Math.min(1, drag / SWIPE_AT)) : 0;
 
   return (
-    <div className="page page--session">
+    <div className="page page--session dash session-dash">
+      <div className="dash__main">
       <div className="fc-top">
         <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={queue.length}
              aria-valuenow={index} aria-label={t('practise')}>
@@ -363,7 +365,7 @@ export function FlashcardSession() {
         <p className="session-count"><Num testId="session-count">{index + 1} / {queue.length}</Num></p>
       </div>
       {timebox}
-      {!conceptFilter && !cardFilter && index === 0 && <LevelPicker level={level} count={levelCount} />}
+      {!conceptFilter && !cardFilter && index === 0 && <div className="session-inline"><LevelPicker level={level} count={levelCount} /></div>}
 
       {/* The card turns over like a paper card. Keyed by the card, so the next
           one arrives face up instead of turning back in front of the learner. */}
@@ -518,19 +520,47 @@ export function FlashcardSession() {
         </div>
         {revealed && <p className="fc__swipe-hint">{t('shellCardsSwipeHint')}</p>}
       </div>
+      </div>
+
+      {/* The side column, on a wide screen: the levels, how far this session
+          has come, and the keys. Narrow screens keep the picker above the card. */}
+      <aside className="dash__aside session-aside" aria-label={t('tdSession')}>
+        {!conceptFilter && !cardFilter && (
+          <section className="dash-card">
+            <h2 className="dash-card__title">{t('shellCardsLevel')}</h2>
+            <LevelPicker level={level} count={levelCount} where="aside" />
+          </section>
+        )}
+        <section className="dash-card">
+          <h2 className="dash-card__title">{t('tdSession')}</h2>
+          <p className="session-aside__done"><Num>{t('tdDone', { n: index, m: queue.length })}</Num></p>
+          <div className="rail session-aside__rail" aria-hidden="true">
+            <span className="rail__fill" style={{ width: `${(index / Math.max(1, queue.length)) * 100}%` }} />
+          </div>
+          {reviewed > 0 && <p className="fine muted">{t('reviewed', { n: reviewed })}</p>}
+        </section>
+        <section className="dash-card session-keys">
+          <h2 className="dash-card__title">{t('tdKeys')}</h2>
+          <dl>
+            <dt><kbd>{t('shellKeySpace')}</kbd></dt><dd>{t('tdKeyFlip')}</dd>
+            <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>{t('tdKeyMove')}</dd>
+            <dt><kbd>1</kbd>–<kbd>4</kbd></dt><dd>{t('tdKeyGrade')}</dd>
+          </dl>
+        </section>
+      </aside>
     </div>
   );
 }
 
 /** The six levels as links. Choosing one starts a session of that level's
  *  new cards; whatever is due from other levels still comes first. */
-function LevelPicker({ level, count }: { level: Level; count: number | null }) {
+function LevelPicker({ level, count, where = 'inline' }: { level: Level; count: number | null; where?: 'inline' | 'aside' }) {
   const { t } = useApp();
   return (
-    <nav className="card-levels" aria-label={t('shellCardsLevel')} data-testid="card-levels">
+    <nav className="card-levels" aria-label={t('shellCardsLevel')} data-testid={where === 'aside' ? 'card-levels-aside' : 'card-levels'}>
       <div className="row gap-2 wrap">
         {CARD_LEVELS.map((lv) => (
-          <Link key={lv} to={`/app/cards?level=${lv}`} data-testid={`card-level-${lv}`}
+          <Link key={lv} to={`/app/cards?level=${lv}`} data-testid={where === 'aside' ? `aside-level-${lv}` : `card-level-${lv}`}
                 className={`chip chip--${lv.toLowerCase()}${lv === level ? ' is-current' : ''}`}
                 aria-current={lv === level ? 'true' : undefined}>{lv}</Link>
         ))}
