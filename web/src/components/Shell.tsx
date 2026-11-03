@@ -16,9 +16,10 @@ import { lazy, Suspense } from 'react';
 // The portal menus load with the portal, not with the landing page.
 const Sidebar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.Sidebar })));
 const MobileBar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.MobileBar })));
+const TimerPanel = lazy(() => import('./TimerPanel'));
 const RouteBanner = lazy(() => import('../routes/app/PortalNav').then((m) => ({ default: m.RouteBanner })));
 import { TopLine } from '../routes/app/TopLine';
-import { PRESETS, DEFAULT_PRESET, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime, primeAudio } from '../lib/timer';
+import { DEFAULT_PRESET, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime, primeAudio } from '../lib/timer';
 
 export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const { t, settings, update } = useApp();
@@ -165,24 +166,11 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
               <Popover.Portal>
                 <Popover.Content className="timer-panel" data-testid="timer-panel"
                                  aria-label={t('timer')} sideOffset={8} align="end" collisionPadding={8}>
-            <div className="presets">
-              {PRESETS.map((m) => (
-                <button key={m} className="preset" aria-pressed={selected === m} disabled={timer.running}
-                        data-testid={`preset-${m}`} onClick={() => setSelected(m)}>{m}m</button>
-              ))}
-            </div>
-            <div className="row gap-2">
-              <button className="btn btn--primary btn--sm" data-testid="timer-start"
-                      onClick={() => (timer.running ? stop() : start())}>
-                {timer.running ? t('pause') : t('start')}
-              </button>
-              <button className="btn btn--ghost btn--sm" onClick={stop}>{t('reset')}</button>
-              <button className="icon-btn" aria-pressed={settings.sound} data-testid="timer-sound"
-                      aria-label={settings.sound ? t('soundOn') : t('soundOff')}
-                      onClick={() => update({ sound: !settings.sound })}>
-                <Icon name={settings.sound ? 'sound' : 'mute'} />
-              </button>
-            </div>
+                  <Suspense fallback={<div className="tp tp--loading" />}>
+                    <TimerPanel clock={clock} running={timer.running} selected={selected}
+                                left={timer.running ? remainingSeconds(timer.endsAt, Date.now()) / (timer.durationMin * 60) : 1}
+                                onSelect={setSelected} onStart={start} onStop={stop} />
+                  </Suspense>
                 </Popover.Content>
               </Popover.Portal>
             </Popover.Root>

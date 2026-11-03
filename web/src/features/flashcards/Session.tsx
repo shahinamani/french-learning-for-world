@@ -258,18 +258,36 @@ export function FlashcardSession() {
     else if (dx < -SWIPE_AT) void grade(1);
   };
 
+  const goTo = useCallback((i: number) => {
+    if (!queue) return;
+    const next = new URLSearchParams(params);
+    next.set('i', String(Math.max(0, Math.min(queue.length, i))));
+    setParams(next, { replace: true });
+  }, [queue, params, setParams]);
+
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
       if (e.target instanceof HTMLInputElement || e.target instanceof HTMLSelectElement) return;
       if (!card) return;
-      if (!revealed && (e.key === ' ' || e.key === 'Enter')) { e.preventDefault(); setRevealed(true); return; }
+      const onButton = e.target instanceof HTMLButtonElement || e.target instanceof HTMLAnchorElement;
+      // Space turns the card either way; Enter only reveals, and leaves a
+      // focused button to do its own job.
+      if (e.key === ' ') { e.preventDefault(); setRevealed((r) => !r); return; }
+      if (e.key === 'Enter' && !revealed && !onButton) { e.preventDefault(); setRevealed(true); return; }
+      // The arrows move through the session, in reading direction.
+      const rtl = document.documentElement.dir === 'rtl';
+      if (e.key === 'ArrowRight' || e.key === 'ArrowLeft') {
+        e.preventDefault();
+        goTo(index + ((e.key === 'ArrowRight') !== rtl ? 1 : -1));
+        return;
+      }
       if (revealed && ['1', '2', '3', '4'].includes(e.key)) {
         e.preventDefault(); void grade(Number(e.key) as Grade);
       }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [card, revealed, grade]);
+  }, [card, revealed, grade, goTo, index]);
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
   // The countdown is shown from the first frame: the timer is already
@@ -375,7 +393,12 @@ export function FlashcardSession() {
               <p className="fc__hint">{t('shellCardsFlipHint')}</p>
             </section>
 
-            <section className="fc__face fc__back" aria-hidden={!revealed || undefined}>
+            <section className="fc__face fc__back" aria-hidden={!revealed || undefined}
+                     onClick={(e) => {
+                       // Tap again to turn it back; a button or link on the back keeps its own job.
+                       if (moved.current || (e.target as HTMLElement).closest('button, a')) return;
+                       setRevealed(false);
+                     }}>
               {revealed && (
                 <div className="flashcard__answer" data-testid="answer">
                   <header className="fc__head">
@@ -438,6 +461,19 @@ export function FlashcardSession() {
           </div>
         </article>
       </div>
+
+      {/* Move through the session without grading: back to look again, or on. */}
+      <nav className="fc-nav" aria-label={t('practise')}>
+        <button type="button" className="fc-nav__btn" data-testid="card-prev" disabled={index === 0}
+                onClick={() => goTo(index - 1)}>
+          <span className="fc-nav__chev fc-nav__chev--back" aria-hidden="true"><Icon name="chevron" size={16} /></span>
+          {t('shellCardsPrev')}
+        </button>
+        <button type="button" className="fc-nav__btn" data-testid="card-next" onClick={() => goTo(index + 1)}>
+          {t('shellCardsNext')}
+          <span className="fc-nav__chev" aria-hidden="true"><Icon name="chevron" size={16} /></span>
+        </button>
+      </nav>
 
       <div className="actions">
         <div className="actions-in">
