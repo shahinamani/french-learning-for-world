@@ -56,6 +56,11 @@ const SCREENS = [
   // nothing without a query, and the concept page was not walked at all.
   ['/learn/concept/gram.negation', 'concept', '[data-testid="concept-practise"], [data-testid="concept-no-cards"]'],
   ['/search?q=negation', 'search-results', '[data-testid="search-concepts"] a'],
+  // Themes and free resources (2026-11-06): French headwords inside an RTL
+  // page, and meanings that switch between Persian and English.
+  ['/app/themes', 'themes', '[data-testid^="topic-"]'],
+  ['/app/themes/housing?level=all', 'theme', '.topic-words li'],
+  ['/app/resources', 'resources', '.rs-card'],
   ['/search', 'search', 'input[type="search"], .input'],
   ['/account', 'account', '[data-testid="theme"]'],
 ];

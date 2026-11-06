@@ -30,6 +30,9 @@ export const PODCASTS = item('podcasts', 'soundwave', 'shellNavPodcasts');
 export const EXAMS = item('exams', 'examsheet', 'exams');
 export const SAVED = item('saved', 'bookmark', 'shellNavSaved');
 export const PROGRESS = item('progress', 'chart', 'progress');
+/** Themes and free resources (2026-11-06). */
+export const THEMES = item('themes', 'wordtag', 'shellNavThemes');
+export const RESOURCES = item('resources', 'openbook', 'shellNavResources');
 /** The learner's exam (redesign v1): named here so the breadcrumb finds it. */
 export const EXAM = item('exam', 'examsheet', 'shellExamMy');
 
@@ -43,7 +46,7 @@ export const FREE_GROUP: NavItem[] = [CARDS, VERBS, GRAMMAR, READING, WRITING];
 export const NOT_YET: NavItem[] = [VOCABULARY, LISTENING, OUTPUT, NEWS, PODCASTS, SAVED];
 
 export const ALL_ITEMS: NavItem[] =
-  [TODAY, EXAM, PATH, ...FREE_GROUP, EXAMS, PROGRESS, ...NOT_YET];
+  [TODAY, EXAM, PATH, ...FREE_GROUP, THEMES, RESOURCES, EXAMS, PROGRESS, ...NOT_YET];
 
 /** Bottom of the sidebar. Not a group: four standing exits from the learning. */
 export const FOOTER: NavItem[] = [
@@ -54,8 +57,8 @@ export const FOOTER: NavItem[] = [
 ];
 
 /** What the mobile "Learn" sheet lists, and what "More" lists. */
-export const LEARN_SHEET: NavItem[] = [VERBS, GRAMMAR, READING, WRITING];
-export const MORE_SHEET: NavItem[] = [PROGRESS, PATH];
+export const LEARN_SHEET: NavItem[] = [THEMES, VERBS, GRAMMAR, READING, WRITING];
+export const MORE_SHEET: NavItem[] = [RESOURCES, PROGRESS, PATH];
 
 /** Which top-level nav item a pathname belongs to, for the breadcrumb. */
 export function itemFor(pathname: string): NavItem | undefined {

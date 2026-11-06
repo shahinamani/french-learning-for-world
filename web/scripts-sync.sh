@@ -15,6 +15,9 @@ cp ../content/verbs/*.json public/content/verbs/
 cp ../content/verb-cards/*.json public/content/verb-cards/
 # The word cards appear level by level as they are drafted; none yet is not an error.
 cp ../content/word-cards/*.json public/content/word-cards/ 2>/dev/null || true
+# One file per theme; the index (content/themes.json) comes with the flat copy.
+mkdir -p public/content/themes
+cp ../content/themes/*.json public/content/themes/
 
 # The portal summary is ALSO copied into src/generated, because the landing page
 # imports it rather than fetching it: the build-time prerender has to state the

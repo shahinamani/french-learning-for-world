@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import {
   BookOpen, ChevronDown, ClipboardCheck, Compass, Ear, Home, Layers, LineChart, Mic, PenLine,
-  BookA, Clock3, FileText, MoreHorizontal, GraduationCap,
+  BookA, Clock3, FileText, MoreHorizontal, GraduationCap, Shapes, Library,
 } from 'lucide-react';
 import { useApp, useUserId } from '../../app-context';
 import { Icon } from '../../components/Icon';
@@ -129,6 +129,19 @@ export function Sidebar() {
           </SidebarMenu>
         </SidebarGroup>
 
+        {/* Themes and free resources (2026-11-06): what to study for the exam,
+            and where to find more of it. */}
+        <SidebarGroup>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <SidebarMenuButton to="/app/themes" icon={<Shapes />} testId="nav-themes">{t('shellNavThemes')}</SidebarMenuButton>
+            </SidebarMenuItem>
+            <SidebarMenuItem>
+              <SidebarMenuButton to="/app/resources" icon={<Library />} testId="nav-resources">{t('shellNavResources')}</SidebarMenuButton>
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarGroup>
+
         <SidebarGroup>
           <button type="button" className="sb-group-toggle" aria-expanded={expanded} aria-controls="nav-free"
                   data-testid="nav-free-toggle"
@@ -192,8 +205,8 @@ export function MobileBar() {
   };
   const close = () => setSheet(null);
   const inExam = pathname.startsWith('/app/exam');
-  const inLearn = ['/app/verbs', '/app/grammar', '/app/reading', '/app/writing'].some((p) => pathname.startsWith(p));
-  const inMore = ['/app/progress', '/app/path', '/account', '/about'].some((p) => pathname.startsWith(p));
+  const inLearn = ['/app/themes', '/app/verbs', '/app/grammar', '/app/reading', '/app/writing'].some((p) => pathname.startsWith(p));
+  const inMore = ['/app/resources', '/app/progress', '/app/path', '/account', '/about'].some((p) => pathname.startsWith(p));
 
   let items: { to: string; label: string; id: string }[] = [];
   if (sheet === 'exam') {
@@ -204,9 +217,11 @@ export function MobileBar() {
          { to: '/app/exam', label: t('shellExamSwitch'), id: 'exam-choose' }]
       : [{ to: '/app/exam', label: t('shellExamChoose'), id: 'exam-choose' }];
   } else if (sheet === 'learn') {
-    items = SKILLS.filter((s) => s.id !== 'cards').map((s) => ({ to: s.to, label: t(s.label), id: s.id }));
+    items = [{ to: '/app/themes', label: t('shellNavThemes'), id: 'themes' },
+      ...SKILLS.filter((s) => s.id !== 'cards').map((s) => ({ to: s.to, label: t(s.label), id: s.id }))];
   } else if (sheet === 'more') {
-    items = [{ to: '/app/progress', label: t('progress'), id: 'progress' }, { to: '/app/path', label: t('shellNavPath'), id: 'path' },
+    items = [{ to: '/app/resources', label: t('shellNavResources'), id: 'resources' },
+      { to: '/app/progress', label: t('progress'), id: 'progress' }, { to: '/app/path', label: t('shellNavPath'), id: 'path' },
       ...FOOTER.map((i: NavItem) => ({ to: i.to, label: t(i.label), id: i.id }))];
   }
   const title = sheet === 'exam' ? (target ? target.label : t('shellExamChoose'))
@@ -257,6 +272,8 @@ const BANNERS: { match: RegExp; photo: string; size: number; fr: string }[] = [
   { match: /^\/app\/reading\/?$/, photo: 'terrace', size: 900, fr: 'La lecture' },
   { match: /^\/app\/exams\/?$/, photo: 'flag-balcony', size: 900, fr: 'Les sujets d’entraînement' },
   { match: /^\/app\/exam(\/[a-z0-9-]+)?\/?$/, photo: 'flag-balcony', size: 900, fr: 'Mon examen' },
+  { match: /^\/app\/themes\/?$/, photo: 'market', size: 900, fr: 'Les thèmes' },
+  { match: /^\/app\/resources\/?$/, photo: 'bouquinistes', size: 900, fr: 'Les ressources gratuites' },
   { match: /^\/app\/progress\/?$/, photo: 'montmartre', size: 800, fr: 'Mes progrès' },
   { match: /^\/app\/path\/?$/, photo: 'market', size: 900, fr: 'Mon parcours' },
 ];

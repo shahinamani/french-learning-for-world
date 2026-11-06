@@ -1,0 +1,1430 @@
+{
+ "id": "health",
+ "names": {
+  "fr": "La santé",
+  "en": "Health",
+  "fa": "سلامت"
+ },
+ "counts": {
+  "words": 105,
+  "verbs": 32,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "dalf",
+   "level": "C2"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:bouche",
+   "fr": "bouche",
+   "type": "noun",
+   "article": "la",
+   "en": "mouth",
+   "fa": "دهان",
+   "level": "A1"
+  },
+  {
+   "key": "n:bras",
+   "fr": "bras",
+   "type": "noun",
+   "article": "le",
+   "en": "arm",
+   "fa": "بازو، دست",
+   "level": "A1"
+  },
+  {
+   "key": "n:coeur",
+   "fr": "cœur",
+   "type": "noun",
+   "article": "le",
+   "en": "heart",
+   "fa": "قلب، دل",
+   "level": "A1"
+  },
+  {
+   "key": "n:corps",
+   "fr": "corps",
+   "type": "noun",
+   "article": "le",
+   "en": "body",
+   "fa": "بدن",
+   "level": "A1"
+  },
+  {
+   "key": "n:docteur",
+   "fr": "docteur",
+   "type": "noun",
+   "article": "le",
+   "en": "doctor",
+   "fa": "دکتر، پزشک",
+   "level": "A1"
+  },
+  {
+   "key": "n:doigt",
+   "fr": "doigt",
+   "type": "noun",
+   "article": "le",
+   "en": "finger",
+   "fa": "انگشت",
+   "level": "A1"
+  },
+  {
+   "key": "n:dos",
+   "fr": "dos",
+   "type": "noun",
+   "article": "le",
+   "en": "back",
+   "fa": "پشت، کمر",
+   "level": "A1"
+  },
+  {
+   "key": "n:epaule",
+   "fr": "épaule",
+   "type": "noun",
+   "article": "l'",
+   "en": "shoulder",
+   "fa": "شانه",
+   "level": "A1"
+  },
+  {
+   "key": "n:jambe",
+   "fr": "jambe",
+   "type": "noun",
+   "article": "la",
+   "en": "leg",
+   "fa": "پا",
+   "level": "A1"
+  },
+  {
+   "key": "n:main",
+   "fr": "main",
+   "type": "noun",
+   "article": "la",
+   "en": "hand",
+   "fa": "دست",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "mal",
+   "type": "noun",
+   "article": "le",
+   "en": "ache, pain",
+   "fa": "درد",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:oeil",
+   "fr": "œil",
+   "type": "noun",
+   "article": "l'",
+   "en": "eye",
+   "fa": "چشم",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "pharmacie",
+   "type": "noun",
+   "article": "la",
+   "en": "pharmacy",
+   "fa": "داروخانه",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:pied",
+   "fr": "pied",
+   "type": "noun",
+   "article": "le",
+   "en": "foot",
+   "fa": "پا",
+   "level": "A1"
+  },
+  {
+   "key": "n:sang",
+   "fr": "sang",
+   "type": "noun",
+   "article": "le",
+   "en": "blood",
+   "fa": "خون",
+   "level": "A1"
+  },
+  {
+   "key": "n:tete",
+   "fr": "tête",
+   "type": "noun",
+   "article": "la",
+   "en": "head",
+   "fa": "سر",
+   "level": "A1"
+  },
+  {
+   "key": "n:visage",
+   "fr": "visage",
+   "type": "noun",
+   "article": "le",
+   "en": "face",
+   "fa": "صورت، چهره",
+   "level": "A1"
+  },
+  {
+   "key": "n:cou",
+   "fr": "cou",
+   "type": "noun",
+   "article": "le",
+   "en": "neck",
+   "fa": "گردن",
+   "level": "A2"
+  },
+  {
+   "key": "n:dent",
+   "fr": "dent",
+   "type": "noun",
+   "article": "la",
+   "en": "tooth",
+   "fa": "دندان",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "dentiste",
+   "type": "noun",
+   "article": "le",
+   "en": "dentist",
+   "fa": "دندانپزشک",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:douleur",
+   "fr": "douleur",
+   "type": "noun",
+   "article": "la",
+   "en": "pain",
+   "fa": "درد",
+   "level": "A2"
+  },
+  {
+   "key": "n:front",
+   "fr": "front",
+   "type": "noun",
+   "article": "le",
+   "en": "forehead",
+   "fa": "پیشانی",
+   "level": "A2"
+  },
+  {
+   "key": "n:genou",
+   "fr": "genou",
+   "type": "noun",
+   "article": "le",
+   "en": "knee",
+   "fa": "زانو",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "grippe",
+   "type": "noun",
+   "article": "la",
+   "en": "flu",
+   "fa": "آنفلوآنزا",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:hopital",
+   "fr": "hôpital",
+   "type": "noun",
+   "article": "l'",
+   "en": "hospital",
+   "fa": "بیمارستان",
+   "level": "A2"
+  },
+  {
+   "key": "n:joue",
+   "fr": "joue",
+   "type": "noun",
+   "article": "la",
+   "en": "cheek",
+   "fa": "گونه، لپ",
+   "level": "A2"
+  },
+  {
+   "key": "n:levre",
+   "fr": "lèvre",
+   "type": "noun",
+   "article": "la",
+   "en": "lip",
+   "fa": "لب",
+   "level": "A2"
+  },
+  {
+   "key": "a:malade",
+   "fr": "malade",
+   "type": "adjective",
+   "article": null,
+   "en": "ill, sick",
+   "fa": "بیمار، مریض",
+   "level": "A2"
+  },
+  {
+   "key": "n:medecin",
+   "fr": "médecin",
+   "type": "noun",
+   "article": "le",
+   "en": "doctor",
+   "fa": "پزشک، دکتر",
+   "level": "A2"
+  },
+  {
+   "key": "n:nez",
+   "fr": "nez",
+   "type": "noun",
+   "article": "le",
+   "en": "nose",
+   "fa": "بینی",
+   "level": "A2"
+  },
+  {
+   "key": "n:oreille",
+   "fr": "oreille",
+   "type": "noun",
+   "article": "l'",
+   "en": "ear",
+   "fa": "گوش",
+   "level": "A2"
+  },
+  {
+   "key": "n:peau",
+   "fr": "peau",
+   "type": "noun",
+   "article": "la",
+   "en": "skin",
+   "fa": "پوست",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "rhume",
+   "type": "noun",
+   "article": "le",
+   "en": "cold",
+   "fa": "سرماخوردگی",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:sante",
+   "fr": "santé",
+   "type": "noun",
+   "article": "la",
+   "en": "health",
+   "fa": "سلامتی، سلامت",
+   "level": "A2"
+  },
+  {
+   "key": "n:sommeil",
+   "fr": "sommeil",
+   "type": "noun",
+   "article": "le",
+   "en": "sleep, sleepiness",
+   "fa": "خواب، خواب‌آلودگی",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "toux",
+   "type": "noun",
+   "article": "la",
+   "en": "cough",
+   "fa": "سرفه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:ventre",
+   "fr": "ventre",
+   "type": "noun",
+   "article": "le",
+   "en": "belly, stomach",
+   "fa": "شکم، دل",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "allergie",
+   "type": "noun",
+   "article": "l’",
+   "en": "allergy",
+   "fa": "حساسیت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "analyse",
+   "type": "noun",
+   "article": "l’",
+   "en": "test, analysis",
+   "fa": "آزمایش",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:cerveau",
+   "fr": "cerveau",
+   "type": "noun",
+   "article": "le",
+   "en": "brain",
+   "fa": "مغز",
+   "level": "B1"
+  },
+  {
+   "key": "n:crane",
+   "fr": "crâne",
+   "type": "noun",
+   "article": "le",
+   "en": "skull",
+   "fa": "جمجمه",
+   "level": "B1"
+  },
+  {
+   "key": "n:cuisse",
+   "fr": "cuisse",
+   "type": "noun",
+   "article": "la",
+   "en": "thigh, leg (of chicken)",
+   "fa": "ران",
+   "level": "B1"
+  },
+  {
+   "key": "n:gorge",
+   "fr": "gorge",
+   "type": "noun",
+   "article": "la",
+   "en": "throat",
+   "fa": "گلو",
+   "level": "B1"
+  },
+  {
+   "key": "n:maladie",
+   "fr": "maladie",
+   "type": "noun",
+   "article": "la",
+   "en": "illness, disease",
+   "fa": "بیماری",
+   "level": "B1"
+  },
+  {
+   "key": "n:operation",
+   "fr": "opération",
+   "type": "noun",
+   "article": "l'",
+   "en": "operation, surgery",
+   "fa": "عمل، عملیات",
+   "level": "B1"
+  },
+  {
+   "key": "n:poids",
+   "fr": "poids",
+   "type": "noun",
+   "article": "le",
+   "en": "weight",
+   "fa": "وزن",
+   "level": "B1"
+  },
+  {
+   "key": "n:poitrine",
+   "fr": "poitrine",
+   "type": "noun",
+   "article": "la",
+   "en": "chest",
+   "fa": "سینه",
+   "level": "B1"
+  },
+  {
+   "key": "n:secours",
+   "fr": "secours",
+   "type": "noun",
+   "article": "le",
+   "en": "help, rescue",
+   "fa": "کمک، امداد",
+   "level": "B1"
+  },
+  {
+   "key": "n:soin",
+   "fr": "soin",
+   "type": "noun",
+   "article": "le",
+   "en": "care, attention",
+   "fa": "مراقبت، دقت",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "stress",
+   "type": "noun",
+   "article": "le",
+   "en": "stress",
+   "fa": "استرس",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "symptôme",
+   "type": "noun",
+   "article": "le",
+   "en": "symptom",
+   "fa": "علامت بیماری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "vaccin",
+   "type": "noun",
+   "article": "le",
+   "en": "vaccine",
+   "fa": "واکسن",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:aveugle",
+   "fr": "aveugle",
+   "type": "adjective",
+   "article": null,
+   "en": "blind",
+   "fa": "نابینا، کور",
+   "level": "B2"
+  },
+  {
+   "key": "n:blesse",
+   "fr": "blessé",
+   "type": "noun",
+   "article": "le",
+   "en": "injured person",
+   "fa": "مجروح",
+   "level": "B2"
+  },
+  {
+   "key": "n:blessure",
+   "fr": "blessure",
+   "type": "noun",
+   "article": "la",
+   "en": "wound, injury",
+   "fa": "زخم، آسیب",
+   "level": "B2"
+  },
+  {
+   "key": "n:cabinet",
+   "fr": "cabinet",
+   "type": "noun",
+   "article": "le",
+   "en": "office, surgery",
+   "fa": "مطب، دفتر",
+   "level": "B2"
+  },
+  {
+   "key": "n:coude",
+   "fr": "coude",
+   "type": "noun",
+   "article": "le",
+   "en": "elbow",
+   "fa": "آرنج",
+   "level": "B2"
+  },
+  {
+   "key": "a:enceinte",
+   "fr": "enceinte",
+   "type": "adjective",
+   "article": null,
+   "en": "pregnant",
+   "fa": "باردار",
+   "level": "B2"
+  },
+  {
+   "key": "n:estomac",
+   "fr": "estomac",
+   "type": "noun",
+   "article": "l'",
+   "en": "stomach",
+   "fa": "معده",
+   "level": "B2"
+  },
+  {
+   "key": "n:fatigue",
+   "fr": "fatigue",
+   "type": "noun",
+   "article": "la",
+   "en": "tiredness, fatigue",
+   "fa": "خستگی",
+   "level": "B2"
+  },
+  {
+   "key": "n:fievre",
+   "fr": "fièvre",
+   "type": "noun",
+   "article": "la",
+   "en": "fever",
+   "fa": "تب",
+   "level": "B2"
+  },
+  {
+   "key": "a:gras",
+   "fr": "gras",
+   "type": "adjective",
+   "article": null,
+   "en": "fat, greasy",
+   "fa": "چرب، پرچرب",
+   "level": "B2"
+  },
+  {
+   "key": "n:infirmier",
+   "fr": "infirmier",
+   "type": "noun",
+   "article": "l'",
+   "en": "nurse",
+   "fa": "پرستار",
+   "level": "B2"
+  },
+  {
+   "key": "a:maigre",
+   "fr": "maigre",
+   "type": "adjective",
+   "article": null,
+   "en": "thin, lean",
+   "fa": "لاغر، کم‌گوشت",
+   "level": "B2"
+  },
+  {
+   "key": "n:medicament",
+   "fr": "médicament",
+   "type": "noun",
+   "article": "le",
+   "en": "medicine",
+   "fa": "دارو",
+   "level": "B2"
+  },
+  {
+   "key": "n:menton",
+   "fr": "menton",
+   "type": "noun",
+   "article": "le",
+   "en": "chin",
+   "fa": "چانه",
+   "level": "B2"
+  },
+  {
+   "key": "a:muet",
+   "fr": "muet",
+   "type": "adjective",
+   "article": null,
+   "en": "mute, silent",
+   "fa": "لال، صامت",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "mutuelle",
+   "type": "noun",
+   "article": "la",
+   "en": "supplementary health insurance",
+   "fa": "بیمه تکمیلی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:nerf",
+   "fr": "nerf",
+   "type": "noun",
+   "article": "le",
+   "en": "nerve",
+   "fa": "عصب",
+   "level": "B2"
+  },
+  {
+   "key": "n:nuque",
+   "fr": "nuque",
+   "type": "noun",
+   "article": "la",
+   "en": "nape of the neck",
+   "fa": "پشت گردن",
+   "level": "B2"
+  },
+  {
+   "key": "n:ongle",
+   "fr": "ongle",
+   "type": "noun",
+   "article": "l'",
+   "en": "nail",
+   "fa": "ناخن",
+   "level": "B2"
+  },
+  {
+   "key": "n:patient",
+   "fr": "patient",
+   "type": "noun",
+   "article": "le",
+   "en": "patient",
+   "fa": "بیمار",
+   "level": "B2"
+  },
+  {
+   "key": "n:paupiere",
+   "fr": "paupière",
+   "type": "noun",
+   "article": "la",
+   "en": "eyelid",
+   "fa": "پلک",
+   "level": "B2"
+  },
+  {
+   "key": "n:poignet",
+   "fr": "poignet",
+   "type": "noun",
+   "article": "le",
+   "en": "wrist",
+   "fa": "مچ دست",
+   "level": "B2"
+  },
+  {
+   "key": "n:pouce",
+   "fr": "pouce",
+   "type": "noun",
+   "article": "le",
+   "en": "thumb, inch",
+   "fa": "انگشت شست، اینچ",
+   "level": "B2"
+  },
+  {
+   "key": "n:regime",
+   "fr": "régime",
+   "type": "noun",
+   "article": "le",
+   "en": "diet, regime",
+   "fa": "رژیم",
+   "level": "B2"
+  },
+  {
+   "key": "n:souffrance",
+   "fr": "souffrance",
+   "type": "noun",
+   "article": "la",
+   "en": "suffering",
+   "fa": "رنج",
+   "level": "B2"
+  },
+  {
+   "key": "n:sourcil",
+   "fr": "sourcil",
+   "type": "noun",
+   "article": "le",
+   "en": "eyebrow",
+   "fa": "ابرو",
+   "level": "B2"
+  },
+  {
+   "key": "a:sourd",
+   "fr": "sourd",
+   "type": "adjective",
+   "article": null,
+   "en": "deaf",
+   "fa": "ناشنوا، کر",
+   "level": "B2"
+  },
+  {
+   "key": "n:urgence",
+   "fr": "urgence",
+   "type": "noun",
+   "article": "l'",
+   "en": "emergency, urgency",
+   "fa": "وضعیت اضطراری، فوریت",
+   "level": "B2"
+  },
+  {
+   "key": "n:veine",
+   "fr": "veine",
+   "type": "noun",
+   "article": "la",
+   "en": "vein",
+   "fa": "رگ",
+   "level": "B2"
+  },
+  {
+   "key": "n:ambulance",
+   "fr": "ambulance",
+   "type": "noun",
+   "article": "l'",
+   "en": "ambulance",
+   "fa": "آمبولانس",
+   "level": "C1"
+  },
+  {
+   "key": "n:foie",
+   "fr": "foie",
+   "type": "noun",
+   "article": "le",
+   "en": "liver",
+   "fa": "کبد، جگر",
+   "level": "C1"
+  },
+  {
+   "key": "n:hanche",
+   "fr": "hanche",
+   "type": "noun",
+   "article": "la",
+   "en": "hip",
+   "fa": "لگن، مفصل ران",
+   "level": "C1"
+  },
+  {
+   "key": "n:medecine",
+   "fr": "médecine",
+   "type": "noun",
+   "article": "la",
+   "en": "medicine",
+   "fa": "پزشکی",
+   "level": "C1"
+  },
+  {
+   "key": "a:medical",
+   "fr": "médical",
+   "type": "adjective",
+   "article": null,
+   "en": "medical",
+   "fa": "پزشکی",
+   "level": "C1"
+  },
+  {
+   "key": "n:muscle",
+   "fr": "muscle",
+   "type": "noun",
+   "article": "le",
+   "en": "muscle",
+   "fa": "ماهیچه، عضله",
+   "level": "C1"
+  },
+  {
+   "key": "n:pilule",
+   "fr": "pilule",
+   "type": "noun",
+   "article": "la",
+   "en": "pill",
+   "fa": "قرص",
+   "level": "C1"
+  },
+  {
+   "key": "n:plaie",
+   "fr": "plaie",
+   "type": "noun",
+   "article": "la",
+   "en": "wound",
+   "fa": "زخم",
+   "level": "C1"
+  },
+  {
+   "key": "n:poumon",
+   "fr": "poumon",
+   "type": "noun",
+   "article": "le",
+   "en": "lung",
+   "fa": "ریه",
+   "level": "C1"
+  },
+  {
+   "key": "n:rein",
+   "fr": "rein",
+   "type": "noun",
+   "article": "le",
+   "en": "kidney",
+   "fa": "کلیه، کمر",
+   "level": "C1"
+  },
+  {
+   "key": "a:sain",
+   "fr": "sain",
+   "type": "adjective",
+   "article": null,
+   "en": "healthy, sound",
+   "fa": "سالم",
+   "level": "C1"
+  },
+  {
+   "key": "n:traitement",
+   "fr": "traitement",
+   "type": "noun",
+   "article": "le",
+   "en": "treatment",
+   "fa": "درمان، رفتار",
+   "level": "C1"
+  },
+  {
+   "key": "n:vertige",
+   "fr": "vertige",
+   "type": "noun",
+   "article": "le",
+   "en": "dizziness, vertigo",
+   "fa": "سرگیجه، ترس از ارتفاع",
+   "level": "C1"
+  },
+  {
+   "key": "n:cancer",
+   "fr": "cancer",
+   "type": "noun",
+   "article": "le",
+   "en": "cancer",
+   "fa": "سرطان",
+   "level": "C2"
+  },
+  {
+   "key": "n:cheville",
+   "fr": "cheville",
+   "type": "noun",
+   "article": "la",
+   "en": "ankle",
+   "fa": "مچ پا",
+   "level": "C2"
+  },
+  {
+   "key": "n:clinique",
+   "fr": "clinique",
+   "type": "noun",
+   "article": "la",
+   "en": "clinic, private hospital",
+   "fa": "کلینیک، بیمارستان خصوصی",
+   "level": "C2"
+  },
+  {
+   "key": "n:dose",
+   "fr": "dose",
+   "type": "noun",
+   "article": "la",
+   "en": "dose",
+   "fa": "مقدار، دوز",
+   "level": "C2"
+  },
+  {
+   "key": "n:machoire",
+   "fr": "mâchoire",
+   "type": "noun",
+   "article": "la",
+   "en": "jaw",
+   "fa": "فک",
+   "level": "C2"
+  },
+  {
+   "key": "n:malaise",
+   "fr": "malaise",
+   "type": "noun",
+   "article": "le",
+   "en": "discomfort, unease; dizzy spell",
+   "fa": "ناخوشی، احساس ناخوشایند",
+   "level": "C2"
+  },
+  {
+   "key": "n:narine",
+   "fr": "narine",
+   "type": "noun",
+   "article": "la",
+   "en": "nostril",
+   "fa": "سوراخ بینی",
+   "level": "C2"
+  },
+  {
+   "key": "n:ordonnance",
+   "fr": "ordonnance",
+   "type": "noun",
+   "article": "l'",
+   "en": "prescription; order, decree",
+   "fa": "نسخه، فرمان",
+   "level": "C2"
+  },
+  {
+   "key": "n:poison",
+   "fr": "poison",
+   "type": "noun",
+   "article": "le",
+   "en": "poison",
+   "fa": "سم، زهر",
+   "level": "C2"
+  },
+  {
+   "key": "n:remede",
+   "fr": "remède",
+   "type": "noun",
+   "article": "le",
+   "en": "remedy, cure",
+   "fa": "درمان، چاره",
+   "level": "C2"
+  },
+  {
+   "key": "n:virus",
+   "fr": "virus",
+   "type": "noun",
+   "article": "le",
+   "en": "virus",
+   "fa": "ویروس",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:blesser",
+   "fr": "blesser",
+   "type": "verb",
+   "en": "to wound, to injure",
+   "fa": "زخمی کردن، رنجاندن",
+   "level": "A1"
+  },
+  {
+   "key": "v:souffrir",
+   "fr": "souffrir",
+   "type": "verb",
+   "en": "to suffer",
+   "fa": "رنج بردن، درد کشیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:étouffer",
+   "fr": "étouffer",
+   "type": "verb",
+   "en": "to smother, to choke",
+   "fa": "خفه شدن، خفه کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:fatiguer",
+   "fr": "fatiguer",
+   "type": "verb",
+   "en": "to tire",
+   "fa": "خسته کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:guérir",
+   "fr": "guérir",
+   "type": "verb",
+   "en": "to cure, to heal",
+   "fa": "بهبود یافتن، خوب شدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:opérer",
+   "fr": "opérer",
+   "type": "verb",
+   "en": "to operate (on)",
+   "fa": "عمل جراحی کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:respirer",
+   "fr": "respirer",
+   "type": "verb",
+   "en": "to breathe",
+   "fa": "نفس کشیدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:saigner",
+   "fr": "saigner",
+   "type": "verb",
+   "en": "to bleed, to be bleeding",
+   "fa": "خون آمدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:soigner",
+   "fr": "soigner",
+   "type": "verb",
+   "en": "to treat, to nurse",
+   "fa": "درمان کردن، مراقبت کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:accoucher",
+   "fr": "accoucher",
+   "type": "verb",
+   "en": "to go into labour",
+   "fa": "زایمان کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:bander",
+   "fr": "bander",
+   "type": "verb",
+   "en": "to bandage (a wound)",
+   "fa": "پانسمان کردن، بستن (زخم)",
+   "level": "B1"
+  },
+  {
+   "key": "v:boiter",
+   "fr": "boiter",
+   "type": "verb",
+   "en": "to limp (to walk lamely, as if favouring one leg)",
+   "fa": "لنگیدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:grossir",
+   "fr": "grossir",
+   "type": "verb",
+   "en": "to increase, to make larger",
+   "fa": "چاق شدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:évanouir",
+   "fr": "s'évanouir",
+   "type": "verb",
+   "en": "to lose consciousness, to faint",
+   "fa": "غش کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:soulager",
+   "fr": "soulager",
+   "type": "verb",
+   "en": "to relieve, soothe",
+   "fa": "تسکین دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:vomir",
+   "fr": "vomir",
+   "type": "verb",
+   "en": "to vomit",
+   "fa": "استفراغ کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:bâiller",
+   "fr": "bâiller",
+   "type": "verb",
+   "en": "to yawn",
+   "fa": "خمیازه کشیدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:digérer",
+   "fr": "digérer",
+   "type": "verb",
+   "en": "to digest",
+   "fa": "هضم کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:maigrir",
+   "fr": "maigrir",
+   "type": "verb",
+   "en": "to slim, to get slim, to lose weight",
+   "fa": "لاغر شدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:prescrire",
+   "fr": "prescrire",
+   "type": "verb",
+   "en": "to prescribe (a medication)",
+   "fa": "تجویز کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:ronfler",
+   "fr": "ronfler",
+   "type": "verb",
+   "en": "to snore",
+   "fa": "خروپف کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:suer",
+   "fr": "suer",
+   "type": "verb",
+   "en": "to sweat",
+   "fa": "عرق ریختن",
+   "level": "B2"
+  },
+  {
+   "key": "v:suffoquer",
+   "fr": "suffoquer",
+   "type": "verb",
+   "en": "to suffocate",
+   "fa": "نفس‌شان بند آمدن، خفه شدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:tousser",
+   "fr": "tousser",
+   "type": "verb",
+   "en": "to cough",
+   "fa": "سرفه کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:transpirer",
+   "fr": "transpirer",
+   "type": "verb",
+   "en": "to transpire",
+   "fa": "عرق کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:éternuer",
+   "fr": "éternuer",
+   "type": "verb",
+   "en": "to sneeze",
+   "fa": "عطسه کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:hospitaliser",
+   "fr": "hospitaliser",
+   "type": "verb",
+   "en": "to hospitalise",
+   "fa": "بستری کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:ausculter",
+   "fr": "ausculter",
+   "type": "verb",
+   "en": "to perform auscultation",
+   "fa": "با گوشی معاینه کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:cicatriser",
+   "fr": "cicatriser",
+   "type": "verb",
+   "en": "to heal, to scar (of a wound)",
+   "fa": "جوش خوردن (زخم)",
+   "level": "C2"
+  },
+  {
+   "key": "v:désinfecter",
+   "fr": "désinfecter",
+   "type": "verb",
+   "en": "to disinfect, to sanitize",
+   "fa": "ضدعفونی کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:enrhumer",
+   "fr": "enrhumer",
+   "type": "verb",
+   "en": "to affect with a cold, to give someone a cold (illness)",
+   "fa": "سرما خوردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:panser",
+   "fr": "panser",
+   "type": "verb",
+   "en": "to dress (a wound etc.), to bandage",
+   "fa": "پانسمان کردن، مرهم گذاشتن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "J'ai mal à la tête.",
+   "en": "I have a headache.",
+   "fa": "سردرد دارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis malade.",
+   "en": "I am ill.",
+   "fa": "من بیمارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai besoin d'un médecin.",
+   "en": "I need a doctor.",
+   "fa": "به پزشک نیاز دارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je voudrais prendre rendez-vous avec le docteur Martin.",
+   "en": "I would like to make an appointment with Dr Martin.",
+   "fa": "می‌خواهم با دکتر مارتن وقت بگیرم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai de la fièvre et je tousse depuis trois jours.",
+   "en": "I have had a fever and a cough for three days.",
+   "fa": "سه روز است که تب و سرفه دارم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Qu'est-ce qui ne va pas ?",
+   "en": "What's wrong?",
+   "fa": "مشکل چیست؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Vous devez vous reposer et boire beaucoup d'eau.",
+   "en": "You must rest and drink plenty of water.",
+   "fa": "باید استراحت کنید و آب زیاد بنوشید.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je cherche une pharmacie de garde.",
+   "en": "I am looking for an on-call pharmacy.",
+   "fa": "دنبال یک داروخانه شبانه‌روزی می‌گردم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Prenez ce médicament deux fois par jour, après les repas.",
+   "en": "Take this medicine twice a day, after meals.",
+   "fa": "این دارو را روزی دو بار، بعد از غذا مصرف کنید.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je me suis foulé la cheville en faisant du sport.",
+   "en": "I sprained my ankle while playing sport.",
+   "fa": "هنگام ورزش مچ پایم پیچ خورد.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Pour rester en forme, il faut dormir suffisamment et bouger régulièrement.",
+   "en": "To stay in shape, you need to sleep enough and move regularly.",
+   "fa": "برای سرحال ماندن باید به اندازه کافی خوابید و مرتب تحرک داشت.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je suis allergique à la pénicilline.",
+   "en": "I am allergic to penicillin.",
+   "fa": "به پنی‌سیلین حساسیت دارم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "La prévention coûte moins cher que les soins, et elle devrait être mieux encouragée.",
+   "en": "Prevention costs less than treatment and should be encouraged more.",
+   "fa": "پیشگیری ارزان‌تر از درمان است و باید بیشتر تشویق شود.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le système de santé français permet à chacun d'être soigné, mais il manque de médecins dans certaines régions.",
+   "en": "The French health system allows everyone to be treated, but some regions lack doctors.",
+   "fa": "نظام سلامت فرانسه به همه امکان درمان می‌دهد، اما در برخی مناطق پزشک کم است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le stress au travail est devenu un véritable problème de santé publique.",
+   "en": "Stress at work has become a genuine public health problem.",
+   "fa": "استرس در محل کار به یک مشکل واقعی سلامت عمومی تبدیل شده است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il est essentiel de considérer la santé mentale à égalité avec la santé physique.",
+   "en": "It is essential to treat mental health on an equal footing with physical health.",
+   "fa": "ضروری است که با سلامت روان همانند سلامت جسم برخورد شود.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : accident de travail, explication au responsable",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous travaillez en France et vous venez d’avoir un accident pendant vos heures de travail."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "document déclencheur : le stress aux examens",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Stress aux examens : comment l’apprivoiser"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CO",
+   "topic": "radio : téléphone portable à l'hôpital, hygiène des mains",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_example1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Qu’enseigne le professeur Michel Drancourt ?"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CO",
+   "topic": "radio : don du sang (Établissement français du sang)",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_example1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "L’objectif de l’Établissement français du sang est…"
+  },
+  {
+   "exam": "dalf",
+   "level": "C2",
+   "paper": "PO",
+   "topic": "document sonore Sciences : évolution de la relation patient-médecin et médecine moderne",
+   "source": {
+    "what": "DALF C2 Sciences, exemple 2 (candidat, épreuve orale), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C2/c2-nouveau_example2_SC_ca_ndidat_PO_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "l’évolution des relations patient-médecin"
+  }
+ ]
+}

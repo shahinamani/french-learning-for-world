@@ -1,0 +1,1128 @@
+{
+ "id": "housing",
+ "names": {
+  "fr": "Le logement",
+  "en": "Housing and renting",
+  "fa": "مسکن و اجاره"
+ },
+ "counts": {
+  "words": 86,
+  "verbs": 17,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A1"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:chambre",
+   "fr": "chambre",
+   "type": "noun",
+   "article": "la",
+   "en": "bedroom, room",
+   "fa": "اتاق خواب",
+   "level": "A1"
+  },
+  {
+   "key": "n:fenetre",
+   "fr": "fenêtre",
+   "type": "noun",
+   "article": "la",
+   "en": "window",
+   "fa": "پنجره",
+   "level": "A1"
+  },
+  {
+   "key": "n:lit",
+   "fr": "lit",
+   "type": "noun",
+   "article": "le",
+   "en": "bed",
+   "fa": "تخت",
+   "level": "A1"
+  },
+  {
+   "key": "n:maison",
+   "fr": "maison",
+   "type": "noun",
+   "article": "la",
+   "en": "house, home",
+   "fa": "خانه",
+   "level": "A1"
+  },
+  {
+   "key": "n:mur",
+   "fr": "mur",
+   "type": "noun",
+   "article": "le",
+   "en": "wall",
+   "fa": "دیوار",
+   "level": "A1"
+  },
+  {
+   "key": "n:piece",
+   "fr": "pièce",
+   "type": "noun",
+   "article": "la",
+   "en": "room; coin; piece",
+   "fa": "اتاق؛ سکه؛ قطعه",
+   "level": "A1"
+  },
+  {
+   "key": "n:porte",
+   "fr": "porte",
+   "type": "noun",
+   "article": "la",
+   "en": "door",
+   "fa": "در",
+   "level": "A1"
+  },
+  {
+   "key": "n:salle",
+   "fr": "salle",
+   "type": "noun",
+   "article": "la",
+   "en": "room, hall",
+   "fa": "سالن، اتاق",
+   "level": "A1"
+  },
+  {
+   "key": "n:table",
+   "fr": "table",
+   "type": "noun",
+   "article": "la",
+   "en": "table",
+   "fa": "میز",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "toilettes",
+   "type": "noun",
+   "article": "les",
+   "en": "toilet",
+   "fa": "دستشویی",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "annonce",
+   "type": "noun",
+   "article": "l’",
+   "en": "advert, listing",
+   "fa": "آگهی",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:appartement",
+   "fr": "appartement",
+   "type": "noun",
+   "article": "l'",
+   "en": "flat, apartment",
+   "fa": "آپارتمان",
+   "level": "A2"
+  },
+  {
+   "key": "n:chaise",
+   "fr": "chaise",
+   "type": "noun",
+   "article": "la",
+   "en": "chair",
+   "fa": "صندلی",
+   "level": "A2"
+  },
+  {
+   "key": "n:cle",
+   "fr": "clé",
+   "type": "noun",
+   "article": "la",
+   "en": "key",
+   "fa": "کلید",
+   "level": "A2"
+  },
+  {
+   "key": "n:cour",
+   "fr": "cour",
+   "type": "noun",
+   "article": "la",
+   "en": "courtyard, court",
+   "fa": "حیاط، دادگاه",
+   "level": "A2"
+  },
+  {
+   "key": "n:cuisine",
+   "fr": "cuisine",
+   "type": "noun",
+   "article": "la",
+   "en": "kitchen, cooking",
+   "fa": "آشپزخانه، آشپزی",
+   "level": "A2"
+  },
+  {
+   "key": "n:escalier",
+   "fr": "escalier",
+   "type": "noun",
+   "article": "l'",
+   "en": "stairs, staircase",
+   "fa": "پله، راه‌پله",
+   "level": "A2"
+  },
+  {
+   "key": "n:etage",
+   "fr": "étage",
+   "type": "noun",
+   "article": "l'",
+   "en": "floor, storey",
+   "fa": "طبقه",
+   "level": "A2"
+  },
+  {
+   "key": "n:jardin",
+   "fr": "jardin",
+   "type": "noun",
+   "article": "le",
+   "en": "garden",
+   "fa": "باغ، باغچه",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "locataire",
+   "type": "noun",
+   "article": "le",
+   "en": "tenant",
+   "fa": "مستأجر",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "logement",
+   "type": "noun",
+   "article": "le",
+   "en": "housing, accommodation",
+   "fa": "مسکن",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "loyer",
+   "type": "noun",
+   "article": "le",
+   "en": "rent",
+   "fa": "اجاره‌بها",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "quartier",
+   "type": "noun",
+   "article": "le",
+   "en": "neighbourhood",
+   "fa": "محله",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:salon",
+   "fr": "salon",
+   "type": "noun",
+   "article": "le",
+   "en": "living room",
+   "fa": "اتاق نشیمن، پذیرایی",
+   "level": "A2"
+  },
+  {
+   "key": "n:toit",
+   "fr": "toit",
+   "type": "noun",
+   "article": "le",
+   "en": "roof",
+   "fa": "بام، سقف",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "visite",
+   "type": "noun",
+   "article": "la",
+   "en": "viewing, visit",
+   "fa": "بازدید",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "bail",
+   "type": "noun",
+   "article": "le",
+   "en": "lease",
+   "fa": "اجاره‌نامه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "caution",
+   "type": "noun",
+   "article": "la",
+   "en": "deposit; guarantee",
+   "fa": "ودیعه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "charges",
+   "type": "noun",
+   "article": "les",
+   "en": "service charges, bills",
+   "fa": "هزینه‌های جانبی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "chauffage",
+   "type": "noun",
+   "article": "le",
+   "en": "heating",
+   "fa": "گرمایش",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "colocation",
+   "type": "noun",
+   "article": "la",
+   "en": "flat-share",
+   "fa": "هم‌خانگی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:couloir",
+   "fr": "couloir",
+   "type": "noun",
+   "article": "le",
+   "en": "corridor",
+   "fa": "راهرو",
+   "level": "B1"
+  },
+  {
+   "key": "n:couverture",
+   "fr": "couverture",
+   "type": "noun",
+   "article": "la",
+   "en": "blanket, cover",
+   "fa": "پتو، جلد",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "crédit",
+   "type": "noun",
+   "article": "le",
+   "en": "credit",
+   "fa": "اعتبار، وام",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "déménagement",
+   "type": "noun",
+   "article": "le",
+   "en": "move (house)",
+   "fa": "اسباب‌کشی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:drap",
+   "fr": "drap",
+   "type": "noun",
+   "article": "le",
+   "en": "sheet",
+   "fa": "ملافه",
+   "level": "B1"
+  },
+  {
+   "key": "n:fauteuil",
+   "fr": "fauteuil",
+   "type": "noun",
+   "article": "le",
+   "en": "armchair",
+   "fa": "مبل، صندلی راحتی",
+   "level": "B1"
+  },
+  {
+   "key": "n:immeuble",
+   "fr": "immeuble",
+   "type": "noun",
+   "article": "l'",
+   "en": "building, block of flats",
+   "fa": "ساختمان (مسکونی)",
+   "level": "B1"
+  },
+  {
+   "key": "n:lampe",
+   "fr": "lampe",
+   "type": "noun",
+   "article": "la",
+   "en": "lamp",
+   "fa": "چراغ، لامپ",
+   "level": "B1"
+  },
+  {
+   "key": "n:miroir",
+   "fr": "miroir",
+   "type": "noun",
+   "article": "le",
+   "en": "mirror",
+   "fa": "آینه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "prêt",
+   "type": "noun",
+   "article": "le",
+   "en": "loan",
+   "fa": "وام",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:rideau",
+   "fr": "rideau",
+   "type": "noun",
+   "article": "le",
+   "en": "curtain",
+   "fa": "پرده",
+   "level": "B1"
+  },
+  {
+   "key": "n:tapis",
+   "fr": "tapis",
+   "type": "noun",
+   "article": "le",
+   "en": "carpet, rug",
+   "fa": "فرش، قالیچه",
+   "level": "B1"
+  },
+  {
+   "key": "n:terrasse",
+   "fr": "terrasse",
+   "type": "noun",
+   "article": "la",
+   "en": "terrace",
+   "fa": "تراس، فضای باز",
+   "level": "B1"
+  },
+  {
+   "key": "n:vitre",
+   "fr": "vitre",
+   "type": "noun",
+   "article": "la",
+   "en": "window pane",
+   "fa": "شیشه‌ی پنجره",
+   "level": "B1"
+  },
+  {
+   "key": "n:voisin",
+   "fr": "voisin",
+   "type": "noun",
+   "article": "le",
+   "en": "neighbour",
+   "fa": "همسایه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "acheteur",
+   "type": "noun",
+   "article": "l’",
+   "en": "buyer",
+   "fa": "خریدار",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:armoire",
+   "fr": "armoire",
+   "type": "noun",
+   "article": "l'",
+   "en": "wardrobe, cupboard",
+   "fa": "کمد لباس",
+   "level": "B2"
+  },
+  {
+   "key": "n:ascenseur",
+   "fr": "ascenseur",
+   "type": "noun",
+   "article": "l'",
+   "en": "lift, elevator",
+   "fa": "آسانسور",
+   "level": "B2"
+  },
+  {
+   "key": "n:balcon",
+   "fr": "balcon",
+   "type": "noun",
+   "article": "le",
+   "en": "balcony",
+   "fa": "بالکن",
+   "level": "B2"
+  },
+  {
+   "key": "n:batiment",
+   "fr": "bâtiment",
+   "type": "noun",
+   "article": "le",
+   "en": "building",
+   "fa": "ساختمان",
+   "level": "B2"
+  },
+  {
+   "key": "n:cave",
+   "fr": "cave",
+   "type": "noun",
+   "article": "la",
+   "en": "cellar, basement",
+   "fa": "زیرزمین، انبار زیرزمینی",
+   "level": "B2"
+  },
+  {
+   "key": "n:cheminee",
+   "fr": "cheminée",
+   "type": "noun",
+   "article": "la",
+   "en": "chimney, fireplace",
+   "fa": "دودکش، شومینه",
+   "level": "B2"
+  },
+  {
+   "key": "n:clef",
+   "fr": "clef",
+   "type": "noun",
+   "article": "la",
+   "en": "key",
+   "fa": "کلید",
+   "level": "B2"
+  },
+  {
+   "key": "n:foyer",
+   "fr": "foyer",
+   "type": "noun",
+   "article": "le",
+   "en": "home, hostel",
+   "fa": "خانه، خوابگاه",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "immobilier",
+   "type": "noun",
+   "article": "l’",
+   "en": "real estate",
+   "fa": "املاک",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:meuble",
+   "fr": "meuble",
+   "type": "noun",
+   "article": "le",
+   "en": "piece of furniture",
+   "fa": "اثاثیه، مبلمان",
+   "level": "B2"
+  },
+  {
+   "key": "n:placard",
+   "fr": "placard",
+   "type": "noun",
+   "article": "le",
+   "en": "cupboard",
+   "fa": "کمد دیواری",
+   "level": "B2"
+  },
+  {
+   "key": "n:plafond",
+   "fr": "plafond",
+   "type": "noun",
+   "article": "le",
+   "en": "ceiling",
+   "fa": "سقف",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "préavis",
+   "type": "noun",
+   "article": "le",
+   "en": "notice period",
+   "fa": "مهلت اخطار",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:proprietaire",
+   "fr": "propriétaire",
+   "type": "noun",
+   "article": "le",
+   "en": "owner, landlord",
+   "fa": "صاحب، مالک",
+   "level": "B2"
+  },
+  {
+   "key": "n:seuil",
+   "fr": "seuil",
+   "type": "noun",
+   "article": "le",
+   "en": "threshold",
+   "fa": "آستانه",
+   "level": "B2"
+  },
+  {
+   "key": "n:tiroir",
+   "fr": "tiroir",
+   "type": "noun",
+   "article": "le",
+   "en": "drawer",
+   "fa": "کشو",
+   "level": "B2"
+  },
+  {
+   "key": "n:villa",
+   "fr": "villa",
+   "type": "noun",
+   "article": "la",
+   "en": "villa",
+   "fa": "ویلا",
+   "level": "B2"
+  },
+  {
+   "key": "n:canape",
+   "fr": "canapé",
+   "type": "noun",
+   "article": "le",
+   "en": "sofa, couch",
+   "fa": "مبل، کاناپه",
+   "level": "C1"
+  },
+  {
+   "key": "n:carreau",
+   "fr": "carreau",
+   "type": "noun",
+   "article": "le",
+   "en": "tile, windowpane",
+   "fa": "کاشی، شیشه‌ی پنجره",
+   "level": "C1"
+  },
+  {
+   "key": "n:concierge",
+   "fr": "concierge",
+   "type": "noun",
+   "article": "la",
+   "en": "caretaker, concierge (m. or f.)",
+   "fa": "سرایدار، دربان",
+   "level": "C1"
+  },
+  {
+   "key": "n:demeure",
+   "fr": "demeure",
+   "type": "noun",
+   "article": "la",
+   "en": "residence, mansion",
+   "fa": "اقامتگاه، عمارت",
+   "level": "C1"
+  },
+  {
+   "key": "n:hall",
+   "fr": "hall",
+   "type": "noun",
+   "article": "le",
+   "en": "hall, lobby",
+   "fa": "سالن ورودی",
+   "level": "C1"
+  },
+  {
+   "key": "n:oreiller",
+   "fr": "oreiller",
+   "type": "noun",
+   "article": "l'",
+   "en": "pillow",
+   "fa": "بالش",
+   "level": "C1"
+  },
+  {
+   "key": "n:plancher",
+   "fr": "plancher",
+   "type": "noun",
+   "article": "le",
+   "en": "wooden floor",
+   "fa": "کف چوبی",
+   "level": "C1"
+  },
+  {
+   "key": "n:studio",
+   "fr": "studio",
+   "type": "noun",
+   "article": "le",
+   "en": "studio, studio flat",
+   "fa": "استودیو، آپارتمان یک‌اتاقه",
+   "level": "C1"
+  },
+  {
+   "key": "n:volet",
+   "fr": "volet",
+   "type": "noun",
+   "article": "le",
+   "en": "shutter",
+   "fa": "کرکره، پنجره‌ی چوبی",
+   "level": "C1"
+  },
+  {
+   "key": "n:ampoule",
+   "fr": "ampoule",
+   "type": "noun",
+   "article": "l'",
+   "en": "light bulb; blister",
+   "fa": "لامپ؛ تاول",
+   "level": "C2"
+  },
+  {
+   "key": "n:baignoire",
+   "fr": "baignoire",
+   "type": "noun",
+   "article": "la",
+   "en": "bathtub",
+   "fa": "وان حمام",
+   "level": "C2"
+  },
+  {
+   "key": "n:balai",
+   "fr": "balai",
+   "type": "noun",
+   "article": "le",
+   "en": "broom",
+   "fa": "جارو",
+   "level": "C2"
+  },
+  {
+   "key": "n:coussin",
+   "fr": "coussin",
+   "type": "noun",
+   "article": "le",
+   "en": "cushion",
+   "fa": "کوسن",
+   "level": "C2"
+  },
+  {
+   "key": "n:divan",
+   "fr": "divan",
+   "type": "noun",
+   "article": "le",
+   "en": "couch, sofa",
+   "fa": "کاناپه",
+   "level": "C2"
+  },
+  {
+   "key": "n:domicile",
+   "fr": "domicile",
+   "type": "noun",
+   "article": "le",
+   "en": "home, place of residence",
+   "fa": "محل سکونت، منزل",
+   "level": "C2"
+  },
+  {
+   "key": "n:frigo",
+   "fr": "frigo",
+   "type": "noun",
+   "article": "le",
+   "en": "fridge (informal)",
+   "fa": "یخچال (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:grenier",
+   "fr": "grenier",
+   "type": "noun",
+   "article": "le",
+   "en": "attic; granary",
+   "fa": "اتاق زیر شیروانی، انبار غله",
+   "level": "C2"
+  },
+  {
+   "key": "n:matelas",
+   "fr": "matelas",
+   "type": "noun",
+   "article": "le",
+   "en": "mattress",
+   "fa": "تشک",
+   "level": "C2"
+  },
+  {
+   "key": "n:parquet",
+   "fr": "parquet",
+   "type": "noun",
+   "article": "le",
+   "en": "wooden floor",
+   "fa": "کف چوبی",
+   "level": "C2"
+  },
+  {
+   "key": "n:pavillon",
+   "fr": "pavillon",
+   "type": "noun",
+   "article": "le",
+   "en": "pavilion; detached house",
+   "fa": "پاویون، خانه‌ی ویلایی",
+   "level": "C2"
+  },
+  {
+   "key": "n:portail",
+   "fr": "portail",
+   "type": "noun",
+   "article": "le",
+   "en": "(large) gate; web portal",
+   "fa": "دروازه، درگاه اینترنتی",
+   "level": "C2"
+  },
+  {
+   "key": "n:serrure",
+   "fr": "serrure",
+   "type": "noun",
+   "article": "la",
+   "en": "lock",
+   "fa": "قفل",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:habiter",
+   "fr": "habiter",
+   "type": "verb",
+   "en": "to live in, to occupy (to have as a home.)",
+   "fa": "سکونت داشتن، زندگی کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:construire",
+   "fr": "construire",
+   "type": "verb",
+   "en": "to build",
+   "fa": "ساختن",
+   "level": "A2"
+  },
+  {
+   "key": "v:déménager",
+   "fr": "déménager",
+   "type": "verb",
+   "en": "to move (an object from a place to another)",
+   "fa": "اسباب‌کشی کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:installer",
+   "fr": "installer",
+   "type": "verb",
+   "en": "to install",
+   "fa": "نصب کردن، جا دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:louer",
+   "fr": "louer",
+   "type": "verb",
+   "en": "to rent",
+   "fa": "اجاره کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:bâtir",
+   "fr": "bâtir",
+   "type": "verb",
+   "en": "to build, to construct",
+   "fa": "ساختن، بنا کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:demeurer",
+   "fr": "demeurer",
+   "type": "verb",
+   "en": "to live, stay",
+   "fa": "ماندن، سکونت داشتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:emménager",
+   "fr": "emménager",
+   "type": "verb",
+   "en": "to move in (to a new home)",
+   "fa": "اسباب‌کشی کردن (به خانهٔ جدید)",
+   "level": "B1"
+  },
+  {
+   "key": "v:loger",
+   "fr": "loger",
+   "type": "verb",
+   "en": "to lodge, to stay, to be lodging (to temporarily inhabit)",
+   "fa": "اقامت داشتن، جا دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:aménager",
+   "fr": "aménager",
+   "type": "verb",
+   "en": "to lay out, fit out",
+   "fa": "تغییر کاربری دادن، مرتب کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:bricoler",
+   "fr": "bricoler",
+   "type": "verb",
+   "en": "to do DIY",
+   "fa": "کارهای دستی و تعمیرات خانگی کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:héberger",
+   "fr": "héberger",
+   "type": "verb",
+   "en": "to house, accommodate",
+   "fa": "پذیرایی کردن، جا دادن",
+   "level": "C1"
+  },
+  {
+   "key": "v:meubler",
+   "fr": "meubler",
+   "type": "verb",
+   "en": "to furnish",
+   "fa": "مبله کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:repeindre",
+   "fr": "repeindre",
+   "type": "verb",
+   "en": "to repaint",
+   "fa": "دوباره رنگ کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:tapisser",
+   "fr": "tapisser",
+   "type": "verb",
+   "en": "to carpet (cover with carpet)",
+   "fa": "پوشاندن (دیوار)، کاغذدیواری کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:verrouiller",
+   "fr": "verrouiller",
+   "type": "verb",
+   "en": "to bolt (lock with a bolt)",
+   "fa": "قفل کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:rénover",
+   "fr": "rénover",
+   "type": "verb",
+   "en": "to renew, to renovate, to revitalize",
+   "fa": "نوسازی کردن، بازسازی کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "J'habite dans un appartement au deuxième étage.",
+   "en": "I live in a flat on the second floor.",
+   "fa": "من در یک آپارتمان در طبقه دوم زندگی می‌کنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Il y a une chambre, un salon et une cuisine.",
+   "en": "There is a bedroom, a living room and a kitchen.",
+   "fa": "یک اتاق خواب، یک پذیرایی و یک آشپزخانه هست.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je cherche un deux-pièces à louer.",
+   "en": "I am looking for a two-room flat to rent.",
+   "fa": "دنبال یک آپارتمان دو اتاقه برای اجاره می‌گردم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Quel est le montant du loyer ?",
+   "en": "How much is the rent?",
+   "fa": "اجاره‌بها چقدر است؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Est-ce que l'appartement est meublé ?",
+   "en": "Is the flat furnished?",
+   "fa": "آیا آپارتمان مبله است؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je voudrais visiter l'appartement samedi matin.",
+   "en": "I would like to view the flat on Saturday morning.",
+   "fa": "می‌خواهم شنبه صبح آپارتمان را ببینم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Le loyer est charges comprises ?",
+   "en": "Is the rent including charges?",
+   "fa": "آیا اجاره‌بها شامل هزینه‌های جانبی است؟",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je souhaite résilier mon bail avec un préavis d'un mois.",
+   "en": "I wish to terminate my lease with one month's notice.",
+   "fa": "می‌خواهم اجاره‌نامه‌ام را با یک ماه اخطار فسخ کنم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Le chauffage ne fonctionne plus depuis lundi.",
+   "en": "The heating has not been working since Monday.",
+   "fa": "از دوشنبه گرمایش کار نمی‌کند.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai déménagé parce que mon ancien quartier était trop bruyant.",
+   "en": "I moved because my old neighbourhood was too noisy.",
+   "fa": "اسباب‌کشی کردم چون محله قبلی‌ام خیلی پرسروصدا بود.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Quand pourrai-je récupérer ma caution ?",
+   "en": "When will I be able to get my deposit back?",
+   "fa": "کی می‌توانم ودیعه‌ام را پس بگیرم؟",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Les prix de l'immobilier ont flambé ces dernières années.",
+   "en": "Property prices have soared in recent years.",
+   "fa": "قیمت املاک در سال‌های اخیر به شدت بالا رفته است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il vaut mieux acheter que louer, car le loyer, c'est de l'argent perdu.",
+   "en": "It is better to buy than to rent, because rent is money lost.",
+   "fa": "خرید بهتر از اجاره است، چون اجاره‌بها پولی است که از دست می‌رود.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La colocation est une solution pratique pour les étudiants qui ont un petit budget.",
+   "en": "Flat-sharing is a practical solution for students on a small budget.",
+   "fa": "هم‌خانگی راه‌حل کاربردی برای دانشجویانی است که بودجه کمی دارند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le manque de logements abordables touche surtout les jeunes et les familles modestes.",
+   "en": "The lack of affordable housing affects mainly young people and low-income families.",
+   "fa": "کمبود مسکن مقرون‌به‌صرفه بیش از همه جوانان و خانواده‌های کم‌درآمد را تحت تأثیر می‌گذارد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Face à la crise du logement, il conviendrait d'encadrer les loyers et de construire davantage de logements sociaux.",
+   "en": "Faced with the housing crisis, rents should be capped and more social housing built.",
+   "fa": "در برابر بحران مسکن، باید سقف اجاره‌بها تعیین شود و مسکن اجتماعی بیشتری ساخته شود.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "CE",
+   "topic": "annonces sur un panneau d'entreprise : cours de piano, ciné-club, appartements à louer, tennis",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Appartements"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CE",
+   "topic": "petites annonces : location d'appartement et de maison pour des amis",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/a2_ex1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Plusieurs de vos amis français recherchent un appartement."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : recherche de logement dans une agence immobilière",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "vous entrez dans une agence immobilière pour expliquer le"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section A : situation pratique de la vie quotidienne (emploi, location d'un appartement, agence de voyage)",
+   "source": {
+    "what": "TEF, livret de l'examinateur expression orale 2024 (Le français des affaires) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://lefrancaisdesaffaires.fr/wp-content/uploads/2024/12/2024-livret-de-examinateur-tef-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "location d’un appartement, prise"
+  }
+ ]
+}

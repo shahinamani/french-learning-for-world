@@ -1,0 +1,1028 @@
+{
+ "id": "family-relationships",
+ "names": {
+  "fr": "La famille et les relations",
+  "en": "Family and relationships",
+  "fa": "خانواده و روابط"
+ },
+ "counts": {
+  "words": 69,
+  "verbs": 25,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:ami",
+   "fr": "ami",
+   "type": "noun",
+   "article": "l'",
+   "en": "friend (l'amie, f.)",
+   "fa": "دوست",
+   "level": "A1"
+  },
+  {
+   "key": "n:amour",
+   "fr": "amour",
+   "type": "noun",
+   "article": "l'",
+   "en": "love",
+   "fa": "عشق",
+   "level": "A1"
+  },
+  {
+   "key": "n:enfant",
+   "fr": "enfant",
+   "type": "noun",
+   "article": "l'",
+   "en": "child",
+   "fa": "کودک، بچه",
+   "level": "A1"
+  },
+  {
+   "key": "n:famille",
+   "fr": "famille",
+   "type": "noun",
+   "article": "la",
+   "en": "family",
+   "fa": "خانواده",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "femme",
+   "type": "noun",
+   "article": "la",
+   "en": "wife; woman",
+   "fa": "همسر",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:fille",
+   "fr": "fille",
+   "type": "noun",
+   "article": "la",
+   "en": "girl, daughter",
+   "fa": "دختر",
+   "level": "A1"
+  },
+  {
+   "key": "n:fils",
+   "fr": "fils",
+   "type": "noun",
+   "article": "le",
+   "en": "son",
+   "fa": "پسر، فرزند پسر",
+   "level": "A1"
+  },
+  {
+   "key": "n:frere",
+   "fr": "frère",
+   "type": "noun",
+   "article": "le",
+   "en": "brother",
+   "fa": "برادر",
+   "level": "A1"
+  },
+  {
+   "key": "n:maman",
+   "fr": "maman",
+   "type": "noun",
+   "article": "la",
+   "en": "mum, mummy",
+   "fa": "مامان",
+   "level": "A1"
+  },
+  {
+   "key": "n:mari",
+   "fr": "mari",
+   "type": "noun",
+   "article": "le",
+   "en": "husband",
+   "fa": "شوهر",
+   "level": "A1"
+  },
+  {
+   "key": "n:mere",
+   "fr": "mère",
+   "type": "noun",
+   "article": "la",
+   "en": "mother",
+   "fa": "مادر",
+   "level": "A1"
+  },
+  {
+   "key": "n:papa",
+   "fr": "papa",
+   "type": "noun",
+   "article": "le",
+   "en": "dad",
+   "fa": "بابا",
+   "level": "A1"
+  },
+  {
+   "key": "n:parent",
+   "fr": "parent",
+   "type": "noun",
+   "article": "le",
+   "en": "parent, relative",
+   "fa": "والد، خویشاوند",
+   "level": "A1"
+  },
+  {
+   "key": "n:pere",
+   "fr": "père",
+   "type": "noun",
+   "article": "le",
+   "en": "father",
+   "fa": "پدر",
+   "level": "A1"
+  },
+  {
+   "key": "n:soeur",
+   "fr": "sœur",
+   "type": "noun",
+   "article": "la",
+   "en": "sister",
+   "fa": "خواهر",
+   "level": "A1"
+  },
+  {
+   "key": "a:amoureux",
+   "fr": "amoureux",
+   "type": "adjective",
+   "article": null,
+   "en": "in love",
+   "fa": "عاشق",
+   "level": "A2"
+  },
+  {
+   "key": "n:bebe",
+   "fr": "bébé",
+   "type": "noun",
+   "article": "le",
+   "en": "baby",
+   "fa": "نوزاد، بچه",
+   "level": "A2"
+  },
+  {
+   "key": "n:cadeau",
+   "fr": "cadeau",
+   "type": "noun",
+   "article": "le",
+   "en": "gift, present",
+   "fa": "هدیه",
+   "level": "A2"
+  },
+  {
+   "key": "n:camarade",
+   "fr": "camarade",
+   "type": "noun",
+   "article": "le",
+   "en": "classmate, comrade (m/f)",
+   "fa": "هم‌کلاسی، رفیق",
+   "level": "A2"
+  },
+  {
+   "key": "n:confiance",
+   "fr": "confiance",
+   "type": "noun",
+   "article": "la",
+   "en": "trust, confidence",
+   "fa": "اعتماد",
+   "level": "A2"
+  },
+  {
+   "key": "n:copain",
+   "fr": "copain",
+   "type": "noun",
+   "article": "le",
+   "en": "friend, pal",
+   "fa": "رفیق، دوست",
+   "level": "A2"
+  },
+  {
+   "key": "n:cousin",
+   "fr": "cousin",
+   "type": "noun",
+   "article": "le",
+   "en": "cousin",
+   "fa": "پسرعمو، پسردایی",
+   "level": "A2"
+  },
+  {
+   "key": "n:fete",
+   "fr": "fête",
+   "type": "noun",
+   "article": "la",
+   "en": "party, festival",
+   "fa": "جشن",
+   "level": "A2"
+  },
+  {
+   "key": "n:gosse",
+   "fr": "gosse",
+   "type": "noun",
+   "article": "le",
+   "en": "kid, child (informal, m/f)",
+   "fa": "بچه (محاوره‌ای)",
+   "level": "A2"
+  },
+  {
+   "key": "n:grand-mere",
+   "fr": "grand-mère",
+   "type": "noun",
+   "article": "la",
+   "en": "grandmother",
+   "fa": "مادربزرگ",
+   "level": "A2"
+  },
+  {
+   "key": "n:grand-pere",
+   "fr": "grand-père",
+   "type": "noun",
+   "article": "le",
+   "en": "grandfather",
+   "fa": "پدربزرگ",
+   "level": "A2"
+  },
+  {
+   "key": "n:mariage",
+   "fr": "mariage",
+   "type": "noun",
+   "article": "le",
+   "en": "wedding, marriage",
+   "fa": "عروسی، ازدواج",
+   "level": "A2"
+  },
+  {
+   "key": "n:oncle",
+   "fr": "oncle",
+   "type": "noun",
+   "article": "l'",
+   "en": "uncle",
+   "fa": "عمو، دایی",
+   "level": "A2"
+  },
+  {
+   "key": "n:tante",
+   "fr": "tante",
+   "type": "noun",
+   "article": "la",
+   "en": "aunt",
+   "fa": "عمه، خاله",
+   "level": "A2"
+  },
+  {
+   "key": "n:amant",
+   "fr": "amant",
+   "type": "noun",
+   "article": "l'",
+   "en": "lover",
+   "fa": "معشوق، عاشق",
+   "level": "B1"
+  },
+  {
+   "key": "n:amitie",
+   "fr": "amitié",
+   "type": "noun",
+   "article": "l'",
+   "en": "friendship",
+   "fa": "دوستی",
+   "level": "B1"
+  },
+  {
+   "key": "n:anniversaire",
+   "fr": "anniversaire",
+   "type": "noun",
+   "article": "l'",
+   "en": "birthday, anniversary",
+   "fa": "تولد، سالگرد",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "belle-mère",
+   "type": "noun",
+   "article": "la",
+   "en": "mother-in-law; stepmother",
+   "fa": "مادرزن، نامادری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:compagnon",
+   "fr": "compagnon",
+   "type": "noun",
+   "article": "le",
+   "en": "companion, partner",
+   "fa": "همراه، شریک",
+   "level": "B1"
+  },
+  {
+   "key": "n:couple",
+   "fr": "couple",
+   "type": "noun",
+   "article": "le",
+   "en": "couple",
+   "fa": "زوج",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "dispute",
+   "type": "noun",
+   "article": "la",
+   "en": "argument",
+   "fa": "دعوا",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:enfance",
+   "fr": "enfance",
+   "type": "noun",
+   "article": "l'",
+   "en": "childhood",
+   "fa": "کودکی",
+   "level": "B1"
+  },
+  {
+   "key": "n:epoux",
+   "fr": "époux",
+   "type": "noun",
+   "article": "l'",
+   "en": "husband, spouse",
+   "fa": "همسر",
+   "level": "B1"
+  },
+  {
+   "key": "n:gamin",
+   "fr": "gamin",
+   "type": "noun",
+   "article": "le",
+   "en": "kid, youngster",
+   "fa": "بچه، پسربچه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "génération",
+   "type": "noun",
+   "article": "la",
+   "en": "generation",
+   "fa": "نسل",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:jeunesse",
+   "fr": "jeunesse",
+   "type": "noun",
+   "article": "la",
+   "en": "youth",
+   "fa": "جوانی",
+   "level": "B1"
+  },
+  {
+   "key": "n:naissance",
+   "fr": "naissance",
+   "type": "noun",
+   "article": "la",
+   "en": "birth",
+   "fa": "تولد",
+   "level": "B1"
+  },
+  {
+   "key": "n:pote",
+   "fr": "pote",
+   "type": "noun",
+   "article": "le",
+   "en": "mate, pal (informal)",
+   "fa": "رفیق (عامیانه)",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "respect",
+   "type": "noun",
+   "article": "le",
+   "en": "respect",
+   "fa": "احترام",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:voisin",
+   "fr": "voisin",
+   "type": "noun",
+   "article": "le",
+   "en": "neighbour",
+   "fa": "همسایه",
+   "level": "B1"
+  },
+  {
+   "key": "n:fiance",
+   "fr": "fiancé",
+   "type": "noun",
+   "article": "le",
+   "en": "fiancé, betrothed",
+   "fa": "نامزد",
+   "level": "B2"
+  },
+  {
+   "key": "n:invite",
+   "fr": "invité",
+   "type": "noun",
+   "article": "l'",
+   "en": "guest",
+   "fa": "مهمان",
+   "level": "B2"
+  },
+  {
+   "key": "a:jaloux",
+   "fr": "jaloux",
+   "type": "adjective",
+   "article": null,
+   "en": "jealous",
+   "fa": "حسود، رشک‌برنده",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "rupture",
+   "type": "noun",
+   "article": "la",
+   "en": "break-up",
+   "fa": "جدایی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "solitude",
+   "type": "noun",
+   "article": "la",
+   "en": "loneliness",
+   "fa": "تنهایی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:tendresse",
+   "fr": "tendresse",
+   "type": "noun",
+   "article": "la",
+   "en": "tenderness, affection",
+   "fa": "مهربانی، محبت",
+   "level": "B2"
+  },
+  {
+   "key": "n:veuf",
+   "fr": "veuf",
+   "type": "noun",
+   "article": "le",
+   "en": "widower",
+   "fa": "مرد بیوه",
+   "level": "B2"
+  },
+  {
+   "key": "n:affection",
+   "fr": "affection",
+   "type": "noun",
+   "article": "l'",
+   "en": "affection",
+   "fa": "محبت، دلبستگی",
+   "level": "C1"
+  },
+  {
+   "key": "n:deuil",
+   "fr": "deuil",
+   "type": "noun",
+   "article": "le",
+   "en": "mourning, bereavement",
+   "fa": "عزا، سوگ",
+   "level": "C1"
+  },
+  {
+   "key": "n:enterrement",
+   "fr": "enterrement",
+   "type": "noun",
+   "article": "l'",
+   "en": "funeral, burial",
+   "fa": "مراسم خاک‌سپاری، تشییع",
+   "level": "C1"
+  },
+  {
+   "key": "n:invitation",
+   "fr": "invitation",
+   "type": "noun",
+   "article": "l'",
+   "en": "invitation",
+   "fa": "دعوت‌نامه، دعوت",
+   "level": "C1"
+  },
+  {
+   "key": "n:jalousie",
+   "fr": "jalousie",
+   "type": "noun",
+   "article": "la",
+   "en": "jealousy",
+   "fa": "حسادت، رشک",
+   "level": "C1"
+  },
+  {
+   "key": "n:neveu",
+   "fr": "neveu",
+   "type": "noun",
+   "article": "le",
+   "en": "nephew",
+   "fa": "برادرزاده، خواهرزاده",
+   "level": "C1"
+  },
+  {
+   "key": "n:noce",
+   "fr": "noce",
+   "type": "noun",
+   "article": "la",
+   "en": "wedding",
+   "fa": "عروسی، جشن ازدواج",
+   "level": "C1"
+  },
+  {
+   "key": "n:adolescent",
+   "fr": "adolescent",
+   "type": "noun",
+   "article": "l'",
+   "en": "teenager",
+   "fa": "نوجوان",
+   "level": "C2"
+  },
+  {
+   "key": "n:aine",
+   "fr": "aîné",
+   "type": "noun",
+   "article": "l'",
+   "en": "elder, eldest child",
+   "fa": "فرزند بزرگ‌تر",
+   "level": "C2"
+  },
+  {
+   "key": "n:ancetre",
+   "fr": "ancêtre",
+   "type": "noun",
+   "article": "l'",
+   "en": "ancestor",
+   "fa": "نیا، جد",
+   "level": "C2"
+  },
+  {
+   "key": "n:beau-frere",
+   "fr": "beau-frère",
+   "type": "noun",
+   "article": "le",
+   "en": "brother-in-law",
+   "fa": "برادرزن، شوهرخواهر یا برادرشوهر",
+   "level": "C2"
+  },
+  {
+   "key": "n:beau-pere",
+   "fr": "beau-père",
+   "type": "noun",
+   "article": "le",
+   "en": "father-in-law; stepfather",
+   "fa": "پدرزن یا پدرشوهر؛ ناپدری",
+   "level": "C2"
+  },
+  {
+   "key": "n:divorce",
+   "fr": "divorce",
+   "type": "noun",
+   "article": "le",
+   "en": "divorce",
+   "fa": "طلاق",
+   "level": "C2"
+  },
+  {
+   "key": "n:fiston",
+   "fr": "fiston",
+   "type": "noun",
+   "article": "le",
+   "en": "son, sonny (informal)",
+   "fa": "پسرم (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:frangin",
+   "fr": "frangin",
+   "type": "noun",
+   "article": "le",
+   "en": "brother (informal)",
+   "fa": "برادر (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:jumeau",
+   "fr": "jumeau",
+   "type": "noun",
+   "article": "le",
+   "en": "twin",
+   "fa": "دوقلو",
+   "level": "C2"
+  },
+  {
+   "key": "n:tonton",
+   "fr": "tonton",
+   "type": "noun",
+   "article": "le",
+   "en": "uncle (familiar)",
+   "fa": "عمو یا دایی (محاوره‌ای)",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:adorer",
+   "fr": "adorer",
+   "type": "verb",
+   "en": "to love, to adore",
+   "fa": "خیلی دوست داشتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:aimer",
+   "fr": "aimer",
+   "type": "verb",
+   "en": "to love",
+   "fa": "دوست داشتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:embrasser",
+   "fr": "embrasser",
+   "type": "verb",
+   "en": "to kiss (also: to hug)",
+   "fa": "بوسیدن، در آغوش گرفتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:épouser",
+   "fr": "épouser",
+   "type": "verb",
+   "en": "to marry, to wed",
+   "fa": "ازدواج کردن با",
+   "level": "A1"
+  },
+  {
+   "key": "v:inviter",
+   "fr": "inviter",
+   "type": "verb",
+   "en": "to invite",
+   "fa": "دعوت کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:marier",
+   "fr": "marier",
+   "type": "verb",
+   "en": "to marry, to marry off, to perform or cause the marriage of",
+   "fa": "به عقد درآوردن، ازدواج دادن",
+   "level": "A1"
+  },
+  {
+   "key": "v:pardonner",
+   "fr": "pardonner",
+   "type": "verb",
+   "en": "to pardon, forgive",
+   "fa": "بخشیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:remercier",
+   "fr": "remercier",
+   "type": "verb",
+   "en": "to thank (someone)",
+   "fa": "تشکر کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:rencontrer",
+   "fr": "rencontrer",
+   "type": "verb",
+   "en": "to meet",
+   "fa": "ملاقات کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:accueillir",
+   "fr": "accueillir",
+   "type": "verb",
+   "en": "to welcome, to accommodate",
+   "fa": "پذیرایی کردن، استقبال کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:disputer",
+   "fr": "disputer",
+   "type": "verb",
+   "en": "to dispute",
+   "fa": "بازی کردن، رقابت کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:élever",
+   "fr": "élever",
+   "type": "verb",
+   "en": "to raise",
+   "fa": "پرورش دادن، بزرگ کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:fêter",
+   "fr": "fêter",
+   "type": "verb",
+   "en": "to celebrate (an event)",
+   "fa": "جشن گرفتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:caresser",
+   "fr": "caresser",
+   "type": "verb",
+   "en": "to stroke, to caress (to move the hand over the surface of)",
+   "fa": "نوازش کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:chérir",
+   "fr": "chérir",
+   "type": "verb",
+   "en": "to cherish",
+   "fa": "عزیز داشتن، دوست داشتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:consoler",
+   "fr": "consoler",
+   "type": "verb",
+   "en": "to comfort, console",
+   "fa": "دلداری دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:divorcer",
+   "fr": "divorcer",
+   "type": "verb",
+   "en": "to divorce (to legally dissolve a marriage)",
+   "fa": "طلاق گرفتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:draguer",
+   "fr": "draguer",
+   "type": "verb",
+   "en": "to hit on, chat up (flirt)",
+   "fa": "تور کردن، لایروبی کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:fréquenter",
+   "fr": "fréquenter",
+   "type": "verb",
+   "en": "to frequent, to go to (a place)",
+   "fa": "رفت‌وآمد داشتن، معاشرت کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:hériter",
+   "fr": "hériter",
+   "type": "verb",
+   "en": "to inherit",
+   "fa": "ارث بردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:séduire",
+   "fr": "séduire",
+   "type": "verb",
+   "en": "to seduce",
+   "fa": "فریفتن، جذب کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:enlacer",
+   "fr": "enlacer",
+   "type": "verb",
+   "en": "to wrap around, to embrace",
+   "fa": "در آغوش گرفتن",
+   "level": "B2"
+  },
+  {
+   "key": "v:réconcilier",
+   "fr": "réconcilier",
+   "type": "verb",
+   "en": "to reconcile",
+   "fa": "آشتی دادن",
+   "level": "B2"
+  },
+  {
+   "key": "v:quereller",
+   "fr": "quereller",
+   "type": "verb",
+   "en": "to quarrel, to squabble",
+   "fa": "با هم جر و بحث کردن، دعوا کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:chamailler",
+   "fr": "se chamailler",
+   "type": "verb",
+   "en": "to bicker, to squabble, to quarrel, especially over something of little value",
+   "fa": "کل‌کل کردن، سر چیزی بگومگو کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "J'ai deux frères et une sœur.",
+   "en": "I have two brothers and a sister.",
+   "fa": "من دو برادر و یک خواهر دارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Ma mère s'appelle Maryam.",
+   "en": "My mother's name is Maryam.",
+   "fa": "اسم مادرم مریم است.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis marié(e) et j'ai un enfant.",
+   "en": "I am married and have one child.",
+   "fa": "من متأهل هستم و یک فرزند دارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Joyeux anniversaire !",
+   "en": "Happy birthday!",
+   "fa": "تولدت مبارک!",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je m'entends bien avec mes voisins.",
+   "en": "I get along well with my neighbours.",
+   "fa": "با همسایه‌هایم رابطه خوبی دارم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "On se voit tous les dimanches en famille.",
+   "en": "We get together as a family every Sunday.",
+   "fa": "هر یکشنبه خانوادگی همدیگر را می‌بینیم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je t'invite à mon mariage le 12 juin.",
+   "en": "I invite you to my wedding on 12 June.",
+   "fa": "تو را به عروسی‌ام در ۱۲ ژوئن دعوت می‌کنم.",
+   "level": "A2",
+   "use": "writing"
+  },
+  {
+   "fr": "C'est mon meilleur ami depuis l'enfance.",
+   "en": "He is my best friend since childhood.",
+   "fa": "او از بچگی بهترین دوست من است.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je me suis disputé avec ma sœur, mais on s'est réconciliés.",
+   "en": "I had an argument with my sister, but we made up.",
+   "fa": "با خواهرم دعوا کردم، ولی آشتی کردیم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Dans une amitié, la confiance est essentielle.",
+   "en": "In a friendship, trust is essential.",
+   "fa": "در دوستی، اعتماد اساسی است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Mes parents m'ont toujours soutenu dans mes choix.",
+   "en": "My parents have always supported me in my choices.",
+   "fa": "پدر و مادرم همیشه در انتخاب‌هایم از من حمایت کرده‌اند.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "J'ai perdu le contact avec certains amis d'enfance.",
+   "en": "I have lost touch with some childhood friends.",
+   "fa": "ارتباطم با بعضی از دوستان دوران کودکی قطع شده است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "La famille reste, selon moi, le principal lieu d'apprentissage des valeurs.",
+   "en": "In my view, the family remains the main place where values are learned.",
+   "fa": "به نظر من، خانواده همچنان مهم‌ترین جایگاه آموختن ارزش‌هاست.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les relations à distance demandent beaucoup d'efforts de part et d'autre.",
+   "en": "Long-distance relationships require a lot of effort from both sides.",
+   "fa": "روابط از راه دور از هر دو طرف تلاش زیادی می‌طلبد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il est parfois difficile de concilier vie de couple et vie professionnelle.",
+   "en": "It is sometimes hard to balance couple life and professional life.",
+   "fa": "گاهی تلفیق زندگی زناشویی و زندگی حرفه‌ای دشوار است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Si les liens familiaux se sont distendus, c'est en partie à cause de la mobilité professionnelle.",
+   "en": "If family ties have loosened, it is partly because of job mobility.",
+   "fa": "اگر پیوندهای خانوادگی سست شده است، تا حدی به دلیل جابه‌جایی‌های شغلی است.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PE",
+   "topic": "forum internet : les fêtes de famille",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "sur le thème des fêtes de famille"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PE",
+   "topic": "courriel pour féliciter des amis de leur mariage et accepter l'invitation",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "avez reçu ce faire-part de mariage."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CO",
+   "topic": "invitation à une fête (anniversaire) entre amis",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/Sujet_demo_2019_TP_B1_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Qu’est-ce que Célia va fêter ?"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CE",
+   "topic": "texte argumentatif : les « nouveaux pères », partage des tâches parentales",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_example1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Les nouveaux pères ne sont pas des gens fabuleux"
+  }
+ ]
+}

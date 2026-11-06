@@ -1,0 +1,1576 @@
+{
+ "version": 1,
+ "checkedOn": "2026-11-06",
+ "note": "Compiled 2026-11-06. Each URL was requested on that date. 'blocked' means the site refused an automated request (or served a bot challenge that answers every address alike), so the page was not confirmed on that date. Whether a resource is fully free or has a paid tier was judged from its pages on that date, or from general knowledge where the site was blocked, and may change. Descriptions are this project's own words. Levels are empty unless the publisher states them.",
+ "resources": [
+  {
+   "id": "rfi-francais-facile",
+   "title": "Le français facile",
+   "url": "https://francaisfacile.rfi.fr/fr/",
+   "publisher": "RFI",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "reading",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "RFI's learning site for French as a foreign language, with audio, news and exercises.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "rfi-journal-francais-facile",
+   "title": "Journal en français facile",
+   "url": "https://www.rfi.fr/fr/podcasts/journal-fran%C3%A7ais-facile/",
+   "publisher": "RFI",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "A daily news bulletin read slowly in simplified French.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "podcast-francais-facile",
+   "title": "Podcast Français Facile",
+   "url": "https://www.podcastfrancaisfacile.com/",
+   "publisher": "Podcast Français Facile",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "A French-learning podcast and website with episode transcripts.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "innerfrench-podcast",
+   "title": "InnerFrench",
+   "url": "https://innerfrench.com/podcast/",
+   "publisher": "InnerFrench",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "A podcast in French for intermediate learners about French topics.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "coffee-break-french",
+   "title": "Coffee Break French",
+   "url": "https://coffeebreaklanguages.com/coffeebreakfrench/",
+   "publisher": "Coffee Break Languages",
+   "kind": "podcast",
+   "cost": "free-tier",
+   "costNote": "The podcast lessons and the free signup are free; the Coffee Break Academy courses are paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "speaking",
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "A podcast-based French course taught in English with French practice.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "france-culture",
+   "title": "France Culture",
+   "url": "https://www.radiofrance.fr/franceculture",
+   "publisher": "Radio France",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Public-service French radio station with live streams and podcasts on culture, history and ideas.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "france-inter",
+   "title": "France Inter",
+   "url": "https://www.radiofrance.fr/franceinter",
+   "publisher": "Radio France",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Public-service French general radio station with live streams and podcasts.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "franceinfo-radio",
+   "title": "franceinfo",
+   "url": "https://www.radiofrance.fr/franceinfo",
+   "publisher": "Radio France",
+   "kind": "news",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Public-service French news radio, live and as podcasts.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "franceinfo-site",
+   "title": "franceinfo.fr",
+   "url": "https://www.franceinfo.fr/",
+   "publisher": "France Télévisions and Radio France",
+   "kind": "news",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading",
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Public-service French news website with articles, video and audio.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "choses-a-savoir",
+   "title": "Choses à savoir",
+   "url": "https://chosesasavoir.com/",
+   "publisher": "Choses à savoir",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Short daily French podcasts, each explaining one general-knowledge topic.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "learn-french-by-podcast",
+   "title": "Learn French by Podcast",
+   "url": "https://learnfrenchbypodcast.com/",
+   "publisher": "Learn French by Podcast",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "A podcast and website for learning French by listening.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "duolingo-french-podcast",
+   "title": "Duolingo French Podcast",
+   "url": "https://podcast.duolingo.com/french",
+   "publisher": "Duolingo",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "True-story episodes told in French with English commentary.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "arteradio",
+   "title": "ARTE Radio",
+   "url": "https://www.arteradio.com/",
+   "publisher": "ARTE",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "French documentary and storytelling podcasts from the ARTE public broadcaster.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "radio-france-fip",
+   "title": "FIP",
+   "url": "https://www.radiofrance.fr/fip",
+   "publisher": "Radio France",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Public radio music stations with short French presenter announcements.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "easy-french-youtube",
+   "title": "Easy French (YouTube)",
+   "url": "https://www.youtube.com/@EasyFrench",
+   "publisher": "Easy French",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Street interviews in French with French and English subtitles.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "francais-avec-pierre-youtube",
+   "title": "Français avec Pierre (YouTube)",
+   "url": "https://www.youtube.com/@francaisavecpierre",
+   "publisher": "Français avec Pierre",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Video lessons in French on grammar, vocabulary and pronunciation.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "francais-avec-pierre-site",
+   "title": "Français avec Pierre",
+   "url": "https://www.francaisavecpierre.com/",
+   "publisher": "Français avec Pierre",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary",
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Website of the video teacher Pierre, with lessons and resources.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "innerfrench-youtube",
+   "title": "InnerFrench (YouTube)",
+   "url": "https://www.youtube.com/@innerfrench",
+   "publisher": "InnerFrench",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Videos in slow, clear French on French culture and society.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "learn-french-with-alexa",
+   "title": "Learn French With Alexa (YouTube)",
+   "url": "https://www.youtube.com/@learnfrenchwithalexa",
+   "publisher": "Learn French With Alexa",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary",
+    "speaking"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Video lessons on French grammar, vocabulary and speaking.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "comme-une-francaise-youtube",
+   "title": "Comme une Française (YouTube)",
+   "url": "https://www.youtube.com/@CommeUneFrancaise",
+   "publisher": "Comme une Française",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Video lessons on spoken French and French culture.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "comme-une-francaise-site",
+   "title": "Comme une Française",
+   "url": "https://www.commeunefrancaise.com/",
+   "publisher": "Comme une Française",
+   "kind": "website",
+   "cost": "free-tier",
+   "costNote": "The blog and videos are free; paid courses are also sold on the site.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Website with free French lessons and paid courses.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "french-with-lucy",
+   "title": "French With Lucy (YouTube)",
+   "url": "https://www.youtube.com/@FrenchwithLucy",
+   "publisher": "French With Lucy",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "English-language video lessons on French grammar and vocabulary.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "francais-authentique-youtube",
+   "title": "Français Authentique (YouTube)",
+   "url": "https://www.youtube.com/@FrancaisAuthentique",
+   "publisher": "Français Authentique",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Videos in French about learning French and speaking it naturally.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "francais-authentique-site",
+   "title": "Français Authentique",
+   "url": "https://www.francaisauthentique.com/",
+   "publisher": "Français Authentique",
+   "kind": "website",
+   "cost": "free-tier",
+   "costNote": "Free podcast and articles; paid courses are also sold.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "French-learning site with a free podcast and paid courses.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "tv5monde-youtube",
+   "title": "TV5MONDE (YouTube)",
+   "url": "https://www.youtube.com/@TV5MONDE",
+   "publisher": "TV5MONDE",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Official channel of the French-language broadcaster.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "lumni",
+   "title": "Lumni",
+   "url": "https://www.lumni.fr/",
+   "publisher": "France Télévisions",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "reading"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Free educational video and activities for French school students.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "lumni-youtube",
+   "title": "Lumni (YouTube)",
+   "url": "https://www.youtube.com/@Lumni",
+   "publisher": "France Télévisions",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Official YouTube channel of Lumni with educational videos.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "arte-tv",
+   "title": "ARTE",
+   "url": "https://www.arte.tv/fr/",
+   "publisher": "ARTE",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "European public broadcaster streaming French-language documentaries and films.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "france-tv",
+   "title": "france.tv",
+   "url": "https://www.france.tv/",
+   "publisher": "France Télévisions",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "French public television streaming platform; some content is region-restricted.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "auvio-rtbf",
+   "title": "Auvio",
+   "url": "https://auvio.rtbf.be/",
+   "publisher": "RTBF",
+   "kind": "video",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Belgian public broadcaster's streaming platform; some content is region-restricted.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "tou-tv",
+   "title": "ICI TOU.TV",
+   "url": "https://ici.tou.tv/",
+   "publisher": "Radio-Canada",
+   "kind": "video",
+   "cost": "free-tier",
+   "costNote": "A part of the catalogue is free; the Extra tier is paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Radio-Canada streaming platform for Quebec French content.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "fr-wikisource",
+   "title": "Wikisource (français)",
+   "url": "https://fr.wikisource.org/",
+   "publisher": "Wikimedia Foundation",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Library of French texts that are in the public domain or freely licensed.",
+   "licence": "public domain or free licence, per text",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "gutenberg-french",
+   "title": "Project Gutenberg: books in French",
+   "url": "https://www.gutenberg.org/browse/languages/fr",
+   "publisher": "Project Gutenberg",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Public-domain books in French, free to read online or download.",
+   "licence": "public domain (check per book for your country)",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "gallica",
+   "title": "Gallica",
+   "url": "https://gallica.bnf.fr/",
+   "publisher": "Bibliothèque nationale de France",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Digital library of the BnF with books, press and manuscripts, many in the public domain.",
+   "licence": "public domain items; some items carry reuse conditions",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "bibliotheque-numerique-romande",
+   "title": "Bibliothèque numérique romande",
+   "url": "https://ebooks-bnr.com/",
+   "publisher": "Bibliothèque numérique romande",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Free e-books in French by Swiss and other authors, from the public domain.",
+   "licence": "public domain",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "beq",
+   "title": "Bibliothèque électronique du Québec",
+   "url": "https://beq.ebooksgratuits.com/",
+   "publisher": "Bibliothèque électronique du Québec",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Free e-books in French, mostly public-domain literature.",
+   "licence": "public domain",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "francais-interactif",
+   "title": "Français interactif",
+   "url": "https://www.laits.utexas.edu/fi/",
+   "publisher": "University of Texas at Austin",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading",
+    "listening",
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "Online French course and textbook with audio and video, with chapters free to download.",
+   "licence": "free to read online and download; see the site for the exact licence",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "tex-french-grammar",
+   "title": "Tex's French Grammar",
+   "url": "https://www.laits.utexas.edu/tex/",
+   "publisher": "University of Texas at Austin",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "Online French grammar reference with exercises.",
+   "licence": "free to read online",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "wikibooks-french",
+   "title": "French (Wikibooks)",
+   "url": "https://en.wikibooks.org/wiki/French",
+   "publisher": "Wikimedia Foundation",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "Open-content French textbook written by volunteers.",
+   "licence": "CC BY-SA",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "libretexts-french",
+   "title": "LibreTexts: French",
+   "url": "https://human.libretexts.org/Bookshelves/Languages/French",
+   "publisher": "LibreTexts",
+   "kind": "book",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "Collection of open-access French course texts.",
+   "licence": "open licences, varying per book",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "lawless-french",
+   "title": "Lawless French",
+   "url": "https://www.lawlessfrench.com/",
+   "publisher": "Laura K. Lawless",
+   "kind": "website",
+   "cost": "free-tier",
+   "costNote": "The online lessons are free; e-books and some audio are sold.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "English-language French grammar and vocabulary lessons.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "le-point-du-fle",
+   "title": "Le Point du FLE",
+   "url": "https://www.lepointdufle.net/",
+   "publisher": "Le Point du FLE",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary",
+    "listening",
+    "reading",
+    "writing",
+    "speaking"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Directory of free exercises and teaching resources for learners of French.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "fei-tcf-tout-public",
+   "title": "TCF tout public",
+   "url": "https://www.france-education-international.fr/test/tcf-tout-public",
+   "publisher": "France Éducation international",
+   "kind": "exam-practice",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "exam"
+   ],
+   "exams": [
+    "tcf"
+   ],
+   "language": "fr",
+   "description": "The exam body's page for the TCF tout public: sections, scoring and sample questions.",
+   "checked": "blocked"
+  },
+  {
+   "id": "fei-tcf-canada",
+   "title": "TCF Canada",
+   "url": "https://www.france-education-international.fr/test/tcf-canada",
+   "publisher": "France Éducation international",
+   "kind": "exam-practice",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "exam"
+   ],
+   "exams": [
+    "tcf-canada"
+   ],
+   "language": "fr",
+   "description": "The exam body's page for the TCF Canada: sections, scoring and sample questions.",
+   "checked": "blocked"
+  },
+  {
+   "id": "delfdalf-ch",
+   "title": "delfdalf.ch",
+   "url": "https://www.delfdalf.ch/",
+   "publisher": "Swiss DELF-DALF centres",
+   "kind": "exam-practice",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "exam"
+   ],
+   "exams": [
+    "delf",
+    "dalf"
+   ],
+   "language": "fr",
+   "description": "Swiss site with information on the DELF and DALF.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "tef-canada-fda",
+   "title": "TEF Canada",
+   "url": "https://www.lefrancaisdesaffaires.fr/candidat/test-evaluation-francais/tef-canada/",
+   "publisher": "Le français des affaires (CCI Paris Île-de-France)",
+   "kind": "exam-practice",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "exam"
+   ],
+   "exams": [
+    "tef-canada"
+   ],
+   "language": "fr",
+   "description": "Official page of the TEF Canada.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "tef-canada-preparation",
+   "title": "TEF Canada: préparation",
+   "url": "https://www.lefrancaisdesaffaires.fr/candidat/test-evaluation-francais/tef-canada/preparation/",
+   "publisher": "Le français des affaires (CCI Paris Île-de-France)",
+   "kind": "exam-practice",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "exam"
+   ],
+   "exams": [
+    "tef-canada"
+   ],
+   "language": "fr",
+   "description": "Official preparation page for the TEF Canada.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "tv5monde-apprendre",
+   "title": "TV5MONDE Apprendre le français",
+   "url": "https://apprendre.tv5monde.com/fr",
+   "publisher": "TV5MONDE",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "reading",
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Exercises and video activities for learning French.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "tv5monde-7-jours",
+   "title": "7 jours sur la planète",
+   "url": "https://apprendre.tv5monde.com/fr/7-jours-sur-la-planete",
+   "publisher": "TV5MONDE",
+   "kind": "news",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Weekly news video with learning exercises.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "tv5monde-info",
+   "title": "TV5MONDE Info",
+   "url": "https://information.tv5monde.com/",
+   "publisher": "TV5MONDE",
+   "kind": "news",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading",
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "News website of the French-language broadcaster.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "bonjour-de-france",
+   "title": "Bonjour de France",
+   "url": "https://www.bonjourdefrance.com/",
+   "publisher": "Bonjour de France",
+   "kind": "website",
+   "cost": "free-tier",
+   "costNote": "Many exercises and lessons are free; some content is paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Website of French exercises and lessons.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "lingolia-french",
+   "title": "Lingolia Français",
+   "url": "https://francais.lingolia.com/en/",
+   "publisher": "Lingolia",
+   "kind": "website",
+   "cost": "free-tier",
+   "costNote": "Grammar explanations are free; some exercises are paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "French grammar explanations and exercises.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "francais-facile-com",
+   "title": "Français Facile",
+   "url": "https://www.francaisfacile.com/",
+   "publisher": "Français Facile",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary",
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Free exercises and lessons for learners of French.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "ccdmd-ameliofrancais",
+   "title": "Amélioration du français",
+   "url": "https://ameliofrancais.ccdmd.qc.ca/",
+   "publisher": "CCDMD",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "writing"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Quebec site of interactive exercises on French writing and grammar.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "ccdmd",
+   "title": "CCDMD",
+   "url": "https://ccdmd.qc.ca/",
+   "publisher": "Centre collégial de développement de matériel didactique",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "writing"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Quebec college resource centre offering French exercises and teaching tools.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "1jour1actu",
+   "title": "1jour1actu",
+   "url": "https://www.1jour1actu.com/",
+   "publisher": "Milan Presse",
+   "kind": "news",
+   "cost": "free-tier",
+   "costNote": "Part of the site is free; the magazine is paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "News explained for children in simple French.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "france24-fr",
+   "title": "France 24 en français",
+   "url": "https://www.france24.com/fr/",
+   "publisher": "France Médias Monde",
+   "kind": "news",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading",
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "International news in French as text and video.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "rts-info",
+   "title": "RTS Info",
+   "url": "https://www.rts.ch/info",
+   "publisher": "RTS",
+   "kind": "news",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "reading",
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Swiss public broadcaster's news site.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "rfi-journal-page",
+   "title": "RFI podcasts",
+   "url": "https://www.rfi.fr/fr/podcasts/",
+   "publisher": "RFI",
+   "kind": "podcast",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Index of RFI's French-language podcasts.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "academie-francaise",
+   "title": "Académie française",
+   "url": "https://www.academie-francaise.fr/",
+   "publisher": "Académie française",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Official site of the Académie française with language-usage guidance.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "oqlf-banque-depannage",
+   "title": "Vitrine linguistique (OQLF)",
+   "url": "https://vitrinelinguistique.oqlf.gouv.qc.ca/",
+   "publisher": "Office québécois de la langue française",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar",
+    "vocabulary",
+    "writing"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Quebec language office's language-usage resources, including the Banque de dépannage linguistique.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "dictionnaire-academie",
+   "title": "Dictionnaire de l'Académie française",
+   "url": "https://www.dictionnaire-academie.fr/",
+   "publisher": "Académie française",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Online dictionary of the Académie française.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "le-robert-dico-en-ligne",
+   "title": "Le Robert dico en ligne",
+   "url": "https://dictionnaire.lerobert.com/",
+   "publisher": "Le Robert",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Online French dictionary; some features are subscriber-only.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "larousse-dictionnaires",
+   "title": "Larousse: dictionnaires en ligne",
+   "url": "https://www.larousse.fr/dictionnaires/francais",
+   "publisher": "Larousse",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Free online French dictionary.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "cnrtl",
+   "title": "CNRTL (TLFi)",
+   "url": "https://www.cnrtl.fr/",
+   "publisher": "CNRS / ATILF",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Portal with the Trésor de la langue française informatisé and other lexical tools.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "fr-wiktionary",
+   "title": "Wiktionnaire",
+   "url": "https://fr.wiktionary.org/",
+   "publisher": "Wikimedia Foundation",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Free collaborative dictionary.",
+   "licence": "CC BY-SA",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "reverso-context",
+   "title": "Reverso Context",
+   "url": "https://context.reverso.net/traduction/",
+   "publisher": "Reverso",
+   "kind": "dictionary",
+   "cost": "free-tier",
+   "costNote": "Basic lookups are free; some features need an account or a subscription.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Translation lookups shown in example sentences.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "forvo-french",
+   "title": "Forvo: French",
+   "url": "https://forvo.com/languages/fr/",
+   "publisher": "Forvo",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "listening",
+    "speaking"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Pronunciation dictionary with recordings by native speakers.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "le-conjugueur",
+   "title": "Le Conjugueur",
+   "url": "https://leconjugueur.lefigaro.fr/",
+   "publisher": "Le Figaro",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Online French verb conjugator.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "conjugaison-com",
+   "title": "Conjugaison.com",
+   "url": "https://www.conjugaison.com/",
+   "publisher": "Conjugaison.com",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "grammar"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Online French verb conjugator.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "languagetool",
+   "title": "LanguageTool",
+   "url": "https://languagetool.org/",
+   "publisher": "LanguageTool",
+   "kind": "dictionary",
+   "cost": "free-tier",
+   "costNote": "The basic grammar checker is free; Premium is paid and the free version has limits.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "writing",
+    "grammar"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Grammar and spelling checker that supports French.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "termium-plus",
+   "title": "TERMIUM Plus",
+   "url": "https://www.btb.termiumplus.gc.ca/tpv2alpha/alpha-fra.html",
+   "publisher": "Government of Canada",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Canadian government terminology and linguistic data bank.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "nos-langues",
+   "title": "Language Portal of Canada",
+   "url": "https://nos-langues.canada.ca/",
+   "publisher": "Government of Canada",
+   "kind": "website",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "writing",
+    "grammar"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Canadian government writing tools and language resources.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "cambridge-french-english",
+   "title": "Cambridge French-English Dictionary",
+   "url": "https://dictionary.cambridge.org/dictionary/french-english/",
+   "publisher": "Cambridge University Press",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Online French-English dictionary.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "collins-french-english",
+   "title": "Collins French-English Dictionary",
+   "url": "https://www.collinsdictionary.com/dictionary/french-english",
+   "publisher": "Collins",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "Online French-English dictionary.",
+   "checked": "blocked",
+   "httpStatus": 403
+  },
+  {
+   "id": "linguee-english-french",
+   "title": "Linguee",
+   "url": "https://www.linguee.com/english-french",
+   "publisher": "Linguee",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr+en",
+   "description": "English-French dictionary with example sentences.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "lexilogos",
+   "title": "Lexilogos",
+   "url": "https://www.lexilogos.com/",
+   "publisher": "Lexilogos",
+   "kind": "dictionary",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "fr",
+   "description": "Portal of links to French dictionaries and language tools.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "duolingo-french",
+   "title": "Duolingo: French",
+   "url": "https://www.duolingo.com/course/fr/en/Learn-French",
+   "publisher": "Duolingo",
+   "kind": "app",
+   "cost": "free-tier",
+   "costNote": "The core lessons are free with ads; Super is paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [],
+   "exams": [],
+   "language": "en",
+   "description": "Game-style French course for beginners.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "busuu-french",
+   "title": "Busuu: French",
+   "url": "https://www.busuu.com/",
+   "publisher": "Busuu",
+   "kind": "app",
+   "cost": "free-tier",
+   "costNote": "Some lessons are free; the full course is paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [],
+   "exams": [],
+   "language": "en",
+   "description": "Language-learning app with French courses.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "anki",
+   "title": "Anki",
+   "url": "https://apps.ankiweb.net/",
+   "publisher": "Ankitects",
+   "kind": "app",
+   "cost": "free-tier",
+   "costNote": "The desktop version and AnkiDroid are free; the iOS app is paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "vocabulary"
+   ],
+   "exams": [],
+   "language": "en",
+   "description": "Spaced-repetition flashcard software.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "fun-mooc",
+   "title": "FUN MOOC",
+   "url": "https://www.fun-mooc.fr/fr/",
+   "publisher": "France Université Numérique",
+   "kind": "website",
+   "cost": "free-tier",
+   "costNote": "Courses can be followed for free; some certificates are paid.",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [],
+   "exams": [],
+   "language": "fr",
+   "description": "French public platform of free online courses, including French as a foreign language.",
+   "checked": "ok",
+   "httpStatus": 200
+  },
+  {
+   "id": "fei-delf",
+   "title": "DELF tous publics",
+   "url": "https://www.france-education-international.fr/diplome/delf-tous-publics",
+   "publisher": "France Éducation international",
+   "kind": "exam-practice",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "exam"
+   ],
+   "exams": [
+    "delf"
+   ],
+   "language": "fr",
+   "description": "The exam body's page for the DELF: levels, papers and sample subjects.",
+   "checked": "blocked"
+  },
+  {
+   "id": "fei-dalf",
+   "title": "DALF tous publics",
+   "url": "https://www.france-education-international.fr/diplome/dalf-tous-publics",
+   "publisher": "France Éducation international",
+   "kind": "exam-practice",
+   "cost": "free",
+   "levels": [],
+   "levelsFrom": "none",
+   "skills": [
+    "exam"
+   ],
+   "exams": [
+    "dalf"
+   ],
+   "language": "fr",
+   "description": "The exam body's page for the DALF C1 and C2: papers and sample subjects.",
+   "checked": "blocked"
+  }
+ ]
+}

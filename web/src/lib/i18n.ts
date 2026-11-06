@@ -524,6 +524,8 @@ const shellEn = {
   shellNavOutput: 'Speaking and writing',
   shellNavNews: 'News',
   shellNavPodcasts: 'Podcasts',
+  shellNavThemes: 'Themes',
+  shellNavResources: 'Free resources',
   shellNavSaved: 'My library',
   shellNavReview: 'Review',
   shellNavSavedShort: 'Saved',
@@ -565,11 +567,12 @@ import type { grammarEn } from './locales/en/grammarEn';
 import type { readerEn } from './locales/en/readerEn';
 import type { todayEn } from './locales/en/todayEn';
 import type { writingEn } from './locales/en/writingEn';
+import type { topicsEn } from './locales/en/topicsEn';
 
 export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
   & Partial<typeof importEn> & Partial<typeof workspaceEn> & Partial<typeof shellEn>
   & Partial<typeof weaknessEn> & Partial<typeof grammarEn> & Partial<typeof readerEn>
-  & Partial<typeof todayEn> & Partial<typeof writingEn>;
+  & Partial<typeof todayEn> & Partial<typeof writingEn> & Partial<typeof topicsEn>;
 
 /**
  * What the translator and the prerender read: English, landing copy included.

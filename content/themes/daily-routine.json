@@ -1,0 +1,1055 @@
+{
+ "id": "daily-routine",
+ "names": {
+  "fr": "La vie quotidienne",
+  "en": "Daily life",
+  "fa": "زندگی روزمره"
+ },
+ "counts": {
+  "words": 72,
+  "verbs": 25,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "tcf",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:annee",
+   "fr": "année",
+   "type": "noun",
+   "article": "l'",
+   "en": "year",
+   "fa": "سال",
+   "level": "A1"
+  },
+  {
+   "key": "n:heure",
+   "fr": "heure",
+   "type": "noun",
+   "article": "l'",
+   "en": "hour, o'clock",
+   "fa": "ساعت",
+   "level": "A1"
+  },
+  {
+   "key": "n:jour",
+   "fr": "jour",
+   "type": "noun",
+   "article": "le",
+   "en": "day",
+   "fa": "روز",
+   "level": "A1"
+  },
+  {
+   "key": "n:journee",
+   "fr": "journée",
+   "type": "noun",
+   "article": "la",
+   "en": "day (daytime)",
+   "fa": "روز (طول روز)",
+   "level": "A1"
+  },
+  {
+   "key": "n:matin",
+   "fr": "matin",
+   "type": "noun",
+   "article": "le",
+   "en": "morning",
+   "fa": "صبح",
+   "level": "A1"
+  },
+  {
+   "key": "n:minute",
+   "fr": "minute",
+   "type": "noun",
+   "article": "la",
+   "en": "minute",
+   "fa": "دقیقه",
+   "level": "A1"
+  },
+  {
+   "key": "n:mois",
+   "fr": "mois",
+   "type": "noun",
+   "article": "le",
+   "en": "month",
+   "fa": "ماه",
+   "level": "A1"
+  },
+  {
+   "key": "n:nuit",
+   "fr": "nuit",
+   "type": "noun",
+   "article": "la",
+   "en": "night",
+   "fa": "شب",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "petit-déjeuner",
+   "type": "noun",
+   "article": "le",
+   "en": "breakfast",
+   "fa": "صبحانه",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:semaine",
+   "fr": "semaine",
+   "type": "noun",
+   "article": "la",
+   "en": "week",
+   "fa": "هفته",
+   "level": "A1"
+  },
+  {
+   "key": "n:soir",
+   "fr": "soir",
+   "type": "noun",
+   "article": "le",
+   "en": "evening",
+   "fa": "عصر، شب",
+   "level": "A1"
+  },
+  {
+   "key": "n:bain",
+   "fr": "bain",
+   "type": "noun",
+   "article": "le",
+   "en": "bath",
+   "fa": "حمام (وان)",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "courses",
+   "type": "noun",
+   "article": "les",
+   "en": "shopping, errands",
+   "fa": "خرید روزانه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:dimanche",
+   "fr": "dimanche",
+   "type": "noun",
+   "article": "le",
+   "en": "Sunday",
+   "fa": "یکشنبه",
+   "level": "A2"
+  },
+  {
+   "key": "n:diner",
+   "fr": "dîner",
+   "type": "noun",
+   "article": "le",
+   "en": "dinner",
+   "fa": "شام",
+   "level": "A2"
+  },
+  {
+   "key": "n:ete",
+   "fr": "été",
+   "type": "noun",
+   "article": "l'",
+   "en": "summer",
+   "fa": "تابستان",
+   "level": "A2"
+  },
+  {
+   "key": "n:habitude",
+   "fr": "habitude",
+   "type": "noun",
+   "article": "l'",
+   "en": "habit",
+   "fa": "عادت",
+   "level": "A2"
+  },
+  {
+   "key": "n:lendemain",
+   "fr": "lendemain",
+   "type": "noun",
+   "article": "le",
+   "en": "next day, day after",
+   "fa": "روز بعد، فردا",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "lessive",
+   "type": "noun",
+   "article": "la",
+   "en": "laundry",
+   "fa": "لباس‌شویی",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "rendez-vous",
+   "type": "noun",
+   "article": "le",
+   "en": "appointment, meeting",
+   "fa": "قرار ملاقات",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:retard",
+   "fr": "retard",
+   "type": "noun",
+   "article": "le",
+   "en": "delay, lateness",
+   "fa": "تأخیر",
+   "level": "A2"
+  },
+  {
+   "key": "n:seconde",
+   "fr": "seconde",
+   "type": "noun",
+   "article": "la",
+   "en": "second (of time)",
+   "fa": "ثانیه",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "sieste",
+   "type": "noun",
+   "article": "la",
+   "en": "nap",
+   "fa": "چرت",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:soiree",
+   "fr": "soirée",
+   "type": "noun",
+   "article": "la",
+   "en": "evening, party",
+   "fa": "شب، مهمانی شبانه",
+   "level": "A2"
+  },
+  {
+   "key": "n:sommeil",
+   "fr": "sommeil",
+   "type": "noun",
+   "article": "le",
+   "en": "sleep, sleepiness",
+   "fa": "خواب، خواب‌آلودگی",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "agenda",
+   "type": "noun",
+   "article": "l’",
+   "en": "diary, planner",
+   "fa": "دفتر برنامه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "calendrier",
+   "type": "noun",
+   "article": "le",
+   "en": "calendar",
+   "fa": "تقویم",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:dejeuner",
+   "fr": "déjeuner",
+   "type": "noun",
+   "article": "le",
+   "en": "lunch",
+   "fa": "ناهار",
+   "level": "B1"
+  },
+  {
+   "key": "n:hiver",
+   "fr": "hiver",
+   "type": "noun",
+   "article": "l'",
+   "en": "winter",
+   "fa": "زمستان",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "horaire",
+   "type": "noun",
+   "article": "l’",
+   "en": "schedule, opening hours",
+   "fa": "ساعت کاری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:midi",
+   "fr": "midi",
+   "type": "noun",
+   "article": "le",
+   "en": "noon, midday",
+   "fa": "ظهر",
+   "level": "B1"
+  },
+  {
+   "key": "n:montre",
+   "fr": "montre",
+   "type": "noun",
+   "article": "la",
+   "en": "watch",
+   "fa": "ساعت مچی",
+   "level": "B1"
+  },
+  {
+   "key": "n:printemps",
+   "fr": "printemps",
+   "type": "noun",
+   "article": "le",
+   "en": "spring (season)",
+   "fa": "بهار",
+   "level": "B1"
+  },
+  {
+   "key": "n:repas",
+   "fr": "repas",
+   "type": "noun",
+   "article": "le",
+   "en": "meal",
+   "fa": "وعده‌ی غذا",
+   "level": "B1"
+  },
+  {
+   "key": "n:repos",
+   "fr": "repos",
+   "type": "noun",
+   "article": "le",
+   "en": "rest",
+   "fa": "استراحت",
+   "level": "B1"
+  },
+  {
+   "key": "n:saison",
+   "fr": "saison",
+   "type": "noun",
+   "article": "la",
+   "en": "season",
+   "fa": "فصل",
+   "level": "B1"
+  },
+  {
+   "key": "n:samedi",
+   "fr": "samedi",
+   "type": "noun",
+   "article": "le",
+   "en": "Saturday",
+   "fa": "شنبه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "stress",
+   "type": "noun",
+   "article": "le",
+   "en": "stress",
+   "fa": "استرس",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:veille",
+   "fr": "veille",
+   "type": "noun",
+   "article": "la",
+   "en": "day before, eve",
+   "fa": "شب پیش، روز قبل",
+   "level": "B1"
+  },
+  {
+   "key": "n:aout",
+   "fr": "août",
+   "type": "noun",
+   "article": "l'",
+   "en": "August",
+   "fa": "اوت",
+   "level": "B2"
+  },
+  {
+   "key": "n:automne",
+   "fr": "automne",
+   "type": "noun",
+   "article": "l'",
+   "en": "autumn",
+   "fa": "پاییز",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "corvée",
+   "type": "noun",
+   "article": "la",
+   "en": "chore",
+   "fa": "کار خسته‌کننده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:date",
+   "fr": "date",
+   "type": "noun",
+   "article": "la",
+   "en": "date",
+   "fa": "تاریخ",
+   "level": "B2"
+  },
+  {
+   "key": "n:douche",
+   "fr": "douche",
+   "type": "noun",
+   "article": "la",
+   "en": "shower",
+   "fa": "دوش",
+   "level": "B2"
+  },
+  {
+   "key": "a:habituel",
+   "fr": "habituel",
+   "type": "adjective",
+   "article": null,
+   "en": "usual, customary",
+   "fa": "معمول، همیشگی",
+   "level": "B2"
+  },
+  {
+   "key": "n:juillet",
+   "fr": "juillet",
+   "type": "noun",
+   "article": "le",
+   "en": "July",
+   "fa": "ژوئیه",
+   "level": "B2"
+  },
+  {
+   "key": "n:juin",
+   "fr": "juin",
+   "type": "noun",
+   "article": "le",
+   "en": "June",
+   "fa": "ژوئن",
+   "level": "B2"
+  },
+  {
+   "key": "n:linge",
+   "fr": "linge",
+   "type": "noun",
+   "article": "le",
+   "en": "laundry, linen",
+   "fa": "رخت، ملحفه",
+   "level": "B2"
+  },
+  {
+   "key": "n:lundi",
+   "fr": "lundi",
+   "type": "noun",
+   "article": "le",
+   "en": "Monday",
+   "fa": "دوشنبه",
+   "level": "B2"
+  },
+  {
+   "key": "n:mai",
+   "fr": "mai",
+   "type": "noun",
+   "article": "le",
+   "en": "May",
+   "fa": "ماه مه",
+   "level": "B2"
+  },
+  {
+   "key": "n:menage",
+   "fr": "ménage",
+   "type": "noun",
+   "article": "le",
+   "en": "housework, household",
+   "fa": "کارهای خانه، خانوار",
+   "level": "B2"
+  },
+  {
+   "key": "n:minuit",
+   "fr": "minuit",
+   "type": "noun",
+   "article": "le",
+   "en": "midnight",
+   "fa": "نیمه‌شب",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "rythme",
+   "type": "noun",
+   "article": "le",
+   "en": "pace, rhythm",
+   "fa": "ریتم",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:septembre",
+   "fr": "septembre",
+   "type": "noun",
+   "article": "le",
+   "en": "September",
+   "fa": "سپتامبر",
+   "level": "B2"
+  },
+  {
+   "key": "n:vendredi",
+   "fr": "vendredi",
+   "type": "noun",
+   "article": "le",
+   "en": "Friday",
+   "fa": "جمعه",
+   "level": "B2"
+  },
+  {
+   "key": "n:week-end",
+   "fr": "week-end",
+   "type": "noun",
+   "article": "le",
+   "en": "weekend",
+   "fa": "آخر هفته",
+   "level": "B2"
+  },
+  {
+   "key": "n:avril",
+   "fr": "avril",
+   "type": "noun",
+   "article": "l'",
+   "en": "April",
+   "fa": "آوریل",
+   "level": "C1"
+  },
+  {
+   "key": "n:decembre",
+   "fr": "décembre",
+   "type": "noun",
+   "article": "le",
+   "en": "December",
+   "fa": "دسامبر",
+   "level": "C1"
+  },
+  {
+   "key": "n:demi-heure",
+   "fr": "demi-heure",
+   "type": "noun",
+   "article": "la",
+   "en": "half an hour",
+   "fa": "نیم ساعت",
+   "level": "C1"
+  },
+  {
+   "key": "n:janvier",
+   "fr": "janvier",
+   "type": "noun",
+   "article": "le",
+   "en": "January",
+   "fa": "ژانویه",
+   "level": "C1"
+  },
+  {
+   "key": "n:jeudi",
+   "fr": "jeudi",
+   "type": "noun",
+   "article": "le",
+   "en": "Thursday",
+   "fa": "پنجشنبه",
+   "level": "C1"
+  },
+  {
+   "key": "n:mardi",
+   "fr": "mardi",
+   "type": "noun",
+   "article": "le",
+   "en": "Tuesday",
+   "fa": "سه‌شنبه",
+   "level": "C1"
+  },
+  {
+   "key": "n:mars",
+   "fr": "mars",
+   "type": "noun",
+   "article": "le",
+   "en": "March",
+   "fa": "مارس",
+   "level": "C1"
+  },
+  {
+   "key": "n:matinee",
+   "fr": "matinée",
+   "type": "noun",
+   "article": "la",
+   "en": "morning",
+   "fa": "صبح، پیش از ظهر",
+   "level": "C1"
+  },
+  {
+   "key": "n:novembre",
+   "fr": "novembre",
+   "type": "noun",
+   "article": "le",
+   "en": "November",
+   "fa": "نوامبر",
+   "level": "C1"
+  },
+  {
+   "key": "n:octobre",
+   "fr": "octobre",
+   "type": "noun",
+   "article": "l'",
+   "en": "October",
+   "fa": "اکتبر",
+   "level": "C1"
+  },
+  {
+   "key": "a:quotidien",
+   "fr": "quotidien",
+   "type": "adjective",
+   "article": null,
+   "en": "daily, everyday",
+   "fa": "روزمره، روزانه",
+   "level": "C1"
+  },
+  {
+   "key": "n:reveil",
+   "fr": "réveil",
+   "type": "noun",
+   "article": "le",
+   "en": "alarm clock, waking up",
+   "fa": "ساعت زنگ‌دار، بیدار شدن",
+   "level": "C1"
+  },
+  {
+   "key": "n:vaisselle",
+   "fr": "vaisselle",
+   "type": "noun",
+   "article": "la",
+   "en": "dishes, crockery",
+   "fa": "ظروف، شستن ظرف",
+   "level": "C1"
+  },
+  {
+   "key": "n:fevrier",
+   "fr": "février",
+   "type": "noun",
+   "article": "le",
+   "en": "February",
+   "fa": "فوریه",
+   "level": "C2"
+  },
+  {
+   "key": "n:horloge",
+   "fr": "horloge",
+   "type": "noun",
+   "article": "l'",
+   "en": "clock (large, wall or tower)",
+   "fa": "ساعت دیواری یا برجی",
+   "level": "C2"
+  },
+  {
+   "key": "n:mercredi",
+   "fr": "mercredi",
+   "type": "noun",
+   "article": "le",
+   "en": "Wednesday",
+   "fa": "چهارشنبه",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:coucher",
+   "fr": "coucher",
+   "type": "verb",
+   "en": "to lay, to lay down",
+   "fa": "خواباندن",
+   "level": "A1"
+  },
+  {
+   "key": "v:dormir",
+   "fr": "dormir",
+   "type": "verb",
+   "en": "to sleep",
+   "fa": "خوابیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:lever",
+   "fr": "lever",
+   "type": "verb",
+   "en": "to raise, lift",
+   "fa": "بالا بردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:rentrer",
+   "fr": "rentrer",
+   "type": "verb",
+   "en": "to go back, to re-enter",
+   "fa": "به خانه برگشتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:réveiller",
+   "fr": "réveiller",
+   "type": "verb",
+   "en": "to awaken",
+   "fa": "بیدار کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:déjeuner",
+   "fr": "déjeuner",
+   "type": "verb",
+   "en": "to lunch, to eat lunch, to have lunch (formal)",
+   "fa": "ناهار خوردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:dîner",
+   "fr": "dîner",
+   "type": "verb",
+   "en": "to dine",
+   "fa": "شام خوردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:durer",
+   "fr": "durer",
+   "type": "verb",
+   "en": "to last (for)",
+   "fa": "طول کشیدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:endormir",
+   "fr": "endormir",
+   "type": "verb",
+   "en": "to put to sleep",
+   "fa": "خواباندن",
+   "level": "A2"
+  },
+  {
+   "key": "v:habiller",
+   "fr": "habiller",
+   "type": "verb",
+   "en": "to dress",
+   "fa": "لباس پوشاندن",
+   "level": "A2"
+  },
+  {
+   "key": "v:laver",
+   "fr": "laver",
+   "type": "verb",
+   "en": "to wash",
+   "fa": "شستن",
+   "level": "A2"
+  },
+  {
+   "key": "v:nettoyer",
+   "fr": "nettoyer",
+   "type": "verb",
+   "en": "to clean",
+   "fa": "تمیز کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:ranger",
+   "fr": "ranger",
+   "type": "verb",
+   "en": "to order, to arrange",
+   "fa": "مرتب کردن، سر جایش گذاشتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:raser",
+   "fr": "raser",
+   "type": "verb",
+   "en": "to shave",
+   "fa": "تراشیدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:balayer",
+   "fr": "balayer",
+   "type": "verb",
+   "en": "to sweep",
+   "fa": "جارو کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:essuyer",
+   "fr": "essuyer",
+   "type": "verb",
+   "en": "to wipe, to wipe down",
+   "fa": "پاک کردن، خشک کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:repasser",
+   "fr": "repasser",
+   "type": "verb",
+   "en": "to iron (to pass an iron over clothing)",
+   "fa": "اتو کردن، دوباره رد شدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:bâiller",
+   "fr": "bâiller",
+   "type": "verb",
+   "en": "to yawn",
+   "fa": "خمیازه کشیدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:brosser",
+   "fr": "brosser",
+   "type": "verb",
+   "en": "to brush (to clean/tidy/shape with a brush)",
+   "fa": "برس زدن، مسواک زدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:rendormir",
+   "fr": "rendormir",
+   "type": "verb",
+   "en": "to fall asleep again, to fall back to sleep, to go back to sleep",
+   "fa": "دوباره خوابیدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:rincer",
+   "fr": "rincer",
+   "type": "verb",
+   "en": "to rinse",
+   "fa": "آبکشی کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:souper",
+   "fr": "souper",
+   "type": "verb",
+   "en": "to dine",
+   "fa": "شام خوردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:doucher",
+   "fr": "doucher",
+   "type": "verb",
+   "en": "to shower",
+   "fa": "دوش گرفتن",
+   "level": "C1"
+  },
+  {
+   "key": "v:épousseter",
+   "fr": "épousseter",
+   "type": "verb",
+   "en": "to dust",
+   "fa": "گردگیری کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:peigner",
+   "fr": "peigner",
+   "type": "verb",
+   "en": "to comb",
+   "fa": "شانه کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je me lève à sept heures.",
+   "en": "I get up at seven o'clock.",
+   "fa": "ساعت هفت بیدار می‌شوم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Il est huit heures et demie.",
+   "en": "It is half past eight.",
+   "fa": "ساعت هشت و نیم است.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je prends le petit-déjeuner à la maison.",
+   "en": "I have breakfast at home.",
+   "fa": "صبحانه را در خانه می‌خورم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je me couche vers onze heures.",
+   "en": "I go to bed around eleven.",
+   "fa": "حدود ساعت یازده می‌خوابم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "D'habitude, je finis le travail à dix-sept heures.",
+   "en": "Usually I finish work at five p.m.",
+   "fa": "معمولاً ساعت پنج بعدازظهر کارم تمام می‌شود.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Le samedi, je fais le ménage et les courses.",
+   "en": "On Saturdays I do the housework and the shopping.",
+   "fa": "شنبه‌ها خانه را تمیز می‌کنم و خرید می‌کنم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je n'ai pas le temps de déjeuner le midi.",
+   "en": "I don't have time for lunch at noon.",
+   "fa": "ظهرها وقت ناهار خوردن ندارم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Tu es libre demain soir ?",
+   "en": "Are you free tomorrow evening?",
+   "fa": "فردا شب وقت داری؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'essaie de garder un rythme régulier, même le week-end.",
+   "en": "I try to keep a regular rhythm, even at weekends.",
+   "fa": "سعی می‌کنم حتی آخر هفته‌ها هم ریتم منظمی داشته باشم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je suis toujours pressé le matin, alors je prépare tout la veille.",
+   "en": "I am always in a hurry in the morning, so I prepare everything the day before.",
+   "fa": "صبح‌ها همیشه عجله دارم، برای همین همه‌چیز را از شب قبل آماده می‌کنم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai du mal à concilier mon travail et mes tâches ménagères.",
+   "en": "I find it hard to combine my work and my household tasks.",
+   "fa": "تلفیق کار و کارهای خانه برایم سخت است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Pourriez-vous reporter notre rendez-vous à jeudi ?",
+   "en": "Could you move our appointment to Thursday?",
+   "fa": "ممکن است قرار ما را به پنجشنبه موکول کنید؟",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Beaucoup de gens se sentent débordés par le rythme de la vie moderne.",
+   "en": "Many people feel overwhelmed by the pace of modern life.",
+   "fa": "بسیاری از مردم از ریتم زندگی مدرن احساس فشار می‌کنند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il vaut mieux organiser sa journée que de courir après le temps.",
+   "en": "It is better to organise your day than to chase after time.",
+   "fa": "بهتر است روزتان را سازماندهی کنید تا اینکه دنبال وقت بدوید.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La semaine de quatre jours permettrait de mieux profiter de son temps libre.",
+   "en": "A four-day week would allow people to enjoy their free time more.",
+   "fa": "هفته کاری چهار روزه امکان می‌دهد از وقت آزاد بیشتر لذت ببریم.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le sentiment de manquer de temps tient autant à notre organisation qu'à la charge réelle de travail.",
+   "en": "The feeling of lacking time owes as much to our organisation as to the actual workload.",
+   "fa": "احساس کمبود وقت همان‌قدر به نحوه سازماندهی ما برمی‌گردد که به حجم واقعی کار.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CO",
+   "topic": "4 dialogues : inviter, remercier, demander un service, s'informer sur les transports/horaires",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "pour associer chaque dialogue à la situation correspondante"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "monologue suivi, sujets au choix : logement et quartier ; mer ou montagne ; amis ; sport ; magasins ; cinéma ; avion ; restaurant ; travail ; ordinateur ; livres ; études ; français ; professeur",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Décrivez votre logement. Dites ce que vous aimez et ce que vous n’aimez pas dans votre quartier."
+  },
+  {
+   "exam": "tcf",
+   "level": null,
+   "paper": "EO",
+   "topic": "tâche 2 : trouver quelqu'un pour garder son chat pendant son absence",
+   "source": {
+    "what": "TCF, Manuel du candidat (version 20/09/2017) — France Éducation international document, copy hosted on francepodcasts.com, NOT on an FEI domain; older than current TCF Canada (a copy hosted by a third party; the exam body’s own site refuses automated reading)",
+    "url": "https://www.francepodcasts.com/wp-content/uploads/2018/05/TCF-manuel-du-candidat.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "chercher quelqu’un pour garder son chat pendant son absence"
+  },
+  {
+   "exam": "tcf",
+   "level": null,
+   "paper": "CE",
+   "topic": "documents courants : petites annonces, prospectus, menus et horaires",
+   "source": {
+    "what": "TCF, Manuel du candidat (version 20/09/2017) — France Éducation international document, copy hosted on francepodcasts.com, NOT on an FEI domain; older than current TCF Canada (a copy hosted by a third party; the exam body’s own site refuses automated reading)",
+    "url": "https://www.francepodcasts.com/wp-content/uploads/2018/05/TCF-manuel-du-candidat.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "petites annonces, prospectus, menus et"
+  }
+ ]
+}

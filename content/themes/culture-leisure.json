@@ -1,0 +1,1191 @@
+{
+ "id": "culture-leisure",
+ "names": {
+  "fr": "Les loisirs et la culture",
+  "en": "Leisure and culture",
+  "fa": "اوقات فراغت و فرهنگ"
+ },
+ "counts": {
+  "words": 83,
+  "verbs": 23,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A1"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  },
+  {
+   "exam": "tef",
+   "level": null
+  },
+  {
+   "exam": "tef-canada",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:film",
+   "fr": "film",
+   "type": "noun",
+   "article": "le",
+   "en": "film, movie",
+   "fa": "فیلم",
+   "level": "A1"
+  },
+  {
+   "key": "n:jeu",
+   "fr": "jeu",
+   "type": "noun",
+   "article": "le",
+   "en": "game",
+   "fa": "بازی",
+   "level": "A1"
+  },
+  {
+   "key": "n:livre",
+   "fr": "livre",
+   "type": "noun",
+   "article": "le",
+   "en": "book (la livre: pound)",
+   "fa": "کتاب",
+   "level": "A1"
+  },
+  {
+   "key": "n:photo",
+   "fr": "photo",
+   "type": "noun",
+   "article": "la",
+   "en": "photo",
+   "fa": "عکس",
+   "level": "A1"
+  },
+  {
+   "key": "n:art",
+   "fr": "art",
+   "type": "noun",
+   "article": "l'",
+   "en": "art",
+   "fa": "هنر",
+   "level": "A2"
+  },
+  {
+   "key": "n:cinema",
+   "fr": "cinéma",
+   "type": "noun",
+   "article": "le",
+   "en": "cinema",
+   "fa": "سینما",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "festival",
+   "type": "noun",
+   "article": "le",
+   "en": "festival",
+   "fa": "جشنواره",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:fete",
+   "fr": "fête",
+   "type": "noun",
+   "article": "la",
+   "en": "party, festival",
+   "fa": "جشن",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "groupe",
+   "type": "noun",
+   "article": "le",
+   "en": "band; group",
+   "fa": "گروه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:musique",
+   "fr": "musique",
+   "type": "noun",
+   "article": "la",
+   "en": "music",
+   "fa": "موسیقی",
+   "level": "A2"
+  },
+  {
+   "key": "n:scene",
+   "fr": "scène",
+   "type": "noun",
+   "article": "la",
+   "en": "stage, scene",
+   "fa": "صحنه، سن",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "soirée",
+   "type": "noun",
+   "article": "la",
+   "en": "evening; party",
+   "fa": "مهمانی شبانه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:acteur",
+   "fr": "acteur",
+   "type": "noun",
+   "article": "l'",
+   "en": "actor",
+   "fa": "بازیگر",
+   "level": "B1"
+  },
+  {
+   "key": "n:artiste",
+   "fr": "artiste",
+   "type": "noun",
+   "article": "l'",
+   "en": "artist",
+   "fa": "هنرمند",
+   "level": "B1"
+  },
+  {
+   "key": "n:chanson",
+   "fr": "chanson",
+   "type": "noun",
+   "article": "la",
+   "en": "song",
+   "fa": "آهنگ",
+   "level": "B1"
+  },
+  {
+   "key": "n:danse",
+   "fr": "danse",
+   "type": "noun",
+   "article": "la",
+   "en": "dance",
+   "fa": "رقص",
+   "level": "B1"
+  },
+  {
+   "key": "n:dessin",
+   "fr": "dessin",
+   "type": "noun",
+   "article": "le",
+   "en": "drawing",
+   "fa": "نقاشی، طراحی",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "passe-temps",
+   "type": "noun",
+   "article": "le",
+   "en": "pastime, hobby",
+   "fa": "سرگرمی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:peinture",
+   "fr": "peinture",
+   "type": "noun",
+   "article": "la",
+   "en": "painting, paint",
+   "fa": "نقاشی، رنگ",
+   "level": "B1"
+  },
+  {
+   "key": "n:portrait",
+   "fr": "portrait",
+   "type": "noun",
+   "article": "le",
+   "en": "portrait",
+   "fa": "پرتره، چهره‌نگاری",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "réalisateur",
+   "type": "noun",
+   "article": "le",
+   "en": "film director",
+   "fa": "کارگردان",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:roman",
+   "fr": "roman",
+   "type": "noun",
+   "article": "le",
+   "en": "novel",
+   "fa": "رمان",
+   "level": "B1"
+  },
+  {
+   "key": "n:sortie",
+   "fr": "sortie",
+   "type": "noun",
+   "article": "la",
+   "en": "exit, outing",
+   "fa": "خروجی، گردش",
+   "level": "B1"
+  },
+  {
+   "key": "n:spectacle",
+   "fr": "spectacle",
+   "type": "noun",
+   "article": "le",
+   "en": "show, performance",
+   "fa": "نمایش",
+   "level": "B1"
+  },
+  {
+   "key": "n:tableau",
+   "fr": "tableau",
+   "type": "noun",
+   "article": "le",
+   "en": "painting, board",
+   "fa": "تابلو، تخته",
+   "level": "B1"
+  },
+  {
+   "key": "n:theatre",
+   "fr": "théâtre",
+   "type": "noun",
+   "article": "le",
+   "en": "theatre",
+   "fa": "تئاتر",
+   "level": "B1"
+  },
+  {
+   "key": "n:atelier",
+   "fr": "atelier",
+   "type": "noun",
+   "article": "l'",
+   "en": "workshop, studio",
+   "fa": "کارگاه، آتلیه",
+   "level": "B2"
+  },
+  {
+   "key": "n:auteur",
+   "fr": "auteur",
+   "type": "noun",
+   "article": "l'",
+   "en": "author",
+   "fa": "نویسنده، پدیدآورنده",
+   "level": "B2"
+  },
+  {
+   "key": "n:bal",
+   "fr": "bal",
+   "type": "noun",
+   "article": "le",
+   "en": "ball, dance",
+   "fa": "مجلس رقص",
+   "level": "B2"
+  },
+  {
+   "key": "n:bibliotheque",
+   "fr": "bibliothèque",
+   "type": "noun",
+   "article": "la",
+   "en": "library, bookcase",
+   "fa": "کتابخانه",
+   "level": "B2"
+  },
+  {
+   "key": "n:camera",
+   "fr": "caméra",
+   "type": "noun",
+   "article": "la",
+   "en": "camera (video)",
+   "fa": "دوربین فیلم‌برداری",
+   "level": "B2"
+  },
+  {
+   "key": "n:chant",
+   "fr": "chant",
+   "type": "noun",
+   "article": "le",
+   "en": "song, singing",
+   "fa": "آواز، سرود",
+   "level": "B2"
+  },
+  {
+   "key": "n:comedie",
+   "fr": "comédie",
+   "type": "noun",
+   "article": "la",
+   "en": "comedy",
+   "fa": "کمدی",
+   "level": "B2"
+  },
+  {
+   "key": "n:concert",
+   "fr": "concert",
+   "type": "noun",
+   "article": "le",
+   "en": "concert",
+   "fa": "کنسرت",
+   "level": "B2"
+  },
+  {
+   "key": "n:culture",
+   "fr": "culture",
+   "type": "noun",
+   "article": "la",
+   "en": "culture",
+   "fa": "فرهنگ",
+   "level": "B2"
+  },
+  {
+   "key": "n:disque",
+   "fr": "disque",
+   "type": "noun",
+   "article": "le",
+   "en": "disc, record",
+   "fa": "صفحه، دیسک",
+   "level": "B2"
+  },
+  {
+   "key": "n:drame",
+   "fr": "drame",
+   "type": "noun",
+   "article": "le",
+   "en": "drama, tragedy",
+   "fa": "درام، فاجعه",
+   "level": "B2"
+  },
+  {
+   "key": "n:ecrivain",
+   "fr": "écrivain",
+   "type": "noun",
+   "article": "l'",
+   "en": "writer",
+   "fa": "نویسنده",
+   "level": "B2"
+  },
+  {
+   "key": "n:instrument",
+   "fr": "instrument",
+   "type": "noun",
+   "article": "l'",
+   "en": "instrument",
+   "fa": "ساز، ابزار",
+   "level": "B2"
+  },
+  {
+   "key": "n:lecture",
+   "fr": "lecture",
+   "type": "noun",
+   "article": "la",
+   "en": "reading",
+   "fa": "خواندن، مطالعه",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "patrimoine",
+   "type": "noun",
+   "article": "le",
+   "en": "heritage",
+   "fa": "میراث فرهنگی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:peintre",
+   "fr": "peintre",
+   "type": "noun",
+   "article": "le",
+   "en": "painter (m. or f.)",
+   "fa": "نقاش",
+   "level": "B2"
+  },
+  {
+   "key": "n:piano",
+   "fr": "piano",
+   "type": "noun",
+   "article": "le",
+   "en": "piano",
+   "fa": "پیانو",
+   "level": "B2"
+  },
+  {
+   "key": "n:poeme",
+   "fr": "poème",
+   "type": "noun",
+   "article": "le",
+   "en": "poem",
+   "fa": "شعر",
+   "level": "B2"
+  },
+  {
+   "key": "n:poete",
+   "fr": "poète",
+   "type": "noun",
+   "article": "le",
+   "en": "poet",
+   "fa": "شاعر",
+   "level": "B2"
+  },
+  {
+   "key": "n:promenade",
+   "fr": "promenade",
+   "type": "noun",
+   "article": "la",
+   "en": "walk, stroll",
+   "fa": "گردش، قدم‌زنی",
+   "level": "B2"
+  },
+  {
+   "key": "n:rythme",
+   "fr": "rythme",
+   "type": "noun",
+   "article": "le",
+   "en": "rhythm, pace",
+   "fa": "ریتم، آهنگ",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "sculpture",
+   "type": "noun",
+   "article": "la",
+   "en": "sculpture",
+   "fa": "مجسمه‌سازی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:seance",
+   "fr": "séance",
+   "type": "noun",
+   "article": "la",
+   "en": "session, showing",
+   "fa": "جلسه، سانس",
+   "level": "B2"
+  },
+  {
+   "key": "n:serie",
+   "fr": "série",
+   "type": "noun",
+   "article": "la",
+   "en": "series, set",
+   "fa": "سریال، مجموعه",
+   "level": "B2"
+  },
+  {
+   "key": "n:statue",
+   "fr": "statue",
+   "type": "noun",
+   "article": "la",
+   "en": "statue",
+   "fa": "مجسمه",
+   "level": "B2"
+  },
+  {
+   "key": "n:cassette",
+   "fr": "cassette",
+   "type": "noun",
+   "article": "la",
+   "en": "cassette",
+   "fa": "کاست",
+   "level": "C1"
+  },
+  {
+   "key": "n:chanteur",
+   "fr": "chanteur",
+   "type": "noun",
+   "article": "le",
+   "en": "singer",
+   "fa": "خواننده",
+   "level": "C1"
+  },
+  {
+   "key": "n:cirque",
+   "fr": "cirque",
+   "type": "noun",
+   "article": "le",
+   "en": "circus",
+   "fa": "سیرک",
+   "level": "C1"
+  },
+  {
+   "key": "n:collection",
+   "fr": "collection",
+   "type": "noun",
+   "article": "la",
+   "en": "collection",
+   "fa": "مجموعه",
+   "level": "C1"
+  },
+  {
+   "key": "n:danseur",
+   "fr": "danseur",
+   "type": "noun",
+   "article": "le",
+   "en": "dancer",
+   "fa": "رقصنده",
+   "level": "C1"
+  },
+  {
+   "key": "n:episode",
+   "fr": "épisode",
+   "type": "noun",
+   "article": "l'",
+   "en": "episode",
+   "fa": "قسمت، اپیزود",
+   "level": "C1"
+  },
+  {
+   "key": "n:galerie",
+   "fr": "galerie",
+   "type": "noun",
+   "article": "la",
+   "en": "gallery",
+   "fa": "گالری، نگارخانه",
+   "level": "C1"
+  },
+  {
+   "key": "n:legende",
+   "fr": "légende",
+   "type": "noun",
+   "article": "la",
+   "en": "legend, caption",
+   "fa": "افسانه، شرح تصویر",
+   "level": "C1"
+  },
+  {
+   "key": "n:magazine",
+   "fr": "magazine",
+   "type": "noun",
+   "article": "le",
+   "en": "magazine",
+   "fa": "مجله",
+   "level": "C1"
+  },
+  {
+   "key": "n:musee",
+   "fr": "musée",
+   "type": "noun",
+   "article": "le",
+   "en": "museum",
+   "fa": "موزه",
+   "level": "C1"
+  },
+  {
+   "key": "a:musical",
+   "fr": "musical",
+   "type": "adjective",
+   "article": null,
+   "en": "musical",
+   "fa": "موسیقایی، موسیقی",
+   "level": "C1"
+  },
+  {
+   "key": "n:opera",
+   "fr": "opéra",
+   "type": "noun",
+   "article": "l'",
+   "en": "opera",
+   "fa": "اپرا",
+   "level": "C1"
+  },
+  {
+   "key": "n:photographie",
+   "fr": "photographie",
+   "type": "noun",
+   "article": "la",
+   "en": "photograph, photography",
+   "fa": "عکس، عکاسی",
+   "level": "C1"
+  },
+  {
+   "key": "n:poesie",
+   "fr": "poésie",
+   "type": "noun",
+   "article": "la",
+   "en": "poetry, poem",
+   "fa": "شعر، شاعری",
+   "level": "C1"
+  },
+  {
+   "key": "n:revue",
+   "fr": "revue",
+   "type": "noun",
+   "article": "la",
+   "en": "magazine, review",
+   "fa": "مجله، بازبینی",
+   "level": "C1"
+  },
+  {
+   "key": "n:rock",
+   "fr": "rock",
+   "type": "noun",
+   "article": "le",
+   "en": "rock (music)",
+   "fa": "راک",
+   "level": "C1"
+  },
+  {
+   "key": "n:star",
+   "fr": "star",
+   "type": "noun",
+   "article": "la",
+   "en": "star, celebrity",
+   "fa": "ستاره‌ی سینما، چهره‌ی مشهور",
+   "level": "C1"
+  },
+  {
+   "key": "n:studio",
+   "fr": "studio",
+   "type": "noun",
+   "article": "le",
+   "en": "studio, studio flat",
+   "fa": "استودیو، آپارتمان یک‌اتاقه",
+   "level": "C1"
+  },
+  {
+   "key": "n:album",
+   "fr": "album",
+   "type": "noun",
+   "article": "l'",
+   "en": "album",
+   "fa": "آلبوم",
+   "level": "C2"
+  },
+  {
+   "key": "n:choeur",
+   "fr": "chœur",
+   "type": "noun",
+   "article": "le",
+   "en": "choir, chorus",
+   "fa": "گروه کر، همسرایی",
+   "level": "C2"
+  },
+  {
+   "key": "n:conte",
+   "fr": "conte",
+   "type": "noun",
+   "article": "le",
+   "en": "tale, story",
+   "fa": "قصه، حکایت",
+   "level": "C2"
+  },
+  {
+   "key": "n:exposition",
+   "fr": "exposition",
+   "type": "noun",
+   "article": "l'",
+   "en": "exhibition",
+   "fa": "نمایشگاه",
+   "level": "C2"
+  },
+  {
+   "key": "n:guitare",
+   "fr": "guitare",
+   "type": "noun",
+   "article": "la",
+   "en": "guitar",
+   "fa": "گیتار",
+   "level": "C2"
+  },
+  {
+   "key": "n:loisir",
+   "fr": "loisir",
+   "type": "noun",
+   "article": "le",
+   "en": "leisure activity; spare time",
+   "fa": "سرگرمی، اوقات فراغت",
+   "level": "C2"
+  },
+  {
+   "key": "n:musicien",
+   "fr": "musicien",
+   "type": "noun",
+   "article": "le",
+   "en": "musician",
+   "fa": "نوازنده، موسیقی‌دان",
+   "level": "C2"
+  },
+  {
+   "key": "n:orchestre",
+   "fr": "orchestre",
+   "type": "noun",
+   "article": "l'",
+   "en": "orchestra",
+   "fa": "ارکستر",
+   "level": "C2"
+  },
+  {
+   "key": "n:photographe",
+   "fr": "photographe",
+   "type": "noun",
+   "article": "le",
+   "en": "photographer",
+   "fa": "عکاس",
+   "level": "C2"
+  },
+  {
+   "key": "n:scenario",
+   "fr": "scénario",
+   "type": "noun",
+   "article": "le",
+   "en": "screenplay, scenario",
+   "fa": "فیلم‌نامه، سناریو",
+   "level": "C2"
+  },
+  {
+   "key": "n:spectateur",
+   "fr": "spectateur",
+   "type": "noun",
+   "article": "le",
+   "en": "spectator",
+   "fa": "تماشاگر",
+   "level": "C2"
+  },
+  {
+   "key": "n:tragedie",
+   "fr": "tragédie",
+   "type": "noun",
+   "article": "la",
+   "en": "tragedy",
+   "fa": "تراژدی، فاجعه",
+   "level": "C2"
+  },
+  {
+   "key": "n:vedette",
+   "fr": "vedette",
+   "type": "noun",
+   "article": "la",
+   "en": "star, celebrity",
+   "fa": "ستاره، چهره‌ی سرشناس",
+   "level": "C2"
+  },
+  {
+   "key": "n:violon",
+   "fr": "violon",
+   "type": "noun",
+   "article": "le",
+   "en": "violin",
+   "fa": "ویولن",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:chanter",
+   "fr": "chanter",
+   "type": "verb",
+   "en": "to sing",
+   "fa": "آواز خواندن",
+   "level": "A1"
+  },
+  {
+   "key": "v:danser",
+   "fr": "danser",
+   "type": "verb",
+   "en": "to dance",
+   "fa": "رقصیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:jouer",
+   "fr": "jouer",
+   "type": "verb",
+   "en": "to play (engage in games or play)",
+   "fa": "بازی کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:lire",
+   "fr": "lire",
+   "type": "verb",
+   "en": "to read",
+   "fa": "خواندن",
+   "level": "A1"
+  },
+  {
+   "key": "v:dessiner",
+   "fr": "dessiner",
+   "type": "verb",
+   "en": "to draw, to sketch",
+   "fa": "طراحی کردن، کشیدن (نقاشی)",
+   "level": "A2"
+  },
+  {
+   "key": "v:fêter",
+   "fr": "fêter",
+   "type": "verb",
+   "en": "to celebrate (an event)",
+   "fa": "جشن گرفتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:filmer",
+   "fr": "filmer",
+   "type": "verb",
+   "en": "to film",
+   "fa": "فیلم گرفتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:peindre",
+   "fr": "peindre",
+   "type": "verb",
+   "en": "to paint",
+   "fa": "نقاشی کردن، رنگ زدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:représenter",
+   "fr": "représenter",
+   "type": "verb",
+   "en": "to represent (to be the representative of)",
+   "fa": "نمایندگی کردن، نشان دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:applaudir",
+   "fr": "applaudir",
+   "type": "verb",
+   "en": "to applaud (express approval by clapping)",
+   "fa": "کف زدن، تشویق کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:composer",
+   "fr": "composer",
+   "type": "verb",
+   "en": "to compose",
+   "fa": "ساختن (موسیقی)، تشکیل دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:exposer",
+   "fr": "exposer",
+   "type": "verb",
+   "en": "to expose",
+   "fa": "به نمایش گذاشتن، توضیح دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:pêcher",
+   "fr": "pêcher",
+   "type": "verb",
+   "en": "to fish",
+   "fa": "ماهی گرفتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:improviser",
+   "fr": "improviser",
+   "type": "verb",
+   "en": "to improvise",
+   "fa": "بداهه‌سازی کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:interpréter",
+   "fr": "interpréter",
+   "type": "verb",
+   "en": "to translate",
+   "fa": "اجرا کردن، تفسیر کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:photographier",
+   "fr": "photographier",
+   "type": "verb",
+   "en": "to photograph",
+   "fa": "عکس گرفتن از",
+   "level": "B2"
+  },
+  {
+   "key": "v:sculpter",
+   "fr": "sculpter",
+   "type": "verb",
+   "en": "to sculpt",
+   "fa": "مجسمه‌سازی کردن، تراشیدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:tricoter",
+   "fr": "tricoter",
+   "type": "verb",
+   "en": "to knit",
+   "fa": "بافتن",
+   "level": "B2"
+  },
+  {
+   "key": "v:bricoler",
+   "fr": "bricoler",
+   "type": "verb",
+   "en": "to do DIY",
+   "fa": "کارهای دستی و تعمیرات خانگی کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:collectionner",
+   "fr": "collectionner",
+   "type": "verb",
+   "en": "to collect (to accumulate items)",
+   "fa": "جمع‌آوری کردن (به‌عنوان کلکسیون)",
+   "level": "C1"
+  },
+  {
+   "key": "v:flâner",
+   "fr": "flâner",
+   "type": "verb",
+   "en": "to wander around",
+   "fa": "ول گشتن، بی‌هدف گردش کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:fredonner",
+   "fr": "fredonner",
+   "type": "verb",
+   "en": "to hum (to make sound with lips closed)",
+   "fa": "زیر لب زمزمه کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:siffloter",
+   "fr": "siffloter",
+   "type": "verb",
+   "en": "to whistle (carelessly)",
+   "fa": "آرام سوت زدن",
+   "level": "C1"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "J'aime la musique et le cinéma.",
+   "en": "I like music and cinema.",
+   "fa": "موسیقی و سینما را دوست دارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Qu'est-ce que tu fais pendant ton temps libre ?",
+   "en": "What do you do in your free time?",
+   "fa": "در اوقات فراغتت چه کار می‌کنی؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je joue de la guitare depuis deux ans.",
+   "en": "I have been playing the guitar for two years.",
+   "fa": "دو سال است که گیتار می‌زنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "On va au cinéma ce soir ?",
+   "en": "Shall we go to the cinema tonight?",
+   "fa": "امشب به سینما برویم؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Deux places pour la séance de vingt heures, s'il vous plaît.",
+   "en": "Two seats for the eight o'clock showing, please.",
+   "fa": "دو بلیت برای سانس ساعت هشت، لطفاً.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Le week-end dernier, j'ai visité une exposition de photos.",
+   "en": "Last weekend I visited a photography exhibition.",
+   "fa": "آخر هفته گذشته از یک نمایشگاه عکس دیدن کردم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je préfère lire un bon livre plutôt que regarder la télé.",
+   "en": "I would rather read a good book than watch TV.",
+   "fa": "ترجیح می‌دهم یک کتاب خوب بخوانم تا اینکه تلویزیون ببینم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai adoré ce film : l'histoire est émouvante et les acteurs sont excellents.",
+   "en": "I loved this film: the story is moving and the actors are excellent.",
+   "fa": "این فیلم را خیلی دوست داشتم: داستانش تأثیرگذار است و بازیگرانش عالی‌اند.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Ce roman m'a déçu, car l'intrigue est trop prévisible.",
+   "en": "This novel disappointed me because the plot is too predictable.",
+   "fa": "این رمان مرا ناامید کرد، چون داستانش بیش از حد قابل‌پیش‌بینی است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je te recommande ce spectacle ; il vaut vraiment le détour.",
+   "en": "I recommend this show; it is really worth the trip.",
+   "fa": "این نمایش را به تو توصیه می‌کنم؛ واقعاً ارزش رفتن دارد.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je vous écris pour vous inviter à la soirée que j'organise samedi.",
+   "en": "I am writing to invite you to the party I am organising on Saturday.",
+   "fa": "برایتان می‌نویسم تا شما را به مهمانی‌ای که شنبه برگزار می‌کنم دعوت کنم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "La culture devrait être accessible à tous, quels que soient les revenus.",
+   "en": "Culture should be accessible to everyone, whatever their income.",
+   "fa": "فرهنگ باید برای همه، فارغ از میزان درآمد، در دسترس باشد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les jeux vidéo ne sont pas forcément nuisibles ; tout dépend du temps qu'on y passe.",
+   "en": "Video games are not necessarily harmful; it all depends on how much time you spend on them.",
+   "fa": "بازی‌های ویدیویی لزوماً مضر نیستند؛ همه‌چیز به مدت زمانی که صرف آن‌ها می‌شود بستگی دارد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les festivals font vivre les villes et attirent de nombreux touristes.",
+   "en": "Festivals bring towns to life and attract many tourists.",
+   "fa": "جشنواره‌ها شهرها را زنده می‌کنند و گردشگران بسیاری را جذب می‌کنند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La lecture, loin d'être un simple divertissement, nourrit l'esprit critique et l'imagination.",
+   "en": "Reading, far from being mere entertainment, nourishes critical thinking and imagination.",
+   "fa": "مطالعه، به‌جای آنکه سرگرمی صرف باشد، تفکر انتقادی و تخیل را پرورش می‌دهد.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "CE",
+   "topic": "article : journée portes ouvertes d'un cinéma",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Journée Portes ouvertes du"
+  },
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "PE",
+   "topic": "lettre à un ami : l'inviter pendant les vacances, activités à faire ensemble",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "pour l’inviter dans votre pays pendant les vacances"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CE",
+   "topic": "publicités de livres : cuisine, sport, voyage (Transsibérien), nature, bébé",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "voulez offrir un livre à vos amis français. Vous lisez cette publicité."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CE",
+   "topic": "article : un nouveau musée de petits trains à Brest",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "« Petits trains », une nouvelle idée de sortie à Brest"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CE",
+   "topic": "forum : adaptations de livres au cinéma, pour ou contre",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Adaptations de livres au cinéma : pour ou contre ?"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section A : annonce de randonnée",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Itinéraires de 3 à 5 jours"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section A : annonce de figuration dans une comédie musicale",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "La Compagnie Ciné-Art recherche des acteurs figurants"
+  },
+  {
+   "exam": "tef",
+   "level": null,
+   "paper": "EE",
+   "topic": "section B : lettre au journal — accès gratuit à la culture",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression écrite (Le français des affaires, CCI Paris Île-de-France)",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-ee.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "« L’accès à la culture (cinéma, théâtre, expositions…) devrait être gratuit. »"
+  }
+ ]
+}

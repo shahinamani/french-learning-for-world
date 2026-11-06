@@ -1,0 +1,1695 @@
+{
+ "id": "environment",
+ "names": {
+  "fr": "L'environnement et la nature",
+  "en": "Environment and nature",
+  "fa": "محیط زیست و طبیعت"
+ },
+ "counts": {
+  "words": 137,
+  "verbs": 34,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "dalf",
+   "level": "C1"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:bois",
+   "fr": "bois",
+   "type": "noun",
+   "article": "le",
+   "en": "wood; woods",
+   "fa": "چوب؛ جنگل",
+   "level": "A1"
+  },
+  {
+   "key": "n:cheval",
+   "fr": "cheval",
+   "type": "noun",
+   "article": "le",
+   "en": "horse",
+   "fa": "اسب",
+   "level": "A1"
+  },
+  {
+   "key": "n:chien",
+   "fr": "chien",
+   "type": "noun",
+   "article": "le",
+   "en": "dog (la chienne, f.)",
+   "fa": "سگ",
+   "level": "A1"
+  },
+  {
+   "key": "n:ciel",
+   "fr": "ciel",
+   "type": "noun",
+   "article": "le",
+   "en": "sky",
+   "fa": "آسمان",
+   "level": "A1"
+  },
+  {
+   "key": "n:eau",
+   "fr": "eau",
+   "type": "noun",
+   "article": "l'",
+   "en": "water",
+   "fa": "آب",
+   "level": "A1"
+  },
+  {
+   "key": "n:mer",
+   "fr": "mer",
+   "type": "noun",
+   "article": "la",
+   "en": "sea",
+   "fa": "دریا",
+   "level": "A1"
+  },
+  {
+   "key": "n:soleil",
+   "fr": "soleil",
+   "type": "noun",
+   "article": "le",
+   "en": "sun",
+   "fa": "خورشید",
+   "level": "A1"
+  },
+  {
+   "key": "n:temps",
+   "fr": "temps",
+   "type": "noun",
+   "article": "le",
+   "en": "time, weather",
+   "fa": "زمان، هوا",
+   "level": "A1"
+  },
+  {
+   "key": "n:terre",
+   "fr": "terre",
+   "type": "noun",
+   "article": "la",
+   "en": "earth, land, ground",
+   "fa": "زمین",
+   "level": "A1"
+  },
+  {
+   "key": "n:animal",
+   "fr": "animal",
+   "type": "noun",
+   "article": "l'",
+   "en": "animal",
+   "fa": "حیوان",
+   "level": "A2"
+  },
+  {
+   "key": "n:arbre",
+   "fr": "arbre",
+   "type": "noun",
+   "article": "l'",
+   "en": "tree",
+   "fa": "درخت",
+   "level": "A2"
+  },
+  {
+   "key": "n:bete",
+   "fr": "bête",
+   "type": "noun",
+   "article": "la",
+   "en": "animal, beast",
+   "fa": "جانور، حیوان",
+   "level": "A2"
+  },
+  {
+   "key": "n:campagne",
+   "fr": "campagne",
+   "type": "noun",
+   "article": "la",
+   "en": "countryside",
+   "fa": "روستا، حومه",
+   "level": "A2"
+  },
+  {
+   "key": "n:chaleur",
+   "fr": "chaleur",
+   "type": "noun",
+   "article": "la",
+   "en": "heat, warmth",
+   "fa": "گرما",
+   "level": "A2"
+  },
+  {
+   "key": "n:champ",
+   "fr": "champ",
+   "type": "noun",
+   "article": "le",
+   "en": "field",
+   "fa": "مزرعه، دشت",
+   "level": "A2"
+  },
+  {
+   "key": "n:chat",
+   "fr": "chat",
+   "type": "noun",
+   "article": "le",
+   "en": "cat",
+   "fa": "گربه",
+   "level": "A2"
+  },
+  {
+   "key": "a:chaud",
+   "fr": "chaud",
+   "type": "adjective",
+   "article": null,
+   "en": "hot, warm",
+   "fa": "گرم، داغ",
+   "level": "A2"
+  },
+  {
+   "key": "n:ete",
+   "fr": "été",
+   "type": "noun",
+   "article": "l'",
+   "en": "summer",
+   "fa": "تابستان",
+   "level": "A2"
+  },
+  {
+   "key": "n:feuille",
+   "fr": "feuille",
+   "type": "noun",
+   "article": "la",
+   "en": "leaf, sheet",
+   "fa": "برگ، ورق",
+   "level": "A2"
+  },
+  {
+   "key": "n:fleur",
+   "fr": "fleur",
+   "type": "noun",
+   "article": "la",
+   "en": "flower",
+   "fa": "گل",
+   "level": "A2"
+  },
+  {
+   "key": "n:foret",
+   "fr": "forêt",
+   "type": "noun",
+   "article": "la",
+   "en": "forest",
+   "fa": "جنگل",
+   "level": "A2"
+  },
+  {
+   "key": "a:froid",
+   "fr": "froid",
+   "type": "adjective",
+   "article": null,
+   "en": "cold",
+   "fa": "سرد",
+   "level": "A2"
+  },
+  {
+   "key": "n:glace",
+   "fr": "glace",
+   "type": "noun",
+   "article": "la",
+   "en": "ice cream, ice",
+   "fa": "بستنی، یخ",
+   "level": "A2"
+  },
+  {
+   "key": "n:herbe",
+   "fr": "herbe",
+   "type": "noun",
+   "article": "l'",
+   "en": "grass, herb",
+   "fa": "علف، سبزی",
+   "level": "A2"
+  },
+  {
+   "key": "n:ile",
+   "fr": "île",
+   "type": "noun",
+   "article": "l'",
+   "en": "island",
+   "fa": "جزیره",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "météo",
+   "type": "noun",
+   "article": "la",
+   "en": "weather forecast",
+   "fa": "پیش‌بینی هوا",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:montagne",
+   "fr": "montagne",
+   "type": "noun",
+   "article": "la",
+   "en": "mountain",
+   "fa": "کوه، کوهستان",
+   "level": "A2"
+  },
+  {
+   "key": "n:nature",
+   "fr": "nature",
+   "type": "noun",
+   "article": "la",
+   "en": "nature",
+   "fa": "طبیعت",
+   "level": "A2"
+  },
+  {
+   "key": "n:oiseau",
+   "fr": "oiseau",
+   "type": "noun",
+   "article": "l'",
+   "en": "bird",
+   "fa": "پرنده",
+   "level": "A2"
+  },
+  {
+   "key": "n:pierre",
+   "fr": "pierre",
+   "type": "noun",
+   "article": "la",
+   "en": "stone",
+   "fa": "سنگ",
+   "level": "A2"
+  },
+  {
+   "key": "n:pluie",
+   "fr": "pluie",
+   "type": "noun",
+   "article": "la",
+   "en": "rain",
+   "fa": "باران",
+   "level": "A2"
+  },
+  {
+   "key": "a:sec",
+   "fr": "sec",
+   "type": "adjective",
+   "article": null,
+   "en": "dry",
+   "fa": "خشک",
+   "level": "A2"
+  },
+  {
+   "key": "n:sol",
+   "fr": "sol",
+   "type": "noun",
+   "article": "le",
+   "en": "ground, floor",
+   "fa": "زمین، کف",
+   "level": "A2"
+  },
+  {
+   "key": "n:vent",
+   "fr": "vent",
+   "type": "noun",
+   "article": "le",
+   "en": "wind",
+   "fa": "باد",
+   "level": "A2"
+  },
+  {
+   "key": "n:branche",
+   "fr": "branche",
+   "type": "noun",
+   "article": "la",
+   "en": "branch",
+   "fa": "شاخه",
+   "level": "B1"
+  },
+  {
+   "key": "n:colline",
+   "fr": "colline",
+   "type": "noun",
+   "article": "la",
+   "en": "hill",
+   "fa": "تپه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "déchet",
+   "type": "noun",
+   "article": "le",
+   "en": "waste",
+   "fa": "زباله",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "environnement",
+   "type": "noun",
+   "article": "l’",
+   "en": "environment",
+   "fa": "محیط زیست",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:etoile",
+   "fr": "étoile",
+   "type": "noun",
+   "article": "l'",
+   "en": "star",
+   "fa": "ستاره",
+   "level": "B1"
+  },
+  {
+   "key": "n:fumee",
+   "fr": "fumée",
+   "type": "noun",
+   "article": "la",
+   "en": "smoke",
+   "fa": "دود",
+   "level": "B1"
+  },
+  {
+   "key": "n:hiver",
+   "fr": "hiver",
+   "type": "noun",
+   "article": "l'",
+   "en": "winter",
+   "fa": "زمستان",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "inondation",
+   "type": "noun",
+   "article": "l’",
+   "en": "flood",
+   "fa": "سیل",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:lune",
+   "fr": "lune",
+   "type": "noun",
+   "article": "la",
+   "en": "moon",
+   "fa": "ماه",
+   "level": "B1"
+  },
+  {
+   "key": "n:neige",
+   "fr": "neige",
+   "type": "noun",
+   "article": "la",
+   "en": "snow",
+   "fa": "برف",
+   "level": "B1"
+  },
+  {
+   "key": "n:nuage",
+   "fr": "nuage",
+   "type": "noun",
+   "article": "le",
+   "en": "cloud",
+   "fa": "ابر",
+   "level": "B1"
+  },
+  {
+   "key": "n:plage",
+   "fr": "plage",
+   "type": "noun",
+   "article": "la",
+   "en": "beach",
+   "fa": "ساحل",
+   "level": "B1"
+  },
+  {
+   "key": "n:planete",
+   "fr": "planète",
+   "type": "noun",
+   "article": "la",
+   "en": "planet",
+   "fa": "سیاره",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "plastique",
+   "type": "noun",
+   "article": "le",
+   "en": "plastic",
+   "fa": "پلاستیک",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:poisson",
+   "fr": "poisson",
+   "type": "noun",
+   "article": "le",
+   "en": "fish",
+   "fa": "ماهی",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "pollution",
+   "type": "noun",
+   "article": "la",
+   "en": "pollution",
+   "fa": "آلودگی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:poussiere",
+   "fr": "poussière",
+   "type": "noun",
+   "article": "la",
+   "en": "dust",
+   "fa": "گرد و غبار",
+   "level": "B1"
+  },
+  {
+   "key": "n:printemps",
+   "fr": "printemps",
+   "type": "noun",
+   "article": "le",
+   "en": "spring (season)",
+   "fa": "بهار",
+   "level": "B1"
+  },
+  {
+   "key": "n:rat",
+   "fr": "rat",
+   "type": "noun",
+   "article": "le",
+   "en": "rat",
+   "fa": "موش (بزرگ)",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "recyclage",
+   "type": "noun",
+   "article": "le",
+   "en": "recycling",
+   "fa": "بازیافت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:sable",
+   "fr": "sable",
+   "type": "noun",
+   "article": "le",
+   "en": "sand",
+   "fa": "ماسه، شن",
+   "level": "B1"
+  },
+  {
+   "key": "n:saison",
+   "fr": "saison",
+   "type": "noun",
+   "article": "la",
+   "en": "season",
+   "fa": "فصل",
+   "level": "B1"
+  },
+  {
+   "key": "n:source",
+   "fr": "source",
+   "type": "noun",
+   "article": "la",
+   "en": "spring, source",
+   "fa": "چشمه، منبع",
+   "level": "B1"
+  },
+  {
+   "key": "n:univers",
+   "fr": "univers",
+   "type": "noun",
+   "article": "l'",
+   "en": "universe",
+   "fa": "جهان، گیتی",
+   "level": "B1"
+  },
+  {
+   "key": "n:vache",
+   "fr": "vache",
+   "type": "noun",
+   "article": "la",
+   "en": "cow",
+   "fa": "گاو",
+   "level": "B1"
+  },
+  {
+   "key": "n:vague",
+   "fr": "vague",
+   "type": "noun",
+   "article": "la",
+   "en": "wave",
+   "fa": "موج",
+   "level": "B1"
+  },
+  {
+   "key": "n:automne",
+   "fr": "automne",
+   "type": "noun",
+   "article": "l'",
+   "en": "autumn",
+   "fa": "پاییز",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "biodiversité",
+   "type": "noun",
+   "article": "la",
+   "en": "biodiversity",
+   "fa": "تنوع زیستی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:boue",
+   "fr": "boue",
+   "type": "noun",
+   "article": "la",
+   "en": "mud",
+   "fa": "گل، لجن",
+   "level": "B2"
+  },
+  {
+   "key": "n:canard",
+   "fr": "canard",
+   "type": "noun",
+   "article": "le",
+   "en": "duck",
+   "fa": "اردک",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "catastrophe",
+   "type": "noun",
+   "article": "la",
+   "en": "disaster",
+   "fa": "فاجعه",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:cochon",
+   "fr": "cochon",
+   "type": "noun",
+   "article": "le",
+   "en": "pig",
+   "fa": "خوک",
+   "level": "B2"
+  },
+  {
+   "key": "n:desert",
+   "fr": "désert",
+   "type": "noun",
+   "article": "le",
+   "en": "desert",
+   "fa": "بیابان، صحرا",
+   "level": "B2"
+  },
+  {
+   "key": "n:energie",
+   "fr": "énergie",
+   "type": "noun",
+   "article": "l'",
+   "en": "energy",
+   "fa": "انرژی",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "espèce",
+   "type": "noun",
+   "article": "l’",
+   "en": "species",
+   "fa": "گونه",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:fleuve",
+   "fr": "fleuve",
+   "type": "noun",
+   "article": "le",
+   "en": "river (flowing to the sea)",
+   "fa": "رود بزرگ، رودخانه",
+   "level": "B2"
+  },
+  {
+   "key": "n:gaz",
+   "fr": "gaz",
+   "type": "noun",
+   "article": "le",
+   "en": "gas",
+   "fa": "گاز",
+   "level": "B2"
+  },
+  {
+   "key": "n:horizon",
+   "fr": "horizon",
+   "type": "noun",
+   "article": "l'",
+   "en": "horizon",
+   "fa": "افق",
+   "level": "B2"
+  },
+  {
+   "key": "a:humide",
+   "fr": "humide",
+   "type": "adjective",
+   "article": null,
+   "en": "damp, humid",
+   "fa": "مرطوب، نمناک",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "incendie",
+   "type": "noun",
+   "article": "l’",
+   "en": "fire",
+   "fa": "آتش‌سوزی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:lac",
+   "fr": "lac",
+   "type": "noun",
+   "article": "le",
+   "en": "lake",
+   "fa": "دریاچه",
+   "level": "B2"
+  },
+  {
+   "key": "n:lapin",
+   "fr": "lapin",
+   "type": "noun",
+   "article": "le",
+   "en": "rabbit",
+   "fa": "خرگوش",
+   "level": "B2"
+  },
+  {
+   "key": "n:lion",
+   "fr": "lion",
+   "type": "noun",
+   "article": "le",
+   "en": "lion",
+   "fa": "شیر",
+   "level": "B2"
+  },
+  {
+   "key": "n:loup",
+   "fr": "loup",
+   "type": "noun",
+   "article": "le",
+   "en": "wolf",
+   "fa": "گرگ",
+   "level": "B2"
+  },
+  {
+   "key": "n:mouche",
+   "fr": "mouche",
+   "type": "noun",
+   "article": "la",
+   "en": "fly",
+   "fa": "مگس",
+   "level": "B2"
+  },
+  {
+   "key": "n:ocean",
+   "fr": "océan",
+   "type": "noun",
+   "article": "l'",
+   "en": "ocean",
+   "fa": "اقیانوس",
+   "level": "B2"
+  },
+  {
+   "key": "n:orage",
+   "fr": "orage",
+   "type": "noun",
+   "article": "l'",
+   "en": "storm, thunderstorm",
+   "fa": "طوفان، رعد و برق",
+   "level": "B2"
+  },
+  {
+   "key": "n:ordure",
+   "fr": "ordure",
+   "type": "noun",
+   "article": "l'",
+   "en": "rubbish, waste (usually plural)",
+   "fa": "زباله",
+   "level": "B2"
+  },
+  {
+   "key": "n:paysage",
+   "fr": "paysage",
+   "type": "noun",
+   "article": "le",
+   "en": "landscape, scenery",
+   "fa": "منظره، چشم‌انداز",
+   "level": "B2"
+  },
+  {
+   "key": "n:plante",
+   "fr": "plante",
+   "type": "noun",
+   "article": "la",
+   "en": "plant",
+   "fa": "گیاه",
+   "level": "B2"
+  },
+  {
+   "key": "n:poule",
+   "fr": "poule",
+   "type": "noun",
+   "article": "la",
+   "en": "hen",
+   "fa": "مرغ",
+   "level": "B2"
+  },
+  {
+   "key": "n:pre",
+   "fr": "pré",
+   "type": "noun",
+   "article": "le",
+   "en": "meadow",
+   "fa": "چمنزار، مرتع",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "réchauffement",
+   "type": "noun",
+   "article": "le",
+   "en": "warming",
+   "fa": "گرمایش",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "ressource",
+   "type": "noun",
+   "article": "la",
+   "en": "resource",
+   "fa": "منبع",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:riviere",
+   "fr": "rivière",
+   "type": "noun",
+   "article": "la",
+   "en": "river",
+   "fa": "رودخانه",
+   "level": "B2"
+  },
+  {
+   "key": "n:rocher",
+   "fr": "rocher",
+   "type": "noun",
+   "article": "le",
+   "en": "rock",
+   "fa": "صخره، تخته‌سنگ",
+   "level": "B2"
+  },
+  {
+   "key": "a:sauvage",
+   "fr": "sauvage",
+   "type": "adjective",
+   "article": null,
+   "en": "wild, savage",
+   "fa": "وحشی",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "sécheresse",
+   "type": "noun",
+   "article": "la",
+   "en": "drought",
+   "fa": "خشکسالی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:serpent",
+   "fr": "serpent",
+   "type": "noun",
+   "article": "le",
+   "en": "snake",
+   "fa": "مار",
+   "level": "B2"
+  },
+  {
+   "key": "n:singe",
+   "fr": "singe",
+   "type": "noun",
+   "article": "le",
+   "en": "monkey",
+   "fa": "میمون",
+   "level": "B2"
+  },
+  {
+   "key": "n:tempete",
+   "fr": "tempête",
+   "type": "noun",
+   "article": "la",
+   "en": "storm",
+   "fa": "طوفان",
+   "level": "B2"
+  },
+  {
+   "key": "n:araignee",
+   "fr": "araignée",
+   "type": "noun",
+   "article": "l'",
+   "en": "spider",
+   "fa": "عنکبوت",
+   "level": "C1"
+  },
+  {
+   "key": "n:brouillard",
+   "fr": "brouillard",
+   "type": "noun",
+   "article": "le",
+   "en": "fog",
+   "fa": "مه",
+   "level": "C1"
+  },
+  {
+   "key": "n:brume",
+   "fr": "brume",
+   "type": "noun",
+   "article": "la",
+   "en": "mist",
+   "fa": "مه سبک، غبار",
+   "level": "C1"
+  },
+  {
+   "key": "n:caillou",
+   "fr": "caillou",
+   "type": "noun",
+   "article": "le",
+   "en": "pebble, stone",
+   "fa": "سنگ‌ریزه، قلوه‌سنگ",
+   "level": "C1"
+  },
+  {
+   "key": "n:cendre",
+   "fr": "cendre",
+   "type": "noun",
+   "article": "la",
+   "en": "ash",
+   "fa": "خاکستر",
+   "level": "C1"
+  },
+  {
+   "key": "n:eclair",
+   "fr": "éclair",
+   "type": "noun",
+   "article": "l'",
+   "en": "lightning, éclair (pastry)",
+   "fa": "برق، اکلر",
+   "level": "C1"
+  },
+  {
+   "key": "n:fraicheur",
+   "fr": "fraîcheur",
+   "type": "noun",
+   "article": "la",
+   "en": "coolness, freshness",
+   "fa": "خنکی، طراوت",
+   "level": "C1"
+  },
+  {
+   "key": "n:insecte",
+   "fr": "insecte",
+   "type": "noun",
+   "article": "l'",
+   "en": "insect",
+   "fa": "حشره",
+   "level": "C1"
+  },
+  {
+   "key": "n:mouton",
+   "fr": "mouton",
+   "type": "noun",
+   "article": "le",
+   "en": "sheep, mutton",
+   "fa": "گوسفند، گوشت گوسفند",
+   "level": "C1"
+  },
+  {
+   "key": "n:ours",
+   "fr": "ours",
+   "type": "noun",
+   "article": "l'",
+   "en": "bear",
+   "fa": "خرس",
+   "level": "C1"
+  },
+  {
+   "key": "n:plaine",
+   "fr": "plaine",
+   "type": "noun",
+   "article": "la",
+   "en": "plain",
+   "fa": "دشت",
+   "level": "C1"
+  },
+  {
+   "key": "n:poubelle",
+   "fr": "poubelle",
+   "type": "noun",
+   "article": "la",
+   "en": "bin, dustbin",
+   "fa": "سطل زباله",
+   "level": "C1"
+  },
+  {
+   "key": "n:puce",
+   "fr": "puce",
+   "type": "noun",
+   "article": "la",
+   "en": "flea, chip",
+   "fa": "کک، تراشه",
+   "level": "C1"
+  },
+  {
+   "key": "n:racine",
+   "fr": "racine",
+   "type": "noun",
+   "article": "la",
+   "en": "root",
+   "fa": "ریشه",
+   "level": "C1"
+  },
+  {
+   "key": "n:souris",
+   "fr": "souris",
+   "type": "noun",
+   "article": "la",
+   "en": "mouse",
+   "fa": "موش، ماوس",
+   "level": "C1"
+  },
+  {
+   "key": "n:tronc",
+   "fr": "tronc",
+   "type": "noun",
+   "article": "le",
+   "en": "trunk",
+   "fa": "تنه",
+   "level": "C1"
+  },
+  {
+   "key": "n:vallee",
+   "fr": "vallée",
+   "type": "noun",
+   "article": "la",
+   "en": "valley",
+   "fa": "دره",
+   "level": "C1"
+  },
+  {
+   "key": "n:ane",
+   "fr": "âne",
+   "type": "noun",
+   "article": "l'",
+   "en": "donkey",
+   "fa": "الاغ",
+   "level": "C2"
+  },
+  {
+   "key": "n:boeuf",
+   "fr": "bœuf",
+   "type": "noun",
+   "article": "le",
+   "en": "ox; beef",
+   "fa": "گاو نر؛ گوشت گاو",
+   "level": "C2"
+  },
+  {
+   "key": "n:buisson",
+   "fr": "buisson",
+   "type": "noun",
+   "article": "le",
+   "en": "bush",
+   "fa": "بوته",
+   "level": "C2"
+  },
+  {
+   "key": "n:cerf",
+   "fr": "cerf",
+   "type": "noun",
+   "article": "le",
+   "en": "stag, deer",
+   "fa": "گوزن نر",
+   "level": "C2"
+  },
+  {
+   "key": "n:charbon",
+   "fr": "charbon",
+   "type": "noun",
+   "article": "le",
+   "en": "coal",
+   "fa": "زغال‌سنگ",
+   "level": "C2"
+  },
+  {
+   "key": "n:chene",
+   "fr": "chêne",
+   "type": "noun",
+   "article": "le",
+   "en": "oak",
+   "fa": "بلوط",
+   "level": "C2"
+  },
+  {
+   "key": "n:chevre",
+   "fr": "chèvre",
+   "type": "noun",
+   "article": "la",
+   "en": "goat",
+   "fa": "بز",
+   "level": "C2"
+  },
+  {
+   "key": "n:climat",
+   "fr": "climat",
+   "type": "noun",
+   "article": "le",
+   "en": "climate",
+   "fa": "آب‌وهوا",
+   "level": "C2"
+  },
+  {
+   "key": "n:coq",
+   "fr": "coq",
+   "type": "noun",
+   "article": "le",
+   "en": "rooster",
+   "fa": "خروس",
+   "level": "C2"
+  },
+  {
+   "key": "n:electricite",
+   "fr": "électricité",
+   "type": "noun",
+   "article": "l'",
+   "en": "electricity",
+   "fa": "برق، الکتریسیته",
+   "level": "C2"
+  },
+  {
+   "key": "n:elephant",
+   "fr": "éléphant",
+   "type": "noun",
+   "article": "l'",
+   "en": "elephant",
+   "fa": "فیل",
+   "level": "C2"
+  },
+  {
+   "key": "n:falaise",
+   "fr": "falaise",
+   "type": "noun",
+   "article": "la",
+   "en": "cliff",
+   "fa": "پرتگاه ساحلی، صخره",
+   "level": "C2"
+  },
+  {
+   "key": "n:fontaine",
+   "fr": "fontaine",
+   "type": "noun",
+   "article": "la",
+   "en": "fountain",
+   "fa": "فواره، آب‌نما",
+   "level": "C2"
+  },
+  {
+   "key": "n:haie",
+   "fr": "haie",
+   "type": "noun",
+   "article": "la",
+   "en": "hedge",
+   "fa": "پرچین",
+   "level": "C2"
+  },
+  {
+   "key": "n:maree",
+   "fr": "marée",
+   "type": "noun",
+   "article": "la",
+   "en": "tide",
+   "fa": "جزر و مد",
+   "level": "C2"
+  },
+  {
+   "key": "n:papillon",
+   "fr": "papillon",
+   "type": "noun",
+   "article": "le",
+   "en": "butterfly",
+   "fa": "پروانه",
+   "level": "C2"
+  },
+  {
+   "key": "n:petrole",
+   "fr": "pétrole",
+   "type": "noun",
+   "article": "le",
+   "en": "oil, petroleum",
+   "fa": "نفت",
+   "level": "C2"
+  },
+  {
+   "key": "n:pigeon",
+   "fr": "pigeon",
+   "type": "noun",
+   "article": "le",
+   "en": "pigeon",
+   "fa": "کبوتر",
+   "level": "C2"
+  },
+  {
+   "key": "n:pin",
+   "fr": "pin",
+   "type": "noun",
+   "article": "le",
+   "en": "pine",
+   "fa": "کاج",
+   "level": "C2"
+  },
+  {
+   "key": "n:roche",
+   "fr": "roche",
+   "type": "noun",
+   "article": "la",
+   "en": "rock",
+   "fa": "سنگ، صخره",
+   "level": "C2"
+  },
+  {
+   "key": "n:ruisseau",
+   "fr": "ruisseau",
+   "type": "noun",
+   "article": "le",
+   "en": "stream, brook",
+   "fa": "جویبار",
+   "level": "C2"
+  },
+  {
+   "key": "n:sapin",
+   "fr": "sapin",
+   "type": "noun",
+   "article": "le",
+   "en": "fir tree; Christmas tree",
+   "fa": "درخت صنوبر",
+   "level": "C2"
+  },
+  {
+   "key": "n:temperature",
+   "fr": "température",
+   "type": "noun",
+   "article": "la",
+   "en": "temperature",
+   "fa": "دما",
+   "level": "C2"
+  },
+  {
+   "key": "n:tonnerre",
+   "fr": "tonnerre",
+   "type": "noun",
+   "article": "le",
+   "en": "thunder",
+   "fa": "رعد",
+   "level": "C2"
+  },
+  {
+   "key": "n:vigne",
+   "fr": "vigne",
+   "type": "noun",
+   "article": "la",
+   "en": "vine; vineyard",
+   "fa": "تاک، تاکستان",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:pousser",
+   "fr": "pousser",
+   "type": "verb",
+   "en": "to push",
+   "fa": "هل دادن، روییدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:briller",
+   "fr": "briller",
+   "type": "verb",
+   "en": "to shine, to sparkle",
+   "fa": "درخشیدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:couler",
+   "fr": "couler",
+   "type": "verb",
+   "en": "to sink",
+   "fa": "غرق شدن، جاری شدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:planter",
+   "fr": "planter",
+   "type": "verb",
+   "en": "to plant",
+   "fa": "کاشتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:pleuvoir",
+   "fr": "pleuvoir",
+   "type": "verb",
+   "en": "to rain",
+   "fa": "باریدن (باران)",
+   "level": "A2"
+  },
+  {
+   "key": "v:arroser",
+   "fr": "arroser",
+   "type": "verb",
+   "en": "to water (e.g. plants)",
+   "fa": "آب دادن (گیاه)",
+   "level": "B1"
+  },
+  {
+   "key": "v:déborder",
+   "fr": "déborder",
+   "type": "verb",
+   "en": "to overflow (exceed the brim), to spill over",
+   "fa": "سرریز شدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:flotter",
+   "fr": "flotter",
+   "type": "verb",
+   "en": "to float",
+   "fa": "شناور بودن، روی آب ماندن",
+   "level": "B1"
+  },
+  {
+   "key": "v:fondre",
+   "fr": "fondre",
+   "type": "verb",
+   "en": "to melt, melt down, smelt",
+   "fa": "آب شدن، ذوب شدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:geler",
+   "fr": "geler",
+   "type": "verb",
+   "en": "to freeze",
+   "fa": "یخ زدن، منجمد کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:récolter",
+   "fr": "récolter",
+   "type": "verb",
+   "en": "to harvest (to reap)",
+   "fa": "برداشت کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:semer",
+   "fr": "semer",
+   "type": "verb",
+   "en": "to sow (scatter seed, etc.)",
+   "fa": "کاشتن (بذر)، جا گذاشتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:souffler",
+   "fr": "souffler",
+   "type": "verb",
+   "en": "to blow",
+   "fa": "فوت کردن، وزیدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:aboyer",
+   "fr": "aboyer",
+   "type": "verb",
+   "en": "to bark",
+   "fa": "پارس کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:croître",
+   "fr": "croître",
+   "type": "verb",
+   "en": "to grow",
+   "fa": "رشد کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:cultiver",
+   "fr": "cultiver",
+   "type": "verb",
+   "en": "to cultivate",
+   "fa": "کاشتن، پرورش دادن",
+   "level": "B2"
+  },
+  {
+   "key": "v:fleurir",
+   "fr": "fleurir",
+   "type": "verb",
+   "en": "to flower, to produce flowers",
+   "fa": "شکوفا شدن، گل دادن",
+   "level": "B2"
+  },
+  {
+   "key": "v:inonder",
+   "fr": "inonder",
+   "type": "verb",
+   "en": "to flood (to overflow)",
+   "fa": "زیر آب بردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:ruisseler",
+   "fr": "ruisseler",
+   "type": "verb",
+   "en": "to stream, drip, pour",
+   "fa": "جاری شدن، سرازیر شدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:brouter",
+   "fr": "brouter",
+   "type": "verb",
+   "en": "to graze, to browse",
+   "fa": "چریدن، علف خوردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:faner",
+   "fr": "faner",
+   "type": "verb",
+   "en": "to make hay (literary)",
+   "fa": "پژمرده شدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:miauler",
+   "fr": "miauler",
+   "type": "verb",
+   "en": "to meow, meowl, mew",
+   "fa": "میو میو کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:mûrir",
+   "fr": "mûrir",
+   "type": "verb",
+   "en": "to mature, to become mature",
+   "fa": "رسیدن، پخته شدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:neiger",
+   "fr": "neiger",
+   "type": "verb",
+   "en": "to snow",
+   "fa": "برف آمدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:pondre",
+   "fr": "pondre",
+   "type": "verb",
+   "en": "to lay (eggs)",
+   "fa": "تخم گذاشتن",
+   "level": "C1"
+  },
+  {
+   "key": "v:ronronner",
+   "fr": "ronronner",
+   "type": "verb",
+   "en": "to purr (to make a vibrating sound in its throat when contented or in certain other conditions)",
+   "fa": "خرخر کردن (گربه)",
+   "level": "C1"
+  },
+  {
+   "key": "v:rugir",
+   "fr": "rugir",
+   "type": "verb",
+   "en": "to roar",
+   "fa": "غریدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:ensoleiller",
+   "fr": "ensoleiller",
+   "type": "verb",
+   "en": "to fill with light, to brighten, to illuminate",
+   "fa": "آفتابی کردن، روشن و شاد کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:évaporer",
+   "fr": "évaporer",
+   "type": "verb",
+   "en": "to evaporate",
+   "fa": "تبخیر شدن، محو شدن",
+   "level": "C2"
+  },
+  {
+   "key": "v:germer",
+   "fr": "germer",
+   "type": "verb",
+   "en": "to germinate",
+   "fa": "جوانه زدن",
+   "level": "C2"
+  },
+  {
+   "key": "v:nicher",
+   "fr": "nicher",
+   "type": "verb",
+   "en": "to nest (bird)",
+   "fa": "لانه کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:paître",
+   "fr": "paître",
+   "type": "verb",
+   "en": "to graze",
+   "fa": "چریدن",
+   "level": "C2"
+  },
+  {
+   "key": "v:polluer",
+   "fr": "polluer",
+   "type": "verb",
+   "en": "to pollute (create pollution)",
+   "fa": "آلوده کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:tonner",
+   "fr": "tonner",
+   "type": "verb",
+   "en": "to thunder",
+   "fa": "غریدن (رعد)",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Il fait beau aujourd'hui.",
+   "en": "The weather is nice today.",
+   "fa": "امروز هوا خوب است.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Il pleut et il y a du vent.",
+   "en": "It's raining and it's windy.",
+   "fa": "باران می‌بارد و باد می‌وزد.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'aime les animaux et la nature.",
+   "en": "I like animals and nature.",
+   "fa": "حیوانات و طبیعت را دوست دارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Quel temps va-t-il faire demain ?",
+   "en": "What will the weather be like tomorrow?",
+   "fa": "فردا هوا چطور خواهد بود؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "En hiver, il neige souvent dans les montagnes.",
+   "en": "In winter it often snows in the mountains.",
+   "fa": "در زمستان در کوهستان‌ها اغلب برف می‌بارد.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Il faut trier ses déchets et les jeter dans la bonne poubelle.",
+   "en": "You have to sort your waste and put it in the right bin.",
+   "fa": "باید زباله‌ها را تفکیک کرد و در سطل درست انداخت.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je prends le vélo pour réduire ma pollution.",
+   "en": "I take my bike to reduce my pollution.",
+   "fa": "برای کم کردن آلودگی‌ام با دوچرخه می‌روم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Chacun peut faire un geste pour protéger la planète.",
+   "en": "Everyone can do something to protect the planet.",
+   "fa": "هر کس می‌تواند برای حفاظت از سیاره کاری بکند.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Les étés sont de plus en plus chauds et secs dans notre région.",
+   "en": "Summers are getting hotter and drier in our region.",
+   "fa": "تابستان‌ها در منطقه ما روزبه‌روز گرم‌تر و خشک‌تر می‌شوند.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je vous écris pour signaler un dépôt sauvage de déchets près de chez moi.",
+   "en": "I am writing to report illegal dumping of waste near my home.",
+   "fa": "می‌نویسم تا ریختن غیرقانونی زباله در نزدیکی خانه‌ام را گزارش کنم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Le réchauffement climatique est dû en grande partie aux activités humaines.",
+   "en": "Global warming is largely caused by human activity.",
+   "fa": "گرمایش جهانی عمدتاً ناشی از فعالیت‌های انسانی است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il est urgent de développer les énergies renouvelables, comme le solaire et l'éolien.",
+   "en": "It is urgent to develop renewable energies, such as solar and wind.",
+   "fa": "توسعه انرژی‌های تجدیدپذیر مانند خورشیدی و بادی فوری است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les gouvernements doivent prendre des mesures plus ambitieuses plutôt que de se contenter de promesses.",
+   "en": "Governments must take more ambitious measures rather than settle for promises.",
+   "fa": "دولت‌ها باید به‌جای اکتفا به وعده، اقدامات جسورانه‌تری انجام دهند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Beaucoup d'espèces animales sont menacées de disparition à cause de la déforestation.",
+   "en": "Many animal species are threatened with extinction because of deforestation.",
+   "fa": "بسیاری از گونه‌های جانوری به علت جنگل‌زدایی در معرض نابودی‌اند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Ce n'est qu'en conciliant développement économique et préservation des ressources que l'on pourra bâtir un avenir durable.",
+   "en": "Only by reconciling economic development and the preservation of resources can a sustainable future be built.",
+   "fa": "تنها با آشتی دادن توسعه اقتصادی و حفظ منابع می‌توان آینده‌ای پایدار ساخت.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CE",
+   "topic": "article : recyclage des déchets électroniques des entreprises",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_example1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "En France, les déchets électroniques des entreprises seront recyclés"
+  },
+  {
+   "exam": "dalf",
+   "level": "C1",
+   "paper": "CO",
+   "topic": "extraits radio : le coelacanthe (espèce marine), les cartes postales",
+   "source": {
+    "what": "DALF C1, sujet démo (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-candidat-coll.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "En 1936, les scientifiques s’intéressent au coelacanthe, une espèce marine…"
+  },
+  {
+   "exam": "dalf",
+   "level": "C1",
+   "paper": "PO",
+   "topic": "exposé sujet 2 : l'espèce humaine peut-elle préserver la biodiversité ?",
+   "source": {
+    "what": "DALF C1, sujet démo (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-examinateur.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "L’espèce humaine peut-elle préserver"
+  }
+ ]
+}

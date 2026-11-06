@@ -1,0 +1,1054 @@
+{
+ "id": "travel-hotel",
+ "names": {
+  "fr": "Les voyages et l'hôtel",
+  "en": "Travel and hotels",
+  "fa": "سفر و هتل"
+ },
+ "counts": {
+  "words": 69,
+  "verbs": 18,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A1"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  },
+  {
+   "exam": "tef",
+   "level": null
+  },
+  {
+   "exam": "tef-canada",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:chambre",
+   "fr": "chambre",
+   "type": "noun",
+   "article": "la",
+   "en": "bedroom, room",
+   "fa": "اتاق خواب",
+   "level": "A1"
+  },
+  {
+   "key": "n:mer",
+   "fr": "mer",
+   "type": "noun",
+   "article": "la",
+   "en": "sea",
+   "fa": "دریا",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "nuit",
+   "type": "noun",
+   "article": "la",
+   "en": "night",
+   "fa": "شب",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:pays",
+   "fr": "pays",
+   "type": "noun",
+   "article": "le",
+   "en": "country",
+   "fa": "کشور",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "petit-déjeuner",
+   "type": "noun",
+   "article": "le",
+   "en": "breakfast",
+   "fa": "صبحانه",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:train",
+   "fr": "train",
+   "type": "noun",
+   "article": "le",
+   "en": "train",
+   "fa": "قطار",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "vacances",
+   "type": "noun",
+   "article": "les",
+   "en": "holidays",
+   "fa": "تعطیلات",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:avion",
+   "fr": "avion",
+   "type": "noun",
+   "article": "l'",
+   "en": "plane, aeroplane",
+   "fa": "هواپیما",
+   "level": "A2"
+  },
+  {
+   "key": "n:bateau",
+   "fr": "bateau",
+   "type": "noun",
+   "article": "le",
+   "en": "boat, ship",
+   "fa": "قایق، کشتی",
+   "level": "A2"
+  },
+  {
+   "key": "n:billet",
+   "fr": "billet",
+   "type": "noun",
+   "article": "le",
+   "en": "ticket, banknote",
+   "fa": "بلیت، اسکناس",
+   "level": "A2"
+  },
+  {
+   "key": "n:camp",
+   "fr": "camp",
+   "type": "noun",
+   "article": "le",
+   "en": "camp",
+   "fa": "اردو، کمپ",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "camping",
+   "type": "noun",
+   "article": "le",
+   "en": "campsite",
+   "fa": "کمپینگ",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:cle",
+   "fr": "clé",
+   "type": "noun",
+   "article": "la",
+   "en": "key",
+   "fa": "کلید",
+   "level": "A2"
+  },
+  {
+   "key": "n:depart",
+   "fr": "départ",
+   "type": "noun",
+   "article": "le",
+   "en": "departure",
+   "fa": "حرکت، عزیمت",
+   "level": "A2"
+  },
+  {
+   "key": "n:hotel",
+   "fr": "hôtel",
+   "type": "noun",
+   "article": "l'",
+   "en": "hotel",
+   "fa": "هتل",
+   "level": "A2"
+  },
+  {
+   "key": "n:ile",
+   "fr": "île",
+   "type": "noun",
+   "article": "l'",
+   "en": "island",
+   "fa": "جزیره",
+   "level": "A2"
+  },
+  {
+   "key": "n:montagne",
+   "fr": "montagne",
+   "type": "noun",
+   "article": "la",
+   "en": "mountain",
+   "fa": "کوه، کوهستان",
+   "level": "A2"
+  },
+  {
+   "key": "n:plan",
+   "fr": "plan",
+   "type": "noun",
+   "article": "le",
+   "en": "plan, map",
+   "fa": "برنامه، نقشه",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "réservation",
+   "type": "noun",
+   "article": "la",
+   "en": "reservation, booking",
+   "fa": "رزرو",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "retard",
+   "type": "noun",
+   "article": "le",
+   "en": "delay",
+   "fa": "تأخیر",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:retour",
+   "fr": "retour",
+   "type": "noun",
+   "article": "le",
+   "en": "return, way back",
+   "fa": "بازگشت، برگشت",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "souvenir",
+   "type": "noun",
+   "article": "le",
+   "en": "souvenir; memory",
+   "fa": "سوغات",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:vacance",
+   "fr": "vacance",
+   "type": "noun",
+   "article": "la",
+   "en": "holiday, vacation (almost always plural: les vacances)",
+   "fa": "تعطیلات",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "visa",
+   "type": "noun",
+   "article": "le",
+   "en": "visa",
+   "fa": "ویزا",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:visite",
+   "fr": "visite",
+   "type": "noun",
+   "article": "la",
+   "en": "visit, tour",
+   "fa": "دیدار، بازدید",
+   "level": "A2"
+  },
+  {
+   "key": "n:voyage",
+   "fr": "voyage",
+   "type": "noun",
+   "article": "le",
+   "en": "trip, journey",
+   "fa": "سفر",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "annulation",
+   "type": "noun",
+   "article": "l’",
+   "en": "cancellation",
+   "fa": "لغو",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:arrivee",
+   "fr": "arrivée",
+   "type": "noun",
+   "article": "l'",
+   "en": "arrival",
+   "fa": "ورود، رسیدن",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "assurance",
+   "type": "noun",
+   "article": "l’",
+   "en": "insurance",
+   "fa": "بیمه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:chateau",
+   "fr": "château",
+   "type": "noun",
+   "article": "le",
+   "en": "castle",
+   "fa": "قلعه، کاخ",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "douane",
+   "type": "noun",
+   "article": "la",
+   "en": "customs",
+   "fa": "گمرک",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:etranger",
+   "fr": "étranger",
+   "type": "noun",
+   "article": "l'",
+   "en": "foreigner, abroad",
+   "fa": "خارجی، خارج از کشور",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "excursion",
+   "type": "noun",
+   "article": "l’",
+   "en": "excursion",
+   "fa": "گشت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:gare",
+   "fr": "gare",
+   "type": "noun",
+   "article": "la",
+   "en": "train station",
+   "fa": "ایستگاه قطار",
+   "level": "B1"
+  },
+  {
+   "key": "n:plage",
+   "fr": "plage",
+   "type": "noun",
+   "article": "la",
+   "en": "beach",
+   "fa": "ساحل",
+   "level": "B1"
+  },
+  {
+   "key": "n:port",
+   "fr": "port",
+   "type": "noun",
+   "article": "le",
+   "en": "port, harbour",
+   "fa": "بندر",
+   "level": "B1"
+  },
+  {
+   "key": "n:quai",
+   "fr": "quai",
+   "type": "noun",
+   "article": "le",
+   "en": "platform, quay",
+   "fa": "سکو، اسکله",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "tarif",
+   "type": "noun",
+   "article": "le",
+   "en": "rate, fare",
+   "fa": "تعرفه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "tourisme",
+   "type": "noun",
+   "article": "le",
+   "en": "tourism",
+   "fa": "گردشگری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:valise",
+   "fr": "valise",
+   "type": "noun",
+   "article": "la",
+   "en": "suitcase",
+   "fa": "چمدان",
+   "level": "B1"
+  },
+  {
+   "key": "n:vol",
+   "fr": "vol",
+   "type": "noun",
+   "article": "le",
+   "en": "flight, theft",
+   "fa": "پرواز، دزدی",
+   "level": "B1"
+  },
+  {
+   "key": "n:ascenseur",
+   "fr": "ascenseur",
+   "type": "noun",
+   "article": "l'",
+   "en": "lift, elevator",
+   "fa": "آسانسور",
+   "level": "B2"
+  },
+  {
+   "key": "n:bagage",
+   "fr": "bagage",
+   "type": "noun",
+   "article": "le",
+   "en": "luggage, bag",
+   "fa": "بار، چمدان",
+   "level": "B2"
+  },
+  {
+   "key": "n:cabine",
+   "fr": "cabine",
+   "type": "noun",
+   "article": "la",
+   "en": "cabin, booth, fitting room",
+   "fa": "کابین، اتاقک، اتاق پرو",
+   "level": "B2"
+  },
+  {
+   "key": "n:lac",
+   "fr": "lac",
+   "type": "noun",
+   "article": "le",
+   "en": "lake",
+   "fa": "دریاچه",
+   "level": "B2"
+  },
+  {
+   "key": "n:navire",
+   "fr": "navire",
+   "type": "noun",
+   "article": "le",
+   "en": "ship, vessel",
+   "fa": "کشتی",
+   "level": "B2"
+  },
+  {
+   "key": "n:ocean",
+   "fr": "océan",
+   "type": "noun",
+   "article": "l'",
+   "en": "ocean",
+   "fa": "اقیانوس",
+   "level": "B2"
+  },
+  {
+   "key": "n:paysage",
+   "fr": "paysage",
+   "type": "noun",
+   "article": "le",
+   "en": "landscape, scenery",
+   "fa": "منظره، چشم‌انداز",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "plainte",
+   "type": "noun",
+   "article": "la",
+   "en": "complaint",
+   "fa": "شکایت",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:promenade",
+   "fr": "promenade",
+   "type": "noun",
+   "article": "la",
+   "en": "walk, stroll",
+   "fa": "گردش، قدم‌زنی",
+   "level": "B2"
+  },
+  {
+   "key": "n:sejour",
+   "fr": "séjour",
+   "type": "noun",
+   "article": "le",
+   "en": "stay",
+   "fa": "اقامت",
+   "level": "B2"
+  },
+  {
+   "key": "n:station",
+   "fr": "station",
+   "type": "noun",
+   "article": "la",
+   "en": "station, resort",
+   "fa": "ایستگاه، توقفگاه",
+   "level": "B2"
+  },
+  {
+   "key": "n:villa",
+   "fr": "villa",
+   "type": "noun",
+   "article": "la",
+   "en": "villa",
+   "fa": "ویلا",
+   "level": "B2"
+  },
+  {
+   "key": "n:voyageur",
+   "fr": "voyageur",
+   "type": "noun",
+   "article": "le",
+   "en": "traveller",
+   "fa": "مسافر",
+   "level": "B2"
+  },
+  {
+   "key": "n:aeroport",
+   "fr": "aéroport",
+   "type": "noun",
+   "article": "l'",
+   "en": "airport",
+   "fa": "فرودگاه",
+   "level": "C1"
+  },
+  {
+   "key": null,
+   "fr": "dépaysement",
+   "type": "noun",
+   "article": "le",
+   "en": "change of scenery",
+   "fa": "احساس غریبگی دلپذیر",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:equipage",
+   "fr": "équipage",
+   "type": "noun",
+   "article": "l'",
+   "en": "crew",
+   "fa": "خدمه",
+   "level": "C1"
+  },
+  {
+   "key": "n:guide",
+   "fr": "guide",
+   "type": "noun",
+   "article": "le",
+   "en": "guide (m. or f.), guidebook",
+   "fa": "راهنما، کتاب راهنما",
+   "level": "C1"
+  },
+  {
+   "key": "n:passeport",
+   "fr": "passeport",
+   "type": "noun",
+   "article": "le",
+   "en": "passport",
+   "fa": "گذرنامه",
+   "level": "C1"
+  },
+  {
+   "key": "n:tente",
+   "fr": "tente",
+   "type": "noun",
+   "article": "la",
+   "en": "tent",
+   "fa": "چادر",
+   "level": "C1"
+  },
+  {
+   "key": "n:touriste",
+   "fr": "touriste",
+   "type": "noun",
+   "article": "le",
+   "en": "tourist (m. or f.)",
+   "fa": "گردشگر",
+   "level": "C1"
+  },
+  {
+   "key": "n:wagon",
+   "fr": "wagon",
+   "type": "noun",
+   "article": "le",
+   "en": "carriage, wagon",
+   "fa": "واگن",
+   "level": "C1"
+  },
+  {
+   "key": "n:accueil",
+   "fr": "accueil",
+   "type": "noun",
+   "article": "l'",
+   "en": "welcome, reception",
+   "fa": "پذیرایی، استقبال",
+   "level": "C2"
+  },
+  {
+   "key": "n:auberge",
+   "fr": "auberge",
+   "type": "noun",
+   "article": "l'",
+   "en": "inn; hostel",
+   "fa": "مسافرخانه، مهمان‌پذیر",
+   "level": "C2"
+  },
+  {
+   "key": "n:cathedrale",
+   "fr": "cathédrale",
+   "type": "noun",
+   "article": "la",
+   "en": "cathedral",
+   "fa": "کلیسای جامع",
+   "level": "C2"
+  },
+  {
+   "key": "n:expedition",
+   "fr": "expédition",
+   "type": "noun",
+   "article": "l'",
+   "en": "expedition; shipment",
+   "fa": "سفر اکتشافی؛ ارسال",
+   "level": "C2"
+  },
+  {
+   "key": "n:monument",
+   "fr": "monument",
+   "type": "noun",
+   "article": "le",
+   "en": "monument",
+   "fa": "بنای تاریخی",
+   "level": "C2"
+  },
+  {
+   "key": "n:passager",
+   "fr": "passager",
+   "type": "noun",
+   "article": "le",
+   "en": "passenger",
+   "fa": "مسافر",
+   "level": "C2"
+  },
+  {
+   "key": "n:reception",
+   "fr": "réception",
+   "type": "noun",
+   "article": "la",
+   "en": "reception (desk, party)",
+   "fa": "پذیرش، مهمانی رسمی",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:accueillir",
+   "fr": "accueillir",
+   "type": "verb",
+   "en": "to welcome, to accommodate",
+   "fa": "پذیرایی کردن، استقبال کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:promener",
+   "fr": "promener",
+   "type": "verb",
+   "en": "to walk (leisurely), to go for a walk, to stroll",
+   "fa": "گردش دادن (سگ)",
+   "level": "A2"
+  },
+  {
+   "key": "v:réserver",
+   "fr": "réserver",
+   "type": "verb",
+   "en": "to reserve, to make a reservation (for), to book",
+   "fa": "رزرو کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:visiter",
+   "fr": "visiter",
+   "type": "verb",
+   "en": "to visit (a place)",
+   "fa": "بازدید کردن، دیدن (جایی)",
+   "level": "A2"
+  },
+  {
+   "key": "v:voyager",
+   "fr": "voyager",
+   "type": "verb",
+   "en": "to travel, to voyage",
+   "fa": "سفر کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:atterrir",
+   "fr": "atterrir",
+   "type": "verb",
+   "en": "to land (a plane, helicopter etc.)",
+   "fa": "فرود آمدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:débarquer",
+   "fr": "débarquer",
+   "type": "verb",
+   "en": "to unload (merchandise), land (troops, passengers)",
+   "fa": "پیاده شدن (از کشتی، هواپیما)",
+   "level": "B1"
+  },
+  {
+   "key": "v:décoller",
+   "fr": "décoller",
+   "type": "verb",
+   "en": "to take off (i.e. a plane)",
+   "fa": "برخاستن (هواپیما)، جدا کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:embarquer",
+   "fr": "embarquer",
+   "type": "verb",
+   "en": "to board (a vehicle)",
+   "fa": "سوار شدن (کشتی، هواپیما)",
+   "level": "B1"
+  },
+  {
+   "key": "v:loger",
+   "fr": "loger",
+   "type": "verb",
+   "en": "to lodge, to stay, to be lodging (to temporarily inhabit)",
+   "fa": "اقامت داشتن، جا دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:camper",
+   "fr": "camper",
+   "type": "verb",
+   "en": "to camp",
+   "fa": "چادر زدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:escalader",
+   "fr": "escalader",
+   "type": "verb",
+   "en": "to escalade (attack (e.g. a castle) by using ladders etc. to climb to the top)",
+   "fa": "بالا رفتن از",
+   "level": "B2"
+  },
+  {
+   "key": "v:gravir",
+   "fr": "gravir",
+   "type": "verb",
+   "en": "to climb up",
+   "fa": "بالا رفتن",
+   "level": "B2"
+  },
+  {
+   "key": "v:naviguer",
+   "fr": "naviguer",
+   "type": "verb",
+   "en": "to navigate",
+   "fa": "دریانوردی کردن، گشت زدن (اینترنت)",
+   "level": "B2"
+  },
+  {
+   "key": "v:bronzer",
+   "fr": "bronzer",
+   "type": "verb",
+   "en": "to bronze (plate with bronze)",
+   "fa": "برنزه شدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:déambuler",
+   "fr": "déambuler",
+   "type": "verb",
+   "en": "to stroll, to walk around, to amble",
+   "fa": "پرسه زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:flâner",
+   "fr": "flâner",
+   "type": "verb",
+   "en": "to wander around",
+   "fa": "ول گشتن، بی‌هدف گردش کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:séjourner",
+   "fr": "séjourner",
+   "type": "verb",
+   "en": "to stay, to sojourn",
+   "fa": "اقامت کردن",
+   "level": "C1"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je voudrais réserver une chambre pour deux nuits.",
+   "en": "I would like to book a room for two nights.",
+   "fa": "می‌خواهم یک اتاق برای دو شب رزرو کنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "À quelle heure est le petit-déjeuner ?",
+   "en": "What time is breakfast?",
+   "fa": "صبحانه ساعت چند است؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Voici mon passeport.",
+   "en": "Here is my passport.",
+   "fa": "این گذرنامه من است.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai réservé une chambre au nom de Rezaei.",
+   "en": "I booked a room under the name Rezaei.",
+   "fa": "یک اتاق به نام رضایی رزرو کرده‌ام.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Est-ce que le wifi est gratuit ?",
+   "en": "Is the wifi free?",
+   "fa": "آیا وای‌فای رایگان است؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "L'été dernier, je suis parti en vacances au bord de la mer.",
+   "en": "Last summer I went on holiday to the seaside.",
+   "fa": "تابستان گذشته برای تعطیلات به کنار دریا رفتم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Où puis-je enregistrer mes bagages ?",
+   "en": "Where can I check in my luggage?",
+   "fa": "کجا می‌توانم بارم را تحویل بدهم؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Le vol a été annulé ; que dois-je faire ?",
+   "en": "The flight has been cancelled; what should I do?",
+   "fa": "پرواز لغو شده است؛ چه کار باید بکنم؟",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "La chambre n'était pas propre et la douche ne marchait pas.",
+   "en": "The room was not clean and the shower did not work.",
+   "fa": "اتاق تمیز نبود و دوش کار نمی‌کرد.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je vous écris pour vous faire part de mon mécontentement après mon séjour.",
+   "en": "I am writing to let you know of my dissatisfaction after my stay.",
+   "fa": "این نامه را می‌نویسم تا نارضایتی‌ام را از اقامتم اعلام کنم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Nous avons visité les principaux monuments de la ville en deux jours.",
+   "en": "We visited the city's main monuments in two days.",
+   "fa": "در دو روز از بناهای تاریخی اصلی شهر بازدید کردیم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je souhaite modifier ma réservation du 10 au 12 août.",
+   "en": "I would like to change my booking from 10 to 12 August.",
+   "fa": "می‌خواهم رزروم را به ۱۰ تا ۱۲ اوت تغییر بدهم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Le tourisme de masse abîme les sites naturels et fait monter les prix pour les habitants.",
+   "en": "Mass tourism damages natural sites and drives up prices for residents.",
+   "fa": "گردشگری انبوه به مکان‌های طبیعی آسیب می‌زند و قیمت‌ها را برای ساکنان بالا می‌برد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Voyager permet de s'ouvrir à d'autres cultures et de remettre en question ses habitudes.",
+   "en": "Travelling opens you up to other cultures and challenges your habits.",
+   "fa": "سفر کردن آدم را با فرهنگ‌های دیگر آشنا می‌کند و عادت‌هایش را به چالش می‌کشد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Personnellement, je préfère voyager en train, car c'est moins polluant que l'avion.",
+   "en": "Personally, I prefer travelling by train because it is less polluting than flying.",
+   "fa": "شخصاً سفر با قطار را ترجیح می‌دهم، چون آلودگی‌اش از هواپیما کمتر است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Un voyage réussi tient moins à la destination qu'à la manière dont on la découvre.",
+   "en": "A successful trip depends less on the destination than on the way one discovers it.",
+   "fa": "موفقیت یک سفر کمتر به مقصد و بیشتر به شیوه کشف آن بستگی دارد.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "CO",
+   "topic": "annonce à l'aéroport : retard d'avion, météo, achats",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous êtes en France. Vous entendez cette annonce à l’aéroport."
+  },
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "PE",
+   "topic": "remplir une fiche d'hôtel en vacances (nom, nationalité, profession...)",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous remplissez ce formulaire dans un hôtel."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CE",
+   "topic": "message d'une agence : voyage à Paris, accueil à l'aéroport, hôtel, météo",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/a2_ex1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "vous décrire votre voyage à Paris"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : vacances à la montagne (prix, lieux, climat)",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous voulez partir en vacances en France à la montagne."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CO",
+   "topic": "bilan de vacances : problèmes à l'hôtel (chambre, piscine, personnel)",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 2 (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-candidat-coll-sujet-demo_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "L’un des problèmes à l’hôtel était que"
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CE",
+   "topic": "choix d'activités touristiques pluvieuses (jardin botanique, musée, piscine, centre historique)",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 2 (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-candidat-coll-sujet-demo_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous êtes en vacances en France. Vous vous intéressez aux curiosités de la région."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "interaction : chambre d'hôtel ne correspondant pas à la réservation",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "vous avez réservé une chambre dans un hôtel"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section B : circuit touristique au Québec",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous avez lu cette publicité pour un circuit touristique au Québec."
+  },
+  {
+   "exam": "tef",
+   "level": null,
+   "paper": "EE",
+   "topic": "section B : lettre au journal — voyages organisés",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression écrite (Le français des affaires, CCI Paris Île-de-France)",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-ee.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "« Les voyages organisés sont incompatibles avec la découverte réelle d’un pays. »"
+  }
+ ]
+}

@@ -1,0 +1,1337 @@
+{
+ "id": "city-transport",
+ "names": {
+  "fr": "La ville et les transports",
+  "en": "City and transport",
+  "fa": "شهر و حمل‌ونقل"
+ },
+ "counts": {
+  "words": 101,
+  "verbs": 24,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": null,
+   "fr": "arrêt",
+   "type": "noun",
+   "article": "l’",
+   "en": "stop",
+   "fa": "ایستگاه",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:chemin",
+   "fr": "chemin",
+   "type": "noun",
+   "article": "le",
+   "en": "path, way",
+   "fa": "راه، مسیر",
+   "level": "A1"
+  },
+  {
+   "key": "n:ecole",
+   "fr": "école",
+   "type": "noun",
+   "article": "l'",
+   "en": "school",
+   "fa": "مدرسه",
+   "level": "A1"
+  },
+  {
+   "key": "n:feu",
+   "fr": "feu",
+   "type": "noun",
+   "article": "le",
+   "en": "fire, traffic light",
+   "fa": "آتش، چراغ راهنما",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "pharmacie",
+   "type": "noun",
+   "article": "la",
+   "en": "pharmacy",
+   "fa": "داروخانه",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:place",
+   "fr": "place",
+   "type": "noun",
+   "article": "la",
+   "en": "square, place, seat",
+   "fa": "میدان، جا",
+   "level": "A1"
+  },
+  {
+   "key": "n:route",
+   "fr": "route",
+   "type": "noun",
+   "article": "la",
+   "en": "road",
+   "fa": "جاده",
+   "level": "A1"
+  },
+  {
+   "key": "n:rue",
+   "fr": "rue",
+   "type": "noun",
+   "article": "la",
+   "en": "street",
+   "fa": "خیابان",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "ticket",
+   "type": "noun",
+   "article": "le",
+   "en": "ticket",
+   "fa": "بلیت",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:train",
+   "fr": "train",
+   "type": "noun",
+   "article": "le",
+   "en": "train",
+   "fa": "قطار",
+   "level": "A1"
+  },
+  {
+   "key": "n:ville",
+   "fr": "ville",
+   "type": "noun",
+   "article": "la",
+   "en": "city, town",
+   "fa": "شهر",
+   "level": "A1"
+  },
+  {
+   "key": "n:voiture",
+   "fr": "voiture",
+   "type": "noun",
+   "article": "la",
+   "en": "car",
+   "fa": "ماشین، خودرو",
+   "level": "A1"
+  },
+  {
+   "key": "n:avion",
+   "fr": "avion",
+   "type": "noun",
+   "article": "l'",
+   "en": "plane, aeroplane",
+   "fa": "هواپیما",
+   "level": "A2"
+  },
+  {
+   "key": "n:bateau",
+   "fr": "bateau",
+   "type": "noun",
+   "article": "le",
+   "en": "boat, ship",
+   "fa": "قایق، کشتی",
+   "level": "A2"
+  },
+  {
+   "key": "n:billet",
+   "fr": "billet",
+   "type": "noun",
+   "article": "le",
+   "en": "ticket, banknote",
+   "fa": "بلیت، اسکناس",
+   "level": "A2"
+  },
+  {
+   "key": "n:carte",
+   "fr": "carte",
+   "type": "noun",
+   "article": "la",
+   "en": "card, map, menu",
+   "fa": "کارت، نقشه",
+   "level": "A2"
+  },
+  {
+   "key": "n:centre",
+   "fr": "centre",
+   "type": "noun",
+   "article": "le",
+   "en": "centre, middle",
+   "fa": "مرکز، میان",
+   "level": "A2"
+  },
+  {
+   "key": "n:cinema",
+   "fr": "cinéma",
+   "type": "noun",
+   "article": "le",
+   "en": "cinema",
+   "fa": "سینما",
+   "level": "A2"
+  },
+  {
+   "key": "n:coin",
+   "fr": "coin",
+   "type": "noun",
+   "article": "le",
+   "en": "corner",
+   "fa": "گوشه",
+   "level": "A2"
+  },
+  {
+   "key": "n:depart",
+   "fr": "départ",
+   "type": "noun",
+   "article": "le",
+   "en": "departure",
+   "fa": "حرکت، عزیمت",
+   "level": "A2"
+  },
+  {
+   "key": "n:direction",
+   "fr": "direction",
+   "type": "noun",
+   "article": "la",
+   "en": "direction",
+   "fa": "جهت، سمت",
+   "level": "A2"
+  },
+  {
+   "key": "n:droite",
+   "fr": "droite",
+   "type": "noun",
+   "article": "la",
+   "en": "right, right side",
+   "fa": "راست، سمت راست",
+   "level": "A2"
+  },
+  {
+   "key": "n:eglise",
+   "fr": "église",
+   "type": "noun",
+   "article": "l'",
+   "en": "church",
+   "fa": "کلیسا",
+   "level": "A2"
+  },
+  {
+   "key": "n:entree",
+   "fr": "entrée",
+   "type": "noun",
+   "article": "l'",
+   "en": "entrance, starter",
+   "fa": "ورودی، پیش‌غذا",
+   "level": "A2"
+  },
+  {
+   "key": "n:gauche",
+   "fr": "gauche",
+   "type": "noun",
+   "article": "la",
+   "en": "left, left side",
+   "fa": "چپ، سمت چپ",
+   "level": "A2"
+  },
+  {
+   "key": "n:hopital",
+   "fr": "hôpital",
+   "type": "noun",
+   "article": "l'",
+   "en": "hospital",
+   "fa": "بیمارستان",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "ligne",
+   "type": "noun",
+   "article": "la",
+   "en": "line",
+   "fa": "خط",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:passage",
+   "fr": "passage",
+   "type": "noun",
+   "article": "le",
+   "en": "passage, way through",
+   "fa": "گذرگاه، عبور",
+   "level": "A2"
+  },
+  {
+   "key": "n:plan",
+   "fr": "plan",
+   "type": "noun",
+   "article": "le",
+   "en": "plan, map",
+   "fa": "برنامه، نقشه",
+   "level": "A2"
+  },
+  {
+   "key": "n:pont",
+   "fr": "pont",
+   "type": "noun",
+   "article": "le",
+   "en": "bridge",
+   "fa": "پل",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "poste",
+   "type": "noun",
+   "article": "la",
+   "en": "post office",
+   "fa": "اداره پست",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:quartier",
+   "fr": "quartier",
+   "type": "noun",
+   "article": "le",
+   "en": "neighbourhood, district",
+   "fa": "محله",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "tramway",
+   "type": "noun",
+   "article": "le",
+   "en": "tram",
+   "fa": "تراموا",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:village",
+   "fr": "village",
+   "type": "noun",
+   "article": "le",
+   "en": "village",
+   "fa": "روستا",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "abonnement",
+   "type": "noun",
+   "article": "l’",
+   "en": "season pass, subscription",
+   "fa": "اشتراک",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:arrivee",
+   "fr": "arrivée",
+   "type": "noun",
+   "article": "l'",
+   "en": "arrival",
+   "fa": "ورود، رسیدن",
+   "level": "B1"
+  },
+  {
+   "key": "n:banque",
+   "fr": "banque",
+   "type": "noun",
+   "article": "la",
+   "en": "bank",
+   "fa": "بانک",
+   "level": "B1"
+  },
+  {
+   "key": "n:camion",
+   "fr": "camion",
+   "type": "noun",
+   "article": "le",
+   "en": "lorry, truck",
+   "fa": "کامیون",
+   "level": "B1"
+  },
+  {
+   "key": "n:chauffeur",
+   "fr": "chauffeur",
+   "type": "noun",
+   "article": "le",
+   "en": "driver",
+   "fa": "راننده",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "circulation",
+   "type": "noun",
+   "article": "la",
+   "en": "traffic",
+   "fa": "ترافیک",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "correspondance",
+   "type": "noun",
+   "article": "la",
+   "en": "connection, change",
+   "fa": "تعویض خط",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "embouteillage",
+   "type": "noun",
+   "article": "l’",
+   "en": "traffic jam",
+   "fa": "ترافیک سنگین",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:est",
+   "fr": "est",
+   "type": "noun",
+   "article": "l'",
+   "en": "east",
+   "fa": "شرق",
+   "level": "B1"
+  },
+  {
+   "key": "n:gare",
+   "fr": "gare",
+   "type": "noun",
+   "article": "la",
+   "en": "train station",
+   "fa": "ایستگاه قطار",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "grève",
+   "type": "noun",
+   "article": "la",
+   "en": "strike",
+   "fa": "اعتصاب",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:immeuble",
+   "fr": "immeuble",
+   "type": "noun",
+   "article": "l'",
+   "en": "building, block of flats",
+   "fa": "ساختمان (مسکونی)",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "itinéraire",
+   "type": "noun",
+   "article": "l’",
+   "en": "route",
+   "fa": "مسیر",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:moteur",
+   "fr": "moteur",
+   "type": "noun",
+   "article": "le",
+   "en": "engine, motor",
+   "fa": "موتور",
+   "level": "B1"
+  },
+  {
+   "key": "n:nord",
+   "fr": "nord",
+   "type": "noun",
+   "article": "le",
+   "en": "north",
+   "fa": "شمال",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "piéton",
+   "type": "noun",
+   "article": "le",
+   "en": "pedestrian",
+   "fa": "عابر پیاده",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "pollution",
+   "type": "noun",
+   "article": "la",
+   "en": "pollution",
+   "fa": "آلودگی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:port",
+   "fr": "port",
+   "type": "noun",
+   "article": "le",
+   "en": "port, harbour",
+   "fa": "بندر",
+   "level": "B1"
+  },
+  {
+   "key": "n:quai",
+   "fr": "quai",
+   "type": "noun",
+   "article": "le",
+   "en": "platform, quay",
+   "fa": "سکو، اسکله",
+   "level": "B1"
+  },
+  {
+   "key": "n:sortie",
+   "fr": "sortie",
+   "type": "noun",
+   "article": "la",
+   "en": "exit, outing",
+   "fa": "خروجی، گردش",
+   "level": "B1"
+  },
+  {
+   "key": "n:taxi",
+   "fr": "taxi",
+   "type": "noun",
+   "article": "le",
+   "en": "taxi",
+   "fa": "تاکسی",
+   "level": "B1"
+  },
+  {
+   "key": "n:theatre",
+   "fr": "théâtre",
+   "type": "noun",
+   "article": "le",
+   "en": "theatre",
+   "fa": "تئاتر",
+   "level": "B1"
+  },
+  {
+   "key": "n:trottoir",
+   "fr": "trottoir",
+   "type": "noun",
+   "article": "le",
+   "en": "pavement, sidewalk",
+   "fa": "پیاده‌رو",
+   "level": "B1"
+  },
+  {
+   "key": "n:vitesse",
+   "fr": "vitesse",
+   "type": "noun",
+   "article": "la",
+   "en": "speed",
+   "fa": "سرعت",
+   "level": "B1"
+  },
+  {
+   "key": "n:allee",
+   "fr": "allée",
+   "type": "noun",
+   "article": "l'",
+   "en": "path, lane",
+   "fa": "راه، مسیر",
+   "level": "B2"
+  },
+  {
+   "key": "n:avenue",
+   "fr": "avenue",
+   "type": "noun",
+   "article": "l'",
+   "en": "avenue",
+   "fa": "خیابان بزرگ",
+   "level": "B2"
+  },
+  {
+   "key": "n:bagnole",
+   "fr": "bagnole",
+   "type": "noun",
+   "article": "la",
+   "en": "car (informal)",
+   "fa": "ماشین (محاوره‌ای)",
+   "level": "B2"
+  },
+  {
+   "key": "n:banc",
+   "fr": "banc",
+   "type": "noun",
+   "article": "le",
+   "en": "bench",
+   "fa": "نیمکت",
+   "level": "B2"
+  },
+  {
+   "key": "n:bibliotheque",
+   "fr": "bibliothèque",
+   "type": "noun",
+   "article": "la",
+   "en": "library, bookcase",
+   "fa": "کتابخانه",
+   "level": "B2"
+  },
+  {
+   "key": "n:boulevard",
+   "fr": "boulevard",
+   "type": "noun",
+   "article": "le",
+   "en": "boulevard",
+   "fa": "بلوار",
+   "level": "B2"
+  },
+  {
+   "key": "n:bus",
+   "fr": "bus",
+   "type": "noun",
+   "article": "le",
+   "en": "bus",
+   "fa": "اتوبوس",
+   "level": "B2"
+  },
+  {
+   "key": "n:essence",
+   "fr": "essence",
+   "type": "noun",
+   "article": "l'",
+   "en": "petrol, essence",
+   "fa": "بنزین، جوهر",
+   "level": "B2"
+  },
+  {
+   "key": "n:metro",
+   "fr": "métro",
+   "type": "noun",
+   "article": "le",
+   "en": "metro, subway",
+   "fa": "مترو",
+   "level": "B2"
+  },
+  {
+   "key": "n:ouest",
+   "fr": "ouest",
+   "type": "noun",
+   "article": "l'",
+   "en": "west",
+   "fa": "غرب",
+   "level": "B2"
+  },
+  {
+   "key": "n:parc",
+   "fr": "parc",
+   "type": "noun",
+   "article": "le",
+   "en": "park",
+   "fa": "پارک",
+   "level": "B2"
+  },
+  {
+   "key": "n:station",
+   "fr": "station",
+   "type": "noun",
+   "article": "la",
+   "en": "station, resort",
+   "fa": "ایستگاه، توقفگاه",
+   "level": "B2"
+  },
+  {
+   "key": "n:sud",
+   "fr": "sud",
+   "type": "noun",
+   "article": "le",
+   "en": "south",
+   "fa": "جنوب",
+   "level": "B2"
+  },
+  {
+   "key": "n:velo",
+   "fr": "vélo",
+   "type": "noun",
+   "article": "le",
+   "en": "bike",
+   "fa": "دوچرخه",
+   "level": "B2"
+  },
+  {
+   "key": "n:volant",
+   "fr": "volant",
+   "type": "noun",
+   "article": "le",
+   "en": "steering wheel",
+   "fa": "فرمان",
+   "level": "B2"
+  },
+  {
+   "key": "n:aeroport",
+   "fr": "aéroport",
+   "type": "noun",
+   "article": "l'",
+   "en": "airport",
+   "fa": "فرودگاه",
+   "level": "C1"
+  },
+  {
+   "key": "n:ambulance",
+   "fr": "ambulance",
+   "type": "noun",
+   "article": "l'",
+   "en": "ambulance",
+   "fa": "آمبولانس",
+   "level": "C1"
+  },
+  {
+   "key": "n:bicyclette",
+   "fr": "bicyclette",
+   "type": "noun",
+   "article": "la",
+   "en": "bicycle",
+   "fa": "دوچرخه",
+   "level": "C1"
+  },
+  {
+   "key": "n:capitale",
+   "fr": "capitale",
+   "type": "noun",
+   "article": "la",
+   "en": "capital city",
+   "fa": "پایتخت",
+   "level": "C1"
+  },
+  {
+   "key": "n:carrefour",
+   "fr": "carrefour",
+   "type": "noun",
+   "article": "le",
+   "en": "crossroads",
+   "fa": "چهارراه",
+   "level": "C1"
+  },
+  {
+   "key": "n:cite",
+   "fr": "cité",
+   "type": "noun",
+   "article": "la",
+   "en": "city, housing estate",
+   "fa": "شهر تاریخی، شهرک",
+   "level": "C1"
+  },
+  {
+   "key": "n:conduite",
+   "fr": "conduite",
+   "type": "noun",
+   "article": "la",
+   "en": "behaviour, driving",
+   "fa": "رفتار، رانندگی",
+   "level": "C1"
+  },
+  {
+   "key": "n:garage",
+   "fr": "garage",
+   "type": "noun",
+   "article": "le",
+   "en": "garage",
+   "fa": "گاراژ، تعمیرگاه",
+   "level": "C1"
+  },
+  {
+   "key": "n:moto",
+   "fr": "moto",
+   "type": "noun",
+   "article": "la",
+   "en": "motorbike",
+   "fa": "موتورسیکلت",
+   "level": "C1"
+  },
+  {
+   "key": "n:musee",
+   "fr": "musée",
+   "type": "noun",
+   "article": "le",
+   "en": "museum",
+   "fa": "موزه",
+   "level": "C1"
+  },
+  {
+   "key": "n:panne",
+   "fr": "panne",
+   "type": "noun",
+   "article": "la",
+   "en": "breakdown, failure",
+   "fa": "خرابی، از کار افتادن",
+   "level": "C1"
+  },
+  {
+   "key": "n:panneau",
+   "fr": "panneau",
+   "type": "noun",
+   "article": "le",
+   "en": "sign, panel",
+   "fa": "تابلو، پنل",
+   "level": "C1"
+  },
+  {
+   "key": "n:piscine",
+   "fr": "piscine",
+   "type": "noun",
+   "article": "la",
+   "en": "swimming pool",
+   "fa": "استخر",
+   "level": "C1"
+  },
+  {
+   "key": "n:ruelle",
+   "fr": "ruelle",
+   "type": "noun",
+   "article": "la",
+   "en": "narrow street, alley",
+   "fa": "کوچه‌ی باریک",
+   "level": "C1"
+  },
+  {
+   "key": "n:vehicule",
+   "fr": "véhicule",
+   "type": "noun",
+   "article": "le",
+   "en": "vehicle",
+   "fa": "وسیله‌ی نقلیه",
+   "level": "C1"
+  },
+  {
+   "key": "n:wagon",
+   "fr": "wagon",
+   "type": "noun",
+   "article": "le",
+   "en": "carriage, wagon",
+   "fa": "واگن",
+   "level": "C1"
+  },
+  {
+   "key": "n:autobus",
+   "fr": "autobus",
+   "type": "noun",
+   "article": "l'",
+   "en": "bus",
+   "fa": "اتوبوس",
+   "level": "C2"
+  },
+  {
+   "key": "n:autoroute",
+   "fr": "autoroute",
+   "type": "noun",
+   "article": "l'",
+   "en": "motorway",
+   "fa": "اتوبان، بزرگراه",
+   "level": "C2"
+  },
+  {
+   "key": "n:banlieue",
+   "fr": "banlieue",
+   "type": "noun",
+   "article": "la",
+   "en": "suburb",
+   "fa": "حومه‌ی شهر",
+   "level": "C2"
+  },
+  {
+   "key": "n:borne",
+   "fr": "borne",
+   "type": "noun",
+   "article": "la",
+   "en": "terminal, charging point; boundary marker",
+   "fa": "ایستگاه شارژ؛ تیرک مرزی",
+   "level": "C2"
+  },
+  {
+   "key": "n:camionnette",
+   "fr": "camionnette",
+   "type": "noun",
+   "article": "la",
+   "en": "van",
+   "fa": "ون، وانت",
+   "level": "C2"
+  },
+  {
+   "key": "n:chaussee",
+   "fr": "chaussée",
+   "type": "noun",
+   "article": "la",
+   "en": "roadway, road surface",
+   "fa": "سواره‌رو، جاده",
+   "level": "C2"
+  },
+  {
+   "key": "n:conducteur",
+   "fr": "conducteur",
+   "type": "noun",
+   "article": "le",
+   "en": "driver",
+   "fa": "راننده",
+   "level": "C2"
+  },
+  {
+   "key": "n:mairie",
+   "fr": "mairie",
+   "type": "noun",
+   "article": "la",
+   "en": "town hall",
+   "fa": "شهرداری",
+   "level": "C2"
+  },
+  {
+   "key": "n:parking",
+   "fr": "parking",
+   "type": "noun",
+   "article": "le",
+   "en": "car park",
+   "fa": "پارکینگ",
+   "level": "C2"
+  },
+  {
+   "key": "n:passager",
+   "fr": "passager",
+   "type": "noun",
+   "article": "le",
+   "en": "passenger",
+   "fa": "مسافر",
+   "level": "C2"
+  },
+  {
+   "key": "n:pneu",
+   "fr": "pneu",
+   "type": "noun",
+   "article": "le",
+   "en": "tyre",
+   "fa": "لاستیک",
+   "level": "C2"
+  },
+  {
+   "key": "n:tunnel",
+   "fr": "tunnel",
+   "type": "noun",
+   "article": "le",
+   "en": "tunnel",
+   "fa": "تونل",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:conduire",
+   "fr": "conduire",
+   "type": "verb",
+   "en": "to drive (a vehicle)",
+   "fa": "رانندگی کردن، راندن",
+   "level": "A1"
+  },
+  {
+   "key": "v:descendre",
+   "fr": "descendre",
+   "type": "verb",
+   "en": "to go down",
+   "fa": "پایین رفتن، پیاده شدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:marcher",
+   "fr": "marcher",
+   "type": "verb",
+   "en": "to walk",
+   "fa": "راه رفتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:monter",
+   "fr": "monter",
+   "type": "verb",
+   "en": "to go up, to climb (go to a higher position)",
+   "fa": "بالا رفتن، سوار شدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:suivre",
+   "fr": "suivre",
+   "type": "verb",
+   "en": "to follow (literal sense)",
+   "fa": "دنبال کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:tourner",
+   "fr": "tourner",
+   "type": "verb",
+   "en": "to turn, to change (direction), to rotate, to spin",
+   "fa": "چرخیدن، پیچیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:croiser",
+   "fr": "croiser",
+   "type": "verb",
+   "en": "to cross, to put in the shape of a cross",
+   "fa": "برخوردن به، اتفاقی دیدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:démarrer",
+   "fr": "démarrer",
+   "type": "verb",
+   "en": "to start, to get started, to start up (especially a vehicle)",
+   "fa": "روشن شدن، شروع شدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:dépasser",
+   "fr": "dépasser",
+   "type": "verb",
+   "en": "to exceed",
+   "fa": "سبقت گرفتن، فراتر رفتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:rouler",
+   "fr": "rouler",
+   "type": "verb",
+   "en": "to roll",
+   "fa": "رانندگی کردن، غلتیدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:traverser",
+   "fr": "traverser",
+   "type": "verb",
+   "en": "to cross, to go across",
+   "fa": "عبور کردن از، گذشتن از",
+   "level": "A2"
+  },
+  {
+   "key": "v:accélérer",
+   "fr": "accélérer",
+   "type": "verb",
+   "en": "to accelerate",
+   "fa": "شتاب گرفتن، سرعت دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:circuler",
+   "fr": "circuler",
+   "type": "verb",
+   "en": "to circulate",
+   "fa": "رفت‌وآمد کردن، جریان داشتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:débarquer",
+   "fr": "débarquer",
+   "type": "verb",
+   "en": "to unload (merchandise), land (troops, passengers)",
+   "fa": "پیاده شدن (از کشتی، هواپیما)",
+   "level": "B1"
+  },
+  {
+   "key": "v:garer",
+   "fr": "garer",
+   "type": "verb",
+   "en": "to cover, shelter",
+   "fa": "پارک کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:piloter",
+   "fr": "piloter",
+   "type": "verb",
+   "en": "to pilot (control an aircraft)",
+   "fa": "هدایت کردن (هواپیما، خودرو)",
+   "level": "B1"
+  },
+  {
+   "key": "v:ralentir",
+   "fr": "ralentir",
+   "type": "verb",
+   "en": "to slow down",
+   "fa": "کند کردن، کند شدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:déboucher",
+   "fr": "déboucher",
+   "type": "verb",
+   "en": "to unblock, to clear",
+   "fa": "باز کردن (گرفتگی)، سر بطری را باز کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:freiner",
+   "fr": "freiner",
+   "type": "verb",
+   "en": "to brake",
+   "fa": "ترمز کردن، کند کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:longer",
+   "fr": "longer",
+   "type": "verb",
+   "en": "to walk along, run along",
+   "fa": "در امتداد چیزی رفتن",
+   "level": "B2"
+  },
+  {
+   "key": "v:déraper",
+   "fr": "déraper",
+   "type": "verb",
+   "en": "to skid, to slide",
+   "fa": "لیز خوردن، منحرف شدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:klaxonner",
+   "fr": "klaxonner",
+   "type": "verb",
+   "en": "to honk (sound a horn)",
+   "fa": "بوق زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:pédaler",
+   "fr": "pédaler",
+   "type": "verb",
+   "en": "to pedal (a bicycle)",
+   "fa": "رکاب زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:stationner",
+   "fr": "stationner",
+   "type": "verb",
+   "en": "to park (bring to a halt)",
+   "fa": "پارک کردن، توقف کردن",
+   "level": "C1"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Excusez-moi, où est la gare ?",
+   "en": "Excuse me, where is the station?",
+   "fa": "ببخشید، ایستگاه راه‌آهن کجاست؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Tournez à droite, puis allez tout droit.",
+   "en": "Turn right, then go straight on.",
+   "fa": "به راست بپیچید، بعد مستقیم بروید.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je prends le bus tous les jours.",
+   "en": "I take the bus every day.",
+   "fa": "هر روز با اتوبوس می‌روم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Un billet pour Lyon, s'il vous plaît.",
+   "en": "A ticket to Lyon, please.",
+   "fa": "یک بلیت برای لیون، لطفاً.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "C'est à dix minutes à pied d'ici.",
+   "en": "It's ten minutes on foot from here.",
+   "fa": "از اینجا ده دقیقه پیاده است.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Quelle ligne faut-il prendre pour aller à la mairie ?",
+   "en": "Which line should I take to get to the town hall?",
+   "fa": "برای رفتن به شهرداری باید کدام خط را سوار شوم؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "À quelle heure part le prochain train ?",
+   "en": "What time does the next train leave?",
+   "fa": "قطار بعدی ساعت چند حرکت می‌کند؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je vais au travail en vélo quand il fait beau.",
+   "en": "I cycle to work when the weather is nice.",
+   "fa": "وقتی هوا خوب است با دوچرخه سر کار می‌روم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Le train a du retard à cause d'une grève.",
+   "en": "The train is late because of a strike.",
+   "fa": "قطار به خاطر اعتصاب تأخیر دارد.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Il faut changer à Châtelet, puis prendre la ligne 4.",
+   "en": "You have to change at Châtelet, then take line 4.",
+   "fa": "باید در شاتله عوض کنید و بعد خط ۴ را سوار شوید.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Les transports en commun sont plus pratiques que la voiture en ville.",
+   "en": "Public transport is more practical than a car in town.",
+   "fa": "حمل‌ونقل عمومی در شهر از ماشین کاربردی‌تر است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je suis resté bloqué dans les embouteillages pendant une heure.",
+   "en": "I was stuck in traffic for an hour.",
+   "fa": "یک ساعت در ترافیک گیر کردم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Pour réduire la pollution, il faudrait limiter la circulation des voitures en centre-ville.",
+   "en": "To reduce pollution, car traffic in city centres should be limited.",
+   "fa": "برای کاهش آلودگی، باید تردد خودروها در مرکز شهر محدود شود.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Rendre les transports en commun gratuits serait une mesure coûteuse mais efficace.",
+   "en": "Making public transport free would be a costly but effective measure.",
+   "fa": "رایگان کردن حمل‌ونقل عمومی اقدامی پرهزینه اما مؤثر خواهد بود.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les pistes cyclables encouragent les habitants à abandonner leur voiture.",
+   "en": "Cycle lanes encourage residents to give up their cars.",
+   "fa": "مسیرهای دوچرخه ساکنان را به کنار گذاشتن ماشین‌شان تشویق می‌کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Repenser la mobilité urbaine suppose de donner la priorité aux piétons et aux modes de transport doux.",
+   "en": "Rethinking urban mobility means giving priority to pedestrians and gentle modes of transport.",
+   "fa": "بازاندیشی در جابه‌جایی شهری مستلزم اولویت دادن به عابران پیاده و شیوه‌های حمل‌ونقل سبز است.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CO",
+   "topic": "annonces publiques (transports, prix moins chers, interdictions)",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "écoutez des annonces publiques."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : accident de voiture raconté à un agent de police",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous avez un accident de voiture."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : gare routière Paris-Versailles, tarifs et horaires",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous posez des questions sur les tarifs et les horaires des bus"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CE",
+   "topic": "article : aller au travail à vélo, indemnité kilométrique",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Aller au travail à vélo ?"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "PE",
+   "topic": "lettre au maire : contester l'ouverture d'une zone piétonne aux autobus",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "écrivez une lettre au maire pour contester cette décision"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "PE",
+   "topic": "écrit argumenté : lettre au maire, autobus en zone piétonne (250 mots)",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_example1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "ouvrir certaines des rues de cette zone à la circulation des autobus"
+  }
+ ]
+}

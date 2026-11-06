@@ -1,0 +1,1077 @@
+{
+ "id": "identity-self",
+ "names": {
+  "fr": "Se présenter",
+  "en": "Introducing yourself",
+  "fa": "معرفی خود"
+ },
+ "counts": {
+  "words": 93,
+  "verbs": 7,
+  "expressions": 17
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A1"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": null,
+   "fr": "adresse",
+   "type": "noun",
+   "article": "l’",
+   "en": "address",
+   "fa": "نشانی",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:age",
+   "fr": "âge",
+   "type": "noun",
+   "article": "l'",
+   "en": "age",
+   "fa": "سن",
+   "level": "A1"
+  },
+  {
+   "key": "a:beau",
+   "fr": "beau",
+   "type": "adjective",
+   "article": null,
+   "en": "beautiful, handsome",
+   "fa": "زیبا، قشنگ",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "étudiant",
+   "type": "noun",
+   "article": "l’",
+   "en": "student",
+   "fa": "دانشجو",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "famille",
+   "type": "noun",
+   "article": "la",
+   "en": "family",
+   "fa": "خانواده",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:francais",
+   "fr": "français",
+   "type": "adjective",
+   "article": null,
+   "en": "French",
+   "fa": "فرانسوی",
+   "level": "A1"
+  },
+  {
+   "key": "a:heureux",
+   "fr": "heureux",
+   "type": "adjective",
+   "article": null,
+   "en": "happy",
+   "fa": "خوشحال، خوشبخت",
+   "level": "A1"
+  },
+  {
+   "key": "a:jeune",
+   "fr": "jeune",
+   "type": "adjective",
+   "article": null,
+   "en": "young",
+   "fa": "جوان",
+   "level": "A1"
+  },
+  {
+   "key": "a:joli",
+   "fr": "joli",
+   "type": "adjective",
+   "article": null,
+   "en": "pretty, nice",
+   "fa": "قشنگ، زیبا",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "langue",
+   "type": "noun",
+   "article": "la",
+   "en": "language",
+   "fa": "زبان",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "nationalité",
+   "type": "noun",
+   "article": "la",
+   "en": "nationality",
+   "fa": "ملیت",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:nom",
+   "fr": "nom",
+   "type": "noun",
+   "article": "le",
+   "en": "name, noun",
+   "fa": "نام، اسم",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "pays",
+   "type": "noun",
+   "article": "le",
+   "en": "country",
+   "fa": "کشور",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "profession",
+   "type": "noun",
+   "article": "la",
+   "en": "profession, occupation",
+   "fa": "شغل",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:vieux",
+   "fr": "vieux",
+   "type": "adjective",
+   "article": null,
+   "en": "old",
+   "fa": "پیر، قدیمی",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "ville",
+   "type": "noun",
+   "article": "la",
+   "en": "city, town",
+   "fa": "شهر",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:visage",
+   "fr": "visage",
+   "type": "noun",
+   "article": "le",
+   "en": "face",
+   "fa": "صورت، چهره",
+   "level": "A1"
+  },
+  {
+   "key": "n:allemand",
+   "fr": "allemand",
+   "type": "noun",
+   "article": "l'",
+   "en": "German (language or man)",
+   "fa": "آلمانی",
+   "level": "A2"
+  },
+  {
+   "key": "n:calme",
+   "fr": "calme",
+   "type": "noun",
+   "article": "le",
+   "en": "calm, quiet",
+   "fa": "آرامش",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "cheveux",
+   "type": "noun",
+   "article": "les",
+   "en": "hair",
+   "fa": "مو",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:content",
+   "fr": "content",
+   "type": "adjective",
+   "article": null,
+   "en": "happy, pleased",
+   "fa": "راضی، خوشحال",
+   "level": "A2"
+  },
+  {
+   "key": "a:drole",
+   "fr": "drôle",
+   "type": "adjective",
+   "article": null,
+   "en": "funny, odd",
+   "fa": "خنده‌دار، بامزه",
+   "level": "A2"
+  },
+  {
+   "key": "a:gentil",
+   "fr": "gentil",
+   "type": "adjective",
+   "article": null,
+   "en": "kind, nice",
+   "fa": "مهربان، دوست‌داشتنی",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "goût",
+   "type": "noun",
+   "article": "le",
+   "en": "taste, preference",
+   "fa": "سلیقه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "lieu",
+   "type": "noun",
+   "article": "le",
+   "en": "place",
+   "fa": "مکان",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "loisir",
+   "type": "noun",
+   "article": "le",
+   "en": "leisure activity, hobby",
+   "fa": "سرگرمی",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "métier",
+   "type": "noun",
+   "article": "le",
+   "en": "trade, job",
+   "fa": "حرفه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "sourire",
+   "type": "noun",
+   "article": "le",
+   "en": "smile",
+   "fa": "لبخند",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:tranquille",
+   "fr": "tranquille",
+   "type": "adjective",
+   "article": null,
+   "en": "calm, quiet",
+   "fa": "آرام",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "yeux",
+   "type": "noun",
+   "article": "les",
+   "en": "eyes",
+   "fa": "چشم‌ها",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:americain",
+   "fr": "américain",
+   "type": "adjective",
+   "article": null,
+   "en": "American",
+   "fa": "آمریکایی",
+   "level": "B1"
+  },
+  {
+   "key": "n:anglais",
+   "fr": "anglais",
+   "type": "noun",
+   "article": "l'",
+   "en": "English (language)",
+   "fa": "زبان انگلیسی",
+   "level": "B1"
+  },
+  {
+   "key": "a:blond",
+   "fr": "blond",
+   "type": "adjective",
+   "article": null,
+   "en": "blond, fair",
+   "fa": "بور",
+   "level": "B1"
+  },
+  {
+   "key": "a:brun",
+   "fr": "brun",
+   "type": "adjective",
+   "article": null,
+   "en": "brown, dark-haired",
+   "fa": "قهوه‌ای، سبزه",
+   "level": "B1"
+  },
+  {
+   "key": "n:caractere",
+   "fr": "caractère",
+   "type": "noun",
+   "article": "le",
+   "en": "character, temper",
+   "fa": "شخصیت، خلق‌وخو",
+   "level": "B1"
+  },
+  {
+   "key": "a:charmant",
+   "fr": "charmant",
+   "type": "adjective",
+   "article": null,
+   "en": "charming",
+   "fa": "دل‌انگیز، جذاب",
+   "level": "B1"
+  },
+  {
+   "key": "a:curieux",
+   "fr": "curieux",
+   "type": "adjective",
+   "article": null,
+   "en": "curious",
+   "fa": "کنجکاو، عجیب",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "défaut",
+   "type": "noun",
+   "article": "le",
+   "en": "flaw, shortcoming",
+   "fa": "عیب",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "expérience",
+   "type": "noun",
+   "article": "l’",
+   "en": "experience",
+   "fa": "تجربه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:fier",
+   "fr": "fier",
+   "type": "adjective",
+   "article": null,
+   "en": "proud",
+   "fa": "مغرور، سربلند",
+   "level": "B1"
+  },
+  {
+   "key": "a:honnete",
+   "fr": "honnête",
+   "type": "adjective",
+   "article": null,
+   "en": "honest",
+   "fa": "درست‌کار، صادق",
+   "level": "B1"
+  },
+  {
+   "key": "a:intelligent",
+   "fr": "intelligent",
+   "type": "adjective",
+   "article": null,
+   "en": "intelligent, clever",
+   "fa": "باهوش",
+   "level": "B1"
+  },
+  {
+   "key": "a:joyeux",
+   "fr": "joyeux",
+   "type": "adjective",
+   "article": null,
+   "en": "joyful, cheerful",
+   "fa": "شاد، خوشحال",
+   "level": "B1"
+  },
+  {
+   "key": "a:mignon",
+   "fr": "mignon",
+   "type": "adjective",
+   "article": null,
+   "en": "cute, sweet",
+   "fa": "ناز، دوست‌داشتنی",
+   "level": "B1"
+  },
+  {
+   "key": "a:mince",
+   "fr": "mince",
+   "type": "adjective",
+   "article": null,
+   "en": "thin, slim",
+   "fa": "لاغر، باریک",
+   "level": "B1"
+  },
+  {
+   "key": "a:naturel",
+   "fr": "naturel",
+   "type": "adjective",
+   "article": null,
+   "en": "natural",
+   "fa": "طبیعی",
+   "level": "B1"
+  },
+  {
+   "key": "a:nerveux",
+   "fr": "nerveux",
+   "type": "adjective",
+   "article": null,
+   "en": "nervous, tense",
+   "fa": "عصبی",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "passion",
+   "type": "noun",
+   "article": "la",
+   "en": "passion",
+   "fa": "علاقه شدید",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "projet",
+   "type": "noun",
+   "article": "le",
+   "en": "plan, project",
+   "fa": "برنامه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "qualité",
+   "type": "noun",
+   "article": "la",
+   "en": "good quality, strength",
+   "fa": "ویژگی خوب",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "rêve",
+   "type": "noun",
+   "article": "le",
+   "en": "dream",
+   "fa": "رؤیا",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:russe",
+   "fr": "russe",
+   "type": "adjective",
+   "article": null,
+   "en": "Russian",
+   "fa": "روسی",
+   "level": "B1"
+  },
+  {
+   "key": "a:sympa",
+   "fr": "sympa",
+   "type": "adjective",
+   "article": null,
+   "en": "nice, friendly",
+   "fa": "مهربان، خوب",
+   "level": "B1"
+  },
+  {
+   "key": "n:taille",
+   "fr": "taille",
+   "type": "noun",
+   "article": "la",
+   "en": "size, height",
+   "fa": "اندازه، قد",
+   "level": "B1"
+  },
+  {
+   "key": "a:aimable",
+   "fr": "aimable",
+   "type": "adjective",
+   "article": null,
+   "en": "kind, pleasant",
+   "fa": "مهربان، خوش‌برخورد",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "ambition",
+   "type": "noun",
+   "article": "l’",
+   "en": "ambition",
+   "fa": "جاه‌طلبی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "apparence",
+   "type": "noun",
+   "article": "l’",
+   "en": "appearance",
+   "fa": "ظاهر",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:barbe",
+   "fr": "barbe",
+   "type": "noun",
+   "article": "la",
+   "en": "beard",
+   "fa": "ریش",
+   "level": "B2"
+  },
+  {
+   "key": "a:britannique",
+   "fr": "britannique",
+   "type": "adjective",
+   "article": null,
+   "en": "British",
+   "fa": "بریتانیایی",
+   "level": "B2"
+  },
+  {
+   "key": "a:cool",
+   "fr": "cool",
+   "type": "adjective",
+   "article": null,
+   "en": "cool (informal)",
+   "fa": "باحال (محاوره‌ای)",
+   "level": "B2"
+  },
+  {
+   "key": "a:gai",
+   "fr": "gai",
+   "type": "adjective",
+   "article": null,
+   "en": "cheerful, merry",
+   "fa": "شاد، سرحال",
+   "level": "B2"
+  },
+  {
+   "key": "n:identite",
+   "fr": "identité",
+   "type": "noun",
+   "article": "l'",
+   "en": "identity",
+   "fa": "هویت",
+   "level": "B2"
+  },
+  {
+   "key": "a:italien",
+   "fr": "italien",
+   "type": "adjective",
+   "article": null,
+   "en": "Italian",
+   "fa": "ایتالیایی",
+   "level": "B2"
+  },
+  {
+   "key": "a:maigre",
+   "fr": "maigre",
+   "type": "adjective",
+   "article": null,
+   "en": "thin, lean",
+   "fa": "لاغر، کم‌گوشت",
+   "level": "B2"
+  },
+  {
+   "key": "n:moustache",
+   "fr": "moustache",
+   "type": "noun",
+   "article": "la",
+   "en": "moustache",
+   "fa": "سبیل",
+   "level": "B2"
+  },
+  {
+   "key": "n:origine",
+   "fr": "origine",
+   "type": "noun",
+   "article": "l'",
+   "en": "origin",
+   "fa": "ریشه، منشأ",
+   "level": "B2"
+  },
+  {
+   "key": "n:patient",
+   "fr": "patient",
+   "type": "noun",
+   "article": "le",
+   "en": "patient",
+   "fa": "بیمار",
+   "level": "B2"
+  },
+  {
+   "key": "n:prenom",
+   "fr": "prénom",
+   "type": "noun",
+   "article": "le",
+   "en": "first name",
+   "fa": "نام کوچک",
+   "level": "B2"
+  },
+  {
+   "key": "a:sage",
+   "fr": "sage",
+   "type": "adjective",
+   "article": null,
+   "en": "wise, well-behaved",
+   "fa": "عاقل، حرف‌گوش‌کن",
+   "level": "B2"
+  },
+  {
+   "key": "a:sensible",
+   "fr": "sensible",
+   "type": "adjective",
+   "article": null,
+   "en": "sensitive",
+   "fa": "حساس",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "timidité",
+   "type": "noun",
+   "article": "la",
+   "en": "shyness",
+   "fa": "کم‌رویی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:arabe",
+   "fr": "arabe",
+   "type": "noun",
+   "article": "l'",
+   "en": "Arabic, Arab (m. or f.)",
+   "fa": "عربی، عرب",
+   "level": "C1"
+  },
+  {
+   "key": "a:chinois",
+   "fr": "chinois",
+   "type": "adjective",
+   "article": null,
+   "en": "Chinese",
+   "fa": "چینی",
+   "level": "C1"
+  },
+  {
+   "key": "a:courageux",
+   "fr": "courageux",
+   "type": "adjective",
+   "article": null,
+   "en": "brave, courageous",
+   "fa": "شجاع",
+   "level": "C1"
+  },
+  {
+   "key": "a:discret",
+   "fr": "discret",
+   "type": "adjective",
+   "article": null,
+   "en": "discreet, unobtrusive",
+   "fa": "خوددار، کم‌سروصدا",
+   "level": "C1"
+  },
+  {
+   "key": "a:elegant",
+   "fr": "élégant",
+   "type": "adjective",
+   "article": null,
+   "en": "elegant",
+   "fa": "شیک، برازنده",
+   "level": "C1"
+  },
+  {
+   "key": "a:espagnol",
+   "fr": "espagnol",
+   "type": "adjective",
+   "article": null,
+   "en": "Spanish",
+   "fa": "اسپانیایی",
+   "level": "C1"
+  },
+  {
+   "key": "a:genereux",
+   "fr": "généreux",
+   "type": "adjective",
+   "article": null,
+   "en": "generous",
+   "fa": "بخشنده، سخاوتمند",
+   "level": "C1"
+  },
+  {
+   "key": "a:grec",
+   "fr": "grec",
+   "type": "adjective",
+   "article": null,
+   "en": "Greek",
+   "fa": "یونانی",
+   "level": "C1"
+  },
+  {
+   "key": "a:laid",
+   "fr": "laid",
+   "type": "adjective",
+   "article": null,
+   "en": "ugly",
+   "fa": "زشت",
+   "level": "C1"
+  },
+  {
+   "key": "a:moche",
+   "fr": "moche",
+   "type": "adjective",
+   "article": null,
+   "en": "ugly (informal)",
+   "fa": "زشت",
+   "level": "C1"
+  },
+  {
+   "key": "a:modeste",
+   "fr": "modeste",
+   "type": "adjective",
+   "article": null,
+   "en": "modest, humble",
+   "fa": "ساده، فروتن",
+   "level": "C1"
+  },
+  {
+   "key": "n:personnalite",
+   "fr": "personnalité",
+   "type": "noun",
+   "article": "la",
+   "en": "personality",
+   "fa": "شخصیت",
+   "level": "C1"
+  },
+  {
+   "key": "a:roux",
+   "fr": "roux",
+   "type": "adjective",
+   "article": null,
+   "en": "red-haired, russet",
+   "fa": "حنایی، سرخ‌رنگ",
+   "level": "C1"
+  },
+  {
+   "key": "a:sincere",
+   "fr": "sincère",
+   "type": "adjective",
+   "article": null,
+   "en": "sincere, genuine",
+   "fa": "صادق، صمیمانه",
+   "level": "C1"
+  },
+  {
+   "key": "a:timide",
+   "fr": "timide",
+   "type": "adjective",
+   "article": null,
+   "en": "shy, timid",
+   "fa": "خجالتی، کم‌رو",
+   "level": "C1"
+  },
+  {
+   "key": "a:adorable",
+   "fr": "adorable",
+   "type": "adjective",
+   "article": null,
+   "en": "adorable, lovely",
+   "fa": "دوست‌داشتنی، بامزه",
+   "level": "C2"
+  },
+  {
+   "key": "n:chevelure",
+   "fr": "chevelure",
+   "type": "noun",
+   "article": "la",
+   "en": "head of hair",
+   "fa": "گیسو، موها",
+   "level": "C2"
+  },
+  {
+   "key": "n:coiffure",
+   "fr": "coiffure",
+   "type": "noun",
+   "article": "la",
+   "en": "hairstyle",
+   "fa": "مدل مو",
+   "level": "C2"
+  },
+  {
+   "key": "a:humble",
+   "fr": "humble",
+   "type": "adjective",
+   "article": null,
+   "en": "humble",
+   "fa": "فروتن",
+   "level": "C2"
+  },
+  {
+   "key": "a:japonais",
+   "fr": "japonais",
+   "type": "adjective",
+   "article": null,
+   "en": "Japanese",
+   "fa": "ژاپنی",
+   "level": "C2"
+  },
+  {
+   "key": "a:parisien",
+   "fr": "parisien",
+   "type": "adjective",
+   "article": null,
+   "en": "Parisian",
+   "fa": "پاریسی",
+   "level": "C2"
+  },
+  {
+   "key": "a:romain",
+   "fr": "romain",
+   "type": "adjective",
+   "article": null,
+   "en": "Roman",
+   "fa": "رومی",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:appeler",
+   "fr": "appeler",
+   "type": "verb",
+   "en": "to call (out)",
+   "fa": "صدا زدن، زنگ زدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:habiter",
+   "fr": "habiter",
+   "type": "verb",
+   "en": "to live in, to occupy (to have as a home.)",
+   "fa": "سکونت داشتن، زندگی کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:naître",
+   "fr": "naître",
+   "type": "verb",
+   "en": "to be born",
+   "fa": "به دنیا آمدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:présenter",
+   "fr": "présenter",
+   "type": "verb",
+   "en": "to present, to introduce",
+   "fa": "معرفی کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:ressembler",
+   "fr": "ressembler",
+   "type": "verb",
+   "en": "to resemble",
+   "fa": "شبیه بودن",
+   "level": "A1"
+  },
+  {
+   "key": "v:grandir",
+   "fr": "grandir",
+   "type": "verb",
+   "en": "to grow, get bigger",
+   "fa": "بزرگ شدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:vieillir",
+   "fr": "vieillir",
+   "type": "verb",
+   "en": "to grow old, to age",
+   "fa": "پیر شدن",
+   "level": "B1"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je m'appelle Sara.",
+   "en": "My name is Sara.",
+   "fa": "اسم من سارا است.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai vingt-cinq ans.",
+   "en": "I am twenty-five years old.",
+   "fa": "من بیست‌وپنج سال دارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis iranien / iranienne.",
+   "en": "I am Iranian.",
+   "fa": "من ایرانی هستم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je viens de Téhéran.",
+   "en": "I come from Tehran.",
+   "fa": "من اهل تهران هستم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je parle persan, anglais et un peu français.",
+   "en": "I speak Persian, English and a little French.",
+   "fa": "من فارسی، انگلیسی و کمی فرانسه صحبت می‌کنم.",
+   "level": "A1",
+   "use": "both"
+  },
+  {
+   "fr": "Comment vous appelez-vous ?",
+   "en": "What is your name?",
+   "fa": "اسم شما چیست؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'habite en France depuis deux ans.",
+   "en": "I have been living in France for two years.",
+   "fa": "دو سال است که در فرانسه زندگی می‌کنم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis grand, brun, et j'ai les yeux marron.",
+   "en": "I am tall, dark-haired, and I have brown eyes.",
+   "fa": "قدبلند هستم، موهای تیره دارم و چشمانم قهوه‌ای است.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je suis plutôt timide, mais très curieux.",
+   "en": "I am rather shy, but very curious.",
+   "fa": "من بیشتر خجالتی هستم، اما خیلی کنجکاوم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Ce que j'aime, c'est la musique et la cuisine.",
+   "en": "What I like is music and cooking.",
+   "fa": "چیزی که دوست دارم موسیقی و آشپزی است.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je me décrirais comme quelqu'un de patient et de sérieux.",
+   "en": "I would describe myself as someone patient and serious.",
+   "fa": "خودم را آدمی صبور و جدی توصیف می‌کنم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je me permets de me présenter : je m'appelle…",
+   "en": "Allow me to introduce myself: my name is…",
+   "fa": "اجازه می‌خواهم خودم را معرفی کنم: نام من … است.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Mon principal défaut, c'est que je suis un peu perfectionniste.",
+   "en": "My main flaw is that I am a bit of a perfectionist.",
+   "fa": "عیب اصلی من این است که کمی کمال‌گرا هستم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "On ne se résume pas à son pays d'origine.",
+   "en": "You cannot be reduced to your country of origin.",
+   "fa": "آدم را نمی‌شود به کشور زادگاهش خلاصه کرد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "À mon avis, l'identité se construit au fil des rencontres et des expériences.",
+   "en": "In my opinion, identity is built through encounters and experiences.",
+   "fa": "به نظر من، هویت در طول دیدارها و تجربه‌ها شکل می‌گیرد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Vivre à l'étranger m'a appris à regarder le monde autrement.",
+   "en": "Living abroad taught me to look at the world differently.",
+   "fa": "زندگی در خارج از کشور به من آموخت که به دنیا جور دیگری نگاه کنم.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Être bilingue, c'est avoir deux façons de penser et de ressentir le monde.",
+   "en": "Being bilingual means having two ways of thinking and feeling about the world.",
+   "fa": "دوزبانه بودن یعنی داشتن دو شیوه برای اندیشیدن و حس کردن جهان.",
+   "level": "C1",
+   "use": "both"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "PO",
+   "topic": "entretien dirigé : parler de soi, sa famille, ses goûts, ses activités",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo exemple 1 (candidat, épreuve individuelle), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A1/A1_TP/delf-dalf-a1-tp-candidat-ind-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous répondez aux questions de l’examinateur sur vous, votre famille, vos goûts ou vos activités"
+  }
+ ]
+}

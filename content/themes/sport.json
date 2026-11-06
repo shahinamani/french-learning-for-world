@@ -1,0 +1,927 @@
+{
+ "id": "sport",
+ "names": {
+  "fr": "Le sport",
+  "en": "Sport",
+  "fa": "ورزش"
+ },
+ "counts": {
+  "words": 53,
+  "verbs": 31,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A1"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": null,
+   "fr": "basket",
+   "type": "noun",
+   "article": "le",
+   "en": "basketball",
+   "fa": "بسکتبال",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "football",
+   "type": "noun",
+   "article": "le",
+   "en": "football",
+   "fa": "فوتبال",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:jeu",
+   "fr": "jeu",
+   "type": "noun",
+   "article": "le",
+   "en": "game",
+   "fa": "بازی",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "tennis",
+   "type": "noun",
+   "article": "le",
+   "en": "tennis",
+   "fa": "تنیس",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:balle",
+   "fr": "balle",
+   "type": "noun",
+   "article": "la",
+   "en": "ball, bullet",
+   "fa": "توپ کوچک، گلوله",
+   "level": "A2"
+  },
+  {
+   "key": "n:course",
+   "fr": "course",
+   "type": "noun",
+   "article": "la",
+   "en": "race, errand (les courses: shopping)",
+   "fa": "مسابقه‌ی دو، خرید (les courses)",
+   "level": "A2"
+  },
+  {
+   "key": "n:effort",
+   "fr": "effort",
+   "type": "noun",
+   "article": "l'",
+   "en": "effort",
+   "fa": "تلاش، کوشش",
+   "level": "A2"
+  },
+  {
+   "key": "n:equipe",
+   "fr": "équipe",
+   "type": "noun",
+   "article": "l'",
+   "en": "team",
+   "fa": "تیم",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "natation",
+   "type": "noun",
+   "article": "la",
+   "en": "swimming",
+   "fa": "شنا",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "randonnée",
+   "type": "noun",
+   "article": "la",
+   "en": "hike",
+   "fa": "کوهپیمایی",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "ski",
+   "type": "noun",
+   "article": "le",
+   "en": "skiing, ski",
+   "fa": "اسکی",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "terrain",
+   "type": "noun",
+   "article": "le",
+   "en": "pitch, field",
+   "fa": "زمین",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "yoga",
+   "type": "noun",
+   "article": "l’",
+   "en": "yoga",
+   "fa": "یوگا",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "arbitre",
+   "type": "noun",
+   "article": "l’",
+   "en": "referee",
+   "fa": "داور",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "blessure",
+   "type": "noun",
+   "article": "la",
+   "en": "injury",
+   "fa": "مصدومیت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:but",
+   "fr": "but",
+   "type": "noun",
+   "article": "le",
+   "en": "goal, aim",
+   "fa": "هدف، گل",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "championnat",
+   "type": "noun",
+   "article": "le",
+   "en": "championship",
+   "fa": "قهرمانی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:club",
+   "fr": "club",
+   "type": "noun",
+   "article": "le",
+   "en": "club",
+   "fa": "باشگاه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "compétition",
+   "type": "noun",
+   "article": "la",
+   "en": "competition",
+   "fa": "رقابت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "cyclisme",
+   "type": "noun",
+   "article": "le",
+   "en": "cycling",
+   "fa": "دوچرخه‌سواری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "entraîneur",
+   "type": "noun",
+   "article": "l’",
+   "en": "coach",
+   "fa": "مربی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "gymnastique",
+   "type": "noun",
+   "article": "la",
+   "en": "gymnastics",
+   "fa": "ژیمناستیک",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "judo",
+   "type": "noun",
+   "article": "le",
+   "en": "judo",
+   "fa": "جودو",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "musculation",
+   "type": "noun",
+   "article": "la",
+   "en": "weight training",
+   "fa": "بدنسازی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "rugby",
+   "type": "noun",
+   "article": "le",
+   "en": "rugby",
+   "fa": "راگبی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "score",
+   "type": "noun",
+   "article": "le",
+   "en": "score",
+   "fa": "نتیجه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "supporter",
+   "type": "noun",
+   "article": "le",
+   "en": "supporter, fan",
+   "fa": "هوادار",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:victoire",
+   "fr": "victoire",
+   "type": "noun",
+   "article": "la",
+   "en": "victory",
+   "fa": "پیروزی",
+   "level": "B1"
+  },
+  {
+   "key": "n:vitesse",
+   "fr": "vitesse",
+   "type": "noun",
+   "article": "la",
+   "en": "speed",
+   "fa": "سرعت",
+   "level": "B1"
+  },
+  {
+   "key": "n:ballon",
+   "fr": "ballon",
+   "type": "noun",
+   "article": "le",
+   "en": "ball, balloon",
+   "fa": "توپ، بالن",
+   "level": "B2"
+  },
+  {
+   "key": "n:concours",
+   "fr": "concours",
+   "type": "noun",
+   "article": "le",
+   "en": "competitive exam, contest",
+   "fa": "آزمون ورودی، مسابقه",
+   "level": "B2"
+  },
+  {
+   "key": "n:coupe",
+   "fr": "coupe",
+   "type": "noun",
+   "article": "la",
+   "en": "cup, cut",
+   "fa": "جام، برش",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "dopage",
+   "type": "noun",
+   "article": "le",
+   "en": "doping",
+   "fa": "دوپینگ",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "endurance",
+   "type": "noun",
+   "article": "l’",
+   "en": "stamina",
+   "fa": "استقامت",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:match",
+   "fr": "match",
+   "type": "noun",
+   "article": "le",
+   "en": "match, game",
+   "fa": "مسابقه",
+   "level": "B2"
+  },
+  {
+   "key": "n:sport",
+   "fr": "sport",
+   "type": "noun",
+   "article": "le",
+   "en": "sport",
+   "fa": "ورزش",
+   "level": "B2"
+  },
+  {
+   "key": "n:tir",
+   "fr": "tir",
+   "type": "noun",
+   "article": "le",
+   "en": "shooting, firing",
+   "fa": "تیراندازی، شلیک",
+   "level": "B2"
+  },
+  {
+   "key": "n:velo",
+   "fr": "vélo",
+   "type": "noun",
+   "article": "le",
+   "en": "bike",
+   "fa": "دوچرخه",
+   "level": "B2"
+  },
+  {
+   "key": "n:adversaire",
+   "fr": "adversaire",
+   "type": "noun",
+   "article": "l'",
+   "en": "opponent (m. or f.)",
+   "fa": "حریف، رقیب",
+   "level": "C1"
+  },
+  {
+   "key": "n:champion",
+   "fr": "champion",
+   "type": "noun",
+   "article": "le",
+   "en": "champion",
+   "fa": "قهرمان",
+   "level": "C1"
+  },
+  {
+   "key": "n:joueur",
+   "fr": "joueur",
+   "type": "noun",
+   "article": "le",
+   "en": "player, gambler",
+   "fa": "بازیکن، قمارباز",
+   "level": "C1"
+  },
+  {
+   "key": "n:muscle",
+   "fr": "muscle",
+   "type": "noun",
+   "article": "le",
+   "en": "muscle",
+   "fa": "ماهیچه، عضله",
+   "level": "C1"
+  },
+  {
+   "key": "n:partenaire",
+   "fr": "partenaire",
+   "type": "noun",
+   "article": "le",
+   "en": "partner (m. or f.)",
+   "fa": "شریک، همراه",
+   "level": "C1"
+  },
+  {
+   "key": "n:piscine",
+   "fr": "piscine",
+   "type": "noun",
+   "article": "la",
+   "en": "swimming pool",
+   "fa": "استخر",
+   "level": "C1"
+  },
+  {
+   "key": "n:defaite",
+   "fr": "défaite",
+   "type": "noun",
+   "article": "la",
+   "en": "defeat",
+   "fa": "شکست",
+   "level": "C2"
+  },
+  {
+   "key": "n:defi",
+   "fr": "défi",
+   "type": "noun",
+   "article": "le",
+   "en": "challenge",
+   "fa": "چالش",
+   "level": "C2"
+  },
+  {
+   "key": "n:entrainement",
+   "fr": "entraînement",
+   "type": "noun",
+   "article": "l'",
+   "en": "training, practice session",
+   "fa": "تمرین",
+   "level": "C2"
+  },
+  {
+   "key": "n:foot",
+   "fr": "foot",
+   "type": "noun",
+   "article": "le",
+   "en": "football (informal)",
+   "fa": "فوتبال (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:maillot",
+   "fr": "maillot",
+   "type": "noun",
+   "article": "le",
+   "en": "jersey; swimsuit",
+   "fa": "پیراهن ورزشی؛ لباس شنا",
+   "level": "C2"
+  },
+  {
+   "key": "n:medaille",
+   "fr": "médaille",
+   "type": "noun",
+   "article": "la",
+   "en": "medal",
+   "fa": "مدال",
+   "level": "C2"
+  },
+  {
+   "key": "n:spectateur",
+   "fr": "spectateur",
+   "type": "noun",
+   "article": "le",
+   "en": "spectator",
+   "fa": "تماشاگر",
+   "level": "C2"
+  },
+  {
+   "key": "n:stade",
+   "fr": "stade",
+   "type": "noun",
+   "article": "le",
+   "en": "stadium; stage",
+   "fa": "ورزشگاه؛ مرحله",
+   "level": "C2"
+  },
+  {
+   "key": "n:tireur",
+   "fr": "tireur",
+   "type": "noun",
+   "article": "le",
+   "en": "shooter, marksman",
+   "fa": "تیرانداز",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:battre",
+   "fr": "battre",
+   "type": "verb",
+   "en": "to beat, to defeat",
+   "fa": "شکست دادن، هم زدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:courir",
+   "fr": "courir",
+   "type": "verb",
+   "en": "to run",
+   "fa": "دویدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:gagner",
+   "fr": "gagner",
+   "type": "verb",
+   "en": "to win",
+   "fa": "بردن، به دست آوردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:jouer",
+   "fr": "jouer",
+   "type": "verb",
+   "en": "to play (engage in games or play)",
+   "fa": "بازی کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:perdre",
+   "fr": "perdre",
+   "type": "verb",
+   "en": "to lose (be unable to find)",
+   "fa": "گم کردن، باختن",
+   "level": "A1"
+  },
+  {
+   "key": "v:sauter",
+   "fr": "sauter",
+   "type": "verb",
+   "en": "to jump, leap",
+   "fa": "پریدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:tirer",
+   "fr": "tirer",
+   "type": "verb",
+   "en": "to draw, drag, pull",
+   "fa": "کشیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:entraîner",
+   "fr": "entraîner",
+   "type": "verb",
+   "en": "to coach, to train",
+   "fa": "تمرین دادن، مربیگری کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:lancer",
+   "fr": "lancer",
+   "type": "verb",
+   "en": "to throw",
+   "fa": "پرتاب کردن، راه‌اندازی کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:marquer",
+   "fr": "marquer",
+   "type": "verb",
+   "en": "to mark, mark down (to add a mark or a spot to something)",
+   "fa": "علامت زدن، گل زدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:nager",
+   "fr": "nager",
+   "type": "verb",
+   "en": "to swim",
+   "fa": "شنا کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:plonger",
+   "fr": "plonger",
+   "type": "verb",
+   "en": "to dive",
+   "fa": "شیرجه رفتن، غوطه‌ور شدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:grimper",
+   "fr": "grimper",
+   "type": "verb",
+   "en": "to climb, climb up",
+   "fa": "بالا رفتن، صعود کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:lutter",
+   "fr": "lutter",
+   "type": "verb",
+   "en": "to struggle, to fight",
+   "fa": "مبارزه کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:plaquer",
+   "fr": "plaquer",
+   "type": "verb",
+   "en": "to tackle (rugby)",
+   "fa": "چسباندن، تکل کردن (راگبی)",
+   "level": "B1"
+  },
+  {
+   "key": "v:siffler",
+   "fr": "siffler",
+   "type": "verb",
+   "en": "to whistle",
+   "fa": "سوت زدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:tricher",
+   "fr": "tricher",
+   "type": "verb",
+   "en": "to cheat",
+   "fa": "تقلب کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:vaincre",
+   "fr": "vaincre",
+   "type": "verb",
+   "en": "to defeat, vanquish",
+   "fa": "شکست دادن، غلبه کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:escalader",
+   "fr": "escalader",
+   "type": "verb",
+   "en": "to escalade (attack (e.g. a castle) by using ladders etc. to climb to the top)",
+   "fa": "بالا رفتن از",
+   "level": "B2"
+  },
+  {
+   "key": "v:gravir",
+   "fr": "gravir",
+   "type": "verb",
+   "en": "to climb up",
+   "fa": "بالا رفتن",
+   "level": "B2"
+  },
+  {
+   "key": "v:qualifier",
+   "fr": "qualifier",
+   "type": "verb",
+   "en": "to qualify (of a sports team, etc.)",
+   "fa": "راه یافتن (به مرحله بعد)، توصیف کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:boxer",
+   "fr": "boxer",
+   "type": "verb",
+   "en": "to box (to fight against (a person) in a boxing match)",
+   "fa": "بوکس کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:patiner",
+   "fr": "patiner",
+   "type": "verb",
+   "en": "to ice-skate",
+   "fa": "اسکیت زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:pédaler",
+   "fr": "pédaler",
+   "type": "verb",
+   "en": "to pedal (a bicycle)",
+   "fa": "رکاب زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:ramer",
+   "fr": "ramer",
+   "type": "verb",
+   "en": "to row",
+   "fa": "پارو زدن، دشواری کشیدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:shooter",
+   "fr": "shooter",
+   "type": "verb",
+   "en": "to shoot the ball forward in an attempt to place it in the opponent's goal",
+   "fa": "شوت کردن، توپ زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:surfer",
+   "fr": "surfer",
+   "type": "verb",
+   "en": "to surf (on a wave)",
+   "fa": "موج‌سواری کردن، گشت‌وگذار در اینترنت",
+   "level": "C1"
+  },
+  {
+   "key": "v:égaliser",
+   "fr": "égaliser",
+   "type": "verb",
+   "en": "to equalize, equalise",
+   "fa": "مساوی کردن، برابر کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:exceller",
+   "fr": "exceller",
+   "type": "verb",
+   "en": "to excel",
+   "fa": "درخشیدن، برتری داشتن",
+   "level": "C2"
+  },
+  {
+   "key": "v:rivaliser",
+   "fr": "rivaliser",
+   "type": "verb",
+   "en": "to compete",
+   "fa": "رقابت کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:skier",
+   "fr": "skier",
+   "type": "verb",
+   "en": "to ski",
+   "fa": "اسکی کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je fais du sport deux fois par semaine.",
+   "en": "I do sport twice a week.",
+   "fa": "هفته‌ای دو بار ورزش می‌کنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'aime jouer au football avec mes amis.",
+   "en": "I like playing football with my friends.",
+   "fa": "دوست دارم با دوستانم فوتبال بازی کنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je vais à la piscine le mardi.",
+   "en": "I go to the swimming pool on Tuesdays.",
+   "fa": "سه‌شنبه‌ها به استخر می‌روم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je m'entraîne trois fois par semaine dans une salle de sport.",
+   "en": "I train three times a week at a gym.",
+   "fa": "هفته‌ای سه بار در یک باشگاه ورزشی تمرین می‌کنم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Hier, j'ai regardé le match à la télé avec mon père.",
+   "en": "Yesterday I watched the match on TV with my father.",
+   "fa": "دیروز مسابقه را با پدرم از تلویزیون تماشا کردم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Quel sport est-ce que vous pratiquez ?",
+   "en": "What sport do you play?",
+   "fa": "چه ورزشی انجام می‌دهید؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je voudrais m'inscrire à un cours de natation.",
+   "en": "I would like to sign up for a swimming class.",
+   "fa": "می‌خواهم در یک کلاس شنا ثبت‌نام کنم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Notre équipe a gagné le match par trois buts à un.",
+   "en": "Our team won the match by three goals to one.",
+   "fa": "تیم ما با نتیجه سه بر یک برنده شد.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Le sport m'aide à évacuer le stress et à me sentir mieux.",
+   "en": "Sport helps me let off stress and feel better.",
+   "fa": "ورزش به من کمک می‌کند استرس را تخلیه کنم و حالم بهتر شود.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "J'ai arrêté de jouer à cause d'une blessure au genou.",
+   "en": "I stopped playing because of a knee injury.",
+   "fa": "به خاطر مصدومیت زانو بازی را کنار گذاشتم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Il faut s'échauffer avant l'effort pour éviter de se blesser.",
+   "en": "You have to warm up before exercise to avoid getting hurt.",
+   "fa": "برای جلوگیری از آسیب، باید پیش از تمرین گرم کرد.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Le sport professionnel est devenu une industrie où l'argent compte plus que le jeu.",
+   "en": "Professional sport has become an industry where money matters more than the game.",
+   "fa": "ورزش حرفه‌ای به صنعتی تبدیل شده که در آن پول از خود بازی مهم‌تر است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Faire du sport en équipe apprend la solidarité et le respect des règles.",
+   "en": "Playing team sport teaches solidarity and respect for the rules.",
+   "fa": "ورزش تیمی همبستگی و رعایت قوانین را می‌آموزد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il faudrait proposer davantage d'activités sportives à l'école pour lutter contre la sédentarité.",
+   "en": "More sports activities should be offered at school to combat a sedentary lifestyle.",
+   "fa": "برای مبارزه با کم‌تحرکی، باید فعالیت‌های ورزشی بیشتری در مدرسه ارائه شود.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le dopage entame la crédibilité des compétitions et trahit l'esprit du sport.",
+   "en": "Doping undermines the credibility of competitions and betrays the spirit of sport.",
+   "fa": "دوپینگ اعتبار مسابقات را خدشه‌دار می‌کند و به روح ورزش خیانت می‌ورزد.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "CO",
+   "topic": "message sur répondeur : cours dans un club de sport (premier cours, sac de sport)",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous allez faire quelle activité ?"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CE",
+   "topic": "lettre d'un club de basket-ball : soirée, discussion « Faire du sport pour être en forme ? »",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "« Faire du sport pour être en forme ? »"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CO",
+   "topic": "radio : rythme de vie (lève-tôt/couche-tard) et sport",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Quel rythme de vie adoptent les sportifs professionnels ?"
+  }
+ ]
+}
