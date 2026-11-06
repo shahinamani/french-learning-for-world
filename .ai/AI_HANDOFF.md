@@ -8,19 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-11-03 20:31 +03 (git metadata only, written by a Stop hook)
-- Branch: feat/keep-progress-safe
-- HEAD: acf1201 Keep a learner's progress safer, without a server
-- Uncommitted: 19 file(s)
+- Updated: 2026-11-06 19:27 +03 (git metadata only, written by a Stop hook)
+- Branch: fix/remove-fa-draft-notice
+- HEAD: 953ba4e Merge pull request #73 from shahinamani/feat/bleu-de-france-sidebar
+- Uncommitted: 9 file(s)
   -  M .ai/AI_HANDOFF.md
-  -  M tests/i18n-app.test.js
-  -  M tests/i18n-four-languages.test.js
-  -  M tests/i18n-lazy-groups.test.js
-  -  M tests/no-untranslated-strings.test.js
-  -  M web/src/components/BackupReminder.tsx
-  -  M web/src/features/flashcards/Session.tsx
-  -  M web/src/features/verbs/VerbList.tsx
-  - … and 11 more
+  -  M docs/review/fa-ui-drafts.md
+  -  M web/e2e/walk.mjs
+  -  M web/src/components/Shell.tsx
+  -  M web/src/lib/i18n.ts
+  -  M web/src/lib/locales/en/workspaceEn.ts
+  -  M web/src/lib/locales/fa.ts
+  -  M web/src/lib/locales/fr.ts
+  - … and 1 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -47,7 +47,7 @@ Owner asked for a portal built around exams. Sidebar = shadcn-style anatomy (`co
 
 ## Phase 2c done 2026-10-31
 
-Timer presets 5/10/20/30/60 (default 20), finish toast + system notification (permission asked on first start). Theme toggle in top bar. Card back: past/future side by side. Today: Bonjour/Bonsoir, French date, mot du jour (real card). French photo banners on list pages (RouteBanner in PortalNav, lazy). Verb drill opens on a verb of the day instead of an error. Persian: 533 strings drafted by an agent, marked DRAFT in fa.ts, listed in docs/review/fa-ui-drafts.md, app shows a draft notice (`shellFaDraft`). Arabic unchanged (falls back to English). Tests moved fallback checks to Arabic.
+Timer presets 5/10/20/30/60 (default 20), finish toast + system notification (permission asked on first start). Theme toggle in top bar. Card back: past/future side by side. Today: Bonjour/Bonsoir, French date, mot du jour (real card). French photo banners on list pages (RouteBanner in PortalNav, lazy). Verb drill opens on a verb of the day instead of an error. Persian: 533 strings drafted by an agent, marked DRAFT in fa.ts, listed in docs/review/fa-ui-drafts.md, the in-app draft notice (`shellFaDraft`) was removed at the owner's request on 2026-11-06 (branch `fix/remove-fa-draft-notice`), after an agent re-read all of fa.ts and fixed register (تو→شما), literal phrasings and ezafe spelling. Strings are still in the DRAFT block of fa.ts: the owner has not reviewed them line by line. Arabic unchanged (falls back to English). Tests moved fallback checks to Arabic.
 
 ## Phase 2d: verb flashcards 2026-11-02
 
@@ -80,6 +80,8 @@ Cloudflare Pages project `frenchmavie` (owner's existing Cloudflare account), Gi
 Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences.
 
 ## Decisions
+
+- 2026-11-06 (owner, site already sent to ~10,000 learners): no "draft", "not checked by a teacher", "unreviewed" or "not verified" notice is shown to learners anywhere. Review data (review fields, glossUnreviewed, verified flags) is kept; only its display was removed. Walk checks now assert these notices are absent. This overrides the learner-facing part of AGENTS.md §2.
 
 - Owner chose shadcn/ui, Magic UI free parts only, Babbel-like feel, English-first landing, keep the name, Unsplash photos, everything free.
 - No Docker Desktop (owner will uninstall it). Packages installed directly with scripts off, pinned to versions older than 10 days.

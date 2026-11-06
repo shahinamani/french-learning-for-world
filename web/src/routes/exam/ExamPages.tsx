@@ -229,7 +229,6 @@ export function ExamPage() {
         <p className="exam-lede">{entry.owner}{verified && total > 0 ? `. ${t('shellExamTotal', { minutes: total })}.` : '.'}</p>
       </header>
 
-      {!verified && <p className="exam-notice" data-testid="exam-not-verified">{t('shellExamNotVerified')}</p>}
 
       <section aria-labelledby="ov-sections">
         <h2 id="ov-sections" className="exam-block__h">{rows.length === 4 ? t('shellExamSections') : t('shellExamFormat')}</h2>

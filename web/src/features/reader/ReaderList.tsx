@@ -145,7 +145,6 @@ export function ReaderList() {
       <header className="rd-head">
         <h1 className="h2">{t('rdTitle')}</h1>
         <p className="rd-lead" dir="auto">{t('rdLead')}</p>
-        <p className="rd-note" dir="auto" data-testid="rd-drafted">{t('rdDraftedNote')}</p>
       </header>
 
       <div className="rd-search" role="search">

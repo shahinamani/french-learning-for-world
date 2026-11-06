@@ -77,7 +77,6 @@ function LessonView({ lesson, data, origin }: { lesson: Lesson; data: LessonData
     lesson.explanation, simple ? lesson.simplerExplanation : undefined, lesson.difference,
   ], settings.ui) || (finished ? false : anyUntranslated(
     [lesson.questions[index]?.explanation.right, lesson.questions[index]?.explanation.tempting], settings.ui));
-  const unreviewed = !lesson.review?.teacher;
 
   const restart = () => { setIndex(0); setFirstTries([]); };
 
@@ -93,7 +92,6 @@ function LessonView({ lesson, data, origin }: { lesson: Lesson; data: LessonData
           <span className={`chip chip--${lesson.level.toLowerCase()}`}>{lesson.level}</span>
         </div>
         <h1 className="h2" data-testid="grammar-concept"><Localised field={concept?.name} /></h1>
-        {unreviewed && <p className="muted" data-testid="grammar-unreviewed">{t('grlDrafted')}</p>}
         {missing && <p className="muted notice-untranslated" data-testid="grammar-untranslated">{t('grlNotInYourLanguage')}</p>}
       </header>
 

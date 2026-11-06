@@ -16,7 +16,6 @@ import { newId } from '../../lib/session';
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
-import { allTeacherVerified } from '../../lib/review-status';
 
 export function ExamPaperRoute() {
   const { paperId = '' } = useParams();
@@ -99,11 +98,6 @@ export function ExamPaperRoute() {
             one question in lib/review-status.ts, and a paper keeps the marker
             until every item on it carries an attributable, current, approving
             teacher record. */}
-        {!allTeacherVerified(paper.items) && (
-          <p className="muted" data-testid="paper-unreviewed">
-            <strong>{t('itemUnreviewed')}.</strong>{' '}{t('itemsUnreviewed')}
-          </p>
-        )}
         {anyUntranslated([paper.official.passNote, paper.practiceNote], settings.ui) && (
           <p className="muted" data-testid="not-translated">{t('notTranslatedHere')}</p>
         )}

@@ -357,7 +357,7 @@ group they come from.
 | `wsHideExamples` | Hide examples | پنهان کردن نمونه‌ها |
 | `wsUsage` | Note | یادداشت |
 | `wsGlossOnly` | This card has a dictionary gloss only — no examples have been written for it yet. | این کارت فقط معنای واژه‌نامه‌ای دارد — هنوز هیچ نمونه‌ای برایش نوشته نشده است. |
-| `wsDrafted` | Meaning, examples and Persian drafted here. No teacher has read them and no Persian reader has checked them. | معنا، نمونه‌ها و فارسی همین‌جا پیش‌نویس شده‌اند. هیچ آموزگاری آن‌ها را نخوانده و هیچ فارسی‌زبانی آن‌ها را بررسی نکرده است. |
+| `wsDrafted` | Meaning and examples drafted here. No teacher has read them yet. | معنا و نمونه‌ها همین‌جا پیش‌نویس شده‌اند. هنوز هیچ آموزگاری آن‌ها را نخوانده است. |
 | `wsPatternImpersonal` | Impersonal verb | فعل غیرشخصی |
 | `wsPatternPronominal` | Pronominal verb | فعل ضمیری |
 | `wsCoverageEnriched` | with worked examples | با نمونه‌های کامل |
@@ -578,4 +578,3 @@ group they come from.
 | `rdNoTextsBody` | Come back later, or study words and verbs meanwhile. | بعداً برگردید، یا در این فاصله واژه‌ها و فعل‌ها را تمرین کنید. |
 | `rdNotFoundTitle` | This text does not exist | این متن وجود ندارد |
 | `rdNotFoundBody` | The link may be old. The list has every text there is. | شاید پیوند قدیمی باشد. فهرست، همهٔ متن‌های موجود را دارد. |
-| shellFaDraft | The Persian text of this portal is a draft and has not been reviewed yet. | متن فارسی این پورتال پیش‌نویس است و هنوز بازبینی نشده است. |

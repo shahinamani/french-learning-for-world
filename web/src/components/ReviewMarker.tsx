@@ -27,14 +27,9 @@ export function ReviewMarker({ item, className = 'muted', testId }: Props) {
     );
   }
 
-  return (
-    <p className={className} data-testid={testId ?? 'review-unchecked'}>
-      <strong>{t('itemUnreviewed')}.</strong>{' '}
-      {status.reason === 'stale'
-        ? t('itemTeacherStale', { who: status.by })
-        : item.review?.owner?.decision === 'approved' || item.review?.state === 'approved'
-          ? t('itemOwnerOnly')
-          : t('itemsUnreviewed')}
-    </p>
-  );
+  // The owner decided on 2026-11-06 that learners are not shown "not checked
+  // by a teacher" lines. The review record is kept; only a positive teacher
+  // check is shown.
+  void testId;
+  return null;
 }

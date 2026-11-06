@@ -89,7 +89,7 @@ export function FlashcardPreview({ tx, locale }: { tx: Tx; locale: CopyLocale })
         {grade === 'again' ? tx('landingCardAgainResult')
           : grade === 'easy' ? tx('landingCardEasyResult')
           : turned ? tx('landingCardPreviewOnly')
-          : tx('landingCardUnchecked')}
+          : null}
       </p>
     </article>
   );

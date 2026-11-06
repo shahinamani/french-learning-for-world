@@ -481,8 +481,6 @@ export function FlashcardSession() {
                       ))}
                     </div>
                   </div>}
-                  {card.glossUnreviewed && <p className="fine muted gloss-note" data-testid="gloss-unreviewed">
-                    {card.examples.length ? t('shellCardsDraft') : t('glossSource')}</p>}
                 </div>
               )}
             </section>

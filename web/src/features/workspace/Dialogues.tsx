@@ -142,7 +142,6 @@ export function Dialogues({ voiceId, rate, voiceAvailable }: Props) {
             </div>
           );
         })}
-        <p className="fine muted" data-testid="ws-dialogue-drafted">{t('wsDrafted')}</p>
       </div>
     </div>
   );

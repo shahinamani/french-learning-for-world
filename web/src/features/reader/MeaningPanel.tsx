@@ -157,7 +157,6 @@ export function MeaningPanel({ text, sel, wide, saved, voiceAvailable, saveFaile
                 {kind === 'spelling' && <span className="rd-note" dir="auto">{t('rdSpellingMatch')}</span>}
               </div>
             ))}
-            <p className="rd-note" dir="auto">{t('rdGlossDrafted')}</p>
           </>
         )}
       </section>

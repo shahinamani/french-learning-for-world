@@ -333,16 +333,18 @@ ok('a pasted legacy link to a concept WITH a lesson opens the lesson',
 // 2026-10-02 while the exercises carried nothing. Unevenly applied honesty is
 // worse than none: a learner who has seen the gloss marker concludes its
 // absence means reviewed.
-console.log('\n=== exercises say they are unchecked ===');
+// Owner, 2026-11-06: learners are not shown "not checked by a teacher",
+// "draft" or "unverified" lines anywhere. These checks keep them gone.
+console.log('\n=== exercises show no review notices ===');
 await go(page, '/practise/exams/tcf-b2-structure');
-await page.waitForSelector('[data-testid="paper-unreviewed"]', { timeout: 8000 });
-ok('the paper says so BEFORE a learner sits it',
-   /teacher/i.test(await page.locator('[data-testid="paper-unreviewed"]').innerText()));
+await page.waitForTimeout(800);
+ok('the paper shows no "not checked" notice',
+   (await page.locator('[data-testid="paper-unreviewed"]').count()) === 0);
 
 const startBtn = page.locator('a[href*="/sit"], button').filter({ hasText: /start|commencer/i });
 if (await startBtn.count()) { await startBtn.first().click(); await page.waitForTimeout(700); }
-ok('and while sitting it, quietly',
-   (await page.locator('[data-testid="sit-unreviewed"]').count()) === 1);
+ok('nor while sitting it',
+   (await page.locator('[data-testid="sit-unreviewed"]').count()) === 0);
 
 // Answer everything wrong, so the explanations are what the learner reads.
 for (let i = 0; i < 8; i++) {
@@ -357,10 +359,7 @@ const details = page.locator('details');
 for (let i = 0; i < await details.count(); i++) await details.nth(i).click().catch(() => {});
 await page.waitForTimeout(250);
 const marks = await page.locator('[data-testid^="unreviewed-b2-sv-"]').count();
-ok(`every explanation carries the marker (${marks} of 8)`, marks === 8);
-const flagged = await page.locator('[data-testid="unreviewed-b2-sv-2"]').innerText();
-ok(`a flagged item shows the doubt itself ("${flagged.slice(0, 64).replace(/\n/g, ' ')}…")`,
-   /unsure/i.test(flagged) && /esp|indicative|subjunctive/i.test(flagged));
+ok(`no explanation carries a "not checked" marker (${marks})`, marks === 0);
 
 console.log('\n=== the learn map leads somewhere ===');
 // Redesign v1 (REDESIGN-v1.md §6): the map moved from Today to My path.
@@ -461,8 +460,8 @@ ok('a verb with no imperative says so', true);
 // The meanings are machine-harvested from Wiktionary and no teacher has read
 // them. A learner about to memorise one is told so on the page, every time,
 // rather than in an About screen nobody opens.
-ok('the page says the meanings are from Wiktionary and unreviewed',
-   /wiktionary/i.test(await page.locator('[data-testid="verb-gloss-source"]').innerText()));
+ok('the page shows no "not reviewed" line under the meanings',
+   (await page.locator('[data-testid="verb-gloss-source"]').count()) === 0);
 
 // « venir » shipped "to cum, to come, to orgasm" until today. The sense is
 // labelled vulgar by Wiktionary and is now refused before it is ever written to
@@ -558,8 +557,9 @@ ok('the verb LIST shows « se souvenir », not « souvenir »',
 // "je — souvenir (present)" while the screen had said "je me — se souvenir".
 await go(page, '/learn/verbs/souvenir');
 await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
-ok('the pronominal provenance is on the page, like the gloss provenance',
-   /wiktionary/i.test(await page.locator('[data-testid="verb-pronominal"]').innerText()));
+ok('the pronominal note is on the page, without a "not reviewed" line',
+   /je me souviens/.test(await page.locator('[data-testid="verb-pronominal"]').innerText())
+   && !/review/i.test(await page.locator('[data-testid="verb-pronominal"]').innerText()));
 
 // The sense budget, on the verbs that prove why it replaced the two-sense cap.
 // « porter » showed "to carry" and not "to wear"; « marcher » showed "to walk"
@@ -596,12 +596,11 @@ ok('a corrected gloss shows the teacher\'s meaning, not Wiktionary\'s',
    /revel in/.test(await page.locator('[data-testid="verb-meaning"]').innerText()));
 ok('and says a teacher corrected it rather than claiming it is unreviewed',
    /teacher/i.test(await page.locator('[data-testid="verb-gloss-source"]').innerText()));
-ok('while an uncorrected verb still says it is unreviewed',
+ok('while an uncorrected verb shows no "not reviewed" line',
    await (async () => {
      await go(page, '/learn/verbs/souvenir');
-     await page.waitForSelector('[data-testid="verb-gloss-source"]', { timeout: 8000 });
-     return /not been reviewed/i.test(
-       await page.locator('[data-testid="verb-gloss-source"]').innerText());
+     await page.waitForSelector('[data-testid="verb-headword"]', { timeout: 8000 });
+     return (await page.locator('[data-testid="verb-gloss-source"]').count()) === 0;
    })());
 
 // « fier » the verb and « fier » the adjective are different words.
@@ -1612,8 +1611,8 @@ console.log('\n=== the learning workspace ===');
      await p.locator('[data-testid="ws-card-back"]').count() === 1);
 
   // An unreviewed gloss says so, on the card, where the learner reads it.
-  ok('workspace: an unread gloss is marked as one',
-     await p.locator('[data-testid="ws-card-unreviewed"]').count() === 1);
+  ok('workspace: no card says its meaning is unread',
+     await p.locator('[data-testid="ws-card-unreviewed"]').count() === 0);
 
   // THE check. Known is graded through the real FSRS engine, and the card must
   // land in the Known pile — not vanish between piles, which is exactly what
@@ -1696,7 +1695,7 @@ console.log('\n=== the learning workspace ===');
     ok(`workspace: ${verbCard.front} shows three tenses, each form marked`
        + ` (${verbCard.tenses} / ${verbCard.marks})`,
        verbCard.tenses === 3 && verbCard.marks === 3);
-    ok('workspace: the card says its content is drafted and unreviewed', verbCard.drafted === 1);
+    ok('workspace: the card shows no "draft" or "not read" line', verbCard.drafted === 0);
   }
 
   // The other half, and the one a quick reading would get wrong: a noun card
@@ -1738,8 +1737,8 @@ console.log('\n=== the learning workspace ===');
 
   // Coverage is a measurement and must not round itself up.
   const coverageText = (await p.locator('[data-testid="ws-coverage"]').innerText()).replace(/\s+/g, ' ');
-  ok(`workspace: coverage is stated and claims no review (${coverageText.slice(0, 60)})`,
-     /\d+ \/ \d+/.test(coverageText) && /\b0 \/ \d+ checked by a teacher/.test(coverageText),
+  ok(`workspace: coverage is stated, with no teacher-review count (${coverageText.slice(0, 60)})`,
+     /\d+ \/ \d+/.test(coverageText) && !/teacher/i.test(coverageText),
      coverageText);
   ok('workspace: what the two marking buttons write is stated on screen',
      await p.locator('[data-testid="ws-mark-mapping"]').count() === 1);
@@ -1786,10 +1785,10 @@ console.log('\n=== the learning workspace ===');
   const pos = (await p.locator('[data-testid="ws-position"]').innerText()).trim();
   ok(`workspace fa: the position reads forwards (${JSON.stringify(pos)})`, /^1\s*\/\s*\d+$/.test(pos),
      'the learner is on card 1 of many, not card many of 1');
-  // Persian has the workspace's own text since 2026-10-31, drafted and marked
-  // as awaiting review, so the page says "draft" rather than "not translated".
-  ok('workspace fa: the page says its Persian is a draft awaiting review',
-     await p.locator('[data-testid="shell-fa-draft"]').count() === 1
+  // Persian has the workspace's own text since 2026-10-31. The owner removed
+  // the "Persian is a draft" notice on 2026-11-06, so neither notice shows.
+  ok('workspace fa: the page shows no draft or untranslated notice',
+     await p.locator('[data-testid="shell-fa-draft"]').count() === 0
      && await p.locator('[data-testid="ws-untranslated"]').count() === 0);
   await c.close();
 }
@@ -1946,14 +1945,11 @@ console.log('\n=== the front door ===');
     ['no listening', /No listening/i],
     ['no writing or speaking', /No writing or speaking/i],
     ['the practice ceiling', new RegExp(`Practice stops at ${summary.practiceCeiling}`, 'i')],
-    ['nothing teacher-reviewed', /reviewed by a teacher/i],
   ]) {
     ok(`the gaps section states ${what}`, re.test(text));
   }
-  if (summary.examsUnverified.length) {
-    ok('an unverified examination says NOT VERIFIED',
-       /NOT VERIFIED/.test(text) && text.includes(summary.examsUnverified[0]));
-  }
+  ok('the landing page shows no review or "not verified" notices',
+     !/reviewed by a teacher|checked by a teacher|NOT VERIFIED|Unchecked/i.test(text));
 
   const box = async (sel) => pg.locator(sel).boundingBox();
   const have = await box('[data-testid="landing-today"]');
@@ -2059,8 +2055,8 @@ console.log('\n=== the front door ===');
      await pg.evaluate(() => document.documentElement.dir) === 'rtl'
      && await pg.locator('[data-testid="landing"]').getAttribute('dir') === null);
   ok('Persian: the page is in Persian', /[\u0600-\u06FF]{4,}/.test(await pg.locator('[data-testid="landing"]').innerText()));
-  ok('Persian: and says its Persian is a draft awaiting review',
-     await pg.locator('[data-testid="landing-fa-draft"]').count() === 1);
+  ok('Persian: and shows no "Persian is a draft" notice (removed by the owner, 2026-11-06)',
+     await pg.locator('[data-testid="landing-fa-draft"]').count() === 0);
   ok('Persian: the French headline stays left-to-right',
      await pg.locator('.landing__headline').getAttribute('dir') === 'ltr');
   await c.close();
@@ -2447,9 +2443,9 @@ console.log('\n=== who checked it ===');
 
   // Every one of the 76 items is unreviewed today, so every screen must say so.
   await go(pg, '/practise/exams/tcf-b2-structure-2');
-  await pg.waitForSelector('[data-testid="paper-unreviewed"]', { timeout: 10000 }).catch(() => {});
-  ok('the paper screen says it is not teacher-checked',
-     await pg.locator('[data-testid="paper-unreviewed"]').count() === 1);
+  await pg.waitForTimeout(800);
+  ok('the paper screen shows no "not teacher-checked" notice',
+     await pg.locator('[data-testid="paper-unreviewed"]').count() === 0);
 
   const text = await pg.locator('main').innerText();
   ok('and the wording does not promise correctness',
@@ -2457,8 +2453,8 @@ console.log('\n=== who checked it ===');
 
   await pg.locator('[data-testid="start-exam"], a[href*="/sit"]').first().click().catch(() => {});
   await pg.waitForTimeout(900);
-  ok('the sitting screen says it too',
-     await pg.locator('[data-testid="sit-unreviewed"]').count() === 1);
+  ok('nor does the sitting screen',
+     await pg.locator('[data-testid="sit-unreviewed"]').count() === 0);
 
   // Removed from this section rather than kept: a check reading
   // `typeof window === 'object'` was written here and can never fail. Whether
@@ -2691,8 +2687,8 @@ console.log('\n=== grammar: the learning loop (§10) and the Exercise component 
     ok('and its heading names the nearby concept',
        (await p.locator('#grl-h-difference').innerText()).includes(norm(nearby.name.en)),
        await p.locator('#grl-h-difference').innerText());
-    ok('the draft marker is shown while no teacher has reviewed the lesson',
-       await T(p, 'grammar-unreviewed').count() === 1);
+    ok('the lesson shows no draft marker',
+       await T(p, 'grammar-unreviewed').count() === 0);
 
     /* ── the simpler explanation ──────────────────────────────────────── */
     const full0 = await txt(p, 'grammar-explanation-text');
