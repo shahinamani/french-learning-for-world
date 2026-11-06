@@ -22,7 +22,7 @@ import { registerEnglish } from '../../i18n';
 export const workspaceEn = {
   wsSummaryLead: 'Vocabulary cards, built from the written deck and the verb index.',
   wsSummaryRich: 'written cards, with example sentences and four languages',
-  wsSummaryGloss: 'verb cards whose English meaning comes from Wiktionary and has been read by nobody',
+  wsSummaryGloss: 'verb cards with their English meaning from Wiktionary',
   wsCeiling: 'Graded practice and explanations stop at B2. The levels above it are frequency bands for vocabulary, not a claim that C1 or C2 is taught here.',
   wsLocalOnly: 'Marks are kept on this device, in this browser. There is no account and nothing is uploaded.',
 
@@ -93,7 +93,7 @@ export const workspaceEn = {
   wsHideExamples: 'Hide examples',
   wsUsage: 'Note',
   wsGlossOnly: 'This card has a dictionary gloss only — no examples have been written for it yet.',
-  wsDrafted: 'Meaning, examples and Persian drafted here. No teacher has read them and no Persian reader has checked them.',
+  wsDrafted: 'No teacher has read the meaning and examples on this card yet.',
   wsPatternImpersonal: 'Impersonal verb',
   wsPatternPronominal: 'Pronominal verb',
   wsCoverageEnriched: 'with worked examples',

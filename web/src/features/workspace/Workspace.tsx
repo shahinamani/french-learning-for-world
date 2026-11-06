@@ -121,9 +121,7 @@ export function Workspace() {
             because nobody has reviewed any of it. Neither is a plan. */}
         <p className="muted" data-testid="ws-coverage">
           <strong><Num>{corpus.enriched}</Num></strong>{' / '}
-          <Num>{corpus.total}</Num> {t('wsCoverageEnriched')}{' · '}
-          <strong><Num>{corpus.reviewed}</Num></strong>{' / '}
-          <Num>{corpus.total}</Num> {t('wsCoverageReviewed')}
+          <Num>{corpus.total}</Num> {t('wsCoverageEnriched')}
         </p>
         <p className="fine muted" data-testid="ws-ceiling">{t('wsCeiling')}</p>
         <p className="fine muted" data-testid="ws-local-only">{t('wsLocalOnly')}</p>

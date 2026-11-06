@@ -59,7 +59,7 @@ export const grammarEn = {
   grlFullAgain: 'Full explanation',
   grlOpenNearby: 'Open the lesson on {name}',
   grlNotInYourLanguage: 'Part of this lesson is not written in your language yet. Those parts are shown in English.',
-  grlDrafted: 'Drafted, not reviewed. No teacher has read this lesson, and nobody has checked the grammar against a reference.',
+  grlDrafted: 'No teacher has reviewed this lesson yet.',
   grlQuestionOf: 'Question {n} of {total}',
   grlFinishedTitle: 'Practice finished',
   grlFinishedScore: '{n} of {total} right on the first try.',

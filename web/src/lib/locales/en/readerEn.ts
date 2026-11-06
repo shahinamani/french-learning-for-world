@@ -19,7 +19,7 @@ import { registerEnglish } from '../../i18n';
 export const readerEn = {
   rdTitle: 'Reading',
   rdLead: 'Short original French texts. Select any word to see what it means in its sentence, and add it to your words with that sentence attached.',
-  rdDraftedNote: 'Drafted for this project and not yet read by a teacher. The level was set by the author, not measured.',
+  rdDraftedNote: 'Written for this project and not yet read by a teacher. The level was set by the author.',
   rdSearchLabel: 'Search the texts',
   rdSearchPlaceholder: 'A title or a topic…',
   rdFilterLevel: 'Level',

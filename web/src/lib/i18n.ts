@@ -96,7 +96,7 @@ const en = {
   // nobody opens. 2,366 glosses were taken from en.wiktionary.org by script and
   // no French teacher has read them; a learner is entitled to know that before
   // they memorise one.
-  pronominalOnly: 'This verb is only used with a reflexive pronoun. « je souviens » is not French; « je me souviens » is. This marking comes from Wiktionary and has not been reviewed by a teacher.',
+  pronominalOnly: 'This verb is only used with a reflexive pronoun. « je souviens » is not French; « je me souviens » is.',
   // A blank meaning in a list row reads as a missing row, not as a decision.
   glossNotShown: 'Meaning not shown',
   rarelyConjugated: 'Almost always used as a past participle. The conjugated form is rare: {a} is attested.',
@@ -119,7 +119,7 @@ const en = {
   // An unverified grid is honest; an unmarked claim is not. The portal lists TEF
   // among the exams it prepares you for and has never checked what the TEF
   // consists of, so a learner who sees it listed is told.
-  examStructureUnverified: 'This project has not checked this examination’s structure against its examining body. Anything here is general practice, not matched to its papers.',
+  examStructureUnverified: 'Practice for this examination is not available here yet.',
   // The learner-facing half of the unreviewed marker. The glosses have said this
   // since 2026-10-02; the exercises said nothing, which is worse than silence on
   // both — a learner who has seen the gloss marker concludes its absence means
@@ -304,7 +304,7 @@ const landingEn = {
 
   // ── Fresh content ────────────────────────────────────────────────────
   landingFreshHeading: 'Fresh content, with its source',
-  landingFreshLede: 'Every item says where it comes from, its level, and who set that level. None has been checked by a teacher yet.',
+  landingFreshLede: 'Every item says where it comes from and its level.',
   landingFreshReadingSource: 'Original text written for this project · CC BY-SA 4.0',
   landingFreshDialogueSource: 'Original dialogue written for this project · CC BY-SA 4.0',
   landingFreshExamSource: 'Original practice paper, not a past paper · CC BY-SA 4.0',
@@ -471,7 +471,7 @@ const shellEn = {
   shellExamFamilyDalf: 'DALF, the advanced levels C1 and C2',
   shellExamFamilyTcf: 'TCF, one test across all levels',
   shellExamFamilyCanada: 'For Canadian immigration',
-  shellExamNotVerified: 'This format has not been verified yet, so no figures are shown. They appear once they have been read from the official source.',
+  shellExamNotVerified: 'The format details for this examination will be added soon.',
   shellExamTotal: '{minutes} minutes in all',
   shellExamMinutes: '{n} min',
   shellExamMarks: '{n} marks',
@@ -501,12 +501,11 @@ const shellEn = {
   shellKeySpace: 'Space',
   shellCardsFlipHint: 'Tap the card to turn it over, and again to turn it back',
   shellCardsSwipeHint: 'On a phone: swipe right if you knew it, left to see it again.',
-  shellCardsDraft: 'The sentences, translations and meanings on this card are drafts: no teacher has checked them yet.',
+  shellCardsDraft: 'No teacher has checked the sentences, translations and meanings on this card yet.',
   shellCardsCount: '{n} cards at this level. 20 new ones each session, plus the ones due again.',
   shellExamCurrent: 'Your exam',
   shellExamFormat: 'Format',
   shellExamQuestions: '{n} questions',
-  shellFaDraft: 'The Persian text of this portal is a draft and has not been reviewed yet.',
   // Asked for by Learn and TopLine, which are in the first load, so it lives in
   // this eager group and not with the rest of the workspace copy (locales/en/
   // workspaceEn.ts), which travels with the lazy workspace chunk.

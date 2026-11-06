@@ -162,8 +162,9 @@ console.log('\n=== portal routes, redirects and icon names ===');
      await r.locator('[data-testid="exam-section-co"]').count() === 1
      && /no practice for this section here yet/i.test(await r.locator('main').innerText()));
   await go(r, '/app/exam/tcf-canada');
-  ok('an exam whose format is not verified shows no figures',
-     await r.locator('[data-testid="exam-not-verified"]').count() === 1
+  // Owner, 2026-11-06: no "not verified" notice is shown to learners.
+  ok('an exam whose format is not verified shows no figures and no notice',
+     await r.locator('[data-testid="exam-not-verified"]').count() === 0
      && !/\d+ min/.test(await r.locator('.exam-sections').innerText()));
   await go(r, '/app/verbs');
   await r.locator('#gsearch-q').fill('manger');

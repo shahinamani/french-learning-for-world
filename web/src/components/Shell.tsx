@@ -206,9 +206,6 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
         {!onLanding && !labelsTranslated && (
           <p className="muted topline__note" data-testid="shell-untranslated">{t('shellUntranslated')}</p>
         )}
-        {!onLanding && settings.ui === 'fa' && (
-          <p className="muted topline__note" data-testid="shell-fa-draft">{t('shellFaDraft')}</p>
-        )}
         {prerenderChild ?? <Outlet />}
       </main>
 

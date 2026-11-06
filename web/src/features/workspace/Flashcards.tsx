@@ -325,12 +325,6 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
                   <span className="ws-tagline" data-testid="ws-pattern">{t('wsPatternPronominal')}</span>
                 )}
 
-                {card.glossUnreviewed && !back && (
-                  <p className="fine muted" data-testid="ws-card-unreviewed">
-                    {t('wsGlossUnreviewed')}
-                  </p>
-                )}
-
                 {back ? (
                   <>
                     <button type="button" className="btn btn--sm ws-disclose"
@@ -390,7 +384,6 @@ export function Flashcards({ voiceId, rate, voiceAvailable, onCorpus }: Props) {
                             <strong>{t('wsUsage')}</strong> {back.usage}
                           </p>
                         )}
-                        <p className="fine muted" data-testid="ws-drafted">{t('wsDrafted')}</p>
                       </div>
                     )}
                   </>

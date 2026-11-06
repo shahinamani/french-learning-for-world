@@ -148,9 +148,6 @@ export function Landing() {
       {!translated && (
         <p className="landing__untranslated" data-testid="landing-untranslated">{t('landingUntranslated')}</p>
       )}
-      {translated && ui === 'fa' && (
-        <p className="landing__untranslated" data-testid="landing-fa-draft">{t('shellFaDraft')}</p>
-      )}
 
       {/* ── Header ─────────────────────────────────────────────────────── */}
       <header className="lp3-header">
@@ -233,7 +230,6 @@ export function Landing() {
             without: num(summary.conceptsWithoutMaterial),
             live: num(summary.liveConcepts),
           })}</li>
-          <li>{tx('landingUnreviewed')}</li>
         </ul>
       </section>
 
@@ -295,7 +291,6 @@ export function Landing() {
             {([
               ['landingTrustOpenTitle', 'landingTrustOpenBody'],
               ['landingTrustSourcesTitle', 'landingTrustSourcesBody'],
-              ['landingTrustHonestTitle', 'landingTrustHonestBody'],
               ['landingTrustIndependentTitle', 'landingTrustIndependentBody'],
             ] as [keyof Dict, keyof Dict][]).map(([h, b]) => (
               <div key={h}>
@@ -313,11 +308,6 @@ export function Landing() {
             <h3 id="landing-exams-h">{tx('landingExamsHeading')}</h3>
             <div>
               <p>{tx('landingExamsVerified', { verified: list(summary.examsVerified, copyLocale, 'conjunction') })}</p>
-              {summary.examsUnverified.length > 0 && (
-                <p data-testid="landing-unverified">
-                  {tx('landingExamsUnverified', { unverified: list(summary.examsUnverified, copyLocale, 'conjunction') })}
-                </p>
-              )}
               <p>{tx('landingExamsPapers', { coverage: coverage(summary.paperCoverage, copyLocale) })}</p>
             </div>
           </div>
@@ -333,7 +323,6 @@ export function Landing() {
             ['landingFaqWhereQ', 'landingFaqWhereA'],
             ['landingFaqOfficialQ', 'landingFaqOfficialA'],
             ['landingFaqAudioQ', 'landingFaqAudioA'],
-            ['landingFaqTeacherQ', 'landingFaqTeacherA'],
           ] as [keyof Dict, keyof Dict][]).map(([q, a]) => (
             <AccordionItem key={q}>
               <AccordionTrigger>{tx(q)}</AccordionTrigger>
