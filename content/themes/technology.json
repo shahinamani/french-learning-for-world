@@ -1,0 +1,1096 @@
+{
+ "id": "technology",
+ "names": {
+  "fr": "Les technologies et le numérique",
+  "en": "Technology and the internet",
+  "fa": "فناوری و دنیای دیجیتال"
+ },
+ "counts": {
+  "words": 74,
+  "verbs": 28,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "dalf",
+   "level": "C2"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "tef",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": null,
+   "fr": "internet",
+   "type": "noun",
+   "article": "l’",
+   "en": "internet",
+   "fa": "اینترنت",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "photo",
+   "type": "noun",
+   "article": "la",
+   "en": "photo",
+   "fa": "عکس",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:appel",
+   "fr": "appel",
+   "type": "noun",
+   "article": "l'",
+   "en": "call",
+   "fa": "تماس، فراخوان",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "application",
+   "type": "noun",
+   "article": "l’",
+   "en": "app",
+   "fa": "برنامه کاربردی",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "chargeur",
+   "type": "noun",
+   "article": "le",
+   "en": "charger",
+   "fa": "شارژر",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "clavier",
+   "type": "noun",
+   "article": "le",
+   "en": "keyboard",
+   "fa": "صفحه‌کلید",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "compte",
+   "type": "noun",
+   "article": "le",
+   "en": "account",
+   "fa": "حساب کاربری",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "courriel",
+   "type": "noun",
+   "article": "le",
+   "en": "email",
+   "fa": "ایمیل",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "imprimante",
+   "type": "noun",
+   "article": "l’",
+   "en": "printer",
+   "fa": "چاپگر",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:machine",
+   "fr": "machine",
+   "type": "noun",
+   "article": "la",
+   "en": "machine",
+   "fa": "ماشین، دستگاه",
+   "level": "A2"
+  },
+  {
+   "key": "n:message",
+   "fr": "message",
+   "type": "noun",
+   "article": "le",
+   "en": "message",
+   "fa": "پیام",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "page",
+   "type": "noun",
+   "article": "la",
+   "en": "page",
+   "fa": "صفحه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "site",
+   "type": "noun",
+   "article": "le",
+   "en": "website",
+   "fa": "وب‌سایت",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "souris",
+   "type": "noun",
+   "article": "la",
+   "en": "mouse",
+   "fa": "ماوس",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "tablette",
+   "type": "noun",
+   "article": "la",
+   "en": "tablet",
+   "fa": "تبلت",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:telephone",
+   "fr": "téléphone",
+   "type": "noun",
+   "article": "le",
+   "en": "telephone, phone",
+   "fa": "تلفن",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "vidéo",
+   "type": "noun",
+   "article": "la",
+   "en": "video",
+   "fa": "ویدیو",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "abonné",
+   "type": "noun",
+   "article": "l’",
+   "en": "follower, subscriber",
+   "fa": "دنبال‌کننده",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:appareil",
+   "fr": "appareil",
+   "type": "noun",
+   "article": "l'",
+   "en": "device, appliance",
+   "fa": "دستگاه، وسیله",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "câble",
+   "type": "noun",
+   "article": "le",
+   "en": "cable",
+   "fa": "کابل",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "données",
+   "type": "noun",
+   "article": "les",
+   "en": "data",
+   "fa": "داده‌ها",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:experience",
+   "fr": "expérience",
+   "type": "noun",
+   "article": "l'",
+   "en": "experience",
+   "fa": "تجربه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "fichier",
+   "type": "noun",
+   "article": "le",
+   "en": "file",
+   "fa": "فایل",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "lien",
+   "type": "noun",
+   "article": "le",
+   "en": "link",
+   "fa": "پیوند",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "logiciel",
+   "type": "noun",
+   "article": "le",
+   "en": "software",
+   "fa": "نرم‌افزار",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:moteur",
+   "fr": "moteur",
+   "type": "noun",
+   "article": "le",
+   "en": "engine, motor",
+   "fa": "موتور",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "panne",
+   "type": "noun",
+   "article": "la",
+   "en": "breakdown, failure",
+   "fa": "خرابی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:radio",
+   "fr": "radio",
+   "type": "noun",
+   "article": "la",
+   "en": "radio",
+   "fa": "رادیو",
+   "level": "B1"
+  },
+  {
+   "key": "n:recherche",
+   "fr": "recherche",
+   "type": "noun",
+   "article": "la",
+   "en": "research, search",
+   "fa": "پژوهش، جست‌وجو",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "scientifique",
+   "type": "noun",
+   "article": "le",
+   "en": "scientist",
+   "fa": "دانشمند",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "sécurité",
+   "type": "noun",
+   "article": "la",
+   "en": "security",
+   "fa": "امنیت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:systeme",
+   "fr": "système",
+   "type": "noun",
+   "article": "le",
+   "en": "system",
+   "fa": "سیستم، نظام",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "addiction",
+   "type": "noun",
+   "article": "l’",
+   "en": "addiction",
+   "fa": "اعتیاد",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:code",
+   "fr": "code",
+   "type": "noun",
+   "article": "le",
+   "en": "code",
+   "fa": "کد، رمز",
+   "level": "B2"
+  },
+  {
+   "key": "n:disque",
+   "fr": "disque",
+   "type": "noun",
+   "article": "le",
+   "en": "disc, record",
+   "fa": "صفحه، دیسک",
+   "level": "B2"
+  },
+  {
+   "key": "a:electrique",
+   "fr": "électrique",
+   "type": "adjective",
+   "article": null,
+   "en": "electric",
+   "fa": "برقی",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "innovation",
+   "type": "noun",
+   "article": "l’",
+   "en": "innovation",
+   "fa": "نوآوری",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:instrument",
+   "fr": "instrument",
+   "type": "noun",
+   "article": "l'",
+   "en": "instrument",
+   "fa": "ساز، ابزار",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "internaute",
+   "type": "noun",
+   "article": "l’",
+   "en": "internet user",
+   "fa": "کاربر اینترنت",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:metal",
+   "fr": "métal",
+   "type": "noun",
+   "article": "le",
+   "en": "metal",
+   "fa": "فلز",
+   "level": "B2"
+  },
+  {
+   "key": "a:moderne",
+   "fr": "moderne",
+   "type": "adjective",
+   "article": null,
+   "en": "modern",
+   "fa": "مدرن، نوین",
+   "level": "B2"
+  },
+  {
+   "key": "n:pile",
+   "fr": "pile",
+   "type": "noun",
+   "article": "la",
+   "en": "battery, pile",
+   "fa": "باتری، توده",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "piratage",
+   "type": "noun",
+   "article": "le",
+   "en": "hacking",
+   "fa": "هک",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:prise",
+   "fr": "prise",
+   "type": "noun",
+   "article": "la",
+   "en": "socket, grip",
+   "fa": "پریز، گرفتن",
+   "level": "B2"
+  },
+  {
+   "key": "n:programme",
+   "fr": "programme",
+   "type": "noun",
+   "article": "le",
+   "en": "programme, schedule",
+   "fa": "برنامه",
+   "level": "B2"
+  },
+  {
+   "key": "n:science",
+   "fr": "science",
+   "type": "noun",
+   "article": "la",
+   "en": "science",
+   "fa": "علم",
+   "level": "B2"
+  },
+  {
+   "key": "n:signal",
+   "fr": "signal",
+   "type": "noun",
+   "article": "le",
+   "en": "signal",
+   "fa": "علامت، سیگنال",
+   "level": "B2"
+  },
+  {
+   "key": "n:television",
+   "fr": "télévision",
+   "type": "noun",
+   "article": "la",
+   "en": "television",
+   "fa": "تلویزیون",
+   "level": "B2"
+  },
+  {
+   "key": "n:test",
+   "fr": "test",
+   "type": "noun",
+   "article": "le",
+   "en": "test",
+   "fa": "آزمون، تست",
+   "level": "B2"
+  },
+  {
+   "key": "n:cassette",
+   "fr": "cassette",
+   "type": "noun",
+   "article": "la",
+   "en": "cassette",
+   "fa": "کاست",
+   "level": "C1"
+  },
+  {
+   "key": "n:communication",
+   "fr": "communication",
+   "type": "noun",
+   "article": "la",
+   "en": "communication",
+   "fa": "ارتباط، مکالمه",
+   "level": "C1"
+  },
+  {
+   "key": "n:decouverte",
+   "fr": "découverte",
+   "type": "noun",
+   "article": "la",
+   "en": "discovery",
+   "fa": "کشف",
+   "level": "C1"
+  },
+  {
+   "key": "n:document",
+   "fr": "document",
+   "type": "noun",
+   "article": "le",
+   "en": "document",
+   "fa": "سند، مدرک",
+   "level": "C1"
+  },
+  {
+   "key": "n:ecran",
+   "fr": "écran",
+   "type": "noun",
+   "article": "l'",
+   "en": "screen",
+   "fa": "صفحه‌نمایش، پرده",
+   "level": "C1"
+  },
+  {
+   "key": "n:formule",
+   "fr": "formule",
+   "type": "noun",
+   "article": "la",
+   "en": "formula",
+   "fa": "فرمول، شیوه",
+   "level": "C1"
+  },
+  {
+   "key": "n:ordinateur",
+   "fr": "ordinateur",
+   "type": "noun",
+   "article": "l'",
+   "en": "computer",
+   "fa": "رایانه، کامپیوتر",
+   "level": "C1"
+  },
+  {
+   "key": "a:portable",
+   "fr": "portable",
+   "type": "adjective",
+   "article": null,
+   "en": "portable, mobile",
+   "fa": "قابل‌حمل، همراه",
+   "level": "C1"
+  },
+  {
+   "key": "n:progres",
+   "fr": "progrès",
+   "type": "noun",
+   "article": "le",
+   "en": "progress",
+   "fa": "پیشرفت",
+   "level": "C1"
+  },
+  {
+   "key": "n:telegramme",
+   "fr": "télégramme",
+   "type": "noun",
+   "article": "le",
+   "en": "telegram",
+   "fa": "تلگراف",
+   "level": "C1"
+  },
+  {
+   "key": "n:theorie",
+   "fr": "théorie",
+   "type": "noun",
+   "article": "la",
+   "en": "theory",
+   "fa": "نظریه",
+   "level": "C1"
+  },
+  {
+   "key": "n:alarme",
+   "fr": "alarme",
+   "type": "noun",
+   "article": "l'",
+   "en": "alarm",
+   "fa": "آلارم، هشدار",
+   "level": "C2"
+  },
+  {
+   "key": "n:batterie",
+   "fr": "batterie",
+   "type": "noun",
+   "article": "la",
+   "en": "battery; drum kit",
+   "fa": "باتری؛ درام",
+   "level": "C2"
+  },
+  {
+   "key": "n:donnee",
+   "fr": "donnée",
+   "type": "noun",
+   "article": "la",
+   "en": "piece of data; (plural) data",
+   "fa": "داده",
+   "level": "C2"
+  },
+  {
+   "key": "n:electricite",
+   "fr": "électricité",
+   "type": "noun",
+   "article": "l'",
+   "en": "electricity",
+   "fa": "برق، الکتریسیته",
+   "level": "C2"
+  },
+  {
+   "key": "n:info",
+   "fr": "info",
+   "type": "noun",
+   "article": "l'",
+   "en": "news, info (informal)",
+   "fa": "خبر، اطلاعات (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:invention",
+   "fr": "invention",
+   "type": "noun",
+   "article": "l'",
+   "en": "invention",
+   "fa": "اختراع",
+   "level": "C2"
+  },
+  {
+   "key": "n:labo",
+   "fr": "labo",
+   "type": "noun",
+   "article": "le",
+   "en": "lab (informal)",
+   "fa": "آزمایشگاه (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:laboratoire",
+   "fr": "laboratoire",
+   "type": "noun",
+   "article": "le",
+   "en": "laboratory",
+   "fa": "آزمایشگاه",
+   "level": "C2"
+  },
+  {
+   "key": "n:plastique",
+   "fr": "plastique",
+   "type": "noun",
+   "article": "le",
+   "en": "plastic",
+   "fa": "پلاستیک",
+   "level": "C2"
+  },
+  {
+   "key": "n:reseau",
+   "fr": "réseau",
+   "type": "noun",
+   "article": "le",
+   "en": "network",
+   "fa": "شبکه",
+   "level": "C2"
+  },
+  {
+   "key": "n:robot",
+   "fr": "robot",
+   "type": "noun",
+   "article": "le",
+   "en": "robot",
+   "fa": "ربات",
+   "level": "C2"
+  },
+  {
+   "key": "a:technique",
+   "fr": "technique",
+   "type": "adjective",
+   "article": null,
+   "en": "technical",
+   "fa": "فنی",
+   "level": "C2"
+  },
+  {
+   "key": "n:version",
+   "fr": "version",
+   "type": "noun",
+   "article": "la",
+   "en": "version",
+   "fa": "نسخه، روایت",
+   "level": "C2"
+  },
+  {
+   "key": "n:virus",
+   "fr": "virus",
+   "type": "noun",
+   "article": "le",
+   "en": "virus",
+   "fa": "ویروس",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:appeler",
+   "fr": "appeler",
+   "type": "verb",
+   "en": "to call (out)",
+   "fa": "صدا زدن، زنگ زدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:enregistrer",
+   "fr": "enregistrer",
+   "type": "verb",
+   "en": "to record for later replay or use, especially sound",
+   "fa": "ضبط کردن، ثبت کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:inventer",
+   "fr": "inventer",
+   "type": "verb",
+   "en": "to invent (to make something for the first time)",
+   "fa": "اختراع کردن، ابداع کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:téléphoner",
+   "fr": "téléphoner",
+   "type": "verb",
+   "en": "to call, to ring, to telephone",
+   "fa": "تلفن زدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:activer",
+   "fr": "activer",
+   "type": "verb",
+   "en": "to activate (to encourage development or induce increased activity",
+   "fa": "فعال کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:analyser",
+   "fr": "analyser",
+   "type": "verb",
+   "en": "to analyse",
+   "fa": "تحلیل کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:brancher",
+   "fr": "brancher",
+   "type": "verb",
+   "en": "to connect, plug in (appliance)",
+   "fa": "وصل کردن (به برق)",
+   "level": "B1"
+  },
+  {
+   "key": "v:calculer",
+   "fr": "calculer",
+   "type": "verb",
+   "en": "to calculate (all meanings)",
+   "fa": "محاسبه کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:communiquer",
+   "fr": "communiquer",
+   "type": "verb",
+   "en": "to communicate",
+   "fa": "ارتباط برقرار کردن، اطلاع دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:développer",
+   "fr": "développer",
+   "type": "verb",
+   "en": "to develop",
+   "fa": "توسعه دادن، گسترش دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:localiser",
+   "fr": "localiser",
+   "type": "verb",
+   "en": "to locate, to run to ground, to run to earth",
+   "fa": "مکان‌یابی کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:tester",
+   "fr": "tester",
+   "type": "verb",
+   "en": "to test",
+   "fa": "آزمایش کردن، امتحان کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:transmettre",
+   "fr": "transmettre",
+   "type": "verb",
+   "en": "to transmit",
+   "fa": "منتقل کردن، رساندن",
+   "level": "B1"
+  },
+  {
+   "key": "v:copier",
+   "fr": "copier",
+   "type": "verb",
+   "en": "to copy",
+   "fa": "کپی کردن، رونویسی کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:diffuser",
+   "fr": "diffuser",
+   "type": "verb",
+   "en": "to diffuse",
+   "fa": "پخش کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:imprimer",
+   "fr": "imprimer",
+   "type": "verb",
+   "en": "to print, to print out",
+   "fa": "چاپ کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:naviguer",
+   "fr": "naviguer",
+   "type": "verb",
+   "en": "to navigate",
+   "fa": "دریانوردی کردن، گشت زدن (اینترنت)",
+   "level": "B2"
+  },
+  {
+   "key": "v:photographier",
+   "fr": "photographier",
+   "type": "verb",
+   "en": "to photograph",
+   "fa": "عکس گرفتن از",
+   "level": "B2"
+  },
+  {
+   "key": "v:connecter",
+   "fr": "connecter",
+   "type": "verb",
+   "en": "to connect",
+   "fa": "متصل کردن، وصل کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:débrancher",
+   "fr": "débrancher",
+   "type": "verb",
+   "en": "to unplug",
+   "fa": "از برق کشیدن، جدا کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:programmer",
+   "fr": "programmer",
+   "type": "verb",
+   "en": "to program",
+   "fa": "برنامه‌ریزی کردن، تنظیم کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:surfer",
+   "fr": "surfer",
+   "type": "verb",
+   "en": "to surf (on a wave)",
+   "fa": "موج‌سواری کردن، گشت‌وگذار در اینترنت",
+   "level": "C1"
+  },
+  {
+   "key": "v:télégraphier",
+   "fr": "télégraphier",
+   "type": "verb",
+   "en": "to telegraph",
+   "fa": "تلگراف زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:biper",
+   "fr": "biper",
+   "type": "verb",
+   "en": "to beep, to buzz (contact by phone or by beeper)",
+   "fa": "بیپ زدن",
+   "level": "C2"
+  },
+  {
+   "key": "v:désactiver",
+   "fr": "désactiver",
+   "type": "verb",
+   "en": "to disable, to turn off (to deactivate a function of an electronic or mechanical device)",
+   "fa": "غیرفعال کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:expérimenter",
+   "fr": "expérimenter",
+   "type": "verb",
+   "en": "to experiment",
+   "fa": "آزمایش کردن، تجربه کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:moduler",
+   "fr": "moduler",
+   "type": "verb",
+   "en": "to modulate",
+   "fa": "تعدیل کردن، تغییر دادن (صدا، لحن)",
+   "level": "C2"
+  },
+  {
+   "key": "v:sauvegarder",
+   "fr": "sauvegarder",
+   "type": "verb",
+   "en": "to safeguard, to protect",
+   "fa": "ذخیره کردن، حفظ کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Mon téléphone ne marche pas.",
+   "en": "My phone doesn't work.",
+   "fa": "تلفنم کار نمی‌کند.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je t'envoie un message ce soir.",
+   "en": "I'll send you a message tonight.",
+   "fa": "امشب برایت پیام می‌فرستم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Quel est le mot de passe du wifi ?",
+   "en": "What is the wifi password?",
+   "fa": "گذرواژه وای‌فای چیست؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je vous envoie le fichier par courriel.",
+   "en": "I am sending you the file by email.",
+   "fa": "فایل را با ایمیل برایتان می‌فرستم.",
+   "level": "A2",
+   "use": "writing"
+  },
+  {
+   "fr": "Ma batterie est presque vide ; as-tu un chargeur ?",
+   "en": "My battery is almost flat; do you have a charger?",
+   "fa": "باتری‌ام تقریباً خالی است؛ شارژر داری؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'utilise internet tous les jours pour travailler et pour parler avec ma famille.",
+   "en": "I use the internet every day to work and to talk with my family.",
+   "fa": "هر روز از اینترنت برای کار و صحبت با خانواده‌ام استفاده می‌کنم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Mon ordinateur est tombé en panne ; pouvez-vous le réparer ?",
+   "en": "My computer has broken down; can you repair it?",
+   "fa": "رایانه‌ام خراب شده است؛ می‌توانید تعمیرش کنید؟",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai oublié mon mot de passe, donc je dois le réinitialiser.",
+   "en": "I forgot my password, so I have to reset it.",
+   "fa": "گذرواژه‌ام را فراموش کرده‌ام، پس باید آن را بازنشانی کنم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Les réseaux sociaux permettent de garder le contact, mais ils font perdre beaucoup de temps.",
+   "en": "Social networks let you stay in touch, but they waste a lot of time.",
+   "fa": "شبکه‌های اجتماعی امکان حفظ ارتباط را می‌دهند، اما وقت زیادی تلف می‌کنند.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Il faut faire attention aux informations personnelles qu'on publie en ligne.",
+   "en": "You have to be careful about the personal information you post online.",
+   "fa": "باید مراقب اطلاعات شخصی‌ای بود که آنلاین منتشر می‌کنیم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Les jeunes passent trop de temps devant les écrans, ce qui nuit à leur sommeil et à leurs études.",
+   "en": "Young people spend too much time in front of screens, which harms their sleep and studies.",
+   "fa": "جوانان زمان زیادی را پشت صفحه‌نمایش می‌گذرانند و این به خواب و درسشان آسیب می‌زند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "L'intelligence artificielle soulève des questions éthiques qu'on ne peut pas ignorer.",
+   "en": "Artificial intelligence raises ethical questions that cannot be ignored.",
+   "fa": "هوش مصنوعی پرسش‌های اخلاقی‌ای را پیش می‌کشد که نمی‌توان نادیده گرفت.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le numérique facilite la vie quotidienne, mais il crée aussi une fracture entre ceux qui sont connectés et les autres.",
+   "en": "Digital technology makes daily life easier, but it also creates a divide between those who are connected and those who are not.",
+   "fa": "فناوری دیجیتال زندگی روزمره را آسان می‌کند، اما شکافی میان کسانی که متصل‌اند و دیگران نیز ایجاد می‌کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La protection des données personnelles devrait être une priorité pour les entreprises comme pour les États.",
+   "en": "The protection of personal data should be a priority for companies and states alike.",
+   "fa": "حفاظت از داده‌های شخصی باید هم برای شرکت‌ها و هم برای دولت‌ها اولویت باشد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Si le progrès technique est source d'émancipation, il n'en reste pas moins porteur de risques que la loi peine à encadrer.",
+   "en": "While technical progress is a source of emancipation, it nonetheless carries risks that the law struggles to regulate.",
+   "fa": "اگرچه پیشرفت فناورانه سرچشمه رهایی است، اما همچنان خطراتی دارد که قانون در مهار آن‌ها ناتوان است.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CE",
+   "topic": "guide d'achat de l'ordinateur portable (magazine)",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/a2_ex1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Guide d’achat"
+  },
+  {
+   "exam": "dalf",
+   "level": "C2",
+   "paper": "PE",
+   "topic": "dossier Sciences « Robotique : menace ou progrès pour l'Humanité ? » (robots au travail)",
+   "source": {
+    "what": "DALF C2 Sciences, exemple 2 (candidat, production écrite), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C2/c2-nouveau_example2_SC_candidat_PE_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Robotique : menace ou progrès pour l’Humanité ?"
+  },
+  {
+   "exam": "tef",
+   "level": null,
+   "paper": "EE",
+   "topic": "section B : lettre au journal — réseaux sociaux et enfants",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression écrite (Le français des affaires, CCI Paris Île-de-France)",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-ee.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "« Les réseaux sociaux représentent un danger permanent pour les enfants. »"
+  }
+ ]
+}

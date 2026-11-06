@@ -1,0 +1,1216 @@
+{
+ "id": "education",
+ "names": {
+  "fr": "Les études",
+  "en": "Studies and education",
+  "fa": "تحصیل و آموزش"
+ },
+ "counts": {
+  "words": 76,
+  "verbs": 27,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "dalf",
+   "level": "C1"
+  },
+  {
+   "exam": "dalf",
+   "level": "C2"
+  },
+  {
+   "exam": "delf",
+   "level": "A1"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:cours",
+   "fr": "cours",
+   "type": "noun",
+   "article": "le",
+   "en": "class, lesson, course",
+   "fa": "درس، کلاس",
+   "level": "A1"
+  },
+  {
+   "key": "n:ecole",
+   "fr": "école",
+   "type": "noun",
+   "article": "l'",
+   "en": "school",
+   "fa": "مدرسه",
+   "level": "A1"
+  },
+  {
+   "key": "n:livre",
+   "fr": "livre",
+   "type": "noun",
+   "article": "le",
+   "en": "book (la livre: pound)",
+   "fa": "کتاب",
+   "level": "A1"
+  },
+  {
+   "key": "n:mot",
+   "fr": "mot",
+   "type": "noun",
+   "article": "le",
+   "en": "word",
+   "fa": "کلمه، واژه",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "bibliothèque",
+   "type": "noun",
+   "article": "la",
+   "en": "library",
+   "fa": "کتابخانه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:classe",
+   "fr": "classe",
+   "type": "noun",
+   "article": "la",
+   "en": "class, classroom",
+   "fa": "کلاس",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "devoir",
+   "type": "noun",
+   "article": "le",
+   "en": "homework; assignment",
+   "fa": "تکلیف",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "dictionnaire",
+   "type": "noun",
+   "article": "le",
+   "en": "dictionary",
+   "fa": "فرهنگ لغت",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "diplôme",
+   "type": "noun",
+   "article": "le",
+   "en": "degree, diploma",
+   "fa": "مدرک",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "grammaire",
+   "type": "noun",
+   "article": "la",
+   "en": "grammar",
+   "fa": "دستور زبان",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "inscription",
+   "type": "noun",
+   "article": "l’",
+   "en": "registration",
+   "fa": "ثبت‌نام",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:langue",
+   "fr": "langue",
+   "type": "noun",
+   "article": "la",
+   "en": "language, tongue",
+   "fa": "زبان",
+   "level": "A2"
+  },
+  {
+   "key": "n:maitre",
+   "fr": "maître",
+   "type": "noun",
+   "article": "le",
+   "en": "master, primary school teacher",
+   "fa": "معلم دبستان، استاد",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "niveau",
+   "type": "noun",
+   "article": "le",
+   "en": "level",
+   "fa": "سطح",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:page",
+   "fr": "page",
+   "type": "noun",
+   "article": "la",
+   "en": "page",
+   "fa": "صفحه",
+   "level": "A2"
+  },
+  {
+   "key": "n:phrase",
+   "fr": "phrase",
+   "type": "noun",
+   "article": "la",
+   "en": "sentence",
+   "fa": "جمله",
+   "level": "A2"
+  },
+  {
+   "key": "n:professeur",
+   "fr": "professeur",
+   "type": "noun",
+   "article": "le",
+   "en": "teacher, professor",
+   "fa": "معلم، استاد",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "vocabulaire",
+   "type": "noun",
+   "article": "le",
+   "en": "vocabulary",
+   "fa": "واژگان",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "apprentissage",
+   "type": "noun",
+   "article": "l’",
+   "en": "learning",
+   "fa": "یادگیری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "camarade",
+   "type": "noun",
+   "article": "le",
+   "en": "classmate",
+   "fa": "هم‌کلاسی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:eleve",
+   "fr": "élève",
+   "type": "noun",
+   "article": "l'",
+   "en": "pupil, student",
+   "fa": "دانش‌آموز",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "enseignant",
+   "type": "noun",
+   "article": "l’",
+   "en": "teacher",
+   "fa": "معلم",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "épreuve",
+   "type": "noun",
+   "article": "l’",
+   "en": "test, exam paper",
+   "fa": "آزمون",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:etude",
+   "fr": "étude",
+   "type": "noun",
+   "article": "l'",
+   "en": "study",
+   "fa": "مطالعه، پژوهش",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "formation",
+   "type": "noun",
+   "article": "la",
+   "en": "training, course of study",
+   "fa": "دوره آموزشی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:lecon",
+   "fr": "leçon",
+   "type": "noun",
+   "article": "la",
+   "en": "lesson",
+   "fa": "درس",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "licence",
+   "type": "noun",
+   "article": "la",
+   "en": "bachelor's degree",
+   "fa": "لیسانس",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:lycee",
+   "fr": "lycée",
+   "type": "noun",
+   "article": "le",
+   "en": "secondary school (lycée)",
+   "fa": "دبیرستان (لیسه)",
+   "level": "B1"
+  },
+  {
+   "key": "n:maitresse",
+   "fr": "maîtresse",
+   "type": "noun",
+   "article": "la",
+   "en": "(school) teacher",
+   "fa": "معلم (خانم، دبستان)",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "master",
+   "type": "noun",
+   "article": "le",
+   "en": "master's degree",
+   "fa": "فوق‌لیسانس",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:note",
+   "fr": "note",
+   "type": "noun",
+   "article": "la",
+   "en": "note, grade",
+   "fa": "یادداشت، نمره",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "prononciation",
+   "type": "noun",
+   "article": "la",
+   "en": "pronunciation",
+   "fa": "تلفظ",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "stage",
+   "type": "noun",
+   "article": "le",
+   "en": "internship; course",
+   "fa": "کارآموزی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:tableau",
+   "fr": "tableau",
+   "type": "noun",
+   "article": "le",
+   "en": "painting, board",
+   "fa": "تابلو، تخته",
+   "level": "B1"
+  },
+  {
+   "key": "n:accent",
+   "fr": "accent",
+   "type": "noun",
+   "article": "l'",
+   "en": "accent",
+   "fa": "لهجه، تکیه",
+   "level": "B2"
+  },
+  {
+   "key": "n:concours",
+   "fr": "concours",
+   "type": "noun",
+   "article": "le",
+   "en": "competitive exam, contest",
+   "fa": "آزمون ورودی، مسابقه",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "doctorat",
+   "type": "noun",
+   "article": "le",
+   "en": "doctorate",
+   "fa": "دکتری",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:echec",
+   "fr": "échec",
+   "type": "noun",
+   "article": "l'",
+   "en": "failure",
+   "fa": "شکست",
+   "level": "B2"
+  },
+  {
+   "key": "n:etudiant",
+   "fr": "étudiant",
+   "type": "noun",
+   "article": "l'",
+   "en": "student",
+   "fa": "دانشجو",
+   "level": "B2"
+  },
+  {
+   "key": "n:examen",
+   "fr": "examen",
+   "type": "noun",
+   "article": "l'",
+   "en": "exam",
+   "fa": "امتحان",
+   "level": "B2"
+  },
+  {
+   "key": "n:instruction",
+   "fr": "instruction",
+   "type": "noun",
+   "article": "l'",
+   "en": "instruction, education",
+   "fa": "دستورالعمل، آموزش",
+   "level": "B2"
+  },
+  {
+   "key": "n:langage",
+   "fr": "langage",
+   "type": "noun",
+   "article": "le",
+   "en": "language, speech",
+   "fa": "زبان، شیوه‌ی بیان",
+   "level": "B2"
+  },
+  {
+   "key": "n:lecture",
+   "fr": "lecture",
+   "type": "noun",
+   "article": "la",
+   "en": "reading",
+   "fa": "خواندن، مطالعه",
+   "level": "B2"
+  },
+  {
+   "key": "n:matiere",
+   "fr": "matière",
+   "type": "noun",
+   "article": "la",
+   "en": "subject, material",
+   "fa": "درس، ماده",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "mémoire",
+   "type": "noun",
+   "article": "le",
+   "en": "dissertation",
+   "fa": "پایان‌نامه",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "orientation",
+   "type": "noun",
+   "article": "l’",
+   "en": "academic guidance",
+   "fa": "راهنمایی تحصیلی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:prof",
+   "fr": "prof",
+   "type": "noun",
+   "article": "le",
+   "en": "teacher (informal, m. or f.)",
+   "fa": "معلم (محاوره‌ای)",
+   "level": "B2"
+  },
+  {
+   "key": "n:programme",
+   "fr": "programme",
+   "type": "noun",
+   "article": "le",
+   "en": "programme, schedule",
+   "fa": "برنامه",
+   "level": "B2"
+  },
+  {
+   "key": "n:science",
+   "fr": "science",
+   "type": "noun",
+   "article": "la",
+   "en": "science",
+   "fa": "علم",
+   "level": "B2"
+  },
+  {
+   "key": "n:sous-titrage",
+   "fr": "sous-titrage",
+   "type": "noun",
+   "article": "le",
+   "en": "subtitling, subtitles",
+   "fa": "زیرنویس‌گذاری، زیرنویس",
+   "level": "B2"
+  },
+  {
+   "key": "n:test",
+   "fr": "test",
+   "type": "noun",
+   "article": "le",
+   "en": "test",
+   "fa": "آزمون، تست",
+   "level": "B2"
+  },
+  {
+   "key": "n:texte",
+   "fr": "texte",
+   "type": "noun",
+   "article": "le",
+   "en": "text",
+   "fa": "متن",
+   "level": "B2"
+  },
+  {
+   "key": "n:universite",
+   "fr": "université",
+   "type": "noun",
+   "article": "l'",
+   "en": "university",
+   "fa": "دانشگاه",
+   "level": "B2"
+  },
+  {
+   "key": "n:analyse",
+   "fr": "analyse",
+   "type": "noun",
+   "article": "l'",
+   "en": "analysis",
+   "fa": "تحلیل، آزمایش",
+   "level": "C1"
+  },
+  {
+   "key": "n:cahier",
+   "fr": "cahier",
+   "type": "noun",
+   "article": "le",
+   "en": "exercise book",
+   "fa": "دفتر",
+   "level": "C1"
+  },
+  {
+   "key": "n:carnet",
+   "fr": "carnet",
+   "type": "noun",
+   "article": "le",
+   "en": "notebook",
+   "fa": "دفترچه",
+   "level": "C1"
+  },
+  {
+   "key": "n:college",
+   "fr": "collège",
+   "type": "noun",
+   "article": "le",
+   "en": "middle school",
+   "fa": "دوره‌ی اول متوسطه",
+   "level": "C1"
+  },
+  {
+   "key": "n:conference",
+   "fr": "conférence",
+   "type": "noun",
+   "article": "la",
+   "en": "lecture, conference",
+   "fa": "سخنرانی، کنفرانس",
+   "level": "C1"
+  },
+  {
+   "key": "n:copie",
+   "fr": "copie",
+   "type": "noun",
+   "article": "la",
+   "en": "copy",
+   "fa": "رونوشت، نسخه",
+   "level": "C1"
+  },
+  {
+   "key": "n:crayon",
+   "fr": "crayon",
+   "type": "noun",
+   "article": "le",
+   "en": "pencil",
+   "fa": "مداد",
+   "level": "C1"
+  },
+  {
+   "key": "n:dialogue",
+   "fr": "dialogue",
+   "type": "noun",
+   "article": "le",
+   "en": "dialogue",
+   "fa": "گفت‌وگو",
+   "level": "C1"
+  },
+  {
+   "key": "n:ecriture",
+   "fr": "écriture",
+   "type": "noun",
+   "article": "l'",
+   "en": "writing, handwriting",
+   "fa": "نوشتن، دست‌خط",
+   "level": "C1"
+  },
+  {
+   "key": "n:education",
+   "fr": "éducation",
+   "type": "noun",
+   "article": "l'",
+   "en": "education, upbringing",
+   "fa": "آموزش، تربیت",
+   "level": "C1"
+  },
+  {
+   "key": "n:encre",
+   "fr": "encre",
+   "type": "noun",
+   "article": "l'",
+   "en": "ink",
+   "fa": "جوهر",
+   "level": "C1"
+  },
+  {
+   "key": "n:exercice",
+   "fr": "exercice",
+   "type": "noun",
+   "article": "l'",
+   "en": "exercise",
+   "fa": "تمرین",
+   "level": "C1"
+  },
+  {
+   "key": "n:instituteur",
+   "fr": "instituteur",
+   "type": "noun",
+   "article": "l'",
+   "en": "primary-school teacher",
+   "fa": "معلم دبستان",
+   "level": "C1"
+  },
+  {
+   "key": "n:litterature",
+   "fr": "littérature",
+   "type": "noun",
+   "article": "la",
+   "en": "literature",
+   "fa": "ادبیات",
+   "level": "C1"
+  },
+  {
+   "key": "n:philosophie",
+   "fr": "philosophie",
+   "type": "noun",
+   "article": "la",
+   "en": "philosophy",
+   "fa": "فلسفه",
+   "level": "C1"
+  },
+  {
+   "key": "n:theorie",
+   "fr": "théorie",
+   "type": "noun",
+   "article": "la",
+   "en": "theory",
+   "fa": "نظریه",
+   "level": "C1"
+  },
+  {
+   "key": "n:bac",
+   "fr": "bac",
+   "type": "noun",
+   "article": "le",
+   "en": "baccalauréat exam (informal); tray, bin",
+   "fa": "امتحان دیپلم (محاوره‌ای)؛ جعبه‌ی بزرگ",
+   "level": "C2"
+  },
+  {
+   "key": "n:bourse",
+   "fr": "bourse",
+   "type": "noun",
+   "article": "la",
+   "en": "scholarship; stock exchange",
+   "fa": "بورسیه، بورس",
+   "level": "C2"
+  },
+  {
+   "key": "n:discipline",
+   "fr": "discipline",
+   "type": "noun",
+   "article": "la",
+   "en": "discipline; school subject",
+   "fa": "نظم و انضباط، رشته",
+   "level": "C2"
+  },
+  {
+   "key": "n:fac",
+   "fr": "fac",
+   "type": "noun",
+   "article": "la",
+   "en": "university (informal)",
+   "fa": "دانشگاه (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:faculte",
+   "fr": "faculté",
+   "type": "noun",
+   "article": "la",
+   "en": "faculty, ability; university faculty",
+   "fa": "توانایی؛ دانشکده",
+   "level": "C2"
+  },
+  {
+   "key": "n:reussite",
+   "fr": "réussite",
+   "type": "noun",
+   "article": "la",
+   "en": "success",
+   "fa": "موفقیت",
+   "level": "C2"
+  },
+  {
+   "key": "n:stylo",
+   "fr": "stylo",
+   "type": "noun",
+   "article": "le",
+   "en": "pen",
+   "fa": "خودکار",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:apprendre",
+   "fr": "apprendre",
+   "type": "verb",
+   "en": "to learn",
+   "fa": "یاد گرفتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:comprendre",
+   "fr": "comprendre",
+   "type": "verb",
+   "en": "to understand, comprehend",
+   "fa": "فهمیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:écrire",
+   "fr": "écrire",
+   "type": "verb",
+   "en": "to write",
+   "fa": "نوشتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:expliquer",
+   "fr": "expliquer",
+   "type": "verb",
+   "en": "to explain",
+   "fa": "توضیح دادن",
+   "level": "A1"
+  },
+  {
+   "key": "v:lire",
+   "fr": "lire",
+   "type": "verb",
+   "en": "to read",
+   "fa": "خواندن",
+   "level": "A1"
+  },
+  {
+   "key": "v:réussir",
+   "fr": "réussir",
+   "type": "verb",
+   "en": "to manage to do something",
+   "fa": "موفق شدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:dessiner",
+   "fr": "dessiner",
+   "type": "verb",
+   "en": "to draw, to sketch",
+   "fa": "طراحی کردن، کشیدن (نقاشی)",
+   "level": "A2"
+  },
+  {
+   "key": "v:échouer",
+   "fr": "échouer",
+   "type": "verb",
+   "en": "to fail, fall through, miscarry",
+   "fa": "شکست خوردن، رد شدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:enseigner",
+   "fr": "enseigner",
+   "type": "verb",
+   "en": "to teach, to instruct, to educate",
+   "fa": "تدریس کردن، درس دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:étudier",
+   "fr": "étudier",
+   "type": "verb",
+   "en": "to study",
+   "fa": "درس خواندن، مطالعه کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:former",
+   "fr": "former",
+   "type": "verb",
+   "en": "to form",
+   "fa": "آموزش دادن، شکل دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:noter",
+   "fr": "noter",
+   "type": "verb",
+   "en": "to note",
+   "fa": "یادداشت کردن، نمره دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:répéter",
+   "fr": "répéter",
+   "type": "verb",
+   "en": "to repeat",
+   "fa": "تکرار کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:corriger",
+   "fr": "corriger",
+   "type": "verb",
+   "en": "to correct",
+   "fa": "تصحیح کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:inscrire",
+   "fr": "inscrire",
+   "type": "verb",
+   "en": "to inscribe (engrave)",
+   "fa": "ثبت‌نام کردن، نوشتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:réciter",
+   "fr": "réciter",
+   "type": "verb",
+   "en": "to recite, to declaim (dated)",
+   "fa": "از بر خواندن",
+   "level": "B1"
+  },
+  {
+   "key": "v:tester",
+   "fr": "tester",
+   "type": "verb",
+   "en": "to test",
+   "fa": "آزمایش کردن، امتحان کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:traduire",
+   "fr": "traduire",
+   "type": "verb",
+   "en": "to translate",
+   "fa": "ترجمه کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:copier",
+   "fr": "copier",
+   "type": "verb",
+   "en": "to copy",
+   "fa": "کپی کردن، رونویسی کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:instruire",
+   "fr": "instruire",
+   "type": "verb",
+   "en": "to instruct, to teach",
+   "fa": "آموزش دادن",
+   "level": "B2"
+  },
+  {
+   "key": "v:rédiger",
+   "fr": "rédiger",
+   "type": "verb",
+   "en": "to compose, write in a well defined manner according to context and the style required, often definite",
+   "fa": "نوشتن، تنظیم کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:résumer",
+   "fr": "résumer",
+   "type": "verb",
+   "en": "to summarize, to sum up",
+   "fa": "خلاصه کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:éduquer",
+   "fr": "éduquer",
+   "type": "verb",
+   "en": "to educate",
+   "fa": "تربیت کردن، آموزش دادن",
+   "level": "C1"
+  },
+  {
+   "key": "v:recopier",
+   "fr": "recopier",
+   "type": "verb",
+   "en": "to copy (again)",
+   "fa": "دوباره نوشتن، کپی کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:réviser",
+   "fr": "réviser",
+   "type": "verb",
+   "en": "to revise, review",
+   "fa": "مرور کردن، بازبینی کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:conjuguer",
+   "fr": "conjuguer",
+   "type": "verb",
+   "en": "to conjugate",
+   "fa": "صرف کردن (فعل)، ترکیب کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:épeler",
+   "fr": "épeler",
+   "type": "verb",
+   "en": "to spell",
+   "fa": "هجی کردن، حرف به حرف گفتن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "J'apprends le français depuis six mois.",
+   "en": "I have been learning French for six months.",
+   "fa": "شش ماه است که فرانسه یاد می‌گیرم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis étudiant en médecine.",
+   "en": "I am a medical student.",
+   "fa": "من دانشجوی پزشکی هستم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Pouvez-vous répéter, s'il vous plaît ?",
+   "en": "Can you repeat, please?",
+   "fa": "لطفاً می‌توانید تکرار کنید؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je ne comprends pas ce mot ; que veut-il dire ?",
+   "en": "I don't understand this word; what does it mean?",
+   "fa": "این واژه را نمی‌فهمم؛ چه معنایی دارد؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai un examen de grammaire vendredi.",
+   "en": "I have a grammar exam on Friday.",
+   "fa": "جمعه امتحان دستور زبان دارم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je révise mon vocabulaire tous les soirs.",
+   "en": "I revise my vocabulary every evening.",
+   "fa": "هر شب واژگانم را مرور می‌کنم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je voudrais m'inscrire au cours de français du soir.",
+   "en": "I would like to enrol in the evening French course.",
+   "fa": "می‌خواهم در کلاس فرانسه شبانه ثبت‌نام کنم.",
+   "level": "A2",
+   "use": "writing"
+  },
+  {
+   "fr": "Pour réussir l'examen, il faut s'entraîner régulièrement à l'oral et à l'écrit.",
+   "en": "To pass the exam, you need to practise regularly, both orally and in writing.",
+   "fa": "برای قبول شدن در آزمون باید به‌طور منظم شفاهی و کتبی تمرین کرد.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "J'ai du mal avec la prononciation, surtout avec les voyelles.",
+   "en": "I struggle with pronunciation, especially vowels.",
+   "fa": "در تلفظ مشکل دارم، به‌ویژه با مصوت‌ها.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je souhaite poser ma candidature pour une bourse d'études.",
+   "en": "I wish to apply for a scholarship.",
+   "fa": "می‌خواهم برای دریافت بورسیه تحصیلی درخواست بدهم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Je prépare le DELF B2 pour pouvoir étudier en France.",
+   "en": "I am preparing for the DELF B2 in order to study in France.",
+   "fa": "برای اینکه بتوانم در فرانسه تحصیل کنم، خودم را برای دلف B2 آماده می‌کنم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "L'école devrait apprendre aux élèves à réfléchir par eux-mêmes plutôt qu'à mémoriser.",
+   "en": "School should teach pupils to think for themselves rather than to memorise.",
+   "fa": "مدرسه باید به دانش‌آموزان یاد بدهد خودشان فکر کنند، نه اینکه فقط حفظ کنند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les études supérieures sont de plus en plus chères, ce qui creuse les inégalités.",
+   "en": "Higher education is increasingly expensive, which widens inequalities.",
+   "fa": "تحصیلات عالی روزبه‌روز گران‌تر می‌شود و این نابرابری‌ها را عمیق‌تر می‌کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Apprendre une langue étrangère ouvre des portes, tant sur le plan professionnel que personnel.",
+   "en": "Learning a foreign language opens doors, both professionally and personally.",
+   "fa": "یادگیری زبان خارجی هم در حوزه حرفه‌ای و هم در زندگی شخصی درهایی را باز می‌کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "L'essor de l'enseignement à distance interroge le rôle même de l'enseignant.",
+   "en": "The rise of distance learning raises questions about the very role of the teacher.",
+   "fa": "گسترش آموزش از راه دور خود نقش معلم را زیر سؤال می‌برد.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "CE",
+   "topic": "panneau d'une école de langues : nouvelle adresse du bureau d'inscription, pièce d'identité",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "dans une école de langues. Vous lisez le panneau suivant."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : s'inscrire à la bibliothèque, université/vie étudiante, école des enfants, garderie",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous voulez partir étudier en France."
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CE",
+   "topic": "article : interdiction du téléphone portable au collège",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "L’interdiction du téléphone portable au collège"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "PO",
+   "topic": "document déclencheur : l'école en demande-t-elle trop aux parents ?",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_ex1_PO_examinateur_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "L’école en demande-t-elle trop aux parents ?"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "PO",
+   "topic": "document déclencheur : rôle de l'université, préparer à un métier",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_ex1_PO_examinateur_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Le rôle de l’université"
+  },
+  {
+   "exam": "dalf",
+   "level": "C1",
+   "paper": "PE",
+   "topic": "essai argumenté : lettre ouverte au ministre sur le nombre de langues enseignées",
+   "source": {
+    "what": "DALF C1, sujet démo (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-candidat-coll.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "réduire le nombre de langues actuellement enseignées dans le système scolaire"
+  },
+  {
+   "exam": "dalf",
+   "level": "C2",
+   "paper": "PO",
+   "topic": "document sonore LSH : débat sur la transmission du savoir / avenir du métier d'enseignant",
+   "source": {
+    "what": "DALF C2 Lettres et sciences humaines, exemple 1 (candidat, épreuve orale), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C2/c2-nouveau_example1_LSH_candidat_PO.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "l’avenir du métier d’enseignant"
+  },
+  {
+   "exam": "dalf",
+   "level": "C2",
+   "paper": "CO",
+   "topic": "émission France Culture « La classe inversée » (innovation pédagogique)",
+   "source": {
+    "what": "DALF C2 Lettres et sciences humaines, exemple 1 (transcriptions), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C2/c2-nouveau_example1_LSH_transcriptions.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "la classe inversée, une innovation pédagogique"
+  },
+  {
+   "exam": "dalf",
+   "level": "C2",
+   "paper": "PE",
+   "topic": "dossier LSH « Bâtir l'école du XXIe siècle » : informatique et TIC à l'école",
+   "source": {
+    "what": "DALF C2 Lettres et sciences humaines, exemple 1 (candidat, production écrite), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C2/c2-nouveau_example1_LSH_candidat_PE.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "BÂTIR L’ÉCOLE DU XXIe SIÈCLE"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section B : offre d'emploi de professeur à domicile",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Dométudes"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section B : publicité pour des cours de langue en ligne",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous avez lu une publicité pour des cours de langue."
+  }
+ ]
+}

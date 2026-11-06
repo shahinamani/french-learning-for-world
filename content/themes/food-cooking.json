@@ -1,0 +1,1284 @@
+{
+ "id": "food-cooking",
+ "names": {
+  "fr": "La cuisine et l'alimentation",
+  "en": "Food and cooking",
+  "fa": "آشپزی و خوراک"
+ },
+ "counts": {
+  "words": 88,
+  "verbs": 31,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:cafe",
+   "fr": "café",
+   "type": "noun",
+   "article": "le",
+   "en": "coffee; café",
+   "fa": "قهوه، کافه",
+   "level": "A1"
+  },
+  {
+   "key": "n:eau",
+   "fr": "eau",
+   "type": "noun",
+   "article": "l'",
+   "en": "water",
+   "fa": "آب",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "menu",
+   "type": "noun",
+   "article": "le",
+   "en": "menu; set meal",
+   "fa": "منو",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "pâtes",
+   "type": "noun",
+   "article": "les",
+   "en": "pasta",
+   "fa": "ماکارونی",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:verre",
+   "fr": "verre",
+   "type": "noun",
+   "article": "le",
+   "en": "glass",
+   "fa": "لیوان، شیشه",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "addition",
+   "type": "noun",
+   "article": "l’",
+   "en": "bill",
+   "fa": "صورتحساب",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:bouteille",
+   "fr": "bouteille",
+   "type": "noun",
+   "article": "la",
+   "en": "bottle",
+   "fa": "بطری",
+   "level": "A2"
+  },
+  {
+   "key": "n:cuisine",
+   "fr": "cuisine",
+   "type": "noun",
+   "article": "la",
+   "en": "kitchen, cooking",
+   "fa": "آشپزخانه، آشپزی",
+   "level": "A2"
+  },
+  {
+   "key": "n:diner",
+   "fr": "dîner",
+   "type": "noun",
+   "article": "le",
+   "en": "dinner",
+   "fa": "شام",
+   "level": "A2"
+  },
+  {
+   "key": "n:entree",
+   "fr": "entrée",
+   "type": "noun",
+   "article": "l'",
+   "en": "entrance, starter",
+   "fa": "ورودی، پیش‌غذا",
+   "level": "A2"
+  },
+  {
+   "key": "n:faim",
+   "fr": "faim",
+   "type": "noun",
+   "article": "la",
+   "en": "hunger",
+   "fa": "گرسنگی",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "farine",
+   "type": "noun",
+   "article": "la",
+   "en": "flour",
+   "fa": "آرد",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:gout",
+   "fr": "goût",
+   "type": "noun",
+   "article": "le",
+   "en": "taste, flavour",
+   "fa": "طعم، سلیقه",
+   "level": "A2"
+  },
+  {
+   "key": "n:pain",
+   "fr": "pain",
+   "type": "noun",
+   "article": "le",
+   "en": "bread",
+   "fa": "نان",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "poivre",
+   "type": "noun",
+   "article": "le",
+   "en": "pepper",
+   "fa": "فلفل سیاه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:vin",
+   "fr": "vin",
+   "type": "noun",
+   "article": "le",
+   "en": "wine",
+   "fa": "شراب",
+   "level": "A2"
+  },
+  {
+   "key": "n:alcool",
+   "fr": "alcool",
+   "type": "noun",
+   "article": "l'",
+   "en": "alcohol",
+   "fa": "الکل",
+   "level": "B1"
+  },
+  {
+   "key": "n:bar",
+   "fr": "bar",
+   "type": "noun",
+   "article": "le",
+   "en": "bar, pub",
+   "fa": "بار، میخانه",
+   "level": "B1"
+  },
+  {
+   "key": "n:biere",
+   "fr": "bière",
+   "type": "noun",
+   "article": "la",
+   "en": "beer",
+   "fa": "آبجو",
+   "level": "B1"
+  },
+  {
+   "key": "n:couteau",
+   "fr": "couteau",
+   "type": "noun",
+   "article": "le",
+   "en": "knife",
+   "fa": "چاقو",
+   "level": "B1"
+  },
+  {
+   "key": "n:cuisse",
+   "fr": "cuisse",
+   "type": "noun",
+   "article": "la",
+   "en": "thigh, leg (of chicken)",
+   "fa": "ران",
+   "level": "B1"
+  },
+  {
+   "key": "n:dejeuner",
+   "fr": "déjeuner",
+   "type": "noun",
+   "article": "le",
+   "en": "lunch",
+   "fa": "ناهار",
+   "level": "B1"
+  },
+  {
+   "key": "n:fruit",
+   "fr": "fruit",
+   "type": "noun",
+   "article": "le",
+   "en": "fruit",
+   "fa": "میوه",
+   "level": "B1"
+  },
+  {
+   "key": "n:gateau",
+   "fr": "gâteau",
+   "type": "noun",
+   "article": "le",
+   "en": "cake",
+   "fa": "کیک",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "ingrédient",
+   "type": "noun",
+   "article": "l’",
+   "en": "ingredient",
+   "fa": "ماده تشکیل‌دهنده",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:lait",
+   "fr": "lait",
+   "type": "noun",
+   "article": "le",
+   "en": "milk",
+   "fa": "شیر",
+   "level": "B1"
+  },
+  {
+   "key": "n:oeuf",
+   "fr": "œuf",
+   "type": "noun",
+   "article": "l'",
+   "en": "egg",
+   "fa": "تخم‌مرغ",
+   "level": "B1"
+  },
+  {
+   "key": "n:plat",
+   "fr": "plat",
+   "type": "noun",
+   "article": "le",
+   "en": "dish, course",
+   "fa": "غذا، ظرف",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "poêle",
+   "type": "noun",
+   "article": "la",
+   "en": "frying pan",
+   "fa": "ماهیتابه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:poisson",
+   "fr": "poisson",
+   "type": "noun",
+   "article": "le",
+   "en": "fish",
+   "fa": "ماهی",
+   "level": "B1"
+  },
+  {
+   "key": "n:pomme",
+   "fr": "pomme",
+   "type": "noun",
+   "article": "la",
+   "en": "apple",
+   "fa": "سیب",
+   "level": "B1"
+  },
+  {
+   "key": "n:repas",
+   "fr": "repas",
+   "type": "noun",
+   "article": "le",
+   "en": "meal",
+   "fa": "وعده‌ی غذا",
+   "level": "B1"
+  },
+  {
+   "key": "n:restaurant",
+   "fr": "restaurant",
+   "type": "noun",
+   "article": "le",
+   "en": "restaurant",
+   "fa": "رستوران",
+   "level": "B1"
+  },
+  {
+   "key": "n:the",
+   "fr": "thé",
+   "type": "noun",
+   "article": "le",
+   "en": "tea",
+   "fa": "چای",
+   "level": "B1"
+  },
+  {
+   "key": "n:viande",
+   "fr": "viande",
+   "type": "noun",
+   "article": "la",
+   "en": "meat",
+   "fa": "گوشت",
+   "level": "B1"
+  },
+  {
+   "key": "n:assiette",
+   "fr": "assiette",
+   "type": "noun",
+   "article": "l'",
+   "en": "plate",
+   "fa": "بشقاب",
+   "level": "B2"
+  },
+  {
+   "key": "n:champagne",
+   "fr": "champagne",
+   "type": "noun",
+   "article": "le",
+   "en": "champagne",
+   "fa": "شامپاین",
+   "level": "B2"
+  },
+  {
+   "key": "n:chocolat",
+   "fr": "chocolat",
+   "type": "noun",
+   "article": "le",
+   "en": "chocolate",
+   "fa": "شکلات",
+   "level": "B2"
+  },
+  {
+   "key": "n:cochon",
+   "fr": "cochon",
+   "type": "noun",
+   "article": "le",
+   "en": "pig",
+   "fa": "خوک",
+   "level": "B2"
+  },
+  {
+   "key": "n:fromage",
+   "fr": "fromage",
+   "type": "noun",
+   "article": "le",
+   "en": "cheese",
+   "fa": "پنیر",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "gaspillage",
+   "type": "noun",
+   "article": "le",
+   "en": "waste",
+   "fa": "اسراف",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:huile",
+   "fr": "huile",
+   "type": "noun",
+   "article": "l'",
+   "en": "oil",
+   "fa": "روغن",
+   "level": "B2"
+  },
+  {
+   "key": "n:mets",
+   "fr": "mets",
+   "type": "noun",
+   "article": "le",
+   "en": "dish",
+   "fa": "خوراک، غذا",
+   "level": "B2"
+  },
+  {
+   "key": "n:nourriture",
+   "fr": "nourriture",
+   "type": "noun",
+   "article": "la",
+   "en": "food",
+   "fa": "غذا، خوراک",
+   "level": "B2"
+  },
+  {
+   "key": "n:porc",
+   "fr": "porc",
+   "type": "noun",
+   "article": "le",
+   "en": "pig, pork",
+   "fa": "خوک، گوشت خوک",
+   "level": "B2"
+  },
+  {
+   "key": "n:pot",
+   "fr": "pot",
+   "type": "noun",
+   "article": "le",
+   "en": "pot, jar",
+   "fa": "ظرف، شیشه",
+   "level": "B2"
+  },
+  {
+   "key": "n:poulet",
+   "fr": "poulet",
+   "type": "noun",
+   "article": "le",
+   "en": "chicken",
+   "fa": "مرغ، جوجه",
+   "level": "B2"
+  },
+  {
+   "key": "n:regime",
+   "fr": "régime",
+   "type": "noun",
+   "article": "le",
+   "en": "diet, regime",
+   "fa": "رژیم",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "saveur",
+   "type": "noun",
+   "article": "la",
+   "en": "flavour",
+   "fa": "مزه",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:sel",
+   "fr": "sel",
+   "type": "noun",
+   "article": "le",
+   "en": "salt",
+   "fa": "نمک",
+   "level": "B2"
+  },
+  {
+   "key": "n:serviette",
+   "fr": "serviette",
+   "type": "noun",
+   "article": "la",
+   "en": "towel, napkin",
+   "fa": "حوله، دستمال سفره",
+   "level": "B2"
+  },
+  {
+   "key": "n:soif",
+   "fr": "soif",
+   "type": "noun",
+   "article": "la",
+   "en": "thirst (avoir soif = to be thirsty)",
+   "fa": "تشنگی",
+   "level": "B2"
+  },
+  {
+   "key": "n:soupe",
+   "fr": "soupe",
+   "type": "noun",
+   "article": "la",
+   "en": "soup",
+   "fa": "سوپ",
+   "level": "B2"
+  },
+  {
+   "key": "n:sucre",
+   "fr": "sucre",
+   "type": "noun",
+   "article": "le",
+   "en": "sugar",
+   "fa": "شکر",
+   "level": "B2"
+  },
+  {
+   "key": "n:tasse",
+   "fr": "tasse",
+   "type": "noun",
+   "article": "la",
+   "en": "cup",
+   "fa": "فنجان",
+   "level": "B2"
+  },
+  {
+   "key": "n:whisky",
+   "fr": "whisky",
+   "type": "noun",
+   "article": "le",
+   "en": "whisky",
+   "fa": "ویسکی",
+   "level": "B2"
+  },
+  {
+   "key": "n:appetit",
+   "fr": "appétit",
+   "type": "noun",
+   "article": "l'",
+   "en": "appetite",
+   "fa": "اشتها",
+   "level": "C1"
+  },
+  {
+   "key": "n:beurre",
+   "fr": "beurre",
+   "type": "noun",
+   "article": "le",
+   "en": "butter",
+   "fa": "کره",
+   "level": "C1"
+  },
+  {
+   "key": "n:bol",
+   "fr": "bol",
+   "type": "noun",
+   "article": "le",
+   "en": "bowl",
+   "fa": "کاسه",
+   "level": "C1"
+  },
+  {
+   "key": "n:bonbon",
+   "fr": "bonbon",
+   "type": "noun",
+   "article": "le",
+   "en": "sweet, candy",
+   "fa": "آب‌نبات، شیرینی",
+   "level": "C1"
+  },
+  {
+   "key": "n:comptoir",
+   "fr": "comptoir",
+   "type": "noun",
+   "article": "le",
+   "en": "counter, bar",
+   "fa": "پیشخوان، میز بار",
+   "level": "C1"
+  },
+  {
+   "key": "n:creme",
+   "fr": "crème",
+   "type": "noun",
+   "article": "la",
+   "en": "cream",
+   "fa": "کرم، خامه",
+   "level": "C1"
+  },
+  {
+   "key": "n:cuisinier",
+   "fr": "cuisinier",
+   "type": "noun",
+   "article": "le",
+   "en": "cook",
+   "fa": "آشپز",
+   "level": "C1"
+  },
+  {
+   "key": "n:four",
+   "fr": "four",
+   "type": "noun",
+   "article": "le",
+   "en": "oven",
+   "fa": "فر، تنور",
+   "level": "C1"
+  },
+  {
+   "key": "n:jus",
+   "fr": "jus",
+   "type": "noun",
+   "article": "le",
+   "en": "juice",
+   "fa": "آب‌میوه",
+   "level": "C1"
+  },
+  {
+   "key": "n:legume",
+   "fr": "légume",
+   "type": "noun",
+   "article": "le",
+   "en": "vegetable",
+   "fa": "سبزی، سبزیجات",
+   "level": "C1"
+  },
+  {
+   "key": "n:oignon",
+   "fr": "oignon",
+   "type": "noun",
+   "article": "l'",
+   "en": "onion",
+   "fa": "پیاز",
+   "level": "C1"
+  },
+  {
+   "key": "n:orange",
+   "fr": "orange",
+   "type": "noun",
+   "article": "l'",
+   "en": "orange (fruit)",
+   "fa": "پرتقال",
+   "level": "C1"
+  },
+  {
+   "key": "n:pate",
+   "fr": "pâte",
+   "type": "noun",
+   "article": "la",
+   "en": "dough, batter",
+   "fa": "خمیر",
+   "level": "C1"
+  },
+  {
+   "key": "n:riz",
+   "fr": "riz",
+   "type": "noun",
+   "article": "le",
+   "en": "rice",
+   "fa": "برنج",
+   "level": "C1"
+  },
+  {
+   "key": "n:salade",
+   "fr": "salade",
+   "type": "noun",
+   "article": "la",
+   "en": "salad",
+   "fa": "سالاد",
+   "level": "C1"
+  },
+  {
+   "key": "n:serveur",
+   "fr": "serveur",
+   "type": "noun",
+   "article": "le",
+   "en": "waiter",
+   "fa": "گارسون، پیشخدمت",
+   "level": "C1"
+  },
+  {
+   "key": "n:vaisselle",
+   "fr": "vaisselle",
+   "type": "noun",
+   "article": "la",
+   "en": "dishes, crockery",
+   "fa": "ظروف، شستن ظرف",
+   "level": "C1"
+  },
+  {
+   "key": "n:bistrot",
+   "fr": "bistrot",
+   "type": "noun",
+   "article": "le",
+   "en": "café, bistro",
+   "fa": "کافه‌ی کوچک",
+   "level": "C2"
+  },
+  {
+   "key": "n:boeuf",
+   "fr": "bœuf",
+   "type": "noun",
+   "article": "le",
+   "en": "ox; beef",
+   "fa": "گاو نر؛ گوشت گاو",
+   "level": "C2"
+  },
+  {
+   "key": "n:boisson",
+   "fr": "boisson",
+   "type": "noun",
+   "article": "la",
+   "en": "drink",
+   "fa": "نوشیدنی",
+   "level": "C2"
+  },
+  {
+   "key": "n:buffet",
+   "fr": "buffet",
+   "type": "noun",
+   "article": "le",
+   "en": "buffet; sideboard",
+   "fa": "بوفه؛ بوفه‌ی ظرف",
+   "level": "C2"
+  },
+  {
+   "key": "n:casserole",
+   "fr": "casserole",
+   "type": "noun",
+   "article": "la",
+   "en": "saucepan",
+   "fa": "قابلمه",
+   "level": "C2"
+  },
+  {
+   "key": "n:couvert",
+   "fr": "couvert",
+   "type": "noun",
+   "article": "le",
+   "en": "place setting, cutlery",
+   "fa": "سرویس غذاخوری، کارد و چنگال",
+   "level": "C2"
+  },
+  {
+   "key": "n:dessert",
+   "fr": "dessert",
+   "type": "noun",
+   "article": "le",
+   "en": "dessert",
+   "fa": "دسر",
+   "level": "C2"
+  },
+  {
+   "key": "n:miel",
+   "fr": "miel",
+   "type": "noun",
+   "article": "le",
+   "en": "honey",
+   "fa": "عسل",
+   "level": "C2"
+  },
+  {
+   "key": "n:mousse",
+   "fr": "mousse",
+   "type": "noun",
+   "article": "la",
+   "en": "foam, moss (le mousse: ship's boy)",
+   "fa": "کف، خزه",
+   "level": "C2"
+  },
+  {
+   "key": "n:nappe",
+   "fr": "nappe",
+   "type": "noun",
+   "article": "la",
+   "en": "tablecloth; layer",
+   "fa": "رومیزی؛ لایه",
+   "level": "C2"
+  },
+  {
+   "key": "n:pizza",
+   "fr": "pizza",
+   "type": "noun",
+   "article": "la",
+   "en": "pizza",
+   "fa": "پیتزا",
+   "level": "C2"
+  },
+  {
+   "key": "n:recette",
+   "fr": "recette",
+   "type": "noun",
+   "article": "la",
+   "en": "recipe; takings",
+   "fa": "دستور پخت؛ درآمد",
+   "level": "C2"
+  },
+  {
+   "key": "n:sauce",
+   "fr": "sauce",
+   "type": "noun",
+   "article": "la",
+   "en": "sauce",
+   "fa": "سس",
+   "level": "C2"
+  },
+  {
+   "key": "n:tomate",
+   "fr": "tomate",
+   "type": "noun",
+   "article": "la",
+   "en": "tomato",
+   "fa": "گوجه‌فرنگی",
+   "level": "C2"
+  },
+  {
+   "key": "n:tranche",
+   "fr": "tranche",
+   "type": "noun",
+   "article": "la",
+   "en": "slice",
+   "fa": "برش، تکه",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:boire",
+   "fr": "boire",
+   "type": "verb",
+   "en": "to drink",
+   "fa": "نوشیدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:manger",
+   "fr": "manger",
+   "type": "verb",
+   "en": "to eat",
+   "fa": "خوردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:servir",
+   "fr": "servir",
+   "type": "verb",
+   "en": "to serve (to help in a shop",
+   "fa": "سرو کردن، به کار آمدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:commander",
+   "fr": "commander",
+   "type": "verb",
+   "en": "to order (tell someone to do something)",
+   "fa": "سفارش دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:goûter",
+   "fr": "goûter",
+   "type": "verb",
+   "en": "to taste, to try (to sample something orally)",
+   "fa": "چشیدن",
+   "level": "A2"
+  },
+  {
+   "key": "v:nourrir",
+   "fr": "nourrir",
+   "type": "verb",
+   "en": "to feed (provide with nourishment), nourish",
+   "fa": "غذا دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:bouffer",
+   "fr": "bouffer",
+   "type": "verb",
+   "en": "to eat (colloquial)",
+   "fa": "خوردن (محاوره‌ای)",
+   "level": "B1"
+  },
+  {
+   "key": "v:cuire",
+   "fr": "cuire",
+   "type": "verb",
+   "en": "to cook",
+   "fa": "پختن",
+   "level": "B1"
+  },
+  {
+   "key": "v:cuisiner",
+   "fr": "cuisiner",
+   "type": "verb",
+   "en": "to cook (prepare food)",
+   "fa": "آشپزی کردن، پختن",
+   "level": "B1"
+  },
+  {
+   "key": "v:griller",
+   "fr": "griller",
+   "type": "verb",
+   "en": "to toast (cook with a toaster)",
+   "fa": "کباب کردن، برشته کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:réchauffer",
+   "fr": "réchauffer",
+   "type": "verb",
+   "en": "to reheat",
+   "fa": "دوباره گرم کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:trinquer",
+   "fr": "trinquer",
+   "type": "verb",
+   "en": "to clink glasses, toast",
+   "fa": "جام زدن، به سلامتی نوشیدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:croquer",
+   "fr": "croquer",
+   "type": "verb",
+   "en": "to crunch",
+   "fa": "گاز زدن، ترد خوردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:déguster",
+   "fr": "déguster",
+   "type": "verb",
+   "en": "to try, to taste (food or drink)",
+   "fa": "مزه کردن، لذت بردن از مزه",
+   "level": "B2"
+  },
+  {
+   "key": "v:farcir",
+   "fr": "farcir",
+   "type": "verb",
+   "en": "to stuff, to put stuffing in something",
+   "fa": "پر کردن (دلمه)",
+   "level": "B2"
+  },
+  {
+   "key": "v:grignoter",
+   "fr": "grignoter",
+   "type": "verb",
+   "en": "to nibble",
+   "fa": "ریزه‌خواری کردن، ریز ریز جویدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:mâcher",
+   "fr": "mâcher",
+   "type": "verb",
+   "en": "to chew",
+   "fa": "جویدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:mijoter",
+   "fr": "mijoter",
+   "type": "verb",
+   "en": "to simmer",
+   "fa": "آرام پختن",
+   "level": "B2"
+  },
+  {
+   "key": "v:régaler",
+   "fr": "régaler",
+   "type": "verb",
+   "en": "to cook (someone) a really good meal",
+   "fa": "پذیرایی کردن، سیر کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:saler",
+   "fr": "saler",
+   "type": "verb",
+   "en": "to salt",
+   "fa": "نمک زدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:savourer",
+   "fr": "savourer",
+   "type": "verb",
+   "en": "to savour, to savor",
+   "fa": "مزه‌مزه کردن، لذت بردن از",
+   "level": "B2"
+  },
+  {
+   "key": "v:souper",
+   "fr": "souper",
+   "type": "verb",
+   "en": "to dine",
+   "fa": "شام خوردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:éplucher",
+   "fr": "éplucher",
+   "type": "verb",
+   "en": "to peel",
+   "fa": "پوست کندن",
+   "level": "C1"
+  },
+  {
+   "key": "v:hacher",
+   "fr": "hacher",
+   "type": "verb",
+   "en": "to chop up, mince",
+   "fa": "خرد کردن، چرخ کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:picoler",
+   "fr": "picoler",
+   "type": "verb",
+   "en": "to drink, tipple (colloquial)",
+   "fa": "(الکل) نوشیدن، مشروب خوردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:rôtir",
+   "fr": "rôtir",
+   "type": "verb",
+   "en": "to roast",
+   "fa": "کباب کردن (در فر)",
+   "level": "C1"
+  },
+  {
+   "key": "v:siroter",
+   "fr": "siroter",
+   "type": "verb",
+   "en": "to sip",
+   "fa": "جرعه‌جرعه نوشیدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:becter",
+   "fr": "becter",
+   "type": "verb",
+   "en": "to eat (informal)",
+   "fa": "خوردن (محاوره)",
+   "level": "C2"
+  },
+  {
+   "key": "v:ingurgiter",
+   "fr": "ingurgiter",
+   "type": "verb",
+   "en": "to swallow",
+   "fa": "بلعیدن، با ولع خوردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:mariner",
+   "fr": "mariner",
+   "type": "verb",
+   "en": "to marinate",
+   "fa": "ماریناد شدن (در سس)",
+   "level": "C2"
+  },
+  {
+   "key": "v:sucrer",
+   "fr": "sucrer",
+   "type": "verb",
+   "en": "to sugar",
+   "fa": "شیرین کردن (با شکر)",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je voudrais un café, s'il vous plaît.",
+   "en": "I would like a coffee, please.",
+   "fa": "یک قهوه می‌خواهم، لطفاً.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je mange du pain et du fromage.",
+   "en": "I eat bread and cheese.",
+   "fa": "نان و پنیر می‌خورم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "C'est très bon !",
+   "en": "It's very good!",
+   "fa": "خیلی خوشمزه است!",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Une table pour deux personnes, s'il vous plaît.",
+   "en": "A table for two, please.",
+   "fa": "یک میز برای دو نفر، لطفاً.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Qu'est-ce que vous me conseillez comme plat du jour ?",
+   "en": "What do you recommend as the dish of the day?",
+   "fa": "به‌عنوان غذای روز چه پیشنهاد می‌کنید؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "L'addition, s'il vous plaît.",
+   "en": "The bill, please.",
+   "fa": "صورتحساب را لطفاً بیاورید.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Pour cette recette, il faut deux œufs, de la farine et du sucre.",
+   "en": "For this recipe, you need two eggs, flour and sugar.",
+   "fa": "برای این دستور پخت، دو تخم‌مرغ، آرد و شکر لازم است.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je suis allergique aux fruits à coque.",
+   "en": "I am allergic to nuts.",
+   "fa": "به آجیل حساسیت دارم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis végétarien ; est-ce qu'il y a un plat sans viande ?",
+   "en": "I am vegetarian; is there a dish without meat?",
+   "fa": "من گیاهخوارم؛ غذایی بدون گوشت دارید؟",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Faites cuire à feu doux pendant vingt minutes.",
+   "en": "Cook over low heat for twenty minutes.",
+   "fa": "به مدت بیست دقیقه روی حرارت ملایم بپزید.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Le repas était froid et le service très lent ; je demande un remboursement.",
+   "en": "The meal was cold and the service very slow; I am asking for a refund.",
+   "fa": "غذا سرد بود و سرویس‌دهی خیلی کند؛ درخواست بازپرداخت دارم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Je fais attention à ce que je mange pour rester en bonne santé.",
+   "en": "I watch what I eat to stay healthy.",
+   "fa": "مراقب غذایی که می‌خورم هستم تا سالم بمانم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Le fast-food est pratique, mais il ne favorise pas une alimentation équilibrée.",
+   "en": "Fast food is convenient, but it does not encourage a balanced diet.",
+   "fa": "فست‌فود راحت است، اما تغذیه متعادل را تشویق نمی‌کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il faudrait lutter contre le gaspillage alimentaire dans les cantines et les supermarchés.",
+   "en": "We should fight food waste in canteens and supermarkets.",
+   "fa": "باید با اسراف مواد غذایی در سلف‌سرویس‌ها و سوپرمارکت‌ها مبارزه کرد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Manger local et de saison est meilleur pour la santé comme pour l'environnement.",
+   "en": "Eating local and seasonal food is better for both health and the environment.",
+   "fa": "خوردن غذاهای محلی و فصلی هم برای سلامت و هم برای محیط زیست بهتر است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La gastronomie française, inscrite au patrimoine de l'humanité, est autant un art de vivre qu'une cuisine.",
+   "en": "French gastronomy, listed as world heritage, is as much a way of life as a cuisine.",
+   "fa": "غذاشناسی فرانسوی که در فهرست میراث جهانی ثبت شده، به همان اندازه که یک آشپزی است، یک سبک زندگی نیز هست.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CO",
+   "topic": "message sur répondeur d'une pâtisserie : commande de gâteaux pour un événement",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "travaillez dans une pâtisserie."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CO",
+   "topic": "radio : un salon (chefs, entrée, nouvelle activité)",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 2 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/a2_ex1_tp_candidat_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Quelle est la spécialité du salon présentée dans l’émission ?"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : au restaurant, demander la carte et choisir son repas",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous demandez la carte et vous choisissez votre repas."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CO",
+   "topic": "entreprise Baluchon : service de repas du midi",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/Sujet_demo_2019_TP_B1_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "François Dechy veut proposer un service..."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CE",
+   "topic": "choix d'un restaurant à Lyon pour un repas d'affaires (menus sans viande, lieu calme)",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/Sujet_demo_2019_TP_B1_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous devez organiser un repas d’affaires avec des clients étrangers."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "interaction : festival gastronomique dans une résidence étudiante",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "organiser, dans la résidence pour étudiants étrangers où vous"
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "document déclencheur : les Français et la cuisine",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Les Français fous de cuisine"
+  }
+ ]
+}

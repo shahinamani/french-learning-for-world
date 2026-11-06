@@ -1,0 +1,1300 @@
+{
+ "id": "society-citizenship",
+ "names": {
+  "fr": "La société et la citoyenneté",
+  "en": "Society and citizenship",
+  "fa": "جامعه و شهروندی"
+ },
+ "counts": {
+  "words": 90,
+  "verbs": 31,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "dalf",
+   "level": "C1"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  },
+  {
+   "exam": "tcf",
+   "level": null
+  },
+  {
+   "exam": "tef-canada",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:droit",
+   "fr": "droit",
+   "type": "noun",
+   "article": "le",
+   "en": "right; law",
+   "fa": "حق؛ حقوق",
+   "level": "A1"
+  },
+  {
+   "key": "n:etat",
+   "fr": "état",
+   "type": "noun",
+   "article": "l'",
+   "en": "state, condition",
+   "fa": "وضعیت، دولت",
+   "level": "A1"
+  },
+  {
+   "key": "n:guerre",
+   "fr": "guerre",
+   "type": "noun",
+   "article": "la",
+   "en": "war",
+   "fa": "جنگ",
+   "level": "A1"
+  },
+  {
+   "key": "n:pays",
+   "fr": "pays",
+   "type": "noun",
+   "article": "le",
+   "en": "country",
+   "fa": "کشور",
+   "level": "A1"
+  },
+  {
+   "key": "n:police",
+   "fr": "police",
+   "type": "noun",
+   "article": "la",
+   "en": "police",
+   "fa": "پلیس",
+   "level": "A1"
+  },
+  {
+   "key": "n:armee",
+   "fr": "armée",
+   "type": "noun",
+   "article": "l'",
+   "en": "army",
+   "fa": "ارتش",
+   "level": "A2"
+  },
+  {
+   "key": "n:avocat",
+   "fr": "avocat",
+   "type": "noun",
+   "article": "l'",
+   "en": "lawyer, avocado",
+   "fa": "وکیل، آووکادو",
+   "level": "A2"
+  },
+  {
+   "key": "n:crime",
+   "fr": "crime",
+   "type": "noun",
+   "article": "le",
+   "en": "crime",
+   "fa": "جنایت، جرم",
+   "level": "A2"
+  },
+  {
+   "key": "n:gouvernement",
+   "fr": "gouvernement",
+   "type": "noun",
+   "article": "le",
+   "en": "government",
+   "fa": "دولت، حکومت",
+   "level": "A2"
+  },
+  {
+   "key": "n:liberte",
+   "fr": "liberté",
+   "type": "noun",
+   "article": "la",
+   "en": "freedom, liberty",
+   "fa": "آزادی",
+   "level": "A2"
+  },
+  {
+   "key": "n:loi",
+   "fr": "loi",
+   "type": "noun",
+   "article": "la",
+   "en": "law",
+   "fa": "قانون",
+   "level": "A2"
+  },
+  {
+   "key": "n:paix",
+   "fr": "paix",
+   "type": "noun",
+   "article": "la",
+   "en": "peace",
+   "fa": "صلح، آرامش",
+   "level": "A2"
+  },
+  {
+   "key": "n:peuple",
+   "fr": "peuple",
+   "type": "noun",
+   "article": "le",
+   "en": "people, nation",
+   "fa": "ملت، مردم",
+   "level": "A2"
+  },
+  {
+   "key": "n:president",
+   "fr": "président",
+   "type": "noun",
+   "article": "le",
+   "en": "president",
+   "fa": "رئیس‌جمهور، رئیس",
+   "level": "A2"
+  },
+  {
+   "key": "n:prison",
+   "fr": "prison",
+   "type": "noun",
+   "article": "la",
+   "en": "prison, jail",
+   "fa": "زندان",
+   "level": "A2"
+  },
+  {
+   "key": "n:securite",
+   "fr": "sécurité",
+   "type": "noun",
+   "article": "la",
+   "en": "safety, security",
+   "fa": "امنیت، ایمنی",
+   "level": "A2"
+  },
+  {
+   "key": "n:soldat",
+   "fr": "soldat",
+   "type": "noun",
+   "article": "le",
+   "en": "soldier",
+   "fa": "سرباز",
+   "level": "A2"
+  },
+  {
+   "key": "n:victime",
+   "fr": "victime",
+   "type": "noun",
+   "article": "la",
+   "en": "victim (always feminine)",
+   "fa": "قربانی",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "association",
+   "type": "noun",
+   "article": "l’",
+   "en": "association, charity",
+   "fa": "انجمن",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:autorite",
+   "fr": "autorité",
+   "type": "noun",
+   "article": "l'",
+   "en": "authority",
+   "fa": "اقتدار، مرجع",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "bénévole",
+   "type": "noun",
+   "article": "le",
+   "en": "volunteer",
+   "fa": "داوطلب",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:comite",
+   "fr": "comité",
+   "type": "noun",
+   "article": "le",
+   "en": "committee",
+   "fa": "کمیته",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "devoir",
+   "type": "noun",
+   "article": "le",
+   "en": "duty",
+   "fa": "وظیفه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "égalité",
+   "type": "noun",
+   "article": "l’",
+   "en": "equality",
+   "fa": "برابری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:empire",
+   "fr": "empire",
+   "type": "noun",
+   "article": "l'",
+   "en": "empire",
+   "fa": "امپراتوری",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "grève",
+   "type": "noun",
+   "article": "la",
+   "en": "strike",
+   "fa": "اعتصاب",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:juge",
+   "fr": "juge",
+   "type": "noun",
+   "article": "le",
+   "en": "judge",
+   "fa": "قاضی",
+   "level": "B1"
+  },
+  {
+   "key": "n:justice",
+   "fr": "justice",
+   "type": "noun",
+   "article": "la",
+   "en": "justice",
+   "fa": "عدالت",
+   "level": "B1"
+  },
+  {
+   "key": "n:ministre",
+   "fr": "ministre",
+   "type": "noun",
+   "article": "le",
+   "en": "minister",
+   "fa": "وزیر",
+   "level": "B1"
+  },
+  {
+   "key": "n:parti",
+   "fr": "parti",
+   "type": "noun",
+   "article": "le",
+   "en": "(political) party",
+   "fa": "حزب",
+   "level": "B1"
+  },
+  {
+   "key": "a:politique",
+   "fr": "politique",
+   "type": "adjective",
+   "article": null,
+   "en": "political",
+   "fa": "سیاسی",
+   "level": "B1"
+  },
+  {
+   "key": "a:public",
+   "fr": "public",
+   "type": "adjective",
+   "article": null,
+   "en": "public",
+   "fa": "عمومی",
+   "level": "B1"
+  },
+  {
+   "key": "a:social",
+   "fr": "social",
+   "type": "adjective",
+   "article": null,
+   "en": "social",
+   "fa": "اجتماعی",
+   "level": "B1"
+  },
+  {
+   "key": "n:societe",
+   "fr": "société",
+   "type": "noun",
+   "article": "la",
+   "en": "society, company",
+   "fa": "جامعه، شرکت",
+   "level": "B1"
+  },
+  {
+   "key": "n:temoin",
+   "fr": "témoin",
+   "type": "noun",
+   "article": "le",
+   "en": "witness",
+   "fa": "شاهد",
+   "level": "B1"
+  },
+  {
+   "key": "n:violence",
+   "fr": "violence",
+   "type": "noun",
+   "article": "la",
+   "en": "violence",
+   "fa": "خشونت",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "vote",
+   "type": "noun",
+   "article": "le",
+   "en": "vote",
+   "fa": "رأی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "bénévolat",
+   "type": "noun",
+   "article": "le",
+   "en": "voluntary work",
+   "fa": "کار داوطلبانه",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "citoyenneté",
+   "type": "noun",
+   "article": "la",
+   "en": "citizenship",
+   "fa": "شهروندی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:coupable",
+   "fr": "coupable",
+   "type": "adjective",
+   "article": null,
+   "en": "guilty",
+   "fa": "گناهکار، مقصر",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "délinquance",
+   "type": "noun",
+   "article": "la",
+   "en": "crime rate, delinquency",
+   "fa": "بزهکاری",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "député",
+   "type": "noun",
+   "article": "le",
+   "en": "member of parliament",
+   "fa": "نماینده مجلس",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "discrimination",
+   "type": "noun",
+   "article": "la",
+   "en": "discrimination",
+   "fa": "تبعیض",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "électeur",
+   "type": "noun",
+   "article": "l’",
+   "en": "voter",
+   "fa": "رأی‌دهنده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "fraternité",
+   "type": "noun",
+   "article": "la",
+   "en": "fraternity",
+   "fa": "برادری",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:gendarme",
+   "fr": "gendarme",
+   "type": "noun",
+   "article": "le",
+   "en": "gendarme (police officer)",
+   "fa": "ژاندارم",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "immigration",
+   "type": "noun",
+   "article": "l’",
+   "en": "immigration",
+   "fa": "مهاجرت",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "inégalité",
+   "type": "noun",
+   "article": "l’",
+   "en": "inequality",
+   "fa": "نابرابری",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:innocent",
+   "fr": "innocent",
+   "type": "adjective",
+   "article": null,
+   "en": "innocent",
+   "fa": "بی‌گناه، معصوم",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "intégration",
+   "type": "noun",
+   "article": "l’",
+   "en": "integration",
+   "fa": "ادغام",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:nation",
+   "fr": "nation",
+   "type": "noun",
+   "article": "la",
+   "en": "nation",
+   "fa": "ملت، کشور",
+   "level": "B2"
+  },
+  {
+   "key": "n:organisation",
+   "fr": "organisation",
+   "type": "noun",
+   "article": "l'",
+   "en": "organisation",
+   "fa": "سازمان، سازمان‌دهی",
+   "level": "B2"
+  },
+  {
+   "key": "n:patrie",
+   "fr": "patrie",
+   "type": "noun",
+   "article": "la",
+   "en": "homeland",
+   "fa": "میهن، وطن",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "pauvreté",
+   "type": "noun",
+   "article": "la",
+   "en": "poverty",
+   "fa": "فقر",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:proces",
+   "fr": "procès",
+   "type": "noun",
+   "article": "le",
+   "en": "trial, lawsuit",
+   "fa": "محاکمه، دادرسی",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "racisme",
+   "type": "noun",
+   "article": "le",
+   "en": "racism",
+   "fa": "نژادپرستی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:religion",
+   "fr": "religion",
+   "type": "noun",
+   "article": "la",
+   "en": "religion",
+   "fa": "دین",
+   "level": "B2"
+  },
+  {
+   "key": "n:resistance",
+   "fr": "résistance",
+   "type": "noun",
+   "article": "la",
+   "en": "resistance",
+   "fa": "مقاومت",
+   "level": "B2"
+  },
+  {
+   "key": "n:revolution",
+   "fr": "révolution",
+   "type": "noun",
+   "article": "la",
+   "en": "revolution",
+   "fa": "انقلاب",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "solidarité",
+   "type": "noun",
+   "article": "la",
+   "en": "solidarity",
+   "fa": "همبستگی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:territoire",
+   "fr": "territoire",
+   "type": "noun",
+   "article": "le",
+   "en": "territory",
+   "fa": "قلمرو، سرزمین",
+   "level": "B2"
+  },
+  {
+   "key": "n:tradition",
+   "fr": "tradition",
+   "type": "noun",
+   "article": "la",
+   "en": "tradition",
+   "fa": "سنت",
+   "level": "B2"
+  },
+  {
+   "key": "n:tribunal",
+   "fr": "tribunal",
+   "type": "noun",
+   "article": "le",
+   "en": "court",
+   "fa": "دادگاه",
+   "level": "B2"
+  },
+  {
+   "key": "n:alliance",
+   "fr": "alliance",
+   "type": "noun",
+   "article": "l'",
+   "en": "alliance, wedding ring",
+   "fa": "اتحاد، حلقه‌ی ازدواج",
+   "level": "C1"
+  },
+  {
+   "key": "n:assemblee",
+   "fr": "assemblée",
+   "type": "noun",
+   "article": "l'",
+   "en": "assembly",
+   "fa": "مجمع، مجلس",
+   "level": "C1"
+  },
+  {
+   "key": "n:bataillon",
+   "fr": "bataillon",
+   "type": "noun",
+   "article": "le",
+   "en": "battalion",
+   "fa": "گردان",
+   "level": "C1"
+  },
+  {
+   "key": "a:catholique",
+   "fr": "catholique",
+   "type": "adjective",
+   "article": null,
+   "en": "Catholic",
+   "fa": "کاتولیک",
+   "level": "C1"
+  },
+  {
+   "key": "n:citoyen",
+   "fr": "citoyen",
+   "type": "noun",
+   "article": "le",
+   "en": "citizen",
+   "fa": "شهروند",
+   "level": "C1"
+  },
+  {
+   "key": "n:commission",
+   "fr": "commission",
+   "type": "noun",
+   "article": "la",
+   "en": "committee, commission",
+   "fa": "کمیته، کمیسیون",
+   "level": "C1"
+  },
+  {
+   "key": "n:communaute",
+   "fr": "communauté",
+   "type": "noun",
+   "article": "la",
+   "en": "community",
+   "fa": "جامعه، اجتماع",
+   "level": "C1"
+  },
+  {
+   "key": "n:communiste",
+   "fr": "communiste",
+   "type": "noun",
+   "article": "le",
+   "en": "communist (m. or f.)",
+   "fa": "کمونیست",
+   "level": "C1"
+  },
+  {
+   "key": "n:criminel",
+   "fr": "criminel",
+   "type": "noun",
+   "article": "le",
+   "en": "criminal",
+   "fa": "جنایتکار، مجرم",
+   "level": "C1"
+  },
+  {
+   "key": "n:maire",
+   "fr": "maire",
+   "type": "noun",
+   "article": "le",
+   "en": "mayor",
+   "fa": "شهردار",
+   "level": "C1"
+  },
+  {
+   "key": "n:population",
+   "fr": "population",
+   "type": "noun",
+   "article": "la",
+   "en": "population",
+   "fa": "جمعیت",
+   "level": "C1"
+  },
+  {
+   "key": "n:procureur",
+   "fr": "procureur",
+   "type": "noun",
+   "article": "le",
+   "en": "prosecutor",
+   "fa": "دادستان",
+   "level": "C1"
+  },
+  {
+   "key": "n:protection",
+   "fr": "protection",
+   "type": "noun",
+   "article": "la",
+   "en": "protection",
+   "fa": "محافظت، حفاظت",
+   "level": "C1"
+  },
+  {
+   "key": "n:reglement",
+   "fr": "règlement",
+   "type": "noun",
+   "article": "le",
+   "en": "regulations, payment",
+   "fa": "آیین‌نامه، مقررات",
+   "level": "C1"
+  },
+  {
+   "key": "n:union",
+   "fr": "union",
+   "type": "noun",
+   "article": "l'",
+   "en": "union, unity",
+   "fa": "اتحاد، اتحادیه",
+   "level": "C1"
+  },
+  {
+   "key": "n:charite",
+   "fr": "charité",
+   "type": "noun",
+   "article": "la",
+   "en": "charity",
+   "fa": "نیکوکاری، خیریه",
+   "level": "C2"
+  },
+  {
+   "key": "n:civilisation",
+   "fr": "civilisation",
+   "type": "noun",
+   "article": "la",
+   "en": "civilisation",
+   "fa": "تمدن",
+   "level": "C2"
+  },
+  {
+   "key": "n:conflit",
+   "fr": "conflit",
+   "type": "noun",
+   "article": "le",
+   "en": "conflict",
+   "fa": "درگیری، تعارض",
+   "level": "C2"
+  },
+  {
+   "key": "n:democratie",
+   "fr": "démocratie",
+   "type": "noun",
+   "article": "la",
+   "en": "democracy",
+   "fa": "دموکراسی",
+   "level": "C2"
+  },
+  {
+   "key": "n:election",
+   "fr": "élection",
+   "type": "noun",
+   "article": "l'",
+   "en": "election",
+   "fa": "انتخابات",
+   "level": "C2"
+  },
+  {
+   "key": "n:independance",
+   "fr": "indépendance",
+   "type": "noun",
+   "article": "l'",
+   "en": "independence",
+   "fa": "استقلال",
+   "level": "C2"
+  },
+  {
+   "key": "a:injuste",
+   "fr": "injuste",
+   "type": "adjective",
+   "article": null,
+   "en": "unfair, unjust",
+   "fa": "ناعادلانه، بی‌انصاف",
+   "level": "C2"
+  },
+  {
+   "key": "n:institution",
+   "fr": "institution",
+   "type": "noun",
+   "article": "l'",
+   "en": "institution",
+   "fa": "نهاد، مؤسسه",
+   "level": "C2"
+  },
+  {
+   "key": "n:manifestation",
+   "fr": "manifestation",
+   "type": "noun",
+   "article": "la",
+   "en": "demonstration, protest; event",
+   "fa": "تظاهرات؛ رویداد",
+   "level": "C2"
+  },
+  {
+   "key": "n:ministere",
+   "fr": "ministère",
+   "type": "noun",
+   "article": "le",
+   "en": "ministry, government department",
+   "fa": "وزارتخانه",
+   "level": "C2"
+  },
+  {
+   "key": "n:obligation",
+   "fr": "obligation",
+   "type": "noun",
+   "article": "l'",
+   "en": "obligation, duty",
+   "fa": "الزام، تعهد",
+   "level": "C2"
+  },
+  {
+   "key": "n:privilege",
+   "fr": "privilège",
+   "type": "noun",
+   "article": "le",
+   "en": "privilege",
+   "fa": "امتیاز، امتیاز ویژه",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:protéger",
+   "fr": "protéger",
+   "type": "verb",
+   "en": "to protect",
+   "fa": "محافظت کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:accuser",
+   "fr": "accuser",
+   "type": "verb",
+   "en": "to accuse",
+   "fa": "متهم کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:autoriser",
+   "fr": "autoriser",
+   "type": "verb",
+   "en": "to authorise",
+   "fa": "اجازه دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:condamner",
+   "fr": "condamner",
+   "type": "verb",
+   "en": "to condemn",
+   "fa": "محکوم کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:défendre",
+   "fr": "défendre",
+   "type": "verb",
+   "en": "to defend",
+   "fa": "دفاع کردن، ممنوع کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:interdire",
+   "fr": "interdire",
+   "type": "verb",
+   "en": "to forbid, ban, prohibit",
+   "fa": "ممنوع کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:juger",
+   "fr": "juger",
+   "type": "verb",
+   "en": "to judge, to try",
+   "fa": "قضاوت کردن، داوری کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:libérer",
+   "fr": "libérer",
+   "type": "verb",
+   "en": "to liberate, to set free, to release from captivity",
+   "fa": "آزاد کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:obéir",
+   "fr": "obéir",
+   "type": "verb",
+   "en": "to obey",
+   "fa": "اطاعت کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:punir",
+   "fr": "punir",
+   "type": "verb",
+   "en": "to punish",
+   "fa": "تنبیه کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:respecter",
+   "fr": "respecter",
+   "type": "verb",
+   "en": "to respect",
+   "fa": "احترام گذاشتن، رعایت کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:voter",
+   "fr": "voter",
+   "type": "verb",
+   "en": "to vote",
+   "fa": "رأی دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:élire",
+   "fr": "élire",
+   "type": "verb",
+   "en": "to elect",
+   "fa": "انتخاب کردن (با رأی)",
+   "level": "B1"
+  },
+  {
+   "key": "v:exclure",
+   "fr": "exclure",
+   "type": "verb",
+   "en": "to exclude",
+   "fa": "اخراج کردن، مستثنی کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:plaider",
+   "fr": "plaider",
+   "type": "verb",
+   "en": "to plead",
+   "fa": "دفاع کردن (در دادگاه)",
+   "level": "B1"
+  },
+  {
+   "key": "v:régner",
+   "fr": "régner",
+   "type": "verb",
+   "en": "to reign (of a monarch)",
+   "fa": "حکومت کردن، حاکم بودن",
+   "level": "B1"
+  },
+  {
+   "key": "v:emprisonner",
+   "fr": "emprisonner",
+   "type": "verb",
+   "en": "to imprison",
+   "fa": "زندانی کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:gouverner",
+   "fr": "gouverner",
+   "type": "verb",
+   "en": "to govern",
+   "fa": "حکومت کردن، اداره کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:manifester",
+   "fr": "manifester",
+   "type": "verb",
+   "en": "to manifest or demonstrate",
+   "fa": "تظاهرات کردن، نشان دادن",
+   "level": "B2"
+  },
+  {
+   "key": "v:présider",
+   "fr": "présider",
+   "type": "verb",
+   "en": "to preside, to chair, to head (to be in charge of)",
+   "fa": "ریاست کردن بر",
+   "level": "B2"
+  },
+  {
+   "key": "v:protester",
+   "fr": "protester",
+   "type": "verb",
+   "en": "to protest, to object",
+   "fa": "اعتراض کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:abolir",
+   "fr": "abolir",
+   "type": "verb",
+   "en": "to abolish",
+   "fa": "لغو کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:acquitter",
+   "fr": "acquitter",
+   "type": "verb",
+   "en": "to pay",
+   "fa": "پرداخت کردن، تسویه کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:désobéir",
+   "fr": "désobéir",
+   "type": "verb",
+   "en": "to disobey",
+   "fa": "نافرمانی کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:inculper",
+   "fr": "inculper",
+   "type": "verb",
+   "en": "to charge",
+   "fa": "متهم کردن، رسماً اتهام زدن",
+   "level": "C1"
+  },
+  {
+   "key": "v:persécuter",
+   "fr": "persécuter",
+   "type": "verb",
+   "en": "to persecute",
+   "fa": "آزار و اذیت کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:promouvoir",
+   "fr": "promouvoir",
+   "type": "verb",
+   "en": "to promote (advertise a product)",
+   "fa": "ترویج کردن، ارتقا دادن",
+   "level": "C1"
+  },
+  {
+   "key": "v:siéger",
+   "fr": "siéger",
+   "type": "verb",
+   "en": "to sit (hold a seat)",
+   "fa": "جلسه داشتن، مستقر بودن",
+   "level": "C1"
+  },
+  {
+   "key": "v:délibérer",
+   "fr": "délibérer",
+   "type": "verb",
+   "en": "to plan, to prepare",
+   "fa": "شور کردن، مشورت کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:gracier",
+   "fr": "gracier",
+   "type": "verb",
+   "en": "to pardon, to issue a pardon to",
+   "fa": "عفو کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:militer",
+   "fr": "militer",
+   "type": "verb",
+   "en": "to militate",
+   "fa": "فعالیت اجتماعی یا سیاسی کردن، مبارزه کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "En France, le président est élu tous les cinq ans.",
+   "en": "In France, the president is elected every five years.",
+   "fa": "در فرانسه رئیس‌جمهور هر پنج سال انتخاب می‌شود.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis bénévole dans une association le samedi.",
+   "en": "I volunteer for a charity on Saturdays.",
+   "fa": "شنبه‌ها در یک انجمن داوطلبانه کار می‌کنم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Tous les citoyens ont le droit de voter à dix-huit ans.",
+   "en": "All citizens have the right to vote at eighteen.",
+   "fa": "همه شهروندان در هجده‌سالگی حق رأی دارند.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Il y a une manifestation dans le centre-ville ce samedi.",
+   "en": "There is a demonstration in the town centre this Saturday.",
+   "fa": "این شنبه در مرکز شهر تظاهرات برگزار می‌شود.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je pense qu'il est important de participer à la vie de son quartier.",
+   "en": "I think it is important to take part in the life of your neighbourhood.",
+   "fa": "فکر می‌کنم مشارکت در زندگی محله‌ی خود مهم است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Les droits et les devoirs vont de pair.",
+   "en": "Rights and duties go hand in hand.",
+   "fa": "حقوق و وظایف همراه یکدیگرند.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je m'adresse à vous afin de proposer mon aide à votre association.",
+   "en": "I am writing to you to offer my help to your association.",
+   "fa": "برای پیشنهاد کمک به انجمن شما با شما تماس می‌گیرم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Voter est un devoir civique, même si beaucoup de gens s'abstiennent.",
+   "en": "Voting is a civic duty, even if many people abstain.",
+   "fa": "رأی دادن یک وظیفه مدنی است، حتی اگر بسیاری رأی نمی‌دهند.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "La lutte contre les discriminations doit commencer dès l'école.",
+   "en": "The fight against discrimination must start at school.",
+   "fa": "مبارزه با تبعیض باید از مدرسه آغاز شود.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il est regrettable que de nombreux jeunes se désintéressent de la politique.",
+   "en": "It is regrettable that many young people are no longer interested in politics.",
+   "fa": "جای تأسف است که بسیاری از جوانان به سیاست بی‌علاقه شده‌اند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Selon moi, l'égalité entre les femmes et les hommes est loin d'être atteinte.",
+   "en": "In my view, equality between women and men is far from being achieved.",
+   "fa": "به نظر من، برابری میان زنان و مردان هنوز راه درازی تا تحقق دارد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "L'engagement associatif renforce les liens entre les générations.",
+   "en": "Involvement in associations strengthens ties between generations.",
+   "fa": "فعالیت در انجمن‌ها پیوند میان نسل‌ها را تقویت می‌کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "On ne peut pas parler d'intégration sans parler d'accès au logement et à l'emploi.",
+   "en": "You can't speak of integration without speaking of access to housing and employment.",
+   "fa": "نمی‌توان از ادغام صحبت کرد و از دسترسی به مسکن و شغل سخن نگفت.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le débat public gagnerait en qualité si chacun acceptait d'écouter les arguments de l'autre.",
+   "en": "Public debate would gain in quality if everyone agreed to listen to the other's arguments.",
+   "fa": "اگر همه حاضر بودند به استدلال دیگری گوش کنند، کیفیت بحث عمومی بالا می‌رفت.",
+   "level": "C1",
+   "use": "writing"
+  },
+  {
+   "fr": "La liberté de chacun s'arrête là où commence celle des autres.",
+   "en": "One person's freedom ends where another's begins.",
+   "fa": "آزادی هر کس آنجا پایان می‌یابد که آزادی دیگران آغاز می‌شود.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CO",
+   "topic": "association « Un regard pour toi » : vêtements pour personnes malvoyantes",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/Sujet_demo_2019_TP_B1_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Grâce à Un regard pour toi, les personnes malvoyantes peuvent acheter leurs vêtements..."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "document déclencheur : l'engagement des jeunes (humanitaire, bénévolat)",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Moi, je m’engage"
+  },
+  {
+   "exam": "dalf",
+   "level": "C1",
+   "paper": "PE",
+   "topic": "synthèse de documents : la diversité linguistique, langues en danger",
+   "source": {
+    "what": "DALF C1, sujet démo (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-candidat-coll.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "La diversité linguistique : un atout pour l’humanité"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section B : bénévolat dans une association d'entraide",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "S.O.S amitié recherche des bénévoles"
+  },
+  {
+   "exam": "tcf",
+   "level": null,
+   "paper": "EO",
+   "topic": "tâche 3 : activité humanitaire",
+   "source": {
+    "what": "TCF, Manuel du candidat (version 20/09/2017) — France Éducation international document, copy hosted on francepodcasts.com, NOT on an FEI domain; older than current TCF Canada (a copy hosted by a third party; the exam body’s own site refuses automated reading)",
+    "url": "https://www.francepodcasts.com/wp-content/uploads/2018/05/TCF-manuel-du-candidat.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Si vous aviez une activité humanitaire, laquelle vous plairait ?"
+  },
+  {
+   "exam": "tcf",
+   "level": null,
+   "paper": "EE",
+   "topic": "tâche 3 : comparer deux points de vue sur un fait de société",
+   "source": {
+    "what": "TCF, Manuel du candidat (version 20/09/2017) — France Éducation international document, copy hosted on francepodcasts.com, NOT on an FEI domain; older than current TCF Canada (a copy hosted by a third party; the exam body’s own site refuses automated reading)",
+    "url": "https://www.francepodcasts.com/wp-content/uploads/2018/05/TCF-manuel-du-candidat.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "qui compare deux points de vue portant sur un fait de société"
+  }
+ ]
+}

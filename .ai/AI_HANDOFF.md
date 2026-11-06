@@ -75,6 +75,16 @@ Cloudflare Pages project `frenchmavie` (owner's existing Cloudflare account), Gi
 
 - Wide dashboard (owner chose "dashboard with side column"): `.dash` / `.dash__main` / `.dash__aside` in `routes/portal.css`, two columns from 1100 px, one below. Used by Today (week chart, mot du jour, my exam on the side), exam overview, cards session (levels, session, keys on the side), Progress. Verbs is a card grid, Account two columns, exam chooser families side by side. `--width-page` is set on `.shell` (tokens.css :root is unlayered and would win). New lazy text group `todayEn` (prefix `td`) because the first-load budget was full; French and Persian carry it, Arabic falls back.
 
+## Themes and free resources (2026-11-06, branch feat/themes-and-resources)
+
+Owner asked for exam themes (housing, hotel, sport, economy…) with words, verbs and expressions, tied to each exam and level, plus a free-resources panel. Code says "topics" because "theme" already means light/dark. Pages `/app/themes`, `/app/themes/:id`, `/app/resources` (`routes/topics/Topics.tsx`, data `lib/topics.ts`, strings lazy group `topicsEn`, prefixes tp/rs; sidebar labels `shellNavThemes/Resources` are eager because TopLine is). Flashcards take `?theme=<id>`.
+- Source `data/themes.json` → `python3 -I scripts/build-themes.py --lexique ~/.cache/flw/lexique/Lexique383.tsv` → `content/themes.json` + `content/themes/<id>.json`. Card words are referenced by key; theme-only nouns are checked against Lexique (form or lemma, gender), else dropped and listed.
+- Exam links are evidence only: 99 rows read in official sample papers (quotes machine-checked). No readable TCF Canada evidence (FEI site = Anubis). TEF EO rows count for TEF Canada (source says sections shared); TEF EE rows stay "TEF". Theme "administration" has no evidence yet.
+- `content/resources.json`: 83 entries; france-education-international.fr answers 200 to ANY path (bot challenge), so its links are `blocked`; a test enforces it.
+- All drafted content is unreviewed, recorded in the data (`reviewed`, `levelEstimated`, `checked`) and `docs/review/themes.md`, but NOT shown to learners (owner decision 2026-11-06, PR #74). Persian strings appended to `docs/review/fa-ui-drafts.md`, polite register.
+- First load now 153,566 / 153,600 bytes (34 spare). Anything eager needs room made first.
+- Port 4179 may be another session's preview: check `lsof` cwd before trusting an e2e run.
+
 ## Next step
 
 Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences.

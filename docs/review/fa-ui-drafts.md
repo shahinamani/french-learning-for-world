@@ -578,3 +578,65 @@ group they come from.
 | `rdNoTextsBody` | Come back later, or study words and verbs meanwhile. | بعداً برگردید، یا در این فاصله واژه‌ها و فعل‌ها را تمرین کنید. |
 | `rdNotFoundTitle` | This text does not exist | این متن وجود ندارد |
 | `rdNotFoundBody` | The link may be old. The list has every text there is. | شاید پیوند قدیمی باشد. فهرست، همهٔ متن‌های موجود را دارد. |
+
+
+## topicsEn (2026-11-06)
+
+Written in the polite register with the ـهٔ spelling used since 2026-11-06.
+
+| key | English | فارسی (draft) |
+|---|---|---|
+| `shellNavThemes` | Themes | موضوع‌ها |
+| `shellNavResources` | Free resources | منابع رایگان |
+| `tpTitle` | Themes | موضوع‌ها |
+| `tpLede` | Exam tasks are set on everyday subjects: renting a flat, a hotel stay, sport, work. Each theme gathers the words, verbs and expressions you need to talk and write about it. | پرسش‌های آزمون دربارهٔ موضوع‌های روزمره‌اند: اجارهٔ آپارتمان، اقامت در هتل، ورزش، کار. هر موضوع واژه‌ها، فعل‌ها و عبارت‌هایی را که برای صحبت و نوشتن دربارهٔ آن لازم دارید یک‌جا گرد می‌آورد. |
+| `tpForExam` | Seen in {exam} sample papers | دیده‌شده در نمونه‌آزمون‌های {exam} |
+| `tpForExamNone` | No official {exam} sample paper read so far is set on these themes. Any of them can still come up. | هیچ‌یک از نمونه‌آزمون‌های رسمی {exam} که تاکنون خوانده‌ایم دربارهٔ این موضوع‌ها نیست. با این حال، هر کدام ممکن است در آزمون بیاید. |
+| `tpOthers` | More themes | موضوع‌های دیگر |
+| `tpAll` | All themes | همهٔ موضوع‌ها |
+| `tpChooseExam` | Choose your exam to see which themes its official sample papers use. | آزمون خود را انتخاب کنید تا ببینید نمونه‌آزمون‌های رسمی آن از کدام موضوع‌ها استفاده می‌کنند. |
+| `tpCounts` | {w} words · {v} verbs · {e} expressions | {w} واژه · {v} فعل · {e} عبارت |
+| `tpInExam` | In {exam} samples | در نمونه‌آزمون‌های {exam} |
+| `tpHowTitle` | How themes are matched to exams | موضوع‌ها چگونه به آزمون‌ها مربوط می‌شوند |
+| `tpHowBody` | A theme is linked to an exam only when we read an official sample paper or the exam body’s own description and found a task on that subject. Each link names the document and the date it was read. Prep sites’ “top themes” lists are not used. | یک موضوع تنها زمانی به آزمونی مربوط می‌شود که نمونه‌آزمونی رسمی یا توضیح خود نهاد برگزارکننده را خوانده و در آن تکلیفی دربارهٔ همان موضوع یافته باشیم. هر پیوند نام سند و تاریخ خواندن آن را دارد. از فهرست‌های «موضوع‌های پرتکرار» سایت‌های آمادگی استفاده نمی‌شود. |
+| `tpLoading` | Loading themes… | در حال بارگذاری موضوع‌ها… |
+| `tpBack` | All themes | همهٔ موضوع‌ها |
+| `tpWords` | Words | واژه‌ها |
+| `tpVerbs` | Verbs | فعل‌ها |
+| `tpExpressions` | Expressions | عبارت‌ها |
+| `tpLevel` | Level | سطح |
+| `tpUpTo` | Up to {level} | تا سطح {level} |
+| `tpAllLevels` | All levels | همهٔ سطح‌ها |
+| `tpNoneAtLevel` | Nothing in this list at these levels yet. | فعلاً در این سطح‌ها چیزی در این فهرست نیست. |
+| `tpUseSpeaking` | speaking | گفتاری |
+| `tpUseWriting` | writing | نوشتاری |
+| `tpUseBoth` | speaking and writing | گفتاری و نوشتاری |
+| `tpPractise` | Practise this theme’s cards | تمرین کارت‌های این موضوع |
+| `tpPractiseNote` | {n} of these words and verbs are flashcards. Practising them here adds to the same review history as your level decks. | {n} مورد از این واژه‌ها و فعل‌ها کارت هستند. تمرین آن‌ها در اینجا به همان سابقهٔ مرور کارت‌های هر سطح افزوده می‌شود. |
+| `tpEvidenceTitle` | Where this theme appears in exams | این موضوع در کدام آزمون‌ها آمده است |
+| `tpEvidenceNone` | We have not yet found this theme in an official sample paper. That does not mean it cannot come up. | هنوز این موضوع را در نمونه‌آزمونی رسمی نیافته‌ایم. این به آن معنا نیست که در آزمون نمی‌آید. |
+| `tpEvidenceYours` | Your exam | آزمون شما |
+| `tpEvidenceOther` | Other exams | آزمون‌های دیگر |
+| `tpReadOn` | read on {date} | خوانده‌شده در {date} |
+| `tpNotFound` | This theme does not exist. | چنین موضوعی وجود ندارد. |
+| `rsTitle` | Free resources | منابع رایگان |
+| `rsLede` | Podcasts, videos, books, sample papers and tools you can use without paying. Only legal sources: public broadcasters, exam bodies, public-domain books. | پادکست، ویدیو، کتاب، نمونه‌آزمون و ابزارهایی که بدون پرداخت هزینه می‌توانید از آن‌ها استفاده کنید. فقط منابع قانونی: رسانه‌های عمومی، نهادهای برگزارکنندهٔ آزمون و کتاب‌های مالکیت عمومی. |
+| `rsKind` | Type | نوع |
+| `rsAllKinds` | All | همه |
+| `rsLevelAny` | Any level | هر سطحی |
+| `rsForMyExam` | Only for {exam} | فقط برای {exam} |
+| `rsCount` | {n} resources | {n} منبع |
+| `rsNone` | No resource matches these filters. | هیچ منبعی با این فیلترها مطابقت ندارد. |
+| `rsFreeTier` | Free tier | نسخهٔ رایگان |
+| `rsFree` | Free | رایگان |
+| `rsInLanguage` | Explained in {lang} | توضیح به {lang} |
+| `rsChecked` | List compiled on {date}. Whether something is fully free or has a paid tier can change. | این فهرست در {date} تهیه شده است. رایگان بودن یک منبع ممکن است تغییر کند. |
+| `rsIndependent` | This project is not connected to any of these publishers and receives nothing from them. | این پروژه هیچ ارتباطی با این ناشران ندارد و چیزی از آن‌ها دریافت نمی‌کند. |
+| `rsKindExamPractice` | Exam practice | آمادگی آزمون |
+| `rsKindPodcast` | Podcasts | پادکست‌ها |
+| `rsKindVideo` | Videos | ویدیوها |
+| `rsKindNews` | Easy news | خبر به زبان ساده |
+| `rsKindBook` | Free books | کتاب‌های رایگان |
+| `rsKindWebsite` | Exercises | تمرین‌ها |
+| `rsKindDictionary` | Dictionaries | فرهنگ‌های لغت |
+| `rsKindApp` | Apps | اپلیکیشن‌ها |

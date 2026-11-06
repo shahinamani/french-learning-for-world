@@ -1,0 +1,1001 @@
+{
+ "id": "media",
+ "names": {
+  "fr": "Les médias et l'information",
+  "en": "Media and news",
+  "fa": "رسانه و خبر"
+ },
+ "counts": {
+  "words": 65,
+  "verbs": 24,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "B1"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  },
+  {
+   "exam": "tef",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:journal",
+   "fr": "journal",
+   "type": "noun",
+   "article": "le",
+   "en": "newspaper; diary",
+   "fa": "روزنامه",
+   "level": "A1"
+  },
+  {
+   "key": "a:nouvelle",
+   "fr": "nouvelle",
+   "type": "adjective",
+   "article": null,
+   "en": "new",
+   "fa": "جدید، تازه",
+   "level": "A1"
+  },
+  {
+   "key": "n:avis",
+   "fr": "avis",
+   "type": "noun",
+   "article": "l'",
+   "en": "opinion",
+   "fa": "نظر، عقیده",
+   "level": "A2"
+  },
+  {
+   "key": "n:image",
+   "fr": "image",
+   "type": "noun",
+   "article": "l'",
+   "en": "picture, image",
+   "fa": "تصویر",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "interview",
+   "type": "noun",
+   "article": "l’",
+   "en": "interview",
+   "fa": "مصاحبه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:message",
+   "fr": "message",
+   "type": "noun",
+   "article": "le",
+   "en": "message",
+   "fa": "پیام",
+   "level": "A2"
+  },
+  {
+   "key": "n:parole",
+   "fr": "parole",
+   "type": "noun",
+   "article": "la",
+   "en": "word, promise",
+   "fa": "سخن، قول",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "actualité",
+   "type": "noun",
+   "article": "l’",
+   "en": "current events",
+   "fa": "رویدادهای روز",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:article",
+   "fr": "article",
+   "type": "noun",
+   "article": "l'",
+   "en": "article, item",
+   "fa": "مقاله، کالا",
+   "level": "B1"
+  },
+  {
+   "key": "n:chaine",
+   "fr": "chaîne",
+   "type": "noun",
+   "article": "la",
+   "en": "chain, channel",
+   "fa": "زنجیر، کانال",
+   "level": "B1"
+  },
+  {
+   "key": "n:discours",
+   "fr": "discours",
+   "type": "noun",
+   "article": "le",
+   "en": "speech",
+   "fa": "سخنرانی",
+   "level": "B1"
+  },
+  {
+   "key": "n:expression",
+   "fr": "expression",
+   "type": "noun",
+   "article": "l'",
+   "en": "expression",
+   "fa": "بیان، عبارت",
+   "level": "B1"
+  },
+  {
+   "key": "n:information",
+   "fr": "information",
+   "type": "noun",
+   "article": "l'",
+   "en": "information, piece of news",
+   "fa": "اطلاعات، خبر",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "lecteur",
+   "type": "noun",
+   "article": "le",
+   "en": "reader",
+   "fa": "خواننده",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "média",
+   "type": "noun",
+   "article": "le",
+   "en": "medium, the media",
+   "fa": "رسانه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "présentateur",
+   "type": "noun",
+   "article": "le",
+   "en": "presenter",
+   "fa": "مجری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:presse",
+   "fr": "presse",
+   "type": "noun",
+   "article": "la",
+   "en": "press",
+   "fa": "مطبوعات",
+   "level": "B1"
+  },
+  {
+   "key": "n:radio",
+   "fr": "radio",
+   "type": "noun",
+   "article": "la",
+   "en": "radio",
+   "fa": "رادیو",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "reportage",
+   "type": "noun",
+   "article": "le",
+   "en": "report, feature",
+   "fa": "گزارش",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "source",
+   "type": "noun",
+   "article": "la",
+   "en": "source",
+   "fa": "منبع",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:tele",
+   "fr": "télé",
+   "type": "noun",
+   "article": "la",
+   "en": "TV (informal)",
+   "fa": "تلویزیون (عامیانه)",
+   "level": "B1"
+  },
+  {
+   "key": "n:titre",
+   "fr": "titre",
+   "type": "noun",
+   "article": "le",
+   "en": "title",
+   "fa": "عنوان",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "audience",
+   "type": "noun",
+   "article": "l’",
+   "en": "audience",
+   "fa": "مخاطبان",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "auditeur",
+   "type": "noun",
+   "article": "l’",
+   "en": "listener",
+   "fa": "شنونده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:auteur",
+   "fr": "auteur",
+   "type": "noun",
+   "article": "l'",
+   "en": "author",
+   "fa": "نویسنده، پدیدآورنده",
+   "level": "B2"
+  },
+  {
+   "key": "n:discussion",
+   "fr": "discussion",
+   "type": "noun",
+   "article": "la",
+   "en": "discussion",
+   "fa": "گفت‌وگو، بحث",
+   "level": "B2"
+  },
+  {
+   "key": "n:enquete",
+   "fr": "enquête",
+   "type": "noun",
+   "article": "l'",
+   "en": "investigation, survey",
+   "fa": "تحقیق، نظرسنجی",
+   "level": "B2"
+  },
+  {
+   "key": "n:journaliste",
+   "fr": "journaliste",
+   "type": "noun",
+   "article": "le",
+   "en": "journalist (m. or f.)",
+   "fa": "روزنامه‌نگار",
+   "level": "B2"
+  },
+  {
+   "key": "n:opinion",
+   "fr": "opinion",
+   "type": "noun",
+   "article": "l'",
+   "en": "opinion",
+   "fa": "نظر، عقیده",
+   "level": "B2"
+  },
+  {
+   "key": "n:recit",
+   "fr": "récit",
+   "type": "noun",
+   "article": "le",
+   "en": "story, account",
+   "fa": "روایت، داستان",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "rédacteur",
+   "type": "noun",
+   "article": "le",
+   "en": "editor, writer",
+   "fa": "نویسنده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "rubrique",
+   "type": "noun",
+   "article": "la",
+   "en": "section, column",
+   "fa": "ستون",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:rumeur",
+   "fr": "rumeur",
+   "type": "noun",
+   "article": "la",
+   "en": "rumour",
+   "fa": "شایعه",
+   "level": "B2"
+  },
+  {
+   "key": "n:serie",
+   "fr": "série",
+   "type": "noun",
+   "article": "la",
+   "en": "series, set",
+   "fa": "سریال، مجموعه",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "slogan",
+   "type": "noun",
+   "article": "le",
+   "en": "slogan",
+   "fa": "شعار تبلیغاتی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:sous-titrage",
+   "fr": "sous-titrage",
+   "type": "noun",
+   "article": "le",
+   "en": "subtitling, subtitles",
+   "fa": "زیرنویس‌گذاری، زیرنویس",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "téléspectateur",
+   "type": "noun",
+   "article": "le",
+   "en": "viewer",
+   "fa": "بیننده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:television",
+   "fr": "télévision",
+   "type": "noun",
+   "article": "la",
+   "en": "television",
+   "fa": "تلویزیون",
+   "level": "B2"
+  },
+  {
+   "key": "n:texte",
+   "fr": "texte",
+   "type": "noun",
+   "article": "le",
+   "en": "text",
+   "fa": "متن",
+   "level": "B2"
+  },
+  {
+   "key": "n:annonce",
+   "fr": "annonce",
+   "type": "noun",
+   "article": "l'",
+   "en": "advertisement, announcement",
+   "fa": "آگهی، اعلام",
+   "level": "C1"
+  },
+  {
+   "key": null,
+   "fr": "annonceur",
+   "type": "noun",
+   "article": "l’",
+   "en": "advertiser",
+   "fa": "آگهی‌دهنده",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "censure",
+   "type": "noun",
+   "article": "la",
+   "en": "censorship",
+   "fa": "سانسور",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "chronique",
+   "type": "noun",
+   "article": "la",
+   "en": "column",
+   "fa": "ستون نظر",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:communication",
+   "fr": "communication",
+   "type": "noun",
+   "article": "la",
+   "en": "communication",
+   "fa": "ارتباط، مکالمه",
+   "level": "C1"
+  },
+  {
+   "key": "n:conference",
+   "fr": "conférence",
+   "type": "noun",
+   "article": "la",
+   "en": "lecture, conference",
+   "fa": "سخنرانی، کنفرانس",
+   "level": "C1"
+  },
+  {
+   "key": "n:declaration",
+   "fr": "déclaration",
+   "type": "noun",
+   "article": "la",
+   "en": "statement, declaration",
+   "fa": "بیانیه، اظهارات",
+   "level": "C1"
+  },
+  {
+   "key": null,
+   "fr": "désinformation",
+   "type": "noun",
+   "article": "la",
+   "en": "disinformation",
+   "fa": "اطلاعات نادرست",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "éditorial",
+   "type": "noun",
+   "article": "l’",
+   "en": "editorial",
+   "fa": "سرمقاله",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:emission",
+   "fr": "émission",
+   "type": "noun",
+   "article": "l'",
+   "en": "programme, broadcast",
+   "fa": "برنامه‌ی رادیو و تلویزیون، پخش",
+   "level": "C1"
+  },
+  {
+   "key": "n:entretien",
+   "fr": "entretien",
+   "type": "noun",
+   "article": "l'",
+   "en": "interview, maintenance",
+   "fa": "مصاحبه، نگهداری",
+   "level": "C1"
+  },
+  {
+   "key": "n:episode",
+   "fr": "épisode",
+   "type": "noun",
+   "article": "l'",
+   "en": "episode",
+   "fa": "قسمت، اپیزود",
+   "level": "C1"
+  },
+  {
+   "key": "n:magazine",
+   "fr": "magazine",
+   "type": "noun",
+   "article": "le",
+   "en": "magazine",
+   "fa": "مجله",
+   "level": "C1"
+  },
+  {
+   "key": "n:reputation",
+   "fr": "réputation",
+   "type": "noun",
+   "article": "la",
+   "en": "reputation",
+   "fa": "شهرت، اعتبار",
+   "level": "C1"
+  },
+  {
+   "key": "n:revue",
+   "fr": "revue",
+   "type": "noun",
+   "article": "la",
+   "en": "magazine, review",
+   "fa": "مجله، بازبینی",
+   "level": "C1"
+  },
+  {
+   "key": "n:scandale",
+   "fr": "scandale",
+   "type": "noun",
+   "article": "le",
+   "en": "scandal",
+   "fa": "رسوایی",
+   "level": "C1"
+  },
+  {
+   "key": "n:star",
+   "fr": "star",
+   "type": "noun",
+   "article": "la",
+   "en": "star, celebrity",
+   "fa": "ستاره‌ی سینما، چهره‌ی مشهور",
+   "level": "C1"
+  },
+  {
+   "key": "n:temoignage",
+   "fr": "témoignage",
+   "type": "noun",
+   "article": "le",
+   "en": "testimony",
+   "fa": "شهادت، گواهی",
+   "level": "C1"
+  },
+  {
+   "key": "n:affiche",
+   "fr": "affiche",
+   "type": "noun",
+   "article": "l'",
+   "en": "poster, notice",
+   "fa": "پوستر، آگهی",
+   "level": "C2"
+  },
+  {
+   "key": "n:commentaire",
+   "fr": "commentaire",
+   "type": "noun",
+   "article": "le",
+   "en": "comment, commentary",
+   "fa": "نظر، توضیح",
+   "level": "C2"
+  },
+  {
+   "key": "n:critique",
+   "fr": "critique",
+   "type": "noun",
+   "article": "la",
+   "en": "criticism, review; critic (le critique)",
+   "fa": "انتقاد، نقد",
+   "level": "C2"
+  },
+  {
+   "key": "n:debat",
+   "fr": "débat",
+   "type": "noun",
+   "article": "le",
+   "en": "debate",
+   "fa": "مناظره، بحث",
+   "level": "C2"
+  },
+  {
+   "key": "n:edition",
+   "fr": "édition",
+   "type": "noun",
+   "article": "l'",
+   "en": "edition",
+   "fa": "چاپ، ویراست",
+   "level": "C2"
+  },
+  {
+   "key": "n:info",
+   "fr": "info",
+   "type": "noun",
+   "article": "l'",
+   "en": "news, info (informal)",
+   "fa": "خبر، اطلاعات (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:publicite",
+   "fr": "publicité",
+   "type": "noun",
+   "article": "la",
+   "en": "advertising; advert",
+   "fa": "تبلیغات، آگهی",
+   "level": "C2"
+  },
+  {
+   "key": "n:vedette",
+   "fr": "vedette",
+   "type": "noun",
+   "article": "la",
+   "en": "star, celebrity",
+   "fa": "ستاره، چهره‌ی سرشناس",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:annoncer",
+   "fr": "annoncer",
+   "type": "verb",
+   "en": "to announce",
+   "fa": "اعلام کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:déclarer",
+   "fr": "déclarer",
+   "type": "verb",
+   "en": "to declare",
+   "fa": "اعلام کردن، اظهار کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:dénoncer",
+   "fr": "dénoncer",
+   "type": "verb",
+   "en": "to denounce",
+   "fa": "افشا کردن، محکوم کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:discuter",
+   "fr": "discuter",
+   "type": "verb",
+   "en": "to argue, to debate",
+   "fa": "گفتگو کردن، بحث کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:exprimer",
+   "fr": "exprimer",
+   "type": "verb",
+   "en": "to express",
+   "fa": "بیان کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:informer",
+   "fr": "informer",
+   "type": "verb",
+   "en": "to inform, to enlighten, to impart knowledge (upon)",
+   "fa": "اطلاع دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:rapporter",
+   "fr": "rapporter",
+   "type": "verb",
+   "en": "to bring back (physically bring something back from where it came from)",
+   "fa": "پس آوردن، گزارش دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:révéler",
+   "fr": "révéler",
+   "type": "verb",
+   "en": "to reveal, to give away",
+   "fa": "فاش کردن، آشکار کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:affirmer",
+   "fr": "affirmer",
+   "type": "verb",
+   "en": "to affirm, to claim",
+   "fa": "تأکید کردن، ادعا کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:citer",
+   "fr": "citer",
+   "type": "verb",
+   "en": "to cite, quote",
+   "fa": "نقل کردن، نام بردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:communiquer",
+   "fr": "communiquer",
+   "type": "verb",
+   "en": "to communicate",
+   "fa": "ارتباط برقرار کردن، اطلاع دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:enquêter",
+   "fr": "enquêter",
+   "type": "verb",
+   "en": "to investigate",
+   "fa": "تحقیق کردن، پرس‌وجو کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:mentionner",
+   "fr": "mentionner",
+   "type": "verb",
+   "en": "to mention",
+   "fa": "ذکر کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:publier",
+   "fr": "publier",
+   "type": "verb",
+   "en": "to publish, to release, to issue",
+   "fa": "منتشر کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:signaler",
+   "fr": "signaler",
+   "type": "verb",
+   "en": "to signal",
+   "fa": "گزارش دادن، اطلاع دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:afficher",
+   "fr": "afficher",
+   "type": "verb",
+   "en": "to put up (a notice etc)",
+   "fa": "نصب کردن (اعلان)، نمایش دادن",
+   "level": "B2"
+  },
+  {
+   "key": "v:commenter",
+   "fr": "commenter",
+   "type": "verb",
+   "en": "to comment",
+   "fa": "تفسیر کردن، نظر دادن",
+   "level": "B2"
+  },
+  {
+   "key": "v:critiquer",
+   "fr": "critiquer",
+   "type": "verb",
+   "en": "to criticise",
+   "fa": "انتقاد کردن، نقد کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:débattre",
+   "fr": "débattre",
+   "type": "verb",
+   "en": "to negotiate",
+   "fa": "بحث کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:diffuser",
+   "fr": "diffuser",
+   "type": "verb",
+   "en": "to diffuse",
+   "fa": "پخش کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:imprimer",
+   "fr": "imprimer",
+   "type": "verb",
+   "en": "to print, to print out",
+   "fa": "چاپ کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:proclamer",
+   "fr": "proclamer",
+   "type": "verb",
+   "en": "to proclaim, to declare",
+   "fa": "اعلام کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:rédiger",
+   "fr": "rédiger",
+   "type": "verb",
+   "en": "to compose, write in a well defined manner according to context and the style required, often definite",
+   "fa": "نوشتن، تنظیم کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:démentir",
+   "fr": "démentir",
+   "type": "verb",
+   "en": "to contradict, gainsay (someone)",
+   "fa": "تکذیب کردن",
+   "level": "C1"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je regarde les informations à la télévision tous les soirs.",
+   "en": "I watch the news on television every evening.",
+   "fa": "هر شب اخبار را از تلویزیون تماشا می‌کنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'écoute la radio le matin.",
+   "en": "I listen to the radio in the morning.",
+   "fa": "صبح‌ها رادیو گوش می‌دهم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Tu as lu l'article sur la nouvelle loi ?",
+   "en": "Have you read the article on the new law?",
+   "fa": "مقاله درباره قانون جدید را خواندی؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je lis le journal en ligne parce que c'est gratuit.",
+   "en": "I read the newspaper online because it's free.",
+   "fa": "روزنامه را آنلاین می‌خوانم چون رایگان است.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Quelle est ta chaîne préférée ?",
+   "en": "What is your favourite channel?",
+   "fa": "شبکه مورد علاقه‌ات کدام است؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "D'après ce reportage, la situation s'est améliorée.",
+   "en": "According to this report, the situation has improved.",
+   "fa": "بر اساس این گزارش، وضعیت بهتر شده است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je m'informe surtout sur les réseaux sociaux, mais je vérifie toujours les sources.",
+   "en": "I get my news mainly from social networks, but I always check the sources.",
+   "fa": "بیشتر از طریق شبکه‌های اجتماعی خبر می‌گیرم، اما همیشه منابع را بررسی می‌کنم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je vous écris pour réagir à votre article paru hier dans le journal.",
+   "en": "I am writing to respond to your article published yesterday in the paper.",
+   "fa": "برای واکنش به مقاله‌ای که دیروز در روزنامه منتشر کردید می‌نویسم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "La publicité nous influence plus qu'on ne le pense.",
+   "en": "Advertising influences us more than we think.",
+   "fa": "تبلیغات بیش از آنچه فکر می‌کنیم روی ما اثر می‌گذارد.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Les médias ont un rôle essentiel dans une démocratie : informer et surveiller les pouvoirs.",
+   "en": "The media play an essential role in a democracy: informing and holding power to account.",
+   "fa": "رسانه‌ها در یک دموکراسی نقشی اساسی دارند: آگاه‌سازی و نظارت بر قدرت.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les fausses informations se propagent beaucoup plus vite que les démentis.",
+   "en": "False information spreads much faster than denials.",
+   "fa": "اخبار جعلی بسیار سریع‌تر از تکذیبیه‌ها پخش می‌شوند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "À mon avis, il faut apprendre aux jeunes à décrypter l'information dès l'école.",
+   "en": "In my opinion, young people must be taught to decode information from school onwards.",
+   "fa": "به نظر من، باید از مدرسه به جوانان یاد داد اطلاعات را تحلیل کنند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Certains journalistes privilégient le sensationnel pour attirer l'audience.",
+   "en": "Some journalists favour the sensational to attract an audience.",
+   "fa": "برخی روزنامه‌نگاران برای جذب مخاطب سراغ هیجان‌انگیزی می‌روند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La concentration des médias entre les mains de quelques groupes menace le pluralisme de l'information.",
+   "en": "The concentration of the media in the hands of a few groups threatens the plurality of information.",
+   "fa": "تمرکز رسانه‌ها در دست چند گروه، تکثر اطلاع‌رسانی را تهدید می‌کند.",
+   "level": "C1",
+   "use": "writing"
+  },
+  {
+   "fr": "Il convient de distinguer l'information du commentaire, que l'on confond trop souvent.",
+   "en": "One should distinguish information from commentary, which are too often confused.",
+   "fa": "باید اطلاعات را از تفسیر تمایز داد، چیزهایی که اغلب با هم اشتباه گرفته می‌شوند.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CE",
+   "topic": "article : accents régionaux à la radio, journaliste Jean-Michel Aphatie",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 2 (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-candidat-coll-sujet-demo_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Une voix pour les accents"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CO",
+   "topic": "extraits : presse jeunesse, jeux de société, robots émotionnels et enfants",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Qu’est-ce qu’on constate dans l’évolution de la presse jeunesse actuellement ?"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "PO",
+   "topic": "document déclencheur : peut-on vivre sans télé ?",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_ex1_PO_examinateur_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Peut-on vivre sans télé ?"
+  },
+  {
+   "exam": "tef",
+   "level": null,
+   "paper": "EE",
+   "topic": "section A : continuer un fait divers (mariages au sommet, lion, trésor, mamie)",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression écrite (Le français des affaires, CCI Paris Île-de-France)",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-ee.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Mariages au sommet"
+  },
+  {
+   "exam": "tef",
+   "level": null,
+   "paper": "EE",
+   "topic": "section B : lettre au journal — supprimer la publicité à la télévision",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression écrite (Le français des affaires, CCI Paris Île-de-France)",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-ee.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "« Il faut d’urgence supprimer la publicité à la télévision. »"
+  }
+ ]
+}

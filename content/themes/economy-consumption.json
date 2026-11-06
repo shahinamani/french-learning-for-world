@@ -1,0 +1,1139 @@
+{
+ "id": "economy-consumption",
+ "names": {
+  "fr": "L'économie et la consommation",
+  "en": "Economy and money",
+  "fa": "اقتصاد و مصرف"
+ },
+ "counts": {
+  "words": 81,
+  "verbs": 26,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "dalf",
+   "level": "C1"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:argent",
+   "fr": "argent",
+   "type": "noun",
+   "article": "l'",
+   "en": "money, silver",
+   "fa": "پول، نقره",
+   "level": "A1"
+  },
+  {
+   "key": "a:cher",
+   "fr": "cher",
+   "type": "adjective",
+   "article": null,
+   "en": "expensive, dear",
+   "fa": "گران، عزیز",
+   "level": "A1"
+  },
+  {
+   "key": "n:compte",
+   "fr": "compte",
+   "type": "noun",
+   "article": "le",
+   "en": "account; count",
+   "fa": "حساب",
+   "level": "A1"
+  },
+  {
+   "key": "a:pauvre",
+   "fr": "pauvre",
+   "type": "adjective",
+   "article": null,
+   "en": "poor",
+   "fa": "فقیر، بیچاره",
+   "level": "A1"
+  },
+  {
+   "key": "n:dollar",
+   "fr": "dollar",
+   "type": "noun",
+   "article": "le",
+   "en": "dollar",
+   "fa": "دلار",
+   "level": "A2"
+  },
+  {
+   "key": "n:million",
+   "fr": "million",
+   "type": "noun",
+   "article": "le",
+   "en": "million",
+   "fa": "میلیون",
+   "level": "A2"
+  },
+  {
+   "key": "n:prix",
+   "fr": "prix",
+   "type": "noun",
+   "article": "le",
+   "en": "price, prize",
+   "fa": "قیمت، جایزه",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "soldes",
+   "type": "noun",
+   "article": "les",
+   "en": "sales",
+   "fa": "حراج",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:banque",
+   "fr": "banque",
+   "type": "noun",
+   "article": "la",
+   "en": "bank",
+   "fa": "بانک",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "budget",
+   "type": "noun",
+   "article": "le",
+   "en": "budget",
+   "fa": "بودجه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:caisse",
+   "fr": "caisse",
+   "type": "noun",
+   "article": "la",
+   "en": "crate, till",
+   "fa": "جعبه، صندوق",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "chômage",
+   "type": "noun",
+   "article": "le",
+   "en": "unemployment",
+   "fa": "بیکاری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "commerçant",
+   "type": "noun",
+   "article": "le",
+   "en": "shopkeeper",
+   "fa": "کاسب",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "coût",
+   "type": "noun",
+   "article": "le",
+   "en": "cost",
+   "fa": "هزینه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "crise",
+   "type": "noun",
+   "article": "la",
+   "en": "crisis",
+   "fa": "بحران",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "dépense",
+   "type": "noun",
+   "article": "la",
+   "en": "expense",
+   "fa": "هزینه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "emploi",
+   "type": "noun",
+   "article": "l’",
+   "en": "job, employment",
+   "fa": "اشتغال",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "épargne",
+   "type": "noun",
+   "article": "l’",
+   "en": "savings",
+   "fa": "پس‌انداز",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "espèces",
+   "type": "noun",
+   "article": "les",
+   "en": "cash",
+   "fa": "پول نقد",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:fortune",
+   "fr": "fortune",
+   "type": "noun",
+   "article": "la",
+   "en": "fortune, wealth",
+   "fa": "ثروت، بخت",
+   "level": "B1"
+  },
+  {
+   "key": "n:franc",
+   "fr": "franc",
+   "type": "noun",
+   "article": "le",
+   "en": "franc (old currency)",
+   "fa": "فرانک (پول قدیمی)",
+   "level": "B1"
+  },
+  {
+   "key": "n:fric",
+   "fr": "fric",
+   "type": "noun",
+   "article": "le",
+   "en": "money (informal)",
+   "fa": "پول (عامیانه)",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "impôt",
+   "type": "noun",
+   "article": "l’",
+   "en": "tax",
+   "fa": "مالیات",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "marché",
+   "type": "noun",
+   "article": "le",
+   "en": "market",
+   "fa": "بازار",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "prêt",
+   "type": "noun",
+   "article": "le",
+   "en": "loan",
+   "fa": "وام",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "publicité",
+   "type": "noun",
+   "article": "la",
+   "en": "advertising",
+   "fa": "تبلیغات",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "revenu",
+   "type": "noun",
+   "article": "le",
+   "en": "income",
+   "fa": "درآمد",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:riche",
+   "fr": "riche",
+   "type": "adjective",
+   "article": null,
+   "en": "rich, wealthy",
+   "fa": "ثروتمند، غنی",
+   "level": "B1"
+  },
+  {
+   "key": "n:somme",
+   "fr": "somme",
+   "type": "noun",
+   "article": "la",
+   "en": "sum, amount",
+   "fa": "مبلغ، جمع",
+   "level": "B1"
+  },
+  {
+   "key": "n:usine",
+   "fr": "usine",
+   "type": "noun",
+   "article": "l'",
+   "en": "factory",
+   "fa": "کارخانه",
+   "level": "B1"
+  },
+  {
+   "key": "n:valeur",
+   "fr": "valeur",
+   "type": "noun",
+   "article": "la",
+   "en": "value, worth",
+   "fa": "ارزش",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "virement",
+   "type": "noun",
+   "article": "le",
+   "en": "bank transfer",
+   "fa": "انتقال بانکی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:assurance",
+   "fr": "assurance",
+   "type": "noun",
+   "article": "l'",
+   "en": "insurance, confidence",
+   "fa": "بیمه، اطمینان",
+   "level": "B2"
+  },
+  {
+   "key": "n:avantage",
+   "fr": "avantage",
+   "type": "noun",
+   "article": "l'",
+   "en": "advantage",
+   "fa": "مزیت",
+   "level": "B2"
+  },
+  {
+   "key": "n:chiffre",
+   "fr": "chiffre",
+   "type": "noun",
+   "article": "le",
+   "en": "figure, digit",
+   "fa": "رقم، عدد",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "consommateur",
+   "type": "noun",
+   "article": "le",
+   "en": "consumer",
+   "fa": "مصرف‌کننده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "consommation",
+   "type": "noun",
+   "article": "la",
+   "en": "consumption",
+   "fa": "مصرف",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "croissance",
+   "type": "noun",
+   "article": "la",
+   "en": "growth",
+   "fa": "رشد",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:echange",
+   "fr": "échange",
+   "type": "noun",
+   "article": "l'",
+   "en": "exchange",
+   "fa": "تبادل، مبادله",
+   "level": "B2"
+  },
+  {
+   "key": "n:entreprise",
+   "fr": "entreprise",
+   "type": "noun",
+   "article": "l'",
+   "en": "company, business",
+   "fa": "شرکت، بنگاه",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "exportation",
+   "type": "noun",
+   "article": "l’",
+   "en": "export",
+   "fa": "صادرات",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "importation",
+   "type": "noun",
+   "article": "l’",
+   "en": "import",
+   "fa": "واردات",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "inégalité",
+   "type": "noun",
+   "article": "l’",
+   "en": "inequality",
+   "fa": "نابرابری",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "inflation",
+   "type": "noun",
+   "article": "l’",
+   "en": "inflation",
+   "fa": "تورم",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:luxe",
+   "fr": "luxe",
+   "type": "noun",
+   "article": "le",
+   "en": "luxury",
+   "fa": "تجمل، لوکس",
+   "level": "B2"
+  },
+  {
+   "key": "n:marchand",
+   "fr": "marchand",
+   "type": "noun",
+   "article": "le",
+   "en": "merchant, seller",
+   "fa": "فروشنده، بازرگان",
+   "level": "B2"
+  },
+  {
+   "key": "n:misere",
+   "fr": "misère",
+   "type": "noun",
+   "article": "la",
+   "en": "poverty, misery",
+   "fa": "فقر، بدبختی",
+   "level": "B2"
+  },
+  {
+   "key": "n:monnaie",
+   "fr": "monnaie",
+   "type": "noun",
+   "article": "la",
+   "en": "change, currency",
+   "fa": "پول خرد، واحد پول",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "pauvreté",
+   "type": "noun",
+   "article": "la",
+   "en": "poverty",
+   "fa": "فقر",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:perte",
+   "fr": "perte",
+   "type": "noun",
+   "article": "la",
+   "en": "loss",
+   "fa": "از دست دادن، ضرر",
+   "level": "B2"
+  },
+  {
+   "key": "n:produit",
+   "fr": "produit",
+   "type": "noun",
+   "article": "le",
+   "en": "product",
+   "fa": "محصول",
+   "level": "B2"
+  },
+  {
+   "key": "n:sou",
+   "fr": "sou",
+   "type": "noun",
+   "article": "le",
+   "en": "sou, penny (small coin)",
+   "fa": "شاهی، پشیز",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "taxe",
+   "type": "noun",
+   "article": "la",
+   "en": "tax, duty",
+   "fa": "عوارض",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:cheque",
+   "fr": "chèque",
+   "type": "noun",
+   "article": "le",
+   "en": "cheque",
+   "fa": "چک",
+   "level": "C1"
+  },
+  {
+   "key": "n:commerce",
+   "fr": "commerce",
+   "type": "noun",
+   "article": "le",
+   "en": "trade, shop, business",
+   "fa": "تجارت، مغازه",
+   "level": "C1"
+  },
+  {
+   "key": "n:credit",
+   "fr": "crédit",
+   "type": "noun",
+   "article": "le",
+   "en": "credit, loan",
+   "fa": "اعتبار، وام",
+   "level": "C1"
+  },
+  {
+   "key": "n:dette",
+   "fr": "dette",
+   "type": "noun",
+   "article": "la",
+   "en": "debt",
+   "fa": "بدهی",
+   "level": "C1"
+  },
+  {
+   "key": "n:economie",
+   "fr": "économie",
+   "type": "noun",
+   "article": "l'",
+   "en": "economy, saving",
+   "fa": "اقتصاد، صرفه‌جویی",
+   "level": "C1"
+  },
+  {
+   "key": "a:gratuit",
+   "fr": "gratuit",
+   "type": "adjective",
+   "article": null,
+   "en": "free, free of charge",
+   "fa": "رایگان",
+   "level": "C1"
+  },
+  {
+   "key": "n:offre",
+   "fr": "offre",
+   "type": "noun",
+   "article": "l'",
+   "en": "offer, supply",
+   "fa": "پیشنهاد، عرضه",
+   "level": "C1"
+  },
+  {
+   "key": "n:pension",
+   "fr": "pension",
+   "type": "noun",
+   "article": "la",
+   "en": "boarding house, pension",
+   "fa": "پانسیون، مستمری",
+   "level": "C1"
+  },
+  {
+   "key": "n:portefeuille",
+   "fr": "portefeuille",
+   "type": "noun",
+   "article": "le",
+   "en": "wallet",
+   "fa": "کیف پول",
+   "level": "C1"
+  },
+  {
+   "key": "n:profit",
+   "fr": "profit",
+   "type": "noun",
+   "article": "le",
+   "en": "profit",
+   "fa": "سود",
+   "level": "C1"
+  },
+  {
+   "key": null,
+   "fr": "récession",
+   "type": "noun",
+   "article": "la",
+   "en": "recession",
+   "fa": "رکود",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:richesse",
+   "fr": "richesse",
+   "type": "noun",
+   "article": "la",
+   "en": "wealth, richness",
+   "fa": "ثروت، غنا",
+   "level": "C1"
+  },
+  {
+   "key": "n:salaire",
+   "fr": "salaire",
+   "type": "noun",
+   "article": "le",
+   "en": "salary, wage",
+   "fa": "حقوق، دستمزد",
+   "level": "C1"
+  },
+  {
+   "key": "n:secteur",
+   "fr": "secteur",
+   "type": "noun",
+   "article": "le",
+   "en": "sector, area",
+   "fa": "بخش، حوزه",
+   "level": "C1"
+  },
+  {
+   "key": "n:vente",
+   "fr": "vente",
+   "type": "noun",
+   "article": "la",
+   "en": "sale, selling",
+   "fa": "فروش، حراج",
+   "level": "C1"
+  },
+  {
+   "key": "n:achat",
+   "fr": "achat",
+   "type": "noun",
+   "article": "l'",
+   "en": "purchase",
+   "fa": "خرید",
+   "level": "C2"
+  },
+  {
+   "key": "n:bourse",
+   "fr": "bourse",
+   "type": "noun",
+   "article": "la",
+   "en": "scholarship; stock exchange",
+   "fa": "بورسیه، بورس",
+   "level": "C2"
+  },
+  {
+   "key": "n:cachet",
+   "fr": "cachet",
+   "type": "noun",
+   "article": "le",
+   "en": "fee (for a performer); tablet; charm",
+   "fa": "دستمزد هنرمند؛ قرص؛ جذابیت",
+   "level": "C2"
+  },
+  {
+   "key": "a:economique",
+   "fr": "économique",
+   "type": "adjective",
+   "article": null,
+   "en": "economic; economical",
+   "fa": "اقتصادی",
+   "level": "C2"
+  },
+  {
+   "key": "n:facture",
+   "fr": "facture",
+   "type": "noun",
+   "article": "la",
+   "en": "bill, invoice",
+   "fa": "صورت‌حساب، فاکتور",
+   "level": "C2"
+  },
+  {
+   "key": "n:fonds",
+   "fr": "fonds",
+   "type": "noun",
+   "article": "le",
+   "en": "fund; (plural) funds",
+   "fa": "سرمایه، صندوق",
+   "level": "C2"
+  },
+  {
+   "key": "n:marchandise",
+   "fr": "marchandise",
+   "type": "noun",
+   "article": "la",
+   "en": "goods, merchandise",
+   "fa": "کالا",
+   "level": "C2"
+  },
+  {
+   "key": "n:milliard",
+   "fr": "milliard",
+   "type": "noun",
+   "article": "le",
+   "en": "billion (a thousand million)",
+   "fa": "میلیارد",
+   "level": "C2"
+  },
+  {
+   "key": "n:pognon",
+   "fr": "pognon",
+   "type": "noun",
+   "article": "le",
+   "en": "money, dough (informal)",
+   "fa": "پول (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:prime",
+   "fr": "prime",
+   "type": "noun",
+   "article": "la",
+   "en": "bonus; premium",
+   "fa": "پاداش؛ حق بیمه",
+   "level": "C2"
+  },
+  {
+   "key": "n:production",
+   "fr": "production",
+   "type": "noun",
+   "article": "la",
+   "en": "production",
+   "fa": "تولید",
+   "level": "C2"
+  },
+  {
+   "key": "n:recette",
+   "fr": "recette",
+   "type": "noun",
+   "article": "la",
+   "en": "recipe; takings",
+   "fa": "دستور پخت؛ درآمد",
+   "level": "C2"
+  },
+  {
+   "key": "n:ressource",
+   "fr": "ressource",
+   "type": "noun",
+   "article": "la",
+   "en": "resource",
+   "fa": "منبع، امکانات",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:compter",
+   "fr": "compter",
+   "type": "verb",
+   "en": "to count",
+   "fa": "شمردن، حساب کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:gagner",
+   "fr": "gagner",
+   "type": "verb",
+   "en": "to win",
+   "fa": "بردن، به دست آوردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:payer",
+   "fr": "payer",
+   "type": "verb",
+   "en": "to pay (for)",
+   "fa": "پرداخت کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:valoir",
+   "fr": "valoir",
+   "type": "verb",
+   "en": "to be worth",
+   "fa": "ارزش داشتن، قیمت داشتن",
+   "level": "A1"
+  },
+  {
+   "key": "v:coûter",
+   "fr": "coûter",
+   "type": "verb",
+   "en": "to cost",
+   "fa": "قیمت داشتن، هزینه داشتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:dépenser",
+   "fr": "dépenser",
+   "type": "verb",
+   "en": "to spend (money)",
+   "fa": "خرج کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:emprunter",
+   "fr": "emprunter",
+   "type": "verb",
+   "en": "to borrow",
+   "fa": "قرض گرفتن، امانت گرفتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:prêter",
+   "fr": "prêter",
+   "type": "verb",
+   "en": "to lend",
+   "fa": "قرض دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:produire",
+   "fr": "produire",
+   "type": "verb",
+   "en": "to produce, to yield",
+   "fa": "تولید کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:calculer",
+   "fr": "calculer",
+   "type": "verb",
+   "en": "to calculate (all meanings)",
+   "fa": "محاسبه کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:échanger",
+   "fr": "échanger",
+   "type": "verb",
+   "en": "to exchange, to swap",
+   "fa": "مبادله کردن، عوض کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:économiser",
+   "fr": "économiser",
+   "type": "verb",
+   "en": "to economise (to conserve money)",
+   "fa": "پس‌انداز کردن، صرفه‌جویی کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:épargner",
+   "fr": "épargner",
+   "type": "verb",
+   "en": "to save (time, money etc.)",
+   "fa": "پس‌انداز کردن، دریغ کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:gérer",
+   "fr": "gérer",
+   "type": "verb",
+   "en": "to manage",
+   "fa": "مدیریت کردن، اداره کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:investir",
+   "fr": "investir",
+   "type": "verb",
+   "en": "to invest",
+   "fa": "سرمایه‌گذاری کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:négocier",
+   "fr": "négocier",
+   "type": "verb",
+   "en": "to negotiate",
+   "fa": "مذاکره کردن، چانه زدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:rembourser",
+   "fr": "rembourser",
+   "type": "verb",
+   "en": "to pay back, refund, reimburse",
+   "fa": "پس دادن (پول)، بازپرداخت کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:ruiner",
+   "fr": "ruiner",
+   "type": "verb",
+   "en": "to ruin",
+   "fa": "ویران کردن، ورشکست کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:acquérir",
+   "fr": "acquérir",
+   "type": "verb",
+   "en": "to acquire, to obtain",
+   "fa": "به دست آوردن، خریدن",
+   "level": "B2"
+  },
+  {
+   "key": "v:consommer",
+   "fr": "consommer",
+   "type": "verb",
+   "en": "to consume, to ingest",
+   "fa": "مصرف کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:encaisser",
+   "fr": "encaisser",
+   "type": "verb",
+   "en": "to collect, to cash",
+   "fa": "وصول کردن، دریافت کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:exploiter",
+   "fr": "exploiter",
+   "type": "verb",
+   "en": "to exploit",
+   "fa": "بهره‌برداری کردن، اداره کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:casquer",
+   "fr": "casquer",
+   "type": "verb",
+   "en": "to fall into a trap, particularly by paying money in advance",
+   "fa": "پول دادن (عامیانه)",
+   "level": "C1"
+  },
+  {
+   "key": "v:financer",
+   "fr": "financer",
+   "type": "verb",
+   "en": "to fund",
+   "fa": "تأمین مالی کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:solder",
+   "fr": "solder",
+   "type": "verb",
+   "en": "to close (a deal)",
+   "fa": "حراج کردن، تسویه کردن (حساب)",
+   "level": "C2"
+  },
+  {
+   "key": "v:taxer",
+   "fr": "taxer",
+   "type": "verb",
+   "en": "to tax, to impose a tax on",
+   "fa": "متهم کردن به، مالیات بستن بر",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je n'ai pas assez d'argent.",
+   "en": "I don't have enough money.",
+   "fa": "پول کافی ندارم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je voudrais ouvrir un compte à la banque.",
+   "en": "I would like to open a bank account.",
+   "fa": "می‌خواهم در بانک حساب باز کنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je dois payer mes factures avant la fin du mois.",
+   "en": "I have to pay my bills before the end of the month.",
+   "fa": "باید قبض‌هایم را پیش از پایان ماه بپردازم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je dépense beaucoup en transports et en loyer.",
+   "en": "I spend a lot on transport and rent.",
+   "fa": "برای رفت‌وآمد و اجاره‌بها خیلی خرج می‌کنم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Est-ce que vous acceptez les paiements par carte ?",
+   "en": "Do you accept card payments?",
+   "fa": "آیا پرداخت با کارت را می‌پذیرید؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'essaie d'économiser un peu chaque mois.",
+   "en": "I try to save a little every month.",
+   "fa": "سعی می‌کنم هر ماه کمی پس‌انداز کنم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je voudrais faire un virement vers un compte à l'étranger.",
+   "en": "I would like to make a transfer to an account abroad.",
+   "fa": "می‌خواهم به یک حساب در خارج از کشور انتقال بانکی انجام بدهم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Tout est devenu plus cher, et mon salaire n'a pas augmenté.",
+   "en": "Everything has become more expensive, and my salary has not gone up.",
+   "fa": "همه‌چیز گران‌تر شده و حقوق من بالا نرفته است.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je tiens à vous informer d'une erreur sur ma facture du mois dernier.",
+   "en": "I would like to inform you of an error on my bill from last month.",
+   "fa": "می‌خواهم شما را از اشتباهی در صورتحساب ماه گذشته‌ام مطلع کنم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "L'inflation a fortement réduit le pouvoir d'achat des ménages.",
+   "en": "Inflation has sharply reduced households' purchasing power.",
+   "fa": "تورم قدرت خرید خانوارها را به شدت کاهش داده است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La société de consommation nous pousse à acheter toujours plus, souvent sans réfléchir.",
+   "en": "The consumer society pushes us to buy more and more, often without thinking.",
+   "fa": "جامعه مصرفی ما را به خرید بیشتر و بیشتر، اغلب بدون فکر، وا می‌دارد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Selon moi, l'État devrait davantage aider les petites entreprises.",
+   "en": "In my view, the State should do more to help small businesses.",
+   "fa": "به نظر من، دولت باید بیشتر به کسب‌وکارهای کوچک کمک کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Les inégalités de revenus se sont creusées au cours des dernières décennies.",
+   "en": "Income inequalities have widened over recent decades.",
+   "fa": "نابرابری درآمدی در دهه‌های اخیر عمیق‌تر شده است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "D'un côté, la mondialisation crée des emplois ; de l'autre, elle en supprime.",
+   "en": "On the one hand, globalisation creates jobs; on the other, it destroys them.",
+   "fa": "از یک سو جهانی‌شدن شغل ایجاد می‌کند؛ از سوی دیگر شغل‌هایی را از بین می‌برد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Une croissance qui ignore ses coûts écologiques n'est pas viable à long terme.",
+   "en": "Growth that ignores its ecological costs is not viable in the long term.",
+   "fa": "رشدی که هزینه‌های زیست‌محیطی خود را نادیده می‌گیرد در بلندمدت پایدار نیست.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CO",
+   "topic": "sites internet de don d'objets (Consoblog.com)",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 2 (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-candidat-coll-sujet-demo_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Que faut-il faire pour donner un objet sur le site Consoblog.com ?"
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "CO",
+   "topic": "émission de conseils aux consommateurs : gratuité, offres des supermarchés, restaurants",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 2 (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-candidat-coll-sujet-demo_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Cette émission vise à…"
+  },
+  {
+   "exam": "dalf",
+   "level": "C1",
+   "paper": "CO",
+   "topic": "entretien avec Michel Serres : économie, pollution, mesure du bonheur",
+   "source": {
+    "what": "DALF C1, sujet démo (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-candidat-coll.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Dans cet entretien, la réflexion de Michel Serres porte"
+  }
+ ]
+}

@@ -62,6 +62,11 @@ const GrammarOrConcept = lazy(() => import('./routes/app/GrammarOrConcept').then
 const Progress = lazy(() => import('./routes/Progress').then((m) => ({ default: m.Progress })));
 const ExamChooser = lazy(() => import('./routes/exam/ExamPages').then((m) => ({ default: m.ExamChooser })));
 const ExamPage = lazy(() => import('./routes/exam/ExamPages').then((m) => ({ default: m.ExamPage })));
+// Themes and free resources (2026-11-06): one lazy chunk for the three pages.
+const topics = () => import('./routes/topics/Topics');
+const TopicList = lazy(() => topics().then((m) => ({ default: m.TopicList })));
+const TopicDetail = lazy(() => topics().then((m) => ({ default: m.TopicDetail })));
+const ResourceList = lazy(() => topics().then((m) => ({ default: m.ResourceList })));
 const Reader = lazy(() => import('./features/reader').then((m) => ({ default: m.Reader })));
 
 /** A lazy route still has to render something while its chunk arrives, and a
@@ -124,6 +129,9 @@ function AppRoutes() {
           <Route path="exams/:paperId" element={lazily(<ExamPaperRoute />)} />
           <Route path="exams/:paperId/sit" element={lazily(<ExamSit />)} />
           <Route path="exams/:paperId/results" element={lazily(<ExamResults />)} />
+          <Route path="themes" element={lazily(<TopicList />)} />
+          <Route path="themes/:id" element={lazily(<TopicDetail />)} />
+          <Route path="resources" element={lazily(<ResourceList />)} />
           <Route path="saved" element={<PlaceholderRoute id="saved" />} />
           <Route path="progress" element={lazily(<Progress />)} />
           <Route path="search" element={lazily(<SearchRoute />)} />

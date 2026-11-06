@@ -29,7 +29,7 @@ const R = (p) => readFileSync(new URL(`../${p}`, import.meta.url), 'utf8');
 const src = R('web/src/lib/i18n.ts');
 // Four optional English groups belong to lazy routes and live in their own files
 // (web/src/lib/locales/en/); the rest stay in i18n.ts, which the first load needs.
-const LAZY_EN = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn'];   // todayEn added 2026-11-03
+const LAZY_EN = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'topicsEn'];   // todayEn added 2026-11-03
 const sourceFor = (c) => (['en', 'landingEn', 'nextEn', 'importEn', 'shellEn'].includes(c) ? src
   : LAZY_EN.includes(c) ? R(`web/src/lib/locales/en/${c}.ts`)
   : R(`web/src/lib/locales/${c}.ts`));
@@ -92,7 +92,7 @@ function entries(code) {
  */
 const optional = new Map([...entries('landingEn'), ...entries('nextEn'),
                           ...entries('importEn'), ...entries('workspaceEn'), ...entries('shellEn'),
-                          ...entries('weaknessEn'), ...entries('grammarEn'), ...entries('readerEn'), ...entries('todayEn')]);
+                          ...entries('weaknessEn'), ...entries('grammarEn'), ...entries('readerEn'), ...entries('todayEn'), ...entries('topicsEn')]);
 const LANDING = [...optional.keys()];
 
 const dict = Object.fromEntries(LOC.map((c) => [

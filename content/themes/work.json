@@ -1,0 +1,1236 @@
+{
+ "id": "work",
+ "names": {
+  "fr": "Le travail",
+  "en": "Work and jobs",
+  "fa": "کار و شغل"
+ },
+ "counts": {
+  "words": 82,
+  "verbs": 20,
+  "expressions": 15
+ },
+ "exams": [
+  {
+   "exam": "dalf",
+   "level": "C1"
+  },
+  {
+   "exam": "delf",
+   "level": "A1"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  },
+  {
+   "exam": "delf",
+   "level": "B2"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:bureau",
+   "fr": "bureau",
+   "type": "noun",
+   "article": "le",
+   "en": "office; desk",
+   "fa": "دفتر؛ میز تحریر",
+   "level": "A1"
+  },
+  {
+   "key": "n:chef",
+   "fr": "chef",
+   "type": "noun",
+   "article": "le",
+   "en": "boss, chief, chef",
+   "fa": "رئیس، سرآشپز",
+   "level": "A1"
+  },
+  {
+   "key": "n:travail",
+   "fr": "travail",
+   "type": "noun",
+   "article": "le",
+   "en": "work, job",
+   "fa": "کار",
+   "level": "A1"
+  },
+  {
+   "key": "n:agent",
+   "fr": "agent",
+   "type": "noun",
+   "article": "l'",
+   "en": "agent, officer",
+   "fa": "مأمور، عامل",
+   "level": "A2"
+  },
+  {
+   "key": "n:avocat",
+   "fr": "avocat",
+   "type": "noun",
+   "article": "l'",
+   "en": "lawyer, avocado",
+   "fa": "وکیل، آووکادو",
+   "level": "A2"
+  },
+  {
+   "key": "n:boulot",
+   "fr": "boulot",
+   "type": "noun",
+   "article": "le",
+   "en": "job, work (informal)",
+   "fa": "کار، شغل (محاوره‌ای)",
+   "level": "A2"
+  },
+  {
+   "key": "n:client",
+   "fr": "client",
+   "type": "noun",
+   "article": "le",
+   "en": "customer, client",
+   "fa": "مشتری",
+   "level": "A2"
+  },
+  {
+   "key": "n:equipe",
+   "fr": "équipe",
+   "type": "noun",
+   "article": "l'",
+   "en": "team",
+   "fa": "تیم",
+   "level": "A2"
+  },
+  {
+   "key": "n:machine",
+   "fr": "machine",
+   "type": "noun",
+   "article": "la",
+   "en": "machine",
+   "fa": "ماشین، دستگاه",
+   "level": "A2"
+  },
+  {
+   "key": "n:medecin",
+   "fr": "médecin",
+   "type": "noun",
+   "article": "le",
+   "en": "doctor",
+   "fa": "پزشک، دکتر",
+   "level": "A2"
+  },
+  {
+   "key": "n:patron",
+   "fr": "patron",
+   "type": "noun",
+   "article": "le",
+   "en": "boss, owner",
+   "fa": "رئیس، کارفرما",
+   "level": "A2"
+  },
+  {
+   "key": "n:poste",
+   "fr": "poste",
+   "type": "noun",
+   "article": "le",
+   "en": "job, position (la poste: post office)",
+   "fa": "شغل، پست (la poste: اداره‌ی پست)",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "profession",
+   "type": "noun",
+   "article": "la",
+   "en": "profession",
+   "fa": "حرفه",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "candidat",
+   "type": "noun",
+   "article": "le",
+   "en": "applicant, candidate",
+   "fa": "متقاضی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "candidature",
+   "type": "noun",
+   "article": "la",
+   "en": "application",
+   "fa": "درخواست استخدام",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:chauffeur",
+   "fr": "chauffeur",
+   "type": "noun",
+   "article": "le",
+   "en": "driver",
+   "fa": "راننده",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "chômage",
+   "type": "noun",
+   "article": "le",
+   "en": "unemployment",
+   "fa": "بیکاری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "chômeur",
+   "type": "noun",
+   "article": "le",
+   "en": "unemployed person",
+   "fa": "بیکار",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "compétence",
+   "type": "noun",
+   "article": "la",
+   "en": "skill",
+   "fa": "مهارت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:directeur",
+   "fr": "directeur",
+   "type": "noun",
+   "article": "le",
+   "en": "director, headmaster",
+   "fa": "مدیر",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "expérience",
+   "type": "noun",
+   "article": "l’",
+   "en": "experience",
+   "fa": "تجربه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "horaires",
+   "type": "noun",
+   "article": "les",
+   "en": "working hours",
+   "fa": "ساعات کاری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:metier",
+   "fr": "métier",
+   "type": "noun",
+   "article": "le",
+   "en": "job, trade",
+   "fa": "شغل، حرفه",
+   "level": "B1"
+  },
+  {
+   "key": "n:mission",
+   "fr": "mission",
+   "type": "noun",
+   "article": "la",
+   "en": "mission, assignment",
+   "fa": "مأموریت",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "offre",
+   "type": "noun",
+   "article": "l’",
+   "en": "offer; job advert",
+   "fa": "آگهی استخدام",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:reunion",
+   "fr": "réunion",
+   "type": "noun",
+   "article": "la",
+   "en": "meeting",
+   "fa": "جلسه",
+   "level": "B1"
+  },
+  {
+   "key": "n:societe",
+   "fr": "société",
+   "type": "noun",
+   "article": "la",
+   "en": "society, company",
+   "fa": "جامعه، شرکت",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "stage",
+   "type": "noun",
+   "article": "le",
+   "en": "internship",
+   "fa": "کارآموزی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "stagiaire",
+   "type": "noun",
+   "article": "le",
+   "en": "intern",
+   "fa": "کارآموز",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "télétravail",
+   "type": "noun",
+   "article": "le",
+   "en": "remote working",
+   "fa": "دورکاری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:usine",
+   "fr": "usine",
+   "type": "noun",
+   "article": "l'",
+   "en": "factory",
+   "fa": "کارخانه",
+   "level": "B1"
+  },
+  {
+   "key": "n:atelier",
+   "fr": "atelier",
+   "type": "noun",
+   "article": "l'",
+   "en": "workshop, studio",
+   "fa": "کارگاه، آتلیه",
+   "level": "B2"
+  },
+  {
+   "key": "n:cabinet",
+   "fr": "cabinet",
+   "type": "noun",
+   "article": "le",
+   "en": "office, surgery",
+   "fa": "مطب، دفتر",
+   "level": "B2"
+  },
+  {
+   "key": "n:cadre",
+   "fr": "cadre",
+   "type": "noun",
+   "article": "le",
+   "en": "frame, executive",
+   "fa": "قاب، مدیر",
+   "level": "B2"
+  },
+  {
+   "key": "n:carriere",
+   "fr": "carrière",
+   "type": "noun",
+   "article": "la",
+   "en": "career",
+   "fa": "حرفه، مسیر شغلی",
+   "level": "B2"
+  },
+  {
+   "key": "n:charge",
+   "fr": "charge",
+   "type": "noun",
+   "article": "la",
+   "en": "burden, responsibility",
+   "fa": "بار، مسئولیت",
+   "level": "B2"
+  },
+  {
+   "key": "n:collegue",
+   "fr": "collègue",
+   "type": "noun",
+   "article": "le",
+   "en": "colleague (m. or f.)",
+   "fa": "همکار",
+   "level": "B2"
+  },
+  {
+   "key": "n:contrat",
+   "fr": "contrat",
+   "type": "noun",
+   "article": "le",
+   "en": "contract",
+   "fa": "قرارداد",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "démission",
+   "type": "noun",
+   "article": "la",
+   "en": "resignation",
+   "fa": "استعفا",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "embauche",
+   "type": "noun",
+   "article": "l’",
+   "en": "hiring",
+   "fa": "استخدام",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:emploi",
+   "fr": "emploi",
+   "type": "noun",
+   "article": "l'",
+   "en": "job, use",
+   "fa": "شغل، کاربرد",
+   "level": "B2"
+  },
+  {
+   "key": "n:employe",
+   "fr": "employé",
+   "type": "noun",
+   "article": "l'",
+   "en": "employee",
+   "fa": "کارمند",
+   "level": "B2"
+  },
+  {
+   "key": "n:entreprise",
+   "fr": "entreprise",
+   "type": "noun",
+   "article": "l'",
+   "en": "company, business",
+   "fa": "شرکت، بنگاه",
+   "level": "B2"
+  },
+  {
+   "key": "n:fonction",
+   "fr": "fonction",
+   "type": "noun",
+   "article": "la",
+   "en": "function, role",
+   "fa": "نقش، وظیفه",
+   "level": "B2"
+  },
+  {
+   "key": "n:infirmier",
+   "fr": "infirmier",
+   "type": "noun",
+   "article": "l'",
+   "en": "nurse",
+   "fa": "پرستار",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "licenciement",
+   "type": "noun",
+   "article": "le",
+   "en": "dismissal",
+   "fa": "اخراج",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:organisation",
+   "fr": "organisation",
+   "type": "noun",
+   "article": "l'",
+   "en": "organisation",
+   "fa": "سازمان، سازمان‌دهی",
+   "level": "B2"
+  },
+  {
+   "key": "n:ouvrier",
+   "fr": "ouvrier",
+   "type": "noun",
+   "article": "l'",
+   "en": "worker",
+   "fa": "کارگر",
+   "level": "B2"
+  },
+  {
+   "key": "n:responsabilite",
+   "fr": "responsabilité",
+   "type": "noun",
+   "article": "la",
+   "en": "responsibility",
+   "fa": "مسئولیت",
+   "level": "B2"
+  },
+  {
+   "key": "a:responsable",
+   "fr": "responsable",
+   "type": "adjective",
+   "article": null,
+   "en": "responsible",
+   "fa": "مسئول",
+   "level": "B2"
+  },
+  {
+   "key": "n:retraite",
+   "fr": "retraite",
+   "type": "noun",
+   "article": "la",
+   "en": "retirement, retreat",
+   "fa": "بازنشستگی، عقب‌نشینی",
+   "level": "B2"
+  },
+  {
+   "key": "n:secretaire",
+   "fr": "secrétaire",
+   "type": "noun",
+   "article": "la",
+   "en": "secretary (m. or f.)",
+   "fa": "منشی",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "syndicat",
+   "type": "noun",
+   "article": "le",
+   "en": "trade union",
+   "fa": "اتحادیه کارگری",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:administration",
+   "fr": "administration",
+   "type": "noun",
+   "article": "l'",
+   "en": "administration",
+   "fa": "اداره، مدیریت",
+   "level": "C1"
+  },
+  {
+   "key": "n:agence",
+   "fr": "agence",
+   "type": "noun",
+   "article": "l'",
+   "en": "agency",
+   "fa": "آژانس",
+   "level": "C1"
+  },
+  {
+   "key": "n:assistant",
+   "fr": "assistant",
+   "type": "noun",
+   "article": "l'",
+   "en": "assistant",
+   "fa": "دستیار",
+   "level": "C1"
+  },
+  {
+   "key": "n:coiffeur",
+   "fr": "coiffeur",
+   "type": "noun",
+   "article": "le",
+   "en": "hairdresser",
+   "fa": "آرایشگر مو",
+   "level": "C1"
+  },
+  {
+   "key": "n:commerce",
+   "fr": "commerce",
+   "type": "noun",
+   "article": "le",
+   "en": "trade, shop, business",
+   "fa": "تجارت، مغازه",
+   "level": "C1"
+  },
+  {
+   "key": "n:conge",
+   "fr": "congé",
+   "type": "noun",
+   "article": "le",
+   "en": "leave, time off",
+   "fa": "مرخصی",
+   "level": "C1"
+  },
+  {
+   "key": "n:cuisinier",
+   "fr": "cuisinier",
+   "type": "noun",
+   "article": "le",
+   "en": "cook",
+   "fa": "آشپز",
+   "level": "C1"
+  },
+  {
+   "key": "n:entretien",
+   "fr": "entretien",
+   "type": "noun",
+   "article": "l'",
+   "en": "interview, maintenance",
+   "fa": "مصاحبه، نگهداری",
+   "level": "C1"
+  },
+  {
+   "key": "n:greve",
+   "fr": "grève",
+   "type": "noun",
+   "article": "la",
+   "en": "strike",
+   "fa": "اعتصاب",
+   "level": "C1"
+  },
+  {
+   "key": "n:instituteur",
+   "fr": "instituteur",
+   "type": "noun",
+   "article": "l'",
+   "en": "primary-school teacher",
+   "fa": "معلم دبستان",
+   "level": "C1"
+  },
+  {
+   "key": "n:outil",
+   "fr": "outil",
+   "type": "noun",
+   "article": "l'",
+   "en": "tool",
+   "fa": "ابزار",
+   "level": "C1"
+  },
+  {
+   "key": "n:pilote",
+   "fr": "pilote",
+   "type": "noun",
+   "article": "le",
+   "en": "pilot, racing driver (m. or f.)",
+   "fa": "خلبان، راننده‌ی مسابقه",
+   "level": "C1"
+  },
+  {
+   "key": "a:professionnel",
+   "fr": "professionnel",
+   "type": "adjective",
+   "article": null,
+   "en": "professional",
+   "fa": "حرفه‌ای",
+   "level": "C1"
+  },
+  {
+   "key": "n:representant",
+   "fr": "représentant",
+   "type": "noun",
+   "article": "le",
+   "en": "representative",
+   "fa": "نماینده",
+   "level": "C1"
+  },
+  {
+   "key": "n:salaire",
+   "fr": "salaire",
+   "type": "noun",
+   "article": "le",
+   "en": "salary, wage",
+   "fa": "حقوق، دستمزد",
+   "level": "C1"
+  },
+  {
+   "key": "n:secteur",
+   "fr": "secteur",
+   "type": "noun",
+   "article": "le",
+   "en": "sector, area",
+   "fa": "بخش، حوزه",
+   "level": "C1"
+  },
+  {
+   "key": "n:serveur",
+   "fr": "serveur",
+   "type": "noun",
+   "article": "le",
+   "en": "waiter",
+   "fa": "گارسون، پیشخدمت",
+   "level": "C1"
+  },
+  {
+   "key": "n:vendeur",
+   "fr": "vendeur",
+   "type": "noun",
+   "article": "le",
+   "en": "salesperson, shop assistant",
+   "fa": "فروشنده",
+   "level": "C1"
+  },
+  {
+   "key": "n:facteur",
+   "fr": "facteur",
+   "type": "noun",
+   "article": "le",
+   "en": "postman; factor",
+   "fa": "پستچی؛ عامل",
+   "level": "C2"
+  },
+  {
+   "key": "n:fonctionnaire",
+   "fr": "fonctionnaire",
+   "type": "noun",
+   "article": "le",
+   "en": "civil servant, official",
+   "fa": "کارمند دولت",
+   "level": "C2"
+  },
+  {
+   "key": "n:formation",
+   "fr": "formation",
+   "type": "noun",
+   "article": "la",
+   "en": "training; formation",
+   "fa": "آموزش؛ شکل‌گیری",
+   "level": "C2"
+  },
+  {
+   "key": "n:ingenieur",
+   "fr": "ingénieur",
+   "type": "noun",
+   "article": "l'",
+   "en": "engineer",
+   "fa": "مهندس",
+   "level": "C2"
+  },
+  {
+   "key": "n:job",
+   "fr": "job",
+   "type": "noun",
+   "article": "le",
+   "en": "job (informal)",
+   "fa": "کار، شغل (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:labo",
+   "fr": "labo",
+   "type": "noun",
+   "article": "le",
+   "en": "lab (informal)",
+   "fa": "آزمایشگاه (محاوره‌ای)",
+   "level": "C2"
+  },
+  {
+   "key": "n:office",
+   "fr": "office",
+   "type": "noun",
+   "article": "l'",
+   "en": "office, bureau; church service",
+   "fa": "اداره، دفتر؛ مراسم کلیسایی",
+   "level": "C2"
+  },
+  {
+   "key": "n:prime",
+   "fr": "prime",
+   "type": "noun",
+   "article": "la",
+   "en": "bonus; premium",
+   "fa": "پاداش؛ حق بیمه",
+   "level": "C2"
+  },
+  {
+   "key": "n:production",
+   "fr": "production",
+   "type": "noun",
+   "article": "la",
+   "en": "production",
+   "fa": "تولید",
+   "level": "C2"
+  },
+  {
+   "key": "n:specialiste",
+   "fr": "spécialiste",
+   "type": "noun",
+   "article": "le",
+   "en": "specialist",
+   "fa": "متخصص",
+   "level": "C2"
+  },
+  {
+   "key": "n:vocation",
+   "fr": "vocation",
+   "type": "noun",
+   "article": "la",
+   "en": "calling, vocation",
+   "fa": "رسالت، گرایش درونی به یک کار",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:travailler",
+   "fr": "travailler",
+   "type": "verb",
+   "en": "to work",
+   "fa": "کار کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:diriger",
+   "fr": "diriger",
+   "type": "verb",
+   "en": "to run, to direct (be the director of)",
+   "fa": "اداره کردن، رهبری کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:engager",
+   "fr": "engager",
+   "type": "verb",
+   "en": "to pledge, commit",
+   "fa": "استخدام کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:fabriquer",
+   "fr": "fabriquer",
+   "type": "verb",
+   "en": "to make, to build, to manufacture",
+   "fa": "ساختن، تولید کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:produire",
+   "fr": "produire",
+   "type": "verb",
+   "en": "to produce, to yield",
+   "fa": "تولید کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:bosser",
+   "fr": "bosser",
+   "type": "verb",
+   "en": "to work, labour, do a day's work (informal)",
+   "fa": "کار کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:coopérer",
+   "fr": "coopérer",
+   "type": "verb",
+   "en": "to cooperate",
+   "fa": "همکاری کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:démissionner",
+   "fr": "démissionner",
+   "type": "verb",
+   "en": "to resign",
+   "fa": "استعفا دادن",
+   "level": "B1"
+  },
+  {
+   "key": "v:embaucher",
+   "fr": "embaucher",
+   "type": "verb",
+   "en": "to hire, to employ",
+   "fa": "استخدام کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:employer",
+   "fr": "employer",
+   "type": "verb",
+   "en": "to use (a physical thing)",
+   "fa": "به کار بردن، استخدام کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:exercer",
+   "fr": "exercer",
+   "type": "verb",
+   "en": "to instruct, to command",
+   "fa": "تمرین کردن، به کار بردن، اشتغال داشتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:gérer",
+   "fr": "gérer",
+   "type": "verb",
+   "en": "to manage",
+   "fa": "مدیریت کردن، اداره کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:négocier",
+   "fr": "négocier",
+   "type": "verb",
+   "en": "to negotiate",
+   "fa": "مذاکره کردن، چانه زدن",
+   "level": "B1"
+  },
+  {
+   "key": "v:recruter",
+   "fr": "recruter",
+   "type": "verb",
+   "en": "to recruit",
+   "fa": "استخدام کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:collaborer",
+   "fr": "collaborer",
+   "type": "verb",
+   "en": "to collaborate",
+   "fa": "همکاری کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:déléguer",
+   "fr": "déléguer",
+   "type": "verb",
+   "en": "to delegate (to commit a task to someone), depute",
+   "fa": "واگذار کردن، نماینده فرستادن",
+   "level": "C1"
+  },
+  {
+   "key": "v:licencier",
+   "fr": "licencier",
+   "type": "verb",
+   "en": "to fire, to sack (to terminate the employment of)",
+   "fa": "اخراج کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:trimer",
+   "fr": "trimer",
+   "type": "verb",
+   "en": "to slave away (to work very hard) (colloquial)",
+   "fa": "جان کندن، سخت کار کردن (عامیانه)",
+   "level": "C1"
+  },
+  {
+   "key": "v:coordonner",
+   "fr": "coordonner",
+   "type": "verb",
+   "en": "to coordinate, to organise thoroughly",
+   "fa": "هماهنگ کردن",
+   "level": "C2"
+  },
+  {
+   "key": "v:superviser",
+   "fr": "superviser",
+   "type": "verb",
+   "en": "to supervise",
+   "fa": "نظارت کردن بر، سرپرستی کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Je travaille dans un bureau.",
+   "en": "I work in an office.",
+   "fa": "من در یک دفتر کار می‌کنم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Quelle est votre profession ?",
+   "en": "What is your job?",
+   "fa": "شغل شما چیست؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis ingénieur.",
+   "en": "I am an engineer.",
+   "fa": "من مهندس هستم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je cherche du travail dans la restauration.",
+   "en": "I am looking for work in catering.",
+   "fa": "دنبال کار در رستوران‌داری می‌گردم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je travaille du lundi au vendredi, de neuf heures à dix-sept heures.",
+   "en": "I work Monday to Friday, from nine to five.",
+   "fa": "دوشنبه تا جمعه، از ساعت نه تا پنج کار می‌کنم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai un entretien d'embauche demain matin.",
+   "en": "I have a job interview tomorrow morning.",
+   "fa": "فردا صبح مصاحبه استخدامی دارم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je vous envoie mon CV en pièce jointe.",
+   "en": "I am sending you my CV as an attachment.",
+   "fa": "رزومه‌ام را پیوست ایمیل می‌فرستم.",
+   "level": "A2",
+   "use": "writing"
+  },
+  {
+   "fr": "Je vous prie de trouver ci-joint ma candidature pour le poste de comptable.",
+   "en": "Please find attached my application for the accountant position.",
+   "fa": "لطفاً درخواست من برای سمت حسابدار را در پیوست ملاحظه بفرمایید.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "J'ai cinq ans d'expérience dans la vente.",
+   "en": "I have five years of experience in sales.",
+   "fa": "پنج سال سابقه کار در فروش دارم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Quel est le salaire proposé pour ce poste ?",
+   "en": "What salary is offered for this position?",
+   "fa": "حقوق پیشنهادی برای این سمت چقدر است؟",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je suis à la recherche d'un poste qui corresponde à mes compétences.",
+   "en": "I am looking for a position that matches my skills.",
+   "fa": "دنبال شغلی هستم که با مهارت‌هایم هم‌خوانی داشته باشد.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Le télétravail offre plus de liberté, mais il peut isoler les salariés.",
+   "en": "Remote working offers more freedom, but it can isolate employees.",
+   "fa": "دورکاری آزادی بیشتری می‌دهد، اما ممکن است کارمندان را منزوی کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il est parfois difficile de trouver un équilibre entre vie professionnelle et vie privée.",
+   "en": "It is sometimes difficult to find a balance between work and private life.",
+   "fa": "گاهی یافتن تعادل میان زندگی کاری و زندگی شخصی دشوار است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "À mon avis, les jeunes diplômés devraient être mieux accompagnés dans leur recherche d'emploi.",
+   "en": "In my opinion, young graduates should receive more support in their job search.",
+   "fa": "به نظر من، فارغ‌التحصیلان جوان باید در جست‌وجوی کار حمایت بیشتری شوند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La précarité de l'emploi fragilise durablement la situation des jeunes actifs.",
+   "en": "Job insecurity lastingly weakens the situation of young workers.",
+   "fa": "ناپایداری شغلی وضعیت نیروی کار جوان را به‌طور پایدار شکننده می‌کند.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "CO",
+   "topic": "message d'un collègue sur répondeur : absence du bureau, réunion",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo (candidat, épreuves collectives), delfdalf.ch",
+    "url": "https://www.delfdalf.ch/fileadmin/user_upload/Unterlagen/Exemples_examens/A1/A1_TP/2022_uploads/delfa1toutpubliccandidatexemple2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Votre collègue Romain laisse le message suivant sur votre répondeur"
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "CE",
+   "topic": "boulangerie : règles de propreté, consignes aux employés, mode d'emploi d'une machine à glaces",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/sujet_demo_2019_tp_a2_candidat_2_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "travaillez dans une boulangerie. Vous lisez ces documents."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : entretien d'embauche avec le directeur d'une entreprise",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous avez un entretien avec le directeur d’une grande entreprise."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PE",
+   "topic": "réponse à un ami qui doit quitter Brest pour New York : nature, langue, logement, amis",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 2 (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-candidat-coll-sujet-demo_exemple_2.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Mon entreprise me propose de quitter Brest pour aller travailler à New York."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "interaction : fête de départ en retraite d'un collègue",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "pour le départ en retraite d’un collègue"
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "document déclencheur : le télétravail",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Travailler dans son salon"
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "document déclencheur : les petits boulots d'été",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Les petits boulots d’été"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "CO",
+   "topic": "radio : organisation du travail, hôtels de travail (Sanofi, Google)",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo 2019 exemple 1 (candidat), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/Sujet_demo_2019_TP_B2_candidat_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "la nouvelle organisation concerne"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "PO",
+   "topic": "document déclencheur : le travail, c'est le bonheur ? (baromètre du bonheur au travail)",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_ex1_PO_examinateur_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Est-ce que le travail, c’est le bonheur ?"
+  },
+  {
+   "exam": "delf",
+   "level": "B2",
+   "paper": "PO",
+   "topic": "document déclencheur : le télétravail, une solution durable ?",
+   "source": {
+    "what": "DELF B2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B2/BS_TP/b2_ex1_PO_examinateur_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Le télétravail, une solution durable ?"
+  },
+  {
+   "exam": "dalf",
+   "level": "C1",
+   "paper": "CE",
+   "topic": "article : « Changer de vie », reconversion professionnelle, maisons d'hôtes",
+   "source": {
+    "what": "DALF C1, sujet démo (candidat, collectif), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-candidat-coll.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Changer de vie, le syndrome du tourisme"
+  },
+  {
+   "exam": "dalf",
+   "level": "C1",
+   "paper": "PO",
+   "topic": "exposé sujet 1 : le travail est-il nécessaire au bonheur ?",
+   "source": {
+    "what": "DALF C1, sujet démo (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DALF_C1/dalf-c1_sujet-demo-examinateur.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Le travail est-il nécessaire au bonheur ?"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section A : téléphoner pour une offre d'emploi (personne âgée à domicile)",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Recherche personne pour s’occuper"
+  }
+ ]
+}

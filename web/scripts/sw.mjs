@@ -24,7 +24,8 @@ const fonts = walk('fonts', 'fonts/').filter((f) => f.endsWith('.woff2') || f.en
 // The verb cards are kept out for the same reason: one level is opened at a
 // time, and it caches itself on first use.
 const content = walk('content', 'content/')
-  .filter((f) => !f.startsWith('content/verbs/') && !f.startsWith('content/verb-cards/') && !f.startsWith('content/word-cards/'));
+  .filter((f) => !f.startsWith('content/verbs/') && !f.startsWith('content/verb-cards/') && !f.startsWith('content/word-cards/')
+    && !f.startsWith('content/themes/'));
 const shell = ['./', 'index.html', ...assets, ...fonts, ...content];
 const version = readFileSync(resolve(dist, 'index.html'), 'utf8').length + '-' + assets.join('').length;
 

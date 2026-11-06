@@ -50,6 +50,9 @@ export function FlashcardSession() {
 
   const conceptFilter = params.get('concept');
   const cardFilter = params.get('card');
+  // `?theme=housing` (2026-11-06): the cards of one theme, new ones twenty at
+  // a time like a level, plus whatever of the theme is due.
+  const themeFilter = params.get('theme');
   // The level whose NEW cards this session introduces. Due cards come from
   // every level the learner has history in, whichever level is chosen.
   const [target] = useTarget(userId);
@@ -112,8 +115,11 @@ export function FlashcardSession() {
         // Everything is requested at once: the first card should not wait on
         // four round trips in a row.
         const chosen = loadLevelCards(level);
-        const [{ cards: written }, saved, index, words] = await Promise.all([
-          loadContent(), allCardStates(userId), loadVerbIndex().catch(() => []), loadWordIndex(), chosen.catch(() => [])]);
+        const [{ cards: written }, saved, index, words, , theme] = await Promise.all([
+          loadContent(), allCardStates(userId), loadVerbIndex().catch(() => []), loadWordIndex(), chosen.catch(() => []),
+          themeFilter ? import('../../lib/topics').then((m) => m.loadTopic(themeFilter)) : Promise.resolve(null)]);
+        const themeKeys = theme ? new Set([...theme.words, ...theme.verbs].map((w) => w.key).filter(Boolean) as string[]) : null;
+        const themeLevels = theme ? [...theme.words, ...theme.verbs].filter((w) => w.key && w.level).map((w) => w.level as Level) : [];
         const byKey = new Map(saved.map((s) => [s.cardKey, s as CardState]));
         // Load the chosen level, and every level a reviewed verb belongs to, so
         // a card due today is never missed because its level was not opened.
@@ -122,12 +128,13 @@ export function FlashcardSession() {
         for (const st of saved) { const l = levelOfKey.get(st.cardKey); if (l) levels.add(l); }
         // A link to one card (`?card=`) must find it whatever level is open.
         if (cardFilter) { const l = levelOfKey.get(cardFilter); if (l) levels.add(l); }
+        for (const l of themeLevels) levels.add(l);
         const verbCards = (await Promise.all([...levels].map(loadLevelCards))).flat();
         const cards = mergeCards(written, verbCards);
         if (!live) return;
         setLevelCount(cards.filter((c) => c.level === level).length);
         const now = Date.now();
-        const filter = `${conceptFilter ?? ''}|${cardFilter ?? ''}|${level}`;
+        const filter = `${conceptFilter ?? ''}|${cardFilter ?? ''}|${themeFilter ?? ''}|${level}`;
         // localStorage, not sessionStorage: a reopened tab must be able to
         // resume. Isolation still holds because the key carries the user id,
         // and two learners in two tabs write to different keys entirely.
@@ -156,6 +163,7 @@ export function FlashcardSession() {
           let pool = cards;
           if (conceptFilter) pool = pool.filter((c) => c.conceptIds.includes(conceptFilter));
           if (cardFilter) pool = pool.filter((c) => c.key === cardFilter);
+          if (themeKeys) pool = pool.filter((c) => themeKeys.has(c.key));
 
           // A learner who asks for a concept gets that concept.
           //
@@ -170,7 +178,7 @@ export function FlashcardSession() {
           const due: Card[] = [], fresh: Card[] = [], early: Card[] = [];
           for (const c of pool) {
             const s = byKey.get(c.key);
-            if (!s || s.reps === 0) { if (asked || c.level === level) fresh.push(c); }
+            if (!s || s.reps === 0) { if (asked || themeKeys || c.level === level) fresh.push(c); }
             else if (s.dueAt <= now) due.push(c);
             else if (asked) early.push(c);
           }
@@ -205,7 +213,7 @@ export function FlashcardSession() {
     // `params`/`setParams` are intentionally not dependencies: this effect
     // writes `s` into them, and depending on them would rebuild in a loop.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [userId, conceptFilter, cardFilter, sessionParam, level]);
+  }, [userId, conceptFilter, cardFilter, themeFilter, sessionParam, level]);
 
   const card = queue?.[index] ?? null;
   useEffect(() => { setRevealed(false); shownAt.current = Date.now(); }, [index, card?.key]);

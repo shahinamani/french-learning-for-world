@@ -1,0 +1,953 @@
+{
+ "id": "administration",
+ "names": {
+  "fr": "Les démarches administratives",
+  "en": "Paperwork and official procedures",
+  "fa": "کارهای اداری"
+ },
+ "counts": {
+  "words": 67,
+  "verbs": 25,
+  "expressions": 15
+ },
+ "exams": [],
+ "reviewed": false,
+ "words": [
+  {
+   "key": "n:bureau",
+   "fr": "bureau",
+   "type": "noun",
+   "article": "le",
+   "en": "office; desk",
+   "fa": "دفتر؛ میز تحریر",
+   "level": "A1"
+  },
+  {
+   "key": "n:lettre",
+   "fr": "lettre",
+   "type": "noun",
+   "article": "la",
+   "en": "letter",
+   "fa": "نامه، حرف",
+   "level": "A1"
+  },
+  {
+   "key": "n:papier",
+   "fr": "papier",
+   "type": "noun",
+   "article": "le",
+   "en": "paper",
+   "fa": "کاغذ",
+   "level": "A1"
+  },
+  {
+   "key": "n:service",
+   "fr": "service",
+   "type": "noun",
+   "article": "le",
+   "en": "service; favour",
+   "fa": "خدمت؛ لطف",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "formulaire",
+   "type": "noun",
+   "article": "le",
+   "en": "form",
+   "fa": "فرم",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:numero",
+   "fr": "numéro",
+   "type": "noun",
+   "article": "le",
+   "en": "number",
+   "fa": "شماره",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "papiers",
+   "type": "noun",
+   "article": "les",
+   "en": "papers, documents",
+   "fa": "مدارک",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:poste",
+   "fr": "poste",
+   "type": "noun",
+   "article": "le",
+   "en": "job, position (la poste: post office)",
+   "fa": "شغل، پست (la poste: اداره‌ی پست)",
+   "level": "A2"
+  },
+  {
+   "key": "n:preuve",
+   "fr": "preuve",
+   "type": "noun",
+   "article": "la",
+   "en": "proof, evidence",
+   "fa": "مدرک، دلیل",
+   "level": "A2"
+  },
+  {
+   "key": "n:rendez-vous",
+   "fr": "rendez-vous",
+   "type": "noun",
+   "article": "le",
+   "en": "appointment, meeting",
+   "fa": "قرار ملاقات، وقت",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "réponse",
+   "type": "noun",
+   "article": "la",
+   "en": "reply",
+   "fa": "پاسخ",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "visa",
+   "type": "noun",
+   "article": "le",
+   "en": "visa",
+   "fa": "ویزا",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:adresse",
+   "fr": "adresse",
+   "type": "noun",
+   "article": "l'",
+   "en": "address",
+   "fa": "نشانی",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "ambassade",
+   "type": "noun",
+   "article": "l’",
+   "en": "embassy",
+   "fa": "سفارت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:attente",
+   "fr": "attente",
+   "type": "noun",
+   "article": "l'",
+   "en": "wait, waiting",
+   "fa": "انتظار",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "attestation",
+   "type": "noun",
+   "article": "l’",
+   "en": "certificate",
+   "fa": "گواهی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "certificat",
+   "type": "noun",
+   "article": "le",
+   "en": "certificate",
+   "fa": "گواهینامه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "colis",
+   "type": "noun",
+   "article": "le",
+   "en": "parcel",
+   "fa": "بسته",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "consulat",
+   "type": "noun",
+   "article": "le",
+   "en": "consulate",
+   "fa": "کنسولگری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:demande",
+   "fr": "demande",
+   "type": "noun",
+   "article": "la",
+   "en": "request, application",
+   "fa": "درخواست",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "démarche",
+   "type": "noun",
+   "article": "la",
+   "en": "procedure, step",
+   "fa": "اقدام اداری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:dossier",
+   "fr": "dossier",
+   "type": "noun",
+   "article": "le",
+   "en": "file, folder",
+   "fa": "پرونده",
+   "level": "B1"
+  },
+  {
+   "key": "n:etranger",
+   "fr": "étranger",
+   "type": "noun",
+   "article": "l'",
+   "en": "foreigner, abroad",
+   "fa": "خارجی، خارج از کشور",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "guichet",
+   "type": "noun",
+   "article": "le",
+   "en": "counter, desk",
+   "fa": "باجه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "immigré",
+   "type": "noun",
+   "article": "l’",
+   "en": "immigrant",
+   "fa": "مهاجر",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "impôt",
+   "type": "noun",
+   "article": "l’",
+   "en": "tax",
+   "fa": "مالیات",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "justificatif",
+   "type": "noun",
+   "article": "le",
+   "en": "supporting document, proof",
+   "fa": "مدرک تأیید",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "nationalité",
+   "type": "noun",
+   "article": "la",
+   "en": "nationality",
+   "fa": "تابعیت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "original",
+   "type": "noun",
+   "article": "l’",
+   "en": "original",
+   "fa": "اصل",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:paquet",
+   "fr": "paquet",
+   "type": "noun",
+   "article": "le",
+   "en": "packet, parcel",
+   "fa": "بسته",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "préfecture",
+   "type": "noun",
+   "article": "la",
+   "en": "prefecture",
+   "fa": "استانداری",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "résidence",
+   "type": "noun",
+   "article": "la",
+   "en": "residence",
+   "fa": "محل سکونت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "allocation",
+   "type": "noun",
+   "article": "l’",
+   "en": "allowance, benefit",
+   "fa": "کمک‌هزینه",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:assurance",
+   "fr": "assurance",
+   "type": "noun",
+   "article": "l'",
+   "en": "insurance, confidence",
+   "fa": "بیمه، اطمینان",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "cachet",
+   "type": "noun",
+   "article": "le",
+   "en": "stamp",
+   "fa": "مهر",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:contrat",
+   "fr": "contrat",
+   "type": "noun",
+   "article": "le",
+   "en": "contract",
+   "fa": "قرارداد",
+   "level": "B2"
+  },
+  {
+   "key": "n:frontiere",
+   "fr": "frontière",
+   "type": "noun",
+   "article": "la",
+   "en": "border",
+   "fa": "مرز",
+   "level": "B2"
+  },
+  {
+   "key": "n:identite",
+   "fr": "identité",
+   "type": "noun",
+   "article": "l'",
+   "en": "identity",
+   "fa": "هویت",
+   "level": "B2"
+  },
+  {
+   "key": "n:permission",
+   "fr": "permission",
+   "type": "noun",
+   "article": "la",
+   "en": "permission",
+   "fa": "اجازه",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "recommandé",
+   "type": "noun",
+   "article": "le",
+   "en": "registered letter",
+   "fa": "پست سفارشی",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "réfugié",
+   "type": "noun",
+   "article": "le",
+   "en": "refugee",
+   "fa": "پناهنده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:secretaire",
+   "fr": "secrétaire",
+   "type": "noun",
+   "article": "la",
+   "en": "secretary (m. or f.)",
+   "fa": "منشی",
+   "level": "B2"
+  },
+  {
+   "key": "n:administration",
+   "fr": "administration",
+   "type": "noun",
+   "article": "l'",
+   "en": "administration",
+   "fa": "اداره، مدیریت",
+   "level": "C1"
+  },
+  {
+   "key": "n:agence",
+   "fr": "agence",
+   "type": "noun",
+   "article": "l'",
+   "en": "agency",
+   "fa": "آژانس",
+   "level": "C1"
+  },
+  {
+   "key": "n:citoyen",
+   "fr": "citoyen",
+   "type": "noun",
+   "article": "le",
+   "en": "citizen",
+   "fa": "شهروند",
+   "level": "C1"
+  },
+  {
+   "key": "n:conge",
+   "fr": "congé",
+   "type": "noun",
+   "article": "le",
+   "en": "leave, time off",
+   "fa": "مرخصی",
+   "level": "C1"
+  },
+  {
+   "key": "n:copie",
+   "fr": "copie",
+   "type": "noun",
+   "article": "la",
+   "en": "copy",
+   "fa": "رونوشت، نسخه",
+   "level": "C1"
+  },
+  {
+   "key": "n:courrier",
+   "fr": "courrier",
+   "type": "noun",
+   "article": "le",
+   "en": "mail, post",
+   "fa": "نامه‌ها، پست",
+   "level": "C1"
+  },
+  {
+   "key": "n:declaration",
+   "fr": "déclaration",
+   "type": "noun",
+   "article": "la",
+   "en": "statement, declaration",
+   "fa": "بیانیه، اظهارات",
+   "level": "C1"
+  },
+  {
+   "key": "n:document",
+   "fr": "document",
+   "type": "noun",
+   "article": "le",
+   "en": "document",
+   "fa": "سند، مدرک",
+   "level": "C1"
+  },
+  {
+   "key": "n:enveloppe",
+   "fr": "enveloppe",
+   "type": "noun",
+   "article": "l'",
+   "en": "envelope",
+   "fa": "پاکت",
+   "level": "C1"
+  },
+  {
+   "key": "n:mandat",
+   "fr": "mandat",
+   "type": "noun",
+   "article": "le",
+   "en": "term of office, mandate",
+   "fa": "دوره‌ی نمایندگی، حواله",
+   "level": "C1"
+  },
+  {
+   "key": null,
+   "fr": "naturalisation",
+   "type": "noun",
+   "article": "la",
+   "en": "naturalisation",
+   "fa": "تابعیت‌گیری",
+   "level": "C1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:passeport",
+   "fr": "passeport",
+   "type": "noun",
+   "article": "le",
+   "en": "passport",
+   "fa": "گذرنامه",
+   "level": "C1"
+  },
+  {
+   "key": "n:reglement",
+   "fr": "règlement",
+   "type": "noun",
+   "article": "le",
+   "en": "regulations, payment",
+   "fa": "آیین‌نامه، مقررات",
+   "level": "C1"
+  },
+  {
+   "key": "n:renseignement",
+   "fr": "renseignement",
+   "type": "noun",
+   "article": "le",
+   "en": "information, inquiry",
+   "fa": "اطلاعات، راهنمایی",
+   "level": "C1"
+  },
+  {
+   "key": "n:autorisation",
+   "fr": "autorisation",
+   "type": "noun",
+   "article": "l'",
+   "en": "permission, authorisation",
+   "fa": "اجازه، مجوز",
+   "level": "C2"
+  },
+  {
+   "key": "n:commissariat",
+   "fr": "commissariat",
+   "type": "noun",
+   "article": "le",
+   "en": "police station",
+   "fa": "کلانتری",
+   "level": "C2"
+  },
+  {
+   "key": "n:delai",
+   "fr": "délai",
+   "type": "noun",
+   "article": "le",
+   "en": "deadline, delay",
+   "fa": "مهلت، تأخیر",
+   "level": "C2"
+  },
+  {
+   "key": "n:domicile",
+   "fr": "domicile",
+   "type": "noun",
+   "article": "le",
+   "en": "home, place of residence",
+   "fa": "محل سکونت، منزل",
+   "level": "C2"
+  },
+  {
+   "key": "n:fonctionnaire",
+   "fr": "fonctionnaire",
+   "type": "noun",
+   "article": "le",
+   "en": "civil servant, official",
+   "fa": "کارمند دولت",
+   "level": "C2"
+  },
+  {
+   "key": "n:formation",
+   "fr": "formation",
+   "type": "noun",
+   "article": "la",
+   "en": "training; formation",
+   "fa": "آموزش؛ شکل‌گیری",
+   "level": "C2"
+  },
+  {
+   "key": "n:inscription",
+   "fr": "inscription",
+   "type": "noun",
+   "article": "l'",
+   "en": "registration; inscription",
+   "fa": "ثبت‌نام؛ کتیبه",
+   "level": "C2"
+  },
+  {
+   "key": "n:mairie",
+   "fr": "mairie",
+   "type": "noun",
+   "article": "la",
+   "en": "town hall",
+   "fa": "شهرداری",
+   "level": "C2"
+  },
+  {
+   "key": "n:permis",
+   "fr": "permis",
+   "type": "noun",
+   "article": "le",
+   "en": "licence, permit",
+   "fa": "گواهینامه، مجوز",
+   "level": "C2"
+  },
+  {
+   "key": "n:signature",
+   "fr": "signature",
+   "type": "noun",
+   "article": "la",
+   "en": "signature",
+   "fa": "امضا",
+   "level": "C2"
+  },
+  {
+   "key": "n:timbre",
+   "fr": "timbre",
+   "type": "noun",
+   "article": "le",
+   "en": "stamp",
+   "fa": "تمبر",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:vérifier",
+   "fr": "vérifier",
+   "type": "verb",
+   "en": "to verify",
+   "fa": "بررسی کردن، چک کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:adresser",
+   "fr": "adresser",
+   "type": "verb",
+   "en": "to direct",
+   "fa": "خطاب کردن، ارسال کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:annuler",
+   "fr": "annuler",
+   "type": "verb",
+   "en": "to cancel (to invalidate, to annul)",
+   "fa": "لغو کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:autoriser",
+   "fr": "autoriser",
+   "type": "verb",
+   "en": "to authorise",
+   "fa": "اجازه دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:contrôler",
+   "fr": "contrôler",
+   "type": "verb",
+   "en": "to check or examine",
+   "fa": "کنترل کردن، بازرسی کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:déclarer",
+   "fr": "déclarer",
+   "type": "verb",
+   "en": "to declare",
+   "fa": "اعلام کردن، اظهار کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:déposer",
+   "fr": "déposer",
+   "type": "verb",
+   "en": "to put down (set down), lay down",
+   "fa": "گذاشتن، تحویل دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:enregistrer",
+   "fr": "enregistrer",
+   "type": "verb",
+   "en": "to record for later replay or use, especially sound",
+   "fa": "ضبط کردن، ثبت کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:exiger",
+   "fr": "exiger",
+   "type": "verb",
+   "en": "to demand, require",
+   "fa": "خواستار شدن، مطالبه کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:identifier",
+   "fr": "identifier",
+   "type": "verb",
+   "en": "to identify",
+   "fa": "شناسایی کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:obtenir",
+   "fr": "obtenir",
+   "type": "verb",
+   "en": "to get, to obtain",
+   "fa": "به دست آوردن، گرفتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:prouver",
+   "fr": "prouver",
+   "type": "verb",
+   "en": "to prove",
+   "fa": "ثابت کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:remplir",
+   "fr": "remplir",
+   "type": "verb",
+   "en": "to fill, to fill up (make full)",
+   "fa": "پر کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:signer",
+   "fr": "signer",
+   "type": "verb",
+   "en": "to sign (put a signature on)",
+   "fa": "امضا کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:convoquer",
+   "fr": "convoquer",
+   "type": "verb",
+   "en": "to convene, convoke (invite together)",
+   "fa": "احضار کردن، فرا خواندن",
+   "level": "B1"
+  },
+  {
+   "key": "v:fournir",
+   "fr": "fournir",
+   "type": "verb",
+   "en": "to supply, to provide, to furnish",
+   "fa": "تأمین کردن، فراهم کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:inscrire",
+   "fr": "inscrire",
+   "type": "verb",
+   "en": "to inscribe (engrave)",
+   "fa": "ثبت‌نام کردن، نوشتن",
+   "level": "B1"
+  },
+  {
+   "key": "v:justifier",
+   "fr": "justifier",
+   "type": "verb",
+   "en": "to justify",
+   "fa": "توجیه کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:affranchir",
+   "fr": "affranchir",
+   "type": "verb",
+   "en": "to free, liberate, enfranchise, emancipate",
+   "fa": "تمبر زدن، آزاد کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:expédier",
+   "fr": "expédier",
+   "type": "verb",
+   "en": "to post, to send, to ship",
+   "fa": "فرستادن، ارسال کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:renouveler",
+   "fr": "renouveler",
+   "type": "verb",
+   "en": "to renew",
+   "fa": "تمدید کردن، نو کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:assigner",
+   "fr": "assigner",
+   "type": "verb",
+   "en": "to assign",
+   "fa": "محول کردن، تخصیص دادن",
+   "level": "C1"
+  },
+  {
+   "key": "v:attester",
+   "fr": "attester",
+   "type": "verb",
+   "en": "to attest, to support with evidence",
+   "fa": "گواهی کردن، تأیید کردن",
+   "level": "C1"
+  },
+  {
+   "key": "v:consigner",
+   "fr": "consigner",
+   "type": "verb",
+   "en": "to confine to quarters",
+   "fa": "ثبت کردن، سپردن (به‌عنوان وثیقه)",
+   "level": "C1"
+  },
+  {
+   "key": "v:certifier",
+   "fr": "certifier",
+   "type": "verb",
+   "en": "to certify (to attest as to)",
+   "fa": "گواهی کردن، تأیید رسمی کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Où puis-je trouver le formulaire ?",
+   "en": "Where can I find the form?",
+   "fa": "فرم را کجا می‌توانم پیدا کنم؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Voici mon passeport et mon adresse.",
+   "en": "Here are my passport and my address.",
+   "fa": "این گذرنامه و نشانی من است.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "J'ai rendez-vous à la préfecture à dix heures.",
+   "en": "I have an appointment at the prefecture at ten.",
+   "fa": "ساعت ده در استانداری وقت دارم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Quels documents faut-il apporter ?",
+   "en": "Which documents do I need to bring?",
+   "fa": "چه مدارکی باید بیاورم؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je voudrais envoyer ce colis en recommandé.",
+   "en": "I would like to send this parcel by registered post.",
+   "fa": "می‌خواهم این بسته را سفارشی بفرستم.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Merci de remplir ce formulaire en lettres majuscules.",
+   "en": "Please fill in this form in capital letters.",
+   "fa": "لطفاً این فرم را با حروف بزرگ پر کنید.",
+   "level": "A2",
+   "use": "writing"
+  },
+  {
+   "fr": "Je voudrais renouveler mon titre de séjour.",
+   "en": "I would like to renew my residence permit.",
+   "fa": "می‌خواهم اجازه اقامتم را تمدید کنم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Il me manque un justificatif de domicile.",
+   "en": "I am missing a proof of address.",
+   "fa": "مدرک تأیید محل سکونت را ندارم.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Suite à notre entretien téléphonique, je vous adresse les pièces demandées.",
+   "en": "Following our telephone conversation, I am sending you the documents requested.",
+   "fa": "به دنبال گفت‌وگوی تلفنی‌مان، مدارک درخواست‌شده را برایتان ارسال می‌کنم.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Je vous serais reconnaissant de bien vouloir traiter ma demande dans les meilleurs délais.",
+   "en": "I would be grateful if you could process my request as soon as possible.",
+   "fa": "سپاسگزار می‌شوم اگر درخواستم را در سریع‌ترین زمان ممکن بررسی کنید.",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Mon dossier est-il complet ou manque-t-il des pièces ?",
+   "en": "Is my file complete or are there documents missing?",
+   "fa": "آیا پرونده‌ام کامل است یا مدارکی کم دارد؟",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Les démarches administratives sont souvent longues et compliquées pour les étrangers.",
+   "en": "Administrative procedures are often long and complicated for foreigners.",
+   "fa": "کارهای اداری برای خارجی‌ها اغلب طولانی و پیچیده است.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La dématérialisation des services publics simplifie la vie de certains, mais en exclut d'autres.",
+   "en": "Putting public services online makes life simpler for some, but excludes others.",
+   "fa": "دیجیتالی شدن خدمات عمومی زندگی بعضی را ساده می‌کند اما بعضی دیگر را کنار می‌گذارد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Je me permets de contester la décision que vous m'avez notifiée le 5 mars.",
+   "en": "I take the liberty of contesting the decision you notified me of on 5 March.",
+   "fa": "اجازه می‌خواهم به تصمیمی که در ۵ مارس به من ابلاغ کردید اعتراض کنم.",
+   "level": "B2",
+   "use": "writing"
+  },
+  {
+   "fr": "Il serait souhaitable que l'administration communique ses décisions de manière claire et motivée.",
+   "en": "It would be desirable for the administration to communicate its decisions clearly and with reasons.",
+   "fa": "مطلوب است که اداره تصمیمات خود را به‌طور روشن و مستدل اعلام کند.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": []
+}

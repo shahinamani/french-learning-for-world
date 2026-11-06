@@ -1,0 +1,1084 @@
+{
+ "id": "shopping",
+ "names": {
+  "fr": "Les achats",
+  "en": "Shopping",
+  "fa": "خرید"
+ },
+ "counts": {
+  "words": 81,
+  "verbs": 17,
+  "expressions": 16
+ },
+ "exams": [
+  {
+   "exam": "delf",
+   "level": "A1"
+  },
+  {
+   "exam": "delf",
+   "level": "A2"
+  },
+  {
+   "exam": "delf",
+   "level": "B1"
+  },
+  {
+   "exam": "tef-canada",
+   "level": null
+  }
+ ],
+ "reviewed": false,
+ "words": [
+  {
+   "key": null,
+   "fr": "argent",
+   "type": "noun",
+   "article": "l’",
+   "en": "money",
+   "fa": "پول",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "a:cher",
+   "fr": "cher",
+   "type": "adjective",
+   "article": null,
+   "en": "expensive, dear",
+   "fa": "گران، عزیز",
+   "level": "A1"
+  },
+  {
+   "key": null,
+   "fr": "supermarché",
+   "type": "noun",
+   "article": "le",
+   "en": "supermarket",
+   "fa": "سوپرمارکت",
+   "level": "A1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:boite",
+   "fr": "boîte",
+   "type": "noun",
+   "article": "la",
+   "en": "box",
+   "fa": "جعبه",
+   "level": "A2"
+  },
+  {
+   "key": "n:chapeau",
+   "fr": "chapeau",
+   "type": "noun",
+   "article": "le",
+   "en": "hat",
+   "fa": "کلاه",
+   "level": "A2"
+  },
+  {
+   "key": "n:client",
+   "fr": "client",
+   "type": "noun",
+   "article": "le",
+   "en": "customer, client",
+   "fa": "مشتری",
+   "level": "A2"
+  },
+  {
+   "key": "n:course",
+   "fr": "course",
+   "type": "noun",
+   "article": "la",
+   "en": "race, errand (les courses: shopping)",
+   "fa": "مسابقه‌ی دو، خرید (les courses)",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "pointure",
+   "type": "noun",
+   "article": "la",
+   "en": "shoe size",
+   "fa": "شماره کفش",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:prix",
+   "fr": "prix",
+   "type": "noun",
+   "article": "le",
+   "en": "price, prize",
+   "fa": "قیمت، جایزه",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "réduction",
+   "type": "noun",
+   "article": "la",
+   "en": "discount",
+   "fa": "تخفیف",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:robe",
+   "fr": "robe",
+   "type": "noun",
+   "article": "la",
+   "en": "dress",
+   "fa": "پیراهن زنانه، لباس",
+   "level": "A2"
+  },
+  {
+   "key": "n:sac",
+   "fr": "sac",
+   "type": "noun",
+   "article": "le",
+   "en": "bag",
+   "fa": "کیف، کیسه",
+   "level": "A2"
+  },
+  {
+   "key": null,
+   "fr": "soldes",
+   "type": "noun",
+   "article": "les",
+   "en": "sales",
+   "fa": "حراج",
+   "level": "A2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:vetement",
+   "fr": "vêtement",
+   "type": "noun",
+   "article": "le",
+   "en": "piece of clothing",
+   "fa": "لباس، پوشاک",
+   "level": "A2"
+  },
+  {
+   "key": "n:article",
+   "fr": "article",
+   "type": "noun",
+   "article": "l'",
+   "en": "article, item",
+   "fa": "مقاله، کالا",
+   "level": "B1"
+  },
+  {
+   "key": "n:caisse",
+   "fr": "caisse",
+   "type": "noun",
+   "article": "la",
+   "en": "crate, till",
+   "fa": "جعبه، صندوق",
+   "level": "B1"
+  },
+  {
+   "key": "n:chaussure",
+   "fr": "chaussure",
+   "type": "noun",
+   "article": "la",
+   "en": "shoe",
+   "fa": "کفش",
+   "level": "B1"
+  },
+  {
+   "key": "n:chemise",
+   "fr": "chemise",
+   "type": "noun",
+   "article": "la",
+   "en": "shirt",
+   "fa": "پیراهن",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "colis",
+   "type": "noun",
+   "article": "le",
+   "en": "parcel",
+   "fa": "بسته پستی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:costume",
+   "fr": "costume",
+   "type": "noun",
+   "article": "le",
+   "en": "suit, costume",
+   "fa": "کت‌وشلوار، لباس نمایش",
+   "level": "B1"
+  },
+  {
+   "key": "n:cuir",
+   "fr": "cuir",
+   "type": "noun",
+   "article": "le",
+   "en": "leather",
+   "fa": "چرم",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "échange",
+   "type": "noun",
+   "article": "l’",
+   "en": "exchange",
+   "fa": "تعویض",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "espèces",
+   "type": "noun",
+   "article": "les",
+   "en": "cash",
+   "fa": "پول نقد",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "garantie",
+   "type": "noun",
+   "article": "la",
+   "en": "warranty",
+   "fa": "گارانتی",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "livraison",
+   "type": "noun",
+   "article": "la",
+   "en": "delivery",
+   "fa": "تحویل",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:lunette",
+   "fr": "lunette",
+   "type": "noun",
+   "article": "la",
+   "en": "glasses, telescope",
+   "fa": "عینک، دوربین",
+   "level": "B1"
+  },
+  {
+   "key": "n:magasin",
+   "fr": "magasin",
+   "type": "noun",
+   "article": "le",
+   "en": "shop, store",
+   "fa": "مغازه، فروشگاه",
+   "level": "B1"
+  },
+  {
+   "key": "n:manteau",
+   "fr": "manteau",
+   "type": "noun",
+   "article": "le",
+   "en": "coat",
+   "fa": "پالتو",
+   "level": "B1"
+  },
+  {
+   "key": "n:marche#2",
+   "fr": "marché",
+   "type": "noun",
+   "article": "le",
+   "en": "market",
+   "fa": "بازار",
+   "level": "B1"
+  },
+  {
+   "key": "n:mode",
+   "fr": "mode",
+   "type": "noun",
+   "article": "la",
+   "en": "fashion, (le mode) way",
+   "fa": "مد، (le mode) شیوه",
+   "level": "B1"
+  },
+  {
+   "key": "n:montre",
+   "fr": "montre",
+   "type": "noun",
+   "article": "la",
+   "en": "watch",
+   "fa": "ساعت مچی",
+   "level": "B1"
+  },
+  {
+   "key": "n:pantalon",
+   "fr": "pantalon",
+   "type": "noun",
+   "article": "le",
+   "en": "trousers, pants",
+   "fa": "شلوار",
+   "level": "B1"
+  },
+  {
+   "key": "n:paquet",
+   "fr": "paquet",
+   "type": "noun",
+   "article": "le",
+   "en": "packet, parcel",
+   "fa": "بسته",
+   "level": "B1"
+  },
+  {
+   "key": "n:parfum",
+   "fr": "parfum",
+   "type": "noun",
+   "article": "le",
+   "en": "perfume, flavour",
+   "fa": "عطر، طعم",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "promotion",
+   "type": "noun",
+   "article": "la",
+   "en": "special offer",
+   "fa": "پیشنهاد ویژه",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:rayon",
+   "fr": "rayon",
+   "type": "noun",
+   "article": "le",
+   "en": "ray, shelf, department",
+   "fa": "پرتو، قفسه",
+   "level": "B1"
+  },
+  {
+   "key": null,
+   "fr": "reçu",
+   "type": "noun",
+   "article": "le",
+   "en": "receipt",
+   "fa": "رسید",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": null,
+   "fr": "remboursement",
+   "type": "noun",
+   "article": "le",
+   "en": "refund",
+   "fa": "بازپرداخت",
+   "level": "B1",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:taille",
+   "fr": "taille",
+   "type": "noun",
+   "article": "la",
+   "en": "size, height",
+   "fa": "اندازه، قد",
+   "level": "B1"
+  },
+  {
+   "key": "n:veste",
+   "fr": "veste",
+   "type": "noun",
+   "article": "la",
+   "en": "jacket",
+   "fa": "کت، ژاکت",
+   "level": "B1"
+  },
+  {
+   "key": "n:bague",
+   "fr": "bague",
+   "type": "noun",
+   "article": "la",
+   "en": "ring",
+   "fa": "انگشتر",
+   "level": "B2"
+  },
+  {
+   "key": "n:boutique",
+   "fr": "boutique",
+   "type": "noun",
+   "article": "la",
+   "en": "shop, boutique",
+   "fa": "مغازه، بوتیک",
+   "level": "B2"
+  },
+  {
+   "key": "n:cabine",
+   "fr": "cabine",
+   "type": "noun",
+   "article": "la",
+   "en": "cabin, booth, fitting room",
+   "fa": "کابین، اتاقک، اتاق پرو",
+   "level": "B2"
+  },
+  {
+   "key": "n:ceinture",
+   "fr": "ceinture",
+   "type": "noun",
+   "article": "la",
+   "en": "belt",
+   "fa": "کمربند",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "consommateur",
+   "type": "noun",
+   "article": "le",
+   "en": "consumer",
+   "fa": "مصرف‌کننده",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:cravate",
+   "fr": "cravate",
+   "type": "noun",
+   "article": "la",
+   "en": "tie",
+   "fa": "کراوات",
+   "level": "B2"
+  },
+  {
+   "key": "n:gant",
+   "fr": "gant",
+   "type": "noun",
+   "article": "le",
+   "en": "glove",
+   "fa": "دستکش",
+   "level": "B2"
+  },
+  {
+   "key": "n:habit",
+   "fr": "habit",
+   "type": "noun",
+   "article": "l'",
+   "en": "clothing, suit",
+   "fa": "لباس",
+   "level": "B2"
+  },
+  {
+   "key": "n:jupe",
+   "fr": "jupe",
+   "type": "noun",
+   "article": "la",
+   "en": "skirt",
+   "fa": "دامن",
+   "level": "B2"
+  },
+  {
+   "key": "n:marque",
+   "fr": "marque",
+   "type": "noun",
+   "article": "la",
+   "en": "brand, mark",
+   "fa": "مارک، نشانه",
+   "level": "B2"
+  },
+  {
+   "key": "n:monnaie",
+   "fr": "monnaie",
+   "type": "noun",
+   "article": "la",
+   "en": "change, currency",
+   "fa": "پول خرد، واحد پول",
+   "level": "B2"
+  },
+  {
+   "key": "n:produit",
+   "fr": "produit",
+   "type": "noun",
+   "article": "le",
+   "en": "product",
+   "fa": "محصول",
+   "level": "B2"
+  },
+  {
+   "key": null,
+   "fr": "réclamation",
+   "type": "noun",
+   "article": "la",
+   "en": "complaint",
+   "fa": "شکایت",
+   "level": "B2",
+   "levelEstimated": true
+  },
+  {
+   "key": "n:soie",
+   "fr": "soie",
+   "type": "noun",
+   "article": "la",
+   "en": "silk",
+   "fa": "ابریشم",
+   "level": "B2"
+  },
+  {
+   "key": "n:tenue",
+   "fr": "tenue",
+   "type": "noun",
+   "article": "la",
+   "en": "outfit, dress",
+   "fa": "لباس، پوشش",
+   "level": "B2"
+  },
+  {
+   "key": "n:tissu",
+   "fr": "tissu",
+   "type": "noun",
+   "article": "le",
+   "en": "fabric",
+   "fa": "پارچه",
+   "level": "B2"
+  },
+  {
+   "key": "n:bijoux",
+   "fr": "bijoux",
+   "type": "noun",
+   "article": "les",
+   "en": "jewels, jewellery",
+   "fa": "جواهرات، زیورآلات",
+   "level": "C1"
+  },
+  {
+   "key": "n:casquette",
+   "fr": "casquette",
+   "type": "noun",
+   "article": "la",
+   "en": "cap",
+   "fa": "کلاه لبه‌دار",
+   "level": "C1"
+  },
+  {
+   "key": "n:chaussette",
+   "fr": "chaussette",
+   "type": "noun",
+   "article": "la",
+   "en": "sock",
+   "fa": "جوراب",
+   "level": "C1"
+  },
+  {
+   "key": "n:cheque",
+   "fr": "chèque",
+   "type": "noun",
+   "article": "le",
+   "en": "cheque",
+   "fa": "چک",
+   "level": "C1"
+  },
+  {
+   "key": "n:collier",
+   "fr": "collier",
+   "type": "noun",
+   "article": "le",
+   "en": "necklace, collar",
+   "fa": "گردنبند، قلاده",
+   "level": "C1"
+  },
+  {
+   "key": "n:commande",
+   "fr": "commande",
+   "type": "noun",
+   "article": "la",
+   "en": "order, command",
+   "fa": "سفارش",
+   "level": "C1"
+  },
+  {
+   "key": "n:coton",
+   "fr": "coton",
+   "type": "noun",
+   "article": "le",
+   "en": "cotton",
+   "fa": "پنبه، نخ",
+   "level": "C1"
+  },
+  {
+   "key": "a:gratuit",
+   "fr": "gratuit",
+   "type": "adjective",
+   "article": null,
+   "en": "free, free of charge",
+   "fa": "رایگان",
+   "level": "C1"
+  },
+  {
+   "key": "n:laine",
+   "fr": "laine",
+   "type": "noun",
+   "article": "la",
+   "en": "wool",
+   "fa": "پشم",
+   "level": "C1"
+  },
+  {
+   "key": "n:offre",
+   "fr": "offre",
+   "type": "noun",
+   "article": "l'",
+   "en": "offer, supply",
+   "fa": "پیشنهاد، عرضه",
+   "level": "C1"
+  },
+  {
+   "key": "n:panier",
+   "fr": "panier",
+   "type": "noun",
+   "article": "le",
+   "en": "basket",
+   "fa": "سبد",
+   "level": "C1"
+  },
+  {
+   "key": "n:portefeuille",
+   "fr": "portefeuille",
+   "type": "noun",
+   "article": "le",
+   "en": "wallet",
+   "fa": "کیف پول",
+   "level": "C1"
+  },
+  {
+   "key": "n:soulier",
+   "fr": "soulier",
+   "type": "noun",
+   "article": "le",
+   "en": "shoe",
+   "fa": "کفش",
+   "level": "C1"
+  },
+  {
+   "key": "n:ticket",
+   "fr": "ticket",
+   "type": "noun",
+   "article": "le",
+   "en": "ticket, receipt",
+   "fa": "بلیت، رسید",
+   "level": "C1"
+  },
+  {
+   "key": "n:vendeur",
+   "fr": "vendeur",
+   "type": "noun",
+   "article": "le",
+   "en": "salesperson, shop assistant",
+   "fa": "فروشنده",
+   "level": "C1"
+  },
+  {
+   "key": "n:vente",
+   "fr": "vente",
+   "type": "noun",
+   "article": "la",
+   "en": "sale, selling",
+   "fa": "فروش، حراج",
+   "level": "C1"
+  },
+  {
+   "key": "n:vitrine",
+   "fr": "vitrine",
+   "type": "noun",
+   "article": "la",
+   "en": "shop window, display case",
+   "fa": "ویترین",
+   "level": "C1"
+  },
+  {
+   "key": "n:achat",
+   "fr": "achat",
+   "type": "noun",
+   "article": "l'",
+   "en": "purchase",
+   "fa": "خرید",
+   "level": "C2"
+  },
+  {
+   "key": "n:blouson",
+   "fr": "blouson",
+   "type": "noun",
+   "article": "le",
+   "en": "jacket",
+   "fa": "کاپشن، ژاکت کوتاه",
+   "level": "C2"
+  },
+  {
+   "key": "n:bonnet",
+   "fr": "bonnet",
+   "type": "noun",
+   "article": "le",
+   "en": "hat, woolly hat",
+   "fa": "کلاه بافتنی",
+   "level": "C2"
+  },
+  {
+   "key": "n:dentelle",
+   "fr": "dentelle",
+   "type": "noun",
+   "article": "la",
+   "en": "lace",
+   "fa": "دانتل، تور",
+   "level": "C2"
+  },
+  {
+   "key": "n:etoffe",
+   "fr": "étoffe",
+   "type": "noun",
+   "article": "l'",
+   "en": "fabric, material",
+   "fa": "پارچه",
+   "level": "C2"
+  },
+  {
+   "key": "n:facture",
+   "fr": "facture",
+   "type": "noun",
+   "article": "la",
+   "en": "bill, invoice",
+   "fa": "صورت‌حساب، فاکتور",
+   "level": "C2"
+  },
+  {
+   "key": "n:maillot",
+   "fr": "maillot",
+   "type": "noun",
+   "article": "le",
+   "en": "jersey; swimsuit",
+   "fa": "پیراهن ورزشی؛ لباس شنا",
+   "level": "C2"
+  },
+  {
+   "key": "n:marchandise",
+   "fr": "marchandise",
+   "type": "noun",
+   "article": "la",
+   "en": "goods, merchandise",
+   "fa": "کالا",
+   "level": "C2"
+  }
+ ],
+ "verbs": [
+  {
+   "key": "v:acheter",
+   "fr": "acheter",
+   "type": "verb",
+   "en": "to purchase, buy",
+   "fa": "خریدن",
+   "level": "A1"
+  },
+  {
+   "key": "v:essayer",
+   "fr": "essayer",
+   "type": "verb",
+   "en": "to test, to try on",
+   "fa": "سعی کردن، امتحان کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:offrir",
+   "fr": "offrir",
+   "type": "verb",
+   "en": "to offer, to provide",
+   "fa": "هدیه دادن",
+   "level": "A1"
+  },
+  {
+   "key": "v:payer",
+   "fr": "payer",
+   "type": "verb",
+   "en": "to pay (for)",
+   "fa": "پرداخت کردن",
+   "level": "A1"
+  },
+  {
+   "key": "v:vendre",
+   "fr": "vendre",
+   "type": "verb",
+   "en": "to sell",
+   "fa": "فروختن",
+   "level": "A1"
+  },
+  {
+   "key": "v:commander",
+   "fr": "commander",
+   "type": "verb",
+   "en": "to order (tell someone to do something)",
+   "fa": "سفارش دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:coûter",
+   "fr": "coûter",
+   "type": "verb",
+   "en": "to cost",
+   "fa": "قیمت داشتن، هزینه داشتن",
+   "level": "A2"
+  },
+  {
+   "key": "v:dépenser",
+   "fr": "dépenser",
+   "type": "verb",
+   "en": "to spend (money)",
+   "fa": "خرج کردن",
+   "level": "A2"
+  },
+  {
+   "key": "v:habiller",
+   "fr": "habiller",
+   "type": "verb",
+   "en": "to dress",
+   "fa": "لباس پوشاندن",
+   "level": "A2"
+  },
+  {
+   "key": "v:livrer",
+   "fr": "livrer",
+   "type": "verb",
+   "en": "to deliver (a package, merchandise etc.)",
+   "fa": "تحویل دادن",
+   "level": "A2"
+  },
+  {
+   "key": "v:échanger",
+   "fr": "échanger",
+   "type": "verb",
+   "en": "to exchange, to swap",
+   "fa": "مبادله کردن، عوض کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:emballer",
+   "fr": "emballer",
+   "type": "verb",
+   "en": "to pack up, to wrap up, to parcel",
+   "fa": "بسته‌بندی کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:rembourser",
+   "fr": "rembourser",
+   "type": "verb",
+   "en": "to pay back, refund, reimburse",
+   "fa": "پس دادن (پول)، بازپرداخت کردن",
+   "level": "B1"
+  },
+  {
+   "key": "v:chausser",
+   "fr": "chausser",
+   "type": "verb",
+   "en": "to put footwear (on someone)",
+   "fa": "پوشیدن (کفش)، به پا کردن",
+   "level": "B2"
+  },
+  {
+   "key": "v:marchander",
+   "fr": "marchander",
+   "type": "verb",
+   "en": "to bargain over, to haggle over",
+   "fa": "چانه زدن",
+   "level": "C2"
+  },
+  {
+   "key": "v:solder",
+   "fr": "solder",
+   "type": "verb",
+   "en": "to close (a deal)",
+   "fa": "حراج کردن، تسویه کردن (حساب)",
+   "level": "C2"
+  },
+  {
+   "key": "v:troquer",
+   "fr": "troquer",
+   "type": "verb",
+   "en": "to barter (exchange goods or services without involving money)",
+   "fa": "معاوضه کردن، عوض کردن",
+   "level": "C2"
+  }
+ ],
+ "expressions": [
+  {
+   "fr": "Combien ça coûte ?",
+   "en": "How much does it cost?",
+   "fa": "این چقدر قیمت دارد؟",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je voudrais une baguette et un kilo de pommes.",
+   "en": "I would like a baguette and a kilo of apples.",
+   "fa": "یک باگت و یک کیلو سیب می‌خواهم.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "C'est trop cher.",
+   "en": "It's too expensive.",
+   "fa": "خیلی گران است.",
+   "level": "A1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Vous avez cette chemise en taille M ?",
+   "en": "Do you have this shirt in size M?",
+   "fa": "این پیراهن را در سایز M دارید؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Est-ce que je peux l'essayer ?",
+   "en": "Can I try it on?",
+   "fa": "می‌توانم پرو کنم؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je paie par carte, s'il vous plaît.",
+   "en": "I'll pay by card, please.",
+   "fa": "با کارت پرداخت می‌کنم، لطفاً.",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Vous faites une réduction pour les étudiants ?",
+   "en": "Do you offer a student discount?",
+   "fa": "برای دانشجوها تخفیف دارید؟",
+   "level": "A2",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je cherche un cadeau pour l'anniversaire de ma sœur.",
+   "en": "I am looking for a present for my sister's birthday.",
+   "fa": "دنبال هدیه‌ای برای تولد خواهرم می‌گردم.",
+   "level": "A2",
+   "use": "both"
+  },
+  {
+   "fr": "Je voudrais échanger ce pull : il est trop petit.",
+   "en": "I would like to exchange this jumper: it is too small.",
+   "fa": "می‌خواهم این پلیور را عوض کنم: کوچک است.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Je n'ai pas reçu ma commande ; pouvez-vous me tenir informé ?",
+   "en": "I have not received my order; can you keep me informed?",
+   "fa": "سفارشم را دریافت نکرده‌ام؛ می‌توانید مرا در جریان بگذارید؟",
+   "level": "B1",
+   "use": "writing"
+  },
+  {
+   "fr": "Le produit était défectueux, donc j'ai demandé un remboursement.",
+   "en": "The product was faulty, so I asked for a refund.",
+   "fa": "محصول معیوب بود، برای همین درخواست بازپرداخت کردم.",
+   "level": "B1",
+   "use": "both"
+  },
+  {
+   "fr": "Je préfère acheter en ligne, parce que c'est moins cher et plus rapide.",
+   "en": "I prefer buying online because it is cheaper and faster.",
+   "fa": "ترجیح می‌دهم اینترنتی بخرم، چون ارزان‌تر و سریع‌تر است.",
+   "level": "B1",
+   "use": "speaking"
+  },
+  {
+   "fr": "Les soldes poussent à acheter des choses dont on n'a pas vraiment besoin.",
+   "en": "Sales push people to buy things they don't really need.",
+   "fa": "حراج‌ها آدم را به خرید چیزهایی وا می‌دارد که واقعاً به آن‌ها نیاز ندارد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Le commerce en ligne menace les petits commerçants de quartier.",
+   "en": "Online shopping threatens small neighbourhood shopkeepers.",
+   "fa": "خرید اینترنتی کسبه کوچک محله را تهدید می‌کند.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "Il faut être un consommateur responsable et privilégier la qualité plutôt que la quantité.",
+   "en": "One must be a responsible consumer and favour quality over quantity.",
+   "fa": "باید مصرف‌کننده‌ای مسئول بود و کیفیت را بر کمیت ترجیح داد.",
+   "level": "B2",
+   "use": "both"
+  },
+  {
+   "fr": "La publicité entretient chez le consommateur un sentiment constant d'insatisfaction.",
+   "en": "Advertising maintains a constant feeling of dissatisfaction in the consumer.",
+   "fa": "تبلیغات در مصرف‌کننده احساس نارضایتی دائمی را زنده نگه می‌دارد.",
+   "level": "C1",
+   "use": "writing"
+  }
+ ],
+ "evidence": [
+  {
+   "exam": "delf",
+   "level": "A1",
+   "paper": "PO",
+   "topic": "dialogue simulé : s'informer sur le prix de produits à acheter ou commander",
+   "source": {
+    "what": "DELF A1 tout public, sujet démo exemple 1 (candidat, épreuve individuelle), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A1/A1_TP/delf-dalf-a1-tp-candidat-ind-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous vous informez sur le prix des produits que vous voulez acheter ou commander."
+  },
+  {
+   "exam": "delf",
+   "level": "A2",
+   "paper": "PO",
+   "topic": "interaction : achat d'un ordinateur dans un magasin",
+   "source": {
+    "what": "DELF A2 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_A2/A2_TP/delf-dalf-a2-tp-examinateur-sujet-demo_exemple1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Vous demandez des renseignements dans un magasin sur le prix, la taille, la qualité, etc."
+  },
+  {
+   "exam": "delf",
+   "level": "B1",
+   "paper": "PO",
+   "topic": "interaction : demander un remboursement (« satisfait ou remboursé »)",
+   "source": {
+    "what": "DELF B1 tout public, sujet démo exemple 1 (document examinateur, oral), FEF",
+    "url": "https://www.fondation-esprit-francophonie.ch/fileadmin/files/Ressources/Ressources_DELF/Exemples_d_Examen/DELF_B1/B1_TP/delf-dalf-b1-tp-examinateur-sujet-demo_exemple_1.pdf",
+    "kind": "official-paper",
+    "readOn": "2026-11-06"
+   },
+   "quote": "La publicité précisait « satisfait ou remboursé »."
+  },
+  {
+   "exam": "tef-canada",
+   "level": null,
+   "paper": "EO",
+   "topic": "section A : petite annonce de meubles à vendre",
+   "source": {
+    "what": "TEF, Exemples de sujets, expression orale (Le français des affaires, CCI Paris Île-de-France) — the source states the oral sections are the same for the TEF, TEF Canada and TEFAQ",
+    "url": "https://www.lefrancaisdesaffaires.fr/wp-content/uploads/2024/10/tef-exemples-epreuve-eo.pdf",
+    "kind": "exam-body",
+    "readOn": "2026-11-06"
+   },
+   "quote": "Meubles à vendre"
+  }
+ ]
+}

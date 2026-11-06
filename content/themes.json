@@ -1,0 +1,531 @@
+{
+ "version": 1,
+ "builtOn": "2026-11-06",
+ "note": "Words and verbs are existing flashcards, assigned to themes by an agent on 2026-11-06. Extra theme nouns and expressions were drafted by an agent the same day, with estimated levels. NOT REVIEWED. Exam evidence was read in official sample papers and exam-body documents on the date each row gives; it shows what those papers use, not everything an exam can ask.",
+ "themes": [
+  {
+   "id": "identity-self",
+   "names": {
+    "fr": "Se présenter",
+    "en": "Introducing yourself",
+    "fa": "معرفی خود"
+   },
+   "counts": {
+    "words": 93,
+    "verbs": 7,
+    "expressions": 17
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A1"
+    }
+   ]
+  },
+  {
+   "id": "family-relationships",
+   "names": {
+    "fr": "La famille et les relations",
+    "en": "Family and relationships",
+    "fa": "خانواده و روابط"
+   },
+   "counts": {
+    "words": 69,
+    "verbs": 25,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    }
+   ]
+  },
+  {
+   "id": "daily-routine",
+   "names": {
+    "fr": "La vie quotidienne",
+    "en": "Daily life",
+    "fa": "زندگی روزمره"
+   },
+   "counts": {
+    "words": 72,
+    "verbs": 25,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "tcf",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "housing",
+   "names": {
+    "fr": "Le logement",
+    "en": "Housing and renting",
+    "fa": "مسکن و اجاره"
+   },
+   "counts": {
+    "words": 86,
+    "verbs": 17,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A1"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "tef-canada",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "food-cooking",
+   "names": {
+    "fr": "La cuisine et l'alimentation",
+    "en": "Food and cooking",
+    "fa": "آشپزی و خوراک"
+   },
+   "counts": {
+    "words": 88,
+    "verbs": 31,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    }
+   ]
+  },
+  {
+   "id": "shopping",
+   "names": {
+    "fr": "Les achats",
+    "en": "Shopping",
+    "fa": "خرید"
+   },
+   "counts": {
+    "words": 81,
+    "verbs": 17,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A1"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    },
+    {
+     "exam": "tef-canada",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "city-transport",
+   "names": {
+    "fr": "La ville et les transports",
+    "en": "City and transport",
+    "fa": "شهر و حمل‌ونقل"
+   },
+   "counts": {
+    "words": 101,
+    "verbs": 24,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    }
+   ]
+  },
+  {
+   "id": "travel-hotel",
+   "names": {
+    "fr": "Les voyages et l'hôtel",
+    "en": "Travel and hotels",
+    "fa": "سفر و هتل"
+   },
+   "counts": {
+    "words": 69,
+    "verbs": 18,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A1"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    },
+    {
+     "exam": "tef",
+     "level": null
+    },
+    {
+     "exam": "tef-canada",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "health",
+   "names": {
+    "fr": "La santé",
+    "en": "Health",
+    "fa": "سلامت"
+   },
+   "counts": {
+    "words": 105,
+    "verbs": 32,
+    "expressions": 16
+   },
+   "exams": [
+    {
+     "exam": "dalf",
+     "level": "C2"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    }
+   ]
+  },
+  {
+   "id": "sport",
+   "names": {
+    "fr": "Le sport",
+    "en": "Sport",
+    "fa": "ورزش"
+   },
+   "counts": {
+    "words": 53,
+    "verbs": 31,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A1"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    }
+   ]
+  },
+  {
+   "id": "culture-leisure",
+   "names": {
+    "fr": "Les loisirs et la culture",
+    "en": "Leisure and culture",
+    "fa": "اوقات فراغت و فرهنگ"
+   },
+   "counts": {
+    "words": 83,
+    "verbs": 23,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "A1"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    },
+    {
+     "exam": "tef",
+     "level": null
+    },
+    {
+     "exam": "tef-canada",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "work",
+   "names": {
+    "fr": "Le travail",
+    "en": "Work and jobs",
+    "fa": "کار و شغل"
+   },
+   "counts": {
+    "words": 82,
+    "verbs": 20,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "dalf",
+     "level": "C1"
+    },
+    {
+     "exam": "delf",
+     "level": "A1"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    },
+    {
+     "exam": "tef-canada",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "education",
+   "names": {
+    "fr": "Les études",
+    "en": "Studies and education",
+    "fa": "تحصیل و آموزش"
+   },
+   "counts": {
+    "words": 76,
+    "verbs": 27,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "dalf",
+     "level": "C1"
+    },
+    {
+     "exam": "dalf",
+     "level": "C2"
+    },
+    {
+     "exam": "delf",
+     "level": "A1"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    },
+    {
+     "exam": "tef-canada",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "economy-consumption",
+   "names": {
+    "fr": "L'économie et la consommation",
+    "en": "Economy and money",
+    "fa": "اقتصاد و مصرف"
+   },
+   "counts": {
+    "words": 81,
+    "verbs": 26,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "dalf",
+     "level": "C1"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    }
+   ]
+  },
+  {
+   "id": "environment",
+   "names": {
+    "fr": "L'environnement et la nature",
+    "en": "Environment and nature",
+    "fa": "محیط زیست و طبیعت"
+   },
+   "counts": {
+    "words": 137,
+    "verbs": 34,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "dalf",
+     "level": "C1"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    }
+   ]
+  },
+  {
+   "id": "technology",
+   "names": {
+    "fr": "Les technologies et le numérique",
+    "en": "Technology and the internet",
+    "fa": "فناوری و دنیای دیجیتال"
+   },
+   "counts": {
+    "words": 74,
+    "verbs": 28,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "dalf",
+     "level": "C2"
+    },
+    {
+     "exam": "delf",
+     "level": "A2"
+    },
+    {
+     "exam": "tef",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "media",
+   "names": {
+    "fr": "Les médias et l'information",
+    "en": "Media and news",
+    "fa": "رسانه و خبر"
+   },
+   "counts": {
+    "words": 65,
+    "verbs": 24,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "delf",
+     "level": "B1"
+    },
+    {
+     "exam": "delf",
+     "level": "B2"
+    },
+    {
+     "exam": "tef",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "society-citizenship",
+   "names": {
+    "fr": "La société et la citoyenneté",
+    "en": "Society and citizenship",
+    "fa": "جامعه و شهروندی"
+   },
+   "counts": {
+    "words": 90,
+    "verbs": 31,
+    "expressions": 15
+   },
+   "exams": [
+    {
+     "exam": "dalf",
+     "level": "C1"
+    },
+    {
+     "exam": "delf",
+     "level": "B1"
+    },
+    {
+     "exam": "tcf",
+     "level": null
+    },
+    {
+     "exam": "tef-canada",
+     "level": null
+    }
+   ]
+  },
+  {
+   "id": "administration",
+   "names": {
+    "fr": "Les démarches administratives",
+    "en": "Paperwork and official procedures",
+    "fa": "کارهای اداری"
+   },
+   "counts": {
+    "words": 67,
+    "verbs": 25,
+    "expressions": 15
+   },
+   "exams": []
+  }
+ ]
+}
