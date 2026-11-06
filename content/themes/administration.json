@@ -266,7 +266,7 @@
    "type": "noun",
    "article": "le",
    "en": "supporting document, proof",
-   "fa": "مدرک تأیید",
+   "fa": "مدرک اثباتی",
    "level": "B1",
    "levelEstimated": true
   },
@@ -509,7 +509,7 @@
    "type": "noun",
    "article": "la",
    "en": "naturalisation",
-   "fa": "تابعیت‌گیری",
+   "fa": "اخذ تابعیت",
    "level": "C1",
    "levelEstimated": true
   },
@@ -888,14 +888,14 @@
   {
    "fr": "Je voudrais renouveler mon titre de séjour.",
    "en": "I would like to renew my residence permit.",
-   "fa": "می‌خواهم اجازه اقامتم را تمدید کنم.",
+   "fa": "می‌خواهم کارت اقامتم را تمدید کنم.",
    "level": "B1",
    "use": "speaking"
   },
   {
    "fr": "Il me manque un justificatif de domicile.",
    "en": "I am missing a proof of address.",
-   "fa": "مدرک تأیید محل سکونت را ندارم.",
+   "fa": "مدرکی برای اثبات محل سکونتم ندارم.",
    "level": "B1",
    "use": "speaking"
   },

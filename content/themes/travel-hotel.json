@@ -550,7 +550,7 @@
    "type": "noun",
    "article": "le",
    "en": "change of scenery",
-   "fa": "احساس غریبگی دلپذیر",
+   "fa": "تغییر حال و هوا",
    "level": "C1",
    "levelEstimated": true
   },
@@ -836,7 +836,7 @@
   {
    "fr": "Voici mon passeport.",
    "en": "Here is my passport.",
-   "fa": "این گذرنامه من است.",
+   "fa": "این گذرنامهٔ من است.",
    "level": "A1",
    "use": "speaking"
   },
@@ -927,7 +927,7 @@
   {
    "fr": "Un voyage réussi tient moins à la destination qu'à la manière dont on la découvre.",
    "en": "A successful trip depends less on the destination than on the way one discovers it.",
-   "fa": "موفقیت یک سفر کمتر به مقصد و بیشتر به شیوه کشف آن بستگی دارد.",
+   "fa": "موفقیت یک سفر کمتر به مقصد و بیشتر به شیوهٔ کشف آن بستگی دارد.",
    "level": "C1",
    "use": "writing"
   }

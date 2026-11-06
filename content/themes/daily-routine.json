@@ -296,7 +296,7 @@
    "type": "noun",
    "article": "l’",
    "en": "schedule, opening hours",
-   "fa": "ساعت کاری",
+   "fa": "برنامهٔ زمانی، ساعت کار",
    "level": "B1",
    "levelEstimated": true
   },
@@ -986,14 +986,14 @@
   {
    "fr": "La semaine de quatre jours permettrait de mieux profiter de son temps libre.",
    "en": "A four-day week would allow people to enjoy their free time more.",
-   "fa": "هفته کاری چهار روزه امکان می‌دهد از وقت آزاد بیشتر لذت ببریم.",
+   "fa": "هفتهٔ کاری چهار روزه امکان می‌دهد از وقت آزاد بیشتر لذت ببریم.",
    "level": "B2",
    "use": "both"
   },
   {
    "fr": "Le sentiment de manquer de temps tient autant à notre organisation qu'à la charge réelle de travail.",
    "en": "The feeling of lacking time owes as much to our organisation as to the actual workload.",
-   "fa": "احساس کمبود وقت همان‌قدر به نحوه سازماندهی ما برمی‌گردد که به حجم واقعی کار.",
+   "fa": "احساس کمبود وقت همان‌قدر به نحوهٔ سازماندهی ما برمی‌گردد که به حجم واقعی کار.",
    "level": "C1",
    "use": "writing"
   }

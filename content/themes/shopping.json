@@ -101,7 +101,7 @@
    "type": "noun",
    "article": "la",
    "en": "shoe size",
-   "fa": "شماره کفش",
+   "fa": "شمارهٔ کفش",
    "level": "A2",
    "levelEstimated": true
   },
@@ -203,7 +203,7 @@
    "type": "noun",
    "article": "le",
    "en": "parcel",
-   "fa": "بسته پستی",
+   "fa": "بستهٔ پستی",
    "level": "B1",
    "levelEstimated": true
   },
@@ -381,7 +381,7 @@
    "type": "noun",
    "article": "le",
    "en": "refund",
-   "fa": "بازپرداخت",
+   "fa": "پس دادن پول",
    "level": "B1",
    "levelEstimated": true
   },
@@ -987,7 +987,7 @@
   {
    "fr": "Le produit était défectueux, donc j'ai demandé un remboursement.",
    "en": "The product was faulty, so I asked for a refund.",
-   "fa": "محصول معیوب بود، برای همین درخواست بازپرداخت کردم.",
+   "fa": "محصول معیوب بود، برای همین درخواست کردم پولم را پس بدهند.",
    "level": "B1",
    "use": "both"
   },
@@ -1001,14 +1001,14 @@
   {
    "fr": "Les soldes poussent à acheter des choses dont on n'a pas vraiment besoin.",
    "en": "Sales push people to buy things they don't really need.",
-   "fa": "حراج‌ها آدم را به خرید چیزهایی وا می‌دارد که واقعاً به آن‌ها نیاز ندارد.",
+   "fa": "حراج‌ها آدم را به خرید چیزهایی وا می‌دارند که واقعاً به آن‌ها نیاز ندارد.",
    "level": "B2",
    "use": "both"
   },
   {
    "fr": "Le commerce en ligne menace les petits commerçants de quartier.",
    "en": "Online shopping threatens small neighbourhood shopkeepers.",
-   "fa": "خرید اینترنتی کسبه کوچک محله را تهدید می‌کند.",
+   "fa": "خرید اینترنتی کسبهٔ کوچک محله را تهدید می‌کند.",
    "level": "B2",
    "use": "both"
   },

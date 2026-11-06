@@ -414,7 +414,7 @@
    "type": "noun",
    "article": "le",
    "en": "member of parliament",
-   "fa": "نماینده مجلس",
+   "fa": "نمایندهٔ مجلس",
    "level": "B2",
    "levelEstimated": true
   },
@@ -492,7 +492,7 @@
    "type": "noun",
    "article": "l’",
    "en": "integration",
-   "fa": "ادغام",
+   "fa": "جذب در جامعه",
    "level": "B2",
    "levelEstimated": true
   },
@@ -1128,7 +1128,7 @@
   {
    "fr": "Tous les citoyens ont le droit de voter à dix-huit ans.",
    "en": "All citizens have the right to vote at eighteen.",
-   "fa": "همه شهروندان در هجده‌سالگی حق رأی دارند.",
+   "fa": "همهٔ شهروندان در هجده‌سالگی حق رأی دارند.",
    "level": "A2",
    "use": "both"
   },
@@ -1142,7 +1142,7 @@
   {
    "fr": "Je pense qu'il est important de participer à la vie de son quartier.",
    "en": "I think it is important to take part in the life of your neighbourhood.",
-   "fa": "فکر می‌کنم مشارکت در زندگی محله‌ی خود مهم است.",
+   "fa": "فکر می‌کنم مشارکت در زندگی محلهٔ خود مهم است.",
    "level": "B1",
    "use": "both"
   },
@@ -1156,14 +1156,14 @@
   {
    "fr": "Je m'adresse à vous afin de proposer mon aide à votre association.",
    "en": "I am writing to you to offer my help to your association.",
-   "fa": "برای پیشنهاد کمک به انجمن شما با شما تماس می‌گیرم.",
+   "fa": "برای پیشنهاد کمک به انجمن شما به شما نامه می‌نویسم.",
    "level": "B1",
    "use": "writing"
   },
   {
    "fr": "Voter est un devoir civique, même si beaucoup de gens s'abstiennent.",
    "en": "Voting is a civic duty, even if many people abstain.",
-   "fa": "رأی دادن یک وظیفه مدنی است، حتی اگر بسیاری رأی نمی‌دهند.",
+   "fa": "رأی دادن یک وظیفهٔ مدنی است، حتی اگر بسیاری رأی ندهند.",
    "level": "B1",
    "use": "both"
   },
@@ -1198,7 +1198,7 @@
   {
    "fr": "On ne peut pas parler d'intégration sans parler d'accès au logement et à l'emploi.",
    "en": "You can't speak of integration without speaking of access to housing and employment.",
-   "fa": "نمی‌توان از ادغام صحبت کرد و از دسترسی به مسکن و شغل سخن نگفت.",
+   "fa": "نمی‌توان از جذب مهاجران در جامعه صحبت کرد و از دسترسی به مسکن و شغل سخن نگفت.",
    "level": "B2",
    "use": "both"
   },

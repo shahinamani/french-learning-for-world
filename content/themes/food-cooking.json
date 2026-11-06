@@ -249,7 +249,7 @@
    "type": "noun",
    "article": "l’",
    "en": "ingredient",
-   "fa": "ماده تشکیل‌دهنده",
+   "fa": "مادهٔ تشکیل‌دهنده",
    "level": "B1",
    "levelEstimated": true
   },
@@ -1148,7 +1148,7 @@
   {
    "fr": "Le repas était froid et le service très lent ; je demande un remboursement.",
    "en": "The meal was cold and the service very slow; I am asking for a refund.",
-   "fa": "غذا سرد بود و سرویس‌دهی خیلی کند؛ درخواست بازپرداخت دارم.",
+   "fa": "غذا سرد بود و سرویس‌دهی خیلی کند؛ می‌خواهم پولم را پس بدهند.",
    "level": "B1",
    "use": "writing"
   },
@@ -1162,7 +1162,7 @@
   {
    "fr": "Le fast-food est pratique, mais il ne favorise pas une alimentation équilibrée.",
    "en": "Fast food is convenient, but it does not encourage a balanced diet.",
-   "fa": "فست‌فود راحت است، اما تغذیه متعادل را تشویق نمی‌کند.",
+   "fa": "فست‌فود راحت است، اما تغذیهٔ متعادل را تشویق نمی‌کند.",
    "level": "B2",
    "use": "both"
   },
@@ -1183,7 +1183,7 @@
   {
    "fr": "La gastronomie française, inscrite au patrimoine de l'humanité, est autant un art de vivre qu'une cuisine.",
    "en": "French gastronomy, listed as world heritage, is as much a way of life as a cuisine.",
-   "fa": "غذاشناسی فرانسوی که در فهرست میراث جهانی ثبت شده، به همان اندازه که یک آشپزی است، یک سبک زندگی نیز هست.",
+   "fa": "هنر آشپزی فرانسوی که در فهرست میراث جهانی ثبت شده، به همان اندازه که یک آشپزی است، یک سبک زندگی نیز هست.",
    "level": "C1",
    "use": "writing"
   }
