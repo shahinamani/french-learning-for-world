@@ -68,6 +68,8 @@ const TopicList = lazy(() => topics().then((m) => ({ default: m.TopicList })));
 const TopicDetail = lazy(() => topics().then((m) => ({ default: m.TopicDetail })));
 const ResourceList = lazy(() => topics().then((m) => ({ default: m.ResourceList })));
 const Reader = lazy(() => import('./features/reader').then((m) => ({ default: m.Reader })));
+// Letters (production écrite): lazy for the same reason as the Reader.
+const Letters = lazy(() => import('./features/letters').then((m) => ({ default: m.Letters })));
 
 /** A lazy route still has to render something while its chunk arrives, and a
  *  blank screen is not one of the four honest states. */
@@ -118,6 +120,7 @@ function AppRoutes() {
           <Route path="grammar/:id" element={lazily(<GrammarOrConcept />)} />
           <Route path="listening" element={<Stub titleKey="stubSoundsTitle" bodyKey="stubSoundsBody" />} />
           <Route path="reading/*" element={lazily(<Reader />)} />
+          <Route path="writing/*" element={lazily(<Letters />)} />
           <Route path="output" element={<PlaceholderRoute id="output" />} />
           <Route path="news" element={<PlaceholderRoute id="news" />} />
           <Route path="podcasts" element={<PlaceholderRoute id="podcasts" />} />

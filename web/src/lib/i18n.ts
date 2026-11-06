@@ -520,6 +520,7 @@ const shellEn = {
   shellNavPath: 'My path',
   shellNavListening: 'Listening',
   shellNavReading: 'Reading',
+  shellNavWriting: 'Writing',
   shellNavOutput: 'Speaking and writing',
   shellNavNews: 'News',
   shellNavPodcasts: 'Podcasts',
@@ -541,7 +542,7 @@ const shellEn = {
   shellMissingVocabulary: 'There is no vocabulary index page yet. The vocabulary cards, with example sentences, exist in the learning workspace, and every word is searchable.',
   shellMissingGrammar: 'There is no grammar index yet. Each grammar concept has its own page and is found through search or from the level map.',
   shellMissingReading: 'There is no reader yet and no text to read in it: every text needs a source and a licence that permits reuse, and none has been obtained. The verb tables and grammar pages are readable now.',
-  shellMissingOutput: 'There is no speaking or writing practice yet. Speaking needs recording and a marker, and nothing here can mark free writing. Conjugation drills are the closest written practice that exists.',
+  shellMissingOutput: 'There is no speaking practice yet: speaking needs recording and a marker. Letter writing has its own section, which checks the structure of a letter but cannot mark the French.',
   shellMissingNews: 'There are no news items yet: each one needs a source whose licence permits reuse, and none has been obtained. Nothing is shown rather than copying text we may not use.',
   shellMissingPodcasts: 'There are no podcasts yet: this project holds no licensed recording, and machine speech is not offered in its place.',
   shellMissingSaved: 'Saving a word or sentence to a personal library is not built. Your review history is kept on this device and is visible under Progress.',
@@ -565,12 +566,13 @@ import type { weaknessEn } from './locales/en/weaknessEn';
 import type { grammarEn } from './locales/en/grammarEn';
 import type { readerEn } from './locales/en/readerEn';
 import type { todayEn } from './locales/en/todayEn';
+import type { writingEn } from './locales/en/writingEn';
 import type { topicsEn } from './locales/en/topicsEn';
 
 export type Dict = typeof en & Partial<typeof landingEn> & Partial<typeof nextEn>
   & Partial<typeof importEn> & Partial<typeof workspaceEn> & Partial<typeof shellEn>
   & Partial<typeof weaknessEn> & Partial<typeof grammarEn> & Partial<typeof readerEn>
-  & Partial<typeof todayEn> & Partial<typeof topicsEn>;
+  & Partial<typeof todayEn> & Partial<typeof writingEn> & Partial<typeof topicsEn>;
 
 /**
  * What the translator and the prerender read: English, landing copy included.

@@ -45,10 +45,14 @@ export function useCrumbs(pathname: string): Crumb[] {
   if (group) crumbs.push({ label: t(group) });
   const rest = parts.slice(2);
   crumbs.push(rest.length ? { label: t(it.label), to: it.to } : { label: t(it.label) });
+  // Letters: the kind is shown by its French name, as written (like a verb);
+  // the task id after it is not a name, and the page states the task.
+  if (it.id === 'writing') rest.splice(1);
   rest.forEach((p, n) => {
     // The last segment is the page itself. Exam ids, verbs and level codes are
     // shown as written: they are identifiers, not interface strings.
     let label = decodeURIComponent(p);
+    if (it.id === 'writing') label = p === 'formal' ? 'Lettre formelle' : p === 'informal' ? 'Lettre amicale' : label;
     if (p === 'sit' || p === 'results') label = p;
     if (p === 'drill') label = t('practiseTense');
     crumbs.push(n === rest.length - 1 ? { label } : { label, to: '/app/' + parts.slice(1, 3 + n).join('/') });

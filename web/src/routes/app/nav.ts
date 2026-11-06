@@ -23,6 +23,7 @@ export const VERBS = item('verbs', 'bookclock', 'verbs');
 export const GRAMMAR = item('grammar', 'openbook', 'grammar');
 export const LISTENING = item('listening', 'headphones', 'shellNavListening');
 export const READING = item('reading', 'textpage', 'shellNavReading');
+export const WRITING = item('writing', 'micpen', 'shellNavWriting');
 export const OUTPUT = item('output', 'micpen', 'shellNavOutput');
 export const NEWS = item('news', 'newspaper', 'shellNavNews');
 export const PODCASTS = item('podcasts', 'soundwave', 'shellNavPodcasts');
@@ -36,10 +37,10 @@ export const RESOURCES = item('resources', 'openbook', 'shellNavResources');
 export const EXAM = item('exam', 'examsheet', 'shellExamMy');
 
 /** Redesign v1 (docs/blueprint/REDESIGN-v1.md §4): the navigation shows only
- *  what exists. Vocabulary, listening, speaking and writing, news, podcasts and
+ *  what exists. Vocabulary, listening, speaking, news, podcasts and
  *  saved have no content yet; their routes stay and say so, but no menu sends a
  *  learner to an empty page. Each returns to these lists when it is built. */
-export const FREE_GROUP: NavItem[] = [CARDS, VERBS, GRAMMAR, READING];
+export const FREE_GROUP: NavItem[] = [CARDS, VERBS, GRAMMAR, READING, WRITING];
 /** Built later. Kept here so the breadcrumb and the placeholder pages still
  *  find their names. */
 export const NOT_YET: NavItem[] = [VOCABULARY, LISTENING, OUTPUT, NEWS, PODCASTS, SAVED];
@@ -56,7 +57,7 @@ export const FOOTER: NavItem[] = [
 ];
 
 /** What the mobile "Learn" sheet lists, and what "More" lists. */
-export const LEARN_SHEET: NavItem[] = [THEMES, VERBS, GRAMMAR, READING];
+export const LEARN_SHEET: NavItem[] = [THEMES, VERBS, GRAMMAR, READING, WRITING];
 export const MORE_SHEET: NavItem[] = [RESOURCES, PROGRESS, PATH];
 
 /** Which top-level nav item a pathname belongs to, for the breadcrumb. */

@@ -62,6 +62,7 @@ const SKILLS: { id: string; to: string; icon: typeof Ear; label: keyof Dict }[] 
   { id: 'verbs', to: '/app/verbs', icon: Clock3, label: 'verbs' },
   { id: 'grammar', to: '/app/grammar', icon: BookA, label: 'grammar' },
   { id: 'reading', to: '/app/reading', icon: FileText, label: 'shellNavReading' },
+  { id: 'writing', to: '/app/writing', icon: PenLine, label: 'shellNavWriting' },
 ];
 
 export function Sidebar() {
@@ -204,7 +205,7 @@ export function MobileBar() {
   };
   const close = () => setSheet(null);
   const inExam = pathname.startsWith('/app/exam');
-  const inLearn = ['/app/themes', '/app/verbs', '/app/grammar', '/app/reading'].some((p) => pathname.startsWith(p));
+  const inLearn = ['/app/themes', '/app/verbs', '/app/grammar', '/app/reading', '/app/writing'].some((p) => pathname.startsWith(p));
   const inMore = ['/app/resources', '/app/progress', '/app/path', '/account', '/about'].some((p) => pathname.startsWith(p));
 
   let items: { to: string; label: string; id: string }[] = [];

@@ -134,7 +134,7 @@ test('the key scanner ignores comments, including colons inside them', () => {
  */
 // The groups that belong to lazy routes are their own modules; the rest are in
 // i18n.ts. Looked up here so the list of group NAMES below stays complete.
-const LAZY_EN = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'topicsEn'];   // todayEn added 2026-11-03
+const LAZY_EN = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'writingEn', 'topicsEn'];   // todayEn added 2026-11-03, writingEn 2026-11-06
 function optionalKeys(name) {
   const text = LAZY_EN.includes(name)
     ? readFileSync(new URL(`../web/src/lib/locales/en/${name}.ts`, import.meta.url), 'utf8')
@@ -163,7 +163,7 @@ function optionalKeys(name) {
  * widening a prefix match somewhere else.
  */
 const OPTIONAL_GROUPS = ['landingEn', 'nextEn', 'importEn', 'workspaceEn',
-                         'shellEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'topicsEn'];
+                         'shellEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'writingEn', 'topicsEn'];
 const allOptionalKeys = () => OPTIONAL_GROUPS.flatMap(optionalKeys);
 
 test('every locale defines exactly the English key set, optional groups aside', () => {

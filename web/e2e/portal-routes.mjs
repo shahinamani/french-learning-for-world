@@ -105,7 +105,7 @@ console.log('\n=== portal routes, redirects and icon names ===');
   ok('a redirect keeps the query string (?minutes=5)', pathOf(r) === '/app/cards' && /minutes=5/.test(hashOf(r)), hashOf(r));
 
   // 2. Every learner route renders, and the placeholders say what is missing.
-  const ROUTES = ['today', 'path', 'vocabulary', 'cards', 'verbs', 'grammar', 'listening', 'reading', 'output',
+  const ROUTES = ['today', 'path', 'vocabulary', 'cards', 'verbs', 'grammar', 'listening', 'reading', 'writing', 'output',
                   'news', 'podcasts', 'exams', 'saved', 'progress', 'search', 'workspace'];
   // Grammar and reading were placeholders until they were mounted; they are real pages now.
   // My path became the level map in redesign v1 (REDESIGN-v1.md §6).
@@ -139,13 +139,13 @@ console.log('\n=== portal routes, redirects and icon names ===');
   // around the learner's exam. A new profile has none yet, so it is offered
   // the chooser where the exam's sections will be.
   // Themes and free resources follow the exam (owner request 2026-11-06).
-  const wanted = ['today', 'exam', 'themes', 'resources', 'cards', 'verbs', 'grammar', 'reading', 'progress'].map((s) => `#/app/${s}`);
+  const wanted = ['today', 'exam', 'themes', 'resources', 'cards', 'verbs', 'grammar', 'reading', 'writing', 'progress'].map((s) => `#/app/${s}`);
   ok('the sidebar lists Today, the exam chooser, themes and resources, the skill tools and progress, in order',
-     JSON.stringify(sidebarLinks.slice(0, 9)) === JSON.stringify(wanted), sidebarLinks.slice(0, 9).join(' '));
+     JSON.stringify(sidebarLinks.slice(0, 10)) === JSON.stringify(wanted), sidebarLinks.slice(0, 10).join(' '));
   ok('and no empty section is in it',
      !sidebarLinks.some((h) => /vocabulary|listening|output|news|podcasts|saved/.test(h ?? '')), sidebarLinks.join(' '));
   ok('the sidebar ends with account, appearance and language, help, exit',
-     JSON.stringify(sidebarLinks.slice(9)) === JSON.stringify(['#/account', '#/account', '#/about', '#/']), sidebarLinks.slice(9).join(' '));
+     JSON.stringify(sidebarLinks.slice(10)) === JSON.stringify(['#/account', '#/account', '#/about', '#/']), sidebarLinks.slice(10).join(' '));
   ok('the sidebar marks the current page with aria-current',
      await r.locator('[data-testid="nav-verbs"][aria-current="page"]').count() === 1);
   ok('the breadcrumb shows where you are',
@@ -212,8 +212,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
   ok(`the Learn menu opens as a bottom sheet (bottom ${Math.round(box.y + box.height)} of 844, width ${Math.round(box.width)} of 390)`,
      Math.abs(box.y + box.height - 844) <= 1 && Math.abs(box.width - 390) <= 1);
   ok('the sheet has an accessible title', await m.locator('[data-testid="nav-sheet"]').getAttribute('aria-labelledby') !== null);
-  ok('the sheet lists themes, verbs, grammar and reading (cards has its own tab)',
-     await m.locator('[data-testid="nav-sheet"] a').count() === 4);
+  ok('the sheet lists themes, verbs, grammar, reading and writing (cards has its own tab)',
+     await m.locator('[data-testid="nav-sheet"] a').count() === 5);
   const unnamedSheet = await m.evaluate(unnamedIn);
   ok('no control is unnamed with the sheet open', unnamedSheet.length === 0, unnamedSheet.join(' | '));
   await m.keyboard.press('Escape'); await m.waitForTimeout(250);

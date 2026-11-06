@@ -92,7 +92,7 @@ test('every key the components ask for exists in all four dictionaries', () => {
   }
   // English is i18n.ts plus the four groups that travel with lazy routes
   // (locales/en/*.ts). Reading only i18n.ts would report their keys missing.
-  for (const g of ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'topicsEn']) {   // todayEn added 2026-11-03
+  for (const g of ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'writingEn', 'topicsEn']) {   // todayEn added 2026-11-03
     dicts.en += readFileSync(new URL(`../web/src/lib/locales/en/${g}.ts`, import.meta.url), 'utf8');
   }
   // The landing page's strings are the one legitimate absence: a locale without
@@ -118,7 +118,7 @@ test('every key the components ask for exists in all four dictionaries', () => {
   const OPTIONAL = ['landing', 'next', 'importTooLarge', 'ws', 'grl',
                     'itemTeacherChecked', 'itemTeacherStale', 'itemOwnerOnly', 'shell', 'wk', 'rd',
                     'td',    // td: Today side column and backup, lazy (2026-11-03)
-                    'tp', 'rs'];   // themes and free resources, lazy (2026-11-06); fr and fa carry them
+                    'lw', 'tp', 'rs'];   // lw: letters (production écrite); tp, rs: themes and free resources; lazy (2026-11-06)
   const landingMayBeAbsent = (key, code) =>
     OPTIONAL.some((p) => key.startsWith(p)) && (code === 'fa' || code === 'ar');
 

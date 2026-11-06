@@ -11,4 +11,5 @@ import './en/weaknessEn';
 import './en/grammarEn';
 import './en/readerEn';
 import './en/todayEn';
+import './en/writingEn';
 import './en/topicsEn';

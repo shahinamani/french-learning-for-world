@@ -25,7 +25,7 @@ import { fileURLToPath } from 'node:url';
 import { translator, loadDictionary } from '../web/src/lib/i18n.ts';
 
 const ROOT = resolve(dirname(fileURLToPath(import.meta.url)), '../web/src');
-const GROUPS = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'topicsEn'];   // todayEn added 2026-11-03 (Today side column, backup)
+const GROUPS = ['workspaceEn', 'weaknessEn', 'grammarEn', 'readerEn', 'todayEn', 'writingEn', 'topicsEn'];   // todayEn added 2026-11-03 (Today side column, backup)
 const groupFile = (g) => join(ROOT, 'lib/locales/en', `${g}.ts`);
 const read = (p) => readFileSync(p, 'utf8');
 
