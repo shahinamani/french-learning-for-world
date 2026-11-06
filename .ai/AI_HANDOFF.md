@@ -75,9 +75,13 @@ Cloudflare Pages project `frenchmavie` (owner's existing Cloudflare account), Gi
 
 - Wide dashboard (owner chose "dashboard with side column"): `.dash` / `.dash__main` / `.dash__aside` in `routes/portal.css`, two columns from 1100 px, one below. Used by Today (week chart, mot du jour, my exam on the side), exam overview, cards session (levels, session, keys on the side), Progress. Verbs is a card grid, Account two columns, exam chooser families side by side. `--width-page` is set on `.shell` (tokens.css :root is unlayered and would win). New lazy text group `todayEn` (prefix `td`) because the first-load budget was full; French and Persian carry it, Arabic falls back.
 
+## Letters / production écrite (2026-11-06, branch feat/letter-writing, not committed)
+
+`/app/writing`: formal letter (vous) and informal letter (tu). Per kind: parts in order with phrase banks, annotated model, easy mistakes, tasks (A2–B2, author-assigned). Writing desk: autosaved draft (shared `notes` store, key `draft.<taskId>`, so export/erase already cover it), phrase insert at cursor, word count, live structure checks (`features/letters/model.ts`: date, Objet, greeting, closing, greeting echoed in closing, tu/vous, tone, signature, leftover [brackets]). Content `content/letters.json`, drafted, NOT reviewed. Lazy text group `writingEn` (prefix `lw`), fr + fa written, ar falls back. Sidebar list is `SKILLS` in `PortalNav.tsx`, not `nav.ts` (both updated). `tests/letters.test.js` runs the checks against the model letters and phrase banks.
+
 ## Next step
 
-Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences.
+Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences. Letters: a teacher reads `content/letters.json`; a person reads the official DELF word minimums (the FEI site blocks automated reading) and records them with the date before any target is shown.
 
 ## Decisions
 
@@ -101,6 +105,8 @@ Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom dom
 - The global `kbd` rule has a light background; override it on coloured buttons (axe caught it).
 - Persian strings use Latin digits; the app substitutes them (a test enforces it).
 - Full-page screenshots need `main{overflow:visible}`: the page scrolls inside `main`.
+- First-load JS is at the 150 KB ceiling (0.1 KB spare after letters). New UI text goes in a lazy group, not `shellEn`.
+- `lib/typography` fr() groups every 4+ digit number (« 2 026 », « 69 003 ») despite its comment; letters undo it locally (`letterFr`). Other screens still show it.
 
 ## How to run and test
 

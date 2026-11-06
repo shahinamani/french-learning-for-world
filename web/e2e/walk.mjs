@@ -1210,10 +1210,11 @@ console.log('\n=== lazy English groups: a route opened before its strings arrive
 {
   const group = (name) => readFileSync(new URL(`../src/lib/locales/en/${name}.ts`, import.meta.url), 'utf8');
   const firstValue = (name, key) => new RegExp(`\\b${key}:\\s*'([^']+)'`).exec(group(name))?.[1];
-  const RAW = /\b(?:grl|rd|wk|ws)[A-Z][A-Za-z]+\b/;
+  const RAW = /\b(?:grl|rd|wk|ws|lw)[A-Z][A-Za-z]+\b/;
   for (const [hash, file, key, label] of [
     ['/app/grammar', 'grammarEn', 'grlTitle', 'grammar'],
     ['/app/reading', 'readerEn', 'rdTitle', 'the Reader'],
+    ['/app/writing', 'writingEn', 'lwTitle', 'the letters'],
     ['/app/progress', 'weaknessEn', 'wkHeading', 'the weakness card'],
     ['/workspace', 'workspaceEn', 'wsSummaryLead', 'the workspace'],
   ]) {
