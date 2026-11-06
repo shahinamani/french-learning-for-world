@@ -1,0 +1,817 @@
+{
+  "version": 1,
+  "licence": "CC BY-SA 4.0",
+  "note": "The two kinds of letter a learner of French is asked to write: the formal letter (lettre formelle, written with vous to an organisation or a person you do not know) and the informal letter (lettre amicale, written with tu to a friend or relative). Each kind lists its parts in the order they appear on the page, a bank of phrases for each part, an outline the learner can start from, an annotated model letter, and the mistakes that are easy to make. `model.segments[].text` joined with blank lines is the model letter; tests/letters-content.test.js asserts that every model passes the same structure checks the writing desk runs on a learner's letter (web/src/features/letters/model.ts). Placeholders in square brackets are for the learner to replace.",
+  "reviewNote": "DRAFTED, NOT REVIEWED. The French, the English and the Persian, the phrase banks, the model letters, the mistakes and the writing tasks were written by the agent that built this file on 2026-11-06. No teacher has read the French and no Persian reader has checked the Persian; `review.owner` and `review.teacher` are null on every task. The level of each task was ASSIGNED BY THE AUTHOR (`levelBasis: \"author\"`) and may be wrong by a band.",
+  "examNote": "NOT VERIFIED: this file carries no exam word counts. The official DELF pages (france-education-international.fr) refused automated reading on 2026-11-06, so the minimum word count of each level's writing task could not be read from the source. Until a person reads it there and records it with the date, the writing desk shows the learner's word count and no target.",
+  "kinds": [
+    {
+      "id": "formal",
+      "register": "vous",
+      "name": {
+        "fr": "La lettre formelle",
+        "en": "The formal letter",
+        "fa": "نامهٔ رسمی"
+      },
+      "when": {
+        "fr": "Pour écrire à une administration, une entreprise, un service clients, un propriétaire, un directeur ou toute personne que vous ne connaissez pas personnellement : réclamation, demande d’information, candidature, inscription.",
+        "en": "For writing to an office, a company, customer service, a landlord, a head of school, or anyone you do not know personally: a complaint, a request for information, an application, an enrolment.",
+        "fa": "برای نوشتن به اداره، شرکت، خدمات مشتریان، صاحب‌خانه، مدیر یا هر کسی که او را شخصاً نمی‌شناسید: شکایت، درخواست اطلاعات، درخواست کار، ثبت‌نام."
+      },
+      "registerNote": {
+        "fr": "On vouvoie du début à la fin : vous, votre, vos. Pas de « tu », pas de « Salut », pas de « Bises ».",
+        "en": "Use vous from the first line to the last: vous, votre, vos. No tu, no Salut, no Bises.",
+        "fa": "از اول تا آخر «⁨vous⁩» به کار می‌رود: vous، votre، vos. نه «⁨tu⁩»، نه «⁨Salut⁩»، نه «⁨Bises⁩»."
+      },
+      "outline": "[Prénom NOM]\n[Votre adresse]\n\n[Nom du destinataire ou du service]\n[Adresse du destinataire]\n\n[Ville], le [date]\n\nObjet : [le sujet de la lettre en quelques mots]\n\nMadame, Monsieur,\n\n[Introduction : qui vous êtes et pourquoi vous écrivez]\n\n[Développement : les faits, puis ce que vous demandez]\n\n[Conclusion : l’attente d’une réponse]\n\nJe vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.\n\n[Prénom NOM]",
+      "parts": [
+        {
+          "id": "sender",
+          "name": {
+            "fr": "L’expéditeur",
+            "en": "Your details",
+            "fa": "مشخصات فرستنده"
+          },
+          "purpose": {
+            "fr": "En haut à gauche : votre prénom, votre nom et votre adresse. Dans un exercice, inventez-les.",
+            "en": "Top left: your first name, surname and address. In an exercise, make them up.",
+            "fa": "بالا سمت چپ: نام، نام خانوادگی و نشانی شما. در تمرین، آن‌ها را از خودتان بسازید."
+          },
+          "phrases": [
+            {
+              "fr": "Camille MARTIN",
+              "en": "First name, then SURNAME in capitals",
+              "fa": "نام، سپس نام خانوادگی با حروف بزرگ"
+            },
+            {
+              "fr": "12, rue des Lilas\n69003 Lyon",
+              "en": "Number, street, then postcode and town",
+              "fa": "پلاک و خیابان، سپس کد پستی و شهر"
+            }
+          ]
+        },
+        {
+          "id": "recipient",
+          "name": {
+            "fr": "Le destinataire",
+            "en": "The recipient",
+            "fa": "گیرنده"
+          },
+          "purpose": {
+            "fr": "En dessous, à droite : le nom de la personne ou du service, puis son adresse.",
+            "en": "Below, on the right: the name of the person or department, then their address.",
+            "fa": "پایین‌تر، سمت راست: نام شخص یا بخش، سپس نشانی او."
+          },
+          "phrases": [
+            {
+              "fr": "Service clients",
+              "en": "Customer service",
+              "fa": "خدمات مشتریان"
+            },
+            {
+              "fr": "Madame la Directrice",
+              "en": "To the (female) head",
+              "fa": "خانم مدیر"
+            },
+            {
+              "fr": "Monsieur le Maire",
+              "en": "To the mayor",
+              "fa": "آقای شهردار"
+            }
+          ]
+        },
+        {
+          "id": "placeDate",
+          "name": {
+            "fr": "Le lieu et la date",
+            "en": "Place and date",
+            "fa": "محل و تاریخ"
+          },
+          "purpose": {
+            "fr": "À droite, au-dessus de l’objet : la ville d’où vous écrivez, puis « le » et la date.",
+            "en": "On the right, above the subject line: the town you write from, then « le » and the date.",
+            "fa": "سمت راست، بالای موضوع: شهری که از آن می‌نویسید، سپس «⁨le⁩» و تاریخ."
+          },
+          "phrases": [
+            {
+              "fr": "Lyon, le 6 novembre 2026",
+              "en": "Lyon, 6 November 2026",
+              "fa": "لیون، ۶ نوامبر ۲۰۲۶"
+            },
+            {
+              "fr": "Paris, le 1er mars 2026",
+              "en": "The first of the month is written 1er",
+              "fa": "روز اول ماه به صورت 1er نوشته می‌شود"
+            }
+          ]
+        },
+        {
+          "id": "object",
+          "name": {
+            "fr": "L’objet",
+            "en": "Subject line",
+            "fa": "موضوع"
+          },
+          "purpose": {
+            "fr": "« Objet : » suivi du sujet en quelques mots. Le lecteur sait tout de suite de quoi il s’agit.",
+            "en": "« Objet : » followed by the subject in a few words, so the reader knows at once what it is about.",
+            "fa": "«⁨Objet :⁩» و پس از آن موضوع در چند کلمه، تا خواننده بی‌درنگ بداند نامه دربارهٔ چیست."
+          },
+          "phrases": [
+            {
+              "fr": "Objet : Demande d’informations",
+              "en": "Subject: Request for information",
+              "fa": "موضوع: درخواست اطلاعات"
+            },
+            {
+              "fr": "Objet : Réclamation concernant la commande n° [numéro]",
+              "en": "Subject: Complaint about order no. [number]",
+              "fa": "موضوع: شکایت دربارهٔ سفارش شمارهٔ [شماره]"
+            },
+            {
+              "fr": "Objet : Candidature au poste de [poste]",
+              "en": "Subject: Application for the post of [post]",
+              "fa": "موضوع: درخواست برای سمت [سمت]"
+            }
+          ]
+        },
+        {
+          "id": "salutation",
+          "name": {
+            "fr": "La formule d’appel",
+            "en": "The greeting",
+            "fa": "عبارت خطاب"
+          },
+          "purpose": {
+            "fr": "Seule sur sa ligne, suivie d’une virgule. Si vous ne savez pas qui lira la lettre : « Madame, Monsieur, ».",
+            "en": "On a line of its own, followed by a comma. If you do not know who will read it: « Madame, Monsieur, ».",
+            "fa": "در یک خط جداگانه و با ویرگول در پایان. اگر نمی‌دانید چه کسی نامه را می‌خواند: «⁨Madame, Monsieur,⁩»."
+          },
+          "phrases": [
+            {
+              "fr": "Madame, Monsieur,",
+              "en": "Dear Sir or Madam,",
+              "fa": "خانم، آقا،"
+            },
+            {
+              "fr": "Madame,",
+              "en": "Dear Madam, (a woman you do not know)",
+              "fa": "خانم، (زنی که او را نمی‌شناسید)"
+            },
+            {
+              "fr": "Monsieur le Directeur,",
+              "en": "Dear Director, (using the title)",
+              "fa": "آقای مدیر، (با عنوان شغلی)"
+            }
+          ]
+        },
+        {
+          "id": "opening",
+          "name": {
+            "fr": "L’introduction",
+            "en": "The opening",
+            "fa": "مقدمه"
+          },
+          "purpose": {
+            "fr": "Une ou deux phrases : pourquoi vous écrivez.",
+            "en": "One or two sentences: why you are writing.",
+            "fa": "یک یا دو جمله: چرا می‌نویسید."
+          },
+          "phrases": [
+            {
+              "fr": "Je me permets de vous écrire au sujet de …",
+              "en": "I am writing to you about …",
+              "fa": "به خود اجازه می‌دهم دربارهٔ … برایتان بنویسم"
+            },
+            {
+              "fr": "Je vous écris afin de …",
+              "en": "I am writing in order to …",
+              "fa": "برایتان می‌نویسم تا …"
+            },
+            {
+              "fr": "Suite à notre conversation téléphonique du [date], …",
+              "en": "Following our telephone conversation of [date], …",
+              "fa": "در پی گفت‌وگوی تلفنی‌مان در [تاریخ]، …"
+            },
+            {
+              "fr": "Ayant lu votre annonce parue sur [site], …",
+              "en": "Having read your advertisement on [site], …",
+              "fa": "پس از خواندن آگهی شما در [سایت]، …"
+            }
+          ]
+        },
+        {
+          "id": "body",
+          "name": {
+            "fr": "Le développement",
+            "en": "The body",
+            "fa": "بدنه"
+          },
+          "purpose": {
+            "fr": "Les faits d’abord, puis ce que vous demandez. Un paragraphe par idée, reliés par des connecteurs.",
+            "en": "The facts first, then what you are asking for. One paragraph per idea, linked by connectors.",
+            "fa": "اول واقعیت‌ها، بعد آنچه می‌خواهید. برای هر ایده یک بند، و بندها با کلمات ربط به هم وصل می‌شوند."
+          },
+          "phrases": [
+            {
+              "fr": "En effet, …",
+              "en": "Indeed, … (gives the facts behind what you just said)",
+              "fa": "در واقع، … (دلیل گفتهٔ قبلی را می‌آورد)"
+            },
+            {
+              "fr": "De plus, …",
+              "en": "Moreover, …",
+              "fa": "افزون بر این، …"
+            },
+            {
+              "fr": "Par ailleurs, …",
+              "en": "Furthermore, … / In addition, …",
+              "fa": "از سوی دیگر، …"
+            },
+            {
+              "fr": "Je vous serais reconnaissant(e) de bien vouloir …",
+              "en": "I would be grateful if you would …",
+              "fa": "سپاسگزار خواهم بود اگر لطف کنید و …"
+            },
+            {
+              "fr": "Je souhaiterais savoir si …",
+              "en": "I would like to know whether …",
+              "fa": "مایلم بدانم آیا …"
+            },
+            {
+              "fr": "Vous trouverez ci-joint …",
+              "en": "Please find attached …",
+              "fa": "به پیوست … را می‌یابید"
+            }
+          ]
+        },
+        {
+          "id": "conclusion",
+          "name": {
+            "fr": "La conclusion",
+            "en": "The conclusion",
+            "fa": "نتیجه‌گیری"
+          },
+          "purpose": {
+            "fr": "Une phrase qui ferme la lettre : vous attendez une réponse, vous restez disponible.",
+            "en": "One sentence that closes the letter: you await a reply, you remain available.",
+            "fa": "یک جمله که نامه را می‌بندد: منتظر پاسخ هستید و در دسترس می‌مانید."
+          },
+          "phrases": [
+            {
+              "fr": "Dans l’attente de votre réponse, …",
+              "en": "Looking forward to your reply, …",
+              "fa": "در انتظار پاسخ شما، …"
+            },
+            {
+              "fr": "Je reste à votre disposition pour tout renseignement complémentaire.",
+              "en": "I remain at your disposal for any further information.",
+              "fa": "برای هر اطلاعات بیشتری در خدمت شما هستم."
+            },
+            {
+              "fr": "En vous remerciant par avance de votre attention, …",
+              "en": "Thanking you in advance for your attention, …",
+              "fa": "با سپاس پیشاپیش از توجه شما، …"
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "name": {
+            "fr": "La formule de politesse",
+            "en": "The closing formula",
+            "fa": "عبارت پایانی مؤدبانه"
+          },
+          "purpose": {
+            "fr": "Une phrase complète qui reprend la formule d’appel telle quelle, entre deux virgules.",
+            "en": "A complete sentence that repeats the greeting exactly as you wrote it, between two commas.",
+            "fa": "یک جملهٔ کامل که عبارت خطاب را دقیقاً همان‌طور که نوشته‌اید، میان دو ویرگول تکرار می‌کند."
+          },
+          "phrases": [
+            {
+              "fr": "Je vous prie d’agréer, Madame, Monsieur, l’expression de mes salutations distinguées.",
+              "en": "Yours faithfully. (the standard closing)",
+              "fa": "با احترام. (عبارت پایانی معمول)"
+            },
+            {
+              "fr": "Veuillez agréer, Madame, Monsieur, l’expression de mes sentiments respectueux.",
+              "en": "Yours faithfully, with respect. (to someone senior)",
+              "fa": "با احترام فراوان. (برای مقام بالاتر)"
+            },
+            {
+              "fr": "Recevez, Madame, Monsieur, mes salutations distinguées.",
+              "en": "Yours faithfully. (a shorter form)",
+              "fa": "با احترام. (شکل کوتاه‌تر)"
+            }
+          ]
+        },
+        {
+          "id": "signature",
+          "name": {
+            "fr": "La signature",
+            "en": "The signature",
+            "fa": "امضا"
+          },
+          "purpose": {
+            "fr": "Votre prénom et votre nom, à la fin.",
+            "en": "Your first name and surname, at the end.",
+            "fa": "نام و نام خانوادگی شما، در پایان."
+          },
+          "phrases": [
+            {
+              "fr": "Camille MARTIN",
+              "en": "First name and SURNAME",
+              "fa": "نام و نام خانوادگی"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "fr": "« Cher Monsieur » ne s’écrit qu’à une personne que l’on connaît déjà. À un inconnu : « Monsieur, ».",
+          "en": "« Cher Monsieur » is only for someone you already know. To a stranger: « Monsieur, ».",
+          "fa": "«⁨Cher Monsieur⁩» فقط برای کسی است که از قبل می‌شناسید. برای ناشناس: «⁨Monsieur,⁩»."
+        },
+        {
+          "fr": "« Bonjour Madame, » se voit dans un courriel, pas dans une lettre. « Cordialement » aussi : la lettre se termine par une formule de politesse complète.",
+          "en": "« Bonjour Madame, » belongs in an email, not a letter. So does « Cordialement »: a letter ends with a full closing formula.",
+          "fa": "«⁨Bonjour Madame,⁩» در ایمیل دیده می‌شود، نه در نامه. «⁨Cordialement⁩» هم همین‌طور: نامه با یک عبارت پایانی کامل تمام می‌شود."
+        },
+        {
+          "fr": "La formule de politesse reprend la formule d’appel : « Madame, Monsieur, » au début, « Madame, Monsieur, » dans la dernière phrase.",
+          "en": "The closing repeats the greeting: « Madame, Monsieur, » at the top, « Madame, Monsieur, » in the last sentence.",
+          "fa": "عبارت پایانی، عبارت خطاب را تکرار می‌کند: «⁨Madame, Monsieur,⁩» در آغاز، و «⁨Madame, Monsieur,⁩» در جملهٔ آخر."
+        },
+        {
+          "fr": "Un seul « tu » suffit à rompre le registre. Relisez la lettre en cherchant tu, te, ton, ta, tes.",
+          "en": "A single tu breaks the register. Read the letter again looking for tu, te, ton, ta, tes.",
+          "fa": "یک «⁨tu⁩» کافی است تا لحن رسمی بشکند. نامه را دوباره بخوانید و دنبال tu، te، ton، ta، tes بگردید."
+        },
+        {
+          "fr": "Les faits avant la demande : le lecteur doit comprendre la situation avant de lire ce que vous voulez.",
+          "en": "Facts before the request: the reader must understand the situation before reading what you want.",
+          "fa": "واقعیت‌ها پیش از درخواست: خواننده باید پیش از خواندن خواستهٔ شما، موقعیت را بفهمد."
+        }
+      ],
+      "model": {
+        "title": {
+          "fr": "Réclamation : une commande arrivée cassée",
+          "en": "A complaint: an order that arrived broken",
+          "fa": "شکایت: سفارشی که شکسته رسید"
+        },
+        "level": "B1",
+        "levelBasis": "author",
+        "segments": [
+          {
+            "part": "sender",
+            "text": "Camille MARTIN\n12, rue des Lilas\n69003 Lyon"
+          },
+          {
+            "part": "recipient",
+            "text": "Service clients\nMaison & Jardin\n45, avenue de la République\n75011 Paris"
+          },
+          {
+            "part": "placeDate",
+            "text": "Lyon, le 6 novembre 2026"
+          },
+          {
+            "part": "object",
+            "text": "Objet : Commande n° 48213 reçue endommagée"
+          },
+          {
+            "part": "salutation",
+            "text": "Madame, Monsieur,"
+          },
+          {
+            "part": "opening",
+            "text": "Je me permets de vous écrire au sujet de ma commande n° 48213, passée sur votre site le 20 octobre et livrée le 3 novembre."
+          },
+          {
+            "part": "body",
+            "text": "En effet, la lampe de bureau que j'ai reçue est arrivée cassée : le pied est fendu et l'ampoule ne s'allume pas. Le carton était lui-même abîmé, ce qui laisse penser que le problème vient du transport. Vous trouverez ci-joint deux photos du colis et de la lampe."
+          },
+          {
+            "part": "body",
+            "text": "Je vous serais reconnaissante de bien vouloir m'envoyer une nouvelle lampe dans les meilleurs délais ou, si ce n'est pas possible, de me rembourser la somme de 39 euros. Je souhaiterais également savoir comment vous retourner l'article abîmé."
+          },
+          {
+            "part": "conclusion",
+            "text": "Dans l'attente de votre réponse, je reste à votre disposition pour tout renseignement complémentaire."
+          },
+          {
+            "part": "closing",
+            "text": "Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées."
+          },
+          {
+            "part": "signature",
+            "text": "Camille MARTIN"
+          }
+        ]
+      }
+    },
+    {
+      "id": "informal",
+      "register": "tu",
+      "name": {
+        "fr": "La lettre amicale",
+        "en": "The informal letter",
+        "fa": "نامهٔ دوستانه"
+      },
+      "when": {
+        "fr": "Pour écrire à un ami, à quelqu’un de votre famille, à un collègue que vous tutoyez : donner des nouvelles, inviter, remercier, raconter, conseiller.",
+        "en": "For writing to a friend, a relative, or a colleague you call tu: sharing news, inviting, thanking, telling a story, giving advice.",
+        "fa": "برای نوشتن به دوست، یکی از اعضای خانواده یا همکاری که با او «⁨tu⁩» حرف می‌زنید: خبر دادن، دعوت کردن، تشکر، تعریف کردن، نصیحت."
+      },
+      "registerNote": {
+        "fr": "On tutoie une seule personne : tu, ton, ta, tes. « Vous » n’est juste que si vous écrivez à plusieurs amis à la fois.",
+        "en": "Use tu to one person: tu, ton, ta, tes. Vous is right only when you write to several friends at once.",
+        "fa": "به یک نفر «⁨tu⁩» گفته می‌شود: tu، ton، ta، tes. «⁨vous⁩» فقط وقتی درست است که هم‌زمان به چند دوست می‌نویسید."
+      },
+      "outline": "[Ville], le [date]\n\nCher [prénom], / Chère [prénom],\n\n[Prendre des nouvelles, réagir à sa dernière lettre]\n\n[Le cœur de la lettre : ce que vous voulez raconter, proposer ou demander]\n\n[Conclure : une question, un projet, des salutations à la famille]\n\nBises,\n\n[Prénom]",
+      "parts": [
+        {
+          "id": "placeDate",
+          "name": {
+            "fr": "Le lieu et la date",
+            "en": "Place and date",
+            "fa": "محل و تاریخ"
+          },
+          "purpose": {
+            "fr": "Facultatif, mais courant en haut à droite. L’année n’est pas nécessaire.",
+            "en": "Optional, but usual at the top right. The year is not needed.",
+            "fa": "اختیاری است، اما معمولاً بالا سمت راست می‌آید. سال لازم نیست."
+          },
+          "phrases": [
+            {
+              "fr": "Marseille, le 6 novembre",
+              "en": "Marseille, 6 November",
+              "fa": "مارسی، ۶ نوامبر"
+            }
+          ]
+        },
+        {
+          "id": "salutation",
+          "name": {
+            "fr": "La formule d’appel",
+            "en": "The greeting",
+            "fa": "عبارت خطاب"
+          },
+          "purpose": {
+            "fr": "« Cher » s’accorde : Cher Paul, Chère Léa, Chers amis. Suivie d’une virgule, ou d’un point d’exclamation après « Salut ».",
+            "en": "« Cher » agrees: Cher Paul, Chère Léa, Chers amis. Followed by a comma, or an exclamation mark after « Salut ».",
+            "fa": "«⁨Cher⁩» با مخاطب مطابقت می‌کند: Cher Paul، Chère Léa، Chers amis. پس از آن ویرگول می‌آید، یا بعد از «⁨Salut⁩» علامت تعجب."
+          },
+          "phrases": [
+            {
+              "fr": "Cher Paul,",
+              "en": "Dear Paul, (a man)",
+              "fa": "پل عزیز، (مرد)"
+            },
+            {
+              "fr": "Chère Léa,",
+              "en": "Dear Léa, (a woman)",
+              "fa": "لئای عزیز، (زن)"
+            },
+            {
+              "fr": "Chers amis,",
+              "en": "Dear friends,",
+              "fa": "دوستان عزیز،"
+            },
+            {
+              "fr": "Salut Tom !",
+              "en": "Hi Tom! (very familiar)",
+              "fa": "سلام تام! (خیلی خودمانی)"
+            }
+          ]
+        },
+        {
+          "id": "opening",
+          "name": {
+            "fr": "Prendre des nouvelles",
+            "en": "Asking for news",
+            "fa": "احوال‌پرسی"
+          },
+          "purpose": {
+            "fr": "Demander comment va la personne, réagir à son dernier message.",
+            "en": "Ask how the person is and react to their last message.",
+            "fa": "حال طرف را بپرسید و به آخرین پیامش واکنش نشان دهید."
+          },
+          "phrases": [
+            {
+              "fr": "Comment vas-tu ?",
+              "en": "How are you?",
+              "fa": "حالت چطور است؟"
+            },
+            {
+              "fr": "Merci pour ta lettre, ça m'a fait très plaisir !",
+              "en": "Thanks for your letter, it made me very happy!",
+              "fa": "ممنون برای نامه‌ات، خیلی خوشحالم کرد!"
+            },
+            {
+              "fr": "J'espère que tout va bien pour toi.",
+              "en": "I hope all is well with you.",
+              "fa": "امیدوارم همه چیز برایت خوب باشد."
+            },
+            {
+              "fr": "Ça fait longtemps que je ne t'ai pas écrit !",
+              "en": "It's been a long time since I wrote to you!",
+              "fa": "خیلی وقت است برایت ننوشته‌ام!"
+            }
+          ]
+        },
+        {
+          "id": "body",
+          "name": {
+            "fr": "Le cœur de la lettre",
+            "en": "The heart of the letter",
+            "fa": "بخش اصلی نامه"
+          },
+          "purpose": {
+            "fr": "Ce que vous voulez raconter, proposer ou demander. Phrases naturelles, mais complètes.",
+            "en": "What you want to tell, suggest or ask. Natural sentences, but complete ones.",
+            "fa": "آنچه می‌خواهید تعریف کنید، پیشنهاد دهید یا بپرسید. جمله‌های طبیعی، اما کامل."
+          },
+          "phrases": [
+            {
+              "fr": "Figure-toi que …",
+              "en": "Guess what … / Would you believe …",
+              "fa": "باورت می‌شود که …"
+            },
+            {
+              "fr": "Je voulais te raconter …",
+              "en": "I wanted to tell you about …",
+              "fa": "می‌خواستم برایت تعریف کنم …"
+            },
+            {
+              "fr": "Est-ce que tu serais libre le [jour] ?",
+              "en": "Would you be free on [day]?",
+              "fa": "آیا [روز] وقتت آزاد است؟"
+            },
+            {
+              "fr": "À ta place, je …",
+              "en": "If I were you, I would …",
+              "fa": "اگر جای تو بودم، …"
+            },
+            {
+              "fr": "D'ailleurs, …",
+              "en": "By the way, … / Besides, …",
+              "fa": "راستی، …"
+            }
+          ]
+        },
+        {
+          "id": "conclusion",
+          "name": {
+            "fr": "Pour finir",
+            "en": "Rounding off",
+            "fa": "جمع‌بندی"
+          },
+          "purpose": {
+            "fr": "Une question, un projet, des salutations pour les proches.",
+            "en": "A question, a plan, greetings to the people close to them.",
+            "fa": "یک پرسش، یک برنامه، سلام رساندن به نزدیکانش."
+          },
+          "phrases": [
+            {
+              "fr": "Réponds-moi vite !",
+              "en": "Write back soon!",
+              "fa": "زود جوابم را بده!"
+            },
+            {
+              "fr": "J'ai hâte de te voir.",
+              "en": "I can't wait to see you.",
+              "fa": "بی‌صبرانه منتظر دیدنت هستم."
+            },
+            {
+              "fr": "Donne-moi de tes nouvelles.",
+              "en": "Let me know how you are.",
+              "fa": "از حال خودت خبرم کن."
+            },
+            {
+              "fr": "Passe le bonjour à ta famille !",
+              "en": "Say hello to your family!",
+              "fa": "به خانواده‌ات سلام برسان!"
+            }
+          ]
+        },
+        {
+          "id": "closing",
+          "name": {
+            "fr": "La formule finale",
+            "en": "The sign-off",
+            "fa": "عبارت پایانی"
+          },
+          "purpose": {
+            "fr": "Courte, seule sur sa ligne, suivie d’une virgule.",
+            "en": "Short, on a line of its own, followed by a comma.",
+            "fa": "کوتاه، در یک خط جداگانه، با ویرگول در پایان."
+          },
+          "phrases": [
+            {
+              "fr": "Bises,",
+              "en": "Love, (lit. kisses)",
+              "fa": "می‌بوسمت، (به معنای «بوسه‌ها»)"
+            },
+            {
+              "fr": "Je t'embrasse,",
+              "en": "Love, (lit. I hug you)",
+              "fa": "در آغوشت می‌گیرم،"
+            },
+            {
+              "fr": "À bientôt,",
+              "en": "See you soon,",
+              "fa": "به‌زودی می‌بینمت،"
+            },
+            {
+              "fr": "Amitiés,",
+              "en": "Best wishes, (warm but less intimate)",
+              "fa": "با مهر، (گرم ولی کمتر خودمانی)"
+            }
+          ]
+        },
+        {
+          "id": "signature",
+          "name": {
+            "fr": "La signature",
+            "en": "The signature",
+            "fa": "امضا"
+          },
+          "purpose": {
+            "fr": "Votre prénom seulement.",
+            "en": "Your first name only.",
+            "fa": "فقط نام کوچک شما."
+          },
+          "phrases": [
+            {
+              "fr": "Inès",
+              "en": "First name only",
+              "fa": "فقط نام کوچک"
+            }
+          ]
+        }
+      ],
+      "pitfalls": [
+        {
+          "fr": "Ne mélangez pas tu et vous pour la même personne.",
+          "en": "Do not mix tu and vous for the same person.",
+          "fa": "برای یک نفر، tu و vous را با هم قاطی نکنید."
+        },
+        {
+          "fr": "« Cher » s’accorde avec la personne : « Chère Léa », pas « Cher Léa ».",
+          "en": "« Cher » agrees with the person: « Chère Léa », not « Cher Léa ».",
+          "fa": "«⁨Cher⁩» با شخص مطابقت می‌کند: «⁨Chère Léa⁩»، نه «⁨Cher Léa⁩»."
+        },
+        {
+          "fr": "Pas d’objet, pas d’adresse, pas de « Je vous prie d’agréer… » : une lettre à un ami qui ressemble à une lettre à la banque sonne froid.",
+          "en": "No subject line, no address block, no « Je vous prie d’agréer… »: a letter to a friend that reads like a letter to the bank sounds cold.",
+          "fa": "بدون موضوع، بدون نشانی، بدون «⁨Je vous prie d’agréer…⁩»: نامه به دوستی که شبیه نامه به بانک باشد، سرد به نظر می‌رسد."
+        },
+        {
+          "fr": "Une lettre amicale répond : réagissez aux nouvelles de votre ami et posez-lui des questions.",
+          "en": "An informal letter answers: react to your friend’s news and ask them questions back.",
+          "fa": "نامهٔ دوستانه پاسخ می‌دهد: به خبرهای دوستتان واکنش نشان دهید و از او سؤال بپرسید."
+        },
+        {
+          "fr": "Familier ne veut pas dire négligé : des phrases complètes, des majuscules, des accents.",
+          "en": "Familiar does not mean careless: complete sentences, capital letters, accents.",
+          "fa": "خودمانی به معنای بی‌دقت نیست: جمله‌های کامل، حروف بزرگ، علامت‌های تکیه."
+        }
+      ],
+      "model": {
+        "title": {
+          "fr": "Une invitation : « Je déménage ! »",
+          "en": "An invitation: “I’m moving!”",
+          "fa": "یک دعوت: «دارم اسباب‌کشی می‌کنم!»"
+        },
+        "level": "A2",
+        "levelBasis": "author",
+        "segments": [
+          {
+            "part": "placeDate",
+            "text": "Marseille, le 6 novembre"
+          },
+          {
+            "part": "salutation",
+            "text": "Chère Léa,"
+          },
+          {
+            "part": "opening",
+            "text": "Merci beaucoup pour ta lettre, ça m'a fait très plaisir d'avoir de tes nouvelles ! Je suis contente de savoir que ton nouveau travail se passe bien."
+          },
+          {
+            "part": "body",
+            "text": "Moi, j'ai une grande nouvelle : je déménage ! J'ai enfin trouvé un appartement près du Vieux-Port. Il est petit, mais il y a un balcon avec une vue magnifique sur la mer. Le déménagement est prévu pour le samedi 22 novembre."
+          },
+          {
+            "part": "body",
+            "text": "Justement, est-ce que tu serais libre ce week-end-là ? Tu pourrais venir m'aider, et le soir, on fêterait ça avec quelques amis. Tu peux dormir à la maison, bien sûr. Dis-moi vite si c'est possible pour toi."
+          },
+          {
+            "part": "conclusion",
+            "text": "J'ai hâte de te revoir. Passe le bonjour à tes parents !"
+          },
+          {
+            "part": "closing",
+            "text": "Je t'embrasse,"
+          },
+          {
+            "part": "signature",
+            "text": "Inès"
+          }
+        ]
+      }
+    }
+  ],
+  "tasks": [
+    {
+      "id": "letter.formal.inscription",
+      "kind": "formal",
+      "level": "A2",
+      "levelBasis": "author",
+      "task": {
+        "fr": "Vous voulez suivre un cours de français dans une école de langues de votre ville. Écrivez au directeur ou à la directrice de l’école pour demander des informations : les horaires, le prix et la manière de connaître votre niveau.",
+        "en": "You want to take a French course at a language school in your town. Write to the head of the school to ask for information: the timetable, the price, and how your level will be assessed.",
+        "fa": "می‌خواهید در یک آموزشگاه زبان در شهرتان کلاس فرانسه بگیرید. به مدیر آموزشگاه بنویسید و دربارهٔ ساعت‌ها، هزینه و چگونگی تعیین سطحتان اطلاعات بخواهید."
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      }
+    },
+    {
+      "id": "letter.formal.reclamation",
+      "kind": "formal",
+      "level": "B1",
+      "levelBasis": "author",
+      "task": {
+        "fr": "Vous avez acheté un appareil électroménager sur Internet. Il ne fonctionne pas depuis le premier jour. Écrivez au service clients : expliquez le problème et demandez une solution précise.",
+        "en": "You bought a household appliance online. It has not worked since the first day. Write to customer service: explain the problem and ask for a specific solution.",
+        "fa": "یک وسیلهٔ برقی خانگی را اینترنتی خریده‌اید که از روز اول کار نکرده است. به خدمات مشتریان بنویسید: مشکل را توضیح دهید و راه‌حل مشخصی بخواهید."
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      }
+    },
+    {
+      "id": "letter.formal.mairie",
+      "kind": "formal",
+      "level": "B2",
+      "levelBasis": "author",
+      "task": {
+        "fr": "Depuis un mois, des travaux font beaucoup de bruit dans votre rue, même tard le soir. Écrivez au maire de votre ville : décrivez la situation, expliquez ses conséquences pour les habitants et proposez des solutions.",
+        "en": "For a month, building work has made a lot of noise in your street, even late in the evening. Write to the mayor of your town: describe the situation, explain its consequences for the residents and suggest solutions.",
+        "fa": "یک ماه است که کارهای ساختمانی در خیابان شما، حتی تا دیروقت شب، سروصدای زیادی دارد. به شهردار شهرتان بنویسید: وضعیت را شرح دهید، پیامدهایش را برای ساکنان توضیح دهید و راه‌حل پیشنهاد کنید."
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      }
+    },
+    {
+      "id": "letter.informal.anniversaire",
+      "kind": "informal",
+      "level": "A2",
+      "levelBasis": "author",
+      "task": {
+        "fr": "Vous organisez une fête pour votre anniversaire. Écrivez à un ami pour l’inviter : donnez la date, le lieu et le programme de la soirée.",
+        "en": "You are throwing a party for your birthday. Write to a friend to invite them: give the date, the place and the plan for the evening.",
+        "fa": "برای تولدتان مهمانی گرفته‌اید. به یک دوست بنویسید و او را دعوت کنید: تاریخ، محل و برنامهٔ شب را بگویید."
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      }
+    },
+    {
+      "id": "letter.informal.vacances",
+      "kind": "informal",
+      "level": "B1",
+      "levelBasis": "author",
+      "task": {
+        "fr": "Vous passez une semaine de vacances dans une ville française. Écrivez à une amie : racontez ce que vous avez fait et dites ce que vous pensez de la ville.",
+        "en": "You are spending a week’s holiday in a French town. Write to a friend: tell her what you have done and say what you think of the town.",
+        "fa": "یک هفته در یک شهر فرانسوی تعطیلات هستید. به یک دوست بنویسید: تعریف کنید چه کارهایی کرده‌اید و نظرتان دربارهٔ شهر چیست."
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      }
+    },
+    {
+      "id": "letter.informal.conseil",
+      "kind": "informal",
+      "level": "B1",
+      "levelBasis": "author",
+      "task": {
+        "fr": "Un ami vous écrit : il hésite à partir étudier un an à l’étranger. Répondez-lui : réagissez à sa lettre, donnez-lui votre avis et quelques conseils.",
+        "en": "A friend writes to you: he cannot decide whether to go and study abroad for a year. Reply: react to his letter, give him your opinion and some advice.",
+        "fa": "دوستی برایتان نوشته که مردد است یک سال برای تحصیل به خارج برود. جوابش را بدهید: به نامه‌اش واکنش نشان دهید، نظرتان را بگویید و چند توصیه کنید."
+      },
+      "review": {
+        "owner": null,
+        "teacher": null
+      }
+    }
+  ]
+}

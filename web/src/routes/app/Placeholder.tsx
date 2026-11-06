@@ -46,7 +46,7 @@ export const PLACEHOLDERS: Record<string, { missing: keyof Dict; instead: Instea
   vocabulary: { missing: 'shellMissingVocabulary', instead: [WORKSPACE, { to: '/app/cards', label: 'cards' }, SEARCH] },
   grammar: { missing: 'shellMissingGrammar', instead: [SEARCH, TODAY] },
   reading: { missing: 'shellMissingReading', instead: [{ to: '/app/verbs', label: 'verbs' }, SEARCH] },
-  output: { missing: 'shellMissingOutput', instead: [{ to: '/app/verbs/drill', label: 'shellGoDrill' }, { to: '/app/verbs', label: 'verbs' }] },
+  output: { missing: 'shellMissingOutput', instead: [{ to: '/app/writing', label: 'shellNavWriting' }, { to: '/app/verbs/drill', label: 'shellGoDrill' }] },
   news: { missing: 'shellMissingNews', instead: [SEARCH, TODAY] },
   podcasts: { missing: 'shellMissingPodcasts', instead: [{ to: '/app/listening', label: 'shellNavListening' }, TODAY] },
   saved: { missing: 'shellMissingSaved', instead: [{ to: '/app/progress', label: 'progress' }, { to: '/app/cards', label: 'cards' }] },
