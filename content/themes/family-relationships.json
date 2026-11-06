@@ -321,7 +321,7 @@
    "type": "noun",
    "article": "la",
    "en": "mother-in-law; stepmother",
-   "fa": "مادرزن، نامادری",
+   "fa": "مادرزن، مادرشوهر، نامادری",
    "level": "B1",
    "levelEstimated": true
   },
@@ -889,7 +889,7 @@
   {
    "fr": "Je m'entends bien avec mes voisins.",
    "en": "I get along well with my neighbours.",
-   "fa": "با همسایه‌هایم رابطه خوبی دارم.",
+   "fa": "با همسایه‌هایم رابطهٔ خوبی دارم.",
    "level": "A2",
    "use": "speaking"
   },

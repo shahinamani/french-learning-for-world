@@ -227,7 +227,7 @@
      "lemma": "passion",
      "gender": "f",
      "en": "passion",
-     "fa": "علاقه شدید",
+     "fa": "علاقهٔ شدید",
      "level": "B1"
     },
     {
@@ -743,14 +743,14 @@
      "lemma": "beau-père",
      "gender": "m",
      "en": "father-in-law; stepfather",
-     "fa": "پدرزن، ناپدری",
+     "fa": "پدرزن، پدرشوهر، ناپدری",
      "level": "B1"
     },
     {
      "lemma": "belle-mère",
      "gender": "f",
      "en": "mother-in-law; stepmother",
-     "fa": "مادرزن، نامادری",
+     "fa": "مادرزن، مادرشوهر، نامادری",
      "level": "B1"
     },
     {
@@ -814,7 +814,7 @@
     {
      "fr": "Je m'entends bien avec mes voisins.",
      "en": "I get along well with my neighbours.",
-     "fa": "با همسایه‌هایم رابطه خوبی دارم.",
+     "fa": "با همسایه‌هایم رابطهٔ خوبی دارم.",
      "level": "A2",
      "use": "speaking"
     },
@@ -1153,7 +1153,7 @@
      "lemma": "horaire",
      "gender": "m",
      "en": "schedule, opening hours",
-     "fa": "ساعت کاری",
+     "fa": "برنامهٔ زمانی، ساعت کار",
      "level": "B1"
     },
     {
@@ -1188,7 +1188,7 @@
      "lemma": "repas",
      "gender": "m",
      "en": "meal",
-     "fa": "وعده غذایی",
+     "fa": "وعدهٔ غذایی",
      "level": "A1"
     },
     {
@@ -1329,14 +1329,14 @@
     {
      "fr": "La semaine de quatre jours permettrait de mieux profiter de son temps libre.",
      "en": "A four-day week would allow people to enjoy their free time more.",
-     "fa": "هفته کاری چهار روزه امکان می‌دهد از وقت آزاد بیشتر لذت ببریم.",
+     "fa": "هفتهٔ کاری چهار روزه امکان می‌دهد از وقت آزاد بیشتر لذت ببریم.",
      "level": "B2",
      "use": "both"
     },
     {
      "fr": "Le sentiment de manquer de temps tient autant à notre organisation qu'à la charge réelle de travail.",
      "en": "The feeling of lacking time owes as much to our organisation as to the actual workload.",
-     "fa": "احساس کمبود وقت همان‌قدر به نحوه سازماندهی ما برمی‌گردد که به حجم واقعی کار.",
+     "fa": "احساس کمبود وقت همان‌قدر به نحوهٔ سازماندهی ما برمی‌گردد که به حجم واقعی کار.",
      "level": "C1",
      "use": "writing"
     }
@@ -1703,7 +1703,7 @@
     {
      "fr": "J'habite dans un appartement au deuxième étage.",
      "en": "I live in a flat on the second floor.",
-     "fa": "من در یک آپارتمان در طبقه دوم زندگی می‌کنم.",
+     "fa": "من در یک آپارتمان در طبقهٔ دوم زندگی می‌کنم.",
      "level": "A1",
      "use": "speaking"
     },
@@ -1766,7 +1766,7 @@
     {
      "fr": "J'ai déménagé parce que mon ancien quartier était trop bruyant.",
      "en": "I moved because my old neighbourhood was too noisy.",
-     "fa": "اسباب‌کشی کردم چون محله قبلی‌ام خیلی پرسروصدا بود.",
+     "fa": "اسباب‌کشی کردم چون محلهٔ قبلی‌ام خیلی پرسروصدا بود.",
      "level": "B1",
      "use": "both"
     },
@@ -1801,7 +1801,7 @@
     {
      "fr": "Le manque de logements abordables touche surtout les jeunes et les familles modestes.",
      "en": "The lack of affordable housing affects mainly young people and low-income families.",
-     "fa": "کمبود مسکن مقرون‌به‌صرفه بیش از همه جوانان و خانواده‌های کم‌درآمد را تحت تأثیر می‌گذارد.",
+     "fa": "کمبود مسکن مقرون‌به‌صرفه بیش از همه جوانان و خانواده‌های کم‌درآمد را تحت تأثیر قرار می‌دهد.",
      "level": "B2",
      "use": "both"
     },
@@ -2101,7 +2101,7 @@
      "lemma": "repas",
      "gender": "m",
      "en": "meal",
-     "fa": "وعده غذایی",
+     "fa": "وعدهٔ غذایی",
      "level": "A1"
     },
     {
@@ -2150,7 +2150,7 @@
      "lemma": "ingrédient",
      "gender": "m",
      "en": "ingredient",
-     "fa": "ماده تشکیل‌دهنده",
+     "fa": "مادهٔ تشکیل‌دهنده",
      "level": "B1"
     },
     {
@@ -2291,7 +2291,7 @@
     {
      "fr": "Le repas était froid et le service très lent ; je demande un remboursement.",
      "en": "The meal was cold and the service very slow; I am asking for a refund.",
-     "fa": "غذا سرد بود و سرویس‌دهی خیلی کند؛ درخواست بازپرداخت دارم.",
+     "fa": "غذا سرد بود و سرویس‌دهی خیلی کند؛ می‌خواهم پولم را پس بدهند.",
      "level": "B1",
      "use": "writing"
     },
@@ -2305,7 +2305,7 @@
     {
      "fr": "Le fast-food est pratique, mais il ne favorise pas une alimentation équilibrée.",
      "en": "Fast food is convenient, but it does not encourage a balanced diet.",
-     "fa": "فست‌فود راحت است، اما تغذیه متعادل را تشویق نمی‌کند.",
+     "fa": "فست‌فود راحت است، اما تغذیهٔ متعادل را تشویق نمی‌کند.",
      "level": "B2",
      "use": "both"
     },
@@ -2326,7 +2326,7 @@
     {
      "fr": "La gastronomie française, inscrite au patrimoine de l'humanité, est autant un art de vivre qu'une cuisine.",
      "en": "French gastronomy, listed as world heritage, is as much a way of life as a cuisine.",
-     "fa": "غذاشناسی فرانسوی که در فهرست میراث جهانی ثبت شده، به همان اندازه که یک آشپزی است، یک سبک زندگی نیز هست.",
+     "fa": "هنر آشپزی فرانسوی که در فهرست میراث جهانی ثبت شده، به همان اندازه که یک آشپزی است، یک سبک زندگی نیز هست.",
      "level": "C1",
      "use": "writing"
     }
@@ -2585,7 +2585,7 @@
      "lemma": "pointure",
      "gender": "f",
      "en": "shoe size",
-     "fa": "شماره کفش",
+     "fa": "شمارهٔ کفش",
      "level": "A2"
     },
     {
@@ -2641,7 +2641,7 @@
      "lemma": "colis",
      "gender": "m",
      "en": "parcel",
-     "fa": "بسته پستی",
+     "fa": "بستهٔ پستی",
      "level": "B1"
     },
     {
@@ -2662,7 +2662,7 @@
      "lemma": "remboursement",
      "gender": "m",
      "en": "refund",
-     "fa": "بازپرداخت",
+     "fa": "پس دادن پول",
      "level": "B1"
     },
     {
@@ -2761,7 +2761,7 @@
     {
      "fr": "Le produit était défectueux, donc j'ai demandé un remboursement.",
      "en": "The product was faulty, so I asked for a refund.",
-     "fa": "محصول معیوب بود، برای همین درخواست بازپرداخت کردم.",
+     "fa": "محصول معیوب بود، برای همین درخواست کردم پولم را پس بدهند.",
      "level": "B1",
      "use": "both"
     },
@@ -2775,14 +2775,14 @@
     {
      "fr": "Les soldes poussent à acheter des choses dont on n'a pas vraiment besoin.",
      "en": "Sales push people to buy things they don't really need.",
-     "fa": "حراج‌ها آدم را به خرید چیزهایی وا می‌دارد که واقعاً به آن‌ها نیاز ندارد.",
+     "fa": "حراج‌ها آدم را به خرید چیزهایی وا می‌دارند که واقعاً به آن‌ها نیاز ندارد.",
      "level": "B2",
      "use": "both"
     },
     {
      "fr": "Le commerce en ligne menace les petits commerçants de quartier.",
      "en": "Online shopping threatens small neighbourhood shopkeepers.",
-     "fa": "خرید اینترنتی کسبه کوچک محله را تهدید می‌کند.",
+     "fa": "خرید اینترنتی کسبهٔ کوچک محله را تهدید می‌کند.",
      "level": "B2",
      "use": "both"
     },
@@ -3146,7 +3146,7 @@
      "lemma": "plan",
      "gender": "m",
      "en": "map (of a town)",
-     "fa": "نقشه شهر",
+     "fa": "نقشهٔ شهر",
      "level": "A2"
     },
     {
@@ -3160,7 +3160,7 @@
      "lemma": "poste",
      "gender": "f",
      "en": "post office",
-     "fa": "اداره پست",
+     "fa": "ادارهٔ پست",
      "level": "A2"
     },
     {
@@ -3674,7 +3674,7 @@
      "lemma": "dépaysement",
      "gender": "m",
      "en": "change of scenery",
-     "fa": "احساس غریبگی دلپذیر",
+     "fa": "تغییر حال و هوا",
      "level": "C1"
     }
    ],
@@ -3696,7 +3696,7 @@
     {
      "fr": "Voici mon passeport.",
      "en": "Here is my passport.",
-     "fa": "این گذرنامه من است.",
+     "fa": "این گذرنامهٔ من است.",
      "level": "A1",
      "use": "speaking"
     },
@@ -3787,7 +3787,7 @@
     {
      "fr": "Un voyage réussi tient moins à la destination qu'à la manière dont on la découvre.",
      "en": "A successful trip depends less on the destination than on the way one discovers it.",
-     "fa": "موفقیت یک سفر کمتر به مقصد و بیشتر به شیوه کشف آن بستگی دارد.",
+     "fa": "موفقیت یک سفر کمتر به مقصد و بیشتر به شیوهٔ کشف آن بستگی دارد.",
      "level": "C1",
      "use": "writing"
     }
@@ -4186,7 +4186,7 @@
      "lemma": "mutuelle",
      "gender": "f",
      "en": "supplementary health insurance",
-     "fa": "بیمه تکمیلی",
+     "fa": "بیمهٔ تکمیلی",
      "level": "B2"
     },
     {
@@ -4264,7 +4264,7 @@
     {
      "fr": "Je cherche une pharmacie de garde.",
      "en": "I am looking for an on-call pharmacy.",
-     "fa": "دنبال یک داروخانه شبانه‌روزی می‌گردم.",
+     "fa": "دنبال یک داروخانهٔ شبانه‌روزی می‌گردم.",
      "level": "A2",
      "use": "speaking"
     },
@@ -4285,7 +4285,7 @@
     {
      "fr": "Pour rester en forme, il faut dormir suffisamment et bouger régulièrement.",
      "en": "To stay in shape, you need to sleep enough and move regularly.",
-     "fa": "برای سرحال ماندن باید به اندازه کافی خوابید و مرتب تحرک داشت.",
+     "fa": "برای سرحال ماندن باید به اندازهٔ کافی خوابید و مرتب تحرک داشت.",
      "level": "B1",
      "use": "both"
     },
@@ -4727,7 +4727,7 @@
     {
      "fr": "Notre équipe a gagné le match par trois buts à un.",
      "en": "Our team won the match by three goals to one.",
-     "fa": "تیم ما با نتیجه سه بر یک برنده شد.",
+     "fa": "تیم ما با نتیجهٔ سه بر یک برنده شد.",
      "level": "B1",
      "use": "both"
     },
@@ -5199,7 +5199,7 @@
     {
      "fr": "Le week-end dernier, j'ai visité une exposition de photos.",
      "en": "Last weekend I visited a photography exhibition.",
-     "fa": "آخر هفته گذشته از یک نمایشگاه عکس دیدن کردم.",
+     "fa": "آخر هفتهٔ گذشته از یک نمایشگاه عکس دیدن کردم.",
      "level": "A2",
      "use": "both"
     },
@@ -5262,7 +5262,7 @@
     {
      "fr": "La lecture, loin d'être un simple divertissement, nourrit l'esprit critique et l'imagination.",
      "en": "Reading, far from being mere entertainment, nourishes critical thinking and imagination.",
-     "fa": "مطالعه، به‌جای آنکه سرگرمی صرف باشد، تفکر انتقادی و تخیل را پرورش می‌دهد.",
+     "fa": "مطالعه نه‌تنها سرگرمی صرف نیست، بلکه تفکر انتقادی و تخیل را پرورش می‌دهد.",
      "level": "C1",
      "use": "writing"
     }
@@ -5636,7 +5636,7 @@
      "lemma": "syndicat",
      "gender": "m",
      "en": "trade union",
-     "fa": "اتحادیه کارگری",
+     "fa": "اتحادیهٔ کارگری",
      "level": "B2"
     }
    ],
@@ -5665,7 +5665,7 @@
     {
      "fr": "Je cherche du travail dans la restauration.",
      "en": "I am looking for work in catering.",
-     "fa": "دنبال کار در رستوران‌داری می‌گردم.",
+     "fa": "دنبال کار در رستوران‌ها می‌گردم.",
      "level": "A2",
      "use": "speaking"
     },
@@ -5679,7 +5679,7 @@
     {
      "fr": "J'ai un entretien d'embauche demain matin.",
      "en": "I have a job interview tomorrow morning.",
-     "fa": "فردا صبح مصاحبه استخدامی دارم.",
+     "fa": "فردا صبح مصاحبهٔ استخدامی دارم.",
      "level": "A2",
      "use": "both"
     },
@@ -5700,7 +5700,7 @@
     {
      "fr": "J'ai cinq ans d'expérience dans la vente.",
      "en": "I have five years of experience in sales.",
-     "fa": "پنج سال سابقه کار در فروش دارم.",
+     "fa": "پنج سال سابقهٔ کار در فروش دارم.",
      "level": "B1",
      "use": "speaking"
     },
@@ -5742,7 +5742,7 @@
     {
      "fr": "La précarité de l'emploi fragilise durablement la situation des jeunes actifs.",
      "en": "Job insecurity lastingly weakens the situation of young workers.",
-     "fa": "ناپایداری شغلی وضعیت نیروی کار جوان را به‌طور پایدار شکننده می‌کند.",
+     "fa": "ناپایداری شغلی وضعیت نیروی کار جوان را برای مدتی طولانی شکننده می‌کند.",
      "level": "C1",
      "use": "writing"
     }
@@ -5854,7 +5854,7 @@
      "lemma": "collège",
      "gender": "m",
      "en": "lower secondary school",
-     "fa": "دوره اول متوسطه",
+     "fa": "دورهٔ اول متوسطه",
      "level": "A2"
     },
     {
@@ -6078,7 +6078,7 @@
      "lemma": "formation",
      "gender": "f",
      "en": "training, course of study",
-     "fa": "دوره آموزشی",
+     "fa": "دورهٔ آموزشی",
      "level": "B1"
     },
     {
@@ -6191,7 +6191,7 @@
     {
      "fr": "Je souhaite poser ma candidature pour une bourse d'études.",
      "en": "I wish to apply for a scholarship.",
-     "fa": "می‌خواهم برای دریافت بورسیه تحصیلی درخواست بدهم.",
+     "fa": "می‌خواهم برای دریافت بورسیهٔ تحصیلی درخواست بدهم.",
      "level": "B1",
      "use": "writing"
     },
@@ -6219,7 +6219,7 @@
     {
      "fr": "Apprendre une langue étrangère ouvre des portes, tant sur le plan professionnel que personnel.",
      "en": "Learning a foreign language opens doors, both professionally and personally.",
-     "fa": "یادگیری زبان خارجی هم در حوزه حرفه‌ای و هم در زندگی شخصی درهایی را باز می‌کند.",
+     "fa": "یادگیری زبان خارجی هم در حوزهٔ حرفه‌ای و هم در زندگی شخصی درهایی را باز می‌کند.",
      "level": "B2",
      "use": "both"
     },
@@ -6680,7 +6680,7 @@
     {
      "fr": "La société de consommation nous pousse à acheter toujours plus, souvent sans réfléchir.",
      "en": "The consumer society pushes us to buy more and more, often without thinking.",
-     "fa": "جامعه مصرفی ما را به خرید بیشتر و بیشتر، اغلب بدون فکر، وا می‌دارد.",
+     "fa": "جامعهٔ مصرفی ما را به خرید بیشتر و بیشتر، اغلب بدون فکر، وا می‌دارد.",
      "level": "B2",
      "use": "both"
     },
@@ -6950,7 +6950,7 @@
      "lemma": "orage",
      "gender": "m",
      "en": "storm",
-     "fa": "طوفان",
+     "fa": "طوفان رعد و برق",
      "level": "A2"
     },
     {
@@ -7125,7 +7125,7 @@
      "lemma": "réchauffement",
      "gender": "m",
      "en": "warming",
-     "fa": "گرمایش",
+     "fa": "گرم شدن زمین",
      "level": "B2"
     },
     {
@@ -7224,7 +7224,7 @@
     {
      "fr": "Les étés sont de plus en plus chauds et secs dans notre région.",
      "en": "Summers are getting hotter and drier in our region.",
-     "fa": "تابستان‌ها در منطقه ما روزبه‌روز گرم‌تر و خشک‌تر می‌شوند.",
+     "fa": "تابستان‌ها در منطقهٔ ما روزبه‌روز گرم‌تر و خشک‌تر می‌شوند.",
      "level": "B1",
      "use": "both"
     },
@@ -7245,7 +7245,7 @@
     {
      "fr": "Il est urgent de développer les énergies renouvelables, comme le solaire et l'éolien.",
      "en": "It is urgent to develop renewable energies, such as solar and wind.",
-     "fa": "توسعه انرژی‌های تجدیدپذیر مانند خورشیدی و بادی فوری است.",
+     "fa": "توسعهٔ انرژی‌های تجدیدپذیر مانند خورشیدی و بادی فوری است.",
      "level": "B2",
      "use": "both"
     },
@@ -7266,7 +7266,7 @@
     {
      "fr": "Ce n'est qu'en conciliant développement économique et préservation des ressources que l'on pourra bâtir un avenir durable.",
      "en": "Only by reconciling economic development and the preservation of resources can a sustainable future be built.",
-     "fa": "تنها با آشتی دادن توسعه اقتصادی و حفظ منابع می‌توان آینده‌ای پایدار ساخت.",
+     "fa": "تنها با آشتی دادن توسعهٔ اقتصادی و حفظ منابع می‌توان آینده‌ای پایدار ساخت.",
      "level": "C1",
      "use": "writing"
     }
@@ -7504,7 +7504,7 @@
      "lemma": "application",
      "gender": "f",
      "en": "app",
-     "fa": "برنامه کاربردی",
+     "fa": "برنامهٔ کاربردی",
      "level": "A2"
     },
     {
@@ -7652,7 +7652,7 @@
     {
      "fr": "Quel est le mot de passe du wifi ?",
      "en": "What is the wifi password?",
-     "fa": "گذرواژه وای‌فای چیست؟",
+     "fa": "گذرواژهٔ وای‌فای چیست؟",
      "level": "A1",
      "use": "speaking"
     },
@@ -7736,7 +7736,7 @@
     {
      "fr": "Si le progrès technique est source d'émancipation, il n'en reste pas moins porteur de risques que la loi peine à encadrer.",
      "en": "While technical progress is a source of emancipation, it nonetheless carries risks that the law struggles to regulate.",
-     "fa": "اگرچه پیشرفت فناورانه سرچشمه رهایی است، اما همچنان خطراتی دارد که قانون در مهار آن‌ها ناتوان است.",
+     "fa": "اگرچه پیشرفت فناورانه سرچشمهٔ رهایی است، اما همچنان خطراتی دارد که قانون به‌سختی می‌تواند مهارشان کند.",
      "level": "C1",
      "use": "writing"
     }
@@ -8103,7 +8103,7 @@
     {
      "fr": "Tu as lu l'article sur la nouvelle loi ?",
      "en": "Have you read the article on the new law?",
-     "fa": "مقاله درباره قانون جدید را خواندی؟",
+     "fa": "مقالهٔ دربارهٔ قانون جدید را خواندی؟",
      "level": "A2",
      "use": "speaking"
     },
@@ -8117,7 +8117,7 @@
     {
      "fr": "Quelle est ta chaîne préférée ?",
      "en": "What is your favourite channel?",
-     "fa": "شبکه مورد علاقه‌ات کدام است؟",
+     "fa": "شبکهٔ مورد علاقه‌ات کدام است؟",
      "level": "A2",
      "use": "speaking"
     },
@@ -8173,7 +8173,7 @@
     {
      "fr": "Certains journalistes privilégient le sensationnel pour attirer l'audience.",
      "en": "Some journalists favour the sensational to attract an audience.",
-     "fa": "برخی روزنامه‌نگاران برای جذب مخاطب سراغ هیجان‌انگیزی می‌روند.",
+     "fa": "برخی روزنامه‌نگاران برای جذب مخاطب به خبرهای هیجان‌انگیز روی می‌آورند.",
      "level": "B2",
      "use": "both"
     },
@@ -8187,7 +8187,7 @@
     {
      "fr": "Il convient de distinguer l'information du commentaire, que l'on confond trop souvent.",
      "en": "One should distinguish information from commentary, which are too often confused.",
-     "fa": "باید اطلاعات را از تفسیر تمایز داد، چیزهایی که اغلب با هم اشتباه گرفته می‌شوند.",
+     "fa": "باید خبر را از تفسیر جدا کرد؛ این دو اغلب با هم اشتباه گرفته می‌شوند.",
      "level": "C1",
      "use": "writing"
     }
@@ -8360,7 +8360,7 @@
      "lemma": "député",
      "gender": "m",
      "en": "member of parliament",
-     "fa": "نماینده مجلس",
+     "fa": "نمایندهٔ مجلس",
      "level": "B2"
     },
     {
@@ -8542,7 +8542,7 @@
      "lemma": "intégration",
      "gender": "f",
      "en": "integration",
-     "fa": "ادغام",
+     "fa": "جذب در جامعه",
      "level": "B2"
     },
     {
@@ -8606,7 +8606,7 @@
     {
      "fr": "Tous les citoyens ont le droit de voter à dix-huit ans.",
      "en": "All citizens have the right to vote at eighteen.",
-     "fa": "همه شهروندان در هجده‌سالگی حق رأی دارند.",
+     "fa": "همهٔ شهروندان در هجده‌سالگی حق رأی دارند.",
      "level": "A2",
      "use": "both"
     },
@@ -8620,7 +8620,7 @@
     {
      "fr": "Je pense qu'il est important de participer à la vie de son quartier.",
      "en": "I think it is important to take part in the life of your neighbourhood.",
-     "fa": "فکر می‌کنم مشارکت در زندگی محله‌ی خود مهم است.",
+     "fa": "فکر می‌کنم مشارکت در زندگی محلهٔ خود مهم است.",
      "level": "B1",
      "use": "both"
     },
@@ -8634,14 +8634,14 @@
     {
      "fr": "Je m'adresse à vous afin de proposer mon aide à votre association.",
      "en": "I am writing to you to offer my help to your association.",
-     "fa": "برای پیشنهاد کمک به انجمن شما با شما تماس می‌گیرم.",
+     "fa": "برای پیشنهاد کمک به انجمن شما به شما نامه می‌نویسم.",
      "level": "B1",
      "use": "writing"
     },
     {
      "fr": "Voter est un devoir civique, même si beaucoup de gens s'abstiennent.",
      "en": "Voting is a civic duty, even if many people abstain.",
-     "fa": "رأی دادن یک وظیفه مدنی است، حتی اگر بسیاری رأی نمی‌دهند.",
+     "fa": "رأی دادن یک وظیفهٔ مدنی است، حتی اگر بسیاری رأی ندهند.",
      "level": "B1",
      "use": "both"
     },
@@ -8676,7 +8676,7 @@
     {
      "fr": "On ne peut pas parler d'intégration sans parler d'accès au logement et à l'emploi.",
      "en": "You can't speak of integration without speaking of access to housing and employment.",
-     "fa": "نمی‌توان از ادغام صحبت کرد و از دسترسی به مسکن و شغل سخن نگفت.",
+     "fa": "نمی‌توان از جذب مهاجران در جامعه صحبت کرد و از دسترسی به مسکن و شغل سخن نگفت.",
      "level": "B2",
      "use": "both"
     },
@@ -8823,7 +8823,7 @@
      "lemma": "justificatif",
      "gender": "m",
      "en": "supporting document, proof",
-     "fa": "مدرک تأیید",
+     "fa": "مدرک اثباتی",
      "level": "B1"
     },
     {
@@ -8956,7 +8956,7 @@
      "lemma": "naturalisation",
      "gender": "f",
      "en": "naturalisation",
-     "fa": "تابعیت‌گیری",
+     "fa": "اخذ تابعیت",
      "level": "C1"
     },
     {
@@ -9033,7 +9033,7 @@
      "lemma": "poste",
      "gender": "f",
      "en": "post office",
-     "fa": "اداره پست",
+     "fa": "ادارهٔ پست",
      "level": "A2"
     },
     {
@@ -9104,14 +9104,14 @@
     {
      "fr": "Je voudrais renouveler mon titre de séjour.",
      "en": "I would like to renew my residence permit.",
-     "fa": "می‌خواهم اجازه اقامتم را تمدید کنم.",
+     "fa": "می‌خواهم کارت اقامتم را تمدید کنم.",
      "level": "B1",
      "use": "speaking"
     },
     {
      "fr": "Il me manque un justificatif de domicile.",
      "en": "I am missing a proof of address.",
-     "fa": "مدرک تأیید محل سکونت را ندارم.",
+     "fa": "مدرکی برای اثبات محل سکونتم ندارم.",
      "level": "B1",
      "use": "speaking"
     },

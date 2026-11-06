@@ -897,3 +897,12 @@ Card words in this theme: bureau, lettre, papier, service, numéro, poste, preuv
 
 Card verbs in this theme: vérifier, adresser, annuler, autoriser, contrôler, déclarer, déposer, enregistrer, exiger, identifier, obtenir, prouver, remplir, signer, convoquer, fournir, inscrire, justifier, affranchir, expédier, renouveler, assigner, attester, consigner, certifier
 
+
+## Persian pass, 2026-11-07 (agent, at the owner's request)
+
+One read of all agent-written Persian (725 theme nouns, 295 expressions, the
+page texts). Fixed: the ezafe after a silent h written ـهٔ (41 phrases); ten
+word meanings (horaire, remboursement, orage, intégration, naturalisation,
+justificatif, beau-père, belle-mère, dépaysement, réchauffement); sixteen
+expressions with a grammar slip or a meaning that drifted from the French.
+This is still an agent's reading, not a Persian reader's: `reviewed` stays false.
