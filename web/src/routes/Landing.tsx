@@ -171,17 +171,17 @@ export function Landing() {
         </div>
       </header>
 
-      {/* ── Hero: Paris at golden hour, and the sentence the page is about ─
-           Design 22, chosen 2026-11-07: a calm silent film (the Eiffel Tower at
-           golden hour, Pexels licence) over its own still frame, a centred and
+      {/* ── Hero: the Seine at sunset, and the sentence the page is about ──
+           Design 22, chosen 2026-11-07: a calm silent film (two boats on the Seine
+           at sunset, the Eiffel Tower beyond; Pexels licence) over its own still frame, a centred and
            formal composition at the foot of the picture. */}
       <section className="lp3-hero" aria-labelledby="lp3-h1">
         <picture>
-          <source media="(max-width: 960px)" srcSet="photos/eiffel-golden-hour-640.webp" />
-          <img src="photos/eiffel-golden-hour-1280.webp" width={1280} height={720} alt={tx('landingHeroPhotoAltParis')}
+          <source media="(max-width: 960px)" srcSet="photos/seine-ferries-640.webp" />
+          <img src="photos/seine-ferries-1280.webp" width={1280} height={720} alt={tx('landingHeroPhotoAltParis')}
                fetchPriority="high" className="lp3-hero__photo" />
         </picture>
-        <Suspense><HeroFilm src="video/eiffel-golden-hour.mp4" /></Suspense>
+        <Suspense><HeroFilm src="video/seine-ferries.mp4" /></Suspense>
         <div className="lp3-hero__shade" aria-hidden="true" />
         <div className="lp3-wrap lp3-hero__in">
           <h1 id="lp3-h1" className="landing__headline lp3-h1" lang="fr" dir="ltr">{fr(HEADLINE_FR)}</h1>
