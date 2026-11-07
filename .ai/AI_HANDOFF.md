@@ -8,19 +8,19 @@ tokens, no credentials, no connection strings, no server IPs. Narrative sections
 are written by the agent; the state block is generated — do not hand-edit it.
 
 <!-- ai:state:start -->
-- Updated: 2026-11-07 10:23 +03 (git metadata only, written by a Stop hook)
-- Branch: feat/landing-hero-video
-- HEAD: 9fdd119 Merge pull request #77 from shahinamani/fix/fa-themes-wording
-- Uncommitted: 10 file(s)
-  -  M .ai/AI_HANDOFF.md
-  -  M web/scripts/sw.mjs
+- Updated: 2026-11-07 11:54 +03 (git metadata only, written by a Stop hook)
+- Branch: fix/hero-film-framing
+- HEAD: 3897dd7 Merge pull request #78 from shahinamani/feat/landing-hero-video
+- Uncommitted: 13 file(s)
+  -  M content/attribution.json
+  - D  web/public/photos/eiffel-golden-hour-1280.webp
+  - D  web/public/photos/eiffel-golden-hour-640.webp
+  - D  web/public/video/eiffel-golden-hour.mp4
   -  M web/src/lib/i18n.ts
   -  M web/src/lib/locales/fa.ts
   -  M web/src/lib/locales/fr.ts
   -  M web/src/routes/Landing.tsx
-  -  M web/src/routes/landing/landing3.css
-  -  M web/src/routes/portal.css
-  - … and 2 more
+  - … and 5 more
 <!-- ai:state:end -->
 
 ## Goal
@@ -89,13 +89,13 @@ Owner asked for exam themes (housing, hotel, sport, economy…) with words, verb
 - First load now 153,566 / 153,600 bytes (34 spare). Anything eager needs room made first.
 - Port 4179 may be another session's preview: check `lsof` cwd before trusting an e2e run.
 
-## Landing hero film (2026-11-07, branch feat/landing-hero-video, NOT committed yet)
+## Landing hero film (live since 2026-11-07, PR #78; framing fix in branch fix/hero-film-framing)
 
-Owner chose design 22 (centred formal hero: headline, CSS hairline, outline button, French place caption drawn by CSS) with a silent film: the Eiffel Tower at golden hour (Pexels 13315638, Yago Trillo, Pexels licence: no permission, no credit; recorded in content/attribution.json). `routes/landing/HeroFilm.tsx` is a lazy chunk; `src` set only after mount, never with reduced motion or Save-Data; 60% speed; plays only on screen; the still frame `photos/eiffel-golden-hour-*.webp` is the picture. sw.mjs skips video/range requests. Headers unchanged (muted autoplay works under `autoplay=()`, tested). Tests 626/626, walk 659/0/0. First-load JS budget is FULL (~0 KB spare; main had ~0.1 KB): the next change must trim or the owner decides on the budget. Owner's rule: only assets that need nobody's permission, licence checked before showing. Mixkit mixes Free and Restricted clips; Pexels files can be fetched through the owner's Chrome (remote debugging, port 9222) with Playwright `connectOverCDP`.
+Design 22 (centred formal hero: headline, CSS hairline, outline button, French place caption drawn by CSS) over a silent film: two boats on the Seine at sunset with the Eiffel Tower (Pexels 12308438, Zheltenko Oleksandr, Pexels licence: no permission, no credit; recorded in content/attribution.json). The owner wants the WHOLE frame visible: the hero takes the film's 16:9 proportions on wide screens (`min-height: 56.25vw`), and below 1024px the film is a full-width 16:9 band with the words under it. Plays at its own speed (slowed, it looked frozen). `routes/landing/HeroFilm.tsx` is a lazy chunk; `src` only after mount, never with reduced motion or Save-Data. sw.mjs skips video/range requests. First-load JS budget is FULL (0.1 KB spare). Owner's rule: only assets that need nobody's permission, licence checked before showing. Pexels files can be fetched through the owner's Chrome (remote debugging, port 9222) with Playwright `connectOverCDP`; Mixkit mixes Free and Restricted clips.
 
 ## Next step
 
-Hero film: commit, PR and merge feat/landing-hero-video when the owner says publish. Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences. Letters: a teacher reads `content/letters.json`; a person reads the official DELF word minimums (the FEI site blocks automated reading) and records them with the date before any target is shown.
+Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences. Letters: a teacher reads `content/letters.json`; a person reads the official DELF word minimums (the FEI site blocks automated reading) and records them with the date before any target is shown.
 
 ## Decisions
 

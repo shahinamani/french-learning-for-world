@@ -46,7 +46,7 @@
 }
 .lp3-nav button:hover { color: var(--lp3-ink); text-decoration: underline; text-underline-offset: 0.3em; }
 
-/* Hero, design 22 (owner, 2026-11-07): the Eiffel Tower at golden hour, a silent film
+/* Hero, design 22 (owner, 2026-11-07): two boats on the Seine at sunset, a silent film
  * laid over its own still frame, and a centred, formal composition at the foot
  * of the picture: headline, a short hairline, then everything else, quieter. */
 .lp3-hero { position: relative; isolation: isolate; overflow: hidden; background: #10213f; color: #ffffff; }
@@ -60,11 +60,24 @@
 .lp3-hero__film.is-playing { opacity: 1; }
 .lp3-hero__shade {
   position: absolute; inset: 0; z-index: -1;
-  background: linear-gradient(180deg, rgb(8 12 24 / 0.25) 0%, rgb(8 12 24 / 0.05) 30%, rgb(8 12 24 / 0.55) 62%, rgb(8 12 24 / 0.88) 100%);
+  background: linear-gradient(180deg, rgb(8 12 24 / 0.2) 0%, rgb(8 12 24 / 0) 30%, rgb(8 12 24 / 0.32) 60%, rgb(8 12 24 / 0.62) 100%);
 }
 .lp3-hero__in {
   display: flex; flex-direction: column; justify-content: flex-end; align-items: center; text-align: center; gap: 1.25rem;
   min-height: min(88vh, 50rem); padding-block: 8rem 3.25rem;
+  text-shadow: 0 1px 18px rgb(0 0 0 / 0.45);
+}
+/* The film is 16:9 and the owner chose it for what is IN the frame: the tower,
+   the river and the boats along the quay. So the frame is never cropped:
+   on a wide screen the hero takes the film's own proportions; on a narrow one
+   the film is a full-width 16:9 band and the words sit beneath it. */
+@media (min-width: 1024px) {
+  .lp3-hero__in { min-height: 56.25vw; padding-top: 4rem; }
+}
+@media (max-width: 1023px) {
+  .lp3-hero__photo, .lp3-hero__film { inset: 0 0 auto 0; height: auto; aspect-ratio: 16 / 9; }
+  .lp3-hero__shade { inset: 0 0 auto 0; height: auto; aspect-ratio: 16 / 9; background: linear-gradient(180deg, rgb(16 33 63 / 0) 70%, #10213f 100%); }
+  .lp3-hero__in { min-height: 0; padding-block: calc(56.25vw + 1.75rem) 2.5rem; text-shadow: none; }
 }
 .landing .landing__headline.lp3-h1 {
   max-width: 15ch; color: #ffffff; animation: none; text-align: center;
@@ -79,7 +92,7 @@
 .lp3-points { list-style: none; padding: 0; display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem 1.5rem; font-size: 0.9375rem; color: rgb(255 255 255 / 0.82); }
 /* Where the film was shot, in French in every interface language. A caption
    drawn by CSS: decorative, and it costs the first-load JS nothing. */
-.lp3-hero::after { content: "La tour Eiffel, l’heure dorée"; position: absolute; inset-inline-end: 1.6rem; bottom: 1.1rem; font-family: var(--font-display); font-size: 0.9375rem; color: rgb(255 255 255 / 0.72); }
+.lp3-hero::after { content: "La Seine au coucher du soleil"; position: absolute; inset-inline-end: 1.6rem; bottom: 1.1rem; font-family: var(--font-display); font-size: 0.9375rem; color: rgb(255 255 255 / 0.72); }
 @media (max-width: 860px) { .lp3-hero::after { content: none; } }
 .lp3-points li { display: flex; align-items: center; gap: 0.5rem; }
 .lp3-hero :focus-visible { outline-color: #ffffff; }
