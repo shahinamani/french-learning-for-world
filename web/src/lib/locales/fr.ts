@@ -148,7 +148,7 @@ const fr: Dict = {
   landingDayLede: 'Des textes courts et originaux sur la vie de tous les jours, du marché du samedi au premier jour de travail. Touchez un mot pour voir son sens dans la phrase.',
   landingRead: 'Lire',
   landingTryHeading: 'Installez-vous au café',
-  landingHeroPhotoAltParis: 'Les toits de Paris au coucher du soleil, avec la tour Eiffel au loin',
+  landingHeroPhotoAltParis: 'La tour Eiffel dans la lumière dorée du soir, au-dessus de la Seine',
   landingHeroPhotoAlt: 'Une femme lit un livre à la table d’un café',
   landingLede: 'Un portail de français libre et gratuit pour les adultes : les mots et les verbes dont tu as besoin, de vrais textes à lire, et de l’entraînement pour le DELF, le DALF, le TCF et le TEF.',
   landingAudience: 'Conçu pour les étudiants en master, les professionnels et toute personne qui passe un examen de français, où qu’elle soit dans le monde. Il suppose que tu es adulte et que tu as une date dans ton agenda.',

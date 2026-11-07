@@ -49,6 +49,9 @@ self.addEventListener('fetch', (e) => {
   const { request } = e;
   if (request.method !== 'GET') return;
   if (new URL(request.url).origin !== self.location.origin) return;
+  // Video is fetched in byte ranges, and a 206 partial response cannot be
+  // cached; let the browser fetch the landing film itself, uncached and online.
+  if (request.destination === 'video' || request.headers.has('range')) return;
   e.respondWith(caches.open(CACHE).then(async (cache) => {
     const hit = await cache.match(request, { ignoreSearch: true });
     const net = fetch(request).then((r) => { if (r.ok) cache.put(request, r.clone()); return r; }).catch(() => null);

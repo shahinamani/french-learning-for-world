@@ -341,7 +341,10 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
  * 3. "What is not here yet" sits straight after the tiles, at the same weight.
  *    It is not a footnote. web/e2e/walk.mjs fails if it is moved.
  * 4. Motion is staged at load (about 900ms, once) and otherwise only on a
- *    press. No scroll-linked effects, no autoplay. prefers-reduced-motion
+ *    press. No scroll-linked effects. One autoplay, by the owner's choice on
+ *    2026-11-07: the landing hero's silent film (routes/landing/HeroFilm.tsx),
+ *    which reduced motion and Save-Data replace with its still frame. No other
+ *    autoplay, and never sound. prefers-reduced-motion
  *    removes the movement at the end of this block; the information and the
  *    function stay.
  * 5. The returning-learner swap: the prerendered HTML holds this page,

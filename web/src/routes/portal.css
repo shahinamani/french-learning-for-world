@@ -324,8 +324,9 @@
   :root:not([data-theme="light"]) .today-main { background: var(--fr-bleu-soft); color: var(--color-ink); }
   :root:not([data-theme="light"]) .today-start { background: var(--fr-bleu); color: var(--fr-bleu-ink); }
 }
-.landing .landing__headline.lp3-h1[dir="ltr"] { text-align: start; }
-[dir="rtl"] .lp3-h1[dir="ltr"], [dir="rtl"] .lp3-close__fr[dir="ltr"] { align-self: flex-start; text-align: right; }
+/* The hero headline is centred in every interface language (design 22, 2026-11-07). */
+.landing .landing__headline.lp3-h1[dir="ltr"] { text-align: center; }
+[dir="rtl"] .lp3-close__fr[dir="ltr"] { align-self: flex-start; text-align: right; }
 /* The banner's French is left-to-right, so its side is set physically from
    the page's direction, not from its own. */
 .fr-banner__fr { inset-inline-start: auto; left: 1.5rem; }

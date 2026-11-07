@@ -99,6 +99,25 @@
           "photographer": "https://unsplash.com/@sandrocenni"
         }
       ]
+    },
+    {
+      "id": "pexels",
+      "name": "Pexels",
+      "url": "https://www.pexels.com/",
+      "licence": "Pexels License",
+      "licenceUrl": "https://www.pexels.com/license/",
+      "takenFrom": "Yago Trillo, “Eiffel Tower and Marina on River in Paris” (video 13315638)",
+      "usedFor": {
+        "en": "The silent film of the Eiffel Tower at golden hour behind the landing page’s headline, and its still frame. Free to use under the Pexels License, with no credit or permission required; credited here anyway.",
+        "fr": "Le film muet de la tour Eiffel à l’heure dorée derrière le titre de la page d’accueil, et son image fixe. Libre d’utilisation sous la licence Pexels, sans mention ni autorisation requises ; crédité ici malgré tout."
+      },
+      "videos": [
+        {
+          "file": "web/public/video/eiffel-golden-hour.mp4, web/public/photos/eiffel-golden-hour-*.webp",
+          "page": "https://www.pexels.com/video/eiffel-tower-and-marina-on-river-in-paris-13315638/",
+          "licenceRead": "2026-11-07: the page's own record says license \"Pexels\"."
+        }
+      ]
     }
   ]
 }
