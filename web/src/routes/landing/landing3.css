@@ -72,7 +72,7 @@
    on a wide screen the hero takes the film's own proportions; on a narrow one
    the film is a full-width 16:9 band and the words sit beneath it. */
 @media (min-width: 1024px) {
-  .lp3-hero__in { min-height: 56.25vw; padding-top: 4rem; }
+  .lp3-hero__in { min-height: 56.25vw; justify-content: center; padding-block: 2rem clamp(3rem, 22vw - 10rem, 16rem); }
 }
 @media (max-width: 1023px) {
   .lp3-hero__photo, .lp3-hero__film { inset: 0 0 auto 0; height: auto; aspect-ratio: 16 / 9; }
