@@ -24,7 +24,7 @@
  * French only**; in Persian and Arabic the page is English, in English's
  * direction and digits, behind a line that says so.
  */
-import { useId } from 'react';
+import { lazy, Suspense, useId } from 'react';
 import { Link } from 'react-router';
 import { Check, WifiOff, Lock } from 'lucide-react';
 import { useApp } from '../app-context';
@@ -71,6 +71,9 @@ function Tricolore({ className }: { className?: string }) {
  *  headline is `landingHeadline` in lib/locales/fr.ts, written out here
  *  because that dictionary is a lazy chunk, absent from the prerender. */
 const HEADLINE_FR = 'Le français, pour la vie que tu veux.';
+/** The hero film is its own lazy chunk: the first-load budget had 0.1 KB spare,
+ *  and the still frame is the page's picture until the film arrives anyway. */
+const HeroFilm = lazy(() => import('./landing/HeroFilm'));
 const CLOSE_FR = 'On commence ?';
 
 function LanguageSelect({ tx, ui, onChange }: { tx: Tx; ui: Locale; onChange: (l: Locale) => void }) {
@@ -168,21 +171,25 @@ export function Landing() {
         </div>
       </header>
 
-      {/* ── Hero: Paris, and the sentence the page is about ────────────── */}
+      {/* ── Hero: Paris at golden hour, and the sentence the page is about ─
+           Design 22, chosen 2026-11-07: a calm silent film (the Eiffel Tower at
+           golden hour, Pexels licence) over its own still frame, a centred and
+           formal composition at the foot of the picture. */}
       <section className="lp3-hero" aria-labelledby="lp3-h1">
         <picture>
-          <source media="(max-width: 960px)" srcSet="photos/paris-rooftops-960.webp" />
-          <img src="photos/paris-rooftops-1920.webp" width={1920} height={1080} alt={tx('landingHeroPhotoAltParis')}
+          <source media="(max-width: 960px)" srcSet="photos/eiffel-golden-hour-640.webp" />
+          <img src="photos/eiffel-golden-hour-1280.webp" width={1280} height={720} alt={tx('landingHeroPhotoAltParis')}
                fetchPriority="high" className="lp3-hero__photo" />
         </picture>
+        <Suspense><HeroFilm src="video/eiffel-golden-hour.mp4" /></Suspense>
         <div className="lp3-hero__shade" aria-hidden="true" />
         <div className="lp3-wrap lp3-hero__in">
           <h1 id="lp3-h1" className="landing__headline lp3-h1" lang="fr" dir="ltr">{fr(HEADLINE_FR)}</h1>
           {english && <p className="lp3-h1-en">{tx('landingHeadline')}</p>}
           <p className="lp3-hero__lede">{tx('landingLede')}</p>
           <p className="lp3-hero__audience">{tx('landingAudience')}</p>
-          <div className="flex flex-wrap items-center gap-x-6 gap-y-3">
-            <Button asChild size="lg" data-testid="landing-start" className="bg-white text-[#1f3a6e] hover:bg-[#e9edf5] rounded-md font-bold">
+          <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-3">
+            <Button asChild size="lg" data-testid="landing-start" className="rounded-[2px] border border-white bg-transparent font-normal text-white hover:bg-white hover:text-[#1f3a6e]">
               <Link to="/app/today">{tx('landingStart')}</Link>
             </Button>
             <button type="button" className="lp3-textlink lp3-textlink--light" onClick={() => goTo('today')}>

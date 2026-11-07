@@ -199,7 +199,7 @@ const landingEn = {
   landingDayLede: 'Short original texts set in ordinary French life, from the Saturday market to a first day at work. Tap any word to see what it means in its sentence.',
   landingRead: 'Read',
   landingTryHeading: 'Sit down at the café',
-  landingHeroPhotoAltParis: 'The rooftops of Paris at sunset, with the Eiffel Tower in the distance',
+  landingHeroPhotoAltParis: 'The Eiffel Tower in golden evening light above the Seine',
   landingHeroPhotoAlt: 'A woman reading a book at a café table',
   landingLede: 'A free, open French portal for adults: the words and verbs you need, real texts to read, and practice for DELF, DALF, TCF and TEF.',
   landingAudience: 'Built for masters applicants, professionals and anyone sitting a French examination, anywhere in the world. It assumes you are an adult with a date in your calendar.',
