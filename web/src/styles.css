@@ -1022,3 +1022,10 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
   .shell--focus { grid-template-columns: 1fr; }
   .shell--focus main { grid-column: 1; }
 }
+
+/* Focus mode on a phone: the exit button and the three actions need the whole
+   bar; the name is one tap away on Today. */
+@media (max-width: 599px) {
+  .shell--focus .brand-name { display: none; }
+  .shell--focus .bar-exit { margin-inline-start: 0; }
+}

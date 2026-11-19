@@ -768,8 +768,8 @@
 .today-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .625rem; }
 @media (min-width: 720px) { .today-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 .today-steps a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .75rem; align-items: start; padding: .875rem 1rem;
-  border-radius: 10px; background: rgb(255 255 255 / 0.1); color: inherit; text-decoration: none; min-height: 4.5rem; }
-.today-steps a:hover { background: rgb(255 255 255 / 0.18); }
+  border-radius: 10px; background: color-mix(in srgb, var(--fr-bleu-ink) 12%, var(--fr-bleu)); color: inherit; text-decoration: none; min-height: 4.5rem; }
+.today-steps a:hover { background: color-mix(in srgb, var(--fr-bleu-ink) 20%, var(--fr-bleu)); }
 .today-steps li[data-done] a { opacity: .6; }
 .today-steps__n { display: inline-grid; place-items: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; border: 1.5px solid currentColor; font-size: .8125rem; font-weight: 700; }
 .today-steps__body { display: flex; flex-direction: column; gap: .125rem; min-width: 0; }
@@ -856,3 +856,14 @@
 .fc__voice { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .75rem; }
 .fc__voice .fc__rate { width: auto; padding-block: .25rem; font-size: .8125rem; }
 .fc__speech-aid { flex-basis: 100%; margin: 0; text-align: center; }
+
+/* A long label on a finishing button wraps instead of pushing the page wider. */
+.empty .btn, .next-step .btn, .rd-actions .btn { white-space: normal; line-height: 1.25; max-width: 100%; text-align: center; }
+/* Dark: the session card is the soft navy with light ink, so a step is a
+   lighter navy, never the light blue the light theme mixes from. */
+:root[data-theme="dark"] .today-steps a { background: color-mix(in srgb, var(--color-ink) 10%, var(--fr-bleu-soft)); }
+:root[data-theme="dark"] .today-steps a:hover { background: color-mix(in srgb, var(--color-ink) 16%, var(--fr-bleu-soft)); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .today-steps a { background: color-mix(in srgb, var(--color-ink) 10%, var(--fr-bleu-soft)); }
+  :root:not([data-theme="light"]) .today-steps a:hover { background: color-mix(in srgb, var(--color-ink) 16%, var(--fr-bleu-soft)); }
+}
