@@ -13,16 +13,20 @@
  */
 import { useEffect, useMemo, useState } from 'react';
 import { Link, Navigate, useNavigate, useParams } from 'react-router';
-import { ArrowUpRight, BookOpen, Ear, Mic, PenLine } from 'lucide-react';
+import { ArrowUpRight, BookOpen, CalendarDays, Ear, Mic, PenLine } from 'lucide-react';
 import { useApp, useUserId } from '../../app-context';
 import {
   TARGETS, loadExamEntries, papersOf, extraPapersOf, totalMinutes, passingOf, validityOf, targetById, useTarget, SECTIONS, SKILL_OF,
-  type ExamEntry, type Paper, type SectionKey, type Target,
+  type ExamEntry, type Paper, type Resource, type SectionKey, type Target,
 } from '../../lib/exam-targets';
 import { loadPapers, pick, type ExamPaper } from '../../lib/exams';
 import type { Dict } from '../../lib/i18n';
 import { ErrorState } from '../../components/Search';
 import { SECTION_LABEL, practiceFor } from '../app/PortalNav';
+import { SectionHead } from '../../components/SectionHead';
+import { userKey } from '../../lib/session';
+import { readPlan } from '../../lib/plan';
+import type { Locale } from '../../lib/types';
 
 const ICON: Record<SectionKey, typeof Ear> = { co: Ear, ce: BookOpen, pe: PenLine, po: Mic };
 
@@ -205,112 +209,292 @@ export function ExamPage() {
     );
   }
 
-  // Overview.
+  return <Overview target={target} entry={entry} verified={verified} official={official} bySection={bySection}
+                   officialPages={officialPages} userId={userId} ui={ui} t={t} name={name} frName={frName} />;
+}
+
+// ── The overview: the exam, the date, the four sections, what helps ───────
+type T = ReturnType<typeof useApp>['t'];
+
+/** The learner's exam date, per profile, in localStorage. `setOn` is the day it
+ *  was chosen, so the plan can show the days already behind them. */
+type ExamDate = { date: string; setOn: string };
+const dateKey = (userId: string) => userKey(userId, 'exam-date');
+const ymd = (d: Date) => `${d.getFullYear()}-${String(d.getMonth() + 1).padStart(2, '0')}-${String(d.getDate()).padStart(2, '0')}`;
+const parseYmd = (s: string) => { const [y, m, d] = s.split('-').map(Number); return new Date(y ?? 1970, (m ?? 1) - 1, d ?? 1); };
+const daysBetween = (a: Date, b: Date) => Math.round((b.getTime() - a.getTime()) / 86_400_000);
+
+function readExamDate(userId: string): ExamDate | null {
+  try {
+    const raw = localStorage.getItem(dateKey(userId));
+    const v = raw ? JSON.parse(raw) as ExamDate : null;
+    return v && /^\d{4}-\d{2}-\d{2}$/.test(v.date) ? v : null;
+  } catch { return null; }
+}
+function writeExamDate(userId: string, v: ExamDate | null) {
+  try { if (v) localStorage.setItem(dateKey(userId), JSON.stringify(v)); else localStorage.removeItem(dateKey(userId)); } catch { /* private window */ }
+}
+
+/** The suggested focus of one day: what the site actually has, in turn, with
+ *  every seventh day left for rest and review. */
+type Focus = 'cards' | 'reading' | 'letter' | 'rest' | 'exam';
+const ROTATION: Focus[] = ['cards', 'reading', 'letter'];
+const focusOf = (i: number, last: boolean): Focus => (last ? 'exam' : i % 7 === 6 ? 'rest' : ROTATION[i % 3] ?? 'cards');
+
+/** What the learner has done here, by section. Counts, never predictions. */
+type Has = { textsTotal: number; textsAnswered: number; kinds: number; drafts: number } | null;
+function useHas(userId: string, level: string | null): Has {
+  const [has, setHas] = useState<Has>(null);
+  useEffect(() => {
+    let live = true;
+    (async () => {
+      const [{ loadReading }, reader, { loadLetters }, letters] = await Promise.all([
+        import('../../features/reader/data'), import('../../features/reader/store'),
+        import('../../features/letters/data'), import('../../features/letters/store'),
+      ]);
+      const [texts, results, file, drafts] = await Promise.all([
+        loadReading().catch(() => []), reader.resultsForUser(userId).catch(() => []),
+        loadLetters().catch(() => ({ kinds: [], tasks: [] })), letters.draftsFor(userId).catch(() => []),
+      ]);
+      if (!live) return;
+      const answered = new Set(results.map((r) => r.itemId));
+      const mine = texts.filter((x) => !level || x.level === level);
+      setHas({ textsTotal: mine.length, textsAnswered: mine.filter((x) => answered.has(x.id)).length,
+        kinds: file.kinds.length, drafts: drafts.length });
+    })().catch(() => { if (live) setHas({ textsTotal: 0, textsAnswered: 0, kinds: 0, drafts: 0 }); });
+    return () => { live = false; };
+  }, [userId, level]);
+  return has;
+}
+
+function Countdown({ userId, level, ui, t }: { userId: string; level: string | null; ui: Locale; t: T }) {
+  const [saved, setSaved] = useState<ExamDate | null>(() => readExamDate(userId));
+  useEffect(() => { setSaved(readExamDate(userId)); }, [userId]);
+  const today = parseYmd(ymd(new Date()));
+  const todayKey = ymd(today);
+  const change = (value: string) => {
+    const v = value ? { date: value, setOn: saved?.setOn ?? todayKey } : null;
+    writeExamDate(userId, v); setSaved(v);
+  };
+  const fmtLong = useMemo(() => new Intl.DateTimeFormat(ui, { dateStyle: 'long' }), [ui]);
+  const fmtDay = useMemo(() => new Intl.DateTimeFormat(ui, { day: 'numeric' }), [ui]);
+  const fmtWeekday = useMemo(() => new Intl.DateTimeFormat(ui, { weekday: 'short' }), [ui]);
+
+  const input = (
+    <label className="exam-date">
+      <CalendarDays className="size-4" aria-hidden="true" />
+      <span>{t('exDate')}</span>
+      <input type="date" value={saved?.date ?? ''} min={todayKey} onChange={(e) => change(e.target.value)} data-testid="exam-date" />
+      {saved && <button type="button" className="exam-date__clear" onClick={() => change('')}>{t('exDateClear')}</button>}
+    </label>
+  );
+
+  if (!saved) {
+    return (
+      <section className="exam-plan exam-plan--empty" aria-labelledby="ov-plan">
+        <h2 id="ov-plan" className="exam-block__h">{t('exPlanTitle')}</h2>
+        <p className="exam-plan__prompt">{t('exDateSet')}</p>
+        {input}
+      </section>
+    );
+  }
+
+  const exam = parseYmd(saved.date);
+  const left = daysBetween(today, exam);
+  const start = parseYmd(saved.setOn) < today ? parseYmd(saved.setOn) : today;
+  const total = daysBetween(start, exam) + 1;
+  // Today's plan is the only one plan.ts keeps, so today is the only day that
+  // can honestly be marked done. Nothing is claimed about any other day.
+  const plan = readPlan(userId);
+  const todayDone = !!plan && plan.steps.length > 0 && plan.steps.every((s) => s.done);
+
+  const FOCUS_KEY: Record<Focus, string> = {
+    cards: t('exDayCards'), reading: level ? t('exDayReading', { level }) : t('exDayReadingAny'),
+    letter: t('exDayLetter'), rest: t('exDayRest'), exam: t('exDayExam'),
+  };
+  const cell = (i: number) => {
+    const d = new Date(start); d.setDate(start.getDate() + i);
+    const key = ymd(d);
+    const isToday = key === todayKey, past = d < today, last = i === total - 1;
+    const f = focusOf(i, last);
+    const cls = ['exam-day', isToday && 'exam-day--today', past && 'exam-day--past', last && 'exam-day--exam', isToday && todayDone && 'exam-day--done'].filter(Boolean).join(' ');
+    return (
+      <li key={key} className={cls} aria-current={isToday ? 'date' : undefined}>
+        <span className="exam-day__date"><span className="exam-day__wd">{fmtWeekday.format(d)}</span> <span className="exam-day__n">{fmtDay.format(d)}</span></span>
+        <span className="exam-day__focus">{FOCUS_KEY[f]}</span>
+        {isToday && todayDone && <span className="exam-day__done">{t('exDayDone')}</span>}
+      </li>
+    );
+  };
+  const cells: ReturnType<typeof cell>[] = [];
+  if (total <= 21) for (let i = 0; i < total; i++) cells.push(cell(i));
+  else {
+    for (let i = 0; i < 14; i++) cells.push(cell(i));
+    cells.push(<li key="gap" className="exam-day exam-day--gap"><span>{t('exDaysMore', { n: total - 15 })}</span></li>);
+    cells.push(cell(total - 1));
+  }
+
+  return (
+    <section className="exam-plan" aria-labelledby="ov-plan" data-testid="exam-plan">
+      <div className="exam-plan__head">
+        <div>
+          <h2 id="ov-plan" className="exam-block__h">{t('exPlanTitle')}</h2>
+          <p className="exam-plan__left" data-testid="exam-days-left">
+            {left < 0 ? t('exDatePassed') : left === 0 ? t('exDayExamToday') : t('exDaysLeft', { n: left, date: fmtLong.format(exam) })}
+          </p>
+        </div>
+        {input}
+      </div>
+      {left >= 0 && <ol className="exam-days" aria-label={t('exPlanTitle')}>{cells}</ol>}
+      <p className="exam-note">{t('exPlanNote')}</p>
+    </section>
+  );
+}
+
+function Overview({ target, entry, verified, official, bySection, officialPages, userId, ui, t, name, frName }: {
+  target: Target; entry: ExamEntry; verified: boolean; official: Partial<Record<SectionKey, Paper>> | null;
+  bySection: Record<SectionKey, ExamPaper[]>; officialPages: Resource[]; userId: string; ui: Locale; t: T;
+  name: (p: Paper | undefined, k: SectionKey) => string; frName: (p: Paper | undefined) => string | null;
+}) {
   const total = verified ? totalMinutes(entry, target) : 0;
-  // One row per official paper: DALF C2's two combined papers each serve two
-  // sections, and are listed once, under the first section they serve.
-  const seen = new Set<string>();
-  const rows = SECTIONS.filter((k) => {
-    const code = official?.[k]?.code;
-    if (!code) return true;
-    if (seen.has(code)) return false;
-    seen.add(code); return true;
-  });
   const passing = verified ? passingOf(entry, target) : null;
   const validity = verified ? validityOf(entry) : null;
   const caveat = entry.structure.caveat
     ? (typeof entry.structure.caveat === 'string' ? entry.structure.caveat : pick(entry.structure.caveat, ui).text) : null;
+  const has = useHas(userId, target.level);
+  const free = entry.resources.filter((r) => r.kind !== 'exam-body' || r.skill !== 'general');
+  const bySkill = SECTIONS.map((k) => [k, free.filter((r) => r.skill === SKILL_OF[k])] as const).filter(([, rs]) => rs.length > 0);
+  const general = free.filter((r) => r.skill === 'general');
+
+  const resourceList = (rs: Resource[]) => (
+    <ul className="exam-rows">
+      {rs.map((r) => (
+        <li key={r.url}>
+          <a href={r.url} target="_blank" rel="noopener noreferrer" className="exam-row">
+            <span className="exam-row__name" lang={r.lang}>{r.title}</span>
+            <span className="exam-row__meta">{r.publisher}<ArrowUpRight className="size-4" aria-hidden="true" /></span>
+          </a>
+        </li>
+      ))}
+    </ul>
+  );
+
+  const hasCell = (k: SectionKey) => {
+    const papers = bySection[k];
+    const q = papers.reduce((m, x) => m + x.items.length, 0);
+    if (k === 'ce') {
+      return (
+        <>
+          <span className="exam-has__line">{!has ? '…' : target.level
+            ? t('exHasReading', { m: has.textsTotal, n: has.textsAnswered, level: target.level })
+            : t('exHasReadingAny', { m: has.textsTotal, n: has.textsAnswered })}</span>
+          {q > 0 && <Link className="exam-has__line" to={`/app/exam/${target.id}/${k}`}>{t('shellExamQuestions', { n: q })}</Link>}
+          <Link className="btn btn--sm" to={target.level ? `/app/reading?level=${target.level}` : '/app/reading'} data-testid="exam-practise-ce">{t('exPractise')}</Link>
+        </>
+      );
+    }
+    if (k === 'pe') {
+      return (
+        <>
+          <span className="exam-has__line">{!has ? '…' : t('exHasWriting', { m: has.kinds, n: has.drafts })}</span>
+          {q > 0 && <Link className="exam-has__line" to={`/app/exam/${target.id}/${k}`}>{t('shellExamQuestions', { n: q })}</Link>}
+          <Link className="btn btn--sm" to="/app/writing" data-testid="exam-practise-pe">{t('exPractise')}</Link>
+        </>
+      );
+    }
+    return (
+      <>
+        <span className="exam-has__line exam-has__line--none"><span className="exam-sec__here exam-sec__here--none">{t('shellExamSoon')}</span> {t('exNotOnSite')}</span>
+        {q > 0 && <Link className="exam-has__line" to={`/app/exam/${target.id}/${k}`}>{t('shellExamQuestions', { n: q })}</Link>}
+        <Link className="btn btn--sm" to={`/app/exam/${target.id}/${k}`} data-testid={`exam-resources-${k}`}>{t('exResources')}</Link>
+      </>
+    );
+  };
+
   return (
-    <div className="page exam-page dash" data-testid="exam-overview">
-      <div className="dash__main">
-      <header className="exam-head">
-        <h1 className="exam-title">{target.label}</h1>
-        <p className="exam-fr" lang="fr" dir="ltr">{entry.fullName}</p>
-        <p className="exam-lede">{entry.owner}{verified && total > 0 ? `. ${t('shellExamTotal', { minutes: total })}.` : '.'}</p>
-      </header>
+    <div className="page exam-page exam-page--dash" data-testid="exam-overview">
+      <SectionHead title={target.label} fr={ui !== 'fr' ? entry.fullName : undefined}
+                   lede={<>{entry.owner}{verified && total > 0 ? ` · ${t('shellExamTotal', { minutes: total })}` : ''}</>}
+                   aside={<Link to="/app/exam" className="btn btn--sm" data-testid="exam-change">{t('shellExamSwitch')}</Link>} />
 
+      <div className="dash exam-dash">
+        <div className="dash__main">
+          <Countdown userId={userId} level={target.level} ui={ui} t={t} />
 
-      <section aria-labelledby="ov-sections">
-        <h2 id="ov-sections" className="exam-block__h">{rows.length === 4 ? t('shellExamSections') : t('shellExamFormat')}</h2>
-        <ol className="exam-sections">
-          {rows.map((k) => {
-            const p = official?.[k];
-            const I = ICON[k];
-            const n = bySection[k].length;
-            return (
-              <li key={k}>
-                <Link to={`/app/exam/${target.id}/${k}`} className="exam-sec" data-testid={`exam-sec-${k}`}>
-                  <span className="exam-sec__icon" aria-hidden="true"><I className="size-5" /></span>
-                  <span className="exam-sec__name">
-                    <span>{name(p, k)}</span>
-                    {frName(p) && ui !== 'fr' && <span className="exam-sec__fr" lang="fr" dir="ltr">{frName(p)}</span>}
-                  </span>
-                  <span className="exam-sec__facts">{verified && p ? facts(p, t).join(' · ') : ''}</span>
-                  <span className={n > 0 ? 'exam-sec__here' : 'exam-sec__here exam-sec__here--none'}>
-                    {n > 0 ? t('shellExamQuestions', { n: bySection[k].reduce((m, x) => m + x.items.length, 0) }) : t('shellExamSoon')}
-                  </span>
-                </Link>
-              </li>
-            );
-          })}
-        </ol>
-        {verified && extraPapersOf(entry).length > 0 && (
-          <div className="exam-extra">
-            <h3 className="exam-block__h">{t('shellExamOtherSection')}</h3>
-            <ul className="exam-facts">
-              {extraPapersOf(entry).map((p) => <li key={p.code}>{pick(p.name, ui).text}: {facts(p, t).join(', ')}</li>)}
-            </ul>
-          </div>
-        )}
-      </section>
+          <section aria-labelledby="ov-sections">
+            <h2 id="ov-sections" className="exam-block__h">{t('shellExamSections')}</h2>
+            <ol className="exam-table">
+              {SECTIONS.map((k) => {
+                const p = official?.[k];
+                const I = ICON[k];
+                return (
+                  <li key={k} className="exam-tr" data-testid={`exam-sec-${k}`}>
+                    <span className="exam-sec__icon" aria-hidden="true"><I className="size-5" /></span>
+                    <Link to={`/app/exam/${target.id}/${k}`} className="exam-sec__name exam-tr__name">
+                      <span>{name(p, k)}</span>
+                      {frName(p) && ui !== 'fr' && <span className="exam-sec__fr" lang="fr" dir="ltr">{frName(p)}</span>}
+                    </Link>
+                    <span className="exam-sec__facts exam-tr__facts">{verified && p ? facts(p, t).join(' · ') : t('shellExamNotVerified')}</span>
+                    <span className="exam-has">{hasCell(k)}</span>
+                  </li>
+                );
+              })}
+            </ol>
+            {verified && extraPapersOf(entry).length > 0 && (
+              <div className="exam-extra">
+                <h3 className="exam-block__h">{t('shellExamOtherSection')}</h3>
+                <ul className="exam-facts">
+                  {extraPapersOf(entry).map((p) => <li key={p.code}>{pick(p.name, ui).text}: {facts(p, t).join(', ')}</li>)}
+                </ul>
+              </div>
+            )}
+          </section>
+        </div>
 
+        <aside className="dash__aside">
+          <section className="exam-block dash-card" aria-labelledby="ov-pass" data-testid="exam-pass">
+            <h2 id="ov-pass" className="exam-block__h">{t('shellExamPassing')}</h2>
+            {passing && (passing.overall || passing.perPaper) ? (
+              <ul className="exam-facts exam-facts--prose">
+                {passing.overall && <li>{passing.overall}</li>}
+                {passing.perPaper && <li>{passing.perPaper}</li>}
+                {entry.structure.scoring?.scale && <li>{entry.structure.scoring.scale}</li>}
+                {validity && <li>{validity}</li>}
+              </ul>
+            ) : <p className="exam-note">{t('exPassUnknown')}</p>}
+            {verified && entry.structure.sources && entry.structure.sources.length > 0 && (
+              <details className="exam-sources">
+                <summary>{t('shellExamSources')}</summary>
+                <ul>
+                  {entry.structure.sources.map((s) => (
+                    <li key={s.url + s.what}>
+                      <a href={s.url} target="_blank" rel="noopener noreferrer">{s.what}</a>
+                      <span className="exam-note"> {t('shellExamReadOn', { date: s.readOn })}</span>
+                    </li>
+                  ))}
+                </ul>
+                {caveat && <p className="exam-note">{caveat}</p>}
+              </details>
+            )}
+          </section>
+
+          {(officialPages.length > 0 || bySkill.length > 0 || general.length > 0) && (
+            <section className="exam-block dash-card" aria-labelledby="ov-free" data-testid="exam-resources">
+              <h2 id="ov-free" className="exam-block__h">{t('exResourcesTitle')}</h2>
+              {officialPages.length > 0 && (<><h3 className="exam-group__h">{t('shellExamOfficial')}</h3>{resourceList(officialPages)}</>)}
+              {bySkill.map(([k, rs]) => (<div key={k}><h3 className="exam-group__h">{t(SECTION_LABEL[k])}</h3>{resourceList(rs)}</div>))}
+              {general.length > 0 && (<><h3 className="exam-group__h">{t('exGeneral')}</h3>{resourceList(general)}</>)}
+            </section>
+          )}
+
+          <section className="exam-block dash-card" aria-labelledby="ov-teacher" data-testid="exam-teacher">
+            <h2 id="ov-teacher" className="exam-block__h">{t('exTeacherTitle')}</h2>
+            <p className="exam-teacher__p">{t('exTeacherBody')}</p>
+            <Link to="/account" className="btn btn--sm">{t('exTeacherExport')}</Link>
+            <p className="exam-note">{t('exTeacherNote')}</p>
+          </section>
+        </aside>
       </div>
-
-      {/* The side column: what it takes to pass, and where the facts come from. */}
-      <aside className="dash__aside">
-      {verified && (passing || entry.structure.scoring?.scale || validity) && (
-        <section className="exam-block dash-card" aria-labelledby="ov-pass">
-          <h2 id="ov-pass" className="exam-block__h">{t('shellExamPassing')}</h2>
-          <ul className="exam-facts exam-facts--prose">
-            {passing?.overall && <li>{passing.overall}</li>}
-            {passing?.perPaper && <li>{passing.perPaper}</li>}
-            {entry.structure.scoring?.scale && <li>{entry.structure.scoring.scale}</li>}
-            {validity && <li>{validity}</li>}
-          </ul>
-        </section>
-      )}
-
-      {officialPages.length > 0 && (
-        <section className="exam-block dash-card" aria-labelledby="ov-official">
-          <h2 id="ov-official" className="exam-block__h">{t('shellExamOfficial')}</h2>
-          <ul className="exam-rows">
-            {officialPages.map((r) => (
-              <li key={r.url}>
-                <a href={r.url} target="_blank" rel="noopener noreferrer" className="exam-row">
-                  <span className="exam-row__name" lang={r.lang}>{r.title}</span>
-                  <span className="exam-row__meta">{r.publisher}<ArrowUpRight className="size-4" aria-hidden="true" /></span>
-                </a>
-              </li>
-            ))}
-          </ul>
-        </section>
-      )}
-
-      {verified && entry.structure.sources && entry.structure.sources.length > 0 && (
-        <details className="exam-sources">
-          <summary>{t('shellExamSources')}</summary>
-          <ul>
-            {entry.structure.sources.map((s) => (
-              <li key={s.url + s.what}>
-                <a href={s.url} target="_blank" rel="noopener noreferrer">{s.what}</a>
-                <span className="exam-note"> {t('shellExamReadOn', { date: s.readOn })}</span>
-              </li>
-            ))}
-          </ul>
-          {caveat && <p className="exam-note">{caveat}</p>}
-        </details>
-      )}
-      </aside>
     </div>
   );
 }
