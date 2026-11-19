@@ -23,6 +23,8 @@ import {
 import { CATEGORIES, type ReadingCategory, type ReadingText } from './types';
 import { deleteSaved, putSaved, positionsFor, resultsForUser, savedForUser, type ReaderResult } from './store';
 import { ReaderState, useReadingTexts, useWide } from './ui';
+import { ExamSectionCard, PageWithAside, SavedWordsCard, TipCard } from '../../components/aside';
+import { ReaderResultsCard } from '../../components/aside/ReaderCards';
 import './reader.css';
 
 type Key = Parameters<ReturnType<typeof useApp>['t']>[0];
@@ -141,9 +143,37 @@ export function ReaderList() {
     </>
   );
 
+  // Texts the learner opened and left part-way: one row, before the library.
+  const continuing = texts.filter((x) => (started.get(x.id) ?? 0) > 0 && !results.has(x.id)).slice(0, 3);
+
   return (
-    <div className="rd" data-testid="reader-list">
+    <PageWithAside className="rd-page" testId="reader-list" aside={(
+      <>
+        <ExamSectionCard section="ce" />
+        <ReaderResultsCard results={[...results.values()]} texts={texts} />
+        <SavedWordsCard />
+        <TipCard id="reading" />
+      </>
+    )}>
+    <div className="rd">
       <SectionHead title={t('rdTitle')} fr="La lecture" lede={t('rdLead')} />
+
+      {continuing.length > 0 && (
+        <section className="rd-continue" aria-labelledby="rd-continue-h" data-testid="rd-continue">
+          <h2 id="rd-continue-h" className="rd-continue__h">{t('rdContinueRow')}</h2>
+          <ul className="rd-continue__list">
+            {continuing.map((x) => (
+              <li key={x.id}>
+                <Link className="rd-continue__item" to={`/app/reading/${x.id}`} state={{ from: location.search }}>
+                  <span className={`chip chip--${(x.level ?? '').toLowerCase()}`}>{x.level ?? t('rdLevelNone')}</span>
+                  <span className="rd-continue__title" lang="fr" dir="ltr">{frText(x.title.fr ?? '')}</span>
+                  <span className="rd-continue__go">{t('rdContinue')} <Icon name="chevron" size={14} /></span>
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
       <div className="rd-search" role="search">
         <div className="field">
@@ -227,6 +257,7 @@ export function ReaderList() {
         </ul>
       )}
     </div>
+    </PageWithAside>
   );
 }
 

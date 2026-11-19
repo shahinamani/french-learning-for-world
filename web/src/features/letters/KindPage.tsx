@@ -6,9 +6,13 @@ import { useEffect, useState } from 'react';
 import { Link, useLocation, useParams } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
 import { Icon } from '../../components/Icon';
-import { draftsFor } from './store';
+import { countWords } from './model';
+import { draftsFor, type Draft } from './store';
 import { freeTaskId, type LetterKindContent, type LettersFile } from './types';
 import { Fr, Gloss, NotFoundLetter, NotReady, useLetters, useText } from './ui';
+import { ExamSectionCard, PageWithAside, TipCard } from '../../components/aside';
+import { DraftsCard } from '../../components/aside/DraftsCard';
+import { PartsIndexCard } from '../../components/aside/PartsIndexCard';
 import './letters.css';
 
 export function KindPage() {
@@ -26,11 +30,12 @@ function Kind({ k, data }: { k: LetterKindContent; data: LettersFile }) {
   const text = useText();
   const location = useLocation();
   const [labels, setLabels] = useState(true);
-  const [started, setStarted] = useState<Set<string>>(new Set());
+  const [drafts, setDrafts] = useState<Draft[] | null>(null);
+  const started = new Set((drafts ?? []).map((x) => x.taskId));
 
   useEffect(() => {
     let live = true;
-    draftsFor(userId).then((d) => { if (live) setStarted(new Set(d.map((x) => x.taskId))); }).catch(() => {});
+    draftsFor(userId).then((d) => { if (live) setDrafts(d); }).catch(() => { if (live) setDrafts([]); });
     return () => { live = false; };
   }, [userId]);
 
@@ -41,9 +46,26 @@ function Kind({ k, data }: { k: LetterKindContent; data: LettersFile }) {
 
   const partName = (id: string) => k.parts.find((p) => p.id === id)?.name;
   const tasks = data.tasks.filter((x) => x.kind === k.id);
+  // This kind's drafts, for the side column: the task's wording, or "free task".
+  const draftTitle = (taskId: string) => {
+    const task = tasks.find((x) => x.id === taskId);
+    return task ? text(task.task).text : `${t('lwFreeTask')} — ${text(k.name).text}`;
+  };
+  const rows = drafts === null ? null : drafts
+    .filter((d) => d.text.trim().length > 0 && (tasks.some((x) => x.id === d.taskId) || d.taskId === freeTaskId(k.id)))
+    .sort((a, b) => b.updatedAt - a.updatedAt)
+    .map((d) => ({ to: `/app/writing/${k.id}/${d.taskId}`, title: draftTitle(d.taskId), words: countWords(d.text), updatedAt: d.updatedAt }));
 
   return (
-    <div className="lw" data-testid={`lw-kind-page-${k.id}`}>
+    <PageWithAside className="lw-page" testId={`lw-kind-page-${k.id}`} aside={(
+      <>
+        <PartsIndexCard parts={k.parts.map((p) => ({ id: p.id, fr: p.name.fr ?? p.id, local: text(p.name).locale === 'fr' ? undefined : text(p.name).text }))} />
+        <DraftsCard drafts={rows} />
+        <ExamSectionCard section="pe" />
+        <TipCard id="writing" />
+      </>
+    )}>
+    <div className="lw">
       <Link className="lw-back" to="/app/writing"><Icon name="chevron" size={16} />{t('lwBackHome')}</Link>
       <header className="lw-head">
         <h1 className="h2"><Fr>{k.name.fr ?? ''}</Fr></h1>
@@ -66,7 +88,7 @@ function Kind({ k, data }: { k: LetterKindContent; data: LettersFile }) {
         <h2 id="lw-parts" className="h3">{t('lwParts')}</h2>
         <ol className="lw-parts">
           {k.parts.map((p) => (
-            <li key={p.id} className="lw-part">
+            <li key={p.id} className="lw-part" id={`lw-part-${p.id}`}>
               <h3 className="lw-part__name"><Fr>{p.name.fr ?? ''}</Fr> <Gloss field={p.name} /></h3>
               <p className="lw-part__purpose" dir="auto">{text(p.purpose).text}</p>
               <ul className="lw-phrases">
@@ -134,5 +156,6 @@ function Kind({ k, data }: { k: LetterKindContent; data: LettersFile }) {
         </ul>
       </section>
     </div>
+    </PageWithAside>
   );
 }

@@ -936,3 +936,14 @@
 .grl-lesson .grl-text { max-width: 70ch; }
 /* The two-example grid lives in grammar.css: this file is in the `components`
    layer and grammar.css is unlayered, so a rule here cannot win against it. */
+/* ── Side columns of reading, writing, themes and placeholder pages (v2b, group C) ── */
+.dash__main > .rd, .dash__main > .lw { padding: 0; margin: 0; max-width: none; }
+.aside-rail { display: block; height: 6px; border-radius: 999px; overflow: hidden; background: var(--color-line); }
+.aside-rail__fill { display: block; height: 100%; border-radius: 999px; background: var(--fr-bleu); }
+.aside-drafts a { align-items: flex-start; min-height: 0; padding-block: .25rem; }
+.aside-drafts__body { display: flex; flex-direction: column; gap: .125rem; min-width: 0; }
+.aside-drafts__body .muted { font-size: .8125rem; }
+.aside-parts__local { font-size: .875rem; }
+.aside-card .chip { vertical-align: middle; }
+.dash > .empty { margin-inline: 0; max-width: none; text-align: start; align-items: flex-start; }
+.dash > .empty .row { justify-content: flex-start !important; }

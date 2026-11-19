@@ -5,11 +5,12 @@ import { useEffect, useState } from 'react';
 import { SectionHead } from '../../components/SectionHead';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
-import { Icon } from '../../components/Icon';
 import { countWords } from './model';
 import { draftsFor, type Draft } from './store';
 import { KINDS, freeTaskId, type LettersFile } from './types';
 import { Fr, NotReady, useLetters, useText } from './ui';
+import { ExamSectionCard, PageWithAside, TipCard } from '../../components/aside';
+import { DraftsCard } from '../../components/aside/DraftsCard';
 import './letters.css';
 
 export function LettersHome() {
@@ -30,7 +31,6 @@ function Home({ data }: { data: LettersFile }) {
     return () => { live = false; };
   }, [userId]);
 
-  const date = (ms: number) => new Intl.DateTimeFormat(settings.ui, { dateStyle: 'medium' }).format(ms);
   const taskTitle = (taskId: string) => {
     const task = data.tasks.find((x) => x.id === taskId);
     if (task) return text(task.task).text;
@@ -40,8 +40,18 @@ function Home({ data }: { data: LettersFile }) {
   };
   const kindOfTask = (taskId: string) => taskId.split('.')[1] ?? '';
 
+  const rows = drafts === null ? null : drafts.filter((d) => d.text.trim().length > 0).sort((a, b) => b.updatedAt - a.updatedAt)
+    .map((d) => ({ to: `/app/writing/${kindOfTask(d.taskId)}/${d.taskId}`, title: taskTitle(d.taskId), words: countWords(d.text), updatedAt: d.updatedAt }));
+
   return (
-    <div className="lw" data-testid="lw-home">
+    <PageWithAside className="lw-page" testId="lw-home" aside={(
+      <>
+        <DraftsCard drafts={rows} />
+        <ExamSectionCard section="pe" />
+        <TipCard id="writing" />
+      </>
+    )}>
+    <div className="lw">
       <SectionHead title={t('lwTitle')} fr="Les lettres" lede={t('lwLead')}
                    note={<p className="lw-note" dir="auto">{t('lwDraftedNote')}</p>} />
 
@@ -52,6 +62,10 @@ function Home({ data }: { data: LettersFile }) {
             <h2 className="lw-kind__title"><Fr>{k.name.fr ?? ''}</Fr></h2>
             {settings.ui !== 'fr' && <p className="lw-kind__sub" dir="auto">{text(k.name).text}</p>}
             <p className="lw-kind__desc" dir="auto">{text(k.when).text}</p>
+            {/* The parts in order, from the data file: what the marker expects to find. */}
+            <ol className="lw-kind__parts" aria-label={t('lwParts')}>
+              {k.parts.map((p) => <li key={p.id}><Fr>{p.name.fr ?? ''}</Fr></li>)}
+            </ol>
             <div className="lw-kind__actions">
               <Link className="btn btn--primary" to={`/app/writing/${k.id}`}>{t('lwStudy')}</Link>
               <Link className="btn" to={`/app/writing/${k.id}#tasks`}>{t('lwWrite')}</Link>
@@ -60,31 +74,7 @@ function Home({ data }: { data: LettersFile }) {
         ))}
       </ul>
 
-      <section className="lw-section" aria-labelledby="lw-drafts">
-        <h2 id="lw-drafts" className="h3">{t('lwYourDrafts')}</h2>
-        {drafts === null ? <div className="skeleton skeleton--text" />
-          : drafts.length === 0 ? <p className="lw-note" dir="auto">{t('lwNoDrafts')}</p>
-          : (
-            <ul className="lw-drafts">
-              {drafts.map((d) => {
-                const n = countWords(d.text);
-                return (
-                  <li key={d.taskId} className="lw-draft">
-                    <Icon name="micpen" size={20} />
-                    <div className="lw-draft__body">
-                      <p className="lw-draft__title" dir="auto">{taskTitle(d.taskId)}</p>
-                      <p className="lw-meta">
-                        <span>{n === 1 ? t('lwWordsOne') : t('lwWords', { n })}</span>
-                        <span>{t('lwUpdated', { date: date(d.updatedAt) })}</span>
-                      </p>
-                    </div>
-                    <Link className="btn" to={`/app/writing/${kindOfTask(d.taskId)}/${d.taskId}`}>{t('lwOpenDraft')}</Link>
-                  </li>
-                );
-              })}
-            </ul>
-          )}
-      </section>
     </div>
+    </PageWithAside>
   );
 }

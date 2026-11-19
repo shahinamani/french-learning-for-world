@@ -8,7 +8,7 @@ import { useApp, useUserId } from '../app-context';
 import { loadContent } from '../lib/content';
 import { loadMaterial, cellState, type Material } from '../lib/material';
 import { counts, weakPoints, type Counts, type ConceptStat } from '../lib/progress';
-import { WeekCard } from '../components/aside';
+import { SavedWordsCard, WeekCard } from '../components/aside';
 import { Icon } from '../components/Icon';
 import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
@@ -293,6 +293,7 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
             <p className="fine muted">{t('tdReadyNote')}</p>
           </section>
         )}
+        <SavedWordsCard />
         {mot && (
           <section className="mot" aria-labelledby="mot-h" data-testid="mot-du-jour">
             <p id="mot-h" className="mot__label" lang="fr" dir="ltr">{MOT_FR}</p>
