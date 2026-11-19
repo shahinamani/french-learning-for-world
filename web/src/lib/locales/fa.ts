@@ -29,6 +29,8 @@ const fa: Dict = {
   crashedBody: 'این صفحه دچار خطا شد. پیشرفت شما روی همین دستگاه محفوظ است.',
   crashedReload: 'بارگذاری دوباره',
   focusExit: 'خروج از جلسه',
+  cardNew: 'کارت جدید', cardSeen: 'بار {n}',
+  nextStepLabel: 'قدم بعدی', backToToday: 'برگرد به امروز', nextLesson: 'درس بعدی: {name}', nextText: 'متن بعدی: {name}', drillThisVerb: 'تمرین این فعل', nextVerb: 'فعل بعدی: {name}',
   theme: 'پوسته',
   themeSystem: 'سیستم',
   themeLight: 'روشن',

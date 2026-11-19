@@ -30,6 +30,8 @@ const ar: Dict = {
   crashedBody: 'حدث خطأ في هذه الشاشة. تقدّمك محفوظ على هذا الجهاز.',
   crashedReload: 'إعادة التحميل',
   focusExit: 'مغادرة الجلسة',
+  cardNew: 'بطاقة جديدة', cardSeen: 'شوهدت {n} مرات',
+  nextStepLabel: 'الخطوة التالية', backToToday: 'العودة إلى اليوم', nextLesson: 'الدرس التالي: {name}', nextText: 'النص التالي: {name}', drillThisVerb: 'تدرّب على هذا الفعل', nextVerb: 'الفعل التالي: {name}',
   theme: 'المظهر',
   themeSystem: 'النظام',
   themeLight: 'فاتح',

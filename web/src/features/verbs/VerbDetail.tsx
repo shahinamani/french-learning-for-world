@@ -1,5 +1,6 @@
 /** One verb: every tense and mood, irregularities marked, practice from the table. */
 import { useEffect, useState } from 'react';
+import { NextStep } from '../../components/NextStep';
 import { Link, useNavigate, useParams } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
 import { loadVerb, loadTenseNames, type Verb, type TenseNames } from '../../lib/verbs';
@@ -195,6 +196,8 @@ export function VerbDetail() {
           <p className="muted" data-testid="no-imperative">{t('noImperative')}</p>
         )}
       </section>
+      <NextStep primary={{ to: `/app/verbs/drill?verb=${encodeURIComponent(verb.infinitive)}`, label: t('drillThisVerb'), testId: 'verb-drill' }}
+                others={[{ to: '/app/verbs', label: t('verbs') }]} />
     </div>
   );
 }

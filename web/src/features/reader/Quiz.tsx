@@ -20,9 +20,11 @@ type Props = {
   onFinished: (correct: number, total: number) => void;
   onReread: () => void;
   backSearch: string;
+  /** The text to read after this one, if any. */
+  next?: { id: string; title: string } | null;
 };
 
-export function Quiz({ textId, questions, onFinished, onReread, backSearch }: Props) {
+export function Quiz({ textId, questions, onFinished, onReread, backSearch, next }: Props) {
   const { t } = useApp();
   const [picked, setPicked] = useState<Record<string, number>>({});
   /** questionId → the index checked FIRST. Set once, never overwritten. */
@@ -99,9 +101,13 @@ export function Quiz({ textId, questions, onFinished, onReread, backSearch }: Pr
           <p data-testid="rd-score"><Num>{t('rdFinishedScore', { c: correct, n: total })}</Num></p>
           <p className="rd-note" dir="auto">{t('rdFinishedNext')}</p>
           <div className="rd-actions">
-            <Link className="btn btn--primary" to="/app/cards" data-testid="rd-to-cards">{t('rdMyWords')}</Link>
+            {next
+              ? <Link className="btn btn--primary" to={`/app/reading/${next.id}${backSearch}`} data-testid="rd-next-text">{t('nextText', { name: next.title })}</Link>
+              : <Link className="btn btn--primary" to="/app/cards" data-testid="rd-to-cards">{t('rdMyWords')}</Link>}
+            {next && <Link className="btn" to="/app/cards" data-testid="rd-to-cards">{t('rdMyWords')}</Link>}
             <button type="button" className="btn" onClick={onReread}>{t('rdReread')}</button>
             <Link className="btn" to={`/app/reading${backSearch}`}>{t('rdBack')}</Link>
+            <Link className="btn btn--ghost" to="/app/today" data-testid="next-step-today">{t('backToToday')}</Link>
           </div>
         </div>
       )}

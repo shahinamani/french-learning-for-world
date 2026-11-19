@@ -29,6 +29,8 @@ const fr: Dict = {
   crashedBody: 'Cet écran a rencontré une erreur. Votre progression est conservée sur cet appareil.',
   crashedReload: 'Recharger',
   focusExit: 'Quitter la séance',
+  cardNew: 'Nouvelle carte', cardSeen: 'Vue {n} fois',
+  nextStepLabel: 'Et ensuite', backToToday: 'Retour à aujourd’hui', nextLesson: 'Leçon suivante : {name}', nextText: 'Texte suivant : {name}', drillThisVerb: 'Travailler ce verbe', nextVerb: 'Verbe suivant : {name}',
   theme: 'Thème',
   themeSystem: 'Système',
   themeLight: 'Clair',

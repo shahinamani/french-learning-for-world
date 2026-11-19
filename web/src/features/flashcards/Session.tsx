@@ -363,8 +363,7 @@ export function FlashcardSession() {
   const tilt = drag ? Math.max(-1, Math.min(1, drag / SWIPE_AT)) : 0;
 
   return (
-    <div className="page page--session dash session-dash">
-      <div className="dash__main">
+    <div className="page page--session">
       <div className="fc-top">
         <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={queue.length}
              aria-valuenow={index} aria-label={t('practise')}>
@@ -395,6 +394,11 @@ export function FlashcardSession() {
                 <span className={`chip chip--${card.level.toLowerCase()}`}>{card.level}</span>
                 {card.gender && <span className="chip">{t(card.gender === 'f' ? 'feminine' : 'masculine')}</span>}
                 {card.register && <span className="chip" lang="fr" dir="ltr" data-testid="card-register">{card.register}</span>}
+                {/* How many times this card has come round: a learner on the
+                    fourth meeting with « déménager » should know it is the fourth. */}
+                <span className="fc__seen" data-testid="card-seen">
+                  {stateOf(card.key).reps === 0 ? t('cardNew') : t('cardSeen', { n: stateOf(card.key).reps })}
+                </span>
               </div>
               <p className="flashcard__word fc__word" lang="fr" dir="ltr">
                 {/* The article in the gender's colour: blue le, red la. */}
@@ -497,18 +501,6 @@ export function FlashcardSession() {
       </div>
 
       {/* Move through the session without grading: back to look again, or on. */}
-      <nav className="fc-nav" aria-label={t('practise')}>
-        <button type="button" className="fc-nav__btn" data-testid="card-prev" disabled={index === 0}
-                onClick={() => goTo(index - 1)}>
-          <span className="fc-nav__chev fc-nav__chev--back" aria-hidden="true"><Icon name="chevron" size={16} /></span>
-          {t('shellCardsPrev')}
-        </button>
-        <button type="button" className="fc-nav__btn" data-testid="card-next" onClick={() => goTo(index + 1)}>
-          {t('shellCardsNext')}
-          <span className="fc-nav__chev" aria-hidden="true"><Icon name="chevron" size={16} /></span>
-        </button>
-      </nav>
-
       <div className="actions">
         <div className="actions-in">
           {!revealed ? (
@@ -526,34 +518,21 @@ export function FlashcardSession() {
         </div>
         {revealed && <p className="fc__swipe-hint">{t('shellCardsSwipeHint')}</p>}
       </div>
-      </div>
+      <nav className="fc-nav" aria-label={t('practise')}>
+        <button type="button" className="fc-nav__btn" data-testid="card-prev" disabled={index === 0}
+                onClick={() => goTo(index - 1)}>
+          <span className="fc-nav__chev fc-nav__chev--back" aria-hidden="true"><Icon name="chevron" size={16} /></span>
+          {t('shellCardsPrev')}
+        </button>
+        <button type="button" className="fc-nav__btn" data-testid="card-next" onClick={() => goTo(index + 1)}>
+          {t('shellCardsNext')}
+          <span className="fc-nav__chev" aria-hidden="true"><Icon name="chevron" size={16} /></span>
+        </button>
+      </nav>
 
-      {/* The side column, on a wide screen: the levels, how far this session
-          has come, and the keys. Narrow screens keep the picker above the card. */}
-      <aside className="dash__aside session-aside" aria-label={t('tdSession')}>
-        {!conceptFilter && !cardFilter && (
-          <section className="dash-card">
-            <h2 className="dash-card__title">{t('shellCardsLevel')}</h2>
-            <LevelPicker level={level} count={levelCount} where="aside" />
-          </section>
-        )}
-        <section className="dash-card">
-          <h2 className="dash-card__title">{t('tdSession')}</h2>
-          <p className="session-aside__done"><Num>{t('tdDone', { n: index, m: queue.length })}</Num></p>
-          <div className="rail session-aside__rail" aria-hidden="true">
-            <span className="rail__fill" style={{ width: `${(index / Math.max(1, queue.length)) * 100}%` }} />
-          </div>
-          {reviewed > 0 && <p className="fine muted">{t('reviewed', { n: reviewed })}</p>}
-        </section>
-        <section className="dash-card session-keys">
-          <h2 className="dash-card__title">{t('tdKeys')}</h2>
-          <dl>
-            <dt><kbd>{t('shellKeySpace')}</kbd></dt><dd>{t('tdKeyFlip')}</dd>
-            <dt><kbd>←</kbd> <kbd>→</kbd></dt><dd>{t('tdKeyMove')}</dd>
-            <dt><kbd>1</kbd>–<kbd>4</kbd></dt><dd>{t('tdKeyGrade')}</dd>
-          </dl>
-        </section>
-      </aside>
+      <p className="fc__keys muted fine" aria-hidden="true">
+        <kbd>{t('shellKeySpace')}</kbd> {t('tdKeyFlip')} · <kbd>←</kbd> <kbd>→</kbd> {t('tdKeyMove')} · <kbd>1</kbd>–<kbd>4</kbd> {t('tdKeyGrade')}
+      </p>
     </div>
   );
 }

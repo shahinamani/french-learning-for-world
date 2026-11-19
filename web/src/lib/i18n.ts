@@ -34,6 +34,8 @@ const en = {
   crashedBody: 'This screen broke. Your progress is safe on this device.',
   crashedReload: 'Reload',
   focusExit: 'Leave the session',
+  cardNew: 'New card', cardSeen: 'Seen {n} times',
+  nextStepLabel: 'What next', backToToday: 'Back to today', nextLesson: 'Next lesson: {name}', nextText: 'Next text: {name}', drillThisVerb: 'Practise this verb', nextVerb: 'Next verb: {name}',
   theme: 'Theme',
   themeSystem: 'System',
   themeLight: 'Light',
