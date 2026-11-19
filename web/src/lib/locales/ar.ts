@@ -27,6 +27,8 @@ const ar: Dict = {
   submitExam: 'إنهاء — {n} من {m}',
   notTranslatedHere: 'يُعرض هذا بالإنجليزية — لم تُترجَم الأسئلة والشروح إلى العربية بعد.',
   skipToContent: 'تخطَّ إلى المحتوى',
+  navDialogues: 'الحوارات',
+  dialoguesLede: 'موقف، النص الفرنسي، معناه، وأسئلة مع الإجابة والشرح.',
   crashedBody: 'حدث خطأ في هذه الشاشة. تقدّمك محفوظ على هذا الجهاز.',
   crashedReload: 'إعادة التحميل',
   focusExit: 'مغادرة الجلسة',

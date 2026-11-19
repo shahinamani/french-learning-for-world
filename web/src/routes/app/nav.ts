@@ -35,12 +35,14 @@ export const THEMES = item('themes', 'wordtag', 'shellNavThemes');
 export const RESOURCES = item('resources', 'openbook', 'shellNavResources');
 /** The learner's exam (redesign v1): named here so the breadcrumb finds it. */
 export const EXAM = item('exam', 'examsheet', 'shellExamMy');
+/** Dialogues (2026-11-19): was a tab of the retired workspace; its own page now. */
+export const DIALOGUES = item('dialogues', 'textpage', 'navDialogues');
 
 /** Redesign v1 (docs/blueprint/REDESIGN-v1.md §4): the navigation shows only
  *  what exists. Vocabulary, listening, speaking, news, podcasts and
  *  saved have no content yet; their routes stay and say so, but no menu sends a
  *  learner to an empty page. Each returns to these lists when it is built. */
-export const FREE_GROUP: NavItem[] = [CARDS, VERBS, GRAMMAR, READING, WRITING];
+export const FREE_GROUP: NavItem[] = [CARDS, VERBS, GRAMMAR, READING, WRITING, DIALOGUES];
 /** Built later. Kept here so the breadcrumb and the placeholder pages still
  *  find their names. */
 export const NOT_YET: NavItem[] = [VOCABULARY, LISTENING, OUTPUT, NEWS, PODCASTS, SAVED];
@@ -57,7 +59,7 @@ export const FOOTER: NavItem[] = [
 ];
 
 /** What the mobile "Learn" sheet lists, and what "More" lists. */
-export const LEARN_SHEET: NavItem[] = [THEMES, VERBS, GRAMMAR, READING, WRITING];
+export const LEARN_SHEET: NavItem[] = [THEMES, DIALOGUES, VERBS, GRAMMAR, READING, WRITING];
 export const MORE_SHEET: NavItem[] = [RESOURCES, PROGRESS, PATH];
 
 /** Which top-level nav item a pathname belongs to, for the breadcrumb. */

@@ -77,7 +77,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
     [`/practise/exams/${paperId}/results`, `/app/exams/${paperId}/results`],
     ['/practise/listening', '/app/listening'],
     ['/progress', '/app/progress'],
-    ['/workspace', '/app/workspace'],
+    ['/workspace', '/app/cards'],
+    ['/app/workspace', '/app/cards'],
     ['/search', '/app/search'],
     ['/app', '/app/today'],
   ];
@@ -106,7 +107,7 @@ console.log('\n=== portal routes, redirects and icon names ===');
 
   // 2. Every learner route renders, and the placeholders say what is missing.
   const ROUTES = ['today', 'path', 'vocabulary', 'cards', 'verbs', 'grammar', 'listening', 'reading', 'writing', 'output',
-                  'news', 'podcasts', 'exams', 'saved', 'progress', 'search', 'workspace'];
+                  'news', 'podcasts', 'exams', 'saved', 'progress', 'search', 'dialogues'];
   // Grammar and reading were placeholders until they were mounted; they are real pages now.
   // My path became the level map in redesign v1 (REDESIGN-v1.md §6).
   const PLACEHOLDER = ['vocabulary', 'output', 'news', 'podcasts', 'saved'];

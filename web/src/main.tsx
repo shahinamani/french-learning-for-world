@@ -44,11 +44,10 @@ const ExamPaperRoute = lazy(() => import('./features/exams/ExamPaper').then((m) 
 const ExamSit = lazy(() => import('./features/exams/ExamSit').then((m) => ({ default: m.ExamSit })));
 const ExamResults = lazy(() => import('./features/exams/ExamResults').then((m) => ({ default: m.ExamResults })));
 
-// The workspace is lazy for the same reason exams are: it pulls the verb index
-// reader, the speech layer and the whole card surface, and the first load has
-// 15.7 KB of headroom against the 150 KB budget. A learner who never opens it
-// does not pay for it.
-const Workspace = lazy(() => import('./features/workspace/Workspace').then((m) => ({ default: m.Workspace })));
+// Dialogues (2026-11-19): was a tab of the learning workspace. The workspace
+// was retired because it was a second flashcard tool beside /app/cards; the
+// dialogue content is real and keeps its own lazy chunk, speech layer included.
+const Dialogues = lazy(() => import('./features/dialogues/Dialogues').then((m) => ({ default: m.DialoguesPage })));
 
 // Grammar and the Reader are lazy chunks for the same reason: the first load
 // is measured against a 150 KB ceiling (scripts/budget.mjs) and neither screen
@@ -138,10 +137,10 @@ function AppRoutes() {
           <Route path="saved" element={<PlaceholderRoute id="saved" />} />
           <Route path="progress" element={lazily(<Progress />)} />
           <Route path="search" element={lazily(<SearchRoute />)} />
-          {/* Not in the contract's table. The workspace is a finished page that
-              Learn links to; the table sends /workspace to Today, which would
-              make that link a loop back to where it was clicked. */}
-          <Route path="workspace" element={lazily(<Workspace />)} />
+          <Route path="dialogues" element={lazily(<Dialogues />)} />
+          {/* The workspace was retired on 2026-11-19 (one flashcard tool, not
+              two). Old links to it land on the cards, with their query string. */}
+          <Route path="workspace" element={<Redirect to={() => '/app/cards'} />} />
         </Route>
 
         {/* Old addresses. Every one forwards with `replace`; none may 404. */}

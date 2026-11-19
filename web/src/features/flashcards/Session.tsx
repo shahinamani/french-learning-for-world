@@ -31,7 +31,12 @@ import { loadVerbIndex } from '../../lib/verbs';
 import { useTarget } from '../../lib/exam-targets';
 import { requestPersistence } from '../../lib/backup';
 import { completeStep, type Step } from '../../lib/plan';
+import { RATES, speakAll, stop as stopSpeech, type Rate } from '../../lib/speech';
+import { useVoice } from '../../hooks/useVoice';
 import '../../lib/locales/en/todayEn';   // registers its English (lazy group)
+// The Listen button and the voice-speed choice came from the retired workspace
+// (owner decision 2026-11-19: one flashcard tool, not two) and keep its keys.
+import '../../lib/locales/en/workspaceEn';
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
 /** How far a card must be dragged, in pixels, to count as a swipe. */
@@ -48,6 +53,7 @@ export function FlashcardSession() {
   const userId = useUserId();
   const [params, setParams] = useSearchParams();
   const panel = useSidePanel();
+  const voice = useVoice(userId);
 
   const conceptFilter = params.get('concept');
   const cardFilter = params.get('card');
@@ -225,9 +231,24 @@ export function FlashcardSession() {
     planMarked.current = true;
     setPlanNext(completeStep(userId, 'cards'));
   }, [queue, card, userId, conceptFilter, cardFilter]);
-  useEffect(() => { setRevealed(false); shownAt.current = Date.now(); }, [index, card?.key]);
+  // `stopSpeech` too: the previous word must not talk over the next card.
+  useEffect(() => { setRevealed(false); shownAt.current = Date.now(); stopSpeech(); }, [index, card?.key]);
 
   const stateOf = useCallback((key: string) => states.get(key) ?? emptyState(), [states]);
+
+  /**
+   * Read the card aloud: the headword with its article, and on the back the
+   * present-tense example as well. The device's own voice (lib/speech.ts), a
+   * pronunciation aid and not listening practice — the screen says so.
+   */
+  const listen = useCallback((withExample: boolean) => {
+    if (!card) return;
+    const word = `${card.article ? card.article + (card.article.endsWith("'") ? '' : ' ') : ''}${card.fr}`;
+    const example = withExample
+      ? (card.examples.find((ex) => ex.tense === 'present') ?? card.examples[0])?.fr
+      : undefined;
+    speakAll(example ? [word, example] : [word], voice.voiceId, voice.rate);
+  }, [card, voice.voiceId, voice.rate]);
 
   const grade = useCallback(async (g: Grade) => {
     if (!card || !queue || !engine) return;
@@ -306,11 +327,13 @@ export function FlashcardSession() {
       }
       if (revealed && ['1', '2', '3', '4'].includes(e.key)) {
         e.preventDefault(); void grade(Number(e.key) as Grade);
+        return;
       }
+      if ((e.key === 'l' || e.key === 'L') && voice.available) { e.preventDefault(); listen(revealed); }
     };
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
-  }, [card, revealed, grade, goTo, index]);
+  }, [card, revealed, grade, goTo, index, listen, voice.available]);
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
   // The countdown is shown from the first frame: the timer is already
@@ -357,6 +380,8 @@ export function FlashcardSession() {
             <Link className={planNext ? 'btn' : 'btn btn--primary'} to={`/app/cards?level=${level}`}
                   data-testid="session-more">{t('keepGoing')}</Link>
           )}
+          {/* The retired workspace's Quiz tab was this link; it lives on here. */}
+          <Link className="btn btn--sm" to="/app/exams" data-testid="session-exams">{t('exams')}</Link>
         </div>
         {!conceptFilter && !cardFilter && <LevelPicker level={level} count={levelCount} />}
         {/* The continuation. `justDid` is passed rather than inferred from the
@@ -512,6 +537,17 @@ export function FlashcardSession() {
             </section>
           </div>
         </article>
+        {/* Outside the <article>: the front face is itself a button, and a
+            button inside a button is a nesting assistive technology refuses.
+            Positioned on the card, where it belongs, by CSS. Hidden entirely
+            when the device has no French voice — not disabled, hidden. */}
+        {voice.available && (
+          <button type="button" className="fc__listen" data-testid="card-listen"
+                  aria-label={t('wsListen')} title={t('wsSpeechAid')}
+                  onClick={() => listen(revealed)}>
+            <Icon name="sound" size={18} />
+          </button>
+        )}
       </div>
 
       {/* Move through the session without grading: back to look again, or on. */}
@@ -546,7 +582,22 @@ export function FlashcardSession() {
 
       <p className="fc__keys muted fine" aria-hidden="true">
         <kbd>{t('shellKeySpace')}</kbd> {t('tdKeyFlip')} · <kbd>←</kbd> <kbd>→</kbd> {t('tdKeyMove')} · <kbd>1</kbd>–<kbd>4</kbd> {t('tdKeyGrade')}
+        {voice.available && <> · <kbd>L</kbd> {t('wsListen')}</>}
       </p>
+      {/* The speed, kept per profile; and once per session, on the first card,
+          what the voice is: a pronunciation aid, not listening practice. */}
+      {voice.available && (
+        <div className="fc__voice" data-testid="card-voice">
+          <label className="fine muted" htmlFor="card-rate">{t('wsVoiceSpeed')}</label>
+          <select id="card-rate" className="input fc__rate" data-testid="card-rate" value={String(voice.rate)}
+                  onChange={(e) => voice.setRate(Number(e.target.value) as Rate)}>
+            {/* An <option> cannot hold a span, so the isolate is the Unicode
+                one: without it "1×" renders as "×1" on an RTL page. */}
+            {RATES.map((r) => <option key={r} value={r}>{`⁦${r}×⁩`}</option>)}
+          </select>
+          {index === 0 && <p className="fine muted fc__speech-aid" data-testid="card-speech-aid">{t('wsSpeechAid')}</p>}
+        </div>
+      )}
     </div>
   );
 }

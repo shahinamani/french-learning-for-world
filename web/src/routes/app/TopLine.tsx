@@ -29,7 +29,6 @@ export function useCrumbs(pathname: string): Crumb[] {
   }
   const seg = parts[1];
   if (seg === 'search') { crumbs.push({ label: t('search') }); return crumbs; }
-  if (seg === 'workspace') { crumbs.push({ label: t('wsTitle') }); return crumbs; }
   // The exam pages name the exam and the section, not their address.
   if (seg === 'exam') {
     const target = targetById(parts[2]);
