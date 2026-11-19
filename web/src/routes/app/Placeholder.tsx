@@ -37,13 +37,12 @@ export function Placeholder({ item, missing, instead }: {
 
 const SEARCH: Instead = { to: '/app/search', label: 'search' };
 const TODAY: Instead = { to: '/app/today', label: 'shellGoMap' };
-const WORKSPACE: Instead = { to: '/app/workspace', label: 'shellGoWorkspace' };
 
 /** Which pages are placeholders, and what each offers instead. Every `to` here
  *  is a route that exists; the walk follows each one. */
 export const PLACEHOLDERS: Record<string, { missing: keyof Dict; instead: Instead[] }> = {
   path: { missing: 'shellMissingPath', instead: [TODAY, { to: '/app/cards', label: 'cards' }] },
-  vocabulary: { missing: 'shellMissingVocabulary', instead: [WORKSPACE, { to: '/app/cards', label: 'cards' }, SEARCH] },
+  vocabulary: { missing: 'shellMissingVocabulary', instead: [{ to: '/app/cards', label: 'cards' }, { to: '/app/themes', label: 'shellNavThemes' }, SEARCH] },
   grammar: { missing: 'shellMissingGrammar', instead: [SEARCH, TODAY] },
   reading: { missing: 'shellMissingReading', instead: [{ to: '/app/verbs', label: 'verbs' }, SEARCH] },
   output: { missing: 'shellMissingOutput', instead: [{ to: '/app/writing', label: 'shellNavWriting' }, { to: '/app/verbs/drill', label: 'shellGoDrill' }] },

@@ -77,7 +77,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
     [`/practise/exams/${paperId}/results`, `/app/exams/${paperId}/results`],
     ['/practise/listening', '/app/listening'],
     ['/progress', '/app/progress'],
-    ['/workspace', '/app/workspace'],
+    ['/workspace', '/app/cards'],
+    ['/app/workspace', '/app/cards'],
     ['/search', '/app/search'],
     ['/app', '/app/today'],
   ];
@@ -106,12 +107,18 @@ console.log('\n=== portal routes, redirects and icon names ===');
 
   // 2. Every learner route renders, and the placeholders say what is missing.
   const ROUTES = ['today', 'path', 'vocabulary', 'cards', 'verbs', 'grammar', 'listening', 'reading', 'writing', 'output',
-                  'news', 'podcasts', 'exams', 'saved', 'progress', 'search', 'workspace'];
+                  'news', 'podcasts', 'exams', 'saved', 'progress', 'search', 'dialogues'];
   // Grammar and reading were placeholders until they were mounted; they are real pages now.
   // My path became the level map in redesign v1 (REDESIGN-v1.md §6).
   const PLACEHOLDER = ['vocabulary', 'output', 'news', 'podcasts', 'saved'];
   for (const id of ROUTES) {
     await go(r, `/app/${id}`);
+    // A lazy route's chunks come from the service worker's cache, so the
+    // network is idle before the page has rendered. Wait for the page, or
+    // for the 404, up to a few seconds; the assertion below is about what
+    // renders, not about when.
+    await r.waitForFunction(() => (document.querySelector('main')?.innerText ?? '').trim().length > 40
+      || document.querySelector('[data-testid="not-found"]'), null, { timeout: 8000 }).catch(() => {});
     const nf = await r.locator('[data-testid="not-found"]').count();
     const mainText = (await r.locator('main').innerText()).trim();
     ok(`/app/${id} renders a page (${mainText.length} chars, no 404)`, nf === 0 && mainText.length > 40);
@@ -138,9 +145,11 @@ console.log('\n=== portal routes, redirects and icon names ===');
   // Redesign v1 (REDESIGN-v1.md §4, owner 2026-10-31): the sidebar is built
   // around the learner's exam. A new profile has none yet, so it is offered
   // the chooser where the exam's sections will be.
-  // Themes and free resources follow the exam (owner request 2026-11-06).
-  const wanted = ['today', 'exam', 'themes', 'resources', 'cards', 'verbs', 'grammar', 'reading', 'writing', 'progress'].map((s) => `#/app/${s}`);
-  ok('the sidebar lists Today, the exam chooser, themes and resources, the skill tools and progress, in order',
+  // Redesign v2 (owner 2026-11-19): no second "Choose your exam" line under
+  // the switcher; the free resources sit with the exam; themes and dialogues
+  // sit with the learning tools.
+  const wanted = ['today', 'resources', 'cards', 'verbs', 'grammar', 'reading', 'writing', 'themes', 'dialogues', 'progress'].map((s) => `#/app/${s}`);
+  ok('the sidebar lists Today, the resources, the learning tools and progress, in order',
      JSON.stringify(sidebarLinks.slice(0, 10)) === JSON.stringify(wanted), sidebarLinks.slice(0, 10).join(' '));
   ok('and no empty section is in it',
      !sidebarLinks.some((h) => /vocabulary|listening|output|news|podcasts|saved/.test(h ?? '')), sidebarLinks.join(' '));
@@ -148,8 +157,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
      JSON.stringify(sidebarLinks.slice(10)) === JSON.stringify(['#/account', '#/account', '#/about', '#/']), sidebarLinks.slice(10).join(' '));
   ok('the sidebar marks the current page with aria-current',
      await r.locator('[data-testid="nav-verbs"][aria-current="page"]').count() === 1);
-  ok('the breadcrumb shows where you are',
-     (await r.locator('[data-testid="breadcrumb"]').innerText()).replace(/\s+/g, ' ').includes('Free learning'));
+  // Redesign v2: the breadcrumb line is gone; search is an icon in the bar.
+  ok('search is reachable from the bar', await r.locator('[data-testid="search-link"]').count() === 1);
   // Choosing an exam turns the chooser into that exam's four sections.
   await go(r, '/app/exam');
   await r.locator('[data-testid="choose-delf-b1"]').click(); await r.waitForTimeout(600);
@@ -166,12 +175,14 @@ console.log('\n=== portal routes, redirects and icon names ===');
   // Owner, 2026-11-06: no "not verified" notice is shown to learners.
   ok('an exam whose format is not verified shows no figures and no notice',
      await r.locator('[data-testid="exam-not-verified"]').count() === 0
-     && !/\d+ min/.test(await r.locator('.exam-sections').innerText()));
+     && !/\d+ min/.test((await r.locator('[data-testid^="exam-sec-"]').allInnerTexts()).join(' ')));
+  // Redesign v2: the search box left the top line; the bar's icon opens the
+  // search page, whose own field writes the query into the address.
   await go(r, '/app/verbs');
-  await r.locator('#gsearch-q').fill('manger');
-  await r.locator('#gsearch-q').press('Enter');
+  await r.locator('[data-testid="search-link"]').click(); await r.waitForTimeout(400);
+  await r.locator('#search-q').fill('manger');
   await r.waitForTimeout(500);
-  ok('the global search submits to the search page with the query in the address',
+  ok('the search icon opens the search page and the query lands in the address',
      pathOf(r) === '/app/search' && /q=manger/.test(hashOf(r)), hashOf(r));
 
   // The free-learning group collapses and remembers.
@@ -212,8 +223,8 @@ console.log('\n=== portal routes, redirects and icon names ===');
   ok(`the Learn menu opens as a bottom sheet (bottom ${Math.round(box.y + box.height)} of 844, width ${Math.round(box.width)} of 390)`,
      Math.abs(box.y + box.height - 844) <= 1 && Math.abs(box.width - 390) <= 1);
   ok('the sheet has an accessible title', await m.locator('[data-testid="nav-sheet"]').getAttribute('aria-labelledby') !== null);
-  ok('the sheet lists themes, verbs, grammar, reading and writing (cards has its own tab)',
-     await m.locator('[data-testid="nav-sheet"] a').count() === 5);
+  ok('the sheet lists verbs, grammar, reading, writing, themes and dialogues (cards has its own tab)',
+     await m.locator('[data-testid="nav-sheet"] a').count() === 6);
   const unnamedSheet = await m.evaluate(unnamedIn);
   ok('no control is unnamed with the sheet open', unnamedSheet.length === 0, unnamedSheet.join(' | '));
   await m.keyboard.press('Escape'); await m.waitForTimeout(250);

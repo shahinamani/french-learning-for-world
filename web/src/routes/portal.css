@@ -734,3 +734,136 @@
 .rs-cost { padding: .125rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 700; background: var(--color-success-soft, #e7f4ec); color: var(--color-success, #1d6b3a); }
 .rs-cost--tier { background: var(--color-surface-sunken); color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-line); }
 .rs-foot { padding-block: 1rem 2rem; }
+
+/* ── The section heading every list page shares (redesign v2) ──────────── */
+.sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: .5rem 1.5rem; margin-block-end: var(--space-2); }
+.sec-head__text { min-width: 0; flex: 1 1 24rem; }
+.sec-head__title { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em;
+  font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.375rem); line-height: 1.1; display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; }
+.sec-head__fr { font-style: italic; font-size: .62em; color: var(--color-ink-muted); }
+.sec-head__lede { margin: .375rem 0 0; color: var(--color-ink-muted); max-width: 48rem; }
+.sec-head__aside { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }
+
+/* ── The session in focus mode (redesign v2): one column, the card, the one
+   button under it, the four ratings, then the quiet things. ─────────────── */
+.page--session { max-width: 46rem; }
+.fc__seen { margin-inline-start: auto; font-size: .8125rem; color: var(--color-ink-muted); }
+.page--session .fc-nav { display: flex; justify-content: space-between; margin-block-start: .25rem; }
+.page--session .fc-nav__btn { font-size: .875rem; min-height: 2.5rem; padding-inline: .75rem; background: none; border: 0; color: var(--color-ink-muted); display: inline-flex; align-items: center; gap: .25rem; cursor: pointer; border-radius: 8px; }
+.page--session .fc-nav__btn:hover { background: var(--color-surface-sunken); color: var(--color-ink); }
+.page--session .fc-nav__btn:disabled { opacity: .4; cursor: default; }
+.fc__keys { margin: 0; text-align: center; }
+.fc__keys kbd { font: inherit; font-size: .75rem; padding: 0 .3em; border: 1px solid var(--color-line); border-radius: 4px; }
+@media (max-width: 1023px) { .fc__keys { display: none; } }
+
+/* ── What next, at the end of an activity (redesign v2) ──────────────────── */
+.next-step { display: flex; flex-wrap: wrap; gap: .625rem; align-items: center; margin-block-start: var(--space-4); padding-block-start: var(--space-4); border-block-start: 1px solid var(--color-line); }
+.next-step .btn--lg { flex: 1 1 16rem; justify-content: center; }
+
+/* ── Today as a session (redesign v2) ────────────────────────────────────── */
+.today-page { max-width: none; gap: 1.5rem; }
+.today-plan { flex-direction: column; align-items: stretch; gap: 1.25rem; padding: 1.75rem 2rem; }
+.today-plan__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.today-plan__label { margin: 0 0 .25rem; font-size: .8125rem; font-weight: 700; opacity: .8; }
+.today-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .625rem; }
+@media (min-width: 720px) { .today-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.today-steps a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .75rem; align-items: start; padding: .875rem 1rem;
+  border-radius: 10px; background: color-mix(in srgb, var(--fr-bleu-ink) 12%, var(--fr-bleu)); color: inherit; text-decoration: none; min-height: 4.5rem; }
+.today-steps a:hover { background: color-mix(in srgb, var(--fr-bleu-ink) 20%, var(--fr-bleu)); }
+.today-steps li[data-done] a { opacity: .6; }
+.today-steps__n { display: inline-grid; place-items: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; border: 1.5px solid currentColor; font-size: .8125rem; font-weight: 700; }
+.today-steps__body { display: flex; flex-direction: column; gap: .125rem; min-width: 0; }
+.today-steps__title { font-weight: 600; }
+.today-steps__fr { font-family: var(--font-display); font-size: 1.125rem; line-height: 1.25; overflow-wrap: anywhere; }
+.today-steps__min { font-size: .8125rem; opacity: .85; white-space: nowrap; }
+.today-grid { display: grid; gap: 1.25rem; }
+@media (min-width: 720px) { .today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.today-grid .dash-card { margin: 0; }
+.ready { list-style: none; margin: 0; padding: 0; display: grid; gap: .625rem; font-size: .9375rem; }
+.ready li { display: grid; gap: .3rem; }
+.ready a { color: inherit; text-decoration: none; }
+.ready a:hover { color: var(--fr-bleu); }
+.ready .rail { display: block; height: 6px; border-radius: 999px; background: var(--color-surface-sunken); overflow: hidden; }
+.ready .rail__fill { display: block; height: 100%; background: var(--fr-bleu); border-radius: 999px; }
+
+/* ── My exam: the overview (redesign v2, 2026-11-19) ─────────────────────
+   Full width, two columns on a wide screen: the countdown and the four
+   sections on the left, what it takes to pass and what helps on the right. */
+.exam-page--dash { max-width: var(--width-page); gap: 1.5rem; }
+.exam-page--dash .sec-head .btn { text-decoration: none; }
+.exam-dash .dash__main { gap: 2.5rem; }
+
+/* The exam date and the days until it. */
+.exam-plan { display: flex; flex-direction: column; gap: 1rem; padding: 1.25rem; border: 1px solid var(--color-line); border-radius: 14px; background: var(--color-surface); }
+.exam-plan--empty { border-style: dashed; border-color: var(--color-line-strong); background: none; }
+.exam-plan__head { display: flex; flex-wrap: wrap; align-items: flex-start; justify-content: space-between; gap: .75rem 1.5rem; }
+.exam-plan__head .exam-block__h { margin-bottom: .25rem; }
+.exam-plan__left { margin: 0; font-family: var(--font-display); font-size: clamp(1.375rem, 1.1rem + 1vw, 1.75rem); line-height: 1.2; font-variant-numeric: tabular-nums; }
+.exam-plan__prompt { margin: 0; color: var(--color-ink-muted); max-width: 36rem; }
+.exam-date { display: inline-flex; flex-wrap: wrap; align-items: center; gap: .5rem; font-size: .875rem; font-weight: 700; color: var(--color-ink-muted); }
+.exam-date input { min-height: 2.5rem; padding: 0 .625rem; border: 1px solid var(--color-line-strong); border-radius: 6px; background: var(--color-surface); color: var(--color-ink); font: inherit; font-weight: 400; max-width: 100%; }
+.exam-date input:focus-visible { outline: 2px solid var(--fr-bleu); outline-offset: 1px; }
+.exam-date__clear { border: 0; background: none; padding: .25rem .5rem; min-height: 2.5rem; color: var(--fr-bleu); font: inherit; font-size: .875rem; cursor: pointer; }
+.exam-date__clear:hover { text-decoration: underline; }
+.exam-days { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(5.75rem, 1fr)); gap: .5rem; }
+.exam-day { display: flex; flex-direction: column; gap: .25rem; min-height: 5rem; padding: .5rem .625rem; border: 1px solid var(--color-line); border-radius: 10px; background: var(--color-surface-sunken); font-size: .75rem; line-height: 1.3; }
+.exam-day__date { display: flex; align-items: baseline; gap: .25rem; color: var(--color-ink-muted); }
+.exam-day__n { font-size: 1.125rem; font-weight: 700; color: var(--color-ink); font-variant-numeric: tabular-nums; }
+.exam-day__focus { color: var(--color-ink); }
+.exam-day__done { font-weight: 700; color: var(--fr-bleu); }
+.exam-day--today { outline: 2px solid var(--fr-bleu); outline-offset: -1px; background: var(--color-surface); }
+.exam-day--past { opacity: .55; }
+.exam-day--done { opacity: 1; }
+.exam-day--exam { background: var(--fr-rouge-soft); border-color: var(--fr-rouge); }
+.exam-day--exam .exam-day__focus { font-weight: 700; color: var(--fr-rouge); }
+.exam-day--gap { align-items: center; justify-content: center; text-align: center; border-style: dashed; background: none; color: var(--color-ink-muted); }
+
+/* The four sections as a table: icon · name · official facts · what is here. */
+.exam-table { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--color-ink); }
+.exam-tr { display: grid; grid-template-columns: 2.5rem minmax(0, 1fr); gap: .375rem .75rem; align-items: start; padding: .875rem 0; border-bottom: 1px solid var(--color-line); }
+.exam-tr .exam-sec__icon { grid-row: span 3; }
+.exam-tr__name { color: inherit; text-decoration: none; }
+.exam-tr__name:hover > span:first-child { color: var(--fr-bleu); text-decoration: underline; }
+.exam-tr__facts { grid-column: 2; }
+.exam-has { grid-column: 2; display: flex; flex-wrap: wrap; align-items: center; gap: .375rem .75rem; font-size: .875rem; }
+.exam-has__line { color: var(--color-ink); }
+.exam-has__line--none { color: var(--color-ink-muted); }
+.exam-has .btn { text-decoration: none; }
+@media (min-width: 900px) {
+  .exam-tr { grid-template-columns: 2.5rem 1.1fr .9fr 1.4fr; align-items: center; }
+  .exam-tr .exam-sec__icon { grid-row: auto; }
+  .exam-tr__facts, .exam-has { grid-column: auto; }
+  .exam-has { justify-content: flex-end; }
+}
+
+/* The side cards. */
+.exam-group__h { margin: .75rem 0 .25rem; font-size: .8125rem; font-weight: 700; color: var(--color-ink-muted); }
+.exam-block.dash-card > .exam-block__h + .exam-group__h { margin-top: 0; }
+.exam-teacher__p { margin: 0; }
+.dash__aside .btn { align-self: flex-start; text-decoration: none; }
+.dash__aside .exam-sources { margin-top: .25rem; font-size: .875rem; }
+/* Listen (2026-11-19, from the retired workspace): on the card's top-right
+   corner but outside the <article>, because the front face is a button. */
+.fc-stage { position: relative; }
+.fc__listen {
+  position: absolute; inset-block-start: 1.25rem; inset-inline-end: 1.25rem; z-index: 2;
+  display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem;
+  border-radius: 999px; border: 1px solid var(--color-line); background: var(--color-surface);
+  color: var(--color-ink-muted); cursor: pointer;
+}
+.fc__listen:hover { color: var(--fr-bleu); border-color: var(--fr-bleu); }
+.fc__listen:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.fc__voice { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .75rem; }
+.fc__voice .fc__rate { width: auto; padding-block: .25rem; font-size: .8125rem; }
+.fc__speech-aid { flex-basis: 100%; margin: 0; text-align: center; }
+
+/* A long label on a finishing button wraps instead of pushing the page wider. */
+.empty .btn, .next-step .btn, .rd-actions .btn { white-space: normal; line-height: 1.25; max-width: 100%; text-align: center; }
+/* Dark: the session card is the soft navy with light ink, so a step is a
+   lighter navy, never the light blue the light theme mixes from. */
+:root[data-theme="dark"] .today-steps a { background: color-mix(in srgb, var(--color-ink) 10%, var(--fr-bleu-soft)); }
+:root[data-theme="dark"] .today-steps a:hover { background: color-mix(in srgb, var(--color-ink) 16%, var(--fr-bleu-soft)); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .today-steps a { background: color-mix(in srgb, var(--color-ink) 10%, var(--fr-bleu-soft)); }
+  :root:not([data-theme="light"]) .today-steps a:hover { background: color-mix(in srgb, var(--color-ink) 16%, var(--fr-bleu-soft)); }
+}

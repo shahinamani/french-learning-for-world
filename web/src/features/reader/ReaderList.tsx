@@ -8,6 +8,7 @@
  * to the reader page, and Back returns to the same address.
  */
 import { useEffect, useMemo, useState } from 'react';
+import { SectionHead } from '../../components/SectionHead';
 import { Link, useSearchParams, useLocation } from 'react-router';
 import * as Dialog from '@radix-ui/react-dialog';
 import { useApp, useUserId } from '../../app-context';
@@ -142,10 +143,7 @@ export function ReaderList() {
 
   return (
     <div className="rd" data-testid="reader-list">
-      <header className="rd-head">
-        <h1 className="h2">{t('rdTitle')}</h1>
-        <p className="rd-lead" dir="auto">{t('rdLead')}</p>
-      </header>
+      <SectionHead title={t('rdTitle')} fr="La lecture" lede={t('rdLead')} />
 
       <div className="rd-search" role="search">
         <div className="field">

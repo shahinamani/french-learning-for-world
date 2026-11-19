@@ -29,6 +29,7 @@ import { Quiz } from './Quiz';
 import { deleteSaved, getPosition, putPosition, putResult, putSaved, resultsForUser, savedForUser, type ReaderResult } from './store';
 import type { ReadingText } from './types';
 import { ReaderState, useReadingTexts, useWide } from './ui';
+import { completeStep, type Step } from '../../lib/plan';
 import './reader.css';
 
 const SIZES = [16, 18, 20, 22, 24, 28] as const;
@@ -72,6 +73,16 @@ export function ReaderPage() {
     );
   }
   const text = data.texts.find((x) => x.id === id);
+  // What to read next: the following text of the same level, else the next
+  // in the list. Offered when the questions are done, so a finished text
+  // leads to another text instead of back to the list.
+  const nextText = (() => {
+    if (!text) return null;
+    const i = data.texts.indexOf(text);
+    const after = data.texts.slice(i + 1);
+    const n = after.find((x) => x.level === text.level) ?? after[0] ?? null;
+    return n ? { id: n.id, title: n.title.fr ?? n.id } : null;
+  })();
   if (!text) {
     return (
       <div className="rd">
@@ -81,7 +92,7 @@ export function ReaderPage() {
       </div>
     );
   }
-  return <ReaderView key={text.id} text={text} back={back} />;
+  return <ReaderView key={text.id} text={text} back={back} next={nextText} />;
 }
 
 function scrollerOf(el: HTMLElement): HTMLElement {
@@ -92,7 +103,7 @@ function scrollerOf(el: HTMLElement): HTMLElement {
   return (document.scrollingElement as HTMLElement) ?? document.documentElement;
 }
 
-function ReaderView({ text, back }: { text: ReadingText; back: string }) {
+function ReaderView({ text, back, next }: { text: ReadingText; back: string; next: { id: string; title: string } | null }) {
   const { t, settings } = useApp();
   const userId = useUserId();
   const wide = useWide();
@@ -323,10 +334,13 @@ function ReaderView({ text, back }: { text: ReadingText; back: string }) {
 
   const tr = pick({ fa: text.body.fa, en: text.body.en }, settings.meaning);
   const audio = text.media?.audio?.url;
+  const [planNext, setPlanNext] = useState<Step | null>(null);
   const onFinished = useCallback((c: number, n: number) => {
     const r = { userId, itemId: text.id, correct: c, total: n, updatedAt: Date.now() };
     setLast(r);
     putResult(r).catch(() => { /* result not kept; the screen still shows it */ });
+    // Today's plan: the text step is done; the quiz offers what comes next.
+    setPlanNext(completeStep(userId, 'text'));
   }, [userId, text.id]);
 
   return (
@@ -427,7 +441,7 @@ function ReaderView({ text, back }: { text: ReadingText; back: string }) {
                 {last && <span className="rd-note" data-testid="rd-last"><Num>{t('rdResultBadge', { c: last.correct, n: last.total })}</Num></span>}
               </div>
             ) : (
-              <Quiz key={quizKey} textId={text.id} questions={text.questions} onFinished={onFinished} backSearch={back.replace('/app/reading', '')}
+              <Quiz key={quizKey} textId={text.id} questions={text.questions} onFinished={onFinished} backSearch={back.replace('/app/reading', '')} next={next} planNext={planNext}
                 onReread={() => { setQuiz(false); setQuizKey((k) => k + 1); toTop(); }} />
             )}
           </div>

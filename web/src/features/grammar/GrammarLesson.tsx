@@ -14,7 +14,10 @@
  *
  * The way back is `?from=`. See lessons.ts for why it lives in the address.
  */
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { NextStep } from '../../components/NextStep';
+import { completeStep, type Step } from '../../lib/plan';
+import { useUserId } from '../../app-context';
 import { Link, useLocation, useNavigate, useParams, useSearchParams } from 'react-router';
 import { useApp } from '../../app-context';
 import { Exercise } from '../exercise/Exercise';
@@ -79,6 +82,14 @@ function LessonView({ lesson, data, origin }: { lesson: Lesson; data: LessonData
     [lesson.questions[index]?.explanation.right, lesson.questions[index]?.explanation.tempting], settings.ui));
 
   const restart = () => { setIndex(0); setFirstTries([]); };
+  // The lesson after this one in the library's order, so a finished lesson
+  // leads somewhere instead of back to the list to choose again.
+  const at = data.lessons.findIndex((l) => l.id === lesson.id);
+  const nextLesson = at >= 0 ? data.lessons[at + 1] ?? null : null;
+  const nextName = nextLesson ? pick(data.concepts.get(nextLesson.conceptId)?.name ?? {}, settings.ui).text : '';
+  const userId = useUserId();
+  const [planNext, setPlanNext] = useState<Step | null>(null);
+  useEffect(() => { if (finished) setPlanNext(completeStep(userId, 'lesson')); }, [finished, userId]);
 
   return (
     <div className="page grl-page" data-testid="grammar-lesson" data-lesson={lesson.id}>
@@ -143,8 +154,11 @@ function LessonView({ lesson, data, origin }: { lesson: Lesson; data: LessonData
               title: t('grlFinishedTitle'),
               body: t('grlFinishedScore', { n: firstTries.filter(Boolean).length, total }),
             }}
-            action={{ label: origin ? t('grlReturnOrigin') : t('grlReturnList'),
-                      onClick: () => navigate(backTo), testId: 'grammar-return' }}
+            action={planNext
+              ? { label: t('tdPlanAfter', { n: 2, m: 3, name: planNext.fr ?? planNext.title }), onClick: () => navigate(planNext.to), testId: 'plan-next' }
+              : nextLesson && !origin
+              ? { label: t('nextLesson', { name: nextName }), onClick: () => navigate(lessonPath(nextLesson.id)), testId: 'grammar-next' }
+              : { label: origin ? t('grlReturnOrigin') : t('grlReturnList'), onClick: () => navigate(backTo), testId: 'grammar-return' }}
             secondaryAction={{ label: t('grlPracticeAgain'), onClick: restart, testId: 'grammar-again' }}
           />
         ) : (
@@ -157,6 +171,9 @@ function LessonView({ lesson, data, origin }: { lesson: Lesson; data: LessonData
           </>
         )}
       </section>
+      {finished && (
+        <NextStep primary={null} others={[{ to: backTo, label: backLabel, testId: 'grammar-return-list' }]} />
+      )}
     </div>
   );
 }

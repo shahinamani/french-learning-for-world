@@ -96,7 +96,7 @@ test('the scan is wired to something: main.tsx reaches the shell, and the lazy r
   assert.ok(EAGER.size > 25, `only ${EAGER.size} modules reached from main.tsx; the import walk is broken`);
   assert.ok([...EAGER].some((f) => f.endsWith('components/Shell.tsx')), 'Shell is in the first load');
   for (const lazy of ['features/reader/index.tsx', 'features/grammar/index.ts',
-                      'features/workspace/Workspace.tsx', 'features/weakness/WeaknessCard.tsx']) {
+                      'features/dialogues/Dialogues.tsx', 'features/weakness/WeaknessCard.tsx']) {
     assert.ok(!EAGER.has(join(ROOT, lazy)), `${lazy} is a chunk of its own, not part of the first load`);
   }
   // A floor per group, to catch an extraction that reads a handful. todayEn is

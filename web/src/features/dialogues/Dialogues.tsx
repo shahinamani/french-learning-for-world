@@ -1,22 +1,30 @@
 /**
- * The dialogues section: a situation, the French, the meaning, and questions
- * that are answered and explained.
+ * The dialogues: a situation, the French, the meaning, and questions that are
+ * answered and explained.
  *
- * There is ONE unit. It is complete rather than large, and the section says
- * how many there are instead of implying more — an empty tab advertised as
- * content is the thing this replaces, and a tab with nine half-units would be
- * the same fault at greater length.
+ * There is ONE unit. It is complete rather than large, and the page says how
+ * many there are instead of implying more — an empty tab advertised as content
+ * is the thing this replaced on 2026-10-12, and a page with nine half-units
+ * would be the same fault at greater length.
+ *
+ * Its own page since 2026-11-19. It was a tab of the learning workspace; the
+ * workspace was retired because it was a second flashcard tool beside
+ * /app/cards, and the dialogue was the one tab that was content.
  *
  * The audio here is the device's speech synthesiser and the screen says so
  * next to the control. No recording has been obtained under a licence that
  * permits use, and machine speech is not offered as listening practice.
  */
+// This chunk registers its English: the dialogue strings are not in the first load.
+import '../../lib/locales/en/workspaceEn';
 import { useEffect, useState } from 'react';
-import { useApp } from '../../app-context';
+import { useApp, useUserId } from '../../app-context';
 import { Num } from '../../components/Num';
 import { Localised } from '../../components/Localised';
+import { SectionHead } from '../../components/SectionHead';
 import { fr as frText } from '../../lib/typography';
 import { speak, stop } from '../../lib/speech';
+import { useVoice } from '../../hooks/useVoice';
 import type { Locale } from '../../lib/types';
 
 type Line = { speaker: string; fr: string; fa: string; en: string };
@@ -35,10 +43,21 @@ type Dialogue = {
   questions: Question[];
 };
 
-type Props = { voiceId: string | null; rate: number; voiceAvailable: boolean };
+/** The route: heading, then the one unit. */
+export function DialoguesPage() {
+  const { t } = useApp();
+  return (
+    <div className="page" data-testid="dialogues">
+      <SectionHead title={t('navDialogues')} fr="Les dialogues" lede={t('dialoguesLede')}
+                   titleTestId="dialogues-title" />
+      <Dialogues />
+    </div>
+  );
+}
 
-export function Dialogues({ voiceId, rate, voiceAvailable }: Props) {
+export function Dialogues() {
   const { settings, t } = useApp();
+  const voice = useVoice(useUserId());
   const [units, setUnits] = useState<Dialogue[] | null>(null);
   /** questionId → the index the learner chose. Retry clears one entry. */
   const [chosen, setChosen] = useState<Record<string, number>>({});
@@ -81,11 +100,14 @@ export function Dialogues({ voiceId, rate, voiceAvailable }: Props) {
             <div key={i} className="ws-dlg__line">
               <div className="ws-dlg__who">
                 <span className="ws-ex__tense">{frText(line.speaker)}</span>
-                <button type="button" className="icon-btn ws-ex__listen"
-                        data-testid={`ws-dlg-listen-${i}`}
-                        aria-label={`${t('wsListen')} — ${sentence}`}
-                        disabled={!voiceAvailable}
-                        onClick={() => speak(line.fr, voiceId, rate)}>♪</button>
+                {/* Hidden, not disabled, on a device with no French voice. */}
+                {voice.available && (
+                  <button type="button" className="icon-btn ws-ex__listen"
+                          data-testid={`ws-dlg-listen-${i}`}
+                          aria-label={`${t('wsListen')} — ${sentence}`}
+                          title={t('wsSpeechAid')}
+                          onClick={() => speak(line.fr, voice.voiceId, voice.rate)}>♪</button>
+                )}
               </div>
               <p className="ws-ex__fr" lang="fr" dir="ltr">{sentence}</p>
               <p className="ws-ex__fa" lang="fa" dir="rtl">{line.fa}</p>

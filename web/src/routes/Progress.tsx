@@ -1,5 +1,6 @@
 /** Every number here is a query over the review log. Summary first. */
 import { useEffect, useState } from 'react';
+import { SectionHead } from '../components/SectionHead';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { reviewsForUser } from '../lib/db';
@@ -56,7 +57,7 @@ export function Progress() {
   return (
     <div className="page dash progress-page">
       <div className="dash__main">
-      <h1 className="h2">{t('progress')}</h1>
+      <SectionHead title={t('progress')} fr="Mes progrès" />
 
 
       <section aria-labelledby="moved-h">

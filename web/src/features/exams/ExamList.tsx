@@ -7,6 +7,7 @@
  * here that we have nothing for them, not by searching and finding silence.
  */
 import { useEffect, useState } from 'react';
+import { SectionHead } from '../../components/SectionHead';
 import { Link } from 'react-router';
 import { useApp } from '../../app-context';
 import { loadPapers, type ExamPaper } from '../../lib/exams';
@@ -44,8 +45,7 @@ export function ExamList() {
 
   return (
     <div className="page">
-      <h1 className="h2">{t('exams')}</h1>
-      <p className="muted">{t('examsIntro')}</p>
+      <SectionHead title={t('exams')} fr="Les sujets d’entraînement" lede={t('examsIntro')} />
 
       <section aria-labelledby="ex-avail">
         <h2 id="ex-avail" className="eyebrow">{t('examsAvailable')}</h2>

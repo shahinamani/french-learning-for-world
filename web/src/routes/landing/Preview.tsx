@@ -130,7 +130,7 @@ export function DialoguePreview({ tx, locale }: { tx: Tx; locale: CopyLocale }) 
                 onClick={() => setShowEn(!showEn)} data-testid="landing-dialogue-en">
           {showEn ? tx('landingDialogueHideEn') : tx('landingDialogueShowEn')}
         </button>
-        <Link className="lp-textlink" to="/app/workspace">{tx('landingDialogueOpen')}</Link>
+        <Link className="lp-textlink" to="/app/dialogues">{tx('landingDialogueOpen')}</Link>
       </div>
       <p className="lp-card__note">{tx('landingDialogueNoAudio')}</p>
     </article>

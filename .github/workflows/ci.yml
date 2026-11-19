@@ -16,11 +16,11 @@ jobs:
     # Playwright 1.55 cannot install Chromium, and the browser job failed in setup.
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
 
@@ -82,11 +82,11 @@ jobs:
       # day it mattered: actions/checkout defaults to depth 1, and a suite that
       # gives one answer at depth 1 and another at full depth is a suite whose
       # result depends on which workflow ran it. docs/lessons.md #15.
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
         with:
           fetch-depth: 0
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:
           node-version: '22'
           cache: npm
@@ -172,7 +172,7 @@ jobs:
       - name: Design-system contrast and layout
         run: node design-system/contrast-check.mjs
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@ea165f8d65b6e75b540449e92b4886f43607fa02 # v4
         if: always()
         with:
           name: screenshots

@@ -190,9 +190,25 @@ export function parseExport(text: string): { rows: Omit<ReviewRow, 'userId'>[];
       ...r,
       conceptIds: (r.conceptIds as unknown[]).filter((c): c is string => typeof c === 'string'),
     }));
-  const goodCards = cards.filter((c): c is CardState & { cardKey: string } =>
-    !!c && typeof c === 'object'
-    && typeof (c as { cardKey?: unknown }).cardKey === 'string'
-    && Number.isFinite((c as { dueAt?: unknown }).dueAt as number));
+  // The scheduler does arithmetic on every one of these. A string, NaN or an
+  // object reaches ts-fsrs as a number and the next review throws, which with
+  // no honest value to substitute means the card is dropped, not repaired.
+  // Only the fields `CardState` names are kept: the old spread also carried
+  // whatever else the file held into IndexedDB.
+  const CARD_NUMBERS = ['dueAt', 'stability', 'difficulty', 'elapsedDays', 'scheduledDays', 'reps', 'lapses'] as const;
+  const goodCards = cards.flatMap((c): (CardState & { cardKey: string })[] => {
+    if (!c || typeof c !== 'object') return [];
+    const o = c as Record<string, unknown>;
+    if (typeof o.cardKey !== 'string') return [];
+    // Present and not a number drops the card; absent is an older export whose
+    // missing fields the scheduler fills in, exactly as before this check.
+    if (!Number.isFinite(o.dueAt as number)) return [];
+    for (const k of CARD_NUMBERS) if (k in o && !Number.isFinite(o[k] as number)) return [];
+    if ('state' in o && o.state !== 0 && o.state !== 1 && o.state !== 2 && o.state !== 3) return [];
+    if ('lastReviewedAt' in o && o.lastReviewedAt !== null && !Number.isFinite(o.lastReviewedAt as number)) return [];
+    const card: Record<string, unknown> = { cardKey: o.cardKey };
+    for (const k of [...CARD_NUMBERS, 'state', 'lastReviewedAt']) if (k in o) card[k] = o[k];
+    return [card as CardState & { cardKey: string }];
+  });
   return { rows: goodRows, cards: goodCards, personal: parsePersonal(o), version };
 }

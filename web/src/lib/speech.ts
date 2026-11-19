@@ -104,3 +104,28 @@ export function speak(text: string, voiceId: string | null, rate: number): boole
   window.speechSynthesis.speak(u);
   return true;
 }
+
+/**
+ * Say several French strings one after another — the headword, then its
+ * example — replacing anything already being said. One `cancel()` for the
+ * whole sequence: cancelling per utterance would cut each one off with the
+ * next. Returns false when the device cannot speak any of it.
+ */
+export function speakAll(texts: string[], voiceId: string | null, rate: number): boolean {
+  const list = texts.map((s) => s.trim()).filter(Boolean);
+  if (!supported() || list.length === 0) return false;
+  const all = window.speechSynthesis.getVoices()
+    .filter((v) => v.lang.toLowerCase().startsWith('fr'));
+  const chosen = all.find((v) => v.voiceURI === voiceId) ?? all[0];
+  if (!chosen) return false;
+
+  window.speechSynthesis.cancel();
+  for (const text of list) {
+    const u = new SpeechSynthesisUtterance(text);
+    u.voice = chosen;
+    u.lang = chosen.lang;
+    u.rate = rate;
+    window.speechSynthesis.speak(u);
+  }
+  return true;
+}
