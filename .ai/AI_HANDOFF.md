@@ -29,18 +29,11 @@ A free French study portal for Persian-speaking (and other) adults with an exam 
 
 ## Current state
 
-Branch `redesign/portal-v2` (from `origin/main` 45cda38), pushed, PR open to `main`. It holds:
-- Five security-audit fixes: error boundary inside the shell, dev review endpoint checks Origin/content-type/size/fields, FSRS card fields validated on import, SW does not cache rewritten HTML for non-navigation requests, GitHub actions pinned to SHAs.
-- `SectionHead` on every list page (photo banners and duplicate titles gone); breadcrumb line and search box removed, search is an icon in the bar (Cmd-K still works); focus mode (`FOCUS` regexes in `components/Shell.tsx`) for cards, exam sit, letter desk, verb drill; sidebar: Learning group (cards, verbs, grammar, reading, writing, themes, dialogues), resources under the exam, no duplicate "Choose your exam".
-- Card session in one column with Listen button (`hooks/useVoice.ts`, speeds from `lib/speech.ts`); `NextStep` at the end of a lesson (next lesson), text (next text), verb (drill).
-- Today = three-step session from `lib/plan.ts` (cards due, weak point's lesson or first at exam level, first unanswered text at exam level), stored per profile per day; Session/GrammarLesson/ReaderPage call `completeStep`; readiness and "left unfinished" cards.
-- `/app/exam/:target`: exam date per profile (`userKey(userId,'exam-date')`), countdown and day plan, four sections with the learner's real counts, official resources, teacher card.
-- Workspace retired: `/app/workspace` redirects to `/app/cards`; Dialogues is `/app/dialogues`.
-First load 149.9 / 150.0 KB. Unit tests: 514 pass; the 10 "failures" on a bare `node --test` are `.ts` resolution; the pre-push sweep and CI use `tests/register.mjs` and pass.
+Branch `redesign/full-width` (from `main` after PR #81), PR to `main`: every content page carries a side column (redesign v2b, owner 2026-11-19: "no empty space left or right"). Foundation `web/src/components/aside/index.tsx` (`PageWithAside`, `ExamSectionCard`, `SavedWordsCard`, `WeakPointsCard`, `PlanCard`, `TipCard`, `WeekCard`, `AsideCard`) plus per-group cards in `components/aside/*.tsx`. Card session and verb drill are three columns at ≥1280 px (`SessionFrame`). Progress has four stat tiles, 30-day bars and a concept table. Exam section pages list the reading texts and letter tasks at the exam level. Placeholder route is lazy (first load 149.8 / 150.0 KB). Strings for the side column live in the lazy Today group with the `td` prefix (fa/fr carry them, ar falls back). Measured at 1920 px with `scratchpad/tools/thirds.mjs`: no page has an empty side; thirds under 20 % remain only where an empty profile has nothing to show. Unit 626/626; browser walk 645/645.
 
 ## Next step
 
-After the PR merges, verify on `main` and on the live site (`curl -sI https://frenchmavie.com/` for CSP/HSTS headers). Then: owner checks the phone layout on a real phone; owner/teacher reviews the drafted Persian UI strings (`docs/review/fa-ui-drafts.md`) and card sentences; a teacher reads `content/letters.json`; update `docs/blueprint/CONTRACTS-v0.2.md` (still describes `/workspace`); `lib/card-backs.ts` has no screen consumer any more. Older open items: fix « frire » in the verb tables; frenchmavie.com custom domain on Pages and `docs/deploying.md` to match.
+After PR #82 merges: verify on main and on the live site. Then the older items: after the PR merges, verify on `main` and on the live site (`curl -sI https://frenchmavie.com/` for CSP/HSTS headers). Then: owner checks the phone layout on a real phone; owner/teacher reviews the drafted Persian UI strings (`docs/review/fa-ui-drafts.md`) and card sentences; a teacher reads `content/letters.json`; update `docs/blueprint/CONTRACTS-v0.2.md` (still describes `/workspace`); `lib/card-backs.ts` has no screen consumer any more. Older open items: fix « frire » in the verb tables; frenchmavie.com custom domain on Pages and `docs/deploying.md` to match.
 
 ## Decisions
 
@@ -52,7 +45,7 @@ After the PR merges, verify on `main` and on the live site (`curl -sI https://fr
 
 ## Gotchas
 
-- New dictionary keys go in the core `en` object of `lib/i18n.ts` after `skipToContent` (and at the same anchor in fa/fr/ar), not beside `shell*` keys: the lazy-group test otherwise accuses Arabic of a partial group. Lazy text groups: todayEn, workspaceEn, grammarEn, readerEn, writingEn, topicsEn, weaknessEn.
+- Strings shown only inside lazy pages go in the lazy group of that feature (prefixes td, rd, lw, tp, grl, ws, wk) in `locales/en/<group>.ts` + fa + fr, one key per line, never in ar; the dictionary tests exempt fa/ar only for those prefixes. Core keys (first load) go in the core `en` object of `lib/i18n.ts` after `skipToContent` (and at the same anchor in fa/fr/ar), not beside `shell*` keys: the lazy-group test otherwise accuses Arabic of a partial group. Lazy text groups: todayEn, workspaceEn, grammarEn, readerEn, writingEn, topicsEn, weaknessEn.
 - `tests/no-untranslated-strings.test.js` flags Latin text between JSX tags, in aria-label/placeholder/alt/title, and `=> new Map<T>()`-style generics.
 - First-load JS is at the ceiling (0.1 KB spare): nothing eager without making room; new routes are lazy.
 - Headless Chrome `--window-size=390` clips the right edge; it is the headless window, not the site (CDP at a real 390 px viewport: scrollWidth 390). Full-page screenshots need `main{overflow:visible}`.

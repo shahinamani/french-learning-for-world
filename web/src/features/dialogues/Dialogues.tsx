@@ -26,6 +26,7 @@ import { fr as frText } from '../../lib/typography';
 import { speak, stop } from '../../lib/speech';
 import { useVoice } from '../../hooks/useVoice';
 import type { Locale } from '../../lib/types';
+import { PageWithAside, TipCard, ExamSectionCard, SavedWordsCard, PlanCard, WeekCard } from '../../components/aside';
 
 type Line = { speaker: string; fr: string; fa: string; en: string };
 type Question = {
@@ -47,11 +48,11 @@ type Dialogue = {
 export function DialoguesPage() {
   const { t } = useApp();
   return (
-    <div className="page" data-testid="dialogues">
+    <PageWithAside testId="dialogues" aside={<><TipCard id="dialogues" /><ExamSectionCard section="po" /><SavedWordsCard /><PlanCard /><WeekCard /></>}>
       <SectionHead title={t('navDialogues')} fr="Les dialogues" lede={t('dialoguesLede')}
                    titleTestId="dialogues-title" />
       <Dialogues />
-    </div>
+    </PageWithAside>
   );
 }
 

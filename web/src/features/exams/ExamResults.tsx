@@ -27,6 +27,8 @@ import { fr as frText } from '../../lib/typography';
 import type { Concept, ReviewRow } from '../../lib/types';
 import { Num } from '../../components/Num';
 import { NextActivity } from '../../components/NextActivity';
+import { PageWithAside, AsideCard, WeakPointsCard, PlanCard } from '../../components/aside';
+import '../../lib/locales/en/todayEn';   // registers its English (lazy group)
 
 export function ExamResults() {
   const { paperId = '' } = useParams();
@@ -192,7 +194,16 @@ export function ExamResults() {
   const strong = scored.byConcept.filter((c) => c.correct === c.total);
 
   return (
-    <div className="page">
+    <PageWithAside className="exams-page" aside={<>
+      <WeakPointsCard />
+      <PlanCard />
+      <AsideCard title={t('exams')} testId="aside-back">
+        <ul className="aside-list">
+          <li><Link to={`/practise/exams/${encodeURIComponent(paper.id)}`}>{t('backToPaper')} <Icon name="chevron" size={14} /></Link></li>
+          <li><Link to="/practise/exams">{t('tdAsBackList')} <Icon name="chevron" size={14} /></Link></li>
+        </ul>
+      </AsideCard>
+    </>}>
       <h1 className="h2">{t('yourResult')}</h1>
 
       <section className="card card--raised" aria-labelledby="r-score">
@@ -287,6 +298,6 @@ export function ExamResults() {
         <Link className="btn" to={`/practise/exams/${encodeURIComponent(paper.id)}`}>{t('backToPaper')}</Link>
         <Link className="btn btn--sm" to="/progress">{t('progress')}</Link>
       </div>
-    </div>
+    </PageWithAside>
   );
 }

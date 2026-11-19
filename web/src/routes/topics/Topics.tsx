@@ -22,6 +22,10 @@ import type { Dict } from '../../lib/i18n';
 import { ErrorState } from '../../components/Search';
 import { pick } from '../../lib/exams';
 import '../../lib/locales/en/topicsEn';   // registers its English (lazy group)
+import { ExamSectionCard, PlanCard, SavedWordsCard, TipCard } from '../../components/aside';
+import { ThemePractiseCard } from '../../components/aside/ThemePractiseCard';
+import '../../lib/locales/en/todayEn';    // the side column's strings (lazy group)
+import { PageWithAside, AsideCard } from '../../components/aside';
 
 type T = ReturnType<typeof useApp>['t'];
 type Ui = ReturnType<typeof useApp>['settings']['ui'];
@@ -102,10 +106,13 @@ export function TopicList() {
       </div>
 
       <aside className="dash__aside">
+        <ExamSectionCard section="pe" />
         <section className="dash-card" aria-labelledby="tp-how">
           <h2 id="tp-how" className="dash-card__title">{t('tpHowTitle')}</h2>
           <p className="exam-note">{t('tpHowBody')}</p>
         </section>
+        <TipCard id="themes" />
+        <SavedWordsCard />
       </aside>
     </div>
   );
@@ -204,14 +211,16 @@ export function TopicDetail() {
       </div>
 
       <aside className="dash__aside">
-        {cards > 0 && (
-          <section className="dash-card">
-            <Link className="btn btn--primary topic-practise" to={`/app/cards?theme=${topic.id}`} data-testid="topic-practise">
-              <Layers className="size-4" aria-hidden="true" /> {t('tpPractise')}
-            </Link>
-            <p className="exam-note">{t('tpPractiseNote', { n: cards })}</p>
-          </section>
-        )}
+        <ThemePractiseCard papers={topic.evidence.map((e) => e.paper)}>
+          {cards > 0 && (
+            <>
+              <Link className="btn btn--primary topic-practise" to={`/app/cards?theme=${topic.id}`} data-testid="topic-practise">
+                <Layers className="size-4" aria-hidden="true" /> {t('tpPractise')}
+              </Link>
+              <p className="exam-note">{t('tpPractiseNote', { n: cards })}</p>
+            </>
+          )}
+        </ThemePractiseCard>
 
         <section className="dash-card" aria-labelledby="tp-ev" data-testid="topic-evidence">
           <h2 id="tp-ev" className="dash-card__title">{t('tpEvidenceTitle')}</h2>
@@ -220,6 +229,11 @@ export function TopicDetail() {
           {other.length > 0 && <EvidenceList title={mine.length ? t('tpEvidenceOther') : null} list={other} t={t} />}
         </section>
 
+        <section className="dash-card" aria-labelledby="tp-how-d">
+          <h2 id="tp-how-d" className="dash-card__title">{t('tpHowTitle')}</h2>
+          <p className="exam-note">{t('tpHowBody')}</p>
+        </section>
+        <PlanCard />
       </aside>
     </div>
   );
@@ -325,16 +339,14 @@ export function ResourceList() {
   // level filter would filter nothing, so it is not offered.
   const anyLevels = data.resources.some((r) => r.levels.length > 0);
 
-  return (
-    <div className="page topic-page" data-testid="resources">
-      <SectionHead title={t('rsTitle')} fr="Les ressources gratuites" lede={t('rsLede')} />
-
+  const filters = (
+    <AsideCard title={t('tdAsFiltersTitle')} testId="rs-filters">
       <div className="rs-filters">
         <nav className="topic-levels" aria-label={t('rsKind')}>
           <button type="button" className={`chip${!kind ? ' is-current' : ''}`} aria-pressed={!kind} onClick={() => set('kind', null)}>{t('rsAllKinds')}</button>
           {RESOURCE_KINDS.filter((k) => data.resources.some((r) => r.kind === k)).map((k) => (
             <button key={k} type="button" className={`chip${kind === k ? ' is-current' : ''}`} aria-pressed={kind === k}
-                    onClick={() => set('kind', k)} data-testid={`rs-kind-${k}`}>{t(KIND_LABEL[k])}</button>
+                    onClick={() => set('kind', k)} data-testid={`rs-kind-${k}`}>{t(KIND_LABEL[k])} <span className="topic-count">{data.resources.filter((r) => r.kind === k).length}</span></button>
           ))}
         </nav>
         {anyLevels && <nav className="topic-levels" aria-label={t('tpLevel')}>
@@ -352,6 +364,15 @@ export function ResourceList() {
         )}
         <p className="exam-note" role="status">{t('rsCount', { n: list.length })}</p>
       </div>
+    </AsideCard>
+  );
+
+  return (
+    <PageWithAside className="topic-page topic-page--resources" testId="resources" aside={<>
+      {filters}
+      <AsideCard title={t('rsChecked', { date: data.checkedOn })} testId="rs-checked"><p className="fine">{t('rsIndependent')}</p></AsideCard>
+    </>}>
+      <SectionHead title={t('rsTitle')} fr="Les ressources gratuites" lede={t('rsLede')} />
 
       {list.length === 0 && <p className="exam-note">{t('rsNone')}</p>}
 
@@ -382,9 +403,6 @@ export function ResourceList() {
         </section>
       ))}
 
-      <footer className="rs-foot">
-        <p className="exam-note">{t('rsChecked', { date: data.checkedOn })} {t('rsIndependent')}</p>
-      </footer>
-    </div>
+    </PageWithAside>
   );
 }

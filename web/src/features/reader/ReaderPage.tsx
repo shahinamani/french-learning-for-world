@@ -30,7 +30,14 @@ import { deleteSaved, getPosition, putPosition, putResult, putSaved, resultsForU
 import type { ReadingText } from './types';
 import { ReaderState, useReadingTexts, useWide } from './ui';
 import { completeStep, type Step } from '../../lib/plan';
+import { ExamSectionCard, TipCard } from '../../components/aside';
+import { TextFactsCard, TextWordsCard } from '../../components/aside/ReaderCards';
 import './reader.css';
+
+type Key = Parameters<ReturnType<typeof useApp>['t']>[0];
+const TOPIC_KEY: Record<ReadingText['category'], Key> = {
+  daily: 'rdTopicDaily', work: 'rdTopicWork', science: 'rdTopicScience', culture: 'rdTopicCulture',
+};
 
 const SIZES = [16, 18, 20, 22, 24, 28] as const;
 const DEFAULT_SIZE = 18;
@@ -448,6 +455,15 @@ function ReaderView({ text, back, next }: { text: ReadingText; back: string; nex
 
           <MeaningPanel text={text} sel={sel} wide={wide} saved={saved} voiceAvailable={voiceAvailable}
             saveFailed={saveFailed} onAdd={addWord} onClose={close} />
+
+          {/* The right third of a wide screen: this text's facts, the words
+              saved from it, the exam paper it prepares for, and the tip. */}
+          <aside className="rd-side" data-testid="rd-side">
+            <TextWordsCard textId={text.id} saved={saved} />
+            <TextFactsCard text={text} topic={t(TOPIC_KEY[text.category])} />
+            <ExamSectionCard section="ce" />
+            <TipCard id="reading" />
+          </aside>
         </div>
       </div>
     </div>

@@ -14,6 +14,8 @@ import { loadPapers, type ExamPaper } from '../../lib/exams';
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
+import { PageWithAside, ExamSectionCard, TipCard } from '../../components/aside';
+import { AttemptsCard } from '../../components/aside/AttemptsCard';
 
 /** Why a paper is absent. Each reason is a real constraint, named in docs/02
  *  or docs/07, not a placeholder. */
@@ -44,7 +46,11 @@ export function ExamList() {
   };
 
   return (
-    <div className="page">
+    <PageWithAside className="exams-page" aside={<>
+      <ExamSectionCard section="ce" />
+      <AttemptsCard papers={papers} />
+      <TipCard id="exam" />
+    </>}>
       <SectionHead title={t('exams')} fr="Les sujets d’entraînement" lede={t('examsIntro')} />
 
       <section aria-labelledby="ex-avail">
@@ -91,6 +97,6 @@ export function ExamList() {
       </section>
 
       <p className="muted foot-legal" data-testid="exam-independence">{t('examIndependence')}</p>
-    </div>
+    </PageWithAside>
   );
 }

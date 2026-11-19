@@ -17,6 +17,7 @@ import { fold } from '../../lib/fold';
 import { pick } from '../../lib/exams';
 import { lessonPath, topicOf, type Lesson, type LessonData } from './lessons';
 import { PageState, useLessons, useLessonsGate } from './useLessons';
+import { PageWithAside, WeakPointsCard, ExamSectionCard, TipCard, PlanCard, WeekCard } from '../../components/aside';
 import './grammar.css';
 
 const LEVELS = ['A1', 'A2', 'B1', 'B2'];
@@ -24,11 +25,13 @@ const LEVELS = ['A1', 'A2', 'B1', 'B2'];
 export function GrammarList() {
   const [state, retry] = useLessons();
   const gate = useLessonsGate(state, retry);
+  // `.grl-page` is a flex column and `.dash` a grid; the frame takes the grid
+  // and its main column is already a column of cards, so the class stays off.
   return (
-    <div className="page grl-page" data-testid="grammar-list">
+    <PageWithAside testId="grammar-list" aside={<><WeakPointsCard /><ExamSectionCard section="pe" /><TipCard id="grammar" /><PlanCard /><WeekCard /></>}>
       <Heading />
       {gate ?? (state.status === 'ready' && <Library data={state.data} />)}
-    </div>
+    </PageWithAside>
   );
 }
 

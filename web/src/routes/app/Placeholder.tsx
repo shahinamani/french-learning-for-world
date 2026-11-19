@@ -4,23 +4,27 @@
  * It says what is missing, why where the reason is known, and where to go
  * instead. It never says "coming soon": that is a promise with no date, and the
  * blueprint names it as a reason to reject the page. Nothing here is styled to
- * look like content.
+ * look like content. A lazy route like every other page (redesign v2b): its
+ * side column reads the learner's plan, which has no place in the first load.
  */
 import { Link } from 'react-router';
 import { useApp } from '../../app-context';
 import { Icon } from '../../components/Icon';
 import type { Dict } from '../../lib/i18n';
 import type { NavItem } from './nav';
+import { PlanCard, TipCard } from '../../components/aside';
+import type { Instead } from './placeholders';
 
-export type Instead = { to: string; label: keyof Dict };
+export type { Instead } from './placeholders';
+export { PLACEHOLDERS } from './placeholders';
 
 export function Placeholder({ item, missing, instead }: {
   item: NavItem; missing: keyof Dict; instead: Instead[];
 }) {
   const { t } = useApp();
   return (
-    <div className="page">
-      <div className="empty" data-testid={`placeholder-${item.id}`}>
+    <div className="page dash">
+      <div className="empty dash__main" data-testid={`placeholder-${item.id}`}>
         <div className="empty__icon"><Icon name={item.icon} size={34} /></div>
         <h1 className="empty__title">{t(item.label)}</h1>
         <p className="empty__body"><strong>{t('notBuilt')}.</strong> {t(missing)}</p>
@@ -31,22 +35,8 @@ export function Placeholder({ item, missing, instead }: {
           ))}
         </div>
       </div>
+      {/* A dead end still shows where to go: today's plan and what the map means. */}
+      <aside className="dash__aside"><PlanCard /><TipCard id="path" /></aside>
     </div>
   );
 }
-
-const SEARCH: Instead = { to: '/app/search', label: 'search' };
-const TODAY: Instead = { to: '/app/today', label: 'shellGoMap' };
-
-/** Which pages are placeholders, and what each offers instead. Every `to` here
- *  is a route that exists; the walk follows each one. */
-export const PLACEHOLDERS: Record<string, { missing: keyof Dict; instead: Instead[] }> = {
-  path: { missing: 'shellMissingPath', instead: [TODAY, { to: '/app/cards', label: 'cards' }] },
-  vocabulary: { missing: 'shellMissingVocabulary', instead: [{ to: '/app/cards', label: 'cards' }, { to: '/app/themes', label: 'shellNavThemes' }, SEARCH] },
-  grammar: { missing: 'shellMissingGrammar', instead: [SEARCH, TODAY] },
-  reading: { missing: 'shellMissingReading', instead: [{ to: '/app/verbs', label: 'verbs' }, SEARCH] },
-  output: { missing: 'shellMissingOutput', instead: [{ to: '/app/writing', label: 'shellNavWriting' }, { to: '/app/verbs/drill', label: 'shellGoDrill' }] },
-  news: { missing: 'shellMissingNews', instead: [SEARCH, TODAY] },
-  podcasts: { missing: 'shellMissingPodcasts', instead: [{ to: '/app/listening', label: 'shellNavListening' }, TODAY] },
-  saved: { missing: 'shellMissingSaved', instead: [{ to: '/app/progress', label: 'progress' }, { to: '/app/cards', label: 'cards' }] },
-};

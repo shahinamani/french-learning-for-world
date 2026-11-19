@@ -16,6 +16,9 @@ import { newId } from '../../lib/session';
 import { Icon } from '../../components/Icon';
 import { ErrorState } from '../../components/Search';
 import { fr as frText } from '../../lib/typography';
+import { PageWithAside, TipCard } from '../../components/aside';
+import { AttemptsCard } from '../../components/aside/AttemptsCard';
+import { PaperFactsCard } from '../../components/aside/PaperFactsCard';
 
 export function ExamPaperRoute() {
   const { paperId = '' } = useParams();
@@ -65,7 +68,11 @@ export function ExamPaperRoute() {
   };
 
   return (
-    <div className="page">
+    <PageWithAside className="exams-page" aside={<>
+      <PaperFactsCard paper={paper} />
+      <AttemptsCard papers={[paper]} />
+      <TipCard id="exam" />
+    </>}>
       <Link className="back" to="/practise/exams"><Icon name="chevron" size={16} /> {t('exams')}</Link>
       <h1 className="h2" lang={settings.ui === 'fr' ? 'fr' : undefined}>
         {settings.ui === 'fr' ? frText(name) : name}
@@ -136,6 +143,6 @@ export function ExamPaperRoute() {
           </ul>
         </section>
       )}
-    </div>
+    </PageWithAside>
   );
 }

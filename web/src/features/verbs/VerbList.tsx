@@ -10,6 +10,8 @@ import { fr as frText } from '../../lib/typography';
 import { verbLabel } from '../../lib/pronominal';
 import { fold } from '../../lib/fold';
 import { WithAccentBar } from '../../components/AccentBar';
+import { PageWithAside, TipCard, ExamSectionCard, WeakPointsCard } from '../../components/aside';
+import { FrequentVerbsCard } from '../../components/aside/VerbCards';
 
 // Shared with answer checking and the verb filter: three near-copies of this
 // had drifted, and none of them handled the œ/æ ligatures.
@@ -70,8 +72,16 @@ export function VerbList() {
 
   if (error) return <ErrorState onRetry={() => location.reload()} />;
 
+  const aside = (
+    <>
+      <FrequentVerbsCard verbs={verbs} />
+      <TipCard id="verbs" />
+      <ExamSectionCard section="pe" />
+      <WeakPointsCard />
+    </>
+  );
   return (
-    <div className="page verbs-page">
+    <PageWithAside className="verbs-page" aside={aside}>
       <SectionHead title={t('verbs')} fr="Les verbes" lede={t('verbsIntro')} />
       <WithAccentBar inputRef={input} onInsert={setQuery}>
         <label className="field">
@@ -120,6 +130,6 @@ export function VerbList() {
           ))}
         </ul>
       )}
-    </div>
+    </PageWithAside>
   );
 }
