@@ -51,7 +51,7 @@ const fa: Dict = {
   tdStepMin: '{n} دقیقه', tdStepDone: 'انجام شد', tdLine: 'امروز {n} دقیقه کافی است.',
   tdReady: 'آمادگی برای {exam}', tdReadyReading: 'خواندن: {n} از {m} متن پاسخ داده شده', tdReadyWriting: 'نوشتن: {n} پیش‌نویس در جریان',
   tdReadyCards: 'کارت‌ها: {n} از {m} یادگرفته‌شده', tdReadyOral: 'شنیدن و گفتن: منابع رسمی', tdReadyNote: 'شمارش کارهایی که اینجا کرده‌اید، نه پیش‌بینی نمره.',
-  tdNoExam: 'آزمونتان را انتخاب کنید تا جلسه با سطح آن ساخته شود.', tdContinueTitle: 'نیمه‌کاره', tdWeakLesson: 'درس مربوط به این', tdPractiseWeak: 'تمرین همین نکته',
+  tdNoExam: 'آزمونتان را انتخاب کنید تا جلسه با سطح آن ساخته شود.', tdContinueTitle: 'نیمه‌کاره', tdWeakLesson: 'درس مربوط به این', tdPractiseWeak: 'تمرین این نقطهٔ ضعف',
   tdNothingUnfinished: 'چیزی نیمه‌کاره نیست. نامه‌ای که شروع کنید اینجا می‌ماند.',
   tdPlanAfter: 'گام {n} از {m} تمام شد. بعدی: {name}',
   nextStepLabel: 'قدم بعدی', backToToday: 'برگرد به امروز', nextLesson: 'درس بعدی: {name}', nextText: 'متن بعدی: {name}', drillThisVerb: 'تمرین این فعل', nextVerb: 'فعل بعدی: {name}',
