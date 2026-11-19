@@ -14,7 +14,7 @@ import { useEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router';
 import {
   BookOpen, ChevronDown, ClipboardCheck, Compass, Ear, Home, Layers, LineChart, Mic, PenLine,
-  BookA, Clock3, FileText, MoreHorizontal, GraduationCap, Shapes, Library,
+  BookA, Clock3, FileText, MoreHorizontal, GraduationCap, Shapes, Library, MessagesSquare,
 } from 'lucide-react';
 import { useApp, useUserId } from '../../app-context';
 import { Icon } from '../../components/Icon';
@@ -64,6 +64,7 @@ const SKILLS: { id: string; to: string; icon: typeof Ear; label: keyof Dict }[] 
   { id: 'reading', to: '/app/reading', icon: FileText, label: 'shellNavReading' },
   { id: 'writing', to: '/app/writing', icon: PenLine, label: 'shellNavWriting' },
   { id: 'themes', to: '/app/themes', icon: Shapes, label: 'shellNavThemes' },
+  { id: 'dialogues', to: '/app/dialogues', icon: MessagesSquare, label: 'navDialogues' },
 ];
 
 export function Sidebar() {
@@ -195,7 +196,7 @@ export function MobileBar() {
   };
   const close = () => setSheet(null);
   const inExam = pathname.startsWith('/app/exam');
-  const inLearn = ['/app/themes', '/app/verbs', '/app/grammar', '/app/reading', '/app/writing'].some((p) => pathname.startsWith(p));
+  const inLearn = ['/app/themes', '/app/dialogues', '/app/verbs', '/app/grammar', '/app/reading', '/app/writing'].some((p) => pathname.startsWith(p));
   const inMore = ['/app/resources', '/app/progress', '/app/path', '/account', '/about'].some((p) => pathname.startsWith(p));
 
   let items: { to: string; label: string; id: string }[] = [];

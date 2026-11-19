@@ -82,7 +82,7 @@ export const READING = {
 
 export const DIALOGUE: Item = {
   id: 'a1-au-cafe', kind: 'dialogue', level: 'A1',
-  fr: 'Au café', en: 'At the café', to: '/app/workspace',
+  fr: 'Au café', en: 'At the café', to: '/app/dialogues',
 };
 
 export const EXAMS = {

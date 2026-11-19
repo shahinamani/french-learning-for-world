@@ -842,3 +842,17 @@
 .exam-teacher__p { margin: 0; }
 .dash__aside .btn { align-self: flex-start; text-decoration: none; }
 .dash__aside .exam-sources { margin-top: .25rem; font-size: .875rem; }
+/* Listen (2026-11-19, from the retired workspace): on the card's top-right
+   corner but outside the <article>, because the front face is a button. */
+.fc-stage { position: relative; }
+.fc__listen {
+  position: absolute; inset-block-start: 1.25rem; inset-inline-end: 1.25rem; z-index: 2;
+  display: inline-flex; align-items: center; justify-content: center; width: 2.25rem; height: 2.25rem;
+  border-radius: 999px; border: 1px solid var(--color-line); background: var(--color-surface);
+  color: var(--color-ink-muted); cursor: pointer;
+}
+.fc__listen:hover { color: var(--fr-bleu); border-color: var(--fr-bleu); }
+.fc__listen:focus-visible { outline: 3px solid var(--color-focus); outline-offset: 2px; }
+.fc__voice { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: .5rem .75rem; }
+.fc__voice .fc__rate { width: auto; padding-block: .25rem; font-size: .8125rem; }
+.fc__speech-aid { flex-basis: 100%; margin: 0; text-align: center; }

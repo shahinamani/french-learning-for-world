@@ -92,11 +92,11 @@ const MOT_FR = 'Le mot du jour';
 
 /** Ways into the parts of the portal that exist. The French word is content,
  *  the same in every interface language; the label is the dictionary's. */
-const WAYS: { to: string; fr: string; label: 'verbs' | 'shellNavReading' | 'exams' | 'wsTitle' | 'shellNavPath'; testId?: string; icon: string }[] = [
+const WAYS: { to: string; fr: string; label: 'verbs' | 'shellNavReading' | 'exams' | 'navDialogues' | 'shellNavPath'; testId?: string; icon: string }[] = [
   { to: '/app/verbs/drill', fr: 'les verbes', label: 'verbs', icon: 'bookclock' },
   { to: '/app/reading', fr: 'la lecture', label: 'shellNavReading', icon: 'openbook' },
   { to: '/app/exams', fr: 'les examens', label: 'exams', icon: 'practise' },
-  { to: '/app/workspace', fr: 'l’atelier', label: 'wsTitle', testId: 'go-workspace', icon: 'stackedcards' },
+  { to: '/app/dialogues', fr: 'les dialogues', label: 'navDialogues', testId: 'go-dialogues', icon: 'textpage' },
   { to: '/app/path', fr: 'le parcours', label: 'shellNavPath', icon: 'path' },
 ];
 

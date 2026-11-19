@@ -1216,7 +1216,7 @@ console.log('\n=== lazy English groups: a route opened before its strings arrive
     ['/app/reading', 'readerEn', 'rdTitle', 'the Reader'],
     ['/app/writing', 'writingEn', 'lwTitle', 'the letters'],
     ['/app/progress', 'weaknessEn', 'wkHeading', 'the weakness card'],
-    ['/workspace', 'workspaceEn', 'wsSummaryLead', 'the workspace'],
+    ['/app/dialogues', 'workspaceEn', 'wsComprehension', 'the dialogues'],
   ]) {
     // Arabic since 2026-10-31: Persian now carries these groups (owner-requested
     // drafts), so only Arabic still exercises the English fallback.
@@ -1435,11 +1435,10 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
     ['/learn/concept/gram.present.irregular', 'Concept'],
     ['/practise/exams', 'Exams'],
     ['/practise/exams/delf-a1-ce', 'Exam paper'],
-    // The workspace brings the only new colour this product has had in months
-    // — the gold accent — and axe's contrast rule reads the RENDERED pixels,
-    // which is the one place a token's AA claim is actually tested rather than
-    // asserted in a comment next to it.
-    ['/workspace', 'Workspace'],
+    // The dialogues keep the gold accent the workspace introduced, and axe's
+    // contrast rule reads the RENDERED pixels, which is the one place a
+    // token's AA claim is actually tested rather than asserted in a comment.
+    ['/app/dialogues', 'Dialogues'],
   ];
 
   // The two open states matter most: a dialog and a popover are exactly what
@@ -1558,239 +1557,60 @@ console.log('\n=== accessibility (axe-core, WCAG 2.1 A + AA) ===');
      `${totalViolations} violations`);
 }
 
-// ── The workspace: the half of the pile rule that needs the real engine ────
-//
-// `tests/workspace-cards.test.js` checks `markOf` as a pure function of the
-// schedule. It cannot check that the ENGINE puts a card on the right side of
-// the horizon, because the React scheduler is a dynamic import of `ts-fsrs`
-// and CI runs the unit suite with `web/node_modules` hidden. So that half is
-// here, in a browser, where the real engine exists: press the button, read the
-// pile back.
-//
-// This is the check that caught the two mistakes the feature was built with —
-// the piles reading FSRS's state enum, and the buttons being Good and Again —
-// neither of which any amount of reasoning had found.
-console.log('\n=== the learning workspace ===');
+// ── The dialogues (2026-11-19): the one tab of the retired workspace that was
+// content. The workspace's card surface is gone — /app/cards is THE flashcard
+// tool now — so the pile checks that lived here went with it. What remains is
+// the complete loop a dialogue promises: answer, feedback, explanation, retry.
+console.log('\n=== the dialogues ===');
 {
   const c = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
-  const p = await c.newPage(); watch(p, ' workspace');
-  await p.goto(BASE + '#/workspace', { waitUntil: 'networkidle' });
-  await p.waitForSelector('[data-testid="ws-flashcards"]', { timeout: 20000 });
-  await p.waitForTimeout(600);
-
-  // An empty filtered set shows the empty state and no position at all, so
-  // these tolerate its absence and report 0. Without that, the pile checks
-  // below die on a 30s locator timeout instead of saying which pile was empty
-  // — seen while proving them red, and a check that crashes rather than fails
-  // tells you less than it knows.
-  const position = async () =>
-    (await p.locator('[data-testid="ws-position"]').innerText({ timeout: 4000 })
-      .catch(() => '')).replace(/\s+/g, '');
-  const total = async () => Number((await position()).split('/')[1] ?? '0');
-
-  ok('the workspace renders its card surface',
-     await p.locator('[data-testid="ws-card"]').count() === 1);
-
-  // The counts the page prints must be the counts it filters by. A chip that
-  // says 208 and a set of 207 is the defect this asserts away.
-  await p.locator('[data-testid="ws-level-A2"]').click();
-  await p.waitForTimeout(400);
-  const chip = Number((await p.locator('[data-testid="ws-level-A1"] .ws-chip__n')
-    .innerText()).replace(/[^\d]/g, ''));
-  const filtered = await total();
-  ok(`workspace: the A1 chip count is the filtered total (${chip} / ${filtered})`,
-     chip === filtered && filtered > 0);
-
-  // Reveal on keyboard, because the card is a div with role=button and that is
-  // the whole reason it needs its own key handling.
-  ok('workspace: the answer is hidden until asked for',
-     await p.locator('[data-testid="ws-card-back"]').count() === 0);
-  await p.locator('[data-testid="ws-card"]').focus();
-  await p.keyboard.press('Enter');
-  await p.waitForTimeout(300);
-  ok('workspace: Enter reveals the answer',
-     await p.locator('[data-testid="ws-card-back"]').count() === 1);
-
-  // An unreviewed gloss says so, on the card, where the learner reads it.
-  ok('workspace: no card says its meaning is unread',
-     await p.locator('[data-testid="ws-card-unreviewed"]').count() === 0);
-
-  // THE check. Known is graded through the real FSRS engine, and the card must
-  // land in the Known pile — not vanish between piles, which is exactly what
-  // happened while the buttons were Good and Again.
-  await p.locator('[data-testid="ws-filter-none"]').click();
-  await p.waitForTimeout(400);
-  const unmarkedBefore = await total();
-  await p.locator('[data-testid="ws-known"]').click();
-  await p.waitForTimeout(900);
-  await p.locator('[data-testid="ws-filter-known"]').click();
+  const p = await c.newPage(); watch(p, ' dialogues');
+  await p.goto(BASE + '#/app/dialogues', { waitUntil: 'networkidle' });
+  await p.waitForSelector('[data-testid="ws-dialogue"]', { timeout: 20000 });
   await p.waitForTimeout(500);
-  const known = await total();
-  await p.locator('[data-testid="ws-filter-none"]').click();
-  await p.waitForTimeout(500);
-  const unmarkedAfter = await total();
-  ok(`workspace: Known puts the card in the Known pile (${known})`, known === 1);
-  ok(`workspace: and takes it out of the unmarked pile (${unmarkedBefore} → ${unmarkedAfter})`,
-     unmarkedAfter === unmarkedBefore - 1, 'the three piles must account for every card');
-
-  // Through a reload, on the existing store, with no second progress record.
-  await p.goto(BASE + '#/workspace', { waitUntil: 'networkidle' });
-  await p.waitForSelector('[data-testid="ws-flashcards"]', { timeout: 20000 });
-  await p.waitForTimeout(900);
-  await p.locator('[data-testid="ws-level-A2"]').click();
-  await p.waitForTimeout(300);
-  await p.locator('[data-testid="ws-filter-known"]').click();
-  await p.waitForTimeout(500);
-  ok('workspace: the mark survives a reload', await total() === 1);
-
-  // Shuffle must not change what it is counting.
-  await p.locator('[data-testid="ws-filter-all"]').click();
-  await p.waitForTimeout(400);
-  const before = await total();
-  await p.locator('[data-testid="ws-shuffle"]').click();
-  await p.waitForTimeout(500);
-  ok(`workspace: shuffle keeps the total (${before} → ${await total()})`,
-     await total() === before);
-
-  // The educational back, and the fact that it is NOT shown all at once.
-  //
-  // Both kinds of enriched card are looked for by name rather than taking
-  // whichever turns up first. The first version took the first one and
-  // asserted three tense labels on it — and the corpus is ordered by level
-  // then alphabetically, so « eau » and « femme » sit among the verbs. It
-  // passed locally, landed on a noun in CI, and failed there: a noun has no
-  // tense and is RIGHT to have none. Comparing the wrong two things, caught by
-  // the one run that happened to order them differently.
-  await p.locator('[data-testid="ws-filter-all"]').click();
-  await p.waitForTimeout(300);
-
-  let verbCard = null;      // an enriched card that has tense labels
-  let nounCard = null;      // an enriched card that has none
-  for (let i = 0; i < 140 && !(verbCard && nounCard); i++) {
-    await p.locator('[data-testid="ws-card"]').click();
-    // Wait for the back, rather than hoping 110 ms was enough. It was not on
-    // a slow runner: the toggle had not rendered when the scan looked, every
-    // enriched card was counted as un-enriched, and the check then announced
-    // that no enriched noun exists — a fact about the timeout, not the corpus.
-    await p.waitForSelector('[data-testid="ws-card-back"]', { timeout: 4000 }).catch(() => {});
-    if (await p.locator('[data-testid="ws-examples-toggle"]').count()) {
-      if (await p.locator('[data-testid="ws-examples"]').count() === 0) {
-        await p.locator('[data-testid="ws-examples-toggle"]').click();
-        await p.waitForTimeout(220);
-      }
-      const tenses = await p.locator('[data-testid^="ws-tense-"]').count();
-      const marks = await p.locator('.ws-ex__form').count();
-      const front = await p.locator('[data-testid="ws-card-front"]').innerText();
-      const drafted = await p.locator('[data-testid="ws-drafted"]').count();
-      if (tenses > 0 && !verbCard) verbCard = { front, tenses, marks, drafted };
-      if (tenses === 0 && !nounCard) nounCard = { front, tenses, marks, drafted };
-    }
-    await p.locator('[data-testid="ws-card"]').click();
-    await p.locator('[data-testid="ws-next"]').click();
-    await p.waitForTimeout(90);
-  }
-
-  ok('workspace: a verb card with worked examples is reachable', !!verbCard,
-     'no card with tense labels in the cards scanned');
-  if (verbCard) {
-    ok(`workspace: ${verbCard.front} shows three tenses, each form marked`
-       + ` (${verbCard.tenses} / ${verbCard.marks})`,
-       verbCard.tenses === 3 && verbCard.marks === 3);
-    ok('workspace: the card shows no "draft" or "not read" line', verbCard.drafted === 0);
-  }
-
-  // The other half, and the one a quick reading would get wrong: a noun card
-  // carries examples and NO tense, because a tense on a noun is a grammatical
-  // claim the word cannot carry.
-  ok('workspace: a non-verb card with examples is reachable', !!nounCard,
-     'no enriched non-verb card in the cards scanned');
-  if (nounCard) {
-    ok(`workspace: ${nounCard.front} is a noun — examples, and no tense label`
-       + ` (${nounCard.tenses} tenses, ${nounCard.marks} marked)`,
-       nounCard.tenses === 0 && nounCard.marks >= 1);
-  }
-
-  // Disclosure, asserted on a card known to have a back rather than on
-  // whichever card the scan stopped on.
-  //
-  // `reload()`, not `goto()` of the same address: the toggle is deliberately
-  // sticky across cards, and goto to an identical hash URL is a same-document
-  // navigation that does not remount anything — so the scan above left the
-  // examples open and this check read its own leftovers. The product was
-  // right; the check was looking at a page it had not actually reset.
-  await p.reload({ waitUntil: 'networkidle' });
-  await p.waitForSelector('[data-testid="ws-flashcards"]', { timeout: 20000 });
-  await p.waitForTimeout(700);
-  for (let i = 0; i < 60; i++) {
-    await p.locator('[data-testid="ws-card"]').click();
-    await p.waitForSelector('[data-testid="ws-card-back"]', { timeout: 4000 }).catch(() => {});
-    if (await p.locator('[data-testid="ws-examples-toggle"]').count()) break;
-    await p.locator('[data-testid="ws-card"]').click();
-    await p.locator('[data-testid="ws-next"]').click();
-    await p.waitForTimeout(90);
-  }
-  ok('workspace: the examples are closed until asked for',
-     await p.locator('[data-testid="ws-examples"]').count() === 0);
-  await p.locator('[data-testid="ws-examples-toggle"]').click();
-  await p.waitForTimeout(300);
-  ok('workspace: opening the examples does not turn the card back over',
-     await p.locator('[data-testid="ws-card-back"]').count() === 1);
-
-  // Coverage is a measurement and must not round itself up.
-  const coverageText = (await p.locator('[data-testid="ws-coverage"]').innerText()).replace(/\s+/g, ' ');
-  ok(`workspace: coverage is stated, with no teacher-review count (${coverageText.slice(0, 60)})`,
-     /\d+ \/ \d+/.test(coverageText) && !/teacher/i.test(coverageText),
-     coverageText);
-  ok('workspace: what the two marking buttons write is stated on screen',
-     await p.locator('[data-testid="ws-mark-mapping"]').count() === 1);
-
-  // Dialogues: a complete loop — answer, feedback, explanation, retry.
-  await p.locator('[data-testid="ws-tab-dialogues"]').click();
-  await p.waitForTimeout(700);
-  ok('workspace: the dialogues tab has a unit rather than an empty state',
+  ok('dialogues: the page has a unit rather than an empty state',
      await p.locator('[data-testid="ws-dialogue"]').count() === 1);
-  ok('workspace: the dialogue says its speech is the device\'s, not a recording',
+  ok('dialogues: the page says its speech is the device\'s, not a recording',
      await p.locator('[data-testid="ws-dialogue-speech"]').count() === 1);
+  ok('dialogues: the section heading names the page',
+     await p.locator('[data-testid="dialogues-title"]').count() === 1);
   {
     const q = 'a1-au-cafe-q1';
-    ok('workspace: no feedback before the question is answered',
+    ok('dialogues: no feedback before the question is answered',
        await p.locator(`[data-testid="ws-dlg-feedback-${q}"]`).count() === 0);
     await p.locator(`[data-testid="ws-dlg-opt-${q}-1"]`).click();
     await p.waitForTimeout(300);
     const explain = await p.locator(`[data-testid="ws-dlg-feedback-${q}"] .ws-usage`)
       .innerText().catch(() => '');
-    ok('workspace: a wrong answer is told so, and explained', explain.length > 20, explain.slice(0, 60));
+    ok('dialogues: a wrong answer is told so, and explained', explain.length > 20, explain.slice(0, 60));
     await p.locator(`[data-testid="ws-dlg-retry-${q}"]`).click();
-    await p.waitForTimeout(250);
-    ok('workspace: retry puts the question back',
+    await p.waitForTimeout(200);
+    ok('dialogues: retry puts the question back',
        await p.locator(`[data-testid="ws-dlg-feedback-${q}"]`).count() === 0);
     await p.locator(`[data-testid="ws-dlg-opt-${q}-0"]`).click();
     await p.waitForTimeout(300);
-    ok('workspace: a right answer is marked right and still explains itself',
+    ok('dialogues: a right answer is marked right and still explains itself',
        await p.locator(`[data-testid="ws-dlg-feedback-${q}"] .ws-dlg__right`).count() === 1
        && (await p.locator(`[data-testid="ws-dlg-feedback-${q}"] .ws-usage`).innerText()).length > 20);
   }
-
   await c.close();
 }
 
-// The position is a fraction, and a fraction must not reverse on an RTL page.
-// It did: "1 / 507" rendered as "507 / 1" in Persian, because isolating each
-// number still leaves the paragraph to order them.
+// The cards' Listen button (2026-11-19, from the retired workspace) is hidden,
+// not disabled, when the device has no French voice. Headless Chromium on CI
+// has none, so the absence is what is asserted here; a device with a voice
+// shows the button and the speed choice, which the owner sees on his Mac.
 {
-  const c = await browser.newContext({ locale: 'fa-IR', viewport: { width: 1100, height: 900 } });
-  const p = await c.newPage(); watch(p, ' workspace fa');
-  await p.goto(BASE + '#/workspace', { waitUntil: 'networkidle' });
-  await p.waitForSelector('[data-testid="ws-position"]', { timeout: 20000 });
-  await p.waitForTimeout(700);
-  const pos = (await p.locator('[data-testid="ws-position"]').innerText()).trim();
-  ok(`workspace fa: the position reads forwards (${JSON.stringify(pos)})`, /^1\s*\/\s*\d+$/.test(pos),
-     'the learner is on card 1 of many, not card many of 1');
-  // Persian has the workspace's own text since 2026-10-31. The owner removed
-  // the "Persian is a draft" notice on 2026-11-06, so neither notice shows.
-  ok('workspace fa: the page shows no draft or untranslated notice',
-     await p.locator('[data-testid="shell-fa-draft"]').count() === 0
-     && await p.locator('[data-testid="ws-untranslated"]').count() === 0);
+  const c = await browser.newContext({ viewport: { width: 1280, height: 1000 } });
+  const p = await c.newPage(); watch(p, ' cards voice');
+  await p.goto(BASE + '#/app/cards', { waitUntil: 'networkidle' });
+  await p.waitForSelector('[data-testid="flashcard"]', { timeout: 20000 });
+  const hasVoice = await p.evaluate(() => speechSynthesis.getVoices().some((v) => v.lang.toLowerCase().startsWith('fr')));
+  const button = await p.locator('[data-testid="card-listen"]').count();
+  const speed = await p.locator('[data-testid="card-rate"]').count();
+  ok(`cards: Listen and the speed choice are shown exactly when a French voice exists (voice ${hasVoice}, button ${button}, speed ${speed})`,
+     (hasVoice ? 1 : 0) === button && button === speed);
+  ok('cards: no disabled Listen button', await p.locator('[data-testid="card-listen"]:disabled').count() === 0);
   await c.close();
 }
 

@@ -38,6 +38,7 @@ export const LEGACY: Array<{ from: string; to: (p: Params) => string }> = [
   { from: 'practise/exams/*', to: (p) => `/app/exams${splat(p) ? '/' + splat(p) : ''}` },
   { from: 'practise/listening', to: () => '/app/listening' },
   { from: 'progress', to: () => '/app/progress' },
-  { from: 'workspace', to: () => '/app/workspace' },
+  // The workspace was retired on 2026-11-19; its flashcards ARE /app/cards now.
+  { from: 'workspace', to: () => '/app/cards' },
   { from: 'search', to: () => '/app/search' },
 ];
