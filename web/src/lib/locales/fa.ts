@@ -26,6 +26,8 @@ const fa: Dict = {
   questionsAnswered: 'پرسش‌های پاسخ‌داده‌شده', previous: 'پیشین',
   submitExam: 'پایان — {n} از {m}',
   skipToContent: 'رفتن به محتوا',
+  crashedBody: 'این صفحه دچار خطا شد. پیشرفت شما روی همین دستگاه محفوظ است.',
+  crashedReload: 'بارگذاری دوباره',
   theme: 'پوسته',
   themeSystem: 'سیستم',
   themeLight: 'روشن',

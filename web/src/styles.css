@@ -1009,3 +1009,7 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
 
 @media (prefers-reduced-motion: reduce) { .nav-group__chev { transition: none; } }
 } /* @layer legacy */
+
+/* The error boundary: the one screen that renders when a route throws. */
+.crashed { max-width: 40rem; margin: 10vh auto; display: grid; gap: var(--space-3); text-align: center; }
+.crashed p { margin: 0; }

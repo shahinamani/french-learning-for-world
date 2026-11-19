@@ -30,6 +30,10 @@ import { fileURLToPath } from 'node:url';
 
 /** The one spelling. The guard greps for it. */
 const ENDPOINT = '/__review';
+/** A decision is a few short strings; anything bigger is not one. */
+const MAX_DECISION_BYTES = 64 * 1024;
+/** What `data/review-decisions.json` holds per decision, and nothing else. */
+const DECISION_FIELDS = ['itemId', 'paperId', 'verdict', 'note', 'by'];
 
 /**
  * A decision is { itemId, paperId, verdict, note, by, at } — written as a
@@ -103,11 +107,34 @@ export function reviewTool(root = fileURLToPath(new URL('../../', import.meta.ur
 
       server.middlewares.use(`${ENDPOINT}/decide`, (req, res) => {
         if (req.method !== 'POST') { res.statusCode = 405; res.end(); return; }
+        // A page on any other site can POST here with a form or a no-cors
+        // fetch while the dev server runs, and a decision it forges carries the
+        // developer's name. Browsers send Origin on every cross-site POST, so a
+        // same-origin check plus a JSON content type (which a form cannot send)
+        // closes that. A request with no Origin at all (curl) is the developer.
+        const origin = req.headers.origin;
+        const host = req.headers.host;
+        if (origin && host && new URL(origin).host !== host) {
+          res.statusCode = 403; res.end(JSON.stringify({ error: 'cross-site' })); return;
+        }
+        if (!String(req.headers['content-type'] ?? '').startsWith('application/json')) {
+          res.statusCode = 415; res.end(JSON.stringify({ error: 'json only' })); return;
+        }
         let body = '';
-        req.on('data', (c) => { body += c; });
+        let tooBig = false;
+        req.on('data', (c) => {
+          if (tooBig) return;
+          body += c;
+          if (body.length > MAX_DECISION_BYTES) { tooBig = true; body = ''; }
+        });
         req.on('end', () => {
+          if (tooBig) { res.statusCode = 413; res.end(JSON.stringify({ error: 'too large' })); return; }
           try {
-            const d = JSON.parse(body);
+            const raw = JSON.parse(body);
+            // Only the fields the decisions file is documented to hold. The
+            // old spread wrote whatever the client sent into a committed file.
+            const d = {};
+            for (const k of DECISION_FIELDS) if (typeof raw?.[k] === 'string') d[k] = raw[k];
             // `cleared` removes the record entirely: a mis-key must be
             // undoable, not merely overwritable with a different verdict.
             if (!d.itemId || !['approved', 'rejected', 'skipped', 'cleared'].includes(d.verdict)) {

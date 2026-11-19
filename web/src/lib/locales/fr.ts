@@ -26,6 +26,8 @@ const fr: Dict = {
   questionsAnswered: 'Questions répondues', previous: 'Précédent',
   submitExam: 'Terminer — {n} sur {m}',
   skipToContent: 'Aller au contenu',
+  crashedBody: 'Cet écran a rencontré une erreur. Votre progression est conservée sur cet appareil.',
+  crashedReload: 'Recharger',
   theme: 'Thème',
   themeSystem: 'Système',
   themeLight: 'Clair',

@@ -54,7 +54,12 @@ self.addEventListener('fetch', (e) => {
   if (request.destination === 'video' || request.headers.has('range')) return;
   e.respondWith(caches.open(CACHE).then(async (cache) => {
     const hit = await cache.match(request, { ignoreSearch: true });
-    const net = fetch(request).then((r) => { if (r.ok) cache.put(request, r.clone()); return r; }).catch(() => null);
+    // The host rewrites every missing path to index.html with a 200, so a
+    // missing content file would otherwise be cached as HTML and fail as JSON
+    // until the next worker version. A non-navigation request never wants HTML.
+    const cacheable = (r) => r.ok && (request.mode === 'navigate'
+      || !(r.headers.get('content-type') || '').startsWith('text/html'));
+    const net = fetch(request).then((r) => { if (cacheable(r)) cache.put(request, r.clone()); return r; }).catch(() => null);
     if (hit) return hit;                       // instant, and works offline
     const fresh = await net;
     if (fresh) return fresh;

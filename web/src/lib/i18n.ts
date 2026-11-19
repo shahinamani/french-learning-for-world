@@ -31,6 +31,8 @@ const en = {
   questionsAnswered: 'Questions answered', previous: 'Previous',
   submitExam: 'Finish — {n} of {m} answered',
   skipToContent: 'Skip to content',
+  crashedBody: 'This screen broke. Your progress is safe on this device.',
+  crashedReload: 'Reload',
   theme: 'Theme',
   themeSystem: 'System',
   themeLight: 'Light',

@@ -10,6 +10,7 @@ import { NavLink, Outlet, useNavigate, useLocation } from 'react-router';
 import { hasStarted } from '../lib/started';
 import * as Popover from '@radix-ui/react-popover';
 import { useApp, useUserId } from '../app-context';
+import { ErrorBoundary } from './ErrorBoundary';
 import { Icon } from './Icon';
 import { SidePanel } from './SidePanel';
 import { lazy, Suspense } from 'react';
@@ -206,7 +207,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
         {!onLanding && !labelsTranslated && (
           <p className="muted topline__note" data-testid="shell-untranslated">{t('shellUntranslated')}</p>
         )}
-        {prerenderChild ?? <Outlet />}
+        {prerenderChild ?? <ErrorBoundary body={t('crashedBody')} reload={t('crashedReload')}><Outlet /></ErrorBoundary>}
       </main>
 
       {/* One navigation per width. On the landing page there is no sidebar:
