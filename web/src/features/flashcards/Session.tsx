@@ -33,6 +33,10 @@ import { requestPersistence } from '../../lib/backup';
 import { completeStep, type Step } from '../../lib/plan';
 import { RATES, speakAll, stop as stopSpeech, type Rate } from '../../lib/speech';
 import { useVoice } from '../../hooks/useVoice';
+import { SessionFrame } from '../../components/aside/SessionFrame';
+import { SessionCard } from '../../components/aside/SessionCard';
+import { ThisCardCard } from '../../components/aside/ThisCardCard';
+import { ExamSectionCard, TipCard, WeekCard, WeakPointsCard } from '../../components/aside';
 import '../../lib/locales/en/todayEn';   // registers its English (lazy group)
 // The Listen button and the voice-speed choice came from the retired workspace
 // (owner decision 2026-11-19: one flashcard tool, not two) and keep its keys.
@@ -98,6 +102,11 @@ export function FlashcardSession() {
   const [states, setStates] = useState<Map<string, CardState>>(new Map());
   const [revealed, setRevealed] = useState(false);
   const [reviewed, setReviewed] = useState(0);
+  // The side column's own record of this sitting: how many were rated good or
+  // easy, the grade given to each card, and the time each card took.
+  const [rightCount, setRightCount] = useState(0);
+  const [gradesGiven, setGradesGiven] = useState<Map<string, Grade>>(new Map());
+  const [times, setTimes] = useState<number[]>([]);
   const [error, setError] = useState(false);
   const shownAt = useRef<number>(Date.now());
   const sessionId = useRef<string>(newId());
@@ -274,6 +283,9 @@ export function FlashcardSession() {
     void requestPersistence();
     setStates((m) => new Map(m).set(card.key, after));
     setReviewed((n) => n + 1);
+    if (g >= 3) setRightCount((n) => n + 1);
+    setGradesGiven((m) => new Map(m).set(card.key, g));
+    setTimes((xs) => [...xs, now - shownAt.current]);
     const next = new URLSearchParams(params);
     next.set('i', String(index + 1));
     setParams(next, { replace: true });   // replace: the back button leaves the session
@@ -401,7 +413,26 @@ export function FlashcardSession() {
   const rtlMeaning = settings.meaning === 'fa' || settings.meaning === 'ar';
   const tilt = drag ? Math.max(-1, Math.min(1, drag / SWIPE_AT)) : 0;
 
+  const sides = {
+    left: (
+      <>
+        <SessionCard current="cards" done={index} total={queue.length} right={rightCount} rightKey="tdBsRight" times={times} />
+        {!conceptFilter && !cardFilter && <div className="dash-card aside-card"><LevelPicker level={level} count={levelCount} where="aside" /></div>}
+        <WeekCard />
+      </>
+    ),
+    right: (
+      <>
+        <ThisCardCard card={card} state={stateOf(card.key)} previews={previews} lastGrade={gradesGiven.get(card.key) ?? null} />
+        {target && <ExamSectionCard section="ce" />}
+        <WeakPointsCard />
+        <TipCard id="cards" />
+      </>
+    ),
+  };
+
   return (
+    <SessionFrame left={sides.left} right={sides.right} leftLabel={t('tdBsAsideSession')} rightLabel={t('tdBsAsideCard')}>
     <div className="page page--session">
       <div className="fc-top">
         <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={queue.length}
@@ -599,6 +630,7 @@ export function FlashcardSession() {
         </div>
       )}
     </div>
+    </SessionFrame>
   );
 }
 

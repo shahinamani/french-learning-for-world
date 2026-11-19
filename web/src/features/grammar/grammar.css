@@ -27,3 +27,11 @@
 .grl-state p { margin: 0; }
 button:focus-visible, a.btn:focus-visible, .ws-chip:focus-visible { outline: 3px solid var(--color-focus);
   outline-offset: 2px; }
+
+/* In the two-column lesson page (2026-11-19) the two examples sit side by side
+   from 900 px. Here rather than in portal.css: that file is layered and this
+   one is not, so only a rule here can change what `.grl-examples` sets above. */
+.grl-lesson .grl-examples li { padding: .875rem 1rem; border-radius: 12px; background: var(--color-surface-sunken); }
+@media (min-width: 900px) {
+  .grl-lesson .grl-examples { width: 100%; align-self: stretch; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: var(--space-4); }
+}

@@ -27,6 +27,8 @@ import { pick } from '../../lib/exams';
 import { fr as frText } from '../../lib/typography';
 import { findLesson, lessonPath, safeOrigin, type Lesson, type LessonData } from './lessons';
 import { PageState, useLessons, useLessonsGate } from './useLessons';
+import { WeakPointsCard, TipCard } from '../../components/aside';
+import { LessonFactsCard } from '../../components/aside/LessonFactsCard';
 import './grammar.css';
 
 export function GrammarLesson() {
@@ -91,8 +93,11 @@ function LessonView({ lesson, data, origin }: { lesson: Lesson; data: LessonData
   const [planNext, setPlanNext] = useState<Step | null>(null);
   useEffect(() => { if (finished) setPlanNext(completeStep(userId, 'lesson')); }, [finished, userId]);
 
+  // The two-column frame by hand rather than PageWithAside: the walk finds
+  // this page by `data-testid` and `data-lesson` on the same element.
   return (
-    <div className="page grl-page" data-testid="grammar-lesson" data-lesson={lesson.id}>
+    <div className="page dash page--aside grl-lesson" data-testid="grammar-lesson" data-lesson={lesson.id}>
+      <div className="dash__main">
       <Link className="btn btn--ghost btn--sm grl-back" to={backTo} data-testid="grammar-back">
         ← {backLabel}
       </Link>
@@ -174,6 +179,12 @@ function LessonView({ lesson, data, origin }: { lesson: Lesson; data: LessonData
       {finished && (
         <NextStep primary={null} others={[{ to: backTo, label: backLabel, testId: 'grammar-return-list' }]} />
       )}
+      </div>
+      <aside className="dash__aside">
+        <LessonFactsCard lesson={lesson} data={data} index={index} origin={here.pathname + here.search} />
+        <WeakPointsCard />
+        <TipCard id="grammar" />
+      </aside>
     </div>
   );
 }

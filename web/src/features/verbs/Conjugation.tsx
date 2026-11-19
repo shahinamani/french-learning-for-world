@@ -6,6 +6,7 @@
  * weak points through the same path, and the two sections agree about what a
  * learner is weak at.
  */
+import '../../lib/locales/en/todayEn';   // the side column's strings (lazy group)
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { Link, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
@@ -22,6 +23,11 @@ import { reflexivePronoun, verbLabel } from '../../lib/pronominal';
 import { WithAccentBar } from '../../components/AccentBar';
 import { pick } from '../../lib/exams';
 import { Num } from '../../components/Num';
+import { SessionFrame } from '../../components/aside/SessionFrame';
+import { SessionCard } from '../../components/aside/SessionCard';
+import { VerbFactsCard, TenseLinksCard } from '../../components/aside/VerbCards';
+import { AsideCard, TipCard, WeekCard, ExamSectionCard, WeakPointsCard } from '../../components/aside';
+import { useTarget } from '../../lib/exam-targets';
 
 function newId() {
   if (globalThis.crypto?.randomUUID) return globalThis.crypto.randomUUID();
@@ -36,6 +42,7 @@ export function ConjugationDrill() {
   const { t, settings } = useApp();
   const userId = useUserId();
   const panel = useSidePanel();
+  const [target] = useTarget(userId);
   const [params, setParams] = useSearchParams();
   // No verb in the address (the drill opened from Today or the menu): drill
   // the verb of the day, one of the ten most used, rather than an error page.
@@ -48,6 +55,8 @@ export function ConjugationDrill() {
   const [value, setValue] = useState('');
   const [result, setResult] = useState<null | { correct: boolean; accentsOnly: boolean; expected: string }>(null);
   const [right, setRight] = useState(0);
+  // Milliseconds per answered form, for the side column's average.
+  const [times, setTimes] = useState<number[]>([]);
   const shownAt = useRef(Date.now());
 
   // The session id belongs in the URL, exactly as it does for flashcards. Held
@@ -87,6 +96,7 @@ export function ConjugationDrill() {
     const check = checkAnswer(value, expected, [tense.accepted?.[index] ?? '']);
     setResult({ ...check, expected });
     if (check.correct) setRight((n) => n + 1);
+    setTimes((xs) => [...xs, Date.now() - shownAt.current]);
 
     const now = Date.now();
     // A typed answer maps onto the same four grades: right and fast is Easy,
@@ -156,7 +166,29 @@ export function ConjugationDrill() {
   }
 
   const label = pick(names[tense.id] ?? {}, settings.ui).text;
+  const left = (
+    <>
+      <SessionCard done={index} total={verb.persons.length} right={right} rightKey="tdBsRightSoFar" times={times} countKey="tdBsFormsDone" />
+      <AsideCard title={t('practiseTense')} testId="aside-drill-now">
+        <dl className="aside-facts">
+          <dt>{t('tdBsVerbNow')}</dt><dd lang="fr" dir="ltr">{frText(verbLabel(verb))}</dd>
+          <dt>{t('tdBsTenseNow')}</dt><dd>{frText(label)} <span className="muted" lang="fr" dir="ltr">· {tense.mood}</span></dd>
+        </dl>
+      </AsideCard>
+      <TenseLinksCard verb={verb} names={names} current={tense.id} />
+      <WeekCard />
+    </>
+  );
+  const right_ = (
+    <>
+      <VerbFactsCard verb={verb} linkToVerb />
+      {target && <ExamSectionCard section="pe" />}
+      <WeakPointsCard />
+      <TipCard id="verbs" />
+    </>
+  );
   return (
+    <SessionFrame left={left} right={right_} leftLabel={t('tdBsAsideSession')} rightLabel={t('tdBsVerbFacts')}>
     <div className="page page--session">
       <div className="rail" role="progressbar" aria-valuemin={0} aria-valuemax={verb.persons.length} aria-valuenow={index} aria-label={t('practiseTense')}>
         <span className="rail__fill" style={{ width: `${(index / verb.persons.length) * 100}%` }} />
@@ -213,5 +245,6 @@ export function ConjugationDrill() {
         </div>
       </div>
     </div>
+    </SessionFrame>
   );
 }

@@ -11,6 +11,8 @@ import { NotFound } from '../../routes/Stub';
 import { fr as frText } from '../../lib/typography';
 import { Localised } from '../../components/Localised';
 import { withPronoun, verbLabel } from '../../lib/pronominal';
+import { PageWithAside, TipCard } from '../../components/aside';
+import { VerbFactsCard, TenseLinksCard } from '../../components/aside/VerbCards';
 
 export function VerbDetail() {
   const { infinitive = '' } = useParams();
@@ -43,8 +45,15 @@ export function VerbDetail() {
   if (verb === undefined) return <div className="page"><div className="skeleton skeleton--title" /></div>;
   if (verb === null) return <NotFound />;
 
+  const aside = (
+    <>
+      <VerbFactsCard verb={verb} />
+      <TenseLinksCard verb={verb} names={names} />
+      <TipCard id="verbs" />
+    </>
+  );
   return (
-    <div className="page">
+    <PageWithAside className="verb-page" aside={aside}>
       <button className="btn btn--ghost btn--sm" onClick={() => navigate(-1)} data-testid="verb-back">
         ← {t('back')}
       </button>
@@ -114,6 +123,9 @@ export function VerbDetail() {
         </p>
       )}
 
+      {/* Two tenses side by side from 1100 px: a table of six forms is one
+          narrow column, and the page was that column with nothing beside it. */}
+      <div className="conj-grid">
       {verb.tenses.map((tn) => (
         <section key={tn.id} className="card" aria-labelledby={`t-${tn.id}`}>
           <div className="row" style={{ justifyContent: 'space-between' }}>
@@ -196,8 +208,9 @@ export function VerbDetail() {
           <p className="muted" data-testid="no-imperative">{t('noImperative')}</p>
         )}
       </section>
+      </div>
       <NextStep primary={{ to: `/app/verbs/drill?verb=${encodeURIComponent(verb.infinitive)}`, label: t('drillThisVerb'), testId: 'verb-drill' }}
                 others={[{ to: '/app/verbs', label: t('verbs') }]} />
-    </div>
+    </PageWithAside>
   );
 }
