@@ -9,6 +9,7 @@ import { loadContent } from '../lib/content';
 import { loadMaterial, cellState, type Material } from '../lib/material';
 import { counts, weakPoints, type Counts, type ConceptStat } from '../lib/progress';
 import { SavedWordsCard, WeekCard } from '../components/aside';
+import { WeekCard, PageWithAside, TipCard, ExamSectionCard, WeakPointsCard, PlanCard } from '../components/aside';
 import { Icon } from '../components/Icon';
 import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
@@ -317,7 +318,12 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
   );
 
   return (
-    <div className="page learn learn--path">
+    <PageWithAside className="learn--path path-page" aside={<>
+      <TipCard id="path" />
+      <ExamSectionCard section="ce" />
+      <PlanCard />
+      <WeakPointsCard />
+    </>}>
 
       <section className="learn__main" aria-labelledby="map-h">
         <div className="row u-between">
@@ -387,6 +393,6 @@ export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
         </div>
       </section>
 
-    </div>
+    </PageWithAside>
   );
 }

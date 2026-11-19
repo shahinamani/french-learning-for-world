@@ -27,6 +27,9 @@ import { SectionHead } from '../../components/SectionHead';
 import { userKey } from '../../lib/session';
 import { readPlan } from '../../lib/plan';
 import type { Locale } from '../../lib/types';
+import '../../lib/locales/en/todayEn';   // registers its English (lazy group)
+import { PageWithAside, AsideCard, ExamSectionCard, WeakPointsCard, PlanCard, TipCard } from '../../components/aside';
+import { OfferCard } from '../../components/aside/OfferCard';
 
 const ICON: Record<SectionKey, typeof Ear> = { co: Ear, ce: BookOpen, pe: PenLine, po: Mic };
 
@@ -59,6 +62,32 @@ function useExamData(target: Target | null) {
   return { entry, papers, error };
 }
 
+/** The texts (reading) or letter tasks (writing) this portal has at the
+ *  exam's level, for the section page's "practise here" list. Counts and
+ *  titles come from the content files; a level of null is shown at every level. */
+type Material = { texts: { id: string; title: string; level: string | null; minutes: number; mine: boolean }[]; tasks: { id: string; kind: string; title: string; level: string | null; mine: boolean }[] } | null;
+function useSectionMaterial(section: SectionKey | null, level: string | null, ui: Locale): Material {
+  const [m, setM] = useState<Material>(null);
+  useEffect(() => {
+    if (section !== 'ce' && section !== 'pe') { setM({ texts: [], tasks: [] }); return; }
+    let live = true;
+    (async () => {
+      const at = (l: string | null) => !level || !l || l === level;
+      if (section === 'ce') {
+        const { loadReading } = await import('../../features/reader/data');
+        const texts = await loadReading().catch(() => []);
+        if (live) setM({ texts: texts.map((x) => ({ id: x.id, title: pick(x.title, ui).text, level: x.level, minutes: Math.max(1, Math.round(x.readingTime.seconds / 60)), mine: at(x.level) })).sort((a, b) => Number(b.mine) - Number(a.mine)), tasks: [] });
+      } else {
+        const { loadLetters } = await import('../../features/letters/data');
+        const file = await loadLetters().catch(() => ({ kinds: [], tasks: [] }));
+        if (live) setM({ texts: [], tasks: file.tasks.map((x) => ({ id: x.id, kind: x.kind, title: pick(x.task, ui).text, level: x.level, mine: at(x.level) })).sort((a, b) => Number(b.mine) - Number(a.mine)) });
+      }
+    })().catch(() => { if (live) setM({ texts: [], tasks: [] }); });
+    return () => { live = false; };
+  }, [section, level, ui]);
+  return m;
+}
+
 function facts(p: Paper, t: ReturnType<typeof useApp>['t']): string[] {
   const out: string[] = [];
   if (p.minutes) out.push(t('shellExamMinutes', { n: p.minutes }));
@@ -79,29 +108,35 @@ export function ExamChooser() {
   const [target, choose] = useTarget(userId);
   const navigate = useNavigate();
   return (
-    <div className="page exam-page exam-page--choose">
+    <PageWithAside className="exam-page" aside={<>
+      <OfferCard />
+      <AsideCard title={t('tdAsWhyTitle')} testId="aside-why"><p className="fine">{t('tdAsWhyBody')}</p></AsideCard>
+      <TipCard id="exam" />
+    </>}>
       <header className="exam-head">
         <h1 className="exam-title">{t('shellExamChoose')}</h1>
         <p className="exam-lede">{t('shellExamChooseLede')}</p>
       </header>
-      {FAMILY.map(([f, label]) => (
-        <section key={f} className="exam-family" aria-labelledby={`fam-${f}`}>
-          <h2 id={`fam-${f}`} className="exam-family__h">{t(label)}</h2>
-          <ul className="exam-choices">
-            {TARGETS.filter((x) => x.family === f).map((x) => (
-              <li key={x.id}>
-                <button type="button" className="exam-choice" aria-pressed={target?.id === x.id}
-                        data-testid={`choose-${x.id}`}
-                        onClick={() => { choose(x.id); navigate(`/app/exam/${x.id}`); }}>
-                  <span className="exam-choice__code">{x.label}</span>
-                  {x.level && <span className={`chip chip--${x.level.toLowerCase()}`}>{x.level}</span>}
-                </button>
-              </li>
-            ))}
-          </ul>
-        </section>
-      ))}
-    </div>
+      <div className="exam-page--choose">
+        {FAMILY.map(([f, label]) => (
+          <section key={f} className="exam-family" aria-labelledby={`fam-${f}`}>
+            <h2 id={`fam-${f}`} className="exam-family__h">{t(label)}</h2>
+            <ul className="exam-choices">
+              {TARGETS.filter((x) => x.family === f).map((x) => (
+                <li key={x.id}>
+                  <button type="button" className="exam-choice" aria-pressed={target?.id === x.id}
+                          data-testid={`choose-${x.id}`}
+                          onClick={() => { choose(x.id); navigate(`/app/exam/${x.id}`); }}>
+                    <span className="exam-choice__code">{x.label}</span>
+                    {x.level && <span className={`chip chip--${x.level.toLowerCase()}`}>{x.level}</span>}
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </PageWithAside>
   );
 }
 
@@ -121,6 +156,7 @@ export function ExamPage() {
   const sectionKey = (SECTIONS as string[]).includes(section ?? '') ? (section as SectionKey) : null;
   const official = useMemo(() => (entry && target ? papersOf(entry, target) : null), [entry, target]);
   const { bySection } = practiceFor(papers, target);
+  const material = useSectionMaterial(sectionKey, target?.level ?? null, settings.ui);
 
   if (!target) return <Navigate replace to="/app/exam" />;
   if (section && !sectionKey) return <Navigate replace to={`/app/exam/${target.id}`} />;
@@ -139,8 +175,27 @@ export function ExamPage() {
     const free = entry.resources.filter((r) => r.skill === SKILL_OF[sectionKey]);
     const why = WHY_NOT[sectionKey];
     const I = ICON[sectionKey];
+    const freeList = free.length > 0 && (
+      <AsideCard title={t('shellExamFreeElsewhere')} id="sec-free" testId="aside-free">
+        <ul className="exam-rows">
+          {free.map((r) => (
+            <li key={r.url}>
+              <a href={r.url} target="_blank" rel="noopener noreferrer" className="exam-row">
+                <span className="exam-row__name" lang={r.lang}>{r.title}</span>
+                <span className="exam-row__meta">{r.publisher}<ArrowUpRight className="size-4" aria-hidden="true" /></span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </AsideCard>
+    );
     return (
-      <div className="page exam-page" data-testid={`exam-section-${sectionKey}`}>
+      <PageWithAside className="exam-page" testId={`exam-section-${sectionKey}`} aside={<>
+        <ExamSectionCard section={sectionKey} />
+        {freeList}
+        <WeakPointsCard />
+        <PlanCard />
+      </>}>
         <Link to={`/app/exam/${target.id}`} className="exam-back">{target.label}</Link>
         <header className="exam-head exam-head--section">
           <span className="exam-head__icon" aria-hidden="true"><I className="size-6" /></span>
@@ -175,7 +230,32 @@ export function ExamPage() {
                 </li>
               ))}
             </ul>
-          ) : (
+          ) : null}
+          {material && (['texts', 'tasks'] as const).map((kind) => {
+            const all = material[kind];
+            const own = all.filter((x) => x.mine), rest = all.filter((x) => !x.mine);
+            const row = (x: (typeof all)[number]) => (
+              <li key={x.id}>
+                <Link to={kind === 'texts' ? `/app/reading/${x.id}` : `/app/writing/${(x as { kind: string }).kind}/${x.id}`} className="exam-row">
+                  <span className="exam-row__name" lang={kind === 'texts' ? 'fr' : undefined} dir={kind === 'texts' ? 'ltr' : undefined}>{x.title}</span>
+                  <span className="exam-row__meta">{x.level && <span className={`chip chip--${x.level.toLowerCase()}`}>{x.level}</span>}{'minutes' in x && <> {t('shellExamMinutes', { n: x.minutes })}</>}</span>
+                </Link>
+              </li>
+            );
+            if (all.length === 0) return null;
+            return (
+              <div key={kind}>
+                {own.length > 0 && <ul className="exam-rows exam-rows--wide" data-testid={`exam-section-${kind}`}>{own.map(row)}</ul>}
+                {rest.length > 0 && (
+                  <>
+                    <h3 className="exam-group__h">{t('tdAsOtherLevels')}</h3>
+                    <ul className="exam-rows exam-rows--wide" data-testid={`exam-section-${kind}-other`}>{rest.map(row)}</ul>
+                  </>
+                )}
+              </div>
+            );
+          })}
+          {practice.length === 0 && material && material.texts.every((x) => !x.mine) && material.tasks.every((x) => !x.mine) && (
             <div className="exam-empty">
               <p>{t('shellExamNothingHereYet')}</p>
               {why && <p className="exam-note">{t(why)}</p>}
@@ -190,22 +270,7 @@ export function ExamPage() {
           </ul>
         </section>
 
-        {free.length > 0 && (
-          <section className="exam-block" aria-labelledby="sec-free">
-            <h2 id="sec-free" className="exam-block__h">{t('shellExamFreeElsewhere')}</h2>
-            <ul className="exam-rows">
-              {free.map((r) => (
-                <li key={r.url}>
-                  <a href={r.url} target="_blank" rel="noopener noreferrer" className="exam-row">
-                    <span className="exam-row__name" lang={r.lang}>{r.title}</span>
-                    <span className="exam-row__meta">{r.publisher}<ArrowUpRight className="size-4" aria-hidden="true" /></span>
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </section>
-        )}
-      </div>
+      </PageWithAside>
     );
   }
 
