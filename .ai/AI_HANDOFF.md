@@ -25,106 +25,41 @@ are written by the agent; the state block is generated — do not hand-edit it.
 
 ## Goal
 
-Redesign v1: rebuild the landing page and the learning portal on shadcn/ui with a warm, Babbel-like look, then publish on Cloudflare Pages. Brief: `docs/blueprint/REDESIGN-v1.md` (owner-approved 2026-10-31). It supersedes `FRONTEND-START.md` for visual design.
+A free French study portal for Persian-speaking (and other) adults with an exam date (DELF, DALF, TCF, TEF). Redesign v2 (owner-approved 2026-11-19, Design canvas https://claude.ai/artifact/2rdofTMH7SXVKj6adSdCG6): one daily path, one heading per section, focus mode for study, full-width pages with useful detail, no fake numbers. Live on Cloudflare Pages (project `frenchmavie`, production branch `main`, root `web`, `NODE_VERSION=22`); every push to main deploys.
 
 ## Current state
 
-Work is on branch `redesign/v1` (from `origin/main` at `b1545aa`) in a worktree under the session scratchpad (`/private/tmp/.../scratchpad/main-wt`). Phase 0 (foundation) and phase 1 (landing) are built and committed locally (not pushed):
-- Packages added, pinned, installed with `--ignore-scripts`: radix-ui 1.8.1, lucide-react 1.61.0, class-variance-authority, clsx, tailwind-merge.
-- Palette retuned in `design-system/tokens.css` (warm paper `#faf7f2`, deep blue `#1e3a8a`, terracotta mark `#c2410c`); `npm run test:contrast` passes.
-- Inter self-hosted in `public/fonts/`. Unsplash photos in `web/public/photos/` (credits not yet written to `content/attribution.json`).
-- `web/src/theme.css` maps shadcn colour names onto the tokens; old CSS moved to `@layer legacy` so Tailwind utilities win.
-- New `Landing.tsx` + `routes/landing/landing2.css`; UI parts in `web/src/components/ui/`.
-- Portal routes are lazy now; first load 149.2 / 150 KB. `npm test` 580/580.
-
-## Phase 2 (portal) done 2026-10-31
-
-Sidebar and mobile bar list only built sections (nav.ts NOT_YET keeps the rest routable). Today = French greeting, one session card (`today-card`), ways-in rows, weak points, data notice; the level map moved to `/app/path` (`Learn mode="path"`). Card session centred. Labels sentence case (`--tracking-label: 0`). Portal CSS: `web/src/routes/portal.css`. e2e updated for the new design: walk 652/652, rtl clear, reader 54/54.
-
-## Phase 2b (exam-centred portal) done 2026-10-31
-
-Owner asked for a portal built around exams. Sidebar = shadcn-style anatomy (`components/ui/sidebar.tsx`) with an exam switcher (`components/ExamSwitcher.tsx`, Radix dropdown) on top; under it the chosen exam's overview, CO/CE/PE/PO and practice papers, then skill tools. Targets in `lib/exam-targets.ts` (DELF A1-B2, DALF C1-C2, TCF, TCF Canada, TEF Canada), choice stored per profile. Pages `/app/exam`, `/app/exam/:target`, `/app/exam/:target/:section` (`routes/exam/ExamPages.tsx`) show only verified format figures from exams.json. TEF Canada format added from the owner's 2026 booklet; TCF Canada NOT VERIFIED (FEI site blocks automated reads; owner can paste the page). New UI keys are `shellExam*` (optional group: fa/ar fall back to English). Walk 656/656, rtl clear, reader 54/54.
-
-## Phase 2c done 2026-10-31
-
-Timer presets 5/10/20/30/60 (default 20), finish toast + system notification (permission asked on first start). Theme toggle in top bar. Card back: past/future side by side. Today: Bonjour/Bonsoir, French date, mot du jour (real card). French photo banners on list pages (RouteBanner in PortalNav, lazy). Verb drill opens on a verb of the day instead of an error. Persian: 533 strings drafted by an agent, marked DRAFT in fa.ts, listed in docs/review/fa-ui-drafts.md, the in-app draft notice (`shellFaDraft`) was removed at the owner's request on 2026-11-06 (branch `fix/remove-fa-draft-notice`), after an agent re-read all of fa.ts and fixed register (تو→شما), literal phrasings and ezafe spelling. Strings are still in the DRAFT block of fa.ts: the owner has not reviewed them line by line. Arabic unchanged (falls back to English). Tests moved fallback checks to Arabic.
-
-## Phase 2d: verb flashcards 2026-11-02
-
-Owner asked for 200-500 cards per level. `scripts/build-verb-cards.py` builds `content/verb-cards/<level>.json` from the checked verb tables: 2,349 cards (A1 200, A2 299, B1 391, B2 492, C1 491, C2 476). Back = English Wiktionary gloss (marked unreviewed on screen) + past « il a parlé » and future « il parlera » composed from auxiliary/participle/futur ("il", not "je", to avoid elision guesses). `/app/cards?level=X` picks the level (default: exam target level, else A1); 20 new cards per session plus due cards from any level; key = verb index key, so history is shared with the Cards workspace. `decks.json` deliberately unchanged (legacy app/ and tests need four-language cards there). Test: `tests/verb-cards.test.js`. NOT done: nouns/adjectives (no word source in the repo yet; would need Lexique 3.83 for frequency and gender, plus an en.wiktionary harvest), Persian meanings for verbs.
-
-Later 2026-11-02 the owner asked for real sentences on the back: `content/verb-sentences/<level>.json` holds, per verb, a passé composé and a futur sentence with en+fa translations, a Persian meaning, the usual preposition and construction (agent-drafted, NOT REVIEWED; review sheet `docs/review/verb-sentences.md`). `scripts/check-verb-sentences.py` checks every form against the tables; the build merges them in. 11 verbs held back (`exclude` + reason: vulgar/drugs/violence, and frire). Card front shows word type + preposition (« verb · + à »). 2,338 cards now.
-
-## Phase 2e: flip card and timer 2026-11-03
-
-Owner chose the "flip card" style (no reference app). `Session.tsx` card is now a 3D-flipping paper card (`.fc*` in `routes/portal.css`): tricolore band, big word + type/preposition pill on the front; back = first sense large, other senses small, construction, past|aujourd'hui|future axis (always LTR), sentences. Swipe on touch only (right Good, left Again, 96 px). Grade buttons tinted with key hints. No new package. Timer presets 5/10/20/30/45 (owner); the timer popover is `components/TimerPanel.tsx` (lazy: ring, preset tiles, start/reset, chime switch). Card taps toggle front/back; prev/next buttons and arrow keys move without grading (`goTo`); audio is opened silently on Start (`primeAudio`) so the end chime is not blocked.
-
-## Phase 2f: noun and adjective cards 2026-11-03
-
-`scripts/build-word-list.py` reads Lexique 3.83 (kept at `~/.cache/flw/lexique/Lexique383.tsv`, 25 MB, sha256 637ba37a…) into `data/word-frequency-list.json`: top 2,400 NOM/ADJ lemmas in the verb bands, with gender, plural, feminine. Rules worth knowing: gender read from all rows (Lexique often blanks the singular); a separate feminine form makes the headword m; `NOT_FEMININE` and `AMBIGUOUS_GENDER` are explicit exceptions; « oe » before u/i restored to « œ »; keys that fold together get `#2` (côte, marché, tâche, passe, pêche). Agents drafted `content/word-sentences/<level>.json` (meaning en/fa, article, one example; 40 held back); `scripts/check-word-sentences.py` checks them; `scripts/build-word-cards.py` writes `content/word-cards/`. Sessions interleave verbs and words (`loadLevelCards`). Review sheet `docs/review/word-sentences.md`.
-
-## Publishing 2026-11-03
-
-Cloudflare Pages project `frenchmavie` (owner's existing Cloudflare account), Git-connected to this repo: production branch `main`, root directory `web`, build `npm ci && npm run build`, output `dist`, env `NODE_VERSION=22`. Every push to main deploys; PRs get preview builds. `frenchmavie.pages.dev` is blocked by Turkish ISPs (the resolver returns a Superonline address; SNI reset on the real Cloudflare IP), so the owner cannot open it without a VPN; the custom domain avoids this. Owner chose to move frenchmavie.com's nameservers from Namecheap to Cloudflare (registration stays at Namecheap); this reverses the older "DNS stays at Namecheap" line in docs/deploying.md, which still needs updating. CI runners pinned to ubuntu-24.04 (ubuntu-latest became 26.04, where Playwright 1.55 cannot install Chromium).
-
-## Live site changes after launch (2026-11-03)
-
-- PR #70: `main` is `position: relative` (hidden landing labels stretched the document past the footer); white hero buttons fixed to #1f3a6e in dark mode.
-- PR #71: progress kept safer without a server (owner chose option 1 of 3; options 2 sync-code and 3 accounts are documented in that conversation, not built). `lib/backup-rules.ts` (persist request + reminder rules, no package imports so CI's unit job loads it) and `lib/backup.ts` (download). Reminder on Today at 30+ reviewed cards and no backup in 14 days; Later = 7 days. Export now includes the whole review log (it used to stop at 500 rows).
-- First-load budget is at 149.7 / 150 KB: new eager strings or code need room made first.
-
-- Wide dashboard (owner chose "dashboard with side column"): `.dash` / `.dash__main` / `.dash__aside` in `routes/portal.css`, two columns from 1100 px, one below. Used by Today (week chart, mot du jour, my exam on the side), exam overview, cards session (levels, session, keys on the side), Progress. Verbs is a card grid, Account two columns, exam chooser families side by side. `--width-page` is set on `.shell` (tokens.css :root is unlayered and would win). New lazy text group `todayEn` (prefix `td`) because the first-load budget was full; French and Persian carry it, Arabic falls back.
-
-## Letters / production écrite (2026-11-06, branch feat/letter-writing, not committed)
-
-`/app/writing`: formal letter (vous) and informal letter (tu). Per kind: parts in order with phrase banks, annotated model, easy mistakes, tasks (A2–B2, author-assigned). Writing desk: autosaved draft (shared `notes` store, key `draft.<taskId>`, so export/erase already cover it), phrase insert at cursor, word count, live structure checks (`features/letters/model.ts`: date, Objet, greeting, closing, greeting echoed in closing, tu/vous, tone, signature, leftover [brackets]). Content `content/letters.json`, drafted, NOT reviewed. Lazy text group `writingEn` (prefix `lw`), fr + fa written, ar falls back. Sidebar list is `SKILLS` in `PortalNav.tsx`, not `nav.ts` (both updated). `tests/letters.test.js` runs the checks against the model letters and phrase banks.
-
-## Themes and free resources (2026-11-06, branch feat/themes-and-resources)
-
-Owner asked for exam themes (housing, hotel, sport, economy…) with words, verbs and expressions, tied to each exam and level, plus a free-resources panel. Code says "topics" because "theme" already means light/dark. Pages `/app/themes`, `/app/themes/:id`, `/app/resources` (`routes/topics/Topics.tsx`, data `lib/topics.ts`, strings lazy group `topicsEn`, prefixes tp/rs; sidebar labels `shellNavThemes/Resources` are eager because TopLine is). Flashcards take `?theme=<id>`.
-- Source `data/themes.json` → `python3 -I scripts/build-themes.py --lexique ~/.cache/flw/lexique/Lexique383.tsv` → `content/themes.json` + `content/themes/<id>.json`. Card words are referenced by key; theme-only nouns are checked against Lexique (form or lemma, gender), else dropped and listed.
-- Exam links are evidence only: 99 rows read in official sample papers (quotes machine-checked). No readable TCF Canada evidence (FEI site = Anubis). TEF EO rows count for TEF Canada (source says sections shared); TEF EE rows stay "TEF". Theme "administration" has no evidence yet.
-- `content/resources.json`: 83 entries; france-education-international.fr answers 200 to ANY path (bot challenge), so its links are `blocked`; a test enforces it.
-- All drafted content is unreviewed, recorded in the data (`reviewed`, `levelEstimated`, `checked`) and `docs/review/themes.md`, but NOT shown to learners (owner decision 2026-11-06, PR #74). Persian strings appended to `docs/review/fa-ui-drafts.md`, polite register.
-- First load now 153,566 / 153,600 bytes (34 spare). Anything eager needs room made first.
-- Port 4179 may be another session's preview: check `lsof` cwd before trusting an e2e run.
-
-## Landing hero film (live since 2026-11-07, PR #78; framing fix in branch fix/hero-film-framing)
-
-Design 22 (centred formal hero: headline, CSS hairline, outline button, French place caption drawn by CSS) over a silent film: two boats on the Seine at sunset with the Eiffel Tower (Pexels 12308438, Zheltenko Oleksandr, Pexels licence: no permission, no credit; recorded in content/attribution.json). The owner wants the WHOLE frame visible: the hero takes the film's 16:9 proportions on wide screens (`min-height: 56.25vw`), and below 1024px the film is a full-width 16:9 band with the words under it. Plays at its own speed (slowed, it looked frozen). `routes/landing/HeroFilm.tsx` is a lazy chunk; `src` only after mount, never with reduced motion or Save-Data. sw.mjs skips video/range requests. First-load JS budget is FULL (0.1 KB spare). Owner's rule: only assets that need nobody's permission, licence checked before showing. Pexels files can be fetched through the owner's Chrome (remote debugging, port 9222) with Playwright `connectOverCDP`; Mixkit mixes Free and Restricted clips.
-
-## Workspace retired (2026-11-19, branch redesign/merge-workspace)
-Owner decision: one flashcard tool, not two. `/app/cards` (FSRS session) is it. From the workspace it took the Listen button (`card-listen`, outside the `<article>` because the front face is a button; hidden when the device has no French voice), the voice speed (`hooks/useVoice.ts`, per-profile key `voice-rate`, speeds from `lib/speech.ts` RATES) and the speech-aid note (first card of a session). Dialogues is its own page at `/app/dialogues` (`features/dialogues/Dialogues.tsx`, sidebar Learning group and mobile Learn sheet, core keys `navDialogues`/`dialoguesLede` in all four locales). `Workspace.tsx` and the workspace `Flashcards.tsx` are deleted; `/workspace` and `/app/workspace` redirect to the cards. The workspace's Quiz tab was only a link to `/app/exams`; the finished-cards screen carries that link now. Kept: `lib/workspace-cards.ts` and its test (card-backs.test.js reads the corpus through it) and the `workspaceEn` lazy group (Dialogues and the Listen strings use it; seven test files list it by name). `lib/card-backs.ts` now has no screen using it — its content check still runs.
+Branch `redesign/portal-v2` (from `origin/main` 45cda38), pushed, PR open to `main`. It holds:
+- Five security-audit fixes: error boundary inside the shell, dev review endpoint checks Origin/content-type/size/fields, FSRS card fields validated on import, SW does not cache rewritten HTML for non-navigation requests, GitHub actions pinned to SHAs.
+- `SectionHead` on every list page (photo banners and duplicate titles gone); breadcrumb line and search box removed, search is an icon in the bar (Cmd-K still works); focus mode (`FOCUS` regexes in `components/Shell.tsx`) for cards, exam sit, letter desk, verb drill; sidebar: Learning group (cards, verbs, grammar, reading, writing, themes, dialogues), resources under the exam, no duplicate "Choose your exam".
+- Card session in one column with Listen button (`hooks/useVoice.ts`, speeds from `lib/speech.ts`); `NextStep` at the end of a lesson (next lesson), text (next text), verb (drill).
+- Today = three-step session from `lib/plan.ts` (cards due, weak point's lesson or first at exam level, first unanswered text at exam level), stored per profile per day; Session/GrammarLesson/ReaderPage call `completeStep`; readiness and "left unfinished" cards.
+- `/app/exam/:target`: exam date per profile (`userKey(userId,'exam-date')`), countdown and day plan, four sections with the learner's real counts, official resources, teacher card.
+- Workspace retired: `/app/workspace` redirects to `/app/cards`; Dialogues is `/app/dialogues`.
+First load 149.9 / 150.0 KB. Unit tests: 514 pass; the 10 "failures" on a bare `node --test` are `.ts` resolution; the pre-push sweep and CI use `tests/register.mjs` and pass.
 
 ## Next step
 
-Owner: nameservers to Cloudflare, then add frenchmavie.com and www as custom domains on the Pages project. Then update docs/deploying.md to match. Fix « frire » in the verb tables. Owner/teacher review of the drafted Persian UI and card sentences. Letters: a teacher reads `content/letters.json`; a person reads the official DELF word minimums (the FEI site blocks automated reading) and records them with the date before any target is shown.
+After the PR merges, verify on `main` and on the live site (`curl -sI https://frenchmavie.com/` for CSP/HSTS headers). Then: owner checks the phone layout on a real phone; owner/teacher reviews the drafted Persian UI strings (`docs/review/fa-ui-drafts.md`) and card sentences; a teacher reads `content/letters.json`; update `docs/blueprint/CONTRACTS-v0.2.md` (still describes `/workspace`); `lib/card-backs.ts` has no screen consumer any more. Older open items: fix « frire » in the verb tables; frenchmavie.com custom domain on Pages and `docs/deploying.md` to match.
 
 ## Decisions
 
-- 2026-11-06 (owner, site already sent to ~10,000 learners): no "draft", "not checked by a teacher", "unreviewed" or "not verified" notice is shown to learners anywhere. Review data (review fields, glossUnreviewed, verified flags) is kept; only its display was removed. Walk checks now assert these notices are absent. This overrides the learner-facing part of AGENTS.md §2.
-
-- Owner chose shadcn/ui, Magic UI free parts only, Babbel-like feel, English-first landing, keep the name, Unsplash photos, everything free.
-- No Docker Desktop (owner will uninstall it). Packages installed directly with scripts off, pinned to versions older than 10 days.
-- No server. Cloudflare Pages free plan; backend only when accounts/sync/payments are wanted.
-- shadcn `accent` is not mapped: `--color-accent` already means primary blue in the old screens.
-
-- 2026-10-31, third landing pass (owner said passes 1-2 looked AI-made): built with the frontend-design skill. Dropped cream/terracotta, italic accent word, caps eyebrows, card grid, stats strip. Now: Paris photo hero with French headline + English line, sommaire rows, Seyes-ruled practice desk, Spectral + Inria Sans, street-sign blue #1f3a6e. Landing CSS is `web/src/routes/landing/landing3.css`.
-- If the owner rejects again: ask for a reference site, do not iterate blind.
+- 2026-11-19 (owner): one flashcard tool (the FSRS session); photo banners off inner pages; sidebar stays exam-centred; Today is a session; mockups are made on the Design canvas, never CSS wireframes; security review runs with every redesign round.
+- 2026-11-06 (owner, site sent to ~10,000 learners): no "draft / unreviewed / not verified" notice is shown to learners; review data is kept in the files. Overrides the learner-facing part of AGENTS.md §2.
+- shadcn/ui, Magic UI free parts only, everything free; no server, Cloudflare Pages free plan; guest only; four interface languages, Arabic falls back to English for lazy groups.
+- Only assets that need nobody's permission; licence checked before showing (Pexels film on the landing; Unsplash photos).
+- Palette: warm paper, street-sign blue #1f3a6e, Spectral/Newsreader for French, Inria Sans; Vazirmatn for Persian.
 
 ## Gotchas
 
-- Radix Accordion writes inline styles, which the CSP prerender check refuses; FAQ uses native `<details>`.
-- Prerender checks were updated: the landing no longer has the shell bar or mobile tabs.
-- The main checkout is on the stale `content/b1-neg-5-meaning` branch; do not implement there.
-- Playwright's own browser is not installed: run e2e with `CHROMIUM="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"` and `BASE=http://localhost:4173/`.
-- The worktree now lives at `.claude/worktrees/redesign-v1` (the scratchpad one was wiped by a reboot). Its path has a space: build script paths with fileURLToPath, never URL.pathname.
-- The global `kbd` rule has a light background; override it on coloured buttons (axe caught it).
-- Persian strings use Latin digits; the app substitutes them (a test enforces it).
-- Full-page screenshots need `main{overflow:visible}`: the page scrolls inside `main`.
-- First-load JS is at the 150 KB ceiling (0.1 KB spare after letters). New UI text goes in a lazy group, not `shellEn`.
-- `lib/typography` fr() groups every 4+ digit number (« 2 026 », « 69 003 ») despite its comment; letters undo it locally (`letterFr`). Other screens still show it.
+- New dictionary keys go in the core `en` object of `lib/i18n.ts` after `skipToContent` (and at the same anchor in fa/fr/ar), not beside `shell*` keys: the lazy-group test otherwise accuses Arabic of a partial group. Lazy text groups: todayEn, workspaceEn, grammarEn, readerEn, writingEn, topicsEn, weaknessEn.
+- `tests/no-untranslated-strings.test.js` flags Latin text between JSX tags, in aria-label/placeholder/alt/title, and `=> new Map<T>()`-style generics.
+- First-load JS is at the ceiling (0.1 KB spare): nothing eager without making room; new routes are lazy.
+- Headless Chrome `--window-size=390` clips the right edge; it is the headless window, not the site (CDP at a real 390 px viewport: scrollWidth 390). Full-page screenshots need `main{overflow:visible}`.
+- The commit-msg hook refuses attribution trailers, even quoted; `scripts/check-commit-messages.sh` scans every ref.
+- The main checkout is on the stale `content/b1-neg-5-meaning` branch; implement in a worktree from `origin/main`. Playwright's browser is not installed: e2e with `CHROMIUM=<Chrome binary>` and `BASE=http://localhost:4173/`.
+- `lib/typography` fr() groups 4+ digit numbers; letters undo it locally.
 
 ## How to run and test
 
-From the worktree root: `npm test`; `cd web && npm run build && npx vite preview --port 4173`; contrast: serve the repo on 127.0.0.1:8765 and run `CHROMIUM=<Chrome binary> npm run test:contrast`.
+From a worktree root: `cd web && npm ci --ignore-scripts && npm run build && npx vite preview --port 4173`; unit tests as the sweep runs them: `node --import ./tests/register.mjs --test tests/*.test.js`; `./scripts/setup-hooks.sh` once per clone.
