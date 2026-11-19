@@ -129,3 +129,8 @@
 .lw-state { display: flex; flex-direction: column; align-items: center; gap: var(--space-3); text-align: center; padding: var(--space-10) var(--space-4); }
 .lw-state h2 { margin: 0; }
 .lw-state p { margin: 0; color: var(--color-ink-muted); max-width: var(--width-prose); }
+
+/* The kind card names its parts in order (v2b, group C). */
+.lw-kind__parts { margin: 0; padding: 0; list-style: none; display: flex; flex-wrap: wrap; gap: var(--space-1) var(--space-2); counter-reset: part; font-size: var(--text-sm); color: var(--color-ink-muted); }
+.lw-kind__parts li { counter-increment: part; }
+.lw-kind__parts li::before { content: counter(part) " "; font-weight: 700; color: var(--color-accent); }

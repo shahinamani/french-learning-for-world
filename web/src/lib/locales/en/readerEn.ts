@@ -45,6 +45,7 @@ export const readerEn = {
   rdContinue: 'Continue reading',
   rdSavedBadge: 'Saved',
   rdResultBadge: 'Questions: {c} of {n}',
+  rdContinueRow: 'Pick up where you left off',
   rdBack: 'Back to the texts',
   rdSave: 'Save for later',
   rdSavedForLater: 'Saved for later',

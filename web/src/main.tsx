@@ -22,7 +22,8 @@ import { Stub, NotFound } from './routes/Stub';
 const LevelSkill = lazy(() => import('./routes/LevelSkill').then((m) => ({ default: m.LevelSkill })));
 import { Home } from './routes/Home';
 import { Redirect, LEGACY } from './routes/app/Redirects';
-import { Placeholder, PLACEHOLDERS } from './routes/app/Placeholder';
+import { PLACEHOLDERS } from './routes/app/placeholders';
+const Placeholder = lazy(() => import('./routes/app/Placeholder').then((m) => ({ default: m.Placeholder })));
 import * as NAV from './routes/app/nav';
 
 const PlaceholderRoute = ({ id }: { id: string }) => {
