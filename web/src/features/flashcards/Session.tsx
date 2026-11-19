@@ -30,6 +30,7 @@ import { CARD_LEVELS, loadLevelCards, loadWordIndex, mergeCards, NEW_PER_SESSION
 import { loadVerbIndex } from '../../lib/verbs';
 import { useTarget } from '../../lib/exam-targets';
 import { requestPersistence } from '../../lib/backup';
+import { completeStep, type Step } from '../../lib/plan';
 import '../../lib/locales/en/todayEn';   // registers its English (lazy group)
 
 const RATING_KEY = { 1: 'again', 2: 'hard', 3: 'good', 4: 'easy' } as const;
@@ -216,6 +217,14 @@ export function FlashcardSession() {
   }, [userId, conceptFilter, cardFilter, themeFilter, sessionParam, level]);
 
   const card = queue?.[index] ?? null;
+  // Today's plan: a finished queue marks the cards step and names the next.
+  const [planNext, setPlanNext] = useState<Step | null>(null);
+  const planMarked = useRef(false);
+  useEffect(() => {
+    if (!queue || card || planMarked.current || conceptFilter || cardFilter) return;
+    planMarked.current = true;
+    setPlanNext(completeStep(userId, 'cards'));
+  }, [queue, card, userId, conceptFilter, cardFilter]);
   useEffect(() => { setRevealed(false); shownAt.current = Date.now(); }, [index, card?.key]);
 
   const stateOf = useCallback((key: string) => states.get(key) ?? emptyState(), [states]);
@@ -339,8 +348,13 @@ export function FlashcardSession() {
           <p className="empty__body">
             {reviewed > 0 ? `${t('sessionDoneBody')} ${t('reviewed', { n: reviewed })}` : t('nothingDueBody')}
           </p>
+          {planNext && (
+            <Link className="btn btn--primary btn--lg" to={planNext.to} data-testid="plan-next">
+              {t('tdPlanAfter', { n: 1, m: 3, name: planNext.fr ?? planNext.title })}
+            </Link>
+          )}
           {!conceptFilter && !cardFilter && (
-            <Link className="btn btn--primary" to={`/app/cards?level=${level}`}
+            <Link className={planNext ? 'btn' : 'btn btn--primary'} to={`/app/cards?level=${level}`}
                   data-testid="session-more">{t('keepGoing')}</Link>
           )}
         </div>

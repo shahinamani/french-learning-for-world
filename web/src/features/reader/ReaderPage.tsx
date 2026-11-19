@@ -29,6 +29,7 @@ import { Quiz } from './Quiz';
 import { deleteSaved, getPosition, putPosition, putResult, putSaved, resultsForUser, savedForUser, type ReaderResult } from './store';
 import type { ReadingText } from './types';
 import { ReaderState, useReadingTexts, useWide } from './ui';
+import { completeStep, type Step } from '../../lib/plan';
 import './reader.css';
 
 const SIZES = [16, 18, 20, 22, 24, 28] as const;
@@ -333,10 +334,13 @@ function ReaderView({ text, back, next }: { text: ReadingText; back: string; nex
 
   const tr = pick({ fa: text.body.fa, en: text.body.en }, settings.meaning);
   const audio = text.media?.audio?.url;
+  const [planNext, setPlanNext] = useState<Step | null>(null);
   const onFinished = useCallback((c: number, n: number) => {
     const r = { userId, itemId: text.id, correct: c, total: n, updatedAt: Date.now() };
     setLast(r);
     putResult(r).catch(() => { /* result not kept; the screen still shows it */ });
+    // Today's plan: the text step is done; the quiz offers what comes next.
+    setPlanNext(completeStep(userId, 'text'));
   }, [userId, text.id]);
 
   return (
@@ -437,7 +441,7 @@ function ReaderView({ text, back, next }: { text: ReadingText; back: string; nex
                 {last && <span className="rd-note" data-testid="rd-last"><Num>{t('rdResultBadge', { c: last.correct, n: last.total })}</Num></span>}
               </div>
             ) : (
-              <Quiz key={quizKey} textId={text.id} questions={text.questions} onFinished={onFinished} backSearch={back.replace('/app/reading', '')} next={next}
+              <Quiz key={quizKey} textId={text.id} questions={text.questions} onFinished={onFinished} backSearch={back.replace('/app/reading', '')} next={next} planNext={planNext}
                 onReread={() => { setQuiz(false); setQuizKey((k) => k + 1); toTop(); }} />
             )}
           </div>

@@ -759,3 +759,29 @@
 /* ── What next, at the end of an activity (redesign v2) ──────────────────── */
 .next-step { display: flex; flex-wrap: wrap; gap: .625rem; align-items: center; margin-block-start: var(--space-4); padding-block-start: var(--space-4); border-block-start: 1px solid var(--color-line); }
 .next-step .btn--lg { flex: 1 1 16rem; justify-content: center; }
+
+/* ── Today as a session (redesign v2) ────────────────────────────────────── */
+.today-page { max-width: none; gap: 1.5rem; }
+.today-plan { flex-direction: column; align-items: stretch; gap: 1.25rem; padding: 1.75rem 2rem; }
+.today-plan__head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 1rem; }
+.today-plan__label { margin: 0 0 .25rem; font-size: .8125rem; font-weight: 700; opacity: .8; }
+.today-steps { list-style: none; margin: 0; padding: 0; display: grid; gap: .625rem; }
+@media (min-width: 720px) { .today-steps { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+.today-steps a { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: .75rem; align-items: start; padding: .875rem 1rem;
+  border-radius: 10px; background: rgb(255 255 255 / 0.1); color: inherit; text-decoration: none; min-height: 4.5rem; }
+.today-steps a:hover { background: rgb(255 255 255 / 0.18); }
+.today-steps li[data-done] a { opacity: .6; }
+.today-steps__n { display: inline-grid; place-items: center; width: 1.625rem; height: 1.625rem; border-radius: 50%; border: 1.5px solid currentColor; font-size: .8125rem; font-weight: 700; }
+.today-steps__body { display: flex; flex-direction: column; gap: .125rem; min-width: 0; }
+.today-steps__title { font-weight: 600; }
+.today-steps__fr { font-family: var(--font-display); font-size: 1.125rem; line-height: 1.25; overflow-wrap: anywhere; }
+.today-steps__min { font-size: .8125rem; opacity: .85; white-space: nowrap; }
+.today-grid { display: grid; gap: 1.25rem; }
+@media (min-width: 720px) { .today-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+.today-grid .dash-card { margin: 0; }
+.ready { list-style: none; margin: 0; padding: 0; display: grid; gap: .625rem; font-size: .9375rem; }
+.ready li { display: grid; gap: .3rem; }
+.ready a { color: inherit; text-decoration: none; }
+.ready a:hover { color: var(--fr-bleu); }
+.ready .rail { display: block; height: 6px; border-radius: 999px; background: var(--color-surface-sunken); overflow: hidden; }
+.ready .rail__fill { display: block; height: 100%; background: var(--fr-bleu); border-radius: 999px; }

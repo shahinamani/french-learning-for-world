@@ -22,9 +22,11 @@ type Props = {
   backSearch: string;
   /** The text to read after this one, if any. */
   next?: { id: string; title: string } | null;
+  /** Today's plan's next step, when this text was one of its steps. */
+  planNext?: { to: string; title: string; fr?: string } | null;
 };
 
-export function Quiz({ textId, questions, onFinished, onReread, backSearch, next }: Props) {
+export function Quiz({ textId, questions, onFinished, onReread, backSearch, next, planNext }: Props) {
   const { t } = useApp();
   const [picked, setPicked] = useState<Record<string, number>>({});
   /** questionId → the index checked FIRST. Set once, never overwritten. */
@@ -101,9 +103,10 @@ export function Quiz({ textId, questions, onFinished, onReread, backSearch, next
           <p data-testid="rd-score"><Num>{t('rdFinishedScore', { c: correct, n: total })}</Num></p>
           <p className="rd-note" dir="auto">{t('rdFinishedNext')}</p>
           <div className="rd-actions">
+            {planNext && <Link className="btn btn--primary" to={planNext.to} data-testid="plan-next">{t('tdPlanAfter', { n: 3, m: 3, name: planNext.fr ?? planNext.title })}</Link>}
             {next
-              ? <Link className="btn btn--primary" to={`/app/reading/${next.id}${backSearch}`} data-testid="rd-next-text">{t('nextText', { name: next.title })}</Link>
-              : <Link className="btn btn--primary" to="/app/cards" data-testid="rd-to-cards">{t('rdMyWords')}</Link>}
+              ? <Link className={planNext ? 'btn' : 'btn btn--primary'} to={`/app/reading/${next.id}${backSearch}`} data-testid="rd-next-text">{t('nextText', { name: next.title })}</Link>
+              : <Link className={planNext ? 'btn' : 'btn btn--primary'} to="/app/cards" data-testid="rd-to-cards">{t('rdMyWords')}</Link>}
             {next && <Link className="btn" to="/app/cards" data-testid="rd-to-cards">{t('rdMyWords')}</Link>}
             <button type="button" className="btn" onClick={onReread}>{t('rdReread')}</button>
             <Link className="btn" to={`/app/reading${backSearch}`}>{t('rdBack')}</Link>
