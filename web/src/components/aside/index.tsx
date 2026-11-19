@@ -58,7 +58,7 @@ export function ExamSectionCard({ section, note }: { section: SectionKey; note?:
   }, [target]);
   if (!target) {
     return (
-      <AsideCard title={t('asideExamTitle')} testId="aside-exam">
+      <AsideCard title={t('tdAsideExamTitle')} testId="aside-exam">
         <p className="muted fine">{t('tdNoExam')}</p>
         <Link className="btn btn--sm" to="/app/exam">{t('shellExamChoose')}</Link>
       </AsideCard>
@@ -71,7 +71,7 @@ export function ExamSectionCard({ section, note }: { section: SectionKey; note?:
   if (paper?.exercises) facts.push(t('shellExamTasks', { n: paper.exercises }));
   if (paper?.items) facts.push(t('shellExamItems', { n: paper.items }));
   return (
-    <AsideCard title={`${t('asideExamTitle')} · ${target.label}`} testId="aside-exam">
+    <AsideCard title={`${t('tdAsideExamTitle')} · ${target.label}`} testId="aside-exam">
       <p className="aside-card__lead">
         <b>{t(SEC_LABEL[section])}</b>
         {paper && <span className="fr-inline" lang="fr" dir="ltr"> · {pick(paper.name, settings.ui).text}</span>}
@@ -80,7 +80,7 @@ export function ExamSectionCard({ section, note }: { section: SectionKey; note?:
       {facts.length > 0 && <p className="aside-card__facts">{facts.join(' · ')}</p>}
       {paper?.task && <p className="fine" dir="auto">{paper.task}</p>}
       {note && <p className="muted fine">{t(note)}</p>}
-      <Link className="aside-card__link" to={`/app/exam/${target.id}/${section}`}>{t('asideExamOpen')} <Icon name="chevron" size={14} /></Link>
+      <Link className="aside-card__link" to={`/app/exam/${target.id}/${section}`}>{t('tdAsideExamOpen')} <Icon name="chevron" size={14} /></Link>
     </AsideCard>
   );
 }
@@ -101,9 +101,9 @@ export function SavedWordsCard({ limit = 6 }: { limit?: number }) {
     return () => { live = false; };
   }, [userId]);
   return (
-    <AsideCard title={t('asideSavedTitle')} testId="aside-saved">
+    <AsideCard title={t('tdAsideSavedTitle')} testId="aside-saved">
       {items === null && <div className="skeleton skeleton--text" />}
-      {items !== null && items.length === 0 && <p className="muted fine">{t('asideSavedNone')}</p>}
+      {items !== null && items.length === 0 && <p className="muted fine">{t('tdAsideSavedNone')}</p>}
       {items !== null && items.length > 0 && (
         <>
           <ul className="aside-words">
@@ -114,7 +114,7 @@ export function SavedWordsCard({ limit = 6 }: { limit?: number }) {
               </li>
             ))}
           </ul>
-          <p className="muted fine">{t('asideSavedCount', { n: items.length })}</p>
+          <p className="muted fine">{t('tdAsideSavedCount', { n: items.length })}</p>
           <Link className="aside-card__link" to="/app/reading">{t('shellNavReading')} <Icon name="chevron" size={14} /></Link>
         </>
       )}
@@ -164,7 +164,7 @@ export function PlanCard() {
   const next = plan ? nextStep(plan) : null;
   return (
     <AsideCard title={t('tdPlanTitle')} testId="aside-plan">
-      {!plan && <p className="muted fine">{t('asidePlanNone')}</p>}
+      {!plan && <p className="muted fine">{t('tdAsidePlanNone')}</p>}
       {plan && (
         <>
           <p className="aside-card__facts">{t('tdPlanSteps', { n: plan.steps.length, m: minutesOf(plan) })}</p>
@@ -189,10 +189,10 @@ export function PlanCard() {
 export type TipId = 'reading' | 'writing' | 'cards' | 'verbs' | 'grammar' | 'exam' | 'themes' | 'search' | 'dialogues' | 'path' | 'progress';
 export function TipCard({ id }: { id: TipId }) {
   const { t } = useApp();
-  const key = `tip${id[0]!.toUpperCase()}${id.slice(1)}` as 'tipReading';
+  const key = `tdTip${id[0]!.toUpperCase()}${id.slice(1)}` as 'tdTipReading';
   return (
-    <AsideCard title={t(`${key}Title` as 'tipReadingTitle')} testId={`aside-tip-${id}`}>
-      <p className="fine" dir="auto">{t(`${key}Body` as 'tipReadingBody')}</p>
+    <AsideCard title={t(`${key}Title` as 'tdTipReadingTitle')} testId={`aside-tip-${id}`}>
+      <p className="fine" dir="auto">{t(`${key}Body` as 'tdTipReadingBody')}</p>
     </AsideCard>
   );
 }
