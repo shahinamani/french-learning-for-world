@@ -9,6 +9,7 @@
  * address as its origin, so finishing a lesson returns here, filters intact.
  */
 import { useMemo } from 'react';
+import { SectionHead } from '../../components/SectionHead';
 import { Link, useLocation, useSearchParams } from 'react-router';
 import { useApp } from '../../app-context';
 import { Localised } from '../../components/Localised';
@@ -34,10 +35,8 @@ export function GrammarList() {
 function Heading() {
   const { t } = useApp();
   return (
-    <header>
-      <h1 className="h2" data-testid="grammar-title">{t('grlTitle')}</h1>
-      <p className="muted" data-testid="grammar-lead">{t('grlLead')}</p>
-    </header>
+    <SectionHead title={t('grlTitle')} fr="La grammaire" lede={t('grlLead')}
+                 titleTestId="grammar-title" ledeTestId="grammar-lead" />
   );
 }
 

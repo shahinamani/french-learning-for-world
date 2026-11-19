@@ -2,6 +2,7 @@
  * The letters section: the two kinds side by side, and the learner's drafts.
  */
 import { useEffect, useState } from 'react';
+import { SectionHead } from '../../components/SectionHead';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
 import { Icon } from '../../components/Icon';
@@ -41,11 +42,8 @@ function Home({ data }: { data: LettersFile }) {
 
   return (
     <div className="lw" data-testid="lw-home">
-      <header className="lw-head">
-        <h1 className="h2">{t('lwTitle')}</h1>
-        <p className="lw-lead" dir="auto">{t('lwLead')}</p>
-        <p className="lw-note" dir="auto">{t('lwDraftedNote')}</p>
-      </header>
+      <SectionHead title={t('lwTitle')} fr="Les lettres" lede={t('lwLead')}
+                   note={<p className="lw-note" dir="auto">{t('lwDraftedNote')}</p>} />
 
       <ul className="lw-kinds">
         {data.kinds.map((k) => (

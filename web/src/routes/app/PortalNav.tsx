@@ -63,6 +63,7 @@ const SKILLS: { id: string; to: string; icon: typeof Ear; label: keyof Dict }[] 
   { id: 'grammar', to: '/app/grammar', icon: BookA, label: 'grammar' },
   { id: 'reading', to: '/app/reading', icon: FileText, label: 'shellNavReading' },
   { id: 'writing', to: '/app/writing', icon: PenLine, label: 'shellNavWriting' },
+  { id: 'themes', to: '/app/themes', icon: Shapes, label: 'shellNavThemes' },
 ];
 
 export function Sidebar() {
@@ -120,22 +121,11 @@ export function Sidebar() {
                 </SidebarMenuItem>
               </>
             ) : (
-              <SidebarMenuItem>
-                <SidebarMenuButton to="/app/exam" end icon={<GraduationCap />} testId="nav-exam-choose">
-                  {t('shellExamChoose')}
-                </SidebarMenuButton>
-              </SidebarMenuItem>
+              /* No exam yet: the switcher above already says "Choose your
+                 exam"; a second line saying it again was the first thing a
+                 new learner saw twice. The free resources stay reachable. */
+              null
             )}
-          </SidebarMenu>
-        </SidebarGroup>
-
-        {/* Themes and free resources (2026-11-06): what to study for the exam,
-            and where to find more of it. */}
-        <SidebarGroup>
-          <SidebarMenu>
-            <SidebarMenuItem>
-              <SidebarMenuButton to="/app/themes" icon={<Shapes />} testId="nav-themes">{t('shellNavThemes')}</SidebarMenuButton>
-            </SidebarMenuItem>
             <SidebarMenuItem>
               <SidebarMenuButton to="/app/resources" icon={<Library />} testId="nav-resources">{t('shellNavResources')}</SidebarMenuButton>
             </SidebarMenuItem>
@@ -217,8 +207,7 @@ export function MobileBar() {
          { to: '/app/exam', label: t('shellExamSwitch'), id: 'exam-choose' }]
       : [{ to: '/app/exam', label: t('shellExamChoose'), id: 'exam-choose' }];
   } else if (sheet === 'learn') {
-    items = [{ to: '/app/themes', label: t('shellNavThemes'), id: 'themes' },
-      ...SKILLS.filter((s) => s.id !== 'cards').map((s) => ({ to: s.to, label: t(s.label), id: s.id }))];
+    items = SKILLS.filter((s) => s.id !== 'cards').map((s) => ({ to: s.to, label: t(s.label), id: s.id }));
   } else if (sheet === 'more') {
     items = [{ to: '/app/resources', label: t('shellNavResources'), id: 'resources' },
       { to: '/app/progress', label: t('progress'), id: 'progress' }, { to: '/app/path', label: t('shellNavPath'), id: 'path' },
@@ -259,34 +248,5 @@ export function MobileBar() {
         </ul>
       </BottomSheet>
     </>
-  );
-}
-
-/** A slim photograph of France at the top of each list page, with the
- *  section's name in French. Study pages (a card, a text, an exam paper)
- *  have none: nothing should sit between the learner and the French.
- *  French as content, the same in every interface language. */
-const BANNERS: { match: RegExp; photo: string; size: number; fr: string }[] = [
-  { match: /^\/app\/verbs\/?$/, photo: 'bouquinistes', size: 900, fr: 'Les verbes' },
-  { match: /^\/app\/grammar\/?$/, photo: 'bookshelves', size: 900, fr: 'La grammaire' },
-  { match: /^\/app\/reading\/?$/, photo: 'terrace', size: 900, fr: 'La lecture' },
-  { match: /^\/app\/exams\/?$/, photo: 'flag-balcony', size: 900, fr: 'Les sujets d’entraînement' },
-  { match: /^\/app\/exam(\/[a-z0-9-]+)?\/?$/, photo: 'flag-balcony', size: 900, fr: 'Mon examen' },
-  { match: /^\/app\/themes\/?$/, photo: 'market', size: 900, fr: 'Les thèmes' },
-  { match: /^\/app\/resources\/?$/, photo: 'bouquinistes', size: 900, fr: 'Les ressources gratuites' },
-  { match: /^\/app\/progress\/?$/, photo: 'montmartre', size: 800, fr: 'Mes progrès' },
-  { match: /^\/app\/path\/?$/, photo: 'market', size: 900, fr: 'Mon parcours' },
-];
-
-export function RouteBanner() {
-  const { pathname } = useLocation();
-  const b = BANNERS.find((x) => x.match.test(pathname));
-  if (!b) return null;
-  return (
-    <div className="fr-banner" aria-hidden="true">
-      <img src={`photos/${b.photo}-${b.size}.webp`} alt="" width={b.size} height={Math.round(b.size * 0.75)} />
-      <span className="fr-banner__shade" />
-      <span className="fr-banner__fr" lang="fr" dir="ltr">{b.fr}</span>
-    </div>
   );
 }

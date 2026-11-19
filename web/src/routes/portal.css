@@ -734,3 +734,12 @@
 .rs-cost { padding: .125rem .5rem; border-radius: 999px; font-size: .75rem; font-weight: 700; background: var(--color-success-soft, #e7f4ec); color: var(--color-success, #1d6b3a); }
 .rs-cost--tier { background: var(--color-surface-sunken); color: var(--color-ink); box-shadow: inset 0 0 0 1px var(--color-line); }
 .rs-foot { padding-block: 1rem 2rem; }
+
+/* ── The section heading every list page shares (redesign v2) ──────────── */
+.sec-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: .5rem 1.5rem; margin-block-end: var(--space-2); }
+.sec-head__text { min-width: 0; flex: 1 1 24rem; }
+.sec-head__title { margin: 0; font-family: var(--font-display); font-weight: 400; letter-spacing: -0.02em;
+  font-size: clamp(1.875rem, 1.5rem + 1.2vw, 2.375rem); line-height: 1.1; display: flex; flex-wrap: wrap; align-items: baseline; gap: .25rem .75rem; }
+.sec-head__fr { font-style: italic; font-size: .62em; color: var(--color-ink-muted); }
+.sec-head__lede { margin: .375rem 0 0; color: var(--color-ink-muted); max-width: 48rem; }
+.sec-head__aside { display: flex; align-items: center; flex-wrap: wrap; gap: .5rem; }

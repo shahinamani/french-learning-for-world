@@ -8,6 +8,7 @@
  * The data model and its honesty rules are in lib/topics.ts.
  */
 import { useEffect, useMemo, useState } from 'react';
+import { SectionHead } from '../../components/SectionHead';
 import { Link, useParams, useSearchParams } from 'react-router';
 import { ArrowUpRight, Layers } from 'lucide-react';
 import { useApp, useUserId } from '../../app-context';
@@ -83,10 +84,7 @@ export function TopicList() {
   return (
     <div className="page topic-page dash" data-testid="topics">
       <div className="dash__main">
-        <header className="exam-head">
-          <h1 className="exam-title">{t('tpTitle')}</h1>
-          <p className="exam-lede">{t('tpLede')}</p>
-        </header>
+        <SectionHead title={t('tpTitle')} fr="Les thèmes" lede={t('tpLede')} />
 
         {target ? (
           <section aria-labelledby="tp-mine">
@@ -329,10 +327,7 @@ export function ResourceList() {
 
   return (
     <div className="page topic-page" data-testid="resources">
-      <header className="exam-head">
-        <h1 className="exam-title">{t('rsTitle')}</h1>
-        <p className="exam-lede">{t('rsLede')}</p>
-      </header>
+      <SectionHead title={t('rsTitle')} fr="Les ressources gratuites" lede={t('rsLede')} />
 
       <div className="rs-filters">
         <nav className="topic-levels" aria-label={t('rsKind')}>

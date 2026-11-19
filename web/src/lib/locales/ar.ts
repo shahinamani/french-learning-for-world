@@ -29,6 +29,7 @@ const ar: Dict = {
   skipToContent: 'تخطَّ إلى المحتوى',
   crashedBody: 'حدث خطأ في هذه الشاشة. تقدّمك محفوظ على هذا الجهاز.',
   crashedReload: 'إعادة التحميل',
+  focusExit: 'مغادرة الجلسة',
   theme: 'المظهر',
   themeSystem: 'النظام',
   themeLight: 'فاتح',

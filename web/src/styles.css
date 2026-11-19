@@ -1013,3 +1013,12 @@ span.map__cell[data-state="locked"] { color: var(--color-ink-faint); background:
 /* The error boundary: the one screen that renders when a route throws. */
 .crashed { max-width: 40rem; margin: 10vh auto; display: grid; gap: var(--space-3); text-align: center; }
 .crashed p { margin: 0; }
+
+/* Focus mode (redesign v2): a session fills the width; nothing beside it. */
+.bar-exit { margin-inline-start: var(--space-3); gap: var(--space-1); }
+.bar-exit svg { transform: rotate(180deg); }
+[dir="rtl"] .bar-exit svg { transform: none; }
+@media (min-width: 1024px) {
+  .shell--focus { grid-template-columns: 1fr; }
+  .shell--focus main { grid-column: 1; }
+}

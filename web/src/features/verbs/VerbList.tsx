@@ -1,5 +1,6 @@
 /** Search any verb. */
 import { useEffect, useMemo, useState, useRef } from 'react';
+import { SectionHead } from '../../components/SectionHead';
 import { Link, useSearchParams } from 'react-router';
 import { useApp } from '../../app-context';
 import { loadVerbIndex, loadVerbForms, type VerbSummary } from '../../lib/verbs';
@@ -71,8 +72,7 @@ export function VerbList() {
 
   return (
     <div className="page verbs-page">
-      <h1 className="h2">{t('verbs')}</h1>
-      <p className="muted">{t('verbsIntro')}</p>
+      <SectionHead title={t('verbs')} fr="Les verbes" lede={t('verbsIntro')} />
       <WithAccentBar inputRef={input} onInsert={setQuery}>
         <label className="field">
           <span className="u-hidden-visually">{t('search')}</span>
