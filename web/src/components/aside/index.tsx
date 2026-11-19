@@ -7,6 +7,7 @@
  * short honest line, not a blank. All of them are small and lazy-friendly:
  * the pages that use them are lazy chunks already.
  */
+import '../../lib/locales/en/todayEn';   // registers its English (lazy group)
 import { useEffect, useState, type ReactNode } from 'react';
 import { Link } from 'react-router';
 import { useApp, useUserId } from '../../app-context';
