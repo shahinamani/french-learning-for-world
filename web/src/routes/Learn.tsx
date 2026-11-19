@@ -7,7 +7,8 @@ import { Link, useSearchParams } from 'react-router';
 import { useApp, useUserId } from '../app-context';
 import { loadContent } from '../lib/content';
 import { loadMaterial, cellState, type Material } from '../lib/material';
-import { counts, weakPoints, weekSummary, type Counts, type ConceptStat } from '../lib/progress';
+import { counts, weakPoints, type Counts, type ConceptStat } from '../lib/progress';
+import { WeekCard } from '../components/aside';
 import { Icon } from '../components/Icon';
 import { ErrorState } from '../components/Search';
 import type { Card, Concept, Level } from '../lib/types';
@@ -99,41 +100,6 @@ const WAYS: { to: string; fr: string; label: 'verbs' | 'shellNavReading' | 'exam
   { to: '/app/dialogues', fr: 'les dialogues', label: 'navDialogues', testId: 'go-dialogues', icon: 'textpage' },
   { to: '/app/path', fr: 'le parcours', label: 'shellNavPath', icon: 'path' },
 ];
-
-/** Seven bars, today on the end: how many cards were reviewed each day. */
-function WeekCard() {
-  const { t } = useApp();
-  const userId = useUserId();
-  const [week, setWeek] = useState<Awaited<ReturnType<typeof weekSummary>> | null>(null);
-  useEffect(() => {
-    let live = true;
-    weekSummary(userId, Date.now()).then((w) => { if (live) setWeek(w); }).catch(() => {});
-    return () => { live = false; };
-  }, [userId]);
-  const days = Array.from({ length: 7 }, (_, i) => {
-    const d = new Date(Date.now() - (6 - i) * 86_400_000);
-    const key = d.toISOString().slice(0, 10);
-    let label = '';
-    try { label = new Intl.DateTimeFormat('fr', { weekday: 'narrow' }).format(d); } catch { /* no Intl */ }
-    return { key, label, n: week?.byDay.get(key) ?? 0 };
-  });
-  const max = Math.max(1, ...days.map((d) => d.n));
-  return (
-    <section className="dash-card week" aria-labelledby="week-h" data-testid="week-card">
-      <h2 id="week-h" className="dash-card__title">{t('tdWeek')}</h2>
-      <p className="week__total"><b>{week?.reviews ?? 0}</b> {t('tdCards')}</p>
-      <div className="week__bars" aria-hidden="true">
-        {days.map((d) => (
-          <span key={d.key} className="week__bar">
-            <i style={{ height: `${Math.max(4, (d.n / max) * 100)}%` }} data-on={d.n > 0 || undefined} />
-            <small lang="fr" dir="ltr">{d.label}</small>
-          </span>
-        ))}
-      </div>
-      <p className="week__sub">{t('tdDays', { n: week?.days ?? 0 })}</p>
-    </section>
-  );
-}
 
 export function Learn({ mode = 'today' }: { mode?: 'today' | 'path' }) {
   const { t, settings } = useApp();

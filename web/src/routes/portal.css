@@ -867,3 +867,23 @@
   :root:not([data-theme="light"]) .today-steps a { background: color-mix(in srgb, var(--color-ink) 10%, var(--fr-bleu-soft)); }
   :root:not([data-theme="light"]) .today-steps a:hover { background: color-mix(in srgb, var(--color-ink) 16%, var(--fr-bleu-soft)); }
 }
+
+/* ── The side column on every content page (redesign v2b) ───────────────── */
+.page--aside { max-width: var(--width-page); }
+.aside-card { display: flex; flex-direction: column; gap: .5rem; }
+.aside-card__lead { margin: 0; font-size: .9375rem; }
+.aside-card__facts { margin: 0; font-size: .875rem; color: var(--color-ink-muted); }
+.aside-card__link { display: inline-flex; align-items: center; gap: .25rem; font-size: .875rem; font-weight: 600; color: var(--fr-bleu); text-decoration: none; margin-block-start: .25rem; }
+.aside-card .fine { font-size: .875rem; line-height: 1.6; margin: 0; }
+.aside-words { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .5rem; }
+.aside-words__fr { display: block; font-family: var(--font-display); font-size: 1.125rem; }
+.aside-words__ctx { display: block; font-size: .8125rem; color: var(--color-ink-muted); line-height: 1.45; }
+.aside-list { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .25rem; }
+.aside-list a { display: flex; justify-content: space-between; gap: .75rem; min-height: 2.5rem; align-items: center; color: inherit; text-decoration: none; font-size: .9375rem; }
+.aside-list a:hover { color: var(--fr-bleu); }
+.aside-steps { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: .375rem; }
+.aside-steps li { display: flex; gap: .5rem; align-items: center; font-size: .9375rem; }
+.aside-steps li[data-done] { opacity: .6; }
+.aside-steps li a { color: inherit; text-decoration: none; min-height: 2.25rem; display: inline-flex; align-items: center; }
+.aside-steps__n { display: inline-grid; place-items: center; width: 1.5rem; height: 1.5rem; border-radius: 50%; border: 1.5px solid var(--fr-bleu); color: var(--fr-bleu); font-size: .75rem; font-weight: 700; flex: none; }
+.fr-inline { font-family: var(--font-display); font-style: italic; }
