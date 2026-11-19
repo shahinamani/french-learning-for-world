@@ -15,6 +15,8 @@ import { Icon } from './Icon';
 import { fold } from '../lib/fold';
 import { WithAccentBar } from './AccentBar';
 import { Localised } from './Localised';
+import { PageWithAside, SavedWordsCard, TipCard } from './aside';
+import { QuickEntriesCard } from './aside/QuickEntriesCard';
 
 type Result =
   | { kind: 'command'; label: string; to: string }
@@ -85,7 +87,11 @@ export function SearchRoute() {
   if (error) return <ErrorState onRetry={() => location.reload()} />;
 
   return (
-    <div className="page">
+    <PageWithAside className="search-page" aside={<>
+      <TipCard id="search" />
+      <QuickEntriesCard />
+      <SavedWordsCard />
+    </>}>
       <h1 className="h2">{t('search')}</h1>
       <WithAccentBar inputRef={input} onInsert={setQuery}>
         <label className="field" style={{ marginBlockEnd: 'var(--space-4)' }}>
@@ -99,6 +105,22 @@ export function SearchRoute() {
       </WithAccentBar>
 
       {!q && <p className="muted" data-testid="search-hint">{t('searchHint')}</p>}
+      {!q && (
+        <section className="search-starters" data-testid="search-starters">
+          <h2 className="eyebrow">{t('practise')}</h2>
+          <ul className="chips">
+            {[5, 10, 15, 25].map((n) => (
+              <li key={n}><Link className="chip chip--link" to={`/practise/review?minutes=${n}`}><Icon name="timer" size={14} /> {t('minutes', { n })}</Link></li>
+            ))}
+          </ul>
+          <h2 className="eyebrow">{t('yourLevel')}</h2>
+          <ul className="chips">
+            {['A1', 'A2', 'B1', 'B2', 'C1', 'C2'].map((lv) => (
+              <li key={lv}><Link className={`chip chip--link chip--${lv.toLowerCase()}`} to={`/learn?level=${lv}`}>{lv}</Link></li>
+            ))}
+          </ul>
+        </section>
+      )}
       {q && results.length === 0 && (
         <p className="muted" data-testid="search-empty">{t('searchEmpty', { q })}</p>
       )}
@@ -141,7 +163,7 @@ export function SearchRoute() {
             ))}
           </ul></section>
       )}
-    </div>
+    </PageWithAside>
   );
 }
 

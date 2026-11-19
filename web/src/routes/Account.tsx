@@ -10,6 +10,7 @@ import type { Locale } from '../lib/types';
 import { DataNoticeBody } from '../components/DataNotice';
 import { isPersisted } from '../lib/backup';
 import { Link } from 'react-router';
+import { WeekCard } from '../components/aside';
 
 export function Account() {
   const { t, settings, update, profile, setProfile, storageWorks } = useApp();
@@ -74,6 +75,8 @@ export function Account() {
           </select>
         </label>
       </section>
+
+      <WeekCard />
 
       <section className="card" aria-labelledby="i-h">
         <h2 id="i-h" className="eyebrow">{t('importData')}</h2>
