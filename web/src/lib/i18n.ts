@@ -47,7 +47,6 @@ const en = {
   dialoguesLede: 'A situation, the French, the meaning, and questions that are answered and explained.',
   crashedBody: 'This screen broke. Your progress is safe on this device.',
   crashedReload: 'Reload',
-  focusExit: 'Leave the session',
   cardNew: 'New card', cardSeen: 'Seen {n} times',
   tdPlanTitle: 'Today’s session', tdPlanSteps: '{n} steps · about {m} min', tdPlanStart: 'Start the session',
   tdPlanContinue: 'Continue: step {n}', tdPlanAllDone: 'Today’s session is done. Tomorrow brings the next cards.',

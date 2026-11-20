@@ -42,7 +42,6 @@ const fa: Dict = {
   dialoguesLede: 'یک موقعیت، متن فرانسوی، معنی آن، و پرسش‌هایی با پاسخ و توضیح.',
   crashedBody: 'این صفحه دچار خطا شد. پیشرفت شما روی همین دستگاه محفوظ است.',
   crashedReload: 'بارگذاری دوباره',
-  focusExit: 'خروج از جلسه',
   cardNew: 'کارت جدید', cardSeen: 'بار {n}',
   tdPlanTitle: 'جلسهٔ امروز', tdPlanSteps: '{n} گام · حدود {m} دقیقه', tdPlanStart: 'شروع جلسه',
   tdPlanContinue: 'ادامه: گام {n}', tdPlanAllDone: 'جلسهٔ امروز تمام شد. فردا کارت‌های بعدی می‌آیند.',

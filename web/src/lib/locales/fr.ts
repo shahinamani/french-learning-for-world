@@ -42,7 +42,6 @@ const fr: Dict = {
   dialoguesLede: 'Une situation, le français, le sens, et des questions corrigées et expliquées.',
   crashedBody: 'Cet écran a rencontré une erreur. Votre progression est conservée sur cet appareil.',
   crashedReload: 'Recharger',
-  focusExit: 'Quitter la séance',
   cardNew: 'Nouvelle carte', cardSeen: 'Vue {n} fois',
   tdPlanTitle: 'La séance du jour', tdPlanSteps: '{n} étapes · environ {m} min', tdPlanStart: 'Commencer la séance',
   tdPlanContinue: 'Continuer : étape {n}', tdPlanAllDone: 'La séance du jour est terminée. Demain, les cartes suivantes.',

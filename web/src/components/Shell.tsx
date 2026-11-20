@@ -20,9 +20,6 @@ const MobileBar = lazy(() => import('../routes/app/PortalNav').then((m) => ({ de
 const TimerPanel = lazy(() => import('./TimerPanel'));
 import { DEFAULT_PRESET, TIMER_EVENT, formatClock, remainingSeconds, restore, save, clear, announceFinish, chime, primeAudio } from '../lib/timer';
 
-/** The routes that are a study session rather than a page. */
-const FOCUS = [/^\/app\/cards/, /^\/app\/exams\/[^/]+\/sit/, /^\/app\/writing\/[^/]+\/[^/]+/, /^\/app\/verbs\/drill/];
-
 export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const { t, settings, update } = useApp();
   const userId = useUserId();
@@ -32,10 +29,9 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   // is identified by its route rather than by asking the page: `/` shows the
   // dashboard to somebody who has studied here, and they should keep the timer.
   const onLanding = (location.pathname === '/' || location.pathname === '') && !hasStarted();
-  // Focus mode (redesign v2): while a learner is inside a card session, an
-  // exam paper, a letter or a drill, the sidebar, the mobile bar and the
-  // search go away. One thing on the screen, and a way out in the bar.
-  const focus = !onLanding && FOCUS.some((re) => re.test(location.pathname));
+  // There is no focus mode: the owner asked (2026-11-20) that the sidebar
+  // stay on every portal screen, a card session or an exam paper included,
+  // so a learner always sees where they are and where else they can go.
   // Persian and Arabic have no portal-navigation copy: the labels are English,
   // and the page says so rather than showing English as if it were theirs.
   // Persian was drafted for the whole portal on 2026-10-31 and awaits the
@@ -136,7 +132,7 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
   const stop = () => { setTimer({ endsAt: 0, durationMin: selected, running: false }); clear(userId); };
 
   return (
-    <div className={`shell${focus ? ' shell--focus' : ''}`} data-focus={focus || undefined}>
+    <div className="shell">
       <a className="skip" href="#main">{t('skipToContent')}</a>
 
       {/* The landing page carries its own header (redesign v1), so the shell bar
@@ -148,11 +144,6 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
           <NavLink to="/app/today" className="brand" aria-label={t('appName')}>
             <span className="brand-name">{t('appName')}</span>
           </NavLink>
-          {focus && (
-            <NavLink to="/app/today" className="btn btn--sm bar-exit" data-testid="focus-exit">
-              <Icon name="chevron" size={16} /><span>{t('focusExit')}</span>
-            </NavLink>
-          )}
           <div className="bar-actions">
             {/* The study timer is hidden on the landing page. A stranger who has
                 just arrived and does not yet know what this site is was being
@@ -188,12 +179,10 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
             </>
             )}
             {/* Search is a route (⌘K too); in the bar as an icon, not a box on
-                every page above the content. Not in focus mode. */}
-            {!focus && (
-              <NavLink to="/app/search" className="icon-btn" data-testid="search-link">
-                <Icon name="search" /><span className="u-hidden-visually">{t('search')}</span>
-              </NavLink>
-            )}
+                every page above the content. */}
+            <NavLink to="/app/search" className="icon-btn" data-testid="search-link">
+              <Icon name="search" /><span className="u-hidden-visually">{t('search')}</span>
+            </NavLink>
             {/* Light or dark in one click; "follow my device" stays in Settings. */}
             <button type="button" className="icon-btn" data-testid="theme-toggle" aria-pressed={isDark()}
                     onClick={() => update({ theme: isDark() ? 'light' : 'dark' })}>
@@ -227,8 +216,8 @@ export function Shell({ prerenderChild }: { prerenderChild?: ReactNode } = {}) {
 
       {/* One navigation per width. On the landing page there is no sidebar:
           a stranger has no portal to navigate yet. */}
-      {!onLanding && !focus && <Suspense fallback={null}><Sidebar /></Suspense>}
-      {!onLanding && !focus && <Suspense fallback={null}><MobileBar /></Suspense>}
+      {!onLanding && <Suspense fallback={null}><Sidebar /></Suspense>}
+      {!onLanding && <Suspense fallback={null}><MobileBar /></Suspense>}
 
       <SidePanel />
     </div>
